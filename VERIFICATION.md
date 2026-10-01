@@ -5,6 +5,126 @@ keeps the scientific study runners independent from development tooling. Setup
 requires `uv`, Git and Node 20+; Node supplies the JavaScript syntax gate as well
 as the optional browser runner.
 
+## Implementation and acceptance status
+
+The full plan's implementation and required qualification are complete against
+the frozen `runs/verification-completion/workspace-release` tree. Offline,
+Docker/report and source-bound browser checks passed; the complete sustained and
+swarm v2 rehearsals and probe v2 diagnostic are qualified. Recovery composition
+and historical compatibility have separate passing evidence. Earlier measurements
+below remain evidence for their recorded sources, not substitute passes for
+changed code. Release packaging uses an exact export of `main`; its source/wheel
+archives and build receipt are generated under `runs/verification-completion/dist-final/`.
+External publication and hosted CI await a configured destination.
+
+The generated final rollup at
+[completion-qualification.json](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/completion-qualification.json)
+binds the qualified source and receipt hashes to the release commit. It is
+generated after the final documentation commit and retained with the run artifacts
+outside Git. The individual completed receipts are linked below.
+
+| Plan acceptance | Implemented behavior and evidence boundary |
+| --- | --- |
+| Complete inventory and cheap failures | Explicit class/method lanes include all three owned roots and committed fixtures. Syntax/configuration precede concurrent Ruff/mypy; seeded syntax and type failures launched zero candidates. All 665 project methods passed across the offline and Docker batches, plus 13 independent report methods. |
+| Reusable environment and retained failures | Pinned tools, checker caches, image and healthy report server persist. Expensive fixtures, interrupted work and failure logs remain retained; candidate containers, databases and browser contexts remain isolated. |
+| Bounded scheduling | Class setup stays together; lane barriers, exclusive fixture jobs and nested resource declarations bound parallel work. Shared validation batches use separate validators and deterministic reduction. One/two-worker measurements and cancellation regressions cover the new boundaries. |
+| Exact evidence reuse | Source, suite, purpose, runtime, limits and protocol bind receipts. Final source/runtime reconciliation rejects drift. Deterministic visible observations may reuse evidence; independent final and repeatability observations execute physically. |
+| Scientific and historical compatibility | Complete sustained/swarm rehearsals and the probe diagnostic qualified their additive contracts while preserving original CORE sources. Recovery entry qualification composes 24 unchanged original cases with nine new guard probes. The pinned historical auditor reproduced its prior certificate. |
+| Measured tuning and release portability | Scoped timing/resource inventory, controlled failure probes, batched Git exports and curated source/wheel builds provide reviewable evidence. CI configuration is supplied; actual hosted execution depends on the documented repository/runner configuration. |
+
+No unique regression was removed on similarity alone. Further reductions in
+interpreter starts, shared GitStore work, Docker cleanup or independent scientific
+observations require measured benefit and their own preserved correctness
+boundary. Performance of validation batches with four workers, sampled peak
+CPU/process-tree RSS and p95 from fewer than twenty comparable samples are not
+claimed by this work.
+
+## Final development qualification
+
+The frozen release inventory contains **665 project methods: 656 offline and nine
+Docker**. The physical offline batch passed **656/656** in **3,282.533 seconds**
+using 85 class workers, with no reused classes, skips or stale source/runtime
+bindings. [Physical offline receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/offline-release/20261001T022927-67263a07/summary.json).
+
+An unchanged warm confirmation passed **656/656** in **4.926 seconds**, reused
+all 85 class receipts and launched **zero test workers**. The static gate ran and
+source/runtime reconciliation remained current. This measures receipt reuse;
+it is not a second physical execution or a causal end-to-end speedup estimate.
+[Warm confirmation receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/offline-release/20261001T032416-f5e1fe41/summary.json).
+
+The final integration batch passed **22/22 checks: nine Docker and 13 independent
+report methods**, in **520.625 seconds** with five class workers. It reused no
+integration results and reported no skips or stale source/runtime bindings.
+[Docker/report receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/integrations-release/20261001T032442-1517bbcd/summary.json).
+
+The current committed `verification-pilot.html` passed its focused browser check
+in **3.529 seconds with one browser launch**. Owned resources closed, the borrowed
+report stayed healthy, and canonical reviews, feedback and the other workstream's
+live page remained unchanged. The earlier nine-page batch supplies the still-valid
+checks for the other eight pages; the changed page has this new observation.
+[Focused browser receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/browser-release-focused/verification-pilot.json),
+[source/cleanup reconciliation](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/browser-release-focused/postflight.json),
+[earlier page batch](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/browser-final/all-pages.json).
+
+The complete inventory reconciles **665/665 project methods across 89 class/lane
+groups**, plus the separately counted 13 report methods in one group. Its 85 warm
+class reuses add zero physical samples; four-slot and eight-slot execution
+identities retain separate cost observations. Three failed/interrupted histories
+remain with their causes. No flaky rate is inferred, and changed-source history
+is not relabeled as current proof. The earlier offline-only inventory remains
+an unchanged checkpoint.
+[Complete inventory and cost evidence](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/inventory-complete.json),
+[inventory reconciliation](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/inventory-complete-summary.json).
+
+Full study qualification is separate from these development checks. Development
+and integration receipts do not replace its exact-contract evidence.
+
+## Full v2 qualification
+
+The complete sustained v2 rehearsal and strict raw-evidence audit qualified in
+**2,525.608 seconds**. All **six trajectories** were accepted, with **18 completed
+milestones and six verified handoffs to new process IDs**. Its **84 distinct
+physical observations** comprise 54 visible, 12 final and 18 repeatability checks:
+66 passed and 18 recorded intentional candidate faults. All 30 final/repeatability
+observations passed. No observation was reused, and no provider calls or spending
+occurred. Thirteen sessions/preflights preserve the twelve begin/resume controller
+boundaries and one shared parent final session. Source, contract and runtime
+identities matched before execution, afterward and after audit.
+[Sustained qualification receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/sustained-v2-qualification/qualification.json),
+[retained results](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/sustained-v2-rehearsal/results.json).
+
+The complete swarm v2 rehearsal qualified in **1,687.923 seconds**: eight tasks
+and 40 accepted arm releases. Its strict CLI audit verified **144 distinct
+physical observations**, including **48 independent final observations**. There
+were 104 passing observations and 40 expected behavioral failures of deliberately
+bad candidates; these are not 144 passing tests. One preflight served the session,
+with no infrastructure failures, cancellations, reuse or paid usage. All 174
+recorded release files and the runtime stayed unchanged.
+[Swarm qualification receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/swarm-v2-launch/receipt.json),
+[retained results](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/swarm-v2-rehearsal/results.json).
+
+The supplemental probe v2 diagnostic and its source-bound audit passed in
+**131.028 seconds**, including **16.419 seconds** in the validator session. All
+12 planned attempts executed physically with one preflight, no skips, reuse,
+infrastructure failures or cancellations, and verified cleanup. Two candidates
+passed all their supplemental cases and ten failed at least one; these are
+post-hoc behavioral observations, not failed harness qualification. Original
+primary scores stayed unchanged, and source/runtime checks matched before and
+after execution.
+[Probe audit receipt](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/probes-v2-diagnostic-audit/receipt.json),
+[retained diagnostic results](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/probes-v2-diagnostic/results.json).
+
+Comparison with the original probe evidence matched all 12 exact candidate
+source identities/bytes and ordered supplementary suites, all 30 complete case
+outcomes, and all 12 attempt summaries; this comparison read retained records
+without new candidate or Docker executions.
+[Exact probe outcome comparison](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/probes-v2-baseline-comparison.json).
+
+The first probe launch encountered Docker socket permission denial before output
+creation or candidate execution. That infrastructure failure remains retained
+separately from the completed diagnostic.
+[Probe startup evidence](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/probes-v2-startup-denied.json).
+
 ## Start once, reuse the environment
 
 ```sh
@@ -259,11 +379,10 @@ It did not measure CPU/RSS, lock wait or byte counts. The continuation described
 below adds explicitly scoped telemetry; those measurements are not retroactively
 attributed to earlier receipts.
 
-Shared legacy study runners retain their original scientific contracts. Applying
-the new adapter to sustained/swarm/probe runs, changing independent observation
-policy or relaxing integrity-scan timing requires an explicitly versioned study
-contract and its new rehearsal. Those protected migrations are not silently
-included in the development-tooling implementation.
+These earlier measurements preceded the additive sustained/swarm/probe v2
+paths described below. Original study runners still retain their scientific
+contracts; the new paths explicitly version batching, reuse declarations and
+snapshot timing and require separate qualification.
 
 The largest passing physical worker costs in the frozen offline qualification
 were:
@@ -302,14 +421,14 @@ During implementation, the static gate caught a real new type error in
 42 explicitly recorded legacy diagnostics; these are disclosed type debt, not
 new errors suppressed by module-wide ignores.
 
-Qualification uses frozen source snapshots because a separate study workstream
-is editing the same checkout. The broad snapshot contains 498 project methods
-(489 offline and nine Docker); the discovery inventory at that handoff contained 522.
-Final tooling changes have separate source-bound checks. The other workstream
-reports its 19 new handoff checks passed, but those observations are not relabeled
-as this workflow’s central execution receipts or a certificate for the entire
-current combined tree. `qualification_at_registration` in the manifest is an
-audit note; current execution status always comes from run receipts.
+The earlier qualification used frozen source snapshots while a separate study
+workstream edited the same checkout. That snapshot contained 498 project methods
+(489 offline and nine Docker); discovery at that handoff contained 522.
+Its later tooling changes had separate source-bound checks. At that point the
+other workstream's 19 new handoff checks had separate reported passes, rather
+than this workflow's central execution receipts. Those historical counts do not
+describe the expanded release inventory. `qualification_at_registration` in the
+manifest is an audit note; current execution status always comes from run receipts.
 
 The mixed swarm Git group and post-hoc Git diagnostic passed in 147 and
 145 seconds under their inherited 180-second worker watchdogs. Their current
@@ -333,7 +452,7 @@ both the queue and telemetry corrections, with unchanged source hashes. The
 old physical receipts were intact throughout; the frozen warm result’s overall
 3.042-second duration and coverage counts were unaffected.
 
-The final integration batch passed all **nine real Docker checks and 13 report
+The earlier integration batch passed all **nine real Docker checks and 13 report
 checks** in 558.749 seconds, using five class workers, no reused integration
 results, no skipped methods and unchanged frozen inputs. The four Docker groups
 ran within eight resource slots; the report’s eight-writer contention check ran
