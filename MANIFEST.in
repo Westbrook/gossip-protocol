@@ -1,6 +1,7 @@
 # A source checkout/sdist can run the complete offline inventory. Scientific
 # history, local secrets, environments and independent report state are excluded.
 include README.md AGENTS.md VERIFICATION.md VERIFICATION_PLAN.md
+include .gitignore
 include pyproject.toml requirements-dev.lock verification-manifest.json
 include *-study-plan.json
 include *.html
