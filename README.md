@@ -651,10 +651,26 @@ to two synthetic maintenance applications, a build graph and a booking calendar,
 with four cumulative milestones. `strong-reviewed`, `cheap-reviewed`, and
 `portfolio-reviewed` share the same strong reviewer, repair limits, and acceptance
 rule; the portfolio starts with four cheap-model implementations instead of one.
-Three repetitions per project and policy plan **18 trajectories and up to 72
-milestones**. The [current live run](results/verification-live-1/results.json) is
-in progress; consult the [methods and results report](verification-pilot.html)
-and [progress report](http://127.0.0.1:4178/) for its current status.
+Three repetitions per project and policy produced **18 evaluated trajectories**,
+with no censored or unexecuted cases. The [finished live run](results/verification-live-1/results.json)
+completed **64 of 72 milestones** and accepted **3 of 18 projects**. The
+[descriptive summary](results/verification-live-1/descriptive-summary.json)
+reports the following primary results; the [methods and results report](verification-pilot.html)
+provides the interpretation.
+
+| Policy | Accepted projects | Completed milestones | Private requirement instances satisfied | Estimated API cost |
+| --- | ---: | ---: | ---: | ---: |
+| `strong-reviewed` | 3/6 | 24/24 | 86/93 | $4.292283 |
+| `cheap-reviewed` | 0/6 | 24/24 | 77/93 | $4.562591 |
+| `portfolio-reviewed` | 0/6 | 16/24 | 54/93 | $6.833285 |
+
+Each requirement denominator covers the six evaluated trajectories, including
+incomplete projects. Requirement coverage is partial credit; project acceptance
+requires every final gate. All six cheap-reviewed projects completed their
+milestones but failed private checks. The wider portfolio did not improve
+completion or final acceptance in this sample. Builders used pinned GPT-5.4 or
+GPT-5.4-mini snapshots; all model calls, including the shared GPT-5.4 reviewer,
+used **low reasoning effort**.
 
 Reviewers propose bounded JSON checks. A trusted host oracle verifies their
 expected answers without correcting rejected labels, then admitted checks run
@@ -670,16 +686,25 @@ Unknown provider outcomes remain reserved and stop execution. Before milestone
 four, an independent Git history supplies a trusted policy update and exercises
 rejection of stale integration evidence. This covers a specific recovery boundary
 and policy merge, not arbitrary failure recovery or autonomous conflict resolution.
+The live run recorded 17 kills and successful resumptions among trajectories that
+reached the fault, and 15 stale-evidence integration checks among those that
+reached the policy merge.
 
-Run the development gates above first. Use the pinned `.venv` runtime and the
-locally available immutable Docker image throughout qualification and execution.
-Every example output path below must be fresh; preserve earlier runs. The six-case
-rehearsal and retained-evidence audit make **zero API calls**:
+Run the development gates above first. The primary study's
+[frozen contract](results/verification-live-1/preregistered.json) records CPython
+3.14.6 at `/opt/homebrew/opt/python@3.14/bin/python3.14`; its plain `python3`
+command resolved to this executable, rather than the development `.venv`.
+Use the same controller runtime and locally available immutable Docker image
+throughout a rehearsal and its live execution. A different runtime requires its
+own matching rehearsal. Every example output path below must be fresh; preserve
+earlier runs. The six-case rehearsal and retained-evidence audit make **zero API
+calls**:
 
 ```sh
-.venv/bin/python -m gossip_harness.verification_experiment run \
+STUDY_PYTHON=/opt/homebrew/opt/python@3.14/bin/python3.14
+"$STUDY_PYTHON" -m gossip_harness.verification_experiment run \
   --output results/verification-rehearsal-example
-.venv/bin/python -m gossip_harness.verification_audit \
+"$STUDY_PYTHON" -m gossip_harness.verification_audit \
   --run results/verification-rehearsal-example \
   --output analysis/verification-rehearsal-audit-example.json
 ```
@@ -691,7 +716,7 @@ API charges and documents this study's authorized workflow; it does not authoriz
 future paid runs:
 
 ```sh
-.venv/bin/python -m gossip_harness.verification_experiment run --live \
+"$STUDY_PYTHON" -m gossip_harness.verification_experiment run --live \
   --output results/verification-live-example \
   --rehearsal results/verification-rehearsal-example/results.json \
   --repetitions 3 --budget-units 40000000 \
@@ -699,9 +724,11 @@ future paid runs:
 ```
 
 The [audited cap change](runs/verification-budget-increase.json) sets this study's
-shared cumulative ceiling to **$40**, preserving all prior charges. Earlier
-sections retain their historical caps. Keep the same ledger path: fresh output
-directories do not reset spending, and the constructor rejects a silently changed
+shared cumulative ceiling to **$40**, preserving all prior charges. This completed
+study used **$15.688159** in estimated API usage across 289 provider invocations,
+bringing cumulative usage to **$23.940972**. Earlier sections retain their
+historical caps. Keep the same ledger path: fresh output directories do not reset
+spending, and the constructor rejects a silently changed
 cap. Usage figures are conservative token-based estimates, not provider invoices;
 they exclude local compute, oracle development, and human work.
 
@@ -709,37 +736,51 @@ After the entire live study finishes, audit its retained evidence and generate a
 descriptive summary. These commands do not execute candidate code or call models:
 
 ```sh
-.venv/bin/python -m gossip_harness.verification_audit \
+"$STUDY_PYTHON" -m gossip_harness.verification_audit \
   --run results/verification-live-example \
   --accounting-ledger runs/first-live-budget.sqlite \
   --output analysis/verification-live-audit-example.json
-.venv/bin/python analysis/summarize_verification.py \
+"$STUDY_PYTHON" analysis/summarize_verification.py \
   results/verification-live-example \
   --output analysis/verification-live-summary-example.json
 ```
 
+The completed [independent audit](results/verification-live-1/independent-audit.json)
+passed and certified the retained evidence for all 18 trajectories. It reconciled
+289 requests across 67 billing tasks, with zero unsettled reservations or pending
+promotions. This certification covers evidence consistency and accounting;
+it does not prove that every written requirement is satisfied.
+
 For an in-progress run, `verification_audit --finalized-only` can inspect finalized
 cases, but cannot certify the whole study. Partial summaries label evaluated
-denominators and charges not yet attributed to evaluated trajectories. A retained
-evidence audit checks consistency and accounting; it does not prove every written
-requirement is satisfied.
+denominators and charges not yet attributed to evaluated trajectories.
 
 The following supplementary diagnostics make zero API calls and keep primary
-scores and releases unchanged. Both live-study diagnostics require the **entire
+scores and releases unchanged. The live-study diagnostics require the **entire
 finished 18-trajectory roster**, with no active, censored, or unexecuted work, and
 fresh output directories outside the frozen study. They verify frozen source,
 runtime, fixture, and receipt bindings before using Docker:
 
 ```sh
-.venv/bin/python analysis/run_verification_pool_diagnostic.py \
+"$STUDY_PYTHON" analysis/run_verification_pool_diagnostic.py \
   --run results/verification-live-example \
   --output analysis/verification-final-pool-example
-.venv/bin/python analysis/run_verification_persistence_diagnostic.py \
+"$STUDY_PYTHON" analysis/run_verification_persistence_diagnostic.py \
   --golden-rehearsal analysis/verification-persistence-golden-example
-.venv/bin/python analysis/run_verification_persistence_diagnostic.py \
+"$STUDY_PYTHON" analysis/run_verification_persistence_diagnostic.py \
   --run results/verification-live-example \
   --qualification analysis/verification-persistence-golden-example \
   --output analysis/verification-persistence-example
+```
+
+The eligibility diagnostic is specific to the retained finding in
+`verification-live-1`; it is not a general utility for a new run. Its command
+reads that actual study and still requires a fresh output directory:
+
+```sh
+"$STUDY_PYTHON" analysis/run_verification_eligibility_diagnostic.py \
+  --run results/verification-live-1 \
+  --output results/verification-eligibility-example
 ```
 
 The final-pool diagnostic tests the latest retained portfolio candidates against
@@ -748,15 +789,182 @@ descriptive purpose; other distinct sources execute in Docker. It distinguishes
 candidate coverage from selection quality after unequal repairs, not four
 independent end-to-end projects. The persistence diagnostic first requires a
 passing, exactly matched golden qualification, which can run before live work
-finishes. Its four stories carry the same database through all four selected code
-versions and fresh CLI processes, including primary failures that retained all
-four versions; earlier stops are explicitly excluded.
+finishes. Its two stories per application carry the same database through all
+four selected code versions and fresh CLI processes, including primary failures
+that retained all four versions; earlier stops are explicitly excluded.
+
+The completed [final-pool diagnostic](results/verification-pool-diagnostic-2/results.json)
+found no fully passing private-suite implementation among the 12 retained
+candidate versions in the three portfolios that reached the final milestone.
+It reused three selected-source receipts and physically evaluated nine other
+sources. The other three portfolios stopped earlier and have no final pool.
+
+After a passing [golden qualification](results/verification-persistence-golden-1/results.json),
+the [persistence diagnostic](results/verification-persistence-diagnostic-2/results.json)
+passed all 30 story executions across 15 eligible trajectories, including all
+six stories for the three primary accepted projects. Three trajectories that
+stopped early were excluded. This supports continuity of persisted data for the
+four story designs; primary quality failures remain failures.
+
+A separate [eligibility diagnostic](results/verification-eligibility-diagnostic-1/results.json)
+exposed a harness confound in an earlier milestone: an unchanged repair proposal
+incorrectly made retained candidate B ineligible, although that source passed
+all 36 private checks through milestone three; retained candidate C passed 27/36.
+The reviewer also never requested acceptance of B. A source passing that
+milestone's private suite was therefore available, while the final-pool result
+concerns different trajectories that reached milestone four. This does not
+establish that fixing eligibility would make the reviewer accept B or complete the next
+milestone. The measured portfolio acceptance remains 0/6.
 
 This study is **oracle-assisted and unequal in compute**: portfolio width changes
 initial call count, reviewer context, and candidate-aware generated evidence.
 Two synthetic application identities and three repetitions do not establish
 production superiority, a best-available-model result, or a causal benefit from
 gossip. Quality and completion are primary; cost and elapsed time remain secondary.
+
+## Comparing policies and continuing real-module maintenance
+
+The [historical comparison](results/verification-comparison-2/summary.json)
+derives quality ranks, within-application win/draw/loss counts, and observed
+terminal durations from the certified 18-trajectory study. Acceptance and
+requirement coverage have separate rankings. Six trajectories per policy and
+two application identities do not justify a calibrated Elo rating; the 18
+cross-run comparisons per policy pair are correlated derived observations.
+Accepted-only timing always includes its denominator, and a fast incomplete
+run is not treated as a speed victory.
+
+The separate [continuation plan](continuation-study-plan.json) freezes this
+repository's actual `transport.py` into isolated candidate repositories. Two
+cumulative milestones add reproducible snapshots and strict, atomic restore.
+Two repetitions compare a strong maintainer/reviewer with the same controller
+plus two independent cheap test scouts. Scouts propose data-only probes whose
+expected outputs must pass a trusted oracle gate. This measures an additional
+evidence policy, not equal compute or the causal effect of gossip transport.
+
+The new controller preserves valid retained source after rejected or unchanged
+proposals and escalates stalled review within explicit call limits. Acceptance
+still requires executed evidence and an explicit reviewer decision. All four
+terminal sources freeze before any private evaluation. Candidate execution
+uses the pinned Docker validator; provider requests retain journals and budget
+reservations. Unknown outcomes stop without an automatic retry.
+
+Use the same Python executable for rehearsal and live execution, with fresh
+output paths. Live work also requires the registered, quiescent shared ledger
+and matching authorized budget; these examples do not reset either:
+
+```sh
+.venv/bin/python -m gossip_harness.continuation_experiment run \
+  --output results/continuation-rehearsal-example
+.venv/bin/python -m analysis.audit_continuation \
+  --run results/continuation-rehearsal-example \
+  --output results/continuation-rehearsal-example/independent-audit.json
+.venv/bin/python -m gossip_harness.continuation_experiment run --live \
+  --output results/continuation-live-example \
+  --rehearsal results/continuation-rehearsal-example/results.json \
+  --budget-ledger runs/first-live-budget.sqlite
+```
+
+New timing spans distinguish physical provider requests, validation, active
+trajectory work, and the wait for the whole-cohort private-test barrier.
+Concurrent and nested durations must not be summed as elapsed wall time.
+
+The [complete zero-API rehearsal](results/continuation-rehearsal-1/results.json)
+passed all four trajectories and its independent audit. The subsequent
+[live study](results/continuation-live-1/results.json) and
+[independent audit](results/continuation-live-1/independent-audit.json) also
+finished, with 24 physical provider requests and no unsettled reservations or
+pending promotions. The [audited comparison](results/continuation-comparison-1/summary.json)
+reports:
+
+| Policy | Accepted | Requirement coverage | Median active time | API estimate, both runs |
+| --- | --- | --- | --- | --- |
+| Strong maintainer/reviewer | 2/2 | 100% | 3.80 minutes | $0.684577 |
+| Same maintainer/reviewer plus cheap scouts | 2/2 | 100% | 4.58 minutes | $0.879140 |
+
+Both policies completed all four assigned milestones. Active time includes model
+work, Git/controller work, stage checks and final evaluation; deliberate
+whole-cohort barrier and evaluation-queue waits are reported separately. These
+times are not comparable to the older cohort's different task and timing
+contract. Total incremental API usage was $1.563717, bringing the shared ledger
+to $25.504689 of its unchanged $40 cap.
+
+The scouts supplied 12 admitted case proposals. Their seven rejection entries
+comprise three malformed response batches and four rejected parsed proposals;
+they are not seven individual rejected tests. No admitted scout check failed
+against the observed public-passing implementations, and no live stage needed
+a repair or escalation. Because those tests were available before the first
+build, this does not rule out a preventive benefit. It also does not demonstrate
+a quality advantage: this one-module pilot reached a ceiling, with only two
+runs per policy. The forced rehearsal controls establish continuation behavior;
+the live runs did not exercise stalled-review recovery.
+
+The separately reviewed [scout-signal memo](analysis/continuation-scout-signal.json)
+binds 38 retained inputs and distinguishes 12 new admissions from 16 passing
+probe-stage observations. It also identifies weak requirement labels: correct
+expected answers do not establish that a probe meaningfully exercises its
+claimed behavior. A next benchmark should pair harder, multi-module maintenance
+with a preregistered fault bank to measure incremental defect detection.
+
+## Evidence-frontier benchmark
+
+The [registered benchmark](benchmark-study-plan.json) addresses the previous
+pilot's quality ceiling with two maintained, three-module SQLite applications:
+simultaneous build-graph rename/atomic edits, and booking exchanges/transactional
+waitlist settlement. Both retain earlier behavior through two new milestones.
+
+The main comparison gives cheap models four initial opportunities either as a
+sequential revision chain or as independent branches. Both retain all four
+checkpoints for the same stronger reviewer and bounded repair policy. Two
+repetitions per application provide four paired comparisons. One stronger-model
+anchor per application provides additional context; it is not compute-matched.
+These are centrally instrumented candidate-generation policies, not a claim
+that gossip itself improves model reasoning.
+
+Initial candidates freeze before the two independent test scouts run. Their
+current-stage probes cannot influence those initial implementations. All ten
+trajectories, source histories, tests and selections then freeze before private
+evaluation or cross-policy analysis. The separate diagnostic measures:
+
+- Best available initial/final candidate quality versus the selected source.
+- Public-only, scout, reviewer and combined-evidence selectors on the same pool.
+- Own-history evidence versus pooled evidence available only after the study.
+- Detection of preregistered semantic fault families beyond public checks.
+- Completion, regression retention, active time, provider overlap and API usage.
+
+Fault qualification requires golden and equivalent controls to pass, every
+deliberate fault to produce a runnable wrong answer on a witness, and at least
+four public-surviving fault families per application/milestone. Candidate code
+always runs in the pinned Docker boundary. The analysis uses descriptive paired
+win/draw/loss, with quality before timing; two applications do not justify Elo.
+
+Use fresh output paths and the pinned Python runtime. The live entry point
+checks the exact qualification, full rehearsal, scientific contract and shared
+ledger balance; it never resets earlier charges or automatically retries an
+unknown provider outcome. A later paid cohort needs a newly registered contract
+and the corresponding budget decision, not an edited historical result.
+
+```sh
+.venv/bin/python -m analysis.qualify_benchmark \
+  --output results/benchmark-qualification-example
+.venv/bin/python -m gossip_harness.benchmark_experiment run \
+  --output results/benchmark-rehearsal-example \
+  --qualification results/benchmark-qualification-example/results.json
+.venv/bin/python -m analysis.audit_benchmark \
+  --run results/benchmark-rehearsal-example \
+  --output results/benchmark-rehearsal-example/independent-audit.json
+.venv/bin/python -m gossip_harness.benchmark_experiment run --live \
+  --output results/benchmark-live-example \
+  --qualification results/benchmark-qualification-example/results.json \
+  --rehearsal results/benchmark-rehearsal-example/results.json \
+  --budget-ledger runs/first-live-budget.sqlite
+```
+
+The separate `simulation.benchmark_transport` module compares gossip, a durable
+single broker, and replicated brokers with client failover under equal attempted
+contact budgets. Its synthetic rehearsal and later frozen-artifact replay are
+deterministic dissemination experiments, not additional coding trials or
+production availability estimates. It reports bytes separately because equal
+contact counts do not imply equal traffic.
 
 ## Research and review
 
@@ -769,7 +977,12 @@ gossip. Quality and completion are primary; cost and elapsed time remain seconda
 - [sustained-pilot.html](sustained-pilot.html): cumulative project quality,
   persistence, retained-evidence audit, and separate supplemental diagnostics.
 - [verification-pilot.html](verification-pilot.html): adaptive verification,
-  persisted-response recovery, and the current maintenance-study status.
+  persisted-response recovery, and supplementary failure diagnostics.
+- [continuation-comparison.html](continuation-comparison.html): observed quality
+  ranks and timings, plus the separate real-module maintenance comparison.
+- [benchmark-comparison.html](benchmark-comparison.html): stronger maintenance
+  tasks, matched candidate formation, evidence effectiveness and separate
+  transport stress results.
 - `.progress-report/project.json`: locator for the independent durable progress
   report, review checkpoints and continuation handoff.
 

@@ -1,0 +1,1863 @@
+{
+  "schema_version": 1,
+  "analysis": "continuation-scout-signal-v1",
+  "created_at_utc": "2026-10-01T13:10:09.116490+00:00",
+  "purpose": "Post-hoc descriptive inspection of frozen live-stage scout and reviewer evidence; no new candidate execution or counterfactual test.",
+  "run_root": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1",
+  "contract_sha256": "d763e301a3062108511ef096f10240d0b411ded6c75319e181052b8bb8664b5b",
+  "global_provider_freeze": {
+    "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/frozen-trajectories.json",
+    "sha256": "52ddbaeeb44c5c6a308d5ef4daf8b882e7d219e00c3c51ac5ab1d19ee5ae9eae",
+    "frozen_utc": "2026-10-01T13:01:46.012507+00:00",
+    "verified_exact_trajectory_roster": true,
+    "verified_all_four_trajectory_hashes": true,
+    "trajectories": 4,
+    "milestones": 8,
+    "scope": "Provider trajectories only. Final/private scores and cohort certification are excluded."
+  },
+  "headline": "No observed incremental scout failure signal on the four retained assisted sources that passed their cumulative public suite.",
+  "scouts": {
+    "physical_case_stage_observations": 16,
+    "failed_observations": 0,
+    "calls": 8,
+    "parsed_proposals": 16,
+    "new_admissions": 12,
+    "distinct_new_admitted_case_ids": 12,
+    "strict_json_parseable_batches": 5,
+    "malformed_batches": 3,
+    "rejected_parsed_proposals": 4,
+    "rejection_records": 7,
+    "rejection_reasons": {
+      "oracle_rejected_input": 1,
+      "batch_invalid_json": 3,
+      "wrong_expectation": 3
+    },
+    "failed_public_passing_source_observations": 0,
+    "observed_failures_preceding_repairs": 0
+  },
+  "reviewers": {
+    "batches": 8,
+    "parsed_proposals": 19,
+    "new_admissions": 8,
+    "physical_case_stage_observations": 10,
+    "failed_observations": 0,
+    "distinct_new_admitted_case_ids": 8,
+    "rejected_parsed_proposals": 11,
+    "rejection_reasons": {
+      "oracle_rejected_input": 8,
+      "wrong_expectation": 3
+    },
+    "scope": "Both policies, all eight stages; excludes retained-probe revalidation as new admissions."
+  },
+  "strict_json_failure_details": [
+    {
+      "run_id": "transport-scout-assisted-1",
+      "stage_index": 0,
+      "scout_index": 1,
+      "kind": "syntax_error",
+      "message": "Expecting ',' delimiter",
+      "offset": 2291,
+      "content_length": 2291
+    },
+    {
+      "run_id": "transport-scout-assisted-0",
+      "stage_index": 0,
+      "scout_index": 0,
+      "kind": "syntax_error",
+      "message": "Expecting ',' delimiter",
+      "offset": 2072,
+      "content_length": 2072
+    },
+    {
+      "run_id": "transport-scout-assisted-0",
+      "stage_index": 1,
+      "scout_index": 0,
+      "kind": "duplicate_member",
+      "message": "Duplicate member: op"
+    }
+  ],
+  "method": [
+    "Read the exact global freeze manifest and verify all four complete trajectory byte hashes and final source bindings before computing counts.",
+    "Match every embedded candidate validation receipt to exactly one retained physical stage-evaluation JSON receipt. Recompute typed JSON pass comparisons from retained actual outcomes and active expected cases without executing any source.",
+    "Establish public-suite pass only when every cumulative public case was physically observed on the same source hash. New reviewer probes can use an earlier public receipt for that unchanged source; no unexecuted case is assumed to pass.",
+    "Track each probe by origin and case ID. Count new scout admissions once at original admission; retained revalidation is not new admission. Distinguish physical probe-by-stage observations from admissions and distinct defects.",
+    "Verify all admitted scout cases were present in the first builder request for their corresponding stage. Both scouts read the shared stage-start source independently; the maintainer saw admitted probes before producing the observed implementation.",
+    "Classify the three malformed scout batches using strict JSON decoding only. The malformed batches do not supply a trustworthy proposal-count denominator.",
+    "Read-only observations were reused from the live run. This memo executes no candidates, models, or hypothetical tests and does not replace the independent cohort audit."
+  ],
+  "concrete_observations": [
+    {
+      "finding": "Predictable metamorphic proposals were usable. A save/advance/reload/repeat/compare scout case was admitted and passed on both milestone sources in its trajectory.",
+      "case_ids": [
+        "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae"
+      ]
+    },
+    {
+      "finding": "Deep snapshot ownership and RNG-version rejection probes were also admitted, but produced no failing observation on these sources.",
+      "case_ids": [
+        "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+        "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9"
+      ]
+    },
+    {
+      "finding": "Admission validates the expected output, not the semantic strength of the requirement label. One T1-format probe only publishes, steps and inspects a one-peer bus without using snapshot/import; one T2-atomic probe rejects an extra root key through from_snapshot and never calls in-place restore.",
+      "case_ids": [
+        "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+        "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f"
+      ]
+    },
+    {
+      "finding": "Some distinct admitted inputs revisit public fault families, including an unexpected root key and a forged event digest. Distinct case IDs are not evidence of distinct or previously uncovered bug classes.",
+      "case_ids": [
+        "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62",
+        "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee"
+      ],
+      "public_case_ids": [
+        "transport-v2-root-key",
+        "transport-v2-event-hash"
+      ]
+    },
+    {
+      "finding": "All eight stages used one builder and one reviewer with zero repairs. The live cohort therefore supplied no observed repair-triggering scout failure or live stalled-review recovery example."
+    }
+  ],
+  "limitations": [
+    "Zero observed catches does not establish zero preventive benefit: admitted scout probes were visible before the first builder call. There was no same-source build without those probes.",
+    "No counterfactual execution of scout probes on the stage-start source, unassisted candidates, known mutants, or different implementations was performed for this memo.",
+    "Two assisted trajectories on one actual repository module are a small operational pilot, not an estimate of general agent quality, defect recall, or a ranking of model abilities.",
+    "The comparison is oracle-assisted. Wrong labels and out-of-domain inputs were rejected; reviewers and scouts did not independently establish all expected answers.",
+    "Probe admissions and repeated passing executions are not unique bug discoveries. Case requirement labels are model claims; admission alone does not prove that a test exercises the claimed behavior.",
+    "Final/private evaluations and primary acceptance scores are deliberately excluded. Root owns the independent cohort audit and final publication."
+  ],
+  "stages": [
+    {
+      "run_id": "transport-strong-maintainer-0",
+      "policy": "strong-maintainer",
+      "stage_index": 0,
+      "milestone_number": 1,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/trajectory.json",
+      "trajectory_sha256": "0c332c255270b3da14924a9392a910af3957b75afece23a434ec04b791c387b6",
+      "trajectory_stage_json_pointer": "/stages/0",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "repairs": 0
+      },
+      "scout_admissions": [],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 4,
+          "new_admitted_count": 1,
+          "admitted_case_ids": [
+            "transport:b7e4cf3576e6e4bf38d6289ff236772e1259fbb567861bd8128e4504860f2ddd"
+          ],
+          "rejected": [
+            {
+              "index": 0,
+              "proposal_sha256": "cc0eda443856964aaf83f91e7acc1b0737e9506efb3884daecfd3b0d51a2786c",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 1,
+              "proposal_sha256": "236c859cab6d73c5e35627f3fc75d085335c72e715a3fc548b7f501db7a14804",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 3,
+              "proposal_sha256": "ba4fb5c06432001a7abcdaecd7eeaedc7fd09005101ffe59b7c09ca9978b947d",
+              "reason": "oracle_rejected_input"
+            }
+          ]
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "f9b71bee3b29089200f301c0822cbbb94080bf18e075ab120ddb7e314b2c67ea",
+          "cumulative_public_executed": 6,
+          "cumulative_public_passed": 6,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 0,
+          "retained_scout_case_ids": [],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 1,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-0-build-slot-0-1-all-evidence",
+          "source_sha256": "f9b71bee3b29089200f301c0822cbbb94080bf18e075ab120ddb7e314b2c67ea",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/evaluations/5.json",
+          "sha256": "f01cd7cda30ac75db2aa2006fa728615391a989d0e9fe5c413afc2dcc5e4bf31",
+          "suite_sha256": "0eeb3cfb3646966410aac99ec235ac85af2aceac335ddb26e164145535e75078",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": []
+        },
+        {
+          "label": "stage-0-review-1-candidate-A-new-probes",
+          "source_sha256": "f9b71bee3b29089200f301c0822cbbb94080bf18e075ab120ddb7e314b2c67ea",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/evaluations/8.json",
+          "sha256": "423749f4279dbdb827496cf08ea5269f9dc6b17b24e08b3691d23b5831f4a6d2",
+          "suite_sha256": "74c4f42ffd9a437f7aa9ff5c2ccd2310b6a1449a279571fc21b08dcbcf06f9db",
+          "case_ids": [
+            "transport:b7e4cf3576e6e4bf38d6289ff236772e1259fbb567861bd8128e4504860f2ddd"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:b7e4cf3576e6e4bf38d6289ff236772e1259fbb567861bd8128e4504860f2ddd",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "498bef12545bd0acd36a45b28f335d7ee8f3166be554fd2be1b4d24f54a1ec88",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": []
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-strong-maintainer-0",
+      "policy": "strong-maintainer",
+      "stage_index": 1,
+      "milestone_number": 2,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/trajectory.json",
+      "trajectory_sha256": "0c332c255270b3da14924a9392a910af3957b75afece23a434ec04b791c387b6",
+      "trajectory_stage_json_pointer": "/stages/1",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "repairs": 0
+      },
+      "scout_admissions": [],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted_case_ids": [],
+          "rejected": []
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "36bfb34dc166c8a25e685662989cd43d233e1d1d06ec484c75221f19099515f1",
+          "cumulative_public_executed": 12,
+          "cumulative_public_passed": 12,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 0,
+          "retained_scout_case_ids": [],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 1,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-1-build-slot-0-1-all-evidence",
+          "source_sha256": "36bfb34dc166c8a25e685662989cd43d233e1d1d06ec484c75221f19099515f1",
+          "candidate": "candidate-D",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-1/evaluations/12.json",
+          "sha256": "e7927947be09c60271ab716d803f9173289214a8fac6f2df5f6ccc6f11afc798",
+          "suite_sha256": "04609669518017596d84f705b88fbf69c7fd2301a1855ca76ac8cdeabeb7fcb7",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport-v2-root-key",
+            "transport-v2-negative-stats",
+            "transport-v2-event-hash",
+            "transport-v2-rng-index",
+            "transport-v2-late-event-atomic",
+            "transport-v2-valid-restore",
+            "transport:b7e4cf3576e6e4bf38d6289ff236772e1259fbb567861bd8128e4504860f2ddd"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:b7e4cf3576e6e4bf38d6289ff236772e1259fbb567861bd8128e4504860f2ddd",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "642d4f06c279520adda44f8939ec3fe1ce4efd84234ca55a224c14e876e7a5f6",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": []
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-strong-maintainer-1",
+      "policy": "strong-maintainer",
+      "stage_index": 0,
+      "milestone_number": 1,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/trajectory.json",
+      "trajectory_sha256": "0bc72d6e774f14237501ad6df29a894a6fcf7dd4a0aa3bd50572d6d3908b5298",
+      "trajectory_stage_json_pointer": "/stages/0",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "repairs": 0
+      },
+      "scout_admissions": [],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted_case_ids": [],
+          "rejected": []
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "81245c2a24524c65c9e85d9a8f8a7b77fa8ab3b4a192a5c020e9a7dc033741e8",
+          "cumulative_public_executed": 6,
+          "cumulative_public_passed": 6,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 0,
+          "retained_scout_case_ids": [],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 0,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-0-build-slot-0-1-all-evidence",
+          "source_sha256": "81245c2a24524c65c9e85d9a8f8a7b77fa8ab3b4a192a5c020e9a7dc033741e8",
+          "candidate": "candidate-D",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-0/evaluations/19.json",
+          "sha256": "97a1c33cea536f49398ccfcaa699ba2b8edb29de24ed9997f772e390a170547d",
+          "suite_sha256": "0eeb3cfb3646966410aac99ec235ac85af2aceac335ddb26e164145535e75078",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": []
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "046d2d5adeb56db1ee2ff0a1bca73e5ddd0defde6e2c137253c92c946a06b2f6",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": []
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-strong-maintainer-1",
+      "policy": "strong-maintainer",
+      "stage_index": 1,
+      "milestone_number": 2,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/trajectory.json",
+      "trajectory_sha256": "0bc72d6e774f14237501ad6df29a894a6fcf7dd4a0aa3bd50572d6d3908b5298",
+      "trajectory_stage_json_pointer": "/stages/1",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "repairs": 0
+      },
+      "scout_admissions": [],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 4,
+          "new_admitted_count": 3,
+          "admitted_case_ids": [
+            "transport:27bc8ea615a59e2c644e24594bec4633649e63320a97e8e9286c7ecb17d39619",
+            "transport:7b542b7fb4289bd7c76a26ad92b6e6a4d859f2553eda7ef839c788da0d92eb96",
+            "transport:90ab990fae56d09c04fa2c2f9ba0b1632777dd7b9d34b0a127d972cabd715e6d"
+          ],
+          "rejected": [
+            {
+              "index": 2,
+              "proposal_sha256": "c7739e3993bd6636af4cb02d0ee7ad7fa3abe9d67f94b63244670e28ca97907e",
+              "reason": "wrong_expectation"
+            }
+          ]
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "542d716e2e78254dd2b41cfba87d404b169aa31d543c2ccc82a302364e20d4d5",
+          "cumulative_public_executed": 12,
+          "cumulative_public_passed": 12,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 0,
+          "retained_scout_case_ids": [],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 3,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-1-build-slot-0-1-all-evidence",
+          "source_sha256": "542d716e2e78254dd2b41cfba87d404b169aa31d543c2ccc82a302364e20d4d5",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/evaluations/25.json",
+          "sha256": "3c1dfcb633e74e238ff50b6fc9323acd1ebf556244b8d66b1d283782f3609f06",
+          "suite_sha256": "dac31851e0879e05342d2b9ed6e913b55ff7006ff79abcd3f5e0c9517cad2286",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport-v2-root-key",
+            "transport-v2-negative-stats",
+            "transport-v2-event-hash",
+            "transport-v2-rng-index",
+            "transport-v2-late-event-atomic",
+            "transport-v2-valid-restore"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": []
+        },
+        {
+          "label": "stage-1-review-1-candidate-A-new-probes",
+          "source_sha256": "542d716e2e78254dd2b41cfba87d404b169aa31d543c2ccc82a302364e20d4d5",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/evaluations/28.json",
+          "sha256": "a7120f6a35d49d8f8acb4581d4a963c258cc6cc2c6abfc24c69c2f4207007cbe",
+          "suite_sha256": "9fbe8a199506f153300344e866ac0b0e89d92c898efd4b07b44f17e63b5a2f12",
+          "case_ids": [
+            "transport:27bc8ea615a59e2c644e24594bec4633649e63320a97e8e9286c7ecb17d39619",
+            "transport:7b542b7fb4289bd7c76a26ad92b6e6a4d859f2553eda7ef839c788da0d92eb96",
+            "transport:90ab990fae56d09c04fa2c2f9ba0b1632777dd7b9d34b0a127d972cabd715e6d"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:27bc8ea615a59e2c644e24594bec4633649e63320a97e8e9286c7ecb17d39619",
+              "passed": true
+            },
+            {
+              "case_id": "transport:7b542b7fb4289bd7c76a26ad92b6e6a4d859f2553eda7ef839c788da0d92eb96",
+              "passed": true
+            },
+            {
+              "case_id": "transport:90ab990fae56d09c04fa2c2f9ba0b1632777dd7b9d34b0a127d972cabd715e6d",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "fb3cf5540736787678001fd9fce273bd52d3113d5d775f4631b945b4575b635e",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": []
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-scout-assisted-1",
+      "policy": "scout-assisted",
+      "stage_index": 0,
+      "milestone_number": 1,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/trajectory.json",
+      "trajectory_sha256": "e0045d99154efd484f013d6f08bfb5b55faf68154870469abd0b548799c03ce0",
+      "trajectory_stage_json_pointer": "/stages/0",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "scout": 2,
+        "repairs": 0
+      },
+      "scout_admissions": [
+        {
+          "scout_index": 0,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/scout-0-admission.json",
+          "receipt_sha256": "5629b21589f129bda172fb6373895c8022fa7bb45a02821b3704fe1d6317b337",
+          "parsed_proposal_count": 3,
+          "new_admitted_count": 2,
+          "admitted": [
+            {
+              "case_id": "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+              "requirement": "T1-format",
+              "input_sha256": "e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+              "validation_sha256": "637af4d20c2efcd52673f605478c4360c2e72e19afcf740b3c3f4625a8691634",
+              "input": {
+                "commands": [
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "name": "s",
+                    "op": "compare"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b"
+                  ],
+                  "seed": 0
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+              "requirement": "T1-ownership",
+              "input_sha256": "2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+              "validation_sha256": "5767d602ebef0f955e06ce40dfdc14f72e2e0d1ddf1550108260a33d0617ed02",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "records",
+                          "a",
+                          0,
+                          "payload",
+                          "new"
+                        ],
+                        "value": true
+                      }
+                    ],
+                    "name": "s",
+                    "op": "mutate"
+                  },
+                  {
+                    "name": "s",
+                    "op": "compare"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b"
+                  ],
+                  "seed": 0
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            }
+          ],
+          "rejected": [
+            {
+              "index": 2,
+              "proposal_sha256": "e6e41b0bdf54b26f812e8819b89d76d5c3ae9ec21948359c314589caf0728e1c",
+              "reason": "oracle_rejected_input"
+            }
+          ],
+          "strict_json_failure": null
+        },
+        {
+          "scout_index": 1,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/scout-1-admission.json",
+          "receipt_sha256": "a0db294cfa280ce552c045a55ba058cb5d8c7b657861c715c59bc57a47548850",
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted": [],
+          "rejected": [
+            {
+              "index": null,
+              "reason": "batch_invalid_json"
+            }
+          ],
+          "strict_json_failure": {
+            "kind": "syntax_error",
+            "message": "Expecting ',' delimiter",
+            "offset": 2291,
+            "content_length": 2291
+          }
+        }
+      ],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 4,
+          "new_admitted_count": 1,
+          "admitted_case_ids": [
+            "transport:1f9a4d8750c0a1890b2005ac00f42803e257e1ba30a1af6b8f1ee509d7f86602"
+          ],
+          "rejected": [
+            {
+              "index": 1,
+              "proposal_sha256": "e6ba520f62ef6c3113c187abf08ed90f882472c539ca212b4994457274956058",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 2,
+              "proposal_sha256": "e14e01dbab9cd190b46d710b04f23886cae28e5cc3dc374bbcddf8a3a18c0621",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 3,
+              "proposal_sha256": "6977b7d210ac1bfc605b84b4a5cfe1d502ff537589234c3045ed6cbe99b2ee8e",
+              "reason": "wrong_expectation"
+            }
+          ]
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "08bcc337d9f110e5ecdd738cb306086ab1197d13fb1c8b1737a5cab0e04f6644",
+          "cumulative_public_executed": 6,
+          "cumulative_public_passed": 6,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 2,
+          "retained_scout_case_ids": [
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412"
+          ],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 1,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-0-build-slot-0-1-all-evidence",
+          "source_sha256": "08bcc337d9f110e5ecdd738cb306086ab1197d13fb1c8b1737a5cab0e04f6644",
+          "candidate": "candidate-D",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/evaluations/38.json",
+          "sha256": "1422cb6a77f8d585203ca00b87a83f99cfefebd092a67a67c95a0220a682d3df",
+          "suite_sha256": "b52378a151238ee396c717d654fe045984d9f5f9d862b6972b3996fb2dbccfa6",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2"
+          ],
+          "scout_observations": [
+            {
+              "case_id": "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+              "passed": true
+            },
+            {
+              "case_id": "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+              "passed": true
+            }
+          ],
+          "reviewer_observations": []
+        },
+        {
+          "label": "stage-0-review-1-candidate-D-new-probes",
+          "source_sha256": "08bcc337d9f110e5ecdd738cb306086ab1197d13fb1c8b1737a5cab0e04f6644",
+          "candidate": "candidate-D",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/evaluations/41.json",
+          "sha256": "ab7d58c6b5c175ae1518fff1166d8414a58c61429592f150ff1363136fe11f36",
+          "suite_sha256": "ae7c9ac914a7feba0daf80a731be7e1edbf115f0b940c3228a67de0b3df7635b",
+          "case_ids": [
+            "transport:1f9a4d8750c0a1890b2005ac00f42803e257e1ba30a1af6b8f1ee509d7f86602"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:1f9a4d8750c0a1890b2005ac00f42803e257e1ba30a1af6b8f1ee509d7f86602",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "72ea223443656d45ba053782fcfc5b4db2f3c0aa3d55f6091ee1efbca02183a4",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": [
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412"
+          ]
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-scout-assisted-1",
+      "policy": "scout-assisted",
+      "stage_index": 1,
+      "milestone_number": 2,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/trajectory.json",
+      "trajectory_sha256": "e0045d99154efd484f013d6f08bfb5b55faf68154870469abd0b548799c03ce0",
+      "trajectory_stage_json_pointer": "/stages/1",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "scout": 2,
+        "repairs": 0
+      },
+      "scout_admissions": [
+        {
+          "scout_index": 0,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/scout-0-admission.json",
+          "receipt_sha256": "ee1b7b627fa9cf5cd6de89e3e32ab11af442267bd1acde27f86d6890358c6ffe",
+          "parsed_proposal_count": 3,
+          "new_admitted_count": 2,
+          "admitted": [
+            {
+              "case_id": "transport:569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+              "requirement": "T2-shape",
+              "input_sha256": "569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+              "validation_sha256": "6fd48182d24b42386b6144452fe30d25fb26213142f369a5da8d76bb8171cd25",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "unexpected"
+                        ],
+                        "value": true
+                      }
+                    ],
+                    "name": "s",
+                    "op": "mutate"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+              "requirement": "T2-events",
+              "input_sha256": "649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+              "validation_sha256": "159efc0a711797a46a687bcaad2d36640535d7353ce45a6b1ca408859bf8496f",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "records",
+                          "a",
+                          0,
+                          "topic"
+                        ],
+                        "value": "other"
+                      }
+                    ],
+                    "name": "s",
+                    "op": "mutate"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            }
+          ],
+          "rejected": [
+            {
+              "index": 2,
+              "proposal_sha256": "edb1c208c11eff9c71622d8cd065dde50a9989135e058b10d0c03271ead11f2c",
+              "reason": "wrong_expectation"
+            }
+          ],
+          "strict_json_failure": null
+        },
+        {
+          "scout_index": 1,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/scout-1-admission.json",
+          "receipt_sha256": "03a4d8154e809d0c574796e2cd952138597abf63dd2b262c085daaadad1a4c2f",
+          "parsed_proposal_count": 3,
+          "new_admitted_count": 3,
+          "admitted": [
+            {
+              "case_id": "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+              "requirement": "T1-format",
+              "input_sha256": "6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+              "validation_sha256": "4a71b9a4dc5a8a474f4b4b90a56bb7c80785ee082389e44e74d62cdc9b211a53",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "op": "step"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "bus",
+                  "peers": [
+                    "a"
+                  ],
+                  "seed": 0
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+              "requirement": "T1-format",
+              "input_sha256": "966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+              "validation_sha256": "34386c75b0ac97bb1187d562d9737e6e90c894726ec25d69caeb9023352a64d1",
+              "input": {
+                "commands": [
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "z"
+                  ],
+                  "seed": 7
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f",
+              "requirement": "T2-atomic",
+              "input_sha256": "3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f",
+              "validation_sha256": "0c23f68db6ef83a9f7349690f0aa606f6ff94fa2706f1328fb5eb4e8eb77572c",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "extra"
+                        ],
+                        "value": true
+                      }
+                    ],
+                    "method": "from_snapshot",
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "bus",
+                  "peers": [
+                    "a"
+                  ],
+                  "seed": 0
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            }
+          ],
+          "rejected": [],
+          "strict_json_failure": null
+        }
+      ],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 3,
+          "new_admitted_count": 3,
+          "admitted_case_ids": [
+            "transport:3dcbf29baac52b3f50c2938cdca8da4c6083fef71d9aa02c39737d4c1dcc9e34",
+            "transport:38890eca2ab7379d3d45c718c2d404fa222ca8da9abe843c03d303f643eeed40",
+            "transport:d589182eb91e5fdaa2a765c2b1b8ad9b02276b2b1f6f70b6ce84fc1d669f6ae0"
+          ],
+          "rejected": []
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "24a8e26e72f8a858c24cb43cd222676ac9a930cfc524f518ca4cde6bc2e3a9b0",
+          "cumulative_public_executed": 12,
+          "cumulative_public_passed": 12,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 7,
+          "retained_scout_case_ids": [
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+            "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f",
+            "transport:569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+            "transport:649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+            "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+            "transport:966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412"
+          ],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 4,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-1-build-slot-0-1-all-evidence",
+          "source_sha256": "24a8e26e72f8a858c24cb43cd222676ac9a930cfc524f518ca4cde6bc2e3a9b0",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/evaluations/50.json",
+          "sha256": "1922e66e645dedec800896a5938202b4defe3f218ce9f3a063f1fbe7bfe28144",
+          "suite_sha256": "d39e0d383809309cb48892fdbb8441f5b4f5227ab1cf8ac01e990c9289ca1511",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport-v2-root-key",
+            "transport-v2-negative-stats",
+            "transport-v2-event-hash",
+            "transport-v2-rng-index",
+            "transport-v2-late-event-atomic",
+            "transport-v2-valid-restore",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+            "transport:1f9a4d8750c0a1890b2005ac00f42803e257e1ba30a1af6b8f1ee509d7f86602",
+            "transport:569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+            "transport:649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+            "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+            "transport:966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+            "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f"
+          ],
+          "scout_observations": [
+            {
+              "case_id": "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412",
+              "passed": true
+            },
+            {
+              "case_id": "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+              "passed": true
+            },
+            {
+              "case_id": "transport:569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+              "passed": true
+            },
+            {
+              "case_id": "transport:649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+              "passed": true
+            },
+            {
+              "case_id": "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+              "passed": true
+            },
+            {
+              "case_id": "transport:966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+              "passed": true
+            },
+            {
+              "case_id": "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f",
+              "passed": true
+            }
+          ],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:1f9a4d8750c0a1890b2005ac00f42803e257e1ba30a1af6b8f1ee509d7f86602",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "label": "stage-1-review-1-candidate-A-new-probes",
+          "source_sha256": "24a8e26e72f8a858c24cb43cd222676ac9a930cfc524f518ca4cde6bc2e3a9b0",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/evaluations/53.json",
+          "sha256": "9e06a0d409b56a46f40f1031b3d942b26627fc1f240426dd7c98150260b7e95a",
+          "suite_sha256": "bc0b41d6570acb0d4fcdb789fbb5f13ec38977c7485ad5f3204271b9c8d41224",
+          "case_ids": [
+            "transport:3dcbf29baac52b3f50c2938cdca8da4c6083fef71d9aa02c39737d4c1dcc9e34",
+            "transport:38890eca2ab7379d3d45c718c2d404fa222ca8da9abe843c03d303f643eeed40",
+            "transport:d589182eb91e5fdaa2a765c2b1b8ad9b02276b2b1f6f70b6ce84fc1d669f6ae0"
+          ],
+          "scout_observations": [],
+          "reviewer_observations": [
+            {
+              "case_id": "transport:3dcbf29baac52b3f50c2938cdca8da4c6083fef71d9aa02c39737d4c1dcc9e34",
+              "passed": true
+            },
+            {
+              "case_id": "transport:38890eca2ab7379d3d45c718c2d404fa222ca8da9abe843c03d303f643eeed40",
+              "passed": true
+            },
+            {
+              "case_id": "transport:d589182eb91e5fdaa2a765c2b1b8ad9b02276b2b1f6f70b6ce84fc1d669f6ae0",
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "e51e5169fe4d0fd9bc82684d6e7a2b31b092aaeb8e4d3e27746e89e936190be7",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": [
+            "transport:2a1e252828a88fd496cbbe7e96986ca0348c7dc2188177e2da1814a44167cac2",
+            "transport:3bd08421d0541c4bbc80c2582e7e7880585edcc86f07be106c148a37844f397f",
+            "transport:569ddbcfaeb2de0b0852ae2f8e11de775fd358727b7e16572c59abaee811af87",
+            "transport:649a117c04400f078f499cf5fcb78b1faaab9d2cdb530fc62f37c094443d423a",
+            "transport:6677033da8516e73c69a2f404082bb119819d636d438c49e2f2d5c6ade54b3a9",
+            "transport:966fd54613a7e40cbafa200e4184abdc1b26f06ad37a9e410966e9ec5a2088b0",
+            "transport:e4aa20e2f0298c7f69f9ce5f3a1ecc242eb788f62915862a5451b92202793412"
+          ]
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-scout-assisted-0",
+      "policy": "scout-assisted",
+      "stage_index": 0,
+      "milestone_number": 1,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/trajectory.json",
+      "trajectory_sha256": "490f22ad76964c3d90e1699d182109fcbaee7893211dfc38c24f59a0fb8660c5",
+      "trajectory_stage_json_pointer": "/stages/0",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "scout": 2,
+        "repairs": 0
+      },
+      "scout_admissions": [
+        {
+          "scout_index": 0,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/scout-0-admission.json",
+          "receipt_sha256": "4acae40f1d5fbfe58f4dab3124dca09866e40e5e9467f34572319a3fe4ad1081",
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted": [],
+          "rejected": [
+            {
+              "index": null,
+              "reason": "batch_invalid_json"
+            }
+          ],
+          "strict_json_failure": {
+            "kind": "syntax_error",
+            "message": "Expecting ',' delimiter",
+            "offset": 2072,
+            "content_length": 2072
+          }
+        },
+        {
+          "scout_index": 1,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/scout-1-admission.json",
+          "receipt_sha256": "cc5addebefe6fa37b87be5690cede41035fea4cfaf69e182be759ac878649601",
+          "parsed_proposal_count": 3,
+          "new_admitted_count": 2,
+          "admitted": [
+            {
+              "case_id": "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+              "requirement": "T1-format",
+              "input_sha256": "776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+              "validation_sha256": "2bd2ec4d25e2024aaad26db97c14e335a40a54d06223085898b5745b3848b46c",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+              "requirement": "T1-resume",
+              "input_sha256": "2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+              "validation_sha256": "0854253d75d9019da7ee29e6495779e614845b2e6c87b2cd17631fbaf62091df",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "op": "advance",
+                    "rounds": 1
+                  },
+                  {
+                    "name": "t",
+                    "op": "save"
+                  },
+                  {
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "advance",
+                    "rounds": 1
+                  },
+                  {
+                    "name": "t",
+                    "op": "compare"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            }
+          ],
+          "rejected": [
+            {
+              "index": 2,
+              "proposal_sha256": "34bcd1894f4b95c88c0f55a112f2eb51c2f26127d0f75d3d8e19762893d36b93",
+              "reason": "wrong_expectation"
+            }
+          ],
+          "strict_json_failure": null
+        }
+      ],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 4,
+          "new_admitted_count": 0,
+          "admitted_case_ids": [],
+          "rejected": [
+            {
+              "index": 0,
+              "proposal_sha256": "16aab40d3a24ec8f91935577fd3682e197c2bae4983a85de4230805578d9eb97",
+              "reason": "wrong_expectation"
+            },
+            {
+              "index": 1,
+              "proposal_sha256": "16d3cbb3c04761e6b409b2b1ce257d7479aae158e9bf253a0635c85f273bdd89",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 2,
+              "proposal_sha256": "239e8e50d46071eded8d28269cff1db6d47d6c46f80087c9015945112ec2ec17",
+              "reason": "oracle_rejected_input"
+            },
+            {
+              "index": 3,
+              "proposal_sha256": "67a94eeb2eb6a44ad7ddbff52a37d168cc8352a4f622cd3c405adf7d93aefa2a",
+              "reason": "oracle_rejected_input"
+            }
+          ]
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "22ad3e7e67acf4b2edbcf79f640ed9d99d144b187353be1dc8e099636c2ea050",
+          "cumulative_public_executed": 6,
+          "cumulative_public_passed": 6,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 2,
+          "retained_scout_case_ids": [
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf"
+          ],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 0,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-0-build-slot-0-1-all-evidence",
+          "source_sha256": "22ad3e7e67acf4b2edbcf79f640ed9d99d144b187353be1dc8e099636c2ea050",
+          "candidate": "candidate-A",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/evaluations/63.json",
+          "sha256": "7ff1154827701cd062b896e730a0f9a33d33e3e2921999571913be6a1fdd79c9",
+          "suite_sha256": "5053b9d87708e55e3c279c9519a559a9466aa972c67398262805bb9e2579fd3c",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae"
+          ],
+          "scout_observations": [
+            {
+              "case_id": "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+              "passed": true
+            },
+            {
+              "case_id": "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+              "passed": true
+            }
+          ],
+          "reviewer_observations": []
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "b2475a828f26d02d475f16f8b5c0f8593a5e56fe51894f1396190d7200141526",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": [
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf"
+          ]
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    },
+    {
+      "run_id": "transport-scout-assisted-0",
+      "policy": "scout-assisted",
+      "stage_index": 1,
+      "milestone_number": 2,
+      "trajectory_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/trajectory.json",
+      "trajectory_sha256": "490f22ad76964c3d90e1699d182109fcbaee7893211dfc38c24f59a0fb8660c5",
+      "trajectory_stage_json_pointer": "/stages/1",
+      "counts": {
+        "builder": 1,
+        "reviewer": 1,
+        "scout": 2,
+        "repairs": 0
+      },
+      "scout_admissions": [
+        {
+          "scout_index": 0,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/scout-0-admission.json",
+          "receipt_sha256": "d7cc5b52930b29b37cb32f40972d06355eec51f5275fca5564773e9b898dfbbe",
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted": [],
+          "rejected": [
+            {
+              "index": null,
+              "reason": "batch_invalid_json"
+            }
+          ],
+          "strict_json_failure": {
+            "kind": "duplicate_member",
+            "message": "Duplicate member: op"
+          }
+        },
+        {
+          "scout_index": 1,
+          "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/scout-1-admission.json",
+          "receipt_sha256": "9ba44bcba183fec8792317c8ce9c66ae19b1c54733265ffc5bc997c59803e914",
+          "parsed_proposal_count": 4,
+          "new_admitted_count": 3,
+          "admitted": [
+            {
+              "case_id": "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62",
+              "requirement": "T2-shape",
+              "input_sha256": "eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62",
+              "validation_sha256": "21fc3ce0e6a54aef4f7b3c616b0e7adb5b5cbe26b91b705cd19baafd6dbd1c99",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "unexpected"
+                        ],
+                        "value": true
+                      }
+                    ],
+                    "method": "from_snapshot",
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+              "requirement": "T2-events",
+              "input_sha256": "13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+              "validation_sha256": "9c7c34b8dbfac42a06da4c860702c700afd12cbad773ad45ea36b6f924097e5d",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "records",
+                          "a",
+                          0,
+                          "event_id"
+                        ],
+                        "value": "0000000000000000000000000000000000000000000000000000000000000000"
+                      }
+                    ],
+                    "method": "from_snapshot",
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            },
+            {
+              "case_id": "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9",
+              "requirement": "T2-rng",
+              "input_sha256": "e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9",
+              "validation_sha256": "edb0c9c8ca11af871c5f54ff57d7553371f3bf59b37bc107b061e458d73fb03f",
+              "input": {
+                "commands": [
+                  {
+                    "op": "publish",
+                    "peer": "a",
+                    "sequence": 0
+                  },
+                  {
+                    "name": "s",
+                    "op": "save"
+                  },
+                  {
+                    "edits": [
+                      {
+                        "action": "set",
+                        "path": [
+                          "rng_state",
+                          0
+                        ],
+                        "value": 2
+                      }
+                    ],
+                    "method": "restore",
+                    "name": "s",
+                    "op": "load"
+                  },
+                  {
+                    "op": "inspect"
+                  }
+                ],
+                "config": {
+                  "batch_size": 1,
+                  "fanout": 1,
+                  "mode": "gossip",
+                  "peers": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "seed": 19
+                }
+              },
+              "observed_failed_on_any_current_source": false
+            }
+          ],
+          "rejected": [
+            {
+              "index": 3,
+              "proposal_sha256": "db30b55b4991605b2ccad2912c46078d55dbe788608f40d2ccc35040c7cc4ee8",
+              "reason": "wrong_expectation"
+            }
+          ],
+          "strict_json_failure": null
+        }
+      ],
+      "reviewer_new_probes": [
+        {
+          "round": 1,
+          "parsed_proposal_count": 0,
+          "new_admitted_count": 0,
+          "admitted_case_ids": [],
+          "rejected": []
+        }
+      ],
+      "observed_sources": [
+        {
+          "source_sha256": "b4a2021fa8138a65c21a2586d676c04915a15362087346088f30844c0a2e3d14",
+          "cumulative_public_executed": 12,
+          "cumulative_public_passed": 12,
+          "cumulative_public_all_passed": true,
+          "retained_scout_cases_executed": 5,
+          "retained_scout_case_ids": [
+            "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+            "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9",
+            "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62"
+          ],
+          "failed_scout_case_ids": [],
+          "retained_reviewer_cases_executed": 0,
+          "failed_reviewer_case_ids": []
+        }
+      ],
+      "physical_stage_evaluations": [
+        {
+          "label": "stage-1-build-slot-0-1-all-evidence",
+          "source_sha256": "b4a2021fa8138a65c21a2586d676c04915a15362087346088f30844c0a2e3d14",
+          "candidate": "candidate-D",
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/evaluations/74.json",
+          "sha256": "e427f645d34639e810ebfe20bcfadfc5ad4d9d44e902291b49f248c7e30ef6bc",
+          "suite_sha256": "66ac5777236e06ecd5bdb02fc42f48f3a3326fcc40ab7fe77b64a5da9fa7deef",
+          "case_ids": [
+            "transport-v1-format",
+            "transport-v1-resume",
+            "transport-v1-bus",
+            "transport-v1-detached",
+            "transport-v1-duplicates",
+            "transport-v1-partition",
+            "transport-v2-root-key",
+            "transport-v2-negative-stats",
+            "transport-v2-event-hash",
+            "transport-v2-rng-index",
+            "transport-v2-late-event-atomic",
+            "transport-v2-valid-restore",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+            "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62",
+            "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+            "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9"
+          ],
+          "scout_observations": [
+            {
+              "case_id": "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+              "passed": true
+            },
+            {
+              "case_id": "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+              "passed": true
+            },
+            {
+              "case_id": "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62",
+              "passed": true
+            },
+            {
+              "case_id": "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+              "passed": true
+            },
+            {
+              "case_id": "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9",
+              "passed": true
+            }
+          ],
+          "reviewer_observations": []
+        }
+      ],
+      "first_builder_requests": [
+        {
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+          "sha256": "b3d0cb75b77ad502c326293e2c4990e6a655e3895fa9b6ff72877d69b4d64159",
+          "call_id": "builder-slot-0-1",
+          "scout_case_ids_in_first_build_context": [
+            "transport:13bc438026c119d2fb58d0065b41a658c2ccf18383590ca90620ac04cecc14ee",
+            "transport:2438e1af6a08a97d34e2f813fb58c9a9f4c3acb722d3c8c3827b2a00c1a68cae",
+            "transport:776d81936fafcf74e2253f941660abb7cbfc6133ad65f81cd2c8dcf4ab1d54cf",
+            "transport:e25fcc3878ebb217c120ba12ced11647de40a7a8abe97cb456eeabb67eb726e9",
+            "transport:eb04d64bf9f908c498eff4c29d7db4242e4f5ef4dda75e23708393401e9fdf62"
+          ]
+        }
+      ],
+      "scout_failure_preceded_repair": false,
+      "repair_sequence_interpretation": "No repair calls occurred; no failed scout observation occurred."
+    }
+  ],
+  "consumed_inputs_unchanged_verified": true,
+  "consumed_inputs": [
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/fixtures.json",
+      "sha256": "18a6bd9f5fa793e43ecfd288e4888ffca31246d83638ecf644d6fff8b34a23d8",
+      "bytes": 327951
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/frozen-trajectories.json",
+      "sha256": "52ddbaeeb44c5c6a308d5ef4daf8b882e7d219e00c3c51ac5ab1d19ee5ae9eae",
+      "bytes": 3932
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/preregistered.json",
+      "sha256": "d1e8112a867e217133c0f25536e1a62082567c8b446e204a9a4bea63182b9a8c",
+      "bytes": 8319
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/source-snapshot/gossip_harness/continuation_experiment.py",
+      "sha256": "db5e6b1464d0b20810e6d45620d60cee360e3a22f510b1b59e8b5defb5b0be29",
+      "bytes": 45185
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/source-snapshot/gossip_harness/continuation_stage.py",
+      "sha256": "d313c47664a1cd89bcbccc175d629c386310c1097fc3de455c5c45c7b0c6976b",
+      "bytes": 41422
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/source-snapshot/gossip_harness/verification_probes.py",
+      "sha256": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd",
+      "bytes": 13060
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/evaluations/63.json",
+      "sha256": "7ff1154827701cd062b896e730a0f9a33d33e3e2921999571913be6a1fdd79c9",
+      "bytes": 15638
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "b2475a828f26d02d475f16f8b5c0f8593a5e56fe51894f1396190d7200141526",
+      "bytes": 30162
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/scout-0-admission.json",
+      "sha256": "4acae40f1d5fbfe58f4dab3124dca09866e40e5e9467f34572319a3fe4ad1081",
+      "bytes": 539
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-0/scout-1-admission.json",
+      "sha256": "cc5addebefe6fa37b87be5690cede41035fea4cfaf69e182be759ac878649601",
+      "bytes": 4407
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/evaluations/74.json",
+      "sha256": "e427f645d34639e810ebfe20bcfadfc5ad4d9d44e902291b49f248c7e30ef6bc",
+      "bytes": 59770
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "b3d0cb75b77ad502c326293e2c4990e6a655e3895fa9b6ff72877d69b4d64159",
+      "bytes": 66271
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/scout-0-admission.json",
+      "sha256": "d7cc5b52930b29b37cb32f40972d06355eec51f5275fca5564773e9b898dfbbe",
+      "bytes": 539
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/stage-1/scout-1-admission.json",
+      "sha256": "9ba44bcba183fec8792317c8ce9c66ae19b1c54733265ffc5bc997c59803e914",
+      "bytes": 8168
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-0/trajectory.json",
+      "sha256": "490f22ad76964c3d90e1699d182109fcbaee7893211dfc38c24f59a0fb8660c5",
+      "bytes": 919173
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/evaluations/38.json",
+      "sha256": "1422cb6a77f8d585203ca00b87a83f99cfefebd092a67a67c95a0220a682d3df",
+      "bytes": 14905
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/evaluations/41.json",
+      "sha256": "ab7d58c6b5c175ae1518fff1166d8414a58c61429592f150ff1363136fe11f36",
+      "bytes": 1272
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "72ea223443656d45ba053782fcfc5b4db2f3c0aa3d55f6091ee1efbca02183a4",
+      "bytes": 29737
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/scout-0-admission.json",
+      "sha256": "5629b21589f129bda172fb6373895c8022fa7bb45a02821b3704fe1d6317b337",
+      "bytes": 3671
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-0/scout-1-admission.json",
+      "sha256": "a0db294cfa280ce552c045a55ba058cb5d8c7b657861c715c59bc57a47548850",
+      "bytes": 539
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/evaluations/50.json",
+      "sha256": "1922e66e645dedec800896a5938202b4defe3f218ce9f3a063f1fbe7bfe28144",
+      "bytes": 60907
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/evaluations/53.json",
+      "sha256": "9e06a0d409b56a46f40f1031b3d942b26627fc1f240426dd7c98150260b7e95a",
+      "bytes": 3729
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "e51e5169fe4d0fd9bc82684d6e7a2b31b092aaeb8e4d3e27746e89e936190be7",
+      "bytes": 70584
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/scout-0-admission.json",
+      "sha256": "ee1b7b627fa9cf5cd6de89e3e32ab11af442267bd1acde27f86d6890358c6ffe",
+      "bytes": 5736
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/stage-1/scout-1-admission.json",
+      "sha256": "03a4d8154e809d0c574796e2cd952138597abf63dd2b262c085daaadad1a4c2f",
+      "bytes": 6387
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-scout-assisted-1/trajectory.json",
+      "sha256": "e0045d99154efd484f013d6f08bfb5b55faf68154870469abd0b548799c03ce0",
+      "bytes": 1019281
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/evaluations/5.json",
+      "sha256": "f01cd7cda30ac75db2aa2006fa728615391a989d0e9fe5c413afc2dcc5e4bf31",
+      "bytes": 14347
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/evaluations/8.json",
+      "sha256": "423749f4279dbdb827496cf08ea5269f9dc6b17b24e08b3691d23b5831f4a6d2",
+      "bytes": 1283
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "498bef12545bd0acd36a45b28f335d7ee8f3166be554fd2be1b4d24f54a1ec88",
+      "bytes": 28829
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-1/evaluations/12.json",
+      "sha256": "e7927947be09c60271ab716d803f9173289214a8fac6f2df5f6ccc6f11afc798",
+      "bytes": 55558
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "642d4f06c279520adda44f8939ec3fe1ce4efd84234ca55a224c14e876e7a5f6",
+      "bytes": 65597
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-0/trajectory.json",
+      "sha256": "0c332c255270b3da14924a9392a910af3957b75afece23a434ec04b791c387b6",
+      "bytes": 762371
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-0/evaluations/19.json",
+      "sha256": "97a1c33cea536f49398ccfcaa699ba2b8edb29de24ed9997f772e390a170547d",
+      "bytes": 14348
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-0/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "046d2d5adeb56db1ee2ff0a1bca73e5ddd0defde6e2c137253c92c946a06b2f6",
+      "bytes": 28829
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/evaluations/25.json",
+      "sha256": "3c1dfcb633e74e238ff50b6fc9323acd1ebf556244b8d66b1d283782f3609f06",
+      "bytes": 55220
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/evaluations/28.json",
+      "sha256": "a7120f6a35d49d8f8acb4581d4a963c258cc6cc2c6abfc24c69c2f4207007cbe",
+      "bytes": 3378
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/stage-1/journal/658ef7708701e3ed977b0c5667bc3fdc1604fc6d62dab5b8259248321ceb06c1.request.json",
+      "sha256": "fb3cf5540736787678001fd9fce273bd52d3113d5d775f4631b945b4575b635e",
+      "bytes": 63227
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/continuation-live-1/transport-strong-maintainer-1/trajectory.json",
+      "sha256": "0bc72d6e774f14237501ad6df29a894a6fcf7dd4a0aa3bd50572d6d3908b5298",
+      "bytes": 682206
+    }
+  ]
+}

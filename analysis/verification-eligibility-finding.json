@@ -1,0 +1,826 @@
+{
+  "candidate_executions": 0,
+  "finalized_inventory": {
+    "demotions": [
+      {
+        "candidate": "candidate-C",
+        "demoted_round": 2,
+        "demoted_visible_passed": true,
+        "failure": "Proposal contains no effective changes",
+        "failure_kind": "empty",
+        "failure_record_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-3/requests/builder-slot-0-2.result.json",
+        "failure_record_sha256": "6aacbb7ebe164bd8fa6fd2422f016d1b8dc03ee6a751d7a7b9b183c8625217e5",
+        "final_selected": "candidate-C",
+        "prior_valid_round": 1,
+        "recovered_later_in_stage": true,
+        "recovered_round": 3,
+        "run_id": "buildgraph-cheap-reviewed-2",
+        "slot": "slot-0",
+        "source_sha256": "6e3565d4842de6757e7641478ae13e6c4affd7a5aa4cb3cc87d9813f77eda5ca",
+        "stage_completed": true,
+        "stage_index": 3
+      },
+      {
+        "candidate": "candidate-B",
+        "demoted_round": 4,
+        "demoted_visible_passed": true,
+        "failure": "Proposal contains no effective changes",
+        "failure_kind": "empty",
+        "failure_record_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-2-4.result.json",
+        "failure_record_sha256": "e8e6e6224452b2bc914ce9c4302a108159cf6da3d8650cff4ed74e10b9d1145b",
+        "final_selected": "candidate-C",
+        "prior_valid_round": 3,
+        "recovered_later_in_stage": false,
+        "recovered_round": null,
+        "run_id": "buildgraph-portfolio-reviewed-0",
+        "slot": "slot-2",
+        "source_sha256": "73d4df2c17b95e7b94d0544881f3180e06cd49c2fc0bc93ba0933bdf264e9f4c",
+        "stage_completed": false,
+        "stage_index": 2
+      }
+    ],
+    "detection_rule": "Immediately previous builder row for same candidate source_valid=true, next builder row source_valid=false, identical retained source hash; inspect persisted worker failure.",
+    "excluded_active_run_id": "calendar-cheap-reviewed-0",
+    "finalized_stages": 31,
+    "finalized_trajectories": 8,
+    "no_op_demotions": 2,
+    "non_no_op_demotions": 0,
+    "observed_at_utc": "2026-10-01T03:34:36.275730+00:00",
+    "partial_roster": true,
+    "report_snapshot_sha256": "a5267bfe630bde0fbb73fe6b049825514a8bf6a962654fc29e15d04c1f9c77a5",
+    "roster": [
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "calendar-cheap-reviewed-2",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-0/result.json",
+            "result_sha256": "6746e51b4e14aac4a58fc50af7f185df99e4060393515aa4b09188ce67e1751b",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-1/result.json",
+            "result_sha256": "74009f8a40b67a5475566131f1567aa135c124f857264fe7f46829aacaaecfca",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-2/result.json",
+            "result_sha256": "8800bd668d02eae6e582b21052b36872a973f1eb3c6ca5303fa2861bfaed7e1e",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-3/result.json",
+            "result_sha256": "59bd1deb5e2cecfb34f431986f85f495c8949d1e902d1fbaf49c53361b4c4627",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "calendar-strong-reviewed-1",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-0/result.json",
+            "result_sha256": "8306c214456f2fc192b7345c80e306531760df875a31fc77d80c366bf8c4af1f",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-1/result.json",
+            "result_sha256": "8f67be13bd9163699647bd6df6bb7925886f831f67118c6b4e7942504e953b65",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-2/result.json",
+            "result_sha256": "9d765e8ba2b341f232f7a5458f2ff13e7298e1c33e08afd37bcc99cff2abf69b",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-3/result.json",
+            "result_sha256": "470b28e0087a5894e1bca8a6cccd1a741bc2770ab5135ab156416a35e546c6d4",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "buildgraph-portfolio-reviewed-1",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-0/result.json",
+            "result_sha256": "98f130bcd76cd2f1efb4860e9d73571f0852485a9d573d2b32deb064156047a6",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-1/result.json",
+            "result_sha256": "7ab9fde27d1e36a7df428f182d7c0b901bd93235e893d3347476f4426c536d23",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-2/result.json",
+            "result_sha256": "54a3acf2b6bf9bde193456370fdc2f1fb375ec8a07f38bcf877336e9d35e8a80",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/result.json",
+            "result_sha256": "24ea45599f5f103b267eea5da52da438a350d705b2f9de7aed720f282b45ea48",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "calendar-portfolio-reviewed-2",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-0/result.json",
+            "result_sha256": "60c1d6ac40dd6aa2770ff86b906ff004dc8e7d87cd0bc39b4a1f25bc3b683efc",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-1/result.json",
+            "result_sha256": "8f5ecf9ad8c44f70c7bbd5c4dd249e4f28418c508f1d36d0105135f638bbd502",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-2/result.json",
+            "result_sha256": "8c0c1c1d6f9beeb4f36826a2fc0cce7678d8de14ce7ef6af7093eaf0af100330",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/result.json",
+            "result_sha256": "0c9a98df787346d51dc5e69c232c905aca085e1ebdb161d50e77fd4f7d125089",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "buildgraph-cheap-reviewed-2",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-0/result.json",
+            "result_sha256": "f8d6a3dabc52fee5d8e63bab995be547f9ef5166f39f4d425494addc9b1dae6c",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-1/result.json",
+            "result_sha256": "9e8e682ea91d19938857ac18753efda3058d396d16a69ed279b2a8dde5c6dc51",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-2/result.json",
+            "result_sha256": "1876f45556b221094f2a8e195e2b924ec2a5a3c2f199203afbd8c47ba0f0de75",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-3/result.json",
+            "result_sha256": "b03459b6d30ba517148e0da44eb529b51268048559ec04ccc8aa741d9a5d67d9",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "final_quality_failed",
+        "run_id": "buildgraph-cheap-reviewed-1",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-0/result.json",
+            "result_sha256": "cf8727501de3735af66f006ac1c09171e520eb88b7d1c0a874d8887b1835f1f5",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-1/result.json",
+            "result_sha256": "b6e491cf0159702e8c91075d20795cc272be20ac6e0a537482ce6990cab78b94",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-2/result.json",
+            "result_sha256": "6be3700374325fbc9a060087b5cc7168ef9a0790301a18e067fa084aaf6e4bfd",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-3/result.json",
+            "result_sha256": "370e3b97cb31a24dad8b87050a87af1bcb462925adf4c6e090c4739c4195ba7e",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "accepted",
+        "run_id": "buildgraph-strong-reviewed-2",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-0/result.json",
+            "result_sha256": "10d6483b218a62427b1818041c60de1f67f3f74c56d9b3a910d0e685ea40cfbd",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-1/result.json",
+            "result_sha256": "58f54ad67822b659f67846b4cf829402775104ad07c12f2c511ac27b1be5bd95",
+            "stage_index": 1
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-2/result.json",
+            "result_sha256": "aa89252a4a7e3fed1433059568e15ed7d09757c7cb335b55db5e496cf16f3bf1",
+            "stage_index": 2
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-3/result.json",
+            "result_sha256": "a230ab19a68581a6e196d6e243b82aba24e728879cb1bd74bf91e83ad542224e",
+            "stage_index": 3
+          }
+        ]
+      },
+      {
+        "primary_status": "max_steps_incomplete",
+        "run_id": "buildgraph-portfolio-reviewed-0",
+        "stages": [
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-0/result.json",
+            "result_sha256": "60ebc5495bcc4faba3810c6c4d7c40e361d5ca0cb3debc2f4690c4168b5302de",
+            "stage_index": 0
+          },
+          {
+            "completed": true,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-1/result.json",
+            "result_sha256": "643fc16f169835119eae23169aa1c0e4c2df954c6eeaad785bb333394360bbc9",
+            "stage_index": 1
+          },
+          {
+            "completed": false,
+            "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/result.json",
+            "result_sha256": "25f5c515dec05040437969ceb81230f1c3b8062309570d18b7520c39ac3efd86",
+            "stage_index": 2
+          }
+        ]
+      }
+    ],
+    "same_source_valid_to_invalid_demotions": 2,
+    "scope": "Only finalized cases present in this results.json snapshot and their referenced finalized stage results; active and unexecuted trajectories excluded entirely.",
+    "study_status_at_snapshot": "running"
+  },
+  "finding": {
+    "attribution_limits": [
+      "No reviewer acceptance was requested; blocked_acceptances is zero. The observed outcome cannot be attributed solely to eligibility demotion.",
+      "The original rejected scope proposal was not retained; its exact offending path or duplicate cannot be established from saved evidence.",
+      "Passing active evidence does not establish held-out correctness; no corrective hypothesis or counterfactual success is claimed."
+    ],
+    "blocked_acceptances": 0,
+    "candidate_B_active_passed": 32,
+    "candidate_C_active_passed": 21,
+    "explanation": "A no-effective-change repair rejection made the unchanged previously eligible B source ineligible. This is latest-attempt eligibility, not a changed-source contract violation. Eligibility can recover on a later valid proposal.",
+    "final_active_evidence_count": 32,
+    "primary_status": "max_steps_incomplete",
+    "repairs": 3,
+    "reviewer_calls": 6,
+    "run_id": "buildgraph-portfolio-reviewed-0",
+    "stage_completed": false,
+    "stage_index": 2
+  },
+  "fixture_binding": {
+    "file_sha256": "bbd171f78f8c62ffebc638e5e64644d250ce1c655114e2ab1e94417e3927709c",
+    "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/fixtures.json",
+    "projects_sha256": "e155a6801c53d7fac157e40fe23f9be182167a650d25c3e94ab4c8a483e516ff"
+  },
+  "inputs": [
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/results.json",
+      "sha256": "a5267bfe630bde0fbb73fe6b049825514a8bf6a962654fc29e15d04c1f9c77a5",
+      "snapshot_only_mutable": true
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/fixtures.json",
+      "sha256": "bbd171f78f8c62ffebc638e5e64644d250ce1c655114e2ab1e94417e3927709c",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_experiment.py",
+      "sha256": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_stage.py",
+      "sha256": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/blackbox_validator.py",
+      "sha256": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/result.json",
+      "sha256": "25f5c515dec05040437969ceb81230f1c3b8062309570d18b7520c39ac3efd86",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/result.json",
+      "sha256": "b38aff3855393ad12503df5edeaf3fb01a92135198c53000383b345cb273d585",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-3.json",
+      "sha256": "dadd792b5b550e458b29e0cd1777b9567799fd89740d844b568736988e91069d",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-4.json",
+      "sha256": "a822546d2382723156b0eb1020ec3eba6b45d52e07ea9452cddcbc4f4eb33aca",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-0-1.json",
+      "sha256": "3cc23e15e0305c4706555ff4c4537155ec3587b0728c4cd51386441e16c2588b",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-1-1.request.json",
+      "sha256": "5b2bbae75fc81c9ea12aa60b7650afac7ba0a4469d8f656face3a6abb4c0685e",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-1-1.result.json",
+      "sha256": "d5c4977533d5ba94bd40cbf678b5581919a6208854baadf57af6220902959d01",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-2-4.request.json",
+      "sha256": "b2ed80e27e59ca1430cf6faa08b03d80f0d5883f12d2f0e84a00abe6cfa0b688",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-2-4.result.json",
+      "sha256": "e8e6e6224452b2bc914ce9c4302a108159cf6da3d8650cff4ed74e10b9d1145b",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/result.json",
+      "sha256": "3cfbc622f9e0c29fcef02bad28829d5caaaf801cad478818bd75e57593a8b572",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/trajectory.json",
+      "sha256": "812a1faa02610c1e8a8bcdf647fcda1cee9484f3701900547313dfdde09b9f21",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-0/result.json",
+      "sha256": "6746e51b4e14aac4a58fc50af7f185df99e4060393515aa4b09188ce67e1751b",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-1/result.json",
+      "sha256": "74009f8a40b67a5475566131f1567aa135c124f857264fe7f46829aacaaecfca",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-2/result.json",
+      "sha256": "8800bd668d02eae6e582b21052b36872a973f1eb3c6ca5303fa2861bfaed7e1e",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-cheap-reviewed-2/stage-3/result.json",
+      "sha256": "59bd1deb5e2cecfb34f431986f85f495c8949d1e902d1fbaf49c53361b4c4627",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/result.json",
+      "sha256": "889585aa9ef4b61c9b1aa7373ab3f49e3a4c6b0990b9a3763925974801864c24",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/trajectory.json",
+      "sha256": "c17d7c3dee459da95e99443d22e1b30724d752cb5b3c32956e3d184f1d99f937",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-0/result.json",
+      "sha256": "8306c214456f2fc192b7345c80e306531760df875a31fc77d80c366bf8c4af1f",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-1/result.json",
+      "sha256": "8f67be13bd9163699647bd6df6bb7925886f831f67118c6b4e7942504e953b65",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-2/result.json",
+      "sha256": "9d765e8ba2b341f232f7a5458f2ff13e7298e1c33e08afd37bcc99cff2abf69b",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-strong-reviewed-1/stage-3/result.json",
+      "sha256": "470b28e0087a5894e1bca8a6cccd1a741bc2770ab5135ab156416a35e546c6d4",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/result.json",
+      "sha256": "add0064f0cc18c04d2db0d4c9d59dcdb2e8921356aef4e702eafcc58b1636335",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/trajectory.json",
+      "sha256": "ac96150b7ca0f43ac4edfb751d6cb8bd20136913cb49159e0a3ee9e60dc3c5e0",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-0/result.json",
+      "sha256": "98f130bcd76cd2f1efb4860e9d73571f0852485a9d573d2b32deb064156047a6",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-1/result.json",
+      "sha256": "7ab9fde27d1e36a7df428f182d7c0b901bd93235e893d3347476f4426c536d23",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-2/result.json",
+      "sha256": "54a3acf2b6bf9bde193456370fdc2f1fb375ec8a07f38bcf877336e9d35e8a80",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/result.json",
+      "sha256": "24ea45599f5f103b267eea5da52da438a350d705b2f9de7aed720f282b45ea48",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/result.json",
+      "sha256": "49fc219dada9b4cdd9ad18a7e62e319e434363810800c3468d2de28b452f4c16",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/trajectory.json",
+      "sha256": "0fd555b66ba788bca3df6aaad6ac0188c27bf4740759e0eeb4e62543202c2f23",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-0/result.json",
+      "sha256": "60c1d6ac40dd6aa2770ff86b906ff004dc8e7d87cd0bc39b4a1f25bc3b683efc",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-1/result.json",
+      "sha256": "8f5ecf9ad8c44f70c7bbd5c4dd249e4f28418c508f1d36d0105135f638bbd502",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-2/result.json",
+      "sha256": "8c0c1c1d6f9beeb4f36826a2fc0cce7678d8de14ce7ef6af7093eaf0af100330",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/result.json",
+      "sha256": "0c9a98df787346d51dc5e69c232c905aca085e1ebdb161d50e77fd4f7d125089",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/result.json",
+      "sha256": "57001f205e4a6d0ca0b68fb3af91ee894dce295acb0121dc9865e31b50f3205d",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/trajectory.json",
+      "sha256": "22830b7ca350d3c4a24c6d2238161255ce281f3dfb6409ba56bab3c0890f8c38",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-0/result.json",
+      "sha256": "f8d6a3dabc52fee5d8e63bab995be547f9ef5166f39f4d425494addc9b1dae6c",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-1/result.json",
+      "sha256": "9e8e682ea91d19938857ac18753efda3058d396d16a69ed279b2a8dde5c6dc51",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-2/result.json",
+      "sha256": "1876f45556b221094f2a8e195e2b924ec2a5a3c2f199203afbd8c47ba0f0de75",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-3/result.json",
+      "sha256": "b03459b6d30ba517148e0da44eb529b51268048559ec04ccc8aa741d9a5d67d9",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-2/stage-3/requests/builder-slot-0-2.result.json",
+      "sha256": "6aacbb7ebe164bd8fa6fd2422f016d1b8dc03ee6a751d7a7b9b183c8625217e5",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/result.json",
+      "sha256": "0876c15ae478b661ab4f10b232cde9a50f9d8df14d7c98b19d85ba0d14a721b3",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/trajectory.json",
+      "sha256": "b235bad7778a0f32bb9f0174fe94989f9152df3897ee8f3f1dc22202d675cc3a",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-0/result.json",
+      "sha256": "cf8727501de3735af66f006ac1c09171e520eb88b7d1c0a874d8887b1835f1f5",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-1/result.json",
+      "sha256": "b6e491cf0159702e8c91075d20795cc272be20ac6e0a537482ce6990cab78b94",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-2/result.json",
+      "sha256": "6be3700374325fbc9a060087b5cc7168ef9a0790301a18e067fa084aaf6e4bfd",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-cheap-reviewed-1/stage-3/result.json",
+      "sha256": "370e3b97cb31a24dad8b87050a87af1bcb462925adf4c6e090c4739c4195ba7e",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/result.json",
+      "sha256": "f9c76dc27bb10960f95371a167182798e49ad23b454c481da32de6073f9d8be9",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/trajectory.json",
+      "sha256": "e22faed7c59f1df6478b1b31223c1c1b4b113c803c960655c6ddc51460b8e98d",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-0/result.json",
+      "sha256": "10d6483b218a62427b1818041c60de1f67f3f74c56d9b3a910d0e685ea40cfbd",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-1/result.json",
+      "sha256": "58f54ad67822b659f67846b4cf829402775104ad07c12f2c511ac27b1be5bd95",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-2/result.json",
+      "sha256": "aa89252a4a7e3fed1433059568e15ed7d09757c7cb335b55db5e496cf16f3bf1",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-strong-reviewed-2/stage-3/result.json",
+      "sha256": "a230ab19a68581a6e196d6e243b82aba24e728879cb1bd74bf91e83ad542224e",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/trajectory.json",
+      "sha256": "4a5b7228cfce384b2f1bae549a985cdef9a0b79a9e16ca2b28f6acde839d7803",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-0/result.json",
+      "sha256": "60ebc5495bcc4faba3810c6c4d7c40e361d5ca0cb3debc2f4690c4168b5302de",
+      "snapshot_only_mutable": false
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-1/result.json",
+      "sha256": "643fc16f169835119eae23169aa1c0e4c2df954c6eeaad785bb333394360bbc9",
+      "snapshot_only_mutable": false
+    }
+  ],
+  "line_facts": [
+    {
+      "end": 381,
+      "fact": "Scope failures combine invalid, disallowed, and duplicate paths; the retained failure does not identify which condition occurred.",
+      "line_excerpt_sha256": "278bb8efcba524344c25b801fb480cad7b10865cd2b0dd8fdbb05be3389fac24",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/worker.py",
+      "start": 379
+    },
+    {
+      "end": 392,
+      "fact": "A syntactically valid proposal with no effective changes becomes a WorkerFailure of kind empty.",
+      "line_excerpt_sha256": "1ead59276f5cdc18e318e1fb854f49a22cf68b777778d4033dcf2c9da8b32d21",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/worker.py",
+      "start": 388
+    },
+    {
+      "end": 299,
+      "fact": "A known-cost nonfatal worker failure is recorded, then invoke returns None.",
+      "line_excerpt_sha256": "8bee51d4ca5efe02664e573cc6168e4006377689eafac5940de11b089117ac8c",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_experiment.py",
+      "start": 290
+    },
+    {
+      "end": 374,
+      "fact": "A rejected proposal preserves previous files, but source_valid is assigned from validity of the latest attempt; a later valid proposal recalculates it.",
+      "line_excerpt_sha256": "417d78e137b60ae35b40c79c16b6310f878434d4a2e42fe33373b29552728483",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_stage.py",
+      "start": 351
+    },
+    {
+      "end": 404,
+      "fact": "Acceptance and fallback ranking include source_valid, separately from the retained source test matrix.",
+      "line_excerpt_sha256": "c19d5f5f5f8cf9586875654ba48215c2db9df786f918d7ef146663c4ed85d174",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_stage.py",
+      "start": 398
+    },
+    {
+      "end": 486,
+      "fact": "A repair needs both unused repair capacity and a subsequent review opportunity.",
+      "line_excerpt_sha256": "0f5ccc18cd9e6c1327c402fce007e11501f19a347e011ba965970d8c76f4a272",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/source-snapshot/gossip_harness/verification_stage.py",
+      "start": 472
+    },
+    {
+      "end": 37998,
+      "fact": "Candidate B round 3 is source_valid=true and visible_passed=true.",
+      "line_excerpt_sha256": "71cc77fc3177278192b5e967c37292e7239c7dff72a151de1336f864ce578a00",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/result.json",
+      "start": 37985
+    },
+    {
+      "end": 38343,
+      "fact": "Candidate B round 4 retains the same source hash but is source_valid=false and visible_passed=true.",
+      "line_excerpt_sha256": "2122c85d4770ddc10dfbebc8b83dd0f206c0fb4c268fbc39424a783dc9002828",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/result.json",
+      "start": 38330
+    },
+    {
+      "end": 6,
+      "fact": "Recorded final B failure is no effective changes / empty, not a path-scope failure.",
+      "line_excerpt_sha256": "6b9c9c091228fa492d210b3c883c2cfb3fffa12dbcb3254e9b6c9c5cf5165bfe",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/requests/builder-slot-2-4.result.json",
+      "start": 2
+    },
+    {
+      "end": 37037,
+      "fact": "The incomplete stage retained candidate C as its final selected source.",
+      "line_excerpt_sha256": "8a4b015c9b6073b35c546349857613427d4912b1f398e3696d219c807f10497e",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/result.json",
+      "start": 37022
+    }
+  ],
+  "model_calls": 0,
+  "observed_at_utc": "2026-10-01T03:34:36.275730+00:00",
+  "optional_postfreeze_diagnostic": {
+    "binding_rule": "Read immutable Git tips and exports recorded above; verify their exact content hashes. Do not regenerate, edit, or substitute sources.",
+    "eligible_now": false,
+    "evaluation": {
+      "case_count": 36,
+      "case_kind": "hidden_cases",
+      "case_timeout_seconds": 12,
+      "cumulative_stage_indices": [
+        0,
+        1,
+        2
+      ],
+      "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+      "project_id": "buildgraph",
+      "suite_canonicalization": "SHA256 of JSON array in frozen fixture order, each case restricted to input,expected,id,requirement; sort_keys=True, ensure_ascii=True, allow_nan=False, separators=(comma,colon).",
+      "suite_sha256": "8efd70ce3e0bfa5dacf252cff407968f6982a3863bda38836a01025beb53b5a3",
+      "suite_timeout_seconds": 300,
+      "validator": "Frozen BlackboxValidator sandbox; expected outputs stay on host",
+      "validator_source_sha256": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e"
+    },
+    "limitations": [
+      "Supplementary available-quality observation under cumulative milestone-three requirements, not primary project acceptance.",
+      "The primary final-private suite contains all 48 project cases; it is not interchangeable with this exact 36-case diagnostic.",
+      "A difference would not establish that a reviewer would have accepted, that later milestones would complete, or that a changed harness would improve outcomes."
+    ],
+    "maximum_fresh_validations": 2,
+    "maximum_per_source": 1,
+    "no_model_calls": true,
+    "no_promotions": true,
+    "no_repairs": true,
+    "planned_only": true,
+    "primary_scores_modified": false,
+    "purpose": "verification-stage2-retained-availability-diagnostic-v1",
+    "source_labels": [
+      "candidate_B_latest_ineligible",
+      "final_retained_candidate_C"
+    ],
+    "source_sha256": [
+      "73d4df2c17b95e7b94d0544881f3180e06cd49c2fc0bc93ba0933bdf264e9f4c",
+      "3f392273c03dc3d0e45e47aa1e753149fbb1a99ea466074d5615bf417f687eff"
+    ],
+    "whole_live_freeze_required": {
+      "active_case": null,
+      "censored": [],
+      "expected_unique_trajectories": 18,
+      "mode": "live",
+      "protocol": "verification-quality-v1",
+      "repetitions": 3,
+      "roster": "Both frozen projects x all three frozen policies x repetitions 0,1,2; exact contract and preregistered roster binding required.",
+      "status": "finished",
+      "unexecuted": []
+    }
+  },
+  "primary_scores_modified": false,
+  "purpose": "verification-retained-source-eligibility-finding-v1",
+  "schema_version": 1,
+  "sources": {
+    "candidate_B_latest_ineligible": {
+      "builder_round": 4,
+      "candidate": "candidate-B",
+      "export_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-4.json",
+      "export_sha256": "a822546d2382723156b0eb1020ec3eba6b45d52e07ea9452cddcbc4f4eb33aca",
+      "file_sha256": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "ad66bd4f08dbd7e57b2a1be7629dd15055a54b1f2142334af1cdc40423172d84",
+        "buildgraph_app/service.py": "3ba0cdf1ae2b76a3cb743980176cae5f91851a91dcec31ef34728fbd33de3320",
+        "buildgraph_app/storage.py": "009bbc58aa4049d93f352361067f00adbd0f656ae23414ea7cdb954dad14d1aa",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "git_content_matches_export": true,
+      "git_store": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-4.git",
+      "git_tip_sha": "e9ea89eae84909b038530f037a08f041da2d47d2",
+      "git_tree_sha": "b6f608f8f19ae464640f5e1bd98a93202469db62",
+      "label": "candidate-B latest ineligible retained source",
+      "source_sha256": "73d4df2c17b95e7b94d0544881f3180e06cd49c2fc0bc93ba0933bdf264e9f4c",
+      "source_valid": false,
+      "visible_passed_at_proposal": true
+    },
+    "candidate_B_prior_valid": {
+      "builder_round": 3,
+      "candidate": "candidate-B",
+      "export_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-3.json",
+      "export_sha256": "dadd792b5b550e458b29e0cd1777b9567799fd89740d844b568736988e91069d",
+      "file_sha256": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "ad66bd4f08dbd7e57b2a1be7629dd15055a54b1f2142334af1cdc40423172d84",
+        "buildgraph_app/service.py": "3ba0cdf1ae2b76a3cb743980176cae5f91851a91dcec31ef34728fbd33de3320",
+        "buildgraph_app/storage.py": "009bbc58aa4049d93f352361067f00adbd0f656ae23414ea7cdb954dad14d1aa",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "git_content_matches_export": true,
+      "git_store": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-2-3.git",
+      "git_tip_sha": "51c760e240c183e3b432745e43d3b7b661f13114",
+      "git_tree_sha": "b6f608f8f19ae464640f5e1bd98a93202469db62",
+      "label": "candidate-B prior valid retained source",
+      "source_sha256": "73d4df2c17b95e7b94d0544881f3180e06cd49c2fc0bc93ba0933bdf264e9f4c",
+      "source_valid": true,
+      "visible_passed_at_proposal": true
+    },
+    "final_retained_candidate_C": {
+      "builder_round": 1,
+      "candidate": "candidate-C",
+      "export_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-0-1.json",
+      "export_sha256": "3cc23e15e0305c4706555ff4c4537155ec3587b0728c4cd51386441e16c2588b",
+      "file_sha256": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "b716314f1d4541f595703014d708088b180f9741e1dc3f20d3981383f8d6826e",
+        "buildgraph_app/service.py": "0eb920a5d7a8d6f10432d4ccca987dea3321280a74118621c81f87a6259d10bf",
+        "buildgraph_app/storage.py": "ab282066adc8736bd6bc15ea29f282015877e9aeed3aa44035555a5029e96511",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "git_content_matches_export": true,
+      "git_store": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/stage-2/stage-2-build-slot-0-1.git",
+      "git_tip_sha": "28f76426190ec86820561520d4ec6aa53a2877bd",
+      "git_tree_sha": "97ae2c111101cf0650156c287585b80742237ad6",
+      "label": "candidate-C final retained alternative",
+      "source_sha256": "3f392273c03dc3d0e45e47aa1e753149fbb1a99ea466074d5615bf417f687eff",
+      "source_valid": true,
+      "visible_passed_at_proposal": false
+    }
+  },
+  "status": "evidence_record_only_no_diagnostic_execution",
+  "study_contract_sha256": "a65b5cce6b3507cab6d05ae6afaeef58de3caf9b0f153b248c4271425eec0b67",
+  "study_protocol": "verification-quality-v1",
+  "study_root": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1"
+}

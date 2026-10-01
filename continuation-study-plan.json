@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "protocol": "continuation-transport-v1",
+  "question": "Can focused cheap test scouts help the same stronger maintainer finish an actual repository maintenance slice at a higher quality bar?",
+  "scope": "One frozen module from this repository, two cumulative maintenance milestones, two repetitions per policy. This is a feasibility pilot, not independent production repositories or a causal gossip-transport comparison.",
+  "fixture_module": "gossip_harness.continuation_transport",
+  "milestones": 2,
+  "repetitions": 2,
+  "policies": ["strong-maintainer", "scout-assisted"],
+  "roster_seed": 20261001,
+  "policies_detail": {
+    "strong-maintainer": {"builder": "strong", "reviewer": "strong", "initial_builders": 1, "test_scouts_per_stage": 0},
+    "scout-assisted": {"builder": "strong", "reviewer": "strong", "initial_builders": 1, "test_scouts_per_stage": 2, "scout_model": "cheap"}
+  },
+  "common_controller": {
+    "module": "gossip_harness.continuation_stage",
+    "engine_policy": "strong-reviewed",
+    "max_reviews": 6,
+    "max_repairs": 4,
+    "max_escalations": 2,
+    "stagnant_reviews_before_escalation": 2,
+    "max_probes_per_review": 4,
+    "max_new_reviewer_probes_per_stage": 8,
+    "acceptance": "No automatic acceptance on stagnation. Source eligibility, executed evidence, explicit reviewer acceptance, and empty outstanding requirements remain mandatory.",
+    "no_op": "Preserve eligibility of previously valid retained source when a later proposal is invalid or has no effective change; never manufacture validity for unapproved source."
+  },
+  "scouts": {
+    "parallel": true,
+    "proposals_per_scout": 4,
+    "maximum_new_admitted_per_stage": 8,
+    "input_visibility": "Same stage-start source, cumulative public contract, and public evidence; no peer proposals, private cases, or reference implementation.",
+    "output": "Data-only JSON test proposals. No executable tests or source edits.",
+    "gate": "A trusted bounded host oracle validates exact expected outputs; rejected answers are not corrected. Only admitted cases enter the maintainer context. All scout calls and rejected proposals are retained and charged.",
+    "interpretation": "Additional compute and evidence are part of this operational policy. This is not an equal-compute or oracle-free comparison."
+  },
+  "primary_outcome": "Both milestones completed and the exact final source passes all cumulative public, active generated, and private cases.",
+  "secondary_outcomes": [
+    "Completed milestones and private requirement-group coverage",
+    "Valid-source preservation, stalled-review events, escalation, and repair outcomes",
+    "Admitted and rejected scout/reviewer test proposals",
+    "Observed time to terminal outcome, with accepted-only timing separately conditioned on success",
+    "Physical provider-call spans, model usage, and Docker verification spans; overlapping spans are never summed into wall time"
+  ],
+  "barriers": {
+    "before_live": "Current-source focused checks and a complete four-trajectory, zero-API rehearsal with exact source/fixture/plan/runtime/image/model binding.",
+    "private_evaluation": "All four provider-driven trajectories must be terminal and their final source bindings frozen before any private-case evaluation begins.",
+    "after_live": "Independent retained-evidence, result-binding, request-accounting, and comparison review before reporting final acceptance."
+  },
+  "execution": {
+    "candidate_code": "Only inside the existing isolated BlackboxValidator Docker boundary. No candidate imports on the host.",
+    "journal": "Existing durable RequestJournal and shared Ledger. Unknown provider outcomes stop execution without an automatic retry.",
+    "controller_crash_injection": false,
+    "restart_scope": "The new fixture exercises application snapshot/restore and branch continuation. Prior controller SIGKILL recovery evidence is reported separately, not counted as new execution.",
+    "output_tokens": 12288
+  },
+  "budget": {
+    "target_usage_micro_usd": 6000000,
+    "incremental_cap_micro_usd": 12000000,
+    "shared_cumulative_cap_micro_usd": 40000000,
+    "ledger": "runs/first-live-budget.sqlite",
+    "expected_starting_usage_micro_usd": 23940972,
+    "admission": "Account for settled charges and all in-flight reservations before dispatch. The strong profile conservatively reserves its full supported context, approximately $5.526 per call, so the reservation-inclusive ceiling exceeds the $6 usage target. Budget exhaustion censors unexecuted work; four paid completions are not guaranteed. Preserve prior usage; do not raise or reset the existing shared cap.",
+    "cost_meaning": "Conservative API token estimates, not invoices. Excludes local compute and human/oracle development."
+  },
+  "analysis": {
+    "keep_cohorts_separate": true,
+    "elo_rating": false,
+    "ranking": "Report acceptance and requirement-coverage comparisons separately. Historical within-application cross-run W/D/L scores are descriptive derived comparisons, not independent matches or calibrated skill ratings.",
+    "timing": "Report observed local elapsed times and their denominators; early incomplete runs do not win a speed ranking. Host load and differing verification work prevent a causal latency claim. Missing historic provider latency remains unavailable.",
+    "uncertainty": "Only one repository module and two repetitions per policy; do not claim general superiority, a calibrated Elo, or confidence from treating correlated comparisons as independent."
+  }
+}

@@ -19,6 +19,8 @@ const PAGES = {
   'swarm-pilot': {start: 'selection', link: 'Five comparisons', target: 'policies'},
   'sustained-pilot': {start: 'continuity', link: 'Three policies', target: 'policies'},
   'verification-pilot': {start: 'recovery', link: 'Matched reviewers', target: 'policies'},
+  'continuation-comparison': {start: 'timing', link: 'Ranks & paired outcomes', target: 'ranking'},
+  'benchmark-comparison': {start: 'methods', link: 'Quality & ranking', target: 'quality'},
 };
 
 function options(argv) {
@@ -47,7 +49,9 @@ const digest = data => crypto.createHash('sha256').update(data).digest('hex');
 function pageURL(name, base, fixture = false) {
   const overrides = {experiments: 'EXPERIMENT_URL', swarm: 'SWARM_URL',
     'swarm-pilot': 'SWARM_PILOT_URL', 'sustained-pilot': 'SUSTAINED_PILOT_URL',
-    'verification-pilot': 'VERIFICATION_PILOT_URL'};
+    'verification-pilot': 'VERIFICATION_PILOT_URL',
+    'continuation-comparison': 'CONTINUATION_COMPARISON_URL',
+    'benchmark-comparison': 'BENCHMARK_COMPARISON_URL'};
   const supplied = overrides[name] && process.env[overrides[name]];
   const url = new URL(supplied || `${name}.html`, base);
   if (fixture && supplied) {
@@ -151,6 +155,8 @@ async function contentChecks(page, name, requireFinal) {
   }
   const ids = name === 'experiments' ? ['overall-result', 'discovery-outcomes', 'recovery-outcomes', 'accounting-outcomes']
     : name === 'verification-pilot' ? ['overall-result', 'live-outcomes', 'cost-outcomes', 'verification-outcomes']
+    : name === 'continuation-comparison' ? ['overall-result', 'new-outcomes', 'new-accounting']
+    : name === 'benchmark-comparison' ? ['overall-result', 'benchmark-outcomes', 'fault-outcomes', 'selection-outcomes', 'timing-outcomes', 'transport-outcomes', 'accounting-outcomes']
     : ['swarm-pilot', 'sustained-pilot'].includes(name) ? ['overall-result', 'live-outcomes', 'cost-outcomes'] : [];
   for (const id of ids) {
     assert.equal(await page.locator(`#${id}`).evaluate(el => el.classList.contains('warning')), false, `${id} has no draft placeholder`);

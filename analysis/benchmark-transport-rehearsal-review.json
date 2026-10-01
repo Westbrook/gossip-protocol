@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "kind": "retained-transport-rehearsal-reconciliation",
+  "status": "passed",
+  "protocol": "frozen-evidence-transport-v1",
+  "purpose": "synthetic-rehearsal",
+  "execution": "Reconciled original retained observations; no simulation, candidate code, model call, or Docker execution was repeated.",
+  "inputs_sha256": {
+    "simulation/benchmark_transport.py": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696",
+    "tests/test_benchmark_transport.py": "c2829309a53dd57fb84808e942f94fa763602eb690711e36c18f33747962430c",
+    "gossip_harness/transport.py": "c8f68f90480b6090e9f4dc43cc6882b6fad5bde7c6c5378c35b0084691a771a0",
+    "results/benchmark-transport-rehearsal-1/results.json": "d62621b30f48761b31ece6064e59449de08d90849e6f50874fddc0730e1f2deb",
+    "results/benchmark-transport-rehearsal-1/corpus.json": "3f4a41e5a8c9d21e64ca68948cc435c36fa8a7c15cdcaf7774de0ccc940c5d3d",
+    "runs/benchmark-transport-scoped-1.json": "819b37cd278953f2d6ca47de63f243b7012e2ba3691dcee1adea81c7449fbcb4",
+    "runs/benchmark-auxiliary-qualification-1/20261001T141030-82a33df3/inputs.json": "191d717b259a3f6af62d98cdf7393f6533ea050bee0002a4acea3a7e0c97c480",
+    "runs/benchmark-auxiliary-qualification-1/20261001T141030-82a33df3/static.json": "38b66b22aac2f78be988e06f9454b2f8a57b2c9452c411d934f0fcb632360cf4"
+  },
+  "audit_method_sha256": "5f59aed96a3668a7ab4a4c6a18226d366241938eaf268a78649d6b23756b93cf",
+  "counts": {
+    "trials": 420,
+    "scenarios": 7,
+    "arms": 3,
+    "seeds_per_cell": 20,
+    "charged_contact_opportunities_checked": 215040,
+    "locally_supported_decisions_checked": 1680,
+    "correct_complete_trials": 420,
+    "false_accepts": 0,
+    "false_rejects": 0,
+    "lost_facts": 0
+  },
+  "checked": [
+    "Execution source/test/transport hashes equal retained combined-static inputs; combined static status passed.",
+    "Corpus canonical hash, immutable event IDs, embedded UTF-8 artifact hashes, and external expected verdicts.",
+    "All 420 unique arm/scenario/seed cells and complete 64-round, eight-contact schedules.",
+    "Every recorded contact status/delay against the paired environmental hash field and specified partitions/restarts.",
+    "Exact star/replicated contact rosters and local failover state transitions including offline clients; gossip caller roster and valid distinct target bounds.",
+    "All 1,680 emitted decisions contain exact visible contracts, sources, producer-separated positive/challenge receipts and evidence artifact bytes.",
+    "No retained decision uses an event before its publication; no offline reviewer emits a decision.",
+    "Contact, transfer/dedup arithmetic, all-actionable timing, pending availability, persisted restart IDs and receipt-ingestion counters.",
+    "All scenario/arm median and p95 summaries, completion denominators and paired win/draw/loss arithmetic.",
+    "Input bytes unchanged after reconciliation."
+  ],
+  "results": [
+    {
+      "scenario": "healthy",
+      "median_rounds": {
+        "gossip": 16.0,
+        "durable-broker": 15.0,
+        "replicated-broker-client-failover": 15.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 9,
+          "loss": 11
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 9,
+          "loss": 11
+        }
+      ]
+    },
+    {
+      "scenario": "primary-isolation",
+      "median_rounds": {
+        "gossip": 16.0,
+        "durable-broker": 25.0,
+        "replicated-broker-client-failover": 15.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 20,
+          "draw": 0,
+          "loss": 0
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 4,
+          "loss": 16
+        }
+      ]
+    },
+    {
+      "scenario": "standby-isolation",
+      "median_rounds": {
+        "gossip": 16.0,
+        "durable-broker": 15.0,
+        "replicated-broker-client-failover": 15.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 8,
+          "loss": 12
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 8,
+          "loss": 12
+        }
+      ]
+    },
+    {
+      "scenario": "worker-isolation",
+      "median_rounds": {
+        "gossip": 24.0,
+        "durable-broker": 23.0,
+        "replicated-broker-client-failover": 23.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 3,
+          "loss": 17
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 3,
+          "loss": 17
+        }
+      ]
+    },
+    {
+      "scenario": "partition-heal",
+      "median_rounds": {
+        "gossip": 23.0,
+        "durable-broker": 24.0,
+        "replicated-broker-client-failover": 23.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 17,
+          "draw": 3,
+          "loss": 0
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 3,
+          "draw": 14,
+          "loss": 3
+        }
+      ]
+    },
+    {
+      "scenario": "loss-reorder",
+      "median_rounds": {
+        "gossip": 18.0,
+        "durable-broker": 18.0,
+        "replicated-broker-client-failover": 19.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 7,
+          "draw": 3,
+          "loss": 10
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 12,
+          "draw": 3,
+          "loss": 5
+        }
+      ]
+    },
+    {
+      "scenario": "persisted-restart",
+      "median_rounds": {
+        "gossip": 16.0,
+        "durable-broker": 15.0,
+        "replicated-broker-client-failover": 16.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 9,
+          "loss": 11
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 9,
+          "draw": 8,
+          "loss": 3
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "Healthy median: gossip16 rounds, both broker arms15. Primary isolation: gossip16, durable single broker25, replicated failover15. The simpler single hub creates a bottleneck under its specific isolation; explicit broker replication removes this disadvantage in the simulated workload.",
+    "The worker-isolation and balanced-partition controls delay mandatory evidence in all approaches; gossip cannot replace absent required evidence.",
+    "These 420 cases are deterministic synthetic evidence-dissemination trials, not 420 software projects, model-quality trials, real network runs or practical reliability estimates.",
+    "No calibrated Elo is justified. Within-scenario, paired-seed win/draw/loss is descriptive and safety/completion precede timing.",
+    "Zero global fact loss follows the durable-store contract. Zero unsafe approvals tests a closed pre-frozen required-evidence protocol, not resistance to future unknown defects or refutations."
+  ],
+  "limits": [
+    "The author performed this reconciliation; the previous design review was performed by a separate agent. This is not an independently implemented full transport simulator.",
+    "No delivery replay occurred. Exact event-routing causality and serialized-byte totals remain instrumented original-execution observations; the audit checks recorded local visibility, publication timing, trace constraints and accounting, not an independent re-execution.",
+    "The synthetic corpus was generated in-process, so the output binds its canonical JSON hash and this review additionally binds exported exact bytes; original corpus_input_bytes_sha256 is correctly null.",
+    "Gossip schedules vary with seeds; broker schedules repeat outside loss. Equal charged contacts do not equate bytes, physical attempts, capacity, latency or model cost.",
+    "The final live-corpus replay remains separate work and must bind completed-study artifacts and original audited receipt verdicts."
+  ]
+}

@@ -438,6 +438,7 @@ def audit_stage(stage, project, stage_index, policy, initial, prior, calls, cont
                 files.update({path: value for path, value in changes.items() if path in allowed})
             note = _builder_note(changes, requirements)
             prior_note = candidates.get(alias, {}).get("notes", context_base["prior_notes"])
+            reviewer_remaining = deepcopy(candidates.get(alias, {}).get("reviewer_remaining", []))
             metrics["invalid_builder_notes"] += int(note is None)
             metrics["invalid_source_proposals"] += int(not valid)
             require(row["source_valid"] is valid and row["files_sha256"] == digest(files)
@@ -448,7 +449,8 @@ def audit_stage(stage, project, stage_index, policy, initial, prior, calls, cont
             require(retained == dict(binding=row["binding"], files=files), "Retained proposal record mismatch")
             item = dict(files=files, binding=row["binding"], slot=slot, alias=alias, source_valid=valid,
                         notes=safe_notes(note["notes"]) if note and valid else prior_note,
-                        remaining=note["remaining"] if note else [], matrix={}, validation_receipts=[])
+                        remaining=note["remaining"] if note else [], reviewer_remaining=reviewer_remaining,
+                        matrix={}, validation_receipts=[])
             candidates[alias] = item
             evaluate(item, active, label + "-all-evidence")
             failures = [case["id"] for case in active if not item["matrix"][case["id"]]["passed"]]
@@ -485,6 +487,7 @@ def audit_stage(stage, project, stage_index, policy, initial, prior, calls, cont
                         metrics["probe_failures_found"] += sum(not value for value in values)
                         metrics["probe_discriminating_cases"] += int(len(set(values)) > 1)
                 item = candidates[review["candidate"]]
+                item["reviewer_remaining"] = list(review["remaining"])
                 require(row["selected"] == review["candidate"] and row["binding"] == item["binding"], "Reviewer selected stale source")
                 accepted = (review["action"] == "accept" and not review["remaining"] and item["source_valid"]
                             and all(item["matrix"][case["id"]]["passed"] for case in active))
@@ -521,14 +524,14 @@ def audit_stage(stage, project, stage_index, policy, initial, prior, calls, cont
             and stage["status"] == ("complete" if completed else "bounded_incomplete")
             and stage["notes"] == safe_notes(item["notes"])
             and stage["remaining"] == ([] if completed else sorted({case["requirement"] for case in active
-                if not item["matrix"][case["id"]]["passed"]} | set(item["remaining"]))),
+                if not item["matrix"][case["id"]]["passed"]} | set(item["remaining"]) | set(item["reviewer_remaining"]))),
             "Stage selected source differs from final review/fallback")
     require(stage["probe_pool"] == pool and stage["evidence_cases"] == active
             and stage["evidence_sha256"] == digest(active), "Final active evidence differs from accumulated gates")
     require(set(stage["candidates"]) == set(candidates), "Retained final candidate roster mismatch")
     for alias, candidate in candidates.items():
         saved = stage["candidates"][alias]
-        for key in ("binding", "slot", "alias", "source_valid", "notes", "remaining", "matrix", "validation_receipts"):
+        for key in ("binding", "slot", "alias", "source_valid", "notes", "remaining", "reviewer_remaining", "matrix", "validation_receipts"):
             require(same(saved[key], candidate[key]), "Latest candidate matrix/receipt binding mismatch")
     require(same(stage["matrix"], {alias: item["matrix"] for alias, item in candidates.items()}), "Stage matrix mismatch")
     selected_item = candidates[selected]

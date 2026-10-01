@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "protocol": "evidence-frontier-v1",
+  "question": "Does independent cheap-agent diversity improve sustained project quality over a matched sequential revision chain, and does generated evidence identify the useful alternatives?",
+  "projects": [
+    "graph-patch",
+    "calendar-exchange"
+  ],
+  "fixture_modules": [
+    "gossip_harness.benchmark_graph_patch",
+    "gossip_harness.benchmark_calendar_exchange"
+  ],
+  "milestones": 2,
+  "policies": {
+    "sequential-four": {
+      "repetitions": 2,
+      "initial_builders": 4,
+      "model": "cheap",
+      "formation": "sequential"
+    },
+    "independent-four": {
+      "repetitions": 2,
+      "initial_builders": 4,
+      "model": "cheap",
+      "formation": "independent"
+    },
+    "strong-anchor": {
+      "repetitions": 1,
+      "initial_builders": 1,
+      "model": "strong",
+      "formation": "independent"
+    }
+  },
+  "roster_seed": 20261002,
+  "controller": {
+    "max_reviews": 4,
+    "max_repairs": 2,
+    "max_new_probes": 8,
+    "max_escalations": 1,
+    "stagnation_reviews": 2,
+    "reviewer_model": "strong",
+    "scouts": 2,
+    "proposals_per_scout": 4,
+    "output_tokens": 12288,
+    "ceiling_scope": "All listed call/repair/review/scout/proposal ceilings apply per stage. Exactly four initial call opportunities in each matched policy, including invalid/no-op known outcomes. Unknown provider outcomes halt globally without further calls.",
+    "repair_models": "Cheap normal repairs for both matched arms, strong for the anchor; at most one shared strong stall escalation within ordinary repair/review limits.",
+    "max_new_scout_probes": 8,
+    "probe_quotas": "Per-stage independent quotas: at most8 admitted scout probes and8 admitted reviewer probes; rejected proposals consume generation opportunities, not admission slots."
+  },
+  "candidate_formation": "Sequential-four gives each subsequent cheap builder the preceding retained source and its executed public/prior-stage evidence, preserving all four checkpoints for selection. Independent-four gives all four the identical stage-start source without peer outputs. Initial call counts and model/token ceilings match, actual usage need not. Invalid/no-op serial proposals retain prior source eligibility; no new correctness is inferred. Both use identical reviewer, repair and escalation rules.",
+  "scout_visibility": "Scouts run only after all initial candidates for their stage are durably frozen. They receive the stage-start source, cumulative public contract and public cases, not candidates, peer probes, private cases or fault bank. Their oracle-gated probes are then applied to every candidate before the common reviewer. Prior-stage admitted probes remain regression evidence. Test utility is therefore separable from prevention in current-stage initial generation.",
+  "primary": "Whole project explicitly completed at both milestones and exact final source independently passes all cumulative public, admitted and private acceptance cases.",
+  "secondary": [
+    "Paired whole-project acceptance and requirement-group coverage",
+    "Earlier requirements retained after later changes",
+    "Best available first/final pool quality versus selected quality",
+    "Public-only versus scout/reviewer evidence selection on the same frozen pool",
+    "Public-surviving semantic fault families detected, unique probe contribution and redundancy",
+    "Effective repairs, regressions, stagnation and bounded stops",
+    "Active time, provider span union, verification time and API token cost"
+  ],
+  "fault_bank": "Freeze per-stage semantic mutants and correct/semantics-preserving controls before any live call. Qualify golden and control correctness, classify every mutant by public survival and independent witness failures. Never reveal faults/witnesses or fault scores to workers. Count distinct families. Execute generated suites against all same-project stage sources and faults only after the complete provider cohort freezes.",
+  "barriers": {
+    "before_live": "All affected offline gates, fixture Docker qualification, and an exact complete zero-API rehearsal under frozen plan/source/runtime/image/model limits.",
+    "private": "All ten terminal trajectories, every candidate source, proposal and final selection frozen before any private/fault/cross-policy diagnostic execution.",
+    "audit": "Independent source, receipt, roster, journal, accounting, timing and Git audit before reporting final scores."
+  },
+  "budget": {
+    "target_usage_micro_usd": 6000000,
+    "incremental_cap_micro_usd": 24495311,
+    "shared_cumulative_cap_micro_usd": 50000000,
+    "expected_starting_usage_micro_usd": 25504689,
+    "ledger": "runs/first-live-budget.sqlite",
+    "headroom": "Strong calls reserve approximately $5.52648; realized spend cannot consume the full remaining balance while preserving future strong dispatch. Keep existing conservative reservations, serialize strong calls, censor bounded/unexecuted work honestly. No cap reset or automatic retry.",
+    "authorization_receipt": "runs/evidence-frontier-budget-adjustment-1.json"
+  },
+  "execution": {
+    "candidate_boundary": "Pinned BlackboxValidator Docker only",
+    "provider_journal": "Existing RequestJournal; unknown outcomes halt without retry",
+    "rehearsal": "Scripted source/probe/review controls including no-op preservation and common-controller stagnation; no provider calls",
+    "historical_sources": "Existing frozen fixtures/controllers/runners remain byte-identical; new scientific behavior is versioned."
+  },
+  "transport_scope": "Separate deterministic zero-API artifact dissemination stress comparison: peer gossip, durable single broker with persisted restart, and explicitly replicated/failover broker. Equal attempted contact budget includes replication. Measures local evidence availability and safety under specified faults, not improved model reasoning or a live decentralized coding policy.",
+  "interpretation": {
+    "matched": "Only sequential-four versus independent-four has matched initial builder opportunities. Both are centrally instrumented policies; this isolates candidate diversity rather than gossip transport.",
+    "anchor": "Two strong-anchor trajectories provide context, not a compute-matched or equally replicated contrast.",
+    "ranking": "Descriptive within-project paired win/draw/loss; acceptance first, coverage second; no calibrated Elo and no treating derived pairwise comparisons as independent games.",
+    "timing": "Active trajectory elapsed excludes whole-cohort freeze waiting. Early incomplete runs never win a speed ranking. Provider, Docker and active spans overlap and are not additive.",
+    "generalization": "Two maintained synthetic applications, two repetitions per matched policy, oracle-assisted labels and small cohort. Outcomes can falsify local hypotheses but cannot establish general superiority."
+  },
+  "roster": [
+    [
+      "graph-patch",
+      "sequential-four",
+      0
+    ],
+    [
+      "graph-patch",
+      "independent-four",
+      0
+    ],
+    [
+      "calendar-exchange",
+      "strong-anchor",
+      0
+    ],
+    [
+      "calendar-exchange",
+      "independent-four",
+      0
+    ],
+    [
+      "calendar-exchange",
+      "sequential-four",
+      0
+    ],
+    [
+      "graph-patch",
+      "strong-anchor",
+      0
+    ],
+    [
+      "calendar-exchange",
+      "sequential-four",
+      1
+    ],
+    [
+      "calendar-exchange",
+      "independent-four",
+      1
+    ],
+    [
+      "graph-patch",
+      "independent-four",
+      1
+    ],
+    [
+      "graph-patch",
+      "sequential-four",
+      1
+    ]
+  ],
+  "analysis_protocol": {
+    "pairing": "Same project and repetition, not shared provider randomness. Four paired trajectory blocks but only two application domains. Anchors unpaired.",
+    "source_pools": "Preserve all attempt checkpoint identities; deduplicate execution by exact source hash within stage and purpose. Analyze initial and final eligible slot pools separately; best-ever retained source is a separately labeled ceiling.",
+    "counterfactual_selector": "Require original source eligibility and every public case passing, otherwise abstain. Rank eligible public-passing candidates by number of passing extra tests from the named evidence set descending, then the frozen anonymized candidate order ascending. Public-only uses no extras. Deduplicate exact inputs and reject conflicting expectations. No private outcomes enter selection or ties.",
+    "regret": "Gap in private requirement-group coverage between best available pool member and selected source, plus available-perfect-but-selected-imperfect counts. Best-ever source ceiling separately labeled.",
+    "qualification_exception": "Trusted golden/control/mutant fixtures may execute for pre-live qualification. No model-generated private, cross-policy or fault diagnostic before all live provider sources/selections freeze.",
+    "censor": "If budget cannot reserve the next planned call, halt without automatic retry; retain partially executed and unexecuted roster. Do not treat unexecuted as correctness failure or publish completed-cohort scores. No private diagnostics unless every planned trajectory is terminal.",
+    "evidence_scope": "Counterfactual selectors are reported separately with own-history and pooled same-project/stage evidence. Pooled cross-policy evidence was unavailable during live decisions and is not a separately executed agent policy."
+  }
+}

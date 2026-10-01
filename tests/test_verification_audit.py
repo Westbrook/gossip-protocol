@@ -94,7 +94,7 @@ class StageAuditTests(unittest.TestCase):
         self.calls, self.trees = {}, {}
         self.prompts = _prompts((Path(__file__).parents[1] / "gossip_harness" / "verification_stage.py").read_text())
 
-    def make(self, policy="portfolio-reviewed"):
+    def make(self, policy="portfolio-reviewed", review_script=None):
         def invoke(*, role, model, files, instructions, allowed_paths, feedback, metadata):
             call_id = f"{role}-{metadata['candidate_id']}-{metadata['round']}"
             req = dict(files=deepcopy(files), instructions=instructions, allowed_paths=list(allowed_paths),
@@ -103,9 +103,12 @@ class StageAuditTests(unittest.TestCase):
                 changes = {"app.py": "inert candidate " + metadata["candidate_id"],
                            "notes.json": json.dumps(dict(notes="Remember the input contract", remaining=[]))}
             else:
-                changes = {"review.json": json.dumps(dict(candidate=metadata["alias_by_slot"]["slot-0"],
+                review = dict(candidate=metadata["alias_by_slot"]["slot-0"],
                     action="accept", notes="Checked the available evidence", remaining=[],
-                    probes=[dict(requirement="R", input={"n": 1}, expected={"n": 1})]))}
+                    probes=[dict(requirement="R", input={"n": 1}, expected={"n": 1})])
+                if review_script:
+                    review.update(review_script(metadata))
+                changes = {"review.json": json.dumps(review)}
             result = WorkerResult(changes, "Inert response", 0, {"api_calls": 0})
             self.calls[call_id] = (req, dict(changes=changes, role=role, model=model))
             return result
@@ -186,6 +189,45 @@ class StageAuditTests(unittest.TestCase):
         path.unlink()
         with self.assertRaises(FileNotFoundError):
             self.audit()
+
+    def test_incomplete_stage_keeps_reviewer_only_remaining_requirements(self):
+        self.make(review_script=lambda metadata: dict(action="inspect", remaining=["R"]))
+        self.assertFalse(self.stage["completed"])
+        self.assertTrue(all(row["passed"] for row in self.stage["matrix"][self.stage["selected"]].values()))
+        self.assertEqual(self.stage["remaining"], ["R"])
+        self.assertEqual(self.stage["candidates"][self.stage["selected"]]["remaining"], [])
+        self.assertFalse(self.audit()["completed"])
+        changed = deepcopy(self.stage)
+        changed["remaining"] = []
+        with self.assertRaisesRegex(ValueError, "selected source"):
+            self.audit(changed)
+
+    def test_reviewer_remaining_survives_repair_and_fallback_to_different_candidate(self):
+        self.project["stages"][0]["requirements"].append("R-other")
+        def reviews(metadata):
+            if metadata["round"] == 1:
+                return dict(action="repair", remaining=["R"])
+            return dict(candidate=metadata["alias_by_slot"]["slot-1"], action="inspect", remaining=["R-other"])
+        self.make(review_script=reviews)
+        chosen = self.stage["selected"]
+        self.assertEqual(chosen, self.stage["alias_map"]["slot-0"])
+        self.assertNotEqual(chosen, self.stage["trajectory"][-1]["review"]["candidate"])
+        self.assertEqual(self.stage["remaining"], ["R"])
+        self.assertEqual(self.stage["candidates"][chosen]["reviewer_remaining"], ["R"])
+        self.assertEqual(self.audit()["builders"], 5)
+        changed = deepcopy(self.stage)
+        changed["candidates"][chosen]["reviewer_remaining"] = []
+        with self.assertRaisesRegex(ValueError, "candidate"):
+            self.audit(changed)
+
+    def test_later_review_clears_prior_reviewer_remaining_for_that_candidate(self):
+        def reviews(metadata):
+            return dict(action="inspect", remaining=["R"] if metadata["round"] == 1 else [])
+        self.make(review_script=reviews)
+        self.assertFalse(self.stage["completed"])
+        self.assertEqual(self.stage["remaining"], [])
+        self.assertEqual(self.stage["candidates"][self.stage["selected"]]["reviewer_remaining"], [])
+        self.assertFalse(self.audit()["completed"])
 
 
 class FaultAuditTests(unittest.TestCase):

@@ -1,0 +1,1170 @@
+{
+  "analysis": "Independent read-only interpretation of completed final-pool diagnostic",
+  "candidate_or_api_execution_performed": false,
+  "inputs": [
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-0/trajectory.json",
+      "sha256": "4a5b7228cfce384b2f1bae549a985cdef9a0b79a9e16ca2b28f6acde839d7803"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/final-private-receipt.json",
+      "sha256": "4ce0960ae8aa325ad47e07c8714d68ba5eb0342d64e126d0534b519e9e27d7ec"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/result.json",
+      "sha256": "24ea45599f5f103b267eea5da52da438a350d705b2f9de7aed720f282b45ea48"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/stage-3-build-slot-0-1.json",
+      "sha256": "4dbf3aaf7b73166c59c2d61dc96dd47c37eabe1c5f8cba717ea7cd32a8d0a45d"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/stage-3-build-slot-1-2.json",
+      "sha256": "3a5e08ee9c06fa1dfb2b0cad711e9a97f27b14cf15199bdf3461668fab932e81"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/stage-3-build-slot-2-1.json",
+      "sha256": "757661e233d920a4d0c1fb309ba0eda173dcad659dc02686a2aada00ad82468c"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/stage-3/stage-3-build-slot-3-1.json",
+      "sha256": "b49aaa44bd283f0ac9d9abe6f7b11ee76084be245f2c1e8173613fd0826417c0"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-1/trajectory.json",
+      "sha256": "ac96150b7ca0f43ac4edfb751d6cb8bd20136913cb49159e0a3ee9e60dc3c5e0"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/buildgraph-portfolio-reviewed-2/trajectory.json",
+      "sha256": "6892f86c36ec56c1e71882ada1c8edf6702b04b6d1a9a33abcdb8d9b840f5668"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-0/trajectory.json",
+      "sha256": "1dfd98f85523b499de8b8a8ce00843dd218903e600fca4f6592edc84e00740d1"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/final-private-receipt.json",
+      "sha256": "9fb56198a224e4c3d63a0b4424beb8b7a11f530165d1c7726c0b8df1834e23bd"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/stage-3/result.json",
+      "sha256": "30a468d0069b3ecb6a5e625c96f9d58fd7806a1ddf99ca99429d3122caca33dc"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/stage-3/stage-3-build-slot-0-1.json",
+      "sha256": "547fab9c227ee89df6d4de8e3fe2e923d4bf081d9a532e51387ceda9fe89e4ba"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/stage-3/stage-3-build-slot-1-1.json",
+      "sha256": "c9dcaac6bcf58d955596c7cbd7f8b0fe62380eae54934147c82eef23cda3368d"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/stage-3/stage-3-build-slot-2-1.json",
+      "sha256": "59ab0d7dbd92c9570538afbe5d56139c11a3fe30157ac492aeac2962f3ad0a22"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/stage-3/stage-3-build-slot-3-1.json",
+      "sha256": "7fb606025f6232106646be36bc4968a367281a586a4f1d061335967b13b9b440"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-1/trajectory.json",
+      "sha256": "03ffc5d9feb32029577f6e64afdf6f4583ce9b129e523e7ed4fc944bbd1237bf"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/final-private-receipt.json",
+      "sha256": "45c8ef8b5bed43292131af46597a28f4a69bdcad740ef5cd9bb3e810d50d295f"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/result.json",
+      "sha256": "0c9a98df787346d51dc5e69c232c905aca085e1ebdb161d50e77fd4f7d125089"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/stage-3-build-slot-0-1.json",
+      "sha256": "4b345e8e6f92335e45d759800764bbea4fe787bf4f73ad2739a9b6a14a57eacf"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/stage-3-build-slot-1-1.json",
+      "sha256": "3df5b69b48b9d6350f4c4ca54f1f3f372b4c590e2e8a9c534d19c72c1f530057"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/stage-3-build-slot-2-1.json",
+      "sha256": "a01fb52d99f9d340a4ca7afbc5c1babb979bcebafb90dc0a638dd2768c316a2b"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/stage-3/stage-3-build-slot-3-2.json",
+      "sha256": "0282be06dcafb578a89e2180e4e2b9bae56cef7b0db640d4449e7222b6073270"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/calendar-portfolio-reviewed-2/trajectory.json",
+      "sha256": "0fd555b66ba788bca3df6aaad6ac0188c27bf4740759e0eeb4e62543202c2f23"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/fixtures.json",
+      "sha256": "bbd171f78f8c62ffebc638e5e64644d250ce1c655114e2ab1e94417e3927709c"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/results.json",
+      "sha256": "8d9521bbf1a30a35770e30d330c0c5ccff68e249f6a193f7be716b467aa9bf47"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/manifest.json",
+      "sha256": "6331ac91edec1e90ef61d4a6bfe81b328cdc61e3d2901a7323b0172666a876dd"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/buildgraph-portfolio-reviewed-1-candidate-A.json",
+      "sha256": "9c210eb36929d0be0cfb9e6a49ca474a7319e4b1f14113d46ca499ffaf2dc7b7"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/buildgraph-portfolio-reviewed-1-candidate-B.json",
+      "sha256": "f998f0dc6997ea8efe5fa7b40f39939b77d5e03bab5861e9de1883c4b43b2f0f"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/buildgraph-portfolio-reviewed-1-candidate-D.json",
+      "sha256": "ee050d867d0cfdac3c594940ebd1a48510fc9336e23e130ffd983585c45007cb"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-1-candidate-A.json",
+      "sha256": "4a94192e420bff6a4010e4df4e0934e82b181ef03dbf7c8e8a1dfe3174c04ede"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-1-candidate-B.json",
+      "sha256": "47e5ee58ce9165759cf6fda5dd636cf4c9f2977df9d3177478732f0853426ea7"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-1-candidate-C.json",
+      "sha256": "e6bfce4fa532ff31a5ab0f4bac1f47feac40d7001f51233e9f49c39503f754a2"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-2-candidate-A.json",
+      "sha256": "161101b22bcd47de2994b612de287c6f7fa3e13a8b6455df2edf7a4c92a46fba"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-2-candidate-B.json",
+      "sha256": "7f5e31d3bc63157c9fede417c098de89fc6132392ed0d19ce945516294237509"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/receipts/calendar-portfolio-reviewed-2-candidate-C.json",
+      "sha256": "f0b2a1f924295c5ce82cadef1e809492cc53f41a564c9898580ef873c6c0347e"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-pool-diagnostic-2/results.json",
+      "sha256": "4e8d33596f23e73e7c4ffd2c8b27edf066d3605e783c09c106bc3e1b854868c1"
+    }
+  ],
+  "interpretation": [
+    "None of the twelve final retained versions passed the entire private suite. There was no private-perfect alternative for a better selector to recover in these three pools.",
+    "Only four of the twelve final versions passed all active public/probe checks with valid source. All twelve had empty recorded reviewer_remaining lists; empty lists on unselected slots are not evidence that a reviewer individually accepted them.",
+    "Calendar repetition1 has a limited partial opportunity: eligible B failed4 private cases versus selected D5, but both cover11/15 requirements. Their union covers12/15 requirements, combining different implementations and not constituting an executable release.",
+    "Every final pool has at least one private case failed by all four sources. Shared failing cases are observations, not counts of independent root-cause defects.",
+    "Three earlier portfolio stops remain end-to-end completion failures; no final pools existed for them. The final-pool findings are conditional on the three survivors.",
+    "Each milestone starts all four builders from the same prior selected repository, notes/history and retained probes. Only one lineage survives between milestones. Two selected final versions also received a repair while their peers did not.",
+    "Common failures are consistent with inherited errors or shared specification/model/evidence blind spots; final overlap cannot isolate their cause. More reliable verification and persistence deserve priority over selector tuning or simply adding similar candidates under this tested architecture."
+  ],
+  "limitations": [
+    "Synthetic fixtures and three reached final pools do not establish a general result about swarm architectures.",
+    "This is a post-hoc final-pool diagnostic after unequal repairs, not initial independent best-of-four, not twelve independent projects, and not a new acceptance test.",
+    "Private evidence was used only after the entire study froze and cannot be fed back into these runs."
+  ],
+  "new_tests_run": false,
+  "policy_completion_context": {
+    "cheap-reviewed": {
+      "completed_four_milestones": 6,
+      "milestones_completed": 24,
+      "planned_milestones": 24,
+      "planned_trajectories": 6,
+      "primary_accepted": 0
+    },
+    "portfolio-reviewed": {
+      "completed_four_milestones": 3,
+      "milestones_completed": 16,
+      "planned_milestones": 24,
+      "planned_trajectories": 6,
+      "primary_accepted": 0
+    },
+    "strong-reviewed": {
+      "completed_four_milestones": 6,
+      "milestones_completed": 24,
+      "planned_milestones": 24,
+      "planned_trajectories": 6,
+      "primary_accepted": 3
+    }
+  },
+  "pools": [
+    {
+      "all_pool_failed_case_ids": [
+        "buildgraph-hidden-multi-root-priority",
+        "buildgraph-hidden-policy-read-shapes",
+        "buildgraph-hidden-shared-ancestor-single-build",
+        "buildgraph-hidden-unhashable-operation"
+      ],
+      "best_single_eligible_failed_case_count": 6,
+      "best_single_eligible_requirements_passed": 11,
+      "candidates": [
+        {
+          "accept_gate_eligible": true,
+          "alias": "candidate-C",
+          "hidden_failed_case_ids": [
+            "buildgraph-hidden-unhashable-operation",
+            "buildgraph-hidden-multi-root-priority",
+            "buildgraph-hidden-shared-ancestor-single-build",
+            "buildgraph-hidden-six-policy-quota",
+            "buildgraph-hidden-quota-before-graph",
+            "buildgraph-hidden-policy-read-shapes"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "reused_selected_primary",
+          "private_cases_passed": 42,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "B1-order": true,
+            "B1-persist": true,
+            "B1-put": false,
+            "B1-remove": true,
+            "B2-build": true,
+            "B2-durable": true,
+            "B2-invalidate": true,
+            "B2-ready": true,
+            "B3-audit": true,
+            "B3-commit": false,
+            "B3-plan": false,
+            "B3-retry": true,
+            "B4-import": false,
+            "B4-integrate": true,
+            "B4-migrate": true,
+            "B4-policy": false
+          },
+          "requirements_passed": 11,
+          "requirements_total": 16,
+          "reviewer_remaining": [],
+          "source_sha256": "6a9f0e4e44dba58fca258bd074e3f33f5fcb20d90d8b00e170a8f39632ae3c07",
+          "source_valid": true,
+          "visible_eligible": true,
+          "visible_failed_cases": 0
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-A",
+          "hidden_failed_case_ids": [
+            "buildgraph-hidden-unhashable-operation",
+            "buildgraph-hidden-multi-root-priority",
+            "buildgraph-hidden-shared-ancestor-single-build",
+            "buildgraph-hidden-legacy-current-replay",
+            "buildgraph-hidden-import-reordered-graph",
+            "buildgraph-hidden-manifest-duplicate-invalid",
+            "buildgraph-hidden-import-receipt-conflict",
+            "buildgraph-hidden-policy-read-shapes"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 40,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "B1-order": true,
+            "B1-persist": true,
+            "B1-put": false,
+            "B1-remove": true,
+            "B2-build": true,
+            "B2-durable": true,
+            "B2-invalidate": true,
+            "B2-ready": true,
+            "B3-audit": true,
+            "B3-commit": false,
+            "B3-plan": false,
+            "B3-retry": true,
+            "B4-import": false,
+            "B4-integrate": true,
+            "B4-migrate": false,
+            "B4-policy": false
+          },
+          "requirements_passed": 10,
+          "requirements_total": 16,
+          "reviewer_remaining": [],
+          "source_sha256": "b62fcc6c61a13701931e9e16c9b35b880a3d535266522cd1ced78f3fcebc1a1c",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 6
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-D",
+          "hidden_failed_case_ids": [
+            "buildgraph-hidden-unhashable-operation",
+            "buildgraph-hidden-multi-root-priority",
+            "buildgraph-hidden-shared-ancestor-single-build",
+            "buildgraph-hidden-legacy-current-replay",
+            "buildgraph-hidden-import-self-before-missing",
+            "buildgraph-hidden-policy-read-shapes"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 42,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "B1-order": true,
+            "B1-persist": true,
+            "B1-put": false,
+            "B1-remove": true,
+            "B2-build": true,
+            "B2-durable": true,
+            "B2-invalidate": true,
+            "B2-ready": true,
+            "B3-audit": true,
+            "B3-commit": false,
+            "B3-plan": false,
+            "B3-retry": true,
+            "B4-import": false,
+            "B4-integrate": true,
+            "B4-migrate": false,
+            "B4-policy": false
+          },
+          "requirements_passed": 10,
+          "requirements_total": 16,
+          "reviewer_remaining": [],
+          "source_sha256": "becbd9af6a6b45e087d08e4bc0dfe2cfef269d64e41dcb799a7aaaf5e47f8910",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 5
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-B",
+          "hidden_failed_case_ids": [
+            "buildgraph-hidden-unhashable-operation",
+            "buildgraph-hidden-multi-root-priority",
+            "buildgraph-hidden-shared-ancestor-single-build",
+            "buildgraph-hidden-legacy-current-replay",
+            "buildgraph-hidden-import-reordered-graph",
+            "buildgraph-hidden-manifest-duplicate-invalid",
+            "buildgraph-hidden-import-receipt-conflict",
+            "buildgraph-hidden-policy-read-shapes"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 40,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "B1-order": true,
+            "B1-persist": true,
+            "B1-put": false,
+            "B1-remove": true,
+            "B2-build": true,
+            "B2-durable": true,
+            "B2-invalidate": true,
+            "B2-ready": true,
+            "B3-audit": true,
+            "B3-commit": false,
+            "B3-plan": false,
+            "B3-retry": true,
+            "B4-import": false,
+            "B4-integrate": true,
+            "B4-migrate": false,
+            "B4-policy": false
+          },
+          "requirements_passed": 10,
+          "requirements_total": 16,
+          "reviewer_remaining": [],
+          "source_sha256": "00f2cfbd1a45ae93e04481008224d86a031ccb0ea5169c1aff3ea3e8b543de0a",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 3
+        }
+      ],
+      "eligible_union_requirements_passed": 11,
+      "final_stage_repairs_by_candidate": {
+        "candidate-A": 0,
+        "candidate-B": 0,
+        "candidate-C": 1,
+        "candidate-D": 0
+      },
+      "final_stage_review_calls": 3,
+      "run_id": "buildgraph-portfolio-reviewed-1",
+      "selected": "candidate-C",
+      "selected_failed_case_count": 6,
+      "selected_requirements_passed": 11,
+      "visible_eligible_count": 1,
+      "visible_eligible_private_perfect": 0
+    },
+    {
+      "all_pool_failed_case_ids": [
+        "calendar-s3-h-fence-error-precedence",
+        "calendar-s3-h-hold-blocks-move",
+        "calendar-s4-h-queue-id-retained"
+      ],
+      "best_single_eligible_failed_case_count": 4,
+      "best_single_eligible_requirements_passed": 11,
+      "candidates": [
+        {
+          "accept_gate_eligible": true,
+          "alias": "candidate-D",
+          "hidden_failed_case_ids": [
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s4-h-user-limit-skip",
+            "calendar-s4-h-bundle-policy-rollback",
+            "calendar-s4-h-queue-id-retained"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "reused_selected_primary",
+          "private_cases_passed": 43,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": true,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": true,
+            "policy": false,
+            "reschedule": false,
+            "restart": true,
+            "typed-errors": true,
+            "waitlist": false
+          },
+          "requirements_passed": 11,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "3c6c9c6b46dc76e20aa184537c5509b4d69b55dc5e6943aaf7b93376a386a63e",
+          "source_valid": true,
+          "visible_eligible": true,
+          "visible_failed_cases": 0
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-C",
+          "hidden_failed_case_ids": [
+            "calendar-s1-h-left-adjacency",
+            "calendar-s1-h-containment",
+            "calendar-s1-h-contained",
+            "calendar-s1-h-resources",
+            "calendar-s1-h-failed-key",
+            "calendar-s1-h-cancel-retry",
+            "calendar-s1-h-closed-id",
+            "calendar-s1-h-bounds",
+            "calendar-s1-h-malformed-state-precedence",
+            "calendar-s1-h-replay-after-cancel",
+            "calendar-s2-h-move-adjacency",
+            "calendar-s2-h-move-old-freed",
+            "calendar-s2-h-move-retry",
+            "calendar-s2-h-move-closed",
+            "calendar-s2-h-bundle-duplicate",
+            "calendar-s2-h-bundle-rollback-existing",
+            "calendar-s2-h-bundle-adjacency",
+            "calendar-s2-h-bundle-failed-key",
+            "calendar-s2-h-validation-first",
+            "calendar-s2-h-move-int-types",
+            "calendar-s2-h-bundle-order-key",
+            "calendar-s3-h-boundary-no-implicit",
+            "calendar-s3-h-renew-replay",
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-expired-renew",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s3-h-batch-shape-first",
+            "calendar-s3-h-batch-token-rollback",
+            "calendar-s3-h-batch-response",
+            "calendar-s3-h-expiry-selectivity",
+            "calendar-s3-h-token-and-ttl-types",
+            "calendar-s3-h-expire-key-replay",
+            "calendar-s4-h-queue-fifo",
+            "calendar-s4-h-user-limit-skip",
+            "calendar-s4-h-move-excludes-self",
+            "calendar-s4-h-bundle-policy-rollback",
+            "calendar-s4-h-queue-batch-rollback",
+            "calendar-s4-h-admission-key-replay",
+            "calendar-s4-h-idle-key-replay",
+            "calendar-s4-h-grandfather-and-move",
+            "calendar-s4-h-queue-id-retained",
+            "calendar-s4-h-expire-then-admit",
+            "calendar-s4-h-policy-priority"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 5,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": false,
+            "batch-atomicity": false,
+            "booking": false,
+            "bundle-atomicity": false,
+            "cancellation": false,
+            "expiration": false,
+            "fencing": false,
+            "half-open": false,
+            "idempotency": false,
+            "migration": false,
+            "policy": false,
+            "reschedule": false,
+            "restart": false,
+            "typed-errors": false,
+            "waitlist": false
+          },
+          "requirements_passed": 0,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "b34ac161bc0bd1994b80dea3607c9abb01175a3bae491a16528f1d02bd7873c1",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 37
+        },
+        {
+          "accept_gate_eligible": true,
+          "alias": "candidate-B",
+          "hidden_failed_case_ids": [
+            "calendar-s1-h-shape-crossproduct",
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s4-h-queue-id-retained"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 44,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": true,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": true,
+            "policy": true,
+            "reschedule": false,
+            "restart": true,
+            "typed-errors": false,
+            "waitlist": false
+          },
+          "requirements_passed": 11,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "e94f883d79371f75fa175951cba0862f702ed52b999dd0157b4dd7c9d7b11f94",
+          "source_valid": true,
+          "visible_eligible": true,
+          "visible_failed_cases": 0
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-A",
+          "hidden_failed_case_ids": [
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s4-h-bundle-policy-rollback",
+            "calendar-s4-h-queue-batch-rollback",
+            "calendar-s4-h-queue-id-retained"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 43,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": false,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": true,
+            "policy": false,
+            "reschedule": false,
+            "restart": true,
+            "typed-errors": true,
+            "waitlist": false
+          },
+          "requirements_passed": 10,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "02ea93792188ccd116bdd8e763ac5a1323a0a5ec9984573da8f2473fcdd8c4ff",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 1
+        }
+      ],
+      "eligible_union_requirements_passed": 12,
+      "final_stage_repairs_by_candidate": {
+        "candidate-A": 0,
+        "candidate-B": 0,
+        "candidate-C": 0,
+        "candidate-D": 0
+      },
+      "final_stage_review_calls": 1,
+      "run_id": "calendar-portfolio-reviewed-1",
+      "selected": "candidate-D",
+      "selected_failed_case_count": 5,
+      "selected_requirements_passed": 11,
+      "visible_eligible_count": 2,
+      "visible_eligible_private_perfect": 0
+    },
+    {
+      "all_pool_failed_case_ids": [
+        "calendar-s3-h-fence-error-precedence"
+      ],
+      "best_single_eligible_failed_case_count": 1,
+      "best_single_eligible_requirements_passed": 14,
+      "candidates": [
+        {
+          "accept_gate_eligible": true,
+          "alias": "candidate-D",
+          "hidden_failed_case_ids": [
+            "calendar-s3-h-fence-error-precedence"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "reused_selected_primary",
+          "private_cases_passed": 47,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": true,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": true,
+            "policy": true,
+            "reschedule": true,
+            "restart": true,
+            "typed-errors": true,
+            "waitlist": true
+          },
+          "requirements_passed": 14,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "bd9087e11b321e6274c0ec3d87985e917d960f8e2d352453a8418cf2d65e406b",
+          "source_valid": true,
+          "visible_eligible": true,
+          "visible_failed_cases": 0
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-B",
+          "hidden_failed_case_ids": [
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s4-h-queue-batch-rollback"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 45,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": false,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": true,
+            "policy": true,
+            "reschedule": false,
+            "restart": true,
+            "typed-errors": true,
+            "waitlist": true
+          },
+          "requirements_passed": 12,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "2c76dabb141beb8fc2c6235c3956cbe3c7b59d0167df904ca01f24488b626134",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 4
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-C",
+          "hidden_failed_case_ids": [
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s4-h-user-limit-skip",
+            "calendar-s4-h-bundle-policy-rollback",
+            "calendar-s4-h-grandfather-and-move",
+            "calendar-s4-h-policy-priority"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 42,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": true,
+            "batch-atomicity": true,
+            "booking": true,
+            "bundle-atomicity": true,
+            "cancellation": true,
+            "expiration": true,
+            "fencing": false,
+            "half-open": true,
+            "idempotency": true,
+            "migration": false,
+            "policy": false,
+            "reschedule": false,
+            "restart": true,
+            "typed-errors": true,
+            "waitlist": false
+          },
+          "requirements_passed": 10,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "6d0fcf05dc9d78a16380f5801c5731d777b52b9b7c063ca54666cd8b6996541a",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 3
+        },
+        {
+          "accept_gate_eligible": false,
+          "alias": "candidate-A",
+          "hidden_failed_case_ids": [
+            "calendar-s1-h-left-adjacency",
+            "calendar-s1-h-containment",
+            "calendar-s1-h-contained",
+            "calendar-s1-h-resources",
+            "calendar-s1-h-failed-key",
+            "calendar-s1-h-cancel-retry",
+            "calendar-s1-h-closed-id",
+            "calendar-s1-h-bounds",
+            "calendar-s1-h-malformed-state-precedence",
+            "calendar-s1-h-replay-after-cancel",
+            "calendar-s2-h-move-adjacency",
+            "calendar-s2-h-move-old-freed",
+            "calendar-s2-h-move-retry",
+            "calendar-s2-h-move-closed",
+            "calendar-s2-h-bundle-rollback-existing",
+            "calendar-s2-h-bundle-adjacency",
+            "calendar-s2-h-bundle-failed-key",
+            "calendar-s2-h-validation-first",
+            "calendar-s2-h-move-int-types",
+            "calendar-s2-h-bundle-order-key",
+            "calendar-s3-h-boundary-no-implicit",
+            "calendar-s3-h-renew-replay",
+            "calendar-s3-h-fence-error-precedence",
+            "calendar-s3-h-expired-renew",
+            "calendar-s3-h-hold-blocks-move",
+            "calendar-s3-h-batch-shape-first",
+            "calendar-s3-h-batch-token-rollback",
+            "calendar-s3-h-batch-response",
+            "calendar-s3-h-expiry-selectivity",
+            "calendar-s3-h-token-and-ttl-types",
+            "calendar-s3-h-expire-key-replay",
+            "calendar-s4-h-queue-fifo",
+            "calendar-s4-h-user-limit-skip",
+            "calendar-s4-h-move-excludes-self",
+            "calendar-s4-h-bundle-policy-rollback",
+            "calendar-s4-h-queue-batch-rollback",
+            "calendar-s4-h-admission-key-replay",
+            "calendar-s4-h-idle-key-replay",
+            "calendar-s4-h-grandfather-and-move",
+            "calendar-s4-h-queue-id-retained",
+            "calendar-s4-h-expire-then-admit",
+            "calendar-s4-h-policy-priority"
+          ],
+          "hidden_passed": false,
+          "measurement_origin": "fresh_diagnostic",
+          "private_cases_passed": 6,
+          "private_cases_total": 48,
+          "requirement_coverage": {
+            "audit": false,
+            "batch-atomicity": false,
+            "booking": false,
+            "bundle-atomicity": false,
+            "cancellation": false,
+            "expiration": false,
+            "fencing": false,
+            "half-open": false,
+            "idempotency": false,
+            "migration": false,
+            "policy": false,
+            "reschedule": false,
+            "restart": false,
+            "typed-errors": false,
+            "waitlist": false
+          },
+          "requirements_passed": 0,
+          "requirements_total": 15,
+          "reviewer_remaining": [],
+          "source_sha256": "330e11100e29e2391cfffcabbf5b7c3489cc1046114c014f101c952072d29437",
+          "source_valid": true,
+          "visible_eligible": false,
+          "visible_failed_cases": 35
+        }
+      ],
+      "eligible_union_requirements_passed": 14,
+      "final_stage_repairs_by_candidate": {
+        "candidate-A": 0,
+        "candidate-B": 0,
+        "candidate-C": 0,
+        "candidate-D": 1
+      },
+      "final_stage_review_calls": 3,
+      "run_id": "calendar-portfolio-reviewed-2",
+      "selected": "candidate-D",
+      "selected_failed_case_count": 1,
+      "selected_requirements_passed": 14,
+      "visible_eligible_count": 1,
+      "visible_eligible_private_perfect": 0
+    }
+  ],
+  "primary_scores_modified": false,
+  "shared_failure_examples": [
+    {
+      "case_id": "buildgraph-hidden-multi-root-priority",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual": "mid",
+          "expected": "hi",
+          "path": "$[6][4].ids[0]"
+        },
+        "candidate-B": {
+          "actual": "mid",
+          "expected": "hi",
+          "path": "$[6][4].ids[0]"
+        },
+        "candidate-C": {
+          "actual": "mid",
+          "expected": "hi",
+          "path": "$[6][4].ids[0]"
+        },
+        "candidate-D": {
+          "actual": "mid",
+          "expected": "hi",
+          "path": "$[6][4].ids[0]"
+        }
+      },
+      "requirement": "B3-plan",
+      "run_id": "buildgraph-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "buildgraph-hidden-policy-read-shapes",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "status": "error"
+        },
+        "candidate-B": {
+          "status": "error"
+        },
+        "candidate-C": {
+          "status": "error"
+        },
+        "candidate-D": {
+          "status": "error"
+        }
+      },
+      "requirement": "B4-policy",
+      "run_id": "buildgraph-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "buildgraph-hidden-shared-ancestor-single-build",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual": "root",
+          "expected": "a",
+          "path": "$[5][3].ids[0]"
+        },
+        "candidate-B": {
+          "actual": "root",
+          "expected": "a",
+          "path": "$[5][3].ids[0]"
+        },
+        "candidate-C": {
+          "actual": "root",
+          "expected": "a",
+          "path": "$[5][3].ids[0]"
+        },
+        "candidate-D": {
+          "actual": "root",
+          "expected": "a",
+          "path": "$[5][3].ids[0]"
+        }
+      },
+      "requirement": "B3-commit",
+      "run_id": "buildgraph-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "buildgraph-hidden-unhashable-operation",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "status": "error"
+        },
+        "candidate-B": {
+          "status": "error"
+        },
+        "candidate-C": {
+          "status": "error"
+        },
+        "candidate-D": {
+          "status": "error"
+        }
+      },
+      "requirement": "B1-put",
+      "run_id": "buildgraph-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "calendar-s3-h-fence-error-precedence",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-B": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-C": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok",
+            "token"
+          ],
+          "path": "$[0]"
+        },
+        "candidate-D": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        }
+      },
+      "requirement": "fencing",
+      "run_id": "calendar-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "calendar-s3-h-hold-blocks-move",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-B": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-C": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok",
+            "token"
+          ],
+          "path": "$[0]"
+        },
+        "candidate-D": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[1]"
+        }
+      },
+      "requirement": "reschedule",
+      "run_id": "calendar-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "calendar-s4-h-queue-id-retained",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[2]"
+        },
+        "candidate-B": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[2]"
+        },
+        "candidate-C": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[0]"
+        },
+        "candidate-D": {
+          "actual_keys": [
+            "ok"
+          ],
+          "expected_keys": [
+            "error"
+          ],
+          "path": "$[2]"
+        }
+      },
+      "requirement": "waitlist",
+      "run_id": "calendar-portfolio-reviewed-1"
+    },
+    {
+      "case_id": "calendar-s3-h-fence-error-precedence",
+      "first_expected_actual_difference_by_alias": {
+        "candidate-A": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok",
+            "token"
+          ],
+          "path": "$[0]"
+        },
+        "candidate-B": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-C": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        },
+        "candidate-D": {
+          "actual_keys": [
+            "error"
+          ],
+          "expected_keys": [
+            "ok"
+          ],
+          "path": "$[1]"
+        }
+      },
+      "requirement": "fencing",
+      "run_id": "calendar-portfolio-reviewed-2"
+    }
+  ],
+  "skipped": [
+    {
+      "completed_milestones": 2,
+      "denied_decisions": [
+        {
+          "errors": [
+            "Repair denied: no repair opportunity or subsequent review remains"
+          ],
+          "round": 6
+        }
+      ],
+      "last_attempted_stage_index": 2,
+      "last_stage_repairs": 3,
+      "reason": "Final milestone not reached; earlier candidate pools are not substituted",
+      "review_actions": [
+        "inspect",
+        "repair",
+        "repair",
+        "repair",
+        "inspect",
+        "repair"
+      ],
+      "run_id": "buildgraph-portfolio-reviewed-0"
+    },
+    {
+      "completed_milestones": 0,
+      "denied_decisions": [],
+      "last_attempted_stage_index": 0,
+      "last_stage_repairs": 0,
+      "reason": "Final milestone not reached; earlier candidate pools are not substituted",
+      "review_actions": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect"
+      ],
+      "run_id": "buildgraph-portfolio-reviewed-2"
+    },
+    {
+      "completed_milestones": 2,
+      "denied_decisions": [
+        {
+          "errors": [
+            "Repair denied: no repair opportunity or subsequent review remains"
+          ],
+          "round": 5
+        }
+      ],
+      "last_attempted_stage_index": 2,
+      "last_stage_repairs": 4,
+      "reason": "Final milestone not reached; earlier candidate pools are not substituted",
+      "review_actions": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "inspect"
+      ],
+      "run_id": "calendar-portfolio-reviewed-0"
+    }
+  ],
+  "summary": {
+    "best_single_requirement_coverage_gain_by_pool": [
+      0,
+      0,
+      0
+    ],
+    "final_slot_versions": 12,
+    "fresh_private_validations": 9,
+    "full_quality_selector_misses": 0,
+    "planned_portfolio_trajectories": 6,
+    "private_perfect_any_final_slot": 0,
+    "private_perfect_selected": 0,
+    "private_perfect_visible_eligible_slots": 0,
+    "reached_final_pools": 3,
+    "reused_selected_primary_receipts": 3,
+    "skipped_before_final_stage": 3,
+    "slots_with_nonempty_reviewer_remaining": 0,
+    "visible_eligible_slots": 4
+  }
+}
