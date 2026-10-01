@@ -1,0 +1,38 @@
+{
+  "schema": "validation-session-v1",
+  "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+  "adapter_version": "blackbox-batch-v1",
+  "timeout_seconds": 60,
+  "case_timeout_seconds": 2,
+  "resources": {"workers": 2, "cpus": 2, "memory_mib": 512, "outer_parallelism": 1},
+  "jobs": [
+    {
+      "name": "visible-first",
+      "files": {"solution.py": "def solve(payload):\n    return sum(payload)\n"},
+      "cases": [{"id": "sum", "input": [2, 3], "expected": 5}],
+      "purpose": "visible",
+      "deterministic": true,
+      "seed": 1,
+      "protocol": "offline-sum-diagnostic-v1"
+    },
+    {
+      "name": "visible-identical",
+      "files": {"solution.py": "def solve(payload):\n    return sum(payload)\n"},
+      "cases": [{"id": "sum", "input": [2, 3], "expected": 5}],
+      "purpose": "visible",
+      "deterministic": true,
+      "seed": 1,
+      "protocol": "offline-sum-diagnostic-v1"
+    },
+    {
+      "name": "final-independent",
+      "files": {"solution.py": "def solve(payload):\n    return sum(payload)\n"},
+      "cases": [{"id": "sum", "input": [2, 3], "expected": 5}],
+      "purpose": "final",
+      "deterministic": true,
+      "seed": 1,
+      "protocol": "offline-sum-diagnostic-v1",
+      "reason": "Independent final observation remains a fresh physical execution"
+    }
+  ]
+}

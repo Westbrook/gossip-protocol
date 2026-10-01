@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "projectId": "gossip-agent-research",
+  "reportWorkspace": "../gossip-progress-report",
+  "stateLocation": "../gossip-progress-report/data/project.json",
+  "reportUrl": "http://127.0.0.1:4178/",
+  "apps": {}
+}

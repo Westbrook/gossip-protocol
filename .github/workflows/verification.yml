@@ -1,0 +1,175 @@
+name: Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ${{ vars.GOSSIP_CI_RUNNER_LABEL || 'ubuntu-24.04-arm' }}
+    timeout-minutes: 120
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      IMAGE_REFERENCE: ${{ vars.GOSSIP_CI_IMAGE_REFERENCE || 'python@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f' }}
+      REPORT_REPOSITORY: ${{ vars.GOSSIP_CI_REPORT_REPOSITORY }}
+      REPORT_REVISION: ${{ vars.GOSSIP_CI_REPORT_REVISION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check native architecture and CPU capacity before provisioning
+        run: |
+          if [ "$(uname -s)" != Linux ] || [ "$(uname -m)" != aarch64 ]; then
+            echo 'Verification requires a native Linux ARM64 runner for the frozen Docker image.' >&2
+            exit 1
+          fi
+          available_cpus=$(getconf _NPROCESSORS_ONLN)
+          if [ "$available_cpus" -lt 4 ]; then
+            echo 'Verification needs at least 4 available logical CPUs for its declared resource budget.' >&2
+            echo 'Private standard ARM runners have 2 CPUs; select an already configured native ARM runner with at least 4 CPUs using GOSSIP_CI_RUNNER_LABEL.' >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.15"
+          cache: pip
+          cache-dependency-path: requirements-dev.lock
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.16.0"
+      - name: Restore checker caches
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache/ruff
+            .cache/mypy
+          key: static-${{ runner.os }}-${{ runner.arch }}-py311-${{ hashFiles('requirements-dev.lock', 'pyproject.toml') }}-${{ github.sha }}
+          restore-keys: |
+            static-${{ runner.os }}-${{ runner.arch }}-py311-${{ hashFiles('requirements-dev.lock', 'pyproject.toml') }}-
+      - name: Provision one locked Python environment
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --require-hashes -r requirements-dev.lock
+      - name: Static first, then all offline classes
+        run: .venv/bin/python -m devtools.verify --workers 4 --output runs/ci/offline
+      - name: Disclose integration coverage configuration
+        if: always()
+        run: |
+          {
+            echo 'Offline verification includes its static prerequisite gate.'
+            echo 'Docker lane: REQUIRED after offline success, using the frozen Linux ARM64 image.'
+            if [ -z "$REPORT_REPOSITORY" ]; then
+              echo 'Report/browser lanes: NOT REQUESTED; configure the independent report repository and exact revision.'
+            fi
+            echo 'A green offline run does not certify unrequested integration lanes.'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Provision the exact approved container image
+        run: |
+          .venv/bin/python - <<'PY'
+          import json, os, re, subprocess
+          from gossip_harness.pilot import DEFAULT_IMAGE
+          reference = os.environ['IMAGE_REFERENCE']
+          if not re.fullmatch(r'[a-zA-Z0-9._:/-]+@sha256:[0-9a-f]{64}', reference):
+              raise SystemExit('GOSSIP_CI_IMAGE_REFERENCE must be a registry reference pinned by digest')
+          subprocess.run(['docker', 'pull', '--platform', 'linux/arm64', reference], check=True, timeout=300)
+          inspected = json.loads(subprocess.check_output(['docker', 'image', 'inspect', reference], text=True))
+          if len(inspected) != 1:
+              raise SystemExit('Expected exactly one inspected Docker image')
+          actual = inspected[0]
+          if (actual['Id'], actual['Os'], actual['Architecture']) != (DEFAULT_IMAGE, 'linux', 'arm64'):
+              raise SystemExit('Configured image does not match the frozen Linux ARM64 Docker test image')
+          PY
+      - name: Docker classes after offline success
+        run: .venv/bin/python -m devtools.verify --lanes docker --workers 4 --output runs/ci/docker
+      - name: Validate the independent report source selection
+        if: success() && (env.REPORT_REPOSITORY != '' || env.REPORT_REVISION != '')
+        run: |
+          .venv/bin/python - <<'PY'
+          import os, re
+          if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', os.environ['REPORT_REPOSITORY']):
+              raise SystemExit('Set GOSSIP_CI_REPORT_REPOSITORY to owner/repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', os.environ['REPORT_REVISION']):
+              raise SystemExit('Set GOSSIP_CI_REPORT_REVISION to an exact source commit')
+          PY
+      - name: Check out configured independent report sources
+        if: success() && env.REPORT_REPOSITORY != ''
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.REPORT_REPOSITORY }}
+          ref: ${{ env.REPORT_REVISION }}
+          path: .verification/report-source
+          persist-credentials: false
+      - name: Relocate report fixture outside the product checkout
+        if: success() && env.REPORT_REPOSITORY != ''
+        run: |
+          .venv/bin/python - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+          root = Path.cwd()
+          target = Path(os.environ['RUNNER_TEMP']) / 'gossip-independent-report'
+          if target.exists():
+              raise SystemExit('Refusing to replace an existing report fixture')
+          shutil.move(str(root / '.verification/report-source'), target)
+          for name in ('report.py', 'test_report.py', 'index.html', 'data/project.json'):
+              if not (target / name).is_file():
+                  raise SystemExit(f'Independent report checkout is missing {name}')
+          state_path = target / 'data/project.json'
+          state = json.loads(state_path.read_text())
+          state['handoff']['reportWorkspace'] = str(target)
+          state['handoff']['canonicalState'] = str(state_path)
+          state_path.write_text(json.dumps(state) + '\n')
+          locator = {'schemaVersion': 1, 'projectId': state['projectId'], 'reportWorkspace': str(target),
+                     'stateLocation': str(state_path), 'reportUrl': state['reportUrl'],
+                     'apps': {path.stem: state['reportUrl'].rstrip('/') + '/' + path.name + '?progress-report'
+                              for path in root.glob('*.html')}}
+          (root / '.progress-report').mkdir(exist_ok=True)
+          (root / '.progress-report/project.json').write_text(json.dumps(locator) + '\n')
+          PY
+      - name: Report persistence contracts
+        if: success() && env.REPORT_REPOSITORY != ''
+        run: .venv/bin/python -m devtools.verify --lanes report --workers 8 --output runs/ci/report
+      - name: Restore pinned browser cache
+        if: success() && env.REPORT_REPOSITORY != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-chromium1234-${{ hashFiles('devtools/browser/package-lock.json') }}
+      - name: Provision pinned Playwright and its Chromium once
+        if: success() && env.REPORT_REPOSITORY != ''
+        working-directory: devtools/browser
+        run: |
+          npm ci --ignore-scripts
+          npx --no-install playwright install --with-deps chromium
+      - name: One isolated browser batch
+        if: success() && env.REPORT_REPOSITORY != ''
+        env:
+          PYTHON: .venv/bin/python
+        run: node devtools/browser/run.cjs --fixture --pages all --output runs/ci/browser.json
+      - name: Join selected CI evidence to the explicit inventory
+        if: always()
+        run: |
+          roots=()
+          for lane in offline docker report; do
+            if [ -d "runs/ci/$lane" ]; then
+              roots+=(--receipts-root "runs/ci/$lane")
+            fi
+          done
+          .venv/bin/python -m devtools.inventory_report "${roots[@]}" --output runs/ci/inventory.json
+      - name: Retain verification evidence, including failed fixtures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: runs/ci/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,14 @@
+{
+  "name": "gossip-report-browser-verification",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One isolated Playwright batch for the independent progress report and research pages",
+  "scripts": {
+    "check": "node check_syntax.cjs",
+    "test": "node run.cjs",
+    "install-browser": "playwright install chromium"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": { "playwright": "1.62.1" },
+  "browserRevision": "1234"
+}

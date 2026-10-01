@@ -1,0 +1,4289 @@
+{
+  "experiment": "Synchronous dissemination of one immutable fact",
+  "schema_version": 1,
+  "python_version": "3.14.6",
+  "requested_fanout": 3,
+  "base_seed": 20260929,
+  "percentile_method": "nearest rank; failures counted separately",
+  "contact_unit": "one directed caller-peer contact; push-pull is full-duplex",
+  "model": {
+    "initial_informed_node": 0,
+    "topology": "complete graph; peers uniformly sampled without replacement per caller",
+    "scheduling": "all nodes contact fanout peers every round, including uninformed nodes",
+    "round_semantics": "start-of-round snapshots; no within-round cascades",
+    "pairing": "identical seed/contact schedules for push and push-pull until either terminates",
+    "attempted_contacts_include": [
+      "uninformed callers",
+      "repeated destinations across callers/rounds",
+      "reciprocal contacts"
+    ],
+    "assumptions": [
+      "fixed population",
+      "no failures or packet loss",
+      "no network partitions",
+      "unlimited per-round concurrency and bandwidth",
+      "no membership discovery overhead",
+      "no conflicting or superseded facts",
+      "no stopping-detection overhead"
+    ],
+    "not_measured": [
+      "wire messages or bytes",
+      "wall-clock latency",
+      "LLM tokens or cost",
+      "reasoning or software correctness",
+      "task allocation or agreement"
+    ]
+  },
+  "configurations": [
+    {
+      "node_count": 1000,
+      "trial_count": 100,
+      "effective_fanout": 3,
+      "ideal_star_pubsub": {
+        "deliveries_to_100_percent": 999,
+        "network_hops_to_100_percent": 1,
+        "assumptions": "fact initially at hub; simultaneous deliveries; no hub throughput limit",
+        "limitation": "delivery count is not a comparison of LLM inference or context cost"
+      },
+      "modes": {
+        "push": {
+          "summary": {
+            "rounds_to_95_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 6,
+              "p50": 7,
+              "p95": 7,
+              "max": 7,
+              "mean": 6.94
+            },
+            "rounds_to_100_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 7,
+              "p50": 8,
+              "p95": 9,
+              "max": 10,
+              "mean": 8.13
+            },
+            "attempted_contacts_to_95_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 18000,
+              "p50": 21000,
+              "p95": 21000,
+              "max": 21000,
+              "mean": 20820
+            },
+            "attempted_contacts_to_100_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 21000,
+              "p50": 24000,
+              "p95": 27000,
+              "max": 30000,
+              "mean": 24390
+            }
+          },
+          "trials": [
+            {
+              "seed": 21260929,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                221,
+                611,
+                935,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260930,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                225,
+                596,
+                940,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260931,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                212,
+                586,
+                920,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260932,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                223,
+                602,
+                936,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260933,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                58,
+                212,
+                599,
+                930,
+                990,
+                1000
+              ]
+            },
+            {
+              "seed": 21260934,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                225,
+                613,
+                934,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21260935,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                226,
+                618,
+                940,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260936,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                220,
+                591,
+                927,
+                992,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260937,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                229,
+                609,
+                954,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260938,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                218,
+                586,
+                928,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260939,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                221,
+                598,
+                929,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260940,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                218,
+                588,
+                922,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21260941,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                217,
+                593,
+                932,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260942,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                237,
+                638,
+                944,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260943,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                219,
+                609,
+                940,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260944,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                217,
+                591,
+                939,
+                991,
+                1000
+              ]
+            },
+            {
+              "seed": 21260945,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                215,
+                600,
+                948,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260946,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                216,
+                585,
+                925,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260947,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                57,
+                207,
+                572,
+                924,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260948,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                59,
+                215,
+                598,
+                924,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21260949,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                213,
+                575,
+                922,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260950,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                219,
+                582,
+                928,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260951,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                214,
+                572,
+                907,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21260952,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                222,
+                602,
+                937,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260953,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                230,
+                633,
+                941,
+                994,
+                1000
+              ]
+            },
+            {
+              "seed": 21260954,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                215,
+                590,
+                939,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260955,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                236,
+                628,
+                952,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260956,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                237,
+                643,
+                950,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260957,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                236,
+                640,
+                945,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260958,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                224,
+                599,
+                937,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260959,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                218,
+                586,
+                935,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260960,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                213,
+                606,
+                939,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260961,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                59,
+                215,
+                584,
+                932,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260962,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                226,
+                610,
+                938,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260963,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                219,
+                595,
+                926,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260964,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                210,
+                577,
+                920,
+                992,
+                1000
+              ]
+            },
+            {
+              "seed": 21260965,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                220,
+                600,
+                927,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260966,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                222,
+                596,
+                916,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260967,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                219,
+                594,
+                927,
+                993,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260968,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                225,
+                603,
+                942,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260969,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                218,
+                602,
+                944,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260970,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                217,
+                594,
+                931,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260971,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                222,
+                601,
+                938,
+                994,
+                1000
+              ]
+            },
+            {
+              "seed": 21260972,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                222,
+                621,
+                941,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260973,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                214,
+                584,
+                934,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260974,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                229,
+                608,
+                939,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260975,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                215,
+                589,
+                942,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260976,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                214,
+                597,
+                921,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260977,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                60,
+                222,
+                603,
+                938,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260978,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                56,
+                199,
+                562,
+                915,
+                994,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260979,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                221,
+                613,
+                938,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260980,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                225,
+                618,
+                938,
+                996,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260981,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                226,
+                612,
+                936,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260982,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                215,
+                582,
+                926,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260983,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                229,
+                621,
+                941,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260984,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 30000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                229,
+                609,
+                940,
+                995,
+                998,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260985,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                217,
+                596,
+                928,
+                994,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260986,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                222,
+                591,
+                934,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21260987,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                220,
+                611,
+                921,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260988,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                58,
+                207,
+                571,
+                927,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21260989,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                231,
+                625,
+                937,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21260990,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                226,
+                616,
+                938,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260991,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                219,
+                594,
+                950,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260992,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                222,
+                615,
+                944,
+                997,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260993,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                216,
+                567,
+                919,
+                992,
+                1000
+              ]
+            },
+            {
+              "seed": 21260994,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 30000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                219,
+                603,
+                929,
+                995,
+                999,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260995,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                231,
+                618,
+                938,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260996,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                223,
+                596,
+                941,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21260997,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                225,
+                598,
+                937,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260998,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                233,
+                625,
+                955,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21260999,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                229,
+                610,
+                940,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21261000,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 18000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                228,
+                609,
+                955,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21261001,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                58,
+                211,
+                566,
+                927,
+                997,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261002,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 21000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                230,
+                615,
+                942,
+                1000
+              ]
+            },
+            {
+              "seed": 21261003,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                216,
+                596,
+                924,
+                996,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261004,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                224,
+                596,
+                927,
+                991,
+                1000
+              ]
+            },
+            {
+              "seed": 21261005,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                209,
+                590,
+                933,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21261006,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                225,
+                580,
+                924,
+                993,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261007,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                235,
+                618,
+                947,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21261008,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                224,
+                605,
+                932,
+                993,
+                1000
+              ]
+            },
+            {
+              "seed": 21261009,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                223,
+                603,
+                941,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261010,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                218,
+                589,
+                914,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21261011,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                225,
+                602,
+                927,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261012,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 21000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                228,
+                624,
+                947,
+                1000
+              ]
+            },
+            {
+              "seed": 21261013,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                60,
+                223,
+                587,
+                926,
+                992,
+                1000
+              ]
+            },
+            {
+              "seed": 21261014,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                226,
+                600,
+                944,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261015,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                217,
+                575,
+                930,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261016,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                227,
+                607,
+                946,
+                996,
+                1000
+              ]
+            },
+            {
+              "seed": 21261017,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                221,
+                596,
+                928,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261018,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                222,
+                600,
+                926,
+                998,
+                1000
+              ]
+            },
+            {
+              "seed": 21261019,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                219,
+                603,
+                931,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21261020,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                15,
+                60,
+                217,
+                586,
+                931,
+                992,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261021,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                225,
+                620,
+                940,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21261022,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                220,
+                602,
+                938,
+                995,
+                1000
+              ]
+            },
+            {
+              "seed": 21261023,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                223,
+                610,
+                937,
+                990,
+                1000
+              ]
+            },
+            {
+              "seed": 21261024,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                61,
+                212,
+                589,
+                930,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261025,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 9,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 27000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                220,
+                606,
+                935,
+                998,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21261026,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                60,
+                212,
+                597,
+                937,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261027,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                231,
+                618,
+                946,
+                997,
+                1000
+              ]
+            },
+            {
+              "seed": 21261028,
+              "rounds_to_95_percent": 7,
+              "rounds_to_100_percent": 8,
+              "attempted_contacts_to_95_percent": 21000,
+              "attempted_contacts_to_100_percent": 24000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                62,
+                216,
+                602,
+                938,
+                996,
+                1000
+              ]
+            }
+          ]
+        },
+        "push_pull": {
+          "summary": {
+            "rounds_to_95_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 4,
+              "p50": 5,
+              "p95": 5,
+              "max": 5,
+              "mean": 4.91
+            },
+            "rounds_to_100_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 5,
+              "p50": 5,
+              "p95": 5,
+              "max": 6,
+              "mean": 5.02
+            },
+            "attempted_contacts_to_95_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 12000,
+              "p50": 15000,
+              "p95": 15000,
+              "max": 15000,
+              "mean": 14730
+            },
+            "attempted_contacts_to_100_percent": {
+              "completed": 100,
+              "not_reached": 0,
+              "min": 15000,
+              "p50": 15000,
+              "p95": 15000,
+              "max": 18000,
+              "mean": 15060
+            }
+          },
+          "trials": [
+            {
+              "seed": 21260929,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                37,
+                237,
+                840,
+                1000
+              ]
+            },
+            {
+              "seed": 21260930,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                57,
+                303,
+                907,
+                1000
+              ]
+            },
+            {
+              "seed": 21260931,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                51,
+                325,
+                926,
+                1000
+              ]
+            },
+            {
+              "seed": 21260932,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                61,
+                344,
+                944,
+                1000
+              ]
+            },
+            {
+              "seed": 21260933,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 18000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                28,
+                160,
+                713,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260934,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                11,
+                72,
+                385,
+                960,
+                1000
+              ]
+            },
+            {
+              "seed": 21260935,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                54,
+                330,
+                916,
+                1000
+              ]
+            },
+            {
+              "seed": 21260936,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                59,
+                340,
+                947,
+                1000
+              ]
+            },
+            {
+              "seed": 21260937,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                65,
+                373,
+                952,
+                1000
+              ]
+            },
+            {
+              "seed": 21260938,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                63,
+                374,
+                939,
+                1000
+              ]
+            },
+            {
+              "seed": 21260939,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                45,
+                293,
+                895,
+                1000
+              ]
+            },
+            {
+              "seed": 21260940,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                47,
+                278,
+                876,
+                1000
+              ]
+            },
+            {
+              "seed": 21260941,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                40,
+                251,
+                844,
+                1000
+              ]
+            },
+            {
+              "seed": 21260942,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                43,
+                268,
+                880,
+                1000
+              ]
+            },
+            {
+              "seed": 21260943,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                33,
+                198,
+                780,
+                1000
+              ]
+            },
+            {
+              "seed": 21260944,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                50,
+                317,
+                919,
+                1000
+              ]
+            },
+            {
+              "seed": 21260945,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 18000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                43,
+                269,
+                869,
+                999,
+                1000
+              ]
+            },
+            {
+              "seed": 21260946,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                60,
+                340,
+                922,
+                1000
+              ]
+            },
+            {
+              "seed": 21260947,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                42,
+                242,
+                851,
+                1000
+              ]
+            },
+            {
+              "seed": 21260948,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                64,
+                363,
+                941,
+                1000
+              ]
+            },
+            {
+              "seed": 21260949,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                33,
+                212,
+                777,
+                1000
+              ]
+            },
+            {
+              "seed": 21260950,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                34,
+                227,
+                818,
+                1000
+              ]
+            },
+            {
+              "seed": 21260951,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                67,
+                379,
+                953,
+                1000
+              ]
+            },
+            {
+              "seed": 21260952,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                33,
+                211,
+                796,
+                1000
+              ]
+            },
+            {
+              "seed": 21260953,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                56,
+                325,
+                929,
+                1000
+              ]
+            },
+            {
+              "seed": 21260954,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                60,
+                335,
+                933,
+                1000
+              ]
+            },
+            {
+              "seed": 21260955,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                39,
+                237,
+                823,
+                1000
+              ]
+            },
+            {
+              "seed": 21260956,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                30,
+                193,
+                773,
+                1000
+              ]
+            },
+            {
+              "seed": 21260957,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                74,
+                401,
+                963,
+                1000
+              ]
+            },
+            {
+              "seed": 21260958,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                48,
+                320,
+                937,
+                1000
+              ]
+            },
+            {
+              "seed": 21260959,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                42,
+                265,
+                883,
+                1000
+              ]
+            },
+            {
+              "seed": 21260960,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                53,
+                314,
+                920,
+                1000
+              ]
+            },
+            {
+              "seed": 21260961,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                34,
+                213,
+                781,
+                1000
+              ]
+            },
+            {
+              "seed": 21260962,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                56,
+                332,
+                935,
+                1000
+              ]
+            },
+            {
+              "seed": 21260963,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                64,
+                366,
+                942,
+                1000
+              ]
+            },
+            {
+              "seed": 21260964,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                10,
+                60,
+                360,
+                947,
+                1000
+              ]
+            },
+            {
+              "seed": 21260965,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                43,
+                270,
+                866,
+                1000
+              ]
+            },
+            {
+              "seed": 21260966,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                46,
+                280,
+                884,
+                1000
+              ]
+            },
+            {
+              "seed": 21260967,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                62,
+                360,
+                945,
+                1000
+              ]
+            },
+            {
+              "seed": 21260968,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                56,
+                333,
+                930,
+                1000
+              ]
+            },
+            {
+              "seed": 21260969,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                45,
+                256,
+                851,
+                1000
+              ]
+            },
+            {
+              "seed": 21260970,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                58,
+                326,
+                920,
+                1000
+              ]
+            },
+            {
+              "seed": 21260971,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                46,
+                273,
+                900,
+                1000
+              ]
+            },
+            {
+              "seed": 21260972,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                43,
+                268,
+                853,
+                1000
+              ]
+            },
+            {
+              "seed": 21260973,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                49,
+                292,
+                901,
+                1000
+              ]
+            },
+            {
+              "seed": 21260974,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                12,
+                82,
+                442,
+                974,
+                1000
+              ]
+            },
+            {
+              "seed": 21260975,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                10,
+                60,
+                342,
+                940,
+                1000
+              ]
+            },
+            {
+              "seed": 21260976,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                51,
+                285,
+                901,
+                1000
+              ]
+            },
+            {
+              "seed": 21260977,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                54,
+                312,
+                928,
+                1000
+              ]
+            },
+            {
+              "seed": 21260978,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                43,
+                261,
+                869,
+                1000
+              ]
+            },
+            {
+              "seed": 21260979,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                45,
+                275,
+                886,
+                1000
+              ]
+            },
+            {
+              "seed": 21260980,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                50,
+                307,
+                908,
+                1000
+              ]
+            },
+            {
+              "seed": 21260981,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                46,
+                282,
+                891,
+                1000
+              ]
+            },
+            {
+              "seed": 21260982,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                61,
+                369,
+                943,
+                1000
+              ]
+            },
+            {
+              "seed": 21260983,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                52,
+                296,
+                907,
+                1000
+              ]
+            },
+            {
+              "seed": 21260984,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                43,
+                252,
+                857,
+                1000
+              ]
+            },
+            {
+              "seed": 21260985,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                36,
+                223,
+                811,
+                1000
+              ]
+            },
+            {
+              "seed": 21260986,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                43,
+                257,
+                880,
+                1000
+              ]
+            },
+            {
+              "seed": 21260987,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                39,
+                243,
+                849,
+                1000
+              ]
+            },
+            {
+              "seed": 21260988,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                37,
+                224,
+                820,
+                1000
+              ]
+            },
+            {
+              "seed": 21260989,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                45,
+                273,
+                873,
+                1000
+              ]
+            },
+            {
+              "seed": 21260990,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                47,
+                280,
+                892,
+                1000
+              ]
+            },
+            {
+              "seed": 21260991,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                51,
+                306,
+                912,
+                1000
+              ]
+            },
+            {
+              "seed": 21260992,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                10,
+                67,
+                401,
+                966,
+                1000
+              ]
+            },
+            {
+              "seed": 21260993,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                56,
+                334,
+                930,
+                1000
+              ]
+            },
+            {
+              "seed": 21260994,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                55,
+                331,
+                932,
+                1000
+              ]
+            },
+            {
+              "seed": 21260995,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                51,
+                309,
+                899,
+                1000
+              ]
+            },
+            {
+              "seed": 21260996,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                53,
+                310,
+                928,
+                1000
+              ]
+            },
+            {
+              "seed": 21260997,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                60,
+                344,
+                932,
+                1000
+              ]
+            },
+            {
+              "seed": 21260998,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                43,
+                266,
+                862,
+                1000
+              ]
+            },
+            {
+              "seed": 21260999,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                45,
+                281,
+                901,
+                1000
+              ]
+            },
+            {
+              "seed": 21261000,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                11,
+                74,
+                425,
+                962,
+                1000
+              ]
+            },
+            {
+              "seed": 21261001,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                33,
+                204,
+                781,
+                1000
+              ]
+            },
+            {
+              "seed": 21261002,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                57,
+                349,
+                937,
+                1000
+              ]
+            },
+            {
+              "seed": 21261003,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                55,
+                330,
+                929,
+                1000
+              ]
+            },
+            {
+              "seed": 21261004,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                52,
+                314,
+                905,
+                1000
+              ]
+            },
+            {
+              "seed": 21261005,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                57,
+                316,
+                912,
+                1000
+              ]
+            },
+            {
+              "seed": 21261006,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                63,
+                359,
+                941,
+                1000
+              ]
+            },
+            {
+              "seed": 21261007,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                56,
+                314,
+                931,
+                1000
+              ]
+            },
+            {
+              "seed": 21261008,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                48,
+                275,
+                889,
+                1000
+              ]
+            },
+            {
+              "seed": 21261009,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                61,
+                352,
+                941,
+                1000
+              ]
+            },
+            {
+              "seed": 21261010,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                42,
+                250,
+                863,
+                1000
+              ]
+            },
+            {
+              "seed": 21261011,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                11,
+                64,
+                351,
+                935,
+                1000
+              ]
+            },
+            {
+              "seed": 21261012,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                56,
+                332,
+                928,
+                1000
+              ]
+            },
+            {
+              "seed": 21261013,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                48,
+                297,
+                890,
+                1000
+              ]
+            },
+            {
+              "seed": 21261014,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                51,
+                317,
+                927,
+                1000
+              ]
+            },
+            {
+              "seed": 21261015,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                37,
+                223,
+                802,
+                1000
+              ]
+            },
+            {
+              "seed": 21261016,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                10,
+                75,
+                423,
+                971,
+                1000
+              ]
+            },
+            {
+              "seed": 21261017,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                51,
+                314,
+                909,
+                1000
+              ]
+            },
+            {
+              "seed": 21261018,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                38,
+                228,
+                835,
+                1000
+              ]
+            },
+            {
+              "seed": 21261019,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                36,
+                246,
+                850,
+                1000
+              ]
+            },
+            {
+              "seed": 21261020,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                49,
+                279,
+                878,
+                1000
+              ]
+            },
+            {
+              "seed": 21261021,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                60,
+                346,
+                929,
+                1000
+              ]
+            },
+            {
+              "seed": 21261022,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                31,
+                194,
+                775,
+                1000
+              ]
+            },
+            {
+              "seed": 21261023,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                50,
+                298,
+                899,
+                1000
+              ]
+            },
+            {
+              "seed": 21261024,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                59,
+                350,
+                939,
+                1000
+              ]
+            },
+            {
+              "seed": 21261025,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                39,
+                253,
+                854,
+                1000
+              ]
+            },
+            {
+              "seed": 21261026,
+              "rounds_to_95_percent": 4,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 12000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                66,
+                380,
+                964,
+                1000
+              ]
+            },
+            {
+              "seed": 21261027,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                46,
+                287,
+                907,
+                1000
+              ]
+            },
+            {
+              "seed": 21261028,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 5,
+              "attempted_contacts_to_95_percent": 15000,
+              "attempted_contacts_to_100_percent": 15000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                40,
+                252,
+                847,
+                1000
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "node_count": 10000,
+      "trial_count": 20,
+      "effective_fanout": 3,
+      "ideal_star_pubsub": {
+        "deliveries_to_100_percent": 9999,
+        "network_hops_to_100_percent": 1,
+        "assumptions": "fact initially at hub; simultaneous deliveries; no hub throughput limit",
+        "limitation": "delivery count is not a comparison of LLM inference or context cost"
+      },
+      "modes": {
+        "push": {
+          "summary": {
+            "rounds_to_95_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 8,
+              "p50": 8,
+              "p95": 8,
+              "max": 8,
+              "mean": 8
+            },
+            "rounds_to_100_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 10,
+              "p50": 10,
+              "p95": 12,
+              "max": 14,
+              "mean": 10.5
+            },
+            "attempted_contacts_to_95_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 240000,
+              "p50": 240000,
+              "p95": 240000,
+              "max": 240000,
+              "mean": 240000
+            },
+            "attempted_contacts_to_100_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 300000,
+              "p50": 300000,
+              "p95": 360000,
+              "max": 420000,
+              "mean": 315000
+            }
+          },
+          "trials": [
+            {
+              "seed": 30260929,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                255,
+                979,
+                3265,
+                7450,
+                9739,
+                9987,
+                10000
+              ]
+            },
+            {
+              "seed": 30260930,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                253,
+                969,
+                3227,
+                7488,
+                9735,
+                9983,
+                10000
+              ]
+            },
+            {
+              "seed": 30260931,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                973,
+                3249,
+                7418,
+                9734,
+                9986,
+                10000
+              ]
+            },
+            {
+              "seed": 30260932,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                961,
+                3228,
+                7386,
+                9723,
+                9992,
+                10000
+              ]
+            },
+            {
+              "seed": 30260933,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 12,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 360000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                965,
+                3245,
+                7440,
+                9743,
+                9988,
+                9998,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260934,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 11,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 330000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                966,
+                3214,
+                7407,
+                9720,
+                9983,
+                9998,
+                10000
+              ]
+            },
+            {
+              "seed": 30260935,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                961,
+                3219,
+                7407,
+                9718,
+                9983,
+                10000
+              ]
+            },
+            {
+              "seed": 30260936,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 11,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 330000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                63,
+                249,
+                943,
+                3141,
+                7274,
+                9682,
+                9979,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260937,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                253,
+                963,
+                3227,
+                7407,
+                9723,
+                9982,
+                10000
+              ]
+            },
+            {
+              "seed": 30260938,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 11,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 330000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                978,
+                3247,
+                7471,
+                9753,
+                9978,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260939,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                964,
+                3257,
+                7409,
+                9749,
+                9991,
+                10000
+              ]
+            },
+            {
+              "seed": 30260940,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                256,
+                985,
+                3282,
+                7443,
+                9726,
+                9985,
+                10000
+              ]
+            },
+            {
+              "seed": 30260941,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                973,
+                3290,
+                7470,
+                9731,
+                9982,
+                10000
+              ]
+            },
+            {
+              "seed": 30260942,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 14,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 420000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                969,
+                3252,
+                7451,
+                9709,
+                9982,
+                9997,
+                9998,
+                9999,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260943,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                252,
+                961,
+                3226,
+                7449,
+                9732,
+                9990,
+                10000
+              ]
+            },
+            {
+              "seed": 30260944,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                963,
+                3232,
+                7473,
+                9736,
+                9983,
+                10000
+              ]
+            },
+            {
+              "seed": 30260945,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                256,
+                982,
+                3258,
+                7444,
+                9718,
+                9982,
+                10000
+              ]
+            },
+            {
+              "seed": 30260946,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 11,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 330000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                255,
+                978,
+                3294,
+                7534,
+                9737,
+                9988,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260947,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                254,
+                970,
+                3236,
+                7453,
+                9715,
+                9984,
+                10000
+              ]
+            },
+            {
+              "seed": 30260948,
+              "rounds_to_95_percent": 8,
+              "rounds_to_100_percent": 10,
+              "attempted_contacts_to_95_percent": 240000,
+              "attempted_contacts_to_100_percent": 300000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                16,
+                64,
+                253,
+                955,
+                3207,
+                7417,
+                9721,
+                9980,
+                10000
+              ]
+            }
+          ]
+        },
+        "push_pull": {
+          "summary": {
+            "rounds_to_95_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 5,
+              "p50": 6,
+              "p95": 6,
+              "max": 6,
+              "mean": 5.95
+            },
+            "rounds_to_100_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 6,
+              "p50": 7,
+              "p95": 7,
+              "max": 7,
+              "mean": 6.55
+            },
+            "attempted_contacts_to_95_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 150000,
+              "p50": 180000,
+              "p95": 180000,
+              "max": 180000,
+              "mean": 178500
+            },
+            "attempted_contacts_to_100_percent": {
+              "completed": 20,
+              "not_reached": 0,
+              "min": 180000,
+              "p50": 210000,
+              "p95": 210000,
+              "max": 210000,
+              "mean": 196500
+            }
+          },
+          "trials": [
+            {
+              "seed": 30260929,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                29,
+                189,
+                1330,
+                6258,
+                9969,
+                10000
+              ]
+            },
+            {
+              "seed": 30260930,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                40,
+                267,
+                1730,
+                7211,
+                9992,
+                10000
+              ]
+            },
+            {
+              "seed": 30260931,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                36,
+                240,
+                1543,
+                6806,
+                9987,
+                10000
+              ]
+            },
+            {
+              "seed": 30260932,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                71,
+                474,
+                2832,
+                8867,
+                10000
+              ]
+            },
+            {
+              "seed": 30260933,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                61,
+                396,
+                2408,
+                8399,
+                10000
+              ]
+            },
+            {
+              "seed": 30260934,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                45,
+                293,
+                1872,
+                7489,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260935,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                55,
+                391,
+                2361,
+                8266,
+                10000
+              ]
+            },
+            {
+              "seed": 30260936,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                5,
+                33,
+                235,
+                1545,
+                6745,
+                9993,
+                10000
+              ]
+            },
+            {
+              "seed": 30260937,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                56,
+                386,
+                2416,
+                8371,
+                9998,
+                10000
+              ]
+            },
+            {
+              "seed": 30260938,
+              "rounds_to_95_percent": 5,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 150000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                12,
+                97,
+                676,
+                3856,
+                9563,
+                10000
+              ]
+            },
+            {
+              "seed": 30260939,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                48,
+                342,
+                2132,
+                7977,
+                10000
+              ]
+            },
+            {
+              "seed": 30260940,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                7,
+                48,
+                334,
+                2122,
+                7935,
+                9999,
+                10000
+              ]
+            },
+            {
+              "seed": 30260941,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                6,
+                42,
+                281,
+                1780,
+                7341,
+                9997,
+                10000
+              ]
+            },
+            {
+              "seed": 30260942,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                51,
+                347,
+                2200,
+                8065,
+                9998,
+                10000
+              ]
+            },
+            {
+              "seed": 30260943,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                67,
+                481,
+                2901,
+                8965,
+                10000
+              ]
+            },
+            {
+              "seed": 30260944,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                27,
+                171,
+                1135,
+                5657,
+                9935,
+                10000
+              ]
+            },
+            {
+              "seed": 30260945,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                58,
+                398,
+                2462,
+                8434,
+                10000
+              ]
+            },
+            {
+              "seed": 30260946,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                8,
+                53,
+                362,
+                2268,
+                8202,
+                10000
+              ]
+            },
+            {
+              "seed": 30260947,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 7,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 210000,
+              "informed_at_end_of_round": [
+                1,
+                4,
+                23,
+                159,
+                1078,
+                5374,
+                9899,
+                10000
+              ]
+            },
+            {
+              "seed": 30260948,
+              "rounds_to_95_percent": 6,
+              "rounds_to_100_percent": 6,
+              "attempted_contacts_to_95_percent": 180000,
+              "attempted_contacts_to_100_percent": 180000,
+              "informed_at_end_of_round": [
+                1,
+                9,
+                61,
+                414,
+                2521,
+                8540,
+                10000
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

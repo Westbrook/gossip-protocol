@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "protocol": "verification-quality-v1",
+  "status": "design frozen in principle; exact source and fixture hashes required before paid execution",
+  "question": "Does a wider implementation portfolio improve completed maintenance work under the same strong review-and-verification protocol?",
+  "primary": ["whole-project final acceptance", "final cumulative requirement coverage"],
+  "secondary": ["verified generated-test signal", "requirements retained across milestones", "recovery without duplicate model dispatch", "stale-evidence rejection and upstream policy integration", "cost", "elapsed time"],
+  "projects": ["buildgraph", "calendar"],
+  "milestones_per_project": 4,
+  "live_repetitions": 3,
+  "planned_live_trajectories": 18,
+  "planned_live_milestones": 72,
+  "policies": {
+    "strong-reviewed": {"initial_candidates": 1, "builder": "strong", "reviewer": "strong"},
+    "cheap-reviewed": {"initial_candidates": 1, "builder": "cheap", "reviewer": "strong"},
+    "portfolio-reviewed": {"initial_candidates": 4, "builder": "cheap", "reviewer": "strong"}
+  },
+  "shared_limits_per_milestone": {"repair_calls": 4, "review_calls": 6, "proposed_probes_per_review": 4, "new_admitted_probes": 8},
+  "fairness": "Identical stage engine, reviewer model, repair/review ceilings, initial public specification, and completion rule. Width adds three initial cheap calls and additional candidate information. This is an operational policy comparison, not equal compute or an isolated estimate of the value of reviewing or test mining.",
+  "generated_tests": "Reviewers propose bounded JSON inputs and expected outputs. A trusted host reference verifies expectations exactly, including JSON types. Wrong expectations are rejected without correction. Admissible tests execute against every current candidate and survive into later stages unless an explicit contract change retires them. No generated executable test code runs. No private cases are consulted during probe validation.",
+  "candidate_awareness": "Test mining may use candidate code, with the same proposal limits in every arm. Resulting evidence is endogenous to the policy. Final private suites are identical across arms; do not describe the policies as receiving identical model-generated evidence.",
+  "completion": "Reviewer acceptance is provisional until the selected immutable source passes all cumulative public and currently admitted generated checks, with no declared remaining requirements. Final acceptance also requires all four stages and every final private check. No manual source rescue or hidden-test feedback.",
+  "anonymization": "Opaque model-facing task IDs; stage-local randomized candidate aliases; no builder model, cost, filesystem binding paths, or old candidate rankings exposed to the reviewer.",
+  "fault": "For each trajectory reaching milestone two, supervisor sends SIGKILL after the first reviewer response is durably saved but before accounting settlement. There are no other model requests in flight. A new process replays saved work, settles the known receipt once, and continues. A dispatch with no durable response is ambiguous and cannot be retried automatically.",
+  "integration": "Before milestone four, merge a trusted policy change from an independent Git history into the maintained application. Reject a prepared receipt bound to the old accepted head. Models adapt their backend to the merged policy. Separately qualify textual-conflict rejection offline; this is not a claim that agents autonomously resolve textual conflicts.",
+  "qualification": "Fresh private contracts and reference implementations must pass known-solution and targeted-mutant checks. Entire six-case zero-API rehearsal, forced repairs, actual process deaths, replay/settlement checks, and upstream integration must pass with the exact source/fixture/image signature before live use.",
+  "budget": {"shared_ledger": "runs/first-live-budget.sqlite", "starting_cumulative_micro_usd": 8252813, "proposed_cumulative_cap_micro_usd": 40000000, "authorization": "Existing user approval for up to $50 additional API spending; do not reset previous charges."},
+  "limitations": ["Two synthetic application identities, not eighteen independent production repositories", "Three repetitions per project-policy do not establish general statistical superiority", "Trusted reference oracles are a benchmark advantage that must not be assumed for arbitrary production requirements", "Fault injection covers a known persisted response, not unknown in-flight provider outcomes or arbitrary distributed failure", "No causal comparison of gossip transport against orchestration", "Both pinned model profiles retain low reasoning; this is not a best-available-model benchmark"]
+}

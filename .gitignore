@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+runs/
+.env
+.env.*
+.cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+.verification/
+
+# Generated study evidence stays local; one small immutable import fixture ships.
+results/*
+!results/practical-live-1/
+results/practical-live-1/*
+!results/practical-live-1/accepted/
+results/practical-live-1/accepted/*
+!results/practical-live-1/accepted/single/
+
+# The independent progress report locator is specific to this workstation.
+.progress-report/project.json

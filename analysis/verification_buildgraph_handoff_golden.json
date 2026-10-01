@@ -1,0 +1,1234 @@
+{
+  "api_calls": 0,
+  "candidate_code_executed_on_host": false,
+  "case_results": [
+    {
+      "actual_outputs": [
+        {
+          "changed": true,
+          "id": "root",
+          "ok": "put"
+        },
+        {
+          "changed": true,
+          "id": "app",
+          "ok": "put"
+        },
+        [
+          {
+            "deps": [
+              "root"
+            ],
+            "digest": null,
+            "id": "app",
+            "priority": 1,
+            "source": "app-v1"
+          },
+          {
+            "deps": [],
+            "digest": null,
+            "id": "root",
+            "priority": 2,
+            "source": "core-v1"
+          }
+        ],
+        {
+          "cached": false,
+          "digest": "5c1f4264b0b3e126cc2b8c93274ddf4e4ae560fd91bdf707aa974656ce6cf7b1",
+          "id": "root"
+        },
+        {
+          "cached": false,
+          "digest": "f7da5765d357c9963b50b6ea88ad6009cfbb9e885c3ac0d7596cddb3f31f2c21",
+          "id": "app"
+        },
+        {
+          "changed": true,
+          "id": "root",
+          "ok": "put"
+        },
+        [
+          {
+            "deps": [
+              "root"
+            ],
+            "digest": null,
+            "id": "app",
+            "priority": 1,
+            "source": "app-v1"
+          },
+          {
+            "deps": [],
+            "digest": null,
+            "id": "root",
+            "priority": 2,
+            "source": "core-v2"
+          }
+        ],
+        {
+          "order": [
+            "root",
+            "app"
+          ],
+          "version": 5
+        },
+        {
+          "built": [
+            "root",
+            "app"
+          ],
+          "digests": {
+            "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+          },
+          "key": "release",
+          "version": 6
+        },
+        {
+          "changed": true,
+          "id": "root",
+          "ok": "put"
+        },
+        {
+          "built": [
+            "root",
+            "app"
+          ],
+          "digests": {
+            "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+          },
+          "key": "release",
+          "version": 6
+        },
+        {
+          "cached": true,
+          "digest": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957",
+          "id": "app"
+        },
+        {
+          "built": [
+            "root",
+            "app"
+          ],
+          "digests": {
+            "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+          },
+          "key": "release",
+          "version": 6
+        },
+        {
+          "api": 2,
+          "max_import": 6,
+          "schema": 2
+        },
+        {
+          "schema": 2,
+          "targets": [
+            {
+              "deps": [
+                "root"
+              ],
+              "id": "app",
+              "priority": 1,
+              "source": "app-v1"
+            },
+            {
+              "deps": [],
+              "id": "root",
+              "priority": 3,
+              "source": "core-v2"
+            }
+          ]
+        }
+      ],
+      "id": "buildgraph-upgrade-cache-plan-receipt",
+      "matched_expected": true,
+      "old_policy_negative_control": false,
+      "reset_database_negative_control": false,
+      "source_kind": "trusted known implementation only",
+      "stage_sources": [
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "1452a6e1ad5a37a62c099281845c875891324afd68fa9d6b6cb4312070fa7b42",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "fixture_stage_id": "buildgraph-1",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 0
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "c5330b29f9c48510e9cf575bc4ee0383d08009e1e8584a5a112dcfe47ee9e177",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "fixture_stage_id": "buildgraph-2",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 1
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "1e8686524533d3682f0d3888a675d4d01f307752af010bac207f19988126b162",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "fixture_stage_id": "buildgraph-3",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 2
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "bcfc40a8112ead1102006a8137451e0cb597cae157729723faecc88bd8c7d322",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "fixture_stage_id": "buildgraph-4",
+          "policy_text": "{\"api\":2,\"schema\":2,\"max_import\":6}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 3
+        }
+      ],
+      "trace": [
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "root",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "root",
+            "op": "put",
+            "priority": 2,
+            "source": "core-v1"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 0
+        },
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "app",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "deps": [
+              "root"
+            ],
+            "id": "app",
+            "op": "put",
+            "priority": 1,
+            "source": "app-v1"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 1
+        },
+        {
+          "actual_output": [
+            {
+              "deps": [
+                "root"
+              ],
+              "digest": null,
+              "id": "app",
+              "priority": 1,
+              "source": "app-v1"
+            },
+            {
+              "deps": [],
+              "digest": null,
+              "id": "root",
+              "priority": 2,
+              "source": "core-v1"
+            }
+          ],
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "op": "list"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 2
+        },
+        {
+          "actual_output": {
+            "cached": false,
+            "digest": "5c1f4264b0b3e126cc2b8c93274ddf4e4ae560fd91bdf707aa974656ce6cf7b1",
+            "id": "root"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "id": "root",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 3
+        },
+        {
+          "actual_output": {
+            "cached": false,
+            "digest": "f7da5765d357c9963b50b6ea88ad6009cfbb9e885c3ac0d7596cddb3f31f2c21",
+            "id": "app"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "id": "app",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 4
+        },
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "root",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "root",
+            "op": "put",
+            "priority": 2,
+            "source": "core-v2"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 5
+        },
+        {
+          "actual_output": [
+            {
+              "deps": [
+                "root"
+              ],
+              "digest": null,
+              "id": "app",
+              "priority": 1,
+              "source": "app-v1"
+            },
+            {
+              "deps": [],
+              "digest": null,
+              "id": "root",
+              "priority": 2,
+              "source": "core-v2"
+            }
+          ],
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "op": "list"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 6
+        },
+        {
+          "actual_output": {
+            "order": [
+              "root",
+              "app"
+            ],
+            "version": 5
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "op": "plan",
+            "targets": [
+              "app"
+            ]
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 7
+        },
+        {
+          "actual_output": {
+            "built": [
+              "root",
+              "app"
+            ],
+            "digests": {
+              "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+            },
+            "key": "release",
+            "version": 6
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "key": "release",
+            "op": "commit",
+            "targets": [
+              "app"
+            ],
+            "version": 5
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 8
+        },
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "root",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "root",
+            "op": "put",
+            "priority": 3,
+            "source": "core-v2"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 9
+        },
+        {
+          "actual_output": {
+            "built": [
+              "root",
+              "app"
+            ],
+            "digests": {
+              "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+            },
+            "key": "release",
+            "version": 6
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "key": "release",
+            "op": "commit",
+            "targets": [
+              "app"
+            ],
+            "version": 5
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 10
+        },
+        {
+          "actual_output": {
+            "cached": true,
+            "digest": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957",
+            "id": "app"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "id": "app",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 11
+        },
+        {
+          "actual_output": {
+            "built": [
+              "root",
+              "app"
+            ],
+            "digests": {
+              "app": "3e4659896a0756796ab5e3d8662c8d5e1d0d8cd5302e84d54d7621b0d27e5957"
+            },
+            "key": "release",
+            "version": 6
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "key": "release",
+            "op": "commit",
+            "targets": [
+              "app"
+            ],
+            "version": 5
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 12
+        },
+        {
+          "actual_output": {
+            "api": 2,
+            "max_import": 6,
+            "schema": 2
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "op": "policy"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 13
+        },
+        {
+          "actual_output": {
+            "schema": 2,
+            "targets": [
+              {
+                "deps": [
+                  "root"
+                ],
+                "id": "app",
+                "priority": 1,
+                "source": "app-v1"
+              },
+              {
+                "deps": [],
+                "id": "root",
+                "priority": 3,
+                "source": "core-v2"
+              }
+            ]
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "op": "export"
+          },
+          "database_device": 16777232,
+          "database_inode": 284705842,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-crh8zl62/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 14
+        }
+      ]
+    },
+    {
+      "actual_outputs": [
+        {
+          "changed": true,
+          "id": "seed",
+          "ok": "put"
+        },
+        {
+          "changed": true,
+          "id": "spare",
+          "ok": "put"
+        },
+        [
+          {
+            "deps": [],
+            "digest": null,
+            "id": "seed",
+            "priority": -1,
+            "source": "seed-body"
+          },
+          {
+            "deps": [],
+            "digest": null,
+            "id": "spare",
+            "priority": 0,
+            "source": "spare-body"
+          }
+        ],
+        {
+          "cached": false,
+          "digest": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165",
+          "id": "seed"
+        },
+        {
+          "cached": false,
+          "digest": "e574e30cedb663a875eba6c285726b345a11c1505d128699396e50c80006f75b",
+          "id": "spare"
+        },
+        {
+          "id": "spare",
+          "ok": "removed"
+        },
+        {
+          "built": [],
+          "digests": {
+            "seed": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165"
+          },
+          "key": "old-receipt",
+          "version": 6
+        },
+        {
+          "changed": true,
+          "id": "seed",
+          "ok": "put"
+        },
+        {
+          "order": [
+            "seed"
+          ],
+          "version": 7
+        },
+        {
+          "count": 1,
+          "key": "migration",
+          "ok": "imported",
+          "version": 8
+        },
+        {
+          "built": [],
+          "digests": {
+            "seed": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165"
+          },
+          "key": "old-receipt",
+          "version": 6
+        },
+        {
+          "count": 1,
+          "key": "migration",
+          "ok": "imported",
+          "version": 8
+        },
+        {
+          "cached": false,
+          "digest": "0d1da3b44269f862db4c9134bee1d186e01865a7535e2e49a4947082e1b402a2",
+          "id": "migrated"
+        },
+        {
+          "count": 1,
+          "key": "migration",
+          "ok": "imported",
+          "version": 8
+        },
+        [
+          {
+            "deps": [],
+            "digest": "0d1da3b44269f862db4c9134bee1d186e01865a7535e2e49a4947082e1b402a2",
+            "id": "migrated",
+            "priority": 0,
+            "source": "new-body"
+          }
+        ],
+        {
+          "schema": 2,
+          "targets": [
+            {
+              "deps": [],
+              "id": "migrated",
+              "priority": 0,
+              "source": "new-body"
+            }
+          ]
+        }
+      ],
+      "id": "buildgraph-upgrade-import-preserves-old-receipt",
+      "matched_expected": true,
+      "old_policy_negative_control": false,
+      "reset_database_negative_control": false,
+      "source_kind": "trusted known implementation only",
+      "stage_sources": [
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "1452a6e1ad5a37a62c099281845c875891324afd68fa9d6b6cb4312070fa7b42",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "fixture_stage_id": "buildgraph-1",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 0
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "c5330b29f9c48510e9cf575bc4ee0383d08009e1e8584a5a112dcfe47ee9e177",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "fixture_stage_id": "buildgraph-2",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 1
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "1e8686524533d3682f0d3888a675d4d01f307752af010bac207f19988126b162",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "fixture_stage_id": "buildgraph-3",
+          "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 2
+        },
+        {
+          "file_hashes": {
+            "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+            "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+            "buildgraph_app/service.py": "bcfc40a8112ead1102006a8137451e0cb597cae157729723faecc88bd8c7d322",
+            "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+            "policy.json": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+            "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+          },
+          "files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "fixture_stage_id": "buildgraph-4",
+          "policy_text": "{\"api\":2,\"schema\":2,\"max_import\":6}\n",
+          "source_kind": "trusted fixture known_files; not model candidate code",
+          "stage_index": 3
+        }
+      ],
+      "trace": [
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "seed",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "seed",
+            "op": "put",
+            "priority": -1,
+            "source": "seed-body"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 0
+        },
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "spare",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "spare",
+            "op": "put",
+            "priority": 0,
+            "source": "spare-body"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 1
+        },
+        {
+          "actual_output": [
+            {
+              "deps": [],
+              "digest": null,
+              "id": "seed",
+              "priority": -1,
+              "source": "seed-body"
+            },
+            {
+              "deps": [],
+              "digest": null,
+              "id": "spare",
+              "priority": 0,
+              "source": "spare-body"
+            }
+          ],
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-0/buildgraph_app/cli.py",
+          "command": {
+            "op": "list"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+          "stage_index": 0,
+          "step_index": 2
+        },
+        {
+          "actual_output": {
+            "cached": false,
+            "digest": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165",
+            "id": "seed"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "id": "seed",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 3
+        },
+        {
+          "actual_output": {
+            "cached": false,
+            "digest": "e574e30cedb663a875eba6c285726b345a11c1505d128699396e50c80006f75b",
+            "id": "spare"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "id": "spare",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 4
+        },
+        {
+          "actual_output": {
+            "id": "spare",
+            "ok": "removed"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-1/buildgraph_app/cli.py",
+          "command": {
+            "id": "spare",
+            "op": "remove"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+          "stage_index": 1,
+          "step_index": 5
+        },
+        {
+          "actual_output": {
+            "built": [],
+            "digests": {
+              "seed": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165"
+            },
+            "key": "old-receipt",
+            "version": 6
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "key": "old-receipt",
+            "op": "commit",
+            "targets": [
+              "seed"
+            ],
+            "version": 5
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 6
+        },
+        {
+          "actual_output": {
+            "changed": true,
+            "id": "seed",
+            "ok": "put"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "deps": [],
+            "id": "seed",
+            "op": "put",
+            "priority": -1,
+            "source": "changed-body"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 7
+        },
+        {
+          "actual_output": {
+            "order": [
+              "seed"
+            ],
+            "version": 7
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-2/buildgraph_app/cli.py",
+          "command": {
+            "op": "plan",
+            "targets": [
+              "seed"
+            ]
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+          "source_files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+          "stage_index": 2,
+          "step_index": 8
+        },
+        {
+          "actual_output": {
+            "count": 1,
+            "key": "migration",
+            "ok": "imported",
+            "version": 8
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "key": "migration",
+            "manifest": {
+              "schema": 1,
+              "targets": [
+                {
+                  "body": "new-body",
+                  "name": "migrated",
+                  "needs": []
+                }
+              ]
+            },
+            "op": "import"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 9
+        },
+        {
+          "actual_output": {
+            "built": [],
+            "digests": {
+              "seed": "b045f645d6a8f1d08303096b968fd297aa0516a152e8d09a8b6dbaa733cdb165"
+            },
+            "key": "old-receipt",
+            "version": 6
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "key": "old-receipt",
+            "op": "commit",
+            "targets": [
+              "seed"
+            ],
+            "version": 5
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 10
+        },
+        {
+          "actual_output": {
+            "count": 1,
+            "key": "migration",
+            "ok": "imported",
+            "version": 8
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "key": "migration",
+            "manifest": {
+              "schema": 2,
+              "targets": [
+                {
+                  "deps": [],
+                  "id": "migrated",
+                  "priority": 0,
+                  "source": "new-body"
+                }
+              ]
+            },
+            "op": "import"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 11
+        },
+        {
+          "actual_output": {
+            "cached": false,
+            "digest": "0d1da3b44269f862db4c9134bee1d186e01865a7535e2e49a4947082e1b402a2",
+            "id": "migrated"
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "id": "migrated",
+            "op": "build"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 12
+        },
+        {
+          "actual_output": {
+            "count": 1,
+            "key": "migration",
+            "ok": "imported",
+            "version": 8
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "key": "migration",
+            "manifest": {
+              "schema": 1,
+              "targets": [
+                {
+                  "body": "new-body",
+                  "name": "migrated",
+                  "needs": []
+                }
+              ]
+            },
+            "op": "import"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 13
+        },
+        {
+          "actual_output": [
+            {
+              "deps": [],
+              "digest": "0d1da3b44269f862db4c9134bee1d186e01865a7535e2e49a4947082e1b402a2",
+              "id": "migrated",
+              "priority": 0,
+              "source": "new-body"
+            }
+          ],
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "op": "list"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 14
+        },
+        {
+          "actual_output": {
+            "schema": 2,
+            "targets": [
+              {
+                "deps": [],
+                "id": "migrated",
+                "priority": 0,
+                "source": "new-body"
+              }
+            ]
+          },
+          "cli_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/versions/stage-3/buildgraph_app/cli.py",
+          "command": {
+            "op": "export"
+          },
+          "database_device": 16777232,
+          "database_inode": 284711683,
+          "database_path": "/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/trusted-buildgraph-handoff-bjrxaq9t/persisted.sqlite",
+          "policy_sha256": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+          "source_files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+          "stage_index": 3,
+          "step_index": 15
+        }
+      ]
+    }
+  ],
+  "classification": "supplementary_persisted_data_upgrade_robustness",
+  "data_module": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/verification_buildgraph_handoff.py",
+  "data_module_sha256": "820d3b9d4c38e138873714dce6e009b67c5f4fc876ab480ac4675d00dc46d68d",
+  "finished_at": 1790816419.436336,
+  "fixture_module": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_buildgraph.py",
+  "fixture_module_sha256": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
+  "host_python": "3.14.6",
+  "primary_results_modified": false,
+  "qualification": "These traces prove the golden expected outputs across actual trusted source changes on one persisted SQLite file per story. They do not assert that selected model revisions support this additional upgrade robustness. Historical pre-public version continuity remains an explicit supplementary assumption.",
+  "schema": "trusted-buildgraph-persisted-handoff-proof-v1",
+  "source_kind": "Trusted fixture known_files only; no model candidate execution",
+  "stage_sources": [
+    {
+      "file_hashes": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+        "buildgraph_app/service.py": "1452a6e1ad5a37a62c099281845c875891324afd68fa9d6b6cb4312070fa7b42",
+        "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "files_sha256": "5eac38b2efdbcf3ea48958176a1fbdf024d338c8bb37cfcdbd88e9d3a689286d",
+      "fixture_stage_id": "buildgraph-1",
+      "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+      "source_kind": "trusted fixture known_files; not model candidate code",
+      "stage_index": 0
+    },
+    {
+      "file_hashes": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+        "buildgraph_app/service.py": "c5330b29f9c48510e9cf575bc4ee0383d08009e1e8584a5a112dcfe47ee9e177",
+        "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "files_sha256": "012d796008a6fdd6961247398d000f41cd5c8b93e32a2fe1d4e8a2e228c23bfe",
+      "fixture_stage_id": "buildgraph-2",
+      "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+      "source_kind": "trusted fixture known_files; not model candidate code",
+      "stage_index": 1
+    },
+    {
+      "file_hashes": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+        "buildgraph_app/service.py": "1e8686524533d3682f0d3888a675d4d01f307752af010bac207f19988126b162",
+        "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+        "policy.json": "43eda39db5b9b47c88a10c44cb4f0701e12286d5631ec766d4a124dfd11069cf",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "files_sha256": "9a6ebe35cb268df3aac232e2186b23d779aeb8e2c9db27e6501e4ac06938c8ae",
+      "fixture_stage_id": "buildgraph-3",
+      "policy_text": "{\"api\":1,\"schema\":1,\"max_import\":4}\n",
+      "source_kind": "trusted fixture known_files; not model candidate code",
+      "stage_index": 2
+    },
+    {
+      "file_hashes": {
+        "buildgraph_app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "buildgraph_app/cli.py": "1f80aa9650e3432a2d4d367bd309fc2485a4a2e3a8171efecdf28b7d98c76e07",
+        "buildgraph_app/domain.py": "94a71af8f1435c866ee7e975b3ed250a3c5610088e433304f4402f1236dc2604",
+        "buildgraph_app/service.py": "bcfc40a8112ead1102006a8137451e0cb597cae157729723faecc88bd8c7d322",
+        "buildgraph_app/storage.py": "a7ed3fcc7804767511f3cd380dce18d873a3ca92688d32a475b5e7595a65feb5",
+        "policy.json": "f13b214e26f2df93ed948660fec90cc1278f4c6147b18fd30d9a7b24cc6ef8ce",
+        "solution.py": "eac460cfcf46e258e5a68dccde9607d38d582624dd196f82fca5c65b38900c5b"
+      },
+      "files_sha256": "a23549ed9c6a7e2cc1967c7ac721e09904235aec594b2bb646ab51cecb9b5512",
+      "fixture_stage_id": "buildgraph-4",
+      "policy_text": "{\"api\":2,\"schema\":2,\"max_import\":6}\n",
+      "source_kind": "trusted fixture known_files; not model candidate code",
+      "stage_index": 3
+    }
+  ],
+  "started_at": 1790816400.0398238,
+  "test_module_sha256": "c2b82da4ab1a4b0d310aa70fb55dffa7df7ac389f8376bbf6a44c86bcfc05bc6"
+}

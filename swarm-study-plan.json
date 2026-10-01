@@ -1,0 +1,125 @@
+{
+  "created_at": "2026-09-30T16:49:30.854755+00:00",
+  "purpose": "Exploratory candidate-selection pilot, frozen before any live calls",
+  "contract": {
+    "protocol": "candidate-selection-v1",
+    "sources": {
+      "swarm_experiment.py": "5b26740e0a894f721f9d5efaae91bcf303b9088994585c9eb63b72c199546b1c",
+      "swarm_fixture.py": "23aadf7e31474bdf07aadd4d269b1a0c215ab43c451ae5de50c92032708510ac",
+      "blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+      "selection.py": "54b2ea491646f8930a13b00ddb79359c35493b01991a9d183bafeb0da0b1e34d",
+      "worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104",
+      "gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+      "ledger.py": "4cc2b4aeae7a5d57a5a38996751072b6893fbefe8f06a367cce7423aa64d3686",
+      "promotion.py": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972",
+      "sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+      "pilot.py": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e",
+      "__main__.py": "859619e74c30019b87866d7e102b28de7788a6c61eae9d86dcbd015c310cd880"
+    },
+    "fixture": "c2151297153b200d581fade51e3a0ccc22207553b9371b21469f519c96781864",
+    "task_ids": [
+      "config-merge",
+      "config-pointers",
+      "config-expand",
+      "interval-union",
+      "interval-load",
+      "interval-slot",
+      "ledger-transfers",
+      "ledger-versions"
+    ],
+    "families": [
+      "config",
+      "interval",
+      "ledger"
+    ],
+    "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "models": {
+      "cheap": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "context_tokens": 400000,
+        "max_output_tokens": 128000,
+        "input_micro_usd_per_million": 750000,
+        "output_micro_usd_per_million": 4500000,
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+        "long_context_above_input_tokens": null,
+        "long_input_micro_usd_per_million": null,
+        "long_output_micro_usd_per_million": null,
+        "price_verified_on": "2026-09-30",
+        "endpoint": "https://api.openai.com/v1/responses",
+        "service_tier": "default",
+        "reasoning_effort": "low",
+        "configured_max_output_tokens": 4096,
+        "max_request_bytes": 512000,
+        "cached_input_accounting": "uncached_rate",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 318432
+      },
+      "strong": {
+        "model": "gpt-5.4-2026-03-05",
+        "context_tokens": 1050000,
+        "max_output_tokens": 128000,
+        "input_micro_usd_per_million": 2500000,
+        "output_micro_usd_per_million": 15000000,
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4",
+        "long_context_above_input_tokens": 272000,
+        "long_input_micro_usd_per_million": 5000000,
+        "long_output_micro_usd_per_million": 22500000,
+        "price_verified_on": "2026-09-30",
+        "endpoint": "https://api.openai.com/v1/responses",
+        "service_tier": "default",
+        "reasoning_effort": "low",
+        "configured_max_output_tokens": 4096,
+        "max_request_bytes": 512000,
+        "cached_input_accounting": "uncached_rate",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 5342160
+      }
+    },
+    "arms": [
+      "strong-single",
+      "cheap-sequential",
+      "pool-fixed",
+      "pool-fuzz",
+      "pool-reviewer"
+    ],
+    "candidates": 4,
+    "proposal_slots": 6,
+    "strong_attempts": 2,
+    "sequential_attempts": 4,
+    "policy_cap_micro_usd": 6000000,
+    "request_start_deadline_seconds": 900,
+    "selection": "public gate, fraction of unique valid cases, frozen anonymous order",
+    "test_label_condition": "oracle-assisted; invalid labels rejected without correction"
+  },
+  "repetitions": 2,
+  "nested_subsets": {
+    "sizes": [
+      1,
+      2,
+      4
+    ],
+    "rule": "prefix of each task-run frozen candidate_order",
+    "metric": "at least one candidate passes public and held-out checks",
+    "does_not_change_primary_winners": true
+  },
+  "primary_metrics": [
+    "selected success",
+    "candidate coverage",
+    "selector regret",
+    "harmful reviewer selection",
+    "full attributed token cost"
+  ],
+  "secondary_metrics": [
+    "valid, rejected, duplicate and distinguishing tests",
+    "post-freeze visible-hidden input overlap",
+    "container work and elapsed time as diagnostics"
+  ],
+  "interpretation": "Eight task identities in three related synthetic families; two repetitions are not independent project populations. Exploratory descriptive comparisons, no population significance claim.",
+  "scope_deferred": [
+    "strong baseline with the pool evidence",
+    "real repository tool-use loops",
+    "cross-model candidate diversity",
+    "broker-versus-gossip transport replay"
+  ],
+  "decision_rule": "Improve tasks if all methods saturate. Improve generation if candidate coverage is low. Improve selection if correct candidates are missed. Prefer the simpler baseline unless a measurable quality-cost benefit appears."
+}

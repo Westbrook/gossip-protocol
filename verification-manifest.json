@@ -1,0 +1,1121 @@
+{
+  "schema_version": 1,
+  "test_roots": [
+    "tests",
+    "simulation",
+    "analysis"
+  ],
+  "input_globs": [
+    "*.py",
+    "*.json",
+    "gossip_harness/**/*.py",
+    "tests/**/*.py",
+    "simulation/**/*.py",
+    "analysis/**/*.py",
+    "devtools/**/*.py",
+    "pyproject.toml",
+    "requirements*.txt",
+    "requirements*.lock",
+    "verification-manifest.json",
+    "AGENTS.md",
+    "devtools/**/*.json",
+    "devtools/**/*.cjs",
+    "scripts/*",
+    ".progress-report/project.json",
+    "*.html",
+    "analysis/*handoff_golden.json",
+    "analysis/sustained-posthoc-workflow-1/cases.json",
+    "analysis/sustained-posthoc-inventory-1/cases.json",
+    ".github/workflows/*.yml",
+    "MANIFEST.in"
+  ],
+  "retained_fixtures": [
+    "results/practical-live-1/accepted/single"
+  ],
+  "lanes": [
+    "fast",
+    "fixtures",
+    "git",
+    "docker"
+  ],
+  "default_lanes": [
+    "fast",
+    "fixtures",
+    "git"
+  ],
+  "classes": {
+    "tests/test_blackbox_validator.py::BlackboxValidatorTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only generic inputs enter candidate execution; bounded, strictly framed results are judged against the host oracle.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Forged pass fields, malformed framing, type-coerced answers, missing cleanup, or unsafe source could otherwise produce accepted evidence.",
+      "boundary": "Mocked Docker process and filesystem staging; host parser/oracle and receipt construction.",
+      "disposition": "Keep early in fast lane; run once before real Docker checks.",
+      "overlap_reason": "Sandbox tests cover the trusted-checker adapter; these tests cover the separate blackbox framing/oracle adapter. Real Docker tests verify effects that process mocks cannot establish."
+    },
+    "tests/test_blackbox_validator.py::BlackboxDockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The real pinned container runs each case in a fresh child process with bounded time/output and no access to expected answers.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Import-time printing, forged results, hangs, state carried between cases, or leaked checker data may bypass a correct-looking mocked invocation.",
+      "boundary": "Actual Docker image, process isolation, child supervisor and host result comparison; entirely offline candidates.",
+      "disposition": "Keep in explicit Docker lane after cheap gates; reuse one class preflight and run each method once.",
+      "overlap_reason": "Behavioral container checks complement BlackboxValidatorTests rather than repeating their mocked receipt assertions; do not select the whole mixed module twice."
+    },
+    "tests/test_budget_adjustment.py::BudgetAdjustmentTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "An authorized budget increase is atomic, idempotent, quiescent and preserves all existing charges, task state and promotion history.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Concurrent raises could both win, retries could double-apply, or cap changes could erase unsettled reservations or bypass pending promotion.",
+      "boundary": "Real disposable SQLite ledger with concurrent independent connections and persisted audit rows.",
+      "disposition": "Keep early in fast lane; retain per-test databases and concurrent race coverage.",
+      "overlap_reason": "LedgerTests checks normal reservation and lease transitions; this class checks the separate cap-change transaction and its audit/idempotency rules."
+    },
+    "tests/test_discovery_control.py::DiscoveryControlTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Discovery validates the exact complete rehearsal and bounds before work, normalizes repair feedback, and stops later arms on indeterminate cost.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Changed specs or incomplete rehearsal rosters could authorize work, or ambiguous scout/coding usage could allow additional requests.",
+      "boundary": "Discovery controller with fake fixtures, mocked Git/validation and deterministic worker failures; real temporary ledger data.",
+      "disposition": "Keep early in fast lane before any study rehearsal.",
+      "overlap_reason": "Pilot and swarm controllers have similar rules but separate entry paths and arm sequencing. DiscoveryDockerIntegrationTests additionally proves real repair and replay, without replacing cheap rejection gates."
+    },
+    "tests/test_discovery_integration.py::DiscoveryDockerIntegrationTests": {
+      "lane": "docker",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "A real failed scoped patch is repaired, promoted at the tested SHA, and replayed with identical normalized feedback and zero replay provider calls.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Timing noise in real checker output or mismatched recorded repair prompts could break replay or silently trigger extra work.",
+      "boundary": "Offline workers through actual Git, Docker, ledger, evidence delivery, recording and replay across four study arms.",
+      "disposition": "Keep as one explicit Docker integration run; retain its outputs and reuse report assertions.",
+      "overlap_reason": "Control tests inject outcomes and EvidenceTests isolates replay mechanics; this joins them to actual checker output and exact commit promotion. Its deliberate failed-first attempt is scenario coverage."
+    },
+    "tests/test_evidence.py::EvidenceTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Notes and recorded responses remain immutable, identity-bound and delivered consistently; exact replay never falls back to a live request.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Mutated notes, mismatched prompts, duplicate concurrent recordings or audit failures could alter evidence or double-spend known usage.",
+      "boundary": "Synthetic evidence files, deterministic workers, in-memory transports and response-cache/audit persistence.",
+      "disposition": "Keep early in fast lane with process isolation for patches.",
+      "overlap_reason": "TransportTests owns replication mechanics, WorkerTests owns provider decoding, and discovery integration owns real end-to-end repair; this class owns the evidence/replay binding between them."
+    },
+    "tests/test_experiment.py::ExperimentTests": {
+      "lane": "git",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Every topology/transport combination preserves task ancestry, exact tested promotion, conflict classification and equivalent release state.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "An unpublished inherited dependency, semantic conflict, missing integration check or delivery-order violation could escape a correct Git primitive.",
+      "boundary": "One shared real-Git scenario matrix with independent repositories; assertions reuse its retained report and trace.",
+      "disposition": "Keep class intact in Git lane after fast gates; retain one matrix and run all report assertions against it.",
+      "overlap_reason": "GitStoreTests exercises adversarial primitive cases; this matrix compares orchestration across topology/transport combinations. The assertions share one execution rather than rerunning each invariant."
+    },
+    "tests/test_gitstore.py::GitStoreTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Independent stores prepare without publishing, enforce scope/history, and accept only an unchanged exact tested commit with a matching expected head.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Stale CAS, reverted out-of-scope history, index-hidden mutations or unprepared commits could incorrectly advance an accepted ref.",
+      "boundary": "Actual Git object stores, refs, merge/index behavior and validator callbacks with fresh per-test repositories.",
+      "disposition": "Keep in Git lane after fast gates; preserve mutable repository isolation and distinct adversarial cases.",
+      "overlap_reason": "PromotionTests adds ledger/crash coordination and ExperimentTests adds distributed routing; their higher-level success does not cover these explicit malformed-history and mutation cases."
+    },
+    "tests/test_ledger.py::LedgerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Lease epochs, reservations, task dependencies and promotion intents remain atomic and durable under races and expiry.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Expired workers could retain authority, concurrent claims overspend, or a rejected/incomplete intent could release dependent work.",
+      "boundary": "Real disposable SQLite transactions with independent connections, controlled clocks and reopen persistence.",
+      "disposition": "Keep early in fast lane; use explicit time values and preserve concurrent-connection checks.",
+      "overlap_reason": "BudgetAdjustmentTests owns cap changes, PromotionTests owns Git/ledger reconciliation, and the pilot heartbeat proves real renewal scheduling. These direct ledger transitions give cheaper failure localization."
+    },
+    "tests/test_model_profiles.py::ModelProfileTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only registered dated model profiles determine conservative reservations and exact token pricing, including long-context boundaries.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A model/tier mismatch, impossible token count or rounding error could under-reserve or under-charge provider usage.",
+      "boundary": "Offline profile registry and request/accounting conversion using injected provider responses.",
+      "disposition": "Keep early in fast lane before any provider-capable workflow.",
+      "overlap_reason": "WorkerTests checks provider protocol handling and generic accounting failure behavior; this class checks profile-specific rates, context thresholds and manifest immutability."
+    },
+    "tests/test_pilot_control.py::PilotControlTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The pilot rejects missing/mismatched rehearsal or budget before work, conservatively accounts for failed calls, and fences failed or expired heartbeats.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A late guard could start requests, ambiguous usage could release budget, or a renewal failure could still permit publication.",
+      "boundary": "Mocked Git/validator/provider entry paths plus real temporary ledger and one live lease-renewal thread.",
+      "disposition": "Move from Git to fast lane; preserve the single real heartbeat expiry proof and its thread cleanup.",
+      "overlap_reason": "LedgerTests uses controlled time for state transitions; this class proves the real renewal loop plus pilot-specific early guards. Pilot Docker integration covers the actual repair/promotion path."
+    },
+    "tests/test_pilot_fixture.py::PilotFixtureTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The trusted pilot checker executes a complete suite, accepts the reference solution, rejects deliberate mutants, and keeps task-local success distinct from project success.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "An empty/partial checker, float-coerced output, reused result object or leaked oracle could make the coding task vacuous.",
+      "boundary": "Only repository-owned fixture and checker sources execute in isolated host subprocesses.",
+      "disposition": "Keep in fixtures lane; batch the class once after fast gates and preserve fresh-process fixture behavior.",
+      "overlap_reason": "Pilot integration checks orchestration with Docker, while these tests establish that the fixture/checker can detect known semantic defects and support independently solvable tasks."
+    },
+    "tests/test_pilot_integration.py::PilotDockerIntegrationTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "A failed local patch receives feedback, repairs on the next attempt, completes its ledger task and publishes precisely the Docker-tested release SHA.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Lost feedback, extra worker calls, omitted integration/release checks or promotion of an untested commit could pass mocked controller tests.",
+      "boundary": "One offline worker through actual Docker checks, Git stores, ledger, promotion coordinator and trace ordering.",
+      "disposition": "Keep as one explicit Docker integration run after cheap gates; retain evidence on every outcome.",
+      "overlap_reason": "Fixture and control tests isolate checker quality and controller rejection paths; this joins them. Local, merged integration and release assertions remain separate trust-boundary observations."
+    },
+    "tests/test_promotion.py::PromotionTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "A durable promotion intent reconciles exact tested Git publication with task completion, including crash windows and concurrent recovery.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A crash could leave a published commit unrecorded, release stale work, or let recovery cancel an active promotion.",
+      "boundary": "Actual Git refs plus real SQLite intents, simulated crash points and coordinated threads.",
+      "disposition": "Keep in Git lane; preserve crash/reopen and recovery-race coverage.",
+      "overlap_reason": "GitStoreTests checks ref acceptance and LedgerTests checks transactions separately; this class checks cross-resource ordering and recovery that neither primitive alone establishes."
+    },
+    "tests/test_recovery_experiment.py::RecoveryTests": {
+      "lane": "git",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Recovery binds repairs and notices to the current base/spec/lease, conserves known or reserved cost, and replays only the frozen accepted repair.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "methods": {
+        "test_real_docker_repair_and_partition_replay": {
+          "lane": "docker",
+          "weight": 2
+        }
+      },
+      "distinct_defect": "Malformed patches, stale notes, incomplete completion receipts, mismatched seeds or partition replay could publish an unrelated or untested repair.",
+      "boundary": "Mixed cheap controller contracts and real Git/trusted-host fixture recovery; one method explicitly crosses the Docker boundary.",
+      "disposition": "Keep Git methods together for now with Docker method selected only in Docker lane; consider a later cheap-control split using measured cost.",
+      "overlap_reason": "Ledger/transport/Git primitive tests do not prove the combined recovery protocol or seed reuse. The Docker method confirms the real sandbox path; do not repeat the remaining class methods in that lane."
+    },
+    "tests/test_research_fixture.py::ResearchFixtureTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The research upgrade starts from the exact retained v1 project, requires real v2 work, preserves legacy behavior and rejects deliberate upgrade mutants.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Baseline drift, trivial/no-op feature work, partial upgrades, unit/graph/order/type errors or oracle leakage could invalidate the study fixture.",
+      "boundary": "Explicit retained baseline bytes plus trusted fixture/checker subprocesses; no generated candidates are imported.",
+      "disposition": "Keep in fixtures lane and fingerprint its declared retained baseline; exclude unrelated historical trees.",
+      "overlap_reason": "PilotFixtureTests proves v1 behavior, whereas this class proves the v1-to-v2 starting point and new contract. Legacy checks are an intentional regression requirement."
+    },
+    "tests/test_retain_swarm.py::RetainSwarmTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Retained swarm accounting reconciles invocation costs, settled reservations and cumulative budget deltas without changing the ledger; proposal counts distinguish duplicates from rejected cases and batches.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A retained summary silently accepts a mismatched charge, unsettled reservation or duplicate-count inflation.",
+      "boundary": "Read-only retention helpers against a real temporary SQLite ledger and synthetic proposal receipts; no Git, Docker or provider calls.",
+      "disposition": "Keep early in fast; isolate each mutable ledger and retain the byte-preservation assertion.",
+      "overlap_reason": "Runtime budget checks guard spending while this class independently guards the exported retrospective accounting and proposal-count interpretation."
+    },
+    "tests/test_sandbox.py::DockerValidatorTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The trusted-checker sandbox stages only permitted files, enforces pinned constrained execution, bounds output/time and verifies cleanup before acceptance.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Secret-bearing staging, symlink/FIFO traversal, missing limits, leaked exception text or unverifiable container removal could violate the execution contract.",
+      "boundary": "Filesystem staging and mocked Docker CLI lifecycle for the trusted-checker adapter.",
+      "disposition": "Keep early in fast lane; exercise failures without launching Docker.",
+      "overlap_reason": "BlackboxValidatorTests covers a separate transport/oracle adapter sharing sandbox constraints. Retain adapter-specific invocation assertions until shared code plus regression evidence justifies consolidation."
+    },
+    "tests/test_selection.py::ProposalValidationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Proposed cases are bounded, oracle-validated and bound to immutable contract/input/provenance; invalid batches are rejected atomically.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "An incorrect expected value, mutated input, duplicate case or truncated partially accepted batch could contaminate candidate evaluation.",
+      "boundary": "Data-only proposed JSON cases and a trusted host oracle; no candidate execution.",
+      "disposition": "Keep early in fast lane before candidate validation or study scheduling.",
+      "overlap_reason": "PoolAndSelectionTests assumes valid cases and owns deduplication/scoring; this class owns admission to that pool. Blackbox tests own execution, not case authoring."
+    },
+    "tests/test_selection.py::PoolAndSelectionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Selection deduplicates behavioral cases, honors public gates and deterministic tie-breaking, and keeps sealed evaluation separate from selection.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Duplicated cases could inflate scores, missing outcomes could be treated as passes, or hidden results could select the winner.",
+      "boundary": "Data-only candidate/case pools and complete outcome matrices; no Docker or provider work.",
+      "disposition": "Keep early in fast lane before expensive matrix execution.",
+      "overlap_reason": "ProposalValidationTests owns oracle admission and study controllers own when selection occurs; this class owns the deterministic scoring and leakage boundary between them."
+    },
+    "tests/test_sustained_audit.py::SustainedAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A sustained audit binds retained source, trajectory, requests, controls, validation, exports, handoff and ledger evidence without executing frozen source, and reports incomplete coverage honestly.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Tampered evidence passes audit, partial studies count unexecuted projects, or selected hidden recovery is confused with proposal regressions.",
+      "boundary": "Synthetic on-disk evidence and real SQLite with a read-only fake Git object reader; retained source intentionally raises if executed.",
+      "disposition": "Keep early in fast; keep independent tamper subcases because they target different evidence links.",
+      "overlap_reason": "Controller and receipt checks cover evidence production; this class tests independent reconstruction from retained artifacts and cross-artifact consistency."
+    },
+    "tests/test_sustained_checkpoint.py::CheckpointWriteTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Checkpoint bytes are deterministically hashed, file-and-directory fsynced and atomically replaced; failed or invalid writes preserve the previous checkpoint.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Nonfinite/nonobject JSON is accepted, hashes bind different bytes, durability calls are omitted, or replacement failure destroys the previous checkpoint or leaves temporary files.",
+      "boundary": "Real local filesystem writes with targeted fsync and replace interception.",
+      "disposition": "Keep early in fast.",
+      "overlap_reason": "Load tests do not establish atomic write behavior or durability-call ordering; integrated restart rehearsal does not inject every write failure."
+    },
+    "tests/test_sustained_checkpoint.py::CheckpointLoadTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "A checkpoint resumes only in a different process with matching bytes and contract, a stable Git tree, complete stage history and settled valid ledger without mutating accounting.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Tampered bytes, duplicate keys, concurrent head changes, invalid stages, unsettled reservations, pending promotion or missing ledgers are accepted during resume.",
+      "boundary": "Real Git repository, SQLite ledger, checkpoint files and a real child Python process, with focused race injection.",
+      "disposition": "Move from fixtures to Git; retain shared immutable class setup and the deliberate child-process restart probe.",
+      "overlap_reason": "These probes challenge local handoff rejection and ledger immutability; publication covers promotion and complete rehearsal covers integrated deliberate restart."
+    },
+    "tests/test_sustained_experiment.py::SustainedContractTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The scientific contract binds protocol, image, sources, fixtures, models, roster and metrics; rehearsal approval requires complete exact accepted coverage, verified repair and distinct process IDs.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Stale, incomplete, duplicate, interrupted, wrong-contract, unrepaired or same-process evidence authorizes a live run.",
+      "boundary": "Contract construction and in-memory proof validation with source and fixture digest inspection.",
+      "disposition": "Keep early in fast before costly rehearsal or provider preflight.",
+      "overlap_reason": "Checkpoint loading verifies one handoff; this verifies the full authorization roster and execution contract without rerunning the rehearsal."
+    },
+    "tests/test_sustained_experiment.py::SustainedEvaluationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The controller consumes only evaluation receipts bound to exact source and ordered cases with verified cleanup and strictly typed, consistent outcomes and status.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Infrastructure failure, malformed outcomes, source/suite mismatch, truthy nonbooleans or inconsistent pass/fail status becomes valid correctness evidence.",
+      "boundary": "Mock validator responses at the sustained controller receipt-consumption boundary.",
+      "disposition": "Keep early in fast.",
+      "overlap_reason": "Validator tests establish producer behavior; this class checks that the controller independently rejects invalid evidence supplied by that producer."
+    },
+    "tests/test_sustained_experiment.py::SustainedKnownWorkerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The free rehearsal worker faults only the intended first-round selected backend, supplies complete control metadata, preserves fixtures and requests repair before accepting without reviewer source edits.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Fault injection affects unrelated candidates or later rounds, omits allowed files, charges synthetic work, mutates fixtures or permits reviewer source changes.",
+      "boundary": "Trusted fixture dictionaries, generated source strings and parsed control/review JSON; no candidate execution.",
+      "disposition": "Move from fixtures to fast and use its 180-second budget; this class assembles strings and dictionaries rather than executing fixtures.",
+      "overlap_reason": "Fixture execution verifies application behavior; these probes verify the deterministic fault and review script that makes the separate rehearsal meaningful."
+    },
+    "tests/test_sustained_experiment.py::SustainedCredentialTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Synthetic credential files accept supported environment syntax, reject duplicate/missing/symlink inputs and disclose no credentials in captured output or errors.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Ambiguous credential selection, symlink acceptance or secret disclosure occurs on successful or failed loading.",
+      "boundary": "Temporary credential files and symlink with captured stdout/stderr; synthetic credentials only.",
+      "disposition": "Keep early in fast.",
+      "overlap_reason": "Contract, evaluator and publication classes do not exercise credential-file parsing and disclosure behavior."
+    },
+    "tests/test_sustained_experiment.py::SustainedPublicationTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Only the exact tested tree is published with settled accounting; shared source stays unchanged, accepted checkpoints can become final releases and completed billing records do not certify incomplete projects.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Untested files publish, the shared base changes, promotion intents remain pending, valid checkpoint promotion fails or accounting completion is mistaken for acceptance.",
+      "boundary": "Real Git repositories and SQLite promotion/finalization with mocked source-and-suite-bound evaluation receipts.",
+      "disposition": "Keep in Git; preserve class-level immutable setup and per-test mutable ledgers.",
+      "overlap_reason": "Lower-level Git and ledger tests do not prove sustained finalization wiring; mocked evaluation isolates publication without repeating sandbox execution."
+    },
+    "tests/test_sustained_inventory.py::InventoryFixturesTest": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Inventory fixture stages preserve prior requirements, bounded disjoint cases and reservation/stock invariants; realistic mutants pass simple checks but fail advanced and hidden requirements.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A frozen benchmark oracle regresses earlier inventory behavior, contains inconsistent stock expectations, or lets a known plausible mutant pass its quality bar.",
+      "boundary": "Trusted repository-owned fixture source imported from temporary repositories on the host; no model-generated source, Git, Docker or provider calls.",
+      "disposition": "Keep in fixtures after fast gates; reuse trusted immutable source while preserving mutable per-case storage isolation.",
+      "overlap_reason": "Cumulative earlier cases deliberately run against different milestone implementations; expected-state invariants and mutation checks assess oracle and suite quality beyond agreement with known implementations.",
+      "resource_note": "Reserve the complete configured budget during this class: preserved3\u20134second nested CLI deadlines failed under competing fixture startup. Minimum4slots; exclusivity also applies with larger budgets.",
+      "exclusive": true
+    },
+    "tests/test_sustained_pool_diagnostic.py::SustainedPoolDiagnosticTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Posthoc pool analysis uses latest bound candidates, distinguishes eligible regret from primary acceptance, reuses only matching evaluation receipts and never overwrites study evidence or existing output.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A stale candidate, wrong historical suite/settings, invalid receipt reuse or hidden-passing incomplete run produces a misleading diagnostic or overwrites primary results.",
+      "boundary": "Real immutable Git template repositories copied into per-test study fixtures, frozen source snapshots and a fake validator; candidate source is not executed.",
+      "disposition": "Keep shared immutable class setup in Git; a 600-second worker watchdog accommodates the measured 145-second class without changing validator deadlines or diagnostic semantics.",
+      "overlap_reason": "The sustained audit checks primary evidence integrity; this class checks the separate posthoc candidate-pool interpretation, exact diagnostic reuse and output lifecycle."
+    },
+    "tests/test_sustained_queue.py::WorkflowFixtureTests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Workflow fixture stages preserve cumulative requirements and private-case separation; expiry, atomic-batch and retry-receipt mutants remain distinguishable from acceptable implementations.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "A workflow benchmark loses an earlier milestone, leaks or duplicates heldout input, or misses a plausible expiry/rollback/idempotency bug.",
+      "boundary": "Repository-owned source in temporary repositories; each solve starts an isolated Python subprocess and uses bounded JSON transport.",
+      "disposition": "Keep in fixtures; investigate batching interpreter setup across cases only after documenting and preserving state and deliberate restart boundaries.",
+      "overlap_reason": "Earlier cases target changed milestone implementations and mutants, so cumulative checks are purposeful; they test workflow-specific state transitions rather than the inventory fixture contract.",
+      "resource_note": "Reserve the complete configured budget during this class: preserved3\u20134second nested CLI deadlines failed under competing fixture startup. Minimum4slots; exclusivity also applies with larger budgets.",
+      "exclusive": true
+    },
+    "tests/test_sustained_stage.py::SustainedStageTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A stage retains proposed source before evaluation, accepts completion only with valid control and passing cumulative evidence, preserves prior context, and bounds independent portfolio generation and selected-slot repair.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "False completion, leaked hidden/future evidence, atomic-scope violations, infinite repair on infrastructure failures or fallback notes belonging to another candidate change study behavior.",
+      "boundary": "In-memory fixture callbacks and scripted worker results with a four-thread generation barrier; no Git, Docker, HTTP or candidate execution.",
+      "disposition": "Keep early in fast with class-process isolation; account for its internal four-worker portfolio test when budgeting concurrent classes.",
+      "overlap_reason": "Receipt schema and publication tests cover adjacent boundaries; this class tests stage policy decisions and context transfer under those outcomes, including deliberate cumulative regression checks."
+    },
+    "tests/test_swarm_control.py::SwarmControlTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Swarm orchestration requires exact rehearsal and pinned profiles before spending, freezes selections before hidden evaluation, attributes shared-pool costs once and stops safely on unknown usage or infrastructure failure.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "methods": {
+        "test_unknown_usage_preserves_reservation_and_stops_remaining_tasks": {
+          "lane": "git",
+          "timeout_seconds": 600
+        },
+        "test_frozen_pool_cost_attribution_holdout_boundary_and_exact_publication": {
+          "lane": "git",
+          "weight": 4,
+          "timeout_seconds": 600
+        },
+        "test_infrastructure_failure_is_not_recorded_as_model_incorrectness": {
+          "lane": "git",
+          "timeout_seconds": 600
+        }
+      },
+      "distinct_defect": "Live guards allow invalid evidence or injected workers, holdout leaks before selection, shared pool costs are misattributed, or unknown usage triggers additional requests.",
+      "boundary": "Fake task roster, scripted workers and mocked validator/provider transports, with real SQLite and real Git-backed case publication in several methods.",
+      "disposition": "Run pure guards in fast and real Git-backed cases in Git. The Git worker watchdog is 600 seconds after a 147-second qualification; candidate and scientific deadlines are unchanged.",
+      "overlap_reason": "Direct fixture and validator tests do not cover orchestration ordering, durable selection barriers and full-arm cost attribution; the real Git case verifies the exact publication boundary."
+    },
+    "tests/test_swarm_fixture.py::SwarmFixtureTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The frozen swarm roster has disjoint public/hidden/fuzz pools, private data stays out of worker manifests, trusted implementations agree with the oracle, and holdouts reject plausible mutants within transport bounds.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Benchmark answers are inconsistent, hidden data leaks or signatures miss changed fixtures, input/output bounds exceed transport, or public-surviving mutants escape final evaluation.",
+      "boundary": "Trusted repository-owned oracle, known solution and mutant source executed on host with deterministic random seeds; no candidate, Git, Docker or provider execution.",
+      "disposition": "Keep in fixtures after fast gates; preserve process isolation for tests that temporarily mutate shared fixture globals.",
+      "overlap_reason": "Frozen-case agreement, additional seeded inputs, conservation properties and mutation checks assess different oracle/suite weaknesses; final candidate sandbox execution remains a separate boundary."
+    },
+    "tests/test_transport.py::EventTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Event identity covers canonical public content and immutable payloads; tampering, invalid JSON and wrong-origin publication fail.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Mutable or ambiguously serialized payloads could reuse a trusted event ID for different content.",
+      "boundary": "Event creation, defensive serialization and publish admission with in-memory data.",
+      "disposition": "Keep early in fast lane before transport/integration tests.",
+      "overlap_reason": "TransportTests assumes valid events and checks replication; EvidenceTests binds event content to scientific provenance. Event hashes alone certify neither provenance nor semantic truth."
+    },
+    "tests/test_transport.py::TransportTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Bus and gossip replicate the same valid records under deterministic rounds, bounded batches, loss, partitions and healing without within-round relay.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Broker bypass, unfair backlog handling, duplicate processing or snapshot leakage could distort reachability and delivery accounting.",
+      "boundary": "In-memory event transport with seeded faults and explicit round advancement.",
+      "disposition": "Keep early in fast lane; preserve fault-model and bus/gossip boundary cases.",
+      "overlap_reason": "DisseminationTests checks a separate abstract model; experiment integrations connect delivery to software acceptance. Replication convergence intentionally does not assert project correctness."
+    },
+    "tests/test_verification_buildgraph.py::BuildGraphVerificationTests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Build-graph stages, domains and frozen case rosters agree with trusted reference and cumulative known implementations; selected mutants fail relevant hidden cases.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Detects stale cache invalidation, incorrect replay/state precedence, hard-coded policy limits, fixture/reference disagreement and malformed input handling.",
+      "boundary": "Trusted build-graph source executes in isolated Python subprocesses; no model candidate code, Docker or provider access.",
+      "disposition": "keep fixtures; measure interpreter startup cost before batching",
+      "overlap_reason": "Like other fixture suites it checks a reference against known source, but the build-graph dependency/cache and policy-transition behaviors differ; cumulative stages intentionally detect regressions.",
+      "resource_note": "Reserve the complete configured budget during this class: preserved3\u20134second nested CLI deadlines failed under competing fixture startup. Minimum4slots; exclusivity also applies with larger budgets.",
+      "exclusive": true
+    },
+    "tests/test_verification_calendar.py::CalendarFixtureTests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "invariant": "Calendar stages, domains and frozen rosters agree with the SQLite reference and cumulative trusted implementations; selected mutants expose maintenance defects.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Detects reservation boundary, rollback, fencing and waitlist defects, hard-coded trusted policy, invalid probe domains and input mutation.",
+      "boundary": "Trusted calendar implementations execute against isolated temporary repositories; reference comparisons and fixed-seed interleavings require no Docker or provider.",
+      "disposition": "keep fixtures",
+      "overlap_reason": "Fixture schema checks resemble BuildGraphVerificationTests, while calendar-specific transaction, lease and policy semantics require separate evidence; cumulative cases test preserved earlier behavior.",
+      "resource_note": "Reserve the complete configured budget during this class: preserved3\u20134second nested CLI deadlines failed under competing fixture startup. Minimum4slots; exclusivity also applies with larger budgets.",
+      "exclusive": true
+    },
+    "tests/test_verification_integration.py::PolicyIntegrationTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Independent policy merges preserve current backend source, bind acceptance to the merged tree and reject stale evidence or text conflicts without moving accepted heads.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "methods": {
+        "test_only_complete_policy_update_is_allowed_before_sources_are_read": {
+          "lane": "fast"
+        },
+        "test_exact_tree_validator_rejects_extra_files_and_symlinks": {
+          "lane": "fast"
+        }
+      },
+      "distinct_defect": "Detects policy updates that overwrite backend changes, stale-CAS acceptance, shared Git alternates, invalid update scope and extra-file/symlink tree mismatches.",
+      "boundary": "Real independent Git stores plus text-only validators; candidate source is deliberately non-executable.",
+      "disposition": "keep git integration; cheap input/tree guards are candidates for fast method overrides",
+      "overlap_reason": "Generic Git acceptance contracts do not establish the trusted policy-integration flow; direct tree/scope guards cover rejection before reading or merging sources."
+    },
+    "tests/test_verification_journal.py::VerificationJournalTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Durable request results precede idempotent ledger settlement; replay and concurrent callers never dispatch a known call twice, and ambiguous outcomes remain reserved.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Detects duplicate dispatch or reservation ownership, corrupt journal reuse, lost responses, and replay after a real SIGKILL at the persisted-response boundary.",
+      "boundary": "Local file journal and SQLite ledger with synthetic workers, concurrent threads and one deliberate child-process kill/restart; no provider calls.",
+      "disposition": "keep fixtures integration; preserve deliberate process restart",
+      "overlap_reason": "Mocked interruption tests identify individual write/settlement boundaries; the SIGKILL test additionally proves durable recovery across an actual process death."
+    },
+    "tests/test_verification_probes.py::VerificationProbeTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Probe admission is bounded, typed, deterministic and data-only; exact input deduplication and provenance survive valid revalidation while changed contracts retire probes explicitly.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Rejects malformed or oversized envelopes, wrong expectations, duplicate inputs, tampered provenance, backward stage transitions and unexpected oracle failures.",
+      "boundary": "Pure probe parser and revalidation functions with small synthetic reference/domain callbacks.",
+      "disposition": "keep early",
+      "overlap_reason": "Stage tests reuse the probe gate, but these isolate parser limits, typing and callback mutation/error behavior; real-fixture oracle tests separately cover production domain semantics."
+    },
+    "tests/test_verification_stage.py::VerificationStageTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "All review policies share bounded completion rules; admitted probes cross-check candidates, survive repairs and block acceptance until source and reviewer requirements pass.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Detects automatic acceptance or repair, bypassed probe gates, stale source evidence, leaked private context, unstable concurrent replay and unauthorized edits.",
+      "boundary": "Stage orchestration with synthetic builder/reviewer callbacks and evaluation receipts; candidate text is interpreted as test data only.",
+      "disposition": "keep early before fixture and rehearsal execution",
+      "overlap_reason": "Probe parser tests establish admission rules; this suite establishes that the stage invokes and obeys them during selection, repair and review. Final-gate tests cover the later release barrier."
+    },
+    "tests/test_worker.py::WorkerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Provider requests/responses enforce the pinned protocol and patch scope while preserving known usage, retaining unknown reservations and suppressing secrets.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Malformed responses, redirects, model/tier drift, ambiguous usage or automatic retries could publish invalid patches or misaccount spend.",
+      "boundary": "Injected offline HTTP transport, response decoder, patch validator and accounting; no credentials or live calls.",
+      "disposition": "Keep early in fast lane before any provider-capable execution.",
+      "overlap_reason": "ModelProfileTests checks profile-specific rate/context math; this class checks HTTP/payload/error handling. Controllers separately prove that conservative failures stop later work."
+    },
+    "simulation/test_dissemination.py::DisseminationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The abstract push/push-pull model preserves synchronous rounds, seeded contacts, monotonic knowledge and honest completion/percentile accounting.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Within-round cascades, duplicate/self peers, censored failures or incorrect percentiles could produce misleading dissemination estimates.",
+      "boundary": "Pure deterministic simulation and summary calculations, independent of Git or application acceptance.",
+      "disposition": "Keep early in fast lane and include simulation discovery exactly once.",
+      "overlap_reason": "TransportTests validates event-level bus/gossip implementation; this separately validates the mathematical experiment model and aggregate statistics."
+    },
+    "analysis/test_sustained_review_probes.py::ProbeSafetyTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Post-hoc probes require the exact completed primary roster, immutable inputs and a fresh separate output; reached but unaccepted final sources remain eligible and unreached stages remain explicit.",
+      "isolation": "class process; setUpClass once; fresh mutable test fixtures",
+      "overlap": "Mocks prove host contracts; fixture, Git and Docker lanes prove distinct execution boundaries.",
+      "distinct_defect": "Prevents probing an incomplete study, overwriting primary evidence, overlooking snapshot changes, silently omitting unaccepted sources or accepting infrastructure-error receipts.",
+      "boundary": "Post-hoc runner gates and retained frozen case hashes with a mocked BlackboxValidator; no Docker or candidate execution.",
+      "disposition": "keep early; include analysis discovery",
+      "overlap_reason": "Main study finalization and generic receipt checks do not establish post-hoc eligibility, primary-evidence separation or the distinction between unreached and unaccepted final stages."
+    },
+    "tests/test_devtools_verify.py::VerificationRunnerTests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "timeout_seconds": 180,
+      "invariant": "The runner discovers every owned test exactly, enforces static/fast barriers, schedules bounded isolated shards, and reuses only intact matching evidence.",
+      "isolation": "class process with disposable fixture roots",
+      "overlap": "Runner contract tests exercise isolated child processes only.",
+      "distinct_defect": "Missed analysis tests, duplicate Docker selection, hidden skips, oversubscription, stale/tampered receipts or orphaned timed-out work could create false green results.",
+      "boundary": "Disposable miniature projects and real child test processes; fake static commands isolate scheduler behavior.",
+      "disposition": "Keep in fixtures lane because it starts child processes; run once after static/fast prerequisites.",
+      "overlap_reason": "StaticGateTests owns actual type/lint behavior and ArtifactDirectoryTests owns directory retention. This class proves their orchestration and evidence lifecycle rather than repeating each check implementation."
+    },
+    "tests/test_devtools_static.py::StaticGateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Owned source receives non-executing syntax, pinned type and lint gates; exact legacy debt cannot suppress changed or newly introduced diagnostics.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Misconfigured roots, missing/wrong tools, disabled checks, generated-tree scans or broad baselines could silently weaken the earliest failure gate.",
+      "boundary": "Disposable source trees, instrumented tool launches and real pinned checker negative examples.",
+      "disposition": "Keep early in fast lane after the top-level static gate; preserve the negative examples proving failures are detected.",
+      "overlap_reason": "VerificationRunnerTests checks that a failed static result blocks children; this class establishes how that result is produced, including configuration and type-debt integrity."
+    },
+    "tests/test_frozen_sources.py::FrozenSourcesTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Frozen-source export copies only exact contract-bound bytes without importing archived code and preserves an existing destination.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Rejects mismatched contracts, tampered or mid-export-changing sources, symlinks, traversal and case collisions before publishing an export.",
+      "boundary": "Read-only archived evidence validation and staged filesystem materialization using disposable fixtures.",
+      "disposition": "keep early",
+      "overlap_reason": "Other retention tests protect run artifacts; this suite protects the narrower archival-source export boundary and demonstrates that source text is never executed."
+    },
+    "tests/test_validation_session.py::ValidationSessionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Validation sessions bound worker capacity, preserve deterministic result order and exact observation provenance, and reuse only eligible deterministic proofs.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Detects duplicate visible execution, excessive nested parallelism, cache corruption or stale bindings, reused infrastructure failures, skipped independent observations and evidence lost on cancellation or source change.",
+      "boundary": "Validation session and CLI manifest handling with fake validator/runtime identities, local retained receipts and real threads; no Docker or candidate execution.",
+      "disposition": "keep early",
+      "overlap_reason": "Development-runner receipt tests and study state tests cover different scheduling/reuse layers; this suite specifically binds candidate validation observations, resource capacity and independent-purpose exclusions."
+    },
+    "tests/test_verification_experiment.py::VerificationContractTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The experiment contract freezes sources, policy budgets and four-stage behavior; rehearsal qualification requires an exact completed roster and genuine restart, repair and probe evidence.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Changed contracts, missing or duplicate cases, forged restart evidence and incomplete repair/probe execution must not qualify a rehearsal.",
+      "boundary": "Contract construction and rehearsal proof validation; provider invocation is forbidden.",
+      "disposition": "keep early",
+      "overlap_reason": "Checks qualification evidence without executing a rehearsal; complements rather than duplicates costly rehearsal execution."
+    },
+    "tests/test_verification_experiment.py::VerificationStateTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Resumable state matches the exact contract, completed stage history and Git source; cached receipts match source, suite, image and execution limits.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Rejects tampered history or Git/source state and receipts with stale execution bindings or invalid status types.",
+      "boundary": "Persisted state and receipt validation, with one shared real Git fixture.",
+      "disposition": "keep; review fast lane real-Git cost and preserve shared class setup",
+      "overlap_reason": "Receipt coverage establishes general binding rules; OracleGateTests separately checks real probe projection and valid failed receipts."
+    },
+    "tests/test_verification_experiment.py::VerificationOracleGateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Trusted fixtures admit correctly labeled, unique data-only probes; saved probes are revalidated and retired across stages, and receipts bind the actual blackbox projection.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Rejects bad labels and duplicates, prevents host execution, detects altered expected values and preserves probe provenance through repaired milestones.",
+      "boundary": "Real fixture oracles, blackbox input projection and stage-engine integration with synthetic evaluation receipts.",
+      "disposition": "keep early; retain combined two-stage regression",
+      "overlap_reason": "Uses real fixture semantics and stage integration absent from generic receipt/state checks; candidate execution and Docker remain outside this boundary."
+    },
+    "tests/test_verification_experiment.py::VerificationChildReplayTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A changed contract or tampered checkpoint stops replay before credentials, provider/candidate execution or spending.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Rejecting invalid replay after external access or accounting side effects is too late; these tests enforce ordering.",
+      "boundary": "Child replay entry point, persisted checkpoint bytes and local SQLite ledger.",
+      "disposition": "keep early",
+      "overlap_reason": "Exercises rejection ordering through the child entry point; direct state validation alone cannot establish that ordering."
+    },
+    "tests/test_verification_experiment.py::VerificationFinalGateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A final generated-probe failure blocks promotion even when hidden checks pass, while aggregate metrics preserve the actual trajectory.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Final evaluation must not omit generated probes, promote failed quality or lose accumulated probe and blocked-acceptance metrics.",
+      "boundary": "Finalization and promotion barrier with synthetic trajectory and mocked blackbox evaluation.",
+      "disposition": "keep early before rehearsal",
+      "overlap_reason": "Tests the terminal release decision independently of stage acceptance; neither oracle admission nor rehearsal qualification proves this barrier."
+    },
+    "tests/test_artifact_support.py::ArtifactDirectoryTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only owned successful temporary work is removed; failures, expensive fixtures and explicit outputs remain identifiable without overwriting existing evidence.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Context or class-setup failure could delete diagnostic sources/receipts, or repeated tests could collide with or delete caller-owned output.",
+      "boundary": "Disposable directories, symlinks, context-manager exceptions and unittest class cleanup; no Git/Docker.",
+      "disposition": "Keep early in fast lane; test retention policy without expensive fixtures.",
+      "overlap_reason": "VerificationRunnerTests owns child logs/session receipts and exporters own published study archives; this helper owns per-test workspace cleanup and legacy output overrides."
+    },
+    "tests/test_retain_experiments.py::RetainExperimentsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Retention validates accounting and exact source/trace/Git bindings before atomically publishing a fresh complete export.",
+      "isolation": "class process with disposable fixtures",
+      "overlap": "Distinct development-tool or exporter boundary.",
+      "distinct_defect": "Stale ledgers, raced release heads, changing inputs, unsafe paths or partial writes could leave a misleading or overwritten archive.",
+      "boundary": "Synthetic retained runs and real SQLite/filesystem transactions with a mocked Git reader; no candidate execution.",
+      "disposition": "Keep early in fast lane before attempting actual exports.",
+      "overlap_reason": "RetainSwarmTests checks the swarm-specific archive schema and diagnostics; these tests own discovery/recovery export accounting, byte preservation and transactional publication."
+    },
+    "tests/test_verify_auxiliary.py::AuxiliaryVerificationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 60,
+      "invariant": "External source bindings and browser receipt validation",
+      "isolation": "class process with temporary roots",
+      "overlap": "Synthetic receipts and discovery do not repeat browser execution.",
+      "distinct_defect": "Missing external sources, mutated report inputs or forged incomplete browser receipts could appear green.",
+      "boundary": "AST external inventory, source digests and synthetic browser receipts; canonical state is read-only.",
+      "disposition": "Keep early in fast lane before launching external processes.",
+      "overlap_reason": "These guard the orchestration contract;13real report tests and the pinned physical browser batch establish actual behavior."
+    },
+    "tests/test_verification_audit.py::ReceiptAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Receipt identities, completed observations and exact counts are required for accepted study evidence.",
+      "distinct_defect": "Fabricated, stale or incomplete receipts could otherwise pass a study audit.",
+      "boundary": "Synthetic recorded receipt and source hashes; offline audit API.",
+      "isolation": "class process; fresh mutable fixtures",
+      "disposition": "Keep early in the fast lane before any real study execution.",
+      "overlap_reason": "Cheap audit rejection cases cover recorded-evidence integrity; physical integration tests establish the underlying behavior."
+    },
+    "tests/test_verification_audit.py::StageAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Reconstructed stage prompts and retained proposals agree with exact recorded worker and checker outcomes.",
+      "distinct_defect": "A changed prompt or malformed stage result could be treated as reproducible.",
+      "boundary": "Inert candidate files and mocked workers/checkers; stage audit and proposal parser.",
+      "isolation": "class process; fresh mutable fixtures",
+      "disposition": "Keep early in the fast lane before any real study execution.",
+      "overlap_reason": "Cheap audit rejection cases cover recorded-evidence integrity; physical integration tests establish the underlying behavior."
+    },
+    "tests/test_verification_audit.py::FaultAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Crash supervision, request settlement and saved fault evidence reconcile exactly.",
+      "distinct_defect": "Missing or altered crash receipts could claim a fault scenario that was never observed.",
+      "boundary": "Fabricated crash/PID/request receipts; no process signals or provider calls.",
+      "isolation": "class process; fresh mutable fixtures",
+      "disposition": "Keep early in the fast lane before any real study execution.",
+      "overlap_reason": "Cheap audit rejection cases cover recorded-evidence integrity; physical integration tests establish the underlying behavior."
+    },
+    "tests/test_verification_audit_journal.py::VerificationAuditJournalTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Journal replay preserves settled accounting and rejects tampered or inconsistent recorded requests.",
+      "distinct_defect": "Replayed requests could double-charge or silently accept a changed durable record.",
+      "boundary": "Disposable SQLite ledger and request journal, dummy provider outcomes.",
+      "isolation": "class process; fresh mutable fixtures",
+      "disposition": "Keep early in the fast lane before any real study execution.",
+      "overlap_reason": "Cheap audit rejection cases cover recorded-evidence integrity; physical integration tests establish the underlying behavior."
+    },
+    "tests/test_git_snapshot.py::GitBatchFramingTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Batched object decoding rejects malformed framing, order, type, length and Git hash mismatches.",
+      "distinct_defect": "A truncated or substituted object stream could export bytes not bound to the accepted commit.",
+      "boundary": "Synthetic Git object stream; parser failure boundaries.",
+      "isolation": "class process; disposable Git fixture for actual extraction",
+      "disposition": "Keep parsing guards fast and real object extraction in Git lane.",
+      "overlap_reason": "Retainer tests establish transactional export/accounting; these tests establish the separate batched immutable object-read boundary."
+    },
+    "tests/test_git_snapshot.py::GitSnapshotTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "One batched extraction preserves exact recorded commit paths and UTF-8 blob content, including NULs and symlink targets.",
+      "distinct_defect": "Path framing or Unicode mistakes could lose a file; an unpinned read could follow changing HEAD.",
+      "boundary": "Fresh local Git class fixture; exact object identities and byte-equivalence with legacy reads.",
+      "isolation": "class process; disposable Git fixture for actual extraction",
+      "disposition": "Keep parsing guards fast and real object extraction in Git lane.",
+      "overlap_reason": "Retainer tests establish transactional export/accounting; these tests establish the separate batched immutable object-read boundary."
+    },
+    "tests/test_verification_audit.py::IntegrationAuditTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Integration audit binds a real merged commit, parents, changed paths and stale-probe rejection to the recorded exact source.",
+      "distinct_defect": "Tampered integration history or stale evidence could certify an untested merged tree.",
+      "boundary": "Disposable actual Git repositories and inert source text; no candidate/provider execution.",
+      "isolation": "class process; fresh repository fixture",
+      "disposition": "Run once in Git lane after cheap audit rejection tests.",
+      "overlap_reason": "StageAuditTests uses mocked stage results; this verifies actual object history and merge bindings."
+    },
+    "tests/test_verification_pool_diagnostic.py::VerificationPoolDiagnosticTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Frozen-pool diagnostics bind final repaired candidates and distinguish selected-primary reuse, identical-source reuse and fresh observations.",
+      "distinct_defect": "Incomplete studies, hidden-passing but ineligible sources or fabricated receipts could inflate diagnostic coverage or selector-miss claims.",
+      "boundary": "Fake Git readers and validators with inert files; actual fixture receipts and output retention.",
+      "isolation": "class process; fresh temporary study fixture per method",
+      "disposition": "Keep offline guards early; no provider or Docker execution.",
+      "overlap_reason": "Real integration tests establish execution; these guards verify diagnostic interpretation and frozen-evidence identity."
+    },
+    "tests/test_browser_lifecycle.py::BrowserLifecycleTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 30,
+      "invariant": "Browser cancellation preserves a failed receipt and closes every owned resource, including late acquisition and hung cleanup boundaries.",
+      "distinct_defect": "A signal could leave Chromium or an owned fixture server alive, or exit before writing a truthful partial receipt.",
+      "boundary": "One Python adapter runs six Node lifecycle cases with mocked resources and signals; no browser launch.",
+      "isolation": "class process and one bounded Node child; synthetic resources only",
+      "disposition": "Run early before the physical browser batch.",
+      "overlap_reason": "Pure lifecycle tests cover precise race/failure states cheaply; the physical fixture cancellation proof establishes actual process cleanup."
+    },
+    "tests/test_verification_buildgraph_handoff.py::BuildGraphHandoffTests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "exclusive": true,
+      "invariant": "Cached build digests, request receipts and the policy transition survive four trusted CLI source versions using one persistent SQLite database.",
+      "distinct_defect": "Resetting the database, losing prior cache or idempotency receipts, or retaining the old policy after the final upgrade must be detected.",
+      "boundary": "Trusted fixture known_files executed through fixed CLIs with 10-second command deadlines; one database inode across versions. Schema and independent reference checks remain host-only.",
+      "isolation": "Separate worker process and fresh temporary source versions/database per story; executable methods reserve the whole verification budget to avoid deadline contention.",
+      "disposition": "Run pure schema/reference/checkpoint assertions early; batch real cross-version CLI stories in the exclusive fixture lane without changing persistence or restart semantics.",
+      "overlap_reason": "Existing buildgraph fixture tests qualify individual source stages. These stories specifically test durable state and receipts crossing source and policy versions, including explicit reset/stale-policy negative controls.",
+      "methods": {
+        "test_schema_bounds_and_stage_admission": {
+          "lane": "fast",
+          "weight": 1,
+          "timeout_seconds": 180,
+          "exclusive": false
+        },
+        "test_flat_pure_reference_agrees_under_stated_counter_assumption": {
+          "lane": "fast",
+          "weight": 1,
+          "timeout_seconds": 180,
+          "exclusive": false
+        },
+        "test_manual_cache_and_receipt_checkpoints": {
+          "lane": "fast",
+          "weight": 1,
+          "timeout_seconds": 180,
+          "exclusive": false
+        }
+      },
+      "qualification_at_registration": {
+        "owner": "verification-study workstream",
+        "status": "other-owner/pending",
+        "scope": "Source-inspection registration snapshot only; execution status belongs in source-bound run receipts, not this manifest. These classes are outside the frozen developer-tooling qualification."
+      }
+    },
+    "tests/test_verification_calendar_handoff.py::CalendarHandoffTests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "timeout_seconds": 1800,
+      "exclusive": true,
+      "invariant": "Bookings and request-key receipts survive four trusted source versions, including grandfathered bookings under the final policy, in the same real SQLite database.",
+      "distinct_defect": "Database resets or a migration that preserves bookings but discards request receipts must fail the handoff story.",
+      "boundary": "Trusted fixture CLIs with 5-second command deadlines and a persistent temporary SQLite file; separate bounded-schema and independent-reference oracle checks.",
+      "isolation": "Separate worker process and fresh temporary source versions/database per story; executable methods reserve the whole verification budget to avoid deadline contention.",
+      "disposition": "Run schema and oracle checks early; execute the version-changing persistence and negative-control stories together in the exclusive fixture lane.",
+      "overlap_reason": "Single-version calendar fixtures do not establish that durable bookings and prior idempotency keys survive replacement of the application source and policy.",
+      "methods": {
+        "test_bounded_data_schema_and_every_source_stage": {
+          "lane": "fast",
+          "weight": 1,
+          "timeout_seconds": 180,
+          "exclusive": false
+        },
+        "test_manual_expectations_match_independent_reference_prefixes": {
+          "lane": "fast",
+          "weight": 1,
+          "timeout_seconds": 180,
+          "exclusive": false
+        }
+      },
+      "qualification_at_registration": {
+        "owner": "verification-study workstream",
+        "status": "other-owner/pending",
+        "scope": "Source-inspection registration snapshot only; execution status belongs in source-bound run receipts, not this manifest. These classes are outside the frozen developer-tooling qualification."
+      }
+    },
+    "tests/test_verification_persistence_diagnostic.py::PersistenceTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "exclusive": false,
+      "invariant": "The postfreeze persistence diagnostic binds the exact frozen trajectory chain, bounded stories and golden qualification to its adapter/runtime; failures are retained without retry or changes to primary scores.",
+      "distinct_defect": "Incomplete or tampered studies, missing or mismatched golden receipts, leaked oracle expectations, lost database state, unsafe output reuse, and infrastructure failures recorded as valid observations must be rejected.",
+      "boundary": "Fake Git and validator outcomes over disposable frozen-study files; the one executable method runs only literal trusted CLI stubs through an adapter with 8-second step and 20-second outer deadlines.",
+      "isolation": "Separate worker process for module/global patches and fresh temporary study/output trees. The trusted-stub method alone reserves the entire verification budget.",
+      "disposition": "Keep shape, provenance, qualification and failure-accounting controls early; run the real trusted-stub adapter convention check once in the exclusive fixture lane. No Docker, provider calls or model sources execute here.",
+      "overlap_reason": "Pool diagnostic controls bind single-source evaluations; this class additionally binds a cross-version persistence chain and verifies that the adapter preserves one database while respecting both CLI protocols.",
+      "methods": {
+        "test_trusted_adapter_keeps_database_and_uses_correct_cli_conventions": {
+          "lane": "fixtures",
+          "weight": 4,
+          "timeout_seconds": 1800,
+          "exclusive": true
+        }
+      },
+      "qualification_at_registration": {
+        "owner": "verification-study workstream",
+        "status": "other-owner/pending",
+        "scope": "Source-inspection registration snapshot only; execution status belongs in source-bound run receipts, not this manifest. These classes are outside the frozen developer-tooling qualification."
+      }
+    },
+    "tests/test_telemetry.py::TelemetryTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "CPU and memory units, scoped byte counters and lock waits are truthful and exception safe.",
+      "isolation": "isolated class process; mocked resource readings and disposable files",
+      "distinct_defect": "Incorrect Darwin/Linux RSS units, additive scope claims, unlocked counters or incomplete lock accounting could create misleading performance evidence.",
+      "boundary": "Host resource API and explicitly instrumented local I/O; no inferred Docker or process-tree peaks.",
+      "disposition": "Keep fast; telemetry must be correct before expensive benchmark interpretation.",
+      "overlap_reason": "Scheduler tests prove work control; these tests prove measurement attribution and units."
+    },
+    "tests/test_sustained_stage_v2.py::SustainedStageV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Initial proposals are validated as one ordered batch after source/control parsing; dependent repairs remain serial.",
+      "isolation": "one isolated class process with disposable fixture state",
+      "distinct_defect": "Batch reduction or reused source evidence could accidentally validate malformed completion controls, reorder selection or leak private host metadata.",
+      "boundary": "Pure stage controller with deterministic invocation/validation callbacks; retained binding and reviewer prompt boundary.",
+      "disposition": "Keep early before complete versioned rehearsal or combined integration.",
+      "overlap_reason": "Focused negative controls verify new v2 and evidence contracts; full real integration exercises distinct execution boundaries."
+    },
+    "analysis/test_sustained_review_probes_v2.py::ProbeBatchSafetyTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Supplemental probes preserve complete frozen-input accounting and perform one ordered independent observation batch.",
+      "isolation": "one isolated class process with disposable fixture state",
+      "distinct_defect": "Dropped sources, reused independent evidence or mid-run input mutation could produce a false complete diagnostic.",
+      "boundary": "Detached input snapshot, adapter envelopes and retained supplemental output; no primary score mutation.",
+      "disposition": "Keep early before complete versioned rehearsal or combined integration.",
+      "overlap_reason": "Focused negative controls verify new v2 and evidence contracts; full real integration exercises distinct execution boundaries."
+    },
+    "tests/test_inventory_report.py::InventoryReportTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Inventory joins retain historical failures and distinguish reused observations from physical costs and current-source evidence.",
+      "isolation": "one isolated class process with disposable fixture state",
+      "distinct_defect": "A reused zero-duration row or stale fingerprint could hide test expense, failures or missing current coverage.",
+      "boundary": "Authored manifest and explicit retained summary/physical receipt files; no implicit generated-tree scan.",
+      "disposition": "Keep early before complete versioned rehearsal or combined integration.",
+      "overlap_reason": "Focused negative controls verify new v2 and evidence contracts; full real integration exercises distinct execution boundaries."
+    },
+    "tests/test_swarm_experiment_v2.py::SwarmV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Versioned swarm matrix batches preserve ordering, frozen selection and independent heldout observations.",
+      "isolation": "one isolated class process with disposable fixture state",
+      "distinct_defect": "Parallel validation could associate outcomes with another candidate or allow visible cache reuse to replace final scoring.",
+      "boundary": "Controller orchestration with fake workers and bound session envelopes; full rehearsal owns real Git/Docker proof.",
+      "disposition": "Keep early before complete versioned rehearsal or combined integration.",
+      "overlap_reason": "Focused negative controls verify new v2 and evidence contracts; full real integration exercises distinct execution boundaries."
+    },
+    "tests/test_benchmark_validation.py::BenchmarkValidationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Fixed paired samples and warm reuse bind identical source, runtime and execution counts.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "Changing workloads, reusing an independent final or reporting unsupported percentiles could imply nonexistent savings.",
+      "boundary": "Representative deterministic local candidate and fake measurement sessions; real benchmark is separate.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_historical_audit.py::HistoricalAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A historical audit executes only a separately pinned complete trusted runtime against matching frozen core.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "Archive-supplied paths, incomplete sources, runtime drift or interrupted subprocesses could produce a false compatibility certificate.",
+      "boundary": "Trusted runtime attestation, bounded audit subprocess and immutable historical source snapshots.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_recovery_experiment_v2.py::RecoveryEntryV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Live recovery rejects invalid ledger ownership, accounting or cap before costly original-runner preparation.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "A malformed or over-cap shared ledger could incur Docker setup or mutation before rejection.",
+      "boundary": "Read-only SQLite/file checks and versioned entry guard; legacy scientific runner remains frozen.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_sustained_experiment_v2.py::SustainedV2ContractTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "V2 rehearsal qualification binds exact support, resources, purposes and default determinism.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "V1 or altered scheduling proof could authorize a scientifically different run.",
+      "boundary": "Preregistered v2 controller and validation contract, known rehearsal evidence.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_sustained_experiment_v2.py::SustainedV2ControllerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Batched validation preserves settled new-process checkpoint and exact promotion boundaries.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "Resume or invalid source could start expensive setup or promote unbound evidence.",
+      "boundary": "Controller ordering, checkpoint/PID and versioned stage/session integration.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_sustained_experiment_v2.py::SustainedV2FinalMatrixTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Frozen final visible/hidden and historical repeatability observations execute physically with explicit purposes.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "Final scoring could accidentally consume cached visible proof or misassociate a source/suite.",
+      "boundary": "Independent final matrix and stable ordered receipt aggregation.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_study_validation.py::StudyValidationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Study envelopes bind complete caller support and exact source/suite while retaining physical/reuse provenance.",
+      "isolation": "isolated class process with disposable local fixtures",
+      "distinct_defect": "Cross-contract cached evidence, unordered/incomplete batches or runtime changes could be accepted as valid study outcomes.",
+      "boundary": "Shared adapter across v2 study callers and underlying validation session.",
+      "disposition": "Keep cheap negative cases before integration and exact rehearsals.",
+      "overlap_reason": "This owns a distinct measurement, compatibility or v2 contract boundary; costly rehearsals cover actual Git and Docker behavior."
+    },
+    "tests/test_study_receipts.py::StudyReceiptTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Retained v2 sessions bind every ordered job, exact source/suite/runtime, independent purpose and physical/reuse provenance.",
+      "isolation": "isolated class process; synthetic retained session trees and fake evaluator",
+      "distinct_defect": "Summary booleans could hide missing jobs, swapped candidates, nonphysical finals or cross-contract reused evidence.",
+      "boundary": "Read-only trusted rehearsal evidence; raw session inputs/results and original execution references.",
+      "disposition": "Keep cheap tamper checks before complete v2 rehearsal qualification.",
+      "overlap_reason": "The shared verifier establishes raw observation validity; study callers separately prove complete task/arm/stage coverage and exact selected trees."
+    },
+    "tests/test_qualify_recovery_entry.py::RecoveryCompositionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "An unchanged recovery rehearsal is reused only with independently pinned physical evidence, identical execution sources and newly executed entry guards.",
+      "isolation": "isolated class process; disposable pinned proof files and real cheap SQLite guard probes",
+      "distinct_defect": "Changed scientific code, host-only validators, incomplete original traces or stale guard tests could be relabeled as a matching live rehearsal.",
+      "boundary": "Explicit proof composition without candidate, Docker or provider execution; original exact rehearsal gate remains authoritative.",
+      "disposition": "Reuse already qualified unchanged execution; physically test only the newly added entry boundary.",
+      "overlap_reason": "RecoveryEntryV2Tests exercises the guard itself; these tests exercise composition and reject incompatible old execution evidence."
+    }
+  },
+  "audit": {
+    "purpose": "Useful, nonduplicative verification at explicit trust boundaries",
+    "disposition_rule": "Keep distinct regression, fixture, integration, oracle, persistence and scientific observation boundaries. Shared execution only with matching purpose and complete evidence identity.",
+    "discovery_contract": "Directly declared unittest.TestCase methods; dynamic/inherited discovery needs an explicit adapter.",
+    "reuse_scope": "Conservative full-authored dependency fingerprint; unknown dynamic/data dependencies are not guessed."
+  }
+}

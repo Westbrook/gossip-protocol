@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gossip-protocol-lab"
+version = "0.1.0"
+description = "A local correctness lab for distributed Git integration and agent evidence exchange"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+gossip-lab = "gossip_harness.__main__:main"
+
+[tool.setuptools]
+py-modules = ["retain_experiments", "retain_swarm"]
+
+[tool.setuptools.packages.find]
+include = ["gossip_harness*", "devtools*"]
+exclude = ["devtools.browser.node_modules*"]
+
+[dependency-groups]
+# Install the hashed transitive lock with scripts/bootstrap-dev; do not resolve
+# or recreate the environment on every verification invocation.
+dev = ["ruff==0.15.12", "mypy==1.20.2"]
+
+[tool.devtools.static]
+# Authored inputs only: never recursively search generated runs/results or venvs.
+roots = ["gossip_harness", "tests", "simulation", "analysis", "devtools", "retain_experiments.py", "retain_swarm.py"]
+timeout_seconds = 120
+javascript_syntax = "devtools/browser/check_syntax.cjs"
+type_baseline = "devtools/type-baseline.json"
+
+[tool.ruff]
+target-version = "py311"
+cache-dir = ".cache/ruff"
+force-exclude = true
+extend-exclude = ["runs", "results", ".venv", ".cache"]
+
+[tool.ruff.lint]
+# Correctness-first baseline over every owned Python root. Style and unused
+# imports are intentionally outside this first gate; frozen runner bytes matter.
+select = ["E9", "F63", "F7", "F82"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["devtools", "gossip_harness/transport.py", "gossip_harness/sustained_queue.py", "gossip_harness/sustained_stage_v2.py", "gossip_harness/sustained_experiment_v2.py", "gossip_harness/swarm_experiment_v2.py", "gossip_harness/recovery_experiment_v2.py", "analysis/run_sustained_review_probes_v2.py"]
+cache_dir = ".cache/mypy"
+incremental = true
+check_untyped_defs = true
+disallow_incomplete_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+show_error_codes = true
+pretty = false
+# Check all development tools, v2 study paths, two clean legacy leaves, and their imports.
+# Exact pre-existing diagnostics in unchanged scientific files are recorded
+# with SHA256 in devtools/type-baseline.json. New or changed diagnostics fail;
+# changed baseline sources require deliberate remediation and review. No
+# devtools or new verification_* study diagnostic may enter that baseline.
+
+[[tool.mypy.overrides]]
+module = "devtools.static_checks"
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+disallow_any_generics = true
+warn_return_any = true

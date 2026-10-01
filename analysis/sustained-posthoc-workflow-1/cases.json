@@ -1,0 +1,343 @@
+{
+  "candidate_code_executed": false,
+  "case_design_informed_by_candidate_source": true,
+  "cases": [
+    {
+      "expected": [
+        {
+          "error": "cycle"
+        },
+        [],
+        []
+      ],
+      "id": "posthoc-add-self-before-missing",
+      "input": {
+        "commands": [
+          {
+            "deps": [
+              "absent",
+              "job"
+            ],
+            "id": "job",
+            "op": "add",
+            "priority": 0
+          },
+          {
+            "op": "list"
+          },
+          {
+            "op": "audit"
+          }
+        ]
+      },
+      "requirement": "Q1-add"
+    },
+    {
+      "expected": [
+        {
+          "id": "a",
+          "ok": "added"
+        },
+        {
+          "at": 0,
+          "error": "duplicate"
+        },
+        [
+          {
+            "deps": [],
+            "id": "a",
+            "priority": 0,
+            "status": "pending"
+          }
+        ],
+        [
+          {
+            "id": "a",
+            "op": "add",
+            "seq": 1
+          }
+        ]
+      ],
+      "id": "posthoc-batch-first-error-precedence",
+      "input": {
+        "commands": [
+          {
+            "id": "a",
+            "op": "add",
+            "priority": 0
+          },
+          {
+            "commands": [
+              {
+                "id": "a",
+                "op": "add",
+                "priority": 0
+              },
+              {
+                "op": "audit"
+              }
+            ],
+            "op": "batch"
+          },
+          {
+            "op": "list"
+          },
+          {
+            "op": "audit"
+          }
+        ]
+      },
+      "requirement": "Q3-atomic"
+    },
+    {
+      "expected": [
+        {
+          "id": "job",
+          "ok": "added"
+        },
+        {
+          "attempt": 1,
+          "id": "job",
+          "token": 1,
+          "until": 10
+        },
+        {
+          "error": "invalid"
+        },
+        [
+          {
+            "deps": [],
+            "id": "job",
+            "priority": 0,
+            "status": "running"
+          }
+        ],
+        [
+          {
+            "id": "job",
+            "op": "add",
+            "seq": 1
+          },
+          {
+            "id": "job",
+            "op": "claim",
+            "seq": 2
+          }
+        ]
+      ],
+      "id": "posthoc-finish-outcome-list-invalid",
+      "input": {
+        "commands": [
+          {
+            "id": "job",
+            "op": "add",
+            "priority": 0
+          },
+          {
+            "now": 0,
+            "op": "claim",
+            "ttl": 10,
+            "worker": "worker"
+          },
+          {
+            "id": "job",
+            "now": 1,
+            "op": "finish",
+            "outcome": [],
+            "token": 1,
+            "worker": "worker"
+          },
+          {
+            "op": "list"
+          },
+          {
+            "op": "audit"
+          }
+        ]
+      },
+      "requirement": "Q2-fence"
+    }
+  ],
+  "do_not_use_for_primary_selection_repair_or_relabeling": true,
+  "evaluation_stage": 3,
+  "evaluation_stage_reason": "All probes also inspect audit history, which is a milestone3 command.",
+  "justifications": {
+    "posthoc-add-self-before-missing": {
+      "contract": "Q1-add: Existing job ID => duplicate; self dependency => cycle; nonexistent dependency => missing, in that precedence after syntax validation.",
+      "minimum_requirement_stage": 1,
+      "reason": "The new job ID appears among otherwise syntactically valid dependencies, so cycle must take precedence regardless of dependency array order. No job or audit event is created."
+    },
+    "posthoc-batch-first-error-precedence": {
+      "contract": "Q3-atomic: commands execute sequentially inside one transaction; first failed inner command returns its code and zero-based index, rolls back earlier writes, and skips later commands.",
+      "minimum_requirement_stage": 3,
+      "reason": "The batch envelope is valid. Inner command 0 duplicates an existing job, so it fails before inner command 1 is reached. The later prohibited audit is not a batch-envelope error and cannot replace the first error. The pre-batch job and its audit event remain."
+    },
+    "posthoc-finish-outcome-list-invalid": {
+      "contract": "Common contract: malformed fields return invalid and leave state unchanged. Q2-fence: outcome is done, retry, or failed; syntactic validation comes before DB state checks.",
+      "minimum_requirement_stage": 2,
+      "reason": "A JSON array is none of the three permitted outcome strings. It must produce a typed invalid result, not a Python TypeError. The active claim and audit history remain unchanged."
+    }
+  },
+  "limitations": [
+    "These cases were chosen after inspecting candidate code and are not an unbiased performance estimate.",
+    "Static predictions require Docker confirmation; inspect original source hashes before interpreting any later run.",
+    "A passing primary suite does not prove the complete written contract; these cases must be reported separately."
+  ],
+  "posthoc": true,
+  "primary_suites_modified": false,
+  "project": "workflow",
+  "purpose": "Post-hoc secondary diagnostic of specification compliance beyond the frozen primary suites.",
+  "run_only_after_primary_live_study_completes": true,
+  "schema": "sustained-posthoc-supplemental-cases-v1",
+  "static_candidate_observations": [
+    {
+      "accepted_source_directory": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-strong-single-0/accepted",
+      "candidate_code_executed": false,
+      "predicted_from_static_source": {
+        "posthoc-add-self-before-missing": "fail: missing instead of cycle",
+        "posthoc-batch-first-error-precedence": "pass",
+        "posthoc-finish-outcome-list-invalid": "fail: unguarded set membership on list raises TypeError"
+      },
+      "source_sha256": {
+        "workflow/domain.py": "b24465e721346c48beb2eb0d229fb180c24111c18321914a93812dbc87136f34",
+        "workflow/service.py": "0e32218318ebbd7ba44e42e5e6d5d4f291597af2a306a170cb508ea7baf0d667"
+      },
+      "trajectory": "workflow-strong-single-0"
+    },
+    {
+      "accepted_source_directory": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-cheap-sequential-0/accepted",
+      "candidate_code_executed": false,
+      "predicted_from_static_source": {
+        "posthoc-add-self-before-missing": "fail: missing instead of cycle",
+        "posthoc-batch-first-error-precedence": "pass",
+        "posthoc-finish-outcome-list-invalid": "fail: unguarded set membership on list raises TypeError"
+      },
+      "source_sha256": {
+        "workflow/domain.py": "41e23d9bfa99bc9deba249d2079d51f93335c755d56db6b51537e9cf0794dfdc",
+        "workflow/service.py": "1a0fd80d91da074f6dfbf409b56daef24d34b0c91fa65902f30be91fcc1a4991"
+      },
+      "trajectory": "workflow-cheap-sequential-0"
+    },
+    {
+      "accepted_source_directory": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-reviewed-portfolio-0/accepted",
+      "candidate_code_executed": false,
+      "predicted_from_static_source": {
+        "posthoc-add-self-before-missing": "pass",
+        "posthoc-batch-first-error-precedence": "pass",
+        "posthoc-finish-outcome-list-invalid": "fail: unguarded set membership on list raises TypeError"
+      },
+      "source_sha256": {
+        "workflow/domain.py": "6c47d259984aa198ce8fd826666b87673c0b236508aee5f917172b66153a4a37",
+        "workflow/service.py": "33a303dced027dab07117dab96ec0f3354f3aa0b4eed11862e1393f7eb71fca4"
+      },
+      "trajectory": "workflow-reviewed-portfolio-0"
+    },
+    {
+      "accepted_source_directory": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-reviewed-portfolio-1/accepted",
+      "candidate_code_executed": false,
+      "predicted_from_static_source": {
+        "posthoc-add-self-before-missing": "pass",
+        "posthoc-batch-first-error-precedence": "fail: invalid at 1 instead of duplicate at 0",
+        "posthoc-finish-outcome-list-invalid": "fail: unguarded set membership on list raises TypeError"
+      },
+      "source_sha256": {
+        "workflow/domain.py": "135bbe0bd9deb88995eca2d65bdb18457e90c8f8b7155717d3cfe47b78ee9be3",
+        "workflow/service.py": "8899d8a752a8433411fbf3700988567b0a290092f836b9cb1b6e147507faa65b"
+      },
+      "trajectory": "workflow-reviewed-portfolio-1"
+    }
+  ],
+  "trusted_reference_verification": {
+    "case_results": [
+      {
+        "actual": [
+          {
+            "error": "cycle"
+          },
+          [],
+          []
+        ],
+        "case_id": "posthoc-add-self-before-missing",
+        "matched_expected": true
+      },
+      {
+        "actual": [
+          {
+            "id": "a",
+            "ok": "added"
+          },
+          {
+            "at": 0,
+            "error": "duplicate"
+          },
+          [
+            {
+              "deps": [],
+              "id": "a",
+              "priority": 0,
+              "status": "pending"
+            }
+          ],
+          [
+            {
+              "id": "a",
+              "op": "add",
+              "seq": 1
+            }
+          ]
+        ],
+        "case_id": "posthoc-batch-first-error-precedence",
+        "matched_expected": true
+      },
+      {
+        "actual": [
+          {
+            "id": "job",
+            "ok": "added"
+          },
+          {
+            "attempt": 1,
+            "id": "job",
+            "token": 1,
+            "until": 10
+          },
+          {
+            "error": "invalid"
+          },
+          [
+            {
+              "deps": [],
+              "id": "job",
+              "priority": 0,
+              "status": "running"
+            }
+          ],
+          [
+            {
+              "id": "job",
+              "op": "add",
+              "seq": 1
+            },
+            {
+              "id": "job",
+              "op": "claim",
+              "seq": 2
+            }
+          ]
+        ],
+        "case_id": "posthoc-finish-outcome-list-invalid",
+        "matched_expected": true
+      }
+    ],
+    "execution": "Trusted reference only, temporary repository, fixed CLI subprocesses; no API/key/candidate code.",
+    "implementation": "gossip_harness.sustained_queue.PROJECT stages[-1] known_files",
+    "source_sha256": {
+      "solution.py": "3dd9800818c76fb0f04ec1338ec6ff053b526cf2e350e118d098e6fdf93c5fdd",
+      "workflow/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workflow/cli.py": "69d3fd557b5ff2fad3aaaf9f949d0bb42263f78354e6fc2a123eee7d4ea46344",
+      "workflow/domain.py": "ecc9c4d2cc68083cdb23932559c702f25a4d5116ec8485481f6da6a65af32284",
+      "workflow/service.py": "fad0577d296ca19e589e9591a599c7fbe95405182fabfb77b3ca00212213deaf",
+      "workflow/storage.py": "cfe8101975e5b9bf103acd0cc8f61aa5c6a5fb6aecae6929ca97ff72742a2b52"
+    }
+  }
+}

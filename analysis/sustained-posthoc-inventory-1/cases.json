@@ -1,0 +1,426 @@
+{
+  "api_calls": 0,
+  "apply_to": "All six final inventory implementations, with identical cases and separate supplemental scores.",
+  "candidate_code_executed": false,
+  "case_design_informed_by_candidate_source": true,
+  "cases": [
+    {
+      "expected": [
+        {
+          "error": "invalid"
+        }
+      ],
+      "id": "inventory-nonstring-inner-operation",
+      "input": {
+        "commands": [
+          {
+            "commands": [
+              {
+                "op": []
+              }
+            ],
+            "key": "k",
+            "op": "batch"
+          }
+        ]
+      },
+      "requirement": "batch-atomicity"
+    },
+    {
+      "expected": [
+        {
+          "ok": true
+        },
+        {
+          "ok": true
+        },
+        {
+          "reservations": [
+            {
+              "expires": 10,
+              "remaining": 2,
+              "rid": "r",
+              "sku": "item",
+              "status": "active"
+            }
+          ],
+          "stock": [
+            {
+              "available": 4,
+              "on_hand": 6,
+              "reserved": 2,
+              "sku": "item"
+            }
+          ],
+          "version": 2
+        },
+        [
+          {
+            "key": "seed",
+            "op": "adjust",
+            "seq": 1
+          },
+          {
+            "key": "hold",
+            "op": "reserve",
+            "seq": 2
+          }
+        ],
+        {
+          "error": "invalid"
+        },
+        {
+          "reservations": [
+            {
+              "expires": 10,
+              "remaining": 2,
+              "rid": "r",
+              "sku": "item",
+              "status": "active"
+            }
+          ],
+          "stock": [
+            {
+              "available": 4,
+              "on_hand": 6,
+              "reserved": 2,
+              "sku": "item"
+            }
+          ],
+          "version": 2
+        },
+        [
+          {
+            "key": "seed",
+            "op": "adjust",
+            "seq": 1
+          },
+          {
+            "key": "hold",
+            "op": "reserve",
+            "seq": 2
+          }
+        ],
+        {
+          "ok": true
+        },
+        {
+          "reservations": [
+            {
+              "expires": 10,
+              "remaining": 2,
+              "rid": "r",
+              "sku": "item",
+              "status": "active"
+            }
+          ],
+          "stock": [
+            {
+              "available": 5,
+              "on_hand": 7,
+              "reserved": 2,
+              "sku": "item"
+            }
+          ],
+          "version": 2
+        },
+        [
+          {
+            "key": "seed",
+            "op": "adjust",
+            "seq": 1
+          },
+          {
+            "key": "hold",
+            "op": "reserve",
+            "seq": 2
+          },
+          {
+            "key": "k",
+            "op": "batch",
+            "seq": 3
+          }
+        ]
+      ],
+      "id": "inventory-nonstring-inner-operation-atomicity-key-reuse",
+      "input": {
+        "commands": [
+          {
+            "delta": 6,
+            "key": "seed",
+            "op": "adjust",
+            "sku": "item"
+          },
+          {
+            "expires": 10,
+            "key": "hold",
+            "op": "reserve",
+            "qty": 2,
+            "rid": "r",
+            "sku": "item"
+          },
+          {
+            "op": "snapshot"
+          },
+          {
+            "op": "audit"
+          },
+          {
+            "commands": [
+              {
+                "delta": 1,
+                "op": "adjust",
+                "sku": "item"
+              },
+              {
+                "op": []
+              }
+            ],
+            "key": "k",
+            "op": "batch"
+          },
+          {
+            "op": "snapshot"
+          },
+          {
+            "op": "audit"
+          },
+          {
+            "commands": [
+              {
+                "delta": 1,
+                "op": "adjust",
+                "sku": "item"
+              }
+            ],
+            "key": "k",
+            "op": "batch"
+          },
+          {
+            "op": "snapshot"
+          },
+          {
+            "op": "audit"
+          }
+        ]
+      },
+      "requirement": "batch-atomicity"
+    }
+  ],
+  "do_not_use_for_primary_selection_repair_or_relabeling": true,
+  "evaluation_stage": 3,
+  "evaluation_stage_reason": "Batch and audit are milestone-three operations.",
+  "justifications": {
+    "inventory-nonstring-inner-operation": {
+      "contract": "Common: incorrect types and command shapes return invalid, changing nothing. Stage 3: validate all batch inner shapes before executing any inner command; inner commands have no key.",
+      "expected_exact": [
+        {
+          "error": "invalid"
+        }
+      ],
+      "minimum_requirement_stage": 3,
+      "reason": "The outer batch has the exact allowed fields, a valid key and one inner command. The inner op is a JSON array instead of a named operation. This is a specified invalid input, not outside the input domain; neither internal nor success satisfies the typed-error contract."
+    },
+    "inventory-nonstring-inner-operation-atomicity-key-reuse": {
+      "contract": "Validate complete shapes before state changes; failures are atomic and do not consume keys. Audit records exactly one successful top-level mutation and no failed/read operations.",
+      "minimum_requirement_stage": 3,
+      "reason": "The initial stock and active reservation produce two audit events. A valid adjustment followed by an inner op array must reject the entire batch before any write: snapshot and audit remain identical. Retrying the unused key k with a corrected batch succeeds once, adds one stock unit, preserves the reservation, and creates only audit event 3 for the outer batch."
+    }
+  },
+  "limitations": [
+    "The two cases are correlated probes of one source-informed defect family, not independent evidence or an unbiased policy ranking.",
+    "The primary frozen acceptance suite and original results remain unchanged.",
+    "No candidate implementation was executed in this verification. Later confirmation must run the same supplemental cases against every final inventory implementation in Docker."
+  ],
+  "posthoc": true,
+  "primary_suites_modified": false,
+  "project": "inventory",
+  "purpose": "Post-hoc secondary diagnostic of specified typed errors, failure atomicity, audit preservation and failed-key reuse beyond the frozen primary suites.",
+  "run_only_after_primary_live_study_completes": true,
+  "schema": "sustained-posthoc-supplemental-cases-v1",
+  "sources": {
+    "fixture": {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/sustained_inventory.py",
+      "sha256": "d7ddc51fac36097f894973e6f1d39337176aebf785d6ac71c310aa7f80067829"
+    },
+    "static_review": {
+      "finding": "F4",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-static-review-1.json",
+      "probe_id": "inventory-nonstring-inner-operation",
+      "sha256": "582903fed66afd63c6a323aa6c1173c16667fe824467fe4a981eb7cd48e50b21"
+    }
+  },
+  "static_candidate_source_provenance": [
+    {
+      "candidate": "inventory-reviewed-portfolio-0",
+      "file_sha256": "1cc0de0b2e8197518865ba7bd1172b08bacc4b8318c47f8300175b57d552b8cd",
+      "lines": [
+        75,
+        89
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-0/accepted/inventory_app/domain.py"
+    },
+    {
+      "candidate": "inventory-reviewed-portfolio-0",
+      "file_sha256": "a233a20433229cb2fb5410a5b8e52060a869ddfbe59dd579889c4d14950aa4ff",
+      "lines": [
+        5,
+        10
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-0/accepted/inventory_app/cli.py"
+    },
+    {
+      "candidate": "inventory-strong-single-1",
+      "file_sha256": "c76683f39f990da9f11c6658efe1c37364fe7818d778e3ceaf4cd512f4c8876e",
+      "lines": [
+        46,
+        100
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-strong-single-1/accepted/inventory_app/domain.py"
+    }
+  ],
+  "trusted_reference_verification": {
+    "case_results": [
+      {
+        "actual": [
+          {
+            "error": "invalid"
+          }
+        ],
+        "case_id": "inventory-nonstring-inner-operation",
+        "independent_in_memory_reference_matched": true,
+        "matched_expected": true
+      },
+      {
+        "actual": [
+          {
+            "ok": true
+          },
+          {
+            "ok": true
+          },
+          {
+            "reservations": [
+              {
+                "expires": 10,
+                "remaining": 2,
+                "rid": "r",
+                "sku": "item",
+                "status": "active"
+              }
+            ],
+            "stock": [
+              {
+                "available": 4,
+                "on_hand": 6,
+                "reserved": 2,
+                "sku": "item"
+              }
+            ],
+            "version": 2
+          },
+          [
+            {
+              "key": "seed",
+              "op": "adjust",
+              "seq": 1
+            },
+            {
+              "key": "hold",
+              "op": "reserve",
+              "seq": 2
+            }
+          ],
+          {
+            "error": "invalid"
+          },
+          {
+            "reservations": [
+              {
+                "expires": 10,
+                "remaining": 2,
+                "rid": "r",
+                "sku": "item",
+                "status": "active"
+              }
+            ],
+            "stock": [
+              {
+                "available": 4,
+                "on_hand": 6,
+                "reserved": 2,
+                "sku": "item"
+              }
+            ],
+            "version": 2
+          },
+          [
+            {
+              "key": "seed",
+              "op": "adjust",
+              "seq": 1
+            },
+            {
+              "key": "hold",
+              "op": "reserve",
+              "seq": 2
+            }
+          ],
+          {
+            "ok": true
+          },
+          {
+            "reservations": [
+              {
+                "expires": 10,
+                "remaining": 2,
+                "rid": "r",
+                "sku": "item",
+                "status": "active"
+              }
+            ],
+            "stock": [
+              {
+                "available": 5,
+                "on_hand": 7,
+                "reserved": 2,
+                "sku": "item"
+              }
+            ],
+            "version": 2
+          },
+          [
+            {
+              "key": "seed",
+              "op": "adjust",
+              "seq": 1
+            },
+            {
+              "key": "hold",
+              "op": "reserve",
+              "seq": 2
+            },
+            {
+              "key": "k",
+              "op": "batch",
+              "seq": 3
+            }
+          ]
+        ],
+        "case_id": "inventory-nonstring-inner-operation-atomicity-key-reuse",
+        "independent_in_memory_reference_matched": true,
+        "matched_expected": true
+      }
+    ],
+    "comparison": "Canonical JSON encoding preserves scalar types, including integer versus float and boolean.",
+    "execution": "Trusted fixture known_files only, temporary repository, fixed CLI subprocesses; independently cross-checked with fixture in-memory reference. No candidate code, API, or key access.",
+    "implementation": "gossip_harness.sustained_inventory.PROJECT stages[-1] known_files and _expected(payload,3)",
+    "source_sha256": {
+      "inventory_app/cli.py": "a233a20433229cb2fb5410a5b8e52060a869ddfbe59dd579889c4d14950aa4ff",
+      "inventory_app/domain.py": "f45c398ec37963de44ea535525c03b01da3e8d2f3818827fed07e19a4aad5234",
+      "inventory_app/service.py": "32326b927d6910c99278b1a871fa78cc41cca2aa1f24e8be329a8f83aa61be4d",
+      "inventory_app/storage.py": "6e8cd0dc6db8c69b7cdf789e428bc2d3c527849fa982547a31d8c0e920ea662e",
+      "solution.py": "cc1031ce9aa832fafd3db3902f8fbbc3cae6b85b74c9a5c1ea6bbd202ef8eb2c"
+    }
+  }
+}

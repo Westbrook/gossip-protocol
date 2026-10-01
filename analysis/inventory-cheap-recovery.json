@@ -1,0 +1,113 @@
+{
+  "run_id": "inventory-cheap-sequential-1",
+  "stage_index": 2,
+  "rounds": [
+    {
+      "round": 1,
+      "passed_checks": 21,
+      "failed_checks": 3,
+      "control_action": "complete",
+      "source_unchanged_from_previous": false,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-1.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-1.validation.json",
+      "source_sha256": "9fc7779867dc8146a71237c4a17befcf1e990059c55084bf96ba911a394d6a1c"
+    },
+    {
+      "round": 2,
+      "passed_checks": 0,
+      "failed_checks": 24,
+      "control_action": "continue",
+      "source_unchanged_from_previous": false,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-2.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-2.validation.json",
+      "source_sha256": "0d54c4a87bb2d0056255800b8c99e364092b94a320fe275d85249997e80e918a"
+    },
+    {
+      "round": 3,
+      "passed_checks": 0,
+      "failed_checks": 24,
+      "control_action": null,
+      "source_unchanged_from_previous": false,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-3.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-3.validation.json",
+      "source_sha256": "70636ba4fb5a603cbf443f36beb4998760ae68218cec810bfa751cbf480646bf"
+    },
+    {
+      "round": 4,
+      "passed_checks": 0,
+      "failed_checks": 24,
+      "control_action": "complete",
+      "source_unchanged_from_previous": false,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-4.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-4.validation.json",
+      "source_sha256": "418f62c1955ffae9a7c028bb30c70e7e1ae1d898e645e298019de37a53c088b9"
+    },
+    {
+      "round": 5,
+      "passed_checks": 0,
+      "failed_checks": 24,
+      "control_action": "complete",
+      "source_unchanged_from_previous": true,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-5.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-5.validation.json",
+      "source_sha256": "418f62c1955ffae9a7c028bb30c70e7e1ae1d898e645e298019de37a53c088b9"
+    },
+    {
+      "round": 6,
+      "passed_checks": 24,
+      "failed_checks": 0,
+      "control_action": null,
+      "source_unchanged_from_previous": false,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-6.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-6.validation.json",
+      "source_sha256": "18c2613604e2e85b5eec01437ec67fb8b3edcb9dfbe1b38f96b688f07e0c723a"
+    },
+    {
+      "round": 7,
+      "passed_checks": 24,
+      "failed_checks": 0,
+      "control_action": "complete",
+      "source_unchanged_from_previous": true,
+      "proposal": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-7.json",
+      "validation": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-cheap-sequential-1/stage-2/stage-2-cheap-sequential-single-build-7.validation.json",
+      "source_sha256": "18c2613604e2e85b5eec01437ec67fb8b3edcb9dfbe1b38f96b688f07e0c723a"
+    }
+  ],
+  "completed": true,
+  "final_hidden_passed": true,
+  "final_hidden_case_count": 30,
+  "final_requirement_coverage": {
+    "atomicity": true,
+    "audit": true,
+    "batch-atomicity": true,
+    "bundle-atomicity": true,
+    "cancel": true,
+    "expiry": true,
+    "idempotency": true,
+    "migration": true,
+    "partial-capture": true,
+    "partial-release": true,
+    "reconcile-atomicity": true,
+    "reserve": true,
+    "restart": true,
+    "stock": true,
+    "typed-validation": true
+  },
+  "handoff": {
+    "checkpoint_sha256": "510ca93421356b8adb14d4c7480f35254f37a171a13fc89e263a53a95c90361b",
+    "files_sha256": "ab3ffb190d191bc2dd9096b742aaa0ad7e1c5b99dd3944225f3b796bcfecf501",
+    "head": "e5f2095eb3b5268b3d1545b6a1b9809e45545dcf",
+    "previous_pid": 67688,
+    "resumed_pid": 73979,
+    "verified": true
+  },
+  "findings": [
+    "Round 1 passed 21/24 checks but failed the three batch cases because keyless inner commands were sent through validation that expected a top-level idempotency key.",
+    "Round 2 introduced a broad read-path regression: validate() required key before recognizing snapshot/audit, which legitimately have no key. All 24 cumulative scenarios consequently failed; many successful mutation prefixes ended with an invalid read response. This count does not mean 24 independent business-logic defects.",
+    "Rounds 3\u20135 retained that misplaced key check. Round 3 also omitted batch dispatch during refactoring; round 4 restored it. Round 5 changed no source code despite claiming completion.",
+    "Round 6 moved snapshot/audit handling before the key requirement and separated keyless inner mutation validation from keyed top-level requests. All 24 visible checks then passed.",
+    "Round 6 omitted control.json, so the harness did not finish yet. Round 7 preserved identical source and supplied a valid complete declaration with no remaining requirements.",
+    "The harness rejected false completion in rounds 1, 4 and 5 and persisted through the regression. Final cumulative private evaluation passed all 30 cases after the entire project trajectory was frozen.",
+    "This is concrete bounded-loop recovery evidence, including real source defects and a separate final control-only call. It does not establish that cheap sequential repair outperforms other policies or that recovery would occur without a sufficiently informative regression suite."
+  ]
+}

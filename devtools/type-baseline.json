@@ -1,0 +1,800 @@
+{
+  "schema_version": 1,
+  "mypy_version": "1.20.2",
+  "description": "Reviewed source-bound legacy type debt from the explicit development and v2 study roots. The four added unchanged v1 dependencies preserve frozen scientific contracts. Only exact diagnostics on identical source bytes are accepted. New development tools, verification_* and *_v2 modules cannot be baselined. Verification never regenerates this file.",
+  "files": [
+    {
+      "path": "analysis/run_sustained_review_probes.py",
+      "sha256": "c93d6eedc99dc992ef82169503531fc118fb310abb335fade5c598d9ab20d434",
+      "diagnostics": [
+        {
+          "file": "analysis/run_sustained_review_probes.py",
+          "line": 237,
+          "column": 8,
+          "end_line": 237,
+          "end_column": 17,
+          "message": "Need type annotation for \"summaries\" (hint: \"summaries: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/blackbox_validator.py",
+      "sha256": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 152,
+          "column": 0,
+          "end_line": 154,
+          "end_column": 44,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 175,
+          "column": 0,
+          "end_line": 191,
+          "end_column": 16,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 194,
+          "column": 0,
+          "end_line": 204,
+          "end_column": 29,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 232,
+          "column": 8,
+          "end_line": 232,
+          "end_column": 25,
+          "message": "Need type annotation for \"last_receipt\" (hint: \"last_receipt: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 327,
+          "column": 39,
+          "end_line": 327,
+          "end_column": 58,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"read\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 336,
+          "column": 24,
+          "end_line": 336,
+          "end_column": 43,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"write\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 337,
+          "column": 24,
+          "end_line": 337,
+          "end_column": 43,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"close\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 361,
+          "column": 24,
+          "end_line": 361,
+          "end_column": 44,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"close\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 418,
+          "column": 12,
+          "end_line": 418,
+          "end_column": 38,
+          "message": "\"object\" has no attribute \"append\"",
+          "hint": null,
+          "code": "attr-defined",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/blackbox_validator.py",
+          "line": 420,
+          "column": 63,
+          "end_line": 420,
+          "end_column": 82,
+          "message": "\"object\" has no attribute \"__iter__\"; maybe \"__dir__\" or \"__str__\"? (not iterable)",
+          "hint": null,
+          "code": "attr-defined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/gitstore.py",
+      "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/gitstore.py",
+          "line": 172,
+          "column": 37,
+          "end_line": 172,
+          "end_column": 42,
+          "message": "Argument 2 to \"_write_changes\" has incompatible type \"dict[str, str]\"; expected \"dict[str, str | None]\"",
+          "hint": "\"dict\" is invariant -- see https://mypy.readthedocs.io/en/stable/common_issues.html#variance\nConsider using \"Mapping\" instead, which is covariant in the value type",
+          "code": "arg-type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/pilot.py",
+      "sha256": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 44,
+          "column": 4,
+          "end_line": 51,
+          "end_column": 41,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 58,
+          "column": 8,
+          "end_line": 58,
+          "end_column": 19,
+          "message": "Need type annotation for \"leases\" (hint: \"leases: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 58,
+          "column": 21,
+          "end_line": 58,
+          "end_column": 32,
+          "message": "Need type annotation for \"errors\" (hint: \"errors: list[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 66,
+          "column": 4,
+          "end_line": 70,
+          "end_column": 24,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 72,
+          "column": 4,
+          "end_line": 78,
+          "end_column": 24,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 114,
+          "column": 0,
+          "end_line": 305,
+          "end_column": 21,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/pilot.py",
+          "line": 308,
+          "column": 0,
+          "end_line": 383,
+          "end_column": 17,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/promotion.py",
+      "sha256": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/promotion.py",
+          "line": 48,
+          "column": 4,
+          "end_line": 51,
+          "end_column": 86,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/promotion.py",
+          "line": 53,
+          "column": 4,
+          "end_line": 73,
+          "end_column": 109,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/recovery_experiment.py",
+      "sha256": "0c1513b714c54cab894e96559c9c50407b1f23fb40ae74e9810b527cf087f845",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/recovery_experiment.py",
+          "line": 146,
+          "column": 0,
+          "end_line": 147,
+          "end_column": 104,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/recovery_experiment.py",
+          "line": 286,
+          "column": 0,
+          "end_line": 292,
+          "end_column": 46,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/recovery_experiment.py",
+          "line": 312,
+          "column": 11,
+          "end_line": 312,
+          "end_column": 21,
+          "message": "Need type annotation for \"cumulative\" (hint: \"cumulative: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/recovery_experiment.py",
+          "line": 475,
+          "column": 0,
+          "end_line": 573,
+          "end_column": 17,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/sandbox.py",
+      "sha256": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/sandbox.py",
+          "line": 214,
+          "column": 35,
+          "end_line": 214,
+          "end_column": 54,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"read\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sandbox.py",
+          "line": 236,
+          "column": 24,
+          "end_line": 236,
+          "end_column": 44,
+          "message": "Item \"None\" of \"IO[bytes] | None\" has no attribute \"close\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sandbox.py",
+          "line": 256,
+          "column": 29,
+          "end_line": 256,
+          "end_column": 46,
+          "message": "Unsupported operand types for + (\"str\" and \"object\")",
+          "hint": null,
+          "code": "operator",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sandbox.py",
+          "line": 258,
+          "column": 29,
+          "end_line": 258,
+          "end_column": 46,
+          "message": "Unsupported operand types for + (\"str\" and \"object\")",
+          "hint": null,
+          "code": "operator",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/selection.py",
+      "sha256": "54b2ea491646f8930a13b00ddb79359c35493b01991a9d183bafeb0da0b1e34d",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 28,
+          "column": 0,
+          "end_line": 30,
+          "end_column": 44,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 33,
+          "column": 0,
+          "end_line": 34,
+          "end_column": 69,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 125,
+          "column": 0,
+          "end_line": 219,
+          "end_column": 18,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 222,
+          "column": 0,
+          "end_line": 288,
+          "end_column": 60,
+          "message": "Function is missing a type annotation for one or more parameters",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 241,
+          "column": 20,
+          "end_line": 241,
+          "end_column": 26,
+          "message": "Incompatible types in assignment (expression has type \"list[Any] | tuple[Any, ...]\", variable has type \"list[Any]\")",
+          "hint": null,
+          "code": "assignment",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 334,
+          "column": 55,
+          "end_line": 334,
+          "end_column": 69,
+          "message": "Unsupported operand type for unary - (\"object\")",
+          "hint": null,
+          "code": "operator",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 335,
+          "column": 15,
+          "end_line": 335,
+          "end_column": 74,
+          "message": "Incompatible types in assignment (expression has type \"list[object]\", variable has type \"bool\")",
+          "hint": null,
+          "code": "assignment",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/selection.py",
+          "line": 336,
+          "column": 66,
+          "end_line": 336,
+          "end_column": 77,
+          "message": "Value of type \"Literal[True]\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/sustained_experiment.py",
+      "sha256": "fcb4ce3570a9e4a4864b136a4b1fb8b9997948b6cfcfab85c15fbb911036b984",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/sustained_experiment.py",
+          "line": 129,
+          "column": 27,
+          "end_line": 129,
+          "end_column": 32,
+          "message": "Argument 1 to \"propose\" of \"GitStore\" has incompatible type \"dict[str, str]\"; expected \"dict[str, str | None]\"",
+          "hint": "\"dict\" is invariant -- see https://mypy.readthedocs.io/en/stable/common_issues.html#variance\nConsider using \"Mapping\" instead, which is covariant in the value type",
+          "code": "arg-type",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_experiment.py",
+          "line": 218,
+          "column": 29,
+          "end_line": 218,
+          "end_column": 39,
+          "message": "Item \"None\" of \"OpenAIWorker | None\" has no attribute \"run\"",
+          "hint": null,
+          "code": "union-attr",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/sustained_inventory.py",
+      "sha256": "d7ddc51fac36097f894973e6f1d39337176aebf785d6ac71c310aa7f80067829",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 367,
+          "column": 8,
+          "end_line": 370,
+          "end_column": 24,
+          "message": "Incompatible types in assignment (expression has type \"tuple[str, ...]\", variable has type \"tuple[str, str, str]\")",
+          "hint": null,
+          "code": "assignment",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 453,
+          "column": 163,
+          "end_line": 453,
+          "end_column": 183,
+          "message": "\"Collection[Any]\" has no attribute \"items\"",
+          "hint": null,
+          "code": "attr-defined",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 456,
+          "column": 36,
+          "end_line": 456,
+          "end_column": 51,
+          "message": "Argument 1 to \"deepcopy\" has incompatible type \"Collection[Any]\"; expected \"dict[str, object]\"",
+          "hint": null,
+          "code": "arg-type",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 463,
+          "column": 22,
+          "end_line": 463,
+          "end_column": 40,
+          "message": "Value of type \"Collection[Any]\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 467,
+          "column": 16,
+          "end_line": 467,
+          "end_column": 36,
+          "message": "Unsupported target for indexed assignment (\"Collection[Any]\")",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_inventory.py",
+          "line": 468,
+          "column": 16,
+          "end_line": 468,
+          "end_column": 40,
+          "message": "\"Collection[Any]\" has no attribute \"append\"",
+          "hint": null,
+          "code": "attr-defined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/sustained_stage.py",
+      "sha256": "a29da102b594159c0941e8140312ae0d183b9a4a08fe608c38c1f6e6fc2f0a20",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 198,
+          "column": 4,
+          "end_line": 198,
+          "end_column": 11,
+          "message": "Need type annotation for \"history\" (hint: \"history: list[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 200,
+          "column": 4,
+          "end_line": 200,
+          "end_column": 20,
+          "message": "Need type annotation for \"review_remaining\" (hint: \"review_remaining: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 201,
+          "column": 4,
+          "end_line": 201,
+          "end_column": 16,
+          "message": "Need type annotation for \"review_notes\" (hint: \"review_notes: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 265,
+          "column": 31,
+          "end_line": 265,
+          "end_column": 63,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 266,
+          "column": 32,
+          "end_line": 266,
+          "end_column": 65,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/sustained_stage.py",
+          "line": 378,
+          "column": 4,
+          "end_line": 378,
+          "end_column": 17,
+          "message": "Need type annotation for \"review_errors\" (hint: \"review_errors: list[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/swarm_fixture.py",
+      "sha256": "23aadf7e31474bdf07aadd4d269b1a0c215ab43c451ae5de50c92032708510ac",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 126,
+          "column": 4,
+          "end_line": 126,
+          "end_column": 10,
+          "message": "Need type annotation for \"answer\" (hint: \"answer: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 318,
+          "column": 4,
+          "end_line": 318,
+          "end_column": 10,
+          "message": "Need type annotation for \"answer\" (hint: \"answer: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 583,
+          "column": 35,
+          "end_line": 583,
+          "end_column": 43,
+          "message": "Need type annotation for \"max_seen\" (hint: \"max_seen: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 601,
+          "column": 4,
+          "end_line": 601,
+          "end_column": 11,
+          "message": "Need type annotation for \"winners\" (hint: \"winners: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 739,
+          "column": 0,
+          "end_line": 773,
+          "end_column": 34,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 745,
+          "column": 31,
+          "end_line": 745,
+          "end_column": 46,
+          "message": "Argument 1 to \"len\" has incompatible type \"dict[str, int] | list[int] | None\"; expected \"Sized\"",
+          "hint": null,
+          "code": "arg-type",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 751,
+          "column": 31,
+          "end_line": 751,
+          "end_column": 80,
+          "message": "Incompatible types in assignment (expression has type \"list[int] | int | None\", target has type \"str\")",
+          "hint": null,
+          "code": "assignment",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 754,
+          "column": 61,
+          "end_line": 754,
+          "end_column": 87,
+          "message": "Dict entry 2 has incompatible type \"str\": \"int\"; expected \"str\": \"str\"",
+          "hint": null,
+          "code": "dict-item",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 804,
+          "column": 17,
+          "end_line": 804,
+          "end_column": 23,
+          "message": "Need type annotation for \"result\" (hint: \"result: list[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/swarm_fixture.py",
+          "line": 835,
+          "column": 0,
+          "end_line": 839,
+          "end_column": 53,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/worker.py",
+          "line": 56,
+          "column": 19,
+          "end_line": 57,
+          "end_column": 59,
+          "message": "Incompatible return value type (got \"tuple[int | None, int | None]\", expected \"tuple[int, int]\")",
+          "hint": null,
+          "code": "return-value",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/worker.py",
+          "line": 156,
+          "column": 0,
+          "end_line": 157,
+          "end_column": 45,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/worker.py",
+          "line": 169,
+          "column": 0,
+          "end_line": 171,
+          "end_column": 55,
+          "message": "Function is missing a return type annotation",
+          "hint": null,
+          "code": "no-untyped-def",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/worker.py",
+          "line": 321,
+          "column": 38,
+          "end_line": 321,
+          "end_column": 53,
+          "message": "Incompatible types in assignment (expression has type \"int\", target has type \"str\")",
+          "hint": null,
+          "code": "assignment",
+          "severity": "error"
+        }
+      ]
+    }
+  ]
+}

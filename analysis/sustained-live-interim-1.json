@@ -1,0 +1,976 @@
+{
+  "cases": [
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "d50d9f807fbc6c683bcf0a2c592102915760aa488687cc45b612b60ae5ba9a66",
+        "files_sha256": "e978e3342e6d3e3f777ca611a01c87f3cfe9b53862f86801f95b802919f59f29",
+        "head": "73259451979dd748ad88d37d68ae8afeabd772cd",
+        "previous_pid": 30807,
+        "resumed_pid": 39644,
+        "verified": true
+      },
+      "run_id": "workflow-reviewed-portfolio-1",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "continue_claims_despite_passing_visible": 2,
+            "invalid_control_artifacts": 1,
+            "passing_visible_proposals": 4,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 4,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 1,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c3",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "complete_claims_with_visible_defects": 1,
+            "continue_claims_despite_passing_visible": 3,
+            "failing_visible_proposals": 1,
+            "passing_visible_proposals": 3,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 3,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 1,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c3",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "c3",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "nested-rejected"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 5,
+            "continue_claims_despite_passing_visible": 1,
+            "failing_visible_proposals": 4,
+            "followup_calls": 1,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 0,
+            "invalid_control_artifacts": 3,
+            "passing_visible_proposals": 1,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 0,
+            "portfolio_initial_pool_with_a_visible_pass": 0,
+            "portfolio_initial_pool_with_no_visible_pass": 1,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 24,
+            "repair_after_visible_defect": 1,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 2,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c3",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "d7432b86f3e83c56e4e794ce503698ff189ec6a741b6d0446f1433f8b85393cb",
+        "files_sha256": "3f3d992caf9b14674e499d17732f5a9109a031024824b9b5fdf89335e3df24fc",
+        "head": "cda6dbcb2fbd29a172822b4fdcb393fcfe4f1d35",
+        "previous_pid": 44165,
+        "resumed_pid": 51030,
+        "verified": true
+      },
+      "run_id": "inventory-strong-single-1",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 1,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 1,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 1,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "5500b828c738e48241ecebca13a20f9ede29675c9c8f30e78aea270ca811b52f",
+        "files_sha256": "4666f5683ec3062072dcc7a02704816b10b3f507b92022f376f74fff87034254",
+        "head": "4a5e91be40ce53c9ebcd4c5b278ebc6aaea73b0d",
+        "previous_pid": 57864,
+        "resumed_pid": 63432,
+        "verified": true
+      },
+      "run_id": "workflow-cheap-sequential-0",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "single",
+              "category": "repair_of_invalid_control_after_visible_pass",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [],
+              "recovered_visible_suite": false,
+              "round": 2,
+              "unchanged_source": true
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 2,
+            "followup_calls": 1,
+            "followups_recovering_visible_suite": 0,
+            "followups_with_unchanged_source": 1,
+            "invalid_control_artifacts": 1,
+            "passing_visible_proposals": 2,
+            "raw_proposal_regressions": 0,
+            "repair_of_invalid_control_after_visible_pass": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "single",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "retry-receipt"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            },
+            {
+              "candidate": "single",
+              "category": "continuation_after_visible_pass",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [],
+              "recovered_visible_suite": false,
+              "round": 3,
+              "unchanged_source": false
+            },
+            {
+              "candidate": "single",
+              "category": "continuation_after_visible_pass",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [],
+              "recovered_visible_suite": false,
+              "round": 4,
+              "unchanged_source": false
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "continuation_after_visible_pass": 2,
+            "continue_claims_despite_passing_visible": 2,
+            "failing_visible_proposals": 1,
+            "followup_calls": 3,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 0,
+            "passing_visible_proposals": 3,
+            "raw_proposal_regressions": 0,
+            "repair_after_visible_defect": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "single",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "nested-rejected"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            },
+            {
+              "candidate": "single",
+              "category": "continuation_after_visible_pass",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [],
+              "recovered_visible_suite": false,
+              "round": 3,
+              "unchanged_source": true
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 3,
+            "complete_claims_with_visible_defects": 1,
+            "continuation_after_visible_pass": 1,
+            "continue_claims_despite_passing_visible": 1,
+            "failing_visible_proposals": 1,
+            "followup_calls": 2,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 1,
+            "passing_visible_proposals": 2,
+            "raw_proposal_regressions": 0,
+            "repair_after_visible_defect": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "eeeacee655a31f25a049801f1c49c08c1f7ed7533a6e3dbd2bb63c5e2d52442e",
+        "files_sha256": "2bac0f071c5c4f36b1a30da71eb645c256fa6f573f35ca3b19d213cd99f8ed5f",
+        "head": "d3697a22f802bdd29713671cc3c92d2193ba7a70",
+        "previous_pid": 71563,
+        "resumed_pid": 91561,
+        "verified": true
+      },
+      "run_id": "workflow-reviewed-portfolio-0",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "passing_visible_proposals": 4,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 4,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 0,
+            "review_choices_different_from_visible_best": 1,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c2",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "continue_claims_despite_passing_visible": 2,
+            "failing_visible_proposals": 1,
+            "passing_visible_proposals": 3,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 3,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 1,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c2",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "complete_claims_with_visible_defects": 1,
+            "continue_claims_despite_passing_visible": 1,
+            "failing_visible_proposals": 3,
+            "passing_visible_proposals": 1,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 1,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c2",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "aa6bd48ec3b4037a8d8b071f155a06dc053a1cbab290dfe4f27bf186b656c1b4",
+        "files_sha256": "0598495b908e42ecaca5ef2335f7ca58fbe3291f893aadc523129c9a46ab2ba0",
+        "head": "e3a70a7d90ffafce7a7da1afc56a78895ba355ad",
+        "previous_pid": 1260,
+        "resumed_pid": 9809,
+        "verified": true
+      },
+      "run_id": "inventory-reviewed-portfolio-0",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "complete_claims_with_visible_defects": 1,
+            "failing_visible_proposals": 1,
+            "passing_visible_proposals": 3,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 3,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 0,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c0",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "complete_claims_with_visible_defects": 1,
+            "failing_visible_proposals": 3,
+            "invalid_control_artifacts": 1,
+            "passing_visible_proposals": 1,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 1,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 24,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c2",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "complete_claims_with_visible_defects": 3,
+            "continue_claims_despite_passing_visible": 1,
+            "failing_visible_proposals": 3,
+            "passing_visible_proposals": 1,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 1,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 31,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c0",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "a8b26046187f12da48617a3a0f1ff7beda7f91e24ff34063d442f677ce28e479",
+        "files_sha256": "7962d3e1eab54d35f2d7974f5832f0eaab698d55f95ba888c593e9251d3409d5",
+        "head": "c88ab5fa984274115f9abd2912856e3d5d2bc737",
+        "previous_pid": 17966,
+        "resumed_pid": 21971,
+        "verified": true
+      },
+      "run_id": "workflow-strong-single-0",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 1,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 1,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "single",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "nested-rejected"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 2,
+            "complete_claims_with_visible_defects": 1,
+            "failing_visible_proposals": 1,
+            "followup_calls": 1,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 0,
+            "passing_visible_proposals": 1,
+            "raw_proposal_regressions": 0,
+            "repair_after_visible_defect": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "single",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    },
+    {
+      "accepted": true,
+      "final_hidden_failed_case_ids": [],
+      "handoff": {
+        "checkpoint_sha256": "395bfe83763b056339055df79397c9ea16e7e7b658f1c4fd7af1cf93340a04e6",
+        "files_sha256": "caa7c1552e48b98c2dd31bef337f8ae011482cbb77637265fbe5f0c2f2e86220",
+        "head": "38f08088e9bb973612473e65eca837cdbb6d8aec",
+        "previous_pid": 41754,
+        "resumed_pid": 52429,
+        "verified": true
+      },
+      "run_id": "inventory-reviewed-portfolio-1",
+      "selected_private_transitions": [
+        {
+          "from_stage": 0,
+          "recovered_case_ids": [],
+          "recurring_cases": 10,
+          "regressed_case_ids": [],
+          "to_stage": 1
+        },
+        {
+          "from_stage": 1,
+          "recovered_case_ids": [],
+          "recurring_cases": 20,
+          "regressed_case_ids": [],
+          "to_stage": 2
+        }
+      ],
+      "stages": [
+        {
+          "completed": true,
+          "followups": [],
+          "proposal_diagnostics": {
+            "builder_calls": 4,
+            "continue_claims_despite_passing_visible": 1,
+            "failing_visible_proposals": 1,
+            "invalid_control_artifacts": 1,
+            "passing_visible_proposals": 3,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 3,
+            "portfolio_initial_pool_with_a_visible_pass": 1,
+            "portfolio_initial_pool_with_no_visible_pass": 0,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "review_accepts_without_builder_complete_claim": 1,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c1",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 0
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "c2",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "inventory-s2-v-bundle-atomic"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 5,
+            "complete_claims_with_visible_defects": 2,
+            "failing_visible_proposals": 4,
+            "followup_calls": 1,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 0,
+            "passing_visible_proposals": 1,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 0,
+            "portfolio_initial_pool_with_a_visible_pass": 0,
+            "portfolio_initial_pool_with_no_visible_pass": 1,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 16,
+            "repair_after_visible_defect": 1,
+            "review_accepts_without_builder_complete_claim": 0,
+            "review_choices_different_from_visible_best": 1,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 2,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [],
+          "selected": "c2",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 1
+        },
+        {
+          "completed": true,
+          "followups": [
+            {
+              "candidate": "c0",
+              "category": "repair_after_visible_defect",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [
+                "inventory-s3-v-reconcile-floor"
+              ],
+              "recovered_visible_suite": true,
+              "round": 2,
+              "unchanged_source": false
+            },
+            {
+              "candidate": "c0",
+              "category": "reviewer_requested_repair_after_visible_pass",
+              "current_failed_case_ids": [],
+              "previous_failed_case_ids": [],
+              "recovered_visible_suite": false,
+              "round": 3,
+              "unchanged_source": false
+            }
+          ],
+          "proposal_diagnostics": {
+            "builder_calls": 6,
+            "complete_claims_with_visible_defects": 1,
+            "failing_visible_proposals": 4,
+            "followup_calls": 2,
+            "followups_recovering_visible_suite": 1,
+            "followups_with_unchanged_source": 0,
+            "passing_visible_proposals": 2,
+            "portfolio_initial_candidates": 4,
+            "portfolio_initial_passing_candidates": 0,
+            "portfolio_initial_pool_with_a_visible_pass": 0,
+            "portfolio_initial_pool_with_no_visible_pass": 1,
+            "portfolio_milestones": 1,
+            "raw_proposal_regressions": 0,
+            "repair_after_visible_defect": 1,
+            "review_accepts_without_builder_complete_claim": 0,
+            "review_choices_different_from_visible_best": 0,
+            "reviewer_acceptances": 1,
+            "reviewer_calls": 3,
+            "reviewer_requested_repair_after_visible_pass": 1,
+            "selected_milestones_with_hidden_failure": 0
+          },
+          "review_only_repairs": [
+            {
+              "before_binding": {
+                "files_sha256": "a993869c1040dca2fbe6e3815e7331fdbed3bd7f93b4a568cd5a509050b75e62",
+                "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-1/stage-2/stage-2-reviewed-portfolio-c0-build-2.git",
+                "tip_sha": "9db6d5634a366f688a79c1ee0fc42170cff08782"
+              },
+              "before_proposal_json": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-1/stage-2/stage-2-reviewed-portfolio-c0-build-2.json",
+              "candidate": "c0",
+              "counterfactual_hidden_quality": "Not measured in the preregistered run",
+              "notes": "c0 is the strongest implementation and the only one that clears the visible cumulative matrix, but it still misses a hidden stage-3 requirement around reconcile validation/error mapping. In domain.py, top-level reconcile and inner batch reconcile do not reject duplicate sku entries in counts during shape validation, even though the spec requires duplicate sku values to return {\"error\":\"invalid\"}. In service.py, _run_mutation catches ValueError from reconcile_stock only for the \"insufficient\" case; a duplicate-sku reconcile currently escapes as an unhandled exception and the CLI reports {\"error\":\"internal\"} instead of {\"error\":\"invalid\"}. Repair by enforcing unique sku validation in _validate_reconcile, and/or by mapping storage duplicate errors to DomainError(\"invalid\") in the reconcile path. Ensure the same behavior applies for reconcile inside batch so duplicate counts are rejected before any state changes and never surface as internal errors.",
+              "remaining": [
+                "reconcile-atomicity"
+              ],
+              "review_round": 2,
+              "run_id": "inventory-reviewed-portfolio-1",
+              "stage_index": 2,
+              "visible_passed_before_repair": true
+            }
+          ],
+          "selected": "c0",
+          "selected_hidden_failed_case_ids": [],
+          "stage_index": 2
+        }
+      ]
+    }
+  ],
+  "caveats": [
+    "Descriptive read-only analysis; run sustained_audit for evidence binding verification.",
+    "Primary outcomes are final requirement coverage and whole-project completion.",
+    "Raw losing-proposal regressions are exploratory branch diagnostics, not a policy-quality numerator.",
+    "A builder continuation or malformed completion artifact is not necessarily a software defect.",
+    "Historical private checks are retrospective and never supplied as agent repair feedback.",
+    "Passing-visible reviewer repairs need counterfactual private evaluation before claiming measured hidden lift.",
+    "While the study is running, finalized policies have unequal sample counts."
+  ],
+  "finalized_project_runs": 7,
+  "policies": {
+    "cheap-sequential": {
+      "accepted": 1,
+      "builder_calls": 9,
+      "complete_claims_with_visible_defects": 1,
+      "continuation_after_visible_pass": 3,
+      "continue_claims_despite_passing_visible": 3,
+      "failing_visible_proposals": 2,
+      "final_requirements_checked": 12,
+      "final_requirements_passed": 12,
+      "followup_calls": 6,
+      "followups_recovering_visible_suite": 2,
+      "followups_with_unchanged_source": 2,
+      "invalid_control_artifacts": 1,
+      "milestones_completed": 3,
+      "milestones_possible": 3,
+      "passing_visible_proposals": 7,
+      "project_runs": 1,
+      "raw_proposal_regressions": 0,
+      "raw_proposal_regressions_per_builder_call": 0.0,
+      "repair_after_visible_defect": 2,
+      "repair_of_invalid_control_after_visible_pass": 1,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 30,
+      "selected_milestones_with_hidden_failure": 0,
+      "usage_micro_usd": 250157,
+      "verified_distinct_process_handoffs": 1
+    },
+    "reviewed-portfolio": {
+      "accepted": 4,
+      "builder_calls": 52,
+      "complete_claims_with_visible_defects": 10,
+      "continue_claims_despite_passing_visible": 11,
+      "failing_visible_proposals": 25,
+      "final_requirements_checked": 54,
+      "final_requirements_passed": 54,
+      "followup_calls": 4,
+      "followups_recovering_visible_suite": 3,
+      "followups_with_unchanged_source": 0,
+      "invalid_control_artifacts": 6,
+      "milestones_completed": 12,
+      "milestones_possible": 12,
+      "passing_visible_proposals": 27,
+      "portfolio_initial_candidates": 48,
+      "portfolio_initial_passing_candidates": 23,
+      "portfolio_initial_pool_with_a_visible_pass": 9,
+      "portfolio_initial_pool_with_no_visible_pass": 3,
+      "portfolio_milestones": 12,
+      "project_runs": 4,
+      "raw_proposal_regressions": 95,
+      "raw_proposal_regressions_per_builder_call": 1.8269230769230769,
+      "repair_after_visible_defect": 3,
+      "review_accepts_without_builder_complete_claim": 8,
+      "review_choices_different_from_visible_best": 5,
+      "reviewer_acceptances": 12,
+      "reviewer_calls": 16,
+      "reviewer_requested_repair_after_visible_pass": 1,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 120,
+      "selected_milestones_with_hidden_failure": 0,
+      "usage_micro_usd": 4323724,
+      "verified_distinct_process_handoffs": 4
+    },
+    "strong-single": {
+      "accepted": 2,
+      "builder_calls": 7,
+      "complete_claims_with_visible_defects": 1,
+      "failing_visible_proposals": 1,
+      "final_requirements_checked": 27,
+      "final_requirements_passed": 27,
+      "followup_calls": 1,
+      "followups_recovering_visible_suite": 1,
+      "followups_with_unchanged_source": 0,
+      "milestones_completed": 6,
+      "milestones_possible": 6,
+      "passing_visible_proposals": 6,
+      "project_runs": 2,
+      "raw_proposal_regressions": 0,
+      "raw_proposal_regressions_per_builder_call": 0.0,
+      "repair_after_visible_defect": 1,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 60,
+      "selected_milestones_with_hidden_failure": 0,
+      "usage_micro_usd": 575619,
+      "verified_distinct_process_handoffs": 2
+    }
+  },
+  "report_snapshot_sha256": "6a21b7a9abfb4b41931c3d7ca7601fdd94e62c3e6ce00723492a26d466a8752c",
+  "review_only_repairs": [
+    {
+      "before_binding": {
+        "files_sha256": "a993869c1040dca2fbe6e3815e7331fdbed3bd7f93b4a568cd5a509050b75e62",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-1/stage-2/stage-2-reviewed-portfolio-c0-build-2.git",
+        "tip_sha": "9db6d5634a366f688a79c1ee0fc42170cff08782"
+      },
+      "before_proposal_json": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/inventory-reviewed-portfolio-1/stage-2/stage-2-reviewed-portfolio-c0-build-2.json",
+      "candidate": "c0",
+      "counterfactual_hidden_quality": "Not measured in the preregistered run",
+      "notes": "c0 is the strongest implementation and the only one that clears the visible cumulative matrix, but it still misses a hidden stage-3 requirement around reconcile validation/error mapping. In domain.py, top-level reconcile and inner batch reconcile do not reject duplicate sku entries in counts during shape validation, even though the spec requires duplicate sku values to return {\"error\":\"invalid\"}. In service.py, _run_mutation catches ValueError from reconcile_stock only for the \"insufficient\" case; a duplicate-sku reconcile currently escapes as an unhandled exception and the CLI reports {\"error\":\"internal\"} instead of {\"error\":\"invalid\"}. Repair by enforcing unique sku validation in _validate_reconcile, and/or by mapping storage duplicate errors to DomainError(\"invalid\") in the reconcile path. Ensure the same behavior applies for reconcile inside batch so duplicate counts are rejected before any state changes and never surface as internal errors.",
+      "remaining": [
+        "reconcile-atomicity"
+      ],
+      "review_round": 2,
+      "run_id": "inventory-reviewed-portfolio-1",
+      "stage_index": 2,
+      "visible_passed_before_repair": true
+    }
+  ],
+  "study_status": "running",
+  "unexecuted": [
+    [
+      "inventory",
+      "cheap-sequential",
+      1
+    ],
+    [
+      "inventory",
+      "cheap-sequential",
+      0
+    ],
+    [
+      "inventory",
+      "strong-single",
+      0
+    ],
+    [
+      "workflow",
+      "strong-single",
+      1
+    ],
+    [
+      "workflow",
+      "cheap-sequential",
+      1
+    ]
+  ]
+}

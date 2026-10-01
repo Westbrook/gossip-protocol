@@ -1,0 +1,640 @@
+{
+  "analysis": "Read-only source and saved receipt inspection; no candidate execution or new evaluation",
+  "final_report_sha256": "aefd4c45576f8c530db3695d59ba67151ca83f15629fd01b1943509ca937c151",
+  "cases": [
+    {
+      "run_id": "workflow-strong-single-1",
+      "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-strong-single-1/result.json",
+      "trajectory_sha256": "89d069e9645a0c62fae3b5ae64e4e98c6aee7c4ca6fab9e978fa7b9ffab00b7a",
+      "historical_failures": [
+        {
+          "stage_index": 2,
+          "case": {
+            "expected": [
+              {
+                "error": "invalid"
+              },
+              {
+                "error": "invalid"
+              },
+              {
+                "at": 1,
+                "error": "invalid"
+              },
+              []
+            ],
+            "id": "empty-bad-batch",
+            "input": {
+              "commands": [
+                {
+                  "commands": [],
+                  "op": "batch"
+                },
+                {
+                  "commands": {},
+                  "op": "batch"
+                },
+                {
+                  "commands": [
+                    {
+                      "id": "good",
+                      "op": "add",
+                      "priority": 0
+                    },
+                    {
+                      "op": "wat"
+                    }
+                  ],
+                  "op": "batch"
+                },
+                {
+                  "op": "list"
+                }
+              ]
+            },
+            "requirement": "Q3-atomic"
+          },
+          "observed": {
+            "actual": [
+              {
+                "error": "invalid"
+              },
+              {
+                "error": "invalid"
+              },
+              {
+                "error": "invalid"
+              },
+              []
+            ],
+            "id": "empty-bad-batch",
+            "index": 24,
+            "passed": false,
+            "requirement": "Q3-atomic",
+            "status": "wrong_answer"
+          }
+        }
+      ],
+      "final_requirement_coverage": {
+        "Q1-add": true,
+        "Q1-durable": true,
+        "Q1-link": true,
+        "Q1-order": true,
+        "Q2-fence": true,
+        "Q2-idempotent": true,
+        "Q2-lease": true,
+        "Q2-recovery": true,
+        "Q3-atomic": false,
+        "Q3-audit": true,
+        "Q3-migrate": true,
+        "Q3-restart": true
+      },
+      "explanation": "The frozen Q3-atomic contract requires the first failed inner command to report its zero-based at index. domain.validate recursively validates each inner command before service.execute enters its transaction/error-index wrapper. An unknown inner op raises invalid without at, so [add good, wat] yields invalid instead of invalid at 1. Rollback/no mutation remains correct in the recorded failing scenario.",
+      "source_evidence": {
+        "file": "workflow/domain.py",
+        "lines": "98\u2013110 in final retained source",
+        "code": "for index, inner in enumerate(commands):\n    inner_op = validate(inner, stage)\n    if inner_op in {\"batch\", \"audit\"}:\n        fail(\"invalid\", index)",
+        "frozen_spec": "Extend the existing standard-library Python 3.12 SQLite workflow queue.\nOnly workflow/storage.py, workflow/domain.py and workflow/service.py are editable.\nsolution.py and workflow/cli.py are fixed transport. solve receives {\"commands\":\n[command,...]} and optional \"legacy\" rows, returning one JSON value per command.\nEach command is executed by the real CLI in a FRESH process against the same SQLite\nfile; in-memory state cannot implement persistence. Every scenario gets a fresh DB.\nInputs have <=12 commands, <=20 jobs, <=20 dependency IDs per add. Identifiers\n(job and worker names) match [a-z][a-z0-9-]{0,19}. Integers exclude booleans.\nCommands reject missing, extra, or malformed fields with {\"error\":\"invalid\"};\nunknown operations also return invalid. Every error leaves persistent state unchanged.\nNo network, third-party packages, subprocesses outside the fixed transport, or\nexternal state. Keep command output strict JSON. Preserve all earlier milestones.\nThe bridge calls storage.connect(path), then service.execute(connection, command),\nand catches domain.CommandError whose .code and optional .at describe errors.\nValidation occurs before DB existence/state checks. Fields below are exact except\nexplicit defaults. Basic v0 supports add/list; extend it without changing their shape.\n\nAll earlier milestone behavior remains required.\nQ3-atomic: {op:'batch',commands:[...]} executes 1..8 ordinary commands sequentially\ninside ONE transaction. Inner list/ready queries are allowed. Nested batch and audit\nare invalid inner commands. Success returns {ok:'batch',results:[responses...]};\nfirst failed inner command returns {error:code,at:zeroBasedIndex}, rolls back ALL\nearlier writes/receipts/audit events in that batch, and skips later commands. Invalid\nbatch envelope returns {error:'invalid'} without at. No partial commits.\nQ3-audit: {op:'audit'} returns persistent events [{seq,op,id},...], ordered by seq,\nstarting at 1 and contiguous after rollback. Record add, newly-created link, claim\nof a job, and FIRST successful finish. Successful no-op links, duplicate finish\nreceipts, null claims, reads, errors, and rolled-back mutations add NO events.\nBatch itself adds no event; successful inner mutations use their actual op.\nQ3-migrate: The optional legacy payload initializes a v0 SQLite jobs table containing\nONLY id TEXT PRIMARY KEY, priority INTEGER NOT NULL, status TEXT NOT NULL. Rows\nare valid unique IDs, priorities -9..9, statuses pending/done/failed. Open and upgrade\nthat database without losing/reordering jobs or changing their states/priorities.\nLegacy jobs have no dependencies; attempt/token start at 0. Migration creates no\naudit events and is idempotent on every subsequent process restart.\nQ3-restart: Database migrations, atomic results, audit sequence and fencing receipts\nremain correct across fresh CLI invocations, including after a failed batch.\n"
+      }
+    },
+    {
+      "run_id": "workflow-cheap-sequential-1",
+      "result_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/workflow-cheap-sequential-1/result.json",
+      "trajectory_sha256": "9304e8279f76d78bca6eaacad0e9951311d2dbd969ba549958792e4ebcd540ec",
+      "historical_failures": [
+        {
+          "stage_index": 1,
+          "case": {
+            "expected": [
+              {
+                "id": "z",
+                "ok": "added"
+              },
+              {
+                "id": "b",
+                "ok": "added"
+              },
+              {
+                "id": "a",
+                "ok": "added"
+              },
+              {
+                "attempt": 1,
+                "id": "a",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "attempt": 1,
+                "id": "b",
+                "token": 1,
+                "until": 11
+              },
+              {
+                "attempt": 2,
+                "id": "a",
+                "token": 2,
+                "until": 12
+              }
+            ],
+            "id": "claim-priority",
+            "input": {
+              "commands": [
+                {
+                  "id": "z",
+                  "op": "add",
+                  "priority": 4
+                },
+                {
+                  "id": "b",
+                  "op": "add",
+                  "priority": 9
+                },
+                {
+                  "id": "a",
+                  "op": "add",
+                  "priority": 9
+                },
+                {
+                  "now": 0,
+                  "op": "claim",
+                  "ttl": 2,
+                  "worker": "worker"
+                },
+                {
+                  "now": 1,
+                  "op": "claim",
+                  "ttl": 10,
+                  "worker": "second"
+                },
+                {
+                  "now": 2,
+                  "op": "claim",
+                  "ttl": 10,
+                  "worker": "third"
+                }
+              ]
+            },
+            "requirement": "Q2-lease"
+          },
+          "observed": {
+            "actual": [
+              {
+                "id": "z",
+                "ok": "added"
+              },
+              {
+                "id": "b",
+                "ok": "added"
+              },
+              {
+                "id": "a",
+                "ok": "added"
+              },
+              {
+                "attempt": 1,
+                "id": "a",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "attempt": 1,
+                "id": "b",
+                "token": 1,
+                "until": 11
+              },
+              {
+                "attempt": 1,
+                "id": "z",
+                "token": 1,
+                "until": 12
+              }
+            ],
+            "id": "claim-priority",
+            "index": 16,
+            "passed": false,
+            "requirement": "Q2-lease",
+            "status": "wrong_answer"
+          }
+        },
+        {
+          "stage_index": 2,
+          "case": {
+            "expected": [
+              {
+                "id": "z",
+                "ok": "added"
+              },
+              {
+                "id": "b",
+                "ok": "added"
+              },
+              {
+                "id": "a",
+                "ok": "added"
+              },
+              {
+                "attempt": 1,
+                "id": "a",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "attempt": 1,
+                "id": "b",
+                "token": 1,
+                "until": 11
+              },
+              {
+                "attempt": 2,
+                "id": "a",
+                "token": 2,
+                "until": 12
+              }
+            ],
+            "id": "claim-priority",
+            "input": {
+              "commands": [
+                {
+                  "id": "z",
+                  "op": "add",
+                  "priority": 4
+                },
+                {
+                  "id": "b",
+                  "op": "add",
+                  "priority": 9
+                },
+                {
+                  "id": "a",
+                  "op": "add",
+                  "priority": 9
+                },
+                {
+                  "now": 0,
+                  "op": "claim",
+                  "ttl": 2,
+                  "worker": "worker"
+                },
+                {
+                  "now": 1,
+                  "op": "claim",
+                  "ttl": 10,
+                  "worker": "second"
+                },
+                {
+                  "now": 2,
+                  "op": "claim",
+                  "ttl": 10,
+                  "worker": "third"
+                }
+              ]
+            },
+            "requirement": "Q2-lease"
+          },
+          "observed": {
+            "actual": [
+              {
+                "id": "z",
+                "ok": "added"
+              },
+              {
+                "id": "b",
+                "ok": "added"
+              },
+              {
+                "id": "a",
+                "ok": "added"
+              },
+              {
+                "attempt": 1,
+                "id": "a",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "attempt": 1,
+                "id": "b",
+                "token": 1,
+                "until": 11
+              },
+              {
+                "attempt": 1,
+                "id": "z",
+                "token": 1,
+                "until": 12
+              }
+            ],
+            "id": "claim-priority",
+            "index": 16,
+            "passed": false,
+            "requirement": "Q2-lease",
+            "status": "wrong_answer"
+          }
+        },
+        {
+          "stage_index": 2,
+          "case": {
+            "expected": [
+              {
+                "attempt": 1,
+                "id": "legacy",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "pending"
+              },
+              {
+                "attempt": 2,
+                "id": "legacy",
+                "token": 2,
+                "until": 4
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "pending"
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "done"
+              },
+              [
+                {
+                  "id": "legacy",
+                  "op": "claim",
+                  "seq": 1
+                },
+                {
+                  "id": "legacy",
+                  "op": "finish",
+                  "seq": 2
+                },
+                {
+                  "id": "legacy",
+                  "op": "claim",
+                  "seq": 3
+                },
+                {
+                  "id": "legacy",
+                  "op": "finish",
+                  "seq": 4
+                }
+              ]
+            ],
+            "id": "legacy-restart-retry",
+            "input": {
+              "commands": [
+                {
+                  "now": 0,
+                  "op": "claim",
+                  "ttl": 2,
+                  "worker": "worker"
+                },
+                {
+                  "id": "legacy",
+                  "now": 1,
+                  "op": "finish",
+                  "outcome": "retry",
+                  "token": 1,
+                  "worker": "worker"
+                },
+                {
+                  "now": 2,
+                  "op": "claim",
+                  "ttl": 2,
+                  "worker": "next"
+                },
+                {
+                  "id": "legacy",
+                  "now": 3,
+                  "op": "finish",
+                  "outcome": "retry",
+                  "token": 1,
+                  "worker": "worker"
+                },
+                {
+                  "id": "legacy",
+                  "now": 3,
+                  "op": "finish",
+                  "outcome": "done",
+                  "token": 2,
+                  "worker": "next"
+                },
+                {
+                  "op": "audit"
+                }
+              ],
+              "legacy": [
+                {
+                  "id": "legacy",
+                  "priority": 0,
+                  "status": "pending"
+                }
+              ]
+            },
+            "requirement": "Q3-restart"
+          },
+          "observed": {
+            "actual": [
+              {
+                "attempt": 1,
+                "id": "legacy",
+                "token": 1,
+                "until": 2
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "pending"
+              },
+              {
+                "attempt": 2,
+                "id": "legacy",
+                "token": 2,
+                "until": 4
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "pending"
+              },
+              {
+                "id": "legacy",
+                "ok": "finished",
+                "status": "done"
+              },
+              [
+                {
+                  "id": "legacy",
+                  "op": "claim",
+                  "seq": 1
+                },
+                {
+                  "id": "legacy",
+                  "op": "finish",
+                  "seq": 2
+                },
+                {
+                  "id": "legacy",
+                  "op": "claim",
+                  "seq": 3
+                }
+              ]
+            ],
+            "id": "legacy-restart-retry",
+            "index": 28,
+            "passed": false,
+            "requirement": "Q3-restart",
+            "status": "wrong_answer"
+          }
+        }
+      ],
+      "final_requirement_coverage": {
+        "Q1-add": true,
+        "Q1-durable": true,
+        "Q1-link": true,
+        "Q1-order": true,
+        "Q2-fence": true,
+        "Q2-idempotent": true,
+        "Q2-lease": false,
+        "Q2-recovery": true,
+        "Q3-atomic": true,
+        "Q3-audit": true,
+        "Q3-migrate": true,
+        "Q3-restart": false
+      },
+      "persisted_defect": "The stage-2 _select_claimable implementation searches pending jobs and returns immediately if any exist; expired running jobs are considered only when no pending jobs remain. The contract ranks pending and expired eligible jobs together. At now=2, job a(priority9, expired at2) must be reclaimed with attempt/token2; actual returns z(priority4, attempt/token1). The same private failure exists in the stage-2 checkpoint and final stage-3 code.",
+      "introduced_defect": "After stage-3 rounds3,4,5 passed all visible cases, round6 adds _has_audit_event(op,job_id) and suppresses any further finish event for that job. The legacy retry scenario legitimately finishes token1 as retry, then token2 as done; it must contain a second finish event at seq4. Actual retains claim/finish/claim only. The model notes explicitly say only the first successful finish per job.",
+      "specification_ambiguity": "Q3-audit says FIRST successful finish without explicitly spelling out per (job,token). Q2 receipts are scoped by (job,token), and duplicate finish receipts must not log, so the frozen reference interprets each new successful receipt as auditable. The per-job reading is inconsistent with that reference but the prose could be clearer; this is not solely evidence of an invented requirement.",
+      "evidence_limit": "The final candidate was privately evaluated; rounds3\u20135 were not. The introduction of the audit suppression is established by the exact source diff, not an executed pre/post private counterfactual.",
+      "round3_through6_source_changes": [
+        {
+          "from_round": 3,
+          "to_round": 4,
+          "diffs": {
+            "workflow/service.py": "--- round-3\n+++ round-4\n@@ -62,31 +62,23 @@\n         if not allow_batch:\n             fail(\"invalid\")\n         results = []\n+        connection.execute(\"SAVEPOINT batch\")\n         try:\n-            connection.execute(\"BEGIN IMMEDIATE\")\n-            for index, inner in enumerate(command[\"commands\"]):\n+            for inner in command[\"commands\"]:\n                 if type(inner) is not dict:\n-                    raise RuntimeError(\"invalid inner command\")\n-                inner_op = inner.get(\"op\")\n-                if inner_op in {\"batch\", \"audit\"}:\n                     fail(\"invalid\")\n-                try:\n-                    result = _execute(connection, inner, allow_batch=False, record_audit=record_audit)\n-                except Exception:\n-                    raise\n-                results.append(result)\n-            connection.execute(\"COMMIT\")\n-            return {\"ok\": \"batch\", \"results\": results}\n+                if inner.get(\"op\") in {\"batch\", \"audit\"}:\n+                    fail(\"invalid\")\n+                results.append(_execute(connection, inner, allow_batch=False, record_audit=record_audit))\n         except Exception as error:\n-            try:\n-                connection.execute(\"ROLLBACK\")\n-            except Exception:\n-                pass\n+            connection.execute(\"ROLLBACK TO batch\")\n+            connection.execute(\"RELEASE batch\")\n             if hasattr(error, \"code\"):\n                 return {\"error\": error.code, \"at\": len(results)}\n-            if str(error) == \"invalid inner command\":\n-                fail(\"invalid\")\n             raise\n+        else:\n+            connection.execute(\"RELEASE batch\")\n+            return {\"ok\": \"batch\", \"results\": results}\n \n     if op == \"add\":\n         if connection.execute(\"SELECT 1 FROM jobs WHERE id=?\", (command[\"id\"],)).fetchone():\n"
+          }
+        },
+        {
+          "from_round": 4,
+          "to_round": 5,
+          "diffs": {
+            "workflow/service.py": "--- round-4\n+++ round-5\n@@ -62,7 +62,8 @@\n         if not allow_batch:\n             fail(\"invalid\")\n         results = []\n-        connection.execute(\"SAVEPOINT batch\")\n+        savepoint = f\"batch_{id(command)}\"\n+        connection.execute(f\"SAVEPOINT {savepoint}\")\n         try:\n             for inner in command[\"commands\"]:\n                 if type(inner) is not dict:\n@@ -71,13 +72,13 @@\n                     fail(\"invalid\")\n                 results.append(_execute(connection, inner, allow_batch=False, record_audit=record_audit))\n         except Exception as error:\n-            connection.execute(\"ROLLBACK TO batch\")\n-            connection.execute(\"RELEASE batch\")\n+            connection.execute(f\"ROLLBACK TO {savepoint}\")\n+            connection.execute(f\"RELEASE {savepoint}\")\n             if hasattr(error, \"code\"):\n                 return {\"error\": error.code, \"at\": len(results)}\n             raise\n         else:\n-            connection.execute(\"RELEASE batch\")\n+            connection.execute(f\"RELEASE {savepoint}\")\n             return {\"ok\": \"batch\", \"results\": results}\n \n     if op == \"add\":\n"
+          }
+        },
+        {
+          "from_round": 5,
+          "to_round": 6,
+          "diffs": {
+            "workflow/service.py": "--- round-5\n+++ round-6\n@@ -53,6 +53,14 @@\n def _audit_append(connection, op, job_id):\n     seq = connection.execute(\"SELECT COALESCE(MAX(seq), 0) + 1 AS seq FROM audit\").fetchone()[\"seq\"]\n     connection.execute(\"INSERT INTO audit (seq, op, id) VALUES (?, ?, ?)\", (seq, op, job_id))\n+\n+\n+def _has_audit_event(connection, op, job_id):\n+    row = connection.execute(\n+        \"SELECT 1 FROM audit WHERE op=? AND id=? LIMIT 1\",\n+        (op, job_id),\n+    ).fetchone()\n+    return row is not None\n \n \n def _execute(connection, command, *, allow_batch=True, record_audit=True):\n@@ -199,7 +207,7 @@\n             \"INSERT INTO receipts (job_id, token, worker, outcome, response) VALUES (?, ?, ?, ?, ?)\",\n             (job_id, command[\"token\"], command[\"worker\"], outcome, json.dumps(response, separators=(',', ':'))),\n         )\n-        if record_audit:\n+        if record_audit and not _has_audit_event(connection, \"finish\", job_id):\n             _audit_append(connection, \"finish\", job_id)\n         return response\n \n"
+          }
+        }
+      ],
+      "frozen_stage2_spec": "Extend the existing standard-library Python 3.12 SQLite workflow queue.\nOnly workflow/storage.py, workflow/domain.py and workflow/service.py are editable.\nsolution.py and workflow/cli.py are fixed transport. solve receives {\"commands\":\n[command,...]} and optional \"legacy\" rows, returning one JSON value per command.\nEach command is executed by the real CLI in a FRESH process against the same SQLite\nfile; in-memory state cannot implement persistence. Every scenario gets a fresh DB.\nInputs have <=12 commands, <=20 jobs, <=20 dependency IDs per add. Identifiers\n(job and worker names) match [a-z][a-z0-9-]{0,19}. Integers exclude booleans.\nCommands reject missing, extra, or malformed fields with {\"error\":\"invalid\"};\nunknown operations also return invalid. Every error leaves persistent state unchanged.\nNo network, third-party packages, subprocesses outside the fixed transport, or\nexternal state. Keep command output strict JSON. Preserve all earlier milestones.\nThe bridge calls storage.connect(path), then service.execute(connection, command),\nand catches domain.CommandError whose .code and optional .at describe errors.\nValidation occurs before DB existence/state checks. Fields below are exact except\nexplicit defaults. Basic v0 supports add/list; extend it without changing their shape.\n\nAll milestone 1 behavior remains required.\nQ2-lease: {op:'claim',worker,now,ttl} selects one dependency-satisfied pending job\nOR running job whose lease expired (now >= until), using the ready priority/id\norder. now is an integer 0..100000; ttl is 1..1000. Return null if no eligible job.\nOtherwise persist status running, increase that job's attempt and fencing token\nfrom initial 0 by one each, owner=worker, until=now+ttl; return exactly\n{id,attempt,token,until}. Time is explicitly supplied; do not use wall clock.\nready still reports only pending jobs, not running/expired jobs. Logical times in\nnormal scenarios are nondecreasing. A job can be reclaimed exactly at expiration.\nQ2-fence: {op:'finish',id,worker,token,now,outcome} requires an existing job,\nmatching running owner+token, and now < until. token is integer 1..100000;\noutcome is done, retry, or failed. Missing job => missing; unmatched/expired lease\n=> stale. Retry sets pending, done/failed set their names. Return\n{ok:'finished',id,status}. Clear active owner/expiration; preserve attempt/token.\nA failed prerequisite never satisfies a dependency; done does.\nQ2-idempotent: Persist each successful finish receipt by (job,token). Repeating\nthat receipt's worker+outcome returns the original response even after expiration\nor a later claim, and MUST NOT mutate current job state. Same token with a different\nworker or outcome returns stale. Syntactic validation and job existence come first,\nthen prior receipts, then current lease checks. All finish outcomes are idempotent.\nQ2-recovery: Claims, fences, receipts and retries survive every CLI process restart.\n",
+      "frozen_stage3_spec": "Extend the existing standard-library Python 3.12 SQLite workflow queue.\nOnly workflow/storage.py, workflow/domain.py and workflow/service.py are editable.\nsolution.py and workflow/cli.py are fixed transport. solve receives {\"commands\":\n[command,...]} and optional \"legacy\" rows, returning one JSON value per command.\nEach command is executed by the real CLI in a FRESH process against the same SQLite\nfile; in-memory state cannot implement persistence. Every scenario gets a fresh DB.\nInputs have <=12 commands, <=20 jobs, <=20 dependency IDs per add. Identifiers\n(job and worker names) match [a-z][a-z0-9-]{0,19}. Integers exclude booleans.\nCommands reject missing, extra, or malformed fields with {\"error\":\"invalid\"};\nunknown operations also return invalid. Every error leaves persistent state unchanged.\nNo network, third-party packages, subprocesses outside the fixed transport, or\nexternal state. Keep command output strict JSON. Preserve all earlier milestones.\nThe bridge calls storage.connect(path), then service.execute(connection, command),\nand catches domain.CommandError whose .code and optional .at describe errors.\nValidation occurs before DB existence/state checks. Fields below are exact except\nexplicit defaults. Basic v0 supports add/list; extend it without changing their shape.\n\nAll earlier milestone behavior remains required.\nQ3-atomic: {op:'batch',commands:[...]} executes 1..8 ordinary commands sequentially\ninside ONE transaction. Inner list/ready queries are allowed. Nested batch and audit\nare invalid inner commands. Success returns {ok:'batch',results:[responses...]};\nfirst failed inner command returns {error:code,at:zeroBasedIndex}, rolls back ALL\nearlier writes/receipts/audit events in that batch, and skips later commands. Invalid\nbatch envelope returns {error:'invalid'} without at. No partial commits.\nQ3-audit: {op:'audit'} returns persistent events [{seq,op,id},...], ordered by seq,\nstarting at 1 and contiguous after rollback. Record add, newly-created link, claim\nof a job, and FIRST successful finish. Successful no-op links, duplicate finish\nreceipts, null claims, reads, errors, and rolled-back mutations add NO events.\nBatch itself adds no event; successful inner mutations use their actual op.\nQ3-migrate: The optional legacy payload initializes a v0 SQLite jobs table containing\nONLY id TEXT PRIMARY KEY, priority INTEGER NOT NULL, status TEXT NOT NULL. Rows\nare valid unique IDs, priorities -9..9, statuses pending/done/failed. Open and upgrade\nthat database without losing/reordering jobs or changing their states/priorities.\nLegacy jobs have no dependencies; attempt/token start at 0. Migration creates no\naudit events and is idempotent on every subsequent process restart.\nQ3-restart: Database migrations, atomic results, audit sequence and fencing receipts\nremain correct across fresh CLI invocations, including after a failed batch.\n"
+    }
+  ],
+  "policy_aggregates": {
+    "cheap-sequential": {
+      "accepted": 3,
+      "builder_calls": 37,
+      "complete_claims_with_visible_defects": 4,
+      "continuation_after_visible_pass": 9,
+      "continue_claims_despite_passing_visible": 9,
+      "failing_visible_proposals": 10,
+      "final_requirements_checked": 54,
+      "final_requirements_passed": 52,
+      "followup_calls": 25,
+      "followups_recovering_visible_suite": 5,
+      "followups_with_unchanged_source": 9,
+      "invalid_control_artifacts": 7,
+      "milestones_completed": 12,
+      "milestones_possible": 12,
+      "passing_visible_proposals": 27,
+      "project_runs": 4,
+      "raw_proposal_regressions": 35,
+      "raw_proposal_regressions_per_builder_call": 0.9459459459459459,
+      "repair_after_visible_defect": 10,
+      "repair_of_invalid_control_after_visible_pass": 6,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 120,
+      "selected_milestones_with_hidden_failure": 2,
+      "usage_micro_usd": 1212427,
+      "verified_distinct_process_handoffs": 4
+    },
+    "reviewed-portfolio": {
+      "accepted": 4,
+      "builder_calls": 52,
+      "complete_claims_with_visible_defects": 10,
+      "continue_claims_despite_passing_visible": 11,
+      "failing_visible_proposals": 25,
+      "final_requirements_checked": 54,
+      "final_requirements_passed": 54,
+      "followup_calls": 4,
+      "followups_recovering_visible_suite": 3,
+      "followups_with_unchanged_source": 0,
+      "invalid_control_artifacts": 6,
+      "milestones_completed": 12,
+      "milestones_possible": 12,
+      "passing_visible_proposals": 27,
+      "portfolio_initial_candidates": 48,
+      "portfolio_initial_passing_candidates": 23,
+      "portfolio_initial_pool_with_a_visible_pass": 9,
+      "portfolio_initial_pool_with_no_visible_pass": 3,
+      "portfolio_milestones": 12,
+      "project_runs": 4,
+      "raw_proposal_regressions": 95,
+      "raw_proposal_regressions_per_builder_call": 1.8269230769230769,
+      "repair_after_visible_defect": 3,
+      "review_accepts_without_builder_complete_claim": 8,
+      "review_choices_different_from_visible_best": 5,
+      "reviewer_acceptances": 12,
+      "reviewer_calls": 16,
+      "reviewer_requested_repair_after_visible_pass": 1,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 120,
+      "selected_milestones_with_hidden_failure": 0,
+      "usage_micro_usd": 4323724,
+      "verified_distinct_process_handoffs": 4
+    },
+    "strong-single": {
+      "accepted": 3,
+      "builder_calls": 13,
+      "complete_claims_with_visible_defects": 1,
+      "failing_visible_proposals": 1,
+      "final_requirements_checked": 54,
+      "final_requirements_passed": 53,
+      "followup_calls": 1,
+      "followups_recovering_visible_suite": 1,
+      "followups_with_unchanged_source": 0,
+      "milestones_completed": 12,
+      "milestones_possible": 12,
+      "passing_visible_proposals": 12,
+      "project_runs": 4,
+      "raw_proposal_regressions": 0,
+      "raw_proposal_regressions_per_builder_call": 0.0,
+      "repair_after_visible_defect": 1,
+      "selected_hidden_recoveries": 0,
+      "selected_hidden_regressions": 0,
+      "selected_hidden_transition_opportunities": 120,
+      "selected_milestones_with_hidden_failure": 1,
+      "usage_micro_usd": 1026278,
+      "verified_distinct_process_handoffs": 4
+    }
+  },
+  "interpretation": [
+    "All12 project trajectories completed all3 milestones and crossed a verified process handoff; final private quality differs: portfolio4/4, strong3/4, cheap3/4.",
+    "Final requirement coverage: portfolio54/54, strong53/54, cheap52/54. These are repeated requirements across only2 projects, not independent industrial tasks.",
+    "Cheap followups25 =10 after visible defects +6 invalid-control repairs after visible success +9 continuations after visible success. Extra continuation was not monotonically beneficial: one later source change introduces the audit defect described above.",
+    "Zero selected historical private regressions means no recurring old private case changed passing\u2192failing across selected milestones. It does not rule out newly added requirement failures or within-milestone self-refinement bugs.",
+    "Portfolio initially had a visible-passing candidate in9/12milestones; three milestones needed source repair. Only23/48 initial candidates passed all visible checks, showing real implementation diversity and failures.",
+    "One portfolio reviewer requested a source correction after all visible checks passed. That behavior is promising for quality; its pre-repair hidden counterfactual is separate from this analysis."
+  ]
+}

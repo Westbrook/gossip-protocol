@@ -1,0 +1,13 @@
+#!/bin/sh
+# Reuse both the environment and package cache. This command installs tools;
+# ordinary verification must never download packages or replace environments.
+set -eu
+cd "$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+if ! command -v uv >/dev/null 2>&1; then
+    printf '%s\n' 'uv is required to bootstrap development tools.' >&2
+    exit 2
+fi
+if [ ! -x .venv/bin/python ]; then
+    uv --cache-dir .cache/uv venv --python 3.11.15 .venv
+fi
+uv --cache-dir .cache/uv pip install --python .venv/bin/python --require-hashes -r requirements-dev.lock

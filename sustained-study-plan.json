@@ -1,0 +1,111 @@
+{
+  "authorized_budget": "Existing user approval of up to $50 additional. Audited cumulative ledger cap raised to $20 in runs/sustained-budget-increase.json, preserving $1.690384 prior costs.",
+  "contract": {
+    "baseline_calls_per_stage": 8,
+    "case_timeout_seconds": 12,
+    "completion": "All three milestones and all final cumulative visible and hidden cases pass at exact release commit",
+    "fixture_sha256": "a914a75f3c39abe8c3eed7d105360226f02ac05a3da2578369deb372bb183db9",
+    "hidden_feedback": false,
+    "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "intermediate_hidden": "Retrospective diagnostic; earlier defects may be repaired",
+    "interruption": "Settled controller exit after milestone two, new PID resumes exact Git checkpoint",
+    "metrics_order": [
+      "final requirement coverage",
+      "whole-project completion",
+      "regressions and recovery",
+      "premature completion and stagnation",
+      "cost",
+      "elapsed time"
+    ],
+    "milestones": 3,
+    "models": {
+      "cheap": {
+        "cached_input_accounting": "uncached_rate",
+        "configured_max_output_tokens": 8192,
+        "context_tokens": 400000,
+        "endpoint": "https://api.openai.com/v1/responses",
+        "input_micro_usd_per_million": 750000,
+        "long_context_above_input_tokens": null,
+        "long_input_micro_usd_per_million": null,
+        "long_output_micro_usd_per_million": null,
+        "max_output_tokens": 128000,
+        "max_request_bytes": 512000,
+        "model": "gpt-5.4-mini-2026-03-17",
+        "output_micro_usd_per_million": 4500000,
+        "price_verified_on": "2026-09-30",
+        "reasoning_effort": "low",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 336864,
+        "service_tier": "default",
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini"
+      },
+      "strong": {
+        "cached_input_accounting": "uncached_rate",
+        "configured_max_output_tokens": 8192,
+        "context_tokens": 1050000,
+        "endpoint": "https://api.openai.com/v1/responses",
+        "input_micro_usd_per_million": 2500000,
+        "long_context_above_input_tokens": 272000,
+        "long_input_micro_usd_per_million": 5000000,
+        "long_output_micro_usd_per_million": 22500000,
+        "max_output_tokens": 128000,
+        "max_request_bytes": 512000,
+        "model": "gpt-5.4-2026-03-05",
+        "output_micro_usd_per_million": 15000000,
+        "price_verified_on": "2026-09-30",
+        "reasoning_effort": "low",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 5434320,
+        "service_tier": "default",
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+      }
+    },
+    "policies": [
+      "strong-single",
+      "cheap-sequential",
+      "reviewed-portfolio"
+    ],
+    "portfolio_initial": 4,
+    "portfolio_repairs": 4,
+    "project_ids": [
+      "workflow",
+      "inventory"
+    ],
+    "protocol": "sustained-quality-v1",
+    "reviewer_calls_per_stage": 5,
+    "scope": "Bounded stateless patch workers with persistent controller; no gossip transport comparison",
+    "sources": {
+      "blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+      "gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+      "ledger.py": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b",
+      "pilot.py": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e",
+      "promotion.py": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972",
+      "sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+      "sustained_checkpoint.py": "83e7a85fd5930fe3e0b0bf6a87f27ff19bdc9577b0e77afb344c4599e0ef7fbd",
+      "sustained_experiment.py": "fcb4ce3570a9e4a4864b136a4b1fb8b9997948b6cfcfab85c15fbb911036b984",
+      "sustained_inventory.py": "d7ddc51fac36097f894973e6f1d39337176aebf785d6ac71c310aa7f80067829",
+      "sustained_queue.py": "1fd9a82856bb81fcc94a0c653a8e52733ec8548e24af179122b87f8cafb85580",
+      "sustained_stage.py": "a29da102b594159c0941e8140312ae0d183b9a4a08fe608c38c1f6e6fc2f0a20",
+      "worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    },
+    "suite_timeout_seconds": 300
+  },
+  "contract_sha": "35be0a1400010eae271fe798eda288682f75b0fc43b32308e4cc15ca9d32874a",
+  "hypotheses": [
+    "A reviewed cheap-model portfolio may reduce final requirement omissions compared with a sequential cheap-model agent.",
+    "A strong single-model agent may match or exceed the portfolio; no superiority is assumed.",
+    "Controller persistence may improve completion while masking premature agent completion; count both separately."
+  ],
+  "interpretation": [
+    "12 synthetic project trajectories are a pilot, not statistical evidence of general superiority.",
+    "The portfolio bundles diversity, reviewer strength, and additional calls; effects cannot be attributed separately.",
+    "Only sequential process persistence and explicit legacy migration are tested, not database contention or recovery from a process crash.",
+    "A completed milestone uses visible checks; only the final release uses private checks.",
+    "Earlier hidden defects fixed later are permitted; intermediate private scores are diagnostic.",
+    "Cost and wall time are secondary measurements and safety guardrails; their long-term improvement is unproven."
+  ],
+  "live_repetitions": 2,
+  "milestones_per_trajectory": 3,
+  "primary_question": "Does the system complete the full cumulative project at the required quality bar, preserve earlier behavior, and continue through failures and a settled controller restart?",
+  "project_trajectories": 12
+}
