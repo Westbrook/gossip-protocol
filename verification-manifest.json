@@ -2085,6 +2085,136 @@
       "boundary": "One verifier and one service worker thread; no network, Git, Docker or production credentials.",
       "disposition": "Qualifies the finance-to-review-to-recovery interface only; not full release, role runtime or twenty-agent execution.",
       "overlap_reason": "Component tests cannot detect mismatched real terminal proof, response artifact encoding and recovery classification across these modules."
+    },
+    "tests/test_peer_mesh_v2.py::MeshStoreV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Append-only bounded notices, explicit demand, chunk identity and durable exact command replay survive retained store restart.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Private real SQLite mesh stores; no sockets, provider, Git or Docker.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Metadata arrival cannot manufacture payload availability, bypass quotas or replace immutable event identity."
+    },
+    "tests/test_peer_mesh_v2.py::MeshTCPV2Tests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Independent mesh ticks move only requested bytes and preserve exact state through partitions and same-database restart.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Small actual loopback TCP mesh, owned server threads and explicit demand; subprocess readiness smoke.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Real sockets and continuing service lifetime qualify effects not established by store-only tests."
+    },
+    "tests/test_peer_financial_rpc_v2.py::PeerFinancialRPCV2Tests": {
+      "lane": "fast",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Per-principal authenticated RPC preserves atomic claim/renew identity and exact evidence arrival before asynchronous admission.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Disposable ledger, request journal, deterministic worker transport and bounded service threads.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "A forged role, rebound request or unavailable exact reference must not reserve or invoke."
+    },
+    "tests/test_peer_financial_rpc_v2.py::PeerFinancialRPCTCPV2Tests": {
+      "lane": "fixtures",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Lost authenticated replies reconcile exact admitted operations without duplicate provider invocation.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Real loopback RPC and concurrent authenticated callers; at most two injected service worker threads.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Wire framing, response binding and unknown transport outcomes cross a boundary absent from direct journal tests."
+    },
+    "tests/test_peer_role_loop_v2.py::PeerRoleLoopV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Local materialization, finite action accounting and durable lease/request identity survive lost acknowledgments and restart.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Private role SQLite journals, fake mesh/RPC fixtures; no provider or candidate execution.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "An unknown admitted action cannot free its allowance or change identity while evidence waits do not starve ready work."
+    },
+    "tests/test_peer_candidate_v2.py::CandidateMetadataV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Strict candidate notices bind dispatch, complete source, named bytes and original bundle manifest.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Immutable typed candidate records and deterministic fixtures; no source execution.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Result and source digest conventions must not be interchangeable or permit partial provenance."
+    },
+    "tests/test_peer_candidate_v2.py::CandidateGitV2Tests": {
+      "lane": "git",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 300,
+      "invariant": "Completed local actions publish exact scoped private Git proposals and restart without patching twice.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Private actual Git repositories and bundles, local durable intents; candidate code never executes.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Source, base, scope or action substitution and interrupted export cannot produce an accepted candidate publication."
+    },
+    "tests/test_peer_mesh_finance_v2.py::PeerMeshFinanceV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Exact arrived request references and service-owned result indices bridge mesh provenance to accounting.",
+      "isolation": "Dedicated class process; isolated mutable roots and owned services.",
+      "boundary": "Real local mesh stores and SQLite result index; explicit manual fixture delivery, no sockets.",
+      "disposition": "Run nearest offline lane before twenty-role integration; no production credentials or ledger.",
+      "overlap_reason": "Matching bytes from another event cannot impersonate exact arrival or replace a lost result mapping."
+    },
+    "tests/test_library_project_fixture_v1.py::LibraryProjectFixtureV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Working authored v0 preserves source/blob identity, CLI persistence and public API semantics while the independent M1 oracle defines atomic fenced ingestion.",
+      "isolation": "Dedicated class process, fresh trusted authored seed and isolated SQLite/input roots per smoke.",
+      "boundary": "Pure specification/oracle tests first; method-selected resource-bounded host subprocesses execute only repository-authored v0. No model source, provider or Docker.",
+      "disposition": "Qualifies public seed and oracle shape, not real browser/HTTP transport, M1 implementation or held-out acceptance.",
+      "overlap_reason": "Actual seed modules and CLI reopen exercise persistence separate from independently authored dictionary-state semantics.",
+      "methods": {
+        "test_authored_seed_executes_public_histories_and_stays_unsolved_for_m1": {
+          "lane": "fixtures",
+          "weight": 2,
+          "exclusive": true,
+          "timeout_seconds": 120
+        },
+        "test_authored_seed_file_failures_and_shared_blob_storage": {
+          "lane": "fixtures",
+          "weight": 2,
+          "exclusive": true,
+          "timeout_seconds": 120
+        },
+        "test_authored_seed_cli_persistence_and_shared_api_contract": {
+          "lane": "fixtures",
+          "weight": 2,
+          "exclusive": true,
+          "timeout_seconds": 120
+        }
+      }
+    },
+    "tests/test_peer_twenty_role_fixture_v2.py::PeerTwentyRoleFixtureV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "The twenty-role fixture requires actual unique process receipts, local materialization, bounded overlap, in-wait gossip and exact candidate provenance.",
+      "isolation": "Dedicated class process and isolated output paths; synthetic observation records for admission/rejection assertions.",
+      "boundary": "Pure fixture-contract and negative-evidence checks; does not start the twenty-process scenario.",
+      "disposition": "Run before explicit source-bound twenty-role CLI qualification; passing synthetic records are not physical process evidence.",
+      "overlap_reason": "Prevents a partial or unrelated observation set from earning runtime qualification without repeating the expensive integrated scenario."
     }
   },
   "audit": {

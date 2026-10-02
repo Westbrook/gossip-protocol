@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "status": "qualified-offline-runtime-only",
+  "scientific_classification": "Engineering plumbing observation; not a software quality study or live twenty-agent project completion.",
+  "repository_base_head": "733ccb065646b1e705c35dd7def0151f930e6eff",
+  "source_files": {
+    "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+    "gossip_harness/peer_candidate_v2.py": "8a4eb0b2d5995b4234c5a26047cb1fd104212b9a8be80df4cce792063791e988",
+    "gossip_harness/peer_financial_rpc_v2.py": "f20f24b344a96beb8b712f927905b44bfe40887f12648715fc7e8c35bd5c9f27",
+    "gossip_harness/peer_mesh_finance_v2.py": "11de812ef927664a9092f9cc74b1b3a3d1a2aa373f365be6405f8b0b681b5a06",
+    "gossip_harness/peer_mesh_store_v2.py": "bf0ed3d4e44d7728af265c4f6cd1e118daa6bcdc0ae1ae9dc5de5eafc73d7179",
+    "gossip_harness/peer_mesh_v2.py": "e838734dae4b69f5b21b28d1654b2d93812f2d0fe3cf4b3bd73bc57c94b76b0e",
+    "gossip_harness/peer_role_loop_v2.py": "0e0fb1b79192ea21b54f0291543b32a336dcd18abb2aea130799e7a4828a609c",
+    "gossip_harness/peer_twenty_role_fixture_v2.py": "045ae02c951fd1a8b222722eae206d299cd96a4e0587d545fd79beb914d7b098",
+    "tests/test_library_project_fixture_v1.py": "bff0d1f9ab76f4b372b30b06c186af7f7f9c3d8efb7ee407729c6dc7ad5501f2",
+    "tests/test_peer_candidate_v2.py": "3770e694e2f40e0332444c1fbcace7f4254cea5004d22dda27c3d08c7314c454",
+    "tests/test_peer_financial_rpc_v2.py": "ca1c410d106ed937138e577deafa9b041f1db781be131ae8a764a7a12b406358",
+    "tests/test_peer_mesh_finance_v2.py": "bbd28438df530243417f7001ff8211b717093c6f37edd6cb001c4cbdf5117e05",
+    "tests/test_peer_mesh_v2.py": "dc633c5aea2af17470067973daf00869e97a664056f17b771cd49ce6e517c264",
+    "tests/test_peer_role_loop_v2.py": "211593c6482a892ebfe5f9ae01f5c9e0fd4c9b7e268b562227a545de191f8782",
+    "tests/test_peer_twenty_role_fixture_v2.py": "7576d72eee8ad29106f54f2ba38b80d4239886d6bb1604b355220364dc80cf96",
+    "pyproject.toml": "c3714c0e2b60617e4c50426bc2c8556e44b1627478765cd117a0ac0697774d08",
+    "verification-manifest.json": "098f5676cede435da00b731138c4715cbb5f4f95d0bf61bd4995df7967937008",
+    "docs/peer-role-runtime-v2.md": "35544dfb45954b7f8f77bbd9bae6107139b395ef5f343f01bb2d30c407bfdcfe"
+  },
+  "verification": {
+    "session": "runs/investigation-cycle-10-runtime-final/20261002T224935-f020df27",
+    "status": "passed",
+    "physically_executed_tests": 140,
+    "selected_counts": {
+      "fast": 114,
+      "fixtures": 15,
+      "git": 11
+    },
+    "class_processes": 11,
+    "reused_classes": 0,
+    "unexpected_skips": 0,
+    "failures": 0,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "bound_authored_inputs": 283,
+    "static_passed": true,
+    "unchanged_legacy_type_diagnostics": 117,
+    "scope": "Eight new runtime/seed modules added to explicit mypy roots; targeted regressions, not full legacy-suite execution.",
+    "files": {
+      "runs/investigation-cycle-10-runtime-final/20261002T224935-f020df27/summary.json": "b6f658325d1e0f105f9ef073f35060c619774eafc91aab833f9937534b795fc6",
+      "runs/investigation-cycle-10-runtime-final/20261002T224935-f020df27/inputs.json": "c76ad9b99bddf988df1600a4bf3724369411d42f39eaaade7a9e51790c0d1a9f",
+      "runs/investigation-cycle-10-runtime-final/20261002T224935-f020df27/static.json": "d650b8e53dec2be5a0be377f39317b21c91bf188787dab59c46e33a6daaab6b3"
+    }
+  },
+  "superseded_development_gate": {
+    "session": "runs/investigation-cycle-10-runtime-offline/20261002T224632-05337eb4",
+    "passed_tests": 139,
+    "reason": "Final review added a strict post-attestation deadline check and its regression; final140-test gate physically reran on the new source contract."
+  },
+  "physical_observation": {
+    "directory": "runs/twenty-role-plumbing-v2-1",
+    "receipt_sha256": "c546a3e94027da61871a59420b8c3b6d4f377cf6f368ddf9f56a7cc92f92cd80",
+    "execution_contract_sha256": "8dd8b9dd11138de5f5f98871af248e8a03b9f87ed4118803febf0cd3f5e93296",
+    "source_count": 18,
+    "runtime": {
+      "git_executable": "/opt/homebrew/Cellar/git/2.54.0/bin/git",
+      "git_version": "git version 2.54.0",
+      "platform": "macOS-26.6.1-arm64-arm-64bit",
+      "python_executable": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+      "python_version": "3.11.15 (main, Jul 18 2026, 16:57:24) [Clang 22.1.3 ]"
+    },
+    "counts": {
+      "api_calls": 0,
+      "api_spend_micro_usd": 0,
+      "builder_processes": 16,
+      "candidate_executions": 0,
+      "exact_terminal_replays": 20,
+      "gossip_during_wait_observations": 4,
+      "infrastructure_mesh_members": 2,
+      "injected_calls": 20,
+      "lost_acknowledgments_reconciled": 20,
+      "peak_injected_calls": 4,
+      "protected_releases": 0,
+      "reviewer_processes": 4,
+      "role_processes": 20,
+      "scope_approvals": 0,
+      "verified_candidate_bundles": 16
+    },
+    "elapsed_seconds_before_cleanup": 165.15064937528223,
+    "deadline_seconds": 240,
+    "all_twenty_owned_process_exit_codes_zero": true,
+    "cleanup_errors": [],
+    "lost_ack_scope": "Simulated application ACK discard after authentic RPC reply; not packet loss or process crash.",
+    "excluded_claims": [
+      "software-quality",
+      "scope-approval",
+      "release-gate",
+      "live-model",
+      "statistical-superiority",
+      "process-restart",
+      "partition-recovery"
+    ]
+  },
+  "application_seed": {
+    "files": 19,
+    "utf8_bytes": 43692,
+    "seed_sha256": "82c1286d3d9315933183731eb59a5a69ce00fa4b3844efdc5f778e956a8395e8",
+    "qualification": "18 public fixture/oracle tests, including three bounded trusted-authored v0 execution checks. Real HTTP transport/browser, M1 implementation and candidate Docker execution not qualified.",
+    "remaining_milestones": [
+      "M1 reliable ingestion",
+      "M2 lifecycle",
+      "M3 recovery",
+      "M4 migration"
+    ]
+  },
+  "budget": {
+    "new_api_calls": 0,
+    "new_api_spend_micro_usd": 0,
+    "production_ledger_accessed": false,
+    "last_audited_cumulative_cap_micro_usd": 80000000,
+    "last_audited_cumulative_spent_micro_usd": 42150585,
+    "last_audited_remaining_micro_usd": 37849415,
+    "fixture_ledger_simulated_usage_units": 3320,
+    "fixture_units_are_real_provider_spend": false
+  },
+  "next_integration_map": {
+    "path": "runs/large-swarm-next-integration-map-2.json",
+    "sha256": "d528183f448cef12b2ee8867327e8eb8e48fcecdfdb6b1be383b138bc014e015"
+  },
+  "remaining_required_work": [
+    "Typed review target/source materialization and authenticated selection/contribution/execution adapters.",
+    "Actual merged project defect -> reviewer request-changes -> repair -> eight scopes -> fenced protected Git release.",
+    "Combined partition/restart/lost-reply/unknown-outcome project recovery qualification.",
+    "Prospectively resolve reviewer allowance (32 planned versus 48 proposed), profile/context limits and complete-cohort budget before live execution.",
+    "Full four-milestone six-trajectory smaller-swarm/larger-swarm/orchestrated cohort, preregistered resources and sufficient full-cohort budget.",
+    "Independent decision-placement by transport contrast and held-out confirmation.",
+    "Separately requested report/artifact publication remains distinct from Git publication."
+  ],
+  "recorded_at": "2026-10-02T22:59:48.878703+00:00",
+  "independent_review": {
+    "path": "runs/twenty-role-plumbing-v2-1-independent-review.json",
+    "sha256": "6045d9f6aa0f24e05c89eeb28931b93f59f674a7f3e0123b0486de42a2a91ec5",
+    "status": "passed",
+    "retained_evidence_files_bound": 155,
+    "findings": [],
+    "execution": "Read-only audit of original physical evidence; no fixture replay or candidate execution."
+  },
+  "frozen_previous_live_study": {
+    "sources_unchanged": 39,
+    "execution_contract_sha256": "c256db9363054ff66069ee8e35a5a630c35a5e95b77be780a1fb464803eae98c",
+    "classification": "Historical controller result preserved; no retrospective retry or reinterpretation as a twenty-role result."
+  }
+}
