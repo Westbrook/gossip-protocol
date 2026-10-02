@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "protocol": "peer-coding-payload-checkpoint-v1",
+  "created_utc": "2026-10-02T17:28:42.175525+00:00",
+  "status": "merged_tree_qualified",
+  "base_commit": "b5a36d2582d8b4cfb09dfbafd18584f78154a689",
+  "scope": "Actual local peer chunk transport, received Git bundle quarantine and exact merged-source CAS, and provided-task coding dispatch through the real worker interface with offline Responses fixtures. No software-project model-quality claim.",
+  "verification": {
+    "protocol": "cycle6-merged-verification-reconciliation-v1",
+    "recorded_utc": "2026-10-02T17:27:18.637335+00:00",
+    "status": "passed",
+    "checks": 85,
+    "physically_executed": 85,
+    "reused": 0,
+    "skipped": 0,
+    "lanes": {
+      "fast": 64,
+      "fixtures": 10,
+      "git": 11
+    },
+    "discovered_total": 1440,
+    "duration_seconds": 49.86723758280277,
+    "source_inputs_reconciled": 250,
+    "initial_final_current_runtime_match": true,
+    "combined_static": "passed",
+    "historical_type_baseline_count": 117,
+    "scientific_contract_unchanged": true,
+    "contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "receipts": [
+      {
+        "path": "runs/investigation-cycle-6-final-qualification/20261002T172547-0b0edf14/summary.json",
+        "sha256": "4d36ccd64805c6a07219c6eec424e01e621b331ffb3c91d445738ed61b6c9bf4"
+      },
+      {
+        "path": "runs/investigation-cycle-6-final-qualification/20261002T172547-0b0edf14/inputs.json",
+        "sha256": "1a56c950d4f6b57e5f67f87b849335be64b881a296fa3cfc3c70b9115f46be40"
+      },
+      {
+        "path": "runs/investigation-cycle-6-final-qualification/20261002T172547-0b0edf14/static.json",
+        "sha256": "2ce945cb747328c0f472223fe84888af66c5ca4817fec9988832808c879953ff"
+      },
+      {
+        "path": "runs/investigation-cycle-6-final-qualification/20261002T172547-0b0edf14/runtime-final.json",
+        "sha256": "a3ec85c057174a205e62b5d8945e54c0da7922d67e03822f12bbd423ade31d81"
+      }
+    ],
+    "scope": "Targeted new payload, received Git bundle and offline coding-dispatch integration. No real API calls, Docker candidate execution or model-quality measurement.",
+    "timing_interpretation": "Development verification duration, not comparative approach performance."
+  },
+  "source_review": {
+    "path": "runs/investigation-cycle-6-source-review-1.json",
+    "sha256": "89c80f78c55cce71af5da9814550d99c487a845e32151ff6399c6db96188a2ba",
+    "status": "passed"
+  },
+  "source_bindings": {
+    "README.md": "816d8d83a40fbf83d2c29256a274de88923a0ce82a0cbc5011c92471026b902a",
+    "docs/peer-coding-dispatch-v1.md": "cd4db2fbe875cc2bb42b715414cc639c842fff4c4b161678094f63d2e7a9fd4f",
+    "docs/peer-coding-runtime-v1.md": "8490024841e21678b22ec177177b6a081123445bd3d544f9d31f03c0780763f9",
+    "docs/peer-git-bundle-v1.md": "28b555ffedb0810227bc57804c372a5b0821cb9bade65381891b3a1b78fc2aa4",
+    "docs/peer-payload-v1.md": "ed3179879b200f1c2e1092c1749e2e921c2b5ed641651a2ef07f51ff4e663d05",
+    "gossip_harness/peer_coding_dispatch_v1.py": "b3fe79f77966f749e54ab151724e007ed502ab54736f176bd79a55e06628cf5c",
+    "gossip_harness/peer_coding_runtime_v1.py": "26f7ab52d7b659082aa5cb970e30b07793f80507345975010004c272c3f758c0",
+    "gossip_harness/peer_git_bundle_v1.py": "5e1010c7bb2e2489ca697fc190bd1e09eaee0c028115db38be8ca03d0cd0da35",
+    "gossip_harness/peer_payload_runtime_v1.py": "176c91e20ee3667727fb79b38e4b09855fa5ffed14742ccba3cf24239a08060a",
+    "gossip_harness/peer_payload_store_v1.py": "a60f755ee42ae32603df6816fc618b2b440ed9c510f6327fe269869637f4a11a",
+    "peer-coding-contract-v1.json": "e7441860e2c364df05059fb44b04698f9d6888d3d248d8ea7cc9e4b0383c8c13",
+    "peer-payload-contract-v1.json": "f5b6964966b75c942793efef2c00d41d5c96bd273b7125fa2b66a9177faf9851",
+    "pyproject.toml": "6cbb9063d23fdc6935f665e5c6cef1f0092e3609e9b10ba9dba694ac134ea688",
+    "tests/test_peer_coding_dispatch_v1.py": "695aaecee9fe7dd57aecdd38d070727abb4160c138263018ed63eb2c261ec769",
+    "tests/test_peer_coding_runtime_v1.py": "cf0de20ca0eb73b3c1acfafe1bff2556b85a346404787af61245be8c947ba23a",
+    "tests/test_peer_git_bundle_v1.py": "8621ae506c980a13e2e5c3667143b6fe4ad53197dc85669281b8a34c4504c758",
+    "tests/test_peer_payload_runtime_v1.py": "8f6b29b03acd4187984be67f9ce09eb90615f64a0f9d140e285075136584a071",
+    "tests/test_peer_payload_store_v1.py": "86be2167faea1c16a3dbe68b0e8cfc1b611c566e21cd0fd6e29c2f508c88ab0c",
+    "verification-manifest.json": "b77184acd0d748868f0662305d4bc794ef0187216375cc36d5c27d94a4c638d5"
+  },
+  "scenarios": [
+    "Immutable bounded chunk store with full-object and chunk digests, durable partial transfer and exact producer-arrival gates.",
+    "Autonomous gossip and broker transfer of payloads larger than one frame; partial restart and origin plus primary-broker loss with surviving replica.",
+    "Received self-contained Git bundle quarantine after sender exit and source-path removal; historical path/object bounds, divergent target merge, validate exact merged JSON and compare-and-swap that candidate.",
+    "Provided WorkerRequest freezes only locally arrived source/context; common principal-authenticated task, reservation and dispatch namespace.",
+    "Actual OpenAIWorker payload/parser/usage gates through a closed offline Responses fixture; live transport is unavailable.",
+    "Worker and service deaths around claim, durable result and publication; one retained action, one actual fixture invocation and one immutable coding_result.",
+    "Unknown dispatch remains terminal through multiple new autonomous rounds after restart, with reservation retained and zero reinvocation.",
+    "Storage failure fences dispatch; durable known results can recover publication without reinvoking the worker; completed coding receipts still require arrived service-owned payload bytes."
+  ],
+  "retained_development_evidence": [
+    {
+      "path": "runs/investigation-cycle-6-nearest-fast-1",
+      "status": "passed_32",
+      "meaning": "Nearest development checks while other owners finished; not final qualification."
+    },
+    {
+      "path": "runs/investigation-cycle-6-fast/20261002T172036-da2f915a",
+      "status": "passed_63",
+      "meaning": "Initial static/fast gate before final recovery correction and fixture regression."
+    },
+    {
+      "path": "runs/investigation-cycle-6-process-git/20261002T172112-3330951e",
+      "status": "failed_1_remaining_20_not_run",
+      "meaning": "Offline response fixture omitted model and service_tier; real worker correctly rejected pricing identity and retained unknown outcome. Fixture corrected and fast contract check added; not a model-quality failure."
+    },
+    {
+      "path": "runs/investigation-cycle-6-payload-git/20261002T172301-90797806",
+      "status": "passed_16",
+      "meaning": "Independent payload/Git integration before final combined-source qualification; retained separately."
+    }
+  ],
+  "limits": [
+    "One provided coding task, no model-generated plan, candidate selection, repair, source-generation reopening or project completion.",
+    "Private offline authority ledger is not the shared cumulative financial ledger; live mode remains rejected regardless of funding.",
+    "Git parser runs as trusted native subprocesses with work/object/file limits, not a hostile-code memory sandbox. Integrated fixture validation is JSON data only.",
+    "Coding result publication is not integrated Git promotion or independent final project acceptance.",
+    "Durable wire counters preserve recorded observations, not lossless accounting across crashes. Capacity has not been matched for a fair four-cell comparison.",
+    "Same-host authenticated/trusted group, no Byzantine provenance or multi-host/WAN evidence.",
+    "No model quality, general superiority, calibrated Elo or confirmatory statistical inference follows from these offline checks.",
+    "Configured static roots passed with 117 unchanged historical diagnostics; legacy dynamic code is not all proven type-safe."
+  ],
+  "scientific_contract": {
+    "sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "all39_sources_and_plan_unchanged": true,
+    "live_enabled": false
+  },
+  "budget": {
+    "cap_micro_usd": 50000000,
+    "committed_micro_usd": 35543626,
+    "remaining_micro_usd": 14456374,
+    "new_provider_calls": 0,
+    "new_spending_micro_usd": 0,
+    "proposed_cap_micro_usd": 80000000,
+    "proposal_approved": false
+  },
+  "remaining_required_work": [
+    "Shared cumulative financial ledger bridge and qualified live dispatch.",
+    "Integrated sandboxed candidate execution, exact Git promotion and independent final-evaluation barrier.",
+    "Source selection, refutation, repair/reopening and explicit deadlines.",
+    "Matched four-cell placement-by-transport study with common policies and authority.",
+    "Independent held-out task families and powered confirmation.",
+    "Autonomous tool-loop and multi-host studies."
+  ]
+}

@@ -1082,6 +1082,17 @@ outbox and persistent work RPC telemetry. The fixtures transform and review text
 they make no model calls or software-quality claims. Provider integration, Git
 acceptance, full transport accounting and the four-cell comparison remain open.
 
+The [payload transport](docs/peer-payload-v1.md) adds immutable binary objects,
+verified chunk arrival and retained wire observations for coding requests and
+Git bundles. The [bundle adapter](docs/peer-git-bundle-v1.md) imports received
+bytes into a fresh quarantine before the existing merged-tree and CAS gates;
+receivers do not fetch proposals from a sender filesystem path.
+The [coding dispatch adapter](docs/peer-coding-dispatch-v1.md) reuses the bounded
+worker and durable request journal with an injected offline Responses transport.
+Live HTTPS remains disabled until a separately qualified cumulative financial
+ledger adapter is connected. These foundations do not establish coding quality
+or complete the planned placement-by-transport comparison.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

@@ -1799,6 +1799,116 @@
       "boundary": "Verifier plus up to five actual services/peers including broker relays; bounded I/O handlers accounted separately.",
       "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
       "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
+    },
+    "tests/test_peer_payload_store_v1.py::PeerPayloadStoreTests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Immutable bounded chunks, declared capacity, whole-object checksums, persistent partial state and exact root/node binding.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "Verifier plus at most two concurrent store threads; private retained SQLite fixtures.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_payload_runtime_v1.py::PayloadRuntimeTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Arrived-notice gates, bounded inventories, observer/membership/partition restrictions and persistent telemetry.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "One verifier, temporary private stores; no networking or subprocess.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_payload_runtime_v1.py::PayloadProcessTests": {
+      "lane": "fixtures",
+      "weight": 5,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Actual TCP payload transfer and autonomous recovery across partial transfer restart, partitions and primary/origin loss.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "Verifier plus up to four peer daemons with bounded I/O handlers; no provider or candidate execution.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_payload_runtime_v1.py::PayloadGitProcessTests": {
+      "lane": "git",
+      "weight": 6,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Actual received payload bytes and arrived offer metadata feed quarantine and exact merged-tree Git validation/CAS without sender paths.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "Verifier, two payload daemons, one serial Git child and bounded pipe-drainer threads; data-only JSON validator.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_git_bundle_v1.py::BundleMetadataTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Strict bounded manifest/header/payload rejection before import allocation.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "One verifier, no Git subprocess or candidate execution.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_git_bundle_v1.py::GitBundleTests": {
+      "lane": "git",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Real bundle bytes, private quarantine, full historical object/path inspection and existing exact merged-tree/CAS gates.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "Verifier plus one serial Git child and at most two bounded I/O-drainer threads; shared immutable class fixture.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_coding_dispatch_v1.py::PeerCodingDispatchTests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Exact coding request/profile/source/scope ownership, durable response accounting and conservative unknown recovery.",
+      "isolation": "Separate verification worker with owned private state and retained failure evidence.",
+      "boundary": "Verifier plus at most two controlled duplicate-dispatch threads; injected Responses transport and private ledger, no API/subprocess/candidate execution.",
+      "disposition": "Offline integration evidence, not live model quality, statistical superiority or independently accepted project completion.",
+      "overlap_reason": "Unit checks cover malformed/durable state; Git and process lanes exercise physical boundaries unavailable to mocked checks."
+    },
+    "tests/test_peer_git_bundle_v1.py::BundleProcessBoundaryTests": {
+      "lane": "git",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Exited Git leader cannot leave pipe-holding descendants or active output readers beyond bounded cleanup.",
+      "isolation": "Separate verifier and owned fixed subprocess group; retained logs.",
+      "boundary": "Verifier plus fixed child and descendant; bounded I/O drainer threads, no candidate code.",
+      "disposition": "Physical local process-cleanup boundary only, not parser memory sandbox proof.",
+      "overlap_reason": "Actual pipe and process-group lifetime cannot be established with a mocked subprocess."
+    },
+    "tests/test_peer_coding_runtime_v1.py::CodingRuntimeTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 240,
+      "invariant": "Arrived owned payload and configured seed/profile/authority bindings, immutable coding phases and observer restrictions.",
+      "isolation": "Separate verifier process; fixed offline Response fixtures and retained independent process/store state.",
+      "boundary": "One verifier and private local fixtures; no API/candidate execution.",
+      "disposition": "Offline actual-request and recovery integration only, not live coding quality or final project acceptance.",
+      "overlap_reason": "Unit contract checks cannot prove independent TCP transport and process-death recovery."
+    },
+    "tests/test_peer_coding_runtime_v1.py::CodingRuntimeProcessTests": {
+      "lane": "fixtures",
+      "weight": 6,
+      "exclusive": true,
+      "timeout_seconds": 240,
+      "invariant": "Actual autonomous coding peer/control+mesh service, recorded Responses fixture, source/result arrival, exact replay and process death.",
+      "isolation": "Separate verifier process; fixed offline Response fixtures and retained independent process/store state.",
+      "boundary": "Verifier plus up to five daemon processes: combined authority/mesh service, origin, worker and two relays; bounded I/O handlers, no real provider or candidate execution.",
+      "disposition": "Offline actual-request and recovery integration only, not live coding quality or final project acceptance.",
+      "overlap_reason": "Unit contract checks cannot prove independent TCP transport and process-death recovery."
     }
   },
   "audit": {

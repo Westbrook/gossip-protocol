@@ -1,0 +1,15 @@
+{
+  "protocol": "peer-coding-runtime-v1",
+  "phase": "Offline provided-task coding and durable network/accounting integration",
+  "seed": "One configured WorkerRequest payload and producer/hash, received through the actual event/chunk mesh; no generated planning claim",
+  "local_policy": "Freeze complete local request/source/context, claim own allowed task, dispatch stable exact request ID, await both receipt and service-owned arrived result bytes, publish immutable coding_result evidence",
+  "authority": "Existing authenticated Authority request namespace and Ledger plus CodingDispatch; no peer-controlled settlement or global context injection",
+  "dispatch_payload_fields": ["task_id", "epoch", "action_id", "profile_id", "request_sha256"],
+  "worker_payload_fields": ["worker_request", "context"],
+  "context_fields": ["source_sha256", "event_ids"],
+  "accounting": "Private offline test ledger with conservatively retained unknown reservations and durable known-usage replay; not the cumulative live financial ledger",
+  "provider": "Actual OpenAIWorker interface and Responses parsing via a frozen server-only offline fixture; zero real API calls, no key discovery, live mode/default HTTPS transport rejected",
+  "publication": "A durable result is stored before payload publication; publication_pending remains recoverable; coding_result requires exact receipt plus complete arrived service-produced payload",
+  "trust": "Trusted same-host Python services and injected transport, authenticated principal control RPC, trusted-group event provenance; no hostile-code or network-sandbox claim",
+  "remaining": ["Validated bridge to cumulative live financial ledger", "Multi-candidate selection, repair and source-generation reopening", "Integrated Git promotion and sandboxed candidate execution", "Independent final-evaluation barrier", "Matched four-cell placement/transport comparison", "Held-out task-family confirmation and autonomous tool-loop/multi-host studies"]
+}

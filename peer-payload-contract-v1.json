@@ -1,0 +1,15 @@
+{
+  "protocol": "peer-payload-v1",
+  "status": "offline_coding_data_plane",
+  "event_kind": "payload_available",
+  "descriptor_fields": ["protocol", "sha256", "size", "chunk_size", "chunk_sha256", "media_type"],
+  "bounds": {"object_bytes": 8388608, "chunk_bytes": 65536, "registered_objects": 128, "reserved_content_bytes": 67108864, "descriptor_bytes": 16000},
+  "media_types": ["application/json", "application/x-git-bundle", "application/octet-stream"],
+  "local_availability": "Only actually arrived descriptor events enable chunk inventories, offers and receipt; full read requires exact complete bytes and whole-content digest",
+  "durability": "Private root/node-bound WAL store with atomic capacity reservation and chunk insertion; immutable descriptors and idempotent chunks; no transfer restart required after process death",
+  "bulk_rpc": {"payload_exchange": "Bounded inventory and at most one response chunk", "payload_push": "At most one chunk into an already arrived descriptor", "payload_state": "Observer read-only availability and retained telemetry"},
+  "transport": "Same authenticated local TCP envelope, immutable membership and incoming/outgoing application partition gates as event transport; gossip rotating contacts or two-broker client fallback",
+  "accounting": "Separate event and payload contacts; durable observed wire-byte prefixes and offered/validated chunks, including duplicates; not lossless crash or unique-delivery accounting",
+  "authority_exclusions": ["provider dispatch", "candidate execution", "task completion", "Git acceptance", "independent final evaluation"],
+  "limitations": ["Trusted same-host group, no Byzantine producer identity", "No TLS or multi-host failure proof", "Logical payload reservation is not an exact physical disk cap", "No eviction or continuous-stream fairness guarantee", "Equal fanout is not matched resource capacity", "No model-quality or statistical-superiority claim"]
+}
