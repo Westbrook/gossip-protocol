@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "protocol": "funded-pilot-pre-rehearsal-checkpoint-v1",
+  "recorded_utc": "2026-10-02T18:56:57.532317+00:00",
+  "status": "fixture_qualified_full_rehearsal_pending",
+  "contract_sha256": "c256db9363054ff66069ee8e35a5a630c35a5e95b77be780a1fb464803eae98c",
+  "execution_sources_unchanged_from_prior_freeze": 39,
+  "scientific_opportunities_and_models_unchanged": true,
+  "funding": {
+    "cumulative_cap_micro_usd": 80000000,
+    "opening_usage_micro_usd": 35543626,
+    "incremental_cap_micro_usd": 44456374,
+    "authorization": {
+      "path": "analysis/followup-funded-authorization-v1.json",
+      "sha256": "e948e097e2c76d00c95d5bfe67a54a63ebb2fb97ad83397df709c53dee616bd6"
+    }
+  },
+  "fast_verification": {
+    "checks": 13,
+    "status": "passed",
+    "reused": 0,
+    "skipped": 0,
+    "inputs_reconciled": 259,
+    "initial_final_current_runtime_match": true,
+    "summary": {
+      "path": "runs/investigation-cycle-8-final-fast/20261002T185516-dfd213f4/summary.json",
+      "sha256": "f91e3ae73a0faa4d97d29bb36fd237780bb865e4a23f18a455fe479052aefe0d"
+    }
+  },
+  "physical_qualification": {
+    "executions": 42,
+    "physically_executed": 42,
+    "reused": 0,
+    "status": "qualified",
+    "receipt": {
+      "path": "results/followup-funded-qualification-1/results.json",
+      "sha256": "40e3137062073dd99aabf54433e810220b3a4651d0a07267e5d0f2282a2df871"
+    }
+  },
+  "reviews": [
+    {
+      "path": "runs/investigation-cycle-8-funding-source-review-1.json",
+      "sha256": "88925fe689c487b099e844e329c26178ac8e6d1d8ce094d9287514af080255ac"
+    },
+    {
+      "path": "runs/investigation-cycle-8-large-plan-review-1.json",
+      "sha256": "c6302e3cd6c3fc335ea6cbd6986d6fc36ddb0f7ca7572452e375ebb068b8d066"
+    }
+  ],
+  "larger_study_plan": {
+    "path": "large-swarm-project-plan-v1.json",
+    "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e"
+  },
+  "api_calls": 0,
+  "live_readiness_certified": false,
+  "next_action": "Complete one whole funded-contract scripted rehearsal and independent audit, then dispatch the authorized registered live pilot. Preserve all outputs and stop on unreconciled failures. Larger20-role study remains prospective."
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "protocol": "followup-funded-authorization-v1",
+  "recorded_utc": "2026-10-02T18:40:58.368341+00:00",
+  "user_request": "Approve funding expansion to cover all of the audits as currently scheduled.",
+  "decision": "Approved pending $80 cumulative cap proposal, an additional $30, for the registered twelve-trajectory continuation pilot and planned audits.",
+  "cumulative_cap_micro_usd": 80000000,
+  "opening_committed_micro_usd": 35543626,
+  "approved_incremental_micro_usd": 44456374,
+  "budget_policy": "bounded_budget_termination_no_incomplete_comparison",
+  "usage_target_micro_usd": 12000000,
+  "receipt": {
+    "path": "runs/followup-funding-expansion-receipt-1.json",
+    "sha256": "c7b2d43bb77f360c76c07ba69e19804500b18f6ae1487c2b8b57dff7f176a770"
+  },
+  "new_model_calls": 0,
+  "prior_evidence_preservation": "Historical plans and scientific sources remain snapshotted in prior commits and retained runs. The funded plan changes authorization/accounting only; matching qualification and full rehearsal must run before live dispatch.",
+  "models_and_opportunities_changed": false
+}

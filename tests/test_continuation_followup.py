@@ -91,7 +91,9 @@ class FollowupPlanTests(unittest.TestCase):
             runner.validate_plan(plan)
 
     def test_remaining_budget_is_hard_bound_and_boolean_money_invalid(self):
-        for cap in (True, 0, 14_456_375):
+        budget = runner.study_plan()["budget"]
+        available = budget["shared_cumulative_cap_micro_usd"] - budget["expected_starting_usage_micro_usd"]
+        for cap in (True, 0, available + 1):
             plan = runner.study_plan()
             plan["budget"]["incremental_cap_micro_usd"] = cap
             with self.subTest(cap=cap), self.assertRaises(ValueError):

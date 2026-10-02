@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "continuation-followup-v1",
-  "status": "development_contract_not_yet_frozen_for_execution",
+  "status": "funded_contract_pending_exact_validation",
   "question": "Do evidence-directed continuation and retained repair checkpoints improve independently accepted project completion, and does independent candidate formation help under that controller?",
   "interpretation": "An exploratory controller-development pilot. It cannot establish general statistical superiority or a live gossip-versus-orchestrator effect.",
   "projects": [
@@ -147,17 +147,26 @@
   ],
   "budget": {
     "target_usage_micro_usd": 12000000,
-    "incremental_cap_micro_usd": 14456374,
-    "shared_cumulative_cap_micro_usd": 50000000,
+    "incremental_cap_micro_usd": 44456374,
+    "shared_cumulative_cap_micro_usd": 80000000,
     "expected_starting_usage_micro_usd": 35543626,
-    "authorization": "Existing user authorization only; continuing the investigation does not remove the financial cap.",
+    "authorization": "User approved the pending $80 cumulative ceiling (+$30) on 2026-10-02 for the registered twelve-trajectory pilot and scheduled audits; preserve all prior spending.",
     "maximum_physical_call_opportunities": 256,
     "conservative_sum_of_full_context_reservations_micro_usd": 711497856,
-    "cost_interpretation": "The sum of maximum reservations is a conservative ceiling, not expected cash usage. The current remaining budget does not guarantee a complete cohort. The soft target is not a forecast or permission to exceed the cap."
+    "cost_interpretation": "The sum of maximum reservations is a conservative ceiling, not expected cash usage. The current remaining budget does not guarantee a complete cohort. The soft target is not a forecast or permission to exceed the cap.",
+    "funding": {
+      "status": "approved_capped_cohort_admission",
+      "policy": "bounded_budget_termination_no_incomplete_comparison",
+      "approved_incremental_micro_usd": 44456374,
+      "authorization_record": {
+        "path": "analysis/followup-funded-authorization-v1.json",
+        "sha256": "e948e097e2c76d00c95d5bfe67a54a63ebb2fb97ad83397df709c53dee616bd6"
+      }
+    }
   },
   "readiness": {
-    "live_authorized": false,
-    "reason": "Requires completed versioned implementation, fixture qualification, full matching rehearsal, independent audit, frozen contract, and a concrete funding decision before dispatch.",
+    "live_authorized": true,
+    "reason": "Funding approved; exact fixture qualification, one complete matching rehearsal, independent audit and quiescent ledger/runtime checks are required before dispatch.",
     "cannot_infer_readiness_from": "A draft plan, successful unit tests, a review checkpoint, available credentials, or a small exploratory p-value."
   },
   "model_pricing_check": {
@@ -187,15 +196,29 @@
   "pilot_analysis": {
     "version": "continuation-followup-descriptive-comparison-v1",
     "primary_contrasts": [
-      ["improved-independent", "current-independent"],
-      ["improved-independent", "improved-sequential"]
+      [
+        "improved-independent",
+        "current-independent"
+      ],
+      [
+        "improved-independent",
+        "improved-sequential"
+      ]
     ],
     "paired_unit": "The same project and repetition identify a development block. Four blocks repeat two domains; they are not four independent task families.",
     "quality_order": "Explicit whole-project acceptance first, then the fraction of named private requirement groups for which every final case passes. Preserve all planned trajectories and bounded stops in the denominator.",
     "requirements": "Report inherited-contract and added-feature preservation separately. Do not count individual scenarios or repeated requirements as independent replications.",
     "requirement_taxonomy": {
-      "warehouse": {"baseline_inherited": "W0-", "milestone_1_added": "W1-", "milestone_2_added": "W2-"},
-      "job-queue": {"baseline_inherited": "Q0-", "milestone_1_added": "Q1-", "milestone_2_added": "Q2-"},
+      "warehouse": {
+        "baseline_inherited": "W0-",
+        "milestone_1_added": "W1-",
+        "milestone_2_added": "W2-"
+      },
+      "job-queue": {
+        "baseline_inherited": "Q0-",
+        "milestone_1_added": "Q1-",
+        "milestone_2_added": "Q2-"
+      },
       "rule": "Classify exact private requirement labels by these frozen prefixes and reject unclassified groups. W2-inherited is an added fulfillment-integration requirement, not an original baseline requirement. all_added combines the two added scopes."
     },
     "timing": "Report measured arm work, shared setup, final adjudication and scheduling waits separately. Accepted-only time is undefined when no projects are accepted. Stopping early is not a speed win; shared parallel work is not additive wall time.",

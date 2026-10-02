@@ -1023,8 +1023,11 @@ shared setup and final grading times separated. Rehearsal comparisons remain
 explicitly labeled as scripted infrastructure checks. Budget termination keeps
 its evidence but cannot produce a scored incomplete-cohort comparison.
 
-The current plan leaves live execution disabled. Historical charges remain in
-the cumulative ledger. Its reservation ceiling is a worst-case bound, not a
+The [funded plan](analysis/followup-funded-authorization-v1.json) authorizes
+capped live admission under the approved $80 cumulative ceiling. The runner
+still requires matching fixture qualification, a complete rehearsal and an
+independent audit before dispatch. Historical charges remain in the cumulative
+ledger. Its reservation ceiling is a worst-case bound, not a
 cost forecast or authorization. A small development pilot cannot establish
 general superiority: the [confirmatory design](analysis/benchmark-confirmatory-design-v4.json)
 requires independently held-out task families and a fixed analysis/stopping
@@ -1046,15 +1049,17 @@ corrected contract. Its independent audit passes without source-comparison
 waivers: 12 accepted trajectories, 24 completed milestones, 384 fresh Docker
 executions and zero provider calls. The scripted comparison separates active
 work, shared setup and waiting time; it assigns no Elo or quality ranking.
-This qualifies the current execution path, not live model quality or a
-gossip advantage. Live dispatch remains disabled; a changed plan needs matching
-physical qualification and rehearsal before dispatch.
+This qualifies the historical unfunded execution contract, not live model
+quality or a gossip advantage. The funded plan needs its own matching physical
+qualification and rehearsal before dispatch.
 The [request-size reconciliation](analysis/continuation-followup-budget-reconciliation-v1.json)
 is likewise diagnostic and does not authorize additional spending.
 The [certified-evidence budget update](analysis/continuation-followup-budget-reconciliation-v2.json)
-binds the new rehearsal. It retains the conditional $10–13 expected pilot usage
-and an unapproved proposal to raise the cumulative cap from $50 to $80 for
-repair demand and conservative reservation headroom; neither is a guarantee.
+binds that rehearsal and retains the conditional $10–13 expected pilot usage.
+The user subsequently approved its proposed $50-to-$80 cumulative cap increase;
+the [funding authorization](analysis/followup-funded-authorization-v1.json)
+records the preserved prior charges and available allowance. The estimate and
+expanded ceiling do not guarantee completion.
 
 ## Real peer transport foundation
 

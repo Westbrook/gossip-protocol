@@ -1,0 +1,745 @@
+{
+  "acceptance_and_barrier": {
+    "all_trajectory_freeze_before_private": true,
+    "freeze_includes": [
+      "Terminal or deadline integrated source",
+      "Full candidate and accepted Git ancestry",
+      "Role/task/action journals and in-flight dispositions",
+      "Exact public and generated evidence",
+      "Unresolved requirements and durable stop reason"
+    ],
+    "historical_snapshots": "May receive post-barrier evaluation for descriptive preservation/regression curves; never return those private results to active agents.",
+    "local_quiescence_is_not_completion": true,
+    "milestone_requirements_are_cumulative": true,
+    "partial_progress": "Report separately; it cannot compensate for a failed mandatory gate.",
+    "primary_acceptance": "Every mandatory inherited/new-feature gate passes on the frozen integrated release within common horizon/budget with valid provenance.",
+    "private_gates": [
+      "Inherited v0 workflows and stable IDs",
+      "All four milestone new-feature contracts",
+      "Document/source/blob identity and lifecycle consistency",
+      "Cancellation/retry/fencing/rollback correctness",
+      "Shared-content preservation and deletion rules",
+      "Search/API/CLI/browser equivalence",
+      "Backup/restore atomicity",
+      "Restart and schema migration",
+      "Install/start/release and operator handoff",
+      "Valid exact-source review/promotion provenance"
+    ],
+    "shared_barrier_authority": "May stop new dispatch, reconcile/fence in-flight work, preserve source snapshots and enforce budget/deadline. It must not choose a candidate or provide repair reasoning."
+  },
+  "agent_count_contract": {
+    "additional_scouts": 0,
+    "common_infrastructure_not_cognitive_roles": [
+      "Financial authority and credentialed provider adapter",
+      "Gossip relays or transport support",
+      "Sandbox evaluator/browser workers and watchdog",
+      "Git receipt/CAS promotion gate",
+      "Observation, accounting and final-freeze services",
+      "Deterministic central scheduler in O16-G"
+    ],
+    "each_role_requires": [
+      "Independent persistent identity and Git clone",
+      "Isolated local arrived-event/payload store",
+      "Durable cognitive/action journal",
+      "Repeated locally contextualized model decisions",
+      "Resumable propose/test/review/repair/next-work state machine"
+    ],
+    "model_coordinator_policy": "No additional model coordinator in v1. Any future model-based coordinator must occupy a declared role and consume its full budget or change the comparison contract.",
+    "report_separately": [
+      "Configured cognitive roles",
+      "Roles with actual cognitive dispatches",
+      "Distinct physical processes",
+      "Maximum simultaneous provider invocations",
+      "Infrastructure process/thread/container counts"
+    ]
+  },
+  "arms": [
+    {
+      "builder_count": 4,
+      "cognitive_role_count": 8,
+      "decision_placement": "peer_local",
+      "id": "S4-G",
+      "initial_candidate_lanes_per_package": 1,
+      "reviewer_count": 4,
+      "role_ids": [
+        "B01",
+        "B05",
+        "B09",
+        "B13",
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "transport": "same_versioned_gossip"
+    },
+    {
+      "builder_count": 16,
+      "cognitive_role_count": 20,
+      "decision_placement": "peer_local",
+      "id": "S16-G",
+      "initial_candidate_lanes_per_package": 4,
+      "reviewer_count": 4,
+      "role_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "transport": "same_versioned_gossip"
+    },
+    {
+      "builder_count": 16,
+      "cognitive_role_count": 20,
+      "decision_placement": "durable_central_scheduler",
+      "id": "O16-G",
+      "initial_candidate_lanes_per_package": 4,
+      "reviewer_count": 4,
+      "role_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "transport": "same_versioned_gossip"
+    }
+  ],
+  "cohort": {
+    "blocks": [
+      {
+        "arms": [
+          "S4-G",
+          "S16-G",
+          "O16-G"
+        ],
+        "faults": [],
+        "id": "healthy"
+      },
+      {
+        "arms": [
+          "S4-G",
+          "S16-G",
+          "O16-G"
+        ],
+        "faults": [
+          "known_result_before_publication_builder_restart",
+          "bounded_peer_message_partition"
+        ],
+        "id": "compound_recovery"
+      }
+    ],
+    "execution_order": "Preregister randomized order; record physical scheduling.",
+    "fresh_within_trajectory": [
+      "Mutable repositories/databases",
+      "Model draws and cognitive journals",
+      "Candidate/evaluator/browser state"
+    ],
+    "optional_stopping": "No efficacy-driven extension, difficult-outcome replacement, or partial-cohort private feedback. If funding requires fewer complete blocks, freeze that different cohort before any dispatch.",
+    "project_families": 1,
+    "proposed_trajectories": 6,
+    "shared_within_block": [
+      "Seed source and user data",
+      "Requirement-release contract",
+      "Exogenous scenario/fault seed",
+      "Offered role/global capacity and active deadline"
+    ],
+    "unit_of_inference": "Whole-project trajectory within a related block; family count remains one."
+  },
+  "contrasts": [
+    {
+      "arms": [
+        "S16-G",
+        "S4-G"
+      ],
+      "id": "builder_scale",
+      "interpretation": "Larger builder population/allocation/diversity package under the same aggregate offered resources, stronger reviewer population and horizon.",
+      "not_identified": [
+        "Pure concurrency effect",
+        "Pure diversity effect",
+        "Gossip versus broker effect",
+        "Automatic cost efficiency"
+      ]
+    },
+    {
+      "arms": [
+        "S16-G",
+        "O16-G"
+      ],
+      "id": "decision_placement",
+      "interpretation": "Peer-local versus durable centralized application of the declared policy with the same role/model mix, transport, tools, opportunity/capacity limits, initial information and fault inputs.",
+      "not_identified": [
+        "Gossip versus broker",
+        "All possible model-based orchestrators"
+      ]
+    }
+  ],
+  "created_utc": "2026-10-02T18:52:51.464591+00:00",
+  "current_source_review": {
+    "architecture_review": "Root/benchmark_architecture supplied the current capacity, synchronization, payload and evidence-materialization gaps; this plan does not claim they are fixed.",
+    "incorporated_findings": [
+      "20 roles are a testable scale hypothesis, not a requirement to invent work",
+      "Four common reviewers and explicit aggregate budget matching",
+      "Semantic project interactions and inherited usability",
+      "No uncounted model coordinator",
+      "Local decisions and independently materialized evidence",
+      "Architecture/transport claims separated",
+      "Complete horizon, frozen failure schedule and pre-private cohort barrier"
+    ],
+    "independent_review_agent": "benchmark_task_design/graph_fixture_review",
+    "observed_limits": [
+      "peer_runtime_v1 MAX_PEERS=16",
+      "peer_authority_v1 at most16 principals",
+      "peer_coding_dispatch_v1 maximum_concurrent_invocations=1",
+      "Synchronous coding call can exceed the short authority RPC deadline",
+      "CodingPeer fixed seed/task and terminal action record",
+      "Small all-visible event contexts and replicated payload/event capacity",
+      "Project runtime public integration does not implement full project planning/selection/final acceptance"
+    ],
+    "performed": "Read-only source/doc inspection and independent design challenge; no runtime qualification",
+    "source_bindings": {
+      "docs/confirmatory-path-checkpoint-v1.md": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4",
+      "docs/peer-authority-v1.md": "55dde872138cdb375fcd5263a86069f0c8f5d06dec51a3c9e910e7e438ab2132",
+      "docs/peer-coding-dispatch-v1.md": "cd4db2fbe875cc2bb42b715414cc639c842fff4c4b161678094f63d2e7a9fd4f",
+      "docs/peer-project-runtime-v1.md": "d98ed326ae357e7ee5339df7a1c4542212d0c985a2f43a4d38550371ada7a462",
+      "gossip_harness/peer_authority_v1.py": "5750922f03620b9478235eebed52f60e954249a4a9721cd622d0791be6f40e10",
+      "gossip_harness/peer_coding_dispatch_v1.py": "b3fe79f77966f749e54ab151724e007ed502ab54736f176bd79a55e06628cf5c",
+      "gossip_harness/peer_coding_runtime_v1.py": "26f7ab52d7b659082aa5cb970e30b07793f80507345975010004c272c3f758c0",
+      "gossip_harness/peer_payload_store_v1.py": "a60f755ee42ae32603df6816fc618b2b440ed9c510f6327fe269869637f4a11a",
+      "gossip_harness/peer_project_runtime_v1.py": "6a68d2967248ba1ffdd7e7ca93da88cfd378303e20f353dfe8547494caaec6b5",
+      "gossip_harness/peer_runtime_v1.py": "f17ecd4e16eb83de3ef755240d0d19e135bb83c5e77919aa08a2fd87a09ffe14",
+      "gossip_harness/peer_store_v1.py": "86f80448d090c867fe42c9c78d27f489b8b908ef175a8c39f6079cbd5b97f47f"
+    }
+  },
+  "deliverable_scope": {
+    "authored_paths": [
+      "docs/large-swarm-project-plan-v1.md",
+      "large-swarm-project-plan-v1.json"
+    ],
+    "prior_frozen_contracts_modified_by_this_deliverable": false,
+    "separate_root_activity": "Root funding activation updates the registered pilot authorization/budget fields while preserving its 39 execution sources; not performed by this deliverable."
+  },
+  "execution_authorized_by_this_file": false,
+  "fault_contract": {
+    "additional_engineering_qualification": [
+      "Evaluator-parent loss must leave a durable cleanup record and watchdog/startup reclamation",
+      "Duplicates, delayed/reordered payload arrival and stale Git CAS must preserve exact provenance"
+    ],
+    "interpretation": "Compound recovery scenario only; not separate causal estimates for its interventions.",
+    "mapping": "Record affected role fraction and absolute role counts for every arm; do not conceal unequal exposure.",
+    "recovery_block": [
+      "SIGKILL/restart of one builder after a durable known provider result but before candidate publication",
+      "Bounded actual peer-message partition of a declared work-package group"
+    ],
+    "status": "Exact identities, durations and mapping pending preregistration",
+    "unchanged_common_services": [
+      "Financial authority",
+      "Evaluator availability"
+    ],
+    "unknown_provider_outcome": "Retain reservation, fence and follow common fail-closed recovery; never retry to green.",
+    "unreached_trigger": "Recorded as untriggered, not recovered."
+  },
+  "funding": {
+    "approved_cumulative_ceiling_usd": 80,
+    "current_registered_pilot_has_priority": true,
+    "larger_study_scope_authorized": true,
+    "live_dispatch_in_this_design_task": false,
+    "new_permission_rule": "No automatic second permission request if the complete preregistered qualified cohort fits existing authorization. A higher cumulative ceiling requires explicit approval.",
+    "remaining_balance": "Read the unchanged cumulative ledger after the registered pilot settles; do not copy an earlier balance.",
+    "required_estimate": [
+      "Complete cohort expected input/output use by role",
+      "Worst-case overlapping request reservations",
+      "Prepaid and unsettled cumulative commitments",
+      "Local evaluator/runtime costs separately"
+    ],
+    "specific_study_allocation_usd": null
+  },
+  "metrics": {
+    "mechanism_diagnostics": [
+      "Available feature frontier versus alternative lanes",
+      "Useful retained versus discarded work",
+      "Repairs available and used",
+      "Post-freeze candidate-selection regret",
+      "Reviewer probe detection/uniqueness and disagreement",
+      "Review/integration queues",
+      "Blocked, idle and duplicated work",
+      "Stale-head and conflict recovery"
+    ],
+    "quality_first": [
+      "Whole-project accepted count/denominator",
+      "Inherited requirement preservation",
+      "New-feature coverage",
+      "Critical integrity/data-loss failures",
+      "Unresolved obligations and reason for stopping",
+      "Fault exposure and verified continuation"
+    ],
+    "ranking": "Descriptive block-by-arm quality table; no Elo or population superiority from one family/two related blocks.",
+    "resources": [
+      "Actual provider calls/tokens/spend by role",
+      "Reservation peak and settled/unknown liabilities",
+      "Configured/active cognitive roles",
+      "Actual request overlap",
+      "Common infrastructure and candidate container counts"
+    ],
+    "timing": [
+      "Active work to source freeze",
+      "Cohort barrier wait",
+      "Private adjudication",
+      "Critical-path provider/evaluator/communication spans with overlap disclosed"
+    ],
+    "zero_acceptance_cost": "Cost per accepted project is undefined at zero accepted; show total cost with acceptance denominator."
+  },
+  "next_action": "Root finishes and audits the funded registered controller pilot, then selects its qualified controller policy and reconciles remaining budget before freezing/building the additive large-project fixture and runtime contract.",
+  "objective": "Determine whether a larger population of persistent peer agents completes a useful integrated software project with better inherited/new-feature correctness and sustained progress than a smaller population or matched central decision placement.",
+  "peer_policy_contract": {
+    "availability": "Transport/event processing continues while model, test or RPC work is pending.",
+    "claim_limit": "Policy-autonomous bounded structured project actions; not yet an unrestricted shell/tool-loop or multi-host system.",
+    "evidence_context": "Materialize source, candidate/test/receipt bytes and requirement revisions into actual model requests from locally arrived payloads; bind causal event hashes and actual content hashes.",
+    "horizon": "Maintain the same repositories, accepted ancestry and role journals through every release; do not reset agents between feature tickets.",
+    "independent_candidate_boundary": "First alternatives are blind to sibling source until a prospectively fixed proposal boundary; later evidence exchange is explicit.",
+    "initial_affinity_is_not_fixed_assignment": true,
+    "integration": "Peer/model decisions select a whole candidate before narrow common merged-tree validation and fenced promotion; arrival order is not an undeclared source-selection policy.",
+    "task_choice": "Peers choose eligible locally arrived work; the common authority checks leases and budgets but does not select the task.",
+    "task_discovery": "Admissible newly discovered dependency/contract work, allowed scope and identity derivation must be specified before execution.",
+    "task_identity": "Requirement/work-item identity is distinct from each candidate-lane leased task ID."
+  },
+  "plan_id": "large-swarm-project-plan-v1",
+  "prior_frozen_contracts_modified": false,
+  "project": {
+    "family_classification": "one development family; not statistically held-out",
+    "final_deliverables": [
+      "Integrated runnable application",
+      "Installation/start/release command",
+      "Migration and recovery documentation",
+      "Versioned API/schema contract",
+      "Representative user dataset",
+      "Reproducible browser/CLI/API workflows"
+    ],
+    "id": "local-research-library-development-v1",
+    "in_scope_formats": [
+      "UTF-8 text",
+      "Markdown",
+      "HTML",
+      "bounded ZIP",
+      "versioned JSON bundles"
+    ],
+    "milestones": [
+      {
+        "features": [
+          "Directory and bounded ZIP/JSON bundle ingestion",
+          "Durable jobs, progress and cancellation",
+          "Distinct document/source/blob identity and duplicate policy",
+          "Browser/CLI visibility of ingestion outcomes"
+        ],
+        "id": "M1",
+        "inherited": [
+          "v0 text import/list/show/search/export and persistent IDs"
+        ],
+        "semantic_interactions": [
+          "Job completion versus cancellation epoch",
+          "Duplicate bytes versus distinct source identity",
+          "Failed batch import versus durable catalog and blobs"
+        ],
+        "title": "Reliable ingestion"
+      },
+      {
+        "features": [
+          "Source refresh and revisions",
+          "Notes, tags and collections",
+          "Deletion, restoration and referenced-blob retention",
+          "Deterministic search, filtering and pagination"
+        ],
+        "id": "M2",
+        "inherited": [
+          "All v0 and M1 contracts"
+        ],
+        "semantic_interactions": [
+          "Refresh preserves annotations and source identity",
+          "Stale edit token versus changed revision",
+          "Deletion does not remove shared or historical content",
+          "UI/API/CLI/export agree on revision visibility"
+        ],
+        "title": "Document lifecycle"
+      },
+      {
+        "features": [
+          "Restart-safe ingest jobs and incremental reindex",
+          "Bounded export",
+          "Atomic backup/restore",
+          "Actionable user-visible failure/recovery state"
+        ],
+        "id": "M3",
+        "inherited": [
+          "All prior requirements and receipts"
+        ],
+        "semantic_interactions": [
+          "Stale worker result cannot undo cancellation",
+          "Restore validates before replacing live catalog",
+          "Interrupted backup does not become accepted restore input",
+          "Index state recovers without losing catalog data"
+        ],
+        "title": "Recovery and portability"
+      },
+      {
+        "features": [
+          "Preregistered revision-aware API/schema change",
+          "Migration from frozen v0 and M2 data",
+          "CLI compatibility",
+          "Runnable release, documentation, representative dataset and recovery handoff"
+        ],
+        "id": "M4",
+        "inherited": [
+          "All prior behavior not explicitly versioned by the frozen change contract"
+        ],
+        "semantic_interactions": [
+          "Historical IDs and annotations survive migration",
+          "Old retry receipts retain their meaning",
+          "Old clients meet the published compatibility rule",
+          "Complete installation-to-backup-to-restored-search user journey"
+        ],
+        "title": "Compatibility release"
+      }
+    ],
+    "out_of_scope": [
+      "Remote website/account integrations",
+      "Product-internal provider calls",
+      "PDF/OCR",
+      "Multi-user authentication",
+      "Production multi-host availability"
+    ],
+    "proposed_stack": [
+      "Pinned Python and standard-library HTTP service",
+      "Pinned SQLite with qualified search implementation",
+      "Browser-native HTML/CSS/JavaScript",
+      "Pinned isolated browser/evaluator runtime"
+    ],
+    "seed": "Usable v0: local UTF-8 text import, persistent document IDs, SQLite storage, basic search/list/show/export, minimal browser view and published compatibility checks.",
+    "source_size_acceptance_target": null,
+    "title": "Local Research Library",
+    "user_value": "A searchable annotated library built from local research material, with reliable import, refresh, exports and recovery.",
+    "work_packages": [
+      {
+        "id": "catalog-storage",
+        "title": "Catalog and storage"
+      },
+      {
+        "id": "ingestion-jobs",
+        "title": "Ingestion and jobs"
+      },
+      {
+        "id": "query-service",
+        "title": "Query and service contracts"
+      },
+      {
+        "id": "clients-release",
+        "title": "Clients and release workflows"
+      }
+    ]
+  },
+  "readable_document": {
+    "path": "docs/large-swarm-project-plan-v1.md",
+    "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2"
+  },
+  "readiness_gates": [
+    {
+      "id": "product_contract",
+      "requirement": "Create and independently validate the usable seed, four milestone briefs, dependency graph and private acceptance; freeze hashes."
+    },
+    {
+      "id": "multi_action_roles",
+      "requirement": "Version repeated peer-local task discovery/choice, candidate lanes, materialized evidence, strong review and bounded repair; qualify matched durable central scheduler."
+    },
+    {
+      "id": "real_capacity",
+      "requirement": "Replace 16-role ceilings and single synchronous invocation bottleneck with qualified bounded async admission/status, actual provider overlap, separate transport loops and backpressure."
+    },
+    {
+      "id": "bounded_corpus",
+      "requirement": "Qualify 20 isolated role stores, demand-driven payload fetch, retained audit history, selected-context retrieval, Git bundle sizes and complete project horizon; no silent truncation."
+    },
+    {
+      "id": "integration_recovery",
+      "requirement": "Qualify explicit whole-candidate selection, evidence-guided cross-implementation tests, exact merged-source approval, stale-head recovery and durable container cleanup."
+    },
+    {
+      "id": "full_zero_provider_rehearsal",
+      "requirement": "Run and independently audit the complete exact six-trajectory project contract with role activity, negative controls, faults and private barrier after cheaper gates."
+    },
+    {
+      "id": "funded_live_registration",
+      "requirement": "Freeze exact model/resource/fault/stop contract and reconcile whole-cohort cost plus reservation headroom against the remaining approved cumulative ledger; then dispatch only a fully funded cohort."
+    }
+  ],
+  "resource_proposal": {
+    "active_horizon_hours": 6,
+    "allocation": "Aggregate opportunity matching rather than equal per-agent quotas. All planning/test-design/implementation/review/repair calls count. Soft stage allocations may be reassigned by the fixed policy within common hard limits.",
+    "capacity_scaled_followup": "A study giving each of 16 builders the same allowance as each of four builders offers extra aggregate compute and must be separately labeled/registered.",
+    "do_not_force_utilization": "Do not create work merely to fill roles; report empty ready frontiers, idle agents and duplicate alternatives.",
+    "evaluator_browser_capacity": null,
+    "execution_values_frozen": false,
+    "global_in_flight_capacity": null,
+    "matching": [
+      "Same aggregate role call and funded-spend ceilings",
+      "Same active project horizon",
+      "Same model/tool/context/output profiles by role",
+      "Same public evidence allowance",
+      "Same qualified global/per-profile request concurrency",
+      "Same evaluator/browser/CPU/memory resources",
+      "Same fault-exposure rule"
+    ],
+    "maximum_builder_calls_per_trajectory": 128,
+    "maximum_reviewer_calls_per_trajectory": 32,
+    "model_profiles": null,
+    "per_profile_in_flight_capacity": null,
+    "per_trajectory_funded_ceiling_usd": null,
+    "planning_values_not_price_estimate": true
+  },
+  "review_and_test_selection": {
+    "assertion_interface_status": "New contract requiring qualification before use; no current-study labels are repaired or changed.",
+    "bottleneck_measurement": [
+      "Reviewer queue depth",
+      "Review waiting/active time",
+      "Tests proposed/admitted/executed",
+      "Distinct useful defect detections after freeze",
+      "Overlap/redundancy and selection regret"
+    ],
+    "execution": "Run selected tests against eligible alternatives and actual merged source as appropriate under identical evidence budgets.",
+    "hidden_feedback": "Private acceptance and concealed fault-bank outcomes cannot inform live evidence selection, candidate selection or repair.",
+    "inputs": [
+      "Arrived anonymized candidate sources",
+      "Exact public execution receipts",
+      "Builder-proposed checks",
+      "Requirement revisions and inherited obligations",
+      "Cross-implementation disagreements"
+    ],
+    "promotion_review": "Two appropriate non-author reviewers with approvals bound to the actual merged source; stale heads require renewed validation/approval.",
+    "proposed_assertion_interface": [
+      "Exact typed scalar/structured outputs",
+      "Contract-defined ID preservation",
+      "Replay-response equality",
+      "Digest equality between independently observed outputs",
+      "Rollback/state-preservation assertions"
+    ],
+    "reviewer_model_tier": "stronger than builder tier; exact profiles/snapshots pending freeze",
+    "same_four_reviewers_in_all_arms": true,
+    "selection_priorities": [
+      "Consequential candidate distinctions",
+      "Inherited behavior at risk",
+      "Cross-package integration boundary",
+      "Unverified recovery claim"
+    ],
+    "truth_rule": "Majority agreement is not an oracle. A trusted reference/contract checker validates admissible expectations; unsupported claims remain review notes."
+  },
+  "roles": [
+    {
+      "affinity_can_change": true,
+      "id": "B01",
+      "initial_lane": 0,
+      "initial_package_affinity": "catalog-storage",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Document identity and revisions"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B02",
+      "initial_lane": 1,
+      "initial_package_affinity": "catalog-storage",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "SQLite transactions and migrations"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B03",
+      "initial_lane": 2,
+      "initial_package_affinity": "catalog-storage",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Blob references and deletion"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B04",
+      "initial_lane": 3,
+      "initial_package_affinity": "catalog-storage",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Backup consistency and data preservation"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B05",
+      "initial_lane": 0,
+      "initial_package_affinity": "ingestion-jobs",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Directory/manifest ingestion"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B06",
+      "initial_lane": 1,
+      "initial_package_affinity": "ingestion-jobs",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Bounded archive processing"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B07",
+      "initial_lane": 2,
+      "initial_package_affinity": "ingestion-jobs",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Durable job progress and cancellation"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B08",
+      "initial_lane": 3,
+      "initial_package_affinity": "ingestion-jobs",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Retry, fencing and worker recovery"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B09",
+      "initial_lane": 0,
+      "initial_package_affinity": "query-service",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Search and stable pagination"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B10",
+      "initial_lane": 1,
+      "initial_package_affinity": "query-service",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Notes, tags and collections"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B11",
+      "initial_lane": 2,
+      "initial_package_affinity": "query-service",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "HTTP contract and revision guards"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B12",
+      "initial_lane": 3,
+      "initial_package_affinity": "query-service",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "CLI/API compatibility and semantic integration"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B13",
+      "initial_lane": 0,
+      "initial_package_affinity": "clients-release",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Browser document lifecycle"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B14",
+      "initial_lane": 1,
+      "initial_package_affinity": "clients-release",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "CLI workflows and exports"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B15",
+      "initial_lane": 2,
+      "initial_package_affinity": "clients-release",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Recovery/backup user experience"
+    },
+    {
+      "affinity_can_change": true,
+      "id": "B16",
+      "initial_lane": 3,
+      "initial_package_affinity": "clients-release",
+      "model_tier": "common_less_capable_profile",
+      "role": "builder",
+      "suggested_focus": "Accessibility, installation and release handoff"
+    },
+    {
+      "focus": "Inherited behavior and interface compatibility",
+      "id": "R1",
+      "model_tier": "common_stronger_profile",
+      "role": "reviewer"
+    },
+    {
+      "focus": "Data integrity, durability and recovery",
+      "id": "R2",
+      "model_tier": "common_stronger_profile",
+      "role": "reviewer"
+    },
+    {
+      "focus": "Cross-package integration and semantic conflict",
+      "id": "R3",
+      "model_tier": "common_stronger_profile",
+      "role": "reviewer"
+    },
+    {
+      "focus": "End-to-end workflows and release readiness",
+      "id": "R4",
+      "model_tier": "common_stronger_profile",
+      "role": "reviewer"
+    }
+  ],
+  "schema_version": 1,
+  "separate_obligations_preserved": [
+    "Existing placement \u00d7 transport four-cell study",
+    "Independent held-out family registry and confirmatory design",
+    "Autonomous unrestricted tool-loop investigation",
+    "Multi-host availability investigation"
+  ],
+  "status": "prospective_source_reviewed_execution_unqualified",
+  "study_class": "development_and_scaling",
+  "user_review_status": "unreviewed",
+  "verification_statement": "Authored and source/design reviewed only. No implementation, tests, candidate execution, Docker runs, provider calls or execution qualification performed for this plan."
+}
