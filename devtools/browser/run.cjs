@@ -21,6 +21,7 @@ const PAGES = {
   'verification-pilot': {start: 'recovery', link: 'Matched reviewers', target: 'policies'},
   'continuation-comparison': {start: 'timing', link: 'Ranks & paired outcomes', target: 'ranking'},
   'benchmark-comparison': {start: 'methods', link: 'Quality & ranking', target: 'quality'},
+  'investigation-roadmap': {start: 'methods', link: 'Evidence & uncertainty', target: 'statistics'},
 };
 
 function options(argv) {
@@ -51,7 +52,8 @@ function pageURL(name, base, fixture = false) {
     'swarm-pilot': 'SWARM_PILOT_URL', 'sustained-pilot': 'SUSTAINED_PILOT_URL',
     'verification-pilot': 'VERIFICATION_PILOT_URL',
     'continuation-comparison': 'CONTINUATION_COMPARISON_URL',
-    'benchmark-comparison': 'BENCHMARK_COMPARISON_URL'};
+    'benchmark-comparison': 'BENCHMARK_COMPARISON_URL',
+    'investigation-roadmap': 'INVESTIGATION_ROADMAP_URL'};
   const supplied = overrides[name] && process.env[overrides[name]];
   const url = new URL(supplied || `${name}.html`, base);
   if (fixture && supplied) {
@@ -157,6 +159,7 @@ async function contentChecks(page, name, requireFinal) {
     : name === 'verification-pilot' ? ['overall-result', 'live-outcomes', 'cost-outcomes', 'verification-outcomes']
     : name === 'continuation-comparison' ? ['overall-result', 'new-outcomes', 'new-accounting']
     : name === 'benchmark-comparison' ? ['overall-result', 'benchmark-outcomes', 'fault-outcomes', 'selection-outcomes', 'timing-outcomes', 'transport-outcomes', 'accounting-outcomes']
+    : name === 'investigation-roadmap' ? ['investigation-status', 'statistics-outcomes']
     : ['swarm-pilot', 'sustained-pilot'].includes(name) ? ['overall-result', 'live-outcomes', 'cost-outcomes'] : [];
   for (const id of ids) {
     assert.equal(await page.locator(`#${id}`).evaluate(el => el.classList.contains('warning')), false, `${id} has no draft placeholder`);
@@ -193,6 +196,13 @@ async function pageContract(page, name, base, directory, opts) {
   await page.goto(url.href);
   await fit(page, 'mobile');
   await capture(page, directory, 'mobile', opts.captures.includes(name));
+  if (name === 'investigation-roadmap' && opts.captures.includes(name)) {
+    await page.locator('#statistics').scrollIntoViewIfNeeded();
+    await capture(page, directory, 'mobile-statistics', true);
+    await page.setViewportSize({width: 1280, height: 980});
+    await page.locator('#statistics').scrollIntoViewIfNeeded();
+    await capture(page, directory, 'desktop-statistics', true);
+  }
   if (name === 'sustained-pilot') {
     assert.equal(await page.locator('#results').count(), 1, 'sustained results section retained');
     assert.equal(await page.locator('#supplemental-quality').count(), 1, 'supplemental quality section retained');

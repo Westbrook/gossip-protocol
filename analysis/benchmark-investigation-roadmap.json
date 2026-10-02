@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "protocol": "agent-investigation-roadmap-v1",
+  "status": "active_investigation",
+  "objective": "Continue investigating whether distributed gossip and independent multi-agent work can improve completed software quality and persistence, with statistical evidence for or against concrete claims and committed, pushed checkpoints between cycles.",
+  "starting_evidence": {
+    "commit": "a4ca90b17d3e7f7e1478b5dd6607a1ee3369bd16",
+    "report": "benchmark-comparison.html",
+    "certified_primary": "results/benchmark-live-1/independent-audit.json",
+    "certified_comparison": "results/benchmark-comparison-1/summary.json",
+    "retained_handoff": "runs/benchmark-final-handoff-1.json",
+    "observation": "Independent initial branches improved observed requirement coverage over serial revision, but only two of ten trajectories achieved full acceptance. Extra probes did not improve held-out pool selection. Some reviews exhausted without repairs; some repairs regressed earlier behavior.",
+    "inference_limit": "Four matched blocks from two maintained synthetic application domains do not establish general statistical superiority. Real artifact transport was simulated centrally; live autonomous gossip superiority remains untested."
+  },
+  "questions": [
+    {
+      "id": "continuation",
+      "claim": "Evidence-directed review/repair and retained source checkpoints increase whole-project acceptance while preserving inherited behavior.",
+      "next_evidence": "Three-arm twelve-trajectory development pilot on warehouse and job-queue applications.",
+      "purpose": "Debug and evaluate the controller package before freezing it for confirmation.",
+      "nonclaim": "Neither a routing-only causal effect nor statistical proof across software projects."
+    },
+    {
+      "id": "formation",
+      "claim": "Independent cheap-model initial candidates improve whole-project acceptance relative to serial revision under the same frozen controller and offered call limits.",
+      "next_evidence": "Separate paired study across independently held-out task families, with registered practical-effect threshold, sample size, interval, and fixed stopping rule.",
+      "purpose": "Estimate benefit, harm, or an upper bound excluding a worthwhile benefit within the tested population.",
+      "nonclaim": "More repeated seeds on development fixtures are not more independent domains; favorable partial coverage alone is not completed-work superiority."
+    },
+    {
+      "id": "coordination",
+      "claim": "Peer-local gossip coordination improves accepted project completion and recovery over a fair central-orchestrator control under stated availability conditions.",
+      "next_evidence": "Real independently scheduled worker processes with durable local state, the same model/tool permissions, and equivalent Git, budget, and acceptance guarantees.",
+      "purpose": "Separate transport resilience, decision placement, and agent reasoning effects under matched fault schedules.",
+      "nonclaim": "A centrally stepped artifact simulation or an independent-branch coding study is not this live coordination experiment."
+    },
+    {
+      "id": "interface",
+      "claim": "The observed effects persist when workers can use bounded coding tools rather than only return JSON proposals.",
+      "next_evidence": "A separately versioned tool-enabled execution contract with sandbox and budget qualification, after the core comparison is stable.",
+      "purpose": "Assess external validity for practical agent harnesses without silently changing the earlier experiment's interface.",
+      "nonclaim": "The current JSON-interface pilot cannot settle this question, and changing interface and coordination together cannot isolate either effect."
+    }
+  ],
+  "cycles": [
+    {
+      "id": "development-foundation",
+      "status": "in_progress",
+      "deliverables": ["Current-evidence uncertainty analysis", "Prospective statistical design and power calculations", "Versioned continuation controller", "New warehouse and job-queue fixtures", "Runner and independent qualification/audit contracts"],
+      "gate": "Focused tests, combined static gate, exact-input qualification, independent review, retained checkpoint, commit and push."
+    },
+    {
+      "id": "development-pilot",
+      "status": "pending",
+      "deliverables": ["Docker fixture qualification", "Complete matching zero-API rehearsal", "Frozen funded live cohort", "Independent primary audit and mechanism analysis"],
+      "gate": "No paid dispatch until implementation, rehearsal, accounting and sufficient-funding decisions are concrete. Preserve failed, incomplete and unfavorable outcomes."
+    },
+    {
+      "id": "formation-confirmation",
+      "status": "pending",
+      "deliverables": ["Independent held-out task registry", "Frozen controller and treatment", "Registered analysis and sample size", "Complete audited paired cohort with effect interval"],
+      "gate": "No selection of sample size or stopping after inspecting favorable effects. Report inconclusive results as inconclusive; do not keep retrying until significant."
+    },
+    {
+      "id": "live-coordination-confirmation",
+      "status": "pending",
+      "deliverables": ["Real peer-local execution harness", "Fair central-orchestrator and availability controls", "Qualified failure/recovery tests", "Registered paired live study"],
+      "gate": "Keep formation/controller/tool contracts matched and distinguish safety violations, infrastructure failures, incomplete work, and final acceptance."
+    }
+  ],
+  "scientific_rules": [
+    "Statistical evidence concerns a named population, endpoint, effect size and execution contract; no universal proof that swarms always help or can never help is promised.",
+    "Keep development data out of confirmatory task selection and final policy tuning.",
+    "Count independent task families as the generalization unit. Repeated seeds, scenarios, milestones, and generated probes do not enlarge that count.",
+    "Specify multiplicity control before claiming either of several hypotheses wins; a claim about formation cannot be relabeled a claim about gossip.",
+    "Retain all planned runs in accounting, including bounded stops and failures; resolve infrastructure missingness under a prospectively specified rule.",
+    "Completion and inherited behavior remain primary. Speed, cost, generated-test count and source novelty are supporting measurements.",
+    "Only freeze a study after its actual execution contract passes the necessary offline and rehearsal gates. Never rewrite historical study sources or outputs."
+  ],
+  "funding": {
+    "cumulative_authorized_cap_micro_usd": 50000000,
+    "settled_at_start_micro_usd": 35543626,
+    "remaining_at_start_micro_usd": 14456374,
+    "unsettled_at_start": 0,
+    "rule": "No additional spending authorization is inferred from the open-ended goal. Continue useful offline work, then request any necessary cap change against a concrete reviewable execution plan."
+  },
+  "cycle_publication": {
+    "authorized": true,
+    "remote": "origin",
+    "branch": "main",
+    "rule": "Commit and push coherent verified cycles; confirm remote commit identity and retain a local receipt. Do not commit credentials, ignored raw runs, or unrelated work. A pushed development checkpoint is not evidence that the full investigation is complete."
+  },
+  "completion_rule": "The current active goal remains open while the required independent evidence and live-coordination comparison are missing. A pilot, passing harness tests, a report update, or a pushed commit is progress, not proof of the full objective."
+}

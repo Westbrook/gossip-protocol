@@ -1,8 +1,58 @@
 {
   "schema_version": 1,
   "mypy_version": "1.20.2",
-  "description": "Reviewed source-bound legacy type debt from the explicit development and v2 study roots. The four added unchanged v1 dependencies preserve frozen scientific contracts. Only exact diagnostics on identical source bytes are accepted. New development tools, verification_* and *_v2 modules cannot be baselined. Verification never regenerates this file.",
+  "description": "Reviewed source-bound legacy type debt from the explicit development and versioned study roots. Continuation coverage newly traverses eight frozen dependencies: their 34 existing diagnostics are admitted only at hardcoded immutable SHA identities. Other verification_*, continuation_*, benchmark_*, new development tools and *_v2 modules cannot be baselined. Only exact diagnostic objects and multiplicities on identical source bytes are accepted. Verification never regenerates this file.",
   "files": [
+    {
+      "path": "analysis/qualify_benchmark.py",
+      "sha256": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
+      "diagnostics": [
+        {
+          "code": "var-annotated",
+          "column": 4,
+          "end_column": 9,
+          "end_line": 74,
+          "file": "analysis/qualify_benchmark.py",
+          "hint": null,
+          "line": 74,
+          "message": "Need type annotation for \"cases\" (hint: \"cases: list[<type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 11,
+          "end_column": 18,
+          "end_line": 74,
+          "file": "analysis/qualify_benchmark.py",
+          "hint": null,
+          "line": 74,
+          "message": "Need type annotation for \"indexes\" (hint: \"indexes: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 20,
+          "end_column": 24,
+          "end_line": 74,
+          "file": "analysis/qualify_benchmark.py",
+          "hint": null,
+          "line": 74,
+          "message": "Need type annotation for \"seen\" (hint: \"seen: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 4,
+          "end_column": 8,
+          "end_line": 98,
+          "file": "analysis/qualify_benchmark.py",
+          "hint": null,
+          "line": 98,
+          "message": "Need type annotation for \"rows\" (hint: \"rows: list[<type>] = ...\")",
+          "severity": "error"
+        }
+      ]
+    },
     {
       "path": "analysis/run_sustained_review_probes.py",
       "sha256": "c93d6eedc99dc992ef82169503531fc118fb310abb335fade5c598d9ab20d434",
@@ -132,6 +182,56 @@
           "message": "\"object\" has no attribute \"__iter__\"; maybe \"__dir__\" or \"__str__\"? (not iterable)",
           "hint": null,
           "code": "attr-defined",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/continuation_transport.py",
+      "sha256": "de79df63641a14e947eba6896d4ffd52f450c47ec4993e61a49d5797d6cb8498",
+      "diagnostics": [
+        {
+          "code": "var-annotated",
+          "column": 20,
+          "end_column": 46,
+          "end_line": 242,
+          "file": "gossip_harness/continuation_transport.py",
+          "hint": null,
+          "line": 242,
+          "message": "Need type annotation for \"rows\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 8,
+          "end_column": 15,
+          "end_line": 258,
+          "file": "gossip_harness/continuation_transport.py",
+          "hint": null,
+          "line": 258,
+          "message": "Need type annotation for \"packets\" (hint: \"packets: list[<type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 4,
+          "end_column": 13,
+          "end_line": 332,
+          "file": "gossip_harness/continuation_transport.py",
+          "hint": null,
+          "line": 332,
+          "message": "Need type annotation for \"collected\" (hint: \"collected: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "assignment",
+          "column": 29,
+          "end_column": 57,
+          "end_line": 534,
+          "file": "gossip_harness/continuation_transport.py",
+          "hint": null,
+          "line": 534,
+          "message": "Incompatible types in assignment (expression has type \"dict[str, str]\", variable has type \"bool\")",
           "severity": "error"
         }
       ]
@@ -742,6 +842,328 @@
           "message": "Function is missing a return type annotation",
           "hint": null,
           "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_buildgraph.py",
+      "sha256": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
+      "diagnostics": [
+        {
+          "code": "var-annotated",
+          "column": 33,
+          "end_column": 34,
+          "end_line": 773,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 773,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 37,
+          "end_column": 38,
+          "end_line": 775,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 775,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 37,
+          "end_column": 38,
+          "end_line": 776,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 776,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 40,
+          "end_column": 41,
+          "end_line": 798,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 798,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 43,
+          "end_column": 44,
+          "end_line": 819,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 819,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 40,
+          "end_column": 41,
+          "end_line": 820,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 820,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 45,
+          "end_column": 46,
+          "end_line": 841,
+          "file": "gossip_harness/verification_buildgraph.py",
+          "hint": null,
+          "line": 841,
+          "message": "Need type annotation for \"value\"",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_calendar.py",
+      "sha256": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62",
+      "diagnostics": [
+        {
+          "code": "var-annotated",
+          "column": 10,
+          "end_column": 60,
+          "end_line": 515,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 515,
+          "message": "Need type annotation for \"state\"",
+          "severity": "error"
+        },
+        {
+          "code": "index",
+          "column": 8,
+          "end_column": 37,
+          "end_line": 517,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 517,
+          "message": "Unsupported target for indexed assignment (\"Collection[Any]\")",
+          "severity": "error"
+        },
+        {
+          "code": "attr-defined",
+          "column": 82,
+          "end_column": 105,
+          "end_line": 626,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 626,
+          "message": "\"Collection[Any]\" has no attribute \"items\"",
+          "severity": "error"
+        },
+        {
+          "code": "arg-type",
+          "column": 36,
+          "end_column": 51,
+          "end_line": 629,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 629,
+          "message": "Argument 1 to \"deepcopy\" has incompatible type \"Collection[Any]\"; expected \"dict[str, object]\"",
+          "severity": "error"
+        },
+        {
+          "code": "index",
+          "column": 32,
+          "end_column": 50,
+          "end_line": 636,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 636,
+          "message": "Value of type \"Collection[Any]\" is not indexable",
+          "severity": "error"
+        },
+        {
+          "code": "index",
+          "column": 12,
+          "end_column": 32,
+          "end_line": 642,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 642,
+          "message": "Unsupported target for indexed assignment (\"Collection[Any]\")",
+          "severity": "error"
+        },
+        {
+          "code": "attr-defined",
+          "column": 12,
+          "end_column": 36,
+          "end_line": 643,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 643,
+          "message": "\"Collection[Any]\" has no attribute \"append\"",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 10,
+          "end_column": 1,
+          "end_line": 757,
+          "file": "gossip_harness/verification_calendar.py",
+          "hint": null,
+          "line": 676,
+          "message": "Need type annotation for \"SCENARIOS\"",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_experiment.py",
+      "sha256": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",
+      "diagnostics": [
+        {
+          "code": "union-attr",
+          "column": 27,
+          "end_column": 37,
+          "end_line": 267,
+          "file": "gossip_harness/verification_experiment.py",
+          "hint": null,
+          "line": 267,
+          "message": "Item \"None\" of \"OpenAIWorker | None\" has no attribute \"run\"",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_integration.py",
+      "sha256": "bb0d33a085f27c0100874a6062d8d258438117ee4a1867200825625e762b7992",
+      "diagnostics": [
+        {
+          "code": "no-untyped-def",
+          "column": 0,
+          "end_column": 19,
+          "end_line": 73,
+          "file": "gossip_harness/verification_integration.py",
+          "hint": null,
+          "line": 45,
+          "message": "Function is missing a return type annotation",
+          "severity": "error"
+        },
+        {
+          "code": "assignment",
+          "column": 21,
+          "end_column": 33,
+          "end_line": 50,
+          "file": "gossip_harness/verification_integration.py",
+          "hint": null,
+          "line": 50,
+          "message": "Incompatible types in assignment (expression has type \"Path\", variable has type \"str\")",
+          "severity": "error"
+        },
+        {
+          "code": "operator",
+          "column": 20,
+          "end_column": 38,
+          "end_line": 54,
+          "file": "gossip_harness/verification_integration.py",
+          "hint": null,
+          "line": 54,
+          "message": "Unsupported left operand type for / (\"str\")",
+          "severity": "error"
+        },
+        {
+          "code": "operator",
+          "column": 25,
+          "end_column": 42,
+          "end_line": 57,
+          "file": "gossip_harness/verification_integration.py",
+          "hint": null,
+          "line": 57,
+          "message": "Unsupported left operand type for / (\"str\")",
+          "severity": "error"
+        },
+        {
+          "code": "arg-type",
+          "column": 36,
+          "end_column": 43,
+          "end_line": 103,
+          "file": "gossip_harness/verification_integration.py",
+          "hint": "\"dict\" is invariant -- see https://mypy.readthedocs.io/en/stable/common_issues.html#variance\nConsider using \"Mapping\" instead, which is covariant in the value type",
+          "line": 103,
+          "message": "Argument 1 to \"propose\" of \"GitStore\" has incompatible type \"dict[str, str]\"; expected \"dict[str, str | None]\"",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_journal.py",
+      "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+      "diagnostics": [
+        {
+          "code": "assignment",
+          "column": 26,
+          "end_column": 54,
+          "end_line": 218,
+          "file": "gossip_harness/verification_journal.py",
+          "hint": null,
+          "line": 218,
+          "message": "Incompatible types in assignment (expression has type \"WorkerFailure\", variable has type \"WorkerResult\")",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_stage.py",
+      "sha256": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+      "diagnostics": [
+        {
+          "code": "var-annotated",
+          "column": 4,
+          "end_column": 17,
+          "end_line": 200,
+          "file": "gossip_harness/verification_stage.py",
+          "hint": null,
+          "line": 200,
+          "message": "Need type annotation for \"public_inputs\" (hint: \"public_inputs: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 4,
+          "end_column": 14,
+          "end_line": 222,
+          "file": "gossip_harness/verification_stage.py",
+          "hint": null,
+          "line": 222,
+          "message": "Need type annotation for \"candidates\" (hint: \"candidates: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "var-annotated",
+          "column": 8,
+          "end_column": 17,
+          "end_line": 246,
+          "file": "gossip_harness/verification_stage.py",
+          "hint": null,
+          "line": 246,
+          "message": "Need type annotation for \"originals\" (hint: \"originals: dict[<type>, <type>] = ...\")",
+          "severity": "error"
+        },
+        {
+          "code": "union-attr",
+          "column": 61,
+          "end_column": 74,
+          "end_line": 358,
+          "file": "gossip_harness/verification_stage.py",
+          "hint": null,
+          "line": 358,
+          "message": "Item \"None\" of \"Any | None\" has no attribute \"items\"",
           "severity": "error"
         }
       ]

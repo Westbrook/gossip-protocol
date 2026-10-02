@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "protocol": "continuation-followup-v1",
+  "status": "development_contract_not_yet_frozen_for_execution",
+  "question": "Do evidence-directed continuation and retained repair checkpoints improve independently accepted project completion, and does independent candidate formation help under that controller?",
+  "interpretation": "An exploratory controller-development pilot. It cannot establish general statistical superiority or a live gossip-versus-orchestrator effect.",
+  "projects": [
+    "warehouse",
+    "job-queue"
+  ],
+  "fixture_modules": [
+    "gossip_harness.benchmark_warehouse",
+    "gossip_harness.benchmark_job_queue"
+  ],
+  "milestones": 2,
+  "repetitions": 2,
+  "policies": {
+    "current-independent": {
+      "controller": "current",
+      "formation": "independent",
+      "initial_builders": 4,
+      "model": "cheap"
+    },
+    "improved-independent": {
+      "controller": "improved",
+      "formation": "independent",
+      "initial_builders": 4,
+      "model": "cheap"
+    },
+    "improved-sequential": {
+      "controller": "improved",
+      "formation": "sequential",
+      "initial_builders": 4,
+      "model": "cheap"
+    }
+  },
+  "controller": {
+    "max_reviews": 4,
+    "max_repairs": 2,
+    "max_new_probes": 8,
+    "max_escalations": 1,
+    "stagnation_reviews": 2,
+    "output_tokens": 12288,
+    "scouts": 2,
+    "proposals_per_scout": 4
+  },
+  "block_order": [
+    [
+      "warehouse",
+      0
+    ],
+    [
+      "job-queue",
+      0
+    ],
+    [
+      "job-queue",
+      1
+    ],
+    [
+      "warehouse",
+      1
+    ]
+  ],
+  "generation_order": [
+    "independent",
+    "sequential"
+  ],
+  "roster": [
+    [
+      "warehouse",
+      "current-independent",
+      0
+    ],
+    [
+      "warehouse",
+      "improved-independent",
+      0
+    ],
+    [
+      "warehouse",
+      "improved-sequential",
+      0
+    ],
+    [
+      "job-queue",
+      "improved-sequential",
+      0
+    ],
+    [
+      "job-queue",
+      "improved-independent",
+      0
+    ],
+    [
+      "job-queue",
+      "current-independent",
+      0
+    ],
+    [
+      "job-queue",
+      "improved-independent",
+      1
+    ],
+    [
+      "job-queue",
+      "current-independent",
+      1
+    ],
+    [
+      "job-queue",
+      "improved-sequential",
+      1
+    ],
+    [
+      "warehouse",
+      "improved-sequential",
+      1
+    ],
+    [
+      "warehouse",
+      "current-independent",
+      1
+    ],
+    [
+      "warehouse",
+      "improved-independent",
+      1
+    ]
+  ],
+  "pairing": {
+    "stage0": "shared-independent-pool-and-common-scouts",
+    "later": "arm-specific",
+    "initial_barrier": "Freeze independent and sequential first-milestone pools for a block before common candidate-blind scouts. The two independent-controller arms import the exact same immutable pool. All three receive the same scout evidence.",
+    "physical_accounting": "Charge shared setup once, identify each consumer and its equal offered generation opportunities, and distinguish imports from model calls. Imported sources receive fresh arm-specific evaluation; prior execution is never relabeled as independent acceptance.",
+    "later_context": "After the first milestone each arm follows its actual accepted lineage; do not replay responses into changed requests or substitute another arm's accepted source.",
+    "dependence": "A/B is conditional on a common initial draw. Repetitions within a domain are dependent evidence for generalization; twelve trajectories are not twelve independent application domains."
+  },
+  "primary_outcome": "Both milestones explicitly accepted and the exact final source independently passes every inherited and new-feature final case. Every planned trajectory remains in the denominator, including bounded stops.",
+  "guardrails": [
+    "Preserve inherited behavior separately from new-feature coverage.",
+    "Retain pre-repair source checkpoints and compare identical active cases; any new failure is a regression even if total failures decrease.",
+    "Source changes and newly passing tests alone do not count as resolution of known failures.",
+    "Explicit reviewer acceptance, passing active evidence, source eligibility, Git scope/CAS and the independent final barrier all remain necessary.",
+    "Freeze every planned terminal trajectory before any private evaluation; no prompt/controller/fixture changes after seeing held-out outcomes.",
+    "No automatic retries for provider failures or indeterminate accounting; preserve all failed and incomplete artifacts."
+  ],
+  "budget": {
+    "target_usage_micro_usd": 12000000,
+    "incremental_cap_micro_usd": 14456374,
+    "shared_cumulative_cap_micro_usd": 50000000,
+    "expected_starting_usage_micro_usd": 35543626,
+    "authorization": "Existing user authorization only; continuing the investigation does not remove the financial cap.",
+    "maximum_physical_call_opportunities": 256,
+    "conservative_sum_of_full_context_reservations_micro_usd": 711497856,
+    "cost_interpretation": "The sum of maximum reservations is a conservative ceiling, not expected cash usage. The current remaining budget does not guarantee a complete cohort. The soft target is not a forecast or permission to exceed the cap."
+  },
+  "readiness": {
+    "live_authorized": false,
+    "reason": "Requires completed versioned implementation, fixture qualification, full matching rehearsal, independent audit, frozen contract, and a concrete funding decision before dispatch.",
+    "cannot_infer_readiness_from": "A draft plan, successful unit tests, a review checkpoint, available credentials, or a small exploratory p-value."
+  },
+  "model_pricing_check": {
+    "checked_on": "2026-10-02",
+    "unchanged_pinned_models": [
+      "gpt-5.4-mini-2026-03-17",
+      "gpt-5.4-2026-03-05"
+    ],
+    "sources": [
+      "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+      "https://developers.openai.com/api/docs/models/gpt-5.4"
+    ],
+    "historical_worker_source_unchanged": true
+  },
+  "confirmatory_next_phase": {
+    "separate_population": "Independently held-out task families excluded from controller and fixture development.",
+    "analysis": "Preregister a primary comparison, practical effect threshold, sample size, interval method, handling of missing/failed runs, and stopping rule before execution. Report inconclusive evidence honestly.",
+    "scope": "Formation, controller, and live distributed coordination are different hypotheses. A result for one does not establish the others."
+  },
+  "improved_controller_rules": {
+    "uncertainty_focus_retries": 1,
+    "uncertainty": "When the selected source passes active cases but review retains requirements without admitting a focused probe, use at most one subsequent existing reviewer slot for an explicit source/requirement-bound focus request. Repeated lack of useful evidence stops unresolved. No new model role or call allowance is added.",
+    "routing": "Suggested next-review targets are advisory; the reviewer still selects explicitly. Repeated source/evidence routes cannot count as failure progress.",
+    "repair_visibility": "Retained repair aliases and source-bound comparisons disclose repair provenance; the pool is not blind to repair history.",
+    "terminal_reason": "Keep the routing stop cause separate from checks and acceptance state of the actual terminal fallback source."
+  }
+}

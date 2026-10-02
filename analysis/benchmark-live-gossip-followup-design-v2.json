@@ -1,0 +1,694 @@
+{
+  "authority_and_git_safeguards": {
+    "cas": "Only the exact pinned, verified candidate can advance the accepted reference via expected-head CAS. A stale base/head requires re-prepare and revalidation; never rebase or force-write accepted history to make a proposal fit.",
+    "final_authority": "Final project acceptance requires the common explicit acceptance policy and complete independent cumulative checks. Local subsystem approvals and eventual log convergence do not authorize release.",
+    "leases": "Acquire and renew task or slot ownership through the same transactional authority; authority time and monotonic epochs fence stale holders. Gossip announcements are hints, never authority to spend or publish. A partitioned expired peer may retain work but cannot accept a commit or obtain a new unreserved dispatch.",
+    "provider_accounting": "Reserve before dispatch, bind reservation to request digest/attempt/role, persist result before settlement, and preserve unknown outcomes at their full reservation. No automatic provider replay after ambiguous dispatch. Use one authoritative reservation namespace; a node restart must not become a second paid call owner.",
+    "publication_recovery": "Persist task-attempt publication intent, perform Git CAS, then finalize the ledger. After a crash, recover from accepted Git ancestry under the same exclusive authority; preserve intents and all failure logs. Do not claim a joint database/Git transaction.",
+    "references": [
+      {
+        "line": 253,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+        "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+      },
+      {
+        "line": 307,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+        "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+      },
+      {
+        "line": 127,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/ledger.py",
+        "sha256": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b"
+      },
+      {
+        "line": 53,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/promotion.py",
+        "sha256": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972"
+      },
+      {
+        "line": 1,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_journal.py",
+        "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9"
+      },
+      {
+        "line": 140,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/sandbox.py",
+        "sha256": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344"
+      }
+    ],
+    "sandbox": "All candidate code and candidate-provided tools run in fresh bounded containers with network/secret separation and protected test mounts. Peer daemons and provider credentials remain trusted-host services. Real generated output never executes in the model/controller host.",
+    "scope_and_merge": "Reject introduced history outside scope, including reverted unauthorized changes. Validate the actual merged tree in an isolated fresh candidate container. A locally passing patch or clean textual merge is insufficient to accept global semantics."
+  },
+  "budget_and_authority": {
+    "existing_limit_micro_usd": 50000000,
+    "future_preflight": "A full powered cohort may exceed the remaining authorized budget. Finish design/costing and offline work, then obtain any genuinely missing spending decision before provider execution. Do not run a small affordable prefix and call the larger objective complete.",
+    "last_audited_remaining_micro_usd": 14456374,
+    "last_audited_usage_micro_usd": 35543626,
+    "meaning": "Starting context from the completed benchmark and active handoff; current pilot may consume this remainder. These are not a future-study allocation or invoice.",
+    "owners": {
+      "spending_execution_integration_verification_git_publication": "root",
+      "statistics": "confirmatory_statistics",
+      "this_artifact": "benchmark_architecture"
+    },
+    "root_only_provider_execution": true
+  },
+  "created_at_utc": "2026-10-02T12:05:57.889982+00:00",
+  "current_cycle_boundary": {
+    "active_work": "Root is implementing the separately scoped twelve-trajectory controller/formation pilot. This document is future design only.",
+    "can_estimate": [
+      "Exploratory effect of the controller package under matched offered resources and shared first-stage A/B setup.",
+      "Exploratory independent-versus-serial formation contrast under the improved controller, with limited independent-domain generalization."
+    ],
+    "cannot_establish": [
+      "Live gossip versus broker performance: transport is not the pilot treatment.",
+      "Decentralized planning/decision-making: the pilot is centrally run.",
+      "General statistical superiority: twelve trajectories are only four matched blocks across two task families.",
+      "Performance of autonomous shell/tool-using agents: roles still submit bounded structured responses.",
+      "Multi-host availability or production fault tolerance."
+    ],
+    "pilot_roster": "Two new domains x two repetitions x three arms: current controller with four independent candidates; improved routing/retention with four independent candidates; same improved controller with four serial revisions.",
+    "reference": {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-next-experiment-recommendation.json",
+      "sha256": "6b6489e92f79189bc32a3ff5215636fd548992d6aff06cf778e0a4c5abd2c480"
+    },
+    "report_context_observed": {
+      "goal": "Expand investigation for statistical evidence for or against the technique; commit and push between verified cycles.",
+      "note": "Active report data is mutable context, not an immutable scientific input. This contributor does not edit report state or user review markers.",
+      "report_owner": "root/followup_report",
+      "revision": 250,
+      "unresolved_feedback": []
+    }
+  },
+  "document_revision": 2,
+  "execution_and_review_gates": [
+    {
+      "done_when": "Root and independent reviewers reconcile the controller pilot decision, complete arm roster, family sampling, fault mixture/placement map, safety-service API/observer channels, live-cutoff versus post-barrier acceptance clocks, statistical stopping rule and concrete cost envelope. No paid execution is authorized by this design alone.",
+      "phase": "Design freeze"
+    },
+    {
+      "done_when": "New peer runtime and transport/controller adapters exist without changing frozen studies; local-view isolation, durability and authority boundaries are independently reviewed. Existing Git/ledger/journal primitives remain common or changes are prospectively versioned.",
+      "phase": "Versioned implementation"
+    },
+    {
+      "done_when": "One verification owner completes affected static/fast checks, physical sandbox/Git/network/process fault checks, fixture controls and a complete zero-API rehearsal of the frozen full execution contract. Preserve all failed rehearsals.",
+      "phase": "Offline qualification"
+    },
+    {
+      "done_when": "Execute the entire prospectively powered family roster in all four cells under the frozen budget/fault schedule. A handful of passing tasks, a transport-only submatrix or remaining API credits cannot mark the statistical objective complete.",
+      "phase": "Full live cohort"
+    },
+    {
+      "done_when": "Close and freeze the whole cohort; independently evaluate complete projects, audit local visibility/accounting/safety, and run the preregistered family-level analysis with inconclusive or negative outcomes retained.",
+      "phase": "Independent evaluation and analysis"
+    },
+    {
+      "done_when": "Update the existing Progress Report with the full phase denominator and explicit outstanding confirmation/tool-loop/multi-host scope; produce a durable handoff and commit/push verified repository outputs under root ownership. Only the user marks a version reviewed.",
+      "phase": "Review and publish verified cycle"
+    }
+  ],
+  "execution_status": {
+    "budget_allocated_micro_usd": 0,
+    "candidate_executions": 0,
+    "implemented": false,
+    "preregistered": false,
+    "provider_calls": 0,
+    "scheduled": false,
+    "tests_run": 0
+  },
+  "existing_foundation": [
+    {
+      "component": "Independent Git stores and exact integration",
+      "limit": "Git exchange is local file fetch. No peer Git-bundle network sender/receiver was found.",
+      "ready": "Separate bare stores, immutable offers, introduced-history scope checks, disposable merged-tree validation and exact tested-commit CAS.",
+      "references": [
+        {
+          "line": 179,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+          "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+        },
+        {
+          "line": 253,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+          "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+        },
+        {
+          "line": 307,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+          "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+        }
+      ]
+    },
+    {
+      "component": "Ownership, accounting and publication recovery",
+      "limit": "Single-host SQLite and flock are not distributed consensus, remote filesystem safety, or multi-host high availability.",
+      "ready": "Transactional SQLite leases/fencing, budget reservations, persisted publication intent and local crash recovery.",
+      "references": [
+        {
+          "line": 127,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/ledger.py",
+          "sha256": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b"
+        },
+        {
+          "line": 244,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/ledger.py",
+          "sha256": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b"
+        },
+        {
+          "line": 37,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/promotion.py",
+          "sha256": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972"
+        }
+      ]
+    },
+    {
+      "component": "Durable provider request handling",
+      "limit": "Process-local journals require a common reservation ownership namespace; they do not guarantee provider-side exactly-once execution.",
+      "ready": "Exact request binding, persisted result replay and accounting settlement; unknown outcomes are not retried automatically.",
+      "references": [
+        {
+          "line": 1,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_journal.py",
+          "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9"
+        },
+        {
+          "line": 116,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_journal.py",
+          "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9"
+        }
+      ]
+    },
+    {
+      "component": "Artifact identities and local evidence gates",
+      "limit": "Hashes do not authenticate producer identity. The simulator centrally schedules pre-frozen evidence; it is not a live daemon implementation.",
+      "ready": "Content-addressed events and source/receipt/epoch-bound local decision rules in the transport simulation.",
+      "references": [
+        {
+          "line": 71,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/transport.py",
+          "sha256": "c8f68f90480b6090e9f4dc43cc6882b6fad5bde7c6c5378c35b0084691a771a0"
+        },
+        {
+          "line": 176,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/simulation/benchmark_transport.py",
+          "sha256": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696"
+        }
+      ]
+    },
+    {
+      "component": "Current practical process boundary",
+      "limit": "Peer state and transport are in-process Mesh objects; the controller drives delivery, fixed proposal ordering and integration. No independent peer daemon was found.",
+      "ready": "Real Git and Docker subprocesses plus controller-thread model calls.",
+      "references": [
+        {
+          "line": 150,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/pilot.py",
+          "sha256": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e"
+        },
+        {
+          "line": 193,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/pilot.py",
+          "sha256": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e"
+        },
+        {
+          "line": 232,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/experiment.py",
+          "sha256": "bc33c6a7a8070eabad5f45abc6060900fbe7f27373607f64222910d9c6dd421d"
+        }
+      ]
+    },
+    {
+      "component": "Prior discovery/recovery evidence",
+      "limit": "Discovery waits for complete notes and gossip replays the broker response; recovery dissemination follows a centrally generated frozen repair. Neither identifies live delivery-driven coding quality.",
+      "ready": "Useful controlled source-sharing and exact-response replay checks.",
+      "references": [
+        {
+          "line": 206,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/evidence.py",
+          "sha256": "396afd599b69a55c8030a65cddbdbea47d4cd593a09c2bdef5011d82f17bd773"
+        },
+        {
+          "line": 231,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/discovery_experiment.py",
+          "sha256": "f6b82581f7a5291f6549b202802199dcbe4c01162f95722e90c664e2e1d87221"
+        },
+        {
+          "line": 564,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/recovery_experiment.py",
+          "sha256": "0c1513b714c54cab894e96559c9c50407b1f23fb40ae74e9810b527cf087f845"
+        }
+      ]
+    },
+    {
+      "component": "Retained transport stress study",
+      "limit": "No live network, model, Git or real crash execution. Round counts are not wall-clock latency. Equal contact slots do not imply equal bytes, CPU or cost.",
+      "ready": "Broker, replicated-broker client failover and gossip schedules with explicit source/evidence binding and fault controls.",
+      "references": [
+        {
+          "line": 1,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/simulation/benchmark_transport.py",
+          "sha256": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696"
+        },
+        {
+          "line": 269,
+          "path": "/Users/westbrook/Documents/repos/gossip-protocol/simulation/benchmark_transport.py",
+          "sha256": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696"
+        }
+      ]
+    }
+  ],
+  "fairness_contract": {
+    "control_plane_resources": "Freeze the same total control-plane CPU, memory, storage replication and bandwidth envelope and comparable healthy-load headroom. Give the orchestrator durable checkpoints and tested standby takeover; give the broker durable replicas and tested failover. Charge all extra gossip peers, relays, replicas and redundancy. If capacity cannot be matched, label the comparison as a resource-confounded system comparison.",
+    "identical_offered_work": [
+      "Same immutable initial repositories, task graph, specifications, public cases and eligible information sources.",
+      "Same logical builder/scout/reviewer roles, model versions, instructions templates, reasoning settings and maximum call/output-token limits.",
+      "Same total provider spend ceiling, concurrency limit, repair/scout/reviewer/escalation allowances, deadline, candidate-validation capacity and acceptance rule.",
+      "Same isolation, journal, authority availability, ownership/fencing, source scope, merged-source validation, recovery policy and final private-evaluation barrier."
+    ],
+    "inputs_after_divergence": "Same initial inputs and information-access rules do not mean byte-identical later prompts. Each action uses its actual current source and received evidence. Arrival-dependent context is part of the treatment; bind every prompt to the exact visible event IDs and source generation. Do not replay a response into a different request.",
+    "realized_work": "Equal offered caps are not equal realized computation. Report actual requests, input/output/reasoning tokens where available, repairs, validations, duplicate or discarded work, bytes, CPU, memory and cost. Duplicate peer work consumes the common cap. Do not issue dummy paid calls to force equality.",
+    "scheduling": "Randomize or balance arm order within independent-family blocks. Keep per-arm resources isolated; concurrent arm execution is permitted only with dedicated matched capacity. Common provider incidents and time drift remain measured block covariates, not silently removed runs.",
+    "shared_setup": "Common trusted fixtures and public task inputs may be shared. Live candidate/model outputs are new per arm; any frozen-response transport replay is a separate mechanistic study and cannot count as a live quality trajectory."
+  },
+  "future_questions": {
+    "mechanisms": [
+      "Does dissemination topology change outcomes when decision placement stays fixed?",
+      "Does decision placement change outcomes when dissemination topology stays fixed?",
+      "Does their interaction matter, and how do accepted completion and inherited preservation behave after faults?"
+    ],
+    "nonclaims": [
+      "This is not a claim that eventual gossip can safely replace fencing or release authority.",
+      "This is not a model-size or agent-count comparison.",
+      "This is not a proof that decentralized scheduling is more intelligent or universally cheaper."
+    ],
+    "primary": "Under a frozen task-family and fault distribution, does peer-local decision-making plus gossip improve whole-project acceptance by a practically worthwhile amount over a durable failover orchestrator with a replicated broker, at the same offered work and resource limits?"
+  },
+  "genuine_peer_runtime": {
+    "authenticity": "Use authenticated service identities for the fixed roster and bind identities to event/receipt producers. Content hashes alone are integrity identifiers. Byzantine/malicious peers are outside the first crash/partition study.",
+    "decentralization_boundary": "In P cells, no central scheduler chooses a peer action, supplies missing evidence or assembles its model context. The same deterministic routing policy is instantiated at peers; model reviewer decisions remain live. Fixed logical role rosters keep the study focused on coordination rather than changing task decomposition.",
+    "initial_deployment_scope": "Separate processes and actual local network links on one host are an honest first deployment. This measures decentralized process coordination under injected local-network faults, not geographical networking or multi-host service availability.",
+    "instrumentation_boundary": "A read-only observer may collect global traces and an external scorer may inspect all closed evidence after the barrier. The process supervisor may start/stop daemons and apply the preregistered environment. Neither may route tasks, reveal private checks, synthesize evidence or rescue one treatment selectively.",
+    "multi_host_followup": "A later deployment replication must replace local flock/SQLite assumptions with a qualified remote authority and durable service failover, in every cell. Do not put a SQLite database on a network share or describe local process checks as multi-host consensus.",
+    "new_required_components": [
+      "Independent OS processes with private writable stores and bounded authenticated RPC.",
+      "Durable inbox/outbox, content-addressed artifact cache, receive/consume cursors, task-attempt state, model-request journal and source/review checkpoints per peer.",
+      "Peer-local policy loop that consumes only arrived valid events and decides when to claim work, invoke a role, request focused evidence/repair or submit a proposal.",
+      "Real broker and gossip network adapters with anti-entropy inventory exchange, bounded payloads, backpressure, duplicate suppression and actual byte/queue accounting.",
+      "Explicit source-generation supersession and reopening: a later refutation of the selected generation must invalidate prior provisional clearance; a missing receipt never implies acceptance.",
+      "Network Git fetch or immutable bundle transfer into quarantine with exact commit/source verification and scope validation; no local shared-object shortcuts or other peer filesystem access."
+    ],
+    "shared_safety_service": "A common narrow service may enforce lease epochs, budget reservations and exact release publication for every cell. It does not choose tasks, models, recipients, source winners or repairs. Its existence means this is decentralized work coordination with shared authoritative safety, not a fully leaderless commit system.",
+    "shared_service_interface_freeze": {
+      "allowed_role": "Return only the preregistered authority/accounting/verification facts necessary for the caller's own requested task, request or commit. Validation receipts are delivered to the requester and reach other agents only through the assigned dissemination path.",
+      "forbidden_shortcuts": "No global candidate matrix, peer inbox, missing evidence bundle, winner selection, task/repair routing, hidden recovery scheduling or privileged observer feedback through shared services. Apply assigned fault policies to these declared channels; any intentionally fault-exempt authority path is common and explicitly recorded in all cells.",
+      "observer_and_supervisor": "Freeze output-only observer channels and the supervisor's allowed start/stop/fault actions. The supervisor must not become an adaptive orchestrator for peer cells.",
+      "requirement": "Before qualification, freeze exact allowed RPC fields, response fields, channels, service endpoints and authenticated identities for budget, lease, validation, artifact and publication services. Every response is included in the peer-local visibility trace."
+    }
+  },
+  "independent_review": {
+    "completed_at_utc": "2026-10-02T12:07:31.164968+00:00",
+    "execution_performed": false,
+    "findings": [],
+    "handoff_feedback_rechecked": {
+      "report_revision": 253,
+      "unansweredFeedback": []
+    },
+    "numerical_core_rerun": false,
+    "post_review_changes": "Only status and this review record changed after clearance.",
+    "previous_full_design_review": {
+      "completed_at_utc": "2026-10-02T12:03:41.556813+00:00",
+      "findings": [],
+      "handoff_feedback_rechecked": {
+        "report_revision": 252,
+        "unansweredFeedback": []
+      },
+      "not_cleared": [
+        "Implementation",
+        "Statistical sample-size selection",
+        "Fault mixture and schedules",
+        "Future funding",
+        "Offline qualification",
+        "Live execution"
+      ],
+      "post_review_changes": "Only status and this review record were changed after clearance.",
+      "resolved_findings": [
+        "Separated timely eligible source freeze from post-cohort independent acceptance/publication and its clock.",
+        "Made exact common-service APIs, observer channels and fault-placement/exposure maps required freeze inputs."
+      ],
+      "reviewed_artifact_sha256": "a2b9f19ae0a387729438e2e1a2816b79e419b1d2053cd577d4b2fc4a48276c6b",
+      "reviewer": "/root/benchmark_architecture/distributed_harness_design_review",
+      "scope": "Read-only architecture, fairness, authority, fault-placement, timing, interface and future-phase completion review; no execution.",
+      "status": "passed",
+      "verified": {
+        "path_hash_references": 50,
+        "source_line_anchors_valid": true,
+        "statistics_sha256": "4828d96ceac1fa0cc07b1248c773bf672e6ac10caf3bfa3fe5ecd93503a85006",
+        "unique_bound_files": 20
+      }
+    },
+    "reviewed_artifact_sha256": "9101ed9fd68893e16b756f507eae88c22f737e4e3e8d8a58db2dd8efb5ff070e",
+    "reviewer": "/root/benchmark_architecture/distributed_harness_design_review",
+    "scope": "Narrow v1-to-v2 diff, governing statistical v4 binding and endpoint/timing alignment; prior full architecture review retained below.",
+    "status": "passed",
+    "verified": {
+      "architecture_and_endpoint_unchanged": true,
+      "changes_limited_to_references_version_supersession_review_metadata": true,
+      "prior_design_unchanged_sha256": "a5fe4de918238f9a215df1fee85bc11ca2035703b367c14445d48b06e532a524",
+      "statistics_v4_sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587"
+    }
+  },
+  "inputs": [
+    {
+      "line_anchors": [
+        71,
+        110,
+        179,
+        226
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/transport.py",
+      "sha256": "c8f68f90480b6090e9f4dc43cc6882b6fad5bde7c6c5378c35b0084691a771a0"
+    },
+    {
+      "line_anchors": [
+        179,
+        227,
+        253,
+        307
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/gitstore.py",
+      "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da"
+    },
+    {
+      "line_anchors": [
+        127,
+        149,
+        170,
+        244
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/ledger.py",
+      "sha256": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b"
+    },
+    {
+      "line_anchors": [
+        1,
+        37,
+        53,
+        75
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/promotion.py",
+      "sha256": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972"
+    },
+    {
+      "line_anchors": [
+        133,
+        150,
+        193,
+        268
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/pilot.py",
+      "sha256": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e"
+    },
+    {
+      "line_anchors": [
+        1,
+        232
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/experiment.py",
+      "sha256": "bc33c6a7a8070eabad5f45abc6060900fbe7f27373607f64222910d9c6dd421d"
+    },
+    {
+      "line_anchors": [
+        206
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/evidence.py",
+      "sha256": "396afd599b69a55c8030a65cddbdbea47d4cd593a09c2bdef5011d82f17bd773"
+    },
+    {
+      "line_anchors": [
+        195,
+        231
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/discovery_experiment.py",
+      "sha256": "f6b82581f7a5291f6549b202802199dcbe4c01162f95722e90c664e2e1d87221"
+    },
+    {
+      "line_anchors": [
+        368,
+        564
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/recovery_experiment.py",
+      "sha256": "0c1513b714c54cab894e96559c9c50407b1f23fb40ae74e9810b527cf087f845"
+    },
+    {
+      "line_anchors": [
+        1,
+        116
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_journal.py",
+      "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9"
+    },
+    {
+      "line_anchors": [
+        248,
+        267,
+        280,
+        294
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    },
+    {
+      "line_anchors": [
+        193,
+        271,
+        342,
+        607
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/benchmark_experiment.py",
+      "sha256": "6890b98a9e4656724342855667de0bc6365c8dd05ec66103a579d638bf001105"
+    },
+    {
+      "line_anchors": [
+        187,
+        380,
+        394
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/benchmark_stage.py",
+      "sha256": "f0367e5e8fe3c76bf3b40301d8d41d4f1df2526649c342382127df8aca99f705"
+    },
+    {
+      "line_anchors": [
+        1,
+        170,
+        240,
+        264
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_probes.py",
+      "sha256": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd"
+    },
+    {
+      "line_anchors": [
+        140
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/sandbox.py",
+      "sha256": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344"
+    },
+    {
+      "line_anchors": [
+        194
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/blackbox_validator.py",
+      "sha256": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e"
+    },
+    {
+      "line_anchors": [
+        1,
+        176,
+        250,
+        269,
+        323,
+        342,
+        361
+      ],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/simulation/benchmark_transport.py",
+      "sha256": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696"
+    },
+    {
+      "line_anchors": [],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-next-experiment-recommendation.json",
+      "sha256": "6b6489e92f79189bc32a3ff5215636fd548992d6aff06cf778e0a4c5abd2c480"
+    },
+    {
+      "line_anchors": [],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-graph-quality-observations.json",
+      "sha256": "97f1dfc7b4cc981ad03feb7408ae0718f04304655b2705c8e2eca9ddfb430b42"
+    },
+    {
+      "line_anchors": [],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-confirmatory-design-v4.json",
+      "sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587"
+    },
+    {
+      "line_anchors": [],
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-live-gossip-followup-design.json",
+      "sha256": "a5fe4de918238f9a215df1fee85bc11ca2035703b367c14445d48b06e532a524"
+    }
+  ],
+  "matched_availability_plan": {
+    "baseline_credibility_gate": "Do not launch the primary live comparison until durable orchestrator/broker failover and peer recovery all pass the same applicable offline fault gates. A single nonredundant broker remains an optional diagnostic, not the primary control.",
+    "clock_and_exposure": "Use externally scheduled monotonic wall-clock windows after a common ready barrier. Do not trigger outages because one arm is passing or failing. If a role never reaches an affected opportunity, retain that assigned trajectory in the intention-to-treat result; record exposure separately. Durable-boundary crash tests belong to the engineering qualification matrix unless separately randomized in the live estimand.",
+    "endpoint_hazards": [
+      "Separate event-broker identity from release/fencing authority; the old pilot co-locates broker and release.",
+      "A seed label alone does not match faults when topologies traverse different edges; publish the common environmental field and actual traversed-link exposure.",
+      "Equal contact counts or record counts do not match bytes, batch size, CPU or availability. Real inventory exchange and source transfers must count.",
+      "Do not delete durable data only in one arm or assume all origin records survive every restart. Bind the exact persistence/failure contract."
+    ],
+    "mixture_not_yet_frozen": "Healthy, worker restart, partition/heal, bounded loss/reorder and control-plane failover are proposed strata; exact weights and calibrated schedules remain preregistration decisions. No pooled causal claim is valid before the target distribution is fixed.",
+    "placement_freeze": "Freeze the complete process/service/link placement, replication count, CPU/memory/network/storage allocation, authenticated endpoint mapping and per-fault exposure map before qualification. Randomized placements use a predeclared seed and are the same physical opportunities across cells; actual exposure is retained.",
+    "primary_live_fault_assignment": "For each independent task family draw one fault stratum from a frozen target mixture, then apply the same exogenous node/link/time schedule to all four arms. Fix mixture weights, topology placements, durations and severity before any candidate output. Model transport peer-selection RNG and fault RNG are separate.",
+    "principle": "Inject faults into equivalent physical node/link/resource opportunities, not a topology-specific role whose disappearance also removes only one arm's acceptance authority. Preserve comparable durability and documented failover in the control.",
+    "qualification_matrix": [
+      "Healthy operation under bounded load.",
+      "Actual worker process death/restart with a durable prior source and an interrupted local write.",
+      "Delayed, duplicated, reordered and dropped packets under bounded queues.",
+      "Partition/heal with an isolated proposer, isolated reviewer and split worker sets.",
+      "Broker primary crash/standby takeover; matched infrastructure-node outages in gossip with randomized service placement.",
+      "Orchestrator primary crash/recovery; compare to corresponding peer-node loss while keeping common authority equally available.",
+      "Crash after durable publication intent, after Git CAS and before ledger completion; stale lease/head recovery.",
+      "Common authority outage as a separate symmetric safety diagnostic: all arms must stop unauthorized work/publication and recover consistently."
+    ]
+  },
+  "outcomes_and_statistics": {
+    "acceptance_clock_contract": {
+      "cohort_wait": "Wait for the entire preregistered cohort to reach approved terminal states and freeze all sources/evidence before any private scoring. This waiting is measured separately and does not penalize an early arm in the live-work estimand.",
+      "independent_adjudication": "Fresh holdout evaluation and exact promotion happen after cohort closure and outside the live-work cutoff. Their outcomes retrospectively qualify or disqualify the frozen source; accepted Git publication itself is not claimed to occur before the live cutoff.",
+      "live_work_cutoff": "Freeze each arm's eligible terminal source and public-policy completion timestamp by a common monotonic live deadline. An early terminal failure remains unsuccessful through that horizon. Quiesce worker decisions at cutoff; late responses remain billed/retained but cannot improve the eligible source. Unknown provider outcomes remain protocol interruptions.",
+      "timing_reporting": "Report live public-policy source-freeze time, cohort waiting, private evaluation, promotion and actual end-to-end finalization separately. A retrospectively qualified completion-time metric uses the earlier eligible source timestamp only when final acceptance succeeds; label it explicitly."
+    },
+    "decision_framework": "Align with the statistics owner's conservative paired discordant-cell interval: support a worthwhile gain only when its lower bound exceeds +10 percentage points; rule out that worthwhile gain within the covered scope only when its upper bound is below +10 points; otherwise report inconclusive. A negative upper bound is stronger evidence of harm. This margin and method are prospective proposals until preregistered.",
+    "multiplicity": "Do not pool formation and live-gossip studies. If a single claim is allowed to succeed on either study, preallocate familywise alpha (for example .025 each rather than .05 each); freeze any mechanism/fault-stratum testing adjustment separately. Secondary crossed contrasts can remain descriptive.",
+    "persistence_metrics": [
+      "Whole-project acceptance and bounded-stop/unresolved/censored rates.",
+      "Acceptance after assigned restart/partition faults; stage depth and inherited preservation.",
+      "Failure-to-repair latency, unresolved failures surviving later actions, checkpoint recovery and loss of previously passing behavior.",
+      "Duplicate or abandoned work, stale claims, lease takeovers, repeated receipts and reopened/superseded reviews."
+    ],
+    "practical_margin_proposed": 0.1,
+    "preservation_and_safety": "Inherited-contract preservation is a predeclared co-primary or gated outcome; select and power its decision rule before execution. Report every unsafe publication, stale-epoch acceptance, budget violation and hidden-test leak as a protocol failure, never as a quality/cost tradeoff. Zero observed violations is not a general safety proof.",
+    "primary_estimand": "Absolute family-level risk difference P-G minus O-B under the frozen task-family and fault-mixture distribution.",
+    "primary_outcome": "Binary retrospective independent acceptance of the exact public-policy-complete source frozen within the common live work deadline and offered budget. After the full cohort barrier, that exact source must pass all cumulative inherited/new-feature holdout gates and exact release promotion. A source that misses the live cutoff, remains publicly unaccepted, fails independent checks or cannot be validly promoted is unsuccessful; later private checks do not authorize further repair.",
+    "ranking_limit": "Within-cohort paired wins/ties and interval estimates can supplement the report. Do not pool historical cohorts into calibrated Elo or treat repeated test cases as independent matches.",
+    "sample_size": null,
+    "sample_size_gate": "Determine the complete independent-family count prospectively from the statistics owner's power/precision and cost grid, expected discordance, worthwhile margin, alpha and preservation rule. Freeze roster and stopping schedule before live execution. The current twelve trajectories cannot substitute for this count.",
+    "secondary_efficiency": [
+      "Live time to frozen public-policy completion and retrospective time to an eligible source that later passes independent acceptance. Keep early terminal failures as no accepted completion through the common horizon (or a declared competing terminal failure); do not drop them as ordinary noninformative censoring. Separate administrative deadline censoring, infrastructure/provider missingness and actual post-barrier finalization time.",
+      "Provider request wall time including service/network wait, active controller time, candidate runtime and transport queue/delivery latency recorded separately; nested spans are not added.",
+      "Actual requests/tokens/validations/bytes and conservative cost estimates; include failover and redundancy costs."
+    ],
+    "statistical_alignment_source": {
+      "agent": "/root/confirmatory_statistics",
+      "message_summary": "One independent family per pair; accepted-project risk difference; proposed +10pp worthwhile margin; conservative discordant-cell interval; separate formation/gossip hypotheses and prospective multiplicity; fixed sampled fault mixture or a separately defined stratified estimator.",
+      "status": "Aligned with a bound prospective statistical design; exact gossip roster, fault mixture, endpoint implementation and cost/sample size still require freeze."
+    },
+    "statistical_design_reference": {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-confirmatory-design-v4.json",
+      "scope": "Prospective method and power/precision framework. This four-arm protocol requires its own cost projection and final sample-size selection.",
+      "sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587"
+    },
+    "timing_limit": "Simulation rounds, contacts and serialized-log replay are never converted to milliseconds or called live latency. One-host live timing is not WAN or production timing."
+  },
+  "previous_design": {
+    "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-live-gossip-followup-design.json",
+    "sha256": "a5fe4de918238f9a215df1fee85bc11ca2035703b367c14445d48b06e532a524",
+    "status": "Preserved independently reviewed design; this version supersedes its governing statistical reference."
+  },
+  "proposed_factorial_study": {
+    "arms": [
+      {
+        "decision_placement": "Central durable orchestrator with fenced standby takeover",
+        "dissemination": "Durable replicated broker with documented client failover",
+        "id": "O-B",
+        "role": "Primary practical control"
+      },
+      {
+        "decision_placement": "The same central durable orchestrator",
+        "dissemination": "Real bounded gossip overlay",
+        "id": "O-G",
+        "role": "Bridge: dissemination at centralized decision placement"
+      },
+      {
+        "decision_placement": "Independent peer processes, each triggering work from its persisted local evidence",
+        "dissemination": "The same durable replicated broker",
+        "id": "P-B",
+        "role": "Bridge: decision placement at broker dissemination"
+      },
+      {
+        "decision_placement": "Independent peer processes, each triggering work from its persisted local evidence",
+        "dissemination": "The same real bounded gossip overlay",
+        "id": "P-G",
+        "role": "Primary proposed system"
+      }
+    ],
+    "engineering_sequence": "Implement the common peer runtime and transport-only ablation first as offline qualification. Adding central placement creates the full crossed live study; a successful subset is only an engineering checkpoint.",
+    "factor_control": "Use one frozen logical routing/repair/acceptance policy in all cells. The placement and accessible arrived evidence differ; controller algorithm changes are not bundled with the transport treatment.",
+    "full_scope": "Four complete trajectories per independently held-out task-family block, each covering every planned cumulative milestone and final acceptance. Bridge arms are part of this proposed phase, not removable after outcomes are seen.",
+    "primary_contrast": "P-G minus O-B is a total-system contrast. Attribute any mechanism only using the crossed O-G and P-B comparisons, not from the primary package contrast alone.",
+    "prospective_cost_tradeoff": "A prospectively chosen two-arm P-G versus O-B study could answer the total-system question at lower cost, but cannot separate placement and transport mechanisms. That is a different full protocol, requiring its own preregistration and completion denominator before execution. Do not quietly omit bridge cells from this four-arm design after seeing outcomes or spending a prefix.",
+    "secondary_contrasts": "P-G minus P-B and O-G minus O-B isolate dissemination within decision placement; P-G minus O-G and P-B minus O-B isolate placement within dissemination. Treat as secondary/descriptive unless a multiplicity-controlled analysis is preregistered.",
+    "status": "Design recommendation; all four cells and the complete independent-family roster must be frozen before confirmatory execution."
+  },
+  "purpose": "Design a prospective live comparison of gossip dissemination and decentralized worker decisions against a durable orchestrator, measuring accepted software-project completion and preservation through failures. This design does not extend the current pilot execution roster.",
+  "retention_and_acceptance_evidence": {
+    "audit": "Independent read-only audit binds execution sources, roster, snapshots, requests/accounting, exact Git scope/CAS, receipt purpose/freshness, fault schedule, local-visibility proof and private barrier. Replay of deterministic logs is an audit tool, not a fresh live observation.",
+    "cohort_barrier": "Preserve every initial, repaired, rejected and terminal source. Every preregistered trajectory must reach an approved terminal state and the full source/evidence roster must be frozen before private acceptance or cross-policy diagnostics. Budget exhaustion, unknown provider outcomes or a missing bridge arm do not automatically qualify the cohort as complete.",
+    "failure_handling": "Keep all assigned trajectories in the roster. Report protocol interruptions, missing artifacts, bounded stops and timing censoring explicitly. Never replace a bad family or rerun an arm until green. Resolve any incomplete-cohort analysis prospectively without inspecting private grades.",
+    "per_action": [
+      "Arm/family/role/node/epoch IDs and exact task contract.",
+      "Exact local source head, visible event IDs, prompt/request digest and journal/reservation binding.",
+      "Immutable proposed source export and Git ancestry; source-generation/repair/selection decisions.",
+      "Physical test container/source/ordered-suite/runtime/image/purpose receipts and generated-probe origin/admission records.",
+      "Actual network send/receive/ack, queue/bytes, process start/kill/restart, durable writes and authority transitions."
+    ]
+  },
+  "revision_scope": "Only governing statistics v3-to-v4 binding, supersession/version metadata and review record changed. The previously reviewed architecture, arm roster, endpoint/timing rules, safety/fault controls and completion gates remain identical.",
+  "schema": "benchmark-live-gossip-followup-design-v1",
+  "separate_autonomous_tool_loop_phase": {
+    "autonomy_boundary": "No tool loop gains provider credentials, trusted test writes, publication authority or arbitrary host/network execution. Only sandbox-scoped tool results enter its local context.",
+    "completion_claim": "A win in the bounded proposal study does not establish a win for autonomous coding agents. Implementing one tool or allowing one shell call is not completion of this separate end-to-end comparison.",
+    "current_limit": "The current worker is one bounded Responses request returning structured file proposals or JSON review/probe artifacts. It has no shell/tool execution loop. The controller alone validates candidates and decides subsequent dispatch opportunities.",
+    "exact_output_limit": "Generated tests specify literal expected JSON, including hashes when present. The trusted oracle rejects mismatches and never fills in corrected outputs; this may constrain test authoring, but no hash-specific causal explanation is claimed from this design.",
+    "fairness_and_limits": "Use the same underlying model, source/task information, outer spend/deadline limits and sandbox/acceptance gates. Tool interactions and larger/different contexts are part of the interface treatment; track their cost rather than claiming identical realized compute. Do not simultaneously alter oracle admission or test representation unless those are separate declared factors.",
+    "future_comparison": "After freezing or finishing the topology study, compare the bounded proposal interface with a genuine multi-turn coding-agent loop that can inspect/edit/test in an isolated workspace. Keep topology/controller fixed for that interface contrast, or preregister and power a separate factorial interaction study.",
+    "references": [
+      {
+        "line": 267,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/worker.py",
+        "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+      },
+      {
+        "line": 280,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/worker.py",
+        "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+      },
+      {
+        "line": 342,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/benchmark_experiment.py",
+        "sha256": "6890b98a9e4656724342855667de0bc6365c8dd05ec66103a579d638bf001105"
+      },
+      {
+        "line": 264,
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/gossip_harness/verification_probes.py",
+        "sha256": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd"
+      }
+    ]
+  },
+  "software_workload": {
+    "checks": "Public requirements, inherited regressions and all final holdout gates are frozen and independently qualified before provider work. Evaluate merged sources, negative cases, restart/persistence and cross-module semantic interactions; keep inherited and each milestone denominators identifiable.",
+    "holdout_control": "No private result, mutation-bank answer, unselected diagnostic grade or aggregate arm score is returned to an active worker or used to choose the stopping point. Qualify golden/negative controls pre-live using separate purpose-bound receipts.",
+    "interface_constant": "Keep the exact current structured probe/oracle interface constant across all topology cells; changing evidence expression or adding model tools is a separate treatment.",
+    "sampling_provenance": "Publish task-family inclusion/exclusion rules and a prospectively drawn roster before running. Do not reuse the historical Graph/Calendar tasks or the current controller-pilot domains as confirmatory families. Closely related generated variants remain one family.",
+    "sampling_unit": "One independently held-out application/task family per paired block. Model repetitions, seeds, milestones, scenarios and related variants are clustered within that family and are not extra independent samples.",
+    "task_shape": "Use previously unseen multi-module software projects with persistent state or shared invariants and at least three cumulative milestones. Include inherited compatibility, a cross-module feature, and a later integration/repair requirement. Freeze the complete work list before generation."
+  },
+  "status": "proposed_future_phase_independently_reviewed"
+}

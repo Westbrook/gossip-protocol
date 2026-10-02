@@ -1553,6 +1553,90 @@
       "boundary": "Trusted fixture data and synthetic terminal envelopes; no controller cohort, candidate code, real Git, Docker or API execution.",
       "disposition": "Run with the affected benchmark runner checks before a new qualified scientific contract.",
       "overlap_reason": "Exercises the cross-serialization gate missed by earlier simplified fixture mocks."
+    },
+    "tests/test_continuation_controller.py::ContinuationControllerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Known source-bound failures route to bounded repairs, prior repair checkpoints remain eligible, and explicit review/evidence gates still govern acceptance.",
+      "isolation": "One class worker process with fresh mutable fixtures; no live API or Docker.",
+      "overlap": "New versioned controller, inference or qualification contracts; historical study evidence remains unchanged.",
+      "distinct_defect": "A versioned baseline stays equivalent to the frozen controller, shared pools are validated and freshly evaluated, and failure progress cannot be fabricated by source novelty.",
+      "boundary": "Trusted Python and fake retained worker/validator evidence; no untrusted candidate execution on host.",
+      "disposition": "Run after static gate in the bounded offline batch before any paid study or real Docker rehearsal.",
+      "overlap_reason": "Existing benchmark tests qualify the previous protocol. These classes exercise new state transitions, statistical arithmetic or new fixture registry and cannot replace live study certification."
+    },
+    "tests/test_confirmatory_statistics.py::ConfirmatoryStatisticsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exact paired inference and prospective power respect independent task-family units, practical margins, fixed endpoints, and finite-sample uncertainty.",
+      "isolation": "One class worker process with fresh mutable fixtures; no live API or Docker.",
+      "overlap": "New versioned controller, inference or qualification contracts; historical study evidence remains unchanged.",
+      "distinct_defect": "Tail, interval and power calculations must match independent small-case enumeration; repeated domains cannot masquerade as independent pairs.",
+      "boundary": "Trusted Python and fake retained worker/validator evidence; no untrusted candidate execution on host.",
+      "disposition": "Run after static gate in the bounded offline batch before any paid study or real Docker rehearsal.",
+      "overlap_reason": "Existing benchmark tests qualify the previous protocol. These classes exercise new state transitions, statistical arithmetic or new fixture registry and cannot replace live study certification."
+    },
+    "tests/test_followup_qualification.py::FollowupQualificationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "New fixture qualification binds full warehouse/job-queue matrix, private witnesses, source/suite/evaluator/image/purpose, and passing controls.",
+      "isolation": "One class worker process with fresh mutable fixtures; no live API or Docker.",
+      "overlap": "New versioned controller, inference or qualification contracts; historical study evidence remains unchanged.",
+      "distinct_defect": "Missing or stale rows, edited conclusions, infrastructure errors or non-witnessed mutants cannot certify fixtures.",
+      "boundary": "Trusted Python and fake retained worker/validator evidence; no untrusted candidate execution on host.",
+      "disposition": "Run after static gate in the bounded offline batch before any paid study or real Docker rehearsal.",
+      "overlap_reason": "Existing benchmark tests qualify the previous protocol. These classes exercise new state transitions, statistical arithmetic or new fixture registry and cannot replace live study certification."
+    },
+    "tests/test_benchmark_warehouse.py::BenchmarkWarehouseTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Atomic FEFO allocation and original-lot shipment/return provenance preserve stock and prior receipts.",
+      "isolation": "One worker per trusted fixture class; isolated in-memory reference state and source parsing.",
+      "overlap": "Cheap trusted specification checks precede separate real-container fixture qualification.",
+      "distinct_defect": "Ambiguous inherited contracts, inconsistent expected outputs, malformed golden sources or non-distinct fault witnesses can make an experiment vacuous.",
+      "boundary": "Only repository-owned trusted reference model and AST/source data; no model candidate execution.",
+      "disposition": "Run after fast checks, before physical golden/control/mutant qualification in Docker.",
+      "overlap_reason": "These checks establish specification coherence; fresh sandbox qualification separately establishes runnable sources, passing controls and observable semantic faults."
+    },
+    "tests/test_benchmark_job_queue.py::BenchmarkJobQueueTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Durable job leasing, stale-worker fencing and atomic completion/follow-up enqueue preserve retry and earlier job behavior.",
+      "isolation": "One class worker; trusted repository-authored fixture sources run in subprocesses with separate temporary directories and databases.",
+      "overlap": "Cheap trusted specification checks precede separate real-container fixture qualification.",
+      "distinct_defect": "Ambiguous inherited contracts, inconsistent expected outputs, malformed golden sources or non-distinct fault witnesses can make an experiment vacuous.",
+      "boundary": "Repository-authored trusted reference model, golden sources, controls and mutants may execute on the host; no model-generated candidate execution.",
+      "disposition": "Run after fast checks, before physical golden/control/mutant qualification in Docker.",
+      "overlap_reason": "These checks establish specification coherence; fresh sandbox qualification separately establishes runnable sources, passing controls and observable semantic faults."
+    },
+    "tests/test_continuation_followup.py::FollowupPlanTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 60,
+      "invariant": "The twelve-trajectory development plan preserves policy, model, pairing, budget and readiness requirements before any dispatch.",
+      "isolation": "One class process, fresh temporary stores and SQLite journals.",
+      "overlap": "Foundation checks complement later independent full-cohort audit and rehearsal.",
+      "distinct_defect": "A mutated shared source, leaked evidence before freeze, charged import, wrong arm roster or permissive live-readiness flag could corrupt the experiment.",
+      "boundary": "Pure contract parsing and conservative reservation arithmetic; no provider or Docker access.",
+      "disposition": "Keep in explicit bounded offline lane before real fixture qualification or any paid work.",
+      "overlap_reason": "Legacy benchmark runner has no first-class shared-setup treatment; these are new provenance and accounting boundaries, not full-study acceptance."
+    },
+    "tests/test_continuation_followup.py::FollowupSharedSetupTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Both initial formations freeze before common scouts, A/B import exact shared sources, and each consuming arm evaluates fresh without double-charging setup.",
+      "isolation": "One class process, fresh temporary stores and SQLite journals.",
+      "overlap": "Foundation checks complement later independent full-cohort audit and rehearsal.",
+      "distinct_defect": "A mutated shared source, leaked evidence before freeze, charged import, wrong arm roster or permissive live-readiness flag could corrupt the experiment.",
+      "boundary": "Real isolated Git stores, journal/ledger/CAS and deterministic offline callbacks; no untrusted candidate code, provider or Docker.",
+      "disposition": "Keep in explicit bounded offline lane before real fixture qualification or any paid work.",
+      "overlap_reason": "Legacy benchmark runner has no first-class shared-setup treatment; these are new provenance and accounting boundaries, not full-study acceptance."
     }
   },
   "audit": {

@@ -15,7 +15,7 @@ from urllib.parse import urlsplit
 
 
 AUXILIARY_LANES = frozenset({"report", "browser"})
-BROWSER_PAGES = ("report", "research", "investigation", "pilot", "experiments", "swarm", "swarm-pilot", "sustained-pilot", "verification-pilot", "continuation-comparison", "benchmark-comparison")
+BROWSER_PAGES = ("report", "research", "investigation", "pilot", "experiments", "swarm", "swarm-pilot", "sustained-pilot", "verification-pilot", "continuation-comparison", "benchmark-comparison", "investigation-roadmap")
 BROWSER_FILES = ("run.cjs", "lifecycle.cjs", "lifecycle.test.cjs", "check_syntax.cjs", "fixture_server.py", "package.json", "package-lock.json")
 
 

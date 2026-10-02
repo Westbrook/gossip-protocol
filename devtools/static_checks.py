@@ -24,6 +24,19 @@ from typing import Any
 
 EXCLUDED_DIRECTORIES = frozenset({"runs", "results", ".venv", ".cache", "__pycache__", ".git", "node_modules", "build", "dist"})
 REQUIRED_LINT_RULES = frozenset({"E9", "F63", "F7", "F82"})
+# The continuation follow-up newly traverses these historical dependencies.
+# Exact immutable identities permit recording their existing diagnostics without
+# permitting new verification modules (or changed copies) to acquire type debt.
+FROZEN_TYPE_BASELINE_EXCEPTIONS = {
+    "analysis/qualify_benchmark.py": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
+    "gossip_harness/continuation_transport.py": "de79df63641a14e947eba6896d4ffd52f450c47ec4993e61a49d5797d6cb8498",
+    "gossip_harness/verification_buildgraph.py": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
+    "gossip_harness/verification_calendar.py": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62",
+    "gossip_harness/verification_experiment.py": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",
+    "gossip_harness/verification_integration.py": "bb0d33a085f27c0100874a6062d8d258438117ee4a1867200825625e762b7992",
+    "gossip_harness/verification_journal.py": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+    "gossip_harness/verification_stage.py": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+}
 
 
 @dataclass(frozen=True)
@@ -84,9 +97,12 @@ def _read_type_baseline(root: Path, path: str, version: str) -> TypeBaseline:
         relative = Path(entry["path"])
         legacy_source = (
             relative.parts[:1] == ("gossip_harness",) and len(relative.parts) == 2
-            and not relative.name.startswith("verification_") and not relative.stem.endswith("_v2")
+            and not relative.name.startswith(("verification_", "continuation_", "benchmark_"))
+            and not relative.stem.endswith("_v2")
         ) or relative.as_posix() == "analysis/run_sustained_review_probes.py"
-        if not legacy_source:
+        frozen_identity = FROZEN_TYPE_BASELINE_EXCEPTIONS.get(relative.as_posix())
+        frozen_source = frozen_identity is not None and entry.get("sha256") == frozen_identity
+        if not legacy_source and not frozen_source:
             raise ConfigurationError("Type debt is restricted to unchanged legacy scientific files")
         if entry["path"] in seen:
             raise ConfigurationError("Duplicate type baseline source")

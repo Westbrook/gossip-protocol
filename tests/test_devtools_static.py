@@ -10,7 +10,7 @@ import tomllib
 import unittest
 from unittest.mock import patch
 
-from devtools.static_checks import Check, ConfigurationError, _read_type_baseline, _run_type_tool, check_syntax, run_checks, source_files
+from devtools.static_checks import Check, ConfigurationError, FROZEN_TYPE_BASELINE_EXCEPTIONS, _read_type_baseline, _run_type_tool, check_syntax, run_checks, source_files
 
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -59,6 +59,9 @@ class StaticGateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for name in ("devtools/new.py", "gossip_harness/verification_new.py",
+                         "gossip_harness/continuation_controller.py", "gossip_harness/continuation_followup.py",
+                         "gossip_harness/continuation_new.py", "gossip_harness/benchmark_new.py",
+                         "gossip_harness/benchmark_warehouse.py", "gossip_harness/benchmark_job_queue.py",
                          "gossip_harness/sustained_experiment_v2.py", "analysis/new.py",
                          "analysis/run_sustained_review_probes_v2.py"):
                 with self.subTest(name=name):
@@ -67,6 +70,29 @@ class StaticGateTests(unittest.TestCase):
                     ]}))
                     with self.assertRaisesRegex(ConfigurationError, "restricted"):
                         _read_type_baseline(root, "baseline.json", "1.20.2")
+
+    def test_frozen_exception_requires_original_bytes_and_identity(self):
+        for name, identity in FROZEN_TYPE_BASELINE_EXCEPTIONS.items():
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                source = root / name
+                source.parent.mkdir(parents=True)
+                source.write_bytes((PROJECT / name).read_bytes())
+                self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), identity)
+                document = {"schema_version": 1, "mypy_version": "1.20.2", "files": [
+                    {"path": name, "sha256": identity, "diagnostics": []}
+                ]}
+                baseline_file = root / "baseline.json"
+                baseline_file.write_text(json.dumps(document))
+                self.assertEqual(_read_type_baseline(root, "baseline.json", "1.20.2").source_sha256[name], identity)
+                source.write_bytes(source.read_bytes() + b"\n# A changed scientific source\n")
+                with self.assertRaisesRegex(ConfigurationError, "source changed"):
+                    _read_type_baseline(root, "baseline.json", "1.20.2")
+                # Updating a JSON hash cannot approve debt for a new revision.
+                document["files"][0]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+                baseline_file.write_text(json.dumps(document))
+                with self.assertRaisesRegex(ConfigurationError, "restricted"):
+                    _read_type_baseline(root, "baseline.json", "1.20.2")
 
     def test_syntax_never_imports_candidate_and_excludes_generated_trees(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -1,0 +1,803 @@
+{
+  "schema": "paired-confirmatory-statistics-v1",
+  "status": "Prospective design proposal and retrospective sensitivity; not a frozen executable preregistration or spending authorization",
+  "bindings": [
+    {
+      "path": "results/benchmark-comparison-1/summary.json",
+      "sha256": "cb47894ea8b34acec6a19581c28220fdfcffa2e6f23b394d371a0a9752a3bb19"
+    },
+    {
+      "path": "analysis/benchmark-next-experiment-recommendation.json",
+      "sha256": "6b6489e92f79189bc32a3ff5215636fd548992d6aff06cf778e0a4c5abd2c480"
+    },
+    {
+      "path": "runs/benchmark-live-reconciliation-1.json",
+      "sha256": "50eb4e8633429c48f4ac493b507b2bccac3d6ccd4ef6a6f4639e3451089e3b69"
+    }
+  ],
+  "historical": {
+    "direction": "independent-four minus sequential-four",
+    "matched_blocks": 4,
+    "independent_application_identities": 2,
+    "domains": [
+      {
+        "domain": "calendar-exchange",
+        "repetitions": 2,
+        "acceptance_difference": 0.5,
+        "coverage_difference": 0.07692307692307693
+      },
+      {
+        "domain": "graph-patch",
+        "repetitions": 2,
+        "acceptance_difference": 0.0,
+        "coverage_difference": 0.22413793103448276
+      }
+    ],
+    "acceptance": {
+      "clusters": 2,
+      "equal_cluster_mean": 0.25,
+      "two_sided_sign_flip_p": 1.0,
+      "enumerated_sign_assignments": 4,
+      "minimum_attainable_two_sided_p": 1.0,
+      "interpretation": "Exploratory sensitivity only; historical domain-label exchangeability and population sampling are unestablished"
+    },
+    "coverage": {
+      "clusters": 2,
+      "equal_cluster_mean": 0.15053050397877984,
+      "two_sided_sign_flip_p": 0.5,
+      "enumerated_sign_assignments": 4,
+      "minimum_attainable_two_sided_p": 0.5,
+      "interpretation": "Exploratory sensitivity only; historical domain-label exchangeability and population sampling are unestablished"
+    },
+    "population_confidence_interval": null,
+    "limitation": "Only two convenience-selected application identities, each repeated twice. No calibrated population interval, confirmatory p-value, Elo, or cross-cohort ranking is justified."
+  },
+  "hypothesis_families": {
+    "formation": "Independent versus serial candidate formation with the same controller; mechanism-specific, never evidence that live gossip is superior.",
+    "live_protocol": "Separately preregister peer-local decisions plus gossip versus durable failover orchestration plus replicated broker, with matched roles, safety services, offered resources and exogenous fault schedule. One independent family per paired block; mechanism bridge arms remain descriptive unless separately allocated error.",
+    "joint_error_control": "If the research claim is that either of these two techniques has a meaningful advantage, allocate alpha=.025 to each interval (Bonferroni overall error <=.05). The planning grid includes this stricter level and standalone alpha=.05. Select the family and allocation before any confirmatory outcome; never choose the better study after results.",
+    "scope": "Do not pool studies, endpoints, task variants, model-interface generations or fault strata after outcomes. In live topology studies sample one fault stratum per task family independently from a frozen target mixture; stratified claims require their own prespecified analysis."
+  },
+  "primary_design": {
+    "contrast": "Independent-four versus sequential-four under the identical improved continuation controller; separate from development pilot A/B",
+    "endpoint": "Binary success requires an exact source to complete the policy against public evidence and be frozen by the common active deadline/call budget, then pass every independent final private acceptance gate during later adjudication. Private grading starts only after the complete cohort source-freeze barrier; any unmet milestone or failed final gate is failure.",
+    "timing": "The active cutoff applies to policy completion and source freeze, not to delayed private grading or final promotion. Record active source-freeze time, cohort waiting, independent final validation and final promotion separately. A retrospectively successful source time is credited only to a cutoff-eligible source that later passes final adjudication. Early terminal policy failure remains no success through the common horizon, not ordinary noninformative right-censoring or a speed improvement.",
+    "estimand": "Difference in acceptance probability across a preregistered target distribution of independent task families and fresh model randomness",
+    "unit": "One matched pair, one run per arm, from each independently authored/selected task family. Shared baselines, variants, repeated seeds and milestones remain one cluster and cannot inflate this sample size.",
+    "sampling": "Freeze the task-family registry, task-generation/selection rule, target mixture weights and exclusions before any confirmatory calls. Sample independently from that mixture; one family per pair. New repositories alone do not prove independence. If fixed strata or repeated families are required, replace this iid analysis with preregistered stratum/cluster-aware inference before execution.",
+    "practical_margin": 0.1,
+    "margin_reason": "Proposed engineering decision: at least ten additional independently accepted projects per hundred attempts. This is not inferred from the observed pilot.",
+    "interval": "Bonferroni-Clopper-Pearson paired risk-difference interval at the chosen 1-alpha confidence (95% standalone, 97.5% for each of two jointly protected claims): simultaneous intervals for P(treatment-only acceptance) and P(control-only acceptance), then subtract bounds.",
+    "decisions": {
+      "meaningful_benefit": "Lower interval endpoint > +0.10",
+      "rules_out_meaningful_benefit": "Upper endpoint < +0.10, within this population/model/budget contract; does not prove exact equality or universal failure",
+      "otherwise": "Inconclusive; no posthoc margin change or automatic sample extension"
+    },
+    "secondary_direction_test": "Two-sided exact McNemar with the preregistered alpha (.05 standalone or .025 per claim in the two-claim family), with direction reported. Rejecting zero is weaker than establishing +10pp; this does not replace the primary interval decision.",
+    "multiplicity": "One primary contrast, one endpoint and one final analysis. Coverage, time, cost, repairs and subgroup results are descriptive. Any additional confirmatory contrast or outcome requires prospectively allocated error control.",
+    "stopping": "Fixed sample selected before outcomes using planning assumptions; no efficacy peeking or optional extension. Early cost/safety/infrastructure stop yields an incomplete study and no confirmatory declaration. All failed or stopped trajectories remain visible; no outcome-based replacements.",
+    "randomization": "Randomize and freeze within-pair execution order; balance host/time windows; pair tasks and offered resource caps. Fresh arm-specific initial generation; no shared candidates in this confirmatory contrast.",
+    "independence": "Families are sampled independently and each pair has fresh random model draws; whole-pair outcomes may be correlated. Repeated development feedback makes new tasks development data, not held-out confirmation.",
+    "freeze_barrier": "Freeze specification, fixtures, complete evaluator, models, controller, budgets, seeds/order, sample size and analysis source. Seal all final-evaluation material and defer every private result until all study trajectories are frozen.",
+    "infrastructure": "Predeclare infrastructure classification without seeing private outcomes. No automatic reruns; primary policy-success denominator retains launched bounded failures, with explicit infrastructure sensitivity and missingness disclosure. An incomplete/unsettled study is not certified.",
+    "guardrails": "Preserve source/sandbox/Git/receipt/final-evaluation invariants. Report inherited regressions separately and veto deployment if those gates fail; never trade baseline correctness for feature coverage."
+  },
+  "sequence": [
+    "Complete the new 12-trajectory, two-domain exploratory controller pilot; this can guide engineering and detect feasibility failures, not establish superiority.",
+    "Freeze the chosen controller without looking at confirmatory task outcomes. Use development-only data to choose assumptions and exact fixed sample size, then preregister a new task-family registry and evaluation contract.",
+    "Run one fresh complete offline qualification/rehearsal for the changed contract; reconcile exact source, environment, evaluator, limits and budget reservation before paid execution.",
+    "Run the independently sampled confirmatory pair roster with one final analysis and retain failures. Interpret only the population and model/tool interface actually tested.",
+    "If a meaningful advantage survives, replicate on maintained repositories and tool-equipped agents; treat live gossip transport as a separate randomized fault-condition factor, not a claim established by candidate formation."
+  ],
+  "power": {
+    "method": "Exact finite binomial/multinomial summation, floating-point evaluation; no Monte Carlo or fitted pilot effect",
+    "alpha_levels": [
+      0.05,
+      0.025
+    ],
+    "margin": 0.1,
+    "iid_requirement": "Numbers assume independent identically sampled task pairs from the fixed target mixture; correlated task variants invalidate these n values.",
+    "grid": [
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.17849360957921623,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0004656286120216823,
+          "rules_out_meaningful_benefit": 0.0008453719420292206,
+          "inconclusive": 0.998688999445949
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.11484077496095271,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0001326934096717367,
+          "rules_out_meaningful_benefit": 0.00030492921079019114,
+          "inconclusive": 0.9995623773795381
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.3730455779306315,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0008559805027121281,
+          "rules_out_meaningful_benefit": 0.0011242510638707851,
+          "inconclusive": 0.998019768433417
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.28468979541092065,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.00022368293410540693,
+          "rules_out_meaningful_benefit": 0.00037040790212991207,
+          "inconclusive": 0.9994059091637647
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.7034022154347302,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0010878040840092266,
+          "rules_out_meaningful_benefit": 0.001327346646695291,
+          "inconclusive": 0.9975848492692955
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.60116117918649,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.00032261617220105904,
+          "rules_out_meaningful_benefit": 0.00043264364196717953,
+          "inconclusive": 0.9992447401858318
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.9513215618431156,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0012320838616573853,
+          "rules_out_meaningful_benefit": 0.0014364338892200687,
+          "inconclusive": 0.9973314822491225
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.9159046091542328,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0004010071855451638,
+          "rules_out_meaningful_benefit": 0.00045573095114145005,
+          "inconclusive": 0.9991432618633134
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.999380207202895,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.001386297228757745,
+          "rules_out_meaningful_benefit": 0.0015043593170338506,
+          "inconclusive": 0.9971093434542084
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.9983928266511154,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.00044156135902209106,
+          "rules_out_meaningful_benefit": 0.00048786791277398515,
+          "inconclusive": 0.9990705707282039
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.9999952275459071,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.0014581118012934166,
+          "rules_out_meaningful_benefit": 0.0015514547925099132,
+          "inconclusive": 0.9969904334061966
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "10pp_gain_30pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.2,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.1,
+        "discordance": 0.30000000000000004,
+        "direction_test_power": 0.9999829699281544,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.00046721347351005594,
+          "rules_out_meaningful_benefit": 0.000509601686508261,
+          "inconclusive": 0.9990231848399816
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.5466886111979189,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.023347700899112808,
+          "rules_out_meaningful_benefit": 1.2238712443134319e-05,
+          "inconclusive": 0.9766400603884441
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.4245047112031089,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.00849471274799248,
+          "rules_out_meaningful_benefit": 2.8596442872569707e-06,
+          "inconclusive": 0.9915024276077202
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.8779953807574481,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.08269518606146185,
+          "rules_out_meaningful_benefit": 1.7112105592580135e-06,
+          "inconclusive": 0.9173031027279789
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.8121506335286571,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.03980454359626085,
+          "rules_out_meaningful_benefit": 3.389267429951685e-07,
+          "inconclusive": 0.9601951174769962
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9952323518399766,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.25919338283448534,
+          "rules_out_meaningful_benefit": 5.982691114424645e-08,
+          "inconclusive": 0.7408065573386036
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9896276381908474,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.15997249966021673,
+          "rules_out_meaningful_benefit": 9.352534915308155e-09,
+          "inconclusive": 0.8400274909872483
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9999976709674444,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.6414321643167583,
+          "rules_out_meaningful_benefit": 2.0620435661403667e-10,
+          "inconclusive": 0.35856783547703736
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9999910998527249,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.5131388943287258,
+          "rules_out_meaningful_benefit": 2.5709641454907742e-11,
+          "inconclusive": 0.4868611056455645
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9999999999999062,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.9613259394873059,
+          "rules_out_meaningful_benefit": 1.3975513424738289e-14,
+          "inconclusive": 0.03867406051268009
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 0.9999999999992366,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.9248244137007211,
+          "rules_out_meaningful_benefit": 1.0887499459175247e-15,
+          "inconclusive": 0.07517558629927781
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 1.0,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.9977348799124639,
+          "rules_out_meaningful_benefit": 2.4465440137839716e-18,
+          "inconclusive": 0.0022651200875360962
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "20pp_gain_40pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "true_acceptance_difference": 0.19999999999999998,
+        "discordance": 0.4,
+        "direction_test_power": 1.0,
+        "practical_interval_decision": {
+          "meaningful_benefit": 0.9939729634655324,
+          "rules_out_meaningful_benefit": 1.3586555457164018e-19,
+          "inconclusive": 0.006027036534467567
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.013752692904219939,
+        "practical_interval_decision": {
+          "meaningful_benefit": 2.633551760691621e-06,
+          "rules_out_meaningful_benefit": 0.029497257528054602,
+          "inconclusive": 0.9705001089201847
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 50,
+        "independent_task_families": 50,
+        "trajectories": 100,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.00672663493760099,
+        "practical_interval_decision": {
+          "meaningful_benefit": 5.655329733172241e-07,
+          "rules_out_meaningful_benefit": 0.013389535765085819,
+          "inconclusive": 0.9866098987019408
+        },
+        "historical_linear_api_cost_usd": 106.27695
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.015368865161035371,
+        "practical_interval_decision": {
+          "meaningful_benefit": 4.278980735827028e-07,
+          "rules_out_meaningful_benefit": 0.10393285335960102,
+          "inconclusive": 0.8960667187423255
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 100,
+        "independent_task_families": 100,
+        "trajectories": 200,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.00817803446579707,
+        "practical_interval_decision": {
+          "meaningful_benefit": 6.33329042269909e-08,
+          "rules_out_meaningful_benefit": 0.055670149359361154,
+          "inconclusive": 0.9443297873077345
+        },
+        "historical_linear_api_cost_usd": 212.5539
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.018721909342451055,
+        "practical_interval_decision": {
+          "meaningful_benefit": 9.77745837441728e-09,
+          "rules_out_meaningful_benefit": 0.3281419016419681,
+          "inconclusive": 0.6718580885805735
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 200,
+        "independent_task_families": 200,
+        "trajectories": 400,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.009272382214763073,
+        "practical_interval_decision": {
+          "meaningful_benefit": 1.2946773650289783e-09,
+          "rules_out_meaningful_benefit": 0.21741550722554087,
+          "inconclusive": 0.7825844914797817
+        },
+        "historical_linear_api_cost_usd": 425.1078
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.02009196239645217,
+        "practical_interval_decision": {
+          "meaningful_benefit": 1.4173334940943412e-11,
+          "rules_out_meaningful_benefit": 0.7449782313308295,
+          "inconclusive": 0.25502176865499715
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 400,
+        "independent_task_families": 400,
+        "trajectories": 800,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.009938531534249291,
+        "practical_interval_decision": {
+          "meaningful_benefit": 1.5225445073336566e-12,
+          "rules_out_meaningful_benefit": 0.6256792951570973,
+          "inconclusive": 0.37432070484138014
+        },
+        "historical_linear_api_cost_usd": 850.2156
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.021465017818181414,
+        "practical_interval_decision": {
+          "meaningful_benefit": 2.0503443174656656e-16,
+          "rules_out_meaningful_benefit": 0.9857039153419944,
+          "inconclusive": 0.014296084658005359
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 800,
+        "independent_task_families": 800,
+        "trajectories": 1600,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.010563425646777227,
+        "practical_interval_decision": {
+          "meaningful_benefit": 1.2523126575027226e-17,
+          "rules_out_meaningful_benefit": 0.9682601271075376,
+          "inconclusive": 0.031739872892462384
+        },
+        "historical_linear_api_cost_usd": 1700.4312
+      },
+      {
+        "alpha": 0.05,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.02211632516320217,
+        "practical_interval_decision": {
+          "meaningful_benefit": 8.237847489950442e-21,
+          "rules_out_meaningful_benefit": 0.9996124534912697,
+          "inconclusive": 0.0003875465087302965
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      },
+      {
+        "alpha": 0.025,
+        "scenario": "no_gain_30pct_discordance",
+        "pairs": 1200,
+        "independent_task_families": 1200,
+        "trajectories": 2400,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "true_acceptance_difference": 0.0,
+        "discordance": 0.3,
+        "direction_test_power": 0.010930012689722648,
+        "practical_interval_decision": {
+          "meaningful_benefit": 3.488667616333483e-22,
+          "rules_out_meaningful_benefit": 0.9987726728094852,
+          "inconclusive": 0.001227327190514771
+        },
+        "historical_linear_api_cost_usd": 2550.6468
+      }
+    ],
+    "sample_size_status": "A planning grid, not a selected/frozen sample size. Pick the row/assumptions and funding before confirmation.",
+    "conservatism": "The 800-pair row is a conservative proof-of-feasibility example, not a minimum or inevitable requirement. No minimum sample-size search has been performed. Interval conservatism can materially increase task and API requirements.",
+    "alternatives": "Before funding confirmation, independently qualify an established paired score/profile-likelihood or exact-unconditional/melded interval and recalculate power on the same assumptions. Score approximations need coverage checks, particularly sparse/boundary cells; unconditional exact inference requires reliable nuisance maximization and inversion; melding requires validated integration. No unverified alternative is substituted here, and the method cannot change after outcomes.",
+    "funding_recommendation": "Complete the controller pilot first. At alpha=.025, 100/200/400 pairs have about81%/99%/100% direction-test power under a true20pp gain, but only4%/16%/51% power to establish a gain greater than10pp using this conservative interval. Under no gain, those sizes rule out10pp only about6%/22%/63% of the time. Do not fund these as high-power practical-effect confirmation. The800-pair example reaches about92% benefit or97% exclusion power for the respective assumptions; validate efficient alternatives and the task-family sampling frame before fixing a final budget.",
+    "boundary": "A true gain exactly equal to the10pp decision margin should usually remain inconclusive, even at large n. Power to detect10pp versus zero is a different question from establishing a gain strictly greater than10pp."
+  },
+  "budget": {
+    "cumulative_cap_usd": 50.0,
+    "cumulative_used_usd": 35.543626,
+    "remaining_usd": 14.456374,
+    "snapshot": "Historical settled accounting snapshot bound to the completed first benchmark; not a live balance or a new spending authorization",
+    "historical_api_cost_per_pair_usd": 2.125539,
+    "basis": "Eight historical matched-policy trajectories / four pairs, excluding the strong anchor; linear API-only illustration, not a forecast or authorized cap. New repair use, task sizes and model versions can materially change cost.",
+    "limitation": "Remaining authorized funds cannot support even the smallest planning-grid confirmatory study. It may support an exploratory pilot only after a concrete reservation ceiling is checked. Do not spend beyond the ledger cap; local compute and fixture/engineering effort excluded."
+  },
+  "sources": [
+    {
+      "title": "NIST exact binomial confidence intervals",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "use": "Clopper-Pearson tail inversion; finite-sample binomial coverage"
+    },
+    {
+      "title": "NIST Bonferroni simultaneous intervals",
+      "url": "https://itl.nist.gov/div898/handbook/prc/section4/prc473.htm",
+      "use": "Union bound for the two discordant-cell intervals; no independence between cells assumed"
+    },
+    {
+      "title": "exact2x2 official documentation",
+      "url": "https://search.r-project.org/CRAN/refmans/exact2x2/html/exact2x2.html",
+      "use": "Conditional exact McNemar tests discordant wins given total discordance"
+    },
+    {
+      "title": "Newcombe 1998 paired proportion intervals",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9839354/",
+      "use": "Paired score/profile-likelihood intervals are established efficiency alternatives; not implemented or validated here"
+    },
+    {
+      "title": "Exact official paired unconditional test documentation",
+      "url": "https://search.r-project.org/CRAN/refmans/Exact/html/paired.exact.test.html",
+      "use": "Paired unconditional tests/intervals can improve power but require nuisance-parameter maximization and validated numerical search"
+    },
+    {
+      "title": "exact2x2 official paired difference interval documentation",
+      "url": "https://search.r-project.org/CRAN/refmans/exact2x2/html/mcnemarExactDP.html",
+      "use": "Exact melding interval is another candidate; numerical integration and its nonzero-margin behavior must be independently qualified before adoption"
+    },
+    {
+      "title": "Demsar 2006: Statistical Comparisons of Classifiers over Multiple Data Sets",
+      "url": "https://www.jmlr.org/papers/volume7/demsar06a/demsar06a.pdf",
+      "use": "Distinguish independent task/data-set comparisons from repeated measurements within them"
+    }
+  ],
+  "analysis_source_sha256": "5289b38ed2f174a37b329094d09f97864857dd45ec472a459f04d0e9302c9740"
+}
