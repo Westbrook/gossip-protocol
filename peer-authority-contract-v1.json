@@ -1,0 +1,78 @@
+{
+  "protocol": "peer-authority-v1",
+  "phase": "Authenticated single-host lease and zero-provider dispatch foundation",
+  "request_fields": [
+    "protocol",
+    "run_id",
+    "principal",
+    "request_id",
+    "operation",
+    "payload"
+  ],
+  "operations": {
+    "claim": [
+      "task_id"
+    ],
+    "renew": [
+      "task_id",
+      "epoch"
+    ],
+    "validate": [
+      "task_id",
+      "epoch"
+    ],
+    "dispatch": [
+      "task_id",
+      "epoch",
+      "action_id",
+      "request_sha256",
+      "request"
+    ],
+    "lookup": [
+      "request_id"
+    ]
+  },
+  "response_visibility": "Only the authenticated principal's requested lease/action/receipt. Every receipt binds run_id and config_sha256. No global task/candidate/inbox/accounting listings.",
+  "identity": "Distinct per-principal HMAC keys; exact request bytes and run/config binding; principal-scoped request/action IDs; service-derived common reservation namespace",
+  "bounds": {
+    "principals": 16,
+    "tasks": 64,
+    "requests_per_principal": 256,
+    "response_receipt_bytes": 24576,
+    "frame_bytes": 65536,
+    "fixture_text_utf8_bytes": 4096,
+    "visible_event_ids": 32,
+    "active_inbound_handlers": 4,
+    "socket_deadline_seconds": 2,
+    "sqlite_busy_timeout_seconds": 10,
+    "fixture_request_json_bytes": 16384,
+    "complete_rpc_body_bytes": 18432
+  },
+  "fixtures": {
+    "text_build": "Return uppercase supplied text and its UTF-8 SHA256",
+    "text_review": "Hash supplied text and approve iff nonempty and uppercase",
+    "source_binding": "Recompute exact text SHA256 and canonical request digest; context event IDs remain caller assertions for separate local-visibility audit",
+    "usage": "Always zero provider usage; trusted completion refunds generic test reservation credits"
+  },
+  "atomicity": "Frozen Ledger mutations join the same SQLite transaction as request journal; savepoint rolls back rejected mutations; initial dispatch reserve+intent commit precedes fixed fixture; result+trusted settlement commit together",
+  "ambiguity": "Unresolved durable intent becomes unknown on restart, retains full reservation and fences task reclaim/further dispatch; no automatic invocation replay or peer-controlled resolution",
+  "entry_trace": "Private durable authority_invocations row before fixed fixture entry; entry-attempt evidence only, not completed execution or provider calls",
+  "time": "Authority samples wall clock after write-lock acquisition and persists max(previous,current); backward clock movement may delay real-time lease expiry",
+  "ownership": "Exclusive local flock; close rejects new handlers and waits for active handlers before releasing ownership",
+  "authority_exclusions": [
+    "task/model/recipient selection",
+    "provider implementation",
+    "peer settlement",
+    "candidate execution",
+    "Git publication",
+    "global completion"
+  ],
+  "remaining": [
+    "Real provider and independent accounting adapter",
+    "Exact Git scope/merged-source/CAS and final acceptance",
+    "Matched shared-authority availability/resource controls",
+    "Full2x2 live placement/transport cohort",
+    "Independent held-out task-family confirmation",
+    "Separate autonomous tool-loop and multi-host comparisons"
+  ]
+}

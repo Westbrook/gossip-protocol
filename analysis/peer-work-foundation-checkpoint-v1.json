@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "protocol": "peer-work-foundation-checkpoint-v1",
+  "created_utc": "2026-10-02T16:34:49.645856+00:00",
+  "status": "merged_tree_qualified",
+  "base_commit": "94c50297c2e5038a75f2896d282f8c4b006c129a",
+  "scope": "Autonomous peer-local generation-zero text build/review over actual local TCP, private durable journals and a common authenticated lease/dispatch authority. Zero-provider fixture qualification; not coding quality or a four-cell causal study.",
+  "verification": {
+    "protocol": "cycle5-merged-verification-reconciliation-v1",
+    "recorded_utc": "2026-10-02T16:30:18.681172+00:00",
+    "status": "passed",
+    "checks": 48,
+    "physically_executed": 48,
+    "reused": 0,
+    "skipped": 0,
+    "discovered_total": 1355,
+    "duration_seconds": 18.778270750306547,
+    "source_inputs_reconciled": 238,
+    "initial_final_current_runtime_match": true,
+    "combined_static": "passed",
+    "historical_type_baseline_count": 117,
+    "scientific_contract_unchanged": true,
+    "contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "receipts": [
+      {
+        "path": "runs/investigation-cycle-5-final-qualification/20261002T162740-9906215e/summary.json",
+        "sha256": "22e8175069a16eb0266472b5fe87718a1a26fe10916caec1c172afe26501c80b"
+      },
+      {
+        "path": "runs/investigation-cycle-5-final-qualification/20261002T162740-9906215e/inputs.json",
+        "sha256": "7257e3e01e5699f4c711fc5217a815bca7ae7ce321efbcc26469435a62ca4f26"
+      },
+      {
+        "path": "runs/investigation-cycle-5-final-qualification/20261002T162740-9906215e/static.json",
+        "sha256": "862957a8914787ec03db194bbfd79fa9202da930f65e5ead15e16bf4587f9e59"
+      },
+      {
+        "path": "runs/investigation-cycle-5-final-qualification/20261002T162740-9906215e/runtime-final.json",
+        "sha256": "a3ec85c057174a205e62b5d8945e54c0da7922d67e03822f12bbd423ade31d81"
+      }
+    ],
+    "scope": "Targeted new authority/planner/work runtime qualification, not a whole-project rerun or quality study. Prior process run predates strengthened test assertions and is retained as development evidence.",
+    "reconciliation_diagnostic": "First inline reconciliation used the verifier JSON hash serializer for the scientific contract, causing an assertion despite identical contract content. Corrected to the scientific contract canonical digest; no source or tests changed and no tests repeated."
+  },
+  "source_review": {
+    "path": "runs/investigation-cycle-5-source-review-1.json",
+    "sha256": "c3ceedf79419f84396ca027ff27e45e5fe01fb4eea9d835dfeb3eac6bc02351f"
+  },
+  "source_bindings": {
+    "README.md": "9e6dd69a060efeee302c8034dcec3326c61e8ffe3c5093757014551a88ce205f",
+    "docs/peer-authority-v1.md": "55dde872138cdb375fcd5263a86069f0c8f5d06dec51a3c9e910e7e438ab2132",
+    "docs/peer-work-v1.md": "c3faba549c6fe4c26c6c94ea1b34aeb38ff638b09d128da5d4d8a6abd4e0a073",
+    "gossip_harness/peer_authority_v1.py": "5750922f03620b9478235eebed52f60e954249a4a9721cd622d0791be6f40e10",
+    "gossip_harness/peer_work_runtime_v1.py": "16f88c89ee5bb0c23cf6774350403512f368fb11192409dc5fd59fb355b1fa62",
+    "gossip_harness/peer_work_v1.py": "235c6968dd6b61592bcd0870726540324c5f148cb6f080f7e1245ccc5ec89960",
+    "peer-authority-contract-v1.json": "fd4079c1f808432a22fd26d66548bf77abfba377c77f2fc025c097d71ead66f4",
+    "peer-work-foundation-contract-v1.json": "f9ddea1f11849cebd2b5ea9636780ebe4ef2703411ecb78fdaa6aa1eaaba5815",
+    "pyproject.toml": "7b9ab516d503700e5b1064073c1d199134deeb4e79614b679362efd36b05bc4f",
+    "tests/test_peer_authority_v1.py": "73ebaed1ee7c89e6251712f5248db53aa47a4babe25bd7667149c53ef98c7029",
+    "tests/test_peer_work_runtime_v1.py": "e50d4372a4a91871257af979946febfeb74d04d3f06a85a7c011c6599fbef69e",
+    "tests/test_peer_work_v1.py": "24b64e820c9d5cb0e9392c6b4c17e24b6a7eb2866609d552cfa9fb6ca915d690",
+    "verification-manifest.json": "c2a97feb6ebd600005be11d40cb1517aec1e6e79f9430ece7cf230fa984c05e4"
+  },
+  "scenarios": [
+    "Per-principal authenticated task allowlists, run/config/source binding and atomic lease/reservation/request receipts",
+    "Actual authority process death before/after durable intent and result commits, same-ID replay and epoch fencing",
+    "Autonomous builder and reviewer consume arrived local evidence only; reviewer cannot act through a bidirectional partition",
+    "Same local decision policy through actual gossip and healthy two-broker relay adapter",
+    "Worker death before result publication and after publication before local acknowledgment; one immutable output event",
+    "Lost completed authority acknowledgment recovers original receipt with one entry attempt per action",
+    "Unknown dispatch before or after entry retains full reservation and remains terminal through further worker ticks and restart",
+    "Authority outage preserves prepared intent and visible durable transport-error history; recovery clears pending error",
+    "Expired historical claim cannot grant a new dispatch; observer has no run_action, acceptance, release or settlement RPC"
+  ],
+  "evidence_semantics": {
+    "authority_entry_trace": "An entry-attempt record is not proof that a fixture completed or a provider call occurred.",
+    "work_telemetry": "Boots, RPC attempts/replies/errors and pending transport error persist across restart; a request attempt is not a commit.",
+    "publication": "Idempotent exact outbox across two databases, not a cross-database atomic transaction.",
+    "timing": "18.778 seconds is development verification duration, not an approach latency comparison or model performance observation."
+  },
+  "retained_development_evidence": [
+    {
+      "path": "runs/investigation-cycle-5-fast-1/20261002T161515-311e23d3",
+      "status": "failed_before_tests",
+      "detail": "Central discovery rejected indirect unittest inheritance; corrected to direct TestCase declarations without inherited test methods. No test execution occurred."
+    },
+    {
+      "path": "runs/investigation-cycle-5-fast-2/20261002T161602-15576a63",
+      "status": "passed_31",
+      "detail": "Earlier fast development execution, not silently reused as final qualification."
+    },
+    {
+      "path": "runs/investigation-cycle-5-process-1/20261002T161652-3aceb074",
+      "status": "passed_17",
+      "detail": "Earlier process execution before strengthened unknown-after-entry and post-restart checks; preserved separately."
+    }
+  ],
+  "limits": [
+    "Trusted host and gossip group, no isolation from malicious same-user peers or independent signatures on forwarded receipts.",
+    "Only one generation-zero action slot; no source selection, refutation, reopening or project completion.",
+    "Unknown dispatch is deliberately terminal and reserved; no automatic retry of invocation or peer-authorized settlement.",
+    "Permanent authority outage stays visibly pending; no overall live deadline or retry backoff yet.",
+    "Base transport byte counters remain per-boot; work RPC telemetry is durable but does not establish total network cost.",
+    "Application transport gates and local process deaths do not establish WAN, host-loss or multi-host behavior.",
+    "No model-quality, orchestration superiority, independent held-out confirmation or Elo claim follows from these fixture checks.",
+    "Static verification covers configured roots and retains117 exact historical diagnostics; not all legacy dynamic code is proven type-safe."
+  ],
+  "scientific_contract": {
+    "sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "all39_sources_and_plan_unchanged": true,
+    "live_enabled": false
+  },
+  "budget": {
+    "cap_micro_usd": 50000000,
+    "committed_micro_usd": 35543626,
+    "remaining_micro_usd": 14456374,
+    "new_provider_calls": 0,
+    "new_spending_micro_usd": 0,
+    "proposed_cap_micro_usd": 80000000,
+    "proposal_approved": false
+  },
+  "remaining_required_work": [
+    "Funded, exactly qualified live continuation-controller pilot.",
+    "Real provider/accounting adapters, sandboxed candidate execution, Git bundle scope and merged-source CAS/final acceptance.",
+    "Source selection/refutation/reopening, live deadlines, durable complete transport telemetry and matched worker/relay capacity.",
+    "Full placement-by-transport four-cell comparison with common policy and authority availability.",
+    "Independent held-out task-family sampling and powered statistical confirmation.",
+    "Separate autonomous tool-loop and multi-host studies."
+  ],
+  "prior_transport_checkpoint": {
+    "path": "analysis/peer-runtime-foundation-checkpoint-v1.json",
+    "sha256": "cd0c0c29bffb62e78d2217b3ce967d7c9eb67d6c04ed11bbe77b1e8e0d55c693"
+  }
+}

@@ -1074,6 +1074,14 @@ binds independent source review and 33 passing merged-tree checks, including
 nine actual-process checks. The earlier sandbox socket-denial failure and
 corrected test-resource declaration remain separately disclosed.
 
+The [peer-local work foundation](docs/peer-work-v1.md) now connects those stores
+to autonomous build/review fixture decisions through an authenticated narrow
+[authority](docs/peer-authority-v1.md). It adds durable exact-request recovery,
+epoch fencing, conservative unknown-dispatch reservations, an idempotent result
+outbox and persistent work RPC telemetry. The fixtures transform and review text;
+they make no model calls or software-quality claims. Provider integration, Git
+acceptance, full transport accounting and the four-cell comparison remain open.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

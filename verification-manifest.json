@@ -1744,6 +1744,61 @@
       "boundary": "Up to four independently running TCP daemons plus one verifier worker; fresh SQLite stores and retained fixture logs.",
       "disposition": "Foundation only; no candidate, paid API, release or orchestration authority.",
       "overlap_reason": "Fresh physical process executions establish behavior that transaction and frame tests cannot prove."
+    },
+    "tests/test_peer_authority_v1.py::PeerAuthorityTests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Authenticated per-principal RPC, atomic request/lease/reservation journal, run/profile/source binding and conservative unknown outcomes.",
+      "isolation": "Separate verifier worker; private stores, service configuration and retained owned process logs.",
+      "boundary": "One verifier process plus up to two helper lifecycle threads; private SQLite fixtures, no daemon/provider execution.",
+      "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
+      "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
+    },
+    "tests/test_peer_authority_v1.py::PeerAuthorityProcessTests": {
+      "lane": "fixtures",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Actual authority process death at durable boundaries, lost ACK recovery, epoch fencing and exclusive restart ownership.",
+      "isolation": "Separate verifier worker; private stores, service configuration and retained owned process logs.",
+      "boundary": "Verifier plus at most two actual authority processes.",
+      "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
+      "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
+    },
+    "tests/test_peer_work_v1.py::WorkPlannerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Only arrived locally bound task/result evidence can plan a source-bound action; reject invalid provenance, ambiguity and capacity before claiming.",
+      "isolation": "Separate verifier worker; private stores, service configuration and retained owned process logs.",
+      "boundary": "One verifier process; temporary private SQLite state, no daemon/provider execution.",
+      "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
+      "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
+    },
+    "tests/test_peer_work_v1.py::WorkJournalTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Immutable durable action phases, exact claim/result bindings and crash-safe outbox replay without replacement dispatch.",
+      "isolation": "Separate verifier worker; private stores, service configuration and retained owned process logs.",
+      "boundary": "One verifier process; temporary private SQLite state, no daemon/provider execution.",
+      "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
+      "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
+    },
+    "tests/test_peer_work_runtime_v1.py::PeerWorkProcessTests": {
+      "lane": "fixtures",
+      "weight": 6,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Actual independently ticking build/review peers, network-only visibility and same-ID recovery through task/dispatch authority.",
+      "isolation": "Separate verifier worker; private stores, service configuration and retained owned process logs.",
+      "boundary": "Verifier plus up to five actual services/peers including broker relays; bounded I/O handlers accounted separately.",
+      "disposition": "Offline deterministic fixture qualification only; not model quality, release acceptance or four-cell comparison.",
+      "overlap_reason": "Unit checks isolate malformed/replayed records; actual-process checks establish network visibility and termination/restart boundaries."
     }
   },
   "audit": {

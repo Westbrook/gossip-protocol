@@ -1,0 +1,21 @@
+{
+  "protocol": "peer-work-v1",
+  "phase": "Single-host autonomous fixture build and review foundation",
+  "modes": ["gossip", "broker"],
+  "roles": ["builder", "reviewer"],
+  "generation": 0,
+  "decision_trigger": "Local timer consumes only immutable events in this peer's arrived store; observer has no run_action RPC",
+  "config_fields": ["run_id", "role", "task_id", "seed_producer", "builder_peer", "authority_sha256"],
+  "endpoint_fields": ["port", "principal", "key", "config_sha256"],
+  "bounds": {"visible_events": 32, "seed_text_utf8_bytes": 2000, "authority_text_utf8_bytes": 4096},
+  "evidence": "Bind complete visible inventory, consumed prerequisites, artifacts, source text, request, policy, role, run and authority profile; freeze one action per slot",
+  "authority": "peer-authority-v1; separate principal capabilities; common reservations and epoch validation without global state exposure or action selection",
+  "phases": ["prepared", "claimed", "dispatch_pending", "result", "published", "denied", "unknown"],
+  "recovery": "Same claim and dispatch IDs reconcile exact receipts; unknown dispatch retains reservation and is terminal; durable exact outbox uses idempotent event publication",
+  "atomicity": "Action journal and event store are separate databases with an idempotent outbox; no cross-database transaction claim",
+  "telemetry": "Durable boot/RPC attempt/reply/error counters and pending transport-error flag; attempts are not commits; base transport byte counters remain per-boot",
+  "trust": "Trusted host and gossip group; no hostile same-user isolation, independent forwarded receipt signatures, TLS or multi-host failover",
+  "qualification": {"fast_tests": 31, "process_tests": 17, "maximum_fixture_daemons": 5, "manifest_resource_budget": 6},
+  "claims_excluded": ["model quality", "gossip superiority", "software acceptance", "Git publication", "global completion", "exactly-once provider execution", "production availability"],
+  "remaining": ["Real provider and independent accounting", "Sandboxed candidate execution and exact merged-source Git CAS", "Source selection, refutation and reopening", "Bounded live deadlines and retry backoff", "Durable full transport telemetry and matched capacity", "Full four-cell placement/transport experiment", "Independent held-out task-family confirmation", "Autonomous tool-loop and multi-host studies"]
+}
