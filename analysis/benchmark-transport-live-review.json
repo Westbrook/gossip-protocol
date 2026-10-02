@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "kind": "retained-frozen-artifact-transport-reconciliation",
+  "status": "passed",
+  "protocol": "frozen-evidence-transport-v1",
+  "purpose": "frozen-artifact-replay",
+  "execution": "Reconciled original retained observations; no simulation, candidate code, model call, Docker execution, or primary audit was repeated.",
+  "inputs_sha256": {
+    "simulation/benchmark_transport.py": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696",
+    "tests/test_benchmark_transport.py": "c2829309a53dd57fb84808e942f94fa763602eb690711e36c18f33747962430c",
+    "gossip_harness/transport.py": "c8f68f90480b6090e9f4dc43cc6882b6fad5bde7c6c5378c35b0084691a771a0",
+    "results/benchmark-transport-live-artifacts-1/results.json": "5766d420c70ff8bcc37501404205a8eb8882b16243bdb7c2deb4ccd85b2debd3",
+    "results/benchmark-transport-live-artifacts-1/corpus.json": "a649476c2d7dcd9b5cd0e302b32599a0974a4338ca91cfb4e1875cf398b43a05",
+    "runs/benchmark-transport-scoped-1.json": "819b37cd278953f2d6ca47de63f243b7012e2ba3691dcee1adea81c7449fbcb4",
+    "runs/benchmark-auxiliary-qualification-1/20261001T141030-82a33df3/inputs.json": "191d717b259a3f6af62d98cdf7393f6533ea050bee0002a4acea3a7e0c97c480",
+    "runs/benchmark-auxiliary-qualification-1/20261001T141030-82a33df3/static.json": "38b66b22aac2f78be988e06f9454b2f8a57b2c9452c411d934f0fcb632360cf4",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/provenance.json": "4252f7a076cb442eab5b06b8e29f9b0b8ee33434c3d4f8c8d074a0baead6c658",
+    "/Users/westbrook/Documents/repos/gossip-protocol/analysis/audit_benchmark.py": "65db31ef66940dd3adaa0ce598f554565ab4cc57d86e9e5e18318b713dfcf9f8",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-private-receipt.json": "41d84ef57a1f2f4c1ccfa7fbf69c370e4e435e98f5b3a9df14bdd53c2a43e0a3",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-visible-receipt.json": "93a956746f465395c0ae19fd9e2f908dc61486695cd5fe725c69ba66815ea25d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/result.json": "ed509844235eaa1ecb7e87157674dbe5f96e77d87c94ffeb5432b2f23ef0765f",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/candidate-exports.json": "70df590a14ba13923fdc8cfd1c592a3d98cea2cd36d687d5df9e7fdf38f4750f",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/result.json": "12eaa570e6802e723dd9d7902e5d4053f2e851415f6c4b64a3582bf14fbcf0ff",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/stage-1-build-slot-1-1.json": "cf77e1c7ea10aa4555aed109e8152134b1bd7afb480bb2878760c0ccba7da7cf",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/trajectory.json": "ee9bf8becfc2137b457320b1dd12db93a59bbe4e1b4d5937f0808fd3b0599c81",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-private-receipt.json": "67346c25c412f7021f2fd47929def2e28dc8a2d0023bab380d523dba8aade0b5",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-visible-receipt.json": "366f8150d7c4bc243c75efb8db69fda959ee50b6cc571b083ebbee7394b01462",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/result.json": "579b06becc2a23b6afb4bf29e17b4e4b316abf4268097df5f96410d7cb29bab0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/candidate-exports.json": "1a4f4c8083c5a6f0f6d16326f9d2b7e7e956a53001f5ce1e06b054a849098df0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/result.json": "98bd526e47d12493941204099281569415f6ab85ef3aed7439005eb5b0f843c2",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/stage-1-build-slot-1-1.json": "e22418a136b86724b02f1cacdedaf748a09499e4b490c9582c39e55f55325f46",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/trajectory.json": "5dd61d5d39fdb76adc69f3faff0445fd32078778c0249a7b128722c51a11ff6e",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-private-receipt.json": "f0247e80031bb4636be3f6349fb4d9adfda0fa76ed2ee10e978103c6353f2ad0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-visible-receipt.json": "3d8a75588e5bb5100c02cee8c6e3495ea39b138553fd50d90f00356dc8ff3f7c",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/result.json": "431a81e409bcbd2ae75aa8dd47566279a887a7405dbb5f917e6a7b1bf6cdfb60",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/candidate-exports.json": "d569948efd4fcc17b8449d6dfbeb13247cff7a5dbb39094830014a11377b93f5",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/result.json": "248958fd4e73e66422a1fe39f3dd809f67a2e70635148b92ea5857a07feb3478",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/stage-1-build-slot-1-1.json": "1992c9fe4217738f5a41a6b3c6dfa012a99d69d4018330abff06987beb8993ec",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/trajectory.json": "0e86a2637989022896dfc40daa74707784d1d4d73ce4893e3d8f152660f27425",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-private-receipt.json": "723714b15adb5172226e8718e2392959522d11033d949af5c4f586d0744a8598",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-visible-receipt.json": "6c13d6f6b8682a9e53521b8139fd2df6d4efb2ce23335ba6e2fb7548a2ca9c6d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/result.json": "d852aa2568f9434f037fa024b5f8263d6121c9a12d11eaa8f6d888017e4fd689",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/candidate-exports.json": "0cfb5f9a80e96a246fa6dfd1dcfcfc3de0efca0768992fced94dfef492f28ee6",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/result.json": "bf95972432c9f1924aa8331c93bed79da08714a9e9e1581a8a6c757a1e7fc569",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/stage-1-build-slot-3-1.json": "b8041813e31634452832ed015c6aee85c60ee92d97eb9d1f0a05dc1ed8e8fde0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/trajectory.json": "cb89c535f71d692488e88c836c479e99d757f4966165352429d2cffbabee2432",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-private-receipt.json": "95f5e13293786e91750c3cb0112f6e4c5a41f91ed1fec00cc3efd2e487fd9bc5",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-visible-receipt.json": "d00f2289f9bdeeb4e7a611765a02db16e8bb4d0c1a3baa6537999f002021a4a0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/result.json": "9365ee389b262f54e685fbda73b2e078e51fdef83a5cc3eafed5c2032157218b",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/candidate-exports.json": "767be9651639f640b8580cacb21cad17743f4c5517e14d4d8bc6e540c91feb96",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/result.json": "89656c32a9f57c538ad5f2939072ffdfaa1a0a655535c60f6bc6fb6a4509d500",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/stage-1-build-slot-0-1.json": "7b75c632d8419d151b61ea02a109fe837fb21fddd4b0b7f00ad15247c87bd59e",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/trajectory.json": "1d786dc9d39e4fb9c170d0f88eda49f66b1ca72a3c26ff9c1de9231284031b62",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/fixtures.json": "95ed8b23345a6e25fc6fe740973e6e8deadad4e65cb99dadda9a1323e71bffbb",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/frozen-trajectories.json": "765b3a6f9168f06f8c5ad9c800100e789609f9bd525f0ad82ee75ced21623fd9",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/final-private-receipt.json": "11f4b74dfed5a2a4de1350d35487c7935d741e82e64b166d76e4760cf03cdb37",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/final-visible-receipt.json": "d47a4fbe37b9bfaaddf76cadd2b95a5e4cd4be0c0e8db8476af0c364aef98e5c",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/result.json": "04efce49dcfc42c4d62badab35385250db3af72e728c68e343c53a50a176b669",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/stage-1/candidate-exports.json": "2211fd87fbeb099cf236c7374bf9d561f8118adba94f64bf8b3d6d785b24a712",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/stage-1/result.json": "f3aa4dd88850caf5e6ae998c9dd0eb7d3c4e026413406f39215ad2cf5d679b3a",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/stage-1/stage-1-build-slot-1-2.json": "17ffb8ace5a4fadc7dbfa7eb90fc4e6988d3c2d615bd1632b7df371206a5dd47",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-0/trajectory.json": "de56380c4738d44cbbb19504f7337e87dabfc214d0e5acebc252f7c49a9123af",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/final-private-receipt.json": "556202ca2f52d4447d4cf875fce4f032b20b128fa3aab2f7d3201b0bb98ab640",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/final-visible-receipt.json": "f233efa8463f80ffc2fdb72fae2b8111b2796e577b51a0537356712b6bb369c2",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/result.json": "df0928b1f4d2c92bcb94ae4b7410e15b62bb96e4146949e0380a4add99773ebe",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/stage-0/candidate-exports.json": "0438533d3bfc6b5d3e287e9f05fd02d001396d1f02c2150be253872809b0b12d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/stage-0/result.json": "925e0a918b221c0a974b8feee377d47b5bd6ad396984a1db05d1f35d43fac685",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/stage-0/stage-0-build-slot-2-3.json": "bd88cfdcf004edd322c176d4029e994f2a550541caaf9403aa80c5ce786cf102",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-independent-four-1/trajectory.json": "34131db1aa45607153e0fc7cb269be045a2d0e12d0c36669f1a5ed53769de171",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/final-private-receipt.json": "4a8e87bf5617c284ee91357cd6654b39a805d66f65a4e27954857ae91a6fd9d4",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/final-visible-receipt.json": "0661bcbd18eae6824a2e84fe1d4ec0325bba49841649cea1b71d4a4a03630446",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/result.json": "bb2cb96f8746bb755f9f053602450bf3a6793b14a6d5e810c86aa4d365e7369d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/stage-0/candidate-exports.json": "ced8cc2f310f9aaf217e8158b99584c33d8dc9fad131bed52b2bd3584e293497",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/stage-0/result.json": "98aba068dec054d3bc6757f156245257bf3ed5438bd3b0e7746594bcd4830fba",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/stage-0/stage-0-build-slot-1-1.json": "d1e427a4eac410de1dba6051d544aa07861c9e8d1bcc973024be809e3fa3ac86",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-0/trajectory.json": "75b46ed35e81a6bbe7f0e4ff0c44e0eac63e401592f2aa996e405757b8fc6d26",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/final-private-receipt.json": "20fe2822facc9d5ff03056ee8392cbf588594835182db6b7e96955306f4e0456",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/final-visible-receipt.json": "2c0d29f0ae5162863c04f27302871ae2b1f75303c039e5a0c113fccbde8919a3",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/result.json": "2a188e3d20dd6f6e79293dbe07924ba777cfe7a0deec8b2c850bd892f97ff90d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/stage-0/candidate-exports.json": "9a9c3e497bd28737e3c91df554f7fbd13672eebbb52f112c3f19024220085321",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/stage-0/result.json": "ec2c8d64040c5f59f316f1ec023414260196b7df205a5e9e646033a5202857be",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/stage-0/stage-0-build-slot-1-1.json": "38140f53f340e30473f8097f9d8ea73374a2b484904f7333315725498a66c9b2",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-sequential-four-1/trajectory.json": "6dac95bd993ed25708a8da8aa404a0bab32ba6e4aa619acf792f112eadadad56",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/final-private-receipt.json": "4b529ebcacb912ab44befb4bea8d174571ff5384f8ee9534dcce2fea8ad9ab58",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/final-visible-receipt.json": "9a536b924c410112bc02b1ae2bbf745c5d333bf043d8402d2f839008d927b4ef",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/result.json": "9a73eab3f267bc9ce4b14dc9046f80e7baea7b88f9a4e6a36babec2550927c01",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/stage-1/candidate-exports.json": "ca596a2dd4010fcd0c709218b868c47abcf608afd524f123c1f71b49790c93b1",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/stage-1/result.json": "2b8bce34da8005c06c06719b66b013bb2864f35e9ae57c0e8c13056057fb3834",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/stage-1/stage-1-build-slot-0-1.json": "170ea8c397abd3530ac58c2ca6dbd9bf8338d45ff313309fcf446b645d931064",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/graph-patch-strong-anchor-0/trajectory.json": "f8b0668fa091af9bc662d532c7a6b37405a48c3e00fb0fed8bbc76b574f91902",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/independent-audit.json": "753d1f51c5e1045dc2adbee581b5efc1a823164cdb5ef372fc77f0b51dd474eb",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/preregistered.json": "90950e52abaaaa0647a8a9215479dad233b22d118adfe3d56c4fc132c5876e87",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/results.json": "2212328a99f429046fe7bdfe0a90ee39c2fd4cbd1fdddd04d305f81b358ea7fe",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/analysis/qualify_benchmark.py": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_calendar_exchange.py": "a1dbbfce3c7f63d97fe5c203fa30be7017090a7f96c7235922624dc6e136be7a",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_diagnostics.py": "1f97d3915f18ff9346032bbf38ae368db661381fa7940e27679739a7a5909af3",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_experiment.py": "6890b98a9e4656724342855667de0bc6365c8dd05ec66103a579d638bf001105",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_graph_patch.py": "327c501c4b6812d2358f7e16f8d9ad31413bd41d5c054a58e9a103bc81edf655",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_stage.py": "f0367e5e8fe3c76bf3b40301d8d41d4f1df2526649c342382127df8aca99f705",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/continuation_experiment.py": "db5e6b1464d0b20810e6d45620d60cee360e3a22f510b1b59e8b5defb5b0be29",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/continuation_stage.py": "d313c47664a1cd89bcbccc175d629c386310c1097fc3de455c5c45c7b0c6976b",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/continuation_transport.py": "de79df63641a14e947eba6896d4ffd52f450c47ec4993e61a49d5797d6cb8498",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/ledger.py": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/pilot.py": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/promotion.py": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sustained_checkpoint.py": "83e7a85fd5930fe3e0b0bf6a87f27ff19bdc9577b0e77afb344c4599e0ef7fbd",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sustained_experiment.py": "fcb4ce3570a9e4a4864b136a4b1fb8b9997948b6cfcfab85c15fbb911036b984",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sustained_inventory.py": "d7ddc51fac36097f894973e6f1d39337176aebf785d6ac71c310aa7f80067829",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sustained_queue.py": "1fd9a82856bb81fcc94a0c653a8e52733ec8548e24af179122b87f8cafb85580",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/sustained_stage.py": "a29da102b594159c0941e8140312ae0d183b9a4a08fe608c38c1f6e6fc2f0a20",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/transport.py": "c8f68f90480b6090e9f4dc43cc6882b6fad5bde7c6c5378c35b0084691a771a0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_buildgraph.py": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_calendar.py": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_experiment.py": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_integration.py": "bb0d33a085f27c0100874a6062d8d258438117ee4a1867200825625e762b7992",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_journal.py": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_probes.py": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_stage.py": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/study-plan.json": "b8921910b6c82a63d34f1488cf28cae1012bdc06fcf4c78fd6aa2449ffec5042",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/timings.json": "24760b348ea7c981764446adf985123a65ee07dd8cef66b29144c90ba718a46b",
+    "/Users/westbrook/Documents/repos/gossip-protocol/runs/benchmark-transport-corpus-method.py": "83fbf987a8bcffed7178d07cc59c773fe94ec5901b75dc2b704fd5848ddb9e69",
+    "/Users/westbrook/Documents/repos/gossip-protocol/simulation/benchmark_transport.py": "d98bdeaf5efc1dc32da26548d29d00a09d4117dd8f66c18f98285a31dbe4d696",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-0/source-export.json": "d1e427a4eac410de1dba6051d544aa07861c9e8d1bcc973024be809e3fa3ac86",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-0/final-visible-receipt.json": "0661bcbd18eae6824a2e84fe1d4ec0325bba49841649cea1b71d4a4a03630446",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-0/final-private-receipt.json": "4a8e87bf5617c284ee91357cd6654b39a805d66f65a4e27954857ae91a6fd9d4",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-0/source-export.json": "17ffb8ace5a4fadc7dbfa7eb90fc4e6988d3c2d615bd1632b7df371206a5dd47",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-0/final-visible-receipt.json": "d47a4fbe37b9bfaaddf76cadd2b95a5e4cd4be0c0e8db8476af0c364aef98e5c",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-0/final-private-receipt.json": "11f4b74dfed5a2a4de1350d35487c7935d741e82e64b166d76e4760cf03cdb37",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-strong-anchor-0/source-export.json": "7b75c632d8419d151b61ea02a109fe837fb21fddd4b0b7f00ad15247c87bd59e",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-strong-anchor-0/final-visible-receipt.json": "d00f2289f9bdeeb4e7a611765a02db16e8bb4d0c1a3baa6537999f002021a4a0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-strong-anchor-0/final-private-receipt.json": "95f5e13293786e91750c3cb0112f6e4c5a41f91ed1fec00cc3efd2e487fd9bc5",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-0/source-export.json": "cf77e1c7ea10aa4555aed109e8152134b1bd7afb480bb2878760c0ccba7da7cf",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-0/final-visible-receipt.json": "93a956746f465395c0ae19fd9e2f908dc61486695cd5fe725c69ba66815ea25d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-0/final-private-receipt.json": "41d84ef57a1f2f4c1ccfa7fbf69c370e4e435e98f5b3a9df14bdd53c2a43e0a3",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-0/source-export.json": "1992c9fe4217738f5a41a6b3c6dfa012a99d69d4018330abff06987beb8993ec",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-0/final-visible-receipt.json": "3d8a75588e5bb5100c02cee8c6e3495ea39b138553fd50d90f00356dc8ff3f7c",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-0/final-private-receipt.json": "f0247e80031bb4636be3f6349fb4d9adfda0fa76ed2ee10e978103c6353f2ad0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-strong-anchor-0/source-export.json": "170ea8c397abd3530ac58c2ca6dbd9bf8338d45ff313309fcf446b645d931064",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-strong-anchor-0/final-visible-receipt.json": "9a536b924c410112bc02b1ae2bbf745c5d333bf043d8402d2f839008d927b4ef",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-strong-anchor-0/final-private-receipt.json": "4b529ebcacb912ab44befb4bea8d174571ff5384f8ee9534dcce2fea8ad9ab58",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-1/source-export.json": "b8041813e31634452832ed015c6aee85c60ee92d97eb9d1f0a05dc1ed8e8fde0",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-1/final-visible-receipt.json": "6c13d6f6b8682a9e53521b8139fd2df6d4efb2ce23335ba6e2fb7548a2ca9c6d",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-sequential-four-1/final-private-receipt.json": "723714b15adb5172226e8718e2392959522d11033d949af5c4f586d0744a8598",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-1/source-export.json": "e22418a136b86724b02f1cacdedaf748a09499e4b490c9582c39e55f55325f46",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-1/final-visible-receipt.json": "366f8150d7c4bc243c75efb8db69fda959ee50b6cc571b083ebbee7394b01462",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/calendar-exchange-independent-four-1/final-private-receipt.json": "67346c25c412f7021f2fd47929def2e28dc8a2d0023bab380d523dba8aade0b5",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-1/source-export.json": "bd88cfdcf004edd322c176d4029e994f2a550541caaf9403aa80c5ce786cf102",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-1/final-visible-receipt.json": "f233efa8463f80ffc2fdb72fae2b8111b2796e577b51a0537356712b6bb369c2",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-independent-four-1/final-private-receipt.json": "556202ca2f52d4447d4cf875fce4f032b20b128fa3aab2f7d3201b0bb98ab640",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-1/source-export.json": "38140f53f340e30473f8097f9d8ea73374a2b484904f7333315725498a66c9b2",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-1/final-visible-receipt.json": "2c0d29f0ae5162863c04f27302871ae2b1f75303c039e5a0c113fccbde8919a3",
+    "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-transport-live-artifacts-1/artifacts/graph-patch-sequential-four-1/final-private-receipt.json": "20fe2822facc9d5ff03056ee8392cbf588594835182db6b7e96955306f4e0456"
+  },
+  "audit_method_sha256": "eb2aab04e415e4eadcd7c0dc4f07e68002b6255de07cf11bc09672706fdd37ef",
+  "counts": {
+    "trials": 420,
+    "scenarios": 7,
+    "arms": 3,
+    "seeds_per_cell": 20,
+    "charged_contact_opportunities_checked": 215040,
+    "locally_supported_decisions_checked": 8400,
+    "correct_complete_trials": 420,
+    "false_accepts": 0,
+    "false_rejects": 0,
+    "lost_facts": 0,
+    "all_ten_selected_exports": 10,
+    "exact_original_blobs": 30,
+    "unique_frozen_events": 70,
+    "receipt_accept_offers": 3,
+    "receipt_reject_offers": 7,
+    "study_accepted_sources": 2,
+    "receipt_vs_study_acceptance_disagreements": 1
+  },
+  "checked": [
+    "Execution source/test/transport hashes equal retained passing combined-static inputs.",
+    "All109 corpus-preparation input hashes and all30 exact original blob copies; external and embedded provenance match.",
+    "Exact all-ten preregistered final selected export order, completed live primary audit/results/timings/freeze bindings; original export-byte hashes separately map to canonical executed-files digests.",
+    "Original visible/private receipt bytes and verdicts map to each frozen source; no outcome filtering or invented verdict.",
+    "All immutable event IDs and embedded exact UTF-8 artifact hashes.",
+    "All420 unique arm/scenario/seed cells and complete64-round/eight-contact traces.",
+    "Every contact status/delay against paired environmental hash field; exact star/replicated rosters and local failover transitions including offline clients; gossip caller rosters and distinct target bounds.",
+    "All8400 emitted decisions contain exact local-visible source/epoch/contract and producer-separated positive/challenge receipt and artifact bindings; none consumes unpublished evidence or emits while the reviewer is offline.",
+    "Contact, transfer/dedup arithmetic, all-actionable timing, pending availability, persisted restart IDs and receipt-ingestion counters.",
+    "All21 cell median/p95 summaries and14 paired win/draw/loss rows independently recomputed.",
+    "Every bound input/copy remained byte-identical at final reread."
+  ],
+  "roster_facts": [
+    {
+      "run_id": "graph-patch-sequential-four-0",
+      "milestones_completed": 0,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "graph-patch-independent-four-0",
+      "milestones_completed": 1,
+      "study_accepted": false,
+      "transport_receipt_decision": "accept"
+    },
+    {
+      "run_id": "calendar-exchange-strong-anchor-0",
+      "milestones_completed": 2,
+      "study_accepted": true,
+      "transport_receipt_decision": "accept"
+    },
+    {
+      "run_id": "calendar-exchange-independent-four-0",
+      "milestones_completed": 2,
+      "study_accepted": true,
+      "transport_receipt_decision": "accept"
+    },
+    {
+      "run_id": "calendar-exchange-sequential-four-0",
+      "milestones_completed": 1,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "graph-patch-strong-anchor-0",
+      "milestones_completed": 1,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "calendar-exchange-sequential-four-1",
+      "milestones_completed": 2,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "calendar-exchange-independent-four-1",
+      "milestones_completed": 2,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "graph-patch-independent-four-1",
+      "milestones_completed": 0,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    },
+    {
+      "run_id": "graph-patch-sequential-four-1",
+      "milestones_completed": 0,
+      "study_accepted": false,
+      "transport_receipt_decision": "reject"
+    }
+  ],
+  "results": [
+    {
+      "scenario": "healthy",
+      "median_rounds": {
+        "gossip": 21.0,
+        "durable-broker": 19.0,
+        "replicated-broker-client-failover": 19.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 17190682.5,
+        "durable-broker": 13858094.0,
+        "replicated-broker-client-failover": 14260302.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 1,
+          "loss": 19
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 1,
+          "loss": 19
+        }
+      ]
+    },
+    {
+      "scenario": "primary-isolation",
+      "median_rounds": {
+        "gossip": 22.0,
+        "durable-broker": 36.0,
+        "replicated-broker-client-failover": 23.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 17472559.5,
+        "durable-broker": 14337136.0,
+        "replicated-broker-client-failover": 14081422.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 20,
+          "draw": 0,
+          "loss": 0
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 14,
+          "draw": 4,
+          "loss": 2
+        }
+      ]
+    },
+    {
+      "scenario": "standby-isolation",
+      "median_rounds": {
+        "gossip": 22.0,
+        "durable-broker": 19.0,
+        "replicated-broker-client-failover": 19.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 17727376.5,
+        "durable-broker": 13667977.0,
+        "replicated-broker-client-failover": 14260302.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 0,
+          "loss": 20
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 0,
+          "loss": 20
+        }
+      ]
+    },
+    {
+      "scenario": "worker-isolation",
+      "median_rounds": {
+        "gossip": 30.0,
+        "durable-broker": 26.0,
+        "replicated-broker-client-failover": 26.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 17447436.0,
+        "durable-broker": 13737365.0,
+        "replicated-broker-client-failover": 14479053.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 0,
+          "draw": 0,
+          "loss": 20
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 0,
+          "loss": 20
+        }
+      ]
+    },
+    {
+      "scenario": "partition-heal",
+      "median_rounds": {
+        "gossip": 31.0,
+        "durable-broker": 36.0,
+        "replicated-broker-client-failover": 30.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 17738008.0,
+        "durable-broker": 13997403.0,
+        "replicated-broker-client-failover": 14346184.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 20,
+          "draw": 0,
+          "loss": 0
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 0,
+          "draw": 5,
+          "loss": 15
+        }
+      ]
+    },
+    {
+      "scenario": "loss-reorder",
+      "median_rounds": {
+        "gossip": 32.5,
+        "durable-broker": 36.0,
+        "replicated-broker-client-failover": 36.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 20172580.5,
+        "durable-broker": 18388173.5,
+        "replicated-broker-client-failover": 19025961.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 16,
+          "draw": 1,
+          "loss": 3
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 15,
+          "draw": 3,
+          "loss": 2
+        }
+      ]
+    },
+    {
+      "scenario": "persisted-restart",
+      "median_rounds": {
+        "gossip": 23.0,
+        "durable-broker": 24.0,
+        "replicated-broker-client-failover": 23.0
+      },
+      "median_serialized_record_bytes": {
+        "gossip": 16882871.5,
+        "durable-broker": 13990466.0,
+        "replicated-broker-client-failover": 14161996.0
+      },
+      "paired": [
+        {
+          "left": "gossip",
+          "right": "durable-broker",
+          "win": 17,
+          "draw": 2,
+          "loss": 1
+        },
+        {
+          "left": "gossip",
+          "right": "replicated-broker-client-failover",
+          "win": 9,
+          "draw": 8,
+          "loss": 3
+        }
+      ]
+    }
+  ],
+  "interpretation": [
+    "All420 transport cases delivered sufficient evidence for all20 reviewer-offer decisions by the unchanged64-round deadline, including rejection of seven final sources. There were zero unsafe approvals under the closed required-evidence contract.",
+    "Healthy median: gossip21 rounds versus19 for both brokers. Primary isolation: gossip22, single broker36, replicated failover23. Broker replication substantially reduces the single-hub failure penalty; the gossip advantage against the replicated control here is only one median round.",
+    "Balanced partition: gossip31, single broker36, replicated30. Loss/reordering: gossip32.5, both brokers36. These specified stress scenarios show different tradeoffs, not a universal winner.",
+    "Transport receipt acceptance means both retained final suites passed; milestone completion and original study acceptance remain separately recorded. Here both classifications happen to agree for all ten sources (three accepted).",
+    "Rounds are synchronous simulation ticks, not wall-clock/provider latency. Exactly512 charged contact opportunities per case do not establish equal bytes, capacity, physical attempts or implementation cost. Serialized record bytes are separately reported.",
+    "All ten original selected sources are represented once in the frozen corpus.420 transport cases and8400 decisions are schedule observations of that same corpus, not new software projects or independent model-quality trials."
+  ],
+  "limits": [
+    "The author performed this reconciliation; a separate agent independently reviews the retained summary/provenance arithmetic. This is not an independently implemented full transport simulator.",
+    "No delivery replay occurred. Exact event-routing causality and serialized-byte totals remain instrumented original-execution observations; this audit verifies recorded local visibility, publication timing, trace constraints and accounting, not an independent re-execution.",
+    "The embedded independently audited verdicts are trusted retained evidence, not newly executed software acceptance tests. Current mutable Git heads and complete historical primary audit logic are not rerun.",
+    "All producer logs are durable; zero globally lost facts is a model assumption/control. Required exact frozen receipt IDs close the evidence set; absent future unknown refutations are not certified.",
+    "Gossip choices and the environmental loss field vary across seeds; broker schedules repeat outside loss. Specified failures are not sampled operational failure rates.",
+    "Equal contacts have no byte/CPU/concurrency capacity model, so rounds and serialized-byte totals must not be converted into real network performance or provider cost claims."
+  ]
+}

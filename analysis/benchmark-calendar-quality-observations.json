@@ -1,0 +1,1965 @@
+{
+  "binding_validation": {
+    "all_five_final_source_hashes": true,
+    "all_five_final_stage_results_match_freeze_hashes": true,
+    "all_five_selected_export_hashes_and_source_maps": true,
+    "all_five_trajectory_hashes": true,
+    "all_ten_receipts_equal_results_and_bound_to_final_source": true,
+    "audit_freeze_hash": true,
+    "audit_results_hash": true,
+    "freeze_fixtures_hash": true,
+    "source_bytes_unchanged_after_read": true
+  },
+  "bindings": [
+    {
+      "bytes": 3283381,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/results.json",
+      "sha256": "2212328a99f429046fe7bdfe0a90ee39c2fd4cbd1fdddd04d305f81b358ea7fe"
+    },
+    {
+      "bytes": 8116,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/independent-audit.json",
+      "sha256": "753d1f51c5e1045dc2adbee581b5efc1a823164cdb5ef372fc77f0b51dd474eb"
+    },
+    {
+      "bytes": 355609,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/frozen-trajectories.json",
+      "sha256": "765b3a6f9168f06f8c5ad9c800100e789609f9bd525f0ad82ee75ced21623fd9"
+    },
+    {
+      "bytes": 725776,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/fixtures.json",
+      "sha256": "95ed8b23345a6e25fc6fe740973e6e8deadad4e65cb99dadda9a1323e71bffbb"
+    },
+    {
+      "bytes": 36170,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/benchmark_calendar_exchange.py",
+      "sha256": "a1dbbfce3c7f63d97fe5c203fa30be7017090a7f96c7235922624dc6e136be7a"
+    },
+    {
+      "bytes": 47224,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/source-snapshot/gossip_harness/verification_calendar.py",
+      "sha256": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62"
+    },
+    {
+      "bytes": 2273815,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/trajectory.json",
+      "sha256": "1d786dc9d39e4fb9c170d0f88eda49f66b1ca72a3c26ff9c1de9231284031b62"
+    },
+    {
+      "bytes": 16821,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/stage-1-build-slot-0-1.json",
+      "sha256": "7b75c632d8419d151b61ea02a109fe837fb21fddd4b0b7f00ad15247c87bd59e"
+    },
+    {
+      "bytes": 1295749,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/result.json",
+      "sha256": "89656c32a9f57c538ad5f2939072ffdfaa1a0a655535c60f6bc6fb6a4509d500"
+    },
+    {
+      "bytes": 62747,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-visible-receipt.json",
+      "sha256": "d00f2289f9bdeeb4e7a611765a02db16e8bb4d0c1a3baa6537999f002021a4a0"
+    },
+    {
+      "bytes": 89293,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-private-receipt.json",
+      "sha256": "95f5e13293786e91750c3cb0112f6e4c5a41f91ed1fec00cc3efd2e487fd9bc5"
+    },
+    {
+      "bytes": 3992163,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/trajectory.json",
+      "sha256": "ee9bf8becfc2137b457320b1dd12db93a59bbe4e1b4d5937f0808fd3b0599c81"
+    },
+    {
+      "bytes": 16988,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/stage-1-build-slot-1-1.json",
+      "sha256": "cf77e1c7ea10aa4555aed109e8152134b1bd7afb480bb2878760c0ccba7da7cf"
+    },
+    {
+      "bytes": 2191975,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/result.json",
+      "sha256": "12eaa570e6802e723dd9d7902e5d4053f2e851415f6c4b64a3582bf14fbcf0ff"
+    },
+    {
+      "bytes": 53127,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-visible-receipt.json",
+      "sha256": "93a956746f465395c0ae19fd9e2f908dc61486695cd5fe725c69ba66815ea25d"
+    },
+    {
+      "bytes": 89293,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-private-receipt.json",
+      "sha256": "41d84ef57a1f2f4c1ccfa7fbf69c370e4e435e98f5b3a9df14bdd53c2a43e0a3"
+    },
+    {
+      "bytes": 4676404,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/trajectory.json",
+      "sha256": "0e86a2637989022896dfc40daa74707784d1d4d73ce4893e3d8f152660f27425"
+    },
+    {
+      "bytes": 17495,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/stage-1-build-slot-1-1.json",
+      "sha256": "1992c9fe4217738f5a41a6b3c6dfa012a99d69d4018330abff06987beb8993ec"
+    },
+    {
+      "bytes": 2641459,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/result.json",
+      "sha256": "248958fd4e73e66422a1fe39f3dd809f67a2e70635148b92ea5857a07feb3478"
+    },
+    {
+      "bytes": 56564,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-visible-receipt.json",
+      "sha256": "3d8a75588e5bb5100c02cee8c6e3495ea39b138553fd50d90f00356dc8ff3f7c"
+    },
+    {
+      "bytes": 89666,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-private-receipt.json",
+      "sha256": "f0247e80031bb4636be3f6349fb4d9adfda0fa76ed2ee10e978103c6353f2ad0"
+    },
+    {
+      "bytes": 3989428,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/trajectory.json",
+      "sha256": "cb89c535f71d692488e88c836c479e99d757f4966165352429d2cffbabee2432"
+    },
+    {
+      "bytes": 19111,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/stage-1-build-slot-3-1.json",
+      "sha256": "b8041813e31634452832ed015c6aee85c60ee92d97eb9d1f0a05dc1ed8e8fde0"
+    },
+    {
+      "bytes": 2074580,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/result.json",
+      "sha256": "bf95972432c9f1924aa8331c93bed79da08714a9e9e1581a8a6c757a1e7fc569"
+    },
+    {
+      "bytes": 53561,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-visible-receipt.json",
+      "sha256": "6c13d6f6b8682a9e53521b8139fd2df6d4efb2ce23335ba6e2fb7548a2ca9c6d"
+    },
+    {
+      "bytes": 89317,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-private-receipt.json",
+      "sha256": "723714b15adb5172226e8718e2392959522d11033d949af5c4f586d0744a8598"
+    },
+    {
+      "bytes": 4356134,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/trajectory.json",
+      "sha256": "5dd61d5d39fdb76adc69f3faff0445fd32078778c0249a7b128722c51a11ff6e"
+    },
+    {
+      "bytes": 17650,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/stage-1-build-slot-1-1.json",
+      "sha256": "e22418a136b86724b02f1cacdedaf748a09499e4b490c9582c39e55f55325f46"
+    },
+    {
+      "bytes": 2361968,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/result.json",
+      "sha256": "98bd526e47d12493941204099281569415f6ab85ef3aed7439005eb5b0f843c2"
+    },
+    {
+      "bytes": 57732,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-visible-receipt.json",
+      "sha256": "366f8150d7c4bc243c75efb8db69fda959ee50b6cc571b083ebbee7394b01462"
+    },
+    {
+      "bytes": 89310,
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-private-receipt.json",
+      "sha256": "67346c25c412f7021f2fd47929def2e28dc8a2d0023bab380d523dba8aade0b5"
+    }
+  ],
+  "conclusions": [
+    "Strong-anchor-0 and independent-four-0 meet both milestones and every retained public/probe and private case.",
+    "Sequential-four-1 and independent-four-1 meet both visible milestone gates but fail final private acceptance. Their recorded failures are inherited typed-validation regressions; both pass every private exchange and settlement scenario in this frozen suite.",
+    "Both completed-but-failed runs share list/dict nested-operation handling that raises an unexpected exception before typed validation. Sequential-four-1 additionally dereferences top-level null/list commands before validation.",
+    "Sequential-four-0 is bounded incomplete after one accepted milestone. Its retained second-milestone source fails two reviewer-generated public probes as well as three private cases. It is not another visibly accepted false completion.",
+    "The evidence distinguishes reaching a visible milestone from preserving the full inherited contract. It does not establish a causal advantage of independent generation, sequential revision, gossip transport, or any model family."
+  ],
+  "contract_sha256": "14f4678082f404b27ea2db8b05678d28b1ddef0bc04a419c9553c020cf140fba",
+  "independent_read_only_review": {
+    "additional_static_findings_included": true,
+    "agent": "/root/benchmark_calendar_fixture/calendar_review",
+    "candidate_execution": false,
+    "confirmed": [
+      "Shared nested-operation set-membership bug",
+      "Sequential-only top-level get-before-validation bug",
+      "75/78 vs 76/78 private scenarios and 12/13 groups",
+      "Selected export bytes and trajectory source consistency"
+    ],
+    "scope": "Two visibly completed but private-failed selected finals"
+  },
+  "metric_cautions": [
+    "All five private evaluations use the same 78 scenarios. Their visible suites contain the same 41 frozen public scenarios plus different generated probes, so visible case totals are not matched challenges.",
+    "The 13 requirement groups are unequally sized: one baseline-regressions group covers 48 private predecessor scenarios; seven exchange groups cover 14 scenarios and five settlement groups cover 16. A 12/13 group score is not 12/13 uniformly sampled functionality.",
+    "Counts refer to scenario-level equality. A single failed scenario can contain several mismatched command responses; scenario counts, mismatched commands and distinct root causes are different units.",
+    "Passing all retained new-feature scenarios does not prove full new-feature correctness. Static follow-ups below were not executed and do not alter primary scores.",
+    "Two repetitions for each matched cheap policy and one strong anchor on one calendar project are insufficient for general rankings or causal effects."
+  ],
+  "primary_audit_passed": true,
+  "protocol": "evidence-frontier-v1",
+  "purpose": "Post hoc interpretation of the five primary selected calendar sources and their completed receipts; no candidate execution or changed scientific evaluation.",
+  "runs": [
+    {
+      "accepted": true,
+      "failed_cases": [],
+      "failed_requirement_groups": [],
+      "final_binding": {
+        "accepted_head": "95089f1465498b545f6a3fab5b502ec231a50a04",
+        "files_sha256": "e6dcebf9f0ed8353010cec9a96fbf8f2edc1b59e329e7dad02b2914ce9665a2d",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/checkpoint.git",
+        "tip_sha": "95089f1465498b545f6a3fab5b502ec231a50a04"
+      },
+      "final_source_sha256": "e6dcebf9f0ed8353010cec9a96fbf8f2edc1b59e329e7dad02b2914ce9665a2d",
+      "last_stage_reason": "Reviewer acceptance passed every active public and oracle-admissible probe",
+      "last_stage_status": "complete",
+      "milestones_completed": 2,
+      "policy": "strong-anchor",
+      "private": {
+        "exchange": {
+          "passed": 14,
+          "total": 14
+        },
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "439afeed4e39086be5e61c3780802743d3f70cd6534551882f71a0dcf29d8feb",
+        "passed": 78,
+        "predecessor": {
+          "passed": 48,
+          "total": 48
+        },
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-private-receipt.json",
+        "receipt_sha256": "95f5e13293786e91750c3cb0112f6e4c5a41f91ed1fec00cc3efd2e487fd9bc5",
+        "settlement": {
+          "passed": 16,
+          "total": 16
+        },
+        "status": "passed",
+        "suite_sha256": "fa16a3a860f1537c54c88bc256663b32c6b5fb570a321776bf39311b24e91215",
+        "total": 78
+      },
+      "repetition": 0,
+      "requirement_groups_passed": 13,
+      "requirement_groups_total": 13,
+      "run_id": "calendar-exchange-strong-anchor-0",
+      "selected_export": {
+        "binding": {
+          "files_sha256": "e6dcebf9f0ed8353010cec9a96fbf8f2edc1b59e329e7dad02b2914ce9665a2d",
+          "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/stage-1-build-slot-0-1.git",
+          "tip_sha": "95089f1465498b545f6a3fab5b502ec231a50a04"
+        },
+        "files_sha256": "e6dcebf9f0ed8353010cec9a96fbf8f2edc1b59e329e7dad02b2914ce9665a2d",
+        "label": "stage-1-build-slot-0-1",
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/stage-1/stage-1-build-slot-0-1.json",
+        "sha256": "7b75c632d8419d151b61ea02a109fe837fb21fddd4b0b7f00ad15247c87bd59e"
+      },
+      "source_files_sha256": {
+        "calendar_app/cli.py": "0b4f593f1f00d12793b971cd695a71a7f53555ae5cfd575cb9b4976abd066855",
+        "calendar_app/domain.py": "9abb7d58e088eca43c51e197141a9f46c2d06134c09166fe34138bc0b147681f",
+        "calendar_app/service.py": "99683a38d55e1ccc658dc0493e7f10078f3439f20990e5934a72250631bac51b",
+        "calendar_app/storage.py": "aac508fa9239c7a602300858d1d3037ccee8f14b0dfccfa4431bda281d046456",
+        "policy.json": "40d89ad95ce687ce0e32a59a930dc8b5ab6367d7f2ece8b66e8b3ee74268e3a0",
+        "solution.py": "924d41bf6214b8fa954042c6caf5cf8bdb84df404101037be73bb1523d1e0e07"
+      },
+      "status": "accepted",
+      "visible": {
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "fixed_public_passed": 41,
+        "fixed_public_total": 41,
+        "generated_probe_total": 19,
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "616c1ccc53527084c1976afa23f6d8d1bfe69f8e4cd65fa08f2e3e780e9f0798",
+        "passed": 60,
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-strong-anchor-0/final-visible-receipt.json",
+        "receipt_sha256": "d00f2289f9bdeeb4e7a611765a02db16e8bb4d0c1a3baa6537999f002021a4a0",
+        "status": "passed",
+        "suite_sha256": "431b5f121f5bb2a79d20c50fc778f711f3fb17a27ac4bd962eeca2a11e6e6c3b",
+        "total": 60
+      }
+    },
+    {
+      "accepted": true,
+      "failed_cases": [],
+      "failed_requirement_groups": [],
+      "final_binding": {
+        "accepted_head": "d028020ad05f37488cecb24c78e33235a6b95fb3",
+        "files_sha256": "37ea82b009f2679bcbc807d2d8ed1ee26b039e61b1f08d735d15021d400e2201",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/checkpoint.git",
+        "tip_sha": "d028020ad05f37488cecb24c78e33235a6b95fb3"
+      },
+      "final_source_sha256": "37ea82b009f2679bcbc807d2d8ed1ee26b039e61b1f08d735d15021d400e2201",
+      "last_stage_reason": "Reviewer acceptance passed every active public and oracle-admissible probe",
+      "last_stage_status": "complete",
+      "milestones_completed": 2,
+      "policy": "independent-four",
+      "private": {
+        "exchange": {
+          "passed": 14,
+          "total": 14
+        },
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "439afeed4e39086be5e61c3780802743d3f70cd6534551882f71a0dcf29d8feb",
+        "passed": 78,
+        "predecessor": {
+          "passed": 48,
+          "total": 48
+        },
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-private-receipt.json",
+        "receipt_sha256": "41d84ef57a1f2f4c1ccfa7fbf69c370e4e435e98f5b3a9df14bdd53c2a43e0a3",
+        "settlement": {
+          "passed": 16,
+          "total": 16
+        },
+        "status": "passed",
+        "suite_sha256": "fa16a3a860f1537c54c88bc256663b32c6b5fb570a321776bf39311b24e91215",
+        "total": 78
+      },
+      "repetition": 0,
+      "requirement_groups_passed": 13,
+      "requirement_groups_total": 13,
+      "run_id": "calendar-exchange-independent-four-0",
+      "selected_export": {
+        "binding": {
+          "files_sha256": "37ea82b009f2679bcbc807d2d8ed1ee26b039e61b1f08d735d15021d400e2201",
+          "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/stage-1-build-slot-1-1.git",
+          "tip_sha": "d028020ad05f37488cecb24c78e33235a6b95fb3"
+        },
+        "files_sha256": "37ea82b009f2679bcbc807d2d8ed1ee26b039e61b1f08d735d15021d400e2201",
+        "label": "stage-1-build-slot-1-1",
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/stage-1/stage-1-build-slot-1-1.json",
+        "sha256": "cf77e1c7ea10aa4555aed109e8152134b1bd7afb480bb2878760c0ccba7da7cf"
+      },
+      "source_files_sha256": {
+        "calendar_app/cli.py": "0b4f593f1f00d12793b971cd695a71a7f53555ae5cfd575cb9b4976abd066855",
+        "calendar_app/domain.py": "8df17075f99c2d11c2e0ad349deae7315506f00063dd6a3fb4469d8fddc18af0",
+        "calendar_app/service.py": "818b0af327e01a7094afc702284482cc409dd96fe882e657cfb62f91fb22d41d",
+        "calendar_app/storage.py": "aac508fa9239c7a602300858d1d3037ccee8f14b0dfccfa4431bda281d046456",
+        "policy.json": "40d89ad95ce687ce0e32a59a930dc8b5ab6367d7f2ece8b66e8b3ee74268e3a0",
+        "solution.py": "924d41bf6214b8fa954042c6caf5cf8bdb84df404101037be73bb1523d1e0e07"
+      },
+      "status": "accepted",
+      "visible": {
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "fixed_public_passed": 41,
+        "fixed_public_total": 41,
+        "generated_probe_total": 12,
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "2964829b608f5bcc66f8700c02628962d545378280ad4dd88017788eda2dc439",
+        "passed": 53,
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-0/final-visible-receipt.json",
+        "receipt_sha256": "93a956746f465395c0ae19fd9e2f908dc61486695cd5fe725c69ba66815ea25d",
+        "status": "passed",
+        "suite_sha256": "7c6913a44ece0b4c80d44762abd827ba4069a1496236f6e8ed5b8817ff58ea36",
+        "total": 53
+      }
+    },
+    {
+      "accepted": false,
+      "failed_cases": [
+        {
+          "actual": [
+            {
+              "ok": true,
+              "results": [
+                {
+                  "ok": true
+                }
+              ]
+            },
+            [
+              {
+                "key": "b",
+                "op": "batch",
+                "seq": 1
+              }
+            ]
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Read operations are invalid inside batch and failed batches consume neither keys nor audit sequence.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              40,
+              41,
+              46,
+              47
+            ],
+            "mechanism": "domain.validate returns early for snapshot/audit before its inner-command prohibition. apply falls through to ok, so forbidden batch reads succeed; the batch receives a durable audit event.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "ok": true,
+                "results": [
+                  {
+                    "ok": true
+                  }
+                ]
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": "snapshot"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 0,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": [
+                {
+                  "key": "b",
+                  "op": "batch",
+                  "seq": 1
+                }
+              ],
+              "command": {
+                "op": "audit"
+              },
+              "command_index": 1,
+              "expected": []
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            []
+          ],
+          "id": "calendar-exchange:7b95e9cd67797691cb736c53ee6cb68bd4e8892e9a3894bb3273e3d5f0c4f481",
+          "input": {
+            "commands": [
+              {
+                "commands": [
+                  {
+                    "op": "snapshot"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "probe_origin": {
+            "project_id": "calendar-exchange",
+            "review_round": 2,
+            "source": "reviewer",
+            "stage_index": 1
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "visible"
+        },
+        {
+          "actual": [
+            {
+              "ok": true,
+              "results": [
+                {
+                  "ok": true
+                }
+              ]
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Read operations are invalid inside batch and failed batches consume neither keys nor audit sequence.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              40,
+              41,
+              46,
+              47
+            ],
+            "mechanism": "domain.validate returns early for snapshot/audit before its inner-command prohibition. apply falls through to ok, so forbidden batch reads succeed; the batch receives a durable audit event.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "ok": true,
+                "results": [
+                  {
+                    "ok": true
+                  }
+                ]
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": "audit"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 0,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "id": "calendar-exchange:d3362c6546202ae3342350059efc498094b2fa96208faa1fa6c2dbe646ce38d3",
+          "input": {
+            "commands": [
+              {
+                "commands": [
+                  {
+                    "op": "audit"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "snapshot"
+              }
+            ]
+          },
+          "probe_origin": {
+            "project_id": "calendar-exchange",
+            "review_round": 4,
+            "source": "reviewer",
+            "stage_index": 1
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "visible"
+        },
+        {
+          "actual": [
+            {
+              "error": "internal"
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "ok": true
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Top-level malformed values and read objects with extra fields return invalid without mutation.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              165,
+              170
+            ],
+            "mechanism": "The receipt dispatch reads command.get before checking that command is a dict, so null/list commands yield internal. The same source also accepts a snapshot object carrying a mutation key and records a successful no-op.",
+            "source_file": "calendar_app/service.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": null,
+              "command_index": 0,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": [],
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "ok": true
+              },
+              "command": {
+                "key": "x",
+                "op": "snapshot"
+              },
+              "command_index": 5,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "id": "calx-base-h-shape-crossproduct",
+          "input": {
+            "commands": [
+              null,
+              [],
+              {
+                "op": []
+              },
+              {
+                "op": {}
+              },
+              {
+                "end": 6,
+                "extra": 1,
+                "key": "k",
+                "op": "book",
+                "resource": "room",
+                "rid": "a",
+                "start": 2,
+                "user": "user-a"
+              },
+              {
+                "key": "x",
+                "op": "snapshot"
+              },
+              {
+                "op": "snapshot"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        },
+        {
+          "actual": [
+            {
+              "error": "invalid"
+            },
+            {
+              "ok": true,
+              "results": [
+                {
+                  "ok": true
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "results": [
+                {
+                  "ok": true
+                }
+              ]
+            },
+            [
+              {
+                "key": "b",
+                "op": "batch",
+                "seq": 1
+              },
+              {
+                "key": "c",
+                "op": "batch",
+                "seq": 2
+              }
+            ]
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Read operations are invalid inside batch and failed batches consume neither keys nor audit sequence.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              40,
+              41,
+              46,
+              47
+            ],
+            "mechanism": "domain.validate returns early for snapshot/audit before its inner-command prohibition. apply falls through to ok, so forbidden batch reads succeed; the batch receives a durable audit event.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "ok": true,
+                "results": [
+                  {
+                    "ok": true
+                  }
+                ]
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": "snapshot"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "ok": true,
+                "results": [
+                  {
+                    "ok": true
+                  }
+                ]
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": "audit"
+                  }
+                ],
+                "key": "c",
+                "op": "batch"
+              },
+              "command_index": 2,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": [
+                {
+                  "key": "b",
+                  "op": "batch",
+                  "seq": 1
+                },
+                {
+                  "key": "c",
+                  "op": "batch",
+                  "seq": 2
+                }
+              ],
+              "command": {
+                "op": "audit"
+              },
+              "command_index": 3,
+              "expected": []
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            []
+          ],
+          "id": "calx-base-h-nested-and-reads",
+          "input": {
+            "commands": [
+              {
+                "commands": [
+                  {
+                    "commands": [],
+                    "op": "batch"
+                  }
+                ],
+                "key": "a",
+                "op": "batch"
+              },
+              {
+                "commands": [
+                  {
+                    "op": "snapshot"
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "commands": [
+                  {
+                    "op": "audit"
+                  }
+                ],
+                "key": "c",
+                "op": "batch"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        },
+        {
+          "actual": [
+            {
+              "found": false
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "found": false
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "found": false
+            },
+            []
+          ],
+          "diagnosis": {
+            "category": "new-functionality-validation",
+            "contract": "Receipt has exactly op/key and key is a string of length 1..32. Bad shapes/types return invalid.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              165,
+              166,
+              167,
+              168,
+              169,
+              170
+            ],
+            "mechanism": "The early receipt branch bypasses validate. Extra fields and Boolean keys are treated as lookups; a missing key raises an exception mapped to internal.",
+            "source_file": "calendar_app/service.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "found": false
+              },
+              "command": {
+                "extra": true,
+                "key": "s",
+                "op": "receipt"
+              },
+              "command_index": 0,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": {
+                "op": "receipt"
+              },
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "found": false
+              },
+              "command": {
+                "key": true,
+                "op": "receipt"
+              },
+              "command_index": 2,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "found": false
+            },
+            []
+          ],
+          "id": "calx-s2-h-receipt-types",
+          "input": {
+            "commands": [
+              {
+                "extra": true,
+                "key": "s",
+                "op": "receipt"
+              },
+              {
+                "op": "receipt"
+              },
+              {
+                "key": true,
+                "op": "receipt"
+              },
+              {
+                "cancels": [],
+                "key": "s",
+                "limit": true,
+                "moves": [],
+                "op": "settle"
+              },
+              {
+                "cancels": [],
+                "key": "s",
+                "limit": 5,
+                "moves": [],
+                "op": "settle"
+              },
+              {
+                "cancels": [
+                  "x",
+                  "x"
+                ],
+                "key": "s",
+                "limit": 4,
+                "moves": [],
+                "op": "settle"
+              },
+              {
+                "key": "s",
+                "op": "receipt"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "settlement-validation",
+          "status": "wrong_answer",
+          "visibility": "private"
+        }
+      ],
+      "failed_requirement_groups": [
+        "baseline-regressions",
+        "settlement-validation"
+      ],
+      "final_binding": {
+        "accepted_head": "436d195f1fbc5766abbce1b341358ecbb04c9b23",
+        "files_sha256": "993c8481e7b7bfc640a918c4d5e3f824cd41a11153c411d5326882ebb516af01",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/stage-1-build-slot-1-1.git",
+        "tip_sha": "0767e297c1ece51895a4cc133c73a1fb7c68d341"
+      },
+      "final_source_sha256": "993c8481e7b7bfc640a918c4d5e3f824cd41a11153c411d5326882ebb516af01",
+      "last_stage_reason": "Review capacity exhausted; retained candidate still requires explicit valid acceptance",
+      "last_stage_status": "bounded_incomplete",
+      "milestones_completed": 1,
+      "policy": "sequential-four",
+      "private": {
+        "exchange": {
+          "passed": 14,
+          "total": 14
+        },
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "6a268dbb6d0368c812b8585222599f89097c4a9b7ced6b0ef4b4652a564da24b",
+        "passed": 75,
+        "predecessor": {
+          "passed": 46,
+          "total": 48
+        },
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-private-receipt.json",
+        "receipt_sha256": "f0247e80031bb4636be3f6349fb4d9adfda0fa76ed2ee10e978103c6353f2ad0",
+        "settlement": {
+          "passed": 15,
+          "total": 16
+        },
+        "status": "failed",
+        "suite_sha256": "fa16a3a860f1537c54c88bc256663b32c6b5fb570a321776bf39311b24e91215",
+        "total": 78
+      },
+      "repetition": 0,
+      "requirement_groups_passed": 11,
+      "requirement_groups_total": 13,
+      "run_id": "calendar-exchange-sequential-four-0",
+      "selected_export": {
+        "binding": {
+          "files_sha256": "993c8481e7b7bfc640a918c4d5e3f824cd41a11153c411d5326882ebb516af01",
+          "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/stage-1-build-slot-1-1.git",
+          "tip_sha": "0767e297c1ece51895a4cc133c73a1fb7c68d341"
+        },
+        "files_sha256": "993c8481e7b7bfc640a918c4d5e3f824cd41a11153c411d5326882ebb516af01",
+        "label": "stage-1-build-slot-1-1",
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/stage-1/stage-1-build-slot-1-1.json",
+        "sha256": "1992c9fe4217738f5a41a6b3c6dfa012a99d69d4018330abff06987beb8993ec"
+      },
+      "selected_milestone_one_static_comparison": {
+        "batch_precheck": [
+          {
+            "logical_line": 62,
+            "text": "            require(type(item) is dict and item.get(\"op\") != \"batch\")"
+          }
+        ],
+        "interpretation": "The selected first-milestone source used the predecessor equality precheck and had no receipt dispatch. The measured failures explain regressions visible in the later selected source; this comparison does not execute or privately score the earlier source.",
+        "service_get_before_validation": false,
+        "source_sha256": "ebcd6d7608965c7b4fecdfe08077ffe5f668f20db29416f4523aadadab06e521"
+      },
+      "source_files_sha256": {
+        "calendar_app/cli.py": "0b4f593f1f00d12793b971cd695a71a7f53555ae5cfd575cb9b4976abd066855",
+        "calendar_app/domain.py": "7e26ab9b46399832b09980273c542384544fcd2b7760383c116e0d61bc46ab82",
+        "calendar_app/service.py": "b02f4ddd6065d9a05aa4d7d429dd9733cf67c51006aecd09a1176b86c5ce72d1",
+        "calendar_app/storage.py": "42770ca72c0c3c8209efcbbbc081c49f5e0aa6bec469af39873cf4a8b339a1ee",
+        "policy.json": "40d89ad95ce687ce0e32a59a930dc8b5ab6367d7f2ece8b66e8b3ee74268e3a0",
+        "solution.py": "924d41bf6214b8fa954042c6caf5cf8bdb84df404101037be73bb1523d1e0e07"
+      },
+      "status": "bounded_incomplete",
+      "visible": {
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "fixed_public_passed": 41,
+        "fixed_public_total": 41,
+        "generated_probe_total": 18,
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "7f4d291c3e5fd5c114f9630c3a668a26e5bbe1e44445563002665711a11b1723",
+        "passed": 57,
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-0/final-visible-receipt.json",
+        "receipt_sha256": "3d8a75588e5bb5100c02cee8c6e3495ea39b138553fd50d90f00356dc8ff3f7c",
+        "status": "failed",
+        "suite_sha256": "fc43e3921892b9523ba0bd095ce9fe5716d35cac0f87ac56aae3ed1e263ca279",
+        "total": 59
+      }
+    },
+    {
+      "accepted": false,
+      "failed_cases": [
+        {
+          "actual": [
+            {
+              "error": "internal"
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Top-level malformed values and read objects with extra fields return invalid without mutation.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              183,
+              189
+            ],
+            "mechanism": "The receipt dispatch reads command.get before checking that command is a dict, so null/list commands yield internal.",
+            "source_file": "calendar_app/service.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": null,
+              "command_index": 0,
+              "expected": {
+                "error": "invalid"
+              }
+            },
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": [],
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            }
+          ],
+          "id": "calx-base-h-shape-crossproduct",
+          "input": {
+            "commands": [
+              null,
+              [],
+              {
+                "op": []
+              },
+              {
+                "op": {}
+              },
+              {
+                "end": 6,
+                "extra": 1,
+                "key": "k",
+                "op": "book",
+                "resource": "room",
+                "rid": "a",
+                "start": 2,
+                "user": "user-a"
+              },
+              {
+                "key": "x",
+                "op": "snapshot"
+              },
+              {
+                "op": "snapshot"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        },
+        {
+          "actual": [
+            {
+              "ok": true
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "bookings": [
+                {
+                  "end": 6,
+                  "expires": null,
+                  "resource": "room",
+                  "rid": "a",
+                  "start": 2,
+                  "status": "booked",
+                  "token": 0,
+                  "user": "user-a"
+                }
+              ],
+              "version": 2,
+              "waiting": []
+            },
+            [
+              {
+                "key": "a",
+                "op": "book",
+                "seq": 1
+              }
+            ]
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Validate every nested command shape before state checks; malformed operation values return invalid.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              69
+            ],
+            "mechanism": "Nested batch operation value is a list/dict. Set membership runs before scalar validation, raising TypeError instead of DomainError(invalid); the fixed CLI converts unexpected exceptions to internal.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": {
+                "commands": [
+                  {
+                    "end": 6,
+                    "op": "book",
+                    "resource": "room",
+                    "rid": "a",
+                    "start": 2,
+                    "user": "user-a"
+                  },
+                  {
+                    "op": []
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "ok": true
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [
+                {
+                  "end": 6,
+                  "expires": null,
+                  "resource": "room",
+                  "rid": "a",
+                  "start": 2,
+                  "status": "booked",
+                  "token": 0,
+                  "user": "user-a"
+                }
+              ],
+              "version": 2,
+              "waiting": []
+            },
+            [
+              {
+                "key": "a",
+                "op": "book",
+                "seq": 1
+              }
+            ]
+          ],
+          "id": "calx-base-h-batch-shape-first",
+          "input": {
+            "commands": [
+              {
+                "end": 6,
+                "key": "a",
+                "op": "book",
+                "resource": "room",
+                "rid": "a",
+                "start": 2,
+                "user": "user-a"
+              },
+              {
+                "commands": [
+                  {
+                    "end": 6,
+                    "op": "book",
+                    "resource": "room",
+                    "rid": "a",
+                    "start": 2,
+                    "user": "user-a"
+                  },
+                  {
+                    "op": []
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "snapshot"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        },
+        {
+          "actual": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            },
+            []
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Validate every nested command shape before state checks; malformed operation values return invalid.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              69
+            ],
+            "mechanism": "Nested batch operation value is a list/dict. Set membership runs before scalar validation, raising TypeError instead of DomainError(invalid); the fixed CLI converts unexpected exceptions to internal.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": {}
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 2,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            },
+            []
+          ],
+          "id": "calx-base-h-typed-policy",
+          "input": {
+            "commands": [
+              {
+                "end": 6,
+                "key": "q",
+                "op": "enqueue",
+                "resource": "room",
+                "rid": "a",
+                "start": false,
+                "user": "user-a"
+              },
+              {
+                "extra": true,
+                "key": "a",
+                "op": "admit"
+              },
+              {
+                "commands": [
+                  {
+                    "op": {}
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "snapshot"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        }
+      ],
+      "failed_requirement_groups": [
+        "baseline-regressions"
+      ],
+      "final_binding": {
+        "accepted_head": "0ad1ff8415e27379a9d7cdd281ae78718ca44af9",
+        "files_sha256": "c1f63ed01235a40a5d6d09be9a930418c0bdeb386d83e76444735b5e3549b073",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/checkpoint.git",
+        "tip_sha": "0ad1ff8415e27379a9d7cdd281ae78718ca44af9"
+      },
+      "final_source_sha256": "c1f63ed01235a40a5d6d09be9a930418c0bdeb386d83e76444735b5e3549b073",
+      "last_stage_reason": "Reviewer acceptance passed every active public and oracle-admissible probe",
+      "last_stage_status": "complete",
+      "milestones_completed": 2,
+      "policy": "sequential-four",
+      "private": {
+        "exchange": {
+          "passed": 14,
+          "total": 14
+        },
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "5c860ca9a21e2efbe91f1fd43c805dadc75cb798c757ea5ca2aba53577242090",
+        "passed": 75,
+        "predecessor": {
+          "passed": 45,
+          "total": 48
+        },
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-private-receipt.json",
+        "receipt_sha256": "723714b15adb5172226e8718e2392959522d11033d949af5c4f586d0744a8598",
+        "settlement": {
+          "passed": 16,
+          "total": 16
+        },
+        "status": "failed",
+        "suite_sha256": "fa16a3a860f1537c54c88bc256663b32c6b5fb570a321776bf39311b24e91215",
+        "total": 78
+      },
+      "repetition": 1,
+      "requirement_groups_passed": 12,
+      "requirement_groups_total": 13,
+      "run_id": "calendar-exchange-sequential-four-1",
+      "selected_export": {
+        "binding": {
+          "files_sha256": "c1f63ed01235a40a5d6d09be9a930418c0bdeb386d83e76444735b5e3549b073",
+          "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/stage-1-build-slot-3-1.git",
+          "tip_sha": "0ad1ff8415e27379a9d7cdd281ae78718ca44af9"
+        },
+        "files_sha256": "c1f63ed01235a40a5d6d09be9a930418c0bdeb386d83e76444735b5e3549b073",
+        "label": "stage-1-build-slot-3-1",
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/stage-1/stage-1-build-slot-3-1.json",
+        "sha256": "b8041813e31634452832ed015c6aee85c60ee92d97eb9d1f0a05dc1ed8e8fde0"
+      },
+      "selected_milestone_one_static_comparison": {
+        "batch_precheck": [
+          {
+            "logical_line": 63,
+            "text": "            require(type(item) is dict and item.get(\"op\") != \"batch\")"
+          }
+        ],
+        "interpretation": "The selected first-milestone source used the predecessor equality precheck and had no receipt dispatch. The measured failures explain regressions visible in the later selected source; this comparison does not execute or privately score the earlier source.",
+        "service_get_before_validation": false,
+        "source_sha256": "a64ff6a3e8280c6950abaa9113e26aced7be7937f572f82906a6dac456e8dd6f"
+      },
+      "source_files_sha256": {
+        "calendar_app/cli.py": "0b4f593f1f00d12793b971cd695a71a7f53555ae5cfd575cb9b4976abd066855",
+        "calendar_app/domain.py": "09fdbe66405f811797f24b13c3500281c2705e59bf519576987235b533d0c662",
+        "calendar_app/service.py": "5984443b5e7da3699a67a32cd718d1c1aedbda082a9c12d1d3a1af6ea596fa61",
+        "calendar_app/storage.py": "9e4058f4151064bd5a589b12911abacd1a66d475c008ac7fea92311b3757d959",
+        "policy.json": "40d89ad95ce687ce0e32a59a930dc8b5ab6367d7f2ece8b66e8b3ee74268e3a0",
+        "solution.py": "924d41bf6214b8fa954042c6caf5cf8bdb84df404101037be73bb1523d1e0e07"
+      },
+      "status": "final_quality_failed",
+      "visible": {
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "fixed_public_passed": 41,
+        "fixed_public_total": 41,
+        "generated_probe_total": 14,
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "617e5be61fc18125695f605763de7345b748d9148fe07ce2b74c698c2007379d",
+        "passed": 55,
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-sequential-four-1/final-visible-receipt.json",
+        "receipt_sha256": "6c13d6f6b8682a9e53521b8139fd2df6d4efb2ce23335ba6e2fb7548a2ca9c6d",
+        "status": "passed",
+        "suite_sha256": "96ebe9705a1953ed67ea0b6799abc8503e3c43db3ba611c0580f1bd91cdc86b2",
+        "total": 55
+      }
+    },
+    {
+      "accepted": false,
+      "failed_cases": [
+        {
+          "actual": [
+            {
+              "ok": true
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "bookings": [
+                {
+                  "end": 6,
+                  "expires": null,
+                  "resource": "room",
+                  "rid": "a",
+                  "start": 2,
+                  "status": "booked",
+                  "token": 0,
+                  "user": "user-a"
+                }
+              ],
+              "version": 2,
+              "waiting": []
+            },
+            [
+              {
+                "key": "a",
+                "op": "book",
+                "seq": 1
+              }
+            ]
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Validate every nested command shape before state checks; malformed operation values return invalid.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              68
+            ],
+            "mechanism": "Nested batch operation value is a list/dict. Set membership runs before scalar validation, raising TypeError instead of DomainError(invalid); the fixed CLI converts unexpected exceptions to internal.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": {
+                "commands": [
+                  {
+                    "end": 6,
+                    "op": "book",
+                    "resource": "room",
+                    "rid": "a",
+                    "start": 2,
+                    "user": "user-a"
+                  },
+                  {
+                    "op": []
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 1,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "ok": true
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [
+                {
+                  "end": 6,
+                  "expires": null,
+                  "resource": "room",
+                  "rid": "a",
+                  "start": 2,
+                  "status": "booked",
+                  "token": 0,
+                  "user": "user-a"
+                }
+              ],
+              "version": 2,
+              "waiting": []
+            },
+            [
+              {
+                "key": "a",
+                "op": "book",
+                "seq": 1
+              }
+            ]
+          ],
+          "id": "calx-base-h-batch-shape-first",
+          "input": {
+            "commands": [
+              {
+                "end": 6,
+                "key": "a",
+                "op": "book",
+                "resource": "room",
+                "rid": "a",
+                "start": 2,
+                "user": "user-a"
+              },
+              {
+                "commands": [
+                  {
+                    "end": 6,
+                    "op": "book",
+                    "resource": "room",
+                    "rid": "a",
+                    "start": 2,
+                    "user": "user-a"
+                  },
+                  {
+                    "op": []
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "snapshot"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        },
+        {
+          "actual": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "internal"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            },
+            []
+          ],
+          "diagnosis": {
+            "category": "baseline-regression",
+            "contract": "Validate every nested command shape before state checks; malformed operation values return invalid.",
+            "evidence_kind": "recorded wrong answer plus static source explanation",
+            "logical_lines": [
+              68
+            ],
+            "mechanism": "Nested batch operation value is a list/dict. Set membership runs before scalar validation, raising TypeError instead of DomainError(invalid); the fixed CLI converts unexpected exceptions to internal.",
+            "source_file": "calendar_app/domain.py"
+          },
+          "differences": [
+            {
+              "actual": {
+                "error": "internal"
+              },
+              "command": {
+                "commands": [
+                  {
+                    "op": {}
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              "command_index": 2,
+              "expected": {
+                "error": "invalid"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "error": "invalid"
+            },
+            {
+              "bookings": [],
+              "version": 2,
+              "waiting": []
+            },
+            []
+          ],
+          "id": "calx-base-h-typed-policy",
+          "input": {
+            "commands": [
+              {
+                "end": 6,
+                "key": "q",
+                "op": "enqueue",
+                "resource": "room",
+                "rid": "a",
+                "start": false,
+                "user": "user-a"
+              },
+              {
+                "extra": true,
+                "key": "a",
+                "op": "admit"
+              },
+              {
+                "commands": [
+                  {
+                    "op": {}
+                  }
+                ],
+                "key": "b",
+                "op": "batch"
+              },
+              {
+                "op": "snapshot"
+              },
+              {
+                "op": "audit"
+              }
+            ]
+          },
+          "requirement": "baseline-regressions",
+          "status": "wrong_answer",
+          "visibility": "private"
+        }
+      ],
+      "failed_requirement_groups": [
+        "baseline-regressions"
+      ],
+      "final_binding": {
+        "accepted_head": "c14caf106ed702360f38afac6b53d5fb9427f976",
+        "files_sha256": "547aee686f44bb0a6f8e4c2bbb8b838e010cc45560a251d0db1404f085237645",
+        "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/checkpoint.git",
+        "tip_sha": "c14caf106ed702360f38afac6b53d5fb9427f976"
+      },
+      "final_source_sha256": "547aee686f44bb0a6f8e4c2bbb8b838e010cc45560a251d0db1404f085237645",
+      "last_stage_reason": "Reviewer acceptance passed every active public and oracle-admissible probe",
+      "last_stage_status": "complete",
+      "milestones_completed": 2,
+      "policy": "independent-four",
+      "private": {
+        "exchange": {
+          "passed": 14,
+          "total": 14
+        },
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "dce7d53d5e42c65ae5221d85037eea08200437ca448b3a8f0d403a323677d87a",
+        "passed": 76,
+        "predecessor": {
+          "passed": 46,
+          "total": 48
+        },
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-private-receipt.json",
+        "receipt_sha256": "67346c25c412f7021f2fd47929def2e28dc8a2d0023bab380d523dba8aade0b5",
+        "settlement": {
+          "passed": 16,
+          "total": 16
+        },
+        "status": "failed",
+        "suite_sha256": "fa16a3a860f1537c54c88bc256663b32c6b5fb570a321776bf39311b24e91215",
+        "total": 78
+      },
+      "repetition": 1,
+      "requirement_groups_passed": 12,
+      "requirement_groups_total": 13,
+      "run_id": "calendar-exchange-independent-four-1",
+      "selected_export": {
+        "binding": {
+          "files_sha256": "547aee686f44bb0a6f8e4c2bbb8b838e010cc45560a251d0db1404f085237645",
+          "store_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/stage-1-build-slot-1-1.git",
+          "tip_sha": "c14caf106ed702360f38afac6b53d5fb9427f976"
+        },
+        "files_sha256": "547aee686f44bb0a6f8e4c2bbb8b838e010cc45560a251d0db1404f085237645",
+        "label": "stage-1-build-slot-1-1",
+        "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/stage-1/stage-1-build-slot-1-1.json",
+        "sha256": "e22418a136b86724b02f1cacdedaf748a09499e4b490c9582c39e55f55325f46"
+      },
+      "selected_milestone_one_static_comparison": {
+        "batch_precheck": [
+          {
+            "logical_line": 54,
+            "text": "            require(type(item) is dict and item.get(\"op\") != \"batch\")"
+          }
+        ],
+        "interpretation": "The selected first-milestone source used the predecessor equality precheck and had no receipt dispatch. The measured failures explain regressions visible in the later selected source; this comparison does not execute or privately score the earlier source.",
+        "service_get_before_validation": false,
+        "source_sha256": "c88044c80e873d721f4d4eceea2b64aa6ed912c53b7e2120761396a64322c01f"
+      },
+      "source_files_sha256": {
+        "calendar_app/cli.py": "0b4f593f1f00d12793b971cd695a71a7f53555ae5cfd575cb9b4976abd066855",
+        "calendar_app/domain.py": "a8cb4db710184fccd187e13564d4e21a3295688ddcfd4ee6e92b808200e78af5",
+        "calendar_app/service.py": "6834a505f8ee33420aa980a6de650c127e616e6337bdcd0a4de0f0201d51a870",
+        "calendar_app/storage.py": "2ba7526cb11acd384c94b6aeb998258e64c6837a600df121cc0a8cd95715f7c7",
+        "policy.json": "40d89ad95ce687ce0e32a59a930dc8b5ab6367d7f2ece8b66e8b3ee74268e3a0",
+        "solution.py": "924d41bf6214b8fa954042c6caf5cf8bdb84df404101037be73bb1523d1e0e07"
+      },
+      "status": "final_quality_failed",
+      "visible": {
+        "execution": "Existing physical Docker execution, read only during this analysis",
+        "fixed_public_passed": 41,
+        "fixed_public_total": 41,
+        "generated_probe_total": 17,
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "output_sha256": "6c8aef91ec915d9b0dd0595a8d0f86626ea8127ad87f0633a8748eedc196b2a6",
+        "passed": 58,
+        "receipt_path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/calendar-exchange-independent-four-1/final-visible-receipt.json",
+        "receipt_sha256": "366f8150d7c4bc243c75efb8db69fda959ee50b6cc571b083ebbee7394b01462",
+        "status": "passed",
+        "suite_sha256": "25013ec2bd35e4058f53510811957ddd35a0248233d3b5037744e9524577ca17",
+        "total": 58
+      }
+    }
+  ],
+  "schema": "benchmark-calendar-quality-observations-v1",
+  "scope": {
+    "alternative_candidates_scored_or_inferred": false,
+    "candidate_code_executed": false,
+    "posthoc_matrix_inspected": false,
+    "projects": [
+      "calendar-exchange"
+    ],
+    "runs": 5,
+    "selected_sources_only": true,
+    "tests_or_api_or_docker_launched": false
+  },
+  "unexecuted_static_followups": [
+    {
+      "execution_status": "Not executed; no primary-result change.",
+      "finding": "Both selected exchange implementations apply policy while scanning targets. Static reading predicts an overlong first move masks a later missing target, whereas the frozen contract checks all target states before any policy checks.",
+      "id": "exchange-state-before-policy",
+      "proposed_probe_family": "Cross-product of early policy-invalid move and later missing/closed/held target.",
+      "runs": [
+        "calendar-exchange-sequential-four-1",
+        "calendar-exchange-independent-four-1"
+      ],
+      "source_locations": [
+        {
+          "file": "calendar_app/service.py",
+          "logical_lines": [
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66
+          ],
+          "run_id": "calendar-exchange-sequential-four-1"
+        },
+        {
+          "file": "calendar_app/service.py",
+          "logical_lines": [
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61
+          ],
+          "run_id": "calendar-exchange-independent-four-1"
+        }
+      ]
+    },
+    {
+      "execution_status": "Not executed; no primary-result change.",
+      "finding": "Move ID set-membership precedes name validation in exchange and settle. A list/dict rid is statically expected to raise TypeError before invalid is produced.",
+      "id": "unhashable-move-id",
+      "proposed_probe_family": "Typed-error cross-product for nested move identifiers.",
+      "runs": [
+        "calendar-exchange-sequential-four-1"
+      ],
+      "source_locations": [
+        {
+          "file": "calendar_app/domain.py",
+          "logical_lines": [
+            58,
+            59,
+            60,
+            82,
+            83,
+            84
+          ],
+          "run_id": "calendar-exchange-sequential-four-1"
+        }
+      ]
+    }
+  ]
+}

@@ -217,9 +217,34 @@ async function reportContract(page, base, original, directory, opts) {
   assert.equal(await page.locator('article.task').count(), original.tasks.filter(t => (t.inScope !== false && t.status !== 'complete') || t.tier !== 'archive').length);
   await fit(page, 'desktop report');
   await capture(page, directory, 'desktop', opts.captures.includes('report'));
+  const benchmark = original.handoff.benchmarkExpansion?.dashboard;
+  if (benchmark?.rows?.length) {
+    const rows = page.locator('#benchmark-quality tbody tr');
+    assert.equal(await rows.count(), benchmark.rows.length, 'every certified benchmark policy is visible');
+    for (const [index, expected] of benchmark.rows.entries()) {
+      const cells = rows.nth(index).locator('td');
+      assert.equal(await cells.count(), 6, 'benchmark quality, completion, timing and cost stay separate');
+      for (const [column, value] of [expected.label, expected.accepted, expected.coverage,
+        expected.milestones, expected.active, expected.cost].entries()) {
+        assert.equal((await cells.nth(column).innerText()).split('\n')[0].trim(), value,
+          `benchmark row ${index}, column ${column} shows the exact value`);
+      }
+    }
+    const panel = page.locator('#benchmark-result-panel');
+    assert((await panel.innerText()).includes(benchmark.pairedSummary), 'matched comparison and sample qualifications render');
+    assert.equal(await panel.locator('a').last().getAttribute('href'), benchmark.detailUrl, 'dashboard links the exact benchmark version');
+    await panel.scrollIntoViewIfNeeded();
+    await capture(page, directory, 'desktop-benchmark', opts.captures.includes('report'));
+  }
   await page.setViewportSize({width: 390, height: 844});
+  await page.getByRole('heading', {name: 'Gossip × Agents', exact: true}).scrollIntoViewIfNeeded();
   await fit(page, 'mobile report');
   await capture(page, directory, 'mobile', opts.captures.includes('report'));
+  if (benchmark?.rows?.length) {
+    await page.locator('#benchmark-result-panel').scrollIntoViewIfNeeded();
+    await fit(page, 'mobile benchmark dashboard');
+    await capture(page, directory, 'mobile-benchmark', opts.captures.includes('report'));
+  }
   await page.getByRole('link', {name: /Open archive/}).click();
   await page.getByRole('heading', {name: 'Archive', exact: true}).waitFor();
   await page.getByRole('link', {name: '← Return to current work'}).click();

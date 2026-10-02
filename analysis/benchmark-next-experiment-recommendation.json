@@ -1,0 +1,327 @@
+{
+  "schema": "benchmark-next-experiment-recommendation-v1",
+  "status": "Proposed follow-up pilot only; not a frozen preregistration, implementation, scheduled experiment, or spending authorization.",
+  "scope": {
+    "completed_memos_only": true,
+    "partial_diagnostic_matrix_inspected": false,
+    "candidate_code_executed": false,
+    "model_calls_made": false,
+    "scientific_sources_changed": false,
+    "causal_claim": "The completed study describes failure mechanisms. It does not establish that the proposed controller changes would fix them or that adding agents would help."
+  },
+  "recommendation": "Test continuation control before increasing the number of agents. Use a small prospective three-arm pilot to ask whether better routing and source preservation improve independently accepted whole-project completion, then whether independent generation adds value under that same controller.",
+  "why_now": [
+    {
+      "id": "passing-source-without-acceptance",
+      "observation": "Graph independent-four-0's selected final source passes all 75 private scenarios, all 29 private requirement groups and all 43 final public-plus-probe checks, yet milestone two remains unaccepted after four inspect decisions and unresolved provenance concerns.",
+      "evidence": [
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/1/interpretation"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/1/counts"
+        },
+        {
+          "memo": "continuation",
+          "pointer": "/trajectories/1/stop_interpretation"
+        }
+      ],
+      "inference_limit": "This is completion-control failure on the retained acceptance contract, not proof of universal correctness. The frozen controller correctly withheld acceptance when the reviewer did not accept. No additional review or counterfactual repair was executed."
+    },
+    {
+      "id": "unused-capacity",
+      "observation": "Three bounded runs left repair slots unused; two had executed failures while both repair slots remained. In one calendar stage the first explicit repair request arrived at the last review, when no review could follow it.",
+      "evidence": [
+        {
+          "memo": "continuation",
+          "pointer": "/summary/bounded_with_unused_repair_capacity"
+        },
+        {
+          "memo": "continuation",
+          "pointer": "/trajectories/4/stop_interpretation"
+        },
+        {
+          "memo": "continuation",
+          "pointer": "/trajectories/5/stop_interpretation"
+        }
+      ],
+      "inference_limit": "Available repair capacity is not proof that a repair would have succeeded."
+    },
+    {
+      "id": "novelty-versus-progress",
+      "observation": "All 11 repairs changed source. Four reduced failures, four increased failures, and three left the count unchanged on exactly the active cases supplied to each repair. Five introduced at least one previously passing case failure.",
+      "evidence": [
+        {
+          "memo": "continuation",
+          "pointer": "/summary/repair_same_case_comparison"
+        }
+      ],
+      "inference_limit": "Source novelty is not correctness progress. These repair counts are neither independent task outcomes nor causal model or policy comparisons."
+    },
+    {
+      "id": "inherited-contract",
+      "observation": "Two calendar trajectories completed both visible milestones and passed every retained private exchange and settlement scenario, but final acceptance failed on inherited typed-validation behavior.",
+      "evidence": [
+        {
+          "memo": "calendar",
+          "pointer": "/conclusions/1"
+        },
+        {
+          "memo": "calendar",
+          "pointer": "/conclusions/2"
+        }
+      ],
+      "inference_limit": "Passing the retained new-feature scenarios does not prove full feature correctness. Visible milestone completion is not whole-project acceptance."
+    },
+    {
+      "id": "negative-evidence-must-remain-visible",
+      "observation": "Three graph trajectories did not complete the first milestone; their second-milestone patch work was never attempted. All five graph final sources nevertheless preserve all 48 measured private legacy cases and 16 legacy groups.",
+      "evidence": [
+        {
+          "memo": "graph",
+          "pointer": "/summary"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/0/scope_classification"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/1/scope_classification"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/2/scope_classification"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/3/scope_classification"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/4/scope_classification"
+        }
+      ],
+      "inference_limit": "Not every failure is a reviewer bottleneck, and inherited regression was not universal. Unreached patch cases are unmet planned scope, not failed attempted repairs."
+    },
+    {
+      "id": "actionable-error-without-repair",
+      "observation": "The graph strong anchor has one private remove/recreate provenance error and three active generated errors involving removal and recreation. All four final-stage reviewer decisions remained inspect, and neither available repair was used.",
+      "evidence": [
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/2/interpretation"
+        },
+        {
+          "memo": "graph",
+          "pointer": "/trajectories/2/terminal_control"
+        }
+      ],
+      "inference_limit": "A plausible source-level explanation does not prove that one repair would finish the task or satisfy unseen requirements."
+    }
+  ],
+  "pilot": {
+    "label": "Exploratory follow-up pilot, not a powered superiority study",
+    "population": "Two genuinely new held-out application domains, with two repetitions per domain and two cumulative milestones per trajectory.",
+    "trajectories": 12,
+    "matched_blocks": 4,
+    "independent_task_domains": 2,
+    "arms": [
+      {
+        "id": "A",
+        "controller": "Current frozen controller",
+        "formation": "Four independent cheap-model initial candidates",
+        "purpose": "Continuation baseline"
+      },
+      {
+        "id": "B",
+        "controller": "Failure/uncertainty routing plus repair-checkpoint retention",
+        "formation": "Four independent cheap-model initial candidates",
+        "purpose": "Controller-package contrast against A"
+      },
+      {
+        "id": "C",
+        "controller": "Exactly the same controller package as B",
+        "formation": "Four cheap-model serial revision calls with retained initial checkpoints",
+        "purpose": "Candidate-formation contrast against B"
+      }
+    ],
+    "contrasts": [
+      {
+        "comparison": "B versus A",
+        "estimand": "Effect of the controller package under equal offered call caps, conditional on a common first-milestone candidate/evidence draw",
+        "nonclaims": [
+          "Not a routing-only effect",
+          "Not equal realized computation",
+          "Not a general model-family comparison"
+        ]
+      },
+      {
+        "comparison": "B versus C",
+        "estimand": "Independent versus serial candidate formation under the same improved controller and four initial generation opportunities",
+        "nonclaims": [
+          "Not an agent-count dose-response",
+          "Not a gossip-transport comparison"
+        ]
+      }
+    ],
+    "pairing": {
+      "first_milestone": "Within each domain/repetition block, freeze one newly generated four-independent-candidate pool and candidate-blind scout evidence before branching A and B. Their review and repair calls are separate. C receives four new serial formation calls from the same trusted application baseline.",
+      "task_blind_evidence": "After all relevant first-milestone initial pools are frozen, generate and freeze common candidate-blind scout evidence for the block, then give it to all three controllers. Builders do not see it during initial formation. This is declared shared setup, not independent scouting replication.",
+      "later_milestones": "Let accepted lineage and source histories diverge naturally. Generate all later context-dependent calls from each arm's actual state; never replay a response into a changed request.",
+      "accounting": "Count shared first-milestone setup once in actual paid cash, and attribute the same four initial generation opportunities and scout allowance to each relevant policy comparison. Report shared versus arm-specific work explicitly.",
+      "interpretation": "A/B reduces initial-generation variance but is not independent end-to-end replication. B/C still includes formation randomness. Four blocks across two domains provide limited generalization."
+    },
+    "equal_offered_resources": {
+      "keep_fixed": [
+        "Builder, scout, reviewer and escalation model versions",
+        "Initial generation call count, token ceilings, task and baseline source",
+        "Two scouts with the same existing admission contract and allowance",
+        "At most four reviewer calls and two total repair calls per milestone",
+        "At most one strong escalation within the repair allowance",
+        "The existing separate scout/reviewer admitted-probe ceilings",
+        "Acceptance gates, isolation, source eligibility, trusted evaluator and private-evaluation barrier"
+      ],
+      "realized_resources": "Report actual provider calls, tokens, repairs, escalation, candidate executions and wall times by arm. B is intended to use some repair opportunities A currently leaves unused; a benefit can reflect both allocation and additional useful realized computation."
+    },
+    "task_requirements": [
+      "Freeze new application specifications, original trusted baseline, inherited regression contract, two cumulative milestone contracts and common final evaluation before seeing any candidate.",
+      "Use multiple interacting modules and a second milestone that must preserve the first and the inherited baseline.",
+      "Keep inherited, milestone-one and milestone-two final case groups separately identifiable; report their scenario and requirement denominators.",
+      "Keep the same oracle/probe interface in all arms. Do not simultaneously change exact-output admission or introduce a different evidence format.",
+      "Rotate or randomize arm execution order within blocks before running, and retain all failures and bounded stops."
+    ],
+    "omitted_arms": "No new strong-model anchor or extra agent count is necessary for these two contrasts. The three-arm design cannot estimate a controller-by-formation interaction; a full factorial would require current-controller serial formation too."
+  },
+  "proposed_controller_package": {
+    "status": "Hypotheses to implement and preregister later; not established remedies.",
+    "routing": [
+      "Separate an observed source-bound contract or candidate-execution failure from an unexecuted reviewer concern.",
+      "For a candidate with observed failures, route the next productive action to an eligible alternative or a targeted repair while leaving a subsequent reviewer opportunity. Do not spend every remaining review on inspection while repair capacity goes unused.",
+      "When active executed evidence passes but requirements remain unresolved, require focused admissible evidence for that uncertainty, or an explicit unresolved stop. Do not trigger a speculative repair merely because acceptance is delayed.",
+      "Focused probes consume the existing reviewer/scout allowances; no free model turns or late added budget.",
+      "The last reviewer opportunity can still discover a failing case. It must then produce a bounded stop if no valid repair-and-review cycle remains."
+    ],
+    "progress": {
+      "failure_progress": "Measure resolved known failures on the same source-bound active cases, and record any newly failing cases. A source change or extra passing probe alone cannot reset a counter for unresolved known failures.",
+      "evidence_progress": "Track coverage of a previously unresolved requirement separately. Useful new evidence may reveal failures and must not be treated as correctness improvement.",
+      "infrastructure": "Candidate exceptions may be implementation failures when the evaluator classifies them as such. Infrastructure failures remain separate and are not correctness judgments."
+    },
+    "repair_retention": {
+      "rule": "Keep the pre-repair source alongside the repaired source as an immutable, eligibility-preserving checkpoint, rather than destructively replacing it.",
+      "bound": "At most two additional repair checkpoints per milestone under the existing two-repair cap; no additional initial-generation calls.",
+      "comparison": "Compare predecessor and repair on exactly the same current cases with exact source/evaluator/suite bindings. Execute missing cases on both; reuse an existing exact receipt only where the preregistered purpose permits reuse. Independent final acceptance remains independently executed.",
+      "regression": "Any newly failed previously passing case is a regression, even if the total failure count decreases. Preserve both per-case outcomes and provenance for selection.",
+      "cost_caveat": "Retaining checkpoints may add evaluator work and changes the selector's pool. This belongs to the controller package and must be reported, not attributed solely to routing."
+    },
+    "invariant": "Explicit reviewer acceptance, passing active execution gates, source eligibility and scope/CAS checks, and the independent final barrier all remain necessary. No autoacceptance, oracle leakage, or unbounded retry."
+  },
+  "outcomes": {
+    "primary": "Whole-project independent acceptance: both milestone acceptances plus all common final inherited and new-feature cases. Count every planned trajectory, including bounded stops.",
+    "co_primary_guardrail": "Inherited-contract preservation, reported separately from new-feature coverage; also report visible completion followed by final rejection.",
+    "mechanism_measures": [
+      "Milestones attempted and completed; stop reason and unresolved requirement classes",
+      "Known failures and unresolved reviewer concerns at each decision",
+      "Time and reviewer opportunities from an executed failure to repair or eligible alternative",
+      "Unused repair capacity at stop, with why it was unused",
+      "Repairs that resolve failures, introduce failures, or leave the same-case result unchanged",
+      "Pre-repair sources retained and subsequently selected",
+      "All-active-passing sources that stop without acceptance, without labeling them correct until independent final evaluation",
+      "Invalid reviewer decisions and execution-gate-blocked provisional acceptances"
+    ],
+    "resource_secondary": "Observed provider latency, active per-trajectory wall time, candidate-execution time, actual calls/tokens and cash. Separate shared setup, queue/infrastructure time and arm-specific work; do not label simulated parallel speed as observed.",
+    "presentation": "Show all 12 outcomes and four paired wins/draws/losses for each contrast, with denominators. Do not compare raw counts of passing generated tests across differing suites. This pilot is too small and task-concentrated for meaningful Elo calibration."
+  },
+  "proposed_decision_rules": {
+    "status": "Conservative engineering go/no-go rules to freeze prospectively; not statistical proof or retrospective scoring changes.",
+    "advance_controller": "B has more independently accepted whole projects than A in each of the two domains, with no lost paired full acceptances, no additional visible false completions, no worse inherited-contract preservation, and no gate violation. With two repetitions per domain this requires at least two B-over-A wins across four blocks. Advance to a larger confirmatory study, not a superiority claim.",
+    "advance_independent_formation": "Apply the same cross-domain full-acceptance and guardrail criterion to B versus C before investing in a larger independent candidate pool.",
+    "no_demonstrated_gain": "More visible completions, fewer bounded stops, more generated tests or better partial coverage with unchanged full acceptance is insufficient. Ties or ceiling/floor outcomes are inconclusive; a one-domain benefit calls for broader tasks rather than a general claim.",
+    "reject_implementation": "Any completed or promoted acceptance despite known active failures, lost source eligibility, invalid receipt reuse, private leakage, unbounded continuation, or inconsistent final-evaluation input invalidates the implementation claim. A model's provisional accept request that the execution gate correctly blocks is a recorded reviewer error, not an acceptance-gate failure.",
+    "evidence_against_more_agents": [
+      "If serial formation matches or exceeds independent formation on full acceptance under the same improved controller, this pilot does not justify adding independent agents.",
+      "If more source novelty produces regressions without additional valid alternatives or full acceptance, extra agent count is not supported.",
+      "If the improved controller still exhausts reviews without using actionable evidence, increasing candidate supply has not solved the measured bottleneck.",
+      "These outcomes reject the immediate scale-up recommendation in the tested setting; they do not prove swarms can never help."
+    ]
+  },
+  "deferred_questions": [
+    {
+      "topic": "Oracle/probe evidence format",
+      "recommendation": "Consider a separate later comparison of executable assertions, metamorphic relations or trusted output derivation. Do not bundle that contract change into the controller/formation pilot.",
+      "limit": "The present recommendation establishes no causal evidence-format effect. Oracle safety, leakage and evaluator qualification would need their own versioned contract."
+    },
+    {
+      "topic": "Diagnostic candidate matrix",
+      "recommendation": "Wait for the complete audited diagnostic matrix before refining selector-specific claims.",
+      "conditional_only": [
+        "If additional independent candidates contain valid alternatives that selection misses, test selection and evidence routing before adding builders.",
+        "If additional candidates add no measured valid alternatives, widening is unsupported on that task distribution."
+      ],
+      "inspected": false
+    },
+    {
+      "topic": "Gossip transport",
+      "recommendation": "Test message delay, loss, membership and recovery separately with explicit distributed state and acceptance guarantees.",
+      "limit": "This pilot compares controller policy and candidate formation. It cannot establish live gossip superiority over orchestration."
+    }
+  ],
+  "independent_design_review": {
+    "reviewer": "/root/benchmark_challenge/continuation_observation_review",
+    "scope": "Read-only critique of the continuation/calendar evidence, pairing, resource interpretation, routing, regression retention and conservative decision criteria.",
+    "graph_memo_review": "The final completed graph memo was included in this design review; its source and primary interpretations also have their own independent review.",
+    "reviewed_artifact_sha256": "d1dd38f2f818003e5ac296e78c8a46531b1f44578c079a40f57ed0a57afb6e89",
+    "final_artifact_review": "All three completed memo hashes and all 17 observation evidence pointers resolve and support their observations. No essential design inconsistency. Clarified completed/promoted acceptance versus gate-blocked provisional requests after review.",
+    "findings_incorporated": [
+      "Equal offered caps versus realized compute",
+      "Common first-milestone A/B pool",
+      "Repair-review reservation and bounded last-round failure",
+      "Same-case regression definition and bounded predecessor retention",
+      "Inherited-contract guardrail",
+      "Two-domain pilot limits and no Elo claim"
+    ]
+  },
+  "evidence_sources": [
+    {
+      "id": "continuation",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-continuation-observations.json",
+      "sha256": "18b605cec4b5614d1bf783a3426cbc9523420925fe4a06e4ece4fcdd8db7d845",
+      "scope": "Frozen public controller evidence; independently reviewed. Its original public-only status is preserved."
+    },
+    {
+      "id": "calendar",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-calendar-quality-observations.json",
+      "sha256": "9fd59432e643d8972fd1001d81036190af5df87a072d890fec532c359028e0b8",
+      "scope": "Completed, independently reviewed primary selected-source quality interpretation after the primary audit."
+    },
+    {
+      "id": "graph",
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-graph-quality-observations.json",
+      "sha256": "97f1dfc7b4cc981ad03feb7408ae0718f04304655b2705c8e2eca9ddfb430b42",
+      "scope": "Completed, independently reviewed primary selected-source quality interpretation after the primary audit."
+    }
+  ],
+  "original_study_binding": {
+    "global_freeze": {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/benchmark-live-1/frozen-trajectories.json",
+      "sha256": "765b3a6f9168f06f8c5ad9c800100e789609f9bd525f0ad82ee75ced21623fd9",
+      "frozen_utc": "2026-10-01T19:29:45.314112+00:00"
+    },
+    "contract_sha256": "14f4678082f404b27ea2db8b05678d28b1ddef0bc04a419c9553c020cf140fba",
+    "binding_source": "The completed memos above; this recommendation does not re-audit the raw primary study.",
+    "primary_audit_passed": "Reported by root and both completed primary-quality memos."
+  },
+  "before_execution": [
+    "Write a new versioned preregistration with exact controller state transitions, checkpoint bounds, task fixtures, caps, pairing, order, endpoints and decision rules.",
+    "Keep the historical study and failed artifacts immutable; never relabel its unaccepted source as an accepted release.",
+    "Complete the required offline qualification and a matching rehearsal under the new execution contract before any paid calls.",
+    "Confirm the concrete maximum reservation fits the remaining authorized budget; this recommendation neither calculates a new price nor authorizes additional spend."
+  ],
+  "created_at_utc": "2026-10-01T20:10:36.341Z",
+  "evidence_binding_validation": {
+    "memo_sha256": "All three exact raw memo hashes checked before creation and confirmed by independent read-only artifact review.",
+    "evidence_json_pointers": "All 17 evidence references name memo IDs and exact JSON pointers; each resolved and was independently reviewed against its observation."
+  }
+}
