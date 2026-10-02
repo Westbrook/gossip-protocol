@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "protocol": "continuation-followup-physical-checkpoint-v2",
+  "created_utc": "2026-10-02T15:32:10.115322+00:00",
+  "status": "corrected_contract_physical_rehearsal_independently_certified",
+  "implementation_commit": "61a5eabdffeaba1a154deaa767b8b1592e490a1d",
+  "contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+  "evidence_class": "scripted_infrastructure_control",
+  "model_quality_evidence": false,
+  "fixture_qualification": {
+    "status": "qualified_under_corrected_contract",
+    "fresh_docker_executions": 42,
+    "reused": 0,
+    "observations": 1632,
+    "passing_observations": 1583,
+    "expected_private_wrong_answers": 49,
+    "mutant_rows": 28,
+    "distinct_mutant_family_names": 22,
+    "correct_control_and_baseline_rows": 14,
+    "elapsed_seconds": 733.463381,
+    "independently_reviewed": true
+  },
+  "physical_rehearsal": {
+    "status": "finished",
+    "mode": "rehearsal",
+    "trajectories": 12,
+    "shared_setups": 4,
+    "accepted": 12,
+    "completed_milestones": 24,
+    "elapsed_seconds": 1464.7492880821228,
+    "physical_docker_executions": 384,
+    "scripted_calls": 228,
+    "physical_provider_calls": 0,
+    "api_usage_micro_usd": 0,
+    "unexecuted": 0,
+    "censored": 0,
+    "unsettled": {
+      "promotions": 0,
+      "reservations": 0
+    },
+    "independently_certified": true
+  },
+  "independent_audit": {
+    "protocol": "independent-continuation-followup-cohort-audit-v2",
+    "passed": true,
+    "consumed_evidence_files": 2523,
+    "consumed_evidence_sha256": "dba1731029812be7a90cff214e8052c9838ff7b41b13d8bf5cbc4f3821113cad",
+    "source_comparison_waivers": 0,
+    "scope": {
+      "controller_decision_replay": true,
+      "exact_source_promotions": true,
+      "global_private_barrier": true,
+      "live_model_quality": false,
+      "primary_cohort": true,
+      "shared_initial_setup": true
+    },
+    "limitations": [
+      "Scripted infrastructure rehearsal, not model-quality or statistical evidence.",
+      "Trusted-host retained consistency, not independent external execution or clock attestation.",
+      "Historical reservation-time compliance relies on the qualified transactional admission guards; request-interval upper bounds do not prove the measured historical peak.",
+      "Fixture meaning and task representativeness remain separately reviewed scientific assumptions.",
+      "A passing audit does not authorize live dispatch, spending or a change to the scientific contract."
+    ]
+  },
+  "scripted_comparison": {
+    "status": "certified_complete",
+    "application_domains": 2,
+    "development_blocks": 4,
+    "policies": {
+      "current-independent": {
+        "trajectories": 4,
+        "accepted": 4,
+        "milestones_completed": 8,
+        "mean_requirement_coverage": 1.0,
+        "arm_active_seconds": {
+          "observations": 4,
+          "min_seconds": 102.68522237399999,
+          "median_seconds": 114.04176656199999,
+          "max_seconds": 125.57895491600001,
+          "cumulative_seconds": 456.347710414
+        }
+      },
+      "improved-independent": {
+        "trajectories": 4,
+        "accepted": 4,
+        "milestones_completed": 8,
+        "mean_requirement_coverage": 1.0,
+        "arm_active_seconds": {
+          "observations": 4,
+          "min_seconds": 86.37567495799999,
+          "median_seconds": 109.1009576875,
+          "max_seconds": 126.59749895799999,
+          "cumulative_seconds": 431.17508929099995
+        }
+      },
+      "improved-sequential": {
+        "trajectories": 4,
+        "accepted": 4,
+        "milestones_completed": 8,
+        "mean_requirement_coverage": 1.0,
+        "arm_active_seconds": {
+          "observations": 4,
+          "min_seconds": 86.43531941699999,
+          "median_seconds": 105.552414021,
+          "max_seconds": 135.605468542,
+          "cumulative_seconds": 433.145616001
+        }
+      }
+    },
+    "measured_time": {
+      "shared_setup": {
+        "observations": 4,
+        "min_seconds": 27.37036625,
+        "median_seconds": 31.788654811999997,
+        "max_seconds": 34.519179791,
+        "cumulative_seconds": 125.466855665
+      },
+      "primary_parent_intervals": {
+        "span_count": 28,
+        "cumulative_seconds": 1446.135271371,
+        "union_wall_seconds": 1446.135271371,
+        "overlap_seconds": 0.0,
+        "per_span": {
+          "observations": 28,
+          "min_seconds": 27.37036625,
+          "median_seconds": 36.1990717705,
+          "max_seconds": 100.284445167,
+          "cumulative_seconds": 1446.135271371
+        }
+      },
+      "physical_provider": {
+        "span_count": 0,
+        "cumulative_seconds": 0.0,
+        "union_wall_seconds": 0.0,
+        "overlap_seconds": 0.0,
+        "per_span": {
+          "observations": 0,
+          "min_seconds": null,
+          "median_seconds": null,
+          "max_seconds": null,
+          "cumulative_seconds": null
+        }
+      },
+      "docker_validation": {
+        "span_count": 384,
+        "cumulative_seconds": 1178.969167842,
+        "union_wall_seconds": 1178.969167842,
+        "overlap_seconds": 0.0,
+        "per_span": {
+          "observations": 384,
+          "min_seconds": 0.549373833,
+          "median_seconds": 1.8890959585,
+          "max_seconds": 18.03059325,
+          "cumulative_seconds": 1178.9691678419993
+        }
+      }
+    },
+    "elo": null,
+    "population_p_values": null,
+    "ranking": null,
+    "timing_interpretation": "Arm active=model work+independent final adjudication. Shared setup and scheduling waits remain separate. Provider and Docker spans nest within measured parents; report their unions and cumulative durations without adding them to active time. Setup snapshot timing files are never summed."
+  },
+  "offline_verification": {
+    "status": "prior_exact_source_receipts_reconciled_before_execution",
+    "physically_executed_this_cycle": 0,
+    "prior_physically_executed_checks": 174,
+    "source_inputs_reconciled": 225,
+    "receipt": {
+      "path": "runs/investigation-cycle-3-offline-qualification/20261002T143352-37d78526/summary.json",
+      "sha256": "c80f8d94d413d451fb023e1ac0181cbd85809ad30d2852fe0547a1a9fd067639"
+    },
+    "static_type_baseline_diagnostics": 117
+  },
+  "budget": {
+    "cap_micro_usd": 50000000,
+    "committed_micro_usd": 35543626,
+    "unsettled_reservations": 0,
+    "pending_promotions": 0,
+    "remaining_micro_usd": 14456374,
+    "new_api_calls": 0
+  },
+  "history": "Original rehearsal1 and its failed audit/diagnostic traversals remain retained and uncertified. This is a new complete execution under the corrected contract, with no source-comparison waiver.",
+  "evidence_bindings": [
+    {
+      "path": "analysis/continuation-followup-physical-checkpoint-v1.json",
+      "sha256": "1ee09c5bdea4b8cd49840b9b781afbe00b40b4dd5475e198a77bfe30ab365718"
+    },
+    {
+      "path": "results/followup-qualification-2/results.json",
+      "sha256": "5629b0fc6741376e7f438ab57a4d6ebf149b8c4eec693c96eacd6a0630da5301"
+    },
+    {
+      "path": "results/followup-qualification-2/manifest.json",
+      "sha256": "a3988c5ea50302c591d2992710c946b830b976d752b2601b2451b07e320a63f1"
+    },
+    {
+      "path": "runs/investigation-cycle-4-qualification-review-1.json",
+      "sha256": "432746b9c6c2020561b970710383d4b38ed64034e662f7d8bbe8dee00afa4403"
+    },
+    {
+      "path": "results/followup-rehearsal-2/results.json",
+      "sha256": "73d1a134a6810117145248f6d982288e3c42e00deb185994af4fa0583aab8a1c"
+    },
+    {
+      "path": "results/followup-rehearsal-2/frozen-trajectories.json",
+      "sha256": "663649016282d2cf2c5805ecdb4fffaa2850303df81bed99ead5ec52863e4487"
+    },
+    {
+      "path": "results/followup-rehearsal-2/timings.json",
+      "sha256": "45a279b3ec4e0e23c8812c83170d0f32944f0f4482757f1ace871f6a4076b0ea"
+    },
+    {
+      "path": "results/followup-rehearsal-2/independent-audit.json",
+      "sha256": "e39b8f78c855947a5980b881cb55d786ba7db28d5449251ace634b1cc7a6a9e3"
+    },
+    {
+      "path": "results/followup-comparison-2/summary.json",
+      "sha256": "1302fa69f6f414983eef78dbdeccd7c7ffe23fecdb281c67f16af7c5d46e9624"
+    },
+    {
+      "path": "runs/investigation-cycle-3-scientific-freeze-1.json",
+      "sha256": "2ec06268f94b46a58f4a3c5f9972b31211b2ab102a8178d801dab9924699aa84"
+    }
+  ],
+  "evidence_availability": "Raw generated runs and results remain retained locally under repository policy. This authored checkpoint publishes their exact hashes without publishing generated directories.",
+  "next_steps": [
+    "Resolve concrete pilot funding/admission headroom under the unchanged current $50 cumulative cap.",
+    "Any change to live authorization or plan changes the scientific contract and requires matching fresh qualification and full rehearsal before dispatch.",
+    "Integrate and qualify real peer transport separately; task authority, model decision loops and fair 2x2 live comparison remain outstanding.",
+    "Run independently held-out task-family confirmation under a predeclared analysis and stopping rule; this two-domain development cohort is not confirmation."
+  ],
+  "limitations": [
+    "Scripted success and timing do not measure live model quality, a speed advantage, Elo or statistical superiority.",
+    "This is a controller rehearsal, not a live gossip-versus-orchestrator experiment.",
+    "Recorded times are one local physical execution; shared setup and nested Docker time must not be added to arm-active time.",
+    "Trusted-host consistency is not independent external execution attestation.",
+    "No extra funding or live dispatch is authorized by an audit certificate."
+  ]
+}

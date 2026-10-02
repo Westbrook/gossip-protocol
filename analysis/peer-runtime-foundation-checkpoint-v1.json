@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "protocol": "peer-runtime-foundation-checkpoint-v1",
+  "created_utc": "2026-10-02T15:37:43.227397+00:00",
+  "status": "merged_tree_qualified",
+  "root_implementation_commit": "0a259e6",
+  "isolated_implementation_commit": "766b9f128f1dd69b687b958a5c7b8efab3247060",
+  "scope": "Actual separate local processes, private durable stores, bounded TCP gossip and two-broker client fallback. No agent coding integration or quality comparison.",
+  "verification": {
+    "protocol": "cycle4-merged-verification-reconciliation-v1",
+    "recorded_utc": "2026-10-02T15:36:56.006786+00:00",
+    "status": "passed",
+    "checks": 33,
+    "physically_executed": 33,
+    "reused": 0,
+    "skipped": 0,
+    "discovered_total": 1307,
+    "duration_seconds": 7.019874417223036,
+    "source_inputs_reconciled": 230,
+    "initial_final_current_runtime_match": true,
+    "combined_static": "passed",
+    "historical_type_baseline_count": 117,
+    "peer_sources_equal_reviewed_clone": true,
+    "scientific_contract_unchanged": true,
+    "contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "receipts": [
+      {
+        "path": "runs/investigation-cycle-4-merged-qualification/20261002T153510-5d3ac490/summary.json",
+        "sha256": "dd6c652598a03e7ec514a069c7f338b51dbf0964ec8a3a662430a40e2d2912dc"
+      },
+      {
+        "path": "runs/investigation-cycle-4-merged-qualification/20261002T153510-5d3ac490/inputs.json",
+        "sha256": "a36ab17b132723102f514551dfd2ded38a4e0395ccd0a0919bdc5883751d2040"
+      },
+      {
+        "path": "runs/investigation-cycle-4-merged-qualification/20261002T153510-5d3ac490/static.json",
+        "sha256": "ebe517c6862e527957d155f48ee613c9cc5f6d2e2c8a13d7bc64c7048c434550"
+      },
+      {
+        "path": "runs/investigation-cycle-4-merged-qualification/20261002T153510-5d3ac490/runtime-final.json",
+        "sha256": "a3ec85c057174a205e62b5d8945e54c0da7922d67e03822f12bbd423ade31d81"
+      }
+    ],
+    "previous_checks": "Prior174 checks were reconciled before current physical qualification; they were not re-executed. New runtime verification is a fresh merged-tree33-test run with exact root inputs, environment and ordered suite."
+  },
+  "scenarios": [
+    "Autonomous gossip with more events than one transfer batch",
+    "Artifact nesting boundary through complete wire envelopes",
+    "Bidirectional transport partition, process restart and autonomous convergence after healing",
+    "Previously replicated broker state, primary death, standby publication and restarted-primary catch-up",
+    "Forced exit before commit and after commit before acknowledgment",
+    "Atomic incoming-merge crash with explicit manual replay",
+    "Reordered entries and duplicate batches over actual TCP",
+    "Malformed/authentication-failing frames and bounded partial connections",
+    "Exclusive process ownership of a node store"
+  ],
+  "isolated_evidence": {
+    "fast_checks": 24,
+    "process_checks": 9,
+    "role": "Development verification under isolated clone identity, not reused as root qualification",
+    "source_review": {
+      "path": "runs/peer-foundation-isolated-cycle4/peer-foundation-review-1.json",
+      "sha256": "710af9e034162e5f95ec50457c4cdc66ba1ba969a0425c857359b842dd59bd7d"
+    },
+    "handoff": {
+      "path": "runs/peer-foundation-isolated-cycle4/peer-foundation-handoff-1.json",
+      "sha256": "5125dfc75f59eb928dbf656b30dd41a439aec38aaa5b1bf015ef26cb52ce3b02"
+    },
+    "archival_copy": {
+      "path": "runs/peer-foundation-isolated-cycle4-copy-1.json",
+      "sha256": "0f98d9a73e2d34e5732dc9d755ab14dc86c755cdf7ee15da24d714fc87f3d016"
+    },
+    "infrastructure_failure": "First process run failed before socket readiness with sandbox bind PermissionError;1 failed readiness/8notrun retained. Same frozen code passed after narrow loopback escalation.",
+    "resource_declaration_correction": "First fast run incorrectly declared transaction-thread class weight1; corrected to3 exclusive and disclosed exact overlap interval before final qualification"
+  },
+  "source_bindings": {
+    "gossip_harness/peer_runtime_v1.py": "f17ecd4e16eb83de3ef755240d0d19e135bb83c5e77919aa08a2fd87a09ffe14",
+    "gossip_harness/peer_store_v1.py": "86f80448d090c867fe42c9c78d27f489b8b908ef175a8c39f6079cbd5b97f47f",
+    "tests/test_peer_runtime_v1.py": "a4f35bb30082ea526332a7307518ff9f59eeea2c7908827b20e05de83b95430f",
+    "tests/test_peer_store_v1.py": "d3f4660da07d1b266cfd0929c6b34f042a7da02c04ddf9a08e87ae846eb8a9fc",
+    "verification-manifest.json": "6e29e3a599bedeb22ec4f78473d0ffef7e5509a859f22fb06064fe5d70eeedd7",
+    "pyproject.toml": "ead5b6259e28157b6b749c4b924604512da16a4f1480ab9614a49e82c1b6055b",
+    "peer-runtime-foundation-contract.json": "4cd4da843c126a89e31ca9308b0477b222574641a19173c8dd3736f25bfb7099",
+    "docs/peer-runtime-v1.md": "83428f0619b54e2da319638a6366da476316d0e591347d556636e8c01772bbcf"
+  },
+  "authority": {
+    "task_planning": false,
+    "provider_spending": false,
+    "candidate_execution": false,
+    "git_acceptance": false,
+    "global_completion": false
+  },
+  "bounds": {
+    "peers": 16,
+    "events_per_store": 256,
+    "artifact_json_bytes": 16000,
+    "events_per_batch": 8,
+    "frame_bytes": 512000,
+    "active_inbound_handlers_per_node": 4,
+    "contacts_per_turn_max": 4,
+    "connection_deadline_seconds": 2,
+    "connection_deadline_scope": "Client and socket/frame I/O only; server mutation completion may exceed it while SQLite waits up to ten seconds",
+    "broker_fanout_min": 2,
+    "broker_count": 2,
+    "artifact_content_depth_edges": 48,
+    "wire_depth_edges": 64
+  },
+  "broker_acknowledgment": "Receiver-local commit only; asynchronous replication, no quorum/consensus or simultaneous unreplicated source-and-broker loss guarantee",
+  "limitations": [
+    "Trusted shared cluster capability, local TCP and application-level link gates",
+    "Receiver-local commit ACK; asynchronous broker replication without quorum",
+    "Per-boot counters; socket deadline does not bound mutation completion",
+    "Manual receive-crash replay and within-batch reorder tests only",
+    "No API, Docker, candidate execution, money or release authority",
+    "stats_since_boot reset after restart; live fault comparisons require durable telemetry or external accumulation across every boot",
+    "Client timeout leaves mutation outcome ambiguous; reconcile using stable command IDs/content bindings rather than treating timeout as rollback",
+    "Manual incoming-merge crash replay and within-batch event reorder are narrower than autonomous receive-crash recovery and network packet reordering",
+    "Loopback transport-denial tests do not establish WAN, kernel packet loss or host-loss behavior.",
+    "Broker fixtures have two clients and two relay services; equivalent live-worker resources and healthy capacity are not established.",
+    "HMAC authenticates trusted cluster capability, not Byzantine producer identity; this is not production authentication."
+  ],
+  "remaining": [
+    "Integrate genuine peer-local agent decisions and matched central controllers",
+    "Add narrow common budget, lease, Git CAS and independent acceptance adapters",
+    "Qualify healthy capacity, worker/relay resource equivalence and exact fault exposure",
+    "Retain durable cross-restart attempt/byte telemetry and reconcile ambiguous mutations",
+    "Run full2x2 live cohort and independently held-out task-family statistical design",
+    "Study autonomous tool loops and multi-host fault tolerance separately"
+  ],
+  "api_calls": 0,
+  "api_spending_micro_usd": 0,
+  "model_quality_evidence": false,
+  "evidence_availability": "Generated execution receipts and fixtures remain retained locally. Exact copies of all163 isolated evidence files are under runs/peer-foundation-isolated-cycle4 with their original provenance preserved. Authored source and this checkpoint are committed."
+}

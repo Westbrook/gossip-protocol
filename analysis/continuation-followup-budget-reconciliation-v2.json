@@ -1,0 +1,292 @@
+{
+  "bindings": [
+    {
+      "path": "analysis/continuation-followup-budget-planning.json",
+      "sha256": "946e581ffb5e143cde736e3dcb6270ecdfbfd2b88151a7515590e423cec202f3"
+    },
+    {
+      "path": "analysis/continuation-followup-budget-reconciliation-v1.json",
+      "sha256": "51cc03bff96fabc394c5d3d5f4dd532a6410630d5a017c15b5e2e754d54ec5ab"
+    },
+    {
+      "path": "runs/investigation-cycle-3-budget-source-review-1.json",
+      "sha256": "9a448321cb2b5cc35a37bb94f89f65f4a8195d2f9305b52db98a0a0660c72e55"
+    },
+    {
+      "path": "results/followup-rehearsal-2/results.json",
+      "sha256": "73d1a134a6810117145248f6d982288e3c42e00deb185994af4fa0583aab8a1c"
+    },
+    {
+      "path": "results/followup-rehearsal-2/independent-audit.json",
+      "sha256": "e39b8f78c855947a5980b881cb55d786ba7db28d5449251ace634b1cc7a6a9e3"
+    },
+    {
+      "path": "results/followup-comparison-2/summary.json",
+      "sha256": "1302fa69f6f414983eef78dbdeccd7c7ffe23fecdb281c67f16af7c5d46e9624"
+    },
+    {
+      "path": "runs/investigation-cycle-3-scientific-freeze-1.json",
+      "sha256": "2ec06268f94b46a58f4a3c5f9972b31211b2ab102a8178d801dab9924699aa84"
+    },
+    {
+      "path": "runs/investigation-cycle-3-final-reconciliation-1.json",
+      "sha256": "4e5021bc52e6d8792cd4d0f99cef17c1e226a0ec4d437e4c99c1375f000bf611"
+    },
+    {
+      "path": "continuation-followup-study-plan.json",
+      "sha256": "1b82a67d713cda9e6cd7187a0fd438a41f6a2634e57fceec107b2b3b148cbf61"
+    },
+    {
+      "path": "gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    }
+  ],
+  "created_at": "2026-10-02T15:35:38.883027+00:00",
+  "forecast_assumptions_retained": {
+    "central_demand": {
+      "cheap_repairs": 15,
+      "cheap_scouts": 32,
+      "initial_cheap_builders": 80,
+      "strong_repairs": 4,
+      "strong_reviews": 63,
+      "total_calls": 194
+    },
+    "central_demand_method": "Round historical 34/13 reviews, 8/13 cheap repairs and 2/13 strong repairs per attempted milestone over 24 offered milestones. This assumes all stages are reached; a bounded stop may cost less while failing the intended completion objective.",
+    "controller_context": "Retained repair aliases and feedback can enlarge review context. The rehearsal reaches six candidate aliases and a 218,274-byte API payload. Live generated source/evidence may differ.",
+    "historical_basis": "143 actual retained benchmark calls, priced usage $10.038937. Use the eight four-candidate trajectories and 13 attempted milestones for matched role demand; exclude strong-anchor means and correct milestone weighting for a full 24-milestone scenario.",
+    "input_tokens": "Central sensitivity assumes 50\u201375% of stage-weighted historical input tokens. Complete scripted payload measurements qualitatively support smaller context but are bytes, not tokenizer counts; do not directly substitute their ratios for live token multipliers.",
+    "maximum_opportunities": 256,
+    "output_tokens": "Central scenarios use unchanged historical mean outputs at low reasoning. Stress scenarios scale means up to 2x; every role/stage mean remains within the 12,288-token output ceiling. No output length probability is calibrated.",
+    "physical_setup": "Four blocks share first-milestone independent A/B setup and all-three-arm scouts once. Full24-milestone initial builders 80 and scouts 32. Later stages follow arm-specific source. No double-counting imports.",
+    "scenario_sensitivities": [
+      {
+        "estimated_usage_usd": 9.913675718,
+        "id": "central_compact_input",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 15.440155718,
+        "total_physical_calls": 194
+      },
+      {
+        "estimated_usage_usd": 12.781070839,
+        "id": "central_cautious_input",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 18.307550839,
+        "total_physical_calls": 194
+      },
+      {
+        "estimated_usage_usd": 15.64846596,
+        "id": "historical_input_unchanged",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 21.17494596,
+        "total_physical_calls": 194
+      },
+      {
+        "estimated_usage_usd": 24.415946186,
+        "id": "maximum_calls_at_observed_token_means",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 29.942426186,
+        "total_physical_calls": 256
+      },
+      {
+        "estimated_usage_usd": 29.14948472,
+        "id": "retained_pool_and_50pct_output_growth_stress",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 34.67596472,
+        "total_physical_calls": 256
+      },
+      {
+        "estimated_usage_usd": 32.340257532,
+        "id": "retained_pool_and_doubled_output_stress",
+        "planning_commitment_with_one_extra_strong_reservation_usd": 37.866737532,
+        "total_physical_calls": 256
+      }
+    ],
+    "uncertainty": "The working band and stress scenarios are planning assumptions, not confidence intervals or guarantees. No inference of future call demand is made from the forced 228-call rehearsal trace.",
+    "working_usage_band_usd": [
+      10,
+      13
+    ]
+  },
+  "funding_proposal": {
+    "certificate_boundary": "The passing certificate binds the current $50 plan with live_enabled=false. It is not an $80 funding approval or proof for a differently hashed future plan. If funding/configuration changes the frozen contract, root must satisfy the applicable exact-contract qualification/rehearsal/audit gates before any paid dispatch.",
+    "cumulative_cap_comparison": [
+      {
+        "cumulative_cap_micro_usd": 50000000,
+        "increase_over_current_cap_micro_usd": 0,
+        "incremental_available_micro_usd": 14456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": -3.851176839,
+          "central_compact_input": -0.983781718,
+          "central_moderate_input": -2.130739766,
+          "historical_input_unchanged": -6.71857196,
+          "maximum_calls_at_observed_token_means": -15.486052186,
+          "optimistic_fast_acceptance": 1.293792117,
+          "retained_pool_and_50pct_output_growth_stress": -20.21959072,
+          "retained_pool_and_doubled_output_stress": -23.410363532,
+          "retained_pool_growth_stress": -17.028817909
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 8929894
+      },
+      {
+        "cumulative_cap_micro_usd": 70000000,
+        "increase_over_current_cap_micro_usd": 20000000,
+        "incremental_available_micro_usd": 34456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": 16.148823161,
+          "central_compact_input": 19.016218282,
+          "central_moderate_input": 17.869260234,
+          "historical_input_unchanged": 13.28142804,
+          "maximum_calls_at_observed_token_means": 4.513947814,
+          "optimistic_fast_acceptance": 21.293792117,
+          "retained_pool_and_50pct_output_growth_stress": -0.21959072,
+          "retained_pool_and_doubled_output_stress": -3.410363532,
+          "retained_pool_growth_stress": 2.971182091
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 28929894
+      },
+      {
+        "cumulative_cap_micro_usd": 80000000,
+        "increase_over_current_cap_micro_usd": 30000000,
+        "incremental_available_micro_usd": 44456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": 26.148823161,
+          "central_compact_input": 29.016218282,
+          "central_moderate_input": 27.869260234,
+          "historical_input_unchanged": 23.28142804,
+          "maximum_calls_at_observed_token_means": 14.513947814,
+          "optimistic_fast_acceptance": 31.293792117,
+          "retained_pool_and_50pct_output_growth_stress": 9.78040928,
+          "retained_pool_and_doubled_output_stress": 6.589636468,
+          "retained_pool_growth_stress": 12.971182091
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 38929894
+      }
+    ],
+    "expected_new_usage_target_usd": [
+      10,
+      13
+    ],
+    "funding_approved": false,
+    "increase_over_existing_cap_micro_usd": 30000000,
+    "live_dispatch_authorized": false,
+    "not_guaranteed": "Neither $80 nor a passing scripted audit guarantees maximal-token funding, live project acceptance or complete cohort execution. The conservative $711.497856 full-context envelope is not a forecast and is not the requested allowance.",
+    "proposed_available_micro_usd_at_recorded_baseline": 44456374,
+    "proposed_cumulative_cap_micro_usd": 80000000,
+    "proposed_prior_commitment_headroom_before_next_strong_micro_usd": 38929894,
+    "rationale": "The $80 ceiling protects a complete demanding pilot better than the existing cap. The modeled full 256-call retained-pool/doubled-output case uses $32.340258, plus $5.526480 reservation headroom, leaving about $6.59 under the proposed $44.456374 available allowance. A $70 cumulative ceiling falls short of that same planning commitment by about $3.41 and barely misses the 1.5x-output case. The recommendation is contingency capacity, not a target to consume.",
+    "recommendation_still_reasonable": true,
+    "scope_if_approved": "The registered twelve-trajectory, two-domain continuation pilot, subject to its exact execution gates and cumulative accounting cap. Not blanket authorization for unrelated future studies.",
+    "suggested_user_question": "The full scripted pilot and independent audit passed. May I raise the cumulative API budget from $50 to $80 (an additional $30) and run the registered 12-trajectory live pilot after its funded execution gates are satisfied? Expected new usage is about $10\u201313; the higher ceiling covers demanding repairs and reservation headroom and does not guarantee completion."
+  },
+  "independent_read_only_sanity_review": {
+    "result": "Official audit/comparator and their principal bindings agree; model/call/price/reservation assumptions remain unchanged. The $80 contingency remains reasonable but unapproved; the $50 certificate does not authorize the proposed contract.",
+    "reviewer": "/root/budget_adjustment/journal_audit"
+  },
+  "next_action": "Root may present the concrete funding choice to the user. Until an applicable approval exists and the funded contract satisfies its exact gates, preserve the $50 cap and keep live dispatch disabled.",
+  "official_evidence": {
+    "accepted_scripted_trajectories": 12,
+    "audit_protocol": "independent-continuation-followup-cohort-audit-v2",
+    "audit_waiver_applied": false,
+    "comparison_status": "certified_complete",
+    "completed_scripted_milestones": 24,
+    "evidence_class": "scripted_infrastructure_control",
+    "independent_audit_passed": true,
+    "interpretation": "This is now certified complete scripted infrastructure evidence. It demonstrates the registered execution, retention, accounting and acceptance mechanics under scripted controls. It provides no new live model-quality, provider-token-cost or repair-demand observation.",
+    "model_quality_evidence": false,
+    "physical_docker_executions": 384,
+    "physical_provider_calls": 0,
+    "qualification_binding": {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/results/followup-qualification-2/results.json",
+      "sha256": "5629b0fc6741376e7f438ab57a4d6ebf149b8c4eec693c96eacd6a0630da5301"
+    },
+    "scripted_calls": 228,
+    "study_usage_micro_usd": 0
+  },
+  "official_rehearsal_contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+  "protocol": "continuation-followup-budget-reconciliation-v2",
+  "purpose": "Bind the budget recommendation to the corrected official rehearsal/audit and prepare a concrete prospective funding decision. Preserve the original forecast and failed-audit-run diagnostic.",
+  "reconciliation_against_diagnostic_v1": {
+    "aggregate_role_stage_and_policy_request_size_summaries_identical": true,
+    "api_payload_guard_bytes": 512000,
+    "arm_local_scripted_calls": 188,
+    "changed_contract_sources": {
+      "analysis/audit_continuation_followup.py": {
+        "certified_rehearsal2_sha256": "e96ed0a86d71f999f3ab9009503a223e48bbf41e1c1a2cf6335eb37655976d1b",
+        "rehearsal1_sha256": "70d138460839ff682a3088170afce29bb02047455144bdab7a6ff132ef9b8654"
+      },
+      "analysis/audit_followup_stage.py": {
+        "certified_rehearsal2_sha256": "bc0113294398ddc50607351662d0ac99d4abb22069f5edbe92da6eba98d0d838",
+        "rehearsal1_sha256": "abf813359a8ac8474bba1ec520410d952c157bf874c80dcd15c4e7497688d6a4"
+      },
+      "analysis/continuation_followup_comparison.py": {
+        "certified_rehearsal2_sha256": "e721ab50c03bf5ab66d7b126ec8f8d07ec1de23e402e1fc69fa523cc0b44dda9",
+        "rehearsal1_sha256": "ee9abdc54ba5f3dc62a5da2569bbafa3d7c448c867c2455b3d2b476e85ba89bc"
+      }
+    },
+    "core_runner_controller_worker_fixture_sources_unchanged": true,
+    "known_scripted_failures": 8,
+    "maximum_api_payload_bytes": 218274,
+    "measurement_method": "Same offline unchanged OpenAIWorker._payload serialization and canonical WorkerRequest encoding documented in v1, using a synthetic placeholder and transport that raises if invoked. All 228 current request hashes were checked. Canonical and payload statistics by role, milestone and reviewer policy match v1 exactly. No run/transport method, candidate program or test suite was executed.",
+    "only_top_level_contract_change": "extra_sources",
+    "overall_request_bytes": {
+      "api_input_text_bytes": {
+        "count": 228,
+        "maximum": 183202,
+        "mean": 59687.316,
+        "median": 42508.0,
+        "minimum": 18468,
+        "p90_nearest_rank": 120018
+      },
+      "api_payload_bytes": {
+        "count": 228,
+        "maximum": 218274,
+        "mean": 71963.833,
+        "median": 53323.5,
+        "minimum": 22809,
+        "p90_nearest_rank": 140298
+      },
+      "worker_request_bytes": {
+        "count": 228,
+        "maximum": 183105,
+        "mean": 59637,
+        "median": 42468.0,
+        "minimum": 18430,
+        "p90_nearest_rank": 119921
+      }
+    },
+    "pinned_models_pricing_output_ceiling_and_call_envelope_unchanged": true,
+    "plan_unchanged": true,
+    "provider_calls_and_charges": 0,
+    "request_manifest_sha256": "6313dd013a658e3fda8e1a4fcfe0f57f8d1e23a36320f65d8d0da7f87f27be1a",
+    "scripted_counts": {
+      "cheap_initial": 80,
+      "cheap_repair": 20,
+      "reviewer": 76,
+      "scout": 32,
+      "strong_repair": 20
+    },
+    "scripted_results": 220,
+    "shared_setup_scripted_calls": 40,
+    "what_changed_in_interpretation": "The official second-run evidence has a passing independent audit and certified comparator. The earlier run remains an uncertified diagnostic and is neither overwritten nor retrospectively certified."
+  },
+  "reservation_headroom": {
+    "allowance_heuristic": "Estimated total charges plus one full strong reservation supplies conservative late-call planning headroom for the phased schedule. It is not an exact measured peak or a provider invoice.",
+    "balance_source": "Bound root accounting reconciliation, reconfirmed in root task instruction. This review did not open the ledger.",
+    "existing_cumulative_cap_micro_usd": 50000000,
+    "four_cheap_concurrent_reservations_micro_usd": 1421184,
+    "historical_peak_limit": "The official audit relies on qualified transactional admission guards and explicitly does not independently reconstruct actual historical reservation-time peaks.",
+    "maximum_prior_incremental_commitments_before_next_strong_dispatch_micro_usd": 8929894,
+    "meaning": "A further strong request must fit its full reservation before dispatch. With the current recorded balance, prior settled/reserved study usage above $8.929894 prevents that next strong call. The last admitted call may settle above this threshold, so it is not an absolute cash-spend limit.",
+    "one_strong_reservation_micro_usd": 5526480,
+    "recorded_remaining_micro_usd": 14456374,
+    "recorded_spent_micro_usd": 35543626
+  },
+  "schema_version": 2,
+  "scope_of_this_review": {
+    "api_calls": 0,
+    "audit_rerun": false,
+    "candidate_programs_executed": false,
+    "credentials_accessed": false,
+    "financial_authorization_granted": false,
+    "new_json_only": true,
+    "old_forecast_and_v1_preserved": true,
+    "source_plan_readme_or_ledger_mutated": false,
+    "tests_or_docker_run": false
+  },
+  "status": "certified_scripted_evidence_review_funding_not_approved"
+}

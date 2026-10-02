@@ -1039,10 +1039,40 @@ audit then exposed two integration defects: serialized promotion-lease field
 names and fresh scout-response JSON ordering. Audit v2 corrects both, with real
 Git/SQLite and scout producer regressions; 174 affected checks pass. A diagnostic
 traversal of all retained evidence found no further audit failure, but is not a
-certificate. The corrected frozen contract still needs new physical qualification
-and a complete matching rehearsal before live readiness or a scored comparison.
+certificate. Those original outputs remain retained and uncertified.
+The [corrected physical checkpoint](analysis/continuation-followup-physical-checkpoint-v2.json)
+records a new 42-row fixture qualification and complete rehearsal under the
+corrected contract. Its independent audit passes without source-comparison
+waivers: 12 accepted trajectories, 24 completed milestones, 384 fresh Docker
+executions and zero provider calls. The scripted comparison separates active
+work, shared setup and waiting time; it assigns no Elo or quality ranking.
+This qualifies the current execution path, not live model quality or a
+gossip advantage. Live dispatch remains disabled; a changed plan needs matching
+physical qualification and rehearsal before dispatch.
 The [request-size reconciliation](analysis/continuation-followup-budget-reconciliation-v1.json)
 is likewise diagnostic and does not authorize additional spending.
+The [certified-evidence budget update](analysis/continuation-followup-budget-reconciliation-v2.json)
+binds the new rehearsal. It retains the conditional $10–13 expected pilot usage
+and an unapproved proposal to raise the cumulative cap from $50 to $80 for
+repair demand and conservative reservation headroom; neither is a guarantee.
+
+## Real peer transport foundation
+
+The [peer runtime](docs/peer-runtime-v1.md) adds independently running local
+processes with private durable stores, bounded TCP gossip, and a two-broker
+adapter with client fallback. Tests exercise actual partitions, process death,
+lost acknowledgments, replay and recovery. Events carry evidence; this runtime
+has no task, spending, candidate-execution or Git-release authority.
+
+This is the transport foundation for the proposed live comparison. Equivalent
+worker and relay capacity, durable telemetry across restarts, real agent
+decisions and the full four-cell experiment remain outstanding. Broker
+acknowledgments confirm a receiver-local commit with asynchronous replication;
+they do not provide quorum durability.
+The [foundation checkpoint](analysis/peer-runtime-foundation-checkpoint-v1.json)
+binds independent source review and 33 passing merged-tree checks, including
+nine actual-process checks. The earlier sandbox socket-denial failure and
+corrected test-resource declaration remain separately disclosed.
 
 ## Research and review
 
