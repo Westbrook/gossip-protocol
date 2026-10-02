@@ -1,0 +1,49 @@
+{
+  "protocol": "gossip-peer-v1",
+  "phase": "Zero-API process/transport foundation; not a live-agent study",
+  "adapters": [
+    "bounded-peer-gossip",
+    "durable-two-broker-with-client-fallback"
+  ],
+  "bounds": {
+    "peers": 16,
+    "events_per_store": 256,
+    "artifact_json_bytes": 16000,
+    "events_per_batch": 8,
+    "frame_bytes": 512000,
+    "active_inbound_handlers_per_node": 4,
+    "contacts_per_turn_max": 4,
+    "connection_deadline_seconds": 2,
+    "connection_deadline_scope": "Client and socket/frame I/O only; server mutation completion may exceed it while SQLite waits up to ten seconds",
+    "broker_fanout_min": 2,
+    "broker_count": 2,
+    "artifact_content_depth_edges": 48,
+    "wire_depth_edges": 64
+  },
+  "authority": {
+    "task_planning": false,
+    "provider_spending": false,
+    "candidate_execution": false,
+    "git_acceptance": false,
+    "global_completion": false
+  },
+  "persistence": "SQLite WAL/FULL transactions, immutable artifact/event hashes, source command replay binding; peer-owned directory lock and fsynced routing configuration",
+  "faults": "Transport-denial links at node boundary, actual process death, transaction-boundary forced exit and lost acknowledgment; no kernel/WAN/host-loss emulation claim",
+  "authentication": "Ephemeral shared HMAC capability authenticates trusted cluster messages and request/response binding; no TLS or Byzantine producer guarantee",
+  "qualification_resource_weight": 5,
+  "remaining": [
+    "Source-bound agent/controller integration and shared authority adapter qualification",
+    "Equivalent measured healthy capacity and exact live fault/placement resource controls",
+    "Durable cross-restart measurement and explicit ambiguous-mutation reconciliation in live adapters",
+    "Full2x2 decision-placement/transport cohort",
+    "Independent task-family sampling, powered stopping, budget and held-out acceptance",
+    "Separate autonomous tool-loop and multi-host comparisons"
+  ],
+  "no_simulation_latency": "Actual process/socket behavior is observed; local time is not model, WAN or production latency.",
+  "measurement_limits": [
+    "stats_since_boot reset after restart; live fault comparisons require durable telemetry or external accumulation across every boot",
+    "Client timeout leaves mutation outcome ambiguous; reconcile using stable command IDs/content bindings rather than treating timeout as rollback",
+    "Manual incoming-merge crash replay and within-batch event reorder are narrower than autonomous receive-crash recovery and network packet reordering"
+  ],
+  "broker_acknowledgment": "Receiver-local commit only; asynchronous replication, no quorum/consensus or simultaneous unreplicated source-and-broker loss guarantee"
+}

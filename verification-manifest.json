@@ -1705,6 +1705,45 @@
       "isolation": "Whole class in one worker with shared expensive cohort setup and internal four-candidate pools; weight4 reserves the full default resource budget.",
       "disposition": "Run after cheap static and fast tests and before physical fixture qualification/full rehearsal.",
       "overlap_reason": "Stage/controller tests isolate transitions; this class exercises complete cohort orchestration, retention and readiness rejection against actual local Git."
+    },
+    "tests/test_peer_store_v1.py::PeerStoreTests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Bounded content integrity, origin equivocation, durable replay identity and all-or-nothing insertion.",
+      "isolation": "Separate class worker; private node processes/stores; only owned children terminated.",
+      "overlap": "Fast tests inspect store/frame contracts; process tests exercise the real transport and crash boundaries.",
+      "distinct_defect": "A central simulation or an unsafe acknowledgment could masquerade as durable independent local evidence.",
+      "boundary": "One verifier worker and up to two bounded transaction threads; real isolated SQLite data, no daemons/models.",
+      "disposition": "Foundation only; no candidate, paid API, release or orchestration authority.",
+      "overlap_reason": "Fresh physical process executions establish behavior that transaction and frame tests cannot prove."
+    },
+    "tests/test_peer_runtime_v1.py::PeerProtocolTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Frame limits, exact bytes and authentication reject malformed/tampered messages.",
+      "isolation": "Separate class worker; private node processes/stores; only owned children terminated.",
+      "overlap": "Fast tests inspect store/frame contracts; process tests exercise the real transport and crash boundaries.",
+      "distinct_defect": "A central simulation or an unsafe acknowledgment could masquerade as durable independent local evidence.",
+      "boundary": "Real socketpair framing and authenticated envelope data; no daemon/model execution.",
+      "disposition": "Foundation only; no candidate, paid API, release or orchestration authority.",
+      "overlap_reason": "Fresh physical process executions establish behavior that transaction and frame tests cannot prove."
+    },
+    "tests/test_peer_runtime_v1.py::PeerProcessTests": {
+      "lane": "fixtures",
+      "weight": 5,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Autonomous local visibility, real transfer, partitions, durable broker failover, atomic process crashes and deduplicated recovery.",
+      "isolation": "Separate class worker; private node processes/stores; only owned children terminated.",
+      "overlap": "Fast tests inspect store/frame contracts; process tests exercise the real transport and crash boundaries.",
+      "distinct_defect": "A central simulation or an unsafe acknowledgment could masquerade as durable independent local evidence.",
+      "boundary": "Up to four independently running TCP daemons plus one verifier worker; fresh SQLite stores and retained fixture logs.",
+      "disposition": "Foundation only; no candidate, paid API, release or orchestration authority.",
+      "overlap_reason": "Fresh physical process executions establish behavior that transaction and frame tests cannot prove."
     }
   },
   "audit": {
