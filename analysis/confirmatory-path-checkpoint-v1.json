@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "protocol": "confirmatory-path-checkpoint-v1",
+  "created_utc": "2026-10-02T17:45:23.528350+00:00",
+  "status": "source_audit_and_recommendation_only",
+  "baseline_commit": "0d2d7cee7f9941a247bd6d61b9914a27eb1f132b",
+  "user_goal": {
+    "objective": "Keep expanding investigation for evidence for or against the technique, and commit/push verified work between cycles.",
+    "priority": "Higher-quality completed software without losing progress or stopping; speed and cost are secondary.",
+    "not_user_selected": [
+      "+10 percentage point worthwhile-effect margin",
+      "800 family pairs or any fixed confirmatory sample size",
+      "replacement statistical interval",
+      "fault mixture or allocation of confirmatory error"
+    ]
+  },
+  "scope": {
+    "new_model_calls": 0,
+    "new_candidate_executions": 0,
+    "new_tests_run": 0,
+    "statistical_method_implemented": false,
+    "existing_power_recomputed": false,
+    "new_experiment_run": false,
+    "scientific_sources_changed": false,
+    "spending_authorized": false,
+    "goal_completion_claimed": false,
+    "artifact_validation": "JSON parse and retained source/pointer/value binding inspection only; no harness test or fresh study."
+  },
+  "sources": {
+    "benchmark_summary": {
+      "path": "results/benchmark-comparison-1/summary.json",
+      "sha256": "cb47894ea8b34acec6a19581c28220fdfcffa2e6f23b394d371a0a9752a3bb19",
+      "availability": "retained_local_generated_evidence_not_guaranteed_in_fresh_clone"
+    },
+    "confirmatory_design": {
+      "path": "analysis/benchmark-confirmatory-design-v4.json",
+      "sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587",
+      "availability": "repository_authored_source"
+    },
+    "next_experiment": {
+      "path": "analysis/benchmark-next-experiment-recommendation.json",
+      "sha256": "6b6489e92f79189bc32a3ff5215636fd548992d6aff06cf778e0a4c5abd2c480",
+      "availability": "repository_authored_source"
+    },
+    "four_cell_design": {
+      "path": "analysis/benchmark-live-gossip-followup-design-v2.json",
+      "sha256": "9a067d78c3807e9da28c830a6ad2ac166eb10a62bca1dceabb2abe348a0305ad",
+      "availability": "repository_authored_source"
+    },
+    "cycle6_checkpoint": {
+      "path": "analysis/peer-coding-payload-checkpoint-v1.json",
+      "sha256": "53d42557c2c94e3258137e6b8c83413e7989529565bb233b39ec6cab7b8ab74d",
+      "availability": "repository_authored_source"
+    },
+    "pilot_physical_checkpoint": {
+      "path": "analysis/continuation-followup-physical-checkpoint-v2.json",
+      "sha256": "684272a7e25d412870fcb66b18e72d4c72dc0e2459a62735f55267c78af0bc2a",
+      "availability": "repository_authored_source"
+    },
+    "pilot_funding": {
+      "path": "analysis/continuation-followup-budget-reconciliation-v2.json",
+      "sha256": "91fd019f89f59611b9c49ac68a8a5b51a0eda9998a3295598373d09a33b667cf",
+      "availability": "repository_authored_source"
+    },
+    "pilot_plan": {
+      "path": "continuation-followup-study-plan.json",
+      "sha256": "1b82a67d713cda9e6cd7187a0fd438a41f6a2634e57fceec107b2b3b148cbf61",
+      "availability": "repository_authored_source"
+    },
+    "statistics_source": {
+      "path": "analysis/confirmatory_statistics.py",
+      "sha256": "5289b38ed2f174a37b329094d09f97864857dd45ec472a459f04d0e9302c9740",
+      "availability": "repository_authored_source"
+    },
+    "cycle6_handoff": {
+      "path": "runs/investigation-cycle-6-handoff-1.json",
+      "sha256": "e9669fb00bdf574e336a9b27e636148c93d7a3704181de5b76613f99e76e43c7",
+      "availability": "retained_local_generated_evidence_not_guaranteed_in_fresh_clone"
+    }
+  },
+  "numerical_claims": [
+    {
+      "id": "independent-four-accepted",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/independent-four/accepted",
+      "value": 1,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "independent-four-trajectories",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/independent-four/trajectories",
+      "value": 4,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "independent-four-mean_requirement_coverage_equal_project_weight",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/independent-four/mean_requirement_coverage_equal_project_weight",
+      "value": 0.903183023872679,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "sequential-four-accepted",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/sequential-four/accepted",
+      "value": 0,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "sequential-four-trajectories",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/sequential-four/trajectories",
+      "value": 4,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "sequential-four-mean_requirement_coverage_equal_project_weight",
+      "source": "benchmark_summary",
+      "json_pointer": "/policies/sequential-four/mean_requirement_coverage_equal_project_weight",
+      "value": 0.7526525198938991,
+      "interpretation": "Descriptive completed live benchmark; no population interval or gossip causal effect. Coverage displays multiply the retained mean by 100 and round to one decimal percentage point."
+    },
+    {
+      "id": "benchmark-family-count",
+      "source": "benchmark_summary",
+      "json_pointer": "/application_identities",
+      "value": 2,
+      "interpretation": "The four matched blocks repeat two application families; seeds and test cases are not additional independent families."
+    },
+    {
+      "id": "cycle6-check-count",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/verification/checks",
+      "value": 85,
+      "interpretation": "Offline infrastructure checks, not software-project model-quality observations."
+    },
+    {
+      "id": "cycle6-new-provider-calls",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/new_provider_calls",
+      "value": 0,
+      "interpretation": "No paid model observations in cycle 6."
+    },
+    {
+      "id": "pilot-trajectory-count",
+      "source": "pilot_physical_checkpoint",
+      "json_pointer": "/physical_rehearsal/trajectories",
+      "value": 12,
+      "interpretation": "Scripted rehearsal only; not a live quality result."
+    },
+    {
+      "id": "pilot-provider-call-count",
+      "source": "pilot_physical_checkpoint",
+      "json_pointer": "/physical_rehearsal/physical_provider_calls",
+      "value": 0,
+      "interpretation": "All rehearsal outcomes are offline controls."
+    },
+    {
+      "id": "pilot-projects",
+      "source": "pilot_plan",
+      "json_pointer": "/projects",
+      "value": [
+        "warehouse",
+        "job-queue"
+      ],
+      "interpretation": "These two development domains cannot later serve as unseen confirmation for the chosen policy."
+    },
+    {
+      "id": "pilot-repetitions",
+      "source": "pilot_plan",
+      "json_pointer": "/repetitions",
+      "value": 2,
+      "interpretation": "Repeated domains do not create additional independent task families."
+    },
+    {
+      "id": "pilot-policies",
+      "source": "pilot_plan",
+      "json_pointer": "/policies",
+      "value": {
+        "current-independent": {
+          "controller": "current",
+          "formation": "independent",
+          "initial_builders": 4,
+          "model": "cheap"
+        },
+        "improved-independent": {
+          "controller": "improved",
+          "formation": "independent",
+          "initial_builders": 4,
+          "model": "cheap"
+        },
+        "improved-sequential": {
+          "controller": "improved",
+          "formation": "sequential",
+          "initial_builders": 4,
+          "model": "cheap"
+        }
+      },
+      "interpretation": "Three-arm controller/formation comparison, separate from gossip topology."
+    },
+    {
+      "id": "pilot-live-authorization",
+      "source": "pilot_plan",
+      "json_pointer": "/readiness/live_authorized",
+      "value": false,
+      "interpretation": "No authorization is created by this checkpoint."
+    },
+    {
+      "id": "cycle6-budget-cap_micro_usd",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/cap_micro_usd",
+      "value": 50000000,
+      "interpretation": "Historical cycle-6 accounting/authorization snapshot; not a live balance or a new authorization."
+    },
+    {
+      "id": "cycle6-budget-committed_micro_usd",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/committed_micro_usd",
+      "value": 35543626,
+      "interpretation": "Historical cycle-6 accounting/authorization snapshot; not a live balance or a new authorization."
+    },
+    {
+      "id": "cycle6-budget-remaining_micro_usd",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/remaining_micro_usd",
+      "value": 14456374,
+      "interpretation": "Historical cycle-6 accounting/authorization snapshot; not a live balance or a new authorization."
+    },
+    {
+      "id": "cycle6-budget-proposed_cap_micro_usd",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/proposed_cap_micro_usd",
+      "value": 80000000,
+      "interpretation": "Historical cycle-6 accounting/authorization snapshot; not a live balance or a new authorization."
+    },
+    {
+      "id": "cycle6-budget-proposal_approved",
+      "source": "cycle6_checkpoint",
+      "json_pointer": "/budget/proposal_approved",
+      "value": false,
+      "interpretation": "Historical cycle-6 accounting/authorization snapshot; not a live balance or a new authorization."
+    },
+    {
+      "id": "proposed-practical-margin",
+      "source": "confirmatory_design",
+      "json_pointer": "/primary_design/practical_margin",
+      "value": 0.1,
+      "interpretation": "Recommended +10 percentage points, not a user-approved threshold and not a fitted effect from the pilot."
+    },
+    {
+      "id": "historical-api-cost-per-pair",
+      "source": "confirmatory_design",
+      "json_pointer": "/budget/historical_api_cost_per_pair_usd",
+      "value": 2.125539,
+      "interpretation": "Two-arm historical linear API-only illustration, excluding strong anchors and all engineering/local-compute cost; not a forecast or current quote."
+    }
+  ],
+  "power_examples": {
+    "source": "confirmatory_design",
+    "copied_without_recomputation": true,
+    "selected_rows": [
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/15",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "20pp_gain_40pct_discordance",
+          "pairs": 100,
+          "independent_task_families": 100,
+          "trajectories": 200,
+          "p_treatment_only": 0.3,
+          "p_control_only": 0.1,
+          "true_acceptance_difference": 0.19999999999999998,
+          "discordance": 0.4,
+          "direction_test_power": 0.8121506335286571,
+          "practical_interval_decision": {
+            "meaningful_benefit": 0.03980454359626085,
+            "rules_out_meaningful_benefit": 3.389267429951685e-07,
+            "inconclusive": 0.9601951174769962
+          },
+          "historical_linear_api_cost_usd": 212.5539
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/17",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "20pp_gain_40pct_discordance",
+          "pairs": 200,
+          "independent_task_families": 200,
+          "trajectories": 400,
+          "p_treatment_only": 0.3,
+          "p_control_only": 0.1,
+          "true_acceptance_difference": 0.19999999999999998,
+          "discordance": 0.4,
+          "direction_test_power": 0.9896276381908474,
+          "practical_interval_decision": {
+            "meaningful_benefit": 0.15997249966021673,
+            "rules_out_meaningful_benefit": 9.352534915308155e-09,
+            "inconclusive": 0.8400274909872483
+          },
+          "historical_linear_api_cost_usd": 425.1078
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/19",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "20pp_gain_40pct_discordance",
+          "pairs": 400,
+          "independent_task_families": 400,
+          "trajectories": 800,
+          "p_treatment_only": 0.3,
+          "p_control_only": 0.1,
+          "true_acceptance_difference": 0.19999999999999998,
+          "discordance": 0.4,
+          "direction_test_power": 0.9999910998527249,
+          "practical_interval_decision": {
+            "meaningful_benefit": 0.5131388943287258,
+            "rules_out_meaningful_benefit": 2.5709641454907742e-11,
+            "inconclusive": 0.4868611056455645
+          },
+          "historical_linear_api_cost_usd": 850.2156
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/21",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "20pp_gain_40pct_discordance",
+          "pairs": 800,
+          "independent_task_families": 800,
+          "trajectories": 1600,
+          "p_treatment_only": 0.3,
+          "p_control_only": 0.1,
+          "true_acceptance_difference": 0.19999999999999998,
+          "discordance": 0.4,
+          "direction_test_power": 0.9999999999992366,
+          "practical_interval_decision": {
+            "meaningful_benefit": 0.9248244137007211,
+            "rules_out_meaningful_benefit": 1.0887499459175247e-15,
+            "inconclusive": 0.07517558629927781
+          },
+          "historical_linear_api_cost_usd": 1700.4312
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/27",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "no_gain_30pct_discordance",
+          "pairs": 100,
+          "independent_task_families": 100,
+          "trajectories": 200,
+          "p_treatment_only": 0.15,
+          "p_control_only": 0.15,
+          "true_acceptance_difference": 0.0,
+          "discordance": 0.3,
+          "direction_test_power": 0.00817803446579707,
+          "practical_interval_decision": {
+            "meaningful_benefit": 6.33329042269909e-08,
+            "rules_out_meaningful_benefit": 0.055670149359361154,
+            "inconclusive": 0.9443297873077345
+          },
+          "historical_linear_api_cost_usd": 212.5539
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/29",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "no_gain_30pct_discordance",
+          "pairs": 200,
+          "independent_task_families": 200,
+          "trajectories": 400,
+          "p_treatment_only": 0.15,
+          "p_control_only": 0.15,
+          "true_acceptance_difference": 0.0,
+          "discordance": 0.3,
+          "direction_test_power": 0.009272382214763073,
+          "practical_interval_decision": {
+            "meaningful_benefit": 1.2946773650289783e-09,
+            "rules_out_meaningful_benefit": 0.21741550722554087,
+            "inconclusive": 0.7825844914797817
+          },
+          "historical_linear_api_cost_usd": 425.1078
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/31",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "no_gain_30pct_discordance",
+          "pairs": 400,
+          "independent_task_families": 400,
+          "trajectories": 800,
+          "p_treatment_only": 0.15,
+          "p_control_only": 0.15,
+          "true_acceptance_difference": 0.0,
+          "discordance": 0.3,
+          "direction_test_power": 0.009938531534249291,
+          "practical_interval_decision": {
+            "meaningful_benefit": 1.5225445073336566e-12,
+            "rules_out_meaningful_benefit": 0.6256792951570973,
+            "inconclusive": 0.37432070484138014
+          },
+          "historical_linear_api_cost_usd": 850.2156
+        }
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/grid/33",
+        "retained_row": {
+          "alpha": 0.025,
+          "scenario": "no_gain_30pct_discordance",
+          "pairs": 800,
+          "independent_task_families": 800,
+          "trajectories": 1600,
+          "p_treatment_only": 0.15,
+          "p_control_only": 0.15,
+          "true_acceptance_difference": 0.0,
+          "discordance": 0.3,
+          "direction_test_power": 0.010563425646777227,
+          "practical_interval_decision": {
+            "meaningful_benefit": 1.2523126575027226e-17,
+            "rules_out_meaningful_benefit": 0.9682601271075376,
+            "inconclusive": 0.031739872892462384
+          },
+          "historical_linear_api_cost_usd": 1700.4312
+        }
+      }
+    ],
+    "display_rounding": "Probabilities multiplied by 100 and rounded to one decimal percentage point.",
+    "conditions": "iid independent-family paired binary outcomes; alpha .025 per claim; practical margin .10; beneficial scenario p10=.30,p01=.10 versus separate exclusion scenario p10=.15,p01=.15.",
+    "sample_size_selected": false,
+    "minimum_sample_size_proven": false,
+    "cost_claim": {
+      "source": "confirmatory_design",
+      "json_pointer": "/power/grid/21/historical_linear_api_cost_usd",
+      "retained_value_usd": 1700.4312,
+      "basis": "800 multiplied by retained historical two-arm per-pair API illustration $2.125539. Excludes strong anchors, engineering, fixture and local-compute cost; not a four-cell estimate."
+    },
+    "boundary": "A true gain equal to the practical margin should usually remain inconclusive; rejecting zero and establishing a worthwhile nonzero margin have different power."
+  },
+  "scientific_scope": {
+    "observed_live_comparison": "Independent versus serial candidate formation under a common central controller; not live gossip or decentralized planning.",
+    "controller_pilot": "12 trajectories, four matched blocks, two development task families. A/B shared first-milestone candidates/scouts are declared setup, not independent end-to-end replication. Improves diagnosis and policy selection only.",
+    "four_cell_future_comparison": "P-G versus O-B is a package contrast. O-G and P-B separate dissemination and decision placement under one common policy, safety/authority services, offered resources and matched credible failover. Full four-cell scope remains unfinished.",
+    "primary_endpoint_recommendation": "Exact source public-policy complete and frozen by common active deadline/offered budget, then complete inherited/new private acceptance and valid promotion after the global cohort freeze barrier.",
+    "independence": "One independently sampled previously held-out family per pair for the proposed iid analysis. Repeated seeds, scenarios, milestones, related variants and reused baselines remain clustered. New repositories alone do not establish independence.",
+    "timing": "Keep early terminal failures unsuccessful through the horizon. Separate active source-freeze time, cohort waiting, private adjudication and final promotion; do not count early stopping as a speed win.",
+    "preservation": "Keep inherited correctness inside all-or-nothing acceptance. Any separate co-primary preservation claim requires a frozen rule and error allocation; unsafe publication is a protocol failure.",
+    "limits": "Same-host offline dispatch and bounded-proposal studies do not complete autonomous multi-turn tool-loop or multi-host investigations."
+  },
+  "recommended_decision": {
+    "status": "proposal_not_preregistration_or_user_approval",
+    "practical_margin": 0.1,
+    "benefit": "Lower paired acceptance-difference interval endpoint > +.10.",
+    "exclusion": "Upper endpoint < +.10 rules out that worthwhile gain only in the tested population/model/budget contract; upper <0 is stronger evidence of harm.",
+    "otherwise": "Inconclusive; no outcome-driven change of margin, method or sample size.",
+    "error_allocation": "Existing design proposes alpha .025 each if either formation or live protocol may satisfy one jointly protected research claim. Select allocation and method before outcomes.",
+    "stopping": "Freeze fixed sample and all handling of failed/missing runs before execution. No efficacy peeking, selective replacements or automatic extension. Incomplete cohorts do not receive confirmatory declarations."
+  },
+  "held_out_registry_audit": {
+    "finding": "No executable frozen confirmatory family registry identified in the inspected repository plans and matching file inventory.",
+    "scope": "Checked authored filenames matching registry, confirmatory, study-plan and followup-design, excluding generated runs/results and HTML; inspected current confirmatory v4, live-gossip v2 and controller-pilot plans. This is a bounded source audit, not a claim about files outside the repository.",
+    "sources": [
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/primary_design/sampling"
+      },
+      {
+        "source": "confirmatory_design",
+        "json_pointer": "/power/sample_size_status"
+      },
+      {
+        "source": "four_cell_design",
+        "json_pointer": "/outcomes_and_statistics/sample_size"
+      },
+      {
+        "source": "four_cell_design",
+        "json_pointer": "/software_workload/sampling_provenance"
+      },
+      {
+        "source": "pilot_plan",
+        "json_pointer": "/confirmatory_next_phase"
+      }
+    ],
+    "exclusions": "Graph/Calendar and derivatives, warehouse/job-queue, and every other family used for development or controller/fixture selection.",
+    "required_work": "Select a target population and inclusion/exclusion rules; independently author/select and freeze the family registry; select estimator, alpha, effect margin, sample size, model/interface/controller/budget, order, fixed fault mixture and sealed acceptance contract before confirmatory outcomes."
+  },
+  "recommended_sequence": [
+    "Finish the already-rehearsed controller pilot only after its funding and exact-contract gates permit; retain descriptive whole-project outcomes and failure mechanisms.",
+    "Freeze the controller using development data; qualify any more efficient established paired interval before choosing power assumptions and a fixed independent-family sample.",
+    "Complete integrated source generation/selection/repair, sandboxed validation, Git promotion, final evaluation and qualified cumulative financial dispatch; retain the existing complete four-cell scope.",
+    "Freeze held-out sampling, full four-cell roster, placement/capacity, exogenous fault-mixture schedule, and endpoint/error/stopping contract; qualify the exact whole contract before live execution.",
+    "Execute the complete funded cohort, freeze all sources before private evaluation, audit independently and publish the prespecified analysis including negative or inconclusive findings."
+  ],
+  "outstanding_design_gaps": [
+    "Frozen confirmatory held-out task-family registry",
+    "Selected confirmatory sample size and interval method",
+    "Frozen target fault mixture and placement/resource contract",
+    "Final preservation and multiplicity decision rule",
+    "Independent qualification of proposed efficient statistical alternative before adoption"
+  ],
+  "funding_boundary": {
+    "source": "pilot_funding",
+    "json_pointer": "/funding_proposal",
+    "status": "Current sources retain $50 cap and unapproved $80 controller-pilot proposal; this source audit requests no approval and changes no budget.",
+    "required_if_changed": "A funded execution contract with changed hashes must satisfy applicable exact-contract qualification/rehearsal/audit gates before paid dispatch.",
+    "four_cell_cost": "Requires separate prospective full-cohort forecast and authorization; historical two-arm pair illustration is insufficient."
+  },
+  "method_research": [
+    {
+      "title": "Newcombe 1998: Improved confidence intervals for the difference between binomial proportions based on paired data",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9839354/",
+      "role": "Primary-paper description of paired profile-likelihood and score-based alternatives; candidate for future independent qualification only.",
+      "adopted": false
+    },
+    {
+      "title": "Official exact2x2 mcnemarExactDP documentation",
+      "url": "https://search.r-project.org/CRAN/refmans/exact2x2/html/mcnemarExactDP.html",
+      "role": "Maintainer documentation of a paired difference interval using melding and numeric integration; candidate for future independent qualification only.",
+      "adopted": false
+    }
+  ],
+  "method_research_requirements": "Check implementation, sparse/boundary coverage and nonzero-margin behavior, recalculate power under unchanged assumptions, and fix the method before confirmatory outcomes. No alternative is implemented or statistically validated by this checkpoint.",
+  "dated_design_warning": "The live-gossip v2 proposal contains historical not-implemented foundation descriptions partly superseded by cycle 6. Use it as a prospective design, not current runtime readiness evidence.",
+  "document": {
+    "path": "docs/confirmatory-path-checkpoint-v1.md",
+    "sha256": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4"
+  }
+}

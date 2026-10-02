@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "protocol": "peer-project-integration-checkpoint-v1",
+  "created_utc": "2026-10-02T18:27:14.286907+00:00",
+  "status": "merged_tree_qualified",
+  "base_commit": "0d2d7cee7f9941a247bd6d61b9914a27eb1f132b",
+  "scope": "One supplied coding action produces a source-bound Git bundle, crosses actual peer transport, and receives isolated merged-source public validation and fenced Git promotion. Closed offline model-response fixtures, not live model-quality evidence.",
+  "verification": {
+    "protocol": "cycle7-merged-verification-reconciliation-v1",
+    "recorded_utc": "2026-10-02T18:21:54.663337+00:00",
+    "status": "passed",
+    "checks": 35,
+    "physically_executed": 35,
+    "reused": 0,
+    "skipped": 0,
+    "lanes": {
+      "fast": 8,
+      "git": 23,
+      "docker": 4
+    },
+    "discovered_total": 1475,
+    "duration_seconds": 124.09596741758287,
+    "source_inputs_reconciled": 258,
+    "initial_final_current_runtime_match": true,
+    "combined_static": "passed",
+    "historical_type_baseline_count": 117,
+    "scientific_contract_unchanged": true,
+    "contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "receipts": [
+      {
+        "path": "runs/investigation-cycle-7-final-offline/20261002T181055-5d1e86da/summary.json",
+        "sha256": "dd3d5ce8e9523920df535601baa8c5f35e264f1cbf75c13652c8e448d4fb347c"
+      },
+      {
+        "path": "runs/investigation-cycle-7-final-offline/20261002T181055-5d1e86da/inputs.json",
+        "sha256": "26f347da24ce86795c96b1baa7fb54db8ae763c375b0379dbeb1b4e1aa014adb"
+      },
+      {
+        "path": "runs/investigation-cycle-7-final-offline/20261002T181055-5d1e86da/static.json",
+        "sha256": "85b317cfa7f49f8df60d089fc308a1f365f97068b7c69091a09c085b880d353c"
+      },
+      {
+        "path": "runs/investigation-cycle-7-final-offline/20261002T181055-5d1e86da/runtime-final.json",
+        "sha256": "a3ec85c057174a205e62b5d8945e54c0da7922d67e03822f12bbd423ade31d81"
+      },
+      {
+        "path": "runs/investigation-cycle-7-docker/20261002T181253-ca2e95ff/summary.json",
+        "sha256": "ffc048d642f2a49a123f2e4892bf0e20a16733e207d1a5756618c725d38b87e1"
+      },
+      {
+        "path": "runs/investigation-cycle-7-docker/20261002T181253-ca2e95ff/inputs.json",
+        "sha256": "26f347da24ce86795c96b1baa7fb54db8ae763c375b0379dbeb1b4e1aa014adb"
+      },
+      {
+        "path": "runs/investigation-cycle-7-docker/20261002T181253-ca2e95ff/static.json",
+        "sha256": "f334b2a16773e2d278e0d0a15af90b6543ac23198742ce636293b7a3e6f93d98"
+      },
+      {
+        "path": "runs/investigation-cycle-7-docker/20261002T181253-ca2e95ff/runtime-final.json",
+        "sha256": "a3ec85c057174a205e62b5d8945e54c0da7922d67e03822f12bbd423ade31d81"
+      }
+    ],
+    "scope": "Targeted supplied-task offline coding, mesh Git bundle delivery, exact merged-source Docker validation and public Git promotion/recovery. No provider requests or comparative model-quality measurement.",
+    "timing_interpretation": "Development verification duration, not comparative approach performance."
+  },
+  "source_review": {
+    "path": "runs/investigation-cycle-7-source-review-1.json",
+    "sha256": "28c9975ba2c89c548a06ce8867d2bbe263eab261d20a5e27169829718a15a980",
+    "status": "passed",
+    "unresolved_findings": []
+  },
+  "source_bindings": {
+    "README.md": "fe7164eb53e9cb4776c9204911f1bf475fc027dde323672cbf006c401d60d4c6",
+    "analysis/confirmatory-path-checkpoint-v1.json": "0a8e1b39f8b1d4161ed88e57e7195ece23e3f7bcf16563ac1caf27e979abe40e",
+    "docs/confirmatory-path-checkpoint-v1.md": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4",
+    "docs/peer-candidate-v1.md": "471704f0b6d4c481386ea4b03d0d78d747f2e7841eae6106e7c85770acc4fa6b",
+    "docs/peer-financial-bridge-design-v2.md": "673841478032a84b9e2ae02ad57580095dc42855efe527fb9fec1bbf4d8f534c",
+    "docs/peer-project-runtime-v1.md": "d98ed326ae357e7ee5339df7a1c4542212d0c985a2f43a4d38550371ada7a462",
+    "docs/peer-promotion-v1.md": "92d85b8a7ebbc121cdff0e828dedd3ff9551046fb0b4b9c8fc4ee7216a40bbec",
+    "gossip_harness/peer_candidate_v1.py": "55af2b12329a9f3757280df9fb44dce945b107cb8c08a510861f122a13244c46",
+    "gossip_harness/peer_project_runtime_v1.py": "6a68d2967248ba1ffdd7e7ca93da88cfd378303e20f353dfe8547494caaec6b5",
+    "gossip_harness/peer_promotion_v1.py": "3ec7dbca9b3cee7a91b2f49e30c9f553b3ce65d167d54a475aa369b7be150471",
+    "peer-financial-bridge-plan-v2.json": "9a74120965c3410087dc05f29e3508b6fa7a88ccb0a6e26142675154990dd42b",
+    "peer-project-integration-contract-v1.json": "9aac3ebe0147911f55e9ac259b56e25b1f0ae1595211c12987999dc7f9f434cc",
+    "pyproject.toml": "102e0890caab599dcbf94638490593144966d56a9c0f09240ee420472f7a2d8f",
+    "tests/test_peer_candidate_v1.py": "227579d679e74e26cf683fd80d0c93312fd4ecdc368b22f6ce15f855df931055",
+    "tests/test_peer_project_runtime_v1.py": "5fd36cbacde459c76749bdbe266753cdd18e55c9440e331d76320746cea06934",
+    "tests/test_peer_promotion_v1.py": "c752993e9acbf73ccf7d258a76f672b7c672b422f0d7609466971b24cc7bec79",
+    "verification-manifest.json": "c4f1c6570eb0715486e369c249e5dccecc67cab3fe50a3d1a9d5d17953f71aad"
+  },
+  "scenarios": [
+    "Sender locally arrived request/result authority, full base and allowed-path validation, exact proposal and retained bundle recovery, including valid wrong-source and different-parent substitutions.",
+    "Receiver authoritative dispatch/result validation, actual received bundle quarantine, exact Unicode/CRLF merged source and host-oracle validation receipts.",
+    "Promotion lease admission uses a fresh authority clock after promotion and SQLite locks; exact candidate/intent/Git CAS recovery preserves durable validation.",
+    "Gossip and broker process scenarios require both worker-generated and independently changed receiver source; the complete received candidate promotes after the sender process exits and its repository is renamed.",
+    "Wrong-answer Docker evaluation leaves the accepted head and task completion unchanged.",
+    "Actual service exit after Git CAS recovers the same validation and container identity without another fixture invocation or evaluation."
+  ],
+  "retained_development_evidence": [
+    {
+      "path": "runs/investigation-cycle-7-offline/20261002T180300-1f787a15",
+      "status": "passed_30",
+      "meaning": "Initial coherent static/offline gate; final review then tightened sender replay and executable/environment identity before the 31-check final qualification."
+    }
+  ],
+  "limits": [
+    "Qualification is targeted offline model-response fixture integration. It does not establish live model quality, decentralized planning benefit, an Elo rank or a placement-by-transport comparison.",
+    "Current runtime supports one supplied action per worker at generation zero; CodingDispatch serializes one invocation. Multi-candidate selection, repair, continuation, source-generation reopening and overall project deadlines remain separate work.",
+    "Public-tested Git publication and task completion are not independent final-project acceptance. A complete cohort source freeze and private acceptance barrier remain required.",
+    "Actual service restart occurs after successful Docker evaluation and verified cleanup. SIGKILL during active evaluation can bypass parent timeout/removal; no durable prelaunch container identity, restart cleanup or independent lifetime watchdog is implemented.",
+    "Same-host trusted ownership and group provenance do not establish Byzantine security, multi-host consensus, hard native Git parser memory isolation or VM-grade sandbox guarantees.",
+    "Financial bridge v2 is a prospective unimplemented/unqualified design. The retained $50 cap and unanswered $80 proposal are not changed by these checks; live dispatch remains disabled.",
+    "Statistical checkpoint proposes held-out sampling and decision rules without choosing or validating a new estimator, fixed sample size or confirmatory family registry.",
+    "Development qualification durations measure verification execution only, not comparative agent completion speed or total resource usage.",
+    "Static coverage retains 117 declared historical type-baseline findings; passing incremental coverage does not prove all legacy code type-safe."
+  ],
+  "scientific_contract": {
+    "sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+    "all39_sources_and_plan_unchanged": true,
+    "live_enabled": false
+  },
+  "budget": {
+    "cap_micro_usd": 50000000,
+    "last_audited_committed_micro_usd": 35543626,
+    "remaining_micro_usd": 14456374,
+    "new_provider_calls": 0,
+    "new_spending_micro_usd": 0,
+    "cumulative_ledger_accessed_this_cycle": false,
+    "proposed_cap_micro_usd": 80000000,
+    "proposal_approved": false
+  },
+  "remaining_required_work": [
+    "Qualified cumulative financial ledger integration and authorized complete live pilot",
+    "Multi-candidate selection, repair, source-generation reopening and overall deadlines",
+    "Independent final-evaluation barrier over a frozen complete cohort",
+    "Durable active-evaluator container ownership, restart cleanup and lifetime watchdog",
+    "Matched four-cell placement-by-transport comparison",
+    "Independent held-out task-family registry, prospective decision rule and powered confirmation",
+    "Autonomous tool-loop and multi-host studies"
+  ],
+  "prospective_designs": {
+    "financial_bridge": {
+      "path": "peer-financial-bridge-plan-v2.json",
+      "sha256": "9a74120965c3410087dc05f29e3508b6fa7a88ccb0a6e26142675154990dd42b"
+    },
+    "confirmatory_path": {
+      "path": "analysis/confirmatory-path-checkpoint-v1.json",
+      "sha256": "0a8e1b39f8b1d4161ed88e57e7195ece23e3f7bcf16563ac1caf27e979abe40e"
+    },
+    "execution_or_scientific_approval_implied": false
+  }
+}

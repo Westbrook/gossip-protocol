@@ -1909,6 +1909,72 @@
       "boundary": "Verifier plus up to five daemon processes: combined authority/mesh service, origin, worker and two relays; bounded I/O handlers, no real provider or candidate execution.",
       "disposition": "Offline actual-request and recovery integration only, not live coding quality or final project acceptance.",
       "overlap_reason": "Unit contract checks cannot prove independent TCP transport and process-death recovery."
+    },
+    "tests/test_peer_promotion_v1.py::PromotionMetadataTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 240,
+      "invariant": "Exact candidate offer identities, generation and configuration bounds.",
+      "isolation": "Dedicated class worker and fresh private state; retain failed and interrupted artifacts.",
+      "boundary": "Pure bounded metadata/configuration checks; no subprocesses or candidate execution.",
+      "disposition": "Public candidate integration evidence only, not live model quality, final project acceptance or statistical superiority.",
+      "overlap_reason": "Metadata checks reject malformed identities before work; Git tests exercise durable integration with a labelled offline evaluator; Docker tests qualify actual isolated candidate execution."
+    },
+    "tests/test_peer_promotion_v1.py::ReceivedPromotionGitTests": {
+      "lane": "git",
+      "weight": 5,
+      "exclusive": true,
+      "timeout_seconds": 240,
+      "invariant": "Authoritative coding and bundle bindings, exact source/patch merge, durable validation/promotion recovery and lease/CAS fences.",
+      "isolation": "Dedicated class worker and fresh private state; retain failed and interrupted artifacts.",
+      "boundary": "Verifier, one delayed-lock helper thread, one serial native Git child and up to two bounded I/O readers; mocked evaluator is not candidate execution.",
+      "disposition": "Public candidate integration evidence only, not live model quality, final project acceptance or statistical superiority.",
+      "overlap_reason": "Metadata checks reject malformed identities before work; Git tests exercise durable integration with a labelled offline evaluator; Docker tests qualify actual isolated candidate execution."
+    },
+    "tests/test_peer_promotion_v1.py::ReceivedPromotionDockerTests": {
+      "lane": "docker",
+      "weight": 6,
+      "exclusive": true,
+      "timeout_seconds": 600,
+      "invariant": "Actual merged candidate source is evaluated in a fresh isolated container before exact Git promotion.",
+      "isolation": "Dedicated class worker and fresh private state; retain failed and interrupted artifacts.",
+      "boundary": "One verifier, bounded Git work and one actual pinned candidate container with its host I/O; no model calls.",
+      "disposition": "Public candidate integration evidence only, not live model quality, final project acceptance or statistical superiority.",
+      "overlap_reason": "Metadata checks reject malformed identities before work; Git tests exercise durable integration with a labelled offline evaluator; Docker tests qualify actual isolated candidate execution."
+    },
+    "tests/test_peer_project_runtime_v1.py::ProjectRuntimeTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Strict project role/configuration and read-only observer/gate semantics.",
+      "isolation": "Own daemon roots, ports, Git stores, journals and candidate container; retain artifacts after failure.",
+      "boundary": "One verifier; no subprocess, Git or candidate execution.",
+      "disposition": "Closed offline response fixtures qualify public integration and recovery; not live quality or independent final acceptance.",
+      "overlap_reason": "Fast checks reject malformed control/configuration; real Docker process cases prove network arrival, isolated validation, sender loss and durable promotion recovery together."
+    },
+    "tests/test_peer_project_runtime_v1.py::ProjectRuntimeDockerTests": {
+      "lane": "docker",
+      "weight": 10,
+      "exclusive": true,
+      "timeout_seconds": 900,
+      "invariant": "Actual autonomous coding-to-bundle-to-network-to-isolated-merged-source-to-Git promotion, wrong-answer rejection and service crash recovery.",
+      "isolation": "Own daemon roots, ports, Git stores, journals and candidate container; retain artifacts after failure.",
+      "boundary": "Exclusive integrated fixture: at most five peer/service daemons, verifier, bounded serial Git or Docker work and one candidate container; bounded network/I/O threads. Slots are resource allowances, not a literal thread count.",
+      "disposition": "Closed offline response fixtures qualify public integration and recovery; not live quality or independent final acceptance.",
+      "overlap_reason": "Fast checks reject malformed control/configuration; real Docker process cases prove network arrival, isolated validation, sender loss and durable promotion recovery together."
+    },
+    "tests/test_peer_candidate_v1.py::PeerCandidateTests": {
+      "lane": "git",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 300,
+      "invariant": "Only exact locally arrived coding evidence on the supplied immutable Git base can produce one scoped, durable candidate bundle and outbox offer.",
+      "isolation": "Dedicated worker; private stores, journals and generated Git repositories; no model or candidate execution.",
+      "boundary": "Verifier plus one serial Git child and bounded I/O-reader threads; no socket or Docker.",
+      "disposition": "Sender source/evidence and durable proposal mechanics, not public validation or final acceptance.",
+      "overlap_reason": "Real Git tree and proposal identity cannot be established by metadata-only checks; receiver and Docker classes cover different boundaries."
     }
   },
   "audit": {

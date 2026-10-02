@@ -1093,6 +1093,18 @@ Live HTTPS remains disabled until a separately qualified cumulative financial
 ledger adapter is connected. These foundations do not establish coding quality
 or complete the planned placement-by-transport comparison.
 
+The [project integration runtime](docs/peer-project-runtime-v1.md) connects a
+source-bound coding result to a private Git proposal, actual bundle delivery,
+isolated validation of the receiver's merged source and exact public promotion.
+This path uses offline response fixtures; independent final acceptance and live
+model comparison remain separate requirements. The
+[financial bridge design](docs/peer-financial-bridge-design-v2.md) specifies the
+remaining cumulative-ledger integration without enabling live dispatch.
+
+The [comparative evidence checkpoint](docs/confirmatory-path-checkpoint-v1.md)
+separates existing exploratory quality results from infrastructure checks and
+records the held-out sampling, funding and statistical decisions still needed.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

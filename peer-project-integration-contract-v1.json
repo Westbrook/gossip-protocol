@@ -1,0 +1,26 @@
+{
+  "protocol": "peer-project-integration-v1",
+  "phase": "Offline model-response fixtures driving actual distributed candidate delivery and isolated public validation",
+  "generation": 0,
+  "capacity": "One supplied action per worker at generation zero; common CodingDispatch permits one invocation at a time. No candidate-selection or repair scheduler is implemented by this integration.",
+  "bootstrap": "Separate private baseline Git clones may be initialized before launch. Every request must bind actual immutable baseline files and commit. Candidate offers cross the real event and payload mesh; the receiver cannot fetch from the sender directory.",
+  "worker": "A local timer consumes the existing CodingPeer's completed, source-bound result and arrived service-owned payload, constructs an exactly scoped Git proposal, persists bundle bytes and publishes one immutable candidate_offer.",
+  "receiver": "A separate local service timer consumes only its arrived offer and complete verified bundle, consults its authoritative coding action/request/result journal, proves the offered tree equals the authoritative patch on the exact base, and imports into quarantine.",
+  "validation": "The receiver prepares against its current accepted Git head and executes the exact merged source through BlackboxValidator in a fresh pinned Docker container. Only inputs enter candidate execution; the public expected outputs stay with the trusted host oracle. Receipts bind source, suite, runtime, limits, configuration and public-promotion purpose.",
+  "promotion": "Persist successful exact-candidate validation before the existing task-lease and Git compare-and-swap promotion coordinator. Stale heads or expired/changed leases reject; recovery reconciles the same durable candidate and intent without rerunning validation or invoking a model.",
+  "failures": "Retain wrong answers, text/scope conflicts, infrastructure failures and ambiguous evaluation evidence. No automatic retry until green, receipt substitution, hidden feedback or candidate host execution.",
+  "fixture_control": "A predeclared durable promotion-enabled gate may delay a local timer for partition/restart qualification. Observer RPCs cannot execute an action, reset terminal outcomes or publish acceptance.",
+  "provider": "Closed offline Responses-shaped fixture through the real worker parser. No real API calls or cumulative financial-ledger changes. Live transport remains disabled.",
+  "acceptance_boundary": "Public validation and Git promotion do not establish independent final project acceptance. All cohort terminal sources must be frozen before a future private final evaluation phase.",
+  "restart_qualification": "Current service-death qualification is after completed validation and verified container cleanup. Abrupt service death during active Docker evaluation can bypass parent-owned timeout/cleanup; durable prelaunch container ownership, restart cleanup and an independent lifetime watchdog remain unimplemented. Interrupted validation cannot authorize promotion or automatic reevaluation.",
+  "trust": "Trusted same-host services and group event provenance; isolated candidate execution uses the existing Docker boundary. Native Git quarantine limits are not a hostile parser memory sandbox.",
+  "remaining_required_work": [
+    "Qualified cumulative financial ledger integration and authorized complete live pilot",
+    "Multi-candidate selection, repair, source-generation reopening and overall deadlines",
+    "Independent final-evaluation barrier over a frozen complete cohort",
+    "Durable active-evaluator container ownership, restart cleanup and lifetime watchdog",
+    "Matched four-cell placement-by-transport comparison",
+    "Independent held-out task-family registry, prospective decision rule and powered confirmation",
+    "Autonomous tool-loop and multi-host studies"
+  ]
+}

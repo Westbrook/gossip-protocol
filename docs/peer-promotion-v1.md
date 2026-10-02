@@ -1,0 +1,127 @@
+# Received candidate promotion, version 1
+
+`ReceivedPromotion` connects an arrived `candidate_offer` to the service's own
+coding journal, received Git bundle, Docker host-oracle validation, and existing
+lease-fenced Git publication. It does not generate tasks, call a provider,
+select between candidate cohorts, repair failures, or perform independent final
+project acceptance. The existing live-provider restriction still applies.
+
+## Input and authority
+
+The constructor accepts a receiver-owned `PayloadPeer`, its actual
+`CodingDispatch`, a private target `GitStore`, a nonempty ordered public case
+suite, a pinned local Docker image ID, and validation deadlines. It creates the
+real `BlackboxValidator` internally; there is no supplied validator callback or
+remote pass-receipt interface. `tick()` scans locally arrived offer events.
+`process(event_id)` is the same local implementation for direct qualification;
+production timer dispatch is provided by the separate project runtime.
+
+The exact offer schema is `peer-candidate-v1` with generation `0`, run, task,
+principal, epoch, action, request and profile identities, whole request and
+result payload digests, dispatch configuration digest, bundle digest and bundle
+manifest. The event producer must match the principal. Producer labels rely on
+the existing trusted group and do not establish Byzantine authentication.
+
+An offer alone cannot admit validation. Its producer-owned descriptor and all
+verified bundle chunks must have arrived. The receiver consults its own
+completed coding action and request receipt, revalidates the durable provider
+journal and settled usage, and compares locally available request bytes and its
+own published result bytes. It does not trust the peer's coding receipt. Bundle
+import creates a fresh private quarantine from received bytes; no sender path or
+sender repository handle is accepted. The base commit and complete base files
+must equal the authoritative WorkerRequest. Applying the authoritative result
+changes to those files must produce the exact offered tree, within fixed task
+paths.
+
+## Exact merged evaluation and publication
+
+The target prepares the offer against its current accepted head. Divergent
+receiver changes remain in the merge and are part of evaluation. Candidate files
+are read as immutable Git blobs and decoded as UTF-8, preserving CRLF and Unicode
+bytes; candidate Python is never imported on the host. The existing
+BlackboxValidator stages these files and case inputs into a fresh container.
+Expected outputs remain in the trusted host oracle.
+
+The durable validation evidence binds the exact candidate commit and source
+hash, ordered suite, image, adapter and implementation source hashes (including
+`sandbox.py`), time/resource limits, local runtime, generation, configuration and
+`public_candidate_promotion` purpose. Source and suite hashes use the evaluator's
+ASCII-escaped canonical JSON; peer-wire digests use their existing canonicalizer.
+These identities are intentionally distinct. The configuration also records the
+selected Python, Git and Docker executable paths and file digests, plus a digest
+of the selected Docker/native environment selectors without retaining their
+values. Missing executables are explicit and installing/changing them invalidates
+restart identity. No version subprocess or Docker invocation is needed to gather
+this identity. Executable shims and dynamic libraries remain part of the trusted
+host; hashing an Xcode Git shim does not independently identify its underlying
+toolchain. Source/pin/offer/lease bindings are
+rechecked against actual immutable target Git objects before retained successful
+validation may resume publication.
+
+Under the existing promotion lock, one joined authority write transaction
+samples the authority clock, checks the actual current task owner and epoch,
+reads the current lease expiry, and admits the exact promotion intent. The
+intent and receiver record persist before Git publication. The transaction
+commits before the existing coordinator replays that same intent and performs
+Git compare-and-swap; no SQLite transaction stays open during Git work. A newer
+head or expired/superseded lease cannot silently inherit the previous pass.
+
+## Recovery and retained failures
+
+The bridge owns one locked directory and binds that directory/configuration in
+the shared authority ledger. Separate attempt files contain checksummed,
+fsynced records. In-memory state advances only after persistence. Failures of
+record persistence fence the live instance. This is a trusted local integrity
+mechanism, not a cryptographic defense against a hostile host administrator.
+
+The durable phases are `admitted`, `preparing`, `validated`, `promoting`, and a
+terminal outcome. Interruption before complete exact validation terminates the
+attempt as `interrupted`; even a partial passing observation cannot trigger
+another evaluation. Persisted exact successful validation may resume the same
+promotion once. After intent or Git interruption, recovery examines only the
+matching repository, candidate, lease and intent, reconciles accepted ancestry,
+and completes the same ledger task without a second evaluator/provider call.
+An unpublished recovered intent is rejected, not automatically retried under a
+new generation. Wrong answers, scope/conflict failures and infrastructure
+failures retain their receipts. Malformed/conflicting offers receive durable
+rejections so they do not stop later valid offers. There is no retry-until-green
+behavior. Attempt and rejected-offer capacities are each 128; exhaustion requires
+an explicit new policy, not deletion of retained evidence.
+
+Named crash injection is a trusted constructor/test setting, excluded from the
+execution identity: `after_admission`, `after_validation`, `after_intent`,
+`after_git`, or `after_promotion`. It raises the existing `SimulatedCrash`;
+qualification runtime decides whether its owned service process exits. Peers
+cannot supply crash callbacks.
+
+## Verification and limits
+
+The metadata class is offline. Direct Git tests use the real authority, coding
+worker parser/journal, payload stores, bundle quarantine, merge and promotion,
+with explicitly stubbed Docker evaluation. Their stub receipts identify
+`offline_test_stub` and `physically_executed: false`; they are not candidate
+execution evidence. They cover exact Unicode/CRLF merged input, arrival gates,
+authoritative patch mismatch, persistent failures, malformed-offer isolation,
+crash recovery, lease time after lock/database admission, and substitution of a
+different saved candidate under a passing receipt. The separate opted-in Docker
+class actually executes the merged candidate and host oracle. Physical network
+and service-exit qualification belongs to the project runtime tests.
+
+The service-restart qualification is after successful evaluation and verified
+container cleanup. It does not prove cleanup if the service is killed while a
+Docker evaluation is still active: the existing evaluator keeps the container
+name in memory until it returns, and a process kill can bypass its timeout and
+cleanup code. The bridge will not retry that ambiguous evaluation, but bounded
+orphan-container cleanup needs a future durable prelaunch ownership receipt,
+startup removal and an independent watchdog while the service remains down.
+
+No candidate executes on the host through this adapter. Native Git bundle
+parsing still has the existing work/object/file limits rather than a hard memory
+or VM boundary against hostile parser vulnerabilities. Docker retains its
+existing isolation limits; this is not a new VM-grade security claim.
+
+An `accepted` receipt means the public-tested exact Git candidate was published
+and its task completed in the local ledger. Every result explicitly records
+`independent_final_project_acceptance: false`. All-cohort source freezing,
+private final evaluation, comparative fairness, model quality, held-out task
+families and confirmatory statistics remain separate unfinished work.

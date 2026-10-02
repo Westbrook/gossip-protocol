@@ -1,0 +1,280 @@
+{
+  "admission": {
+    "accounting_units": "microUSD token-cost estimate; no claim of invoice or total engineering cost",
+    "clock_sampling": "For NEW admission sample fresh authority time only after acquiring the joined BEGIN IMMEDIATE SQLite write transaction, after any process/file-lock and SQLite-lock waits; a pre-wait timestamp is insufficient for current lease/epoch validation.",
+    "not_composable": "Do not invoke StudyBudget.reserve inside the joined transaction: separate read connection/file lock create visibility and lock-order hazards.",
+    "ordered_actions": [
+      "Exact historical replay or identity conflict",
+      "Persistent halt/unresolved fence and current clock/epoch ownership check",
+      "SUM(COALESCE(spent,amount)) over exact registered cohort membership plus preregistered slot limits",
+      "Unchanged Ledger.reserve enforces cumulative cap inside the transaction",
+      "Membership + dispatch intent/action + request receipt commit"
+    ],
+    "prioritization": "An old successful receipt is replayed before freshness checks, but does not authorize new invocation.",
+    "provider_wait": "Never hold a SQLite transaction during a provider call or journal-lock wait.",
+    "transaction": "One joined BEGIN IMMEDIATE using the same Ledger instance"
+  },
+  "api": {
+    "forbidden_peer_operations": [
+      "settle",
+      "refund",
+      "increase_budget",
+      "clear_halt",
+      "force_retry",
+      "publish",
+      "global_context_list"
+    ],
+    "peer_operations": [
+      "authenticated claim",
+      "exact coding_dispatch",
+      "principal-scoped lookup"
+    ],
+    "same_all_cells": "All four placement-by-transport cells use the same safety service, policy and offered capacity.",
+    "trusted_factory": "CumulativeAuthorityV2.open(existing_ledger_path, service_root, cohort_contract, incremental_cap_micro_usd, expected_global_cap, expected_opening_usage)",
+    "work_selection": "Caller requests an allowed task/profile; service does not choose tasks, models, recipients or winners."
+  },
+  "base_commit": "0d2d7cee7f9941a247bd6d61b9914a27eb1f132b",
+  "budget_context": {
+    "cap_micro_usd": 50000000,
+    "committed_micro_usd": 35543626,
+    "future_requirement": "Recheck actual state under ownership; these figures are neither an invoice nor a new study allocation.",
+    "new_allocation_authorized": false,
+    "proposal_answered": false,
+    "proposed_cap_micro_usd": 80000000,
+    "remaining_micro_usd": 14456374,
+    "source": "Parent instructions and retained cycle-6 checkpoint; no fresh financial-ledger read"
+  },
+  "decision": {
+    "alternatives": "Two-ledger saga adds partial-state reconciliation; escrow strands a whole allocation during ambiguity and weakens per-request visibility. Neither is needed here.",
+    "architecture": "One existing cumulative SQLite database with new cohort-scoped authority/dispatch glue",
+    "historical_files": "All v1 and frozen scientific sources stay unchanged.",
+    "reject": [
+      "private authority wallet used for live spending",
+      "two independently spendable ledgers",
+      "v1 live toggle or HTTPS wrapper bypass",
+      "output-directory-derived allowance",
+      "silent budget reset or ledger copy/adoption"
+    ],
+    "reuse_unchanged": [
+      "Ledger claims/renewal/reservation/settlement",
+      "joined Ledger transaction adapter",
+      "RequestJournal"
+    ]
+  },
+  "design_document": {
+    "path": "docs/peer-financial-bridge-design-v2.md",
+    "sha256": "673841478032a84b9e2ae02ad57580095dc42855efe527fb9fec1bbf4d8f534c"
+  },
+  "evidence": {
+    "credential": "Trusted provider service only, never events/candidates/logs/sandbox mounts",
+    "exactly_once_limit": "Local dispatch ownership and durable replay do not establish provider-side exactly-once execution",
+    "journal": "Stable call/reservation namespace and immutable request bytes; durable result before settlement",
+    "receipt": "Retain authenticated receipt; bind principal, exact request/action/role/source generation, task mapping, profile, cohort and financial identity",
+    "unknown": "No expiry-based reassignment, refund, automatic retry or peer override"
+  },
+  "execution": {
+    "credential_reads": 0,
+    "implemented": false,
+    "ledger_mutations": 0,
+    "ledger_reads": 0,
+    "live_enabled": false,
+    "provider_calls": 0,
+    "qualification_executed": false
+  },
+  "ownership": {
+    "cooperating_runners": [
+      "continuation_experiment",
+      "benchmark_experiment",
+      "continuation_followup"
+    ],
+    "exact_context_lock": "/Users/westbrook/Documents/repos/gossip-protocol/runs/first-live-budget.sqlite.continuation-live.lock",
+    "legacy_limit": "Older pilot/sustained/verification entry points do not all hold this lock and must stay quiescent.",
+    "lock_formula": "str(Path(existing_ledger_path).resolve()) + \".continuation-live.lock\"",
+    "lock_order": [
+      "existing cumulative-ledger continuation-live lock",
+      "additional service owner lock"
+    ],
+    "mechanism": "Nonblocking exclusive flock",
+    "owner": "Provider-capable service process for its complete dispatch/recovery/in-flight lifetime, not only a supervisor",
+    "registered_ledger_path": "runs/first-live-budget.sqlite",
+    "resolved_context_path": "/Users/westbrook/Documents/repos/gossip-protocol/runs/first-live-budget.sqlite",
+    "trust_limit": "Same-host cooperative ownership; not multi-host consensus or hostile-process isolation."
+  },
+  "ownership_of_this_change": [
+    "docs/peer-financial-bridge-design-v2.md",
+    "peer-financial-bridge-plan-v2.json"
+  ],
+  "protocol": "peer-financial-bridge-design-v2",
+  "purpose": "Connect genuine peer and controller coding dispatch to one cumulative spending authority; not permission to spend or an implemented execution contract.",
+  "recovery_matrix": [
+    {
+      "behavior": "Same-ID retry may proceed only if no durable action exists",
+      "boundary": "No admission commit"
+    },
+    {
+      "behavior": "Full reservation retained, halt, no automatic invocation",
+      "boundary": "Reservation committed without recoverable result"
+    },
+    {
+      "behavior": "Unknown, retain full reservation, no automatic provider retry",
+      "boundary": "Durable intent without result"
+    },
+    {
+      "behavior": "Replay and settle idempotently even after lease expiry",
+      "boundary": "Durable result without settlement"
+    },
+    {
+      "behavior": "Reconstruct receipt without another invocation or charge",
+      "boundary": "Settlement committed without receipt"
+    },
+    {
+      "behavior": "Recover durable result publication only",
+      "boundary": "Publication interrupted"
+    },
+    {
+      "behavior": "Persistent halt; unknown usage remains full reservation",
+      "boundary": "Unknown usage or halt metadata"
+    },
+    {
+      "behavior": "In-memory fence, nonterminal waiting on same request ID, recovery before new dispatch",
+      "boundary": "Storage cannot retain outcome/halt"
+    }
+  ],
+  "registration_and_recovery": {
+    "changed_contract": "Prospective version and qualification required for changes to source, profile, cap, journal, roster or protocol",
+    "durable_intent": "Intent without recoverable result remains unknown; exact durable result may settle after lease expiry. Recovery never upgrades a pre-lock timestamp into current permission.",
+    "fresh": "Exact expected global cap/opening commitments, quiescent historical reservations/promotions, immutable cohort registration",
+    "resume": "Validate registered cohort and retained records; do not require original opening balance or mint a new cap",
+    "saved_receipt": "Exact successful historical receipt replay does not require a fresh lease and cannot authorize another invocation."
+  },
+  "remaining_scope": [
+    "Implement and qualify cumulative adapter",
+    "Complete integrated Git promotion and sandboxed merged-source acceptance",
+    "Common selection/repair/reopening/deadline policies",
+    "Full matched four-cell study",
+    "Independent held-out task-family confirmation",
+    "Autonomous tool-loop and multi-host studies"
+  ],
+  "required_qualification": {
+    "environment": "Actual new adapter against disposable existing-format ledger with historical settled spending; never real cumulative ledger",
+    "final_barrier": "Independent final project evaluation starts only after whole-cohort source freeze; finance passes or partial cohorts do not establish project acceptance.",
+    "ordered_gates": [
+      "Independent design/source review",
+      "Scoped static and fast invariants",
+      "Actual authenticated localhost/process and ledger fault checks",
+      "Combined peer/controller + finance + bundle + sandbox/merged-source/CAS checks",
+      "Full frozen-roster zero-API rehearsal",
+      "Independent accounting/source/purpose audit",
+      "Adequate authorization + registered cohort + current financial recheck before live"
+    ],
+    "receipt_reuse": "Exact source, ordered suite, evaluator, runtime/image, environment, limits, seed, protocol and purpose required; independent acceptance and repeatability remain fresh.",
+    "scenarios": [
+      "Existing-file/schema/identity refusal and historical-row preservation",
+      "Output relocation cannot duplicate cohort cap",
+      "Concurrent global/cohort exhaustion and exact membership",
+      "Duplicate/rebound/cross-principal request identity",
+      "Known-failure charge and full unknown retention",
+      "Real process death across admission/result/settlement/publication/ACK",
+      "Retained transport-entry counts show no reinvocation",
+      "Exact historical-lock contention and provider-owner death",
+      "Expired-lease settlement replay",
+      "Contract/source/profile/journal drift rejection",
+      "Corrupt/missing terminal accounting and halt recovery",
+      "Real arrived payload ownership with actual OpenAIWorker parsing/usage under closed offline transport"
+    ]
+  },
+  "review": {
+    "change": "Explicit post-BEGIN-IMMEDIATE authority clock sampling and separate saved-receipt/intent recovery semantics; document binding updated. No implementation change.",
+    "implementation_or_test_execution": false,
+    "narrow_review": {
+      "implementation_or_test_execution": false,
+      "only_post_review_change": "This clearance metadata; wording and source bindings unchanged",
+      "reviewed_document_sha256": "673841478032a84b9e2ae02ad57580095dc42855efe527fb9fec1bbf4d8f534c",
+      "reviewed_plan_sha256_before_review_metadata_update": "62d1cfb437ff8f6fa9bbf043bd56c39193d9034abd4963132549bd5d730fba01",
+      "reviewer": "authority_boundary_review",
+      "scope": "Post-BEGIN-IMMEDIATE new-admission clock sampling, distinct historical-replay/durable-intent recovery semantics, and updated document binding"
+    },
+    "previous_review": {
+      "implementation_or_test_execution": false,
+      "method": "Independent read-only architectural review and final artifact/source-binding review by authority_boundary_review",
+      "only_post_review_change": "This review metadata; design and source bindings unchanged",
+      "reviewed_document_sha256": "1f091fad666a39c2fcd8d40c5e87f46c83589cc84ca314c8db8e6bd84e1a86e2",
+      "reviewed_plan_sha256_before_review_metadata_update": "0749e23e74dadea97d63c65be6a58c291ba6bc4790be8980169718e7e739e579",
+      "status": "passed_design_and_artifact_bindings",
+      "supporting_source_bindings_verified": 11
+    },
+    "previous_reviewed_plan_sha256": "b5f2c4d1176a38618e626c622727594bb2472f5d735b9fb0b5c729e183146de3",
+    "status": "passed_design_bindings_and_narrow_clock_wording"
+  },
+  "schema_version": 2,
+  "status": "prospective_reviewed_design_only",
+  "storage_contract": {
+    "cohort_binding": [
+      "contract",
+      "complete roster",
+      "principal/task/profile permissions",
+      "incremental cap",
+      "source/evaluator identities",
+      "journal namespace",
+      "cumulative ledger identity"
+    ],
+    "database_hash_limit": "Record canonical historical rows and observed identity; changing SQLite file bytes are not a permanent execution identity.",
+    "identity": "Stable cohort_id and service-derived global task/reservation mappings; output paths never create allowance",
+    "open_existing_only": true,
+    "preflight": [
+      "existing file and compatible schema",
+      "expected cap and historical row snapshot",
+      "no silent new wallet, copy or alias",
+      "preserve historical rows and budget"
+    ],
+    "require_exact_registered_path_and_identity": true,
+    "tables": "NEW cohort-scoped config, request, action, membership and halt tables in the existing cumulative database",
+    "v1_adoption": "Do not pass the cumulative database into v1 Authority; its private bootstrap and singleton config are intentionally unsuitable."
+  },
+  "supporting_sources": [
+    {
+      "path": "gossip_harness/ledger.py",
+      "sha256": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b"
+    },
+    {
+      "path": "gossip_harness/peer_authority_v1.py",
+      "sha256": "5750922f03620b9478235eebed52f60e954249a4a9721cd622d0791be6f40e10"
+    },
+    {
+      "path": "gossip_harness/peer_coding_dispatch_v1.py",
+      "sha256": "b3fe79f77966f749e54ab151724e007ed502ab54736f176bd79a55e06628cf5c"
+    },
+    {
+      "path": "gossip_harness/peer_coding_runtime_v1.py",
+      "sha256": "26f7ab52d7b659082aa5cb970e30b07793f80507345975010004c272c3f758c0"
+    },
+    {
+      "path": "gossip_harness/verification_journal.py",
+      "sha256": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9"
+    },
+    {
+      "path": "gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    },
+    {
+      "path": "gossip_harness/continuation_experiment.py",
+      "sha256": "db5e6b1464d0b20810e6d45620d60cee360e3a22f510b1b59e8b5defb5b0be29"
+    },
+    {
+      "path": "gossip_harness/benchmark_experiment.py",
+      "sha256": "6890b98a9e4656724342855667de0bc6365c8dd05ec66103a579d638bf001105"
+    },
+    {
+      "path": "gossip_harness/continuation_followup.py",
+      "sha256": "32531709cdda8c44a93256b038082695f8fde2d27969152be8d5739ec1b980b7"
+    },
+    {
+      "path": "analysis/peer-coding-payload-checkpoint-v1.json",
+      "sha256": "53d42557c2c94e3258137e6b8c83413e7989529565bb233b39ec6cab7b8ab74d"
+    },
+    {
+      "path": "analysis/benchmark-live-gossip-followup-design-v2.json",
+      "sha256": "9a067d78c3807e9da28c830a6ad2ac166eb10a62bca1dceabb2abe348a0305ad"
+    }
+  ]
+}
