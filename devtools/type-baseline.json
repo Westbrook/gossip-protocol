@@ -1,8 +1,130 @@
 {
   "schema_version": 1,
   "mypy_version": "1.20.2",
-  "description": "Reviewed source-bound legacy type debt from the explicit development and versioned study roots. Continuation coverage newly traverses eight frozen dependencies: their 34 existing diagnostics are admitted only at hardcoded immutable SHA identities. Other verification_*, continuation_*, benchmark_*, new development tools and *_v2 modules cannot be baselined. Only exact diagnostic objects and multiplicities on identical source bytes are accepted. Verification never regenerates this file.",
+  "description": "Reviewed source-bound legacy type debt from the explicit development and versioned study roots. Continuation coverage traverses eleven immutable historical dependencies: the first eight contributed 34 existing diagnostics; three historical audit helpers contribute 18 more. Those 52 diagnostics are admitted only at hardcoded immutable SHA identities. The original 65 diagnostics remain unchanged. Other verification_*, continuation_*, benchmark_*, analysis helpers, new development tools and *_v2 modules cannot be baselined. Only exact diagnostic objects and multiplicities on identical source bytes are accepted. Verification never regenerates this file.",
   "files": [
+    {
+      "path": "analysis/audit_benchmark.py",
+      "sha256": "65db31ef66940dd3adaa0ce598f554565ab4cc57d86e9e5e18318b713dfcf9f8",
+      "diagnostics": [
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 50,
+          "column": 4,
+          "end_line": 50,
+          "end_column": 8,
+          "message": "Need type annotation for \"rows\" (hint: \"rows: list[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 197,
+          "column": 13,
+          "end_line": 197,
+          "end_column": 23,
+          "message": "Need type annotation for \"candidates\" (hint: \"candidates: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 209,
+          "column": 18,
+          "end_line": 209,
+          "end_column": 35,
+          "message": "Value of type \"Any | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 341,
+          "column": 59,
+          "end_line": 341,
+          "end_column": 83,
+          "message": "Value of type \"Any | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 341,
+          "column": 59,
+          "end_line": 341,
+          "end_column": 83,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 561,
+          "column": 17,
+          "end_line": 561,
+          "end_column": 22,
+          "message": "Need type annotation for \"prior\" (hint: \"prior: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_benchmark.py",
+          "line": 645,
+          "column": 26,
+          "end_line": 645,
+          "end_column": 31,
+          "message": "Argument 1 to \"set\" of \"ContextVar\" has incompatible type \"EvidenceReads\"; expected \"None\"",
+          "hint": null,
+          "code": "arg-type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "analysis/audit_continuation.py",
+      "sha256": "54cf10f5d651510d8df3fc87b1bc916e63f030d90ea41999cdd64fd91cbce4ed",
+      "diagnostics": [
+        {
+          "file": "analysis/audit_continuation.py",
+          "line": 111,
+          "column": 37,
+          "end_line": 111,
+          "end_column": 45,
+          "message": "Need type annotation for \"span_ids\" (hint: \"span_ids: set[<type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_continuation.py",
+          "line": 488,
+          "column": 17,
+          "end_line": 488,
+          "end_column": 22,
+          "message": "Need type annotation for \"prior\" (hint: \"prior: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "analysis/audit_continuation.py",
+          "line": 573,
+          "column": 26,
+          "end_line": 573,
+          "end_column": 31,
+          "message": "Argument 1 to \"set\" of \"ContextVar\" has incompatible type \"EvidenceReads\"; expected \"None\"",
+          "hint": null,
+          "code": "arg-type",
+          "severity": "error"
+        }
+      ]
+    },
     {
       "path": "analysis/qualify_benchmark.py",
       "sha256": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
@@ -842,6 +964,100 @@
           "message": "Function is missing a return type annotation",
           "hint": null,
           "code": "no-untyped-def",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "path": "gossip_harness/verification_audit.py",
+      "sha256": "dd6c538c81bd71ce8b031b7f38cbd679741b667391074017daf9bd337524422d",
+      "diagnostics": [
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 311,
+          "column": 18,
+          "end_line": 311,
+          "end_column": 28,
+          "message": "Need type annotation for \"candidates\" (hint: \"candidates: dict[<type>, <type>] = ...\")",
+          "hint": null,
+          "code": "var-annotated",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 333,
+          "column": 21,
+          "end_line": 333,
+          "end_column": 39,
+          "message": "Value of type \"Any | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 335,
+          "column": 18,
+          "end_line": 335,
+          "end_column": 35,
+          "message": "Value of type \"Any | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 430,
+          "column": 45,
+          "end_line": 430,
+          "end_column": 72,
+          "message": "Value of type \"None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 430,
+          "column": 45,
+          "end_line": 430,
+          "end_column": 72,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 517,
+          "column": 16,
+          "end_line": 517,
+          "end_column": 45,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 518,
+          "column": 16,
+          "end_line": 518,
+          "end_column": 43,
+          "message": "Value of type \"dict[str, Any] | None\" is not indexable",
+          "hint": null,
+          "code": "index",
+          "severity": "error"
+        },
+        {
+          "file": "gossip_harness/verification_audit.py",
+          "line": 776,
+          "column": 33,
+          "end_line": 776,
+          "end_column": 50,
+          "message": "Need type annotation for \"dispatches\"",
+          "hint": null,
+          "code": "var-annotated",
           "severity": "error"
         }
       ]

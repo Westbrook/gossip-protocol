@@ -15,11 +15,13 @@ from datetime import datetime, timezone
 import hashlib
 import importlib
 import json
+import os
 from pathlib import Path
 import platform
 import re
 import subprocess
 import sys
+import tempfile
 from typing import Any
 
 from gossip_harness.blackbox_validator import (
@@ -28,12 +30,11 @@ from gossip_harness.blackbox_validator import (
 )
 from gossip_harness.pilot import DEFAULT_IMAGE
 from gossip_harness.sandbox import DockerValidator
-from gossip_harness.sustained_checkpoint import save_checkpoint
 from gossip_harness.sustained_experiment import digest
 from gossip_harness.verification_experiment import CASE_TIMEOUT, SUITE_TIMEOUT, verify_receipt
 
 
-PROTOCOL = "continuation-followup-fixture-qualification-v1"
+PROTOCOL = "continuation-followup-fixture-qualification-v2"
 STUDY_PROTOCOL = "continuation-followup-v1"
 PROJECT_IDS = ("warehouse", "job-queue")
 POLICIES = ("current-independent", "improved-independent", "improved-sequential")
@@ -49,6 +50,38 @@ def require(condition, message):
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def save_checkpoint(path: Path, state: dict[str, Any]) -> str:
+    """Persist exact JSON values, including malformed-string fixture inputs.
+
+    ASCII escaping preserves lone surrogates as JSON data without attempting to
+    encode them as UTF-8 characters. Historical checkpoint helpers stay frozen.
+    """
+    require(isinstance(state, dict), "Checkpoint state must be a JSON object")
+    data = (json.dumps(state, sort_keys=True, indent=2, ensure_ascii=True,
+                       allow_nan=False) + "\n").encode("utf-8")
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="wb", prefix=f".{target.name}.",
+                                         suffix=".tmp", dir=target.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, target)
+        temporary = None
+        directory = os.open(target.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+    return sha(data)
 
 
 def decode(raw):
@@ -175,8 +208,28 @@ def matrix_for(modules):
                     files=files, source_sha256=source_hash, cases=cases,
                     suite_sha256=digest(cases), groups=indexes,
                     receipt=f"receipts/{number:04d}.json"))
+    # Append separate baseline executions without renumbering the milestone
+    # rows. Milestone goldens contain new features and are different source
+    # trees: they cannot establish the shipped baseline's claimed correctness.
+    for module in modules:
+        project = module.PROJECT
+        groups = dict(public=list(module.BASE_PUBLIC), private=list(module.BASE_PRIVATE), witness=[])
+        cases, indexes = ordered_suite(groups)
+        require(indexes["public"] and indexes["private"], "Baseline acceptance groups must be nonempty")
+        for group, stage_group in (("public", "visible_cases"), ("private", "hidden_cases")):
+            inherited, _ = ordered_suite({group: list(project["stages"][0][stage_group])})
+            require(all(any(json_equal(case, candidate) for candidate in inherited)
+                        for case in groups[group]), "Baseline acceptance must be inherited exactly")
+        files, cases, _ = BlackboxValidator._inputs(project["initial_files"], cases)
+        number = len(rows)
+        identity = f"{project['id']}/baseline/initial"
+        rows.append(dict(index=number, project_id=project["id"], stage_index=-1,
+            source_id="initial", kind="baseline", family=None, fixture_id=identity,
+            purpose=f"{PROTOCOL}/{identity}", files=files, source_sha256=digest(files),
+            cases=cases, suite_sha256=digest(cases), groups=indexes,
+            receipt=f"receipts/{number:04d}.json"))
     require(len(stage_keys) == len({tuple(item) for item in stage_keys}), "Duplicate project/stage")
-    return dict(stages=stage_keys, rows=rows)
+    return dict(stages=stage_keys, baseline_projects=list(PROJECT_IDS), rows=rows)
 
 
 def validate_study_contract(contract, image):
@@ -201,6 +254,9 @@ def validate_study_contract(contract, image):
     require(contract["case_timeout_seconds"] == CASE_TIMEOUT
             and contract["suite_timeout_seconds"] == SUITE_TIMEOUT,
             "Unexpected qualification execution limits")
+    matrix_sha = contract.get("qualification_matrix_sha256")
+    require(isinstance(matrix_sha, str) and re.fullmatch(r"[a-f0-9]{64}", matrix_sha) is not None,
+            "Study contract must bind the exact qualification matrix")
 
 
 def prepare(image=DEFAULT_IMAGE):
@@ -211,6 +267,8 @@ def prepare(image=DEFAULT_IMAGE):
     validate_study_contract(contract, image)
     modules = [runner.fixture(project) for project in contract["project_ids"]]
     matrix = matrix_for(modules)
+    require(digest(matrix) == contract["qualification_matrix_sha256"],
+            "Qualification matrix differs from frozen study contract")
     names = {"continuation-followup-study-plan.json": contract["plan_sha256"]}
     names.update({"gossip_harness/" + name: value for name, value in contract["sources"].items()})
     names.update(contract.get("extra_sources", {}))
@@ -349,8 +407,61 @@ def conclusions(matrix, classifications):
                 and len(families) >= MINIMUM_SURVIVING_FAMILIES,
             public_surviving_families=families, public_surviving_family_count=len(families),
             source_count=expected_count))
-    return dict(qualified=complete and all(stage["qualified"] for stage in stages),
-                complete=complete, stages=stages)
+    baselines = []
+    for project_id in matrix["baseline_projects"]:
+        members = [row for row in classifications
+                   if row["project_id"] == project_id and row["kind"] == "baseline"]
+        baselines.append(dict(project_id=project_id,
+            qualified=len(members) == 1 and members[0]["stage_index"] == -1
+                and members[0]["source_id"] == "initial" and members[0]["qualified"],
+            source_count=1))
+    return dict(qualified=complete and all(stage["qualified"] for stage in stages)
+                and all(baseline["qualified"] for baseline in baselines),
+                complete=complete, stages=stages, baselines=baselines)
+
+
+def baseline_proof(report, project_id, initial_files):
+    """Project one baseline's bindings from an already validated full receipt.
+
+    This helper does not replace validate_qualification: callers must complete
+    that read-only eligibility gate before using the returned approval. Keeping
+    the proof separate preserves the controller's exact three-field approval.
+    """
+    require(project_id in PROJECT_IDS and report.get("protocol") == PROTOCOL
+            and report.get("status") == "qualified" and report.get("api_calls") == 0
+            and report.get("conclusion", {}).get("complete") is True
+            and report["conclusion"].get("qualified") is True,
+            "Baseline approval requires complete v2 fixture qualification")
+    baselines = report["conclusion"].get("baselines", [])
+    require([row.get("project_id") for row in baselines] == list(PROJECT_IDS)
+            and all(row.get("qualified") is True and row.get("source_count") == 1
+                    for row in baselines), "Both starting baselines must qualify")
+    identity = f"{project_id}/baseline/initial"
+    executions = [row for row in report.get("executions", []) if row.get("fixture_id") == identity]
+    findings = [row for row in report.get("classifications", []) if row.get("fixture_id") == identity]
+    require(len(executions) == len(findings) == 1, "Exact baseline execution and finding required")
+    execution, finding = executions[0], findings[0]
+    require(execution.get("source_sha256") == digest(initial_files)
+            and execution.get("purpose") == f"{PROTOCOL}/{identity}"
+            and execution.get("physically_executed") is True and execution.get("reused") is False
+            and execution.get("verified") is True
+            and finding.get("qualified") is True and finding.get("runnable") is True
+            and finding.get("all_cases_passed") is True and finding.get("kind") == "baseline"
+            and finding.get("stage_index") == -1 and finding.get("source_id") == "initial"
+            and finding.get("index") == execution.get("index"),
+            "Starting source does not match a passing baseline receipt")
+    result = {key: report[key] for key in ("protocol", "contract_sha256", "manifest_sha256",
+        "execution_environment_sha256", "runtime_identity_sha256")}
+    result.update(project_id=project_id, stage_index=-1, source_id="initial")
+    result.update({key: execution[key] for key in ("fixture_id", "index", "purpose", "source_sha256",
+        "suite_sha256", "receipt", "receipt_sha256", "physically_executed", "reused")})
+    return result
+
+
+def baseline_approval(report, project_id, initial_files):
+    proof = baseline_proof(report, project_id, initial_files)
+    return dict(files_sha256=digest(initial_files), source_valid=True,
+                approval_id="qualified-baseline:" + digest(proof))
 
 
 def run(output, image=DEFAULT_IMAGE):
@@ -452,6 +563,7 @@ def validate_qualification(path, expected_contract_digest):
             and manifest.get("contract") == prepared["contract"], "Qualification contract changed")
     require(manifest.get("matrix") == prepared["matrix"]
             and manifest.get("matrix_sha256") == digest(prepared["matrix"])
+                == prepared["contract"].get("qualification_matrix_sha256")
             and manifest.get("adapter_sha256") == ADAPTER_SHA256
             and manifest.get("minimum_surviving_families") == MINIMUM_SURVIVING_FAMILIES
             and manifest.get("execution_environment") == prepared["execution_environment"]

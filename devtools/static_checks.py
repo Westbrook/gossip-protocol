@@ -28,8 +28,11 @@ REQUIRED_LINT_RULES = frozenset({"E9", "F63", "F7", "F82"})
 # Exact immutable identities permit recording their existing diagnostics without
 # permitting new verification modules (or changed copies) to acquire type debt.
 FROZEN_TYPE_BASELINE_EXCEPTIONS = {
+    "analysis/audit_benchmark.py": "65db31ef66940dd3adaa0ce598f554565ab4cc57d86e9e5e18318b713dfcf9f8",
+    "analysis/audit_continuation.py": "54cf10f5d651510d8df3fc87b1bc916e63f030d90ea41999cdd64fd91cbce4ed",
     "analysis/qualify_benchmark.py": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
     "gossip_harness/continuation_transport.py": "de79df63641a14e947eba6896d4ffd52f450c47ec4993e61a49d5797d6cb8498",
+    "gossip_harness/verification_audit.py": "dd6c538c81bd71ce8b031b7f38cbd679741b667391074017daf9bd337524422d",
     "gossip_harness/verification_buildgraph.py": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
     "gossip_harness/verification_calendar.py": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62",
     "gossip_harness/verification_experiment.py": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",

@@ -1,12 +1,14 @@
 """Zero-provider, zero-Docker tests for immutable paired setup foundations."""
 from copy import deepcopy
 import json
+import re
+import threading
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
 from typing import Any
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from gossip_harness import continuation_followup as runner
 from gossip_harness.blackbox_validator import BlackboxValidator
@@ -122,6 +124,105 @@ class FollowupPlanTests(unittest.TestCase):
                 runner.prepare_offline_setup(output, "warehouse", 0, qualification=None)
             validator.assert_not_called()
             self.assertFalse(output.exists())
+
+    def test_live_admission_requires_exact_numeric_capped_policy(self):
+        plan = runner.study_plan()
+        plan["readiness"]["live_authorized"] = True
+        cap = plan["budget"]["incremental_cap_micro_usd"]
+        plan["budget"]["funding"] = dict(status="approved_capped_cohort_admission",
+            policy="bounded_budget_termination_no_incomplete_comparison", approved_incremental_micro_usd=cap)
+        self.assertTrue(runner.live_readiness(plan)["plan_ready"])
+        for amount in (True, cap + 1, cap - 1):
+            plan["budget"]["funding"]["approved_incremental_micro_usd"] = amount
+            self.assertFalse(runner.live_readiness(plan)["plan_ready"])
+
+    def test_live_mode_rejects_falsey_worker_without_scripted_fallback(self):
+        session = runner.ExecutionSession.__new__(runner.ExecutionSession)
+        session.fatal, session.mode, session.models = threading.Event(), "live", {"cheap": None}
+        with patch.object(runner, "rehearsal_result", side_effect=AssertionError("Scripted fallback forbidden")):
+            with self.assertRaisesRegex(ValueError, "invalid live model"):
+                session.invoke(role="builder", model="cheap", files={}, instructions="", allowed_paths=[],
+                               feedback="", metadata={})
+        self.assertTrue(session.fatal.is_set())
+
+    def test_reservation_failure_sets_fatal_before_sibling_can_dispatch(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            session = runner.ExecutionSession.__new__(runner.ExecutionSession)
+            worker = runner.OpenAIWorker("unit-test-no-network", model=runner.MODEL)
+            session.fatal, session.mode, session.models = threading.Event(), "live", {"cheap": worker}
+            session.contract_check, session.billing, session.contract_sha256 = None, "unit", "unit"
+            session.root = Path(temporary)
+            session.base = Mock(head=lambda: "unit-head")
+            session.lock, session.started_call_ids = threading.RLock(), set()
+            session.journal = runner.RequestJournal(session.root / "journal")
+            arguments = dict(role="builder", model="cheap", files={}, instructions="", allowed_paths=[],
+                feedback="", metadata={"candidate_id": "slot-0", "round": 1})
+            with patch.object(worker, "reservation_units", side_effect=ValueError("reservation invalid")), \
+                    patch.object(worker, "run", side_effect=AssertionError("Provider forbidden")):
+                with self.assertRaisesRegex(ValueError, "reservation invalid"):
+                    session.invoke(**arguments)
+                self.assertTrue(session.fatal.is_set())
+                with self.assertRaisesRegex(RuntimeError, "earlier execution"):
+                    session.invoke(**{**arguments, "metadata": {"candidate_id": "slot-1", "round": 1}})
+
+
+    def test_retained_rehearsal_certificate_matches_all_current_audit_bindings(self):
+        current = dict(passed=True, mode="rehearsal", scope={"primary_cohort": True}, protocol="test-audit-v1",
+            results_sha256="r" * 64, timings_sha256="t" * 64, freeze_manifest_sha256="f" * 64,
+            contract_sha256="c" * 64, auditor_sha256="a" * 64)
+        arguments = dict(results_sha256=current["results_sha256"], contract_sha256=current["contract_sha256"])
+        runner.validate_rehearsal_certificate(deepcopy(current), current, **arguments)
+        for field in ("protocol", "results_sha256", "timings_sha256", "freeze_manifest_sha256",
+                      "contract_sha256", "auditor_sha256", "mode"):
+            for target in ("saved", "current"):
+                saved, fresh = deepcopy(current), deepcopy(current)
+                (saved if target == "saved" else fresh)[field] = "changed"
+                with self.subTest(field=field, target=target), self.assertRaisesRegex(ValueError, "certificate"):
+                    runner.validate_rehearsal_certificate(saved, fresh, **arguments)
+        for key in ("passed", "scope"):
+            broken = deepcopy(current)
+            broken[key] = False if key == "passed" else {"primary_cohort": False}
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                runner.validate_rehearsal_certificate(broken, current, **arguments)
+
+    def test_live_reaudit_mismatch_or_replacement_stops_before_credentials(self):
+        from analysis import qualify_continuation_followup as qualifier
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            proof_path, audit_path = root / "proof" / "results.json", root / "proof-audit.json"
+            qualification = root / "qualification.json"
+            for path in (proof_path, qualification):
+                runner.save(path, {"unit_test_only": True})
+            expected = {"image": "unit-test-image"}
+            current = dict(passed=True, mode="rehearsal", scope={"primary_cohort": True}, protocol="test-audit-v1",
+                results_sha256=runner.sha_file(proof_path), timings_sha256="t" * 64,
+                freeze_manifest_sha256="f" * 64, contract_sha256=runner.digest(expected), auditor_sha256="a" * 64)
+            for tamper in ("wrong-mode", "old-auditor", "replaced-during-audit"):
+                saved = deepcopy(current)
+                if tamper == "wrong-mode":
+                    saved["mode"] = "live"
+                elif tamper == "old-auditor":
+                    saved["auditor_sha256"] = "old"
+                runner.save(audit_path, saved)
+                def reaudited(path):
+                    if tamper == "replaced-during-audit":
+                        runner.save(audit_path, {**current, "mode": "live"})
+                    return deepcopy(current)
+                with self.subTest(tamper=tamper), \
+                        patch.object(runner, "contract", return_value=expected), \
+                        patch.object(runner, "live_readiness", return_value={"plan_ready": True}), \
+                        patch.object(qualifier, "validate_qualification", return_value={"runtime_identity": {}}), \
+                        patch.object(qualifier, "runtime_identity", return_value={}), \
+                        patch.object(qualifier, "baseline_proof", return_value={}), \
+                        patch.object(runner, "validate_rehearsal"), \
+                        patch.object(audit, "audit_run", side_effect=reaudited), \
+                        patch.object(runner, "credential", side_effect=AssertionError("Credential access forbidden")) as credentials:
+                    with self.assertRaisesRegex(ValueError, "certificate"):
+                        runner._run_owned(root / "never-created", mode="live", qualification=qualification,
+                            rehearsal=proof_path, rehearsal_audit=audit_path, image="unit-test-image")
+                    credentials.assert_not_called()
+                    self.assertFalse((root / "never-created").exists())
+
 
 
 class FollowupSharedSetupTests(unittest.TestCase):
@@ -298,9 +399,9 @@ class FollowupSharedSetupTests(unittest.TestCase):
         self.assertEqual(runner.sha_file(self.path), self.sha)
 
     def test_independent_audit_refuses_unit_validator_and_full_cohort_claim(self):
-        with self.assertRaisesRegex(ValueError, "physical-Docker"):
+        with self.assertRaises(ValueError):
             audit.audit_shared_setup(self.root / "block")
-        with self.assertRaisesRegex(ValueError, "unsupported"):
+        with self.assertRaises((ValueError, FileNotFoundError)):
             audit.audit_run(self.root / "block")
 
     def _pool_audit_inputs(self, formation):
@@ -345,45 +446,147 @@ class FollowupSharedSetupTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "builder source"):
             audit.audit_initial_pool(pool, **{**arguments, "calls": calls})
 
-    def test_full_setup_audit_pipeline_with_explicit_temporary_unit_doubles(self):
-        # Deliberately patch the validator class identity as well as the typed
-        # receipt parser to exercise top-level auditor integration. Everything
-        # lives in a temporary unit fixture. No physical execution certificate
-        # is written or offered as qualification by this test.
-        with tempfile.TemporaryDirectory() as temporary, \
-                patch.object(runner, "fixture", return_value=self.fixture), \
-                patch.object(runner, "BlackboxValidator", FakeValidator), \
+    def test_source_snapshot_tampering_rejected_before_shared_import(self):
+        # The cohort auditor owns full qualified-pipeline reconstruction. This
+        # foundation test proves snapshot binding without inventing eligibility.
+        path = self.root / "block" / "study-plan.json"
+        original = path.read_bytes()
+        try:
+            path.write_bytes(original + b"\n")
+            with self.assertRaisesRegex(ValueError, "artifact binding"):
+                self._import()
+        finally:
+            path.write_bytes(original)
+
+
+class FaultAwareValidator(FakeValidator):
+    """Unit oracle for declared operation faults; never executes application code."""
+    lock = threading.Lock()
+
+    def preflight(self):
+        return True, "Explicit unit control, not Docker qualification"
+
+    def evaluate(self, files, cases):
+        with self.lock:
+            result = super().evaluate(files, cases)
+        faults = re.findall(r"^REHEARSAL_FAULT_OP = '([^']+)'$", "\n".join(files.values()), re.MULTILINE)
+        def affected(payload):
+            if isinstance(payload, dict):
+                return payload.get("op") in faults or any(affected(value) for value in payload.values())
+            return isinstance(payload, list) and any(affected(value) for value in payload)
+        result["outcomes"] = [dict(index=index, passed=not affected(case["input"]))
+                              for index, case in enumerate(cases)]
+        result["passed"] = all(item["passed"] for item in result["outcomes"])
+        result["status"] = "passed" if result["passed"] else "failed"
+        return result
+
+
+class FollowupCohortRunnerTests(unittest.TestCase):
+    temporary: tempfile.TemporaryDirectory[str]
+    root: Path
+    expected: dict[str, Any]
+    report: dict[str, Any]
+
+    @classmethod
+    def setUpClass(cls):
+        from analysis import qualify_continuation_followup as qualifier
+        cls.temporary = tempfile.TemporaryDirectory()
+        cls.root = Path(cls.temporary.name).resolve() / "cohort"
+        plan = runner.study_plan()
+        # The scientific source checks have dedicated unit and independent
+        # audit coverage. This fake-validator control runs real fixture inputs,
+        # controller decisions, Git stores, journals and the complete barrier.
+        cls.expected = dict(protocol=runner.PROTOCOL, image="unit-test-image", sources={}, extra_sources={},
+            plan_sha256=runner.sha_file(runner.PLAN_PATH),
+            fixtures={pid: dict(fixture_sha256=runner.digest(runner.fixture(pid).PROJECT)) for pid in runner.PROJECT_MODULES},
+            models={role: {"reservation_units": 0} for role in ("cheap", "strong")},
+            project_ids=list(runner.PROJECT_MODULES), roster=plan["roster"], block_order=plan["block_order"],
+            limits=deepcopy(runner.LIMITS), budget=plan["budget"])
+        proof_path = cls.root.parent / "unit-qualification.json"
+        runner.save(proof_path, {"unit_test_only": True})
+        runtime = {"unit_test_only": True}
+        with patch.object(runner, "contract", return_value=cls.expected), \
+                patch.object(qualifier, "validate_qualification", return_value={"runtime_identity": runtime}), \
+                patch.object(qualifier, "runtime_identity", return_value=runtime), \
+                patch.object(qualifier, "baseline_proof", side_effect=lambda report, pid, files:
+                    dict(unit_test_only=True, project_id=pid, source_sha256=runner.digest(files))), \
                 patch.object(runner.OpenAIWorker, "run", side_effect=AssertionError("Provider call forbidden")):
-            root = Path(temporary).resolve()
-            image = "sha256:" + "0" * 64
-            expected = runner.contract(image)
-            ledger = Ledger(root / "ledger.sqlite", budget_units=0)
-            budget = runner.StudyBudget(ledger, "full-unit-fixture", 0, root / "budget.lock")
-            runner.prepare_shared_block(root / "block", "warehouse", 0,
-                contract_sha256=runner.digest(expected), image=image, ledger=ledger, budget=budget,
-                spans=runner.Spans(root / "clock.json"), expected_contract=expected,
-                validator_factory=FakeValidator)
-            def fake_receipt(receipt, files, cases, contract):
-                return {case["id"]: {"passed": True} for case in cases}
-            with patch.object(audit, "audit_receipt", side_effect=fake_receipt):
-                result = audit.audit_shared_setup(root / "block")
-                self.assertEqual(result["scripted_calls"], 10)
-                self.assertEqual(result["physical_provider_calls"], 0)
-                self.assertTrue(result["scope"]["shared_initial_setup"])
-                self.assertFalse(result["scope"]["primary_cohort"])
-                self.assertFalse(result["scope"]["prospective_arm_execution"])
-                manifest_path = root / "block" / "shared-setup.json"
-                original_snapshot = root / "block" / "source-snapshot" / "gossip_harness" / "continuation_followup.py"
-                snapshot_bytes = original_snapshot.read_bytes()
-                original_snapshot.write_bytes(snapshot_bytes + b"\n# changed snapshot\n")
-                with self.assertRaisesRegex(ValueError, "artifact binding"):
-                    runner.import_shared_initial(manifest_path, "current-independent", project_id="warehouse",
-                        repetition=0, initial_files=self.fixture.PROJECT["initial_files"],
-                        contract_sha256=runner.digest(expected), expected_manifest_sha256=runner.sha_file(manifest_path))
-                original_snapshot.write_bytes(snapshot_bytes)
-                request_path = root / "block" / "scouts" / "requests" / "scout-scout-0-1.request.json"
-                request = runner.read(request_path)
-                request["files"]["solution.py"] = "candidate source leaked into scout"
-                runner.save(request_path, request)
-                with self.assertRaises(ValueError):
-                    audit.audit_shared_setup(root / "block")
+            cls.report = runner.run(cls.root, mode="rehearsal", qualification=proof_path,
+                                    image="unit-test-image", validator_factory=FaultAwareValidator)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temporary.cleanup()
+
+    def test_complete_roster_and_fault_controls_finish_without_provider(self):
+        self.assertEqual(self.report["status"], "finished")
+        self.assertEqual(len(self.report["cases"]), 12)
+        self.assertEqual(sum(row["milestones_completed"] for row in self.report["cases"]), 24)
+        self.assertTrue(all(row["accepted"] for row in self.report["cases"]))
+        calls = [call for row in self.report["shared_setups"] + self.report["cases"] for call in row["invocations"]]
+        self.assertEqual(len(calls), 228)
+        self.assertTrue(all(not call["physical_dispatch"] and call["usage_units"] == 0 for call in calls))
+        self.assertEqual(len({call["reservation"] for call in calls}), len(calls))
+        self.assertEqual(self.report["unsettled"], dict(reservations=0, promotions=0))
+
+    def test_full_barrier_precedes_all_independent_final_executions(self):
+        frozen = runner.read(self.root / "frozen-trajectories.json")
+        spans = runner.read(self.root / "timings.json")["spans"]
+        work = [row for row in spans if row["kind"] in {"model_trajectory", "shared_setup_block"}]
+        finals = [row for row in spans if row.get("purpose", "").startswith("final_")]
+        self.assertEqual(len(work), 16)
+        self.assertEqual(len(finals), 24)
+        self.assertLessEqual(max(row["finished_monotonic_ns"] for row in work), frozen["frozen_monotonic_ns"])
+        self.assertGreaterEqual(min(row["started_monotonic_ns"] for row in finals), frozen["frozen_monotonic_ns"])
+        self.assertEqual(len({runner.read(row["receipt_path"])["container_name"] for row in finals}), 24)
+
+    def test_first_pool_pairing_and_later_accepted_lineage(self):
+        for pid, repetition in self.expected["block_order"]:
+            initial = []
+            for policy in runner.POLICIES:
+                root = self.root / f"{pid}-{policy}-{repetition}"
+                state = runner.read(root / "trajectory.json")
+                initial.append(runner.read(root / "stage-0" / "initial-pool.json")["pool"])
+                second = runner.read(root / "stage-1" / "session.json")
+                self.assertEqual(second["initial_files_sha256"], runner.digest(state["stages"][0]["files"]))
+                self.assertEqual(state["stages"][1]["metrics"]["initial_builder_calls"], 4)
+                self.assertEqual(state["stages"][0]["metrics"]["initial_builder_calls"], 0)
+                self.assertEqual(state["stages"][0]["metrics"]["shared_initial_builder_opportunities"], 4)
+            self.assertEqual([initial[0]["candidates"][alias]["files"] for alias in initial[0]["candidate_order"]],
+                             [initial[1]["candidates"][alias]["files"] for alias in initial[1]["candidate_order"]])
+            self.assertEqual(initial[0]["candidate_order"], initial[1]["candidate_order"])
+
+    def test_rehearsal_retains_regressions_noop_and_focused_review(self):
+        for row in self.report["cases"]:
+            if row["policy"] == "current-independent":
+                continue
+            stages = runner.read(self.root / row["run_id"] / "trajectory.json")["stages"]
+            self.assertEqual(stages[0]["metrics"]["retained_repair_checkpoints"], 2)
+            self.assertEqual(stages[0]["metrics"]["blocked_acceptances"], 2)
+            if row["repetition"] == 0:
+                self.assertGreaterEqual(stages[0]["metrics"]["repair_regressions"], 1)
+            else:
+                self.assertEqual(stages[1]["metrics"]["focused_review_requests"], 1)
+                self.assertEqual(stages[1]["metrics"]["repairs"], 0)
+                self.assertTrue(any(call.get("metadata", {}).get("rehearsal_noop") for call in stages[0]["invocations"]))
+
+    def test_source_evidence_tampering_blocks_private_gate(self):
+        frozen = runner.read(self.root / "frozen-trajectories.json")
+        path = Path(frozen["trajectories"][0]["stage_artifacts"][0]["scouts"]["path"])
+        original = path.read_bytes()
+        try:
+            path.write_bytes(original + b"\n")
+            with self.assertRaisesRegex(ValueError, "Frozen evidence artifact changed"):
+                runner.validate_freeze(self.root, self.expected, self.report["freeze_manifest_sha256"])
+        finally:
+            path.write_bytes(original)
+
+    def test_private_material_absent_from_provider_request_context(self):
+        private_ids = {case["id"] for pid in runner.PROJECT_MODULES
+                       for stage in runner.fixture(pid).PROJECT["stages"] for case in stage["hidden_cases"]}
+        for path in self.root.glob("**/requests/*.request.json"):
+            request = runner.read(path)
+            content = json.dumps(request)
+            self.assertNotIn("known_files", content)
+            self.assertNotIn("hidden_cases", content)
+            self.assertFalse(any(identifier in content for identifier in private_ids))

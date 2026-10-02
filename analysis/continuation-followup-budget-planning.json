@@ -1,0 +1,915 @@
+{
+  "created_at": "2026-10-02T12:53:05.425533+00:00",
+  "forecast_method": {
+    "formula": "For each role: physical call count * (stage-weighted historical mean input tokens * assumed input multiplier * continuation-context factor * historical input price + stage-weighted mean output tokens * output multiplier * historical output price). Sum all roles; prices are USD per token. Scenario USD values are rounded to9 decimal places for arithmetic traceability, not predictive precision.",
+    "outputs": "Historical output means remain unchanged in the central and first stress scenarios. The two added response-growth sensitivities multiply them by 1.5 and 2.0 for all roles; neither multiplier has a calibrated probability. Shorter source/specification does not guarantee shorter reasoning or response output.",
+    "pricing_profiles": {
+      "cheap": {
+        "cached_input_accounting": "uncached_rate",
+        "configured_max_output_tokens": 12288,
+        "context_tokens": 400000,
+        "endpoint": "https://api.openai.com/v1/responses",
+        "input_micro_usd_per_million": 750000,
+        "long_context_above_input_tokens": null,
+        "long_input_micro_usd_per_million": null,
+        "long_output_micro_usd_per_million": null,
+        "max_output_tokens": 128000,
+        "max_request_bytes": 512000,
+        "model": "gpt-5.4-mini-2026-03-17",
+        "output_micro_usd_per_million": 4500000,
+        "price_verified_on": "2026-09-30",
+        "reasoning_effort": "low",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 355296,
+        "service_tier": "default",
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini"
+      },
+      "strong": {
+        "cached_input_accounting": "uncached_rate",
+        "configured_max_output_tokens": 12288,
+        "context_tokens": 1050000,
+        "endpoint": "https://api.openai.com/v1/responses",
+        "input_micro_usd_per_million": 2500000,
+        "long_context_above_input_tokens": 272000,
+        "long_input_micro_usd_per_million": 5000000,
+        "long_output_micro_usd_per_million": 22500000,
+        "max_output_tokens": 128000,
+        "max_request_bytes": 512000,
+        "model": "gpt-5.4-2026-03-05",
+        "output_micro_usd_per_million": 15000000,
+        "price_verified_on": "2026-09-30",
+        "reasoning_effort": "low",
+        "reservation_policy": "full_context_input_plus_configured_max_output",
+        "reservation_units": 5526480,
+        "service_tier": "default",
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4"
+      }
+    },
+    "stage_weighted_role_tokens": {
+      "cheap_initial": {
+        "input_tokens": 23651.3575,
+        "output_tokens": 4750.345
+      },
+      "cheap_repair": {
+        "input_tokens": 29912.25,
+        "output_tokens": 3437.25
+      },
+      "reviewer": {
+        "input_tokens": 56475.604743083,
+        "output_tokens": 1867.679841897
+      },
+      "scout": {
+        "input_tokens": 19930.978125,
+        "output_tokens": 1694.440625
+      },
+      "strong_repair": {
+        "input_tokens": 34073.5,
+        "output_tokens": 3796.5
+      }
+    },
+    "stage_weighting": {
+      "cheap_initial": "32 M1 calls and48 M2 calls",
+      "cheap_repair": "Only 8 historical M1 cheap repairs exist; their token mean is extrapolated to all future cheap repairs.",
+      "reviewer": "Equal M1/M2 mean token weights; scenario reviewer count may be odd and is an aggregate demand approximation, not a fractional physical request.",
+      "scout": "8 M1 calls and24 M2 calls",
+      "strong_repair": "Equal stage weights; only one historical four-candidate strong repair observed at each stage."
+    },
+    "uncertainty": "These are demand/input-size sensitivity scenarios, not confidence or prediction intervals. Tiny dependent historical tasks, new domains and an altered controller cannot support calibrated probabilities. A true cost bound remains much larger."
+  },
+  "historical_evidence": {
+    "all_requests_standard_pricing_context": true,
+    "all_role_statistics": {
+      "cheap_initial": {
+        "calls": 52,
+        "mean_charge_micro_usd": 36485.865384615,
+        "mean_input_tokens": 21661.692307692,
+        "mean_output_tokens": 4497.615384615,
+        "total_charge_micro_usd": 1897265,
+        "total_input_tokens": 1126408,
+        "total_output_tokens": 233876
+      },
+      "cheap_repair": {
+        "calls": 8,
+        "mean_charge_micro_usd": 37902.25,
+        "mean_input_tokens": 29912.25,
+        "mean_output_tokens": 3437.25,
+        "total_charge_micro_usd": 303218,
+        "total_input_tokens": 239298,
+        "total_output_tokens": 27498
+      },
+      "reviewer": {
+        "calls": 42,
+        "mean_charge_micro_usd": 148207.80952381,
+        "mean_input_tokens": 47828.857142857,
+        "mean_output_tokens": 1909.023809524,
+        "total_charge_micro_usd": 6224728,
+        "total_input_tokens": 2008812,
+        "total_output_tokens": 80179
+      },
+      "scout": {
+        "calls": 34,
+        "mean_charge_micro_usd": 22068.176470588,
+        "mean_input_tokens": 17977.5,
+        "mean_output_tokens": 1907.705882353,
+        "total_charge_micro_usd": 750318,
+        "total_input_tokens": 611235,
+        "total_output_tokens": 64862
+      },
+      "strong_initial": {
+        "calls": 4,
+        "mean_charge_micro_usd": 116113.0,
+        "mean_input_tokens": 17697.5,
+        "mean_output_tokens": 4791.25,
+        "total_charge_micro_usd": 464452,
+        "total_input_tokens": 70790,
+        "total_output_tokens": 19165
+      },
+      "strong_repair": {
+        "calls": 3,
+        "mean_charge_micro_usd": 132985.333333333,
+        "mean_input_tokens": 33522.0,
+        "mean_output_tokens": 3278.666666667,
+        "total_charge_micro_usd": 398956,
+        "total_input_tokens": 100566,
+        "total_output_tokens": 9836
+      }
+    },
+    "cost_meaning": "Token-priced local ledger charges using pinned uncached/default-tier rates and ceiling to integer microUSD for each call. No provider invoice was inspected; cached-input discounts are not credited by this accounting. Host, Docker and developer tooling costs are excluded.",
+    "historical_stage_demand": {
+      "cheap_repairs_per_attempted_stage": {
+        "denominator": 13,
+        "numerator": 8
+      },
+      "reviews_per_attempted_stage": {
+        "denominator": 13,
+        "numerator": 34
+      },
+      "strong_repairs_per_attempted_stage": {
+        "denominator": 13,
+        "numerator": 2
+      }
+    },
+    "input_tokens": 4157109,
+    "known_usage_failure_calls_included": 2,
+    "matched_attempted_milestones": 13,
+    "matched_four_candidate_trajectories": 8,
+    "matched_milestone_counts": {
+      "stage0": 8,
+      "stage1": 5
+    },
+    "matched_role_by_stage_statistics": {
+      "cheap_initial": {
+        "0": {
+          "calls": 32,
+          "mean_charge_micro_usd": 31790.25,
+          "mean_input_tokens": 18108.71875,
+          "mean_output_tokens": 4046.3125,
+          "total_charge_micro_usd": 1017288,
+          "total_input_tokens": 579479,
+          "total_output_tokens": 129482
+        },
+        "1": {
+          "calls": 20,
+          "mean_charge_micro_usd": 43998.85,
+          "mean_input_tokens": 27346.45,
+          "mean_output_tokens": 5219.7,
+          "total_charge_micro_usd": 879977,
+          "total_input_tokens": 546929,
+          "total_output_tokens": 104394
+        }
+      },
+      "cheap_repair": {
+        "0": {
+          "calls": 8,
+          "mean_charge_micro_usd": 37902.25,
+          "mean_input_tokens": 29912.25,
+          "mean_output_tokens": 3437.25,
+          "total_charge_micro_usd": 303218,
+          "total_input_tokens": 239298,
+          "total_output_tokens": 27498
+        }
+      },
+      "reviewer": {
+        "0": {
+          "calls": 23,
+          "mean_charge_micro_usd": 144027.652173913,
+          "mean_input_tokens": 44974.391304348,
+          "mean_output_tokens": 2106.086956522,
+          "total_charge_micro_usd": 3312636,
+          "total_input_tokens": 1034411,
+          "total_output_tokens": 48440
+        },
+        "1": {
+          "calls": 11,
+          "mean_charge_micro_usd": 194381.272727273,
+          "mean_input_tokens": 67976.818181818,
+          "mean_output_tokens": 1629.272727273,
+          "total_charge_micro_usd": 2138194,
+          "total_input_tokens": 747745,
+          "total_output_tokens": 17922
+        }
+      },
+      "scout": {
+        "0": {
+          "calls": 16,
+          "mean_charge_micro_usd": 20968.3125,
+          "mean_input_tokens": 15800.8125,
+          "mean_output_tokens": 2026.0625,
+          "total_charge_micro_usd": 335493,
+          "total_input_tokens": 252813,
+          "total_output_tokens": 32417
+        },
+        "1": {
+          "calls": 10,
+          "mean_charge_micro_usd": 23108.7,
+          "mean_input_tokens": 21307.7,
+          "mean_output_tokens": 1583.9,
+          "total_charge_micro_usd": 231087,
+          "total_input_tokens": 213077,
+          "total_output_tokens": 15839
+        }
+      },
+      "strong_repair": {
+        "0": {
+          "calls": 1,
+          "mean_charge_micro_usd": 110713.0,
+          "mean_input_tokens": 26855.0,
+          "mean_output_tokens": 2905.0,
+          "total_charge_micro_usd": 110713,
+          "total_input_tokens": 26855,
+          "total_output_tokens": 2905
+        },
+        "1": {
+          "calls": 1,
+          "mean_charge_micro_usd": 173550.0,
+          "mean_input_tokens": 41292.0,
+          "mean_output_tokens": 4688.0,
+          "total_charge_micro_usd": 173550,
+          "total_input_tokens": 41292,
+          "total_output_tokens": 4688
+        }
+      }
+    },
+    "matched_role_statistics": {
+      "cheap_initial": {
+        "calls": 52,
+        "mean_charge_micro_usd": 36485.865384615,
+        "mean_input_tokens": 21661.692307692,
+        "mean_output_tokens": 4497.615384615,
+        "total_charge_micro_usd": 1897265,
+        "total_input_tokens": 1126408,
+        "total_output_tokens": 233876
+      },
+      "cheap_repair": {
+        "calls": 8,
+        "mean_charge_micro_usd": 37902.25,
+        "mean_input_tokens": 29912.25,
+        "mean_output_tokens": 3437.25,
+        "total_charge_micro_usd": 303218,
+        "total_input_tokens": 239298,
+        "total_output_tokens": 27498
+      },
+      "reviewer": {
+        "calls": 34,
+        "mean_charge_micro_usd": 160318.529411765,
+        "mean_input_tokens": 52416.352941176,
+        "mean_output_tokens": 1951.823529412,
+        "total_charge_micro_usd": 5450830,
+        "total_input_tokens": 1782156,
+        "total_output_tokens": 66362
+      },
+      "scout": {
+        "calls": 26,
+        "mean_charge_micro_usd": 21791.538461538,
+        "mean_input_tokens": 17918.846153846,
+        "mean_output_tokens": 1856.0,
+        "total_charge_micro_usd": 566580,
+        "total_input_tokens": 465890,
+        "total_output_tokens": 48256
+      },
+      "strong_repair": {
+        "calls": 2,
+        "mean_charge_micro_usd": 142131.5,
+        "mean_input_tokens": 34073.5,
+        "mean_output_tokens": 3796.5,
+        "total_charge_micro_usd": 284263,
+        "total_input_tokens": 68147,
+        "total_output_tokens": 7593
+      }
+    },
+    "maximum_observed_input_tokens": 71826,
+    "output_tokens": 435416,
+    "physical_calls": 143,
+    "reconciled_usage_micro_usd": 10038937,
+    "retained_journal_verification": {
+      "canonical_encoding": "JSON sort_keys=true, ensure_ascii=true, allow_nan=false, separators comma/colon, followed by one newline, UTF-8. Journal request/payload hashes use this encoding. Invocation request_sha256 uses the same encoding without the final newline and was checked separately.",
+      "journal_manifest_order": "results.cases order, then case.invocations order; each row has request/result/settled {path relative to repository,sha256} and reservation_id.",
+      "journal_manifest_sha256": "ce758f84874c8d47ea98d500f1d9ddcb5c8ee7f370e870abe09c5d96b0212f5b",
+      "request_canonical_hashes_verified": 143,
+      "request_result_and_settlement_records_checked": 143,
+      "result_payload_hashes_verified": 143,
+      "result_raw_hashes_verified": 143,
+      "unique_reservations": 143,
+      "usage_records_and_per_call_price_rounding_verified": 143
+    },
+    "run": "results/benchmark-live-1"
+  },
+  "independent_sanity_review": {
+    "completed_at": "2026-10-02T12:59:09.243635+00:00",
+    "independence_limit": "Same retained evidence and project context; this is an independent arithmetic/read-only sanity check, not a statistically independent replication or future readiness audit.",
+    "reviewer": "/root/budget_adjustment/journal_audit",
+    "scope": [
+      "Independently reconciled all143 historical journal hashes, known usage and per-call token pricing to $10.038937.",
+      "Recomputed original seven role-weighted scenarios and final two output-growth scenarios, call counts and funding margins.",
+      "Confirmed doubled role output means stay within12,288 tokens; highest stage-weighted mean9,500.69, separate M2 builder mean10,439.4. Scaling averages does not imply every individual historical response can be doubled within the ceiling.",
+      "Identified active runner hash drift; author refreshed that source binding after inspecting actual call and request construction. Final runnable contract still requires owner freeze and full qualification."
+    ],
+    "status": "No arithmetic, physical-mean-output-ceiling or authorization-claim blockers found."
+  },
+  "limitations": [
+    "Only two old domains and two new domains; repetitions and shared setup create dependence.",
+    "Prior four-candidate runs reached 13 of 16 possible stages; full-stage forecasts explicitly correct that selection and the M1/M2 token mix.",
+    "First-stage sharing reduces physical call count; naive143*12/10 scaling would be wrong.",
+    "Retained repair aliases can increase reviewer context; new routing can either reduce wasted reviews or consume the same maximum call allowances. Neither effect has live measurements.",
+    "Input byte ratios omit tokenization, provider message framing, dynamically produced source, accumulated evidence, and reasoning output.",
+    "Standard-context retained rates apply to all historical requests. Crossing 272K strong input tokens changes pricing; scenarios do not model that unlikely-but-unbounded context tail.",
+    "No monetary amount here is an invoice, new approval, readiness certificate or guarantee of software quality."
+  ],
+  "prompt_size_evidence": {
+    "interpretation": "Visible baseline/context is materially smaller. Input multipliers 0.50,0.60 and0.75 deliberately exceed this proxy ratio, but remain hypotheses until actual request construction is frozen. Generated implementations, serialized reviewer evidence, sequential predecessor copies, retained repair aliases and targeted follow-up feedback can erase the discount. There are no measured follow-up provider token counts yet.",
+    "mean_new_over_retained_proxy_by_stage": {
+      "0": 0.369699105,
+      "1": 0.428364102
+    },
+    "measurements": [
+      {
+        "allowed_source_bytes": 11622,
+        "cohort": "retained",
+        "cumulative_public_cases": 28,
+        "cumulative_public_json_bytes": 18741,
+        "cumulative_specification_bytes": 15766,
+        "initial_source_bytes": 12979,
+        "project": "graph-patch",
+        "simple_context_proxy_bytes": 47486,
+        "stage_index": 0
+      },
+      {
+        "allowed_source_bytes": 11622,
+        "cohort": "retained",
+        "cumulative_public_cases": 32,
+        "cumulative_public_json_bytes": 20525,
+        "cumulative_specification_bytes": 17921,
+        "initial_source_bytes": 12979,
+        "project": "graph-patch",
+        "simple_context_proxy_bytes": 51425,
+        "stage_index": 1
+      },
+      {
+        "allowed_source_bytes": 10268,
+        "cohort": "retained",
+        "cumulative_public_cases": 33,
+        "cumulative_public_json_bytes": 18495,
+        "cumulative_specification_bytes": 10153,
+        "initial_source_bytes": 11870,
+        "project": "calendar-exchange",
+        "simple_context_proxy_bytes": 40518,
+        "stage_index": 0
+      },
+      {
+        "allowed_source_bytes": 10268,
+        "cohort": "retained",
+        "cumulative_public_cases": 41,
+        "cumulative_public_json_bytes": 25717,
+        "cumulative_specification_bytes": 21924,
+        "initial_source_bytes": 11870,
+        "project": "calendar-exchange",
+        "simple_context_proxy_bytes": 59511,
+        "stage_index": 1
+      },
+      {
+        "allowed_source_bytes": 6130,
+        "cohort": "proposed",
+        "cumulative_public_cases": 8,
+        "cumulative_public_json_bytes": 4210,
+        "cumulative_specification_bytes": 3973,
+        "initial_source_bytes": 7132,
+        "project": "warehouse",
+        "simple_context_proxy_bytes": 15315,
+        "stage_index": 0
+      },
+      {
+        "allowed_source_bytes": 6130,
+        "cohort": "proposed",
+        "cumulative_public_cases": 12,
+        "cumulative_public_json_bytes": 7121,
+        "cumulative_specification_bytes": 9942,
+        "initial_source_bytes": 7132,
+        "project": "warehouse",
+        "simple_context_proxy_bytes": 24195,
+        "stage_index": 1
+      },
+      {
+        "allowed_source_bytes": 5627,
+        "cohort": "proposed",
+        "cumulative_public_cases": 10,
+        "cumulative_public_json_bytes": 6229,
+        "cumulative_specification_bytes": 4201,
+        "initial_source_bytes": 6790,
+        "project": "job-queue",
+        "simple_context_proxy_bytes": 17220,
+        "stage_index": 0
+      },
+      {
+        "allowed_source_bytes": 5627,
+        "cohort": "proposed",
+        "cumulative_public_cases": 16,
+        "cumulative_public_json_bytes": 10567,
+        "cumulative_specification_bytes": 5969,
+        "initial_source_bytes": 6790,
+        "project": "job-queue",
+        "simple_context_proxy_bytes": 23326,
+        "stage_index": 1
+      }
+    ],
+    "method": "UTF-8 initial file contents + cumulative specification bytes + canonical JSON bytes of cumulative visible cases. This is a comparative byte proxy, not tokenization and not the full generated request. Hidden cases and golden source are excluded. Fixture modules are trusted data definitions; their candidate programs remain strings."
+  },
+  "proposed_physical_structure": {
+    "all_milestone_repair_maximum": 48,
+    "all_milestone_reviewer_maximum": 96,
+    "central_count_derivation": "Assume all 24 stages attempted. Round 34/13*24 reviews to 63, 8/13*24 cheap repairs to 15, 2/13*24 strong repairs to 4. Fixed shared/later initial builders 80 and scouts 32. Early stops can lower charges but do not constitute successful full-cohort completion.",
+    "independent_domains": 2,
+    "maximum_physical_calls": 256,
+    "planned_milestones_if_all_reach_stage2": 24,
+    "planned_trajectories": 12,
+    "policies": [
+      "current-independent",
+      "improved-independent",
+      "improved-sequential"
+    ],
+    "repetitions_per_domain": 2,
+    "shared_accounting": "Independent first-milestone pool is generated once per block and imported by both independent arms. Two common scouts are generated once per block for all three arms. Serial initial pool is generated separately. Imports are not charged as model calls. Later milestones follow arm-specific source and are not response-replayed.",
+    "shared_first_milestone_blocks": 4,
+    "stage0_physical_calls": {
+      "initial_builders": 32,
+      "scouts": 8
+    },
+    "stage1_physical_calls_if_all_reach_it": {
+      "initial_builders": 48,
+      "scouts": 24
+    },
+    "strong_repair_maximum_within_repair_total": 24
+  },
+  "protocol": "continuation-followup-budget-planning-v1",
+  "purpose": "Estimate a runnable full-cohort pilot allowance from retained physical provider usage and actual proposed call structure, separately from reservation guarantees.",
+  "recommendation": {
+    "alternative_expected_allowance": {
+      "authorization": "Proposal only. Current plan retains the existing$50 cumulative ceiling and live_authorized=false. Any changed funded allowance or live authorization must be decided explicitly by the root/user as applicable after qualification. This document grants none.",
+      "available_at_rounded_example_micro_usd": 20456374,
+      "incremental_commitment_micro_usd": 20000000,
+      "interpretation": "A smaller minimum planning option: about $20 available incremental commitment covers the cautious central $12.78 usage scenario plus $5.53 late-call reservation and modest buffer. A rounded $56 cumulative ceiling would provide that allowance at the unchanged starting balance. The prudent $60 option also covers central call demand with no input-token discount. Neither guarantees a maximum-demand cohort; the observed-mean 256-call scenario would need about $29.94 including the same reservation heuristic. This minimum option is not recommended when the priority is protecting the whole cohort against the modeled high-demand cases.",
+      "minimum_cumulative_cap_at_current_baseline_micro_usd": 55543626,
+      "rounded_cumulative_cap_example_micro_usd": 56000000,
+      "usage_headroom_before_another_strong_reservation_at_rounded_example_micro_usd": 14929894
+    },
+    "band_basis": "Rounded central scenarios $9.913676 to$12.781071, based on observed call rates and 50\u201375% historical input. This band is conditional planning judgment, not an interval with statistical coverage.",
+    "can_current_balance_reasonably_support_full_cohort": "Plausible only under optimistic fast acceptance/compact context; insufficient planning margin for the central demand scenarios under the unchanged reservation guard. Do not represent$14.456374 balance or $12 soft target as guaranteed full-cohort funding.",
+    "central_only_funding_option": {
+      "does_not_guarantee": "It does not cover the $29.942426 planning commitment for all 256 calls at observed token means, the retained-pool growth stress scenario, arbitrarily longer responses, provider failures or successful project completion. Full-context bounds remain enforced.",
+      "funding_status": "Recommendation only, for a concrete decision after qualification. The operative plan remains at $50 cumulative with live_authorized=false; no cap or ledger was changed and no new spending was approved by this artifact.",
+      "increase_over_current_cap_micro_usd": 10000000,
+      "incremental_available_at_current_baseline_micro_usd": 24456374,
+      "interpretation": "Smaller $60 option protects the central-call-demand scenarios, including no input discount. It is not the preferred allowance when avoiding censoring across the complete demanding cohort is the priority.",
+      "prior_commitment_headroom_before_another_strong_reservation_micro_usd": 18929894,
+      "proposed_cumulative_cap_micro_usd": 60000000,
+      "reason": "A rounded $60 cumulative ceiling provides $24.456374 for the follow-up at the unchanged baseline. It covers the central $10\u201313 usage scenarios plus the $5.526480 reservation allowance, and the $15.648466 central-demand scenario with no input-token discount plus that allowance ($21.174946). This leaves about $3.28 of margin over the latter planning commitment."
+    },
+    "do_not_change": "Do not reset historical charges, weaken full-context reservation accounting, count shared imports as paid requests, or spend on paid development-workflow benchmarking.",
+    "funding_ceiling_comparison": [
+      {
+        "cumulative_cap_micro_usd": 50000000,
+        "increase_over_current_cap_micro_usd": 0,
+        "incremental_available_micro_usd": 14456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": -3.851176839,
+          "central_compact_input": -0.983781718,
+          "central_moderate_input": -2.130739766,
+          "historical_input_unchanged": -6.71857196,
+          "maximum_calls_at_observed_token_means": -15.486052186,
+          "optimistic_fast_acceptance": 1.293792117,
+          "retained_pool_and_50pct_output_growth_stress": -20.21959072,
+          "retained_pool_and_doubled_output_stress": -23.410363532,
+          "retained_pool_growth_stress": -17.028817909
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 8929894
+      },
+      {
+        "cumulative_cap_micro_usd": 60000000,
+        "increase_over_current_cap_micro_usd": 10000000,
+        "incremental_available_micro_usd": 24456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": 6.148823161,
+          "central_compact_input": 9.016218282,
+          "central_moderate_input": 7.869260234,
+          "historical_input_unchanged": 3.28142804,
+          "maximum_calls_at_observed_token_means": -5.486052186,
+          "optimistic_fast_acceptance": 11.293792117,
+          "retained_pool_and_50pct_output_growth_stress": -10.21959072,
+          "retained_pool_and_doubled_output_stress": -13.410363532,
+          "retained_pool_growth_stress": -7.028817909
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 18929894
+      },
+      {
+        "cumulative_cap_micro_usd": 70000000,
+        "increase_over_current_cap_micro_usd": 20000000,
+        "incremental_available_micro_usd": 34456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": 16.148823161,
+          "central_compact_input": 19.016218282,
+          "central_moderate_input": 17.869260234,
+          "historical_input_unchanged": 13.28142804,
+          "maximum_calls_at_observed_token_means": 4.513947814,
+          "optimistic_fast_acceptance": 21.293792117,
+          "retained_pool_and_50pct_output_growth_stress": -0.21959072,
+          "retained_pool_and_doubled_output_stress": -3.410363532,
+          "retained_pool_growth_stress": 2.971182091
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 28929894
+      },
+      {
+        "cumulative_cap_micro_usd": 80000000,
+        "increase_over_current_cap_micro_usd": 30000000,
+        "incremental_available_micro_usd": 44456374,
+        "margin_after_scenario_usage_and_one_strong_reservation_usd": {
+          "central_cautious_input": 26.148823161,
+          "central_compact_input": 29.016218282,
+          "central_moderate_input": 27.869260234,
+          "historical_input_unchanged": 23.28142804,
+          "maximum_calls_at_observed_token_means": 14.513947814,
+          "optimistic_fast_acceptance": 31.293792117,
+          "retained_pool_and_50pct_output_growth_stress": 9.78040928,
+          "retained_pool_and_doubled_output_stress": 6.589636468,
+          "retained_pool_growth_stress": 12.971182091
+        },
+        "prior_commitment_headroom_before_next_strong_reservation_micro_usd": 38929894
+      }
+    ],
+    "high_demand_sensitivity_usd": [
+      24.42,
+      32.34
+    ],
+    "if_current_cap_is_retained": "No presently qualified unchanged-contract method demonstrates complete-cohort admission within the existing $14.456374 balance. An unchanged run could finish if costs resemble the optimistic $7.64 scenario, but central demand can be censored. Keep the cap and fail-closed behavior and describe that risk honestly. Do not cut task depth, arms, repetitions, model capability or call opportunities merely to fit, selectively continue cheap arms, discard incomplete trajectories, or claim the complete planned comparison from a shortened run. More precise request-specific reservations would be separately versioned accounting work requiring qualification; it is not available headroom under this contract and would not reduce actual usage charges.",
+    "optimistic_usage_usd": 7.64,
+    "preferred_next_step": "Finish executable implementation, fixtures, offline qualification, exact full-roster zero-API rehearsal and independent audit first. Re-measure actual scripted request byte sizes by role/stage and bound retained-pool growth; scripted golden outputs qualify structure, not live token costs or repair frequency. Present that concrete pilot plus a funding choice before any paid dispatch.",
+    "prudent_funding_option_after_qualification": {
+      "comparison_to_70": "A $70 cumulative ceiling leaves $34.456374 available and covers all 256 calls at historical output means, including retained-pool input growth, with about $2.97 of margin. The same pool-growth scenario with 1.5x outputs needs $34.675965 including the reservation allowance, exceeding that headroom by about $0.22. With 2x outputs it exceeds the allowance by about $3.41. Thus $70 is plausible but provides thinner protection against output growth.",
+      "does_not_guarantee": "Neither $70 nor $80 guarantees every maximum-token call fits, eliminates unknown provider outcomes or guarantees completed software. The $711.497856 full-context reservation sum remains a formal extreme envelope, not a useful expected-spend request. No calibrated probability attaches to these stress assumptions.",
+      "expected_usage_target_unchanged_usd": [
+        10,
+        13
+      ],
+      "funding_status": "Recommendation only for a concrete funding decision after qualification and matching rehearsal. The operative plan remains at $50 cumulative with live_authorized=false. This artifact changes neither cap nor authorization and does not request approval on behalf of the user.",
+      "increase_over_current_cap_micro_usd": 30000000,
+      "incremental_available_at_current_baseline_micro_usd": 44456374,
+      "prior_commitment_headroom_before_another_strong_reservation_micro_usd": 38929894,
+      "proposed_cumulative_cap_micro_usd": 80000000,
+      "reason": "If the priority is a reasonable chance of finishing the complete 12-trajectory comparison without funding censoring, prefer an $80 cumulative ceiling over $70 after the runnable pilot is qualified. The $80 option leaves $44.456374 available. The modeled all-256-call retained-pool/doubled-output scenario uses $32.340258 plus a $5.526480 reservation allowance, leaving about $6.59 of planning margin. The expected usage band remains $10\u201313; unused allowance is not a reason to spend."
+    },
+    "working_expected_usage_band_usd": [
+      10,
+      13
+    ]
+  },
+  "request_structure_review": {
+    "findings": [
+      "Full runner still offers physical initial builders80, scouts32, reviewers96 and combined repairs48, with at most24 strong repairs. No new provider role is introduced.",
+      "Every live dispatch uses the unchanged worker model profiles and full reservation rule. Shared M1 sources and scouts are imported with zero new model calls; M2 sources and scouts are generated per arm.",
+      "Builder context includes current source, cumulative public verified cases and feedback. Scout context still contains the stage-start source and cumulative public specification/cases. Strong reviewer requests include every candidate source plus evidence matrix; improved retained repair aliases and focused feedback can increase that context.",
+      "The script now persists exact WorkerRequest values before dispatch. Its future complete zero-API rehearsal can measure actual serialized request byte distributions without credentials. Those scripted requests still cannot forecast live outputs or repair frequency."
+    ],
+    "qualification": "Read-only planning review, not an executable runner audit or readiness certificate. Proposed sources remain active and must be frozen/qualified by their owners.",
+    "reviewed_at": "2026-10-02T12:58:34.308070+00:00",
+    "reviewed_methods": [
+      "continuation_followup.call_envelope",
+      "continuation_followup.ExecutionSession.invoke",
+      "continuation_followup.trajectory",
+      "benchmark_experiment.scout_probes",
+      "continuation_controller.request_builder and reviewer request_files construction"
+    ],
+    "runner_prior_planning_snapshot_sha256": "3076598b210e7b593257a07a4b80be75afa96a185adb119b8a8cf60dcf85002c",
+    "runner_refreshed_snapshot_sha256": "a5f8f9a20850221a60d4c5ce868ae6304db39e553979a5847704112264eb57c3"
+  },
+  "reservation_admission": {
+    "cheap_per_call_reservation_micro_usd": 355296,
+    "current_cumulative_cap_micro_usd": 50000000,
+    "currently_available_micro_usd": 14456374,
+    "four_concurrent_cheap_reservations_micro_usd": 1421184,
+    "maximum_existing_commitments_before_another_strong_reservation_micro_usd": 8929894,
+    "meaning": "At zero other pending calls, another strong request cannot be admitted once incremental prior settled/committed usage exceeds $8.929894. Concurrent reservations reduce this further. A final admitted request may settle above that prior-commitment threshold, so it is not an absolute cash-spend cap. Strong calls must still reserve their entire configured bound before dispatch.",
+    "planning_headroom_rule": "Estimated total usage plus one full strong reservation is a conservative allowance heuristic for the serial-strong/four-cheap phase schedule, not an exact peak or a provider invoice. It leaves a full late-call reservation available even near the expected end; exact admission depends on call order and already settled charges.",
+    "source_of_balance": "Plan and retained benchmark results; root independently verified current ledger has 0 unsettled reservations. This task did not open or mutate the ledger.",
+    "starting_settled_usage_micro_usd": 35543626,
+    "strong_per_call_reservation_micro_usd": 5526480,
+    "sum_interpretation": "Maximum offered calls charged at full context/output reservations. This is a formal conservative envelope, not a likely spend forecast and not justification to request $711.50.",
+    "sum_of_all_maximum_context_reservations_micro_usd": 711497856
+  },
+  "scenarios": [
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 2.419664925,
+        "cheap_repair": 0.0,
+        "reviewer": 4.733265771,
+        "scout": 0.483171187,
+        "strong_repair": 0.0
+      },
+      "estimated_usage_usd": 7.636101883,
+      "fits_current_balance_with_that_headroom": true,
+      "full_milestones_attempted": 24,
+      "id": "optimistic_fast_acceptance",
+      "input_token_multiplier": 0.5,
+      "interpretation": "Two reviews per milestone, no repairs, half historical input tokens. An optimistic full cohort, not a lower mathematical bound.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 0,
+        "reviewer": 48,
+        "scout": 32,
+        "strong_repair": 0
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 13.162581883,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 160
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 2.419664925,
+        "cheap_repair": 0.400270781,
+        "reviewer": 6.212411324,
+        "scout": 0.483171187,
+        "strong_repair": 0.3981575
+      },
+      "estimated_usage_usd": 9.913675718,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "central_compact_input",
+      "input_token_multiplier": 0.5,
+      "interpretation": "Rounded historical review and repair rates over all 24 milestones; half historical input tokens.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 15,
+        "reviewer": 63,
+        "scout": 32,
+        "strong_repair": 4
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 15.440155718,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 194
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 2.56157307,
+        "cheap_repair": 0.433922062,
+        "reviewer": 7.101902099,
+        "scout": 0.531005535,
+        "strong_repair": 0.432231
+      },
+      "estimated_usage_usd": 11.060633766,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "central_moderate_input",
+      "input_token_multiplier": 0.6,
+      "interpretation": "Same call demand; 60% of historical input tokens.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 15,
+        "reviewer": 63,
+        "scout": 32,
+        "strong_repair": 4
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 16.587113766,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 194
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 2.774435287,
+        "cheap_repair": 0.484398984,
+        "reviewer": 8.436138261,
+        "scout": 0.602757056,
+        "strong_repair": 0.48334125
+      },
+      "estimated_usage_usd": 12.781070839,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "central_cautious_input",
+      "input_token_multiplier": 0.75,
+      "interpretation": "Same call demand; 75% of historical input tokens allows part of the apparent fixture-size advantage to be lost in continued source/evidence context.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 15,
+        "reviewer": 63,
+        "scout": 32,
+        "strong_repair": 4
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 18.307550839,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 194
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 3.12920565,
+        "cheap_repair": 0.568527187,
+        "reviewer": 10.659865198,
+        "scout": 0.722342925,
+        "strong_repair": 0.568525
+      },
+      "estimated_usage_usd": 15.64846596,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "historical_input_unchanged",
+      "input_token_multiplier": 1,
+      "interpretation": "Same central call demand; no input-token discount from smaller fixtures.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 15,
+        "reviewer": 63,
+        "scout": 32,
+        "strong_repair": 4
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 21.17494596,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 194
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 3.12920565,
+        "cheap_repair": 0.9096435,
+        "reviewer": 16.243604111,
+        "scout": 0.722342925,
+        "strong_repair": 3.41115
+      },
+      "estimated_usage_usd": 24.415946186,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "maximum_calls_at_observed_token_means",
+      "input_token_multiplier": 1,
+      "interpretation": "Every permitted review/repair slot used, strong escalation once each milestone; observed stage-weighted token means. This is a stress scenario, not a bound.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 24,
+        "reviewer": 96,
+        "scout": 32,
+        "strong_repair": 24
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 29.942426186,
+      "review_and_repair_additional_input_growth": 1,
+      "total_physical_calls": 256
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 2.774435287,
+        "cheap_repair": 0.976946063,
+        "reviewer": 17.937872253,
+        "scout": 0.602757056,
+        "strong_repair": 3.66670125
+      },
+      "estimated_usage_usd": 25.958711909,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "retained_pool_growth_stress",
+      "input_token_multiplier": 0.75,
+      "interpretation": "All256 calls, 75% initial input scale, and an additional 1.5x review/repair input factor for retained predecessors and accumulated evidence. Output remains historical mean. Illustrates controller-context risk; not a bound.",
+      "output_token_multiplier": 1,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 24,
+        "reviewer": 96,
+        "scout": 32,
+        "strong_repair": 24
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 31.485191909,
+      "review_and_repair_additional_input_growth": 1.5,
+      "total_physical_calls": 256
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 3.629497387,
+        "cheap_repair": 1.162557562,
+        "reviewer": 19.282601739,
+        "scout": 0.724756781,
+        "strong_repair": 4.35007125
+      },
+      "estimated_usage_usd": 29.14948472,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "retained_pool_and_50pct_output_growth_stress",
+      "input_token_multiplier": 0.75,
+      "interpretation": "All 256 calls, 75% initial input scale, an additional 1.5x review/repair input factor, and 1.5x historical output means for every role. This is a transparent response-growth sensitivity, not a measured forecast or bound.",
+      "output_token_multiplier": 1.5,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 24,
+        "reviewer": 96,
+        "scout": 32,
+        "strong_repair": 24
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 34.67596472,
+      "review_and_repair_additional_input_growth": 1.5,
+      "total_physical_calls": 256
+    },
+    {
+      "estimated_usage_by_role_usd": {
+        "cheap_initial": 4.484559488,
+        "cheap_repair": 1.348169063,
+        "reviewer": 20.627331225,
+        "scout": 0.846756506,
+        "strong_repair": 5.03344125
+      },
+      "estimated_usage_usd": 32.340257532,
+      "fits_current_balance_with_that_headroom": false,
+      "full_milestones_attempted": 24,
+      "id": "retained_pool_and_doubled_output_stress",
+      "input_token_multiplier": 0.75,
+      "interpretation": "All 256 calls, 75% initial input scale, an additional 1.5x review/repair input factor, and 2.0x historical output means for every role. This is a transparent response-growth sensitivity, not a measured forecast or bound.",
+      "output_token_multiplier": 2.0,
+      "physical_call_counts": {
+        "cheap_initial": 80,
+        "cheap_repair": 24,
+        "reviewer": 96,
+        "scout": 32,
+        "strong_repair": 24
+      },
+      "planning_commitment_with_one_extra_strong_reservation_usd": 37.866737532,
+      "review_and_repair_additional_input_growth": 1.5,
+      "total_physical_calls": 256
+    }
+  ],
+  "schema_version": 1,
+  "scope": {
+    "candidate_executions_performed": 0,
+    "candidate_sources": "Read as retained JSON or trusted fixture string data only; no candidate program was executed.",
+    "credential_access": false,
+    "funding_authorization_granted": false,
+    "future_live_readiness_granted": false,
+    "ledger_modified": false,
+    "provider_calls_performed": 0,
+    "source_code_modified": false
+  },
+  "source_binding_notes": "Mutable proposed implementation and fixture hashes identify the planning snapshot, not a frozen executable contract. Recompute if call opportunities, prices, token ceilings or request composition change. Historical results retain each exact journal path; aggregate manifest below binds every journal independently. The runner binding was refreshed after a read-only check of its completed call and request construction; its recorded hash is planning provenance, not a claim that the current file remains frozen. Its owner must confirm final call/request structure before live funding readiness.",
+  "source_bindings": [
+    {
+      "path": "continuation-followup-study-plan.json",
+      "sha256": "1b82a67d713cda9e6cd7187a0fd438a41f6a2634e57fceec107b2b3b148cbf61"
+    },
+    {
+      "path": "gossip_harness/continuation_followup.py",
+      "sha256": "a5f8f9a20850221a60d4c5ce868ae6304db39e553979a5847704112264eb57c3"
+    },
+    {
+      "path": "gossip_harness/continuation_controller.py",
+      "sha256": "10721a36dc7e5fd4bb42b6f595146aa6a1ae99ef85d56b8b8ee071f06ccce9d5"
+    },
+    {
+      "path": "gossip_harness/benchmark_warehouse.py",
+      "sha256": "dc78ec4e215f6b7258044f556ad95fe8a4981623f5df98da476ad7af57bed62d"
+    },
+    {
+      "path": "gossip_harness/benchmark_job_queue.py",
+      "sha256": "469b3181a3824376990beff7a99a4d1559d5eec7b83c1db528dd5f5bbc99f00e"
+    },
+    {
+      "path": "gossip_harness/benchmark_experiment.py",
+      "sha256": "6890b98a9e4656724342855667de0bc6365c8dd05ec66103a579d638bf001105"
+    },
+    {
+      "path": "gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    },
+    {
+      "path": "results/benchmark-live-1/results.json",
+      "sha256": "2212328a99f429046fe7bdfe0a90ee39c2fd4cbd1fdddd04d305f81b358ea7fe"
+    },
+    {
+      "path": "results/benchmark-live-1/preregistered.json",
+      "sha256": "90950e52abaaaa0647a8a9215479dad233b22d118adfe3d56c4fc132c5876e87"
+    },
+    {
+      "path": "results/benchmark-live-1/fixtures.json",
+      "sha256": "95ed8b23345a6e25fc6fe740973e6e8deadad4e65cb99dadda9a1323e71bffbb"
+    },
+    {
+      "path": "results/benchmark-live-1/independent-audit.json",
+      "sha256": "753d1f51c5e1045dc2adbee581b5efc1a823164cdb5ef372fc77f0b51dd474eb"
+    },
+    {
+      "path": "runs/evidence-frontier-budget-adjustment-1.json",
+      "sha256": "7a24bcdf21571f12999f44185dc6581d1a93ba347b4ce1677e5d73d5026e5cb0"
+    }
+  ],
+  "status": "planning_snapshot_of_unfrozen_development_contract"
+}

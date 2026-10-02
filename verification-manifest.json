@@ -1582,10 +1582,10 @@
       "lane": "fast",
       "weight": 1,
       "timeout_seconds": 180,
-      "invariant": "New fixture qualification binds full warehouse/job-queue matrix, private witnesses, source/suite/evaluator/image/purpose, and passing controls.",
+      "invariant": "Fixture qualification binds both exact starting baselines and the full warehouse/job-queue golden/control/mutant matrix to ordered public/private witnesses, source/evaluator/runtime/purpose and passing controls.",
       "isolation": "One class worker process with fresh mutable fixtures; no live API or Docker.",
       "overlap": "New versioned controller, inference or qualification contracts; historical study evidence remains unchanged.",
-      "distinct_defect": "Missing or stale rows, edited conclusions, infrastructure errors or non-witnessed mutants cannot certify fixtures.",
+      "distinct_defect": "An untested trusted baseline, missing/stale matrix row, edited conclusion, infrastructure failure or unobserved private fault witness cannot certify fixtures or approve an initial source.",
       "boundary": "Trusted Python and fake retained worker/validator evidence; no untrusted candidate execution on host.",
       "disposition": "Run after static gate in the bounded offline batch before any paid study or real Docker rehearsal.",
       "overlap_reason": "Existing benchmark tests qualify the previous protocol. These classes exercise new state transitions, statistical arithmetic or new fixture registry and cannot replace live study certification."
@@ -1628,15 +1628,83 @@
     },
     "tests/test_continuation_followup.py::FollowupSharedSetupTests": {
       "lane": "git",
-      "weight": 1,
+      "weight": 4,
       "timeout_seconds": 180,
       "invariant": "Both initial formations freeze before common scouts, A/B import exact shared sources, and each consuming arm evaluates fresh without double-charging setup.",
-      "isolation": "One class process, fresh temporary stores and SQLite journals.",
+      "isolation": "One class process with fresh temporary Git stores, SQLite journals and mutable state; reserve the four-slot budget for the bounded internal candidate pool.",
       "overlap": "Foundation checks complement later independent full-cohort audit and rehearsal.",
       "distinct_defect": "A mutated shared source, leaked evidence before freeze, charged import, wrong arm roster or permissive live-readiness flag could corrupt the experiment.",
       "boundary": "Real isolated Git stores, journal/ledger/CAS and deterministic offline callbacks; no untrusted candidate code, provider or Docker.",
       "disposition": "Keep in explicit bounded offline lane before real fixture qualification or any paid work.",
       "overlap_reason": "Legacy benchmark runner has no first-class shared-setup treatment; these are new provenance and accounting boundaries, not full-study acceptance."
+    },
+    "tests/test_followup_cohort_audit.py::FollowupCohortAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Independent cohort audit rejects changed roster, source identity, runtime, accounting, evaluation barriers and manufactured completion.",
+      "isolation": "One worker process with separate temporary JSON/filesystem evidence per test; no candidate or real Git execution.",
+      "overlap": "New full-cohort audit follows the distinct shared-setup and stage-decision evidence checks.",
+      "distinct_defect": "Plausible summary counters or passing private receipts must not conceal partial trajectories, early private evaluation, stale qualification or duplicate physical evidence.",
+      "boundary": "Repository-authored synthetic retained evidence and explicit mutations; no provider or Docker access.",
+      "disposition": "Run with new runner and stage audit regressions before physical fixture qualification and full rehearsal.",
+      "overlap_reason": "Local setup or stage correctness does not certify the assembled twelve-trajectory cohort and its global final barrier."
+    },
+    "tests/test_followup_comparison.py::FollowupComparisonTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Descriptive controller and formation comparisons score only complete independently audited cohorts and distinguish rehearsal from live outcomes.",
+      "isolation": "One class worker with synthetic JSON evidence and isolated temporary files; no child processes.",
+      "overlap": "A quality report consumes audited outcomes but independently reconciles aggregation and descriptive comparison rules.",
+      "distinct_defect": "Shared initial-pool reuse, repeated domains, early stopping or allocated cash must not manufacture independent wins, speed gains or standalone cost advantages.",
+      "boundary": "Read-only synthetic evidence and arithmetic; no candidate execution, provider or Docker access.",
+      "disposition": "Run with full-cohort audit regressions before a physical rehearsal and any live study.",
+      "overlap_reason": "The auditor checks evidence integrity; this class checks interpretation, taxonomy, denominators, uncertainty and accounting presentation."
+    },
+    "tests/test_followup_stage_audit.py::FollowupStageAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Independent retained-evidence replay reconstructs current and improved stage decisions without importing the controller, runner, fixtures or candidate code.",
+      "distinct_defect": "Altered prompts, source eligibility, repair history, uncertainty, checkpoint observations or terminal acceptance could otherwise pass a self-reported cohort audit.",
+      "boundary": "Handwritten JSON transcripts and inert source text with synthetic physical receipts; no Git, Docker, provider calls or candidate execution.",
+      "isolation": "Separate class worker process; fresh temporary transcript files per method.",
+      "disposition": "Run once in the affected offline batch before physical qualification and complete rehearsal.",
+      "overlap_reason": "Cohort checks establish global barriers and accounting; these tests independently enforce each stage transition and adversarial transcript rejection."
+    },
+    "tests/test_followup_qualification_audit.py::FollowupQualificationAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The independent audit binds the complete42-row matrix and raw source/suite receipts to the preregistered qualification digest.",
+      "distinct_defect": "Changed and rehashed matrices, missing baseline cases, altered golden sources or forged qualification summaries cannot certify a cohort.",
+      "boundary": "Synthetic retained qualification documents and mocked read-only receipt access; no candidate execution or Git/Docker/API calls.",
+      "isolation": "Separate class worker process; fresh synthetic filesystem fixtures per method.",
+      "disposition": "Run in the affected offline batch before physical qualification and full rehearsal.",
+      "overlap_reason": "Production qualifier tests cover proof construction; these separately implement adversarial checks on independent audit consumption."
+    },
+    "tests/test_followup_qualification_audit.py::FollowupModelProfileAuditTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Frozen model pricing and reservation arithmetic are independently derived from source literals and exact request ceilings.",
+      "distinct_defect": "Self-consistent fabricated prices or reservation values cannot reduce audited charges or bypass live budget admission.",
+      "boundary": "Frozen source AST and synthetic model profile documents; no API, credentials or provider calls.",
+      "isolation": "Separate class worker process; fresh synthetic filesystem fixtures per method.",
+      "disposition": "Run in the affected offline batch before physical qualification and full rehearsal.",
+      "overlap_reason": "Production qualifier tests cover proof construction; these separately implement adversarial checks on independent audit consumption."
+    },
+    "tests/test_continuation_followup.py::FollowupCohortRunnerTests": {
+      "lane": "git",
+      "weight": 4,
+      "timeout_seconds": 900,
+      "invariant": "The full twelve-trajectory runner preserves lineage, source freezes, budget settlement and the global final-evaluation barrier through real Git and fault-aware synthetic validation.",
+      "distinct_defect": "A complete-looking cohort could omit trajectories, leak final feedback, lose repairs or Unicode fixture bytes, mismatch accepted commits, or bypass rehearsal and funding gates.",
+      "boundary": "Twelve-trajectory real Git and local SQLite integration with scripted workers and injected validator/runtime qualification; no Docker, network or provider calls.",
+      "isolation": "Whole class in one worker with shared expensive cohort setup and internal four-candidate pools; weight4 reserves the full default resource budget.",
+      "disposition": "Run after cheap static and fast tests and before physical fixture qualification/full rehearsal.",
+      "overlap_reason": "Stage/controller tests isolate transitions; this class exercises complete cohort orchestration, retention and readiness rejection against actual local Git."
     }
   },
   "audit": {

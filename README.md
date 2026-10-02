@@ -966,6 +966,72 @@ deterministic dissemination experiments, not additional coding trials or
 production availability estimates. It reports bytes separately because equal
 contact counts do not imply equal traffic.
 
+## Continuation-controller follow-up
+
+The [follow-up plan](continuation-followup-study-plan.json) separates two
+questions: whether better continuation control helps finish projects, and
+whether independent candidates help under that controller. The three arms are
+the current controller with four independent candidates, the improved
+controller with four independent candidates, and the improved controller with
+four serial revisions. Warehouse allocation/returns and durable job leasing/
+fan-out each have two cumulative milestones and two repetitions: twelve
+trajectories across **two domains**, not twelve independent project families.
+
+For each first-milestone block, both candidate formations freeze before common
+candidate-blind scouts. The two independent arms share the exact initial draw;
+all three share those scout proposals. Each arm evaluates imported source
+afresh. Later milestones follow each arm's actual accepted lineage. Shared
+model work is charged once; attributed opportunities are reported separately.
+
+The improved controller directs repairs using executed failures, retains
+pre-repair checkpoints and records newly introduced failures even when the
+total failure count falls. A passing source with unresolved review concerns
+gets at most one focused retry within the existing review allowance. Explicit
+acceptance and the final independent checks remain mandatory. These changes
+form one controller package; they do not isolate a routing-only effect.
+
+Use the following zero-API chain after the source contract is frozen and the
+affected offline verification lanes pass. Every output directory must be new.
+Docker must already have the pinned image; qualification never pulls it.
+
+```sh
+.venv/bin/python -m gossip_harness.continuation_followup describe
+.venv/bin/python -m analysis.qualify_continuation_followup \
+  --output results/followup-qualification-example
+.venv/bin/python -m gossip_harness.continuation_followup run \
+  --mode rehearsal --output results/followup-rehearsal-example \
+  --qualification results/followup-qualification-example/results.json
+.venv/bin/python -m analysis.audit_continuation_followup --scope cohort \
+  --run results/followup-rehearsal-example \
+  --output results/followup-rehearsal-example/independent-audit.json
+.venv/bin/python -m analysis.continuation_followup_comparison \
+  --run results/followup-rehearsal-example \
+  --output results/followup-comparison-example/summary.json
+```
+
+Qualification covers the two exact starting applications plus the forty
+milestone golden/control/mutant rows. The complete rehearsal uses scripted
+repairs, regressions, no-op outcomes and uncertainty handling through the real
+Git, ledger and Docker boundaries. Scripted successes qualify execution; they
+are not model-quality observations. All terminal trajectories freeze before
+any candidate's final private evaluation. A later live run must bind the exact
+qualification, complete rehearsal and independent audit, and satisfy the
+registered funding/readiness gates before accessing credentials or dispatching.
+The comparison requires a complete independently audited cohort. It reports
+acceptance first, then inherited and new requirement coverage, with arm work,
+shared setup and final grading times separated. Rehearsal comparisons remain
+explicitly labeled as scripted infrastructure checks. Budget termination keeps
+its evidence but cannot produce a scored incomplete-cohort comparison.
+
+The current plan leaves live execution disabled. Historical charges remain in
+the cumulative ledger. Its reservation ceiling is a worst-case bound, not a
+cost forecast or authorization. A small development pilot cannot establish
+general superiority: the [confirmatory design](analysis/benchmark-confirmatory-design-v4.json)
+requires independently held-out task families and a fixed analysis/stopping
+rule. The [separate live-coordination design](analysis/benchmark-live-gossip-followup-design-v2.json)
+tests real peer decision-making and dissemination; this controller pilot does
+not establish a gossip-versus-orchestrator effect.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
@@ -983,6 +1049,8 @@ contact counts do not imply equal traffic.
 - [benchmark-comparison.html](benchmark-comparison.html): stronger maintenance
   tasks, matched candidate formation, evidence effectiveness and separate
   transport stress results.
+- [investigation-roadmap.html](investigation-roadmap.html): the reviewed
+  investigation design, evidence limits and proposed confirmatory studies.
 - `.progress-report/project.json`: locator for the independent durable progress
   report, review checkpoints and continuation handoff.
 

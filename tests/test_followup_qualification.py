@@ -27,9 +27,10 @@ def fixture(project_id="warehouse"):
     def files(marker):
         return {"solution.py": "# Fake evaluator data only: " + project_id + "-" + marker}
 
+    baseline_public, baseline_private = [case("baseline-public")], [case("baseline-private")]
     stages = [dict(known_files=files("golden-" + str(index)),
-                   visible_cases=[case("public-" + str(index))],
-                   hidden_cases=[case("private-" + str(index)),
+                   visible_cases=(baseline_public if index == 0 else []) + [case("public-" + str(index))],
+                   hidden_cases=(baseline_private if index == 0 else []) + [case("private-" + str(index)),
                        *[case("witness-" + str(number)) for number in range(5)]]) for index in range(2)]
 
     def faults(index):
@@ -41,7 +42,8 @@ def fixture(project_id="warehouse"):
         return [dict(id="control-" + str(number), files=files(f"control-{index}-{number}"))
                 for number in range(2)]
 
-    return SimpleNamespace(PROJECT=dict(id=project_id, stages=stages),
+    return SimpleNamespace(PROJECT=dict(id=project_id, stages=stages, initial_files=files("initial")),
+                           BASE_PUBLIC=baseline_public, BASE_PRIVATE=baseline_private,
                            fault_bank=faults, correct_controls=controls)
 
 
@@ -79,10 +81,12 @@ class FollowupQualificationTests(unittest.TestCase):
         self.queue = fixture("job-queue")
         self.source = self.root / "dependency.py"
         self.source.write_text("frozen dependency\n")
+        matrix = qualifier.matrix_for([self.module, self.queue])
         contract = dict(image=IMAGE, case_timeout_seconds=qualifier.CASE_TIMEOUT,
-                        suite_timeout_seconds=qualifier.SUITE_TIMEOUT)
+                        suite_timeout_seconds=qualifier.SUITE_TIMEOUT,
+                        qualification_matrix_sha256=qualifier.digest(matrix))
         self.prepared = dict(contract=contract, contract_sha256=qualifier.digest(contract),
-            matrix=qualifier.matrix_for([self.module, self.queue]),
+            matrix=matrix,
             inputs={"dependency.py": self.source.read_bytes()},
             execution_environment=qualifier.execution_environment(),
             execution_environment_sha256=qualifier.digest(qualifier.execution_environment()))
@@ -132,20 +136,22 @@ class FollowupQualificationTests(unittest.TestCase):
     def test_success_is_fresh_full_matrix_and_validates_without_reexecution(self):
         result = self.run_qualification()
         self.assertEqual(result["status"], "qualified")
-        self.assertEqual(len(self.calls), 32)
-        self.assertEqual(len({id(row["validator"]) for row in self.calls}), 32)
+        self.assertEqual(len(self.calls), 34)
+        self.assertEqual(len({id(row["validator"]) for row in self.calls}), 34)
         self.assertEqual([row["public_surviving_family_count"] for row in result["conclusion"]["stages"]], [5, 5, 5, 5])
         self.assertTrue(all(row["physically_executed"] and not row["reused"] for row in result["executions"]))
         self.assertEqual(self.validate(), result)
-        self.assertEqual(len(self.calls), 32)
+        self.assertEqual(len(self.calls), 34)
 
     def test_golden_and_controls_cover_private_and_all_fault_witnesses(self):
         matrix = self.prepared["matrix"]
         for row in matrix["rows"]:
-            if row["kind"] != "mutant":
+            if row["kind"] == "baseline":
+                self.assertEqual(row["groups"], dict(public=[0], private=[1], witness=[]))
+            elif row["kind"] != "mutant":
                 self.assertEqual(len(row["groups"]["witness"]), 5)
-                self.assertEqual(len(row["groups"]["private"]), row["stage_index"] + 6)
-                self.assertEqual(len(row["groups"]["public"]), row["stage_index"] + 1)
+                self.assertEqual(len(row["groups"]["private"]), row["stage_index"] + 7)
+                self.assertEqual(len(row["groups"]["public"]), row["stage_index"] + 2)
             else:
                 self.assertTrue(set(row["groups"]["witness"]) <= set(row["groups"]["private"]))
                 self.assertEqual(len(row["groups"]["witness"]), 1)
@@ -156,6 +162,8 @@ class FollowupQualificationTests(unittest.TestCase):
             dict(id="correct", files=self.module.PROJECT["stages"][stage]["known_files"]),
             previous(stage)[1]]
         self.prepared["matrix"] = qualifier.matrix_for([self.module, self.queue])
+        self.prepared["contract"]["qualification_matrix_sha256"] = qualifier.digest(self.prepared["matrix"])
+        self.prepared["contract_sha256"] = qualifier.digest(self.prepared["contract"])
         result = self.run_qualification()
         self.assertEqual(result["status"], "qualified")
         self.assertEqual(self.calls[0]["files"], self.calls[1]["files"])
@@ -250,7 +258,7 @@ class FollowupQualificationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Output already exists"):
             qualifier.run(self.output, IMAGE)
         self.assertEqual((self.output / "results.json").read_bytes(), before)
-        self.assertEqual(len(self.calls), 32)
+        self.assertEqual(len(self.calls), 34)
 
     def test_tampered_live_dependency_rejected(self):
         self.run_qualification()
@@ -339,6 +347,7 @@ class FollowupQualificationTests(unittest.TestCase):
         contract: dict[str, Any] = dict(protocol=qualifier.STUDY_PROTOCOL, project_ids=list(qualifier.PROJECT_IDS),
             milestones=2, policies={policy: {} for policy in qualifier.POLICIES}, image=IMAGE,
             case_timeout_seconds=qualifier.CASE_TIMEOUT, suite_timeout_seconds=qualifier.SUITE_TIMEOUT,
+            qualification_matrix_sha256=qualifier.digest(self.prepared["matrix"]),
             roster=[[project, policy, repetition] for project in qualifier.PROJECT_IDS
                     for policy in qualifier.POLICIES for repetition in range(2)])
         qualifier.validate_study_contract(contract, IMAGE)
@@ -347,7 +356,8 @@ class FollowupQualificationTests(unittest.TestCase):
             dict(roster=contract["roster"][:-1]),
             dict(roster=[contract["roster"][0]] * 12),
             dict(roster=[[*row[:2], bool(row[2])] for row in contract["roster"]]),
-            dict(image="sha256:" + "b" * 64), dict(case_timeout_seconds=1)]
+            dict(image="sha256:" + "b" * 64), dict(case_timeout_seconds=1),
+            dict(qualification_matrix_sha256=None), dict(qualification_matrix_sha256="not-a-digest")]
         for change in changes:
             with self.subTest(change=change):
                 with self.assertRaises(ValueError):
@@ -401,7 +411,7 @@ class FollowupQualificationTests(unittest.TestCase):
         with patch.object(qualifier, "execution_environment", return_value=changed):
             with self.assertRaisesRegex(ValueError, "execution environment changed"):
                 self.validate()
-        self.assertEqual(len(self.calls), 32)
+        self.assertEqual(len(self.calls), 34)
 
     def test_changed_execution_image_limits_adapter_and_order_are_rejected(self):
         row = self.prepared["matrix"]["rows"][0]
@@ -447,6 +457,7 @@ class FollowupQualificationTests(unittest.TestCase):
         contract = dict(protocol=qualifier.STUDY_PROTOCOL, project_ids=list(qualifier.PROJECT_IDS),
             milestones=2, policies={policy: {} for policy in qualifier.POLICIES}, image=IMAGE,
             case_timeout_seconds=qualifier.CASE_TIMEOUT, suite_timeout_seconds=qualifier.SUITE_TIMEOUT,
+            qualification_matrix_sha256=qualifier.digest(self.prepared["matrix"]),
             roster=[[project, policy, repetition] for project in qualifier.PROJECT_IDS
                     for policy in qualifier.POLICIES for repetition in range(2)],
             plan_sha256=hashes[plan_path], sources={name: hashes["gossip_harness/" + name]
@@ -458,9 +469,13 @@ class FollowupQualificationTests(unittest.TestCase):
             prepared = REAL_PREPARE(IMAGE)
             self.assertEqual(set(prepared["inputs"]), set(hashes))
             self.assertEqual(prepared["contract_sha256"], qualifier.digest(contract))
-            self.assertEqual(len(prepared["matrix"]["rows"]), 32)
+            self.assertEqual(len(prepared["matrix"]["rows"]), 34)
             self.assertEqual(prepared["execution_environment_sha256"],
                              qualifier.digest(qualifier.execution_environment()))
+            contract["qualification_matrix_sha256"] = "0" * 64
+            with self.assertRaisesRegex(ValueError, "matrix differs from frozen study contract"):
+                REAL_PREPARE(IMAGE)
+            contract["qualification_matrix_sha256"] = qualifier.digest(self.prepared["matrix"])
             (self.root / plan_path).write_text("changed study plan")
             with self.assertRaisesRegex(ValueError, "Contract source changed"):
                 REAL_PREPARE(IMAGE)
@@ -473,7 +488,7 @@ class FollowupQualificationTests(unittest.TestCase):
         self.runtime["daemon_id_sha256"] = "9" * 64
         with self.assertRaisesRegex(ValueError, "Docker runtime identity changed"):
             self.validate()
-        self.assertEqual(len(self.calls), 32)
+        self.assertEqual(len(self.calls), 34)
 
     def test_daemon_change_during_execution_retains_unverified_receipt(self):
         evaluate = self.fake_validator.evaluate
@@ -510,6 +525,135 @@ class FollowupQualificationTests(unittest.TestCase):
         self.assertNotEqual(original, collect([dict(server, Version="new-engine"), info, context, inspected]))
         with self.assertRaisesRegex(ValueError, "pinned Docker image identity"):
             collect([server, info, context, dict(inspected, Id="sha256:" + "b" * 64)])
+
+    def test_initial_baselines_have_separate_source_suite_and_purpose(self):
+        rows = self.prepared["matrix"]["rows"]
+        self.assertEqual([row["kind"] for row in rows[-2:]], ["baseline", "baseline"])
+        self.assertEqual([row["index"] for row in rows[-2:]], [32, 33])
+        self.assertEqual(self.prepared["matrix"]["baseline_projects"], list(qualifier.PROJECT_IDS))
+        for module, row in zip((self.module, self.queue), rows[-2:]):
+            project_id = module.PROJECT["id"]
+            golden = next(item for item in rows if item["project_id"] == project_id
+                          and item["stage_index"] == 0 and item["kind"] == "golden")
+            self.assertEqual(row["source_sha256"], qualifier.digest(module.PROJECT["initial_files"]))
+            self.assertNotEqual(row["source_sha256"], golden["source_sha256"])
+            self.assertNotEqual(row["purpose"], golden["purpose"])
+            self.assertNotEqual(row["suite_sha256"], golden["suite_sha256"])
+            self.assertEqual(row["cases"], module.BASE_PUBLIC + module.BASE_PRIVATE)
+            self.assertEqual(row["stage_index"], -1)
+
+    def test_baseline_cases_must_be_inherited_in_matching_acceptance_group(self):
+        self.module.PROJECT["stages"][0]["hidden_cases"].remove(self.module.BASE_PRIVATE[0])
+        with self.assertRaisesRegex(ValueError, "Baseline acceptance must be inherited exactly"):
+            qualifier.matrix_for([self.module, self.queue])
+        self.assertEqual(self.calls, [])
+
+    def test_failing_initial_source_blocks_all_qualification_despite_good_milestones(self):
+        evaluate = self.fake_validator.evaluate
+        def broken(instance, files, cases):
+            result = evaluate(instance, files, cases)
+            if files == self.module.PROJECT["initial_files"]:
+                result["outcomes"][1].update(passed=False, status="wrong_answer", actual={"broken": True})
+                result.update(passed=False, status="failed")
+            return result
+        with patch.object(self.fake_validator, "evaluate", broken):
+            result = self.run_qualification()
+        self.assertEqual(len(self.calls), 34)
+        self.assertTrue(all(stage["qualified"] for stage in result["conclusion"]["stages"]))
+        self.assertEqual([row["qualified"] for row in result["conclusion"]["baselines"]], [False, True])
+        self.assertEqual(result["status"], "qualification_failed")
+        self.assertFalse(result["conclusion"]["qualified"])
+        with self.assertRaisesRegex(ValueError, "Not a finalized"):
+            self.validate()
+
+    def test_complete_stage_matrix_without_baseline_rows_is_incomplete(self):
+        stage_rows = [row for row in self.prepared["matrix"]["rows"] if row["kind"] != "baseline"]
+        findings = [qualifier.classify(row, raw_receipt(row["files"], row["cases"])) for row in stage_rows]
+        conclusion = qualifier.conclusions(self.prepared["matrix"], findings)
+        self.assertTrue(all(stage["qualified"] for stage in conclusion["stages"]))
+        self.assertFalse(conclusion["complete"])
+        self.assertFalse(conclusion["qualified"])
+        self.assertTrue(all(not row["qualified"] for row in conclusion["baselines"]))
+
+    def test_v1_receipt_cannot_supply_baseline_qualification(self):
+        self.run_qualification()
+        old_protocol = "continuation-followup-fixture-qualification-v1"
+        self.rewrite("manifest.json", lambda value: value.update(protocol=old_protocol))
+        manifest_sha = qualifier.sha((self.output / "manifest.json").read_bytes())
+        self.rewrite("results.json", lambda value: value.update(protocol=old_protocol,
+                                                               manifest_sha256=manifest_sha))
+        with self.assertRaisesRegex(ValueError, "Not a finalized"):
+            self.validate()
+
+    def test_baseline_approval_binds_exact_private_receipt_without_reexecution(self):
+        self.run_qualification()
+        report = self.validate()
+        initial = self.module.PROJECT["initial_files"]
+        proof = qualifier.baseline_proof(report, "warehouse", initial)
+        approval = qualifier.baseline_approval(report, "warehouse", initial)
+        self.assertEqual(set(approval), {"files_sha256", "source_valid", "approval_id"})
+        self.assertEqual(approval["approval_id"], "qualified-baseline:" + qualifier.digest(proof))
+        self.assertEqual(approval["files_sha256"], qualifier.digest(initial))
+        self.assertTrue(approval["source_valid"])
+        self.assertEqual(proof["receipt"], "receipts/0032.json")
+        self.assertEqual(proof["receipt_sha256"], qualifier.sha((self.output / proof["receipt"]).read_bytes()))
+        self.assertEqual(proof["manifest_sha256"], qualifier.sha((self.output / "manifest.json").read_bytes()))
+        self.assertEqual(proof["stage_index"], -1)
+        self.assertEqual(len(self.calls), 34)
+
+    def test_baseline_proof_rejects_other_source_missing_project_and_incomplete_proof(self):
+        self.run_qualification()
+        report = self.validate()
+        with self.assertRaisesRegex(ValueError, "Starting source does not match"):
+            qualifier.baseline_approval(report, "warehouse", self.module.PROJECT["stages"][0]["known_files"])
+        with self.assertRaisesRegex(ValueError, "complete v2"):
+            qualifier.baseline_approval(report, "unknown", self.module.PROJECT["initial_files"])
+        report["conclusion"]["baselines"].pop()
+        with self.assertRaisesRegex(ValueError, "Both starting baselines"):
+            qualifier.baseline_approval(report, "warehouse", self.module.PROJECT["initial_files"])
+
+    def test_changed_and_rehashed_matrix_cannot_override_study_contract_anchor(self):
+        self.run_qualification()
+        changed = deepcopy(self.prepared["matrix"])
+        fault = next(row for row in changed["rows"] if row["kind"] == "mutant")
+        fault["family"] = "relabelled-fault-family"
+        # Even if the loaded fixture inventory and every derived manifest/report
+        # digest agree with this relabelling, the frozen study contract does not.
+        self.prepared["matrix"] = changed
+        self.rewrite("manifest.json", lambda value: value.update(matrix=changed,
+                                                                 matrix_sha256=qualifier.digest(changed)))
+        manifest_sha = qualifier.sha((self.output / "manifest.json").read_bytes())
+        def change_findings(value):
+            value["manifest_sha256"] = manifest_sha
+            value["classifications"][fault["index"]]["family"] = fault["family"]
+            value["conclusion"] = qualifier.conclusions(changed, value["classifications"])
+        self.rewrite("results.json", change_findings)
+        with self.assertRaisesRegex(ValueError, "matrix or execution contract changed"):
+            self.validate()
+
+    def test_actual_fixture_matrix_serializes_lone_surrogates_without_changing_digest(self):
+        from gossip_harness import benchmark_job_queue, benchmark_warehouse
+        matrix = qualifier.matrix_for([benchmark_warehouse, benchmark_job_queue])
+        path = self.root / "actual-matrix.json"
+        expected_sha = "7790c5549fae805e2aef99cdf8db3a7314a7c1ce40a49748eccdc405501d43e3"
+        self.assertEqual(qualifier.digest(matrix), expected_sha)
+        self.assertEqual(len(matrix["rows"]), 42)
+        self.assertEqual(qualifier.save_checkpoint(path, matrix), qualifier.sha(path.read_bytes()))
+        restored = qualifier.decode(path.read_bytes())
+        self.assertEqual(restored, matrix)
+        self.assertEqual(qualifier.digest(restored), expected_sha)
+        # This data-only round trip exercises the real malformed Unicode case;
+        # no known implementation or mutant source string is imported/executed.
+        self.assertIn(b"\\ud800", path.read_bytes())
+        self.assertEqual(self.calls, [])
+
+    def test_checkpoint_rejects_nonfinite_values_without_replacing_prior_evidence(self):
+        path = self.root / "checkpoint.json"
+        qualifier.save_checkpoint(path, {"retained": "evidence"})
+        original = path.read_bytes()
+        with self.assertRaises(ValueError):
+            qualifier.save_checkpoint(path, {"invalid": float("nan")})
+        self.assertEqual(path.read_bytes(), original)
 
 
 if __name__ == "__main__":

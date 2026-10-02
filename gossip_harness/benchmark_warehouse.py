@@ -10,6 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 import json
 from textwrap import dedent
+from typing import Any
 
 CONTRACT = "warehouse-fulfillment-v1"
 ALLOWED = ("warehouse_app/storage.py", "warehouse_app/domain.py", "warehouse_app/service.py")
@@ -586,7 +587,7 @@ def _apply(state, command):
 
 def reference(stage_index, payload):
     validate_input(stage_index,payload)
-    state = dict(lots={},orders={},shipments={},receipts={},audit=[])
+    state: dict[str, Any] = dict(lots={},orders={},shipments={},receipts={},audit=[])
     answers = []
     for command in payload["commands"]:
         trial = deepcopy(state)

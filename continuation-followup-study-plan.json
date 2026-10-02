@@ -183,5 +183,48 @@
     "routing": "Suggested next-review targets are advisory; the reviewer still selects explicitly. Repeated source/evidence routes cannot count as failure progress.",
     "repair_visibility": "Retained repair aliases and source-bound comparisons disclose repair provenance; the pool is not blind to repair history.",
     "terminal_reason": "Keep the routing stop cause separate from checks and acceptance state of the actual terminal fallback source."
+  },
+  "pilot_analysis": {
+    "version": "continuation-followup-descriptive-comparison-v1",
+    "primary_contrasts": [
+      ["improved-independent", "current-independent"],
+      ["improved-independent", "improved-sequential"]
+    ],
+    "paired_unit": "The same project and repetition identify a development block. Four blocks repeat two domains; they are not four independent task families.",
+    "quality_order": "Explicit whole-project acceptance first, then the fraction of named private requirement groups for which every final case passes. Preserve all planned trajectories and bounded stops in the denominator.",
+    "requirements": "Report inherited-contract and added-feature preservation separately. Do not count individual scenarios or repeated requirements as independent replications.",
+    "requirement_taxonomy": {
+      "warehouse": {"baseline_inherited": "W0-", "milestone_1_added": "W1-", "milestone_2_added": "W2-"},
+      "job-queue": {"baseline_inherited": "Q0-", "milestone_1_added": "Q1-", "milestone_2_added": "Q2-"},
+      "rule": "Classify exact private requirement labels by these frozen prefixes and reject unclassified groups. W2-inherited is an added fulfillment-integration requirement, not an original baseline requirement. all_added combines the two added scopes."
+    },
+    "timing": "Report measured arm work, shared setup, final adjudication and scheduling waits separately. Accepted-only time is undefined when no projects are accepted. Stopping early is not a speed win; shared parallel work is not additive wall time.",
+    "accounting": "Reconcile physical provider requests and cash once, with shared setup separate. Any per-arm allocation must state its rule and reconcile exactly to the physical total; attributed opportunities are not additional calls.",
+    "experimental_allocation_rule": "For each block, split independent setup-builder cost and request equivalents equally between the two independent arms; assign serial setup builders to the serial arm; split common scouts equally among all three arms. Preserve exact rational amounts. This is a joint-experiment accounting allocation, not standalone policy cost: reused A/B generation must not create an apparent deployment cost advantage. The primary table keeps arm-only work and physical shared setup separate; do not rank approaches by this allocation.",
+    "diagnostics": "Describe observed repairs, retained checkpoints, introduced regressions and unresolved stops. These explain recorded behavior without establishing an isolated causal mechanism.",
+    "inference": "Descriptive paired wins/draws/losses only; no calibrated Elo, confirmatory population p-value or general superiority claim from this development pilot.",
+    "qualification": "Score only a complete source-bound cohort with a passing independent audit. Retain incomplete or failed runs as unscored evidence; never retry selectively until green."
+  },
+  "rehearsal": {
+    "version": "controller-rehearsal-v2",
+    "purpose": "One complete zero-API execution of the exact cohort, shared setup, Git promotion, receipt, accounting and final-evaluation barriers before live readiness. Scripted outcomes qualify infrastructure and control flow; they are not model-quality observations.",
+    "required_roster": "All twelve registered trajectories, both milestones each, independently accepted by the exact retained private/public suites.",
+    "initial_controls": "Use repository-authored golden sources with deliberate operation faults in the editable service module. Match each fault to existing public cases; do not change evaluator labels or trusted files.",
+    "repetition_0": "First repair exchanges a known operation fault for another, creating both resolved and introduced failures; the second repair restores the golden implementation. Improved control must retain and compare predecessor checkpoints on identical evidence.",
+    "repetition_1": "Use a zero-charge known no-op WorkerFailure followed by a golden repair to exercise retained eligibility and bounded escalation. At the second milestone, the improved controller uses an all-pass source with unresolved review requirements followed by a focused review and explicit acceptance.",
+    "mechanisms_required": [
+      "Exact common initial pools and scouts with fresh arm validation",
+      "Failure-directed repairs and blocked premature acceptance",
+      "Source-bound resolved and introduced failures on identical cases",
+      "Retained pre-repair checkpoints",
+      "No-op repair and preserved source eligibility",
+      "Bounded strong escalation within existing repair limits",
+      "Focused uncertainty retry within existing review limits",
+      "Complete global terminal freeze before private evaluation",
+      "Exact accepted Git releases and independent whole-cohort audit"
+    ],
+    "bounded_stops": "Separate adversarial offline regressions must retain bounded failures and missing completion in the denominator; a successful scripted rehearsal does not establish that live trajectories will finish.",
+    "model_boundary": "Scripted controls and golden implementations are inaccessible to live dispatch; all live roles receive only their allowed public source/context.",
+    "fixture_qualification": "Version2 requires physical baseline validation as well as golden implementations, correct controls and semantic faults; every source/suite/purpose is a fresh pinned-container execution."
   }
 }
