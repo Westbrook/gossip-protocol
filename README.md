@@ -1070,6 +1070,42 @@ the separate completed cohort and audit. The prospective
 [20-agent project plan](docs/large-swarm-project-plan-v1.md) remains a separate
 development study with unqualified runtime and resource limits.
 
+The [completed live checkpoint](analysis/followup-live-checkpoint-v1.json) now
+binds the full 12-trajectory cohort, passing independent audit and prespecified
+comparison. It retained all failed proposals and the one bounded stop.
+
+| Approach | Accepted projects | Named requirement-group observations | Median active time, accepted only |
+| --- | --- | --- | --- |
+| Current controller, independent candidates | 3/4 | 68/70 | 4.88 min (3 projects) |
+| Improved controller, independent candidates | 3/4 | 63/70 | 4.33 min (3 projects) |
+| Improved controller, sequential candidates | 4/4 | 70/70 | 5.39 min (4 projects) |
+
+All approaches preserved 18/18 baseline group observations. Active time includes
+arm work and final adjudication; shared setup and scheduling waits are separate.
+These success-conditioned times do not reward the improved independent arm's
+early stop. That arm tied the current controller in acceptance and lost one
+paired case to sequential formation. Four paired blocks across two domains
+support no calibrated Elo or population-level superiority claim; this study did
+not compare live gossip with orchestration.
+
+The early stop is a concrete persistence failure: the reviewer returned an
+approval with notes as a JSON list, while the frozen parser required a string.
+The controller stopped despite remaining review, repair and escalation
+allowances. The retained first-stage source was valid; the second milestone
+was never attempted. A prospectively defined response-recovery policy needs
+qualification before the larger live study; this result stays unchanged.
+The other rejection completed both milestones but left exhausted orders marked
+`reserved` instead of `shipped`, failing two final workflow cases after passing
+visible checks. Neither additional agents nor response-format recovery alone
+would establish that those state transitions are correct.
+
+The 145 physical model calls used an estimated **$6.606959**, including shared
+setup exactly once. Cumulative accounting is **$42.150585 of $80**, leaving
+**$37.849415**, with no unsettled reservations or pending promotions. These are
+frozen-price token estimates, not invoices. The next engineering target remains
+the 16-builder/four-reviewer project harness; its runtime and complete cohort
+must be qualified before allocating further live spending.
+
 ## Real peer transport foundation
 
 The [peer runtime](docs/peer-runtime-v1.md) adds independently running local

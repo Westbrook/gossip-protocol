@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "protocol": "certified-followup-live-checkpoint-v1",
+  "recorded_utc": "2026-10-02T21:02:36.464791+00:00",
+  "status": "certified_complete",
+  "interpretation": "Exploratory controller and candidate-formation pilot; not a live gossip-versus-orchestrator test or evidence of general superiority.",
+  "contract_sha256": "c256db9363054ff66069ee8e35a5a630c35a5e95b77be780a1fb464803eae98c",
+  "git_execution_head": "e5f5b6abffd1d345c21ed766a5779879c6c35da7",
+  "evidence": [
+    {
+      "path": "results/followup-live-1/results.json",
+      "sha256": "485f548fed6350733622d3607938eb2a99c66babe72f71014443780b9303e278"
+    },
+    {
+      "path": "results/followup-live-1/timings.json",
+      "sha256": "416bac02f6f85707fec90eed5706e300ba1c5bcc9936287cc7b5f64c38fb0eb7"
+    },
+    {
+      "path": "results/followup-live-1/frozen-trajectories.json",
+      "sha256": "38f6212db31f22fa495cf0134a5b21c1fba72f36fcc5674cf0fe0fc1063bc769"
+    },
+    {
+      "path": "results/followup-live-1/accounting-snapshot.sqlite",
+      "sha256": "932336af94bc728458b5084af46dc8ed2bbe41f85aca369b3b305f3af11f10f1"
+    },
+    {
+      "path": "results/followup-live-1/independent-audit.json",
+      "sha256": "75cd7853a343a11b447ee6086e0378d5a6115102e1ae99c2a334939702740cfe"
+    },
+    {
+      "path": "results/followup-live-comparison-1/summary.json",
+      "sha256": "995325b592abdd4f09d5c646280258ece33f5795233fce70e59b11f2b7e4d22c"
+    },
+    {
+      "path": "analysis/followup-funded-readiness-checkpoint-v1.json",
+      "sha256": "c40c8c39a7a5855566cae1a2b8a58da89587e74ef5d6a2b0e6e3bb12f526776b"
+    },
+    {
+      "path": "analysis/followup-funded-authorization-v1.json",
+      "sha256": "e948e097e2c76d00c95d5bfe67a54a63ebb2fb97ad83397df709c53dee616bd6"
+    }
+  ],
+  "execution": {
+    "live_exit_code": 0,
+    "audit_exit_code": 0,
+    "comparison_exit_code": 0,
+    "physical_provider_calls": 145,
+    "physical_docker_executions": 369,
+    "shared_setups": 4,
+    "trajectories": 12,
+    "accepted_projects": 10,
+    "unexecuted": [],
+    "censored": [],
+    "unsettled": {
+      "promotions": 0,
+      "reservations": 0
+    },
+    "whole_study_wall_seconds": 3858.684117078781,
+    "known_settled_no_change_failures": 3,
+    "failure_policy": "All failed proposals and bounded stops retained in the original denominators; no replacement runs or retry-to-green."
+  },
+  "policies": {
+    "current-independent": {
+      "trajectories": 4,
+      "accepted": 3,
+      "bounded_stops": 0,
+      "milestones_completed": 8,
+      "milestones_total": 8,
+      "requirements_passed": 68,
+      "requirements_total": 70,
+      "requirement_categories": {
+        "baseline_inherited": {
+          "passed": 18,
+          "total": 18,
+          "mean_fraction": 1.0
+        },
+        "milestone_1_added": {
+          "passed": 26,
+          "total": 26,
+          "mean_fraction": 1.0
+        },
+        "milestone_2_added": {
+          "passed": 24,
+          "total": 26,
+          "mean_fraction": 0.9285714285714286
+        },
+        "all_added": {
+          "passed": 50,
+          "total": 52,
+          "mean_fraction": 0.9642857142857143
+        }
+      },
+      "arm_usage_micro_usd": 2360681,
+      "arm_physical_provider_calls": 40,
+      "measured_same_case_regressions": null,
+      "measured_same_case_failure_progress": null,
+      "median_arm_active_seconds_all_attempts": 291.9455539585,
+      "accepted_only_active_time": {
+        "observations": 3,
+        "min_seconds": 266.716370542,
+        "median_seconds": 292.668877125,
+        "max_seconds": 323.689457876,
+        "cumulative_seconds": 883.0747055429999
+      },
+      "repair_metrics": {
+        "repairs": 1,
+        "effective_source_changes": 17,
+        "no_effective_source_proposals": 0,
+        "retained_repair_checkpoints": 0,
+        "repair_regressions": 0,
+        "repair_failure_progress": 0,
+        "resolved_known_failures": 0,
+        "introduced_failures": 0,
+        "alternative_routes": 0,
+        "focused_review_requests": 0,
+        "focused_evidence_steps": 0,
+        "stagnation_events": 0,
+        "escalations": 0
+      }
+    },
+    "improved-independent": {
+      "trajectories": 4,
+      "accepted": 3,
+      "bounded_stops": 1,
+      "milestones_completed": 6,
+      "milestones_total": 8,
+      "requirements_passed": 63,
+      "requirements_total": 70,
+      "requirement_categories": {
+        "baseline_inherited": {
+          "passed": 18,
+          "total": 18,
+          "mean_fraction": 1.0
+        },
+        "milestone_1_added": {
+          "passed": 26,
+          "total": 26,
+          "mean_fraction": 1.0
+        },
+        "milestone_2_added": {
+          "passed": 19,
+          "total": 26,
+          "mean_fraction": 0.75
+        },
+        "all_added": {
+          "passed": 45,
+          "total": 52,
+          "mean_fraction": 0.875
+        }
+      },
+      "arm_usage_micro_usd": 1516908,
+      "arm_physical_provider_calls": 28,
+      "measured_same_case_regressions": 0,
+      "measured_same_case_failure_progress": 0,
+      "median_arm_active_seconds_all_attempts": 248.12301445900002,
+      "accepted_only_active_time": {
+        "observations": 3,
+        "min_seconds": 236.237031209,
+        "median_seconds": 260.008997709,
+        "max_seconds": 276.779053292,
+        "cumulative_seconds": 773.0250822099999
+      },
+      "repair_metrics": {
+        "repairs": 0,
+        "effective_source_changes": 12,
+        "no_effective_source_proposals": 0,
+        "retained_repair_checkpoints": 0,
+        "repair_regressions": 0,
+        "repair_failure_progress": 0,
+        "resolved_known_failures": 0,
+        "introduced_failures": 0,
+        "alternative_routes": 0,
+        "focused_review_requests": 0,
+        "focused_evidence_steps": 3,
+        "stagnation_events": 0,
+        "escalations": 0
+      }
+    },
+    "improved-sequential": {
+      "trajectories": 4,
+      "accepted": 4,
+      "bounded_stops": 0,
+      "milestones_completed": 8,
+      "milestones_total": 8,
+      "requirements_passed": 70,
+      "requirements_total": 70,
+      "requirement_categories": {
+        "baseline_inherited": {
+          "passed": 18,
+          "total": 18,
+          "mean_fraction": 1.0
+        },
+        "milestone_1_added": {
+          "passed": 26,
+          "total": 26,
+          "mean_fraction": 1.0
+        },
+        "milestone_2_added": {
+          "passed": 26,
+          "total": 26,
+          "mean_fraction": 1.0
+        },
+        "all_added": {
+          "passed": 52,
+          "total": 52,
+          "mean_fraction": 1.0
+        }
+      },
+      "arm_usage_micro_usd": 2087326,
+      "arm_physical_provider_calls": 37,
+      "measured_same_case_regressions": 0,
+      "measured_same_case_failure_progress": 0,
+      "median_arm_active_seconds_all_attempts": 323.416219437,
+      "accepted_only_active_time": {
+        "observations": 4,
+        "min_seconds": 260.90583012499997,
+        "median_seconds": 323.416219437,
+        "max_seconds": 359.510690958,
+        "cumulative_seconds": 1267.248959957
+      },
+      "repair_metrics": {
+        "repairs": 0,
+        "effective_source_changes": 13,
+        "no_effective_source_proposals": 1,
+        "retained_repair_checkpoints": 0,
+        "repair_regressions": 0,
+        "repair_failure_progress": 0,
+        "resolved_known_failures": 0,
+        "introduced_failures": 0,
+        "alternative_routes": 0,
+        "focused_review_requests": 0,
+        "focused_evidence_steps": 5,
+        "stagnation_events": 0,
+        "escalations": 0
+      }
+    }
+  },
+  "planned_paired_contrasts": {
+    "controller_package": {
+      "quality_ordered": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "descriptive_win_score": 0.5,
+        "blocks": 4,
+        "application_domains": 2
+      },
+      "whole_project_acceptance": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "descriptive_win_score": 0.5,
+        "blocks": 4,
+        "application_domains": 2
+      },
+      "requirement_coverage": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "descriptive_win_score": 0.5,
+        "blocks": 4,
+        "application_domains": 2
+      }
+    },
+    "candidate_formation": {
+      "quality_ordered": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1,
+        "descriptive_win_score": 0.375,
+        "blocks": 4,
+        "application_domains": 2
+      },
+      "whole_project_acceptance": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1,
+        "descriptive_win_score": 0.375,
+        "blocks": 4,
+        "application_domains": 2
+      },
+      "requirement_coverage": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1,
+        "descriptive_win_score": 0.375,
+        "blocks": 4,
+        "application_domains": 2
+      }
+    }
+  },
+  "accounting": {
+    "units": "conservative frozen-price API token estimates in microUSD; not invoices or total compute/engineering cost",
+    "cumulative_cap_micro_usd": 80000000,
+    "opening_usage_micro_usd": 35543626,
+    "study_usage_micro_usd": 6606959,
+    "cumulative_usage_micro_usd": 42150585,
+    "remaining_micro_usd": 37849415,
+    "unsettled_reservations": 0,
+    "pending_promotions": 0,
+    "shared_setup_usage_micro_usd": 642044,
+    "arm_usage_micro_usd": 5964915,
+    "shared_setup_physical_calls": 40,
+    "arm_physical_calls": 105,
+    "shared_allocation_is_standalone_policy_cost": false
+  },
+  "audit": {
+    "passed": true,
+    "scope": {
+      "controller_decision_replay": true,
+      "exact_source_promotions": true,
+      "global_private_barrier": true,
+      "live_model_quality": true,
+      "primary_cohort": true,
+      "shared_initial_setup": true
+    },
+    "consumed_evidence_files": 4387,
+    "frozen_and_current_ledger_agree": true,
+    "limitations": [
+      "Exploratory development pilot; two application domains do not establish population-level superiority.",
+      "Trusted-host retained consistency, not independent external execution or clock attestation.",
+      "Historical reservation-time compliance relies on the qualified transactional admission guards; request-interval upper bounds do not prove the measured historical peak.",
+      "Fixture meaning and task representativeness remain separately reviewed scientific assumptions.",
+      "A passing audit does not authorize live dispatch, spending or a change to the scientific contract."
+    ]
+  },
+  "findings": [
+    "Improved sequential formation accepted4/4, while current and improved independent each accepted3/4.",
+    "Improved-independent versus current-independent was1win,2draws,1loss; no observed acceptance advantage.",
+    "Improved-independent versus improved-sequential was0wins,3draws,1loss in this small paired cohort.",
+    "All three policies preserved18/18 measured baseline requirement groups. Added-group coverage was50/52 current independent,45/52 improved independent,52/52 improved sequential.",
+    "The improved-independent arm stopped before completing its first milestone once; its shorter all-attempt time is not a speed win.",
+    "No improved-arm repairs or escalations occurred. The pilot does not demonstrate repair recovery, and current-arm missing regression instrumentation is unknown, not zero."
+  ],
+  "timing_interpretation": "Arm active=model work+independent final adjudication. Shared setup and scheduling waits remain separate. Provider and Docker spans nest within measured parents; report their unions and cumulative durations without adding them to active time. Setup snapshot timing files are never summed. Accepted-only times are conditional on three, three and four accepted trajectories respectively; shared setup is excluded.",
+  "interpretation_review": {
+    "status": "passed",
+    "owner": "ranking_review with metrics_method_review",
+    "receipt": {
+      "path": "runs/investigation-cycle-8-live-interpretation-review-1.json",
+      "sha256": "991f3b687ab2ef5c736e8db67589d32589057ecc328a4f1d022f248a3ed7a07d"
+    },
+    "blocking_findings": []
+  },
+  "limitations": [
+    "Exploratory controller-development pilot on two repository-shaped synthetic applications, not confirmatory evidence across independent task families.",
+    "Controller contrast changes a package of continuation rules; formation contrast changes initial source formation under improved control. Neither tests live gossip against central orchestration.",
+    "Four blocks repeat two domains. Shared sources/scouts and reused contrast arms create dependence; no calibrated Elo, population p-value or general superiority inference.",
+    "Bounded stops remain in all planned denominators. Unexecuted or censored cohorts receive no completed-cohort scores; early termination never earns a speed win.",
+    "Accepted-only timing is conditional on success and null if none succeed. Provider conditions, host contention and order effects are not controlled away.",
+    "Shared cost allocation is joint-study bookkeeping only and is deliberately excluded from quality rankings.",
+    "Trusted oracle-assisted evidence and independent private cases measure this frozen contract, not all real-world requirements.",
+    "Passing a scripted zero-API rehearsal qualifies infrastructure and control flow, not model quality.",
+    "This is read-only aggregation of a retained independent certificate, not another audit or external execution attestation."
+  ],
+  "elo": null,
+  "population_p_values": null,
+  "ranking": null,
+  "next_work": {
+    "larger_study": {
+      "path": "large-swarm-project-plan-v1.json",
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e"
+    },
+    "implementation_map": {
+      "path": "runs/large-swarm-implementation-map-1.json",
+      "sha256": "bacfadd75a69ee70fdab8069b39e830e7618e8a9edac79e628feaf81ec6856bc"
+    },
+    "interface_map": {
+      "path": "runs/large-swarm-interface-map-1.json",
+      "sha256": "600a053f937246bb16138c2a9697aae81e1283695c87c3a3ee19ba9963c991dd"
+    },
+    "next_action": "Implement and qualify one integrated20-role zero-provider fixture using16builders/fourreviewers on the Local Research Library. Genuine concurrent dispatch, continued gossip, arrived evidence, semantic conflict/repair, exact release and restart/partition controls precede full four-milestone/six-trajectory qualification and live allocation.",
+    "required_persistence_followup": "Inspect the invalid-review bounded stop and qualify a prospective bounded recovery policy before a larger live study; preserve this completed cohort unchanged.",
+    "funding": "No allocation made. Full128-builder use with mandatory32reviews across six trajectories extrapolates to39.53USD; full48-review allowance to50.60USD, against37.849415USD remaining, before qualifying larger contexts and reservation headroom. These are sensitivities, not a funding request or price guarantee. Quote the complete qualified contract before live admission.",
+    "broader_scope_preserved": [
+      "Full decision-placement by transport comparison",
+      "Independent held-out project-family confirmation"
+    ],
+    "settled_pilot_cost_sensitivity": {
+      "path": "runs/large-swarm-cost-planning-2.json",
+      "sha256": "73c22370ec470576961c3b9e256f1ca83bcf05161c993a5ec66d637d882ec613"
+    }
+  },
+  "verification": {
+    "source_changes": "README plus new authored JSON checkpoint only; all39 frozen execution sources and study plan unchanged.",
+    "fresh_static_and_plan_regression": {
+      "path": "runs/investigation-cycle-8-live-publication-fast/20261002T210524-c718f794/summary.json",
+      "sha256": "abfa189a0ef646448e16861aa1e9ec4a0b8d8fdc270644bd5e7e7c0d26ba01d2"
+    },
+    "fresh_test_passes": 13,
+    "skips": 0,
+    "reused_tests": 0,
+    "why_fresh_gate": "Previous259 source inputs matched, but environment digest differed, so exact runtime receipt reuse was not claimed.",
+    "type_coverage": "Static gate passes declared incremental scope with117 unchanged historical baseline diagnostics; does not establish type safety of every legacy dynamic function.",
+    "candidate_reexecution_for_publication": 0,
+    "browser_checks": "No HTML, UI behavior or report server source changed; existing report data only. No new browser qualification claimed.",
+    "unverified_surfaces": [
+      "20-role runtime implementation and physical qualification",
+      "Full four-milestone/six-trajectory larger project",
+      "Larger-study spending/context allocation",
+      "Independent held-out statistical confirmation"
+    ]
+  },
+  "nonacceptances": [
+    {
+      "run_id": "warehouse-improved-independent-0",
+      "kind": "bounded protocol-recovery stop",
+      "completed_milestones": 0,
+      "cause": "Reviewer returned action accept, candidate-C, no remaining requirements/probes, but notes was an array instead of the frozen string type. Review invalid; controller stopped with3reviews2repairs1escalation still permitted.",
+      "source_interpretation": "Retained source is valid and passes all final W0/W1 groups. W2 was not attempted; final-source coverage does not retroactively complete a milestone.",
+      "next_design": "Prospectively qualify a bounded response-correction policy within the same counted review allowance; retain this failure unchanged."
+    },
+    {
+      "run_id": "warehouse-current-independent-1",
+      "kind": "completed but final quality failed",
+      "completed_milestones": 2,
+      "failed_cases": [
+        "warehouse-return-no-reopen",
+        "warehouse-cross-order-isolation"
+      ],
+      "failed_requirement_groups": [
+        "W2-inherited",
+        "W2-provenance"
+      ],
+      "cause": "_ship removes allocations and increases shipped stock without changing an exhausted order from reserved to shipped. Retained responses consequently keep reserved and later return insufficient instead of closed.",
+      "interpretation": "Both cases are consistent with one missing state transition; not two independently established defect families. All visible/admitted checks passed."
+    }
+  ]
+}
