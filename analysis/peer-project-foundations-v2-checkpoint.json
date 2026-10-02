@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "protocol": "peer-project-foundations-checkpoint-v2",
+  "recorded_utc": "2026-10-02T22:03:30.159418+00:00",
+  "status": "component foundation qualified offline; 20-role runtime remains unimplemented",
+  "starting_commit": "93602c142b75f6f4b829c2302aec0cef0b238c46",
+  "components": [
+    {
+      "path": "gossip_harness/peer_project_contract_v2.py",
+      "sha256": "5af31e3cb5d20b01579903865e418476d9c4aa7c42442f4d9b7f48664f1e711a"
+    },
+    {
+      "path": "gossip_harness/peer_financial_authority_v2.py",
+      "sha256": "32c81af625780bb987d31cdfc09c212fcd4963e9c22e252bbc7eb5ff93345a1e"
+    },
+    {
+      "path": "gossip_harness/peer_review_recovery_v2.py",
+      "sha256": "0e29116378adaa973e1c347464958d1cf372d2e4bca7bfb57deefdcfc0245cb7"
+    },
+    {
+      "path": "gossip_harness/peer_review_release_v2.py",
+      "sha256": "a555d55bb038c2904e251cc1a78f8c8e4bc1e40276f6a3164c036f2cfa61f6e2"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/test_peer_project_contract_v2.py",
+      "sha256": "3b24f002b14fabdb3edee231f8717d335f51bc0e0c31cedbbd2216483a6b0e9f"
+    },
+    {
+      "path": "tests/test_peer_financial_authority_v2.py",
+      "sha256": "62a6edb6ccae2cd633502d6bab805dda8e89de5656d3851ee75292c35539899c"
+    },
+    {
+      "path": "tests/test_peer_review_recovery_v2.py",
+      "sha256": "1b516cf4e04713539903fdaab569a076ba0e50e2052927e4ef1d4a6074f52ae4"
+    },
+    {
+      "path": "tests/test_peer_review_release_v2.py",
+      "sha256": "0436c540d193761bbaf6b8ee48725d2fd7bde87924185ff45ceb6d6aa7ddd262"
+    },
+    {
+      "path": "tests/test_peer_review_bridge_v2.py",
+      "sha256": "d102911702d8ac652d4a47c587c2b487037db35b325825c1c176e416599d642d"
+    }
+  ],
+  "configuration": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "f6936705813ab228073675aaf9ce7218f1d563f867d55088c8751c9b0ec0ee58"
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "9c8837710a297133929573c380ca3589d5848adac811fd533b0e22e55b0b30b9"
+    }
+  ],
+  "documentation": {
+    "path": "docs/peer-project-foundations-v2.md",
+    "sha256": "874ae6d81e0511de3a6d4e8b8b7c32f8766feb740b2708f9a697e308de55c696"
+  },
+  "verification": {
+    "owner": "root",
+    "coverage": "targeted",
+    "command": "env -u GOSSIP_RUN_DOCKER_TESTS .venv/bin/python -m devtools.verify --lanes fast --workers 4 --output runs/investigation-cycle-9-foundations-fast tests/test_peer_project_contract_v2.py tests/test_peer_financial_authority_v2.py tests/test_peer_review_recovery_v2.py tests/test_peer_review_release_v2.py tests/test_peer_review_bridge_v2.py",
+    "central_summary": {
+      "path": "runs/investigation-cycle-9-foundations-fast/20261002T220104-cacf2b1e/summary.json",
+      "sha256": "a727357a89fd8698f5f72a7c9d49bcc5d7ed5ddbc4da9502394a930b986465a5"
+    },
+    "central_static": {
+      "path": "runs/investigation-cycle-9-foundations-fast/20261002T220104-cacf2b1e/static.json",
+      "sha256": "d42983881238b5006e36214642909e8fa557c3b7b3a4ec101b7f96ea1b53a3be"
+    },
+    "central_inputs": {
+      "path": "runs/investigation-cycle-9-foundations-fast/20261002T220104-cacf2b1e/inputs.json",
+      "sha256": "f01bdd461b6210e24ec5a9ac51bddbef6cc7bb3c8caa8799f91046de56b358dd"
+    },
+    "passed": 130,
+    "failed": 0,
+    "skipped": 0,
+    "reused_tests": 0,
+    "classes": 10,
+    "discovered_total": 1605,
+    "source_input_count": 268,
+    "current_fingerprints_match": true,
+    "stale_runtime": false,
+    "declared_type_scope": "Four new modules explicitly added; 117 unchanged historical diagnostics remain in source-bound baseline. No universal legacy type-safety claim.",
+    "independent_review": {
+      "path": "runs/investigation-cycle-9-foundations-cross-review-1.json",
+      "sha256": "94adc250ea23ebb329ed86587a57f89f39da41d79596ef48405f1613de79219d"
+    }
+  },
+  "qualified_behaviors": [
+    "Immutable closed context/action/evidence/dispatch/selection/release/role records, with 20-role roster represented but not executed.",
+    "Threaded offline financial adapter on disposable existing-format ledgers: cumulative/cohort/task limits, overlap, lease freshness, exact replay, unknown retention and known durable-result recovery.",
+    "Finite full-response format correction shares total reviewer allowance and retains exact source/target/view/suite/schema binding.",
+    "Eight explicit public-review scopes reconstructed from actual worker artifacts; required checks grow monotonically and refutations/stale identities block eligibility.",
+    "Three cross-component tests use real injected-transport OpenAIWorker, financial journal and accounting, scoped parsing and correction; no partial malformed approval."
+  ],
+  "execution_boundaries": {
+    "physical_provider_calls": 0,
+    "production_ledger_access": false,
+    "credential_access": false,
+    "candidate_executions": 0,
+    "network_role_processes": 0,
+    "larger_live_allocation": null,
+    "live_dispatch_enabled": false
+  },
+  "unchanged_historical_evidence": {
+    "pilot_sources": 39,
+    "plan_sha256": "ae44d935bda85889e458078028e00aadb0d3a063e4ac28bae6731bf52cdf03b4",
+    "pilot_execution_contract_sha256": "c256db9363054ff66069ee8e35a5a630c35a5e95b77be780a1fb464803eae98c",
+    "check": "All source and plan hashes still match the frozen completed pilot; no historical trial retried."
+  },
+  "budget": {
+    "last_audited_cumulative_micro_usd": 42150585,
+    "approved_cap_micro_usd": 80000000,
+    "last_audited_remaining_micro_usd": 37849415,
+    "new_usage_micro_usd": 0,
+    "meaning": "Frozen-price token estimate from completed pilot; no production ledger access or balance change in this offline cycle."
+  },
+  "next_action": "Implement separately running v2 transport and durable local role loop, with authenticated asynchronous financial RPC and demand-driven payload materialization, then wire real Git/validator/selection/view adapters into one physical20-role four-package release fixture.",
+  "remaining_required_scope": [
+    "Actual20-role fixture with16builders+4reviewers, private journals/Git stores, worker overlap and gossip during waits.",
+    "Semantic integration conflict, repair and fresh eight-scope review, exact protected Git promotion, partition/restart and lost-reply/unknown behavior.",
+    "Four cumulative Local Research Library releases and complete six-trajectory comparative rehearsal; this component checkpoint does not complete them.",
+    "Prospective review-budget amendment and full-cohort pricing before live allocation within approved remaining cap.",
+    "Separate decision-placement by transport contrast, independent held-out families and confirmatory analysis.",
+    "Separate artifact/site publication destination remains unresolved; Git publication is not site publication."
+  ],
+  "claims_not_made": [
+    "Executed20-agent swarm",
+    "Public Git release or independent final acceptance",
+    "Live model quality, speed/cost superiority, calibrated Elo or statistical evidence for general swarm benefit"
+  ]
+}

@@ -1069,6 +1069,14 @@ qualifies live admission under the existing authorization; live quality requires
 the separate completed cohort and audit. The prospective
 [20-agent project plan](docs/large-swarm-project-plan-v1.md) remains a separate
 development study with unqualified runtime and resource limits.
+Its [v2 foundation components](docs/peer-project-foundations-v2.md) now provide
+strict evidence interfaces, asynchronous cumulative accounting, bounded review
+format correction and an exact scoped release gate. They are offline building
+blocks; a configured twenty-role roster is not an executed twenty-agent project.
+The [foundation checkpoint](analysis/peer-project-foundations-v2-checkpoint.json)
+binds passing static checks, 130 freshly executed offline tests and independent
+review. Transport processes, durable role loops and real Git/validator adapters
+remain the next integration work; live financial dispatch stays disabled.
 
 The [completed live checkpoint](analysis/followup-live-checkpoint-v1.json) now
 binds the full 12-trajectory cohort, passing independent audit and prespecified

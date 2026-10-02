@@ -1975,6 +1975,116 @@
       "boundary": "Verifier plus one serial Git child and bounded I/O-reader threads; no socket or Docker.",
       "disposition": "Sender source/evidence and durable proposal mechanics, not public validation or final acceptance.",
       "overlap_reason": "Real Git tree and proposal identity cannot be established by metadata-only checks; receiver and Docker classes cover different boundaries."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectRecordCodecTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Exact typed immutable records and execution-contract-bound round trips reject schema substitution.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure serialization and dataclass field validation; no I/O.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectJsonBoundaryTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Bounded canonical JSON rejects duplicate, cyclic, oversized and malformed inputs before hashing.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure parser, path, lease and worker-request shape boundaries.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectDispatchStateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Non-admitted waiting work cannot carry spending authority; known and unknown outcomes remain distinct.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure dispatch state records, without ledger or provider execution.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectLocalEvidenceTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Only complete digest-matching locally supplied evidence with exact provenance satisfies a view.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure arrival and materialization boundary; host arrival provenance remains external.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectIdentityAndSelectionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Action, lease, worker context and selected-offer identity bind the exact declared information set.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure identity and selection membership; not authenticated financial or selection authority.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_project_contract_v2.py::ProjectReleaseAndRosterTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Release source/base/suite/generation identity and cognitive-role accounting remain explicit.",
+      "isolation": "Dedicated class worker; immutable local records, no global patches or external state.",
+      "boundary": "Pure public-release and role roster contracts; a roster is not an executed swarm.",
+      "disposition": "Run before integrated authority, transport and release qualification; no model quality claim.",
+      "overlap_reason": "Metadata tests establish strict interchange semantics; finance, recovery and release tests enforce their separate authority and state transitions."
+    },
+    "tests/test_peer_review_recovery_v2.py::PeerReviewRecoveryV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Only a complete schema-invalid review may consume a finite counted correction with identical source, target, view, suite and schema.",
+      "isolation": "Dedicated class worker; pure immutable state and bounded JSON checkpoints.",
+      "boundary": "Pure recovery policy and trusted-checksum restore; durable CAS, provider completion and release authority remain external.",
+      "disposition": "Prospective reviewer persistence qualification only; frozen historical study results are unchanged.",
+      "overlap_reason": "Unlike financial replay or semantic approval checks, this class checks finite format-correction state and aggregate reviewer allowance."
+    },
+    "tests/test_peer_financial_authority_v2.py::PeerFinancialAuthorityV2Tests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "One existing cumulative ledger bounds all cohort contexts; asynchronous admission is singleflight, capacity waiting is unpaid, and ambiguous outcomes never reinvoke.",
+      "isolation": "Dedicated class process; disposable existing-format SQLite ledgers, private journals/payloads and real worker with injected deterministic transport.",
+      "boundary": "One verifier, at most two service executor threads and four short caller threads; no network, model request, Git or Docker execution.",
+      "disposition": "Run before any integrated runtime or prospective live qualification. Production ledger and credentials are excluded.",
+      "overlap_reason": "Uses actual joined ledger and request journal mechanics rather than only shared metadata or pure recovery policy; bounded thread resources are reserved once."
+    },
+    "tests/test_peer_review_release_v2.py::ReviewReleaseV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Four exact package contributions, cumulative mandatory tests and eight authenticated reviewer scope decisions bind the same immutable public release.",
+      "isolation": "Dedicated class worker; immutable records and deterministic trusted-adapter fixtures.",
+      "boundary": "Pure release eligibility and actual worker response parsing with fixture transport; no Git CAS or candidate execution.",
+      "disposition": "Run before combined Git/runtime qualification; a gate receipt is not a published release or independent acceptance.",
+      "overlap_reason": "Tests scope completeness, selected-source membership, actual response provenance and invalidation separately from accounting and review-format recovery."
+    },
+    "tests/test_peer_review_bridge_v2.py::PeerReviewBridgeV2Tests": {
+      "lane": "fast",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Actual accounted review artifacts feed strict scoped parsing and finite recovery without manufacturing semantic approval or retrying unknown provider outcomes.",
+      "isolation": "Dedicated class worker; private disposable ledger/journal/payloads and deterministic injected worker transport.",
+      "boundary": "One verifier and one service worker thread; no network, Git, Docker or production credentials.",
+      "disposition": "Qualifies the finance-to-review-to-recovery interface only; not full release, role runtime or twenty-agent execution.",
+      "overlap_reason": "Component tests cannot detect mismatched real terminal proof, response artifact encoding and recovery classification across these modules."
     }
   },
   "audit": {
