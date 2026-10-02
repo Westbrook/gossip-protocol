@@ -1,0 +1,399 @@
+{
+  "bindings": [
+    {
+      "path": "analysis/continuation-followup-budget-planning.json",
+      "sha256": "946e581ffb5e143cde736e3dcb6270ecdfbfd2b88151a7515590e423cec202f3"
+    },
+    {
+      "path": "runs/investigation-cycle-3-budget-source-review-1.json",
+      "sha256": "9a448321cb2b5cc35a37bb94f89f65f4a8195d2f9305b52db98a0a0660c72e55"
+    },
+    {
+      "path": "results/followup-rehearsal-1/results.json",
+      "sha256": "122a9d15d1683f31e692ce8515ff6720b1bf59b0b3e3fc045d11bb3147d1d730"
+    },
+    {
+      "path": "runs/investigation-cycle-3-audit-attempt-1.json",
+      "sha256": "53ab3ec1234e71ba3172f40e64604f5734da03180a095338bed2863e038881c2"
+    },
+    {
+      "path": "results/benchmark-live-1/results.json",
+      "sha256": "2212328a99f429046fe7bdfe0a90ee39c2fd4cbd1fdddd04d305f81b358ea7fe"
+    },
+    {
+      "path": "gossip_harness/worker.py",
+      "sha256": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+    }
+  ],
+  "certification_limit": {
+    "audit_attempt_exit_code": 1,
+    "audit_failure_message": "worker",
+    "audit_failure_site": "analysis/audit_continuation_followup.py:655 audit_local_promotion",
+    "audit_failure_type": "KeyError",
+    "consequence": "Preserve this complete run as diagnostic evidence. Auditor changes alter the frozen contract and require fresh qualification, a complete matching rehearsal and independent audit. This note grants no certificate, scored comparison, live readiness or funding approval.",
+    "independently_certified": false,
+    "physical_run_reported_finished": true,
+    "reported_accepted_trajectories": 12,
+    "reported_completed_milestones": 24,
+    "root_reported_cause": "Auditor expected leases[0][worker]; the Lease dataclass serializes worker_id. Task-table worker field exists."
+  },
+  "created_at": "2026-10-02T14:26:04.106477+00:00",
+  "funding": {
+    "balance_provenance": "Frozen plan and earlier accounting evidence; no fresh ledger read here.",
+    "live_authorized": false,
+    "operative_cumulative_cap_micro_usd": 50000000,
+    "proposal_approved": false,
+    "proposed_contingency_cumulative_cap_micro_usd": 80000000,
+    "proposed_increase_micro_usd": 30000000,
+    "recommendation": "The unapproved $80 contingency recommendation remains reasonable as a planning option if the user\u2019s priority is avoiding budget censoring of the complete pilot. This diagnostic gives no reason to raise it, lower it or treat it as expected spending. Any proposal depends on a later corrected source contract, fresh complete proof/audit and explicit funding decision; it guarantees neither maximal-token calls nor software completion.",
+    "recorded_remaining_allowance_micro_usd": 14456374,
+    "recorded_starting_usage_micro_usd": 35543626,
+    "unchanged_reservation_constraint": "The unchanged full strong-call reservation remains $5.526480. At the recorded $14.456374 balance, prior incremental commitments above $8.929894 prevent another such call from fitting. Smaller measured payloads do not automatically change that guard."
+  },
+  "independent_sanity_check": {
+    "result": "Counts and size summaries agree; scripted controls must not be interpreted as live demand.",
+    "reviewer": "/root/budget_adjustment/journal_audit",
+    "scope": "Independently reconciled 228 unique scripted invocations, role/stage counts, zero provider/usage/replay records and canonical request-size summaries against historical matched requests. This is an arithmetic check, not the failed full cohort audit."
+  },
+  "interpretation": {
+    "compact_context_assumption": "Supported qualitatively for this scripted source/evidence trace: matched API-payload means are about 37\u201339% of historical values for initial builders, 53\u201354% for reviewers and 38\u201343% for scouts. Canonical WorkerRequest byte means show the same direction. These ratios are not input-token multipliers.",
+    "historical_forecast_preserved": "The original conditional working usage band remains $10\u201313 as a planning judgment, not a newly validated prediction. The existing maximum-call/context/output stress scenarios remain relevant.",
+    "no_live_cost_calibration": "Known authored sources and forced failures determine rehearsal prompt sizes and call counts. Live implementations, test proposals, feedback, selected repairs and reasoning/output tokens can differ. No paid usage observation was added, no probability or confidence interval is inferred, and no expected-cost estimate is lowered from this diagnostic.",
+    "retained_pool_growth": "Improved reviewer requests reached 6 candidate aliases versus 4 for current control. The largest serialized API payload was 218,274 bytes, including provider framing; its canonical WorkerRequest was 183,105 bytes. Thus the measured trace exercises the anticipated retained-predecessor growth without hitting the 512,000-byte worker guard."
+  },
+  "measurement_method": {
+    "api_input_text": "UTF-8 bytes of the payload input string, before outer JSON escaping. This is still bytes, not tokenizer output.",
+    "api_payload": "Offline serialization with the unchanged OpenAIWorker._payload implementation, pinned model for that role, max_output_tokens=12288, low reasoning and normal structured-output schema. Workers were constructed with a synthetic placeholder and a transport callback that raises if invoked. Neither run nor any network method was called.",
+    "canonical_request": "JSON of the retained WorkerRequest fields with sort_keys=true, ensure_ascii=true, allow_nan=false, comma/colon separators, UTF-8, no newline. Excludes journal envelope and pretty-printing. Checked against each invocation request_sha256 and journal newline-form request_sha256.",
+    "historical_match": "Compare four-candidate historical trajectories only; exclude both strong-anchor trajectories. Preserve role and milestone separation. Historical total 143 requests were read, of which 122 form the matched comparison.",
+    "request_index": {
+      "historical_requests": 143,
+      "index_sha256": "2b986f62e51be7021c9c1a4191e789958cdd018e69419dd5036b7474c3f31a14",
+      "reconstruction": "Traverse scripted results.shared_setups then results.cases, each in stored order, and each invocations list in stored order; then historical results.cases and invocations in stored order. Every index row has cohort, reservation_id, repository-relative request_path, request_file_sha256, api_payload_sha256 and api_payload_bytes. Hash canonical JSON with sorted keys, ensure_ascii=true, comma/colon separators, no newline.",
+      "scripted_requests": 228,
+      "total_requests_measured": 371
+    },
+    "runtime": {
+      "executable": "/Users/westbrook/Documents/repos/gossip-protocol/.venv/bin/python",
+      "python": "3.11.15"
+    },
+    "safety_scope": {
+      "candidate_programs_executed": false,
+      "credentials_accessed": false,
+      "ledger_accessed_or_changed": false,
+      "original_artifacts_or_source_edited": false,
+      "provider_calls": 0,
+      "tests_or_docker_executed": false
+    },
+    "statistics": "Minimum, mean, median, nearest-rank p90 and maximum describe the finite retained request sample. They are not confidence bounds or expected future costs. Means are rounded to 3 decimal bytes for compact reporting."
+  },
+  "next_step": "After corrected sources and full qualification/rehearsal/audit are complete, reconcile their identities and request composition separately. If measured differences warrant a revised forecast, write a new version and retain the original forecast and this failed-audit-run diagnostic.",
+  "protocol": "continuation-followup-budget-reconciliation-v1",
+  "purpose": "Reconcile observed scripted call opportunities and exact request byte sizes with the preserved planning forecast. No live token or demand forecast is fitted from scripted controls.",
+  "request_bytes": {
+    "all_scripted_serialized_requests_fit_limit": true,
+    "configured_api_payload_limit_bytes": 512000,
+    "largest_scripted_request": {
+      "api_input_text_bytes": 183202,
+      "api_payload_bytes": 218274,
+      "candidate_alias_count": 6,
+      "policy": "improved-sequential",
+      "project_id": "job-queue",
+      "request_file_sha256": "e2fb1f0a156a2aab8fc5628e00557178fe7b40e8cd0adf7dcbbc0e39a35d49bb",
+      "request_path": "results/followup-rehearsal-1/job-queue-improved-sequential-0/stage-1/journal/d6bf7954503fc1516496883a14da9436cc50c1b6246711e8f559f704876f65f9.request.json",
+      "role": "reviewer",
+      "round": 3,
+      "stage_index": 1,
+      "worker_request_bytes": 183105
+    },
+    "matched_role_stage_comparison": [
+      {
+        "historical_api_payload_max_bytes": 121023,
+        "historical_api_payload_mean_bytes": 79973.312,
+        "historical_canonical_request_max_bytes": 97125,
+        "historical_canonical_request_mean_bytes": 64674.25,
+        "historical_matched_count": 32,
+        "mean_canonical_request_byte_ratio": 0.372228,
+        "mean_payload_byte_ratio": 0.372636,
+        "role": "cheap_initial",
+        "scripted_api_payload_max_bytes": 43814,
+        "scripted_api_payload_mean_bytes": 29800.938,
+        "scripted_canonical_request_max_bytes": 35192,
+        "scripted_canonical_request_mean_bytes": 24073.562,
+        "scripted_count": 32,
+        "stage_index": 0
+      },
+      {
+        "historical_api_payload_max_bytes": 187058,
+        "historical_api_payload_mean_bytes": 122703.1,
+        "historical_canonical_request_max_bytes": 146312,
+        "historical_canonical_request_mean_bytes": 98890.65,
+        "historical_matched_count": 20,
+        "mean_canonical_request_byte_ratio": 0.397574,
+        "mean_payload_byte_ratio": 0.393734,
+        "role": "cheap_initial",
+        "scripted_api_payload_max_bytes": 78035,
+        "scripted_api_payload_mean_bytes": 48312.375,
+        "scripted_canonical_request_max_bytes": 62045,
+        "scripted_canonical_request_mean_bytes": 39316.375,
+        "scripted_count": 48,
+        "stage_index": 1
+      },
+      {
+        "historical_api_payload_max_bytes": 131527,
+        "historical_api_payload_mean_bytes": 126286.625,
+        "historical_canonical_request_max_bytes": 105475,
+        "historical_canonical_request_mean_bytes": 101322.75,
+        "historical_matched_count": 8,
+        "mean_canonical_request_byte_ratio": 0.37261,
+        "mean_payload_byte_ratio": 0.376556,
+        "role": "cheap_repair",
+        "scripted_api_payload_max_bytes": 53552,
+        "scripted_api_payload_mean_bytes": 47554,
+        "scripted_canonical_request_max_bytes": 42666,
+        "scripted_canonical_request_mean_bytes": 37753.833,
+        "scripted_count": 12,
+        "stage_index": 0
+      },
+      {
+        "comparison": "No historical matched role-stage observation; do not substitute another stage silently.",
+        "historical_matched_count": 0,
+        "role": "cheap_repair",
+        "scripted_api_payload_max_bytes": 90792,
+        "scripted_api_payload_mean_bytes": 82515.5,
+        "scripted_canonical_request_max_bytes": 71822,
+        "scripted_canonical_request_mean_bytes": 65572,
+        "scripted_count": 8,
+        "stage_index": 1
+      },
+      {
+        "historical_api_payload_max_bytes": 215259,
+        "historical_api_payload_mean_bytes": 189371.522,
+        "historical_canonical_request_max_bytes": 180938,
+        "historical_canonical_request_mean_bytes": 159737.522,
+        "historical_matched_count": 23,
+        "mean_canonical_request_byte_ratio": 0.542399,
+        "mean_payload_byte_ratio": 0.538679,
+        "role": "reviewer",
+        "scripted_api_payload_max_bytes": 140298,
+        "scripted_api_payload_mean_bytes": 102010.525,
+        "scripted_canonical_request_max_bytes": 119921,
+        "scripted_canonical_request_mean_bytes": 86641.425,
+        "scripted_count": 40,
+        "stage_index": 0
+      },
+      {
+        "historical_api_payload_max_bytes": 302071,
+        "historical_api_payload_mean_bytes": 288101.636,
+        "historical_canonical_request_max_bytes": 243682,
+        "historical_canonical_request_mean_bytes": 236483.091,
+        "historical_matched_count": 11,
+        "mean_canonical_request_byte_ratio": 0.541416,
+        "mean_payload_byte_ratio": 0.530339,
+        "role": "reviewer",
+        "scripted_api_payload_max_bytes": 218274,
+        "scripted_api_payload_mean_bytes": 152791.667,
+        "scripted_canonical_request_max_bytes": 183105,
+        "scripted_canonical_request_mean_bytes": 128035.611,
+        "scripted_count": 36,
+        "stage_index": 1
+      },
+      {
+        "historical_api_payload_max_bytes": 66241,
+        "historical_api_payload_mean_bytes": 63573,
+        "historical_canonical_request_max_bytes": 56178,
+        "historical_canonical_request_mean_bytes": 52967.5,
+        "historical_matched_count": 16,
+        "mean_canonical_request_byte_ratio": 0.379223,
+        "mean_payload_byte_ratio": 0.383134,
+        "role": "scout",
+        "scripted_api_payload_max_bytes": 25447,
+        "scripted_api_payload_mean_bytes": 24357,
+        "scripted_canonical_request_max_bytes": 21177,
+        "scripted_canonical_request_mean_bytes": 20086.5,
+        "scripted_count": 8,
+        "stage_index": 0
+      },
+      {
+        "historical_api_payload_max_bytes": 89263,
+        "historical_api_payload_mean_bytes": 86644.4,
+        "historical_canonical_request_max_bytes": 74313,
+        "historical_canonical_request_mean_bytes": 72465.2,
+        "historical_matched_count": 10,
+        "mean_canonical_request_byte_ratio": 0.425749,
+        "mean_payload_byte_ratio": 0.426738,
+        "role": "scout",
+        "scripted_api_payload_max_bytes": 37271,
+        "scripted_api_payload_mean_bytes": 36974.5,
+        "scripted_canonical_request_max_bytes": 31208,
+        "scripted_canonical_request_mean_bytes": 30852,
+        "scripted_count": 24,
+        "stage_index": 1
+      },
+      {
+        "historical_api_payload_max_bytes": 123745,
+        "historical_api_payload_mean_bytes": 123745,
+        "historical_canonical_request_max_bytes": 95950,
+        "historical_canonical_request_mean_bytes": 95950,
+        "historical_matched_count": 1,
+        "mean_canonical_request_byte_ratio": 0.394757,
+        "mean_payload_byte_ratio": 0.38528,
+        "role": "strong_repair",
+        "scripted_api_payload_max_bytes": 53611,
+        "scripted_api_payload_mean_bytes": 47676.417,
+        "scripted_canonical_request_max_bytes": 42734,
+        "scripted_canonical_request_mean_bytes": 37876.917,
+        "scripted_count": 12,
+        "stage_index": 0
+      },
+      {
+        "historical_api_payload_max_bytes": 172892,
+        "historical_api_payload_mean_bytes": 172892,
+        "historical_canonical_request_max_bytes": 138343,
+        "historical_canonical_request_mean_bytes": 138343,
+        "historical_matched_count": 1,
+        "mean_canonical_request_byte_ratio": 0.480212,
+        "mean_payload_byte_ratio": 0.483738,
+        "role": "strong_repair",
+        "scripted_api_payload_max_bytes": 90832,
+        "scripted_api_payload_mean_bytes": 83634.5,
+        "scripted_canonical_request_max_bytes": 71875,
+        "scripted_canonical_request_mean_bytes": 66434,
+        "scripted_count": 8,
+        "stage_index": 1
+      }
+    ],
+    "maximum_payload_fraction_of_limit": 0.426316,
+    "overall_scripted": {
+      "api_input_text_bytes": {
+        "count": 228,
+        "maximum": 183202,
+        "mean": 59687.316,
+        "median": 42508.0,
+        "minimum": 18468,
+        "p90_nearest_rank": 120018
+      },
+      "api_payload_bytes": {
+        "count": 228,
+        "maximum": 218274,
+        "mean": 71963.833,
+        "median": 53323.5,
+        "minimum": 22809,
+        "p90_nearest_rank": 140298
+      },
+      "worker_request_bytes": {
+        "count": 228,
+        "maximum": 183105,
+        "mean": 59637,
+        "median": 42468.0,
+        "minimum": 18430,
+        "p90_nearest_rank": 119921
+      }
+    },
+    "scripted_reviewer_policy_comparison": [
+      {
+        "calls": 16,
+        "maximum_candidate_aliases": 4,
+        "maximum_payload_bytes": 99854,
+        "mean_candidate_aliases": 4,
+        "mean_payload_bytes": 90327.812,
+        "policy": "current-independent",
+        "stage_index": 0
+      },
+      {
+        "calls": 16,
+        "maximum_candidate_aliases": 4,
+        "maximum_payload_bytes": 156473,
+        "mean_candidate_aliases": 4,
+        "mean_payload_bytes": 141907.25,
+        "policy": "current-independent",
+        "stage_index": 1
+      },
+      {
+        "calls": 12,
+        "maximum_candidate_aliases": 6,
+        "maximum_payload_bytes": 140295,
+        "mean_candidate_aliases": 5,
+        "mean_payload_bytes": 109797.5,
+        "policy": "improved-independent",
+        "stage_index": 0
+      },
+      {
+        "calls": 10,
+        "maximum_candidate_aliases": 6,
+        "maximum_payload_bytes": 218271,
+        "mean_candidate_aliases": 4.6,
+        "mean_payload_bytes": 161497.7,
+        "policy": "improved-independent",
+        "stage_index": 1
+      },
+      {
+        "calls": 12,
+        "maximum_candidate_aliases": 6,
+        "maximum_payload_bytes": 140298,
+        "mean_candidate_aliases": 5,
+        "mean_payload_bytes": 109800.5,
+        "policy": "improved-sequential",
+        "stage_index": 0
+      },
+      {
+        "calls": 10,
+        "maximum_candidate_aliases": 6,
+        "maximum_payload_bytes": 218274,
+        "mean_candidate_aliases": 4.6,
+        "mean_payload_bytes": 161500.7,
+        "policy": "improved-sequential",
+        "stage_index": 1
+      }
+    ]
+  },
+  "retained_rehearsal_contract_sha256": "223128982ae83d4e047bb63868bdcc610e1ff2cdee9067994ca86bb0f088576a",
+  "schema_version": 1,
+  "scripted_opportunities": {
+    "arm_local_invocations": 188,
+    "interpretation": "These are actual executions of scripted worker callbacks, not physical provider requests. The predetermined controls forced repairs, escalation and acceptance. Do not replace the forecast\u2019s historical central demand of 63 reviews/15 cheap repairs/4 strong repairs with the scripted 76/20/20.",
+    "journal_replays": 0,
+    "provider_dispatches": 0,
+    "provider_usage_micro_usd": 0,
+    "registered_maximum_physical_call_opportunities": 256,
+    "role_and_stage_counts": [
+      {
+        "role": "cheap_initial",
+        "stage0_calls": 32,
+        "stage1_calls": 48,
+        "total_calls": 80
+      },
+      {
+        "role": "scout",
+        "stage0_calls": 8,
+        "stage1_calls": 24,
+        "total_calls": 32
+      },
+      {
+        "role": "cheap_repair",
+        "stage0_calls": 12,
+        "stage1_calls": 8,
+        "total_calls": 20
+      },
+      {
+        "role": "strong_repair",
+        "stage0_calls": 12,
+        "stage1_calls": 8,
+        "total_calls": 20
+      },
+      {
+        "role": "reviewer",
+        "stage0_calls": 40,
+        "stage1_calls": 36,
+        "total_calls": 76
+      }
+    ],
+    "scripted_known_failure_count": 8,
+    "scripted_result_count": 220,
+    "shared_setup_invocations": 40,
+    "unique_invocations": 228,
+    "within_registered_envelope": true
+  },
+  "source_review_frozen_commit": "ba1dbca08f23c97a1c43ba76b009ab0ff53ea443",
+  "status": "diagnostic_complete_scripted_run_independent_audit_failed"
+}

@@ -18,7 +18,7 @@ import statistics
 PROTOCOL = "continuation-followup-v1"
 ANALYSIS_VERSION = "continuation-followup-descriptive-comparison-v1"
 ANALYSIS_PATH = "analysis/continuation_followup_comparison.py"
-AUDIT_PROTOCOL = "independent-continuation-followup-cohort-audit-v1"
+AUDIT_PROTOCOL = "independent-continuation-followup-cohort-audit-v2"
 PROJECTS = ("warehouse", "job-queue")
 POLICIES = ("current-independent", "improved-independent", "improved-sequential")
 CONTRASTS = {

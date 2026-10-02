@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "protocol": "continuation-followup-physical-checkpoint-v1",
+  "created_utc": "2026-10-02T14:37:10.676156+00:00",
+  "status": "audit_repairs_verified_new_physical_qualification_pending",
+  "implementation_commit_before_repairs": "ba1dbca08f23c97a1c43ba76b009ab0ff53ea443",
+  "original_contract_sha256": "223128982ae83d4e047bb63868bdcc610e1ff2cdee9067994ca86bb0f088576a",
+  "corrected_contract_sha256": "580251320e57c2b96347fe58327f9b385fce46b3574164acfe1b4759fba4a982",
+  "fixture_qualification": {
+    "status": "qualified_under_original_contract",
+    "fresh_docker_executions": 42,
+    "reused": 0,
+    "observations": 1632,
+    "passing_observations": 1583,
+    "expected_private_wrong_answers": 49,
+    "mutant_rows": 28,
+    "distinct_mutant_family_names": 22,
+    "correct_control_and_baseline_rows": 14,
+    "elapsed_seconds": 651.707448
+  },
+  "physical_rehearsal": {
+    "runner_status": "finished",
+    "mode": "rehearsal",
+    "trajectories": 12,
+    "shared_setups": 4,
+    "runner_reported_accepted": 12,
+    "runner_reported_completed_milestones": 24,
+    "elapsed_seconds": 1409.677747964859,
+    "scripted_calls": 228,
+    "physical_provider_calls": 0,
+    "api_usage_micro_usd": 0,
+    "unexecuted": 0,
+    "censored": 0,
+    "independently_certified": false,
+    "comparison_scored": false
+  },
+  "audit_findings": [
+    {
+      "problem": "Promotion auditor expected worker in serialized Lease; actual lease field is worker_id.",
+      "repair": "Bind exact typed task_id, worker_id, epoch and expires_at to the settled SQLite task and Git promotion; verify against real local_promote plus owner/epoch/expiry tampering."
+    },
+    {
+      "problem": "Fresh scout gate raw-response hash was reconstructed from a sorted persisted artifact.",
+      "repair": "Use original raw response member order after semantic binding for fresh arm scouts; preserve persisted ordering for shared first-milestone imports. Real producer/oracle-gate and import regressions cover both paths."
+    }
+  ],
+  "diagnostic": {
+    "status": "complete_traversal",
+    "consumed_evidence_files": 2523,
+    "consumed_bytes_unchanged": true,
+    "qualified": false,
+    "certification": false,
+    "exact_current_source_comparison_waivers": 15,
+    "waived_source_paths": 3,
+    "meaning": "Read-only defect discovery against preserved original evidence. Three reviewed current-source comparisons intentionally differ from original contract, so this is not independent acceptance or repeatability proof."
+  },
+  "verification": {
+    "status": "passed",
+    "coverage": "targeted",
+    "checks": 174,
+    "physically_executed": 174,
+    "reused": 0,
+    "skipped": 0,
+    "classes": 7,
+    "duration_seconds": 6.126389540731907,
+    "input_bindings_verified": 225,
+    "initial_final_current_runtime_match": true,
+    "static": "passed",
+    "exact_legacy_type_diagnostics": 117,
+    "receipts": [
+      {
+        "path": "runs/investigation-cycle-3-offline-qualification/20261002T143352-37d78526/summary.json",
+        "sha256": "c80f8d94d413d451fb023e1ac0181cbd85809ad30d2852fe0547a1a9fd067639"
+      },
+      {
+        "path": "runs/investigation-cycle-3-offline-qualification/20261002T143352-37d78526/static.json",
+        "sha256": "e80a8787035684b91afe5a28cd4ca8b5b9376b316ecf9a7466b0069cfe564ac9"
+      },
+      {
+        "path": "runs/investigation-cycle-3-offline-qualification/20261002T143352-37d78526/inputs.json",
+        "sha256": "0d7ec0128216c0e131c36c989cebeb8959148084187af832be2d2f8d6fdc03ea"
+      },
+      {
+        "path": "runs/investigation-cycle-3-offline-qualification/20261002T143352-37d78526/runtime-final.json",
+        "sha256": "2f009523d561f82111d090afa61f68f8a70cc7cabd475ffa7564ea21165c8c4e"
+      }
+    ]
+  },
+  "budget": {
+    "cap_micro_usd": 50000000,
+    "committed_micro_usd": 35543626,
+    "unsettled_reservations": 0,
+    "pending_promotions": 0,
+    "remaining_micro_usd": 14456374,
+    "new_api_calls": 0
+  },
+  "corrected_sources": [
+    {
+      "path": "analysis/audit_continuation_followup.py",
+      "sha256": "e96ed0a86d71f999f3ab9009503a223e48bbf41e1c1a2cf6335eb37655976d1b"
+    },
+    {
+      "path": "analysis/audit_followup_stage.py",
+      "sha256": "bc0113294398ddc50607351662d0ac99d4abb22069f5edbe92da6eba98d0d838"
+    },
+    {
+      "path": "analysis/continuation_followup_comparison.py",
+      "sha256": "e721ab50c03bf5ab66d7b126ec8f8d07ec1de23e402e1fc69fa523cc0b44dda9"
+    },
+    {
+      "path": "tests/test_followup_cohort_audit.py",
+      "sha256": "8973a883a6ad103b3b7e014342c7be5ebfb8820a30c1e06a50d87d56b9d4c068"
+    },
+    {
+      "path": "tests/test_followup_stage_audit.py",
+      "sha256": "4bf56cbace3c3d9f3eba3a789a1c618e34e963d8275ebd311ed668c03731968f"
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "043915c32a93865ff00e932f54b09e0fdacbc9034443febc30f236fea72627ce"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "results/followup-qualification-1/results.json",
+      "sha256": "4c248669c54920b568b229a1bd05e1a8acdc0187db19d1cad064d91cf876eca2"
+    },
+    {
+      "path": "results/followup-qualification-1/manifest.json",
+      "sha256": "70a882e44f15fd9176afc3e081f578e4408a6ec33260f62fc5a7ddeaecd0a51c"
+    },
+    {
+      "path": "results/followup-rehearsal-1/results.json",
+      "sha256": "122a9d15d1683f31e692ce8515ff6720b1bf59b0b3e3fc045d11bb3147d1d730"
+    },
+    {
+      "path": "results/followup-rehearsal-1/frozen-trajectories.json",
+      "sha256": "1cd7df82b8638a237ebf1e0a5c58c8bd6dae5133e7758fbadc4ee9f559b800ff"
+    },
+    {
+      "path": "results/followup-rehearsal-1/timings.json",
+      "sha256": "585522547751a67426123cb9c4a1fc19693427f5e41c4ce2cceff8f1b8856cfb"
+    },
+    {
+      "path": "runs/investigation-cycle-3-qualification-review-1.json",
+      "sha256": "3fd347e974b5f7a571be61409af3a2947feb2add9bdaa2ff7de2d0c5bd7c58d6"
+    },
+    {
+      "path": "runs/investigation-cycle-3-audit-attempt-1.json",
+      "sha256": "53ab3ec1234e71ba3172f40e64604f5734da03180a095338bed2863e038881c2"
+    },
+    {
+      "path": "runs/followup-audit-diagnostic-1.json",
+      "sha256": "15ef39231c22e5f6819a34fd2d060eb71410832522476b7367f4001bd2812852"
+    },
+    {
+      "path": "runs/followup-audit-diagnostic-2.json",
+      "sha256": "c52f43aa4092e1c83c0a46dd6709fbb2239b1c26a30e768a43836c916ac3fd29"
+    },
+    {
+      "path": "runs/investigation-cycle-3-repair-review-2.json",
+      "sha256": "73652936e624ac43d555c7a696620f4ab9b29492b1898409ccc9e08912fe52b2"
+    },
+    {
+      "path": "runs/investigation-cycle-3-final-reconciliation-1.json",
+      "sha256": "4e5021bc52e6d8792cd4d0f99cef17c1e226a0ec4d437e4c99c1375f000bf611"
+    },
+    {
+      "path": "runs/investigation-cycle-3-scientific-freeze-1.json",
+      "sha256": "2ec06268f94b46a58f4a3c5f9972b31211b2ab102a8178d801dab9924699aa84"
+    },
+    {
+      "path": "analysis/continuation-followup-budget-reconciliation-v1.json",
+      "sha256": "51cc03bff96fabc394c5d3d5f4dd532a6410630d5a017c15b5e2e754d54ec5ab"
+    }
+  ],
+  "evidence_availability": "Raw generated runs and results remain retained locally under repository policy; this authored summary records their exact hashes without publishing those directories.",
+  "next_steps": [
+    "Run new 42-row physical qualification for the corrected frozen contract in a fresh output directory.",
+    "Run one complete matching 12-trajectory/24-milestone zero-API rehearsal, then independent audit and scripted comparison.",
+    "Reconcile concrete live-pilot funding only after qualification; current cumulative cap remains $50.",
+    "Continue independent held-out family confirmation and real peer-gossip comparison; neither has been established by this controller pilot."
+  ],
+  "limitations": [
+    "Scripted fixture/rehearsal observations do not measure model quality, speed advantage, Elo or statistical superiority.",
+    "Successful old-contract fixture qualification and non-certifying diagnostics cannot certify the corrected contract.",
+    "174 affected checks are targeted coverage; 117 exact historical typing diagnostics remain under the existing baseline.",
+    "No additional funding is approved; $80 remains a future contingency proposal."
+  ]
+}

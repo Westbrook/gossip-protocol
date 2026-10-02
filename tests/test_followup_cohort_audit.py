@@ -2,11 +2,14 @@
 from copy import deepcopy
 import json
 from pathlib import Path
+import sqlite3
 import tempfile
 from typing import Any
 import unittest
 
 from analysis import audit_continuation_followup as audit
+from gossip_harness.gitstore import GitStore
+from gossip_harness.sustained_experiment import local_promote
 
 
 def sample_receipt(files, cases, *, image="sha256:" + "f" * 64, passed=True):
@@ -236,3 +239,38 @@ class FollowupCohortAuditTests(unittest.TestCase):
             outer.write_text("{}")
             with self.assertRaisesRegex(ValueError, "escapes"):
                 audit.bound_artifact(dict(path=str(outer), sha256=audit.sha(outer)), directory)
+
+    def test_real_git_promotion_audits_serialized_lease_and_rejects_owner_tampering(self):
+        """Exercise the actual Git/SQLite boundary, including Lease.asdict keys."""
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            initial = {"solution.py": "# trusted test source; never executed\n", "fixed.txt": "adapter"}
+            files = {**initial, "solution.py": "# proposed test source; never executed\n"}
+            base = GitStore.create(root / "initial.git", initial)
+            candidate = GitStore.fork(base, root / "candidate.git")
+            tip = candidate.propose({"solution.py": files["solution.py"]})
+            binding = dict(store_path=str(candidate.path), tip_sha=tip, files_sha256=audit.digest(files))
+            promoted = local_promote(base, binding, root / "checkpoint.git", files, ["solution.py"])
+            self.assertEqual(audit.audit_local_promotion(promoted.path, base.head(), files, ["solution.py"]), promoted.head())
+            ledger = promoted.path.with_suffix(".sqlite")
+            with sqlite3.connect(ledger) as db:
+                intent_id, serialized = db.execute("SELECT id,leases FROM intents").fetchone()
+                task_worker = db.execute("SELECT worker FROM tasks WHERE id='exact-tree'").fetchone()[0]
+            original = json.loads(serialized)
+            self.assertEqual(set(original[0]), {"task_id", "worker_id", "epoch", "expires_at"})
+            self.assertEqual(original[0]["worker_id"], task_worker)
+            variants = [
+                [{**original[0], "worker_id": "foreign-owner"}],
+                [{**original[0], "epoch": original[0]["epoch"] + 1}],
+                [{**original[0], "epoch": True}],
+                [{**original[0], "expires_at": original[0]["expires_at"] + 1}],
+                [{**original[0], "expires_at": True}],
+                [{"task_id": original[0]["task_id"], "worker": task_worker,
+                  "epoch": original[0]["epoch"], "expires_at": original[0]["expires_at"]}],
+            ]
+            for leases in variants:
+                with self.subTest(leases=leases):
+                    with sqlite3.connect(ledger) as db:
+                        db.execute("UPDATE intents SET leases=? WHERE id=?", (json.dumps(leases), intent_id))
+                    with self.assertRaises(ValueError):
+                        audit.audit_local_promotion(promoted.path, base.head(), files, ["solution.py"])

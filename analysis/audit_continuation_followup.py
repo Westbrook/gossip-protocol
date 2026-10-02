@@ -13,6 +13,7 @@ import ast
 from contextvars import ContextVar
 from copy import deepcopy
 import json
+import math
 from pathlib import Path
 import random
 import sqlite3
@@ -42,7 +43,7 @@ EXTRA_SOURCES = {"analysis/qualify_continuation_followup.py", "analysis/audit_co
                  "analysis/audit_followup_stage.py", "analysis/audit_continuation.py",
                  "analysis/audit_benchmark.py", "gossip_harness/verification_audit.py",
                  "analysis/continuation_followup_comparison.py"}
-COHORT_AUDIT_PROTOCOL = "independent-continuation-followup-cohort-audit-v1"
+COHORT_AUDIT_PROTOCOL = "independent-continuation-followup-cohort-audit-v2"
 LIMITS = dict(max_reviews=4, max_repairs=2, max_new_probes=8,
               max_escalations=1, stagnation_reviews=2)
 _READ_SET = cast(ContextVar[EvidenceReads | None], _HISTORICAL_READ_SET)
@@ -647,12 +648,20 @@ def audit_local_promotion(destination, initial_head, files, allowed_paths):
                 "Local promotion has orphan tasks, intents or usage")
         task, intent = tasks[0], intents[0]
         leases = decode(intent["leases"])
+        require(type(leases) is list and len(leases) == 1 and type(leases[0]) is dict
+                and set(leases[0]) == {"task_id", "worker_id", "epoch", "expires_at"}
+                and type(leases[0]["task_id"]) is str and type(leases[0]["worker_id"]) is str
+                and type(leases[0]["epoch"]) is int and leases[0]["epoch"] >= 1
+                and type(leases[0]["expires_at"]) in {int, float}
+                and math.isfinite(leases[0]["expires_at"]) and leases[0]["expires_at"] > 0,
+                "Promotion intent does not contain one exact typed serialized Lease")
         require(task["id"] == "exact-tree" and task["status"] == "complete" and task["accepted_commit"] == head
                 and task["intent_id"] is None and intent["state"] == "accepted"
                 and Path(intent["repository"]).resolve() == destination
                 and intent["old_head"] == initial_head and intent["new_head"] == head
                 and len(leases) == 1 and leases[0]["task_id"] == task["id"]
-                and leases[0]["epoch"] == task["epoch"] and leases[0]["worker"] == task["worker"],
+                and leases[0]["epoch"] == task["epoch"] and leases[0]["worker_id"] == task["worker"]
+                and leases[0]["expires_at"] == task["expires"],
                 "Promotion is not bound to a settled exact-tree Git CAS intent")
     check_frozen_snapshot(ledger)
     return head

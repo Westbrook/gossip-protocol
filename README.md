@@ -1032,6 +1032,18 @@ rule. The [separate live-coordination design](analysis/benchmark-live-gossip-fol
 tests real peer decision-making and dissemination; this controller pilot does
 not establish a gossip-versus-orchestrator effect.
 
+The [first physical checkpoint](analysis/continuation-followup-physical-checkpoint-v1.json)
+records 42 qualified fixture executions and a complete zero-API rehearsal with
+12 runner-reported accepted trajectories and 24 completed milestones. Independent
+audit then exposed two integration defects: serialized promotion-lease field
+names and fresh scout-response JSON ordering. Audit v2 corrects both, with real
+Git/SQLite and scout producer regressions; 174 affected checks pass. A diagnostic
+traversal of all retained evidence found no further audit failure, but is not a
+certificate. The corrected frozen contract still needs new physical qualification
+and a complete matching rehearsal before live readiness or a scored comparison.
+The [request-size reconciliation](analysis/continuation-followup-budget-reconciliation-v1.json)
+is likewise diagnostic and does not authorize additional spending.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

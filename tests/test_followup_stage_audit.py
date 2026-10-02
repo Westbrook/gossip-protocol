@@ -4,10 +4,12 @@ Fixtures are synthetic data, not outputs of the production controller. They use
 complete raw receipt shapes but do not claim physical Docker execution.
 """
 from copy import deepcopy
+from contextlib import nullcontext
 import hashlib
 import json
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
 
 from analysis.audit_followup_stage import (
@@ -659,6 +661,78 @@ class FollowupStageAuditTests(unittest.TestCase):
         fixture.stage["scouts"]["rejected_batches"] = 1
         fixture.save(fixture.root / "scouts.json", fixture.stage["scouts"])
         with self.assertRaisesRegex(ValueError, "rejected-batch"):
+            fixture.audit()
+
+    def test_live_scout_gate_uses_raw_response_order_before_sorted_persistence(self):
+        # Exercise the actual producer and oracle-gate serialization contracts with
+        # trusted pure callbacks. No source controller or candidate code executes.
+        from gossip_harness.benchmark_experiment import scout_probes
+        from gossip_harness.verification_experiment import oracle_gate
+        from gossip_harness.worker import WorkerResult
+
+        fixture = self.transcript()
+        fixture.local_generation()
+        proposal = dict(requirement="R", input={"z": 2, "a": 1}, expected=999)
+        def invoke(**request):
+            index = request["metadata"]["scout_index"]
+            row = fixture.calls[f"scout-scout-{index}-1"]
+            row[0].update(files=deepcopy(request["files"]), instructions=request["instructions"],
+                          allowed_paths=list(request["allowed_paths"]), feedback=request["feedback"])
+            row[1].update(controller_metadata=deepcopy(request["metadata"]),
+                          changes={"probes.json": json.dumps({"probes": [proposal]})})
+            return WorkerResult(deepcopy(row[1]["changes"]), "trusted test scout", 0, {"api_calls": 0})
+        spans = SimpleNamespace(measure=lambda *args, **kwargs: nullcontext())
+        raw, _ = scout_probes(fixture.project, 0, fixture.initial, invoke, fixture.root,
+                             spans, fixture.run_id, fixture.stage["initial_pool"])
+        persisted = json.loads((fixture.root / "scouts.json").read_text())
+        self.assertNotEqual(list(raw[0]["probes"][0]), list(persisted["proposals"][0]["probes"][0]))
+        fixture.prompts["scout_prompt"] = fixture.calls["scout-scout-0-1"][0]["instructions"]
+        gate = oracle_gate(SimpleNamespace(reference=lambda stage, payload: 1,
+                                          validate_input=lambda stage, payload: None), fixture.project)
+        for i, scout in enumerate(raw):
+            record = fixture.stage["probe_receipts"][i]
+            record["envelope"]["probes"] = scout["probes"]
+            record["receipt"] = gate(record["envelope"], 0, record["origin"])
+            self.assertEqual(record["receipt"]["proposed_count"], 1)
+            self.assertEqual(len(record["receipt"]["rejected"]), 1)
+        persisted.update(source="arm_specific", attributed_calls=2, admitted=0, rejected=2)
+        fixture.stage["scouts"] = persisted
+        fixture.save(fixture.root / "scouts.json", persisted)
+        fixture.stage["metrics"].update(scout_proposal_attempts=2, rejected_scout_probes=2, rejected_probes=2)
+        fixture.review(1)
+        fixture.finish()
+        self.assertTrue(fixture.audit()["completed"])
+        # Member-order matters only for the original raw-batch hash: corruption of
+        # that hash must still fail even when decoded proposal values are equal.
+        fixture.stage["probe_receipts"][0]["receipt"]["content_sha256"] = hashlib.sha256(
+            json.dumps({"probes": persisted["proposals"][0]["probes"]}).encode()).hexdigest()
+        with self.assertRaisesRegex(ValueError, "raw batch/cap"):
+            fixture.audit()
+
+    def test_imported_scout_gate_keeps_persisted_shared_proposal_order(self):
+        from gossip_harness.verification_experiment import oracle_gate
+
+        fixture = self.transcript()
+        proposal = dict(requirement="R", input={"z": 2, "a": 1}, expected=999)
+        persisted = json.loads(json.dumps(proposal, sort_keys=True))
+        self.assertNotEqual(list(proposal), list(persisted))
+        gate = oracle_gate(SimpleNamespace(reference=lambda stage, payload: 1,
+                                          validate_input=lambda stage, payload: None), fixture.project)
+        for i in range(2):
+            fixture.shared["scouts"]["proposals"][i]["probes"] = [persisted]
+            fixture.stage["scouts"]["proposals"][i]["probes"] = [persisted]
+            record = fixture.stage["probe_receipts"][i]
+            record["envelope"]["probes"] = [persisted]
+            record["receipt"] = gate(record["envelope"], 0, record["origin"])
+        fixture.stage["scouts"]["rejected"] = 2
+        fixture.save(fixture.root / "scouts.json", fixture.stage["scouts"])
+        fixture.stage["metrics"].update(scout_proposal_attempts=2, rejected_scout_probes=2, rejected_probes=2)
+        fixture.review(1)
+        fixture.finish()
+        self.assertTrue(fixture.audit()["completed"])
+        fixture.stage["probe_receipts"][0]["receipt"]["content_sha256"] = hashlib.sha256(
+            json.dumps({"probes": [proposal]}).encode()).hexdigest()
+        with self.assertRaisesRegex(ValueError, "raw batch/cap"):
             fixture.audit()
 
     def test_prompt_extraction_reads_ast_without_importing_controller(self):

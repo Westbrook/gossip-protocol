@@ -401,6 +401,7 @@ class StageReplay:
     def scouts(self):
         scouts = self.stage["scouts"]
         require(same(load(self.root / "scouts.json"), scouts), "Scout artifact changed")
+        gate_scouts = scouts["proposals"]
         if self.shared is not None:
             require(scouts["source"] == "shared_initial_setup" and scouts["calls"] == 0
                     and scouts["attributed_calls"] == 2 and same(scouts["proposals"], self.shared["scouts"]["proposals"])
@@ -414,7 +415,7 @@ class StageReplay:
                 milestones=[{k: s[k] for k in ("requirements", "specification", "spec") if k in s}
                             for s in self.project["stages"][:self.index + 1]],
                 public_cases=cases_for(self.project, self.index, "visible"))
-            ends, parses = [], []
+            ends, parses, gate_scouts = [], [], []
             for i in range(2):
                 call_id = f"scout-scout-{i}-1"
                 require(call_id in self.calls and call_id not in self.used_calls, "Missing scout opportunity")
@@ -431,6 +432,10 @@ class StageReplay:
                         and span["started_monotonic_ns"] >= self.barrier
                         and same(scouts["proposals"][i], dict(scout_id=f"scout-{i}", probes=scout_proposals(call))),
                         "Scout saw candidate/private information or preceded initial freeze")
+                # Fresh scouts enter the gate before sorted artifact serialization.
+                # Reconstruct their original JSON member order from the raw response;
+                # imported M1 scouts intentionally retain persisted artifact order.
+                gate_scouts.append(dict(scout_id=f"scout-{i}", probes=scout_proposals(call)))
                 self.used_calls.add(call_id)
                 parses.append(dict(scout_id=f"scout-{i}", **scout_parse(call)))
                 ends.append(span["finished_monotonic_ns"])
@@ -441,7 +446,7 @@ class StageReplay:
             self.frontier = max([self.frontier, *ends])
         require(len(scouts["proposals"]) == 2 and [s["scout_id"] for s in scouts["proposals"]] == ["scout-0", "scout-1"],
                 "Scout roster/order changed")
-        for scout in scouts["proposals"]:
+        for scout in gate_scouts:
             admitted, _ = self.gate(scout["probes"], "new", "scout", dict(project_id=self.project["id"],
                 stage_index=self.index, source="scout", scout_id=scout["scout_id"]))
             self.apply_probes(admitted, f"stage-{self.index}-{scout['scout_id']}", "scout-probes", scout=True)
