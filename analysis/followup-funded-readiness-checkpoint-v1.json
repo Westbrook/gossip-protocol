@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "protocol": "funded-followup-live-readiness-checkpoint-v1",
+  "recorded_utc": "2026-10-02T19:44:50.375199+00:00",
+  "status": "full_funded_rehearsal_and_independent_audit_passed",
+  "interpretation": "Scripted execution qualification, not evidence of live model quality or swarm superiority.",
+  "contract_sha256": "c256db9363054ff66069ee8e35a5a630c35a5e95b77be780a1fb464803eae98c",
+  "funding_authorization": {
+    "path": "analysis/followup-funded-authorization-v1.json",
+    "sha256": "e948e097e2c76d00c95d5bfe67a54a63ebb2fb97ad83397df709c53dee616bd6"
+  },
+  "prior_qualification_checkpoint": {
+    "path": "analysis/followup-funded-qualification-checkpoint-v1.json",
+    "sha256": "20dabde9d823f242169c4060e1e3a862a94646acdc62dd4b7b8a249825c15e5b"
+  },
+  "fixture_qualification": {
+    "physical_candidate_executions": 42,
+    "receipt": {
+      "path": "results/followup-funded-qualification-1/results.json",
+      "sha256": "40e3137062073dd99aabf54433e810220b3a4651d0a07267e5d0f2282a2df871"
+    }
+  },
+  "full_rehearsal": {
+    "receipt": {
+      "path": "results/followup-funded-rehearsal-1/results.json",
+      "sha256": "003232e82642ba53fbfea350abe4a6d129dc8c426bb04109d5c0da2b39f7b596"
+    },
+    "timings": {
+      "path": "results/followup-funded-rehearsal-1/timings.json",
+      "sha256": "e1a7a23e83fbb7e2aefbeabfe988653aff282838bf9d7d6c1fa0bbfb3b5332fe"
+    },
+    "freeze": {
+      "path": "results/followup-funded-rehearsal-1/frozen-trajectories.json",
+      "sha256": "12d2d1bfda622c7c419778b46ac847f18469d4a9815f1c0717063c397b5ec1a0"
+    },
+    "trajectories": 12,
+    "milestones": 24,
+    "accepted_scripted_trajectories": 12,
+    "physical_candidate_executions": 384,
+    "scripted_calls": 228,
+    "physical_provider_calls": 0,
+    "incremental_micro_usd": 0,
+    "unsettled": {
+      "promotions": 0,
+      "reservations": 0
+    },
+    "process_exit_code": 0,
+    "unexecuted": [],
+    "censored": []
+  },
+  "independent_audit": {
+    "receipt": {
+      "path": "results/followup-funded-rehearsal-1/independent-audit.json",
+      "sha256": "6ed0cbd0d02118a158f866f8f728545a11a9bc7d7c7f09ae3502f2a63a724bfc"
+    },
+    "passed": true,
+    "scope": {
+      "controller_decision_replay": true,
+      "exact_source_promotions": true,
+      "global_private_barrier": true,
+      "live_model_quality": false,
+      "primary_cohort": true,
+      "shared_initial_setup": true
+    },
+    "limitations": [
+      "Scripted infrastructure rehearsal, not model-quality or statistical evidence.",
+      "Trusted-host retained consistency, not independent external execution or clock attestation.",
+      "Historical reservation-time compliance relies on the qualified transactional admission guards; request-interval upper bounds do not prove the measured historical peak.",
+      "Fixture meaning and task representativeness remain separately reviewed scientific assumptions.",
+      "A passing audit does not authorize live dispatch, spending or a change to the scientific contract."
+    ]
+  },
+  "descriptive_comparison": {
+    "path": "results/followup-funded-comparison-1/summary.json",
+    "sha256": "c16096ae5376360e412fb7fd6b3c198939d2dbe4054083781428e60469bf5d61"
+  },
+  "approved_live_admission": {
+    "authorization_precedes_readiness": true,
+    "cumulative_cap_micro_usd": 80000000,
+    "registered_opening_usage_micro_usd": 35543626,
+    "incremental_cap_micro_usd": 44456374,
+    "ledger": "runs/first-live-budget.sqlite",
+    "rule": "Runner must independently re-audit these exact retained proofs, verify current source/runtime and registered quiescent opening ledger under exclusive ownership before credentials/provider dispatch. Preserve any failure; no automatic retry or output overwrite.",
+    "outcomes": "Live outcome evidence must come from the separate complete live cohort and its independent audit; this checkpoint does not claim it exists."
+  },
+  "prospective_larger_study": {
+    "plan": {
+      "path": "large-swarm-project-plan-v1.json",
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e"
+    },
+    "review_budget_design": {
+      "path": "runs/large-swarm-review-budget-design-1.json",
+      "sha256": "a35e3521d8c504f2d5e7ba0b0a27c33174e2e52884d543a64a9076251d3c9e10"
+    },
+    "cost_sensitivity": {
+      "path": "runs/large-swarm-cost-planning-1.json",
+      "sha256": "a458b178bf2e7826c2ddf6b303818afe00998fdd93f3ee6a8154fa8d4ff47826"
+    },
+    "status": "Published20-role design and retained prospective review-budget alternatives; runtime, chosen contract and allocation remain unqualified.",
+    "next_step": "Use the completed controller pilot and actual remaining budget to freeze reviewer granularity, qualify concurrent20-role execution and price the entire larger cohort before dispatch."
+  },
+  "next_action": "Complete the authorized live cohort, independent audit and prespecified descriptive comparison; preserve broader held-out confirmation and20-role project scope.",
+  "bounded_source_review": {
+    "path": "runs/investigation-cycle-8-funded-rehearsal-source-review-1.json",
+    "sha256": "a9437c6a97f6879f7ce7fe88e8ed9853463098f0689f394c4bc77185f9c90fe4",
+    "unresolved_findings": [],
+    "scope": "Fourteen top-level evidence bindings and39 current execution sources; no repeated full cohort auditor or candidate execution."
+  }
+}

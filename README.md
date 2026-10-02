@@ -1061,6 +1061,15 @@ the [funding authorization](analysis/followup-funded-authorization-v1.json)
 records the preserved prior charges and available allowance. The estimate and
 expanded ceiling do not guarantee completion.
 
+The [funded readiness checkpoint](analysis/followup-funded-readiness-checkpoint-v1.json)
+now binds 42 fresh fixture qualifications and the complete funded-contract
+rehearsal: 12 accepted scripted trajectories, 24 milestones, 384 fresh candidate
+validations and zero provider calls. Its independent cohort audit passes. This
+qualifies live admission under the existing authorization; live quality requires
+the separate completed cohort and audit. The prospective
+[20-agent project plan](docs/large-swarm-project-plan-v1.md) remains a separate
+development study with unqualified runtime and resource limits.
+
 ## Real peer transport foundation
 
 The [peer runtime](docs/peer-runtime-v1.md) adds independently running local
