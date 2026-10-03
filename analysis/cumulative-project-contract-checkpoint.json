@@ -1,0 +1,74 @@
+{
+  "branch": "codex/cumulative-project-contract",
+  "implemented": [
+    "Pure acceptance aggregation against a prospectively pinned complete registry design and exact terminal source",
+    "Explicit distinction among assertion failure, missing/skipped/infrastructure evidence and invalid bindings",
+    "Exact public reuse references; independent acceptance and repeatability require distinct fresh physical observations",
+    "Prospective M1 inventory:106 product requirements plus3 qualification prerequisites",
+    "Prospective M2-M4 product contract:17 requirements and17 feature slots,maximum ready frontier3"
+  ],
+  "live_pilot_boundary": {
+    "credentials_read_this_cycle": false,
+    "ledger_mutations_this_cycle": false,
+    "live_launch_status": "awaiting_explicit_payload_approval_after_automatic_review_rejection",
+    "main_remains_frozen_at": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+    "provider_calls_this_cycle": 0
+  },
+  "next_steps": [
+    "Implement and qualify missing product/prerequisite adapters and complete ordered checks without relabeling existing evidence purposes",
+    "Build cumulative M2-M4 public fixture/reference and independent acceptance histories from the prospective contract",
+    "Integrate peer-local policy, matched central scheduling, generated tests and complete cohort barrier before any comparative dispatch",
+    "Live v4 pilot remains separately pending explicit payload approval; no workaround or automatic retry"
+  ],
+  "not_established": [
+    "Physical receipt authentication or chronology by the pure registry",
+    "Natural-language completeness from structural tests alone",
+    "Ready inventory-to-registry adapter: ordered checks, purposes and qualification prerequisites still need qualified integration",
+    "Whole-M1 or whole-project acceptance",
+    "M2-M4 implemented reference or study-generated software",
+    "Peer-local autonomous policy, matched durable orchestrator, executable generated tests or real fault recovery",
+    "Complete six-trajectory study, independent held-out families or statistical advantage"
+  ],
+  "protocol": "cumulative-project-contract-development-checkpoint-v1",
+  "recorded_at": "2026-10-03T05:46:14.712870+00:00",
+  "retained_failure": {
+    "directory": "runs/cumulative-project-contract-qualification-1/20261003T054124-5bf10485",
+    "finding": "Three adapter requirements named an admission prerequisite without explicit dependency mappings. Corrected rows and mappings now separate required product gates from required qualification prerequisites; inverse membership is checked.",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 1,
+      "passed": 24
+    },
+    "summary_sha256": "9fd38f410e5918573010f81a7707998161c84b7938b5e0a875b659ef10aae697"
+  },
+  "source_base_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "source_sha256": {
+    "docs/library-cumulative-product-v1.md": "bef056092807135279cbf30777d3307b32c54bfe77350e49aadb42c65e7aef63",
+    "docs/project-acceptance-registry-v1.md": "428b9fd6dc00fd4ac937c635b1931e8b2a46a1a385443bbdb14f32fb641b9741",
+    "gossip_harness/project_acceptance_registry_v1.py": "20587fb1bc74666afb21e8a46770cf9e71382b27e2111a622b4ecfa8fc2908f7",
+    "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "library-m1-acceptance-inventory-v1.json": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a",
+    "pyproject.toml": "a85da39193f46f624b813472254ab631cb2d65caab0bd1a4efc5c42012dd2973",
+    "tests/test_library_cumulative_contract_v1.py": "d9a406c413add5bb10c17767cdfd040d74535e758a567499a9941e106e163669",
+    "tests/test_project_acceptance_registry_v1.py": "273e1ddc26f91b4e1f54f467e94466c3271b5607fa55ff9f099843d33ec72173",
+    "verification-manifest.json": "8e0fa15550937783719b81218d6bfb3224921731573d1bdc55cc4b2a3df037bf"
+  },
+  "status": "offline_foundation_qualified_not_a_study",
+  "verification": {
+    "directory": "runs/cumulative-project-contract-qualification-2/20261003T054405-df8eaaa8",
+    "duration_seconds": 2.4421767918393016,
+    "entrypoint": "python -m devtools.verify",
+    "failures": 0,
+    "inputs_sha256": "0f4eb7739008a9c0ca4dd2d725989c54b8952d2a5f345a9863ae9c3bb8f41068",
+    "physically_executed_passes": 26,
+    "reused_classes": 0,
+    "scope": "Targeted pure registry and prospective-contract structural checks; static coverage remains as explicitly configured in pyproject.toml.",
+    "selected_classes": 2,
+    "selected_tests": 26,
+    "skips": 0,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": "passed",
+    "summary_sha256": "762a18cc5f6f70dea0e157150e2279a12610332ddc6d84e0ed93bab4a59644d7"
+  }
+}

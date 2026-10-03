@@ -2432,6 +2432,30 @@
       "boundary": "Production setup factory with real V3 authority and localhost client, before role process and Docker integration.",
       "disposition": "Required regression for the retained startup failure; complete before the full twenty-role rehearsal.",
       "overlap_reason": "Direct adapter tests cannot detect a controller accidentally selecting the incompatible V2 adapter."
+    },
+    "tests/test_project_acceptance_registry_v1.py::AcceptanceRegistryTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The frozen mandatory inventory and exact execution bindings control acceptance; incomplete, stale, reused independent or unpromoted evidence cannot satisfy it.",
+      "isolation": "class process; pure immutable normalized fixtures, no candidate or provider execution",
+      "overlap": "Tests normalized aggregation only; physical receipt adapters, cohort barriers and product workflows require their own qualification.",
+      "distinct_defect": "Caller-supplied coverage, omitted cases, missing cohort members or copied physical receipts could manufacture complete project acceptance.",
+      "boundary": "Pure prospective design fingerprint, normalized receipt identity/census, provenance classification and mandatory requirement aggregation.",
+      "disposition": "Run once in the fast lane before integrating a real receipt adapter.",
+      "overlap_reason": "Existing v4 acceptance tests exercise real evaluators and partial observations; this class checks the new complete-inventory aggregation contract without reexecuting those observations."
+    },
+    "tests/test_library_cumulative_contract_v1.py::ProspectiveProductContractTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Prospective requirement and feature graphs are closed, source-bound and explicitly unqualified, with product and qualification subjects separated.",
+      "isolation": "class process; read-only committed JSON and source definitions",
+      "overlap": "Structural configuration checks only; neither candidate executions nor natural-language coverage proof.",
+      "distinct_defect": "Missing gate mappings, stale cited sources, cycles, duplicated IDs or inflated ready-frontier claims can invalidate the comparative contract before model work.",
+      "boundary": "Actual prospective M1 inventory and cumulative M2-M4 registry, their source citations and exact finite feature graph.",
+      "disposition": "Run in fast lane when either prospective contract or referenced inherited source changes.",
+      "overlap_reason": "AcceptanceRegistryTests exercises normalized evidence aggregation; this class checks the separate declared inputs and explicitly excludes interpreting definitions as execution receipts."
     }
   },
   "audit": {
