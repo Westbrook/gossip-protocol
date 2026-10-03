@@ -1,0 +1,237 @@
+{
+  "base_commit": "f2bdbf155b98c5999e4943293d7e081c931eb222",
+  "branch": "codex/cumulative-project-contract",
+  "configuration": [
+    {
+      "bytes": 8139,
+      "path": "pyproject.toml",
+      "sha256": "8ff6122fca35d0c75840451fc16677953bf5bf42a0b96e02f8585d0d07b7c4a7"
+    },
+    {
+      "bytes": 358295,
+      "path": "verification-manifest.json",
+      "sha256": "f83f695a864af6c99cd0672babb88080ee2bd69a5b72a7c76915e6ca1f9fe095"
+    }
+  ],
+  "core_gate": {
+    "duration_seconds": 40.35224050004035,
+    "execution_kind": "fresh offline worker execution; no Docker/provider calls",
+    "inputs": {
+      "bytes": 55620,
+      "path": "runs/candidate-b03-v4-core-qualification-1/20261003T184223-0a39cc27/inputs.json",
+      "sha256": "3722e92659258885dcdc1c29b337a26fa083528ea7ec01e765049a9a694bdb51"
+    },
+    "methods_executed": 159,
+    "reused_classes": 0,
+    "runtime_final": {
+      "bytes": 1435,
+      "path": "runs/candidate-b03-v4-core-qualification-1/20261003T184223-0a39cc27/runtime-final.json",
+      "sha256": "1318290223d02eaea4e38e013f03407038fd168376c4e623e34531887d75c457"
+    },
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75103,
+      "path": "runs/candidate-b03-v4-core-qualification-1/20261003T184223-0a39cc27/static.json",
+      "sha256": "b4739ee2f62deaa65dbb82a0d371dc25266d158048c1576cdc140bafaf3785cd"
+    },
+    "status": "passed",
+    "summary": {
+      "bytes": 97691,
+      "path": "runs/candidate-b03-v4-core-qualification-1/20261003T184223-0a39cc27/summary.json",
+      "sha256": "587fad76bb1300128e3a73c2502df0f85cbd999403b650315e24c35717156f8b"
+    }
+  },
+  "documentation": {
+    "bytes": 3694,
+    "path": "docs/candidate-b03-v4-core-qualification.md",
+    "sha256": "7109793ff1f07e91ed4be1b9d2c14bf5c522efe818d6e6ad0381a2edfb6fff71"
+  },
+  "draft_gate": {
+    "duration_seconds": 7.412567375227809,
+    "execution_kind": "fresh offline worker execution; no Docker/provider calls",
+    "inputs": {
+      "bytes": 55853,
+      "path": "runs/candidate-b03-v4-draft-review-3/execution/inputs.json",
+      "sha256": "69e642b8512559130951de4b0d70b2fa09635c28e98a45bd9d3969b13cff0cb1"
+    },
+    "methods_executed": 31,
+    "reused_classes": 0,
+    "runtime_final": {
+      "bytes": 1435,
+      "path": "runs/candidate-b03-v4-draft-review-3/execution/runtime-final.json",
+      "sha256": "4c546dfbaa8b45277e2dfadfa713548259474e222c6de2c76e693c8523f29305"
+    },
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75235,
+      "path": "runs/candidate-b03-v4-draft-review-3/execution/static.json",
+      "sha256": "97cba9d983b580a8b4d375689062d2338e1bdd2497c4bb0f81c721e5299d454e"
+    },
+    "status": "passed",
+    "summary": {
+      "bytes": 18582,
+      "path": "runs/candidate-b03-v4-draft-review-3/execution/summary.json",
+      "sha256": "2d05db521fe9451f4594947261f869c81f1fcecc032066303f78b0c3ddf27f20"
+    }
+  },
+  "draft_gate_scope": "isolated temporary snapshot; not installed whole-tree or physical qualification",
+  "drafts_awaiting_installation": [
+    {
+      "bytes": 85372,
+      "intended_repository_path": "tests/test_candidate_clients_docker_v4.py",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_clients_docker_v4.py",
+      "present_at_intended_path": false,
+      "sha256": "1dfb41f45743bae3565f49131dd95bff70430bf0475265ce89fc27d97c5fb40b"
+    },
+    {
+      "bytes": 68989,
+      "intended_repository_path": "tests/test_candidate_client_rejection_v4.py",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py",
+      "present_at_intended_path": false,
+      "sha256": "61a4f8a12641d4f7d19e1fbbba2f599a8137f7d0a8adaf755af234811f1327c1"
+    },
+    {
+      "bytes": 14619,
+      "intended_repository_path": "docs/candidate-client-qualification-plan-v4.md",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/candidate-client-qualification-plan-v4.md",
+      "present_at_intended_path": false,
+      "sha256": "c72718a4f80934998ee92fe6bffe71cda3e0837f1bb1eb86c2fc953d3725c386"
+    }
+  ],
+  "finalized_at": "2026-10-03T18:52:36.603979+00:00",
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "goal_turn_classification": "progress",
+  "http_future_input": {
+    "bytes": 27326,
+    "path": "analysis/candidate-b03-c03-policy-review-v1.json",
+    "sha256": "bec2139ba2b6e99d5ac6da01296842cc690af5c84f3428aaa5183eaf2ec54570"
+  },
+  "http_future_input_status": "future C03 design input only; no current acceptance authority",
+  "implementation_changes": [
+    "Independently registered argv and pinned-runtime validation before dispatch; explicit singleton Cmd:null policy retains raw identity distinctions.",
+    "Complete start-response proof requires full observation and durable retention; unavailable response cannot establish daemon rejection or candidate completion.",
+    "Versioned controller/observer identities preserve unchanged product scoring.",
+    "Draft qualifier independently checks strict raw HTTP/JSON, exact command rejection, owned identity and cleanup chronology."
+  ],
+  "independent_retained_evidence_audit": {
+    "bytes": 2207,
+    "path": "analysis/candidate-b03-v4-core-evidence-audit.json",
+    "sha256": "8e85b3d15ea46b345cc8ac2e91cfa52f4fa0794912d3e2b1573af0d9e10fca14",
+    "status": "bounded reconciliation passed; zero mismatches"
+  },
+  "initial_pre_audit_checkpoint": {
+    "path": "runs/candidate-b03-v4-core-checkpoint-before-final-audit.json",
+    "sha256": "e92d733e675d409cdcc866ac5e5f03138bb254e84a4e6579156ffca37ae4b2a7"
+  },
+  "limitations": [
+    "Core159 and draft31 are different offline execution scopes; they do not establish one installed full CLI qualification.",
+    "Static type coverage is explicitly scoped in pyproject.toml; no global legacy type-safety claim.",
+    "No whole-project acceptance, repeatability, causal swarm/orchestration comparison, ranking win, cost advantage or statistical superiority follows from these checks.",
+    "Static gate retains its existing117-diagnostic type baseline; scoped v4 coverage does not establish zero-diagnostic whole-repository type safety."
+  ],
+  "live_launch_status": "Existing separate payload-transfer approval remains pending; no renewed provider request.",
+  "new_budget_authorization": null,
+  "new_comparative_samples": 0,
+  "new_docker_invocations": 0,
+  "new_provider_calls": 0,
+  "next_actions": [
+    "Await approval of the three exact file additions; do not infer approval from time.",
+    "After approval, install reviewed bytes and register classes; reconcile combined source/configuration verification and freeze the complete v4 version.",
+    "Run fresh persistence plus all11 unchanged controls; launch56 remaining histories only after terminal phase-one success.",
+    "Continue the full cumulative project acceptance and matched-study work without treating this engineering gate as a comparative result."
+  ],
+  "pages_refresh": false,
+  "plan": {
+    "bytes": 57205,
+    "path": "analysis/candidate-b03-empty-command-plan-v3.json",
+    "sha256": "6c99fe8badb01281f0adb82265e5260d1022a818cf4edc18cf97da41912981d3"
+  },
+  "planned_regressions_mapped": 19,
+  "prior_versions": "v1/v2/v3 source and failed observations remain unchanged; no retrospective qualification",
+  "recorded_at": "2026-10-03T18:50:40.217622+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "retained_drafts": {
+    "bytes": 3428,
+    "path": "runs/candidate-b03-v4-draft-review-3/receipt.json",
+    "sha256": "2aa2efd1a7800ea2ae83ee452722cb80b9ca131a8af5f81536756ab70d1bd6ab"
+  },
+  "schema": "candidate-b03-v4-core-qualification-checkpoint-v1",
+  "source_files": [
+    {
+      "bytes": 56273,
+      "path": "gossip_harness/candidate_client_process_v4.py",
+      "sha256": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b"
+    },
+    {
+      "bytes": 73883,
+      "path": "tests/test_candidate_client_process_v4.py",
+      "sha256": "5878c031ccca6127827277953a1f30be09bd78f01498eaff3430711b70acc51f"
+    },
+    {
+      "bytes": 10439,
+      "path": "docs/candidate-client-process-v4.md",
+      "sha256": "a2b8fd3ec0a3f08389c5aeaa6aad63a0588c63643b5adcdcb5374e16684de059"
+    },
+    {
+      "bytes": 55020,
+      "path": "gossip_harness/candidate_client_execution_v4.py",
+      "sha256": "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1"
+    },
+    {
+      "bytes": 50839,
+      "path": "tests/test_candidate_client_execution_v4.py",
+      "sha256": "035892bca9576b3242a21a64b43c9c8707b6498a327cf1fc189680f7ceb7bc85"
+    },
+    {
+      "bytes": 16851,
+      "path": "docs/candidate-client-execution-v4.md",
+      "sha256": "4c3919f54792ad6de7d4a2bbf5becc23a500aa752304e3c9bc937962ffc64fc8"
+    },
+    {
+      "bytes": 20370,
+      "path": "gossip_harness/candidate_client_observer_v4.py",
+      "sha256": "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d64a31208235"
+    },
+    {
+      "bytes": 31791,
+      "path": "tests/test_candidate_client_observer_v4.py",
+      "sha256": "f340c756a3574446f8a3d8644839f77c1d56d02153d14dbf89e9898b13bca91b"
+    },
+    {
+      "bytes": 10987,
+      "path": "docs/candidate-client-observation-v4.md",
+      "sha256": "fdcb7c23c32a47e6c0c1f3920813aeda5be0ac6a907a8373964075d9660f8772"
+    }
+  ],
+  "source_review": {
+    "bytes": 30113,
+    "path": "analysis/candidate-b03-v4-source-review.json",
+    "sha256": "a0ab58ad682a080825879c7ea20408c95439fd300740cef74a56824199c707e8"
+  },
+  "status": "installed core qualified offline; three additional files await human approval; physical qualification not run",
+  "unchanged_contract_counts": {
+    "assertion_cells": 900,
+    "authored_controls": 11,
+    "explicitly_unspecified_cells": 32,
+    "histories": 57,
+    "invocations": 305
+  },
+  "write_approval": {
+    "paths": [
+      "tests/test_candidate_clients_docker_v4.py",
+      "tests/test_candidate_client_rejection_v4.py",
+      "docs/candidate-client-qualification-plan-v4.md"
+    ],
+    "reason": "Automatic approval review rejected source writes under an earlier read-only assignment; later review was canceled. No further installation attempts.",
+    "status": "explicit human approval requested; no answer at checkpoint"
+  }
+}

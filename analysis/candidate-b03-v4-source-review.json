@@ -1,0 +1,540 @@
+{
+  "baseline_commit": "f2bdbf155b98c5999e4943293d7e081c931eb222",
+  "created_at": "2026-10-03T18:45:03.107331+00:00",
+  "material_findings_remaining": [],
+  "pinned_classifier_source": {
+    "bytes": 5558,
+    "path": "runs/candidate-b03-empty-command-primary-sources-1/daemon/errors.go",
+    "sha256": "3c80f755911575e182130b5794f703af4d4d35c6288eece17d6807fee534846f"
+  },
+  "plan": {
+    "bytes": 57205,
+    "path": "analysis/candidate-b03-empty-command-plan-v3.json",
+    "sha256": "6c99fe8badb01281f0adb82265e5260d1022a818cf4edc18cf97da41912981d3"
+  },
+  "planned_regression_source_coverage": [
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_explicit_null_and_empty_cmd_admit_exact_singleton_only",
+            "test_missing_command_or_top_level_args_never_means_null"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_registered_singleton_command_accepts_present_null_without_mutating_inspection"
+          ],
+          "source": "tests/test_candidate_client_execution_v4.py"
+        }
+      ],
+      "id": 1,
+      "requirement": "Explicit Cmd:null and unchanged Cmd:[] each validate only with exact singleton entrypoint/path, declared one-element argv and Args:[]. Missing Cmd, missing Args and Args:null must reject.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_null_command_rejects_unregistered_or_malformed_args",
+            "test_entrypoint_and_path_are_exact_registered_singleton"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        }
+      ],
+      "id": 2,
+      "requirement": "Reject null Cmd with nonempty Args, any additional declared argument (including empty string), mismatched Path/Entrypoint, multi-element or empty/non-string entrypoint and malformed Cmd/Args types.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_nonempty_arrays_and_independent_argv_preserve_type_order_value"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        }
+      ],
+      "id": 3,
+      "requirement": "Nonempty Cmd arrays remain type/order-exact; changed, inserted, reordered or removed arguments and boolean/numeric substitutions reject. Empty-string arguments are preserved distinctly.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_null_empty_identity_changes_still_fail_prestart_and_final"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_diagnostic_identity_preserves_raw_cmd_unknown_fields_and_nested_order",
+            "test_later_continuity_keeps_oom_cmd_and_no_start_state_exact"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 4,
+      "requirement": "Raw identity comparisons reject null-to-empty and empty-to-null Cmd changes at prestart/final even when individual endpoint values are valid. Existing mount and OOM exceptions remain the only comparison rules.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_invocation_requires_pinned_runtime_and_explicit_policy",
+            "test_declared_argv_is_copied_and_fresh_validation_runs_before_attach",
+            "test_wrong_declared_endpoint_or_argv_cannot_reach_runtime_or_attach"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_registered_singleton_command_accepts_present_null_without_mutating_inspection"
+          ],
+          "source": "tests/test_candidate_client_execution_v4.py"
+        },
+        {
+          "methods": [
+            "test_request_runtime_recipe_and_dispatch_order_are_independently_bound",
+            "test_cleanup_identity_requires_exact_id_source_fixture_image_and_argv"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 5,
+      "requirement": "Pure runtime/recipe substitution tests prove null permission cannot dispatch under missing/wrong runtime, image, endpoint, source/fixture or invocation binding.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_composed_raw_helper_real_transport_and_qualifier_require_complete_start_proof"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        },
+        {
+          "methods": [
+            "test_null_command_original_control_reaches_real_parser_once"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        }
+      ],
+      "id": 6,
+      "requirement": "Mocked raw-startup integration feeds a created inspection with exact Cmd:null and the original actual argv. It reaches fake Engine start exactly once and qualifies only with a complete retained source-grounded daemon rejection plus identity-bound cleanup evidence; start_error alone is insufficient. No host candidate execution is used.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_each_raw_helper_decode_boundary_rejects_duplicates_before_use",
+            "test_all_raw_proof_boundaries_reject_duplicate_inspection_keys",
+            "test_strict_raw_decoder_rejects_duplicate_keys_at_every_relevant_depth",
+            "test_strict_raw_decoder_rejects_invalid_encoding_nonfinite_and_nonobject",
+            "test_strict_raw_decoder_bounds_size_depth_and_total_nodes"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 7,
+      "requirement": "Malformed raw container and volume JSON with duplicate keys at each of the four helper boundaries must reject before validation/dispatch or before cleanup ownership is trusted. Include duplicates nested in Config.Cmd/Entrypoint, mount rows and volume options; reject nonfinite values and oversized bodies.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "references": [
+            "tests/test_candidate_client_process_v4.py",
+            "tests/test_candidate_client_execution_v4.py",
+            "tests/test_candidate_client_observer_v4.py"
+          ],
+          "source_basis": "Copied process protocol/lifecycle/compatibility/mount and controller binding/keeper/retention/cleanup tests retain their prior responsibilities. Thirty process top-level functions/classes remain AST-identical to v3, including wire framing, endpoint, bounds, runtime, identity and completion helpers. Observer scoring AST is identical excluding only docstring and two protocol constants."
+        }
+      ],
+      "id": 8,
+      "requirement": "Keep copied existing framing, EOF/start acknowledgement, wait/final-inspect, timeout/overflow, no-redispatch, durability, source identity, keeper lifetime, receipt authentication and cleanup regressions.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_generic_transport_records_statuses_without_qualification_predicate"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_complete_authenticated_rejection_has_only_diagnostic_authority",
+            "test_only_source_grounded_complete_http400_error_shape_qualifies"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 9,
+      "requirement": "A fully retained framed HTTP400 ErrorResponse plus matching invalid-command cleanup state qualifies only the raw startup control; complete generic500/404/409/304/204 and unrelated400 errors do not. Generic transport still records all complete responses without candidate exit attribution.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_lost_and_malformed_responses_never_gain_completion_receipt",
+            "test_absent_or_lost_start_transport_keeps_metadata_null"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_http_rejects_truncation_extra_response_and_ambiguous_length",
+            "test_http_rejects_duplicate_folded_control_and_malformed_headers",
+            "test_http_rejects_incomplete_or_noncanonical_chunk_framing",
+            "test_composed_raw_helper_real_transport_and_qualifier_require_complete_start_proof"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 10,
+      "requirement": "Lost start reply after request send, absent response, connect/read reset, timeout, truncated status/header/body, malformed/duplicate headers, conflicting CL/TE, invalid chunking and missing zero terminator leave start_response null or fail independent authentication; none can qualify from status=start_error.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_file_appears_complete_but_socket_eof_was_not_observed"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_complete_disk_bytes_never_substitute_for_witnessed_socket_eof",
+            "test_http_enforces_header_body_chunk_and_total_wire_bounds",
+            "test_strict_raw_decoder_rejects_invalid_encoding_nonfinite_and_nonobject",
+            "test_only_source_grounded_complete_http400_error_shape_qualifies"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 11,
+      "requirement": "An apparently complete retained close-delimited response without witnessed EOF/normal _control return fails; extra response/trailing bytes, oversize boundaries, invalid UTF-8/JSON, duplicate message keys, missing/wrong-type/message mismatch and nonfinite tokens fail.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_failed_raw_or_completion_retention_keeps_null_metadata_and_cleans"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_status_label_complete_file_or_caller_pass_flag_never_grants_authority",
+            "test_response_receipt_requires_exact_digests_counts_flags_and_scope",
+            "test_record_receipt_raw_and_checkpoint_must_agree"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 12,
+      "requirement": "Retention failure before or after parsed status, or an external checkpoint failure after bytes were written, cannot produce qualifying durable start_response. Include one fault after successful parsing to distinguish the existing204 acknowledgement callback from the new complete retained-response proof.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_request_runtime_recipe_and_dispatch_order_are_independently_bound",
+            "test_response_receipt_requires_exact_digests_counts_flags_and_scope",
+            "test_record_receipt_raw_and_checkpoint_must_agree",
+            "test_actual_final_qualifier_rejects_incomplete_cleanup_removal_and_checkpoint"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 13,
+      "requirement": "Forged/missing start_response, mismatched wire/body/request digest or byte count, wrong status/path/full container ID/endpoint/runtime, duplicate dispatch and out-of-order evidence fail. No retry is performed.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_no_start_guards_reject_started_restarted_oom_and_type_substitutions",
+            "test_cleanup_identity_requires_exact_id_source_fixture_image_and_argv",
+            "test_actual_final_qualifier_rejects_incomplete_cleanup_removal_and_checkpoint"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 14,
+      "requirement": "Wrong or missing cleanup ID/name/source/fixture/image/Config/argv/mount inventory, State.Error mismatch, false127-as-real-exit, positive StartedAt, running/restarted/OOM state, malformed exact types, missing raw cleanup-state, incomplete removal/absence or cleanup errors fail qualification.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_no_candidate_exit_output_or_natural_completion_can_be_inferred",
+            "test_composed_raw_helper_real_transport_and_qualifier_require_complete_start_proof"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        },
+        {
+          "methods": [
+            "test_rejected_start_response_is_not_candidate_output_or_exit_authority"
+          ],
+          "source": "tests/test_candidate_client_observer_v4.py"
+        }
+      ],
+      "id": 15,
+      "requirement": "Real daemon rejection proof requires no wait/final inspection/startup comparison, but does require prestart comparison. Defensive kill-request flag and intentionally incomplete attach EOF cannot be mistaken for actual execution or force a false natural-exit assertion.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_each_raw_helper_decode_boundary_rejects_duplicates_before_use",
+            "test_all_raw_proof_boundaries_reject_duplicate_inspection_keys",
+            "test_strict_raw_decoder_preserves_types_unknown_fields_and_array_order",
+            "test_strict_raw_decoder_rejects_duplicate_keys_at_every_relevant_depth",
+            "test_strict_raw_decoder_bounds_size_depth_and_total_nodes"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        },
+        {
+          "methods": [
+            "test_null_empty_identity_changes_still_fail_prestart_and_final"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        }
+      ],
+      "id": 16,
+      "requirement": "All four raw startup helper JSON callsites use the strict decoder before dictionary conversion; retain the prior duplicate-key, nonfinite, size, unknown-field, Cmd identity and frozen failed-run preservation regressions.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_diagnostic_identity_permits_only_typed_oom_start_transition_and_mount_order",
+            "test_diagnostic_identity_rejects_unbound_proof_phase_runtime_and_views",
+            "test_diagnostic_identity_preserves_raw_cmd_unknown_fields_and_nested_order",
+            "test_diagnostic_identity_rejects_reverse_missing_numeric_and_boolean_oom"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 17,
+      "requirement": "Rejected-start diagnostic comparison accepts only unchanged permitted OOM values or typed false-to-null after fully authenticated rejection proof under the pinned runtime; rejects missing/forged/mismatched proof, unapproved phase/runtime, true/0/1/missing/reverse transitions and any unrelated HostConfig/Config/type/order change. Keep full unknown keys and mount row contents.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_later_continuity_keeps_oom_cmd_and_no_start_state_exact"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        },
+        {
+          "methods": [
+            "test_rejected_start_response_is_not_candidate_output_or_exit_authority"
+          ],
+          "source": "tests/test_candidate_client_observer_v4.py"
+        }
+      ],
+      "id": 18,
+      "requirement": "Later post-rejection CLI continuity keeps OOM exact, permits only approved top-level mount order, and rejects Cmd null/[] changes, changed source/recipe/ID or changed no-start State. The new diagnostic receipt must never satisfy product natural-completion or startup_comparison authority.",
+      "status": "source-level coverage reviewed; not an execution result"
+    },
+    {
+      "evidence": [
+        {
+          "methods": [
+            "test_complete_responses_bind_raw_bytes_for_all_framing_modes",
+            "test_failed_raw_or_completion_retention_keeps_null_metadata_and_cleans"
+          ],
+          "source": "tests/test_candidate_client_process_v4.py"
+        },
+        {
+          "methods": [
+            "test_actual_final_qualifier_authenticates_retained_cleanup_and_checkpoint",
+            "test_actual_final_qualifier_rejects_incomplete_cleanup_removal_and_checkpoint",
+            "test_composed_raw_helper_real_transport_and_qualifier_require_complete_start_proof",
+            "test_request_runtime_recipe_and_dispatch_order_are_independently_bound"
+          ],
+          "source": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py"
+        }
+      ],
+      "id": 19,
+      "requirement": "Record actual ordering with mocked retention: complete raw start response, durable start-response-completion receipt, finally cleanup inspection, final transport result, then owned-removal terminal. A completion-receipt retention failure leaves completion metadata unavailable but still performs bounded owned cleanup; final result metadata must match the separately retained receipt exactly.",
+      "status": "source-level coverage reviewed; not an execution result"
+    }
+  ],
+  "preservation": {
+    "counts": {
+      "assertion_cells": 900,
+      "authored_controls": 11,
+      "explicitly_unspecified_cells": 32,
+      "histories": 57,
+      "invocations": 305
+    },
+    "frozen_files": "No tracked v1/v2/v3 source, test, documentation or plan changed from baseline; component reviewers also reconciled their frozen source hashes. Earlier failed observations remain failed.",
+    "process_ast": "Thirty unchanged top-level functions/classes remain AST-identical, including production identity/completion helpers.",
+    "qualification_ast": "Eleven control definitions; roster/assertion/scoring helpers; complete unknown/unrun census; run_control; save_census; and seven physical control methods unchanged from v3. History/setup differences are version labels. Source-reviewed score-before-qualification and failed/unavailable separation remain.",
+    "scope": "No changed control source bytes, literal argv, expected product outcomes, deadlines, resource limits, scientific samples, product requirements or natural-completion authority.",
+    "shared_provider": {
+      "bytes": 23646,
+      "path": "gossip_harness/candidate_cli_cases_v1.py",
+      "sha256": "4bcd1f7d1d009bb158e45367396d2254b68cb00ae02df4fb460fb52361948e1c"
+    },
+    "tracked_changes_relative_to_baseline": [
+      "pyproject.toml",
+      "verification-manifest.json"
+    ]
+  },
+  "protocol": "candidate-b03-v4-independent-source-review-v1",
+  "repaired_findings": [
+    {
+      "area": "planned regression12",
+      "finding": "Post-parse retention failure matrix lacked successful204 acknowledgement case.",
+      "resolution": "Held process tests cover400 and204 across request/raw-response/completion write and checkpoint failure; acknowledged start may coexist with null durable metadata, no natural completion and bounded cleanup."
+    },
+    {
+      "area": "independent HTTP parsing",
+      "finding": "Draft parser admitted control/DEL bytes and used broad Unicode/Latin-1 whitespace trimming for framing headers.",
+      "resolution": "Held helper rejects invalid control bytes and trims HTTP SP/HTAB only; targeted negative cases discriminate these faults."
+    },
+    {
+      "area": "negative test strength",
+      "finding": "Transfer-Encoding whitespace and some size-bound negatives could fail for unrelated framing errors.",
+      "resolution": "Held tests use otherwise-valid framing and boundary-specific cases."
+    },
+    {
+      "area": "planned regressions14/19",
+      "finding": "Raw tests patched final qualification and pure bundle tests stopped before removal/absence/terminal/checkpoint checks; explicit cleanup identity substitutions were absent.",
+      "resolution": "Direct retained-fixture final-qualifier positives/negatives now cover cleanup, removal/absence, external checkpoint and ID/source/fixture/image/argv substitutions."
+    },
+    {
+      "area": "planned regressions13/19",
+      "finding": "Earlier helper authenticated owned-removal/absence bytes without asserting their first-checkpoint order after final transport and cleanup inspection.",
+      "resolution": "Held helper retains cleanup_durable_order and verifies strict checkpoint-backed order through container and volume removal/absence; coherently reindexed negative fixtures exercise it."
+    },
+    {
+      "area": "planned regression6",
+      "finding": "Separate raw-helper and final-qualifier tests did not compose actual controller/transport/qualifier interfaces.",
+      "resolution": "Held composed test keeps actual raw helper, controller retention/validation/removal, process HTTP handling and final qualifier over fake I/O; complete400 and lost-EOF cases each require exactly one fake start, cleanup and no retry."
+    }
+  ],
+  "reviewed_inert_drafts": [
+    {
+      "bytes": 85372,
+      "intended_repository_path": "tests/test_candidate_clients_docker_v4.py",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_clients_docker_v4.py",
+      "present_at_intended_path": false,
+      "sha256": "1dfb41f45743bae3565f49131dd95bff70430bf0475265ce89fc27d97c5fb40b"
+    },
+    {
+      "bytes": 68989,
+      "intended_repository_path": "tests/test_candidate_client_rejection_v4.py",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/test_candidate_client_rejection_v4.py",
+      "present_at_intended_path": false,
+      "sha256": "61a4f8a12641d4f7d19e1fbbba2f599a8137f7d0a8adaf755af234811f1327c1"
+    },
+    {
+      "bytes": 14619,
+      "intended_repository_path": "docs/candidate-client-qualification-plan-v4.md",
+      "path": "/private/tmp/gossip-b03-v4-qualification-draft/candidate-client-qualification-plan-v4.md",
+      "present_at_intended_path": false,
+      "sha256": "c72718a4f80934998ee92fe6bffe71cda3e0837f1bb1eb86c2fc953d3725c386"
+    }
+  ],
+  "reviewed_worktree_files": [
+    {
+      "bytes": 56273,
+      "path": "gossip_harness/candidate_client_process_v4.py",
+      "sha256": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b"
+    },
+    {
+      "bytes": 73883,
+      "path": "tests/test_candidate_client_process_v4.py",
+      "sha256": "5878c031ccca6127827277953a1f30be09bd78f01498eaff3430711b70acc51f"
+    },
+    {
+      "bytes": 10439,
+      "path": "docs/candidate-client-process-v4.md",
+      "sha256": "a2b8fd3ec0a3f08389c5aeaa6aad63a0588c63643b5adcdcb5374e16684de059"
+    },
+    {
+      "bytes": 55020,
+      "path": "gossip_harness/candidate_client_execution_v4.py",
+      "sha256": "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1"
+    },
+    {
+      "bytes": 50839,
+      "path": "tests/test_candidate_client_execution_v4.py",
+      "sha256": "035892bca9576b3242a21a64b43c9c8707b6498a327cf1fc189680f7ceb7bc85"
+    },
+    {
+      "bytes": 16851,
+      "path": "docs/candidate-client-execution-v4.md",
+      "sha256": "4c3919f54792ad6de7d4a2bbf5becc23a500aa752304e3c9bc937962ffc64fc8"
+    },
+    {
+      "bytes": 20370,
+      "path": "gossip_harness/candidate_client_observer_v4.py",
+      "sha256": "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d64a31208235"
+    },
+    {
+      "bytes": 31791,
+      "path": "tests/test_candidate_client_observer_v4.py",
+      "sha256": "f340c756a3574446f8a3d8644839f77c1d56d02153d14dbf89e9898b13bca91b"
+    },
+    {
+      "bytes": 10987,
+      "path": "docs/candidate-client-observation-v4.md",
+      "sha256": "fdcb7c23c32a47e6c0c1f3920813aeda5be0ac6a907a8373964075d9660f8772"
+    }
+  ],
+  "reviewers": [
+    {
+      "agent": "/root/b03_assertion_review",
+      "scope": "Coordinator; controller and observer source/docs/interfaces, exact hashes, frozen baseline, nineteen-regression reconciliation. Final receipt author."
+    },
+    {
+      "agent": "/root/b03_assertion_review/process_v4_review",
+      "scope": "Independent generic process/HTTP metadata/argv/runtime source, tests and docs; no qualification-helper clearance."
+    },
+    {
+      "agent": "/root/b03_assertion_review/qualification_v4_review",
+      "scope": "Independent qualification helper, raw startup/cleanup integration, tests/docs and control/census preservation; delegated a disjoint bounded HTTP parser/runtime/no-start predicate read to parser_review."
+    }
+  ],
+  "source_conclusions": [
+    "Controller independently forwards registered step argv to initial sandbox validation and transport, separately from inspection data; runtime and command/response policies plus plan enter evaluator/configuration/limits identities.",
+    "Process freezes declared argv/runtime, validates initial and fresh prestart views before attachment, preserves explicit Cmd:null versus Cmd:[] raw identity, and limits singleton-null admission to the exact declared invocation and pinned runtime.",
+    "Complete start-response metadata is assigned only after normal bounded HTTP return, observed socket EOF, durable raw retention and a distinct durable completion receipt. Cleanup remains in finally; final process/transport result binds the receipt afterward.",
+    "The specific HTTP400/message/classifier/bookkeeping127/no-start predicate belongs only to qualification. Generic complete response metadata and diagnostic status alone create no candidate stdout/stderr, natural exit or product acceptance.",
+    "The separately named rejected-start diagnostic comparison requires authenticated proof and pinned runtime; only the planned exact typed OOM false-to-null transition plus approved top-level full-row mount inventory comparison apply. Later continuity keeps OOM exact and all other identity values ordered/type-exact.",
+    "All four raw helper inspection sites decode strictly before use. Independent parser, exact source/recipe/runtime bindings, complete response receipt authentication and ordered retained cleanup remain prospective qualification evidence.",
+    "Observer semantics are AST-identical to v1/v2/v3 excluding only the module docstring and two protocol constants; older-domain observations are rejected and new rejection metadata cannot supply product assertion authority."
+  ],
+  "status": "clear within bounded source-review scope; draft installation and combined/physical qualification not established",
+  "verification_and_authority_limits": [
+    "All reviewer activity was read-only source/AST/retained-evidence inspection; no reviewer ran tests, candidate imports, Docker/Engine/provider calls, retries or candidate code.",
+    "Only this new review receipt was written by the coordinator. No author file, held source, prior review or historical result was changed.",
+    "The three qualification files were reviewed as inert drafts under /private/tmp. Root reports their active-worktree writes await the separate approval process; this receipt does not authorize or perform installation.",
+    "Root separately executed isolated temporary draft checks and retained their results. Earlier27-method or30-method successes are not automatically results for the final31-method snapshot. This source review neither duplicates nor certifies those executions.",
+    "No coherent installed combined-tree, physical qualification, product acceptance or comparative/statistical evidence is claimed. Root owns exact final configuration, manifest, combined gates, freeze and any physical phase.",
+    "Journal order through owned removal/absence is checkpoint-backed. Root-level terminal timing is evidenced by trusted source flow, not by a newly invented independent terminal checkpoint or external attestation.",
+    "A new phase one still requires one reference persistence history and all11 unchanged controls under the new freeze; only genuine complete success permits the remaining56 histories. Frozen v3 remains failed.",
+    "Coverage is bounded to the nineteen approved prospective requirements and reviewed interfaces. Future edits invalidate affected hash-bound findings; no hidden product or scientific acceptance conditions were added."
+  ]
+}

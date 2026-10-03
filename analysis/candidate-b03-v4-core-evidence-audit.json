@@ -1,0 +1,47 @@
+{
+  "baseline_commit": "f2bdbf155b98c5999e4943293d7e081c931eb222",
+  "core": {
+    "cleanup_completed": true,
+    "fixture_errors": [],
+    "input_hashes_matched": 474,
+    "methods_passed": 159,
+    "ordered_requests_raw_results_result_and_log_hashes_agree": true,
+    "returncodes_zero": true,
+    "reused": 0,
+    "runner_fingerprint_and_runtime_records_match": true,
+    "source_runtime_drift": false,
+    "workers": 11
+  },
+  "draft_targets_absent": 3,
+  "limitations": [
+    "Read-only retained-evidence reconciliation; no tests, Engine, Docker, provider calls or candidate execution.",
+    "No v4 physical qualification or product acceptance.",
+    "Static gate recognizes its existing117-diagnostic type baseline; no whole-repository zero-diagnostic type-safety claim."
+  ],
+  "mismatches": [],
+  "pins": {
+    "pyproject.toml": "8ff6122fca35d0c75840451fc16677953bf5bf42a0b96e02f8585d0d07b7c4a7",
+    "runs/candidate-b03-v4-core-qualification-1/20261003T184223-0a39cc27/summary.json": "587fad76bb1300128e3a73c2502df0f85cbd999403b650315e24c35717156f8b",
+    "runs/candidate-b03-v4-draft-review-3/receipt.json": "2aa2efd1a7800ea2ae83ee452722cb80b9ca131a8af5f81536756ab70d1bd6ab",
+    "runs/candidate-b03-v4-source-review-1.json": "a0ab58ad682a080825879c7ea20408c95439fd300740cef74a56824199c707e8",
+    "verification-manifest.json": "f83f695a864af6c99cd0672babb88080ee2bd69a5b72a7c76915e6ca1f9fe095"
+  },
+  "prior_candidate_client_cli_b03_files_byte_identical": 54,
+  "recorded_at": "2026-10-03T18:52:36.603979+00:00",
+  "recording_provenance": "Root recorded the independent reviewer final response; this JSON is a root-authored transcription of reported findings, not a new physical execution.",
+  "reviewed_installed_files_matched": 9,
+  "reviewer": "/root/b03_boundary_review",
+  "schema": "candidate-b03-v4-core-retained-evidence-audit-v1",
+  "separate_draft": {
+    "installed_qualification": false,
+    "methods_passed": 31,
+    "ordered_roster_results_hashes_runtime_agree": true,
+    "receipt_files_matched": 22,
+    "workers": 1
+  },
+  "status": "bounded reconciliation passed",
+  "tracked_changes_observed_before_root_staging": [
+    "pyproject.toml",
+    "verification-manifest.json"
+  ]
+}

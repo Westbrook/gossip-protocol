@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "artifact_id": "candidate-b03-c03-policy-review-1",
+  "artifact_kind": "bounded_independent_http_normative_policy_supplement",
+  "status": "future_C03_design_input_not_acceptance",
+  "reviewer": "/root/b02_wrong_kind_policy_review",
+  "worktree": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol",
+  "inspected_git_commit": "f2bdbf155b98c5999e4943293d7e081c931eb222",
+  "purpose_boundary": {
+    "target_count": 8,
+    "unchanged_target_ids": [
+      "V0-HTTP-01",
+      "V0-HTTP-02",
+      "V0-HTTP-03",
+      "V0-HTTP-04",
+      "M1-HTTP-01",
+      "M1-HTTP-02",
+      "M1-I30",
+      "M1-I31"
+    ],
+    "interactions_only": [
+      "V0-CLI-03",
+      "M1-A08"
+    ],
+    "current_C01_C02_v4_gate": false,
+    "new_blocker": false,
+    "product_verdict": "not_evaluated",
+    "continuation": "Implement supported future HTTP assertions without waiting for optional unspecified facets. This receipt changes no product norm, denominator, current qualification or execution authority."
+  },
+  "scope": {
+    "candidate_reference_implementation_read": false,
+    "candidate_reference_outputs_read": false,
+    "tests_read": false,
+    "tests_executed": 0,
+    "Engine_calls": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "frozen_source_test_config_edits": 0,
+    "new_receipt_only": true,
+    "read_scope": "Authorized C03 planning receipt plus frozen V0/M1 requirement strings and relevant cumulative/inventory clauses. No implementation, test or execution artifacts were opened.",
+    "disclosure": "The authorized plan contains contextual qualification summaries and source-file names/hashes. They were encountered as plan text, not inspected as outputs, and are not evidence for any product expectation. Its normative-ambiguity questions identify scope only."
+  },
+  "source_files": [
+    {
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "sha256": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "role": "primary frozen V0_REQUIREMENTS and M1_REQUIREMENTS strings only"
+    },
+    {
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "sha256": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a",
+      "role": "mandatory obligation records; coverage suggestions separately qualified"
+    },
+    {
+      "path": "library-cumulative-product-v1.json",
+      "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "role": "preserved compatibility and explicitly scoped later requirements"
+    },
+    {
+      "path": "library-cumulative-product-v2.json",
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "role": "preserved compatibility and explicitly scoped amendments"
+    },
+    {
+      "path": "runs/candidate-b03-c03-intake-plan-1.json",
+      "sha256": "41ce879443ee4ceafac92577faecec09613a2c595be91bb47eccb8b8307953ae",
+      "role": "authorized question/scope input, not a product specification"
+    }
+  ],
+  "decision_rule": {
+    "required": "Source-supported exact semantic shapes, exact assigned codes, rejection, statuses, action effects and confinement may be scored independently.",
+    "inferential": "Natural cross-interface interpretations are useful positive controls but must be labeled inferential. An alternate outer wrapper alone does not become a mandatory failure without explicit authority.",
+    "unspecified": "Retain an exact-code/outer-wrapper/parser-policy facet as unspecified rather than inventing a code set, recursively extracting expected keys or learning accepted values from outputs.",
+    "unavailable": "Insufficient authenticated capture, framing support, state evidence or observation budget is unavailable, not a new product-rule violation.",
+    "no_laundering": "An unspecified sibling does not erase a proven supported failure, and a supported pass does not silently close unspecified or unobserved facets.",
+    "no_allowlists": "No observed-code, observed-wrapper, reference-layout or implementation-parser allowlist."
+  },
+  "target_mapping": [
+    {
+      "id": "V0-HTTP-01",
+      "supported": [
+        "Required GET /api/documents with q/offset/limit, GET /api/documents/ID, GET /api/export, POST /api/export with ids, POST /api/import with source.",
+        "Successful HTTP responses are 200 JSON. List/search return exactly documents plus total; show returns one complete six-field document; export returns legacy format plus source-ordered six-field documents with all/selection semantics and no timestamps.",
+        "Validate all selected IDs before export and reject duplicates/missing selections without a partial successful export. Validate content/identity/order independently of raw JSON spelling."
+      ],
+      "inferential_or_unspecified": [
+        "POST /api/import exact outer {status,document} wrapper is explicit in the workflow-adapter paragraph, not the HTTP paragraph. Require supported success/JSON/import effects and preserve literal HTTP outer-wrapper equality as inferential.",
+        "Legacy export rejects duplicate/missing IDs, but frozen export wording does not explicitly assign their exact error codes. Do not silently import M3 export-bundle not_found mapping into M1.",
+        "No canonical JSON whitespace, key order, Unicode escaping, download filename or browser action is established by an HTTP-only export observation."
+      ],
+      "citations": [
+        "V0-IDENTITY",
+        "V0-QUERY-EXPORT",
+        "V0-HTTP",
+        "V0-ADAPTER",
+        "INV-V0-HTTP-01"
+      ]
+    },
+    {
+      "id": "V0-HTTP-02",
+      "supported": [
+        "Error responses have the error/CODE JSON envelope. not_found is 404; source_changed is 409; otherwise 400, with additive M1 conflicts below.",
+        "Unsupported routes return 404. Missing required POST fields, extra POST fields and decisive malformed query values are invalid_request.",
+        "For missing shown documents use the explicit not_found classification. For changed same-source import use source_changed. Isolate one cause so arbitrary precedence among simultaneous defects is not imposed."
+      ],
+      "inferential_or_unspecified": [
+        "The unsupported-route sentence fixes 404 but does not separately assign that route's exact code.",
+        "Repeated/unknown query keys, malformed percent-encoding variants, allowed textual integer spellings and unmentioned HTTP methods are not fully defined by M1's malformed-query-values clause.",
+        "Do not backport all M2 new-route parsing clauses into M1 merely because cumulative v2 is also pinned."
+      ],
+      "citations": [
+        "V0-QUERY-EXPORT",
+        "V0-HTTP",
+        "INV-V0-HTTP-02",
+        "CUMULATIVE-CLIENTS"
+      ]
+    },
+    {
+      "id": "V0-HTTP-03",
+      "supported": [
+        "POST media type must be application/json and body size at most 65536 raw bytes. A complete otherwise-legal 65536-byte body is within the bound; 65537 is rejected.",
+        "A wrong/missing required media type, complete syntactically malformed JSON or nonobject value where a route requires an object is not a legal request. Require rejection and the general HTTP error presentation; generic isolated request-validation failures fall under otherwise-400.",
+        "Use complete unambiguous requests and preserve transmitted bytes. Whitespace padding and multibyte content can isolate byte bounds without changing semantic member limits."
+      ],
+      "inferential_or_unspecified": [
+        "Exact error code for HTTP-body overflow, wrong/missing media type, malformed HTTP JSON or a generic nonobject body is not separately assigned. A schema-invalid JSON bundle on disk is expressly invalid_json, but that is not automatically the HTTP request parser's error code.",
+        "Charset parameters, media-type normalization, duplicate/conflicting Content-Length, Transfer-Encoding combinations, truncated input, chunked-request support and malformed HTTP framing are not defined by the 65536-byte rule.",
+        "Response capture/header budgets and timeouts are evaluator limits, not product output limits. A framing/parser refusal alone must not be relabeled product failure."
+      ],
+      "citations": [
+        "V0-HTTP",
+        "M1-DISCOVERY",
+        "INV-V0-HTTP-03"
+      ]
+    },
+    {
+      "id": "V0-HTTP-04",
+      "supported": [
+        "In an M1 profile, GET /health returns exactly {status:'ok',schema:0} with success200 JSON."
+      ],
+      "inferential_or_unspecified": [
+        "This is a compatibility health projection, not physical database schema proof. Cumulative M2/M3 retain schema0; M4 explicitly changes it to4. Bind the milestone rather than using an observed-schema allowlist."
+      ],
+      "citations": [
+        "V0-HTTP",
+        "INV-V0-HTTP-04",
+        "CUMULATIVE-HEALTH"
+      ]
+    },
+    {
+      "id": "M1-HTTP-01",
+      "supported": [
+        "GET /api/jobs explicitly returns {jobs:[JOB,...]} sorted by job_id; JOB has exactly job_id,epoch,state,total,completed,error.",
+        "POST /api/jobs, GET /api/jobs/ID and POST prepare/commit/cancel/retry routes exist. Commit body is {epoch:E}; other action bodies are {}.",
+        "The routes invoke the specified persisted job operations: queued/running/terminal transitions, running prepare replay, repeated cancelled cancel, retry rules, stale-epoch priority and completed receipt replay retain their semantic obligations.",
+        "Use the explicit GET /api/jobs and document routes for post-state checks. Missing jobs are not_found. Validation failure may lawfully persist a failed job while leaving documents/blobs unchanged."
+      ],
+      "inferential_or_unspecified": [
+        "Successful POST submit, GET single-job and POST action literal outer HTTP wrappers are not individually specified in the HTTP route declaration. Returning JOB/TOKEN/RECEIPT directly is the natural cross-interface reading, but their exact equality is explicitly stated for methods and workflow operations, not a blanket HTTP serialization sentence.",
+        "Preserve exact JOB/TOKEN/RECEIPT meaning and supported action effects without recursive searches through arbitrary wrappers or accepting an output-learned set of containers.",
+        "An HTTP public-state census is not proof of raw blob/receipt conservation, transaction atomicity or internal delegation."
+      ],
+      "citations": [
+        "M1-JOBS",
+        "M1-COMMIT",
+        "M1-HTTP-INTERFACES",
+        "M1-STORE",
+        "M1-HTTP-BODIES",
+        "M1-ADAPTER",
+        "INV-M1-HTTP-01"
+      ]
+    },
+    {
+      "id": "M1-HTTP-02",
+      "supported": [
+        "job_conflict, job_state and stale_epoch use409; not_found uses404; other domain errors use400; success200. Inherited source_changed409 remains binding.",
+        "Source explicitly assigns job_conflict to a different manifest for the same job; job_state to named state misuse; stale_epoch to wrong epoch before state checks; not_found to missing jobs. Isolate these cases and assert their exact codes and statuses.",
+        "Explicit malformed request fields use invalid_request400; a genuine isolated intake I/O error uses io_error400."
+      ],
+      "inferential_or_unspecified": [
+        "A status mapping is not an independent assignment of one of those codes to every possible bad input. Unknown exact classifications must not be filled from candidate/reference behavior."
+      ],
+      "citations": [
+        "V0-HTTP",
+        "M1-JOBS",
+        "M1-COMMIT",
+        "M1-STORE",
+        "M1-DISCOVERY",
+        "M1-HTTP-STATUS",
+        "INV-M1-HTTP-02"
+      ]
+    },
+    {
+      "id": "M1-I30",
+      "supported": [
+        "Job submission body is exactly one of {job_id,entries}, {job_id,directory,namespace}, {job_id,zip,namespace}, {job_id,json}. Required fields and extra-field rejection are exact.",
+        "Missing selectors/required fields, multiple selectors and JSON namespace presence violate a declared closed form; isolated missing/extra POST-field cases are invalid_request400 with no admission.",
+        "Shape/job-ID errors in ordinary create_job are explicitly invalid_request. Shape-valid semantic entry errors are deferred to prepare; do not reject every semantic-invalid entries submission at HTTP admission."
+      ],
+      "inferential_or_unspecified": [
+        "Wrong-type cases must identify a precise source classification. Do not assume every invalid namespace/path value has the same exact code as a missing/extra transport field.",
+        "Exact successful submit HTTP wrapper remains the M1-HTTP-01 inferential facet, while admission/state assertions remain supported."
+      ],
+      "citations": [
+        "V0-HTTP",
+        "M1-STORE",
+        "M1-DISCOVERY",
+        "M1-HTTP-BODIES",
+        "INV-I30"
+      ]
+    },
+    {
+      "id": "M1-I31",
+      "supported": [
+        "Service input paths are relative to Service.root and confined under inherited path rules; directory means directory; bundle suffixes are .zip/.json; namespace is a valid key and combined source keys retain256-byte/16-segment limits.",
+        "Reject traversal and symlinks without following them; their intake code is explicitly invalid_source. Invalid discovery admits no job and preserves existing job/catalog state.",
+        "Wrong filesystem kind and wrong bundle suffix are invalid intake and must be rejected without admission. Valid nested roots/keys and precise within-bound combinations are positive cases."
+      ],
+      "inferential_or_unspecified": [
+        "Wrong-kind and wrong-suffix exact codes are not individually assigned; do not fabricate an observed-code allowlist.",
+        "If a namespace/path-length/depth or lexical-path representative is not decisively covered by a named classification, retain its exact-code facet as unspecified while scoring the explicit validity bound, rejection and no admission. The text's too_large mapping for content/archive byte bounds must not automatically classify every source-key syntax limit.",
+        "Unsafe-looking fixture construction and trustworthy symlink observations are evaluator mechanics. Missing qualified link evidence leaves those cases unobserved and does not prevent regular-path cases."
+      ],
+      "citations": [
+        "V0-PATHS",
+        "M1-INTAKE",
+        "M1-DISCOVERY",
+        "M1-HTTP-BODIES",
+        "INV-I31"
+      ]
+    }
+  ],
+  "response_wrapper_matrix": [
+    {
+      "route": "GET /api/documents",
+      "shape": "{documents:[DOCUMENT,...],total:N}",
+      "authority": "explicit global operation definition applied to named route"
+    },
+    {
+      "route": "GET /api/documents/ID",
+      "shape": "DOCUMENT",
+      "authority": "explicit global show result; missing is not_found"
+    },
+    {
+      "route": "GET /api/export; POST /api/export",
+      "shape": "{format:'local-research-library-v0',documents:[DOCUMENT,...]}",
+      "authority": "explicit global export result applied to named routes"
+    },
+    {
+      "route": "POST /api/import",
+      "shape": "{status,document}",
+      "authority": "explicit for workflow adapter; inferential exact outer shape for HTTP"
+    },
+    {
+      "route": "GET /api/jobs",
+      "shape": "{jobs:[JOB,...]}",
+      "authority": "explicit HTTP route text"
+    },
+    {
+      "route": "GET /api/jobs/ID; POST /api/jobs; POST job actions",
+      "shape": "direct JOB/TOKEN/RECEIPT",
+      "authority": "explicit method/adapter values; inferential exact outer HTTP serialization"
+    },
+    {
+      "route": "GET /health",
+      "shape": "{status:'ok',schema:0}",
+      "authority": "explicit M1 route text"
+    },
+    {
+      "route": "domain-error responses",
+      "shape": "{error:CODE}",
+      "authority": "explicit general HTTP error envelope"
+    }
+  ],
+  "error_code_dispositions": {
+    "explicit": [
+      "not_found: missing shown document and missing job",
+      "source_changed: same source with changed imported bytes",
+      "job_conflict: different canonical manifest for existing job ID",
+      "job_state: specified illegal terminal/state operations",
+      "stale_epoch: wrong epoch before terminal-state check",
+      "invalid_request: missing/extra POST fields, decisive malformed query values and specified shape/job-ID errors",
+      "io_error: actual intake I/O errors",
+      "invalid_archive/invalid_json: ZIP/JSON intake-file syntax; invalid_json for bundle schema",
+      "invalid_source: intake traversal/symlinks",
+      "invalid_utf8: bad intake UTF-8",
+      "invalid_batch: intake file count/duplicate canonical source-key failures",
+      "too_large: intake expansion/content/archive byte bounds"
+    ],
+    "not_assigned_by_reviewed_M1_text": [
+      "exact unsupported-route code (404 is explicit)",
+      "exact HTTP import success wrapper",
+      "exact selected-export duplicate/missing-ID error codes",
+      "exact HTTP body-size/media-type/JSON-parser error codes",
+      "exact wrong-kind/wrong-suffix code",
+      "all possible malformed namespace/source-key bound codes",
+      "every HTTP action success outer wrapper"
+    ],
+    "status_policy": "Use exact source mappings for source-classified cases. Isolated generic request-validation failures use otherwise400, independently of their unspecified code string; unsupported routes require404. For selected missing-ID or another genuinely unresolved classification where the exact fixed status also depends on that classification, preserve that fixed-status facet as unqualified and separately observe the contract's general code-to-status relation. That relation is not an allowlist and does not validate the correctness of an unspecified reported code."
+  },
+  "labeled_interactions": [
+    {
+      "id": "V0-CLI-03",
+      "denominator_role": "interaction_only",
+      "supported": "serve binds127.0.0.1; inventory records only127.0.0.1. A wildcard IPv4/IPv6 service listener contradicts this. Independently inspect actual service-port listeners; successful loopback access alone is insufficient.",
+      "limits": "Trusted listener evidence establishes the observed address/port during a bound interval, not all future behavior, server ownership or source delegation. GET / serving a page is not browser-action/accessibility qualification. serve is long-lived; evaluator shutdown is not a required finite data-command exit0. Reopening state across separate server processes can support persistence, not M3 abrupt-crash recovery.",
+      "citations": [
+        "V0-CLI-LISTENER",
+        "INV-LISTENER",
+        "M1-JOBS"
+      ]
+    },
+    {
+      "id": "M1-A08",
+      "denominator_role": "interaction_only",
+      "supported": "fail_before_commit is offline only and never an HTTP/browser request field. Adding it to otherwise legal commit body is an extra POST field: invalid_request400, no action executed and no injected-failure response. False as well as true is an extra field.",
+      "limits": "This proves transport nonexposure only. It does not prove the offline keyword-only signature, rollback hook, transaction atomicity or Store hook-type semantics. Keep those obligations separate.",
+      "citations": [
+        "M1-OFFLINE-HOOK",
+        "V0-HTTP",
+        "M1-HTTP-BODIES",
+        "INV-HOOK"
+      ]
+    }
+  ],
+  "representation_and_observation_policy": {
+    "baseline": "Use standard complete requests with literal application/json and explicit correct length to exercise the supported core without choosing an ambiguous HTTP dialect.",
+    "not_fixed_by_M1": "Header order/case, reason phrase, JSON whitespace/key order/escaping, particular response framing choice, universal chunked-request support, charset-parameter acceptance, duplicate query/object-key policies and exact raw socket byte sizes are not assigned by the cited M1 product clauses.",
+    "parser": "Complete successful JSON and error-envelope semantics are required; do not pass a valid-looking prefix or recursively find expected keys. A parser refusing an ambiguous representation is not alone a product failure. Where an explicit typed field violates its required value/type, that supported discrepancy remains a failure.",
+    "limits": "65536 POST request bytes is a product bound. Declared response/header/journal/time capture bounds are observation limits. Timeout/truncation/cap hits leave affected evidence unavailable; no fixed M1 response-size cap or latency deadline is created.",
+    "precedence": "Use single-error fixtures unless a particular ordering is explicit, such as stale_epoch before terminal-state inspection.",
+    "milestone": "M1 health is schema0; future cumulative-v2 counter/range amendments explicitly apply to their declared future profile and leave the frozen pilot untouched. A shared contract hash does not automatically add later-milestone acceptance cells.",
+    "independence": "Public HTTP state readback can corroborate current jobs/documents; it cannot by itself establish blob conservation, hidden receipt bytes, database atomicity, runtime sandbox provenance, full browser behavior or whole-ID closure."
+  },
+  "compact_controls": [
+    "Explicit-shaped success/error bodies with legal alternative JSON formatting produce equivalent semantic judgments.",
+    "Correct status with wrong explicitly required body/code fails; an unspecified sibling cannot hide that failure.",
+    "Unknown route404 remains supported even while exact route-error code stays unspecified.",
+    "Otherwise-valid65536-byte body versus65537 isolates the product request-byte bound; output caps remain observation policy.",
+    "All four legal job-submit shapes succeed; missing/extra fields and an HTTP fail_before_commit field fail invalid_request400 without admission/action.",
+    "A correct action state transition with an alternative nonprescribed outer HTTP wrapper does not become an exact-wrapper failure; explicit GET jobs provides independent state evidence.",
+    "Running prepare replay, cancelled cancel replay, completed commit replay and stale-epoch-first cases prevent an overbroad all-terminal-actions-fail evaluator.",
+    "Wrong-kind/suffix rejection is scored independently of an unspecified code; actual traversal/symlink/io-error cases exercise named codes.",
+    "Loopback-only and wildcard listener controls distinguish reachability from bind-address compliance.",
+    "Truncated/ambiguous wire evidence remains unavailable while a separately complete observed product discrepancy is retained."
+  ],
+  "citations": [
+    {
+      "id": "V0-PATHS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 38,
+      "end": 44
+    },
+    {
+      "id": "V0-IDENTITY",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 46,
+      "end": 54
+    },
+    {
+      "id": "V0-QUERY-EXPORT",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 56,
+      "end": 63
+    },
+    {
+      "id": "V0-CLI-LISTENER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 65,
+      "end": 70
+    },
+    {
+      "id": "V0-HTTP",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 72,
+      "end": 79
+    },
+    {
+      "id": "V0-ADAPTER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 81,
+      "end": 90
+    },
+    {
+      "id": "M1-INTAKE",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 97,
+      "end": 111
+    },
+    {
+      "id": "M1-JOBS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 114,
+      "end": 129
+    },
+    {
+      "id": "M1-COMMIT",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 131,
+      "end": 144
+    },
+    {
+      "id": "M1-HTTP-INTERFACES",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 146,
+      "end": 158
+    },
+    {
+      "id": "M1-STORE",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 160,
+      "end": 176
+    },
+    {
+      "id": "M1-OFFLINE-HOOK",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 177,
+      "end": 179
+    },
+    {
+      "id": "M1-DISCOVERY",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 181,
+      "end": 192
+    },
+    {
+      "id": "M1-HTTP-BODIES",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 194,
+      "end": 199
+    },
+    {
+      "id": "M1-HTTP-STATUS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 200,
+      "end": 204
+    },
+    {
+      "id": "M1-ADAPTER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 206,
+      "end": 212
+    },
+    {
+      "id": "INV-V0-HTTP-01",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1753,
+      "end": 1780
+    },
+    {
+      "id": "INV-V0-HTTP-02",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1799,
+      "end": 1826
+    },
+    {
+      "id": "INV-V0-HTTP-03",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1845,
+      "end": 1872
+    },
+    {
+      "id": "INV-V0-HTTP-04",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1892,
+      "end": 1902
+    },
+    {
+      "id": "INV-M1-HTTP-01",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 2096,
+      "end": 2123
+    },
+    {
+      "id": "INV-M1-HTTP-02",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 2188,
+      "end": 2220
+    },
+    {
+      "id": "INV-I30",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 5052,
+      "end": 5084
+    },
+    {
+      "id": "INV-I31",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 5105,
+      "end": 5142
+    },
+    {
+      "id": "INV-LISTENER",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1695,
+      "end": 1732
+    },
+    {
+      "id": "INV-HOOK",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 3618,
+      "end": 3647
+    },
+    {
+      "id": "CUMULATIVE-CLIENTS",
+      "path": "library-cumulative-product-v1.json",
+      "start": 483,
+      "end": 487
+    },
+    {
+      "id": "CUMULATIVE-COMPATIBILITY",
+      "path": "library-cumulative-product-v1.json",
+      "start": 729,
+      "end": 732
+    },
+    {
+      "id": "CUMULATIVE-HEALTH",
+      "path": "library-cumulative-product-v1.json",
+      "start": 773,
+      "end": 789
+    },
+    {
+      "id": "CUMULATIVE-V2-CLIENTS",
+      "path": "library-cumulative-product-v2.json",
+      "start": 508,
+      "end": 513
+    },
+    {
+      "id": "CUMULATIVE-V2-COMPATIBILITY",
+      "path": "library-cumulative-product-v2.json",
+      "start": 760,
+      "end": 764
+    },
+    {
+      "id": "CUMULATIVE-V2-HEALTH",
+      "path": "library-cumulative-product-v2.json",
+      "start": 806,
+      "end": 822
+    },
+    {
+      "id": "CUMULATIVE-V2-COUNTERS",
+      "path": "library-cumulative-product-v2.json",
+      "start": 1444,
+      "end": 1450
+    },
+    {
+      "id": "NO-INVENTION-V1",
+      "path": "library-cumulative-product-v1.json",
+      "start": 1329,
+      "end": 1329
+    },
+    {
+      "id": "NO-INVENTION-V2",
+      "path": "library-cumulative-product-v2.json",
+      "start": 1368,
+      "end": 1368
+    }
+  ]
+}
