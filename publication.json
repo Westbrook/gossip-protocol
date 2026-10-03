@@ -2,9 +2,9 @@
   "protocol": "gossip-pages-publication-v1",
   "source_repository": "https://github.com/Westbrook/gossip-protocol",
   "source_commit": "052793a02c8e7d7791ab13927fd1633a3b710029",
-  "report_revision": 331,
-  "report_source_sha256": "1176f64a471bbffe0c57958ab776bebbbecf79bb8c004f7902458cef997b16a0",
-  "exported_at": "2026-10-03T02:05:49.358998+00:00",
+  "report_revision": 332,
+  "report_source_sha256": "0baff4dc57ab950e3cff020640f8308cd903ae87899b88a554223d5d97ba7658",
+  "exported_at": "2026-10-03T02:14:41.987909+00:00",
   "renderer": {
     "version": "pandoc 3.10",
     "sha256": "925e4d18f999e52744ee65e8e913f6d22a63db0b0096385dffe79762df75d0b7"
@@ -181,133 +181,133 @@
     },
     {
       "path": "docs/repository-guide.html",
-      "exported_sha256": "283d6d0266b606ea8be0d63098d332ec0a5e4dc31a4657f87b99ba6fd2b619dc",
+      "exported_sha256": "6f1ebe0ed7208e941100c7cbcde83350f6622b461e0e6b9b37b397d07d6472f3",
       "source": "README.md",
-      "source_sha256": "3f8cbb423177db3a52ee5033523b2d09ba29ee96a8ef0b97a87fdfac9550c6d0",
+      "source_sha256": "1750198c912ca2da1616db16ced550fe662bebfcb89321de031e29ca19581b6f",
       "provenance": "uncommitted-working-tree-snapshot"
     },
     {
       "path": "docs/development-verification.html",
-      "exported_sha256": "b198aa2098bdb0a40f8e54a798ce3c239cccafa9557342da829243ab1dd861f5",
+      "exported_sha256": "83e306893756fba4e3b879df9c7d27fd2d1f297a25142088c6329b9b01357b05",
       "source": "VERIFICATION.md",
       "source_sha256": "c862500a65dedf77494e79e47a2f0b8727757f424f8de9148bd2e3ef637a2e23",
       "provenance": "committed-source"
     },
     {
       "path": "docs/confirmatory-path-checkpoint-v1.html",
-      "exported_sha256": "6901dd484f7f45459912a278f8ee872319d98995c10c96aa7308cd8213d072da",
+      "exported_sha256": "eeea40d4ccf3d473df2fddee06f16e9bc6d690d8d2de8ee9d79ef8e820770c85",
       "source": "docs/confirmatory-path-checkpoint-v1.md",
       "source_sha256": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4",
       "provenance": "committed-source"
     },
     {
       "path": "docs/large-swarm-project-plan-v1.html",
-      "exported_sha256": "a5771f45358a856e162c4930ff954d65b80baaa28797d677f781049ae5a0b661",
+      "exported_sha256": "da8474c9a60af09cffe6dd8a9c0e95c89500f6a30dd23885c46fa4e5d031dbcd",
       "source": "docs/large-swarm-project-plan-v1.md",
       "source_sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-authority-v1.html",
-      "exported_sha256": "0a6a5ffb8634e09825b1761c258b70584614f8e797fbe7193ba2c5cd4e9705a0",
+      "exported_sha256": "d62b5d26af579adc490bc662c0fafa55c214775fdad99561db04d833e9ceb400",
       "source": "docs/peer-authority-v1.md",
       "source_sha256": "55dde872138cdb375fcd5263a86069f0c8f5d06dec51a3c9e910e7e438ab2132",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-candidate-v1.html",
-      "exported_sha256": "d2d561368b1f58be30beaf34ce99e6897d812209464683686a7435bfd278c758",
+      "exported_sha256": "23558a70bc5ca1903332a0609778dd39c36a85879c50ab0c28cc074a9c45da8a",
       "source": "docs/peer-candidate-v1.md",
       "source_sha256": "471704f0b6d4c481386ea4b03d0d78d747f2e7841eae6106e7c85770acc4fa6b",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-coding-dispatch-v1.html",
-      "exported_sha256": "27ec4fd0b5e4a9937be0dc0f984fbec1034eba373c466948612f1c5a78eb886a",
+      "exported_sha256": "3dcf663283ce5029f8202bfc2a00bf47aa0337b89f65fccb839acbab391f9377",
       "source": "docs/peer-coding-dispatch-v1.md",
       "source_sha256": "cd4db2fbe875cc2bb42b715414cc639c842fff4c4b161678094f63d2e7a9fd4f",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-coding-runtime-v1.html",
-      "exported_sha256": "8657b365d0b0984623dd6c392be5a76e3f88f8b8058c41873386f904c9b4432a",
+      "exported_sha256": "9018424b997d3bd7da6887d823169211ddfd5ad927c996b1736c66f79052c613",
       "source": "docs/peer-coding-runtime-v1.md",
       "source_sha256": "8490024841e21678b22ec177177b6a081123445bd3d544f9d31f03c0780763f9",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-financial-bridge-design-v2.html",
-      "exported_sha256": "206fbc577a9071409fed5c49141f40abc7964b91014bd4a27ec00e47fa564e85",
+      "exported_sha256": "d5a2efb99671f0c3bfd0024ef27729b892d982565d189de44adddc02f82f6865",
       "source": "docs/peer-financial-bridge-design-v2.md",
       "source_sha256": "673841478032a84b9e2ae02ad57580095dc42855efe527fb9fec1bbf4d8f534c",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-git-bundle-v1.html",
-      "exported_sha256": "817250ff686c1348a96262c6959473b828be2b739ce7290c81e45875d7bb697e",
+      "exported_sha256": "833d955be35fdaba47156f81acfa6e47e49f4be49347d650fb0a923221ee16af",
       "source": "docs/peer-git-bundle-v1.md",
       "source_sha256": "28b555ffedb0810227bc57804c372a5b0821cb9bade65381891b3a1b78fc2aa4",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-library-project-v3.html",
-      "exported_sha256": "0147c13456ffbf05c5b81ef4e30e8e1d7543dd55fbd4d5860a03b14a7d8c11bb",
+      "exported_sha256": "0e2be8e91e62d4c36eecbd6af6bdaae96c6c9514c1da451a7039101fbb584b01",
       "source": "docs/peer-library-project-v3.md",
       "source_sha256": "1dae2ec2b5cc8168698f6a2a1049750c0d6c8095fe3ab5b5e42e7ae5bd052ffe",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-library-project-v4.html",
-      "exported_sha256": "f06007bd6e41157d74b27ec8848c40acdae6e5b4d168b6a7d71981cb7b7fb9eb",
+      "exported_sha256": "4c384c37d94349f39ffa5fc8179e5dba4b98139910600ace5986d10344be6037",
       "source": "docs/peer-library-project-v4.md",
       "source_sha256": "a1d2691ee315391eb648d9fdc997b836770d274eb0fe763342c995aabf9b5fcc",
       "provenance": "uncommitted-working-tree-snapshot"
     },
     {
       "path": "docs/peer-payload-v1.html",
-      "exported_sha256": "59a2e8290d08741df4aacca6b507a1333b0ec61e79e96e7b7414be3a07e9a3f8",
+      "exported_sha256": "be853b4d3fd5c62a3d5b0d21449fe81d2a8826b5baef692424dda43869b68c21",
       "source": "docs/peer-payload-v1.md",
       "source_sha256": "ed3179879b200f1c2e1092c1749e2e921c2b5ed641651a2ef07f51ff4e663d05",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-project-foundations-v2.html",
-      "exported_sha256": "43058d9f5b3aba131994f0f8170e0479932d74708257ffcef83b1ae98b39fa33",
+      "exported_sha256": "a899bc20986db89e9230b3cd40521dc8bb7fa03bdfde64ad773209f0f42f45dd",
       "source": "docs/peer-project-foundations-v2.md",
       "source_sha256": "874ae6d81e0511de3a6d4e8b8b7c32f8766feb740b2708f9a697e308de55c696",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-project-runtime-v1.html",
-      "exported_sha256": "3225a11c5766ad259dbaf97181998532f118d3f2d090c96c1b68030c9b24fd62",
+      "exported_sha256": "3c2d2fcc982fd186ec33e2153715e91667d851187d527cf7c3b4497c04b34f04",
       "source": "docs/peer-project-runtime-v1.md",
       "source_sha256": "d98ed326ae357e7ee5339df7a1c4542212d0c985a2f43a4d38550371ada7a462",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-promotion-v1.html",
-      "exported_sha256": "f25d281c486136dd04b7a091b4bbc0a07e5733ce37bb03b6c197ebad8ced0087",
+      "exported_sha256": "2a536226e0e290b617cd047d51b4d33e9a28685f85e8a7bb9581081833cb59f7",
       "source": "docs/peer-promotion-v1.md",
       "source_sha256": "92d85b8a7ebbc121cdff0e828dedd3ff9551046fb0b4b9c8fc4ee7216a40bbec",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-role-runtime-v2.html",
-      "exported_sha256": "99ee8657a8eb481d7d0f1a5d7a49c7584187817d87e59422328bd386aa9de02a",
+      "exported_sha256": "fe4e5c7667611025d3422c0e8e2b71f035e12b20a9ca8f4b12135871062633cd",
       "source": "docs/peer-role-runtime-v2.md",
       "source_sha256": "35544dfb45954b7f8f77bbd9bae6107139b395ef5f343f01bb2d30c407bfdcfe",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-runtime-v1.html",
-      "exported_sha256": "f6fb778acd64daf351c62f346f5d3aa590e76035ec6ccfd9b6caceef03a55974",
+      "exported_sha256": "951acffb2d5184a81407d237f49b5f28f34e486247a291d0f8b6d2cc4048d48d",
       "source": "docs/peer-runtime-v1.md",
       "source_sha256": "83428f0619b54e2da319638a6366da476316d0e591347d556636e8c01772bbcf",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-work-v1.html",
-      "exported_sha256": "f7a313625477d9412194bf639e104a90f43a8b114dc12a0634cd49b50d49f64c",
+      "exported_sha256": "c2263de88cec19d7a709d8e8c50d4346a2e063fa1d8edd4261ed77331ebb7924",
       "source": "docs/peer-work-v1.md",
       "source_sha256": "c3faba549c6fe4c26c6c94ea1b34aeb38ff638b09d128da5d4d8a6abd4e0a073",
       "provenance": "committed-source"
@@ -324,23 +324,23 @@
     },
     {
       "path": "progress.json",
-      "exported_sha256": "02cd32a7585a24c9c4b3c20d159a550d811a44f457285be89e64596acab40b70"
+      "exported_sha256": "c43f31e56d9a10e473e53d5d1ba8436f6ccb0eb34010c8f8aa7d2f0881f6c7b4"
     },
     {
       "path": "index.html",
-      "exported_sha256": "941647606292d7fbada87323d53b53c81b4e29575d70d49308e6970942d86075"
+      "exported_sha256": "1c2608a9826a882e79e3076ba5363c99765f08459a8349495c3dbc824b9317dc"
     },
     {
       "path": "progress/archive.html",
-      "exported_sha256": "7dd8c5f06e3c57da067fab30773266f3a1874c9866541724a6843d94b695a41e"
+      "exported_sha256": "255aecb44164f0e162389356478186e4a65807d1932787f738f68b0b0fcba868"
     },
     {
       "path": "outputs/index.html",
-      "exported_sha256": "00a67acae33d37295aa4f3dee521380aadf2c1e6f93088256cd4ff02bbbb3a67"
+      "exported_sha256": "6720f9f41fc112dc411ae7adeedcecabafa2534599b664931d8fbc0f4ddd002d"
     },
     {
       "path": "docs/index.html",
-      "exported_sha256": "464fb1599008e2c5b14540a7986a65e29d8591983f8a4df9ac768ec6a84196b9"
+      "exported_sha256": "12b5edc994f3d97fbfd9f748d1d24cfefa6999d0b87be8de4ba3b1a146d3a076"
     }
   ],
   "tools_entries": [

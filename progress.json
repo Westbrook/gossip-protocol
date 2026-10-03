@@ -1,13 +1,13 @@
 {
   "protocol": "gossip-public-progress-v1",
   "title": "Gossip × Agents",
-  "source_revision": 331,
-  "snapshot_at": "2026-10-03T02:05:49.358998+00:00",
-  "last_meaningful_update": "2026-10-03T01:57:35+00:00",
+  "source_revision": 332,
+  "snapshot_at": "2026-10-03T02:14:41.987909+00:00",
+  "last_meaningful_update": "2026-10-03T02:13:19+00:00",
   "recorded_status": "working",
-  "verified_effort": 221,
+  "verified_effort": 223,
   "total_effort": 248,
-  "percent": 89,
+  "percent": 90,
   "tasks": [
     {
       "id": "reference",
@@ -683,10 +683,10 @@
       "title": "Build real peer-local coordination controls",
       "weight": 5,
       "status": "in_progress",
-      "note": "The 341-check pre-fix gate remains retained. Actual reference browser qualification failed on a locator timeout; driver fix requires new affected checks and matching physical qualification before full role rehearsal.",
+      "note": "Current browser/public UI changes have scoped verification; matching full qualification, physical acceptance and complete role rehearsal are still required. Fixed-phase/experimental limits and all future studies remain in scope.",
       "phase": "Live coordination",
       "inScope": true,
-      "updatedAt": "2026-10-03T01:57:35+00:00",
+      "updatedAt": "2026-10-03T02:13:19+00:00",
       "tier": "current"
     },
     {
@@ -727,21 +727,21 @@
       "title": "Test a larger project with 20 swarm roles",
       "weight": 8,
       "status": "in_progress",
-      "note": "Physical reference qualification 1 failed: five Docker CLI/HTTP cases passed, but fresh Chromium timed out on the Intake type label locator. Cleanup completed and trace retained. Browser-driver investigation and requalification pending; 20-role fixture has not started.",
+      "note": "Browser/public UI fixes passed source review and 17 contract plus 22 browser scoped checks. Prior 341-check gate is historical for pre-fix source; fresh physical reference/full 20-role rehearsal remain pending. No paid calls or allocation.",
       "phase": "Larger project scaling study",
       "inScope": true,
-      "updatedAt": "2026-10-03T01:57:35+00:00",
+      "updatedAt": "2026-10-03T02:13:19+00:00",
       "tier": "current"
     },
     {
       "id": "github-pages-publication",
       "title": "Publish progress and outputs on GitHub Pages",
       "weight": 2,
-      "status": "in_progress",
-      "note": "User selected GitHub Pages. Isolated static build is underway for the read-only progress projection, output pages and documentation. Deployment/public verification pending; local editable report preserved.",
+      "status": "complete",
+      "note": "Published and verified GitHub Pages: progress snapshot, outputs and docs. All 50 public payloads match exact hashes; 497 links/180 anchors and 14 deployed desktop/mobile observations passed. Read-only snapshot; local editable report remains canonical.",
       "phase": "Documentation publication",
       "inScope": true,
-      "updatedAt": "2026-10-03T01:54:57+00:00",
+      "updatedAt": "2026-10-03T02:13:19+00:00",
       "tier": "current"
     }
   ],
@@ -1231,6 +1231,12 @@
       "remaining": 27,
       "total": 248,
       "reason": "User explicitly selected GitHub Pages for progress and output documentation. Added two units for the separate static-site build/publication/verification deliverable; prior open destination resolved. Existing experiment qualification remains active, with no API spend or completion credit."
+    },
+    {
+      "at": "2026-10-03T02:13:19+00:00",
+      "remaining": 25,
+      "total": 248,
+      "reason": "Completed the user-requested GitHub Pages publication and public verification, earning its two existing units. Experimental physical requalification remains pending; no user review or API spend inferred."
     }
   ],
   "review_semantics": "Read-only public projection; no change to any local user review checkpoint."
