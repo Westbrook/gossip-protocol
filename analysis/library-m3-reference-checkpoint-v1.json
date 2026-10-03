@@ -1,0 +1,583 @@
+{
+  "schema_version": 1,
+  "checkpoint_id": "library-m3-reference-qualification-v1",
+  "recorded_at": "2026-10-03T07:10:55.744434+00:00",
+  "status": "authored_reference_qualified_with_explicit_scope_limits",
+  "whole_project_acceptance": false,
+  "whole_m1_acceptance": false,
+  "whole_m2_acceptance": false,
+  "whole_m3_acceptance": false,
+  "comparative_quality_result": false,
+  "goal": "Complete the full comparative investigation: four cumulative milestones, six matched trajectories and independent held-out confirmation.",
+  "previous_goal_turn_classification": "progress: M3 owned implementations and independent definitions changed authoritative state; existing Pages deployment also reverified.",
+  "source_branch": "codex/cumulative-project-contract",
+  "base_commit": "9292f0d4e51a939c3f5159c5daf780720517de36",
+  "main_frozen_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "new_provider_calls": 0,
+  "new_api_spend_usd": 0,
+  "live_pilot_status": "Not launched. Existing explicit payload-to-OpenAI approval remains pending after automatic approval review rejected launch; this offline qualification uses no credentials.",
+  "implemented": [
+    "Atomic schema3 migration/control and durable incarnation, owner, job and document fences.",
+    "Explicit enrolled worker processing, durable original manifests and receipts, and fresh process restart boundaries.",
+    "Bounded resumable reindex and ownership-based staging/index cleanup.",
+    "Canonical bounded export with real browser downloads.",
+    "Strict logical backup validation, durable no-overwrite publication and atomic restore with retained high-water tombstones.",
+    "Cumulative Service/HTTP/CLI/browser behavior and truthful diagnostics."
+  ],
+  "sources": {
+    "devtools/browser/library_m3_reference.cjs": "dde3b7b7bc94745f190d50e1ed438dc6d08cbe00126cd7046e77759c0c3be611",
+    "gossip_harness/library_m3_acceptance_cases_v1.py": "51a7d547b5683514dec7fd193436c8e1b55f0ccc71118cc1b22f499a91d7ef88",
+    "gossip_harness/library_m3_backup_format_v1.py": "5ab258089d064139b1b2f2adfe98bec006d027c2f99783f2cfe635f7a8136e77",
+    "gossip_harness/library_m3_backup_reference_v1.py": "5c276fde9ffad85609a18a91be9746862d2ea0b17120412f67b6d74b1ae2cee9",
+    "gossip_harness/library_m3_browser_reference_v1.py": "522d99198ae851f038d88ee28d93b45b67c70511890ac12481d81509e1586dec",
+    "gossip_harness/library_m3_clients_reference_v1.py": "19a58f61d16fedc0f8305e2777990561defebb7d5cd72c1980a663e774fdd03b",
+    "gossip_harness/library_m3_control_reference_v1.py": "38df5e59bf10ac99c6f4e3d9c958cecee1b0dfb5a58a71afadd3b22757e8bb43",
+    "gossip_harness/library_m3_maintenance_reference_v1.py": "e05b73a3edf7900c8c890c5c330f55f80befb0566db7b0fac5fdd139e74332cb",
+    "gossip_harness/library_m3_reference_v1.py": "3ad17289d83fca6bc576cc001a2bba6bdf52d2cbf3c5dc536fe0222e2a89f39c",
+    "gossip_harness/library_m3_worker_reference_v1.py": "43c7bc3753cae763e0d6522fc72bc0548b12f17e39998efa11853c6782bbe8f3",
+    "pyproject.toml": "bdfc5c559c1aa6a553888434a030fc946e99549c31d7d250606777d913a0c7dd",
+    "tests/test_library_m3_acceptance_cases_v1.py": "09d2adad937dd319200dd4f042269b8eab79d3276c671a99ad4bb764df050c03",
+    "tests/test_library_m3_backup_format_v1.py": "4acd232a0ed31ee5d58c7d07ef6ca97bad60901f6e379dd04d668ce0f0bd88e7",
+    "tests/test_library_m3_backup_reference_v1.py": "0ce4d3c5eaf3a374fbeaee716dd9a99ea65497e119b567f33bcc4edda94e794a",
+    "tests/test_library_m3_browser_reference_v1.py": "1c1482a2b759e6fb2b3a6d3229ece4728abca79b432cd7b9728af55b9b13c946",
+    "tests/test_library_m3_clients_reference_v1.py": "5b619a77a1e471d5a184a44a3b5d60780694313804bba3b4fef83515affcb68d",
+    "tests/test_library_m3_control_reference_v1.py": "acf14adc0d61b18fcbe01a7101a35cebfe8050e4af97d3c0a88420ad4ca80eac",
+    "tests/test_library_m3_docker_reference_v1.py": "548302e99e215028e8d9cb9c4a2ce892337a8b7b95db5d6f360ee726e6cb2827",
+    "tests/test_library_m3_maintenance_reference_v1.py": "e95e215a8c6d1ed81b9a79b4440d313fbcd69eec2c812692c691290ec17cd66b",
+    "tests/test_library_m3_reference_v1.py": "efc13c53727065fbd77f16806dff5c6c75c6c0c6ab6a791fea6ee726a8d38853",
+    "tests/test_library_m3_worker_reference_v1.py": "18923fc3dac61563d67f503ee1df538a35b097f928ee8eeca9653d6553127de0",
+    "verification-manifest.json": "67ddb0417309d75930eece294df00c49b303bc1ab22ab69990ced1a5d6711ada"
+  },
+  "generated_source_file_count": 32,
+  "generated_source_file_sha256": "ddbf941302dcc09e392214b4725e118d9db8a36baab831afb7b36273f7e322f4",
+  "normative_contract": {
+    "path": "library-cumulative-product-v1.json",
+    "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c"
+  },
+  "independent_cases": {
+    "protocol": "library-m3-independent-cases-v1",
+    "purpose": "independent_acceptance",
+    "status": "unqualified_definition",
+    "contract_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "case_ids": [
+      "m3-reindex-reopen-generation-change",
+      "m3-empty-index-and-limit-types",
+      "m3-export-selection-canonical-byte-bound",
+      "m3-backup-preserves-tombstone-history-receipt",
+      "m3-manual-backup-corrupt-graph-no-mutation",
+      "m3-restore-removal-edit-and-job-aba",
+      "m3-restore-deferred-invalid-manifest",
+      "m3-worker-once-explicit-enrollment-order",
+      "m3-worker-terminal-retry-remains-explicit",
+      "m3-cli-maintenance-arguments"
+    ],
+    "ordered_inputs_sha256": "8239ec21b90d0cdd9a8afd5de22d4801d2399f7f30d71bc78e81f2584535de40",
+    "ordered_expected_sha256": "2d8751ede71f517b5ac36057b9c5823b4aedb9d67b4303883967efff31330259",
+    "ordered_cases_sha256": "6b9bbf052e8f23f6c99248eb1579d363682657432f53f8ca51b7595fcf10e78e",
+    "adapter_sha256": "e35f98cc47aba37219bed0ccbd543a5b648b6f65dd98d2a2425535d968b511df",
+    "requirement_cases": {
+      "M3-WORKER-RECOVERY": [
+        "m3-restore-removal-edit-and-job-aba",
+        "m3-restore-deferred-invalid-manifest",
+        "m3-worker-once-explicit-enrollment-order",
+        "m3-worker-terminal-retry-remains-explicit"
+      ],
+      "M3-REINDEX": [
+        "m3-reindex-reopen-generation-change",
+        "m3-empty-index-and-limit-types",
+        "m3-cli-maintenance-arguments"
+      ],
+      "M3-EXPORT": [
+        "m3-export-selection-canonical-byte-bound",
+        "m3-cli-maintenance-arguments"
+      ],
+      "M3-BACKUP-RESTORE": [
+        "m3-backup-preserves-tombstone-history-receipt",
+        "m3-manual-backup-corrupt-graph-no-mutation",
+        "m3-restore-removal-edit-and-job-aba",
+        "m3-restore-deferred-invalid-manifest"
+      ],
+      "M3-DIAGNOSTICS": [
+        "m3-reindex-reopen-generation-change",
+        "m3-empty-index-and-limit-types",
+        "m3-backup-preserves-tombstone-history-receipt",
+        "m3-manual-backup-corrupt-graph-no-mutation",
+        "m3-worker-terminal-retry-remains-explicit"
+      ],
+      "M3-INTERFACES": [
+        "m3-export-selection-canonical-byte-bound",
+        "m3-worker-once-explicit-enrollment-order",
+        "m3-cli-maintenance-arguments"
+      ]
+    },
+    "limitations": [
+      "No candidate acceptance: caller must authenticate source/runtime/limits and the complete cohort freeze.",
+      "Real worker --once and CLI processes are used; no forced crash at commit/publication boundaries or live-owner lock race.",
+      "Reindex reopen and intervening second-connection writes are observed; no forced overlapping transaction schedule.",
+      "No browser downloads, HTTP wire transport, backup fsync/power-loss or complete staging-cleanup qualification.",
+      "Backup comparisons cover logical envelope and selected metadata, not a privately imposed envelope whitespace encoding.",
+      "Export canonical-byte observations encode the returned Service object; actual browser download bytes require a separate lane.",
+      "The contract does not distinguish idle from stopped absent a live owner; these histories do not impose either state.",
+      "An ordinary pre-restore handle must detect incarnation changes, but its exact error is unspecified; histories reopen before writes.",
+      "Finite valid/malformed backup fixtures do not exhaust every graph invariant, capacity bound or deferred Unicode state.",
+      "Authored legacy snapshots inherit M2 fixture content_hashes_json as bare SHA256 hex arrays; that encoding needs explicit portable-fixture qualification before general candidate acceptance."
+    ]
+  },
+  "pre_reference_freeze": {
+    "path": "runs/m3-cases-pre-reference-freeze-1/freeze.json",
+    "sha256": "56f08c871bf0d6e439c9249ba4b0c29fe1e54c776e970000c8b4639a1e26aa4a"
+  },
+  "source_review": {
+    "path": "runs/m3-reference-independent-review-2.json",
+    "sha256": "78ceeba34befb95fbc56fc78f9425c1107678c6842e71d6eecff58ff30a43f22"
+  },
+  "verification": {
+    "summary": {
+      "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/summary.json",
+      "sha256": "c1fb4e52ea6d618d259be0d233cb6290740802fcb0c074a0f07ac9d9abf92d08"
+    },
+    "inputs": {
+      "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/inputs.json",
+      "sha256": "2c47123e9bb32aaffd79ac06cd4d1b97d396603381c8c86cb4bca06f825c0e9a"
+    },
+    "status": "passed",
+    "physical_checks": 82,
+    "classes": 11,
+    "selected_counts": {
+      "browser": 1,
+      "docker": 5,
+      "fast": 70,
+      "fixtures": 6
+    },
+    "reused_classes": 0,
+    "failures": 0,
+    "skips": 0,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "matching_current_input_hashes": 352,
+    "static": {
+      "duration_seconds": 0.6511979168280959,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "duration_seconds": 23.890347249805927,
+    "timing_scope": "Development qualification only; not an agent cost/speed comparison."
+  },
+  "docker": [
+    {
+      "label": "gossip-m3-independent-reference-5ore5cfo",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-independent-reference-5ore5cfo/execution-receipt.json",
+        "sha256": "a25bdd39d69e4b304ab72952bb9c2866112d8dbccb434cbdcc0b88b9e47399ca"
+      },
+      "freeze": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-independent-reference-5ore5cfo/pre-execution-freeze.json",
+        "sha256": "a98d474822976f5e919a48e4ec420ffaddcc82a693d59018b0589e0c357481cc"
+      },
+      "source_file_sha256": "ddbf941302dcc09e392214b4725e118d9db8a36baab831afb7b36273f7e322f4",
+      "cases_file_sha256": "d637a5aacd9e36bba07cac1978c11d645b247c589a7979c6f3828e8f7bbb2148",
+      "deliberate_defect": null,
+      "passed": true,
+      "status": "passed",
+      "cleanup_verified": true,
+      "outcomes": [
+        {
+          "id": "m3-reindex-reopen-generation-change",
+          "status": "passed"
+        },
+        {
+          "id": "m3-empty-index-and-limit-types",
+          "status": "passed"
+        },
+        {
+          "id": "m3-export-selection-canonical-byte-bound",
+          "status": "passed"
+        },
+        {
+          "id": "m3-backup-preserves-tombstone-history-receipt",
+          "status": "passed"
+        },
+        {
+          "id": "m3-manual-backup-corrupt-graph-no-mutation",
+          "status": "passed"
+        },
+        {
+          "id": "m3-restore-removal-edit-and-job-aba",
+          "status": "passed"
+        },
+        {
+          "id": "m3-restore-deferred-invalid-manifest",
+          "status": "passed"
+        },
+        {
+          "id": "m3-worker-once-explicit-enrollment-order",
+          "status": "passed"
+        },
+        {
+          "id": "m3-worker-terminal-retry-remains-explicit",
+          "status": "passed"
+        },
+        {
+          "id": "m3-cli-maintenance-arguments",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "label": "gossip-m3-inherited-m1-1nrxxrbw",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-inherited-m1-1nrxxrbw/execution-receipt.json",
+        "sha256": "82b389db09b354987fb56d715dd4f4384eb0049f5d0a906de1e7735923f60c1b"
+      },
+      "freeze": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-inherited-m1-1nrxxrbw/pre-execution-freeze.json",
+        "sha256": "08a9fb18387e76284150f27a6321053c0c848e4d4ed10d5fb79af0214afa5bb7"
+      },
+      "source_file_sha256": "ddbf941302dcc09e392214b4725e118d9db8a36baab831afb7b36273f7e322f4",
+      "cases_file_sha256": "7fd3c7bd49e74a837f63f873a46dab6db892345060982ac24e2c894fe7e08c55",
+      "deliberate_defect": null,
+      "passed": true,
+      "status": "passed",
+      "cleanup_verified": true,
+      "outcomes": [
+        {
+          "id": "inherited-text-persistence",
+          "status": "passed"
+        },
+        {
+          "id": "identity-and-replay",
+          "status": "passed"
+        },
+        {
+          "id": "errors-preserve-catalog",
+          "status": "passed"
+        },
+        {
+          "id": "m1-cancel-fences-old-token",
+          "status": "passed"
+        },
+        {
+          "id": "m1-atomic-conflict-after-prepare",
+          "status": "passed"
+        },
+        {
+          "id": "m1-per-source-provenance",
+          "status": "passed"
+        },
+        {
+          "id": "m1-invalid-member-rolls-back",
+          "status": "passed"
+        },
+        {
+          "id": "m1-injected-transaction-failure",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "label": "gossip-m3-inherited-m2-ip8kawpg",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-inherited-m2-ip8kawpg/execution-receipt.json",
+        "sha256": "c2931a0fe5b7a274510f359a8a1da980298151854bb4dddcf57dfeea9a8fc0d9"
+      },
+      "freeze": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-inherited-m2-ip8kawpg/pre-execution-freeze.json",
+        "sha256": "93c1417e947dec34d431fabc3314e06b29571b813ef35efc02270a43897e6f25"
+      },
+      "source_file_sha256": "ddbf941302dcc09e392214b4725e118d9db8a36baab831afb7b36273f7e322f4",
+      "cases_file_sha256": "e470982cfa4f26f6e21b16525fee6c457463d30bc237175066624ceb489e447b",
+      "deliberate_defect": null,
+      "passed": true,
+      "status": "passed",
+      "cleanup_verified": true,
+      "outcomes": [
+        {
+          "id": "m2-migrate-aba-receipt",
+          "status": "passed"
+        },
+        {
+          "id": "m2-normalized-membership-tombstone",
+          "status": "passed"
+        },
+        {
+          "id": "m2-query-generation-pages",
+          "status": "passed"
+        },
+        {
+          "id": "m2-competing-connections",
+          "status": "passed"
+        },
+        {
+          "id": "m2-revision-boundary",
+          "status": "passed"
+        },
+        {
+          "id": "m2-document-capacity-tombstones",
+          "status": "passed"
+        },
+        {
+          "id": "m2-retained-blob-capacity",
+          "status": "passed"
+        },
+        {
+          "id": "m2-refresh-input-boundaries",
+          "status": "passed"
+        },
+        {
+          "id": "m2-annotation-input-boundaries",
+          "status": "passed"
+        },
+        {
+          "id": "m2-collection-boundary",
+          "status": "passed"
+        },
+        {
+          "id": "m2-service-route-contract",
+          "status": "passed"
+        },
+        {
+          "id": "m2-batch-generation-replay",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "label": "gossip-m3-restore-token-defect-qt4_ftyp",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-restore-token-defect-qt4_ftyp/execution-receipt.json",
+        "sha256": "38595ff054ccab1e6592b38e7e60cb347438c3133476bf0d509d32c12b8a7186"
+      },
+      "freeze": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-restore-token-defect-qt4_ftyp/pre-execution-freeze.json",
+        "sha256": "c9e653511d409dd9fd3a1fe8f06c47793fff1f3cae6223322743f64c4f1e7b28"
+      },
+      "source_file_sha256": "4c94f1dc6a9b04df861c50e5a2b30e29afb4ae1d8cc7b7034e83ec30ce7d37fe",
+      "cases_file_sha256": "9f0636839e8e22c5db06fa41191029afaa03d9e95beeffadf4d9828eb100284b",
+      "deliberate_defect": "restore_edit_token_not_advanced",
+      "passed": false,
+      "status": "failed",
+      "cleanup_verified": true,
+      "outcomes": [
+        {
+          "id": "m3-restore-removal-edit-and-job-aba",
+          "status": "wrong_answer"
+        }
+      ]
+    },
+    {
+      "label": "gossip-m3-worker-enrollment-defect-f0yr94h4",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-worker-enrollment-defect-f0yr94h4/execution-receipt.json",
+        "sha256": "e50dbaa36ef89152398dad017fd0a58999dc7ed9d11e235de307888fec7c8617"
+      },
+      "freeze": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/9cf1826366c1bd1d/artifacts/gossip-m3-worker-enrollment-defect-f0yr94h4/pre-execution-freeze.json",
+        "sha256": "258d6ff762aa4a7b64d256d1c0b3132743c44d58315d20c59bca1b96958b2f4c"
+      },
+      "source_file_sha256": "d6be81ba5aba500b17f32bb0d6ebbd1b149fca2c6676730cec6d23cdb3ebe8ce",
+      "cases_file_sha256": "eca608645a69d279b4a3888e48c404ab13287ad4c9046c7229528a1b23c925ab",
+      "deliberate_defect": "worker_ignores_enrollment",
+      "passed": false,
+      "status": "failed",
+      "cleanup_verified": true,
+      "outcomes": [
+        {
+          "id": "m3-worker-once-explicit-enrollment-order",
+          "status": "wrong_answer"
+        }
+      ]
+    }
+  ],
+  "browser": [
+    {
+      "fixture": "inherited-m2",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/inherited-m2/browser/receipt.json",
+        "sha256": "3d6b8b9269d0520818ad10f7be819e9b3f2c68087027df8a2fba6516a0b4478f"
+      },
+      "persistence": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/inherited-m2/persistence-receipt.json",
+        "sha256": "3e337957981e23036c859d3c13b20d38e64e9dc88d77ee77c8ecf40b80eaf822"
+      },
+      "source_binding": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/inherited-m2/source-bindings.json",
+        "sha256": "a5acbc8eb2f6ac868ade82cbfd080a60171060be8c82d6e8a9ed2c708cce9925"
+      },
+      "runtime": {
+        "node": "v24.19.0",
+        "playwright": "1.62.1",
+        "chromiumRevision": "1234",
+        "nodeExecutable": "/Users/westbrook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "nodeExecutableSha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1",
+        "browserVersion": "151.0.7922.34",
+        "executable": "/Users/westbrook/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "executableSha256": "a596b1cfc6353e987fcec8d71a23a28cd6a9e7a6b4e20b908e4c4fcffe51158e",
+        "manifestSha256": "ea21c22ae0f80f08446c1251cd1847f050fc3c8b11d61d89192c54dfdd348af7",
+        "driverSha256": "58c551f9f27ec7fe7da3b66789962063d575a7341806beda73387544cc526df4"
+      },
+      "checks": [
+        "inherited_import_and_job_cancel_retry_commit_controls",
+        "accessible_keyboard_filters_pagination_and_id_selection",
+        "normalized_annotations_collection_registry_and_nonempty_removal_guard",
+        "two_context_stale_token_draft_preservation_explicit_reload_and_stale_pagination",
+        "text_path_refresh_noop_literal_history_and_cross_action_draft_preservation",
+        "external_delete_reopened_draft_keeps_stale_token_and_latest_deleted_state",
+        "delete_restore_tombstone_filters_and_reload_persistence",
+        "desktop_and_mobile_document_fit_viewport"
+      ],
+      "viewport_checks": [
+        {
+          "contextIndex": 0,
+          "viewportWidth": 1280,
+          "viewportHeight": 980,
+          "innerWidth": 1280,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 992,
+          "passed": true
+        },
+        {
+          "contextIndex": 1,
+          "viewportWidth": 430,
+          "viewportHeight": 932,
+          "innerWidth": 430,
+          "documentScrollWidth": 430,
+          "bodyScrollWidth": 430,
+          "passed": true
+        }
+      ],
+      "downloads": 0,
+      "keyboard_actions": 0,
+      "fresh_contexts": 2,
+      "raw_reopened_http_values_retained": true,
+      "fields_compared": [
+        "documents",
+        "collections",
+        "jobs",
+        "history"
+      ],
+      "cleanup": {
+        "browser": "complete",
+        "api": "complete",
+        "ownedServer": "complete"
+      },
+      "screenshots": [
+        {
+          "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/inherited-m2/browser/page-0.png",
+          "sha256": "9f39a587112866b52fc97a7728d8a27793a4bb121d47b2b2db368588a3fde558"
+        },
+        {
+          "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/inherited-m2/browser/page-1.png",
+          "sha256": "30ed83d1243e80cba8e0c20a21b8d0a67aa217d4105a7c7b9146ea0e6c07ff3f"
+        }
+      ]
+    },
+    {
+      "fixture": "m3-maintenance",
+      "receipt": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/m3-maintenance/browser/receipt.json",
+        "sha256": "b853e3eb84ff3feb31a69c37b04178a9d8219a0b3cadf6dcf299c06d88045a57"
+      },
+      "persistence": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/m3-maintenance/persistence-receipt.json",
+        "sha256": "f02536f8739f1673a92ba2abcaa0969f095e2072341a48c542ccb4fe75efbf01"
+      },
+      "source_binding": {
+        "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/m3-maintenance/source-bindings.json",
+        "sha256": "a5acbc8eb2f6ac868ade82cbfd080a60171060be8c82d6e8a9ed2c708cce9925"
+      },
+      "runtime": {
+        "node": "v24.19.0",
+        "playwright": "1.62.1",
+        "chromiumRevision": "1234",
+        "nodeExecutable": "/Users/westbrook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "nodeExecutableSha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1",
+        "browserVersion": "151.0.7922.34",
+        "executable": "/Users/westbrook/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "executableSha256": "a596b1cfc6353e987fcec8d71a23a28cd6a9e7a6b4e20b908e4c4fcffe51158e",
+        "manifestSha256": "ea21c22ae0f80f08446c1251cd1847f050fc3c8b11d61d89192c54dfdd348af7",
+        "driverSha256": "dde3b7b7bc94745f190d50e1ed438dc6d08cbe00126cd7046e77759c0c3be611"
+      },
+      "checks": [
+        "actual_empty_selected_all_downloads_history_tombstones_exact_byte_cap_and_no_partial_result",
+        "eligible_enqueue_control_real_cli_worker_completion_terminal_controls_and_reindex",
+        "backup_duplicate_error_success_clears_error_stale_restore_no_change_or_retry_snapshot_replacement_removed_draft_preservation_and_old_client_fencing",
+        "desktop_mobile_literal_content_and_viewport_fit_and_keyboard_m3_actions"
+      ],
+      "viewport_checks": [
+        {
+          "contextIndex": 0,
+          "viewportWidth": 1280,
+          "viewportHeight": 980,
+          "innerWidth": 1280,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 992,
+          "passed": true
+        },
+        {
+          "contextIndex": 1,
+          "viewportWidth": 430,
+          "viewportHeight": 932,
+          "innerWidth": 430,
+          "documentScrollWidth": 430,
+          "bodyScrollWidth": 430,
+          "passed": true
+        }
+      ],
+      "downloads": 7,
+      "keyboard_actions": 10,
+      "fresh_contexts": 2,
+      "raw_reopened_http_values_retained": true,
+      "fields_compared": [
+        "documents",
+        "collections",
+        "jobs",
+        "history",
+        "backups",
+        "diagnostics"
+      ],
+      "cleanup": {
+        "browser": "complete",
+        "api": "complete",
+        "ownedServer": "complete"
+      },
+      "screenshots": [
+        {
+          "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/m3-maintenance/browser/page-0.png",
+          "sha256": "5d99f0ff00c1ec42efe7d421da0bbfe6c3ac2088900838ddb9e6d61b1195dd78"
+        },
+        {
+          "path": "runs/m3-reference-final-qualification-2/20261003T070529-34fd26d9/classes/b97b18836507527f/artifacts/gossip-LibraryM3BrowserReferenceTests-g14gevc7/run/m3-maintenance/browser/page-1.png",
+          "sha256": "f2e7b2ef1881a70504983de2e5323835aa9145eade66b3d799ba5383b35f26ea"
+        }
+      ]
+    }
+  ],
+  "visual_inspection": "Root inspected M3 desktop/mobile screenshots. Final four screenshot hashes equal the earlier physical run; no new visual difference. Widths1280/430 match actual document scroll widths.",
+  "earlier_runs": [
+    {
+      "summary": {
+        "path": "runs/m3-reference-qualification-1/20261003T070023-7302878b/summary.json",
+        "sha256": "847f9c2e4ec8b39e50f2426a1128d60c09e9a0ceb8200c3b146df0ea2538ffa1"
+      },
+      "status": "passed81_before_final_worker_error_fix",
+      "disposition": "Preserved; source review added a regression and required fresh combined qualification."
+    }
+  ],
+  "scope_limits": [
+    "All sources are trusted authored references, never model-produced work or candidate prompt inputs.",
+    "Crash/process tests use declared authored interposition, not independent arbitrary-candidate crash acceptance or physical power-loss proof.",
+    "Private M3 histories remain finite definition-level coverage; authenticated whole-cohort adapters, complete public fixtures and promotion bindings are still incomplete.",
+    "Counter domains, multi-root metadata retention and portable manifest content-hash encoding require public contract clarification.",
+    "M4 cumulative migration is still unimplemented; no four-milestone trajectory completed."
+  ],
+  "remaining_goal_obligations": [
+    "M4 cumulative migration and independent acceptance histories.",
+    "Close M1/M2/M3 public fixture and trusted receipt-adapter gaps; qualify full combined application.",
+    "Peer-local planning/repair policy plus matched central control, keeping placement versus transport separate.",
+    "Generated distinguishing tests and real restart/partition faults.",
+    "All six planned trajectories and whole-cohort acceptance barrier.",
+    "Independent held-out confirmation and honest statistical comparison of quality/completion."
+  ],
+  "next_action": "Implement M4 cumulative migration/reference and independent histories; resolve explicit contract gaps before freezing candidate-facing acceptance. Preserve the same live payload-approval gate.",
+  "pages": "Existing snapshot346 remains published; this development-branch checkpoint was not deployed to Pages."
+}
