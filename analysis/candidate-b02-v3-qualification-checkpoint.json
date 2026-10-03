@@ -1,0 +1,760 @@
+{
+  "artifact_integrity_status": "No discrepancies found within the explicitly checked retained evidence.",
+  "audit_limits": [
+    "Raw integrity, identities, assertion completeness and outcome consistency were checked for every executed history; not every successful semantic assertion was independently recomputed.",
+    "A passed harness qualification includes 233 ordinary reference observations, 3 partial reference histories and 5 unknowns; these categories are not flattened into 241 complete reference passes.",
+    "Historical mounted candidate/control staging is ephemeral and not retained. Frozen identities, matching inert generated output, source-bound adapter/review and recorded staging checks were verified, but historic mounted bytes cannot currently be independently rehashed.",
+    "No independent secondary-call trace exists for unavailable schedules. Explicit markers, bound source, retained offline controls and conservation are not direct observation of call absence.",
+    "Control and mutant outcome records do not all contain persisted assertion_census_sha256; independent prospective-key reconstruction covers them and records audit-computed digests.",
+    "Raw cleanup establishes self-consistent original removal/absence evidence; no present-day Docker daemon queries or attestations were performed.",
+    "Captures occur after adapter responses rather than atomically at method return. Store reopening occurs in the same candidate process, not after independent process death or power loss.",
+    "Only six immediate ambiguity branches executed; alternative deferred histories have frozen contracts but receive no physical-execution credit.",
+    "Historical v1/v2 failed receipts remain exact and failed. The prospective v3 policy does not retroactively relabel them.",
+    "Closed authored source reviews and private-layout profiles are qualification fixtures, not production prerequisites, full B02 acceptance, cohort authority or independent held-out final acceptance.",
+    "No comparative model samples, ranking, speed/cost causality or swarm superiority evidence is produced."
+  ],
+  "base_development_commit": "af37c57a875f704052a6e302ba541e50d30d0eec",
+  "candidate_source": {
+    "candidate_bytes_unchanged_from_v2": true,
+    "candidate_file_count": 61,
+    "candidate_file_hashes": {
+      "README.md": "21fd75578847050f40b80cfc7951dead344a8491f7a65f2c5e06cde04cf150ef",
+      "compatibility/README.md": "c59d7bce0ec8d40b753da1202c914aed159e66c7d36653dd50514835449ea267",
+      "compatibility/m2.manifest.json": "754146fb8643f36faeb6bb76c2f3dbb354a4aed4464189eb2d68b8f4981f9644",
+      "compatibility/m2.sqlite3": "4d52246ca238887d51649fbc63b923a8dfbdfd545238a83cb6c5e0a5df94c1c2",
+      "compatibility/v0.manifest.json": "29bcdfd24eeac87d025926f72c4d712be161d14d70dace30c31dcef04411f81a",
+      "compatibility/v0.sqlite3": "5a550a1a681d1ea0c119394906580c859af51caaf0eabd83e437513dc5b53429",
+      "cumulative-public-contract.json": "9c7bfd72a8bd292f850b70a1ccdb39d72e579f15889875fd6fc6c9fff6ad8361",
+      "examples/welcome.txt": "7d44c0de069e7bef0eebdee2b0dfd71efdbf3c6de699c9d29985dee1b6cf5ec0",
+      "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "library/__init__.py": "f46df1820472329e0882ae5d1710a1e94f5820dc28f306b5717a21b7959d3e2a",
+      "library/__main__.py": "6b7c2cfa1954fb87f9746a30c383570c1cd8ce6b37907a3a132f6670de74c54e",
+      "library/catalog/__init__.py": "ec2a30b33c46a5e1c52f5b22b819fac830c8503b98f4c579c04a4ad375672b95",
+      "library/catalog/backup.py": "9441b3995a356d6cf292dcc509037176b8e7223c08ad8239649f5e2b0590e416",
+      "library/catalog/backup_format.py": "b07eb9c77733dd5e9f9ccab9552d51da9e3b8e0fb72713cfa2918ca4ebf3f533",
+      "library/catalog/control.py": "d96590a5d739e9b93a3811638d30d3cf188b12e43d2b2bc1cc1d6c14007592e6",
+      "library/catalog/legacy_m1.py": "ae7511167063569b3688e726e1b526b96504d9d1e3cb157441969340acdfd6e5",
+      "library/catalog/legacy_m2.py": "a291881f613c4ebea327c7e33fa7818ff879a1802ade19fb25e22c0171a60dc5",
+      "library/catalog/m4_backup.py": "28aba4fa9225718ab551874e26d9bf5905e8ce95b14c6e9b4bb64cfb275ccafc",
+      "library/catalog/m4_control.py": "3649e23a7da17653611aab1b56b6c91fce9de8761f736e0faa709e7f151bda95",
+      "library/catalog/m4_legacy.py": "411820af7d03f73d10a1711b994c07f9e830c28e494a18a3e23f10fbac2ef389",
+      "library/catalog/m4_store.py": "988756723389f5d77f072cfa96a5395ff9b920a4c429aa79a00df68bee0d9e2c",
+      "library/catalog/m4_validation.py": "4ef145b450b543c7dea83e8583c83956ec3a3fb15f9de17002479934e703175f",
+      "library/catalog/maintenance.py": "49e7ae3261f6c890d79774bcabf59554e52fababff9a0016c357aa8b255472e0",
+      "library/catalog/store.py": "8d0b77fc85e6833cf9d1e18d6d4909db0166fbffcf106ad313f7c79f7e9ca0e3",
+      "library/catalog/v2_maintenance.py": "4dce085d02aea79e5ea06f045729b5643437cc70280496a11ce1bbb9746cadb9",
+      "library/catalog/validation.py": "4588579a589b6d1459fcbfa5581dea331327ff05ffe71d4aae3f33b8124a8aa9",
+      "library/catalog/worker.py": "9744d9a1c6e2b588548198ee9e42ca96cbb7f28c1d59402975a9bd018f522bb9",
+      "library/clients/__init__.py": "d4b4dd2eaf294f02c359d599c66ed554d0b346367397b401a737275137eba32a",
+      "library/clients/cli.py": "a37d5ae76ab29ec9b33dc46be903405b116fa4c73d6bd5503eef2271e5ad68d1",
+      "library/clients/http.py": "2f1fca21df06fcb0bfabe2d3bc41994240433bae80785326280e50ef8c7e73eb",
+      "library/clients/index.html": "a81b7a8fa2f861f8cd1ad7a462c86ee54adc3be7ae9050e4366ab2a286e43466",
+      "library/clients/legacy_m2_cli.py": "b269d81ef8ea9e23088a175960b22aad5e53837700885e5bd82390eac3156c0f",
+      "library/clients/legacy_m3_cli.py": "b1d2dcae0502aad24661bfe825147d30f5206ae6fea081961399a91a81f42a13",
+      "library/clients/release.py": "25e3e77190b99fe9073cb5ec4263e433024b55fba4d4cc555d7e6f19c2cccbdc",
+      "library/clients/workflow.py": "dae97f8d2c4d270b225aa52adb6c473d21fef50bb99d339fb18b2c7ec8445f2b",
+      "library/common.py": "eaf3707233d586cbd1ad918a6a5ca642f3f20a96076670a590e2f09c078c4d38",
+      "library/counters.py": "4b72561cdbed44320da992c7c65478bb842f20ec837c8754916bdbb1c3e5cdef",
+      "library/ingestion/__init__.py": "6663a839e439d8e0b1a9b5e3d5847e7ce2bd867939e71d45412fe4698d24dacd",
+      "library/ingestion/jobs.py": "be070fe6c954828589d8c14f239f83742da14613f2285e3a37fa8d362a9f58ef",
+      "library/ingestion/local.py": "7d0f514fb10a8c534ad27c28ef362d0c851e57052566b19891698ce9a55aeeb6",
+      "library/ingestion/worker.py": "db06d5d41d814e2e170a029e05b3263a1e0151563392a9253753ea4a7adf48d6",
+      "library/query/__init__.py": "1c4c27c6607c86f662e6b07418aef5627f1ddae00b49a83232d75d700b48da7f",
+      "library/query/legacy_m1_service.py": "761eace5ff307d001e82334ebd47a4acaed15afe0a12051204cfc996a8be1a63",
+      "library/query/legacy_m2_service.py": "88596081f6640d9744413f427b9c1fd31baf081ac774c71522522b4b7915671c",
+      "library/query/legacy_m3_service.py": "0a7f19e6abc65d4693799ebabeedd9f89f45a2ecebb8f064acf66e0f3aebef5f",
+      "library/query/legacy_v1_service.py": "80627b173ae0124a782ad1e09b2752e6a77e346635037252a6b3433b25a75ab4",
+      "library/query/service.py": "8d3c04f427d480cf101a23dbc70e13119b06b1aece1f32be487fbed96b2c45e8",
+      "public_cases.json": "3ee8146044776472247114038f61af3c5bede68e54dd3d5bdc469988a5c55911",
+      "release/API.md": "5d99b35ab3d35c514b3572322a03fabc7811299135f009b02310b2ea4fb58af4",
+      "release/CUMULATIVE-CONTRACT.md": "0d35083497080a3317f4e6b2c5d71cff6abf478460914e0f0dc0f6a2c5584e11",
+      "release/INSTALL.md": "4f65582157597b3a352c3882a6453d43e88496534d146ee9d54dfd7872b94a70",
+      "release/RECOVERY.md": "30ddd34b7629aa0ae0e5d659b9fceed47f65ab2f3aec268f158a4151fa4bef00",
+      "release/USER-GUIDE.md": "6f038739654b17900f53c6d90e730377854f0d20595ea3eaad324b4623341d7d",
+      "release/dataset/literal.html": "0c5e647a50adb5b063255d278a26e0bfe572c5ce0bb7f4d49c473a8377b4f4d1",
+      "release/dataset/notes.md": "281798b69a1a0be43acc64897b49bb862cd5d3a12aea0d4ddc9c52aacaf04792",
+      "release/dataset/welcome.txt": "281798b69a1a0be43acc64897b49bb862cd5d3a12aea0d4ddc9c52aacaf04792",
+      "release/dataset/workflow.json": "de8fc79615ea3c4fa2c576816a965c12af9be1acb1af302fb3d4fac9441d8ba9",
+      "solution.py": "98313a378c944a594b26017bcfd7b3c819f4a7cc0c6ead9ab3459253e6e7f177",
+      "test_cumulative_public.py": "dfebe0d255a50ad0fc1e0ea0bd0ec1328eacf761ed37742b89783973f16e9bdc",
+      "test_public.py": "431171aebb31f16441b8f95305f0992926fe7a3d961e81d58ef9d9dabbd41270"
+    },
+    "driver_domain_source_sha256": "6cc91b2c07cd165e99713a0463a848306c342e715d5f1895aa3455a6a07911c8",
+    "reference_source_inputs": {
+      "fixtures/library-m4-compatibility-v1/README.md": "c59d7bce0ec8d40b753da1202c914aed159e66c7d36653dd50514835449ea267",
+      "fixtures/library-m4-compatibility-v1/build_snapshots.py": "10b013d1284851ad874c23466b61ea248cd1b7f53f694de335a38efb4b493941",
+      "fixtures/library-m4-compatibility-v1/m2.manifest.json": "754146fb8643f36faeb6bb76c2f3dbb354a4aed4464189eb2d68b8f4981f9644",
+      "fixtures/library-m4-compatibility-v1/m2.sqlite3": "4d52246ca238887d51649fbc63b923a8dfbdfd545238a83cb6c5e0a5df94c1c2",
+      "fixtures/library-m4-compatibility-v1/v0.manifest.json": "29bcdfd24eeac87d025926f72c4d712be161d14d70dace30c31dcef04411f81a",
+      "fixtures/library-m4-compatibility-v1/v0.sqlite3": "5a550a1a681d1ea0c119394906580c859af51caaf0eabd83e437513dc5b53429",
+      "gossip_harness/library_cumulative_public_fixture_v1.py": "694b35895cdeb74df4dca55a65e44cab7cef52d52cf9f3f003e1828b518e9647",
+      "gossip_harness/library_cumulative_public_fixture_v2.py": "03e2e74c796084355a37e1e35c9532a81f12749e7cd8cfd17fa902d358019052",
+      "gossip_harness/library_m1_clients_reference_v1.py": "e52b6477bb6c5460547d7bde84986e347ab7d16ae07708a6fe28021b5e96a17f",
+      "gossip_harness/library_m1_ingestion_reference_v1.py": "514ad7c5caa546a6b33359af3b9c2d04475a05176a2131ac4b562d38fe1db5ff",
+      "gossip_harness/library_m1_reference_v1.py": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+      "gossip_harness/library_m2_browser_reference_v1.py": "63e047e4c277e49160bbaba2fd14061772f75bf832923c31542cb5ef51e1b825",
+      "gossip_harness/library_m2_catalog_reference_v1.py": "4ad0e946e24c986c7b4c0d5ef41ccf7da0096555ececd9c9e62deb9d55754d56",
+      "gossip_harness/library_m2_clients_reference_v1.py": "49ccc15b651e7b650b30bbae7b1a1ac9c4b67e7bfa398577fbc00e0b78040d2d",
+      "gossip_harness/library_m2_reference_v1.py": "000bdcd8cf167348899875448fa49f1ed599c5ac7273731bbb94accdc35979be",
+      "gossip_harness/library_m3_backup_format_v1.py": "5ab258089d064139b1b2f2adfe98bec006d027c2f99783f2cfe635f7a8136e77",
+      "gossip_harness/library_m3_backup_reference_v1.py": "5c276fde9ffad85609a18a91be9746862d2ea0b17120412f67b6d74b1ae2cee9",
+      "gossip_harness/library_m3_browser_reference_v1.py": "522d99198ae851f038d88ee28d93b45b67c70511890ac12481d81509e1586dec",
+      "gossip_harness/library_m3_clients_reference_v1.py": "19a58f61d16fedc0f8305e2777990561defebb7d5cd72c1980a663e774fdd03b",
+      "gossip_harness/library_m3_control_reference_v1.py": "38df5e59bf10ac99c6f4e3d9c958cecee1b0dfb5a58a71afadd3b22757e8bb43",
+      "gossip_harness/library_m3_maintenance_reference_v1.py": "e05b73a3edf7900c8c890c5c330f55f80befb0566db7b0fac5fdd139e74332cb",
+      "gossip_harness/library_m3_reference_v1.py": "3ad17289d83fca6bc576cc001a2bba6bdf52d2cbf3c5dc536fe0222e2a89f39c",
+      "gossip_harness/library_m3_worker_reference_v1.py": "43c7bc3753cae763e0d6522fc72bc0548b12f17e39998efa11853c6782bbe8f3",
+      "gossip_harness/library_m4_backup_reference_v1.py": "4e59a68b6f71e9af68d321a2beff50e15c3f82b4c150965995458911fc3dc3fc",
+      "gossip_harness/library_m4_browser_reference_v1.py": "233cc5e0dc01dd566fcd2062731694324454afb265a3248200435c8e2b49df5d",
+      "gossip_harness/library_m4_catalog_reference_v1.py": "73055d1dd8cb42ef39cd37c3b0911c1e74f012d7520068c39de40962d2d6717c",
+      "gossip_harness/library_m4_clients_reference_v1.py": "c65f622ea49bad039602b82e33d9398fbeb05cfe90baa8e7b83be44bed423728",
+      "gossip_harness/library_m4_fixture_v1.py": "61c1d53e0a582927639a9fcde955e3fd0e9a66288aac3a291fbfb7d670a8764c",
+      "gossip_harness/library_m4_reference_v1.py": "6df29231508ee642ddfe60dfbe5f36fe8382deb4692ac7177728b0183e5e1452",
+      "gossip_harness/library_m4_release_reference_v1.py": "934863d6bd0c38de5f6c5b8f862d8ed6dbda90fbbd29864f07f51efdef78de30",
+      "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "gossip_harness/library_v2_browser_reference_v1.py": "38cb7fff3ef5d81a5cc68c9bd1b28c957df94db0955009b2892af24cdc434214",
+      "gossip_harness/library_v2_catalog_reference_v1.py": "26fabb8b0e7a317fe5240e3a3d7bea912b844432c541d850799d1275fb27fb82",
+      "gossip_harness/library_v2_clients_reference_v1.py": "a9ff6bfb7daf4c9d7b539fac30fd2992d076f7490ef278ad52a94f7e4074a369",
+      "gossip_harness/library_v2_json_reference_v2.py": "d334a0539101e63cf0e6c10dd8ee3d7c93819354bd119752b06cc36685a3498c",
+      "gossip_harness/library_v2_maintenance_reference_v1.py": "3888260d5d622ca8ac471be5fde43730fe4b69413bb9a508ecae0d3d476cc50f",
+      "gossip_harness/library_v2_reference_v1.py": "dbbcd0e46c2a9c3d6d79a9e3d1129d45536f59eb86453f9472f8c409077ee97d",
+      "gossip_harness/library_v2_release_reference_v1.py": "abcfe610444a88baa8ea024c9638a5cc6ff9c887045114efb7cdaf9133adf881",
+      "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "library-m1-acceptance-inventory-v1.json": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a"
+    }
+  },
+  "cycle_classification": "progress",
+  "definition": {
+    "blind_policy_review": {
+      "path": "runs/candidate-b02-v3-blind-policy-review-1.json",
+      "sha256": "4422728bde0c64ea9b0a102570533305cd4c143a6becf89b930568658df24d2b"
+    },
+    "case_count": 241,
+    "closed_qualification_review_count": 7,
+    "evaluation_policy_sha256": "d84902b58b65ce8d3c35146921126cb63c6f5c6815963ebd0d844bf4ee478f59",
+    "failure_preservation": "All independent result/state/auxiliary failures remain failures. Three partial cases keep all_local_assertions_passed false and one declared unspecified null. Frozen v1/v2 failures are unchanged.",
+    "inherited_v2_sha256": "d582d6143939b56ef834d951799b305a893bd71578904b497c7c6f020f33db30",
+    "policy_limited_case_ids": [
+      "intake-directory-wrong-kind",
+      "intake-zip-wrong-kind",
+      "intake-json-wrong-kind"
+    ],
+    "policy_meaning": "Reject wrong-kind inputs with no admission and conserved state; no prescribed exact error code or universal native exception class. Qualified native error frames support rejection; valid returned jobs fail; unrecognized presentations remain unknown. No observed-code allowlist, new product obligation or exact-code credit.",
+    "production_prerequisite_authority": false,
+    "sha256": "b8f53f457724e97f02d173c7a48c94da455999f62c7d0cd692e438b104614ac7",
+    "sources": {
+      "gossip_harness/candidate_intake_fixtures_v1.py": "ab93758a3e4cfb8404c1fdabc9ca65db22b74e624e6454357cbd4744f8c7f59f",
+      "gossip_harness/candidate_intake_store_cases_v1.py": "291811e6c6714e068619c16acac6ad1d2877b949c4ef481e109163bb9324f0fc",
+      "gossip_harness/candidate_intake_store_cases_v2.py": "159ba708edb050a0fe9c715d70c297182874410bac1b6add70e98afb09ebe201",
+      "gossip_harness/candidate_intake_store_cases_v3.py": "983acb5f1130bd6303f1b8b460bcd0910b776a48abc7f62f51fd173dded69886",
+      "gossip_harness/candidate_intake_store_observer_v1.py": "1e873d61e404e57c83afe025f0a78126fb38cfc5fe4a65f4e61e72606bafb98e",
+      "gossip_harness/candidate_storage_cases_v1.py": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4",
+      "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "library-m1-acceptance-inventory-v1.json": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a"
+    }
+  },
+  "definition_freeze": {
+    "path": "runs/candidate-b02-v3-definition-freeze-1.json",
+    "sha256": "6407a06b4f8bfceceee6e6daa9742d9117ad01cba339e082ef3a250e549a9018"
+  },
+  "development_branch": "codex/cumulative-project-contract",
+  "findings": [
+    "The full planned251 histories completed, including all three previously unreached greater-than-six-MiB padded JSON cases and the symlink-admission mutant.",
+    "233 ordinary observations, three partial wrong-kind observations and five unavailable reference schedules remain distinct; all ten separate positive/mutant controls produced intended qualification outcomes.",
+    "Actual six ambiguity histories selected immediate admission/error branches; frozen deferred alternatives receive no new physical-execution credit.",
+    "Complete prospective product/40 auxiliary key sets and policy/selected-contract identities were checked for every history; control/mutant census digests were independently reconstructed when not persisted.",
+    "All251 before/after ten-source definition maps, thirty source freeze pins,41 reference source inputs, seven inert61-file variants and56 review component bindings matched."
+  ],
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "human_summary": {
+    "path": "docs/candidate-b02-v3-qualification.md",
+    "sha256": "74797463143747d7138f11e2b45b155fe75307fe1bb83b7c48c90fae58bcb31e"
+  },
+  "independent_physical_audit": {
+    "path": "runs/candidate-b02-v3-physical-audit-1.json",
+    "sha256": "8444878ddebc6de98ebd7baddbf3e939b60aaba52bbd5e24afab39e432d7a53a"
+  },
+  "new_api_calls": 0,
+  "new_comparative_samples": 0,
+  "next_boundary_plan": {
+    "blind_client_policy_review": {
+      "disposition": "Supported CLI/HTTP presentation and completion, current visible browser errors and real user-triggered export. M1 control names, download mechanism, raw output bounds and numeric completion deadlines remain unspecified; M3 explicit download requirements are separately scoped.",
+      "path": "runs/candidate-b03-blind-client-policy-review-1.json",
+      "scope": "Prospective design input only, reviewed without candidate/reference implementations or execution results. No B03 execution or new acceptance credit.",
+      "sha256": "2319cb2b14b61a07f0d2a994eb4eca0be967eda5c9f4babcca875cc86beace2f"
+    },
+    "execution_groups": 10,
+    "next_concrete_action": "Begin C01/C02 with versioned raw observation schema and independently proven exit/completion protocol. Independent normative review may resolve PD-ERRORS/PD-EXPORT concurrently. Keep unsupported exact facets open; export clarification does not block useful CLI implementation.",
+    "ordered_slices": 6,
+    "receipt": {
+      "path": "runs/candidate-b03-next-boundary-plan-1.json",
+      "sha256": "5c74f488886d187a811043f0745aba6c80a2043b2c6a8edf879ed1ec2e4cfc82"
+    },
+    "scope": "Future design input only; no B03 execution, acceptance or prerequisite authority.",
+    "source_bindings_reconciled": 32,
+    "target_requirement_count": 33
+  },
+  "physical_counts": {
+    "actual_total_histories": 251,
+    "assertion_schema_cells_checked": 16499,
+    "detected_mutants": 5,
+    "instrumentable_positive_controls": 5,
+    "known_false_cells_all_deliberate_mutants": 26,
+    "not_run_histories": 0,
+    "ordinary_reference_observations": 233,
+    "partial_reference_observations": 3,
+    "planned_total_histories": 251,
+    "prospective_auxiliary_assertion_keys_checked": 10040,
+    "prospective_product_assertion_keys_checked": 6459,
+    "raw_container_cleanup_and_absence_verified": 251,
+    "raw_paused_captures": 753,
+    "raw_volume_cleanup_and_absence_verified": 251,
+    "reference_histories": 241,
+    "retained_stream_bytes_rehashed": 158435914,
+    "retained_streams_rehashed": 12550,
+    "retained_transport_records_rehashed": 6275,
+    "unavailable_reference_schedules": 5,
+    "unique_containers": 251,
+    "unique_volumes": 251,
+    "unknown_unavailable_cells": 235,
+    "unspecified_exact_code_cells": 3
+  },
+  "preexecution_plans": [
+    {
+      "path": "runs/candidate-b02-v3-cycle-plan-1.json",
+      "sha256": "cc9b1eb46613a0a9869079ee5c7903cdbc6ec166ac695e94cfc4c2faf93bea28"
+    },
+    {
+      "path": "runs/candidate-b02-v3-cycle-plan-2.json",
+      "sha256": "d9d9ebaf556338f8d194bc7b9c2842056a3f01ea062d4b5a4705526d64380bfd"
+    }
+  ],
+  "prior_checkpoint": {
+    "path": "analysis/candidate-b02-v2-diagnostic-checkpoint.json",
+    "sha256": "74f1522a66d8180a192b5e96c94a688fdafaba81ddebdab658c2b9fe0fea05d7"
+  },
+  "publication": {
+    "code_and_checkpoint": "Publish in the enclosing commit on codex/cumulative-project-contract; verify remote and retain separate publication receipt.",
+    "github_pages": "Existing public snapshot remains at gh-pages c8ba24ac7d1792ebf7553447ec0c980b48d02c39; no refresh in this cycle.",
+    "only_user_marks_reviewed": true,
+    "raw_evidence": "Retained local runs paths; no bulk runtime-artifact publication."
+  },
+  "purpose": "Version and qualify the evaluator policy without changing candidate behavior or relabelling historical failures. This is engineering qualification, not whole-product acceptance or a comparative model sample.",
+  "qualification": {
+    "coverage": "targeted",
+    "current_input_mismatches": [],
+    "duration_seconds": 265.43819608259946,
+    "final_reconciliation": {
+      "path": "runs/candidate-b02-v3-final-reconciliation-1.json",
+      "sha256": "d069cb6931f920cb2d406f5a36f4bdbe76c1efde5e844b48a37aa677e24d2202"
+    },
+    "input_files_reconciled": 443,
+    "inputs": {
+      "path": "runs/candidate-b02-v3-qualification-1/20261003T141126-acedfd5e/inputs.json",
+      "sha256": "0e6ab69c0b3eb87d4191dda8f9ee0e0f73d461751435aeea6d71d590602832e7"
+    },
+    "method_classes": [
+      {
+        "class": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 1.708976924419403e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_all_241_recipes_order_and_baseline_expected_histories_are_preserved",
+            "run_seconds": 1.0276850424706936,
+            "setup_seconds": 1.7499551177024841e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.125037670135498e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_contract_hash_binds_selected_immediate_and_deferred_histories",
+            "run_seconds": 0.4436095831915736,
+            "setup_seconds": 5.41098415851593e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.1669471859931946e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_defensive_accessors_cannot_change_recipes_policy_or_histories",
+            "run_seconds": 0.03063866589218378,
+            "setup_seconds": 7.078051567077637e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.000240445137024e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_loaded_frozen_and_normative_source_guards_refuse_drift",
+            "run_seconds": 0.006650167517364025,
+            "setup_seconds": 8.335337042808533e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.166015863418579e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_policy_and_source_identities_bind_normative_sources_not_mutable_receipts",
+            "run_seconds": 0.004830041900277138,
+            "setup_seconds": 9.583309292793274e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.3999640941619873e-05,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests.test_three_policy_rows_bind_fixed_baselines_and_no_exact_code_credit",
+            "run_seconds": 0.017925540916621685,
+            "setup_seconds": 1.7499551177024841e-06,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 1.0831281542778015e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_after_failure_and_observed_code_survive_later_unavailability",
+            "run_seconds": 0.8759902501478791,
+            "setup_seconds": 1.3327226042747498e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.166527211666107e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_auxiliary_conservation_failure_survives_rejection_or_unknown_frame",
+            "run_seconds": 0.1433076672255993,
+            "setup_seconds": 8.754432201385498e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.125037670135498e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_before_failure_survives_unknown_and_explicit_unavailable_markers",
+            "run_seconds": 0.04064366687089205,
+            "setup_seconds": 1.084059476852417e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.2079253792762756e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_document_blob_job_and_manifest_failures_are_never_masked_by_policy",
+            "run_seconds": 0.5633518323302269,
+            "setup_seconds": 1.000240445137024e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.2917444109916687e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_missing_extra_outputs_and_registration_mismatch_cannot_qualify",
+            "run_seconds": 0.044985958375036716,
+            "setup_seconds": 5.00120222568512e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 2.905726432800293e-07,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_native_job_recognition_has_strict_types_domains_and_state_shape",
+            "run_seconds": 2.3749656975269318e-05,
+            "setup_seconds": 8.326023817062378e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.0421499609947205e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_no_admission_lookup_result_and_state_checks_remain_strict",
+            "run_seconds": 0.1076341662555933,
+            "setup_seconds": 3.7439167499542236e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.4994293451309204e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_nonempty_native_codes_have_equal_supported_judgment_and_preserve_code",
+            "run_seconds": 0.22606083285063505,
+            "setup_seconds": 1.2079253792762756e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.57399606704712e-07,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_ordinary_empty_intake_still_passes_and_nonpolicy_checks_match_v2",
+            "run_seconds": 0.25784570910036564,
+            "setup_seconds": 5.401670932769775e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 8.745118975639343e-07,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_unrecognized_presentations_are_unknown_not_product_failures_or_passes",
+            "run_seconds": 0.5530810412019491,
+            "setup_seconds": 5.00120222568512e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.000240445137024e-06,
+            "id": "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests.test_valid_job_success_including_zero_entries_is_known_rejection_failure",
+            "run_seconds": 0.13152512535452843,
+            "setup_seconds": 3.7532299757003784e-07,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 1.000240445137024e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_adapter_bind_preserves_original_manifest_and_import_dispatches_secondary",
+            "run_seconds": 0.0010947911068797112,
+            "setup_seconds": 1.2908130884170532e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.497146725654602e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_adapter_keeps_result_history_while_mutating_original_return_alias",
+            "run_seconds": 0.0008137915283441544,
+            "setup_seconds": 6.249174475669861e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.506459951400757e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_candidate_operational_error_does_not_become_reviewed_unavailable",
+            "run_seconds": 0.0008739577606320381,
+            "setup_seconds": 5.420297384262085e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.1669471859931946e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_closed_review_binds_source_components_purpose_and_definition",
+            "run_seconds": 0.9000619584694505,
+            "setup_seconds": 5.41098415851593e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 5.207955837249756e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_container_inputs_are_independently_readonly_and_candidate_is_unprivileged",
+            "run_seconds": 0.0009736660867929459,
+            "setup_seconds": 6.668269634246826e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.000240445137024e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_definition_mismatch_unknown_case_and_existing_output_reject_before_dispatch",
+            "run_seconds": 0.09658170770853758,
+            "setup_seconds": 1.000240445137024e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.125037670135498e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_every_registered_recipe_is_data_only_and_within_physical_bounds",
+            "run_seconds": 4.736014083959162,
+            "setup_seconds": 8.326023817062378e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 6.668269634246826e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_interference_orders_second_call_at_exact_public_store_boundary",
+            "run_seconds": 0.0010015824809670448,
+            "setup_seconds": 8.754432201385498e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 8.326023817062378e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_known_ordinary_failure_survives_reviewed_unavailable_schedule",
+            "run_seconds": 0.011856917291879654,
+            "setup_seconds": 5.830079317092896e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.497146725654602e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_late_auxiliary_unavailable_preserves_prior_product_failure",
+            "run_seconds": 0.0020067086443305016,
+            "setup_seconds": 7.506459951400757e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.592622518539429e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_limited_control_and_mutants_cannot_escape_their_reviewed_case_scope",
+            "run_seconds": 0.06559162493795156,
+            "setup_seconds": 8.754432201385498e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 2.915039658546448e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_markers_require_confined_paths_known_references_and_valid_bytes",
+            "run_seconds": 7.191579788923264e-05,
+            "setup_seconds": 8.745118975639343e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.916241884231567e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_new_source_protocol_binds_same_bytes_differently_and_rejects_mismatch",
+            "run_seconds": 0.0020505404099822044,
+            "setup_seconds": 3.3248215913772583e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.592622518539429e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_partial_control_requires_exact_null_set_and_frozen_policy_bindings",
+            "run_seconds": 0.14019966591149569,
+            "setup_seconds": 5.830079317092896e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.0421499609947205e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_partial_metadata_cannot_expand_closed_case_scope",
+            "run_seconds": 0.011055167764425278,
+            "setup_seconds": 9.173527359962463e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.583309292793274e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_policy_unknown_does_not_mask_known_product_or_auxiliary_failure",
+            "run_seconds": 0.05081683397293091,
+            "setup_seconds": 7.506459951400757e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 3.7439167499542236e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_recipe_rejects_executable_hooks_methods_and_unsafe_fixture_ancestors",
+            "run_seconds": 8.229166269302368e-05,
+            "setup_seconds": 7.925555109977722e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 2.9243528842926025e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_references_persist_before_to_after_and_clear_on_reopen",
+            "run_seconds": 3.841705620288849e-05,
+            "setup_seconds": 4.163011908531189e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 7.925555109977722e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_reviewed_unavailable_schedule_never_creates_secondary_store_or_calls_prepare",
+            "run_seconds": 0.0012042075395584106,
+            "setup_seconds": 3.7439167499542236e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 8.745118975639343e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_source_binding_includes_transport_definitions_profile_and_mapper",
+            "run_seconds": 0.0009161662310361862,
+            "setup_seconds": 7.506459951400757e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.583309292793274e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_source_substitution_and_forged_review_reject_before_dispatch",
+            "run_seconds": 0.056783249601721764,
+            "setup_seconds": 8.745118975639343e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 9.173527359962463e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_stage_fixture_readback_preserves_links_fifo_and_exact_bytes",
+            "run_seconds": 0.0013765422627329826,
+            "setup_seconds": 6.677582859992981e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.041218638420105e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_three_policy_limited_histories_never_become_ordinary_passes",
+            "run_seconds": 0.058446167036890984,
+            "setup_seconds": 5.41098415851593e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 5.00120222568512e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_unavailable_interposition_stops_dependent_actions_and_retains_prefix",
+            "run_seconds": 0.0009999992325901985,
+            "setup_seconds": 6.249174475669861e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 1.000240445137024e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_unqualified_native_frames_do_not_earn_partial_qualification",
+            "run_seconds": 0.09759145881980658,
+            "setup_seconds": 5.00120222568512e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 6.258487701416016e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_unsupported_instance_interposition_is_unavailable_not_product_failure",
+            "run_seconds": 0.0009642504155635834,
+            "setup_seconds": 5.830079317092896e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 8.754432201385498e-07,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_versioned_capture_parser_accepts_larger_file_without_changing_frozen_parser",
+            "run_seconds": 0.00401291623711586,
+            "setup_seconds": 6.668269634246826e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 3.625638782978058e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests.test_versioned_session_retains_three_large_frames_within_new_bound",
+            "run_seconds": 0.06616337411105633,
+            "setup_seconds": 6.249174475669861e-07,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v3.py::CandidateDirectStoreDriverV3DockerTests",
+        "lane": "docker",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 3.0836090445518494e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateDirectStoreDriverV3DockerTests.test_complete_registered_store_roster",
+            "run_seconds": 230.1603685002774,
+            "setup_seconds": 2.9578804969787598e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 4.416331648826599e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateDirectStoreDriverV3DockerTests.test_illegal_cancel_defect_is_distinguished",
+            "run_seconds": 2.414162832312286,
+            "setup_seconds": 9.993091225624084e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 5.709007382392883e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateDirectStoreDriverV3DockerTests.test_stale_epoch_defect_is_distinguished",
+            "run_seconds": 2.1323627503588796,
+            "setup_seconds": 1.2917444109916687e-06,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeDriverV3DockerTests",
+        "lane": "docker",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 6.290152668952942e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeDriverV3DockerTests.test_archive_acceptance_defect_is_distinguished",
+            "run_seconds": 3.280377541668713,
+            "setup_seconds": 3.207474946975708e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 2.9588118195533752e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeDriverV3DockerTests.test_complete_registered_intake_roster",
+            "run_seconds": 247.72162520792335,
+            "setup_seconds": 9.164214134216309e-07,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 4.207715392112732e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeDriverV3DockerTests.test_symlink_acceptance_defect_is_distinguished",
+            "run_seconds": 2.3016417920589447,
+            "setup_seconds": 3.958120942115784e-06,
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v3.py::CandidateScheduleControlV3DockerTests",
+        "lane": "docker",
+        "status": "passed",
+        "tests": [
+          {
+            "cleanup_seconds": 4.00003045797348e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateScheduleControlV3DockerTests.test_all_five_instrumentable_control_schedules",
+            "run_seconds": 12.197199083864689,
+            "setup_seconds": 5.666166543960571e-06,
+            "status": "passed"
+          },
+          {
+            "cleanup_seconds": 3.125518560409546e-06,
+            "id": "tests/test_candidate_intake_store_driver_v3.py::CandidateScheduleControlV3DockerTests.test_instrumentable_false_success_mutant_is_distinguished",
+            "run_seconds": 2.73410408385098,
+            "setup_seconds": 9.993091225624084e-07,
+            "status": "passed"
+          }
+        ]
+      }
+    ],
+    "method_counts": {
+      "class_workers": 6,
+      "docker_passed": 8,
+      "failed": 0,
+      "not_run": 0,
+      "offline_passed": 45,
+      "passed": 53,
+      "reused_classes": 0,
+      "selected": 53
+    },
+    "peak_resource_tokens": 3,
+    "resource_token_budget": 4,
+    "reused_classes": 0,
+    "runtime_reconciliation": {
+      "final_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "initial_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "matches": true
+    },
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": {
+      "path": "runs/candidate-b02-v3-qualification-1/20261003T141126-acedfd5e/static.json",
+      "sha256": "637d68162aae70ae8c1a126f3867d302f1b718c7ba415d7e272074edef037252"
+    },
+    "status": "passed",
+    "summary": {
+      "path": "runs/candidate-b02-v3-qualification-1/20261003T141126-acedfd5e/summary.json",
+      "sha256": "1284f430c100d2fe6d9ca1832794b6cc7fd1f2a83c4b5114f83073e05ac18833"
+    },
+    "type_baseline_debt": 117,
+    "type_coverage": "Explicit roots and imported dependencies; no claim that all legacy dynamic functions are type-safe.",
+    "workers_started": 6
+  },
+  "recorded_at": "2026-10-03T14:30:16.252223+00:00",
+  "remaining_work": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "schema": "candidate-b02-v3-qualification-checkpoint-v1",
+  "source_pins": {
+    "docs/candidate-intake-store-cases-v2.md": "eeb6b32f32bd7a013623b519a63cec4b0ce4e0525a18a937e631bcb0fe4219df",
+    "docs/candidate-intake-store-cases-v3.md": "842551df00f68cad05d1cf0367d7bef11c5c946eae25435f0496290c155b5744",
+    "docs/candidate-intake-store-execution-v2.md": "3881a1cfc4f7f44dd769cabea430c442f1cb6e164b9c2dcda28e43c5d7c3d104",
+    "docs/candidate-intake-store-execution-v3.md": "6e514f433e88a85cfc2de8d195d9ac14aadcb952a466839c090291451acf7bbe",
+    "docs/library-v2-json-reference-v2.md": "56081ea751496f7742ce2381aaf047748710f9c5cf8ca68c2b2fbdedeb71a299",
+    "gossip_harness/candidate_intake_fixtures_v1.py": "ab93758a3e4cfb8404c1fdabc9ca65db22b74e624e6454357cbd4744f8c7f59f",
+    "gossip_harness/candidate_intake_store_cases_v1.py": "291811e6c6714e068619c16acac6ad1d2877b949c4ef481e109163bb9324f0fc",
+    "gossip_harness/candidate_intake_store_cases_v2.py": "159ba708edb050a0fe9c715d70c297182874410bac1b6add70e98afb09ebe201",
+    "gossip_harness/candidate_intake_store_cases_v3.py": "983acb5f1130bd6303f1b8b460bcd0910b776a48abc7f62f51fd173dded69886",
+    "gossip_harness/candidate_intake_store_driver_v1.py": "582b91c3c3e77d2eab72a30128066174486e06893caad97272402d94f8e26a20",
+    "gossip_harness/candidate_intake_store_driver_v2.py": "cbc0a9215d4564dc66e9cd49c0b1198c1e87bc1144fda718454839defd0fa54f",
+    "gossip_harness/candidate_intake_store_driver_v3.py": "be8e02ca70860cff62f2b7e780147dffc62558bcf3ce40fb7127403c5e5c2838",
+    "gossip_harness/candidate_intake_store_observer_v1.py": "1e873d61e404e57c83afe025f0a78126fb38cfc5fe4a65f4e61e72606bafb98e",
+    "gossip_harness/candidate_intake_store_profile_v1.py": "170747329cd27882624ad788a2283b157a507fe52fc840ac8b38c5aace5c730c",
+    "gossip_harness/candidate_storage_cases_v1.py": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4",
+    "gossip_harness/candidate_storage_driver_v1.py": "52bc3a8a3f7fd50d1da92a8755c4076c1508c119d09c0732b6d86fe9b3c13e2a",
+    "gossip_harness/candidate_storage_observer_v1.py": "84952ce86ca8bd6df4434ca76d44e25febde2c4f88af2664f8765681fa131a15",
+    "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+    "gossip_harness/library_v2_json_reference_v2.py": "d334a0539101e63cf0e6c10dd8ee3d7c93819354bd119752b06cc36685a3498c",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "library-m1-acceptance-inventory-v1.json": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a",
+    "pyproject.toml": "4c976de9860ebc9086629b7b4d51f07472c19e921be71800091329b38c7c7fe6",
+    "tests/test_candidate_intake_store_cases_v2.py": "774fdccb6827f294518b835bc6720b71f5ed04aa1ec0b9faf17577d4eadff579",
+    "tests/test_candidate_intake_store_cases_v3.py": "01df02177d7e56bf4d290b50c89235d1aab3a6b2e718a58bea2dbd62aa858276",
+    "tests/test_candidate_intake_store_driver_v2.py": "74b129c1438eb4b5caa447001c8432385e8ec297f80bf324333df9c28641546b",
+    "tests/test_candidate_intake_store_driver_v3.py": "6320e07e32942995a298cf3ad9cb17178167ce07041d89a40182cb0d1a9a894c",
+    "tests/test_library_v2_json_reference_v2.py": "6a6839551a4b477aad261e87eba16b0b1a02d0f368e2543ff4a04536a6a78bf5",
+    "verification-manifest.json": "2f430d197f5e3f131bf3fa520f543fc0080052a3ea187ba7072f14fbb4ffcddb"
+  },
+  "statistical_claim": "No statistical superiority, Elo update, causal speed/cost advantage or comparative model outcome follows from this qualification.",
+  "status": "passed-bounded-harness-qualification",
+  "unchanged": [
+    "Frozen main, historical scientific sources and evidence, cumulative API ledger, published Pages snapshot, full four-milestone/six-trajectory and held-out-family objectives.",
+    "Pending live payload-transfer approval remains separate; this cycle made no API call or new invoice audit.",
+    "Only the user establishes human review checkpoints."
+  ],
+  "whole_product_acceptance": false
+}

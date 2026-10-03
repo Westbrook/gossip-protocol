@@ -3360,6 +3360,78 @@
       "overlap": "Original238 definitions remain frozen; additional fields and three new cases use an explicit v2 contract.",
       "overlap_reason": "Pure definition/scorer checks do not establish candidate behavior or whole-ID acceptance.",
       "disposition": "Run in the combined offline gate before freezing and executing the new physical roster; preserve unsupported and failed observations."
+    },
+    "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3DefinitionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "All241 recipes and ordering are preserved; all238 unrelated rows remain exact, while three wrong-kind rows receive explicit unsupported-code policy identities.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
+    },
+    "tests/test_candidate_intake_store_cases_v3.py::CandidateIntakeStoreV3PolicyTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Substantive rejection/conservation failures survive an unspecified exact-code facet; unrecognized native presentation remains unavailable and cannot earn qualification.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
+    },
+    "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeStoreDriverV3Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Source/review/definition gates and the closed three-case partial-qualification classifier cannot promote unsupported or failed observations.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
+    },
+    "tests/test_candidate_intake_store_driver_v3.py::CandidateIntakeDriverV3DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Complete124 intake histories distinguish three policy-limited wrong-kind observations from ordinary matches; two admission mutants retain intended-defect checks.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
+    },
+    "tests/test_candidate_intake_store_driver_v3.py::CandidateDirectStoreDriverV3DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "Complete117 direct histories preserve112 ordinary observations and five explicitly unavailable forced schedules; two direct-state mutants remain separate.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
+    },
+    "tests/test_candidate_intake_store_driver_v3.py::CandidateScheduleControlV3DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Five limited instrumentable schedule controls and one false-success mutant retain exact reviewed source/case boundaries and no product acceptance credit.",
+      "isolation": "One class worker, no nested pool; physical histories use fresh candidate containers and owned volumes.",
+      "boundary": "New explicitly versioned wrong-kind observation policy with unchanged candidate bytes, recipes and physical limits.",
+      "distinct_defect": "Unsupported exact-code assumptions can manufacture false product failures; broad masking can erase actual admission/storage failures or bless unrecognized native error presentation.",
+      "overlap": "Frozen v1/v2 sources and failed evidence remain unchanged. Three prospective policy-limited cases preserve unresolved exact-code facets, not retroactive passes.",
+      "overlap_reason": "Partial qualification and limited controls do not establish complete product acceptance or independent comparative evidence.",
+      "disposition": "Root runs combined static and affected offline classes before fresh complete changed-contract Docker qualification; freeze all identities first and retain every failure/unknown/unrun result."
     }
   },
   "audit": {
