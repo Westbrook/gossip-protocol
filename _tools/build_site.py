@@ -170,7 +170,11 @@ def main() -> None:
     history = ''.join('<li><time>'+esc(p['at'])+'</time> · '+str(p['remaining'])+'/'+str(p['total'])+' remaining<p>'+esc(clean(p.get('reason','')))+'</p></li>' for p in reversed(points))
     write("progress/archive.html",shell("Scope history",'<div class="eyebrow">Historical scope and completion records</div><h1>How the work expanded</h1><p>This preserves the burndown history. A published snapshot does not change local reviews or mark outstanding work complete.</p><ol>'+history+'</ol>',"progress/archive.html"))
     output_cards = ''.join('<article class="panel"><h3><a href="'+name+'.html?progress-report">'+TITLES[name]+'</a></h3><p class="small">Authored study report. Findings and limitations retain their original scientific scope.</p></article>' for name in PAGES)
-    write("outputs/index.html",shell("Study outputs",'<div class="eyebrow">Research, experiments and comparisons</div><h1>Study outputs</h1><p class="lead">Read the latest comparative reports first; earlier studies remain separate evidence rather than one pooled leaderboard.</p><div class="grid">'+output_cards+'</div>',"outputs/index.html"))
+    development = ''
+    checkpoint = 'analysis/peer-library-project-v4-checkpoint.json'
+    if checkpoint in tracked and 'docs/peer-library-project-v4.md' in doc_map:
+        development = '<section class="panel"><div class="eyebrow">Development qualification</div><h2>20-role M1 harness</h2><p>Read the <a href="../docs/peer-library-project-v4.html?progress-report">versioned methodology</a> and <a href="'+REPOSITORY+'/blob/'+commit+'/'+checkpoint+'">exact published checkpoint</a> for completed checks, retained failures and outstanding rehearsal or live evaluation. A development checkpoint is separate from a comparative model-quality result.</p></section>'
+    write("outputs/index.html",shell("Study outputs",'<div class="eyebrow">Research, experiments and comparisons</div><h1>Study outputs</h1><p class="lead">Read the latest comparative reports first; earlier studies remain separate evidence rather than one pooled leaderboard.</p>'+development+'<div class="grid">'+output_cards+'</div>',"outputs/index.html"))
 
     def export_html(source: Path,path: str,source_name: str,kind: str|None=None) -> None:
         raw = source.read_bytes()

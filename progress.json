@@ -1,9 +1,9 @@
 {
   "protocol": "gossip-public-progress-v1",
   "title": "Gossip × Agents",
-  "source_revision": 332,
-  "snapshot_at": "2026-10-03T02:14:41.987909+00:00",
-  "last_meaningful_update": "2026-10-03T02:13:19+00:00",
+  "source_revision": 338,
+  "snapshot_at": "2026-10-03T03:01:30.431501+00:00",
+  "last_meaningful_update": "2026-10-03T03:00:33+00:00",
   "recorded_status": "working",
   "verified_effort": 223,
   "total_effort": 248,
@@ -17,7 +17,7 @@
       "note": "Inspected video visuals and read the full transcript for Anjan Biswas’s 2:15 MURMUR post. Simulation source is unavailable from the post.",
       "inScope": true,
       "updatedAt": "2026-09-30T02:23:56+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "prior-art",
@@ -27,7 +27,7 @@
       "note": "Reviewed implemented systems, research papers, and products; evidence separated from claims.",
       "inScope": true,
       "updatedAt": "2026-09-30T02:23:56+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "tradeoffs",
@@ -37,7 +37,7 @@
       "note": "Compared architectures and reviewed seeded dissemination probe results; 11 tests passed. Dissemination speed is not software-project quality.",
       "inScope": true,
       "updatedAt": "2026-09-30T02:23:56+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "blueprint",
@@ -47,7 +47,7 @@
       "note": "Delivered a versioned research memo, hybrid architecture proposal, staged build plan, and controlled benchmark with explicit stop/go criteria.",
       "inScope": true,
       "updatedAt": "2026-09-30T02:25:15+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "git-design",
@@ -57,7 +57,7 @@
       "note": "Defined hub versus subsystem-maintainer integration authority. The same delegated Git workflow can use GitHub; hosting and decision topology are separate choices.",
       "inScope": true,
       "updatedAt": "2026-09-30T02:51:48+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "harness-core",
@@ -683,10 +683,10 @@
       "title": "Build real peer-local coordination controls",
       "weight": 5,
       "status": "in_progress",
-      "note": "Current browser/public UI changes have scoped verification; matching full qualification, physical acceptance and complete role rehearsal are still required. Fixed-phase/experimental limits and all future studies remain in scope.",
+      "note": "RPCV3 repair passed the full 21-class gate and is pushed. Root revalidated 315 inputs/runtime after commit and launched the fresh full role fixture; no new allocation, key use or API request.",
       "phase": "Live coordination",
       "inScope": true,
-      "updatedAt": "2026-10-03T02:13:19+00:00",
+      "updatedAt": "2026-10-03T03:00:33+00:00",
       "tier": "current"
     },
     {
@@ -727,10 +727,10 @@
       "title": "Test a larger project with 20 swarm roles",
       "weight": 8,
       "status": "in_progress",
-      "note": "Browser/public UI fixes passed source review and 17 contract plus 22 browser scoped checks. Prior 341-check gate is historical for pre-fix source; fresh physical reference/full 20-role rehearsal remain pending. No paid calls or allocation.",
+      "note": "Published 3019bcf97db8 after 361/361 fresh checks. Complete physical v4 rehearsal 2 is running in root session 83984; actual receipt, audit and live permit are pending. Startup failure 1 preserved; full study unfinished.",
       "phase": "Larger project scaling study",
       "inScope": true,
-      "updatedAt": "2026-10-03T02:13:19+00:00",
+      "updatedAt": "2026-10-03T03:00:33+00:00",
       "tier": "current"
     },
     {

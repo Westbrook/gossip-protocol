@@ -1,10 +1,10 @@
 {
   "protocol": "gossip-pages-publication-v1",
   "source_repository": "https://github.com/Westbrook/gossip-protocol",
-  "source_commit": "052793a02c8e7d7791ab13927fd1633a3b710029",
-  "report_revision": 332,
-  "report_source_sha256": "0baff4dc57ab950e3cff020640f8308cd903ae87899b88a554223d5d97ba7658",
-  "exported_at": "2026-10-03T02:14:41.987909+00:00",
+  "source_commit": "3019bcf97db8d0f37b3bd1f045c8826155ad438e",
+  "report_revision": 338,
+  "report_source_sha256": "9ff5c861a7787d9fc3a427149a2ff4d545c6cee1511204a29bbae06392f6f1cc",
+  "exported_at": "2026-10-03T03:01:30.431501+00:00",
   "renderer": {
     "version": "pandoc 3.10",
     "sha256": "925e4d18f999e52744ee65e8e913f6d22a63db0b0096385dffe79762df75d0b7"
@@ -181,133 +181,133 @@
     },
     {
       "path": "docs/repository-guide.html",
-      "exported_sha256": "6f1ebe0ed7208e941100c7cbcde83350f6622b461e0e6b9b37b397d07d6472f3",
+      "exported_sha256": "cb8f350a82fcf6abd3011aa100b0246eb19710db7e73ac8706aaed59b5ac9602",
       "source": "README.md",
-      "source_sha256": "1750198c912ca2da1616db16ced550fe662bebfcb89321de031e29ca19581b6f",
-      "provenance": "uncommitted-working-tree-snapshot"
+      "source_sha256": "feb568cf68a1ea288ace886b1c2169534e3a3a2ae02374f77a27de561e78e815",
+      "provenance": "committed-source"
     },
     {
       "path": "docs/development-verification.html",
-      "exported_sha256": "83e306893756fba4e3b879df9c7d27fd2d1f297a25142088c6329b9b01357b05",
+      "exported_sha256": "daaf0322683dd958a83af6e6d07035d8582da6993880a42e7ce1ba14d150a5a3",
       "source": "VERIFICATION.md",
       "source_sha256": "c862500a65dedf77494e79e47a2f0b8727757f424f8de9148bd2e3ef637a2e23",
       "provenance": "committed-source"
     },
     {
       "path": "docs/confirmatory-path-checkpoint-v1.html",
-      "exported_sha256": "eeea40d4ccf3d473df2fddee06f16e9bc6d690d8d2de8ee9d79ef8e820770c85",
+      "exported_sha256": "20ee9bad19b2f126105ac12a226f07f1394c12a9c95cee004ea0f10fc3542a48",
       "source": "docs/confirmatory-path-checkpoint-v1.md",
       "source_sha256": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4",
       "provenance": "committed-source"
     },
     {
       "path": "docs/large-swarm-project-plan-v1.html",
-      "exported_sha256": "da8474c9a60af09cffe6dd8a9c0e95c89500f6a30dd23885c46fa4e5d031dbcd",
+      "exported_sha256": "75b53e53c75fa9576c155e4ea975789861526b2c760c43e6a1b44fbfa02af5b1",
       "source": "docs/large-swarm-project-plan-v1.md",
       "source_sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-authority-v1.html",
-      "exported_sha256": "d62b5d26af579adc490bc662c0fafa55c214775fdad99561db04d833e9ceb400",
+      "exported_sha256": "d5883e8ebbc7a7e32ecacf17f737120dcebbe8c4acaaf5bf34e0b7e52ea35c62",
       "source": "docs/peer-authority-v1.md",
       "source_sha256": "55dde872138cdb375fcd5263a86069f0c8f5d06dec51a3c9e910e7e438ab2132",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-candidate-v1.html",
-      "exported_sha256": "23558a70bc5ca1903332a0609778dd39c36a85879c50ab0c28cc074a9c45da8a",
+      "exported_sha256": "687472e8750f11997eff2ca6ec73867647103625f7624ec9e0615a1cbdc0636f",
       "source": "docs/peer-candidate-v1.md",
       "source_sha256": "471704f0b6d4c481386ea4b03d0d78d747f2e7841eae6106e7c85770acc4fa6b",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-coding-dispatch-v1.html",
-      "exported_sha256": "3dcf663283ce5029f8202bfc2a00bf47aa0337b89f65fccb839acbab391f9377",
+      "exported_sha256": "c66bbe4ccdf05423042f9b04251eeea7da04c2852def4195ad4f1281b0e8e6c8",
       "source": "docs/peer-coding-dispatch-v1.md",
       "source_sha256": "cd4db2fbe875cc2bb42b715414cc639c842fff4c4b161678094f63d2e7a9fd4f",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-coding-runtime-v1.html",
-      "exported_sha256": "9018424b997d3bd7da6887d823169211ddfd5ad927c996b1736c66f79052c613",
+      "exported_sha256": "b1bb0a917b7b8e4546154d110652ac5209063227dd43363097d8c9a910881574",
       "source": "docs/peer-coding-runtime-v1.md",
       "source_sha256": "8490024841e21678b22ec177177b6a081123445bd3d544f9d31f03c0780763f9",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-financial-bridge-design-v2.html",
-      "exported_sha256": "d5a2efb99671f0c3bfd0024ef27729b892d982565d189de44adddc02f82f6865",
+      "exported_sha256": "c613362650a5728bd736931224d4e87608264f8b5c87638c2ca166662a64502a",
       "source": "docs/peer-financial-bridge-design-v2.md",
       "source_sha256": "673841478032a84b9e2ae02ad57580095dc42855efe527fb9fec1bbf4d8f534c",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-git-bundle-v1.html",
-      "exported_sha256": "833d955be35fdaba47156f81acfa6e47e49f4be49347d650fb0a923221ee16af",
+      "exported_sha256": "ae70b0271d119566283b0f6e848b433e2cdcac5fc60ff9778b19d15c1ce552ca",
       "source": "docs/peer-git-bundle-v1.md",
       "source_sha256": "28b555ffedb0810227bc57804c372a5b0821cb9bade65381891b3a1b78fc2aa4",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-library-project-v3.html",
-      "exported_sha256": "0e2be8e91e62d4c36eecbd6af6bdaae96c6c9514c1da451a7039101fbb584b01",
+      "exported_sha256": "5b06aaefa0778e5ec5439c345fc938568b364ec3246181a0ec21fc6f6cd3d7ec",
       "source": "docs/peer-library-project-v3.md",
       "source_sha256": "1dae2ec2b5cc8168698f6a2a1049750c0d6c8095fe3ab5b5e42e7ae5bd052ffe",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-library-project-v4.html",
-      "exported_sha256": "4c384c37d94349f39ffa5fc8179e5dba4b98139910600ace5986d10344be6037",
+      "exported_sha256": "e5d0a0dc63234348bf82785f813c70aa57f164bfa946e5c3887db02fd708d2db",
       "source": "docs/peer-library-project-v4.md",
-      "source_sha256": "a1d2691ee315391eb648d9fdc997b836770d274eb0fe763342c995aabf9b5fcc",
-      "provenance": "uncommitted-working-tree-snapshot"
+      "source_sha256": "71aa7cc67121c3cbeb5ca29b1d5a157145254e3de0cb4bf15691bf8128678bbc",
+      "provenance": "committed-source"
     },
     {
       "path": "docs/peer-payload-v1.html",
-      "exported_sha256": "be853b4d3fd5c62a3d5b0d21449fe81d2a8826b5baef692424dda43869b68c21",
+      "exported_sha256": "60ace633952279c4982aaefbf4785e1ccf1ea31e22d0a633186f21f50b6f9f20",
       "source": "docs/peer-payload-v1.md",
       "source_sha256": "ed3179879b200f1c2e1092c1749e2e921c2b5ed641651a2ef07f51ff4e663d05",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-project-foundations-v2.html",
-      "exported_sha256": "a899bc20986db89e9230b3cd40521dc8bb7fa03bdfde64ad773209f0f42f45dd",
+      "exported_sha256": "3f53fd8b21efd20e4252252e29dfb68d15fa876e6e9eea34073c0a10c5a49693",
       "source": "docs/peer-project-foundations-v2.md",
       "source_sha256": "874ae6d81e0511de3a6d4e8b8b7c32f8766feb740b2708f9a697e308de55c696",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-project-runtime-v1.html",
-      "exported_sha256": "3c2d2fcc982fd186ec33e2153715e91667d851187d527cf7c3b4497c04b34f04",
+      "exported_sha256": "ca6b801e52ce38e8b036a76ec6cd0a829c3337f75f47aafc5ed80c1e2c4e4a5e",
       "source": "docs/peer-project-runtime-v1.md",
       "source_sha256": "d98ed326ae357e7ee5339df7a1c4542212d0c985a2f43a4d38550371ada7a462",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-promotion-v1.html",
-      "exported_sha256": "2a536226e0e290b617cd047d51b4d33e9a28685f85e8a7bb9581081833cb59f7",
+      "exported_sha256": "50a3ecedd3399d791702ec2f56a5faae0ebfcd3f826665961ed791647e6018e6",
       "source": "docs/peer-promotion-v1.md",
       "source_sha256": "92d85b8a7ebbc121cdff0e828dedd3ff9551046fb0b4b9c8fc4ee7216a40bbec",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-role-runtime-v2.html",
-      "exported_sha256": "fe4e5c7667611025d3422c0e8e2b71f035e12b20a9ca8f4b12135871062633cd",
+      "exported_sha256": "f80b1f41874c4e495424d7d8fd21252132b2eeeb7d98d3b387273f54d9109396",
       "source": "docs/peer-role-runtime-v2.md",
       "source_sha256": "35544dfb45954b7f8f77bbd9bae6107139b395ef5f343f01bb2d30c407bfdcfe",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-runtime-v1.html",
-      "exported_sha256": "951acffb2d5184a81407d237f49b5f28f34e486247a291d0f8b6d2cc4048d48d",
+      "exported_sha256": "15836f3bed08cadf107d70f72904ea531ae97b09eda937befd6794f07123211c",
       "source": "docs/peer-runtime-v1.md",
       "source_sha256": "83428f0619b54e2da319638a6366da476316d0e591347d556636e8c01772bbcf",
       "provenance": "committed-source"
     },
     {
       "path": "docs/peer-work-v1.html",
-      "exported_sha256": "c2263de88cec19d7a709d8e8c50d4346a2e063fa1d8edd4261ed77331ebb7924",
+      "exported_sha256": "c1f6d385e8bbbc7b8fbbf9b6b55b18ba4bae78f80b36239d48aa7e873aa1d45a",
       "source": "docs/peer-work-v1.md",
       "source_sha256": "c3faba549c6fe4c26c6c94ea1b34aeb38ff638b09d128da5d4d8a6abd4e0a073",
       "provenance": "committed-source"
@@ -324,23 +324,23 @@
     },
     {
       "path": "progress.json",
-      "exported_sha256": "c43f31e56d9a10e473e53d5d1ba8436f6ccb0eb34010c8f8aa7d2f0881f6c7b4"
+      "exported_sha256": "05272ea36e3605c41f4ba7f67ec0e437ad21b075b3c20acd4271745a47f298ed"
     },
     {
       "path": "index.html",
-      "exported_sha256": "1c2608a9826a882e79e3076ba5363c99765f08459a8349495c3dbc824b9317dc"
+      "exported_sha256": "92c904d68d1d08ee7007d8f617c7597e67af431a38ab1a5318ab7609e0913e39"
     },
     {
       "path": "progress/archive.html",
-      "exported_sha256": "255aecb44164f0e162389356478186e4a65807d1932787f738f68b0b0fcba868"
+      "exported_sha256": "9f1ec12f84f35924a8f62395044ce8226a5e25387cba56216097b6e867122359"
     },
     {
       "path": "outputs/index.html",
-      "exported_sha256": "6720f9f41fc112dc411ae7adeedcecabafa2534599b664931d8fbc0f4ddd002d"
+      "exported_sha256": "d0f8e362c41bd2f4617bf067d69caeff99adda1fe2fae810459d3f02e4cbc81b"
     },
     {
       "path": "docs/index.html",
-      "exported_sha256": "12b5edc994f3d97fbfd9f748d1d24cfefa6999d0b87be8de4ba3b1a146d3a076"
+      "exported_sha256": "c65db1c8157e785c546954a38e0947c30425cab51961e5b20ce4027e8f431e48"
     }
   ],
   "tools_entries": [
@@ -354,7 +354,7 @@
     },
     {
       "path": "_tools/build_site.py",
-      "exported_sha256": "85f14206e50dd1f3a40c1f59ac76381a4de18b44bc6c762b4f662cc092928be0"
+      "exported_sha256": "03c2dd2ea061011c21c03412d3eb124ea2323baf996a1c37bb0c09fc73f1fddc"
     },
     {
       "path": "_tools/check_site.py",
