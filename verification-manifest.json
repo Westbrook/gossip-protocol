@@ -3192,6 +3192,90 @@
       "overlap": "Development qualification only; no comparative or independent final acceptance samples.",
       "overlap_reason": "These new boundaries observe and authenticate facts not established by the retained pure registry or authored-reference checks.",
       "disposition": "Static and affected offline checks precede fresh physical qualification; preserve all failed artifacts."
+    },
+    "tests/test_candidate_intake_store_cases_v1.py::CandidateIntakeStoreDefinitionsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Prospective finite B02 recipes preserve the exact 42-ID target census, normative input boundaries, typed expectations, phase distinctions and unique observation selectors.",
+      "isolation": "One class worker; fresh mutable fixtures and candidate container/volume per physical history; no nested execution pool.",
+      "boundary": "Pure normative definitions and generated file/archive fixtures; no candidate imports or execution.",
+      "distinct_defect": "A malformed or double-invalid fixture, invalid epoch, omitted case or changed expectation could produce misleading product evidence.",
+      "overlap": "New B02 observation contract; existing B01 and reference receipts retain their original purpose and are not rerun as equivalent checks.",
+      "overlap_reason": "Pure definition/observer/driver boundaries are distinct from actual candidate effects and intentional defect controls.",
+      "disposition": "Run static and offline qualification before the prospective frozen physical matrix; preserve all failures and not-run roster entries."
+    },
+    "tests/test_candidate_intake_store_cases_v1.py::CandidateIntakeStoreScorerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Host scoring compares exact typed API outputs and raw persisted state without accepting candidate verdict flags.",
+      "isolation": "One class worker; fresh mutable fixtures and candidate container/volume per physical history; no nested execution pool.",
+      "boundary": "Synthetic source-bound storage observations and deliberate result/state defects.",
+      "distinct_defect": "Correct public errors could hide extra blobs, mutable manifests, incorrect receipts or wrong state transitions.",
+      "overlap": "New B02 observation contract; existing B01 and reference receipts retain their original purpose and are not rerun as equivalent checks.",
+      "overlap_reason": "Pure definition/observer/driver boundaries are distinct from actual candidate effects and intentional defect controls.",
+      "disposition": "Run static and offline qualification before the prospective frozen physical matrix; preserve all failures and not-run roster entries."
+    },
+    "tests/test_candidate_intake_store_driver_v1.py::CandidateIntakeStoreDriverTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only frozen whitelisted data recipes enter bounded candidate execution; source, fixture, stream and cleanup identities remain exact.",
+      "isolation": "One class worker; fresh mutable fixtures and candidate container/volume per physical history; no nested execution pool.",
+      "boundary": "Recipe validation, staging, framing, mocked process errors and candidate transport isolation.",
+      "distinct_defect": "A path or reference escape, source change, incomplete capture or output bound could admit untrusted execution or falsely qualify evidence.",
+      "overlap": "New B02 observation contract; existing B01 and reference receipts retain their original purpose and are not rerun as equivalent checks.",
+      "overlap_reason": "Pure definition/observer/driver boundaries are distinct from actual candidate effects and intentional defect controls.",
+      "disposition": "Run static and offline qualification before the prospective frozen physical matrix; preserve all failures and not-run roster entries."
+    },
+    "tests/test_candidate_intake_store_driver_v1.py::CandidateIntakeDriverDockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "All registered intake histories execute once in fresh candidate containers and preserve immediate and reopened storage observations.",
+      "isolation": "One class worker; fresh mutable fixtures and candidate container/volume per physical history; no nested execution pool.",
+      "boundary": "Actual pinned Docker, authored v2 source, archive/filesystem/JSON inputs and surgical intake defects.",
+      "distinct_defect": "Malformed input could mutate jobs/catalog, semantic failure could occur at the wrong phase, or a resource boundary could reject a valid input.",
+      "overlap": "New B02 observation contract; existing B01 and reference receipts retain their original purpose and are not rerun as equivalent checks.",
+      "overlap_reason": "Pure definition/observer/driver boundaries are distinct from actual candidate effects and intentional defect controls.",
+      "disposition": "Run static and offline qualification before the prospective frozen physical matrix; preserve all failures and not-run roster entries."
+    },
+    "tests/test_candidate_intake_store_driver_v1.py::CandidateDirectStoreDriverDockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "All registered direct Store histories and controls execute with exact state/epoch fencing and observed public-boundary interference.",
+      "isolation": "One class worker; fresh mutable fixtures and candidate container/volume per physical history; no nested execution pool.",
+      "boundary": "Actual pinned Docker, fresh persistent state per history, all state/action/epoch recipes and targeted defects.",
+      "distinct_defect": "Stale work or mutable returned data could corrupt newer persisted state while shallow API checks pass.",
+      "overlap": "New B02 observation contract; existing B01 and reference receipts retain their original purpose and are not rerun as equivalent checks.",
+      "overlap_reason": "Pure definition/observer/driver boundaries are distinct from actual candidate effects and intentional defect controls.",
+      "disposition": "Run static and offline qualification before the prospective frozen physical matrix; preserve all failures and not-run roster entries."
+    },
+    "tests/test_candidate_intake_store_profile_v1.py::CandidateIntakeStoreProfileTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Source-reviewed auxiliary storage mapping permits only independently specified legitimate transitions while retaining every physical table and raw value.",
+      "isolation": "Class process; bounded synthetic SQLite snapshots and prospective schema data; no candidate execution.",
+      "boundary": "Authored v2 representation profile, exact source/schema bindings and normative-derived transition checks.",
+      "distinct_defect": "Blanket conservation could reject legitimate new documents; blanket exemptions could hide unrelated auxiliary mutations.",
+      "overlap": "Separate representation qualification from portable normative expectations and physical Docker histories.",
+      "overlap_reason": "The profile explains allowed private representation changes; ordinary API/scorer tests cannot qualify private-table completeness.",
+      "disposition": "Qualify with definitions and driver offline before candidate execution; profile remains authored qualification without production review authority."
+    },
+    "tests/test_candidate_intake_store_observer_v1.py::CandidateIntakeStoreObserverTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The new B02 storage observer admits legitimate combined input maxima, including JSON escaping, while enforcing explicit row, field, capture and parser limits.",
+      "isolation": "Class process; bounded controller-authored SQLite fixtures with exact schema registration; no candidate code execution.",
+      "boundary": "Versioned read-only SQLite normalization and legal compound maximum representation, plus over-bound and corrupted observations.",
+      "distinct_defect": "Valid large manifests and receipts can exceed inherited B01 row or normalized-data limits and falsely become unavailable.",
+      "overlap": "Frozen B01 observer remains unchanged; this version qualifies the larger declared B02 input domain.",
+      "overlap_reason": "Real driver transport and normative API scoring cannot establish the bounded observer handles escaped persisted representations.",
+      "disposition": "Run before the full B02 physical matrix, after expected maximum representation bounds are frozen."
     }
   },
   "audit": {

@@ -1,0 +1,394 @@
+{
+  "audit_limits": [
+    "Raw integrity and outcome consistency were checked for every physically executed history; not every semantic assertion of every successful history was independently recomputed.",
+    "The198 histories are fewer than the planned243. Forty-one positive histories and four mutant methods did not execute and remain unverified.",
+    "The existing failed summary and product-failed census labels remain immutable historical evidence; reviewer interpretation is recorded separately.",
+    "All raw streams completed without transport truncation/infrastructure error, but the Store applicability failure contains a nested candidate-side OperationalError. Absence of infrastructure failures does not erase that observation.",
+    "The six ambiguous definitions do not imply twelve physical observations: five immediate branches ran and one case never ran. No deferred branch execution is claimed.",
+    "Retained container/volume cleanup commands and empty exact-name listings establish recorded cleanup self-consistency, not independent present-day daemon attestation.",
+    "Paused capture follows an adapter response and does not establish atomic method-return observation. Same-process Store reopening is not process-death or power-loss recovery.",
+    "Authored private-layout profile is fixture qualification only and lacks production source-review authority. These controls do not close42 B02 requirements, the production ScopePlan, whole-project acceptance, or the four-milestone/six-trajectory comparative design.",
+    "No statistical, model-ranking, causal performance or swarm-superiority claim follows from this diagnostic engineering audit."
+  ],
+  "base_development_commit": "52d449c63fb16fad8af327955be7805fd294a5b0",
+  "candidate_source": {
+    "file_count": 61,
+    "file_hashes": {
+      "README.md": "21fd75578847050f40b80cfc7951dead344a8491f7a65f2c5e06cde04cf150ef",
+      "compatibility/README.md": "c59d7bce0ec8d40b753da1202c914aed159e66c7d36653dd50514835449ea267",
+      "compatibility/m2.manifest.json": "754146fb8643f36faeb6bb76c2f3dbb354a4aed4464189eb2d68b8f4981f9644",
+      "compatibility/m2.sqlite3": "4d52246ca238887d51649fbc63b923a8dfbdfd545238a83cb6c5e0a5df94c1c2",
+      "compatibility/v0.manifest.json": "29bcdfd24eeac87d025926f72c4d712be161d14d70dace30c31dcef04411f81a",
+      "compatibility/v0.sqlite3": "5a550a1a681d1ea0c119394906580c859af51caaf0eabd83e437513dc5b53429",
+      "cumulative-public-contract.json": "9c7bfd72a8bd292f850b70a1ccdb39d72e579f15889875fd6fc6c9fff6ad8361",
+      "examples/welcome.txt": "7d44c0de069e7bef0eebdee2b0dfd71efdbf3c6de699c9d29985dee1b6cf5ec0",
+      "library-cumulative-product-v1.json": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "library/__init__.py": "f46df1820472329e0882ae5d1710a1e94f5820dc28f306b5717a21b7959d3e2a",
+      "library/__main__.py": "6b7c2cfa1954fb87f9746a30c383570c1cd8ce6b37907a3a132f6670de74c54e",
+      "library/catalog/__init__.py": "ec2a30b33c46a5e1c52f5b22b819fac830c8503b98f4c579c04a4ad375672b95",
+      "library/catalog/backup.py": "9441b3995a356d6cf292dcc509037176b8e7223c08ad8239649f5e2b0590e416",
+      "library/catalog/backup_format.py": "b07eb9c77733dd5e9f9ccab9552d51da9e3b8e0fb72713cfa2918ca4ebf3f533",
+      "library/catalog/control.py": "d96590a5d739e9b93a3811638d30d3cf188b12e43d2b2bc1cc1d6c14007592e6",
+      "library/catalog/legacy_m1.py": "ae7511167063569b3688e726e1b526b96504d9d1e3cb157441969340acdfd6e5",
+      "library/catalog/legacy_m2.py": "a291881f613c4ebea327c7e33fa7818ff879a1802ade19fb25e22c0171a60dc5",
+      "library/catalog/m4_backup.py": "28aba4fa9225718ab551874e26d9bf5905e8ce95b14c6e9b4bb64cfb275ccafc",
+      "library/catalog/m4_control.py": "3649e23a7da17653611aab1b56b6c91fce9de8761f736e0faa709e7f151bda95",
+      "library/catalog/m4_legacy.py": "411820af7d03f73d10a1711b994c07f9e830c28e494a18a3e23f10fbac2ef389",
+      "library/catalog/m4_store.py": "988756723389f5d77f072cfa96a5395ff9b920a4c429aa79a00df68bee0d9e2c",
+      "library/catalog/m4_validation.py": "4ef145b450b543c7dea83e8583c83956ec3a3fb15f9de17002479934e703175f",
+      "library/catalog/maintenance.py": "49e7ae3261f6c890d79774bcabf59554e52fababff9a0016c357aa8b255472e0",
+      "library/catalog/store.py": "8d0b77fc85e6833cf9d1e18d6d4909db0166fbffcf106ad313f7c79f7e9ca0e3",
+      "library/catalog/v2_maintenance.py": "4dce085d02aea79e5ea06f045729b5643437cc70280496a11ce1bbb9746cadb9",
+      "library/catalog/validation.py": "4588579a589b6d1459fcbfa5581dea331327ff05ffe71d4aae3f33b8124a8aa9",
+      "library/catalog/worker.py": "9744d9a1c6e2b588548198ee9e42ca96cbb7f28c1d59402975a9bd018f522bb9",
+      "library/clients/__init__.py": "d4b4dd2eaf294f02c359d599c66ed554d0b346367397b401a737275137eba32a",
+      "library/clients/cli.py": "a37d5ae76ab29ec9b33dc46be903405b116fa4c73d6bd5503eef2271e5ad68d1",
+      "library/clients/http.py": "2f1fca21df06fcb0bfabe2d3bc41994240433bae80785326280e50ef8c7e73eb",
+      "library/clients/index.html": "a81b7a8fa2f861f8cd1ad7a462c86ee54adc3be7ae9050e4366ab2a286e43466",
+      "library/clients/legacy_m2_cli.py": "b269d81ef8ea9e23088a175960b22aad5e53837700885e5bd82390eac3156c0f",
+      "library/clients/legacy_m3_cli.py": "b1d2dcae0502aad24661bfe825147d30f5206ae6fea081961399a91a81f42a13",
+      "library/clients/release.py": "25e3e77190b99fe9073cb5ec4263e433024b55fba4d4cc555d7e6f19c2cccbdc",
+      "library/clients/workflow.py": "dae97f8d2c4d270b225aa52adb6c473d21fef50bb99d339fb18b2c7ec8445f2b",
+      "library/common.py": "eaf3707233d586cbd1ad918a6a5ca642f3f20a96076670a590e2f09c078c4d38",
+      "library/counters.py": "4b72561cdbed44320da992c7c65478bb842f20ec837c8754916bdbb1c3e5cdef",
+      "library/ingestion/__init__.py": "6663a839e439d8e0b1a9b5e3d5847e7ce2bd867939e71d45412fe4698d24dacd",
+      "library/ingestion/jobs.py": "a41620446485c3c69501f36898533a6975cb325a761a957d87f1c56e598e7116",
+      "library/ingestion/local.py": "7d0f514fb10a8c534ad27c28ef362d0c851e57052566b19891698ce9a55aeeb6",
+      "library/ingestion/worker.py": "db06d5d41d814e2e170a029e05b3263a1e0151563392a9253753ea4a7adf48d6",
+      "library/query/__init__.py": "1c4c27c6607c86f662e6b07418aef5627f1ddae00b49a83232d75d700b48da7f",
+      "library/query/legacy_m1_service.py": "761eace5ff307d001e82334ebd47a4acaed15afe0a12051204cfc996a8be1a63",
+      "library/query/legacy_m2_service.py": "88596081f6640d9744413f427b9c1fd31baf081ac774c71522522b4b7915671c",
+      "library/query/legacy_m3_service.py": "0a7f19e6abc65d4693799ebabeedd9f89f45a2ecebb8f064acf66e0f3aebef5f",
+      "library/query/legacy_v1_service.py": "80627b173ae0124a782ad1e09b2752e6a77e346635037252a6b3433b25a75ab4",
+      "library/query/service.py": "8d3c04f427d480cf101a23dbc70e13119b06b1aece1f32be487fbed96b2c45e8",
+      "public_cases.json": "3ee8146044776472247114038f61af3c5bede68e54dd3d5bdc469988a5c55911",
+      "release/API.md": "5d99b35ab3d35c514b3572322a03fabc7811299135f009b02310b2ea4fb58af4",
+      "release/CUMULATIVE-CONTRACT.md": "0d35083497080a3317f4e6b2c5d71cff6abf478460914e0f0dc0f6a2c5584e11",
+      "release/INSTALL.md": "4f65582157597b3a352c3882a6453d43e88496534d146ee9d54dfd7872b94a70",
+      "release/RECOVERY.md": "30ddd34b7629aa0ae0e5d659b9fceed47f65ab2f3aec268f158a4151fa4bef00",
+      "release/USER-GUIDE.md": "6f038739654b17900f53c6d90e730377854f0d20595ea3eaad324b4623341d7d",
+      "release/dataset/literal.html": "0c5e647a50adb5b063255d278a26e0bfe572c5ce0bb7f4d49c473a8377b4f4d1",
+      "release/dataset/notes.md": "281798b69a1a0be43acc64897b49bb862cd5d3a12aea0d4ddc9c52aacaf04792",
+      "release/dataset/welcome.txt": "281798b69a1a0be43acc64897b49bb862cd5d3a12aea0d4ddc9c52aacaf04792",
+      "release/dataset/workflow.json": "de8fc79615ea3c4fa2c576816a965c12af9be1acb1af302fb3d4fac9441d8ba9",
+      "solution.py": "98313a378c944a594b26017bcfd7b3c819f4a7cc0c6ead9ab3459253e6e7f177",
+      "test_cumulative_public.py": "dfebe0d255a50ad0fc1e0ea0bd0ec1328eacf761ed37742b89783973f16e9bdc",
+      "test_public.py": "431171aebb31f16441b8f95305f0992926fe7a3d961e81d58ef9d9dabbd41270"
+    },
+    "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "sha256": "6760ebc84cc116ca92adf15d3d3df8ead4af39e2318d158b9ed8d7f388d9bc25"
+  },
+  "definition": {
+    "ambiguous_json_cases": {
+      "complete_immediate_branches_independently_compared": 5,
+      "deferred_branches_physically_executed": 0,
+      "interpretation": "All five reached cases matched the complete immediate-rejection conjunction, including exact phase responses and conservation of every captured table. No second branch or unrun class is counted as an observation.",
+      "physically_reached": 5,
+      "prospectively_declared": 6,
+      "unrun_case_id": "intake-json-deferred-unencodable"
+    },
+    "authorship": "Definitions and normative reviews preceded candidate execution and were independent of candidate implementations. The expected histories were not changed after failure.",
+    "direct_store_histories": 117,
+    "intake_histories": 121,
+    "prospective_histories": 238,
+    "semantic_sha256": "528ad3d27e8244fa4b9f1c5fa8789add0eb430c3cf0e84c284073e328588128d",
+    "source_sha256": "291811e6c6714e068619c16acac6ad1d2877b949c4ef481e109163bb9324f0fc",
+    "target_ids": [
+      "M1-A06",
+      "M1-A08",
+      "M1-I01",
+      "M1-I02",
+      "M1-I03",
+      "M1-I04",
+      "M1-I05",
+      "M1-I06",
+      "M1-I08",
+      "M1-I09",
+      "M1-I10",
+      "M1-I11",
+      "M1-I12",
+      "M1-I13",
+      "M1-I14",
+      "M1-I15",
+      "M1-I16",
+      "M1-I17",
+      "M1-I18",
+      "M1-I19",
+      "M1-I20",
+      "M1-I21",
+      "M1-I22",
+      "M1-I23",
+      "M1-I24",
+      "M1-I26",
+      "M1-I27",
+      "M1-I28",
+      "M1-I29",
+      "M1-J01",
+      "M1-J02",
+      "M1-J04",
+      "M1-J05",
+      "M1-J07",
+      "M1-J08",
+      "M1-T02",
+      "M1-T03",
+      "M1-T04",
+      "M1-T05",
+      "M1-T06",
+      "M1-T08",
+      "M1-T09"
+    ],
+    "whole_target_acceptance": false
+  },
+  "definition_freezes": [
+    {
+      "path": "runs/candidate-b02-definition-freeze-1.json",
+      "sha256": "4b378124eac307e83ba3613f0697c9db1be5cffb35481b847b33548822aed9d4"
+    },
+    {
+      "path": "runs/candidate-b02-definition-freeze-2.json",
+      "sha256": "1d67dd6c97e657038ef3a69567ace6c585ea4dfcb03f21deb00980572d41e809"
+    }
+  ],
+  "development_branch": "codex/cumulative-project-contract",
+  "findings": [
+    {
+      "audit_conclusion": "The raw mismatch is verified. Parent source/normative triage identifies a reference implementation bug: applying the archive 1 MiB read cap to JSON conflicts with decoded-content accounting for this valid fixture.",
+      "case_id": "intake-json-control-total-byte-limit",
+      "fix_status": "Open; no fix or retest in this cycle.",
+      "historical_outcome": "product-failed",
+      "interpretation_authority": "Source/normative reviewer reasoning supplied by root; the raw audit does not rewrite the frozen expected values or original failed receipt.",
+      "raw_observation": "The input has 3,146,333 serialized bytes and 16 entries of 32,768 decoded bytes, totaling 524,288. Submit returns too_large, subsequent action probes return not_found, and all three physical states retain only the seeded document and untouched job. Frozen expected admission/completion is absent."
+    },
+    {
+      "audit_conclusion": "Forced-schedule observation unavailable / harness applicability failure. The source-reviewed prepare transaction prevents this injected cancellation from completing; the run does not demonstrate a stale-fencing defect.",
+      "case_id": "interfere-start_job-cancel",
+      "fix_status": "Open; no generic exception masking, receipt rewriting or retest in this cycle.",
+      "historical_outcome": "product-failed",
+      "interpretation_authority": "Raw failure to complete the required transition independently verified; transaction applicability conclusion supplied by parent source/normative triage. Original product-failed census label remains unchanged.",
+      "raw_observation": "The injected secondary cancel reports unexpected_exception OperationalError; prepare returns job case at epoch 2. Only the jobs table changes, queued epoch2 to running epoch2; high-water remains2. Expected cancellation at epoch3 did not occur."
+    },
+    {
+      "audit_conclusion": "The intended archive rejection defect is distinguished; unrelated infrastructure failure or crash is not used as sensitivity.",
+      "case_id": "intake-zip-mode-fifo",
+      "control": "archive-rejection-admits",
+      "historical_outcome": "mutant sensitivity method passed",
+      "raw_observation": "The positive and mutant use identical 209-byte FIFO archive input. The positive rejects invalid_archive; the mutant admits an empty queued case job and its control row, which survive reopening."
+    }
+  ],
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "independent_physical_audit": {
+    "path": "runs/candidate-b02-physical-audit-1.json",
+    "sha256": "0755797f3129c5bfcffec236416e887653830c03c7c88b93377f149fcaaa4dec"
+  },
+  "new_api_calls": 0,
+  "new_comparative_samples": 0,
+  "next_cycle": [
+    "Preserve frozen B02 v1 and every failed/unrun receipt. No automatic retry or expectation weakening.",
+    "Introduce a separately versioned, exact-source-bound interposition applicability declaration. Mark the impossible forced ordering unavailable before dispatch; preserve independent prior assertions and all unknowns. Never mask arbitrary SQL errors.",
+    "Create a separately versioned JSON reference repair that separates decoded content limits from ZIP archive bytes. Do not substitute another arbitrary encoded JSON cap; whitespace can enlarge legal serialization.",
+    "Qualify interference sensitivity with a separately named instrumentable control, without claiming those unavailable product facets completed. Design any real parallel test independently to preserve all normative operation orderings.",
+    "After cheaper static/offline checks, freeze the changed execution contract and run its applicable complete qualification. Reconcile any reused observations by exact source, ordered suite, runtime, limits, seed, protocol and purpose.",
+    "Complete candidate scope authorities and full project rehearsal before comparative model execution."
+  ],
+  "preexecution_plan": {
+    "path": "runs/candidate-b02-cycle-plan-1.json",
+    "sha256": "848ccbd9caf5aafa96a7aef063a317531428fcf746acb8c7f302def640b3952a"
+  },
+  "publication": {
+    "development_branch": "Commit and push this diagnostic checkpoint and new source; physical qualification remains failed.",
+    "links": {
+      "docs": "https://westbrook.github.io/gossip-protocol/docs/",
+      "outputs": "https://westbrook.github.io/gossip-protocol/outputs/",
+      "progress": "https://westbrook.github.io/gossip-protocol/"
+    },
+    "pages": "Previously published gh-pages snapshot revision346 at c8ba24ac7d1792ebf7553447ec0c980b48d02c39 remains unchanged."
+  },
+  "purpose": "Expand prospective candidate intake and direct Store observations while preserving falsifiable expected outcomes and recording measurement limitations.",
+  "qualification": {
+    "attempt1_disposition": "Three new definition typing diagnostics;76 not-run methods and0 workers. An annotation/local-variable-only correction retained the exact semantic digest before attempt2.",
+    "coverage": "targeted",
+    "current_input_mismatches": [],
+    "duration_seconds": 201.8897332092747,
+    "input_files_reconciled": 433,
+    "inputs": {
+      "path": "runs/candidate-b02-qualification-2/20261003T121745-7574a5d2/inputs.json",
+      "sha256": "96825fc44b1f755155b0d4ca901da83a01d37ca13fa7bf6bba22f7842a116c81"
+    },
+    "method_outcomes": {
+      "failed": 2,
+      "not_run": 4,
+      "passed": 70
+    },
+    "physical_counts": {
+      "actual_total_histories": 198,
+      "executed_mutant_histories": 1,
+      "executed_positive_histories": 197,
+      "historical_observed_positive_histories": 195,
+      "historical_product_failed_positive_histories": 2,
+      "passed_mutant_sensitivity_methods": 1,
+      "planned_mutant_histories": 5,
+      "planned_positive_histories": 238,
+      "raw_container_cleanup_and_absence_verified": 198,
+      "raw_paused_captures": 594,
+      "raw_volume_cleanup_and_absence_verified": 198,
+      "retained_stream_bytes_rehashed": 105398227,
+      "retained_streams_rehashed": 9900,
+      "retained_transport_records_rehashed": 4950,
+      "unique_container_names": 198,
+      "unique_volume_names": 198,
+      "unrun_mutant_methods": 4,
+      "unrun_positive_histories": 41
+    },
+    "retained_failed_attempt1": {
+      "path": "runs/candidate-b02-qualification-1/20261003T121455-aa4df879/summary.json",
+      "sha256": "4ef8b38146385006175b5e8c82ed2d416db9a222abfb60efc4eb6884c6f0a7c0"
+    },
+    "reused_classes": 0,
+    "runtime_final": {
+      "path": "runs/candidate-b02-qualification-2/20261003T121745-7574a5d2/runtime-final.json",
+      "sha256": "1318290223d02eaea4e38e013f03407038fd168376c4e623e34531887d75c457"
+    },
+    "selected_counts": {
+      "docker": 7,
+      "fast": 69
+    },
+    "selected_methods": 76,
+    "source_fingerprint": "2bd63ec3cb49d37dcf819d9529535d8ba0a905d7d7f1ca597c0d8188144a0d1b",
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": {
+      "path": "runs/candidate-b02-qualification-2/20261003T121745-7574a5d2/static.json",
+      "sha256": "13466cf60ec260f334159097a8e420b37095bf74a9d333075ee292d06b186ed4"
+    },
+    "static_limit": "Explicit type roots and their imports;117 retained baseline diagnostics, no new blocking diagnostics in attempt2. Other authored files receive syntax/correctness lint, not whole-program type proof.",
+    "status": "failed",
+    "summary": {
+      "path": "runs/candidate-b02-qualification-2/20261003T121745-7574a5d2/summary.json",
+      "sha256": "c02327a8ccc68c9cf878d9123878106116cdab175c0e404a58f6aaac2d413538"
+    },
+    "unrun": {
+      "intake_positive_case_ids": [
+        "intake-zip-64-files-plus-directory",
+        "intake-zip-archive-bytes-limit",
+        "intake-zip-archive-bytes-over",
+        "intake-zip-ratio-below",
+        "intake-zip-ratio-limit",
+        "intake-zip-ratio-over",
+        "intake-zip-ratio-zero-compressed",
+        "intake-zip-ignored-directory-byte-bound",
+        "intake-zip-ignored-directory-ratio",
+        "intake-zip-ignored-directory-total",
+        "intake-json-schema-top-list",
+        "intake-json-schema-top-null",
+        "intake-json-schema-top-missing",
+        "intake-json-schema-top-extra",
+        "intake-json-schema-entries-object",
+        "intake-json-schema-entries-null",
+        "intake-json-schema-member-list",
+        "intake-json-schema-member-missing-source",
+        "intake-json-schema-member-missing-text",
+        "intake-json-schema-member-extra",
+        "intake-json-schema-source-nonstr",
+        "intake-json-schema-text-nonstr",
+        "intake-json-syntax",
+        "intake-json-invalid-utf8",
+        "intake-zip-syntax",
+        "intake-directory-missing",
+        "intake-directory-wrong-kind",
+        "intake-zip-missing",
+        "intake-zip-wrong-kind",
+        "intake-json-missing",
+        "intake-json-wrong-kind",
+        "intake-json-deferred-source-parent",
+        "intake-json-deferred-unsupported",
+        "intake-json-deferred-unencodable",
+        "intake-json-literal-byte-limit"
+      ],
+      "mutants": [
+        "symlink-rejection-admits",
+        "stale-epoch",
+        "cancel-failed",
+        "interference-stale-success"
+      ],
+      "status": "Not executed; unverified. No absent case or alternate branch counted as passing.",
+      "store_positive_case_ids": [
+        "interfere-start_job-cancel-retry",
+        "interfere-fail_job-cancel",
+        "interfere-fail_job-cancel-retry",
+        "interfere-prepare-prepare",
+        "two-client-admission",
+        "two-client-cancel"
+      ]
+    },
+    "workers": 4,
+    "workers_started": 7
+  },
+  "recorded_at": "2026-10-03T12:36:17.863143+00:00",
+  "remaining_work": [
+    "Complete the production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Repair and requalify B02 with an explicitly versioned execution/reference contract; complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets. Preserve all41 unrun B02 positive histories and four unrun mutants.",
+    "Bind all candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run the four-milestone six-trajectory matched experiment only after required payload-transfer approval and within the existing approved budget.",
+    "Retain S4-G (4 builders plus 4 reviewers), S16-G (16 plus 4) and O16-G (16 plus 4), each under healthy and compound recovery; compare quality and sustained whole-project completion first.",
+    "Keep generated distinguishing tests, real process restart, bounded partitions, a whole-cohort barrier before fresh independent acceptance, and later heldout families.",
+    "Use further independent project families and a preregistered statistical design before any general superiority claim."
+  ],
+  "schema": "candidate-b02-diagnostic-checkpoint-v1",
+  "shared_ownership": {
+    "assignments": 57,
+    "citations": 747,
+    "documentation": {
+      "path": "docs/cumulative-shared-ownership-v1.md",
+      "sha256": "bd96825c04af99a12236a7dbb8b37826bd5e5752fb36806ca264d1d3d4d21f0d"
+    },
+    "ledger": {
+      "path": "analysis/cumulative-shared-ownership-v1.json",
+      "sha256": "c4f1f4e3a9636d13c99a314b7d29269b2dc3bfde43e56c41425e63ca24b933ad"
+    },
+    "production_scope_registered": false,
+    "qualification_credit": 0,
+    "retained_validation": {
+      "path": "runs/cumulative-shared-ownership-validation-2/result.json",
+      "sha256": "f25875919c87308999edf8a4102df096485d32c23740249bdf5606968a2213bb"
+    },
+    "review": {
+      "path": "analysis/cumulative-shared-ownership-review-v1.json",
+      "sha256": "720b558b8df730a3c16103d3945cdd8fd22f37d6e5bc8bac64eee430161a1e99"
+    },
+    "total_source_instances": 108,
+    "v1_instances": 51,
+    "v2_instances": 57,
+    "validation_mode": "Retained prior physical validation reconciled to exact unchanged source hashes; not repeated."
+  },
+  "source_pins": {
+    "analysis/cumulative-shared-ownership-review-v1.json": "720b558b8df730a3c16103d3945cdd8fd22f37d6e5bc8bac64eee430161a1e99",
+    "analysis/cumulative-shared-ownership-v1.json": "c4f1f4e3a9636d13c99a314b7d29269b2dc3bfde43e56c41425e63ca24b933ad",
+    "docs/candidate-b02-diagnostic-v1.md": "df17bcba44acc068f555de00aab21c24abd23ba3a6b4f5d1a01e5aa085bd75a0",
+    "docs/candidate-intake-store-cases-v1.md": "dfe321fd70f321b349b88277d44fa76cd34f52599af3011de461f170b97d7ae1",
+    "docs/candidate-intake-store-execution-v1.md": "be032e973cda944af49dbcbefa8c55ea4b2ca17310a6fb6c1632d9cf34365b1c",
+    "docs/cumulative-shared-ownership-v1.md": "bd96825c04af99a12236a7dbb8b37826bd5e5752fb36806ca264d1d3d4d21f0d",
+    "gossip_harness/candidate_intake_fixtures_v1.py": "ab93758a3e4cfb8404c1fdabc9ca65db22b74e624e6454357cbd4744f8c7f59f",
+    "gossip_harness/candidate_intake_store_cases_v1.py": "291811e6c6714e068619c16acac6ad1d2877b949c4ef481e109163bb9324f0fc",
+    "gossip_harness/candidate_intake_store_driver_v1.py": "582b91c3c3e77d2eab72a30128066174486e06893caad97272402d94f8e26a20",
+    "gossip_harness/candidate_intake_store_observer_v1.py": "1e873d61e404e57c83afe025f0a78126fb38cfc5fe4a65f4e61e72606bafb98e",
+    "gossip_harness/candidate_intake_store_profile_v1.py": "170747329cd27882624ad788a2283b157a507fe52fc840ac8b38c5aace5c730c",
+    "gossip_harness/candidate_storage_cases_v1.py": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4",
+    "gossip_harness/candidate_storage_driver_v1.py": "52bc3a8a3f7fd50d1da92a8755c4076c1508c119d09c0732b6d86fe9b3c13e2a",
+    "gossip_harness/candidate_storage_observer_v1.py": "84952ce86ca8bd6df4434ca76d44e25febde2c4f88af2664f8765681fa131a15",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "pyproject.toml": "ac63961b272128607bfe8adce664478af3df6530ea057486dcc60c0db6cf84e4",
+    "tests/test_candidate_intake_store_cases_v1.py": "894b2fa3a235fc250d5c279be37fa64156cb1e04b4e9c43b4fec318f20872da9",
+    "tests/test_candidate_intake_store_driver_v1.py": "565ede7aca02e7ea961984daf4f51d2375b10b4e7b13990fcd688d592c98bed0",
+    "tests/test_candidate_intake_store_observer_v1.py": "59b81d2013384b588e609977334c790971beb6670d88ab713e92a8882dd9e722",
+    "tests/test_candidate_intake_store_profile_v1.py": "ed9e7c9840f73077b46c471ce6dd41afdaa15bc7e6baea0b71c1e5c0109379fa",
+    "verification-manifest.json": "6348ae9396d2b05f252a91ea0899ede58a1e67259e614ab8154ac9ca876bb206"
+  },
+  "statistical_claim": "None. Development history and test counts are not independent agent-comparison samples.",
+  "status": "Failed targeted physical qualification, independently audited; diagnostic progress only. Required fixes remain open.",
+  "unchanged": [
+    "Frozen main, historical scientific sources and evidence, cumulative API ledger, published Pages snapshot, full four-milestone/six-trajectory and held-out-family objectives.",
+    "Pending live payload-transfer approval remains separate; this cycle made no API call or new invoice audit.",
+    "Only the user establishes human review checkpoints."
+  ]
+}
