@@ -1,0 +1,192 @@
+{
+  "schema": "candidate-c03-http-definitions-v1-checkpoint",
+  "recorded_utc": "2026-10-03T22:46:10.495699+00:00",
+  "base_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+  "status": "Targeted offline definition/fixture qualification and independent source review passed; full catalog and production authority remain incomplete.",
+  "scope": {
+    "prospective_catalog_rows": 276,
+    "families": 10,
+    "target_ids": [
+      "V0-HTTP-01",
+      "V0-HTTP-02",
+      "V0-HTTP-03",
+      "V0-HTTP-04",
+      "M1-HTTP-01",
+      "M1-HTTP-02",
+      "M1-I30",
+      "M1-I31"
+    ],
+    "catalog_materialized": false,
+    "normative_reviews_resolved": [
+      "R01",
+      "R02",
+      "R03",
+      "R04"
+    ],
+    "literal_recipe_review_R05_complete": false,
+    "production_registration_complete": false,
+    "acceptance_authority": false,
+    "full_scope_preserved": true
+  },
+  "implemented": [
+    "Immutable literal HTTP definitions with full declared source/runtime/policy/purpose and ordered supplied-roster binding.",
+    "Facet-specific earlier setup dependencies; failed/missing/unspecified prerequisites leave dependent assertions unavailable without erasing independent failures.",
+    "Pure independently derived document/job state,20state/action cells,replay/epoch fencing/conflict effects and deterministic ZIP/JSON/path/body fixtures.",
+    "Source-grounded catalog norm dispositions preserve immediate rejection versus deferred validation and leave unsupported exact error/serialization/type facets unspecified."
+  ],
+  "sources": [
+    {
+      "path": "gossip_harness/candidate_http_expectations_v1.py",
+      "sha256": "f5a245e3483e2fdfb164898e1659a4dd86bcdd9717683715d2a497daf83e349d",
+      "bytes": 16277
+    },
+    {
+      "path": "gossip_harness/candidate_http_fixtures_v1.py",
+      "sha256": "ddcb37083efdfaee47b857438d592bfad4bfdff433dbcbad343512feb115c257",
+      "bytes": 25728
+    },
+    {
+      "path": "tests/test_candidate_http_expectations_v1.py",
+      "sha256": "2afb4140510b3c5d804d63a86c1c2d65dd4455a2ba8bdaaba88e0a358d343a64",
+      "bytes": 15669
+    },
+    {
+      "path": "tests/test_candidate_http_fixtures_v1.py",
+      "sha256": "6a4e61bbbb9592d81d87c5307f9d6866fbcbd7a56ee9b56ba1347de487de6436",
+      "bytes": 35252
+    },
+    {
+      "path": "docs/candidate-c03-http-expectations-v1.md",
+      "sha256": "de66b0dc6b67724a39d0a58e6b71b9bb412ab69e01455ff6ede1ba9437ae834a",
+      "bytes": 6414
+    },
+    {
+      "path": "docs/candidate-c03-http-fixtures-v1.md",
+      "sha256": "924027df7e0d42fdec390f1856ff11aaffa3455a0eb5775d5cd5b974127ee1d9",
+      "bytes": 10354
+    },
+    {
+      "path": "docs/candidate-c03-http-catalog-norms-v1.md",
+      "sha256": "d075a3adc03fae8f7ee14631643fead57144be69c1f5072b79574c04ef3dfbc6",
+      "bytes": 13725
+    },
+    {
+      "path": "analysis/candidate-c03-http-catalog-norms-v1.json",
+      "sha256": "24a9c469ec994c3e17bcfb0da7e89f171ac55022e6415a5bcc1d61d6817d71a4",
+      "bytes": 37394
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "b5ac60b825c622f49a33da8e4db25ebd1540a8e9e4facaa9d2f8e0d0237817ef",
+      "bytes": 8530
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "b31838a6c76b11cec2951a73665348899d3e363accb38afa68c09371fa05f6e9",
+      "bytes": 393556
+    }
+  ],
+  "source_review": {
+    "path": "analysis/candidate-c03-http-definitions-v1-source-review.json",
+    "sha256": "f6feae2ad53b42aeadc9ef70bd73c4619eca5469128792a267572c75086fca40",
+    "bytes": 17829
+  },
+  "offline": {
+    "execution": "fresh targeted central verification",
+    "command": "env -u GOSSIP_RUN_DOCKER_TESTS .venv/bin/python -m devtools.verify --lanes fast --workers 4 --output runs/candidate-c03-http-definitions-offline-2 tests/test_candidate_http_expectations_v1.py tests/test_candidate_http_fixtures_v1.py",
+    "summary": {
+      "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/summary.json",
+      "sha256": "37dadec72a837febcb47667b54eee09d58012cadf1843f1cd7174294f88a8a82",
+      "bytes": 38705
+    },
+    "static": {
+      "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/static.json",
+      "sha256": "8255cbdac90cc6de082c079c86814171ce8336054539af2c34b6651636e0dc8b",
+      "bytes": 76973
+    },
+    "inputs": {
+      "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/inputs.json",
+      "sha256": "bc764f8d11e3ba2729be94aa852d683dadad8d7abb352981fe1eb8735d479a1e",
+      "bytes": 58154
+    },
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0,
+    "reused_classes": 0,
+    "class_workers_started": 5,
+    "worker_budget": 4,
+    "peak_resource_tokens": 4,
+    "duration_seconds": 3.623185125179589,
+    "timing_meaning": "Offline verification duration; not a candidate/software-project/swarm performance measurement.",
+    "classes": [
+      {
+        "name": "tests/test_candidate_http_expectations_v1.py::HttpExpectationDefinitionTests",
+        "passed": 16,
+        "status": "passed",
+        "physically_executed": true
+      },
+      {
+        "name": "tests/test_candidate_http_expectations_v1.py::HttpExpectationPrerequisiteTests",
+        "passed": 9,
+        "status": "passed",
+        "physically_executed": true
+      },
+      {
+        "name": "tests/test_candidate_http_fixtures_v1.py::HttpFixtureBytesTests",
+        "passed": 7,
+        "status": "passed",
+        "physically_executed": true
+      },
+      {
+        "name": "tests/test_candidate_http_fixtures_v1.py::HttpFixtureDocumentTests",
+        "passed": 7,
+        "status": "passed",
+        "physically_executed": true
+      },
+      {
+        "name": "tests/test_candidate_http_fixtures_v1.py::HttpFixtureStateTests",
+        "passed": 14,
+        "status": "passed",
+        "physically_executed": true
+      }
+    ],
+    "static_source_count": 426,
+    "type_baseline_diagnostics": 117,
+    "type_coverage": "Declared incremental roots only; 117 unchanged historical diagnostics remain, with no new blocking diagnostics. Not whole-repository type safety.",
+    "all495inputs_reconciled": true,
+    "stale_inputs": false,
+    "stale_runtime": false
+  },
+  "prior_offline_gate": {
+    "summary": {
+      "path": "runs/candidate-c03-http-definitions-offline-1/20261003T223107-e2080d80/summary.json",
+      "sha256": "d5918399076eea35c5fcabf6655c17375740d61de8bc675dfa90c3dadea50b25",
+      "bytes": 38050
+    },
+    "passed": 51,
+    "reused_for_final_qualification": false,
+    "reason": "Retained first successful gate; review identified additional return/status/replay and aggregate-byte/capacity coverage, so changed tests required a fresh final qualification."
+  },
+  "reused_physical_or_comparative_observations": 0,
+  "new_engine_calls": 0,
+  "new_provider_calls": 0,
+  "new_candidate_dispatches": 0,
+  "new_comparative_samples": 0,
+  "preserved_boundaries": [
+    "Frozen main00d51d1 and original HTTPobserver/executor sources unchanged.",
+    "Pending threeCLI v4files remain absent; provider payload-transfer approval remains pending.",
+    "Prior results/failures and cumulative ledger preserved; no newledger audit or spend.",
+    "GitHub Pages is unchanged; a code push is not a Pages refresh."
+  ],
+  "remaining_scope": [
+    "Materialize the complete276-row catalog into literal independently reviewed histories, setup checks, requests, fixtures, resource counts and applicability mappings; retain all10families/8targets and labeled interactions.",
+    "Implement prospectively declared partial/relational predicates for required failed-state effects whose exact error code is unspecified; do not learn expected codes from responses.",
+    "Qualify versioned root/argv epochs and confined direct/ancestor data links; preserve frozen v2 mechanics and link-free candidate source.",
+    "Qualify real same-volume/database HTTP-to-CLI-to-HTTP handoff, exact continuous keeper/source/root/epoch lineage, listener and prerequisite observations; pendingCLIfilepermission is unchanged.",
+    "Install a trusted predispatch registrar, fresh raw-observation bridge and complete production ScopePlan/Registry mapping with whole-cohort final barrier. Definitions and hashes alone prove neither chronology nor execution.",
+    "Complete all retained storage/atomicity/concurrency/architecture/browser/delivery gates and one new complete qualified integrated rehearsal after execution-contract changes.",
+    "Run the full four-milestone/six-trajectory S4-G/S16-G/O16-G healthy/recovery study under approved allocation and payload authorization; preserve failures and quality/persistence priority.",
+    "Retain the topology-by-transport comparison and later independent project families before any general statistical-superiority inference."
+  ],
+  "interpretation": "Engineering progress toward a larger controlled project trial. The latest comparative model results remain unchanged; this cycle supplies no statistical evidence of swarm superiority."
+}

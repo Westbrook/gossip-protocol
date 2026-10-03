@@ -4253,6 +4253,66 @@
       "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
       "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
       "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_expectations_v1.py::HttpExpectationDefinitionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exact literal definitions, expected values, ordered supplied roster and declared execution identities cannot change without changing the plan identity; malformed or incomplete plans reject.",
+      "isolation": "Separate class worker with pure evaluator-authored immutable fixtures and declarations; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Definition identity and prerequisite integrity are distinct from independent fixture/state derivation and the already qualified raw observer.",
+      "distinct_defect": "Exact literal definitions, expected values, ordered supplied roster and declared execution identities cannot change without changing the plan identity; malformed or incomplete plans reject.",
+      "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
+      "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
+      "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
+    },
+    "tests/test_candidate_http_expectations_v1.py::HttpExpectationPrerequisiteTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only explicitly dependent facets become unavailable when earlier setup evidence fails, is absent or unspecified; independent and earlier failures remain visible.",
+      "isolation": "Separate class worker with pure evaluator-authored immutable fixtures and declarations; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Definition identity and prerequisite integrity are distinct from independent fixture/state derivation and the already qualified raw observer.",
+      "distinct_defect": "Only explicitly dependent facets become unavailable when earlier setup evidence fails, is absent or unspecified; independent and earlier failures remain visible.",
+      "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
+      "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
+      "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
+    },
+    "tests/test_candidate_http_fixtures_v1.py::HttpFixtureDocumentTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Independent source-derived identities, Unicode text and catalog projections remain exact without consulting candidate or reference output.",
+      "isolation": "Separate class worker with pure evaluator-authored immutable fixtures and declarations; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Definition identity and prerequisite integrity are distinct from independent fixture/state derivation and the already qualified raw observer.",
+      "distinct_defect": "Independent source-derived identities, Unicode text and catalog projections remain exact without consulting candidate or reference output.",
+      "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
+      "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
+      "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
+    },
+    "tests/test_candidate_http_fixtures_v1.py::HttpFixtureStateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Independent job-state histories preserve manifests, epoch fences, replay and all-or-nothing public effects for the specified known fixtures.",
+      "isolation": "Separate class worker with pure evaluator-authored immutable fixtures and declarations; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Definition identity and prerequisite integrity are distinct from independent fixture/state derivation and the already qualified raw observer.",
+      "distinct_defect": "Independent job-state histories preserve manifests, epoch fences, replay and all-or-nothing public effects for the specified known fixtures.",
+      "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
+      "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
+      "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
+    },
+    "tests/test_candidate_http_fixtures_v1.py::HttpFixtureBytesTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Literal ZIP metadata and UTF-8 byte/segment/count boundaries are deterministic, auditable and distinct from product execution observations.",
+      "isolation": "Separate class worker with pure evaluator-authored immutable fixtures and declarations; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Definition identity and prerequisite integrity are distinct from independent fixture/state derivation and the already qualified raw observer.",
+      "distinct_defect": "Literal ZIP metadata and UTF-8 byte/segment/count boundaries are deterministic, auditable and distinct from product execution observations.",
+      "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
+      "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
+      "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
     }
   },
   "audit": {

@@ -1,0 +1,1178 @@
+{
+  "schema": "candidate-c03-http-catalog-norms-v1",
+  "created_at": "2026-10-03T22:23:38.202815+00:00",
+  "status": "source_based_prospective_norm_resolution_not_execution_or_acceptance",
+  "author": "/root/c03_catalog_design",
+  "held_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+  "scope": {
+    "catalog": {
+      "path": "runs/candidate-c03-http-catalog-design-1/catalog-final.json",
+      "sha256": "2c716eea838784446f73f5d1434d4308f80cbd070ff5d9c04976ba287abfc32e",
+      "prospective_rows": 276,
+      "families": 10,
+      "unchanged": true
+    },
+    "target_ids": [
+      "V0-HTTP-01",
+      "V0-HTTP-02",
+      "V0-HTTP-03",
+      "V0-HTTP-04",
+      "M1-HTTP-01",
+      "M1-HTTP-02",
+      "M1-I30",
+      "M1-I31"
+    ],
+    "target_count": 8,
+    "interactions": [
+      "V0-CLI-03",
+      "M1-A08 transport nonexposure only"
+    ],
+    "same_product_obligations": true,
+    "later_milestone_rules_backported": false,
+    "smaller_acceptance_denominator": false
+  },
+  "resolutions": [
+    {
+      "id": "R01",
+      "status": "resolved_as_supported_plus_explicit_unspecified_facets",
+      "case_pattern": "HTTP-POST-SHAPES/entries-shape-*",
+      "decision": "All six existing structural rows invalid_request400/no admission; direct nested extras unspecified; JSON file schema invalid_json/no admission; schema-valid semantic strings deferred. See entries and field_types."
+    },
+    {
+      "id": "R02",
+      "status": "resolved_as_supported_plus_explicit_unspecified_facets",
+      "case_pattern": "HTTP-ROOT-PATH/*",
+      "decision": "Preserve all path/key rejection and timing. Literal traversal/symlink invalid_source; classify two namespace-parent rows accordingly. Other unassigned exact codes remain unspecified; use predeclared failed-error relation where needed."
+    },
+    {
+      "id": "R03",
+      "status": "resolved_obligation_with_limited_HTTP_observation",
+      "case_pattern": "HTTP-ACTION-STATE/completed-commit",
+      "decision": "Receipt semantic replay remains mandatory; exact HTTP wrapper equality unspecified. Separate HTTP facts/public state from receipt identity and qualify actual same-lineage interface evidence."
+    },
+    {
+      "id": "R04",
+      "status": "resolved_as_fact_only_HTTP_row_with_browser_obligation_open",
+      "case_pattern": "HTTP-PERSIST-LISTENER/root-page-reachable",
+      "decision": "Capture root response facts, without API JSON or invented page/MIME/markup criteria. Actual browser suitability/accessibility/actions remain unqualified."
+    },
+    {
+      "id": "R05",
+      "status": "open_implementation_requirement",
+      "case_pattern": "all multi-step rows",
+      "decision": "Materialize exact recipes/fixture bytes/known epochs/setup/census/epoch transitions/resource counts and predispatch freeze; no missing rows or hidden retries."
+    }
+  ],
+  "closed_POST_forms": [
+    {
+      "id": "import",
+      "method": "POST",
+      "route": "/api/import",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "source"
+      ],
+      "field_domains": {
+        "source": "source_key_string"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "selected_export",
+      "method": "POST",
+      "route": "/api/export",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "ids"
+      ],
+      "field_domains": {
+        "ids": "array_of_document_id_strings"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "submit_entries",
+      "method": "POST",
+      "route": "/api/jobs",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "job_id",
+        "entries"
+      ],
+      "field_domains": {
+        "job_id": "job_id_string",
+        "entries": "direct_entries_core"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "submit_directory",
+      "method": "POST",
+      "route": "/api/jobs",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "job_id",
+        "directory",
+        "namespace"
+      ],
+      "field_domains": {
+        "job_id": "job_id_string",
+        "directory": "confined_directory_path_string",
+        "namespace": "source_key_string"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "submit_zip",
+      "method": "POST",
+      "route": "/api/jobs",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "job_id",
+        "zip",
+        "namespace"
+      ],
+      "field_domains": {
+        "job_id": "job_id_string",
+        "zip": "confined_zip_path_string",
+        "namespace": "source_key_string"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "submit_json",
+      "method": "POST",
+      "route": "/api/jobs",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "job_id",
+        "json"
+      ],
+      "field_domains": {
+        "job_id": "job_id_string",
+        "json": "confined_json_path_string"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "prepare",
+      "method": "POST",
+      "route": "/api/jobs/ID/prepare",
+      "json_kind": "object",
+      "exact_top_level_keys": [],
+      "field_domains": {},
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "commit",
+      "method": "POST",
+      "route": "/api/jobs/ID/commit",
+      "json_kind": "object",
+      "exact_top_level_keys": [
+        "epoch"
+      ],
+      "field_domains": {
+        "epoch": "source_derived_current_or_different_small_integer_for_mandatory_matrix"
+      },
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "cancel",
+      "method": "POST",
+      "route": "/api/jobs/ID/cancel",
+      "json_kind": "object",
+      "exact_top_level_keys": [],
+      "field_domains": {},
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "retry",
+      "method": "POST",
+      "route": "/api/jobs/ID/retry",
+      "json_kind": "object",
+      "exact_top_level_keys": [],
+      "field_domains": {},
+      "isolated_missing_or_extra_field": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "action_executed": false,
+        "job_admission": false,
+        "preexisting_state": "unchanged"
+      },
+      "citations": [
+        "V0-HTTP",
+        "M1-HTTP-INTERFACES",
+        "M1-HTTP-BODIES"
+      ]
+    }
+  ],
+  "entries": {
+    "direct": {
+      "container": "array",
+      "empty_array": "legal",
+      "member_kind": "object",
+      "required_member_keys": [
+        "source",
+        "text"
+      ],
+      "required_member_value_types": {
+        "source": "string",
+        "text": "string"
+      },
+      "empty_text": "legal",
+      "structural_defects": [
+        "nonarray entries",
+        "nonobject member",
+        "missing source",
+        "missing text",
+        "nonstring source",
+        "nonstring text"
+      ],
+      "structural_disposition": {
+        "exact_code": "invalid_request",
+        "status": 400,
+        "job_admission": false,
+        "preexisting_jobs_catalog": "unchanged"
+      },
+      "additional_nested_member_keys": {
+        "acceptance_rejection": "unspecified",
+        "exact_code": "unspecified",
+        "timing": "unspecified",
+        "reason": "Route closure is top-level; explicit nested exact schema is for JSON bundle file. Do not automatically grade as extra POST field."
+      },
+      "citations": [
+        "V0-PATHS",
+        "V0-IDENTITY",
+        "M1-INTAKE",
+        "M1-JOBS",
+        "M1-STORE",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    "json_bundle_file": {
+      "outer_kind": "object",
+      "exact_outer_keys": [
+        "entries"
+      ],
+      "entries_kind": "array",
+      "empty_array": "legal",
+      "member_kind": "object",
+      "exact_member_keys": [
+        "source",
+        "text"
+      ],
+      "member_value_types": {
+        "source": "string",
+        "text": "string"
+      },
+      "schema_defects": [
+        "wrong outer/container/member kind",
+        "missing or extra outer/member keys",
+        "nonstring source/text"
+      ],
+      "schema_disposition": {
+        "exact_code": "invalid_json",
+        "status": 400,
+        "job_admission": false,
+        "preexisting_jobs_catalog": "unchanged"
+      },
+      "syntax_disposition": {
+        "exact_code": "invalid_json",
+        "status": 400,
+        "job_admission": false
+      },
+      "genuinely_bad_file_utf8": {
+        "exact_code": "invalid_utf8",
+        "status": 400,
+        "job_admission": false
+      },
+      "not_decided_here": [
+        "duplicate JSON property parser behavior",
+        "unpaired surrogate/parser dialects"
+      ],
+      "citations": [
+        "M1-INTAKE",
+        "M1-DISCOVERY",
+        "M1-HTTP-STATUS"
+      ]
+    },
+    "deferred_semantics": {
+      "applies_to": [
+        "direct entries with complete source/text strings",
+        "otherwise valid JSON bundle with semantic source errors"
+      ],
+      "submit": "admit queued with initial epoch1, total manifest count, completed0, error null; no catalog mutation",
+      "prepare": "validate semantic members; failure persists failed/error=CODE, completed0, same epoch; documents/blobs unchanged",
+      "explicit_representatives": [
+        {
+          "source": "../bad.txt",
+          "prepare_code": "invalid_source",
+          "status": 400
+        },
+        {
+          "source": "bad.exe",
+          "prepare_code": "unsupported_type",
+          "status": 400
+        }
+      ],
+      "source_key_byte_depth_error": "invalid key rejected at prepare; exact code unspecified for unassigned bound classification",
+      "running_prepare": "returns existing token immediately; do not revalidate and fail a running job at prepare",
+      "commit": "revalidates within transaction; known conflict can fail job with no catalog mutation",
+      "citations": [
+        "M1-JOBS",
+        "M1-COMMIT",
+        "M1-STORE",
+        "M1-DISCOVERY"
+      ]
+    },
+    "discovery_categories_not_deferred": {
+      "file_count_or_duplicate_key": "invalid_batch",
+      "expansion_or_content_archive_byte_bound": "too_large",
+      "traversal_or_symlink": "invalid_source",
+      "ZIP_syntax": "invalid_archive",
+      "JSON_syntax_schema": "invalid_json",
+      "actual_IO": "io_error",
+      "job_admission": false,
+      "preexisting_jobs_catalog": "unchanged",
+      "citations": [
+        "M1-DISCOVERY"
+      ]
+    },
+    "authoring_boundary": "A strict immutable Entry(source:str,text:str) or integer epoch constructor restricts evaluator-authored lawful fixtures. Constructor rejection is not product rejection/acceptance evidence."
+  },
+  "field_types": [
+    {
+      "id": "import_source_nonstring",
+      "representatives": [
+        null,
+        3,
+        true,
+        [],
+        {}
+      ],
+      "required": "rejection with error JSON; unchanged catalog",
+      "exact_error_code": "unspecified",
+      "fixed_status": 400,
+      "timing": "before import mutation",
+      "citations": [
+        "V0-PATHS",
+        "V0-IDENTITY",
+        "V0-HTTP"
+      ]
+    },
+    {
+      "id": "export_ids_nonarray",
+      "representatives": [
+        null,
+        "doc-x",
+        3,
+        true,
+        {}
+      ],
+      "required": "rejection; no partial successful export",
+      "exact_error_code": "unspecified",
+      "fixed_status": 400,
+      "timing": "before export success",
+      "citations": [
+        "V0-QUERY-EXPORT",
+        "V0-HTTP"
+      ]
+    },
+    {
+      "id": "export_selected_member_invalid_or_absent",
+      "representatives": [
+        "nonstring ID",
+        "valid-looking absent ID",
+        "duplicate ID"
+      ],
+      "required": "rejection; validate every selected ID before any successful export",
+      "exact_error_code": "unspecified",
+      "fixed_status": "unspecified",
+      "timing": "before export success",
+      "citations": [
+        "V0-IDENTITY",
+        "V0-QUERY-EXPORT",
+        "V0-HTTP"
+      ],
+      "reported_code_status_relation": "observe separately under source mapping; relation does not establish correct classification",
+      "no_observed_code_allowlist": true
+    },
+    {
+      "id": "job_id_invalid",
+      "representatives": [
+        null,
+        3,
+        true,
+        "",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "é",
+        "a b",
+        "a/b"
+      ],
+      "required": "rejection; no admission",
+      "exact_error_code": "invalid_request",
+      "fixed_status": 400,
+      "timing": "submit",
+      "citations": [
+        "M1-JOBS",
+        "M1-STORE",
+        "M1-HTTP-STATUS"
+      ]
+    },
+    {
+      "id": "intake_path_or_namespace_nonstring",
+      "representatives": [
+        null,
+        3,
+        true,
+        [],
+        {}
+      ],
+      "required": "rejection; no admission; old jobs/catalog unchanged",
+      "exact_error_code": "unspecified",
+      "fixed_status": 400,
+      "timing": "before discovery admission",
+      "citations": [
+        "V0-PATHS",
+        "M1-DISCOVERY",
+        "M1-HTTP-BODIES"
+      ]
+    },
+    {
+      "id": "http_complete_nonobject_json",
+      "representatives": [
+        null,
+        3,
+        true,
+        [],
+        "text"
+      ],
+      "required": "rejection; no action/admission",
+      "exact_error_code": "unspecified",
+      "fixed_status": 400,
+      "timing": "HTTP input validation",
+      "citations": [
+        "V0-HTTP"
+      ],
+      "not_inherited_from": "JSON bundle file schema code or direct create_job shape code"
+    },
+    {
+      "id": "epoch_current_integer",
+      "representatives": [
+        1,
+        2,
+        3
+      ],
+      "required": "apply current-state semantics; success or named state error per frozen matrix",
+      "exact_error_code": "not_a_single_error_case",
+      "fixed_status": "state_dependent",
+      "timing": "commit",
+      "citations": [
+        "M1-JOBS",
+        "M1-COMMIT",
+        "M1-STORE"
+      ]
+    },
+    {
+      "id": "epoch_definitely_different_integer",
+      "representatives": [
+        {
+          "current": 1,
+          "sent": 2
+        },
+        {
+          "current": 2,
+          "sent": 3
+        },
+        {
+          "current": 3,
+          "sent": 1
+        }
+      ],
+      "required": "stale priority even for terminal states; unchanged state",
+      "exact_error_code": "stale_epoch",
+      "fixed_status": 409,
+      "timing": "before state/replay decision",
+      "citations": [
+        "M1-COMMIT",
+        "M1-STORE",
+        "M1-HTTP-STATUS"
+      ]
+    },
+    {
+      "id": "epoch_scalar_dialect",
+      "representatives": [
+        "1",
+        1.0,
+        true,
+        null,
+        1.5,
+        [],
+        {}
+      ],
+      "required": "parser/coercion/normalization and type-rejection predicate unspecified",
+      "exact_error_code": "unspecified",
+      "fixed_status": "unspecified",
+      "timing": "unspecified",
+      "citations": [
+        "M1-JOBS",
+        "M1-COMMIT",
+        "M1-HTTP-INTERFACES"
+      ],
+      "mandatory": false,
+      "do_not_infer": [
+        "pagination boolean exclusion applies globally",
+        "later M2/M4 transport/range rules apply at M1",
+        "observed coercion allowlist"
+      ],
+      "known_integer_rows_remain_mandatory": true
+    }
+  ],
+  "root_paths": {
+    "validity": {
+      "relative_to": "Service.root",
+      "key_utf8_bytes": [
+        1,
+        256
+      ],
+      "segment_utf8_bytes_max": 128,
+      "combined_namespace_member_segments_max": 16,
+      "forbidden": [
+        "absolute path",
+        "backslash",
+        "NUL",
+        "empty segment",
+        "dot segment",
+        "parent segment",
+        "direct symlink",
+        "ancestor symlink"
+      ],
+      "directory_kind": "directory",
+      "bundle_suffixes": {
+        "zip": ".zip",
+        "json": ".json"
+      },
+      "namespace": "valid source key",
+      "positive_boundaries": [
+        "nested explicit root",
+        "256 combined UTF8 bytes with legal segments",
+        "16 combined segments"
+      ]
+    },
+    "discovery_invalid_timing": "reject before admission; existing jobs/catalog unchanged",
+    "schema_valid_member_invalid_timing": "direct entries/valid JSON bundle admit queued, then prepare records failed/completed0 without catalog change",
+    "exact_classifications": [
+      {
+        "class": "literal parent traversal",
+        "code": "invalid_source",
+        "status": 400
+      },
+      {
+        "class": "direct or ancestor symlink",
+        "code": "invalid_source",
+        "status": 400
+      }
+    ],
+    "row_refinements": [
+      {
+        "id": "HTTP-ROOT-PATH/directory-namespace-parent",
+        "input": "n/../m",
+        "exact_code": "invalid_source",
+        "status": 400,
+        "stage": "no admission"
+      },
+      {
+        "id": "HTTP-ROOT-PATH/zip-namespace-parent",
+        "input": "n/../m",
+        "exact_code": "invalid_source",
+        "status": 400,
+        "stage": "no admission"
+      }
+    ],
+    "unspecified_exact_classifications": [
+      "remaining lexical representative",
+      "source-key byte/depth bound",
+      "wrong filesystem kind",
+      "wrong bundle suffix"
+    ],
+    "unclassified_supported_facets": [
+      "rejection",
+      "error JSON",
+      "generic400 for isolated validation",
+      "correct admission-versus-failed-job timing",
+      "preexisting catalog conservation"
+    ],
+    "prohibited_inference": "Do not use too_large content/archive mapping for key syntax/length merely because a bound is exceeded.",
+    "symlink_proof_limit": "Returned rejection/public conservation do not alone prove target was not followed/read; confined lstat/readlink fixture and any required attempted-read authority remain separate.",
+    "citations": [
+      "V0-PATHS",
+      "M1-INTAKE",
+      "M1-DISCOVERY",
+      "M1-HTTP-BODIES"
+    ]
+  },
+  "partial_state_predicate": {
+    "id": "failed_error_response_matches_job_error",
+    "status": "required_predicate_design_for_unclassified_semantic_error; not installed",
+    "predeclared_relation": "response.error == later_jobs_census.subject.error",
+    "independently_exact": [
+      "subject job_id",
+      "known epoch",
+      "state=failed",
+      "known total",
+      "completed=0",
+      "all unaffected jobs/documents"
+    ],
+    "classification": "unspecified even when relation passes",
+    "construction": "Register relation before dispatch; do not populate a literal expectation or an allowed-code set from outputs.",
+    "unavailable": "Either unreadable side leaves only this dependent relation unavailable; retain independently established failures/facets.",
+    "observer_limit": "Existing whole-value comparison does not itself establish this partial/relational expectation authority. P01/P03 implementation required.",
+    "citations": [
+      "M1-JOBS",
+      "M1-STORE",
+      "M1-ADAPTER"
+    ]
+  },
+  "receipt_replay": {
+    "underlying_obligation": "matching completed token replays same receipt semantic values; original batch docs sorted by source, existing identical sources once",
+    "HTTP_facets": [
+      "status200",
+      "complete JSON",
+      "exact independently captured public state"
+    ],
+    "HTTP_exact_outer_wrapper": "unspecified",
+    "receipt_semantic_identity": "unqualified by HTTP state alone",
+    "other_interface_proof": "Separately qualified prescribed method/CLI/storage values; genuine cross-interface identity binds exact source, DB/history and epoch.",
+    "prohibited": [
+      "recursive wrapper search",
+      "observed wrapper allowlist",
+      "public state equality substituted for receipt equality",
+      "raw JSON spelling equality where only semantic value prescribed"
+    ],
+    "citations": [
+      "M1-COMMIT",
+      "M1-STORE",
+      "M1-HTTP-INTERFACES",
+      "M1-ADAPTER"
+    ]
+  },
+  "root_page": {
+    "request": {
+      "method": "GET",
+      "target": "/"
+    },
+    "retained_facts": [
+      "authenticated status",
+      "headers",
+      "body bytes",
+      "completion and limitations"
+    ],
+    "product_obligation": "serve accessible local browser with legacy actions/text-safe rendering and M1 visible job state/cancel/retry",
+    "HTTP_only_product_verdict": "not_evaluated",
+    "still_unqualified": [
+      "page suitability",
+      "accessibility",
+      "browser actions",
+      "text rendering"
+    ],
+    "not_sufficient": [
+      "HTTP200",
+      "nonempty bytes",
+      "HTML marker",
+      "Content-Type heuristic"
+    ],
+    "do_not_apply": "API success JSON shape to root browser response",
+    "citations": [
+      "V0-CLI-LISTENER",
+      "V0-HTTP",
+      "M1-HTTP-INTERFACES"
+    ]
+  },
+  "case_application": {
+    "R01_exact_structural_rows": [
+      "HTTP-POST-SHAPES/entries-shape-object",
+      "HTTP-POST-SHAPES/entries-shape-null",
+      "HTTP-POST-SHAPES/entries-shape-string",
+      "HTTP-POST-SHAPES/entries-shape-number",
+      "HTTP-POST-SHAPES/entries-shape-entry-nonobject",
+      "HTTP-POST-SHAPES/entries-shape-entry-missing-text"
+    ],
+    "R02_exact_code_refinements": [
+      "HTTP-ROOT-PATH/directory-namespace-parent",
+      "HTTP-ROOT-PATH/zip-namespace-parent"
+    ],
+    "other_catalog_rows": "Preserved; norm dispositions constrain materialization without editing retained proposal or granting execution credit."
+  },
+  "prerequisites": {
+    "P01_P10": "all remain open or limited as recorded in retained proposal; this norm resolution closes none",
+    "items": [
+      {
+        "id": "P01-PROSPECTIVE-DEFINITIONS",
+        "status": "unimplemented",
+        "work": "Versioned closed case provider and expectation registry, exact literal inputs/ordered steps/expected states frozen before dispatch. Historical adapter supplies no prospective semantic authority."
+      },
+      {
+        "id": "P02-FRESH-RAW-FACTS",
+        "status": "qualification components in active development; product bridge absent",
+        "work": "Bind fresh original raw request/response/listener facts to exact source/Git/fixture/runtime/helper/server epoch. v2 admits harness_qualification only; retrospective origins never satisfy this catalog."
+      },
+      {
+        "id": "P03-EXPECTED-STATE",
+        "status": "designed, not installed",
+        "work": "Independent pure source-derived identity/state interpreter. Setup prerequisites independently observed; missing prerequisite marks dependent effect unavailable rather than learning expected values from output."
+      },
+      {
+        "id": "P04-VERSIONED-ROOT-RECIPE",
+        "status": "unimplemented",
+        "work": "Current HttpRecipe fixes root_path=/inputs and one server argv. New version must bind literal per-epoch root/argv beneath immutable owned /inputs, preserve frozen v2, never mutate fixtures or admit host paths."
+      },
+      {
+        "id": "P05-CONFINED-LINKS",
+        "status": "unimplemented",
+        "work": "New data-only lstat/readlink census; fixed direct/ancestor links only to owned fixtures or sentinel outside Service.root but inside /inputs. Candidate source stays link-free. Rejection alone is not attempted-read proof."
+      },
+      {
+        "id": "P06-SAME-DB-EPOCHS",
+        "status": "normal HTTP restart mechanics available; semantic and cross-client catalog absent",
+        "work": "Bind exact source/tree/fixture/DB path/volume, uninterrupted keeper, ordered removed old/new full IDs. No reused mutable history."
+      },
+      {
+        "id": "P07-CLI-APPROVAL-AND-BRIDGE",
+        "status": "existing approvals pending; handoff contract absent",
+        "work": "Do not install or recreate the three pending CLI v4 files. After authorization/qualification, version combined HTTP/finite CLI owner with same volume/DB/source and independently complete CLI evidence; separate CLI DB cannot qualify handoff."
+      },
+      {
+        "id": "P08-LISTENER-CONTROL",
+        "status": "v2 kernel/wildcard mechanics available; catalog binding needed",
+        "work": "Bind both address-family tables to declared port/epoch and connected interval. Actual source/config attribution independent of loopback reachability."
+      },
+      {
+        "id": "P09-STORAGE-ARCHITECTURE",
+        "status": "separate mandatory workstream",
+        "work": "Public censuses do not prove raw blobs/manifests/receipt conservation, atomic SQLite transactions, concurrency, source delegation or offline M1-A08 rollback. B01/B02 and combined-source architecture/integration remain."
+      },
+      {
+        "id": "P10-PRODUCTION-AND-COHORT",
+        "status": "complete authority absent",
+        "work": "ScopePlan/Registry M1-GATE-HTTP maps eight exact targets plus labeled interactions; trusted prerequisites and fresh independent purpose remain. Full4milestone×6trajectory barrier, M2/M3/M4, browser, delivery and statistical plan stay required."
+      }
+    ],
+    "pending_CLI_files": [
+      "tests/test_candidate_clients_docker_v4.py",
+      "tests/test_candidate_client_rejection_v4.py",
+      "docs/candidate-client-qualification-plan-v4.md"
+    ],
+    "approval_boundary": "No installation, recreation or alternate-path bypass authorized by this review.",
+    "item_status_scope": {
+      "kind": "historical_catalog_design_baseline",
+      "source_catalog_sha256": "2c716eea838784446f73f5d1434d4308f80cbd070ff5d9c04976ba287abfc32e",
+      "current_cycle": "Declaration and expected-fixture components are being added and independently qualified; their work does not close the complete P01/P03 prospective registry, expected-state or relational-predicate authority. Root publishes current completion status separately."
+    }
+  },
+  "source_pins": {
+    "analysis/candidate-b03-c03-policy-review-v1.json": {
+      "sha256": "bec2139ba2b6e99d5ac6da01296842cc690af5c84f3428aaa5183eaf2ec54570",
+      "bytes": 27326,
+      "role": "normative prose/policy identity; later milestone clauses excluded"
+    },
+    "gossip_harness/library_project_fixture_v1.py": {
+      "sha256": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "bytes": 57374,
+      "role": "normative prose/policy identity; later milestone clauses excluded"
+    },
+    "library-m1-acceptance-inventory-v1.json": {
+      "sha256": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a",
+      "bytes": 295273,
+      "role": "normative prose/policy identity; later milestone clauses excluded"
+    },
+    "library-cumulative-product-v1.json": {
+      "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+      "bytes": 81044,
+      "role": "normative prose/policy identity; later milestone clauses excluded"
+    },
+    "library-cumulative-product-v2.json": {
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "bytes": 119386,
+      "role": "normative prose/policy identity; later milestone clauses excluded"
+    }
+  },
+  "held_observer_pins": {
+    "gossip_harness/candidate_http_transport_v1.py": {
+      "sha256": "a283e205ac3228085da1cf19c1ac60c720f13a0841463134605f0eb984f98ddd",
+      "bytes": 33667,
+      "git_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+      "working_bytes_equal_held_commit": true,
+      "authority": "identity_only_not_new_qualification_or_product_authority"
+    },
+    "gossip_harness/candidate_http_execution_v2.py": {
+      "sha256": "984207582f6ea4e1fa72a3eaba8fa66a99c490e6cb7a309c6101f9687ff05e12",
+      "bytes": 78901,
+      "git_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+      "working_bytes_equal_held_commit": true,
+      "authority": "identity_only_not_new_qualification_or_product_authority"
+    },
+    "gossip_harness/candidate_http_semantics_v1.py": {
+      "sha256": "ce59b1a1cfb2cfb2b39632486c90a0023789ab72b51c13987c654a57f240958f",
+      "bytes": 20617,
+      "git_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+      "working_bytes_equal_held_commit": true,
+      "authority": "identity_only_not_new_qualification_or_product_authority"
+    },
+    "gossip_harness/candidate_http_head_v1.py": {
+      "sha256": "72d860d1e47e7339d34ee3a46974b665bb9f5e08c2597aee4605115857898a55",
+      "bytes": 10220,
+      "git_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+      "working_bytes_equal_held_commit": true,
+      "authority": "identity_only_not_new_qualification_or_product_authority"
+    },
+    "gossip_harness/candidate_http_observation_v1.py": {
+      "sha256": "4bea317d487329bd2db7a682b9a4a80a9384438c8e1de63fd1dc4fcd46334cd7",
+      "bytes": 67189,
+      "git_commit": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+      "working_bytes_equal_held_commit": true,
+      "authority": "identity_only_not_new_qualification_or_product_authority"
+    }
+  },
+  "citations": [
+    {
+      "id": "V0-PATHS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 38,
+      "end": 44
+    },
+    {
+      "id": "V0-IDENTITY",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 46,
+      "end": 54
+    },
+    {
+      "id": "V0-QUERY-EXPORT",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 56,
+      "end": 63
+    },
+    {
+      "id": "V0-CLI-LISTENER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 65,
+      "end": 70
+    },
+    {
+      "id": "V0-HTTP",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 72,
+      "end": 79
+    },
+    {
+      "id": "V0-ADAPTER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 81,
+      "end": 90
+    },
+    {
+      "id": "M1-INTAKE",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 97,
+      "end": 111
+    },
+    {
+      "id": "M1-JOBS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 114,
+      "end": 129
+    },
+    {
+      "id": "M1-COMMIT",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 131,
+      "end": 144
+    },
+    {
+      "id": "M1-HTTP-INTERFACES",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 146,
+      "end": 158
+    },
+    {
+      "id": "M1-STORE",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 160,
+      "end": 176
+    },
+    {
+      "id": "M1-OFFLINE-HOOK",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 177,
+      "end": 179
+    },
+    {
+      "id": "M1-DISCOVERY",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 181,
+      "end": 192
+    },
+    {
+      "id": "M1-HTTP-BODIES",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 194,
+      "end": 199
+    },
+    {
+      "id": "M1-HTTP-STATUS",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 200,
+      "end": 204
+    },
+    {
+      "id": "M1-ADAPTER",
+      "path": "gossip_harness/library_project_fixture_v1.py",
+      "start": 206,
+      "end": 212
+    },
+    {
+      "id": "INV-V0-HTTP-01",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1753,
+      "end": 1780
+    },
+    {
+      "id": "INV-V0-HTTP-02",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1799,
+      "end": 1826
+    },
+    {
+      "id": "INV-V0-HTTP-03",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1845,
+      "end": 1872
+    },
+    {
+      "id": "INV-V0-HTTP-04",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1892,
+      "end": 1902
+    },
+    {
+      "id": "INV-M1-HTTP-01",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 2096,
+      "end": 2123
+    },
+    {
+      "id": "INV-M1-HTTP-02",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 2188,
+      "end": 2220
+    },
+    {
+      "id": "INV-I30",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 5052,
+      "end": 5084
+    },
+    {
+      "id": "INV-I31",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 5105,
+      "end": 5142
+    },
+    {
+      "id": "INV-LISTENER",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 1695,
+      "end": 1732
+    },
+    {
+      "id": "INV-HOOK",
+      "path": "library-m1-acceptance-inventory-v1.json",
+      "start": 3618,
+      "end": 3647
+    },
+    {
+      "id": "CUMULATIVE-CLIENTS",
+      "path": "library-cumulative-product-v1.json",
+      "start": 483,
+      "end": 487
+    },
+    {
+      "id": "CUMULATIVE-COMPATIBILITY",
+      "path": "library-cumulative-product-v1.json",
+      "start": 729,
+      "end": 732
+    },
+    {
+      "id": "CUMULATIVE-HEALTH",
+      "path": "library-cumulative-product-v1.json",
+      "start": 773,
+      "end": 789
+    },
+    {
+      "id": "CUMULATIVE-V2-CLIENTS",
+      "path": "library-cumulative-product-v2.json",
+      "start": 508,
+      "end": 513
+    },
+    {
+      "id": "CUMULATIVE-V2-COMPATIBILITY",
+      "path": "library-cumulative-product-v2.json",
+      "start": 760,
+      "end": 764
+    },
+    {
+      "id": "CUMULATIVE-V2-HEALTH",
+      "path": "library-cumulative-product-v2.json",
+      "start": 806,
+      "end": 822
+    },
+    {
+      "id": "CUMULATIVE-V2-COUNTERS",
+      "path": "library-cumulative-product-v2.json",
+      "start": 1444,
+      "end": 1450
+    },
+    {
+      "id": "NO-INVENTION-V1",
+      "path": "library-cumulative-product-v1.json",
+      "start": 1329,
+      "end": 1329
+    },
+    {
+      "id": "NO-INVENTION-V2",
+      "path": "library-cumulative-product-v2.json",
+      "start": 1368,
+      "end": 1368
+    }
+  ],
+  "documentation": {
+    "path": "docs/candidate-c03-http-catalog-norms-v1.md",
+    "sha256": "d075a3adc03fae8f7ee14631643fead57144be69c1f5072b79574c04ef3dfbc6",
+    "bytes": 13725
+  },
+  "independent_design_review": {
+    "reviewers": [
+      "/root/c03_catalog_design/state_matrix_audit",
+      "/root/c03_catalog_design/root_path_norm_review"
+    ],
+    "scope": "bounded primary-prose/policy review and collaboration findings; root independent integration review pending",
+    "outcomes": [
+      "direct nested-extra-key ambiguity explicitly preserved",
+      "entry shape versus discovery/schema versus semantic timing separated",
+      "epoch scalar coercion not inferred",
+      "namespace-parent traversal source-classified",
+      "receipt and browser authority limits preserved"
+    ]
+  },
+  "activity": {
+    "candidate_or_reference_implementation_read_for_expected_outcomes": false,
+    "candidate_outputs_read": false,
+    "tests_executed": 0,
+    "candidate_executions": 0,
+    "Engine_calls": 0,
+    "provider_calls": 0,
+    "credential_reads": 0,
+    "code_config_report_Git_edits": 0,
+    "new_norm_document_and_JSON_only": true
+  },
+  "verification_boundary": "Artifact construction checks held/source hashes and JSON shape only; no component tests, physical qualification, registry installation, full product acceptance or comparative sample."
+}

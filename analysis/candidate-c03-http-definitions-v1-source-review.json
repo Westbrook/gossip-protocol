@@ -1,0 +1,308 @@
+{
+  "schema": "candidate-c03-http-definitions-source-review-public-projection-v1",
+  "meaning": "Root-authored path-normalized projection of the linked independent source review; not another independent audit.",
+  "original": {
+    "path": "runs/candidate-c03-http-definitions-source-review-2.json",
+    "sha256": "269b9ee146c2ffb8d7b06bffe862c3d26f48020d9a38abef845695a6535e3b36",
+    "bytes": 7202
+  },
+  "review": {
+    "baseline": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+    "changed_reviewed_files": [
+      {
+        "bytes": 35252,
+        "path": "tests/test_candidate_http_fixtures_v1.py",
+        "sha256": "6a4e61bbbb9592d81d87c5307f9d6866fbcbd7a56ee9b56ba1347de487de6436"
+      },
+      {
+        "bytes": 10354,
+        "path": "docs/candidate-c03-http-fixtures-v1.md",
+        "sha256": "924027df7e0d42fdec390f1856ff11aaffa3455a0eb5775d5cd5b974127ee1d9"
+      }
+    ],
+    "delta_review": {
+      "M1_capacity_boundary": "Independent source-union counts distinguish 256 versus 257 at both small and full64-member batches (192 versus193 preexisting sources). Existing identical sources do not double-count capacity and remain in the receipt. A direct import between prepare and commit exercises revalidation and preservation of old state on capacity failure.",
+      "aggregate_byte_boundary": "524288 versus 524289 bytes use the same seventeen-member count, with each member at or below 32768. The success control checks prepare/commit and complete receipt; the failure control checks too_large, failed/completed0, unchanged prior catalog and retained manifest.",
+      "closed_prior_coverage_gaps": [
+        "Successful return/type/status/replay assertions in the state/action matrix",
+        "Direct aggregate-member-byte controls",
+        "Direct M1 batch-capacity controls"
+      ],
+      "documentation": "Describes the concrete controls while preserving method-value versus unspecified HTTP wrapper boundaries, pure expected-state limits and all unfinished catalog/physical/acceptance obligations.",
+      "exact_test_delta": "Existing twenty-cell state/action method strengthened; two new aggregate-byte and M1 capacity methods. Delegated inert byte comparison restoring that method and removing the two additions reproduces the old test hash 8178aa55517aa9a1baa75e4460d478515f03a2f885b891f120db6bd3af676447 exactly.",
+      "implementation_changed": false,
+      "state_action_returns": "All nine successful cells assert exact result type and independently enumerated literal method value, HTTP status 200 and replay flag. All eleven error cells assert the named error/status, no successful value and false replay. Receipt document identities use independent literal hashes."
+    },
+    "execution_boundaries": {
+      "reviewer_Engine_calls": 0,
+      "reviewer_candidate_executions": 0,
+      "reviewer_project_imports": 0,
+      "reviewer_provider_calls": 0,
+      "reviewer_tests": 0,
+      "writes": "This new receipt only; all prior receipts/sources/configuration/Git preserved."
+    },
+    "final_test_method_census": {
+      "HttpExpectationDefinitionTests": 16,
+      "HttpExpectationPrerequisiteTests": 9,
+      "HttpFixtureBytesTests": 7,
+      "HttpFixtureDocumentTests": 7,
+      "HttpFixtureStateTests": 14
+    },
+    "independent_contributors": [
+      {
+        "reviewer": "/root/b03_assertion_review",
+        "scope": "Final documentation/count/identity and unchanged-file reconciliation; retained central-gate/input verification and authority limits."
+      },
+      {
+        "reviewer": "/root/b03_assertion_review/c03_expected_fixture_review",
+        "scope": "Exact bounded test delta, isolated aggregate/capacity controls and documentation. Its disjoint child checked the twenty-cell return/status/replay assertions. No tests or project imports."
+      }
+    ],
+    "material_findings": [],
+    "prior_gate_handling": "Original 51-pass gate and source-review-1 remain retained historical evidence. They are not claimed reusable after fixture test changes; the new gate executed all53 selected methods fresh.",
+    "prior_source_review": {
+      "bytes": 9406,
+      "path": "runs/candidate-c03-http-definitions-source-review-1.json",
+      "sha256": "e2d66a306b068cd27992dd94e29b72cc13b2be8014e5b548756709d24fe6e4ab"
+    },
+    "remaining_limits": [
+      "No candidate execution, real IO/reopen, hidden-state conservation, transaction atomicity or HTTP wrapper proof follows from pure fixture tests.",
+      "The full276 literal cases, independent applicability and requirement mapping, partial/relational error predicates, trusted preregistration chronology and fresh acceptance bridge remain unfinished.",
+      "Root/link/CLI mechanics and the whole cumulative project/cohort, broader task families and causal gossip comparison still need their own qualification."
+    ],
+    "reviewer": "/root/b03_assertion_review",
+    "root_owned_verification": {
+      "class_workers": 5,
+      "current_input_hash_matches": 495,
+      "fresh_passed_methods": 53,
+      "receipts": {
+        "inputs": {
+          "bytes": 58154,
+          "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/inputs.json",
+          "sha256": "bc764f8d11e3ba2729be94aa852d683dadad8d7abb352981fe1eb8735d479a1e"
+        },
+        "static": {
+          "bytes": 76973,
+          "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/static.json",
+          "sha256": "8255cbdac90cc6de082c079c86814171ce8336054539af2c34b6651636e0dc8b"
+        },
+        "summary": {
+          "bytes": 38705,
+          "path": "runs/candidate-c03-http-definitions-offline-2/20261003T224242-5916ea22/summary.json",
+          "sha256": "37dadec72a837febcb47667b54eee09d58012cadf1843f1cd7174294f88a8a82"
+        }
+      },
+      "reused_classes": 0,
+      "scope": "Read exact retained root results and reconcile current inputs; reviewer ran no tests. Targeted five-class component gate, not whole repository or product qualification.",
+      "static_source_count": 426
+    },
+    "schema": "candidate-c03-http-definitions-source-review-v2",
+    "scope": "Bounded review-driven test/docs coverage expansion only. Prior source/norm/authority review remains preserved; this receipt supplies final test identities, closes its named fixture coverage gaps and binds the new root gate.",
+    "status": "clear",
+    "unchanged_reconciled_files": [
+      {
+        "bytes": 16277,
+        "path": "gossip_harness/candidate_http_expectations_v1.py",
+        "sha256": "f5a245e3483e2fdfb164898e1659a4dd86bcdd9717683715d2a497daf83e349d"
+      },
+      {
+        "bytes": 15669,
+        "path": "tests/test_candidate_http_expectations_v1.py",
+        "sha256": "2afb4140510b3c5d804d63a86c1c2d65dd4455a2ba8bdaaba88e0a358d343a64"
+      },
+      {
+        "bytes": 6414,
+        "path": "docs/candidate-c03-http-expectations-v1.md",
+        "sha256": "de66b0dc6b67724a39d0a58e6b71b9bb412ab69e01455ff6ede1ba9437ae834a"
+      },
+      {
+        "bytes": 25728,
+        "path": "gossip_harness/candidate_http_fixtures_v1.py",
+        "sha256": "ddcb37083efdfaee47b857438d592bfad4bfdff433dbcbad343512feb115c257"
+      },
+      {
+        "bytes": 37394,
+        "path": "analysis/candidate-c03-http-catalog-norms-v1.json",
+        "sha256": "24a9c469ec994c3e17bcfb0da7e89f171ac55022e6415a5bcc1d61d6817d71a4"
+      },
+      {
+        "bytes": 13725,
+        "path": "docs/candidate-c03-http-catalog-norms-v1.md",
+        "sha256": "d075a3adc03fae8f7ee14631643fead57144be69c1f5072b79574c04ef3dfbc6"
+      },
+      {
+        "bytes": 8530,
+        "path": "pyproject.toml",
+        "sha256": "b5ac60b825c622f49a33da8e4db25ebd1540a8e9e4facaa9d2f8e0d0237817ef"
+      },
+      {
+        "bytes": 393556,
+        "path": "verification-manifest.json",
+        "sha256": "b31838a6c76b11cec2951a73665348899d3e363accb38afa68c09371fa05f6e9"
+      }
+    ]
+  },
+  "prior_original": {
+    "path": "runs/candidate-c03-http-definitions-source-review-1.json",
+    "sha256": "e2d66a306b068cd27992dd94e29b72cc13b2be8014e5b548756709d24fe6e4ab",
+    "bytes": 9406
+  },
+  "prior_review": {
+    "baseline": "fced9d5bed99c3cc586b7d2ea1e585193d741c4f",
+    "declarations_review": [
+      "Exact typed frozen values and literal ordered recipe/fixture/request bytes bind the serialized declaration; every probe has one ordered expectation and cases cover exactly the supplied roster membership.",
+      "Source/Git/evaluator/runtime/image/environment/policy/seed/purpose identities are declared values, not observed evidence. Digest identity proves neither preregistration chronology nor source authenticity.",
+      "Prerequisites name earlier existing comparison facets. Missing, failed or unspecified prerequisites mask only explicitly dependent facets; unrelated and earlier known failures remain visible. Observed outcomes never become expected values.",
+      "Suite authority is author_declarations_only; diagnostic authority is supplied_values_only. No historical record admission, execution permission, product verdict or acceptance bridge is introduced.",
+      "Requirement/interaction labels are disjoint declarations; correct target classification, roster completeness and actual row coverage still require independent review."
+    ],
+    "execution_boundaries": {
+      "pending_CLI_paths_confirmed_absent": [
+        "tests/test_candidate_clients_docker_v4.py",
+        "tests/test_candidate_client_rejection_v4.py",
+        "docs/candidate-client-qualification-plan-v4.md"
+      ],
+      "reviewer_Engine_calls": 0,
+      "reviewer_candidate_executions": 0,
+      "reviewer_project_imports": 0,
+      "reviewer_provider_calls": 0,
+      "reviewer_tests": 0,
+      "writes": "This new review receipt only; source/configuration/Git and prior evidence untouched."
+    },
+    "fixture_review": [
+      "Independent source-derived document identities, Unicode ordering/search and prescribed public shapes are constructed without candidate/reference imports or observed outputs.",
+      "Known-state transitions preserve source-supported epoch fencing, running prepare, completed replay, manifests, cancelled/failed counters and all-or-nothing expected public effects.",
+      "Completed receipt documents must agree with the expected catalog. Absolute lexical faults and full V0 import capacity refuse unsupported exact-code derivation rather than invent product classifications.",
+      "Deterministic ZIP metadata and named byte/count/key boundaries are author-created fixtures, not observations of real IO, storage, restart or product behavior."
+    ],
+    "independent_contributors": [
+      {
+        "reviewer": "/root/b03_assertion_review",
+        "scope": "Declaration source/tests/docs; normative dispositions, all catalog counts/pins; configuration additions; aggregate authority and source reconciliation."
+      },
+      {
+        "reviewer": "/root/b03_assertion_review/c03_expected_fixture_review",
+        "scope": "Fixture implementation/norm derivation and final source/test/doc hashes; delegated independent portable test-design review covers 26 methods. No test execution."
+      }
+    ],
+    "material_findings": [],
+    "norms_review": {
+      "catalog_path": "runs/candidate-c03-http-catalog-design-1/catalog-final.json",
+      "catalog_sha256": "2c716eea838784446f73f5d1434d4308f80cbd070ff5d9c04976ba287abfc32e",
+      "conclusion": "R01-R04 are source-based supported/unspecified dispositions; all proposal rows and interactions remain. Direct entry versus JSON-file schema, validation timing, epoch dialect, exact-code limits, receipt wrapper and browser obligations retain their distinct scopes. R05 and complete P01-P10 remain open as applicable.",
+      "explicitly_refined_row_ids": 8,
+      "families": 10,
+      "held_Git_observer_identities_checked": 5,
+      "source_pins_checked": 10,
+      "status_interpretation": "Copied prerequisite item statuses are explicitly the historical catalog baseline, not a false claim that this cycle installed nothing.",
+      "target_ids": 8,
+      "unique_rows": 276
+    },
+    "remaining_limits": [
+      "The full 276 literal case histories and their independent applicability/requirement mapping are not implemented or qualified by these 51 methods.",
+      "Unspecified JOB.error needs a future prospectively declared partial/relational predicate; whole-value comparison cannot learn the missing code from output.",
+      "Trusted preregistration chronology, fresh product-purpose observations, authoritative prerequisite evidence, production registry bridge and final independent/cohort barrier remain required.",
+      "New root/argv versions, confined links and authorized same-source/same-database HTTP/CLI handoff need separate implementation and fresh integrated qualification.",
+      "Fixture test coverage does not separately assert every successful return/status/replay field or directly control aggregate-byte and M1 batch-capacity thresholds; no exhaustive fixture/catalog claim is made.",
+      "Pure reopened values, public state and receipt models do not prove real restart/IO, hidden blobs/manifests/receipts, transaction atomicity, architectural delegation, browser behavior or delivery.",
+      "All four milestones, matched trajectories, larger swarm/orchestration study, transport contrast and prospective statistical decisions remain; no comparative sample or swarm advantage established."
+    ],
+    "resolved_findings": [
+      "Public diagnostic records lacked exact immutable payload validation; typed tuple/comparison and unique-ID checks added.",
+      "Interaction-promotion wording exceeded the disjoint-label check; source/test/documentation wording narrowed without adding a hardcoded product allowlist.",
+      "Completed expected job receipts could disagree with expected catalog; coherent-state invariant added.",
+      "Absolute-path and V0 import-capacity expected codes exceeded source-supported classifications; unsupported derivations now raise an authoring limitation.",
+      "Norm prerequisite labels could be mistaken for current cycle status; historical baseline scope is explicit."
+    ],
+    "reviewed_configuration": [
+      {
+        "bytes": 8530,
+        "path": "pyproject.toml",
+        "sha256": "b5ac60b825c622f49a33da8e4db25ebd1540a8e9e4facaa9d2f8e0d0237817ef"
+      },
+      {
+        "bytes": 393556,
+        "path": "verification-manifest.json",
+        "sha256": "b31838a6c76b11cec2951a73665348899d3e363accb38afa68c09371fa05f6e9"
+      }
+    ],
+    "reviewed_sources": [
+      {
+        "bytes": 16277,
+        "path": "gossip_harness/candidate_http_expectations_v1.py",
+        "sha256": "f5a245e3483e2fdfb164898e1659a4dd86bcdd9717683715d2a497daf83e349d"
+      },
+      {
+        "bytes": 15669,
+        "path": "tests/test_candidate_http_expectations_v1.py",
+        "sha256": "2afb4140510b3c5d804d63a86c1c2d65dd4455a2ba8bdaaba88e0a358d343a64"
+      },
+      {
+        "bytes": 6414,
+        "path": "docs/candidate-c03-http-expectations-v1.md",
+        "sha256": "de66b0dc6b67724a39d0a58e6b71b9bb412ab69e01455ff6ede1ba9437ae834a"
+      },
+      {
+        "bytes": 25728,
+        "path": "gossip_harness/candidate_http_fixtures_v1.py",
+        "sha256": "ddcb37083efdfaee47b857438d592bfad4bfdff433dbcbad343512feb115c257"
+      },
+      {
+        "bytes": 21997,
+        "path": "tests/test_candidate_http_fixtures_v1.py",
+        "sha256": "8178aa55517aa9a1baa75e4460d478515f03a2f885b891f120db6bd3af676447"
+      },
+      {
+        "bytes": 9667,
+        "path": "docs/candidate-c03-http-fixtures-v1.md",
+        "sha256": "9a850e69545ebd98b037f00e42967ea86f061782869e3fb6c3e5f9db709b9611"
+      },
+      {
+        "bytes": 37394,
+        "path": "analysis/candidate-c03-http-catalog-norms-v1.json",
+        "sha256": "24a9c469ec994c3e17bcfb0da7e89f171ac55022e6415a5bcc1d61d6817d71a4"
+      },
+      {
+        "bytes": 13725,
+        "path": "docs/candidate-c03-http-catalog-norms-v1.md",
+        "sha256": "d075a3adc03fae8f7ee14631643fead57144be69c1f5072b79574c04ef3dfbc6"
+      }
+    ],
+    "reviewer": "/root/b03_assertion_review",
+    "root_owned_verification": {
+      "current_input_hash_matches": 495,
+      "receipts": {
+        "inputs": {
+          "bytes": 58154,
+          "path": "runs/candidate-c03-http-definitions-offline-1/20261003T223107-e2080d80/inputs.json",
+          "sha256": "37872029f42dd08081b7fdf656268472c29d8b2d3886d956ec72b61af4c29ae0"
+        },
+        "static": {
+          "bytes": 76983,
+          "path": "runs/candidate-c03-http-definitions-offline-1/20261003T223107-e2080d80/static.json",
+          "sha256": "a0d4d1144feb77ab96f093109c68fca6a2eaf60f9bc5d83f8508d7ca5a12e9f7"
+        },
+        "summary": {
+          "bytes": 38050,
+          "path": "runs/candidate-c03-http-definitions-offline-1/20261003T223107-e2080d80/summary.json",
+          "sha256": "d5918399076eea35c5fcabf6655c17375740d61de8bc675dfa90c3dadea50b25"
+        }
+      },
+      "reported_class_workers": 5,
+      "reported_fresh_passed_methods": 51,
+      "reported_reused_classes": 0,
+      "scope": "Read retained root gate status and exact current input fingerprints; reviewer did not run tests or repeat the gate. Targeted five-class component coverage only.",
+      "static_source_count": 426
+    },
+    "schema": "candidate-c03-http-definitions-source-review-v1",
+    "scope": "Independent read-only source, test-design, normative-prose and authority-boundary review of prospective declarations, pure expected fixtures and catalog norm dispositions. No product execution or acceptance review.",
+    "status": "clear",
+    "test_method_census": {
+      "HttpExpectationDefinitionTests": 16,
+      "HttpExpectationPrerequisiteTests": 9,
+      "HttpFixtureBytesTests": 7,
+      "HttpFixtureDocumentTests": 7,
+      "HttpFixtureStateTests": 12
+    }
+  }
+}
