@@ -7,6 +7,12 @@ workers, validation, task ownership, cost reservations, and release publication.
 Both are small experiments; neither establishes production throughput or general
 superiority over orchestration.
 
+Browse the published [Progress Report](https://westbrook.github.io/gossip-protocol/),
+[experiment outputs](https://westbrook.github.io/gossip-protocol/outputs/), and
+[documentation](https://westbrook.github.io/gossip-protocol/docs/) on GitHub Pages.
+The site is a dated, read-only snapshot refreshed at publication checkpoints;
+the local report remains the live workspace for ongoing work and review feedback.
+
 The working design follows Linux-style delegated integration:
 
 ```text
@@ -1113,6 +1119,18 @@ setup exactly once. Cumulative accounting is **$42.150585 of $80**, leaving
 frozen-price token estimates, not invoices. The next engineering target remains
 the 16-builder/four-reviewer project harness; its runtime and complete cohort
 must be qualified before allocating further live spending.
+
+The [twenty-role integration rehearsal](docs/peer-library-project-v3.md) has since
+completed with twenty actual role processes, authored responses, a failed merged
+tree, a repair and a protected release. It establishes the integrated mechanism,
+not live model quality. The [v4 development pilot](docs/peer-library-project-v4.md)
+adds real-model admission, bounded response correction, simultaneous topic
+repairs and independent CLI/HTTP/browser acceptance. The
+[current source checkpoint](analysis/peer-library-project-v4-checkpoint.json)
+records 361 passing targeted qualification checks and the retained startup
+failure that exposed the financial RPC mismatch. The complete physical rehearsal
+and live observation remain pending; the larger comparative project study remains
+separate.
 
 ## Real peer transport foundation
 

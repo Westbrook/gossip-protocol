@@ -139,8 +139,7 @@ class FinancialRPC:
                  max_requests_per_principal: int = MAX_REQUESTS_PER_PRINCIPAL,
                  max_handlers: int = MAX_HANDLERS,
                  crash_hook: Callable[[str, str], None] | None = None):
-        if type(finance) is not CumulativeAuthorityV2 or finance.config["mode"] != "offline":
-            raise FinancialRPCError("An existing offline financial owner is required")
+        self._validate_finance(finance)
         if (type(capabilities) is not dict or not 1 <= len(capabilities) <= MAX_PRINCIPALS
                 or set(capabilities) != finance.actors):
             raise FinancialRPCError("Capabilities must match the registered financial actor roster")
@@ -168,6 +167,7 @@ class FinancialRPC:
                        "max_request": MAX_REQUEST, "max_response": MAX_RESPONSE,
                        "deadline_seconds": DEADLINE_SECONDS,
                        "replay_policy": "exact-semantic-request-fresh-transport-nonce-v2"}
+        self.config = self._finalize_config(self.config)
         self.config_sha256 = _sha(_bytes(self.config))
         with finance._active(), finance.ledger.atomic() as db:
             db.execute("""CREATE TABLE IF NOT EXISTS financial_rpc_config_v2 (
@@ -196,6 +196,14 @@ class FinancialRPC:
                 self._request(_signed({**semantic, "nonce": "0" * 32}, self._keys[row["actor"]]))
                 if semantic["operation"] != "submit" and row["receipt"] is None:
                     raise FinancialRPCError("Missing atomic lease receipt")
+
+    def _validate_finance(self, finance: CumulativeAuthorityV2) -> None:
+        if type(finance) is not CumulativeAuthorityV2 or finance.config["mode"] != "offline":
+            raise FinancialRPCError("An existing offline financial owner is required")
+
+    def _finalize_config(self, config: dict) -> dict:
+        """Versioned adapters bind their identity before RPC enrollment."""
+        return config
 
     def _registration(self, db: sqlite3.Connection) -> None:
         row = db.execute("SELECT * FROM financial_rpc_config_v2 WHERE cohort=?", (self.cohort,)).fetchone()

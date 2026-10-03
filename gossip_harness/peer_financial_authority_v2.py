@@ -102,8 +102,7 @@ class CumulativeAuthorityV2:
                  *, payloads: Payloads, workers: dict[str, OpenAIWorker], max_workers: int = 4,
                  recovery: bool = False, mode: str = "offline", clock: Callable[[], float] = time.time,
                  crash_hook: Callable[[str, str], None] | None = None):
-        if mode != "offline":
-            raise FinancialError("Live financial dispatch is not qualified or enabled")
+        self._validate_mode(mode)
         for value in (incremental_cap_micro_usd, expected_global_cap, expected_opening_usage):
             if type(value) is not int or value < 0:
                 raise FinancialError("Financial amounts must be nonnegative integers")
@@ -170,6 +169,7 @@ class CumulativeAuthorityV2:
                        "expected_global_cap": expected_global_cap, "max_workers": max_workers,
                        "clock_policy": "monotonic-authority-after-begin-immediate-v1",
                        "mode": mode, "sources": sources}
+        self.config = self._finalize_config(self.config)
         self.config_sha256 = _digest(self.config)
         self.owner_id = uuid.uuid4().hex
         self.owner_pid = os.getpid()
@@ -193,6 +193,21 @@ class CumulativeAuthorityV2:
         except BaseException:
             self.owner.close()
             raise
+
+    def _validate_mode(self, mode: str) -> None:
+        if mode != "offline":
+            raise FinancialError("Live financial dispatch is not qualified or enabled")
+
+    def _finalize_config(self, config: dict) -> dict:
+        """Versioned adapters may extend identity before ownership or mutation."""
+        return config
+
+    def _before_invoke(self, worker: OpenAIWorker, request: WorkerRequest) -> None:
+        """Versioned adapters may fence transport immediately before invocation."""
+
+    def _admission_reason(self, db: sqlite3.Connection, actor: str, action: ActionRequest) -> str | None:
+        """Versioned adapters may impose immutable cumulative action limits."""
+        return None
 
     def _profile(self, name: str, worker: OpenAIWorker) -> dict:
         _name(name)
@@ -501,6 +516,9 @@ class CumulativeAuthorityV2:
                     if db.execute("SELECT 1 FROM financial_actions_v2 WHERE cohort=? AND actor=? AND action_id=?",
                                   (self.cohort_id, actor, action.action_id)).fetchone():
                         raise FinancialError("Action identity conflict")
+                    admission_reason = self._admission_reason(db, actor, action)
+                    if admission_reason is not None:
+                        return DispatchReply(action.request_id, identity(action), "waiting", admission_reason)
                     committed = db.execute("""SELECT COALESCE(SUM(COALESCE(r.spent,r.amount)),0)
                         FROM reservations r JOIN financial_actions_v2 a ON a.reservation_id=r.id WHERE a.cohort=?""",
                         (self.cohort_id,)).fetchone()[0]
@@ -626,6 +644,7 @@ class CumulativeAuthorityV2:
                 raise JournalUnknownOutcome("Recovery never invokes provider work")
             self._boundary("before_invoke", request_id)
             reserve()
+            self._before_invoke(worker, request)
             return worker.run(request)
 
         def settle(usage: int) -> None:

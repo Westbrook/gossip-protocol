@@ -1,0 +1,180 @@
+{
+  "budget": {
+    "cumulative_cap_micro_usd": 80000000,
+    "new_live_allocation_micro_usd": 0,
+    "new_provider_calls": 0,
+    "proposal_meaning": "Unallocated proposal within existing authorization, conditional on a complete matching rehearsal and a pinned permit; not an estimated bill or completion guarantee.",
+    "proposed_live_allocation_micro_usd": 25000000,
+    "remaining_micro_usd": 37849415,
+    "used_and_reserved_micro_usd": 42150585
+  },
+  "claims_excluded": [
+    "completed-v4-twenty-role-project",
+    "live-v4-model-quality",
+    "full-four-milestone-project",
+    "decentralized-planning",
+    "gossip-superiority",
+    "statistical-confirmation"
+  ],
+  "configuration": {
+    "deadline_seconds": 5400,
+    "executor_slots": 4,
+    "interval": 0.08,
+    "worker_timeout": 120
+  },
+  "current_qualification": {
+    "classes": 21,
+    "coverage": "Targeted required fast, fixture and Git classes; explicit type coverage with unchanged legacy baseline.",
+    "duration_seconds": 687.4958916669711,
+    "failed": 0,
+    "inputs": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/investigation-cycle-12-m1-qualified-3/20261003T024052-aab73251/inputs.json",
+      "sha256": "964a1c02ae8b73fe8cc06ea640eaa80f40fbd22ec75bd3845552a7998bce87f4"
+    },
+    "passed": 361,
+    "reused": 0,
+    "skipped": 0,
+    "summary": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/investigation-cycle-12-m1-qualified-3/20261003T024052-aab73251/summary.json",
+      "sha256": "32da2cd4306bdeda8e1c8d19ea3a591ab06f1ab118664d2e7de0991ef2c96c5a"
+    },
+    "timing_meaning": "Development qualification runtime, not an agent-approach comparison."
+  },
+  "documentation": "docs/peer-library-project-v4.md",
+  "execution_design_sha256": "fa3e617a1f36f240cc4efae3834284304d552ffa5338b75d7b16f81b1558156d",
+  "next_steps": [
+    "Run and independently audit a fresh complete twenty-role rehearsal under the current contract.",
+    "After qualification, enroll one bounded live healthy-M1 pilot in the existing cumulative ledger.",
+    "Continue all four project milestones, six scaling/comparison trajectories, peer-local and fault controls, matched transport/orchestration studies and independent held-out confirmation."
+  ],
+  "physical_observations": {
+    "reference_attempt_1": {
+      "outcome": "Five interfaces passed; browser locator failed. Retained before public UI/driver repair.",
+      "receipt": {
+        "availability": "retained local evidence; raw runs are excluded from public hosting",
+        "path": "runs/library-m1-v4-acceptance-qualification-1/receipt.json",
+        "sha256": "44b1eec0765769793d7ff727d23e4f00e77ea193fb9fdb44c11afa597b87f3b2"
+      }
+    },
+    "reference_attempt_2": {
+      "boundary": "Authored reference under the pre-RPC-fix contract; evaluator evidence, not model quality or complete project rehearsal.",
+      "elapsed_seconds": 36.41177733335644,
+      "execution_design_sha256": "4cd7ad267b45b428baec24d6b4a1b257a213bd780b02e1c791d461d635875408",
+      "outcome": "Five actual Docker interface cases and routed Playwright browser passed; cleanup verified.",
+      "receipt": {
+        "availability": "retained local evidence; raw runs are excluded from public hosting",
+        "path": "runs/library-m1-v4-acceptance-qualification-2/receipt.json",
+        "sha256": "d50ceecc318cec3cfa0c546e6950ee781ebbb778e353b7739eb73a23bf8bf22a"
+      }
+    },
+    "twenty_role_attempt_1": {
+      "api_calls": 0,
+      "audit_meaning": "The failure and retained evidence reconcile; the rehearsal did not succeed.",
+      "candidate_executions": 0,
+      "cleanup_errors": [],
+      "elapsed_seconds": 2.8874507499858737,
+      "independent_audit": {
+        "availability": "retained local evidence; raw runs are excluded from public hosting",
+        "path": "runs/twenty-role-library-m1-v4-1-independent-review.json",
+        "sha256": "9692f33d771d780081976a72037367c0a5c3de578672ac51acbfd506f327732a"
+      },
+      "injected_calls": 0,
+      "outcome": "Harness startup failure: the V2 financial RPC constructor rejected the V3 authority.",
+      "receipt": {
+        "availability": "retained local evidence; raw runs are excluded from public hosting",
+        "path": "runs/twenty-role-library-m1-v4-1/receipt.json",
+        "sha256": "6c14f5426f614f0b37178423aefdf6fd9a799a36b3fdd0b35d857d35bff9c0a6"
+      },
+      "role_processes": 0
+    }
+  },
+  "protocol": "peer-library-project-v4-development-checkpoint-v1",
+  "public_progress_url": "https://westbrook.github.io/gossip-protocol/",
+  "public_site_semantics": "Dated read-only publication snapshot; the independent local report tracks ongoing work.",
+  "purpose": "Developmental healthy-M1 implementation and evaluator qualification, not comparative scientific evidence.",
+  "recorded_at": "2026-10-03T02:52:43.907264+00:00",
+  "repair": {
+    "implementation": "Strict source/configuration-pinned V3 RPC adapter; two V2 extension hooks preserve the exact offline V2 guard. Production setup now uses the qualified adapter.",
+    "regression": "Real disposable V3 owner and production service factory exercised through authenticated localhost client/server, including settlement and replay.",
+    "scoped_receipt": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/investigation-cycle-12-rpc-v3-scoped-1.json",
+      "sha256": "3d27e06889256ef60bfcf841999aa23f18e7f49a5293d7f5b5b28ab19adf8815"
+    },
+    "source_review": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/investigation-cycle-12-rpc-independent-source-review-1.json",
+      "sha256": "54ffa9af4454a0d687c88833455934c5ca38f4a6597816fbd8ca01d04bf67e63"
+    }
+  },
+  "retention": {
+    "current_source_snapshot": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/cycle-12-rpc-v3-source-snapshot-1/manifest.json",
+      "sha256": "be89bab5e8d60c6a780adaaeb98d9ece970af73259e0c9c66e3e945b9aa16820"
+    },
+    "frozen_historical_sources": 39,
+    "preservation_audit": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/investigation-cycle-12-frozen-source-audit-2.json",
+      "sha256": "c83395b4f2a9faa692b3f7b67f816e4dfb5e2f4357714674fc065001f6cf9f4a"
+    },
+    "prior_source_snapshot": {
+      "availability": "retained local evidence; raw runs are excluded from public hosting",
+      "path": "runs/cycle-12-ui-contract-source-snapshot-1/manifest.json",
+      "sha256": "06fbbcbc71634d170968f90217466203ca0b17e7be519d0f26e34df4b52e30f5"
+    }
+  },
+  "source_files": {
+    "devtools/browser/library_m1_acceptance.cjs": "341c68a909b333144b18cc288e995a8afd2e1b2d1f16d31b4137dd317c4deab9",
+    "devtools/browser/lifecycle.cjs": "5253134bfce5cd0aaa8e28aad97d0416cdaabb66b2189df2e4d9c1171e33b420",
+    "devtools/browser/package-lock.json": "15eba7c974b27ef4f9d093eec7b71aa4f986030cafb1474cdd664c16f385e4e1",
+    "devtools/browser/package.json": "d41b6a915001c47ce4a0801f535921324ef68f0defa135c347ecec339a62b443",
+    "devtools/telemetry.py": "303ae20b8d8b3baa2348bc58e9e730f73d0a06434c39882663e71a1b92a26fb8",
+    "devtools/verify.py": "acdc47d80c6f78d0381830c495027bbfdd328b03edfd62f8509e88fb085ffdb9",
+    "gossip_harness/__init__.py": "b99240d3dc5cec6237ff098230aa0cc7ff3751d865c4124a23fcc37665a68a82",
+    "gossip_harness/blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+    "gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+    "gossip_harness/ledger.py": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b",
+    "gossip_harness/library_m1_acceptance_v4.py": "72b2362ddae4ba781ea31bde6991f16501098a935451c97ae128b246671be305",
+    "gossip_harness/library_m1_browser_acceptance_v4.py": "1d8e3e1796965adb2c6c0d3c5042aa2dc99a5b3f0aca5eec4076f0c482d0fa26",
+    "gossip_harness/library_m1_clients_reference_v1.py": "e52b6477bb6c5460547d7bde84986e347ab7d16ae07708a6fe28021b5e96a17f",
+    "gossip_harness/library_m1_ingestion_reference_v1.py": "514ad7c5caa546a6b33359af3b9c2d04475a05176a2131ac4b562d38fe1db5ff",
+    "gossip_harness/library_m1_reference_v1.py": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+    "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+    "gossip_harness/peer_authority_v1.py": "5750922f03620b9478235eebed52f60e954249a4a9721cd622d0791be6f40e10",
+    "gossip_harness/peer_candidate_v2.py": "8a4eb0b2d5995b4234c5a26047cb1fd104212b9a8be80df4cce792063791e988",
+    "gossip_harness/peer_coding_dispatch_v1.py": "b3fe79f77966f749e54ab151724e007ed502ab54736f176bd79a55e06628cf5c",
+    "gossip_harness/peer_financial_authority_v2.py": "50d8b731be72342c67f3fbc76c36d47e7a6fff3e1a959ab57ed7f1a3fbd21b42",
+    "gossip_harness/peer_financial_authority_v3.py": "cf337b93668f9b464b2b89846ba433ccd5e6a1b90448fb126635a84fb44717d3",
+    "gossip_harness/peer_financial_rpc_v2.py": "730132ba427554112c7bda43043754c6f109fbde8fc23cc609f57b0d8500ba75",
+    "gossip_harness/peer_financial_rpc_v3.py": "2b605442bdba5aa7d04ee86d2ccb9f67253a063c3eccdd94b1c082215d703b83",
+    "gossip_harness/peer_git_bundle_v1.py": "5e1010c7bb2e2489ca697fc190bd1e09eaee0c028115db38be8ca03d0cd0da35",
+    "gossip_harness/peer_library_contract_v4.py": "91e6ee5c725663f83b259cf268e7b90acfb53a52ba0ef13cc03de47f64b65505",
+    "gossip_harness/peer_library_live_v4.py": "e5019cf680d76fb08b95ea062311c68d8d0b27afd12e95b9e8cf2fda0c9d16d0",
+    "gossip_harness/peer_library_project_v4.py": "2f13d9dc771f780185d7b6b8cf596987db96b1d668e8b0b90dcc2df2762cb6eb",
+    "gossip_harness/peer_mesh_finance_v2.py": "11de812ef927664a9092f9cc74b1b3a3d1a2aa373f365be6405f8b0b681b5a06",
+    "gossip_harness/peer_mesh_store_v2.py": "bf0ed3d4e44d7728af265c4f6cd1e118daa6bcdc0ae1ae9dc5de5eafc73d7179",
+    "gossip_harness/peer_mesh_v2.py": "e838734dae4b69f5b21b28d1654b2d93812f2d0fe3cf4b3bd73bc57c94b76b0e",
+    "gossip_harness/peer_project_contract_v2.py": "5af31e3cb5d20b01579903865e418476d9c4aa7c42442f4d9b7f48664f1e711a",
+    "gossip_harness/peer_project_evidence_v3.py": "f7b58772761f2bfcf832bd4a8cecb2466c7af54e2619c925500c35d67046ad85",
+    "gossip_harness/peer_project_execution_v3.py": "1ea793c3eebd5d3ea5341c4c044ee6314b27184190eb955c68e1dbaa963a3edc",
+    "gossip_harness/peer_project_promotion_v3.py": "40554927f0087c46009b9d571e6a9f15833bf784cf1f12a0a148b5f084813569",
+    "gossip_harness/peer_project_repair_v4.py": "736086b5f795c6ae38e93cd3f585cac7554f15230935f5bd31c1ac3697a2fde7",
+    "gossip_harness/peer_project_views_v3.py": "db1ee6cdb941953d6d80281734b980468d7bfac48967c973a49fe161fa2cabd5",
+    "gossip_harness/peer_review_recovery_v2.py": "0e29116378adaa973e1c347464958d1cf372d2e4bca7bfb57deefdcfc0245cb7",
+    "gossip_harness/peer_review_release_v2.py": "a555d55bb038c2904e251cc1a78f8c8e4bc1e40276f6a3164c036f2cfa61f6e2",
+    "gossip_harness/peer_role_loop_v2.py": "00b9f4904c40eb482328eb616bf01d01b6abb74b93ad0262cbf1250f951d6c2f",
+    "gossip_harness/peer_store_v1.py": "86f80448d090c867fe42c9c78d27f489b8b908ef175a8c39f6079cbd5b97f47f",
+    "gossip_harness/peer_twenty_role_fixture_v2.py": "045ae02c951fd1a8b222722eae206d299cd96a4e0587d545fd79beb914d7b098",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "gossip_harness/verification_journal.py": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+    "gossip_harness/worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104",
+    "pyproject.toml": "7f91af3e216e3fa729a03eb6de2b6e6655c47748214f62e2a91aa7496bcf1bea",
+    "verification-manifest.json": "8d3de1fa037931917d2f6e48e8d2056cb1bf6adcb8d4321473d542d1d24cef3a"
+  },
+  "starting_commit": "052793a02c8e7d7791ab13927fd1633a3b710029",
+  "status": "Current source passes offline qualification; complete v4 rehearsal and live pilot remain pending."
+}
