@@ -1,0 +1,376 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "directory": "runs/library-v2-reference-qualification-1/20261003T095744-064ef496",
+      "duration_seconds": 44.01207874994725,
+      "outcomes": {
+        "failed": 1,
+        "not_run": 2,
+        "passed": 86
+      },
+      "runner_reused_classes": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "status": "failed",
+      "summary_sha256": "5b5a50b4c8e0bdd7a7c3d417aa865b91a46b9d7ff4fe07b6af31de543228c11b"
+    },
+    {
+      "attempt": 2,
+      "directory": "runs/library-v2-reference-qualification-2/20261003T100528-5f3fd253",
+      "duration_seconds": 43.9883748749271,
+      "outcomes": {
+        "failed": 1,
+        "not_run": 1,
+        "passed": 89
+      },
+      "runner_reused_classes": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "status": "failed",
+      "summary_sha256": "2147269fdd95af7116a909d618de572402680019c31710907e1710267a7e6782"
+    },
+    {
+      "attempt": 3,
+      "directory": "runs/library-v2-reference-qualification-3/20261003T100846-30e085c0",
+      "duration_seconds": 11.694303042255342,
+      "outcomes": {
+        "error": 1,
+        "not_run": 1
+      },
+      "runner_reused_classes": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "status": "failed",
+      "summary_sha256": "b15e993bf55ffa83657d2f6e9214d25ee99e72f1f25242c06dae3aad6c1bd5d4"
+    },
+    {
+      "attempt": 4,
+      "directory": "runs/library-v2-reference-qualification-4/20261003T101708-a5e014e5",
+      "duration_seconds": 11.346253375522792,
+      "outcomes": {
+        "failed": 1,
+        "not_run": 1,
+        "passed": 2
+      },
+      "runner_reused_classes": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "status": "failed",
+      "summary_sha256": "89368e476071fe9d835d1db8b3832923a9b961af78fba99641d1cce7f7d36b5f"
+    },
+    {
+      "attempt": 5,
+      "directory": "runs/library-v2-reference-qualification-5/20261003T102623-9e8822c2",
+      "duration_seconds": 27.83927616663277,
+      "outcomes": {
+        "passed": 4
+      },
+      "runner_reused_classes": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "status": "passed",
+      "summary_sha256": "2ec8d534740ff36d0f8dad7257c8ea288014bb29351f8ec0e0f74bb43d8f4ee3"
+    }
+  ],
+  "authored_product": {
+    "binary_bytes": 106496,
+    "binary_files": 2,
+    "canonical_text_map_scheme": "UTF-8 JSON text map, sorted keys, ensure_ascii=false, compact separators",
+    "canonical_text_map_sha256": "63fbfc0689db243cb76d9e7966f83a66af08d632984f376d91bdc70ee6e75e9a",
+    "release_manifest_sha256": "4c00cca39c9553826e02f0f48569a0630cba645dfd9acb5e71e9235aa9dda97c",
+    "released_source_sha256": "224149601cbb25550a1fe841c9098c381a81848af33f951f8864457824a9c391",
+    "schema3_predecessor_bytes": 276545,
+    "schema3_predecessor_files": 35,
+    "text_bytes": 980050,
+    "text_files": 59,
+    "validator_source_scheme": "Existing Docker validator source identity; distinct from canonical text-map and release-manifest record digests",
+    "validator_source_sha256": "8b69e6d86247e4a6e4dd7bd35f5bae60ce22f500b17997bf29ae2832c0cb4a74"
+  },
+  "base_development_commit": "bd16ebb32856f37bf4d7789f48ebb0dfab9e54e6",
+  "coverage_map": {
+    "baseline_only": true,
+    "evidence_units": 101,
+    "gap_notes_retained": 188,
+    "logical_gates": 99,
+    "partial_links": 326,
+    "path": "analysis/cumulative-coverage-map-v1.json",
+    "product_and_prerequisite_requirements": 126,
+    "reconciliation_path": "runs/cumulative-coverage-map-reconciliation-1.json",
+    "reconciliation_sha256": "01a9c66769fd52da87643a4e23ed10077f91b9498b1facb054d913fea72bda46",
+    "scopeplan_approved": false,
+    "sha256": "421635d4282a218a267059d161f3245daa8e0d24018b5552d7c594f18f43823c",
+    "v1_obligations": 233,
+    "v2_obligations": 312
+  },
+  "development_branch": "codex/cumulative-project-contract",
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "new_public_history_registry": {
+    "adapter_sha256": "6bada66bc55336d8825d96abfe6401726f25d41485d23c7293d723be5fe01c7d",
+    "amendment_cases": {
+      "V2-BACKUP-ROOT": [
+        "v2-explicit-initial-adoption-and-cas",
+        "v2-rebind-old-service-and-unowned-files",
+        "v2-unbound-pending-backup",
+        "v2-unbound-pending-maintenance",
+        "v2-adoption-registered-corrupt",
+        "v2-adoption-registered-missing",
+        "v2-adoption-registered-valid",
+        "v2-same-root-validates-registry",
+        "v2-adoption-validates-beyond-first-page",
+        "v2-adoption-lexical-symlink-before-dotdot"
+      ],
+      "V2-COUNTER-DOMAIN": [
+        "v2-migration-at-maximum",
+        "v2-maximum-noops-atomic-exhaustion-and-stale-precedence",
+        "v2-one-below-maximum",
+        "v2-request-counter-domain-before-lookup",
+        "v2-refused-persisted-generation-overflow",
+        "v2-refused-persisted-worker-negative",
+        "v2-refused-persisted-worker-fraction",
+        "v2-maximum-job-replay-and-effective-fences",
+        "v2-restore-atomic-document-late-overflow",
+        "v2-restore-atomic-job-late-overflow",
+        "v2-restore-atomic-retained-document-highwater",
+        "v2-restore-atomic-retained-job-highwater",
+        "v2-restore-completed-maximum-no-increment"
+      ],
+      "V2-M1-HASH-SERIALIZATION": [
+        "v2-portable-hash-spelling-preserved-migration-backup",
+        "v2-invalid-hash-null-for-utf8",
+        "v2-invalid-hash-prefixed",
+        "v2-invalid-hash-uppercase",
+        "v2-invalid-hash-extra",
+        "v2-invalid-hash-not-array",
+        "v2-invalid-hash-nonfinite",
+        "v2-invalid-hash-trailing",
+        "v2-digest-for-unencodable-text",
+        "v2-new-admission-canonical-hash-format"
+      ],
+      "V2-MIGRATION-DIAGNOSTIC": [
+        "v2-migration-preserves-controls-migrate",
+        "v2-migration-preserves-controls-backup",
+        "v2-explicit-noop-diagnostic-migrate",
+        "v2-explicit-noop-diagnostic-restore",
+        "v2-refused-persisted-generation-overflow",
+        "v2-refused-persisted-worker-negative",
+        "v2-refused-persisted-worker-fraction"
+      ],
+      "V2-MIGRATION-FENCE": [
+        "v2-migration-preserves-controls-migrate",
+        "v2-migration-preserves-controls-backup",
+        "v2-explicit-noop-diagnostic-migrate",
+        "v2-explicit-noop-diagnostic-restore",
+        "v2-migration-at-maximum",
+        "v2-supported-schema3-handle-fenced-before-removed-tables",
+        "v2-unbound-pending-backup",
+        "v2-unbound-pending-maintenance"
+      ],
+      "V2-WORKER-LIVENESS": [
+        "v2-worker-owner-idle-abrupt-death"
+      ]
+    },
+    "case_ids": [
+      "v2-migration-preserves-controls-migrate",
+      "v2-migration-preserves-controls-backup",
+      "v2-explicit-noop-diagnostic-migrate",
+      "v2-explicit-noop-diagnostic-restore",
+      "v2-migration-at-maximum",
+      "v2-supported-schema3-handle-fenced-before-removed-tables",
+      "v2-maximum-noops-atomic-exhaustion-and-stale-precedence",
+      "v2-one-below-maximum",
+      "v2-request-counter-domain-before-lookup",
+      "v2-refused-persisted-generation-overflow",
+      "v2-refused-persisted-worker-negative",
+      "v2-refused-persisted-worker-fraction",
+      "v2-maximum-job-replay-and-effective-fences",
+      "v2-restore-atomic-document-late-overflow",
+      "v2-restore-atomic-job-late-overflow",
+      "v2-restore-atomic-retained-document-highwater",
+      "v2-restore-atomic-retained-job-highwater",
+      "v2-restore-completed-maximum-no-increment",
+      "v2-portable-hash-spelling-preserved-migration-backup",
+      "v2-invalid-hash-null-for-utf8",
+      "v2-invalid-hash-prefixed",
+      "v2-invalid-hash-uppercase",
+      "v2-invalid-hash-extra",
+      "v2-invalid-hash-not-array",
+      "v2-invalid-hash-nonfinite",
+      "v2-invalid-hash-trailing",
+      "v2-digest-for-unencodable-text",
+      "v2-new-admission-canonical-hash-format",
+      "v2-worker-owner-idle-abrupt-death",
+      "v2-explicit-initial-adoption-and-cas",
+      "v2-rebind-old-service-and-unowned-files",
+      "v2-unbound-pending-backup",
+      "v2-unbound-pending-maintenance",
+      "v2-adoption-registered-corrupt",
+      "v2-adoption-registered-missing",
+      "v2-adoption-registered-valid",
+      "v2-same-root-validates-registry",
+      "v2-adoption-validates-beyond-first-page",
+      "v2-adoption-lexical-symlink-before-dotdot"
+    ],
+    "contract_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "limitations": [
+      "Public development qualification, not concealed independent final acceptance or statistical treatment evidence.",
+      "Finite amendment examples do not cover every inherited requirement, every interface, crash boundary or concurrency interleaving.",
+      "The observer executes inside caller isolation; caller must authenticate source, runtime, outputs, limits, protocol and purpose.",
+      "Actual HTTP wire behavior and browser exact-integer transport require separate lanes; Service.request is routing only.",
+      "Live matching active claim, stale claim dimensions and before/after-commit abrupt worker crash need separately synchronized histories; no timing-based claim is inferred.",
+      "Legacy-handle history requires the declared prospective schema3 predecessor at /legacy-v2; historical unsupported binaries must be shut down separately.",
+      "Adoption metadata-page/read-size bounds, no unowned reads, replacement race, concurrent authority and power-loss need separate instrumented/process lanes.",
+      "Logical portable rows are compared on valid opens; implementation-owned indexes/triggers are not prescribed.",
+      "File observations cover authored maintenance artifacts and backup-root entries, not implementation-specific lock/control files; sandboxing alone does not authenticate a hostile in-process observation.",
+      "No held-out result may be sent to active builders; this module makes no cohort-freeze or receipt-authentication claim."
+    ],
+    "ordered_cases_sha256": "85b530b0049b2f0264ae34b04b2819c5994819955ebc4bb0e3382820bc8a611b",
+    "ordered_expected_sha256": "57e01bfafbf2313eea928af0d7e30a8d6a2f865612654b741b99ce03bab52df0",
+    "ordered_inputs_sha256": "b48c8482f3137ad479394647d1ffbd8663ac9fee692dfb42987e5574506e61c0",
+    "protocol": "library-v2-public-development-histories-v1",
+    "purpose": "development_qualification",
+    "scorer_sha256": "3c555229064e5a52f3547889571e3d6171b4c221bf5f9034854dc34aecc71cf2",
+    "status": "unexecuted_public_development_definition"
+  },
+  "new_statistical_samples": 0,
+  "next_actions": [
+    "Build B01 admission/storage-conservation candidate observations targeting23 inherited IDs.",
+    "Build authenticated scope/prerequisite admission consumer in parallel, with complete production ScopePlan.",
+    "Add explicit v2 candidate-delivery adapter and qualify applicable boundaries.",
+    "Complete four-milestone six-trajectory controller, actual restart/partition, generated distinguishing tests, cohort freeze and independent final evaluation before comparative claims."
+  ],
+  "physical_observations": {
+    "browser": {
+      "blocked_requests": 0,
+      "browser_launches": 7,
+      "cold_exhaustion_control": "tests/test_library_v2_maintenance_reference_v1.py::LibraryV2MaintenanceReferenceTests.test_worker_owner_exhaustion_precedes_liveness_publication",
+      "counter_layout_fixtures": 4,
+      "counter_values": [
+        9007199254740993,
+        9223372036854775807
+      ],
+      "expected_errors_create_no_download": true,
+      "expected_export_errors": [
+        "not_found",
+        "too_large"
+      ],
+      "fixture_protocol": "library-v2-browser-counter-fixture-v2",
+      "fresh_releases": 7,
+      "isolated_contexts": 14,
+      "maximum_primed_state_unchanged": true,
+      "other_workflows": [
+        "lifecycle",
+        "maintenance",
+        "dataset"
+      ],
+      "page_errors": 0,
+      "separately_retained_initialization_preserves_14_public_tables_and_all_other_files": true
+    },
+    "docker": {
+      "all_cleanup_verified": true,
+      "deliberate_root_mutant_rejected": 1,
+      "equal_release_builds": 2,
+      "fresh_containers": 7,
+      "image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+      "inherited": {
+        "m1": 8,
+        "m2": 12,
+        "m3": 10,
+        "m4": 18
+      },
+      "input_delivery_failures": 0,
+      "new_v2_histories": 39,
+      "output_truncations": 0,
+      "positive_histories": 87,
+      "public_release_checks": 3,
+      "raw_literal_comparison_and_host_predicate_verdicts_retained_separately": true,
+      "release_histories": 1,
+      "timeouts": 0
+    }
+  },
+  "product_contract": {
+    "path": "library-cumulative-product-v2.json",
+    "readable_path": "docs/library-cumulative-product-v2.md",
+    "readable_sha256": "0d35083497080a3317f4e6b2c5d71cff6abf478460914e0f0dc0f6a2c5584e11",
+    "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
+  },
+  "prospective_freeze": {
+    "chronology": "After component and inherited release smoke, before these39 full composed-reference history executions; expectations unchanged across repairs.",
+    "path": "runs/library-v2-public-definition-freeze-2.json",
+    "sha256": "0a12326c54cb98c2fca7ae8f0babf3b08d0cf6d606db2964468cf820e8d349e7"
+  },
+  "provider_api_calls_this_cycle": 0,
+  "publication": {
+    "commit_and_push": "Perform after checkpoint validation; exact commit recorded in separate retained publication receipt.",
+    "github_pages": "Existing c8ba24ac7d1792ebf7553447ec0c980b48d02c39 snapshot unchanged this cycle."
+  },
+  "publication_preflight_advisories": [
+    {
+      "disposition": "Nonblocking formatting advisory; retained exact qualified generator bytes. Required syntax/type/lint/configuration gates pass.",
+      "finding": "One trailing whitespace character outside a string literal.",
+      "line": 171,
+      "path": "gossip_harness/library_v2_catalog_reference_v1.py",
+      "tool": "git diff --cached --check"
+    }
+  ],
+  "purpose": "authored_reference_qualification",
+  "qualification": {
+    "classes": 14,
+    "current_selected_scope_skips": 0,
+    "fresh_final_physical_checks": 4,
+    "independent_read_only_audit_clear": true,
+    "lane_counts": {
+      "browser": 2,
+      "docker": 7,
+      "fast": 35,
+      "fixtures": 49
+    },
+    "legacy_type_baseline_diagnostics": 117,
+    "new_static_diagnostics": 0,
+    "reconciliation": {
+      "path": "runs/library-v2-qualification-reconciliation-1.json",
+      "sha256": "cc1e4c84741dc725b2f16b22821d7d0ff8fca1f48e9c195216482d2a85e5ce61"
+    },
+    "retained_original_physical_checks": 89,
+    "selected_scope_missing_checks": [],
+    "unique_checks": 93
+  },
+  "schema": "library-v2-reference-checkpoint-v1",
+  "scope_limits": [
+    "Authored public reference controls, not a candidate-generated project or adversarial in-process observer proof.",
+    "Finite selected histories, not complete semantic acceptance of123 product and3 prerequisite requirements.",
+    "Browser uses recorded host Python; pinned Python3.12 Docker is a separate runtime observation.",
+    "Maximum browser file conservation begins after separately recorded ordinary diagnostics initialization; cold exhausted-worker checks remain separate.",
+    "No whole-project cohort, independent final evaluation, repeatability purpose or statistical superiority claim.",
+    "Existing candidate-release executor pins v1; an explicit versioned v2 adapter remains required."
+  ],
+  "source_sha256": {
+    "analysis/cumulative-coverage-map-v1.json": "421635d4282a218a267059d161f3245daa8e0d24018b5552d7c594f18f43823c",
+    "devtools/browser/library_v2_reference.cjs": "1bc6e79be804084ad65b0f9b4fffda6228912dcd8ffe0d11a4203feef8d96c0d",
+    "docs/cumulative-coverage-map-v1.md": "b94ad91947bfa352dc81a7f860660dadbb84a99debe6bbae6a5f809c917ea3ac",
+    "docs/library-v2-reference-v1.md": "634f4860b38659cc45c242d33ee0851814efeb28cba264f4e2fbefe17adf1f1f",
+    "gossip_harness/library_cumulative_public_fixture_v2.py": "03e2e74c796084355a37e1e35c9532a81f12749e7cd8cfd17fa902d358019052",
+    "gossip_harness/library_v2_acceptance_cases_v1.py": "beca4fc8c16ebbb4e6ddf9b68e7ccae8a8bbde9d981f4bad20bbe6ee4adada44",
+    "gossip_harness/library_v2_browser_reference_v1.py": "38cb7fff3ef5d81a5cc68c9bd1b28c957df94db0955009b2892af24cdc434214",
+    "gossip_harness/library_v2_catalog_reference_v1.py": "26fabb8b0e7a317fe5240e3a3d7bea912b844432c541d850799d1275fb27fb82",
+    "gossip_harness/library_v2_clients_reference_v1.py": "a9ff6bfb7daf4c9d7b539fac30fd2992d076f7490ef278ad52a94f7e4074a369",
+    "gossip_harness/library_v2_inherited_cases_v1.py": "3e4d5f6177df04da7d7675d5f119e1b17020cfca7bb9b7b8bcd94b35ad836b56",
+    "gossip_harness/library_v2_maintenance_reference_v1.py": "3888260d5d622ca8ac471be5fde43730fe4b69413bb9a508ecae0d3d476cc50f",
+    "gossip_harness/library_v2_reference_v1.py": "dbbcd0e46c2a9c3d6d79a9e3d1129d45536f59eb86453f9472f8c409077ee97d",
+    "gossip_harness/library_v2_release_reference_v1.py": "abcfe610444a88baa8ea024c9638a5cc6ff9c887045114efb7cdaf9133adf881",
+    "pyproject.toml": "783a1f6c9c416262ed79b00414b9afd24cde680d904f37cd6152d0c32dc02eee",
+    "tests/test_library_cumulative_public_fixture_v2.py": "dd3f585713c84dae6056bac4e0914d57d1215fbfef4d4e0f7fd33d7b7565af63",
+    "tests/test_library_v2_acceptance_cases_v1.py": "5e9046a6573acb1359873acfcea87b05f5dca6ca2dc377f76e9cb82aac8930cd",
+    "tests/test_library_v2_browser_integration_v1.py": "0d0939cd85f1696a58529c21629fd9b1f54d7d2dfc4653b30e8e5b1a8cf8775d",
+    "tests/test_library_v2_browser_reference_v1.py": "1b5a9e6d578aee928426abe1fc0ec0c7f59db4c2b6dfd4b60ded800baf517d3d",
+    "tests/test_library_v2_catalog_reference_v1.py": "2bbf31910fe23422a935776a98f34ee017b48b68fd5ab8690c01e5cc2f02b12f",
+    "tests/test_library_v2_clients_reference_v1.py": "2c86cf91d1cb04e3d5898979967e7b81d359431d7bceb05a598650f92b629cef",
+    "tests/test_library_v2_docker_reference_v1.py": "da81b19d533f33be8156e8c840272128e90894a8029b9f1c676da8bc68f4c705",
+    "tests/test_library_v2_inherited_cases_v1.py": "0fc70eae090538d31edd3272af740e37b53860331cc69504f208a7a4cb6aa117",
+    "tests/test_library_v2_maintenance_reference_v1.py": "faa4f01a0617937abedf025df934f93dc4383cb483bf148c8278b57691c90cb0",
+    "tests/test_library_v2_reference_v1.py": "ee4842d7b1bd28bd4c16f62a25af182ccd59f4911ade64d34cea2c14afe56615",
+    "tests/test_library_v2_release_reference_v1.py": "0a3d0eb58465d2e14314f18a935b33973d0b9504c2362d395385c3bd1fef1045",
+    "verification-manifest.json": "ec99c8dfb0575f8ecc15feda19052d022dd4eac19be1be5c1ba8dc2536985749"
+  },
+  "status": "selected_development_qualification_complete"
+}
