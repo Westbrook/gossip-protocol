@@ -1,8 +1,9 @@
 # A live twenty-role M1 development pilot
 
-**Status: current source passed 361 offline qualification checks. A complete v4
-twenty-role physical rehearsal and live pilot remain pending; no v4 live
-allocation or provider call is recorded.** This pilot asks whether sixteen independently prompted builders
+**Status: retained-topic continuation passed all 381 targeted offline checks.
+The preceding full-fixture attempt stopped during repair after twenty roles ran;
+a new matching complete rehearsal remains pending. No v4 live allocation or
+provider call is recorded.** This pilot asks whether sixteen independently prompted builders
 and four stronger reviewers can produce, integrate and repair a useful software
 milestone. It is a bounded development observation before the larger comparative
 study, not an estimate of swarm superiority.
@@ -125,10 +126,27 @@ by branching from the failed combined tree.
 
 The next frontier contains exactly those repaired topics and the unchanged
 previously selected topics. They are restaged together from the accepted baseline
-and receive combined evaluation and review again. Package generations advance
-independently: catalog's second repair and query's first repair may belong to the
-same global round. Initial alternatives and failed combined trees remain retained
-even though repair rounds do not reopen the entire sixteen-candidate competition.
+and receive combined evaluation and review again. Each repair attempt uses the
+next global round, 1 or 2, for a distinct action identity. An effective new topic
+also takes that global round as its generation; a retained topic keeps its exact
+old offer and generation. A package first changed in round 2 therefore gets
+generation 2, without inventing a generation-1 change. Initial alternatives and
+failed combined trees remain retained even though repair rounds do not reopen
+the entire sixteen-candidate competition.
+
+Under the prospective retained-topic policy, the controller may keep an existing
+selected topic after a verified known-complete repair failure whose patch makes
+no source change. This is a trusted controller disposition, not a new model
+response schema: the frozen worker still reports `failure_kind: empty`, and its
+failed call remains failed. The old topic gains no new approval or quality claim.
+Fresh evaluation and review of the combined target determine whether the actual
+changes and retained source meet the requirements.
+
+The inherited worker prompt still requests at least one effective change, and
+its parser remains unchanged. The authored fixture deliberately supplies validly
+shaped unchanged proposals to exercise recovery from that failed attempt. This
+does not establish a first-class model acknowledgment that no repair is needed,
+or show that a live model would correctly choose when to leave source untouched.
 
 This addresses simultaneous repairs without weakening Git scope checks, including
 checks on foreign changes later reverted in a branch's history. The plan, target,
@@ -234,8 +252,9 @@ coupling; a finite suite still cannot prove the absence of every defect.
 **Whole-path qualification is pending.** Before paid dispatch, finish the versioned
 implementation, run the central static and applicable offline gates, and complete
 one source/runtime-matching physical twenty-role fixture rehearsal. That rehearsal
-must exercise multiple topic repairs, actual merged-tree evaluation and rejection,
-fresh review and protected release, plus bounded malformed selector/review
+must exercise multi-package repair admission, authenticated unchanged-topic
+continuation, actual merged-tree evaluation and rejection, fresh review and
+protected release, plus bounded malformed selector/review
 corrections. Independently inspect the retained evidence and bind the physical
 CLI/HTTP/browser component qualification to the execution design. Bind that
 evidence and the concrete financial allocation to the live execution design.
@@ -293,15 +312,87 @@ failed composition boundary, not the full twenty-role project loop.
 The [independent RPC source review](../runs/investigation-cycle-12-rpc-independent-source-review-1.json)
 found no remaining source blockers; its SHA-256 is
 `54ffa9af4454a0d687c88833455934c5ca38f4a6597816fbd8ca01d04bf67e63`.
-It did not execute tests or a rehearsal. The new
+It did not execute tests or a rehearsal. The subsequent
 [twenty-one-class gate](../runs/investigation-cycle-12-m1-qualified-3/20261003T024052-aab73251/summary.json)
 passed all 361 checks in 687.50 seconds, with no failures, skips, reused classes
 or source/runtime drift. Its static gate passed as well. This is targeted
 qualification of the required fast, fixture and Git classes, not every repository
-test or a project-quality result. A matching complete physical twenty-role
-fixture is still required. There are no v4 live calls or new live allocation.
+test or a project-quality result. It belongs to the source published in commit
+`3019bcf`, before the retained-topic continuation change.
 The [published-source checkpoint](../analysis/peer-library-project-v4-checkpoint.json)
-binds the current design, qualification, retained failures and remaining scope.
+binds that historical design, qualification, retained failures and remaining scope.
+
+The [second full-fixture attempt](../runs/twenty-role-library-m1-v4-2/receipt.json)
+ran twenty role processes and admitted 27 injected calls; the attempt's total
+controller wall time was **1,062.591530 seconds**. It produced seventeen candidate
+bundles and one actual public merged-tree
+evaluation, then stopped with `missing_repair_candidate`. All twenty role
+processes exited with code zero and cleanup reported no errors. No protected
+release or private acceptance ran, and there were zero provider calls or API
+spend. Receipt SHA-256:
+`b08bfbf96eb4cf4e686b80cbb8ed63e1b0d1daebb4c301070f8f2edfd7a99b83`.
+
+The public failure implicated the integration, so four selected builders received
+repair work. B01's catalog proposal made the needed source change and produced a
+new candidate. B05, B09 and B13 returned known, complete empty source proposals
+for their unchanged packages. The worker correctly retained those as failed
+patch outcomes, and the controller required a new candidate from every repair
+recipient, so it stopped instead of restaging the actual fix with those existing
+topics. The receipt's `source_repairs: 4` counts attempted repairs; it does not
+establish four effective source changes.
+
+All 27 reservations settled and none remained unsettled, but the receipt records
+`complete_bindings_reconciled: false`. The whole-cohort terminal barrier was not
+proven, so independent acceptance remained `not_run`. Successful process exits
+and cleanup do not establish that barrier or project completion. This failed
+observation is preserved separately from the forthcoming continuation contract;
+it is not replaced or relabeled as a successful rehearsal.
+
+The [completed independent failure audit](../runs/twenty-role-library-m1-v4-2-independent-review-completed-1.json),
+SHA-256 `e92a9b5779e5f43abe50e2963f9819063af9de72228f000f3ffb6519b8582fb1`,
+reconciled all 27 terminal bindings in the retained files: 24 completed actions
+and three known empty-change failures. It verified twenty distinct role processes,
+seventeen candidate identities, the seven-of-eight public result, eight rejected
+scopes and preservation of all 6,091 original run files. Its `audit_passed: true`
+means the failed-run evidence reconciled; `rehearsal_passed`, `qualification_ready`
+and `passed` remain false. Later read-only reconciliation cannot retroactively
+supply the missing runtime freeze or authorize resuming the failed cohort.
+
+The new versioned continuation design will retain an authenticated existing
+topic after a verified `failure_kind: empty` outcome for an otherwise valid patch
+that changes no source. It does not introduce an explicit model-authored retain
+decision or reinterpret the worker failure as success. The failed call must
+consume its original allowance; its prior offer, source and package generation
+remain unchanged. Other effective repairs may form a new combined target, but
+fresh public evaluation and all required current-target reviews still gate
+release. Unknown provider outcomes, missing evidence and arbitrary failed patches
+do not receive this continuation treatment.
+
+The next authored fixture is expected to attempt four repairs, with one effective
+source change and three explicitly unchanged topics: 32 injected calls and
+seventeen bundles if it completes its declared path. The new counters separate
+`source_repairs_attempted: 4`, `source_repairs_effective: 1` and
+`source_repairs_unchanged: 3`; the historical `source_repairs` count denotes
+attempts. These are prospective qualification expectations, not observed success.
+The changed contract now has a fresh applicable gate; a new matching complete
+physical rehearsal remains required. There are still no v4 live calls or new live allocation.
+
+The [current twenty-one-class gate](../runs/investigation-cycle-12-m1-qualified-5/20261003T040006-11615b95/summary.json)
+passed all 381 selected checks in 961.49 seconds, with no failures, skips,
+reused results or source/runtime drift. This covers the required fast, fixture
+and Git classes after the central static gate, not every repository test.
+The [development checkpoint](../analysis/peer-library-project-v4-checkpoint.json)
+binds the qualified sources and execution design
+`0211c24e6dae1075ef6eaa05504b6f5915620c7acb85bad79fa7e2e58fd2ac7b`.
+
+The preceding [gate 4](../runs/investigation-cycle-12-m1-qualified-4/20261003T034109-7a6c727a/summary.json)
+remains failed: 363 checks passed, one was interrupted and 17 did not run when
+the promotion class reached its 300-second outer timeout. An
+[independent timing review](../runs/investigation-cycle-12-gate4-timeout-independent-review-1.json)
+supported a bounded 420-second class envelope with the same 19 tests and resource
+limits. The fresh run passed that class in 326.22 seconds. This development-test
+correction changes neither correctness assertions nor the 5,400-second project
+deadline; its duration is not an agent-policy performance comparison.
 
 The completed [v3 rehearsal](peer-library-project-v3.md) is useful historical
 evidence: twenty role processes, 27 scripted calls, two actual merged-source

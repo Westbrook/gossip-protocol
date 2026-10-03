@@ -14,6 +14,7 @@ import json
 from pathlib import Path
 import sqlite3
 import tempfile
+import threading
 import time
 import unittest
 
@@ -27,7 +28,7 @@ from gossip_harness.peer_financial_authority_v3 import (
     digest, preflight_permit, profile_manifest, source_fingerprints, validate_qualification,
 )
 from gossip_harness.peer_project_contract_v2 import ActionRequest, Context, EvidenceRef, WorkKey, to_dict
-from gossip_harness.worker import HTTPResponse, MODEL, OpenAIWorker
+from gossip_harness.worker import HTTPResponse, MODEL, OpenAIWorker, WorkerFailure
 
 
 class Payloads:
@@ -48,17 +49,22 @@ class FixtureTransport:
         self.calls = 0
         self.timeout = False
         self.malformed = False
+        self.unchanged = False
+        self.http_status = 200
+        self.zero_usage = False
 
     def __call__(self, request, timeout, maximum):
         self.calls += 1
         if self.timeout:
             raise TimeoutError("Synthetic no-network timeout")
         body = {"id": "resp_fixture", "model": MODEL, "status": "completed", "service_tier": "default",
-                "usage": {"input_tokens": 101, "output_tokens": 20, "total_tokens": 121},
+                "usage": ({"input_tokens": 0, "output_tokens": 0, "total_tokens": 0} if self.zero_usage else
+                          {"input_tokens": 101, "output_tokens": 20, "total_tokens": 121}),
                 "output": [{"type": "message", "role": "assistant", "status": "completed",
                             "content": [{"type": "output_text", "text": "broken" if self.malformed else json.dumps({
-                                "changes": [{"path": "src/a.py", "content": "fixed\n"}], "summary": "fixture"})}]}]}
-        return HTTPResponse(200, {}, json.dumps(body).encode())
+                                "changes": [{"path": "src/a.py", "content": "broken\n" if self.unchanged else "fixed\n"}],
+                                "summary": "fixture"})}]}]}
+        return HTTPResponse(self.http_status, {}, json.dumps(body).encode())
 
 
 class PeerFinancialAuthorityV3Tests(unittest.TestCase):
@@ -330,6 +336,207 @@ class PeerFinancialAuthorityV3Tests(unittest.TestCase):
         self.assertEqual(self.authority.submit("B01", action, lease), reply)
         self.assertEqual(self.transport.calls, 1)
         self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1166)
+
+    def test_known_empty_failure_proof_is_settled_recoverable_and_never_a_release(self):
+        self.transport.unchanged = True
+        self.open()
+        action, lease, reply = self.invoke_fixture()
+        proof = self.authority.verified_known_failure(reply.binding)
+        self.assertEqual((proof["binding"], proof["action"], proof["reply"]), (reply.binding, action, reply))
+        self.assertIs(type(proof["result"]), WorkerFailure)
+        self.assertEqual(proof["result"].metadata["failure_kind"], "empty")
+        self.assertEqual(proof["result"].usage_units, 166)
+        self.assertEqual(proof["worker_request"].files, {"src/a.py": "broken\n"})
+        self.assertEqual(proof["result_payload"]["kind"], "failure")
+        with self.assertRaises(FinancialError):
+            self.authority.verified_terminal(reply.binding)
+        self.assertEqual(self.authority.submit("B01", action, lease), reply)
+        self.open(recovery=True)
+        self.assertEqual(self.authority.verified_known_failure(reply.binding)["result_payload"], proof["result_payload"])
+        self.assertEqual(self.transport.calls, 1)
+        self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1166)
+
+    def test_known_zero_usage_failure_is_distinct_from_unknown_cost(self):
+        self.transport.zero_usage = self.transport.unchanged = True
+        self.open()
+        _, _, reply = self.invoke_fixture()
+        proof = self.authority.verified_known_failure(reply.binding)
+        self.assertEqual((reply.state, proof["result"].usage_units), ("failed", 0))
+        self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1000)
+
+    def test_known_halting_failure_is_provable_but_does_not_clear_halt(self):
+        self.transport.http_status = 503
+        self.open()
+        _, _, reply = self.invoke_fixture()
+        proof = self.authority.verified_known_failure(reply.binding)
+        self.assertIs(proof["result"].metadata["halt"], True)
+        self.assertEqual(proof["result"].usage_units, 166)
+        with self.assertRaises(FinancialError):
+            self.authority.claim("B01", self.context, self.work)
+        with self.assertRaises(FinancialError):
+            self.authority.verified_terminal(reply.binding)
+        self.assertEqual(self.transport.calls, 1)
+
+    def test_failure_proof_rejects_success_without_changing_release_proof(self):
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        with self.assertRaises(FinancialError):
+            self.authority.verified_known_failure(reply.binding)
+        self.assertFalse(self.authority.failed_closed)
+        self.assertFalse(self.authority.persistence_failed)
+        self.assertEqual(self.authority.lookup("B01", action.request_id), reply)
+        self.assertEqual(self.authority.verified_terminal(reply.binding)["reply"], reply)
+
+    def test_failure_proof_rejects_unknown_without_rewriting_reason_or_retrying(self):
+        self.transport.timeout = True
+        self.open()
+        action, lease, reply = self.invoke_fixture()
+        with self.assertRaises(FinancialError):
+            self.authority.verified_known_failure(reply.binding)
+        self.assertEqual(self.authority.lookup("B01", action.request_id), reply)
+        self.assertEqual(self.authority.submit("B01", action, lease), reply)
+        self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1000 + reply.binding.reserved_units)
+        self.assertEqual(self.transport.calls, 1)
+
+    def test_failure_proof_rejects_pending_without_mutating_dispatch(self):
+        entered, resume = threading.Event(), threading.Event()
+        def hold(name, request_id):
+            if name == "before_invoke":
+                entered.set()
+                if not resume.wait(5):
+                    raise RuntimeError("Disposable fixture barrier expired")
+        self.open(crash_hook=hold)
+        action = self.action()
+        lease = self.authority.claim("B01", self.context, self.work)
+        reply = self.authority.submit("B01", action, lease)
+        try:
+            self.assertTrue(entered.wait(5))
+            self.assertEqual(reply.state, "pending")
+            with self.assertRaises(FinancialError):
+                self.authority.verified_known_failure(reply.binding)
+            self.assertEqual(self.authority.lookup("B01", action.request_id), reply)
+            self.assertEqual(self.transport.calls, 0)
+        finally:
+            resume.set()
+
+    def test_failure_proof_requires_exact_binding_without_poisoning_valid_failure(self):
+        self.transport.unchanged = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        binding = reply.binding
+        changed = [replace(binding, call_id="foreign-call"),
+                   replace(binding, normalized_worker_request_sha256="f" * 64),
+                   replace(binding, authority_config_sha256="f" * 64),
+                   replace(binding, action=replace(action, request_id="absent-request")),
+                   # Dataclass equality alone conflates 160 and 160.0.
+                   replace(binding, lease=replace(binding.lease, expires_at=int(binding.lease.expires_at)))]
+        for foreign in changed:
+            with self.subTest(binding=foreign), self.assertRaises(FinancialError):
+                self.authority.verified_known_failure(foreign)
+            self.assertFalse(self.authority.failed_closed)
+            self.assertFalse(self.authority.persistence_failed)
+            self.assertEqual(self.authority.lookup("B01", action.request_id), reply)
+        self.assertEqual(self.authority.verified_known_failure(binding)["reply"], reply)
+
+    def assert_durable_unknown_before_lookup(self, request_id):
+        self.assertTrue(self.authority.failed_closed)
+        with sqlite3.connect(self.path) as db:
+            self.assertEqual(db.execute("SELECT state FROM financial_actions_v2 WHERE cohort=? AND actor=? AND request_id=?",
+                (self.context.cohort_id, "B01", request_id)).fetchone()[0], "unknown")
+            self.assertEqual(db.execute("SELECT halted FROM financial_cohorts_v2 WHERE cohort=?",
+                (self.context.cohort_id,)).fetchone()[0], 1)
+
+    def test_corrupt_retained_failure_reply_is_immediately_fenced_and_preserved(self):
+        self.transport.unchanged = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        for column in ("reply_sha", "identity_sha"):
+            with sqlite3.connect(self.path) as db:
+                db.row_factory = sqlite3.Row
+                original = dict(db.execute("SELECT * FROM financial_requests_v2 WHERE request_id=?",
+                    (action.request_id,)).fetchone())
+                db.execute(f"UPDATE financial_requests_v2 SET {column}=? WHERE request_id=?",
+                           ("f" * 64, action.request_id))
+                corrupted = dict(db.execute("SELECT * FROM financial_requests_v2 WHERE request_id=?",
+                    (action.request_id,)).fetchone())
+            with self.subTest(column=column), self.assertRaises(FinancialError):
+                self.authority.verified_known_failure(reply.binding)
+            # Do not call lookup: it has its own integrity-failure handling.
+            self.assertTrue(self.authority.failed_closed)
+            self.assertIn(("B01", action.request_id), self.authority.persistence_failed)
+            with sqlite3.connect(self.path) as db:
+                db.row_factory = sqlite3.Row
+                retained = dict(db.execute("SELECT * FROM financial_requests_v2 WHERE request_id=?",
+                    (action.request_id,)).fetchone())
+                self.assertEqual(retained, corrupted)
+                self.assertEqual(db.execute("SELECT state FROM financial_actions_v2 WHERE request_id=?",
+                    (action.request_id,)).fetchone()[0], "failed")
+                self.assertEqual(db.execute("SELECT halted FROM financial_cohorts_v2 WHERE cohort=?",
+                    (self.context.cohort_id,)).fetchone()[0], 0)
+                # Restore only this disposable fault to exercise both checksums.
+                db.execute(f"UPDATE financial_requests_v2 SET {column}=? WHERE request_id=?",
+                           (original[column], action.request_id))
+            self.open(recovery=True)
+        self.assertEqual(self.authority.verified_known_failure(reply.binding)["reply"], reply)
+        self.assertEqual(self.transport.calls, 1)
+        self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1166)
+
+    def test_corrupt_known_failure_journal_fences_unknown_without_reinvocation(self):
+        self.transport.unchanged = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        paths = self.authority.journal.paths(reply.binding.call_id)
+        paths["owner"] = self.authority.journal.root / (
+            hashlib.sha256(reply.binding.reservation_id.encode()).hexdigest() + ".reservation.json")
+        for kind, path in paths.items():
+            original = path.read_bytes()
+            path.write_bytes(b"{}")
+            with self.subTest(kind=kind), self.assertRaises((FinancialError, ValueError, RuntimeError)):
+                self.authority.verified_known_failure(reply.binding)
+            self.assert_durable_unknown_before_lookup(action.request_id)
+            retained = self.authority.lookup("B01", action.request_id)
+            self.assertEqual((retained.state, retained.reason), ("unknown", "terminal_evidence_unavailable"))
+            self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1166)
+            path.write_bytes(original)
+            self.open(recovery=True)
+            self.assertEqual(self.authority.verified_known_failure(reply.binding)["reply"], reply)
+        self.assertEqual(self.transport.calls, 1)
+
+    def test_missing_known_failure_owned_payload_fences_unknown(self):
+        self.transport.malformed = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        del self.payloads.values["B01", reply.result_payload_sha256]
+        with self.assertRaises(KeyError):
+            self.authority.verified_known_failure(reply.binding)
+        self.assert_durable_unknown_before_lookup(action.request_id)
+        self.assertEqual(self.authority.lookup("B01", action.request_id).state, "unknown")
+        self.assertEqual(self.ledger.budget()["spent_or_reserved"], 1166)
+        self.assertEqual(self.transport.calls, 1)
+
+    def test_failure_proof_refuses_persistence_fence_and_closed_owner(self):
+        self.transport.malformed = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        self.authority.persistence_failed.add(("B01", action.request_id))
+        with self.assertRaises(FinancialError):
+            self.authority.verified_known_failure(reply.binding)
+        self.authority.persistence_failed.clear()
+        self.assertEqual(self.authority.verified_known_failure(reply.binding)["reply"], reply)
+        self.authority.close()
+        with self.assertRaises(FinancialError):
+            self.authority.verified_known_failure(reply.binding)
+
+    def test_failure_proof_refuses_changed_configuration_and_fences_unknown(self):
+        self.transport.unchanged = True
+        self.open()
+        action, _, reply = self.invoke_fixture()
+        self.authority.config["max_workers"] = 2
+        with self.assertRaises(FinancialError):
+            self.authority.verified_known_failure(reply.binding)
+        self.authority.config["max_workers"] = 1
+        self.assertEqual(self.authority.lookup("B01", action.request_id).state, "unknown")
+        self.assertEqual(self.transport.calls, 1)
 
     def test_transport_change_at_last_boundary_never_reaches_https(self):
         default = OpenAIWorker("fixture-never-a-real-credential")._transport

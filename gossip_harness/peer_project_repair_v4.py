@@ -20,8 +20,8 @@ from .gitstore import GitStore
 from .peer_candidate_v2 import named_sources
 from .peer_coding_dispatch_v1 import source_digest
 from .peer_project_contract_v2 import (
-    PACKAGES, CandidateOffer, EvidenceRef, ReleaseTarget, SelectionManifest,
-    WorkKey, canonical_bytes, identity, require, resolve_local, to_dict,
+    PACKAGES, CandidateOffer, DispatchBinding, EvidenceRef, ReleaseTarget, SelectionManifest,
+    WorkKey, canonical_bytes, identity, require, resolve_local, sha256, to_dict,
 )
 from .peer_project_views_v3 import ProjectSource
 from .peer_review_release_v2 import (
@@ -43,10 +43,13 @@ class RepairTopic:
     base_files: tuple[tuple[str, str], ...]
     scope: tuple[str, ...]
     repair: bool
+    repair_generation: int
 
     @property
     def new_generation(self) -> int:
-        return self.offer.dispatch.action.work.generation + int(self.repair)
+        # A failed no-patch action may retain an older selected topic. Advancing
+        # by selected generation would then reuse its previous repair WorkKey.
+        return self.repair_generation if self.repair else self.offer.dispatch.action.work.generation
 
     @property
     def base_sha(self) -> str:
@@ -70,6 +73,10 @@ class TopicRepairPlan:
 
     @property
     def package_generations(self) -> tuple[tuple[str, int], ...]:
+        """Prospective generations; derive final policy from the frozen offers.
+
+        An explicit unchanged disposition retains the prior offer generation.
+        """
         return tuple((topic.package_id, topic.new_generation) for topic in self.topics)
 
     @property
@@ -189,6 +196,8 @@ def plan_topic_repairs(*, target_store: GitStore, baseline_sha: str,
         action = offer.dispatch.action
         require(action.context == target.context and action.work.package_id == item.package_id,
                 "Selected topic belongs to another context or package")
+        require(action.work.generation <= target.generation < 1_000_000,
+                "Selected topic generation exceeds the failed target or repair range")
         scope = package_scopes[item.package_id]
         store = stores_by_offer[identity(offer)]
         topic_files = store.read_files(offer.commit_oid)
@@ -201,7 +210,7 @@ def plan_topic_repairs(*, target_store: GitStore, baseline_sha: str,
                 and owned == {path: body for path, body in files.items() if path in scope},
                 "Selected topic contribution differs from failed combined source")
         topics.append(RepairTopic(item.package_id, offer, tuple(sorted(topic_files.items())),
-            scope, item.package_id in repair_packages))
+            scope, item.package_id in repair_packages, target.generation + 1))
     inherited = {path: body for path, body in files.items() if path not in all_paths}
     require(inherited == {path: body for path, body in target_store.read_files(baseline_sha).items()
                           if path not in all_paths}, "Failed target changed inherited source")
@@ -259,25 +268,86 @@ def verify_repair_directive(plan: TopicRepairPlan, directive: WorkDirective, mes
     return ProjectSource.parse(bodies[0])
 
 
+@dataclass(frozen=True, slots=True)
+class UnchangedTopic:
+    """A known accounted no-patch result; never a new candidate or approval.
+
+    Construction alone is not authentication. The controller must reconcile the
+    registered repair directive, exact local view, settled financial failure and
+    arrived result bytes before returning this record from verified_unchanged.
+    Unknown outcomes and infrastructure failures do not authorize this fallback.
+    """
+    package_id: str
+    plan_sha256: str
+    original_offer_sha256: str
+    dispatch: DispatchBinding
+    result_sha256: str
+
+    def __post_init__(self) -> None:
+        require(self.package_id in PACKAGES and type(self.dispatch) is DispatchBinding,
+                "Invalid unchanged topic package or dispatch")
+        for digest in (self.plan_sha256, self.original_offer_sha256, self.result_sha256):
+            sha256(digest)
+
+    def body(self) -> dict:
+        return {"package_id": self.package_id, "plan_sha256": self.plan_sha256,
+            "original_offer_sha256": self.original_offer_sha256, "dispatch": to_dict(self.dispatch),
+            "result_sha256": self.result_sha256}
+
+
+VerifiedUnchanged = Callable[[UnchangedTopic], UnchangedTopic]
+
+
 def repair_frontier(plan: TopicRepairPlan, replacements: tuple[CandidateOffer, ...], *,
-                    current_failure: CurrentFailure) -> tuple[CandidateOffer, ...]:
+                    current_failure: CurrentFailure, unchanged: tuple[UnchangedTopic, ...] = (),
+                    verified_unchanged: VerifiedUnchanged | None = None) -> tuple[CandidateOffer, ...]:
     """Freeze exactly four selected topics, not a new sixteen-candidate contest.
 
     Each replacement must already have an authenticated registry registration.
     The returned immutable tuple is the complete successor eligibility frontier;
     the controller registers it once before selection/staging and does not append
     late candidates. Git source/parent authenticity is checked by that registry
-    and the existing scope-checked ProjectPromotion stage.
+    and the existing scope-checked ProjectPromotion stage. A verified unchanged
+    disposition retains the EXACT old offer, source and generation. It is no
+    approval, no new candidate and no reuse of a correctness judgment. All four
+    topics still require fresh combined evaluation and review. Final generation
+    policy must be derived from returned offers, not plan.package_generations.
     """
     assert_current_plan(plan, current_failure)
     require(type(replacements) is tuple and all(type(offer) is CandidateOffer for offer in replacements),
             "Invalid repaired candidate collection")
     by_package = {offer.dispatch.action.work.package_id: offer for offer in replacements}
-    require(len(by_package) == len(replacements)
-            and set(by_package) == {topic.package_id for topic in plan.topics if topic.repair},
+    require(type(unchanged) is tuple and all(type(item) is UnchangedTopic for item in unchanged),
+            "Invalid unchanged topic collection")
+    carried = {item.package_id: item for item in unchanged}
+    require(len(by_package) == len(replacements) and len(carried) == len(unchanged)
+            and not (set(by_package) & set(carried))
+            and set(by_package) | set(carried) == {topic.package_id for topic in plan.topics if topic.repair},
             "Successor frontier needs exactly the registered repaired packages")
+    require(not unchanged or callable(verified_unchanged), "Unchanged topics need a trusted failure verifier")
     result = []
     for topic in plan.topics:
+        if topic.package_id in carried:
+            disposition = carried[topic.package_id]
+            binding, prior_binding = disposition.dispatch, topic.offer.dispatch
+            action, old = binding.action, prior_binding.action
+            require(disposition.plan_sha256 == plan.sha256
+                    and disposition.original_offer_sha256 == identity(topic.offer)
+                    and action.context == plan.failed_target.context and action.kind == "repair"
+                    and action.actor == old.actor and action.profile_id == old.profile_id
+                    and action.work.package_id == topic.package_id
+                    and action.work.requirement_id == old.work.requirement_id
+                    and action.work.generation == topic.new_generation
+                    and binding.profile_sha256 == prior_binding.profile_sha256
+                    and binding.authority_config_sha256 == prior_binding.authority_config_sha256
+                    and binding.call_id != prior_binding.call_id and action.request_id != old.request_id,
+                    "Unchanged disposition differs from the registered repair or original offer")
+            assert verified_unchanged is not None
+            verified = verified_unchanged(disposition)
+            require(type(verified) is UnchangedTopic and verified == disposition,
+                    "Unchanged disposition lacks exact authenticated known-failure proof")
+            result.append(topic.offer)
+            continue
         offer = by_package[topic.package_id] if topic.repair else topic.offer
         action, prior = offer.dispatch.action, topic.offer.dispatch.action
         require(action.context == plan.failed_target.context and action.actor == prior.actor

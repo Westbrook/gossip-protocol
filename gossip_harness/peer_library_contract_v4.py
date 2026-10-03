@@ -137,6 +137,12 @@ def exact_scopes() -> dict[str, tuple[str, ...]]:
 
 
 def work_key(actor: str, kind: str, generation: int, *, correction: bool = False) -> WorkKey:
+    """Use the global target round for each new action and effective offer.
+
+    Repair generation is the failed target generation plus one, even when that
+    package's selected offer is older. An unchanged topic keeps the exact old
+    offer and generation; it never acquires the attempted repair's generation.
+    """
     _require(type(generation) is int and 0 <= generation < SOURCE_GENERATIONS,
              "Generation exceeds the finite public pilot")
     _require(type(correction) is bool, "Correction must be boolean")
@@ -233,7 +239,17 @@ def prospective_contract(source_identities: Mapping[str, str] | None = None, *,
                    "selection": "One complete eligible frontier, one selection and at most one complete schema correction per round",
                    "review": "Four fresh reviews per target plus at most one complete schema correction each"},
         "repair_basis": "package-topic-base-with-whole-merged-failure-context",
-        "package_generation": "Per-package selected generation + 1; independent of global source round",
+        "package_generation": "Effective repaired offer generation equals failed target generation + 1 (the next global source round); unchanged retains the exact previous selected offer identity and generation",
+        "unchanged_repair": {
+            "required_evidence": "Authenticated known charged worker failure_kind=empty on the exact registered repair request",
+            "consumes_repair_action_and_budget": True,
+            "retained_topic": "Exact previous selected offer identity, source and generation",
+            "creates_candidate": False, "grants_approval": False,
+            "model_endorsed_previous_source": False,
+            "model_interface": "Inherited worker still requires an effective patch; no retain or acknowledgement response type is added",
+            "qualification_fault": "The scripted fixture deliberately injects unchanged-proposal failures to exercise controller recovery",
+            "next_gate": "Fresh combined-source execution and current-target scoped reviews remain mandatory",
+        },
         "capacity": {"complete_contribution_json_bytes": MAX_CONTRIBUTION_BYTES,
                      "normalized_request_bytes": MAX_RECORD_BYTES, "financial_envelope_bytes": MAX_RECORD_BYTES,
                      "worker_http_payload_bytes": MAX_REQUEST_BYTES, "overflow": "context_capacity_exhausted",
@@ -264,7 +280,7 @@ _BUILDER_FOCUS = {
 def builder_prompt(actor: str, *, repair: bool = False) -> str:
     _require(actor in BUILDERS and type(repair) is bool, "Invalid builder prompt role")
     package = package_for(actor)
-    task = ("Repair your selected package on its exact topic commit using the supplied merged failure source and public receipts as context. Other packages' context is read-only; do not import their changes into your topic patch."
+    task = ("Repair your selected package on its exact topic commit using the supplied merged failure source and public receipts as context. Other packages' context is read-only; do not import their changes into your topic patch. Do not fabricate cosmetic edits solely to force an effective patch. An unchanged response is a counted unsuccessful call, not a repair, a new candidate or release approval."
             if repair else "Independently implement your package's M1 behavior against the supplied public seed.")
     return (
         f"Role {actor}; owned package {package}. {task}\n"

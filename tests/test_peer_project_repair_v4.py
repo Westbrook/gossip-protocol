@@ -15,9 +15,10 @@ from gossip_harness.peer_project_contract_v2 import (
 )
 from gossip_harness.peer_project_promotion_v3 import ProjectPromotion, PromotionResult
 from gossip_harness.peer_project_repair_v4 import (
-    assert_current_plan, plan_topic_repairs, publish_repair_directive, repair_frontier,
+    UnchangedTopic, assert_current_plan, plan_topic_repairs, publish_repair_directive, repair_frontier,
     verify_repair_directive,
 )
+from gossip_harness.peer_role_loop_v2 import financial_task_id
 from gossip_harness.peer_project_views_v3 import materialize_project
 from gossip_harness.peer_review_release_v2 import ReviewGateReceipt, policy_digest, suite_digest
 from tests.test_peer_review_release_v2 import Fixture, sha
@@ -121,6 +122,17 @@ class PeerProjectRepairV4Tests(unittest.TestCase):
         self.stores[identity(offer)] = store
         self.members[identity(offer)] = named_sources({topic.package_id + ".py": value})
         return offer
+
+    def unchanged(self, plan, package):
+        """Trusted failure fixture; real finance authentication is controller-owned."""
+        topic = plan.topic(package)
+        old = topic.offer.dispatch
+        work = replace(old.action.work, generation=topic.new_generation, slot_id="repair-" + package)
+        task = financial_task_id(plan.failed_target.context, work)
+        binding = replace(old, action=replace(old.action, kind="repair", work=work,
+            action_id="action-" + sha(task), request_id="request-" + sha(task)),
+            call_id="call-" + sha(task), reservation_id="reservation-" + sha(task))
+        return UnchangedTopic(package, plan.sha256, identity(topic.offer), binding, sha("known-no-patch-" + task))
 
     def test_worker_patch_base_is_topic_while_complete_combined_context_is_preserved(self):
         plan = self.plan()
@@ -247,6 +259,103 @@ class PeerProjectRepairV4Tests(unittest.TestCase):
             with self.subTest(variant=identity(variant)), self.assertRaises(ContractError):
                 repair_frontier(plan, (variant,), current_failure=lambda: self.current)
 
+    def test_known_no_patch_requires_exact_proof_and_preserves_old_offer_source_generation(self):
+        plan = self.plan(repair_packages=("ingestion",))
+        disposition = self.unchanged(plan, "ingestion")
+        with self.assertRaisesRegex(ContractError, "trusted failure verifier"):
+            repair_frontier(plan, (), current_failure=lambda: self.current, unchanged=(disposition,))
+        with self.assertRaisesRegex(ContractError, "exact authenticated known-failure"):
+            repair_frontier(plan, (), current_failure=lambda: self.current, unchanged=(disposition,),
+                verified_unchanged=lambda item: replace(item, result_sha256=sha("different-result")))
+        reads = []
+        def verify(item):
+            reads.append(item)
+            return disposition
+        frontier = repair_frontier(plan, (), current_failure=lambda: self.current,
+                                   unchanged=(disposition,), verified_unchanged=verify)
+        self.assertEqual(reads, [disposition])
+        self.assertEqual(frontier, self.fx.offers)
+        self.assertIs(frontier[1], plan.topic("ingestion").offer)
+        self.assertEqual(frontier[1].dispatch.action.work.generation, 0)
+        self.assertEqual(self.stores[identity(frontier[1])].read_files(frontier[1].commit_oid),
+                         dict(plan.topic("ingestion").base_files))
+        self.assertEqual(self.protected.head(), self.baseline)
+        self.assertEqual(disposition.body()["result_sha256"], disposition.result_sha256)
+        for replacements, unchanged in (((), (disposition, disposition)),
+                ((self.replacement(plan.topic("ingestion"), "overlap"),), (disposition,))):
+            with self.subTest(replacements=len(replacements)), self.assertRaisesRegex(ContractError, "exactly"):
+                repair_frontier(plan, replacements, current_failure=lambda: self.current,
+                                unchanged=unchanged, verified_unchanged=verify)
+
+    def test_unchanged_disposition_fences_plan_offer_actor_profile_round_and_missing_slot(self):
+        plan = self.plan(repair_packages=("ingestion",))
+        disposition = self.unchanged(plan, "ingestion")
+        binding = disposition.dispatch
+        bad_actor = replace(binding, lease=replace(binding.lease, worker_id="foreign"),
+            action=replace(binding.action, actor="foreign",
+                worker_payload_ref=replace(binding.action.worker_payload_ref, producer="foreign")))
+        variants = (replace(disposition, plan_sha256=sha("stale-plan")),
+            replace(disposition, original_offer_sha256=identity(self.fx.offers[0])),
+            replace(disposition, dispatch=bad_actor),
+            replace(disposition, dispatch=replace(binding, profile_sha256=sha("foreign-profile"))),
+            replace(disposition, dispatch=replace(binding, action=replace(binding.action,
+                work=replace(binding.action.work, generation=0)))),
+            replace(disposition, dispatch=replace(binding, call_id=plan.topic("ingestion").offer.dispatch.call_id)))
+        for variant in variants:
+            with self.subTest(variant=variant.body()), self.assertRaisesRegex(ContractError, "registered repair"):
+                repair_frontier(plan, (), current_failure=lambda: self.current, unchanged=(variant,),
+                                verified_unchanged=lambda item: item)
+        with self.assertRaisesRegex(ContractError, "exactly"):
+            repair_frontier(plan, (), current_failure=lambda: self.current,
+                            unchanged=(replace(disposition, package_id="query"),), verified_unchanged=lambda item: item)
+
+    def test_no_patch_round1_then_real_round2_is_distinct_and_can_retain_previous_repair(self):
+        plan = self.plan()
+        catalog = self.replacement(plan.topic("catalog"), "repaired-catalog-round1")
+        empty_ingestion = self.unchanged(plan, "ingestion")
+        first = repair_frontier(plan, (catalog,), current_failure=lambda: self.current,
+                                unchanged=(empty_ingestion,), verified_unchanged=lambda item: item)
+        self.assertEqual(tuple(offer.dispatch.action.work.generation for offer in first), (1, 0, 0, 0))
+        self.fx.offers = first
+        self.set_selection(first, 1)
+        stage = GitStore.fork(self.seed_store, self.root / "round1.git")
+        for offer in first:
+            package = offer.dispatch.action.work.package_id
+            candidate = stage.prepare(self.stores[identity(offer)], offer.commit_oid, stage.head(),
+                lambda _path: (True, "Authored scope-only fixture; no acceptance"), allowed_paths=self.scopes[package])
+            self.assertEqual(stage.accept(candidate).status, "accepted")
+        self.protected._git("fetch", "--no-tags", str(stage.path), stage.head())
+        target = replace(self.target, generation=1, commit_oid=stage.head(),
+            tree_oid=stage._git("rev-parse", stage.head() + "^{tree}"), sources=named_sources(stage.read_files()),
+            selection_sha256=identity(self.fx.selection))
+        self.current = target, replace(self.failure, target_sha256=identity(target))
+        plan2 = self.plan()
+        self.assertEqual(plan2.topic("ingestion").offer, first[1])
+        self.assertEqual(plan2.topic("ingestion").new_generation, 2)
+        next_empty = self.unchanged(plan2, "ingestion")
+        self.assertNotEqual(next_empty.dispatch.call_id, empty_ingestion.dispatch.call_id)
+        self.assertNotEqual(financial_task_id(target.context, next_empty.dispatch.action.work),
+                            financial_task_id(target.context, empty_ingestion.dispatch.action.work))
+        # The next actual ingestion candidate uses the distinct round2 work key,
+        # while catalog's new known empty response retains its round1 candidate.
+        ingestion = self.replacement(plan2.topic("ingestion"), "repaired-ingestion-round2")
+        empty_catalog = self.unchanged(plan2, "catalog")
+        second = repair_frontier(plan2, (ingestion,), current_failure=lambda: self.current,
+                                 unchanged=(empty_catalog,), verified_unchanged=lambda item: item)
+        self.assertEqual(second[0], catalog)
+        self.assertEqual(tuple(offer.dispatch.action.work.generation for offer in second), (1, 2, 0, 0))
+        self.assertNotEqual(ingestion.dispatch.call_id, empty_ingestion.dispatch.call_id)
+        self.assertEqual(ingestion.dispatch.action.work.generation, 2)
+        stage2 = GitStore.fork(self.seed_store, self.root / "round2.git")
+        for offer in second:
+            package = offer.dispatch.action.work.package_id
+            candidate = stage2.prepare(self.stores[identity(offer)], offer.commit_oid, stage2.head(),
+                lambda _path: (True, "Authored scope-only fixture; no acceptance"), allowed_paths=self.scopes[package])
+            self.assertEqual(stage2.accept(candidate).status, "accepted")
+        self.assertEqual(stage2.read_files(), {"seed.py": "seed bytes", "catalog.py": "repaired-catalog-round1",
+            "ingestion.py": "repaired-ingestion-round2", "query.py": "source-query", "clients.py": "source-clients"})
+        self.assertEqual(self.protected.head(), self.baseline)
+
     def test_two_parallel_topics_then_second_round_restage_with_fresh_execution_and_reviews(self):
         promotion = ProjectPromotion(self.root / "promotion", self.protected, repository_id="repository",
             baseline_sha=self.baseline, policy=self.fx.policy, initial_suite=self.fx.suite,
@@ -296,7 +405,7 @@ class PeerProjectRepairV4Tests(unittest.TestCase):
         self.assertFalse(missing.eligible)
         self.assertEqual(len(missing.missing_slots), 8)
         # Repair a previously untouched gen0 package plus catalog again. Package
-        # generations become catalog2, ingestion1, query1, clients0, not all2.
+        # generations become catalog2, ingestion1, query2, clients0, not all2.
         self.fx.execution = replace(self.fx.execution,
             check_results=tuple((check, "failed") for check, _ in self.fx.execution.check_results))
         self.current = second, promotion.promote(second)
@@ -307,7 +416,7 @@ class PeerProjectRepairV4Tests(unittest.TestCase):
         self.set_selection(self.fx.offers, 2)
         self.fx.policy = replace(self.fx.policy, package_generations=plan2.package_generations)
         third = stage(2, plan2.package_generations)
-        self.assertEqual(plan2.package_generations, (("catalog", 2), ("ingestion", 1), ("query", 1), ("clients", 0)))
+        self.assertEqual(plan2.package_generations, (("catalog", 2), ("ingestion", 1), ("query", 2), ("clients", 0)))
         self.assertEqual(self.protected.read_files(third.commit_oid), {"seed.py": "seed bytes", "catalog.py": "round-2-catalog",
             "ingestion.py": "round-1-ingestion", "query.py": "round-2-query", "clients.py": "source-clients"})
         # Fresh receipt must name this final combined tree, not the prior target.

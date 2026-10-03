@@ -69,6 +69,15 @@ class PeerLibraryContractV4Tests(unittest.TestCase):
         contract = prospective_contract()
         self.assertTrue(contract["aggregate_limits_override_sum_of_role_ceilings"])
         self.assertEqual(contract["aggregate_action_limits"]["total"], 54)
+        self.assertIn("failed target generation + 1", contract["package_generation"])
+        unchanged = contract["unchanged_repair"]
+        self.assertTrue(unchanged["consumes_repair_action_and_budget"])
+        self.assertFalse(unchanged["creates_candidate"])
+        self.assertFalse(unchanged["grants_approval"])
+        self.assertFalse(unchanged["model_endorsed_previous_source"])
+        self.assertIn("Inherited worker still requires an effective patch", unchanged["model_interface"])
+        self.assertEqual(unchanged["retained_topic"], "Exact previous selected offer identity, source and generation")
+        self.assertIn("Fresh combined-source execution", unchanged["next_gate"])
 
     def test_work_identity_rejects_unregistered_role_action_generation_or_retry(self):
         for actor, kind, generation, correction in (
@@ -105,6 +114,8 @@ class PeerLibraryContractV4Tests(unittest.TestCase):
             self.assertIn("entire written contract", prompt)
             self.assertIn(package_for(actor), prompt)
             self.assertIn("topic commit", builder_prompt(actor, repair=True))
+            self.assertIn("Do not fabricate cosmetic edits", builder_prompt(actor, repair=True))
+            self.assertIn("counted unsuccessful call", builder_prompt(actor, repair=True))
         module = Path(__file__).parents[1] / "gossip_harness/peer_library_contract_v4.py"
         source = module.read_text()
         self.assertNotIn("library_m1_reference_v1", source)

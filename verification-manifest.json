@@ -2275,9 +2275,9 @@
       "lane": "git",
       "weight": 4,
       "exclusive": true,
-      "timeout_seconds": 300,
+      "timeout_seconds": 420,
       "invariant": "Authenticated selections stage exact package-owned trees; all current scoped reviews and execution evidence precede a durable fenced protected Git CAS.",
-      "boundary": "Real private Git, persistent release journal and trusted test callbacks; no candidate execution, Docker or provider.",
+      "boundary": "Real private Git, persistent release journal and trusted test callbacks; no candidate execution, Docker or provider. Its bounded 420-second class envelope retains all assertions after an observed 300-second outer timeout; study deadlines are unchanged.",
       "disposition": "Promotion mechanics and negative controls only; actual finance/evidence/physical execution are qualified together in the project rehearsal.",
       "isolation": "Dedicated class process with isolated Git stores, mutable journals and owned fixture state.",
       "overlap_reason": "Exercises a real persistence/Git boundary that pure review-policy and materialization tests cannot establish."
@@ -2331,12 +2331,12 @@
     "tests/test_peer_project_repair_v4.py::PeerProjectRepairV4Tests": {
       "lane": "git",
       "weight": 4,
-      "timeout_seconds": 300,
-      "invariant": "Repairs retain selected per-package topic ancestry, complete authenticated public failure context and exact unchanged frontier members.",
+      "timeout_seconds": 420,
+      "invariant": "Repairs retain selected per-package topic ancestry, complete authenticated public failure context and exact unchanged frontier members; later global rounds use distinct charged identities even when a package generation was retained.",
       "isolation": "Class process; fresh mutable fixtures and bounded owned resources.",
       "overlap": "Focused contracts precede the distinct complete process-and-project rehearsal.",
       "distinct_defect": "Combined-tree history leaking foreign scope, stale repair admission, incomplete reviewer feedback or prior-target approvals surviving source repair.",
-      "boundary": "Actual isolated Git stores, bundles, mixed package generations, merged-source and fresh-review gates.",
+      "boundary": "Actual isolated Git stores, bundles, mixed package generations, merged-source and fresh-review gates. The 420-second class ceiling accommodates added real-Git continuation cases; it does not change study deadlines.",
       "disposition": "Run affected class in full after the central static gate and before live qualification.",
       "overlap_reason": "Neighboring legacy modules retain their own invariant coverage; this class qualifies a new versioned boundary."
     },
@@ -2348,7 +2348,7 @@
       "isolation": "Class process; fresh mutable fixtures and bounded owned resources.",
       "overlap": "Focused contracts precede the distinct complete process-and-project rehearsal.",
       "distinct_defect": "Authored live fallbacks, late frontier mutation, indefinite cap-denial loops, credential-bearing children or post-freeze model work.",
-      "boundary": "Offline controller policies and mocked lifecycle boundaries; physical twenty-role rehearsal is a separate retained observation.",
+      "boundary": "Offline controller policies, actual injected-worker/V3-finance failure evidence and authenticated unchanged-topic recovery; other lifecycle and prior-Git fixtures are synthetic. Physical twenty-role rehearsal remains a separate retained observation.",
       "disposition": "Run affected class in full after the central static gate and before live qualification.",
       "overlap_reason": "Neighboring legacy modules retain their own invariant coverage; this class qualifies a new versioned boundary."
     },

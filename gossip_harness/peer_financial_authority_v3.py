@@ -22,8 +22,8 @@ from .peer_financial_authority_v2 import (
     CumulativeAuthorityV2, FinancialError, Payloads, canonical_payload,
 )
 from .peer_store_v1 import strict_loads
-from .peer_project_contract_v2 import ActionRequest, DispatchBinding, decode
-from .worker import OpenAIWorker, WorkerRequest
+from .peer_project_contract_v2 import ActionRequest, DispatchBinding, decode, encode
+from .worker import OpenAIWorker, WorkerFailure, WorkerRequest
 
 PROTOCOL = "peer-financial-authority-v3"
 PERMIT_PROTOCOL = "peer-financial-operator-permit-v3"
@@ -454,6 +454,47 @@ class CumulativeAuthorityV3(CumulativeAuthorityV2):
         names = [name for name, registered in self.workers.items() if registered is worker]
         _require(bool(names) and all(self._profile(name, worker) == self.profiles[name] for name in names),
                  "Bound worker changed before provider entry")
+
+    def verified_known_failure(self, binding: DispatchBinding) -> dict:
+        """Prove one settled failure for trusted controller inspection only.
+
+        This grants no publication or release rights and does not clear a halt.
+        Callers must separately decide which failure kinds their policy permits.
+        Pending, unknown, successful and publication-pending outcomes are refused.
+        """
+        _require(type(binding) is DispatchBinding, "An exact dispatch binding is required")
+        with self._active():
+            try:
+                with self.ledger.atomic() as db:
+                    row = self._row(db, binding.action.actor, binding.action.request_id)
+                    reply = self._reply(row) if row is not None else None
+            except Exception:
+                # _unknown preserves undecodable rows and records its existing
+                # in-memory persistence fence when a durable reply is impossible.
+                self._unknown(binding.action.actor, binding.action.request_id, "terminal_evidence_unavailable")
+                raise
+            _require(reply is not None and reply.state == "failed"
+                     and (binding.action.actor, binding.action.request_id) not in self.persistence_failed,
+                     "No terminal known failure")
+            assert reply is not None
+            # A caller's foreign binding cannot turn a valid outcome unknown.
+            _require(reply.binding is not None and encode(reply.binding) == encode(binding),
+                     "Failure proof requires this exact dispatch")
+            try:
+                _require(digest(self.config) == self.config_sha256,
+                         "Financial configuration changed")
+                proof = self._verify_terminal(binding.action.actor, binding.action.request_id)
+                outcome = proof["result"]
+                _require(encode(proof["binding"]) == encode(binding) and proof["reply"].state == "failed"
+                         and type(outcome) is WorkerFailure and type(outcome.usage_units) is int
+                         and type(proof["reply"].usage_units) is int
+                         and 0 <= outcome.usage_units <= binding.reserved_units
+                         and outcome.usage_units == proof["reply"].usage_units,
+                         "Failure proof requires exact settled known usage")
+            except Exception:
+                self._unknown(binding.action.actor, binding.action.request_id, "terminal_evidence_unavailable")
+                raise
+            return proof
 
 
 def preflight_permit(permit: dict, expected_permit_sha256: str, cohort_contract: dict, profiles: dict) -> dict:

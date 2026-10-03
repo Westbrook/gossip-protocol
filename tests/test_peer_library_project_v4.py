@@ -1,7 +1,8 @@
 """Cheap pilot boundary checks; no provider, Docker, or candidate execution.
 
-The role checks use real disposable journals and explicitly synthetic in-memory
-mesh/finance adapters. They do not qualify the twenty-process project flow.
+Role checks use disposable journals and synthetic meshes. Repair continuation
+also exercises real V3 finance with injected transport and actual worker parsing.
+These checks do not qualify the twenty-process project flow.
 """
 from __future__ import annotations
 
@@ -37,10 +38,14 @@ from gossip_harness.peer_project_contract_v2 import (
     worker_request_digest,
 )
 from gossip_harness.peer_candidate_v2 import named_sources, result_payload_bytes
+from gossip_harness.peer_coding_dispatch_v1 import source_digest
 from gossip_harness.peer_project_evidence_v3 import ContributionSlot, EvidenceError
+from gossip_harness.peer_project_repair_v4 import (
+    RepairTopic, TopicRepairPlan, UnchangedTopic, publish_repair_directive, repair_frontier,
+)
 from gossip_harness.peer_project_views_v3 import materialize_project
 from gossip_harness.peer_review_release_v2 import (
-    ReviewPolicy, ReviewerProfile, ScopeRule, SLOTS, materialize_verdicts,
+    ReviewGateReceipt, ReviewPolicy, ReviewerProfile, ScopeRule, SLOTS, materialize_verdicts,
 )
 from gossip_harness.peer_role_loop_v2 import RoleError, WorkDirective, directive_id
 from gossip_harness.worker import OpenAIWorker, WorkerResult
@@ -256,7 +261,306 @@ def admission_wait_fixture(root, reason, records, *, cohort_cap=1000, global_cap
     return controller
 
 
+def real_repair_failure(test, *, malformed=False):
+    """Real V3 charged failure plus arrived evidence; old Git registration is synthetic.
+
+    A transport returns unchanged file contents through the actual OpenAIWorker
+    parser. No WorkerFailure or terminal proof is fabricated. The small selected
+    topic/failed-public-gate fixture is trusted input for this receiver seam;
+    separate topic tests qualify its real Git provenance.
+    """
+    from tests import test_peer_financial_authority_v3 as authority_fixture
+    from gossip_harness.peer_financial_authority_v3 import digest
+    from gossip_harness.worker import HTTPResponse
+
+    class RepeatedSourceTransport(authority_fixture.FixtureTransport):
+        def __call__(self, request, timeout, maximum):
+            original = super().__call__(request, timeout, maximum)
+            task = json.loads(json.loads(request.data)["input"])
+            path = task["allowed_paths"][0]
+            proposal = {"changes": [] if malformed else [{"path": path, "content": task["files"][path]}],
+                        "summary": "Explicit unchanged-source fixture"}
+            body = json.loads(original.body)
+            body["output"][0]["content"][0]["text"] = json.dumps(proposal)
+            return HTTPResponse(original.status, original.headers, json.dumps(body).encode())
+
+    fixture = authority_fixture.PeerFinancialAuthorityV3Tests()
+    test.addCleanup(fixture.doCleanups)
+    fixture.setUp()
+    actor = "B05"
+    fixture.transport = RepeatedSourceTransport()
+    fixture.worker = OpenAIWorker("fixture-never-a-real-credential", max_output_tokens=64, timeout=2,
+                                  transport=fixture.transport)
+    fixture.work = work_key(actor, "repair", 1)
+    owned_path = "library/ingestion/main.py"
+    fixture.contract["task_specs"] = [{"context": to_dict(fixture.context), "work": to_dict(fixture.work),
+        "actors": [actor], "kinds": ["repair"], "profiles": ["mini"], "allowed_paths": [owned_path],
+        "max_reserved_units": 900_000}]
+    fixture.permit = fixture.make_permit()
+    design = fixture.permit["execution_design"]
+    design["action_limits"] = {"total": 1, "by_kind": {"repair": 1},
+        "by_kind_generation": {"repair": {"1": 1}}, "by_actor": {actor: 1}}
+    fixture.permit["execution_design_sha256"] = digest(design)
+    finance = fixture.open()
+    profile = digest(finance.profiles["mini"])
+    files = {"README.md": "Synthetic public topic interfaces\n", **{
+        f"library/{package}/main.py": f"value = '{package}'\n"
+        for package in ("catalog", "ingestion", "query", "clients")}}
+    offers = []
+    for index, builder in enumerate(("B01", "B05", "B09", "B13"), 1):
+        prior = synthetic_offer(builder, token=index)
+        dispatch = replace(prior.dispatch, action=replace(prior.dispatch.action, context=fixture.context),
+                           authority_config_sha256=finance.config_sha256, profile_sha256=profile)
+        offers.append(replace(prior, dispatch=dispatch, source_sha256=source_digest(files)))
+    offers = tuple(offers)
+    mesh, policy = FakeMesh("seed"), "c" * 64
+    selector_action = ActionRequest(fixture.context, "synthetic-selector", "synthetic-selection", "R1",
+        "select_source", work_key("R1", "select_source", 0), "strong",
+        mesh.arrive("R1", "worker-request", b"synthetic old selector"), "d" * 64)
+    selector_dispatch = DispatchBinding(selector_action, Lease("selector-task", "R1", 1, 200),
+        "e" * 64, "f" * 64, finance.config_sha256, "old-selector-call", "old-selector-reservation", 10)
+    selection = SelectionManifest(fixture.context, policy, selector_dispatch, "d" * 64,
+        tuple(identity(offer) for offer in offers), (),
+        tuple(SelectedOffer(offer.dispatch.action.work.package_id, identity(offer)) for offer in offers))
+    execution_ref = mesh.arrive("seed", "execution-receipt", b'{"fixture":"failed-public-check"}')
+    target = ReleaseTarget(fixture.context, 0, "synthetic-project", "refs/heads/accepted", "f" * 40,
+        "sha1", "9" * 40, "8" * 40, named_sources(files), identity(selection), "d" * 64, "e" * 64,
+        (execution_ref,))
+    gate = ReviewGateReceipt(identity(target), policy, target.required_suite_sha256,
+        (), (), (), (("R2", "ingestion"),), ("required_execution_not_passed",), False)
+    topics = tuple(RepairTopic(offer.dispatch.action.work.package_id, offer, tuple(sorted(files.items())),
+        (f"library/{offer.dispatch.action.work.package_id}/main.py",),
+        offer.dispatch.action.work.package_id == "ingestion", 1) for offer in offers)
+    plan = TopicRepairPlan(target.expected_head, target, selection, gate, topics, tuple(sorted(files.items())),
+                           (execution_ref,))
+    directive = publish_repair_directive(plan, "ingestion", mesh, work=fixture.work, profile_id="mini",
+        instructions=builder_prompt(actor, repair=True), current_failure=lambda: (target, gate))
+    request, view = materialize_project(directive, mesh, policy)
+    raw = canonical_payload({"worker_request": asdict(request), "view_manifest_sha256": identity(view)})
+    payload_sha = fixture.payloads.put_owned(actor, raw)
+    request_ref = mesh.arrive(actor, "worker-request", raw)
+    test.assertEqual(request_ref.payload_sha256, payload_sha)
+    key = directive_id(directive)
+    action = ActionRequest(fixture.context, "action-" + key, "dispatch-" + key, actor, "repair", fixture.work,
+                           "mini", request_ref, identity(view))
+    lease = finance.claim(actor, fixture.context, fixture.work)
+    finance.submit(actor, action, lease)
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        reply = finance.lookup(actor, action.request_id)
+        if reply is not None and reply.state not in ("waiting", "pending", "publication_pending"):
+            break
+        time.sleep(0.005)
+    test.assertIsNotNone(reply)
+    test.assertEqual(reply.state, "failed")
+    proof = finance.verified_known_failure(reply.binding)
+    result_raw = fixture.payloads.read_owned(actor, reply.result_payload_sha256)
+    test.assertEqual(result_raw, canonical_payload(proof["result_payload"]))
+    result_ref = mesh.arrive("finance", "financial-result", result_raw)
+    role_ref = mesh.arrive(actor, "role-result", canonical_payload({
+        "protocol": "peer-role-loop-v2", "actor": actor, "action": to_dict(action), "reply": to_dict(reply),
+        "view_manifest": to_dict(view), "result_ref": to_dict(result_ref)}))
+    result = {"actor": actor, "pid": os.getpid(), "directive_id": key, "state": "published",
+        "reason": "exact_result_reference_published", "reply": to_dict(reply), "view": to_dict(view),
+        "publication_ref": to_dict(role_ref), "result_ref": to_dict(result_ref), "candidate": None,
+        "git_path": None, "exact_terminal_replay": True,
+        "request_sha256": reply.binding.normalized_worker_request_sha256}
+    controller = ProjectRun.__new__(ProjectRun)
+    controller.output = fixture.root / "controller"
+    (controller.output / "unchanged-repairs").mkdir(parents=True)
+    controller.frozen, controller.finance, controller.seed = False, finance, mesh
+    controller.context = fixture.context
+    controller.processes = {actor: SimpleNamespace(pid=os.getpid())}
+    controller.completions = {action.request_id: result}
+    controller.directives, controller.directive_policies = {action.request_id: directive}, {action.request_id: policy}
+    controller.repair_plans, controller.corrections = {action.request_id: plan}, {}
+    controller.unchanged_repairs, controller.pending_unchanged_repairs = {}, ()
+    controller.frontier_seal = FrozenFrontier()
+    controller.current_failure = lambda: (target, gate)
+    contributions = {identity(topic.offer): named_sources({path: body for path, body in topic.base_files
+                                                         if path in topic.scope}) for topic in topics}
+    controller.verified_contribution = lambda offer: contributions[identity(offer)]
+    return SimpleNamespace(fixture=fixture, controller=controller, plan=plan, actor=actor, result=result,
+        proof=proof, action=action, lease=lease, view=view, result_ref=result_ref, role_ref=role_ref, mesh=mesh)
+
+
 class PeerLibraryProjectV4Tests(unittest.TestCase):
+    def test_real_empty_repair_retains_exact_old_offer_and_charged_failed_call(self):
+        case = real_repair_failure(self)
+        run, finance = case.controller, case.controller.finance
+        failure, binding = case.proof["result"], case.proof["binding"]
+        self.assertEqual(str(failure), "Proposal contains no effective changes")
+        self.assertEqual(failure.metadata["failure_kind"], "empty")
+        self.assertEqual(failure.usage_units, 166)
+        before = case.fixture.ledger.budget()
+        self.assertEqual(before["spent_or_reserved"], 1166)
+        retained = run.retain_unchanged_repair(case.plan, case.actor, case.result)
+        self.assertEqual(retained.dispatch, binding)
+        self.assertEqual(retained.result_sha256, case.proof["reply"].result_payload_sha256)
+        self.assertEqual(retained.original_offer_sha256, identity(case.plan.topic("ingestion").offer))
+        self.assertEqual(run.verified_unchanged_repair(retained), retained)
+        frontier = repair_frontier(case.plan, (), current_failure=run.current_failure,
+            unchanged=(retained,), verified_unchanged=run.verified_unchanged_repair)
+        self.assertEqual(frontier, tuple(topic.offer for topic in case.plan.topics))
+        self.assertIs(frontier[1], case.plan.topic("ingestion").offer)
+        self.assertEqual(frontier[1].dispatch.action.work.generation, 0)
+        self.assertEqual(retained.dispatch.action.work.generation, 1)
+        self.assertIsNone(case.result["candidate"])
+        run.pending_repair_plan, run.pending_unchanged_repairs = case.plan, (retained,)
+        self.assertEqual(run.successor_generations(1, frontier),
+                         (("catalog", 0), ("ingestion", 0), ("query", 0), ("clients", 0)))
+        self.assertEqual(finance.submit(case.actor, case.action, case.lease), case.proof["reply"])
+        self.assertEqual(finance.lookup(case.actor, case.action.request_id).state, "failed")
+        self.assertEqual(case.fixture.transport.calls, 1)
+        self.assertEqual(case.fixture.ledger.budget(), before)
+        path = run.output / "unchanged-repairs" / (case.action.request_id + ".json")
+        self.assertEqual(json.loads(path.read_text()), retained.body())
+        with self.assertRaises(PilotError):
+            run.retain_unchanged_repair(case.plan, case.actor, case.result)
+        # A charged failed call never becomes successful candidate/release proof.
+        with self.assertRaises(ValueError):
+            finance.verified_terminal(binding)
+        with self.assertRaises(ValueError):
+            run.verified_view(binding)
+        self.assertEqual(case.fixture.ledger.budget(), before)
+
+    def test_known_malformed_repair_is_not_unchanged_source_authority(self):
+        case = real_repair_failure(self, malformed=True)
+        self.assertEqual(case.proof["result"].metadata["failure_kind"], "proposal")
+        with self.assertRaises(PilotStop) as stopped:
+            case.controller.retain_unchanged_repair(case.plan, case.actor, case.result)
+        self.assertEqual(stopped.exception.outcome, "missing_repair_candidate")
+        self.assertEqual(case.controller.unchanged_repairs, {})
+        self.assertEqual(list((case.controller.output / "unchanged-repairs").iterdir()), [])
+        self.assertEqual(case.fixture.transport.calls, 1)
+        self.assertEqual(case.fixture.ledger.budget()["spent_or_reserved"], 1166)
+
+    def test_unchanged_repair_requires_arrived_exact_evidence_and_current_registration(self):
+        case = real_repair_failure(self)
+        run = case.controller
+        prove = lambda: run._unchanged_repair_proof(case.plan, case.actor, case.result)
+        refs = (case.role_ref, case.result_ref, case.action.worker_payload_ref,
+                run.directives[case.action.request_id].source_ref)
+        for ref in refs:
+            with self.subTest(missing=ref.kind):
+                original = list(case.mesh.refs)
+                case.mesh.refs.remove(ref)
+                try:
+                    with self.assertRaises((ValueError, PilotError, PilotStop)):
+                        prove()
+                finally:
+                    case.mesh.refs[:] = original
+        for ref in (case.role_ref, case.result_ref):
+            with self.subTest(forged=ref.kind):
+                original = case.mesh.blobs[ref.event_id]
+                case.mesh.blobs[ref.event_id] = b'{"forged":true}'
+                try:
+                    with self.assertRaises((ValueError, PilotError, PilotStop)):
+                        prove()
+                finally:
+                    case.mesh.blobs[ref.event_id] = original
+        mutations = {"pid": -1, "state": "locally_failed", "exact_terminal_replay": False,
+                     "request_sha256": "0" * 64, "candidate_error": "incomplete publication",
+                     "git_path": "/untrusted", "result_ref": to_dict(case.role_ref), "view": {},
+                     "reply": {**case.result["reply"], "usage_units": 0}}
+        for key, bad in mutations.items():
+            with self.subTest(completion=key):
+                present, original = key in case.result, case.result.get(key)
+                case.result[key] = bad
+                try:
+                    with self.assertRaises((ValueError, PilotError, PilotStop)):
+                        prove()
+                finally:
+                    if present:
+                        case.result[key] = original
+                    else:
+                        del case.result[key]
+        key = case.action.request_id
+        registered = run.repair_plans.pop(key)
+        with self.assertRaises(PilotError):
+            prove()
+        run.repair_plans[key] = registered
+        current = run.current_failure
+        changed_gate = replace(case.plan.failure_receipt, blockers=("new_public_failure",))
+        run.current_failure = lambda: (case.plan.failed_target, changed_gate)
+        with self.assertRaisesRegex(ValueError, "stale"):
+            prove()
+        run.current_failure = current
+        original_contribution = run.verified_contribution
+        run.verified_contribution = lambda offer: ()
+        with self.assertRaisesRegex(PilotError, "source"):
+            prove()
+        run.verified_contribution = original_contribution
+        retained = run.retain_unchanged_repair(case.plan, case.actor, case.result)
+        path = run.output / "unchanged-repairs" / (key + ".json")
+        raw = path.read_bytes()
+        changed = retained.body()
+        changed["result_sha256"] = "0" * 64
+        path.write_text(json.dumps(changed))
+        with self.assertRaisesRegex(PilotError, "durable"):
+            run.verified_unchanged_repair(retained)
+        path.write_bytes(raw)
+        run.unchanged_repairs.clear()
+        with self.assertRaisesRegex(PilotError, "durable"):
+            run.verified_unchanged_repair(retained)
+        run.unchanged_repairs[key] = retained
+        self.assertEqual(run.verified_unchanged_repair(retained), retained)
+        self.assertEqual(case.fixture.transport.calls, 1)
+
+    def test_unchanged_repair_cannot_arrive_after_successor_seal_or_cohort_freeze(self):
+        case = real_repair_failure(self)
+        run = case.controller
+        run.frozen = True
+        with self.assertRaisesRegex(PilotError, "freeze"):
+            run.retain_unchanged_repair(case.plan, case.actor, case.result)
+        run.frozen = False
+        run.frontier_seal.seal(1, tuple(topic.offer for topic in case.plan.topics))
+        with self.assertRaisesRegex(PilotError, "seal"):
+            run.retain_unchanged_repair(case.plan, case.actor, case.result)
+        self.assertEqual(run.unchanged_repairs, {})
+        self.assertEqual(list((run.output / "unchanged-repairs").iterdir()), [])
+        self.assertEqual(case.fixture.transport.calls, 1)
+        self.assertEqual(case.fixture.ledger.budget()["spent_or_reserved"], 1166)
+
+    def test_successor_registry_distinguishes_old_repair_from_current_round_replacement(self):
+        # Registry/Git authenticity is supplied by the host; this tests the real
+        # work-loop filter and exact final generation policy, with typed offers.
+        case = real_repair_failure(self)
+        prior = case.plan.topic("catalog").offer
+        catalog = replace(prior, dispatch=replace(prior.dispatch,
+            action=replace(prior.dispatch.action, kind="repair", work=work_key("B01", "repair", 1))))
+        topics = tuple(replace(topic, offer=catalog if topic.package_id == "catalog" else topic.offer,
+                               repair=topic.package_id in ("catalog", "ingestion"),
+                               repair_generation=2) for topic in case.plan.topics)
+        target = replace(case.plan.failed_target, generation=1)
+        gate = replace(case.plan.failure_receipt, target_sha256=identity(target))
+        plan = replace(case.plan, failed_target=target, failure_receipt=gate, topics=topics)
+        prior = plan.topic("ingestion").offer
+        replacement = replace(prior, commit_oid="7" * 40, dispatch=replace(prior.dispatch,
+            action=replace(prior.dispatch.action, kind="repair", work=work_key("B05", "repair", 2))))
+        offers = tuple(replacement if topic.package_id == "ingestion" else topic.offer for topic in topics)
+        repair_dispatch = replace(catalog.dispatch, action=replace(catalog.dispatch.action,
+            work=work_key("B01", "repair", 2), action_id="current-catalog-action",
+            request_id="current-catalog-request"), call_id="current-catalog-call")
+        retained = UnchangedTopic("catalog", plan.sha256, identity(catalog), repair_dispatch, "3" * 64)
+        run = case.controller
+        run.pending_repair_plan, run.pending_unchanged_repairs = plan, (retained,)
+        # This fixture isolates the work-loop filter; the preceding tests use
+        # actual finance and arrived evidence for the verifier itself.
+        def trusted_registered_disposition(value):
+            self.assertEqual(value, retained)
+            return retained
+        run.verified_unchanged_repair = trusted_registered_disposition
+        run.current_failure = lambda: (target, gate)
+        self.assertEqual(run.successor_generations(2, offers),
+                         (("catalog", 1), ("ingestion", 2), ("query", 0), ("clients", 0)))
+        for wrong_round, bad in ((1, offers), (2, (*offers, replacement)),
+                                (2, (*offers[:3], offers[2])),
+                                (2, (replace(catalog, commit_oid="6" * 40), *offers[1:]))):
+            with self.subTest(round=wrong_round, offer_ids=tuple(identity(item) for item in bad)):
+                with self.assertRaises((ValueError, PilotError)):
+                    run.successor_generations(wrong_round, bad)
+
     def test_config_has_finite_deadline_and_fixed_executor_and_request_limits(self):
         self.assertEqual(ProjectConfig(), ProjectConfig(5400, 0.08, 4, 120))
         invalid = {

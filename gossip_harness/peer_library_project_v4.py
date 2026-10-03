@@ -55,7 +55,8 @@ from .peer_project_evidence_v3 import ContributionSlot, EvidenceRegistry
 from .peer_project_execution_v3 import ExecutionPolicy, ProjectExecution, required_suite
 from .peer_project_promotion_v3 import ProjectPromotion, PromotionResult
 from .peer_project_repair_v4 import (
-    plan_topic_repairs, publish_repair_directive, repair_frontier, verify_repair_directive,
+    TopicRepairPlan, UnchangedTopic, assert_current_plan, plan_topic_repairs,
+    publish_repair_directive, repair_frontier, verify_repair_directive,
 )
 from .peer_project_views_v3 import materialization_directive, materialize_project, verify_materialized_view
 from .peer_review_release_v2 import (
@@ -65,7 +66,7 @@ from .peer_role_loop_v2 import RoleLoop, WorkDirective, directive_id, financial_
 from .peer_store_v1 import strict_loads as bounded_loads
 from .peer_twenty_role_fixture_v2 import SOURCES as V2_SOURCES
 from .peer_twenty_role_fixture_v2 import _read, _write as _fixture_write, runtime_identity
-from .worker import HTTPResponse, MODEL, STRONG_MODEL, OpenAIWorker, WorkerRequest, WorkerResult
+from .worker import HTTPResponse, MODEL, STRONG_MODEL, OpenAIWorker, WorkerFailure, WorkerRequest, WorkerResult
 
 PROTOCOL = "peer-library-project-v4"
 COHORT = "library-m1-development-v4"
@@ -230,13 +231,15 @@ def execution_design(config: ProjectConfig = ProjectConfig()) -> dict[str, Any]:
         "action_limits": action_limits(),
         "rehearsal_requirements": {"protocol": PROTOCOL, "exact_counts": {"role_processes": 20,
             "builder_processes": 16, "reviewer_processes": 4, "api_calls": 0, "api_spend_micro_usd": 0,
-            "injected_calls": 32, "private_candidate_bundles": 20},
+            "injected_calls": 32, "private_candidate_bundles": 17,
+            "source_repairs_attempted": 4, "source_repairs_effective": 1, "source_repairs_unchanged": 3},
             "minimum_counts": {"physical_public_evaluations": 2, "protected_releases": 1, "source_repairs": 4,
                 "selector_format_corrections": 1, "review_format_corrections": 1, "independent_interface_cases_passed": 5,
                 "independent_browser_observations_passed": 1}},
         "phase_policy": "blind16-physical-merged-source-fresh4review-outcome-topic-repair-at-most3generations",
         "format_policy": "one-known-complete-format-correction-per-selector-or-reviewer-per-generation",
         "controller": "trusted-fixed-phase-dispatcher", "repair_feedback": "public-only",
+        "unchanged_repair": "authenticated-known-empty-failure-retains-exact-topic-no-approval-fresh-evaluation-and-reviews",
         "acceptance": "independent-private-after-whole-cohort-freeze-no-further-model-actions",
         "claims_excluded": list(CLAIMS_EXCLUDED)}
 
@@ -639,6 +642,8 @@ class ProjectRun:
         self.directive_policies: dict[str, str] = {}
         self.corrections: dict[str, tuple[WorkerRequest, str, Any, Any]] = {}
         self.repair_plans: dict[str, Any] = {}
+        self.unchanged_repairs: dict[str, Any] = {}
+        self.pending_unchanged_repairs: tuple[Any, ...] = ()
         self.action_budget, self.frontier_seal = ActionBudget(), FrozenFrontier()
         self.registry_for_action: dict[str, EvidenceRegistry] = {}
         self.registry_by_selection: dict[str, EvidenceRegistry] = {}
@@ -691,7 +696,7 @@ class ProjectRun:
         self.server_thread.start()
 
     def setup(self) -> None:
-        for folder in ("dispatches", "corrections"):
+        for folder in ("dispatches", "corrections", "unchanged-repairs"):
             (self.output / folder).mkdir()
         _write(self.output / "execution-contract.json", self.contract)
         config, output = self.config, self.output
@@ -897,22 +902,116 @@ class ProjectRun:
             verify_format_correction(original, request, actor=actor, provider_outcome=outcome, validation=validation)
         return view
 
-    def verified_view(self, binding: DispatchBinding) -> LocalViewManifest:
-        proof = self.finance.verified_terminal(binding)
+    def verified_role_view(self, binding: DispatchBinding, proof: dict[str, Any]) -> LocalViewManifest:
+        """Authenticate arrived role/result bytes without granting release authority."""
+        require(proof["binding"] == binding, "Financial proof belongs to another dispatch")
+        request_ref = binding.action.worker_payload_ref
+        require(resolve_local(request_ref, self.seed.arrived(), self.seed.resolve(request_ref)) == canonical_payload({
+            "worker_request": asdict(proof["worker_request"]),
+            "view_manifest_sha256": binding.action.view_manifest_sha256}),
+            "Arrived worker request differs from exact financial proof")
         result = self.completions[binding.action.request_id]
+        require(result["reply"] == to_dict(proof["reply"]), "Role completion differs from exact financial proof")
         ref = from_dict(EvidenceRef, result["publication_ref"])
         body = strict_loads(resolve_local(ref, self.seed.arrived(), self.seed.resolve(ref)))
         require(ref.producer == binding.action.actor and ref.kind == "role-result"
                 and body["protocol"] == "peer-role-loop-v2" and body["actor"] == binding.action.actor
                 and body["action"] == to_dict(binding.action) and body["reply"] == to_dict(proof["reply"]),
-                "Review role publication differs from exact financial proof")
+                "Role publication differs from exact financial proof")
         result_ref = from_dict(EvidenceRef, body["result_ref"])
         require(result_ref.producer == "finance" and result_ref.kind == "financial-result"
                 and resolve_local(result_ref, self.seed.arrived(), self.seed.resolve(result_ref)) == canonical_payload(proof["result_payload"]),
-                "Review result bytes differ from financial proof")
-        view = self.pure_view(binding, proof["worker_request"], from_dict(LocalViewManifest, body["view_manifest"]))
+                "Role result bytes differ from financial proof")
+        require(result["result_ref"] == to_dict(result_ref) and result["view"] == body["view_manifest"],
+                "Role completion view or result reference differs from its publication")
+        return self.pure_view(binding, proof["worker_request"], from_dict(LocalViewManifest, body["view_manifest"]))
+
+    def verified_view(self, binding: DispatchBinding) -> LocalViewManifest:
+        proof = self.finance.verified_terminal(binding)
+        view = self.verified_role_view(binding, proof)
         self.registry_for_action[binding.action.request_id].verified_candidate_materials(view)
         return view
+
+    def _unchanged_repair_proof(self, plan: TopicRepairPlan, actor: str,
+                                result: dict[str, Any]) -> UnchangedTopic:
+        """Recognize one accounted no-change outcome; never create a candidate."""
+        assert_current_plan(plan, self.current_failure)
+        require(not self.frozen, "No repair disposition after whole-cohort freeze")
+        reply = result.get("reply") or {}
+        if (reply.get("state") != "failed" or result.get("candidate") is not None
+                or result.get("candidate_error") is not None):
+            raise PilotStop("missing_repair_candidate", "Repair has neither a changed candidate nor a known unchanged proposal")
+        binding = from_dict(DispatchBinding, reply["binding"])
+        action = binding.action
+        topic = plan.topic(package_for(actor))
+        key = action.request_id
+        directive = self.directives.get(key)
+        require(directive is not None, "Unchanged repair lacks a registered directive")
+        assert directive is not None
+        require(topic.repair and topic.offer.dispatch.action.actor == actor and action.actor == actor
+                and action.kind == "repair" and action.work == work_key(actor, "repair", topic.new_generation)
+                and key == "dispatch-" + directive_id(directive)
+                and self.repair_plans.get(key) == plan and self.completions.get(key) == result
+                and result["actor"] == actor and result["pid"] == self.processes[actor].pid
+                and result["directive_id"] == directive_id(directive) and result["state"] == "published"
+                and result["exact_terminal_replay"] is True and result["git_path"] is None
+                and result["request_sha256"] == binding.normalized_worker_request_sha256,
+                "Unchanged repair differs from its exact registered current action")
+        proof = self.finance.verified_known_failure(binding)
+        failure = proof["result"]
+        if (type(failure) is not WorkerFailure or str(failure) != "Proposal contains no effective changes"
+                or failure.metadata.get("failure_kind") != "empty" or failure.metadata.get("halt", False) is not False
+                or self.finance.failed_closed or type(failure.usage_units) is not int
+                or proof["reply"].state != "failed" or proof["reply"].usage_units != failure.usage_units):
+            raise PilotStop("missing_repair_candidate", "Only an exact known settled nonhalt empty proposal can retain its topic")
+        self.verified_role_view(binding, proof)
+        request = proof["worker_request"]
+        require(request.files == dict(topic.base_files) and request.base_sha == topic.base_sha
+                and self.verified_contribution(topic.offer) == named_sources({path: body for path, body in topic.base_files
+                                                                            if path in topic.scope}),
+                "Unchanged repair source differs from the authenticated selected topic")
+        return UnchangedTopic(topic.package_id, plan.sha256, identity(topic.offer), binding,
+                              sha(canonical_payload(proof["result_payload"])))
+
+    def retain_unchanged_repair(self, plan: TopicRepairPlan, actor: str,
+                                result: dict[str, Any]) -> UnchangedTopic:
+        require(plan.failed_target.generation + 1 not in self.frontier_seal.generations,
+                "No late repair disposition after successor frontier seal")
+        disposition = self._unchanged_repair_proof(plan, actor, result)
+        key = disposition.dispatch.action.request_id
+        path = self.output / "unchanged-repairs" / (key + ".json")
+        require(key not in self.unchanged_repairs and not path.exists(), "Unchanged disposition already sealed")
+        _write(path, disposition.body())
+        self.unchanged_repairs[key] = disposition
+        return disposition
+
+    def verified_unchanged_repair(self, disposition: UnchangedTopic) -> UnchangedTopic:
+        """Admission-time proof; historical audits inspect retained immutable bytes."""
+        key = disposition.dispatch.action.request_id
+        require(self.unchanged_repairs.get(key) == disposition
+                and _read(self.output / "unchanged-repairs" / (key + ".json")) == disposition.body(),
+                "Unchanged disposition differs from its durable registration")
+        actual = self._unchanged_repair_proof(self.repair_plans[key], disposition.dispatch.action.actor,
+                                             self.completions[key])
+        require(actual == disposition, "Unchanged disposition proof changed")
+        return actual
+
+    def successor_generations(self, generation: int,
+                              offers: tuple[CandidateOffer, ...]) -> tuple[tuple[str, int], ...]:
+        """Reconcile the next registry with changed and retained selected topics."""
+        plan = self.pending_repair_plan
+        require(plan is not None and generation == plan.failed_target.generation + 1,
+                "Successor round differs from its current repair plan")
+        # A prior repair retained in this round is still an old offer. Its kind
+        # alone cannot identify a new replacement.
+        replacements = tuple(offer for offer in offers if offer.dispatch.action.kind == "repair"
+            and offer.dispatch.action.work.generation == generation
+            and plan.topic(offer.dispatch.action.work.package_id).repair)
+        frontier = repair_frontier(plan, replacements, current_failure=self.current_failure,
+            unchanged=self.pending_unchanged_repairs, verified_unchanged=self.verified_unchanged_repair)
+        require(len(offers) == len(frontier) and {identity(item) for item in offers} == {identity(item) for item in frontier},
+                "Successor registry differs from exact repaired-topic frontier")
+        return tuple((offer.dispatch.action.work.package_id, offer.dispatch.action.work.generation) for offer in frontier)
 
     def verified_selection(self, selection: SelectionManifest) -> SelectionManifest:
         return self.registry_by_selection[identity(selection)].verified_selection(selection)
@@ -1125,11 +1224,7 @@ class ProjectRun:
             registry = self.registry(generation, eligible)
             offers = tuple(self.register(registry, result) for result in eligible)
             if generation and self.pending_repair_plan is not None:
-                replacement_offers = tuple(offer for offer in offers if offer.dispatch.action.kind == "repair"
-                    and self.pending_repair_plan.topic(offer.dispatch.action.work.package_id).repair)
-                expected_frontier = repair_frontier(self.pending_repair_plan, replacement_offers, current_failure=self.current_failure)
-                require({identity(item) for item in offers} == {identity(item) for item in expected_frontier},
-                        "Successor registry differs from exact repaired-topic frontier")
+                generations = self.successor_generations(generation, offers)
             selection = self.select(generation, registry, offers)
             stores = {identity(offer): GitStore(registry.root / ("quarantine-" + identity(offer)) / "quarantine.git") for offer in offers}
             try:
@@ -1190,17 +1285,18 @@ class ProjectRun:
                 keys[package] = self.dispatch(actor, directive, self.eligibility, generation=generation + 1,
                     fixture_changes=_fixture_build(actor, repair=True) if self.transport else None,
                     base_bundle={"ref": to_dict(ref), "manifest": manifest})
-            replacements = {}
+            replacements, unchanged = {}, []
             for package, key in keys.items():
                 actor = plan.topic(package).offer.dispatch.action.actor
                 result = self.collect(actor, key)
-                if not self.successful(result) or result.get("candidate") is None:
-                    raise PilotStop("missing_repair_candidate", "A required package repair returned no complete valid proposal")
-                replacements[package] = result
+                if self.successful(result) and result.get("candidate") is not None:
+                    replacements[package] = result
+                else:
+                    unchanged.append(self.retain_unchanged_repair(plan, actor, result))
             eligible = [replacements[package] if package in replacements else self.offer_results[identity(selected[package])]
                         for package in PACKAGES]
-            generations = plan.package_generations
             self.pending_repair_plan = plan
+            self.pending_unchanged_repairs = tuple(unchanged)
 
     def cleanup(self) -> None:
         for actor in self.processes:
@@ -1267,6 +1363,7 @@ class ProjectRun:
                 self.cleanup_errors.append("Final role " + actor + ": " + repr(error))
         self.receipt.update(final_roles=final_roles, owned_process_exit_codes={a: p.returncode for a, p in self.processes.items()},
             cleanup_errors=self.cleanup_errors, stages=self.stages, physical_execution_publications=self.physical_publications,
+            unchanged_repairs=[item.body() for item in self.unchanged_repairs.values()],
             dispatched_actions=[{"actor": a, "kind": k, "generation": g, "correction": c}
                                 for a, k, g, c in self.action_budget.actions],
             transport=self.transport.snapshot() if self.transport is not None else {"kind": "live-provider-journals"})
@@ -1296,6 +1393,9 @@ class ProjectRun:
             "public_outcome": self.receipt["outcome"], "no_further_model_actions": True,
             "dispatched_actions": self.receipt["dispatched_actions"],
             "financial_config_sha256": self.finance.config_sha256,
+            "unchanged_repair_artifacts": [{"path": str(self.output / "unchanged-repairs" / (key + ".json")),
+                "sha256": sha((self.output / "unchanged-repairs" / (key + ".json")).read_bytes())}
+                for key in self.unchanged_repairs],
             "completion_artifacts": [{"path": str(self.output / "roles" / result["actor"] / "results" / (result["directive_id"] + ".json")),
                 "sha256": sha((self.output / "roles" / result["actor"] / "results" / (result["directive_id"] + ".json")).read_bytes())}
                 for result in self.completions.values()]}
@@ -1308,6 +1408,7 @@ class ProjectRun:
                 and sha(raw) == frozen_sha and all(process.poll() == 0 for process in self.processes.values())
                 and all(sha(Path(item["receipt"]).read_bytes()) == item["sha256"] for item in freeze["final_roles"])
                 and all(sha(Path(item["path"]).read_bytes()) == item["sha256"] for item in freeze["completion_artifacts"])
+                and all(sha(Path(item["path"]).read_bytes()) == item["sha256"] for item in freeze["unchanged_repair_artifacts"])
                 and self.protected.read_files(commit) == files and self.protected._git("rev-parse", commit + "^{tree}") == tree
                 and accounting_snapshot(ledger_path, COHORT, self.completions, self.mode) == accounting)
         self.receipt["freeze"] = {"path": str(path), "sha256": frozen_sha, "subject": asdict(subject)}
@@ -1353,6 +1454,10 @@ class ProjectRun:
             "api_spend_micro_usd": accounting.get("known_spend_micro_usd", 0) if self.mode == "live" else 0,
             "injected_calls": len(self.transport.snapshot()["calls"]) if self.transport else 0,
             "source_repairs": observed["repair", False], "selector_format_corrections": observed["select_source", True],
+            "source_repairs_attempted": observed["repair", False],
+            "source_repairs_effective": sum(item.get("candidate") is not None and self.successful(item)
+                and item["reply"]["binding"]["action"]["kind"] == "repair" for item in self.completions.values()),
+            "source_repairs_unchanged": len(self.unchanged_repairs),
             "review_format_corrections": observed["review", True],
             "private_candidate_bundles": sum(item.get("candidate") is not None for item in self.completions.values()),
             "physical_public_evaluations": sum(bool(item["physically_executed"]) for item in self.physical_publications),

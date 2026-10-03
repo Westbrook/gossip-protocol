@@ -1126,11 +1126,20 @@ tree, a repair and a protected release. It establishes the integrated mechanism,
 not live model quality. The [v4 development pilot](docs/peer-library-project-v4.md)
 adds real-model admission, bounded response correction, simultaneous topic
 repairs and independent CLI/HTTP/browser acceptance. The
-[current source checkpoint](analysis/peer-library-project-v4-checkpoint.json)
-records 361 passing targeted qualification checks and the retained startup
-failure that exposed the financial RPC mismatch. The complete physical rehearsal
-and live observation remain pending; the larger comparative project study remains
-separate.
+[published-source checkpoint](analysis/peer-library-project-v4-checkpoint.json)
+records 381 passing targeted qualification checks, the earlier 361-check gate
+at commit `3019bcf`, and the retained startup failure that exposed the financial
+RPC mismatch. A subsequent
+[fixture attempt](runs/twenty-role-library-m1-v4-2/receipt.json) ran twenty roles,
+27 injected calls and one merged-tree evaluation, then stopped when three repair
+proposals left their package source unchanged. It produced no release or private
+acceptance and made zero API calls. The qualified retained-topic continuation
+contract preserves those failed call outcomes and unchanged topics, then requires
+fresh combined evaluation and review of actual repairs. A timed-out development
+gate remains recorded separately; the fresh 381-check gate passed without skips
+or reused results.
+A complete passing rehearsal and live observation remain pending; the full
+four-milestone comparative project study remains separate.
 
 ## Real peer transport foundation
 
