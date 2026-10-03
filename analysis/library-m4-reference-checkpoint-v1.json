@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "checkpoint_id": "library-m4-reference-qualification-v1",
+  "recorded_at": "2026-10-03T08:09:40.051597+00:00",
+  "status": "authored_reference_qualified_with_explicit_scope_limits",
+  "whole_project_acceptance": false,
+  "comparative_quality_result": false,
+  "goal": "Complete four cumulative milestones across all six matched trajectories and independent held-out confirmation; quality/completion primary.",
+  "previous_goal_turn_classification": "progress: M4 source-review findings produced concrete fixes and new regressions; existing Pages publication reverified.",
+  "source_branch": "codex/cumulative-project-contract",
+  "base_commit": "d3b88d4c1bf12a4453701a61e474aec581e0d7c8",
+  "main_frozen_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "new_provider_calls": 0,
+  "new_api_spend_usd": 0,
+  "live_pilot_status": "Not launched. Automatic approval review rejected paid payload transfer; explicit approval remains pending. Offline development continued without credentials.",
+  "sources": {
+    "devtools/browser/library_m4_reference.cjs": "7436e8c8688f660ac1fb92446f0580d7644af1a91cd136c6609c63923ebe9d04",
+    "fixtures/library-m4-compatibility-v1/README.md": "c59d7bce0ec8d40b753da1202c914aed159e66c7d36653dd50514835449ea267",
+    "fixtures/library-m4-compatibility-v1/build_snapshots.py": "10b013d1284851ad874c23466b61ea248cd1b7f53f694de335a38efb4b493941",
+    "fixtures/library-m4-compatibility-v1/m2.manifest.json": "754146fb8643f36faeb6bb76c2f3dbb354a4aed4464189eb2d68b8f4981f9644",
+    "fixtures/library-m4-compatibility-v1/m2.sqlite3": "4d52246ca238887d51649fbc63b923a8dfbdfd545238a83cb6c5e0a5df94c1c2",
+    "fixtures/library-m4-compatibility-v1/v0.manifest.json": "29bcdfd24eeac87d025926f72c4d712be161d14d70dace30c31dcef04411f81a",
+    "fixtures/library-m4-compatibility-v1/v0.sqlite3": "5a550a1a681d1ea0c119394906580c859af51caaf0eabd83e437513dc5b53429",
+    "gossip_harness/library_cumulative_public_fixture_v1.py": "694b35895cdeb74df4dca55a65e44cab7cef52d52cf9f3f003e1828b518e9647",
+    "gossip_harness/library_m4_acceptance_cases_v1.py": "a87ac7fcabe683c4c8da8d54dbe0f102db3db02d0b5e6b3a78f6fe0bf5bd2832",
+    "gossip_harness/library_m4_acceptance_cases_v2.py": "aa735cb889b09f29d97f771830bdcaaf637060a97c333112ff950437148accba",
+    "gossip_harness/library_m4_acceptance_cases_v3.py": "5bda5c0bd03847d3ada13034343f89d109166b9cf4a4df027452be20ff546793",
+    "gossip_harness/library_m4_backup_reference_v1.py": "4e59a68b6f71e9af68d321a2beff50e15c3f82b4c150965995458911fc3dc3fc",
+    "gossip_harness/library_m4_browser_reference_v1.py": "233cc5e0dc01dd566fcd2062731694324454afb265a3248200435c8e2b49df5d",
+    "gossip_harness/library_m4_catalog_reference_v1.py": "73055d1dd8cb42ef39cd37c3b0911c1e74f012d7520068c39de40962d2d6717c",
+    "gossip_harness/library_m4_clients_reference_v1.py": "c65f622ea49bad039602b82e33d9398fbeb05cfe90baa8e7b83be44bed423728",
+    "gossip_harness/library_m4_fixture_v1.py": "61c1d53e0a582927639a9fcde955e3fd0e9a66288aac3a291fbfb7d670a8764c",
+    "gossip_harness/library_m4_reference_v1.py": "6df29231508ee642ddfe60dfbe5f36fe8382deb4692ac7177728b0183e5e1452",
+    "gossip_harness/library_m4_release_reference_v1.py": "934863d6bd0c38de5f6c5b8f862d8ed6dbda90fbbd29864f07f51efdef78de30",
+    "pyproject.toml": "656b1fa37fe147d5e85c642f10e780952cb74d1c6a90c92211e584405f65fe57",
+    "tests/test_library_cumulative_public_fixture_v1.py": "d6c28dcc22e87371050a0e009d2048d016c2b8a8b4506de5c2bd351f9bf8da92",
+    "tests/test_library_m4_acceptance_cases_v1.py": "d6650ef65ca334a2cb579894bf584acf955eb249a09a54a84976df6385a3d307",
+    "tests/test_library_m4_acceptance_cases_v2.py": "8b60afbed541b500002a79c18316288c28839fa325d42f555c498ef30f571e80",
+    "tests/test_library_m4_acceptance_cases_v3.py": "42e9f430fca2ab555cea4a16e91dbe6c4517b1fc99012fa9ebcd66ebe43f5f51",
+    "tests/test_library_m4_backup_reference_v1.py": "f907f017c34c57f220bcd0bacc7dd06f4b630db8120c73953d1c3ed856ed4038",
+    "tests/test_library_m4_browser_reference_v1.py": "8a9a708b50206f4cb3371d17a45f0881a1d04087aa14a087eed5f00e797e879e",
+    "tests/test_library_m4_catalog_reference_v1.py": "e8c338bd4ab5e8a2a93b9f6967860c8d51476fb309763ac5e9cae008a34db465",
+    "tests/test_library_m4_clients_reference_v1.py": "2e73fbb3987c2c85680270186e53ae20436feb1d8167495293d4062ffabcbcfb",
+    "tests/test_library_m4_docker_reference_v1.py": "98e651c997b65c63384608b8e0da7b2b86c6715fe1b0efb2f4e18899f05b8f1b",
+    "tests/test_library_m4_fixture_v1.py": "d868e0493d9f27021702e10087d73117dc102729b39378f184ef8b08d730ae41",
+    "tests/test_library_m4_reference_v1.py": "4c564204caaaf4ce9bb8fb4b8caf72b7202bcc62dc318c0a0d09c0244c746461",
+    "tests/test_library_m4_release_reference_v1.py": "5c9b26c89020cf917a0df5d6044d3b99fcde894705eeb58c91c7634b47cbb9ef",
+    "verification-manifest.json": "eff2fe5d3eb6b6ac97644ecb59dddf93952c546fd66de5fd57757945c2d3d3cd"
+  },
+  "frozen_prior_sources": {
+    "gossip_harness/library_m1_acceptance_v4.py": "72b2362ddae4ba781ea31bde6991f16501098a935451c97ae128b246671be305",
+    "gossip_harness/library_m1_browser_acceptance_v4.py": "1d8e3e1796965adb2c6c0d3c5042aa2dc99a5b3f0aca5eec4076f0c482d0fa26",
+    "gossip_harness/library_m1_clients_reference_v1.py": "e52b6477bb6c5460547d7bde84986e347ab7d16ae07708a6fe28021b5e96a17f",
+    "gossip_harness/library_m1_ingestion_reference_v1.py": "514ad7c5caa546a6b33359af3b9c2d04475a05176a2131ac4b562d38fe1db5ff",
+    "gossip_harness/library_m1_reference_v1.py": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+    "gossip_harness/library_m2_acceptance_cases_v1.py": "ae3bd3381caf6149b9e5136ce50aa37b9c4d80c4b8589ddfda7f1a77a628d09b",
+    "gossip_harness/library_m2_browser_reference_v1.py": "63e047e4c277e49160bbaba2fd14061772f75bf832923c31542cb5ef51e1b825",
+    "gossip_harness/library_m2_catalog_reference_v1.py": "4ad0e946e24c986c7b4c0d5ef41ccf7da0096555ececd9c9e62deb9d55754d56",
+    "gossip_harness/library_m2_clients_reference_v1.py": "49ccc15b651e7b650b30bbae7b1a1ac9c4b67e7bfa398577fbc00e0b78040d2d",
+    "gossip_harness/library_m2_reference_v1.py": "000bdcd8cf167348899875448fa49f1ed599c5ac7273731bbb94accdc35979be",
+    "gossip_harness/library_m3_acceptance_cases_v1.py": "51a7d547b5683514dec7fd193436c8e1b55f0ccc71118cc1b22f499a91d7ef88",
+    "gossip_harness/library_m3_backup_format_v1.py": "5ab258089d064139b1b2f2adfe98bec006d027c2f99783f2cfe635f7a8136e77",
+    "gossip_harness/library_m3_backup_reference_v1.py": "5c276fde9ffad85609a18a91be9746862d2ea0b17120412f67b6d74b1ae2cee9",
+    "gossip_harness/library_m3_browser_reference_v1.py": "522d99198ae851f038d88ee28d93b45b67c70511890ac12481d81509e1586dec",
+    "gossip_harness/library_m3_clients_reference_v1.py": "19a58f61d16fedc0f8305e2777990561defebb7d5cd72c1980a663e774fdd03b",
+    "gossip_harness/library_m3_control_reference_v1.py": "38df5e59bf10ac99c6f4e3d9c958cecee1b0dfb5a58a71afadd3b22757e8bb43",
+    "gossip_harness/library_m3_maintenance_reference_v1.py": "e05b73a3edf7900c8c890c5c330f55f80befb0566db7b0fac5fdd139e74332cb",
+    "gossip_harness/library_m3_reference_v1.py": "3ad17289d83fca6bc576cc001a2bba6bdf52d2cbf3c5dc536fe0222e2a89f39c",
+    "gossip_harness/library_m3_worker_reference_v1.py": "43c7bc3753cae763e0d6522fc72bc0548b12f17e39998efa11853c6782bbe8f3"
+  },
+  "normative_contract": {
+    "path": "library-cumulative-product-v1.json",
+    "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c"
+  },
+  "generated_application": {
+    "text_files": 53,
+    "binary_files": 2,
+    "total_files": 55,
+    "total_bytes": 636877,
+    "canonical_file_records_sha256": "6312d236ae215a1f7c1a143b8558e2fa85ca9b73b54678b7b30d2390d81ce28b",
+    "manifest": "runs/m4-final-source-manifest-1.json",
+    "manifest_sha256": "4c3e271da1d9ba4fd3bd719ade60457662797cf1c2361de6e9ec048abbb3f93e"
+  },
+  "verification": {
+    "session": "runs/m4-reference-qualification-5/20261003T080600-3718ef81",
+    "summary_sha256": "34fce526e059c1849f29277e662b9652ab9941139ee5a695ac3e39e781dac6f1",
+    "inputs_sha256": "a82282dab940a269bf9a6320fe09cce2003ede974d8143bbaff34e3fcef61536",
+    "status": "passed",
+    "outcomes": {
+      "passed": 74
+    },
+    "classes": 14,
+    "selected_counts": {
+      "browser": 1,
+      "docker": 6,
+      "fast": 39,
+      "fixtures": 28
+    },
+    "duration_seconds": 37.01820020843297,
+    "reused_classes": 0,
+    "physical": true,
+    "input_hash_count": 382,
+    "all_current_input_hashes_match": true,
+    "static_status": "passed",
+    "unexpected_skips": 0,
+    "stale_inputs": false,
+    "stale_runtime": false
+  },
+  "pre_execution_freezes": {
+    "runs/m4-public-fixtures-pre-reference-freeze-1/freeze.json": "40f536b3619c716a8768e3501cbfa07329331e823f395de4259b29d14f59cccc",
+    "runs/m4-cases-pre-reference-freeze-1/freeze.json": "98c1e8e7780c0b812be49cd8c0a00d916825b94a4a5650e8aaac6a8decfeb608",
+    "runs/m4-cases-v2-pre-reference-freeze-1/freeze.json": "a2032b51af1279862185b79e0e5edc64f22c9d0f59e5f1c7e40a6b89137c3f00",
+    "runs/m4-cases-v3-pre-reference-freeze-1/freeze.json": "a5e944037677bd5f545ee056f174867623e8c906e87a1e303192b587a60511b1"
+  },
+  "independent_cases": {
+    "protocol": "library-m4-independent-cases-v3",
+    "purpose": "independent_acceptance",
+    "status": "unqualified_definition",
+    "contract_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "public_fixture_files_sha256": "6179a9758bee5b99cc8fad92577a63fcd7a0960ebe7c56b576ce32a13d86c337",
+    "prior_protocol": "library-m4-independent-cases-v2",
+    "prior_source_sha256": "aa735cb889b09f29d97f771830bdcaaf637060a97c333112ff950437148accba",
+    "prior_cases_sha256": "87104867f4bfdf573a7ff05d6af09e03c0afe2f48270ca47ed8da285f77139d5",
+    "case_ids": [
+      "m4-frozen-v0-migration-preserves-inventory",
+      "m4-frozen-m2-migration-preserves-inventory",
+      "m4-authored-m1-schema0-receipt-and-queued-job",
+      "m4-frozen-m2-receipt-bytes-through-backup-restore",
+      "m4-cli-v1-document-revision-adapters",
+      "m4-v1-mutations-preserve-edit-token-authority",
+      "m4-fresh-revision-identity-and-numbered-adapters",
+      "m4-opt-in-export-and-strict-v1-routes",
+      "m4-restore-reused-number-new-content-identity",
+      "m4-reject-unknown-schema-without-replacement",
+      "m4-reject-missing-inherited-table-without-replacement",
+      "m4-reject-wrong-content-digest-without-replacement",
+      "m4-reject-missing-history-member-without-replacement",
+      "m4-reject-wrong-current-head-without-replacement",
+      "m4-reject-invalid-edit-token-without-replacement",
+      "m4-reject-non-normalized-tags-without-replacement",
+      "m4-reject-missing-collection-without-replacement",
+      "m4-reject-missing-completed-receipt-without-replacement"
+    ],
+    "ordered_inputs_sha256": "80078592345e01e615cdf9d1fca600d79aab4cdb827fce11820274f29654c61e",
+    "ordered_expected_sha256": "7000373db9de73dad1fa8ff8bc82fbade0c4416f03a2395fdf5812399be1bbb3",
+    "ordered_cases_sha256": "87104867f4bfdf573a7ff05d6af09e03c0afe2f48270ca47ed8da285f77139d5",
+    "adapter_sha256": "5b4f9e7b04f930e50ac5d0f7703d5d5ae5f2f777c4d2a70f4fa2a1b5a31d9394",
+    "scorer_protocol": "library-m4-host-observation-scorer-v2",
+    "scorer_source": "def _exact_json(expected: Any, actual: Any) -> bool:\n    \"\"\"Exact JSON shapes and scalar types; booleans never equal integer tokens.\"\"\"\n    if type(expected) is not type(actual):\n        return False\n    if type(expected) is dict:\n        return expected.keys() == actual.keys() and all(_exact_json(value, actual[key])\n                                                      for key, value in expected.items())\n    if type(expected) is list:\n        return len(expected) == len(actual) and all(_exact_json(left, right)\n                                                   for left, right in zip(expected, actual))\n    return bool(expected == actual)\ndef score_case(case: dict[str, Any], actual: Any) -> bool:\n    \"\"\"Host-only observation comparison; never converts infrastructure failure to acceptance.\n\n    Only the explicitly bound case, index, key and marker admit a domain value.\n    Other marker-looking objects remain ordinary exact JSON. Execution status,\n    source authentication and resource limits are independently owned by callers.\n    \"\"\"\n    expected = case[\"expected\"]\n    if case[\"id\"] != DOMAIN_CASE_ID:\n        return _exact_json(expected, actual)\n    if type(actual) is not dict or actual.keys() != expected.keys():\n        return False\n    observations = actual.get(\"observations\")\n    expected_observations = expected.get(\"observations\")\n    if type(observations) is not list or type(expected_observations) is not list or len(observations) != len(expected_observations):\n        return False\n    for index, (wanted, value) in enumerate(zip(expected_observations, observations)):\n        if index != DOMAIN_OBSERVATION:\n            if not _exact_json(wanted, value):\n                return False\n            continue\n        if type(value) is not dict or type(wanted) is not dict or value.keys() != wanted.keys():\n            return False\n        if wanted.get(DOMAIN_FIELD) != {MINIMUM_MARKER: 0}:\n            return False\n        generation = value[DOMAIN_FIELD]\n        if type(generation) is not int or generation < 0:\n            return False\n        if not all(_exact_json(item, value[key]) for key, item in wanted.items() if key != DOMAIN_FIELD):\n            return False\n    return True\n",
+    "scorer_sha256": "418c1e5307ebc30ac8363834690739f5ba22931ebce941db7246f563527b329c",
+    "requirement_cases": {
+      "M4-API-SCHEMA": [
+        "m4-frozen-v0-migration-preserves-inventory",
+        "m4-frozen-m2-migration-preserves-inventory",
+        "m4-authored-m1-schema0-receipt-and-queued-job",
+        "m4-frozen-m2-receipt-bytes-through-backup-restore",
+        "m4-cli-v1-document-revision-adapters",
+        "m4-v1-mutations-preserve-edit-token-authority",
+        "m4-fresh-revision-identity-and-numbered-adapters",
+        "m4-opt-in-export-and-strict-v1-routes",
+        "m4-restore-reused-number-new-content-identity"
+      ],
+      "M4-MIGRATION": [
+        "m4-frozen-v0-migration-preserves-inventory",
+        "m4-frozen-m2-migration-preserves-inventory",
+        "m4-authored-m1-schema0-receipt-and-queued-job",
+        "m4-frozen-m2-receipt-bytes-through-backup-restore",
+        "m4-cli-v1-document-revision-adapters",
+        "m4-fresh-revision-identity-and-numbered-adapters",
+        "m4-reject-unknown-schema-without-replacement",
+        "m4-reject-missing-inherited-table-without-replacement",
+        "m4-reject-wrong-content-digest-without-replacement",
+        "m4-reject-missing-history-member-without-replacement",
+        "m4-reject-wrong-current-head-without-replacement",
+        "m4-reject-invalid-edit-token-without-replacement",
+        "m4-reject-non-normalized-tags-without-replacement",
+        "m4-reject-missing-collection-without-replacement",
+        "m4-reject-missing-completed-receipt-without-replacement"
+      ],
+      "M4-COMPATIBILITY": [
+        "m4-frozen-v0-migration-preserves-inventory",
+        "m4-frozen-m2-migration-preserves-inventory",
+        "m4-authored-m1-schema0-receipt-and-queued-job",
+        "m4-frozen-m2-receipt-bytes-through-backup-restore",
+        "m4-cli-v1-document-revision-adapters",
+        "m4-v1-mutations-preserve-edit-token-authority",
+        "m4-fresh-revision-identity-and-numbered-adapters",
+        "m4-opt-in-export-and-strict-v1-routes",
+        "m4-restore-reused-number-new-content-identity"
+      ]
+    },
+    "uncovered_requirements": [
+      "M4-RELEASE-HANDOFF"
+    ],
+    "limitations": [
+      "Development qualification only; source, runtime, limits, provenance and the complete cohort barrier require caller authentication.",
+      "No M4-RELEASE-HANDOFF install/browser journey: that requires independent qualification against the exact release bytes.",
+      "Service.request checks public routing; actual HTTP wire behavior and browser behavior require separate lanes.",
+      "No forced migration crash, live legacy process, overlapping maintenance lock or power-loss schedule.",
+      "Finite corrupt snapshots do not exhaust every SQLite corruption or graph invariant.",
+      "No unspecified signed-counter ceiling, absent-owner idle/stopped distinction, or multi-root backup registry interpretation is imposed.",
+      "Public v0/M2 fixture inventories are shared compatibility facts; expected histories are independently composed, not concealed held-out data.",
+      "V2 was corrected after v1 observations revealed two invalid observer assumptions; no held-out independence is claimed.",
+      "The only non-exact value is post-restore worker_generation: a typed integer >= its known initial target value 0.",
+      "This zero-baseline history does not independently demonstrate retention of a positive pre-restore worker fence.",
+      "Host scoring covers observations only; caller must reject infrastructure/error outcomes before consulting score_case.",
+      "V3 decodes only a byte-valued status/body pair from explicit Service.request POST /api/v1/export; no other route or shape is normalized.",
+      "This route observation checks the specified JSON value; canonical HTTP wire bytes remain separately qualified."
+    ],
+    "corrections": [
+      {
+        "id": "legacy-export-json-representation",
+        "scope": "child Service.export bytes only",
+        "reason": "The inherited public export contract specifies the JSON value; the observer must decode a serialized helper result before comparing that value.",
+        "authority": [
+          "gossip_harness/library_project_fixture_v1.py:V0_SPEC export and CLI/HTTP paragraphs",
+          "library-cumulative-product-v1.json:requirements[M4-COMPATIBILITY].clauses[0]"
+        ],
+        "unchanged": "Legacy CLI export, route outputs, versioned exports and all parsed legacy fields remain exact."
+      },
+      {
+        "id": "post-restore-worker-generation-domain",
+        "scope": "m4-frozen-m2-receipt-bytes-through-backup-restore:observations[34].worker_generation",
+        "reason": "Fresh controls default to 0, but restore may advance the durable target worker fence. No exact post-restore increment is prescribed.",
+        "authority": [
+          "library-cumulative-product-v1.json:value_types.DIAGNOSTICS3.worker_generation",
+          "library-cumulative-product-v1.json:persistence.schema3[0]",
+          "library-cumulative-product-v1.json:persistence.fencing",
+          "library-cumulative-product-v1.json:requirements[M3-BACKUP-RESTORE].clauses[3:5]"
+        ],
+        "unchanged": "Initial migration generation remains exactly 0; all other post-restore fields remain exact."
+      },
+      {
+        "id": "versioned-export-route-json-representation",
+        "scope": "Service.request('POST', '/api/v1/export', body) with a two-element tuple, integer status and bytes body only",
+        "reason": "The declared POST route returns the exact v4 JSON payload; serialized internal body bytes need strict decoding before host observation comparison.",
+        "authority": [
+          "library-cumulative-product-v1.json:interfaces M4 POST /api/v1/export",
+          "docs/library-cumulative-product-v1.md:M4 routes and commands"
+        ],
+        "unchanged": "All 18 case inputs, expected values and host scorer; all statuses, other methods/routes, non-byte bodies and malformed shapes remain exact."
+      }
+    ]
+  },
+  "observer_corrections": {
+    "v1": "16/18 histories passed; postrestore exact zero was not prescribed, and legacy Service.export bytes were not JSON decoded. Original definitions/failure preserved.",
+    "v2": "Host oracle correctly admitted prescribed generation domain;17/18 histories passed, explicit versioned export route byte body still caused observer encoding error. Original version/failure preserved.",
+    "v3": "Only explicit POST /api/v1/export byte-body normalization changed; all inputs, expected values and host scorer unchanged from v2.18/18 host verdicts passed.",
+    "held_out": false,
+    "raw_receipts_rewritten": false
+  },
+  "docker_executions": [
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-independent-reference-v3-ukzgssne/execution-receipt.json",
+      "sha256": "c57cca3be6a8435cb2f804fce6454b9ec0197a1e50a468fc9837ec336e3db950",
+      "status": "failed",
+      "physical": true,
+      "raw_outcomes": {
+        "passed": 17,
+        "wrong_answer": 1
+      },
+      "source_sha256": "c3a04f6af92ce7069d5e816005707dc00b305501c674277fdac42c159c49f414",
+      "suite_sha256": "8897e2d16b62dc388a442e79f5e54ea440c53145631141f4cf489db8b8132dcf",
+      "cleanup_verified": true,
+      "host_verdict": {
+        "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-independent-reference-v3-ukzgssne/host-verdict.json",
+        "sha256": "b3a38b02c7b45a10b27e947311023c92cb2ef0678de6710d629c7900bb059c30",
+        "passed": true,
+        "outcomes": [
+          {
+            "id": "m4-frozen-v0-migration-preserves-inventory",
+            "index": 0,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-frozen-m2-migration-preserves-inventory",
+            "index": 1,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-authored-m1-schema0-receipt-and-queued-job",
+            "index": 2,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-frozen-m2-receipt-bytes-through-backup-restore",
+            "index": 3,
+            "observed": true,
+            "passed": true,
+            "raw_status": "wrong_answer",
+            "status": "passed"
+          },
+          {
+            "id": "m4-cli-v1-document-revision-adapters",
+            "index": 4,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-v1-mutations-preserve-edit-token-authority",
+            "index": 5,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-fresh-revision-identity-and-numbered-adapters",
+            "index": 6,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-opt-in-export-and-strict-v1-routes",
+            "index": 7,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-restore-reused-number-new-content-identity",
+            "index": 8,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-unknown-schema-without-replacement",
+            "index": 9,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-missing-inherited-table-without-replacement",
+            "index": 10,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-wrong-content-digest-without-replacement",
+            "index": 11,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-missing-history-member-without-replacement",
+            "index": 12,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-wrong-current-head-without-replacement",
+            "index": 13,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-invalid-edit-token-without-replacement",
+            "index": 14,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-non-normalized-tags-without-replacement",
+            "index": 15,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-missing-collection-without-replacement",
+            "index": 16,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          },
+          {
+            "id": "m4-reject-missing-completed-receipt-without-replacement",
+            "index": 17,
+            "observed": true,
+            "passed": true,
+            "raw_status": "passed",
+            "status": "passed"
+          }
+        ],
+        "raw_receipt_sha256": "c57cca3be6a8435cb2f804fce6454b9ec0197a1e50a468fc9837ec336e3db950",
+        "oracle_protocol": "library-m4-independent-cases-v3"
+      }
+    },
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-inherited-m1-u4xjm4l0/execution-receipt.json",
+      "sha256": "83aa7fe4e4a32e44b7205485186c3e4b651d00e85b9be4e24299040f4ac476d9",
+      "status": "passed",
+      "physical": true,
+      "raw_outcomes": {
+        "passed": 8
+      },
+      "source_sha256": "c3a04f6af92ce7069d5e816005707dc00b305501c674277fdac42c159c49f414",
+      "suite_sha256": "97de89a67c0074290543230f5620a110b0d88dc0bbf546b31aafce1ca607093b",
+      "cleanup_verified": true,
+      "host_verdict": null
+    },
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-inherited-m2-8dk6r6hx/execution-receipt.json",
+      "sha256": "001313eb06c833970440ec4ac233f3c6015039875395b8447ed65a72a6a66ed4",
+      "status": "passed",
+      "physical": true,
+      "raw_outcomes": {
+        "passed": 12
+      },
+      "source_sha256": "c3a04f6af92ce7069d5e816005707dc00b305501c674277fdac42c159c49f414",
+      "suite_sha256": "fd358d78b5052cd406a3aaf870798fd226afcf9070d4c4691af8931d077505c7",
+      "cleanup_verified": true,
+      "host_verdict": null
+    },
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-inherited-m3-oi6lo3iz/execution-receipt.json",
+      "sha256": "b05069dc9d7bf48a804926ba597f20d97c23927aa80695505b93fcc99096ac5f",
+      "status": "passed",
+      "physical": true,
+      "raw_outcomes": {
+        "passed": 10
+      },
+      "source_sha256": "c3a04f6af92ce7069d5e816005707dc00b305501c674277fdac42c159c49f414",
+      "suite_sha256": "f4b5e9d03027e114e4099416f4fec447e9770e0635bf61248a5ddbbc7f7264c1",
+      "cleanup_verified": true,
+      "host_verdict": null
+    },
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-release-install-public-qpdt9hk_/execution-receipt.json",
+      "sha256": "a2469b06506cba2acffb8441c6b291754de69f79d5c3e10585c2df52999ab9bb",
+      "status": "passed",
+      "physical": true,
+      "raw_outcomes": {
+        "passed": 1
+      },
+      "source_sha256": "c3a04f6af92ce7069d5e816005707dc00b305501c674277fdac42c159c49f414",
+      "suite_sha256": "61701ed6ab8a9165671c817a2001646440514a464d96fac70be556c8cec189da",
+      "cleanup_verified": true,
+      "host_verdict": null
+    },
+    {
+      "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-revision-content-defect-4er6r5cq/execution-receipt.json",
+      "sha256": "a0ea0337209278b4ab99cda96f86ea55b167c4f9ac3f1b660a527e981a034d5d",
+      "status": "failed",
+      "physical": true,
+      "raw_outcomes": {
+        "wrong_answer": 1
+      },
+      "source_sha256": "af142eac6c17d72bfa24203062401ca82daa6d61d4825d41f5de2d64539ca96e",
+      "suite_sha256": "2b8408b48a4768363324e5af09dcc330b07d970447ac41655773fedb8d0c2c32",
+      "cleanup_verified": true,
+      "host_verdict": {
+        "path": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/083e26298305cc46/artifacts/gossip-m4-revision-content-defect-4er6r5cq/host-verdict.json",
+        "sha256": "894d120e7ffec179384da5bb36a70bbe158077bba8370334a521b0b6b1260389",
+        "passed": false,
+        "outcomes": [
+          {
+            "id": "m4-fresh-revision-identity-and-numbered-adapters",
+            "index": 0,
+            "observed": true,
+            "passed": false,
+            "raw_status": "wrong_answer",
+            "status": "wrong_answer"
+          }
+        ],
+        "raw_receipt_sha256": "a0ea0337209278b4ab99cda96f86ea55b167c4f9ac3f1b660a527e981a034d5d",
+        "oracle_protocol": "library-m4-independent-cases-v3"
+      }
+    }
+  ],
+  "browser": [
+    {
+      "workflow": "lifecycle",
+      "receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/lifecycle/browser/receipt.json",
+      "sha256": "3d57a03f5793e9c68a649da2334d0df62e1536261fadf094623087bbd8e33165",
+      "passed": true,
+      "contexts": 2,
+      "downloads": 0,
+      "page_errors": [],
+      "runtime": {
+        "node": "v24.19.0",
+        "playwright": "1.62.1",
+        "chromiumRevision": "1234",
+        "nodeExecutable": "/Users/westbrook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "nodeExecutableSha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1",
+        "browserVersion": "151.0.7922.34",
+        "executable": "/Users/westbrook/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "executableSha256": "a596b1cfc6353e987fcec8d71a23a28cd6a9e7a6b4e20b908e4c4fcffe51158e",
+        "manifestSha256": "ea21c22ae0f80f08446c1251cd1847f050fc3c8b11d61d89192c54dfdd348af7",
+        "driverSha256": "7436e8c8688f660ac1fb92446f0580d7644af1a91cd136c6609c63923ebe9d04"
+      },
+      "checks": [
+        "inherited_import_and_job_cancel_retry_commit_controls",
+        "accessible_keyboard_filters_pagination_and_id_selection",
+        "normalized_annotations_collection_registry_and_nonempty_removal_guard",
+        "two_context_stale_token_draft_preservation_explicit_reload_and_stale_pagination",
+        "text_path_refresh_noop_literal_history_and_cross_action_draft_preservation",
+        "external_delete_reopened_draft_keeps_stale_token_and_latest_deleted_state",
+        "delete_restore_tombstone_filters_and_reload_persistence",
+        "actual_browser_v1_routes_flattened_record4_deterministic_revision_ids_visible_ids_and_exact_legacy_adapters",
+        "desktop_mobile_literal_content_and_viewport_fit_and_keyboard_m3_actions"
+      ],
+      "persistence_receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/lifecycle/persistence-receipt.json",
+      "persistence_sha256": "70115040d9cd90c663e190df16ffc35aafc1daddb61f0473ef914e6975b5a078"
+    },
+    {
+      "workflow": "maintenance",
+      "receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/maintenance/browser/receipt.json",
+      "sha256": "949d58a1dd63d529b131627ecbfcbfdc5a05569ba76928f42b22cb19dc5b74ba",
+      "passed": true,
+      "contexts": 2,
+      "downloads": 9,
+      "page_errors": [],
+      "runtime": {
+        "node": "v24.19.0",
+        "playwright": "1.62.1",
+        "chromiumRevision": "1234",
+        "nodeExecutable": "/Users/westbrook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "nodeExecutableSha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1",
+        "browserVersion": "151.0.7922.34",
+        "executable": "/Users/westbrook/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "executableSha256": "a596b1cfc6353e987fcec8d71a23a28cd6a9e7a6b4e20b908e4c4fcffe51158e",
+        "manifestSha256": "ea21c22ae0f80f08446c1251cd1847f050fc3c8b11d61d89192c54dfdd348af7",
+        "driverSha256": "7436e8c8688f660ac1fb92446f0580d7644af1a91cd136c6609c63923ebe9d04"
+      },
+      "checks": [
+        "default_v2_export_actual_empty_and_nonempty_canonical_bytes_and_legacy_filename",
+        "actual_empty_selected_all_downloads_history_tombstones_exact_byte_cap_and_no_partial_result",
+        "eligible_enqueue_control_real_cli_worker_completion_terminal_controls_and_reindex",
+        "other_client_restore_removed_document_stale_row_open_retains_dirty_draft_until_explicit_reload",
+        "backup_duplicate_error_success_clears_error_stale_restore_no_change_or_retry_snapshot_replacement_removed_draft_preservation_and_old_client_fencing",
+        "actual_browser_v1_routes_flattened_record4_deterministic_revision_ids_visible_ids_and_exact_legacy_adapters",
+        "desktop_mobile_literal_content_and_viewport_fit_and_keyboard_m3_actions"
+      ],
+      "persistence_receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/maintenance/persistence-receipt.json",
+      "persistence_sha256": "14391c246cedbce91ee33bf35dde875b287a6b5436e3a3db10b5854ab2eec0a6"
+    },
+    {
+      "workflow": "dataset",
+      "receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/dataset/browser/receipt.json",
+      "sha256": "bd3609b81a6bbd4b62ab6a78ca73cbba117ef8c40b426e99142eb68e2233de74",
+      "passed": true,
+      "contexts": 2,
+      "downloads": 1,
+      "page_errors": [],
+      "runtime": {
+        "node": "v24.19.0",
+        "playwright": "1.62.1",
+        "chromiumRevision": "1234",
+        "nodeExecutable": "/Users/westbrook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "nodeExecutableSha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1",
+        "browserVersion": "151.0.7922.34",
+        "executable": "/Users/westbrook/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+        "executableSha256": "a596b1cfc6353e987fcec8d71a23a28cd6a9e7a6b4e20b908e4c4fcffe51158e",
+        "manifestSha256": "ea21c22ae0f80f08446c1251cd1847f050fc3c8b11d61d89192c54dfdd348af7",
+        "driverSha256": "7436e8c8688f660ac1fb92446f0580d7644af1a91cd136c6609c63923ebe9d04"
+      },
+      "checks": [
+        "actual_released_dataset_seven_documented_operations_shared_bytes_unicode_literal_html_history_and_annotations",
+        "documented_backup_explicit_restore_search_selected_canonical_v4_download_on_released_dataset",
+        "actual_browser_v1_routes_flattened_record4_deterministic_revision_ids_visible_ids_and_exact_legacy_adapters",
+        "desktop_mobile_literal_content_and_viewport_fit_and_keyboard_m3_actions"
+      ],
+      "persistence_receipt": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run/dataset/persistence-receipt.json",
+      "persistence_sha256": "c60ea6103e0e24243f95e64e27b7a93787892e9efe0e65edb0cc71c79ecf6a35"
+    }
+  ],
+  "visual_inspection": {
+    "viewed": [
+      "dataset/browser/page-0.png",
+      "dataset/browser/page-1.png",
+      "maintenance/browser/page-1.png"
+    ],
+    "root": "runs/m4-reference-qualification-5/20261003T080600-3718ef81/classes/9fc2aeb3fcae52db/artifacts/gossip-LibraryM4BrowserReferenceTests-t4w42ykn/run",
+    "finding": "Sampled desktop/mobile screenshots show wrapped revision IDs, accessible format selector and retained draft/recovery states without visible clipping. This is developer inspection, not user review."
+  },
+  "source_reviews": {
+    "runs/m4-independent-source-review-1.json": "b6f8c94c25f2769fe6f01907e918fa18663cf87a39a16bca0d8221034c0d16b0",
+    "runs/m4-independent-source-review-2.json": "2c559ef5f9e0692b511a4893297383e006f1dea65e07a5e5dcfe63c15395d7e9",
+    "runs/m4-host-oracle-source-review-1.json": "2e84b953f49ee3dee7ba85f6acd15ba4b39c9798ad230afdc94ef4c259c86db3"
+  },
+  "retained_failed_attempts": [
+    {
+      "path": "runs/m4-reference-qualification-1/20261003T074617-6369f0db/summary.json",
+      "sha256": "edd05d7b5af2663aa817a4513dbc6355e63b97eddd85baa64ba0ed5aef05f687",
+      "status": "failed",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 18,
+        "passed": 42
+      }
+    },
+    {
+      "path": "runs/m4-reference-qualification-2/20261003T074746-6a623e2e/summary.json",
+      "sha256": "686e65374836265b5a901d4233f29494adc13537fa9e970255854462605684d4",
+      "status": "failed",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 6,
+        "passed": 54
+      }
+    },
+    {
+      "path": "runs/m4-reference-qualification-3/20261003T074959-2b9a5789/summary.json",
+      "sha256": "bb868a06a77b9b35256ae34e79412867f6a281b35feac26bbdeaf740b6b264ca",
+      "status": "failed",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 4,
+        "passed": 56
+      }
+    },
+    {
+      "path": "runs/m4-reference-qualification-4/20261003T080016-63d32d07/summary.json",
+      "sha256": "f4946867d9d584f94261ee2797f023cddb873cb4c16c38f8b423f1190e5e5598",
+      "status": "failed",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 4,
+        "passed": 66
+      }
+    }
+  ],
+  "open_contract_decisions": [
+    "Incarnation rotation exception to migration control preservation.",
+    "Preserving incoming migrate last_error versus clearing successful operation diagnostics.",
+    "Signed-64-bit counter domains and exhaustion.",
+    "Explicit portable M1 bare-hex/null content-hash serialization.",
+    "Worker idle/stopped semantics.",
+    "Backup-root binding/adoption and permitted registry behavior."
+  ],
+  "qualification_limits": [
+    "Trusted authored application; not model-generated or statistical superiority evidence.",
+    "Declared crash hooks and process exits do not qualify arbitrary candidate fault boundaries or power loss.",
+    "Frozen development histories are not held-out; v2/v3 corrections followed observed v1/v2 errors.",
+    "No full six-trajectory cohort, generated distinguishing-test study or authenticated candidate-acceptance adapter is complete."
+  ],
+  "next_action": "Version public contract choices and implement cumulative candidate-acceptance compiler/receipt adapter over frozen arbitrary releases; preserve all six trajectories, peer-local vs matched central policy, generated distinguishing tests, actual restart/partition, complete cohort barrier and independent held-out confirmation."
+}

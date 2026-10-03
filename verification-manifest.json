@@ -30,7 +30,8 @@
     "MANIFEST.in"
   ],
   "retained_fixtures": [
-    "results/practical-live-1/accepted/single"
+    "results/practical-live-1/accepted/single",
+    "fixtures/library-m4-compatibility-v1"
   ],
   "lanes": [
     "fast",
@@ -2673,6 +2674,174 @@
       "disposition": "Run coherent static/offline gates before costly physical lanes; retain failures and exact source bindings.",
       "overlap_reason": "Distinct cumulative M3 boundary; does not qualify historical study sources or establish comparative superiority.",
       "distinct_defect": "Only enrolled jobs execute under current owner and epoch; forced process death preserves exactly one completed receipt."
+    },
+    "tests/test_library_m4_acceptance_cases_v1.py::LibraryM4AcceptanceCasesTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Independent migration/API expected histories remain immutable, bounded and separate from the child observer.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Independent public SQL snapshots and host-side definitions; no M4 implementation execution.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Independent migration/API expected histories remain immutable, bounded and separate from the child observer."
+    },
+    "tests/test_library_m4_backup_reference_v1.py::LibraryM4BackupReferenceTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Logical v3 backups preserve normalized v4 histories and highwater fences through atomic restore.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Real authored SQLite restore transactions, retained serialization and deliberate activation failure.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Logical v3 backups preserve normalized v4 histories and highwater fences through atomic restore."
+    },
+    "tests/test_library_m4_browser_reference_v1.py::LibraryM4BrowserReferenceTests": {
+      "lane": "browser",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 600,
+      "invariant": "Actual packaged release supports cumulative desktop/mobile workflows, durable drafts and exact v2/v4 downloads.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Pinned Playwright/Chromium, isolated contexts, installed authored source and raw HTTP/CLI evidence.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Actual packaged release supports cumulative desktop/mobile workflows, durable drafts and exact v2/v4 downloads."
+    },
+    "tests/test_library_m4_catalog_reference_v1.py::LibraryM4CatalogReferenceTests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Atomic migration preserves legacy content, jobs and receipts, rejects corruption and fences stale writers.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Real authored SQLite migrations, process crashes, rollback-journal recovery and worker exclusion.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Atomic migration preserves legacy content, jobs and receipts, rejects corruption and fences stale writers."
+    },
+    "tests/test_library_m4_clients_reference_v1.py::LibraryM4ClientsReferenceV1Tests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Versioned service/HTTP/CLI interfaces expose committed RECORD4 snapshots while preserving legacy shapes.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Owned loopback HTTP server, bounded fresh CLI processes and shared durable authored state.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Versioned service/HTTP/CLI interfaces expose committed RECORD4 snapshots while preserving legacy shapes."
+    },
+    "tests/test_library_m4_docker_reference_v1.py::LibraryM4DockerReferenceTests": {
+      "lane": "docker",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 600,
+      "invariant": "The combined tree passes inherited M1/M2/M3 and independent M4 histories and rejects a revision identity mutant.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Fresh pinned unprivileged Docker and host expectations; actual deterministic release and packaged public workflows.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "The combined tree passes inherited M1/M2/M3 and independent M4 histories and rejects a revision identity mutant."
+    },
+    "tests/test_library_m4_fixture_v1.py::LibraryM4FixtureTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Independently constructed v0/M2 SQLite bytes match declared legacy inventories and corruption recipes.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Read-only public SQLite fixtures, canonical manifests and exact binary/text package separation.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Independently constructed v0/M2 SQLite bytes match declared legacy inventories and corruption recipes."
+    },
+    "tests/test_library_m4_reference_v1.py::LibraryM4CompositionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Composed text and independent binaries preserve frozen seeds, compile and stage without overwrite.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Authored source compilation and exact no-clobber staging, without product execution.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Composed text and independent binaries preserve frozen seeds, compile and stage without overwrite."
+    },
+    "tests/test_library_m4_reference_v1.py::LibraryM4CumulativeReferenceTests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Combined normalized M4 preserves cumulative M1 histories and exact legacy receipts.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Bounded trusted authored processes and real SQLite; no arbitrary generated candidate execution.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Combined normalized M4 preserves cumulative M1 histories and exact legacy receipts."
+    },
+    "tests/test_library_m4_release_reference_v1.py::LibraryM4ReleaseReferenceTests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Release publication is deterministic, complete, symlink-safe and atomic without replacing an existing target.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Actual authored release commands, competing publishers, lexical path attacks and installed CLI workflow.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Release publication is deterministic, complete, symlink-safe and atomic without replacing an existing target."
+    },
+    "tests/test_library_cumulative_public_fixture_v1.py::LibraryCumulativePublicFixtureTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Frozen public workflow, regression grammar and independent snapshot bindings remain bounded and versioned.",
+      "isolation": "Dedicated class process; owned mutable fixtures and bounded processes; retained artifacts.",
+      "boundary": "Definition-only public assets and exact fixture hashes; no product application execution.",
+      "disposition": "Run static and all selected offline lanes before Docker/browser; retain failure evidence.",
+      "overlap_reason": "Distinct cumulative M4 development qualification; does not establish comparative swarm performance or whole study acceptance.",
+      "distinct_defect": "Frozen public workflow, regression grammar and independent snapshot bindings remain bounded and versioned."
+    },
+    "tests/test_library_m4_acceptance_cases_v2.py::LibraryM4AcceptanceCasesV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Versioned host oracle changes only the declared postrestore integer domain and decodes only legacy serialized export.",
+      "isolation": "Dedicated class process; no shared mutable inputs.",
+      "boundary": "Definition-only typed domain checks and immutable v1 bindings; no product execution.",
+      "disposition": "Complete before actual Docker host scoring.",
+      "distinct_defect": "Versioned host oracle changes only the declared postrestore integer domain and decodes only legacy serialized export.",
+      "overlap_reason": "Checks the new post-v1 correction and caller guard, preserving all original v1 evidence."
+    },
+    "tests/test_library_m4_docker_reference_v1.py::LibraryM4DockerHostOracleTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Host oracle never upgrades absent observations, infrastructure failures or malformed raw receipt identities.",
+      "isolation": "Dedicated class process; no shared mutable inputs.",
+      "boundary": "Inert raw receipt mutations and explicit raw-versus-oracle verdict separation; no Docker execution.",
+      "disposition": "Complete before actual Docker host scoring.",
+      "distinct_defect": "Host oracle never upgrades absent observations, infrastructure failures or malformed raw receipt identities.",
+      "overlap_reason": "Checks the new post-v1 correction and caller guard, preserving all original v1 evidence."
+    },
+    "tests/test_library_m4_acceptance_cases_v3.py::LibraryM4AcceptanceCasesV3Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Only explicitly named v1 export byte bodies are strict-decoded; frozen v2 inputs/expected/scorer remain unchanged.",
+      "isolation": "Dedicated definition-only class process.",
+      "boundary": "Inert observer representation checks and immutable version bindings; no product execution.",
+      "disposition": "Run before actual v3 Docker observation.",
+      "distinct_defect": "Broad coercion or altered expected values could hide output defects.",
+      "overlap_reason": "Narrow documented observer boundary correction after retained v2 failure."
     }
   },
   "audit": {

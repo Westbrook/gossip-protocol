@@ -1,0 +1,562 @@
+{
+  "additional_tables": [],
+  "application_path": "compatibility/m2.sqlite3",
+  "authored_history": [
+    "Before M2: submit/cancel/retry/prepare/commit batch-done at epoch 3; all five receipt documents reflect original bytes.",
+    "Before M2: empty-done completes an empty batch at epoch 1; migration to schema 2 starts catalog_generation 0.",
+    "generation 1: create normalized collection papers; generation 2: create normalized collection \u00e9tudes.",
+    "generations 3 and 4: refresh alpha.md twice (original -> revised -> original); edit_version becomes 3.",
+    "generation 5: replace alpha annotations; generation 6: delete alpha; generation 7: restore alpha; edit_version 6.",
+    "generation 8: replace shared-a annotations; edit_version 2.",
+    "generation 9: refresh tombstone; generation 10: replace its annotations; generation 11: delete it; edit_version 4.",
+    "Job-only transitions do not change generation: queue-later and queue-surrogate are newly admitted; running-later was cancelled, retried and prepared; cancelled-later was cancelled, retried and cancelled again; failed-type fails validation.",
+    "queue-surrogate is legal deferred admission: escaped unpaired surrogate text has null content hash; source validation and UTF-8 rejection are deferred, not migration work."
+  ],
+  "construction": "Independently authored SQL and semantic records; no evaluated application imports or calls.",
+  "constructor_runtime": {
+    "python": "3.11.15",
+    "sqlite": "3.53.1"
+  },
+  "constructor_sha256": "10b013d1284851ad874c23466b61ea248cd1b7f53f694de335a38efb4b493941",
+  "contract_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+  "expected": {
+    "active_documents": [
+      {
+        "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+        "document_id": "doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15",
+        "source": "alpha.md",
+        "source_id": "src-1f6437974d524609b50c24df95880dcfe0f4efd09eec8af7634ce20f92532099",
+        "text": "Shared caf\u00e9\nline two\r\n",
+        "title": "alpha.md"
+      },
+      {
+        "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "document_id": "doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442",
+        "source": "empty.txt",
+        "source_id": "src-bbcd4232fcf9b06586dc3746b1f771ef88837d4096d906dc1aadf00080dd275c",
+        "text": "",
+        "title": "empty.txt"
+      },
+      {
+        "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+        "document_id": "doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0",
+        "source": "shared-a.txt",
+        "source_id": "src-16ae43433bba6262595145d2a4bac06c1825690bdaf7b8e548e1c6d6237052cc",
+        "text": "Shared caf\u00e9\nline two\r\n",
+        "title": "shared-a.txt"
+      },
+      {
+        "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+        "document_id": "doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2",
+        "source": "shared-b.txt",
+        "source_id": "src-26eba12e35be886a541602767aadb5eb66a2bd4f1b672b7e44bdf9376f3de600",
+        "text": "Shared caf\u00e9\nline two\r\n",
+        "title": "shared-b.txt"
+      }
+    ],
+    "blobs": [
+      {
+        "blob_id": "blob-03e61bc6c89e48561450e66ec943d63ebd636050632bf76ef402d02bff4b1f89",
+        "bytes": 24,
+        "text": "Original tombstone text\n"
+      },
+      {
+        "blob_id": "blob-1df50e5885d6195cabc6ab510e0e666c240548da73d8df2968f4ebda5b334b4a",
+        "bytes": 24,
+        "text": "Revised tombstone text\r\n"
+      },
+      {
+        "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+        "bytes": 23,
+        "text": "Shared caf\u00e9\nline two\r\n"
+      },
+      {
+        "blob_id": "blob-82ecddb0db6d24dc90255f094c12013f76fa0c033e395bac899f4ac8c7cfb6fa",
+        "bytes": 17,
+        "text": "Alpha revised \u03a9\n"
+      },
+      {
+        "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "text": ""
+      }
+    ],
+    "collections": [
+      {
+        "name": "papers",
+        "total": 2
+      },
+      {
+        "name": "\u00e9tudes",
+        "total": 2
+      }
+    ],
+    "counts": {
+      "active": 4,
+      "blob_bytes": 88,
+      "blobs": 5,
+      "deleted": 1,
+      "documents": 5,
+      "jobs": 7,
+      "revisions": 8
+    },
+    "generation": 11,
+    "histories2": {
+      "doc-0dcb427ef5ba704769fcce751285821f48ff2c305ca387f0adfb9984ba6c1e5f": [
+        {
+          "blob_id": "blob-03e61bc6c89e48561450e66ec943d63ebd636050632bf76ef402d02bff4b1f89",
+          "revision": 1,
+          "text": "Original tombstone text\n"
+        },
+        {
+          "blob_id": "blob-1df50e5885d6195cabc6ab510e0e666c240548da73d8df2968f4ebda5b334b4a",
+          "revision": 2,
+          "text": "Revised tombstone text\r\n"
+        }
+      ],
+      "doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "text": "Shared caf\u00e9\nline two\r\n"
+        },
+        {
+          "blob_id": "blob-82ecddb0db6d24dc90255f094c12013f76fa0c033e395bac899f4ac8c7cfb6fa",
+          "revision": 2,
+          "text": "Alpha revised \u03a9\n"
+        },
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 3,
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ],
+      "doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442": [
+        {
+          "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "revision": 1,
+          "text": ""
+        }
+      ],
+      "doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ],
+      "doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ]
+    },
+    "histories4": {
+      "doc-0dcb427ef5ba704769fcce751285821f48ff2c305ca387f0adfb9984ba6c1e5f": [
+        {
+          "blob_id": "blob-03e61bc6c89e48561450e66ec943d63ebd636050632bf76ef402d02bff4b1f89",
+          "revision": 1,
+          "revision_id": "rev-3d158ebafc49690059278aab4f90f6529b9722d721b43511c530b1a7cf70945e",
+          "text": "Original tombstone text\n"
+        },
+        {
+          "blob_id": "blob-1df50e5885d6195cabc6ab510e0e666c240548da73d8df2968f4ebda5b334b4a",
+          "revision": 2,
+          "revision_id": "rev-1e88f875f29ab27291e1c3491eb1a7ef16c1c6a6c5f8fbb8755f9f98ea79cd09",
+          "text": "Revised tombstone text\r\n"
+        }
+      ],
+      "doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "revision_id": "rev-7a11bb08f3bad4ab56d61e765089d1e4a147b1d36519f96327897b098ce94f31",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        },
+        {
+          "blob_id": "blob-82ecddb0db6d24dc90255f094c12013f76fa0c033e395bac899f4ac8c7cfb6fa",
+          "revision": 2,
+          "revision_id": "rev-9390cbdc3bff3db7470c5f304bb93f0d191aecb41e90ca1ae139b07ff7895997",
+          "text": "Alpha revised \u03a9\n"
+        },
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 3,
+          "revision_id": "rev-cd4edf720207269273812fbfe2b646b26dd66fa96fc0fc988fe224974c93a7d3",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ],
+      "doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442": [
+        {
+          "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "revision": 1,
+          "revision_id": "rev-4a552fa28c6e7c135efe0e8eaa4d68e4ae33606145e51af8d3d8f9734e01390a",
+          "text": ""
+        }
+      ],
+      "doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "revision_id": "rev-2c96afab12ffacd5da0122919da48efe2ce2c35e93be0d426a75db1fc632dfa5",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ],
+      "doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2": [
+        {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "revision_id": "rev-e626ad390607370779348505178e6236d00847c623b7f0c4e95b6164b42e76ee",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        }
+      ]
+    },
+    "jobs": [
+      {
+        "content_hashes_json": "[\"288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"03e61bc6c89e48561450e66ec943d63ebd636050632bf76ef402d02bff4b1f89\"]",
+        "job": {
+          "completed": 5,
+          "epoch": 3,
+          "error": null,
+          "job_id": "batch-done",
+          "state": "completed",
+          "total": 5
+        },
+        "manifest_json": "[{\"source\":\"alpha.md\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\"},{\"source\":\"empty.txt\",\"text\":\"\"},{\"source\":\"shared-a.txt\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\"},{\"source\":\"shared-b.txt\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\"},{\"source\":\"tombstone/\\u65e7.md\",\"text\":\"Original tombstone text\\n\"}]",
+        "receipt_json": "{\"documents\":[{\"blob_id\":\"blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"document_id\":\"doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15\",\"source\":\"alpha.md\",\"source_id\":\"src-1f6437974d524609b50c24df95880dcfe0f4efd09eec8af7634ce20f92532099\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\",\"title\":\"alpha.md\"},{\"blob_id\":\"blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"document_id\":\"doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442\",\"source\":\"empty.txt\",\"source_id\":\"src-bbcd4232fcf9b06586dc3746b1f771ef88837d4096d906dc1aadf00080dd275c\",\"text\":\"\",\"title\":\"empty.txt\"},{\"blob_id\":\"blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"document_id\":\"doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0\",\"source\":\"shared-a.txt\",\"source_id\":\"src-16ae43433bba6262595145d2a4bac06c1825690bdaf7b8e548e1c6d6237052cc\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\",\"title\":\"shared-a.txt\"},{\"blob_id\":\"blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16\",\"document_id\":\"doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2\",\"source\":\"shared-b.txt\",\"source_id\":\"src-26eba12e35be886a541602767aadb5eb66a2bd4f1b672b7e44bdf9376f3de600\",\"text\":\"Shared caf\\u00e9\\nline two\\r\\n\",\"title\":\"shared-b.txt\"},{\"blob_id\":\"blob-03e61bc6c89e48561450e66ec943d63ebd636050632bf76ef402d02bff4b1f89\",\"document_id\":\"doc-0dcb427ef5ba704769fcce751285821f48ff2c305ca387f0adfb9984ba6c1e5f\",\"source\":\"tombstone/\\u65e7.md\",\"source_id\":\"src-6353a5401b3e03745792da07e80c1915b828bdac57a788e806552a772408b837\",\"text\":\"Original tombstone text\\n\",\"title\":\"\\u65e7.md\"}],\"job\":{\"completed\":5,\"epoch\":3,\"error\":null,\"job_id\":\"batch-done\",\"state\":\"completed\",\"total\":5}}"
+      },
+      {
+        "content_hashes_json": "[\"d353a99eb4556847ceeb3c306ac886cf6b4fa13043eb1864b9aeb0607fd5f2cc\"]",
+        "job": {
+          "completed": 0,
+          "epoch": 4,
+          "error": null,
+          "job_id": "cancelled-later",
+          "state": "cancelled",
+          "total": 1
+        },
+        "manifest_json": "[{\"source\":\"future/cancelled.txt\",\"text\":\"Cancelled\"}]",
+        "receipt_json": null
+      },
+      {
+        "content_hashes_json": "[]",
+        "job": {
+          "completed": 0,
+          "epoch": 1,
+          "error": null,
+          "job_id": "empty-done",
+          "state": "completed",
+          "total": 0
+        },
+        "manifest_json": "[]",
+        "receipt_json": "{\"documents\":[],\"job\":{\"completed\":0,\"epoch\":1,\"error\":null,\"job_id\":\"empty-done\",\"state\":\"completed\",\"total\":0}}"
+      },
+      {
+        "content_hashes_json": "[\"753a6c7709b73b4da9f136ba35ff08e473a00b65ef9c03f5c0aa00c613c9bd8e\"]",
+        "job": {
+          "completed": 0,
+          "epoch": 1,
+          "error": "unsupported_type",
+          "job_id": "failed-type",
+          "state": "failed",
+          "total": 1
+        },
+        "manifest_json": "[{\"source\":\"future/tool.exe\",\"text\":\"Not a supported source\"}]",
+        "receipt_json": null
+      },
+      {
+        "content_hashes_json": "[\"a29803ca7de3f5a3bf4f0f2f1c8b9780448fe16cdc09a926b69013d5c8b50f67\"]",
+        "job": {
+          "completed": 0,
+          "epoch": 1,
+          "error": null,
+          "job_id": "queue-later",
+          "state": "queued",
+          "total": 1
+        },
+        "manifest_json": "[{\"source\":\"future/queued.txt\",\"text\":\"Queued, not imported\\n\"}]",
+        "receipt_json": null
+      },
+      {
+        "content_hashes_json": "[null]",
+        "job": {
+          "completed": 0,
+          "epoch": 1,
+          "error": null,
+          "job_id": "queue-surrogate",
+          "state": "queued",
+          "total": 1
+        },
+        "manifest_json": "[{\"source\":\"../deferred.txt\",\"text\":\"\\ud800\"}]",
+        "receipt_json": null
+      },
+      {
+        "content_hashes_json": "[\"3239b9d070caf118323a973e6024cdf895a7cf43838e441e12b185f7f4bad9df\"]",
+        "job": {
+          "completed": 0,
+          "epoch": 3,
+          "error": null,
+          "job_id": "running-later",
+          "state": "running",
+          "total": 1
+        },
+        "manifest_json": "[{\"source\":\"future/running.html\",\"text\":\"<i>Not committed</i>\"}]",
+        "receipt_json": null
+      }
+    ],
+    "migration_response": {
+      "documents": 5,
+      "from_schema": 2,
+      "jobs": 7,
+      "migrated": true,
+      "to_schema": 4
+    },
+    "records2": [
+      {
+        "collections": [
+          "papers",
+          "\u00e9tudes"
+        ],
+        "deleted": false,
+        "document": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "document_id": "doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15",
+          "source": "alpha.md",
+          "source_id": "src-1f6437974d524609b50c24df95880dcfe0f4efd09eec8af7634ce20f92532099",
+          "text": "Shared caf\u00e9\nline two\r\n",
+          "title": "alpha.md"
+        },
+        "edit_version": 6,
+        "notes": "<b>Literal note</b>\ne\u0301 / \u00e9 \ud83e\uddea",
+        "revision": 3,
+        "tags": [
+          "caf\u00e9",
+          "strasse"
+        ]
+      },
+      {
+        "collections": [],
+        "deleted": false,
+        "document": {
+          "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "document_id": "doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442",
+          "source": "empty.txt",
+          "source_id": "src-bbcd4232fcf9b06586dc3746b1f771ef88837d4096d906dc1aadf00080dd275c",
+          "text": "",
+          "title": "empty.txt"
+        },
+        "edit_version": 1,
+        "notes": "",
+        "revision": 1,
+        "tags": []
+      },
+      {
+        "collections": [
+          "papers"
+        ],
+        "deleted": false,
+        "document": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "document_id": "doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0",
+          "source": "shared-a.txt",
+          "source_id": "src-16ae43433bba6262595145d2a4bac06c1825690bdaf7b8e548e1c6d6237052cc",
+          "text": "Shared caf\u00e9\nline two\r\n",
+          "title": "shared-a.txt"
+        },
+        "edit_version": 2,
+        "notes": "Shared does not mean the same document.",
+        "revision": 1,
+        "tags": [
+          "shared"
+        ]
+      },
+      {
+        "collections": [],
+        "deleted": false,
+        "document": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "document_id": "doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2",
+          "source": "shared-b.txt",
+          "source_id": "src-26eba12e35be886a541602767aadb5eb66a2bd4f1b672b7e44bdf9376f3de600",
+          "text": "Shared caf\u00e9\nline two\r\n",
+          "title": "shared-b.txt"
+        },
+        "edit_version": 1,
+        "notes": "",
+        "revision": 1,
+        "tags": []
+      },
+      {
+        "collections": [
+          "\u00e9tudes"
+        ],
+        "deleted": true,
+        "document": {
+          "blob_id": "blob-1df50e5885d6195cabc6ab510e0e666c240548da73d8df2968f4ebda5b334b4a",
+          "document_id": "doc-0dcb427ef5ba704769fcce751285821f48ff2c305ca387f0adfb9984ba6c1e5f",
+          "source": "tombstone/\u65e7.md",
+          "source_id": "src-6353a5401b3e03745792da07e80c1915b828bdac57a788e806552a772408b837",
+          "text": "Revised tombstone text\r\n",
+          "title": "\u65e7.md"
+        },
+        "edit_version": 4,
+        "notes": "Retained on deletion",
+        "revision": 2,
+        "tags": [
+          "archive"
+        ]
+      }
+    ],
+    "records4": [
+      {
+        "collections": [
+          "papers",
+          "\u00e9tudes"
+        ],
+        "current_revision": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 3,
+          "revision_id": "rev-cd4edf720207269273812fbfe2b646b26dd66fa96fc0fc988fe224974c93a7d3",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        },
+        "deleted": false,
+        "document_id": "doc-1987335a5a35396fabb1dc200353e9ffef855c380d58fb331afabeaf141ddf15",
+        "edit_version": 6,
+        "notes": "<b>Literal note</b>\ne\u0301 / \u00e9 \ud83e\uddea",
+        "source": "alpha.md",
+        "source_id": "src-1f6437974d524609b50c24df95880dcfe0f4efd09eec8af7634ce20f92532099",
+        "tags": [
+          "caf\u00e9",
+          "strasse"
+        ],
+        "title": "alpha.md"
+      },
+      {
+        "collections": [],
+        "current_revision": {
+          "blob_id": "blob-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "revision": 1,
+          "revision_id": "rev-4a552fa28c6e7c135efe0e8eaa4d68e4ae33606145e51af8d3d8f9734e01390a",
+          "text": ""
+        },
+        "deleted": false,
+        "document_id": "doc-9322f27cfd38a42da01470abc75c0d80e478a690cde1f669ae807f0a88d92442",
+        "edit_version": 1,
+        "notes": "",
+        "source": "empty.txt",
+        "source_id": "src-bbcd4232fcf9b06586dc3746b1f771ef88837d4096d906dc1aadf00080dd275c",
+        "tags": [],
+        "title": "empty.txt"
+      },
+      {
+        "collections": [
+          "papers"
+        ],
+        "current_revision": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "revision_id": "rev-2c96afab12ffacd5da0122919da48efe2ce2c35e93be0d426a75db1fc632dfa5",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        },
+        "deleted": false,
+        "document_id": "doc-c851217c2bd9534d88a3637c3c3335a3a178462b7300f913c10e595bde10aaf0",
+        "edit_version": 2,
+        "notes": "Shared does not mean the same document.",
+        "source": "shared-a.txt",
+        "source_id": "src-16ae43433bba6262595145d2a4bac06c1825690bdaf7b8e548e1c6d6237052cc",
+        "tags": [
+          "shared"
+        ],
+        "title": "shared-a.txt"
+      },
+      {
+        "collections": [],
+        "current_revision": {
+          "blob_id": "blob-288d1e42ce72a7182f8d2ff132ee8ef0856847f3b6098ba58bd8810248188e16",
+          "revision": 1,
+          "revision_id": "rev-e626ad390607370779348505178e6236d00847c623b7f0c4e95b6164b42e76ee",
+          "text": "Shared caf\u00e9\nline two\r\n"
+        },
+        "deleted": false,
+        "document_id": "doc-fd8d98402927aec57bcdd304221030984300bd55971af5934c2e5315c802aab2",
+        "edit_version": 1,
+        "notes": "",
+        "source": "shared-b.txt",
+        "source_id": "src-26eba12e35be886a541602767aadb5eb66a2bd4f1b672b7e44bdf9376f3de600",
+        "tags": [],
+        "title": "shared-b.txt"
+      },
+      {
+        "collections": [
+          "\u00e9tudes"
+        ],
+        "current_revision": {
+          "blob_id": "blob-1df50e5885d6195cabc6ab510e0e666c240548da73d8df2968f4ebda5b334b4a",
+          "revision": 2,
+          "revision_id": "rev-1e88f875f29ab27291e1c3491eb1a7ef16c1c6a6c5f8fbb8755f9f98ea79cd09",
+          "text": "Revised tombstone text\r\n"
+        },
+        "deleted": true,
+        "document_id": "doc-0dcb427ef5ba704769fcce751285821f48ff2c305ca387f0adfb9984ba6c1e5f",
+        "edit_version": 4,
+        "notes": "Retained on deletion",
+        "source": "tombstone/\u65e7.md",
+        "source_id": "src-6353a5401b3e03745792da07e80c1915b828bdac57a788e806552a772408b837",
+        "tags": [
+          "archive"
+        ],
+        "title": "\u65e7.md"
+      }
+    ],
+    "repeat_migration_response": {
+      "documents": 5,
+      "from_schema": 4,
+      "jobs": 7,
+      "migrated": false,
+      "to_schema": 4
+    }
+  },
+  "fixture_version": "library-m4-compatibility-v1",
+  "limits": {
+    "corruption_destination": "fresh isolated copy; never the frozen original",
+    "max_corruption_sql_statements": 2,
+    "max_snapshot_bytes": 1048576
+  },
+  "name": "m2",
+  "purpose": "public_compatibility",
+  "schema": 2,
+  "snapshot_bytes": 69632,
+  "snapshot_sha256": "4d52246ca238887d51649fbc63b923a8dfbdfd545238a83cb6c5e0a5df94c1c2",
+  "tables": [
+    {
+      "name": "blobs",
+      "sql": "CREATE TABLE blobs(blob_id TEXT PRIMARY KEY,content BLOB NOT NULL)"
+    },
+    {
+      "name": "collections",
+      "sql": "CREATE TABLE collections(name TEXT PRIMARY KEY)"
+    },
+    {
+      "name": "documents",
+      "sql": "CREATE TABLE documents(document_id TEXT PRIMARY KEY,source_id TEXT UNIQUE NOT NULL,source TEXT UNIQUE NOT NULL,blob_id TEXT NOT NULL,title TEXT NOT NULL)"
+    },
+    {
+      "name": "jobs",
+      "sql": "CREATE TABLE jobs(job_id TEXT PRIMARY KEY,epoch INTEGER NOT NULL,state TEXT NOT NULL,total INTEGER NOT NULL,completed INTEGER NOT NULL,error TEXT,manifest TEXT NOT NULL,content_hashes TEXT NOT NULL,receipt TEXT)"
+    },
+    {
+      "name": "lifecycle",
+      "sql": "CREATE TABLE lifecycle(document_id TEXT PRIMARY KEY REFERENCES documents(document_id),current_revision INTEGER NOT NULL,edit_version INTEGER NOT NULL,deleted INTEGER NOT NULL,notes TEXT NOT NULL,tags TEXT NOT NULL,collections TEXT NOT NULL)"
+    },
+    {
+      "name": "metadata",
+      "sql": "CREATE TABLE metadata(key TEXT PRIMARY KEY,value TEXT NOT NULL)"
+    },
+    {
+      "name": "revisions",
+      "sql": "CREATE TABLE revisions(document_id TEXT NOT NULL REFERENCES documents(document_id),revision INTEGER NOT NULL,blob_id TEXT NOT NULL REFERENCES blobs(blob_id),PRIMARY KEY(document_id,revision))"
+    }
+  ]
+}
