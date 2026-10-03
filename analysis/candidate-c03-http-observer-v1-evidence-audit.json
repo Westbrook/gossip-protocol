@@ -1,0 +1,468 @@
+{
+  "acceptance_authority": false,
+  "census": {
+    "authenticated_sent_complete": 13,
+    "complete_exchanges": 9,
+    "observed_rows": 14,
+    "planned_requests": 14,
+    "unknown_request_outcomes": 1
+  },
+  "comparison_authority": "not_registered",
+  "conclusions": [
+    "All 14 literal request identities and original server/epoch identities reconcile.",
+    "All 91 field-evidence records for the 13 attributable rows reconcile to retained raw bytes.",
+    "M05 retains diagnostic-only data and the request-1/stop-1 incomplete completed-step suffix.",
+    "M08 contributes zero requests and zero semantic rows; M09 preserves readable conflicting headers with unavailable body.",
+    "Original qualification histories have no prospectively registered semantic expectations; no fresh execution or acceptance is claimed."
+  ],
+  "fresh_execution": false,
+  "histories": [
+    {
+      "census": {
+        "authenticated_sent_complete": 4,
+        "complete_exchanges": 4,
+        "observed_rows": 4,
+        "planned_requests": 4,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": true,
+          "body_bytes": 48,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        },
+        {
+          "body_available": true,
+          "body_bytes": 35,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-2"
+        },
+        {
+          "body_available": true,
+          "body_bytes": 39,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-3"
+        },
+        {
+          "body_available": true,
+          "body_bytes": 29,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 409,
+          "step_id": "request-4"
+        }
+      ],
+      "origin_id": "M01",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 2,
+        "complete_exchanges": 1,
+        "observed_rows": 2,
+        "planned_requests": 2,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": true,
+          "body_bytes": 31,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        },
+        {
+          "body_available": false,
+          "body_bytes": null,
+          "body_limitation": "incomplete_content_length",
+          "complete_exchange": false,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 409,
+          "step_id": "request-2"
+        }
+      ],
+      "origin_id": "M02",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 1,
+        "complete_exchanges": 0,
+        "observed_rows": 1,
+        "planned_requests": 1,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": false,
+          "body_bytes": null,
+          "body_limitation": "awaiting_close;timeout",
+          "complete_exchange": false,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        }
+      ],
+      "origin_id": "M03",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 2,
+        "complete_exchanges": 1,
+        "observed_rows": 2,
+        "planned_requests": 2,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": true,
+          "body_bytes": 4009,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        },
+        {
+          "body_available": false,
+          "body_bytes": null,
+          "body_limitation": "response_limit;response_limit",
+          "complete_exchange": false,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-2"
+        }
+      ],
+      "origin_id": "M04",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 0,
+        "complete_exchanges": 0,
+        "observed_rows": 1,
+        "planned_requests": 1,
+        "unknown_request_outcomes": 1
+      },
+      "incomplete_completed_step_suffix": [
+        "request-1",
+        "stop-1"
+      ],
+      "observations": [
+        {
+          "body_available": false,
+          "body_bytes": null,
+          "body_limitation": null,
+          "complete_exchange": null,
+          "diagnostic_only": true,
+          "eligible_facts": false,
+          "listener_after": null,
+          "listener_before": null,
+          "status": null,
+          "step_id": "request-1"
+        }
+      ],
+      "origin_id": "M05",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 1,
+        "complete_exchanges": 1,
+        "observed_rows": 1,
+        "planned_requests": 1,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": true,
+          "body_bytes": 14,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "0.0.0.0"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "0.0.0.0"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        }
+      ],
+      "origin_id": "M06",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 2,
+        "complete_exchanges": 2,
+        "observed_rows": 2,
+        "planned_requests": 2,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": true,
+          "body_bytes": 40,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        },
+        {
+          "body_available": true,
+          "body_bytes": 40,
+          "body_limitation": null,
+          "complete_exchange": true,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-2"
+        }
+      ],
+      "origin_id": "M07",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 0,
+        "complete_exchanges": 0,
+        "observed_rows": 0,
+        "planned_requests": 0,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [],
+      "origin_id": "M08",
+      "original_cleanup_verified": true
+    },
+    {
+      "census": {
+        "authenticated_sent_complete": 1,
+        "complete_exchanges": 0,
+        "observed_rows": 1,
+        "planned_requests": 1,
+        "unknown_request_outcomes": 0
+      },
+      "incomplete_completed_step_suffix": [],
+      "observations": [
+        {
+          "body_available": false,
+          "body_bytes": null,
+          "body_limitation": "conflicting_content_length;parse_stopped",
+          "complete_exchange": false,
+          "diagnostic_only": false,
+          "eligible_facts": true,
+          "listener_after": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "listener_before": {
+            "addresses": [
+              "127.0.0.1"
+            ],
+            "limitation": null
+          },
+          "status": 200,
+          "step_id": "request-1"
+        }
+      ],
+      "origin_id": "M09",
+      "original_cleanup_verified": true
+    }
+  ],
+  "independent_audit": {
+    "bytes": 11562,
+    "path": "runs/candidate-c03-http-observer-reanalysis-audit-1.json",
+    "sha256": "0d3dee99e7ed4c1ff79b7d16f9806bce22d9c4db2ab621ad052c938a50116432"
+  },
+  "kind": "Root-authored public summary of the named independent audit, not a second independent review.",
+  "new_comparative_samples": 0,
+  "new_engine_calls": 0,
+  "new_provider_calls": 0,
+  "original_origin_manifest": {
+    "bytes": 1010350,
+    "path": "analysis/candidate-c03-http-qualification-origin-v1.json",
+    "sha256": "3b0e8bc9c3c825c453cff7246731c1fdc6777773cb043a319fda21948af564bb"
+  },
+  "reanalysis": {
+    "bytes": 111720,
+    "path": "runs/candidate-c03-http-observer-reanalysis-1/reanalysis.json",
+    "sha256": "3e6e3a0813fb76e754748650d7058688bc34907f3177bb1f9f4bad08ab27781d"
+  },
+  "schema": "candidate-http-observer-v1-public-evidence-audit",
+  "status": "clear"
+}

@@ -35,7 +35,8 @@
     "analysis/candidate-b03-runtime-compatibility-plan-v1.json",
     "analysis/candidate-b03-mount-inventory-plan-v1.json",
     "fixtures/candidate-http-probe-hostname-v1",
-    "analysis/candidate-c03-http-probe-hostname-plan-v2.json"
+    "analysis/candidate-c03-http-probe-hostname-plan-v2.json",
+    "analysis/candidate-c03-http-qualification-origin-v1.json"
   ],
   "lanes": [
     "fast",
@@ -4180,6 +4181,78 @@
       "boundary": "Synthetic evaluator-authored mechanics only; no HTTP product-catalog, whole-project acceptance or swarm superiority claim. Both pending user approvals remain independent.",
       "disposition": "Run once only after combined static/offline qualification, exact source review and a fresh complete source/runtime/control freeze; preserve failures without automatic retry or output-tuned predicates.",
       "overlap_reason": "The v1 physical failure remains frozen; changed donor-bound v2 semantics require one complete new physical run with the same nine controls and fourteen declared request rows."
+    },
+    "tests/test_candidate_http_semantics_v1.py::HttpSemanticFacetsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Pure semantic facets preserve independent supported failures and unavailable or unspecified facts without product acceptance authority.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "Pure semantic facets preserve independent supported failures and unavailable or unspecified facts without product acceptance authority.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_head_v1.py::HttpHeadFactsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Final response status and syntactically complete fields retain bounded independent byte provenance without asserting body framing.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "Final response status and syntactically complete fields retain bounded independent byte provenance without asserting body framing.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_head_v1.py::HttpHeadInformationalTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only complete valid informational prefixes permit final-head extraction; malformed or unsupported prefixes never create a final status.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "Only complete valid informational prefixes permit final-head extraction; malformed or unsupported prefixes never create a final status.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_head_v1.py::HttpHeadBoundsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Header, count and capture bounds preserve eligible prefix facts without reading overflow sentinel bytes or granting framing authority.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "Header, count and capture bounds preserve eligible prefix facts without reading overflow sentinel bytes or granting framing authority.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_observation_v1.py::HttpObservationAdmissionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A trusted original origin or permanently synthetic fixture admission is required before read-only journal reconstruction; forged identities and raw evidence reject.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "A trusted original origin or permanently synthetic fixture admission is required before read-only journal reconstruction; forged identities and raw evidence reject.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
+    },
+    "tests/test_candidate_http_observation_v1.py::HttpObservationFacetTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Attributable complete-send facts map independently while partial bodies and server-exit diagnostics retain uncertainty and zero acceptance authority.",
+      "isolation": "Separate class worker with portable synthetic input and disposable evidence directories; no Engine, provider, candidate process or original-run dependency.",
+      "overlap": "Pure parser/semantics and composed journal reconstruction establish different trust boundaries.",
+      "distinct_defect": "Attributable complete-send facts map independently while partial bodies and server-exit diagnostics retain uncertainty and zero acceptance authority.",
+      "boundary": "Observer qualification only. Synthetic records cannot acquire historical physical origin; original journal reanalysis is separately retained historical input, never fresh acceptance.",
+      "disposition": "Root runs combined static and affected offline classes after source review; historical reanalysis follows and grants no product-comparison authority.",
+      "overlap_reason": "These checks do not replace original physical mechanics, full ten-family catalog, state effects, prospective expectation registration or production independent acceptance."
     }
   },
   "audit": {

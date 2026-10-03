@@ -1,0 +1,193 @@
+{
+  "base_commit": "c351d1fc6572528c5ea47b671d73889692d469db",
+  "historical_reanalysis": {
+    "acceptance_authority": false,
+    "census": {
+      "authenticated_sent_complete": 13,
+      "complete_exchanges": 9,
+      "observed_rows": 14,
+      "planned_requests": 14,
+      "unknown_request_outcomes": 1
+    },
+    "comparison_authority": "not_registered",
+    "diagnostic_rows": 1,
+    "eligible_complete_bodies": 9,
+    "eligible_rows": 13,
+    "eligible_unavailable_bodies": 4,
+    "field_evidence_records_independently_checked": 91,
+    "forbidden_io_attempts": [],
+    "fresh_execution": false,
+    "histories": 9,
+    "independent_result_audit": {
+      "bytes": 11562,
+      "path": "runs/candidate-c03-http-observer-reanalysis-audit-1.json",
+      "sha256": "0d3dee99e7ed4c1ff79b7d16f9806bce22d9c4db2ab621ad052c938a50116432"
+    },
+    "public_audit_summary": {
+      "bytes": 12879,
+      "path": "analysis/candidate-c03-http-observer-v1-evidence-audit.json",
+      "sha256": "0e36f46919ef9dfcf15f5b0f63765dfc4c866ff1ebfbc841d8733403695a2f33"
+    },
+    "purpose": "Original harness qualification fact reanalysis only.",
+    "result": {
+      "bytes": 111720,
+      "path": "runs/candidate-c03-http-observer-reanalysis-1/reanalysis.json",
+      "sha256": "3e6e3a0813fb76e754748650d7058688bc34907f3177bb1f9f4bad08ab27781d"
+    },
+    "reviewed_script": {
+      "bytes": 5227,
+      "path": "runs/candidate-c03-http-observer-reanalysis-definition-1/reanalyse-v2.py",
+      "sha256": "6db7520d20d2b2885e8882f31e241d4a107a3214f6c40a8a9be84795e06dfb34"
+    }
+  },
+  "interpretation": "Engineering/evaluator qualification only. Latest comparative model results and budget accounting remain unchanged; no swarm superiority or statistical proof is inferred.",
+  "new_candidate_dispatches": 0,
+  "new_comparative_samples": 0,
+  "new_engine_calls": 0,
+  "new_provider_calls": 0,
+  "offline": {
+    "class_workers": 6,
+    "current_source_input_matches": 491,
+    "duration_seconds": 11.091902208514512,
+    "inputs": {
+      "bytes": 57674,
+      "path": "runs/candidate-c03-http-observer-offline-1/20261003T213940-bfae7471/inputs.json",
+      "sha256": "e0375f9c5f8aa359466b9364f9be7a8f79f3664e8f8340d7c3d51ec0abf43430"
+    },
+    "methods_by_component": {
+      "head": 30,
+      "journal_adapter": 38,
+      "semantics": 48
+    },
+    "outcomes": {
+      "passed": 116
+    },
+    "required_lanes": [
+      "fast"
+    ],
+    "reused_classes": 0,
+    "scope": "Targeted six-class qualification, not the entire repository test suite.",
+    "selected_methods": 116,
+    "source_runtime_drift": false,
+    "static": {
+      "bytes": 76536,
+      "path": "runs/candidate-c03-http-observer-offline-1/20261003T213940-bfae7471/static.json",
+      "sha256": "5a68043394929e0323ab323afb7d3187ea287e3b945a83b4cba348f50e8bd594"
+    },
+    "summary": {
+      "bytes": 63575,
+      "path": "runs/candidate-c03-http-observer-offline-1/20261003T213940-bfae7471/summary.json",
+      "sha256": "50a5df7ea688aadefd06517c98d25693fea39f7d660aa8701b34e132d71379f5"
+    },
+    "type_coverage": "Configured type roots passed with 117 unchanged historical baseline diagnostics and no new blocking diagnostics; not whole-repository type safety.",
+    "unexpected_skips": 0,
+    "worker_budget": 4
+  },
+  "original_origin_review": {
+    "bytes": 4237,
+    "path": "runs/candidate-c03-http-origin-review-1.json",
+    "sha256": "6d50a6fd4eabd130473afd9601fce952a472787e755207ded51fafc5759d66b7"
+  },
+  "pending_authorizations_unchanged": [
+    "Previously requested provider-payload transfer approval.",
+    "Previously requested installation approval for three B03 v4 CLI qualification files."
+  ],
+  "recorded_utc": "2026-10-03T21:55:53.492360+00:00",
+  "remaining_scope": [
+    "All ten HTTP case families and prospectively frozen, independently derived product expectations.",
+    "All submit forms, job state/action/replay/fencing histories, state effects and separate conservation/atomicity authority.",
+    "Versioned root and symlink fixtures and same-source/same-database HTTP/CLI handoff.",
+    "Production M1-GATE-HTTP prerequisite/registry bridge and fresh integrated rehearsal; no whole M1 verdict from C03 alone.",
+    "Remaining B01/B02 facets, B03 browser/export/CLI integration, B04 process wire and B05 delivery coverage.",
+    "Four cumulative milestones and six matched trajectories per policy; S4-G, S16-G and O16-G with healthy/compound-recovery conditions.",
+    "Separate topology-by-transport experiment to isolate gossip causally; broader independent task families and prospective statistical decisions."
+  ],
+  "resolved_findings": [
+    "Mutable or caller-supplied semantic record fields could undermine value/result consistency.",
+    "A copied admitted record could relabel synthetic data as physical origin.",
+    "Permissive control HTTP parsing could accept truncated chunk framing.",
+    "A nonregular evidence file could block a read.",
+    "Loaded source code could be mislabeled from later disk bytes.",
+    "Manual-control cleanup needed raw ownership/removal/absence reconstruction."
+  ],
+  "retained_original_mechanics": {
+    "checkpoint": {
+      "bytes": 12538,
+      "path": "analysis/candidate-c03-http-v2-qualification-checkpoint.json",
+      "sha256": "2c868fdc40f7c176a4e234ee59c249c929915f4773f8fc5bff0cd75dd5bbc077"
+    },
+    "offline_methods": 94,
+    "physical_controls": 9,
+    "scope": "Earlier results remain bound to original frozen sources/configuration/runtime/purpose. They were not rerun and are not new combined-tree or acceptance observations."
+  },
+  "schema": "candidate-http-observer-v1-qualification-checkpoint",
+  "scope": "Pure semantic comparisons, bounded head extraction, original qualification-journal fact admission/reconstruction, and portable synthetic qualification fixtures.",
+  "source_review": {
+    "bytes": 12917,
+    "path": "runs/candidate-c03-http-observer-source-review-1.json",
+    "sha256": "c77bbb33821f1cb34ceee71f2790f7791427b4679f429dddc49244f79f4554c8"
+  },
+  "sources": [
+    {
+      "bytes": 20617,
+      "path": "gossip_harness/candidate_http_semantics_v1.py",
+      "sha256": "ce59b1a1cfb2cfb2b39632486c90a0023789ab72b51c13987c654a57f240958f"
+    },
+    {
+      "bytes": 19882,
+      "path": "tests/test_candidate_http_semantics_v1.py",
+      "sha256": "bb0ebeab415109e1959b7e2f649c0872eb21789386d22380f4ffa0bfe28e42fb"
+    },
+    {
+      "bytes": 7609,
+      "path": "docs/candidate-http-semantics-v1.md",
+      "sha256": "150ac17f2ac22875a5038711e36d60d331e64b739cb9649873cca6c579b32058"
+    },
+    {
+      "bytes": 10220,
+      "path": "gossip_harness/candidate_http_head_v1.py",
+      "sha256": "72d860d1e47e7339d34ee3a46974b665bb9f5e08c2597aee4605115857898a55"
+    },
+    {
+      "bytes": 17202,
+      "path": "tests/test_candidate_http_head_v1.py",
+      "sha256": "07363394b031ac5d011e88b40731e5e2ab3563c97753c8d1cc0207879fb448ce"
+    },
+    {
+      "bytes": 3654,
+      "path": "docs/candidate-http-head-v1.md",
+      "sha256": "cd4527bc1df20565dff80e7bfae8fae0f33dc86c65976be9c627419ddc3b813e"
+    },
+    {
+      "bytes": 67189,
+      "path": "gossip_harness/candidate_http_observation_v1.py",
+      "sha256": "4bea317d487329bd2db7a682b9a4a80a9384438c8e1de63fd1dc4fcd46334cd7"
+    },
+    {
+      "bytes": 55603,
+      "path": "tests/test_candidate_http_observation_v1.py",
+      "sha256": "70eb887aa1b728daa2a936903e6bea90dee966428a8e1f14a2620ebfb498e1ca"
+    },
+    {
+      "bytes": 15609,
+      "path": "docs/candidate-http-observation-v1.md",
+      "sha256": "f04c90783965a1f784f2c70683b0d4afc0d3fdb22ee02b8cff9c87bf8573c9bf"
+    },
+    {
+      "bytes": 8430,
+      "path": "pyproject.toml",
+      "sha256": "2c091c6cebe39dbb4a01a79a842c1c739411db42e5236b9a2a3d1403ef110ea8"
+    },
+    {
+      "bytes": 386096,
+      "path": "verification-manifest.json",
+      "sha256": "b0636fbdb27658f4ac481d1b22b39bcc44b9df8173b381e70666c8e78a770009"
+    },
+    {
+      "bytes": 1010350,
+      "path": "analysis/candidate-c03-http-qualification-origin-v1.json",
+      "sha256": "3b0e8bc9c3c825c453cff7246731c1fdc6777773cb043a319fda21948af564bb"
+    }
+  ],
+  "status": "Targeted observer offline qualification and independently audited historical fact reanalysis passed."
+}
