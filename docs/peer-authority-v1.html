@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peer authority v1 · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Documentation from source commit 052793a02c8e. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="peer-authority-v1">Peer authority v1</h1>
+<p>This local service authorizes a caller's requested task lease and runs a fixed, harmless text fixture. It does not select tasks, models, recipients, repairs or winning sources. It exposes no global task list, candidate matrix, peer inbox, settlement or publication operation. It contains no provider implementation and executes no supplied code. Git scope, merged-source validation, exact Git CAS and independent final acceptance remain required future integration.</p>
+<p>Each principal has a distinct HMAC key and a fixed task allowlist. The service binds its run ID, exact configuration, task fixtures and key hashes across restart. Keys are never included in replies or the stored configuration digest. This is authenticated loopback traffic on a trusted host, without TLS or multi-host failover. Peer/model processes must not receive another principal's key or access the private authority database. A peer runtime also needs its own capability isolation; a shared gossip capability does not provide this.</p>
+<h2 id="exact-interface">Exact interface</h2>
+<p>The signed request body is <code>{protocol, run_id, principal, request_id, operation, payload}</code>. The protocol is <code>peer-authority-v1</code>; its envelope is <code>{body, mac}</code>. HMAC-SHA256 covers canonical strict JSON. Responses bind the run, principal, request ID and complete RPC body hash. The client helper is:</p>
+<pre class="python"><code>authority_request(port, principal, key, request_id, operation, payload,
+                  *, run_id, timeout=2.0) -&gt; dict</code></pre>
+<p>It performs one physical request and never retries automatically. Each returned receipt includes <code>run_id</code> and <code>config_sha256</code>. A worker must verify both against its frozen local contract. <code>config_digest(config)</code> calculates the latter from the exact service configuration with keys replaced by their hashes.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Exact payload</th>
+<th>Receipt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claim</code></td>
+<td><code>{task_id}</code></td>
+<td><code>status: ok</code>, historical <code>lease</code>, <code>authority_time</code></td>
+</tr>
+<tr>
+<td><code>renew</code></td>
+<td><code>{task_id, epoch}</code></td>
+<td><code>status: ok</code>, renewed <code>lease</code>, <code>authority_time</code></td>
+</tr>
+<tr>
+<td><code>validate</code></td>
+<td><code>{task_id, epoch}</code></td>
+<td><code>status: ok</code>, current <code>lease</code>, <code>authority_time</code></td>
+</tr>
+<tr>
+<td><code>dispatch</code></td>
+<td><code>{task_id, epoch, action_id, request_sha256, request}</code></td>
+<td>Own action's <code>dispatching</code>, <code>completed</code> or recovered <code>unknown</code> receipt</td>
+</tr>
+<tr>
+<td><code>lookup</code></td>
+<td><code>{request_id}</code></td>
+<td>That principal's retained original receipt, or <code>status: missing</code></td>
+</tr>
+</tbody>
+</table>
+<p>A lease is <code>{task_id, worker_id, epoch, expires_at}</code>. Authentication supplies the worker identity; callers cannot submit a worker ID or clock. The service fixes the lease duration and reservation size. A replay returns its historical receipt and never renews a lease or grants a fresh invocation. A new dispatch validates the actual current principal, epoch and expiry inside its transaction. Use a fresh request ID for a new validation observation; replaying an earlier <code>validate</code> response is a historical observation, not renewed permission.</p>
+<p>An action receipt contains <code>task_id</code>, <code>epoch</code>, <code>action_id</code>, <code>reservation_id</code>, <code>request_sha256</code> and <code>authority_time</code>. Only <code>completed</code> adds <code>result</code> and <code>usage_units: 0</code>. Request IDs and action IDs are scoped to the authenticated principal. Mutation/validation request IDs bind their complete RPC body; a different payload under such an ID is rejected. The read-only <code>lookup</code> RPC does not create a new durable request entry. An action ID cannot move to another request ID within that principal. Reservation IDs are service-derived hashes of protocol, run, principal and action, preserving one common reservation namespace without revealing another principal's actions.</p>
+<p>Authenticated deterministic denials return <code>status: rejected</code> with a bounded reason such as <code>forbidden</code>, <code>malformed</code>, <code>unavailable</code>, <code>budget</code>, <code>request_conflict</code>, <code>action_conflict</code>, <code>request_digest</code>, <code>source_digest</code> or <code>capacity</code>. Unauthenticated/malformed envelopes receive no detailed reply. <code>AuthorityError</code>, <code>OSError</code> or <code>TimeoutError</code> from the client describe transport, authentication or protocol uncertainty, not a mutation rollback. Recover using the original request ID and body, or look up that ID; do not manufacture a new request or action ID to escape uncertainty.</p>
+<h2 id="fixed-zero-provider-fixtures">Fixed zero-provider fixtures</h2>
+<p>Both fixtures accept exactly:</p>
+<pre class="json"><code>{
+  &quot;text&quot;: &quot;arrived text&quot;,
+  &quot;context&quot;: {
+    &quot;source_sha256&quot;: &quot;SHA256 of the exact UTF-8 text&quot;,
+    &quot;event_ids&quot;: [&quot;an arrived immutable event ID&quot;]
+  }
+}</code></pre>
+<p>Text is at most 4096 UTF-8 bytes. Context has at most 32 unique SHA256-shaped event IDs. The service recomputes the text hash and the full canonical request hash. Event IDs are caller assertions bound to that request; the authority does not independently establish that those events arrived. The separate peer-local journal and transport audit must prove that property.</p>
+<p><code>text_build</code> returns the uppercased text and its UTF-8 SHA256. <code>text_review</code> computes the received text's SHA256, <code>nonempty</code>, <code>is_uppercase</code>, and an <code>approve</code>/<code>reject</code> decision requiring both properties. These are data fixtures, not coding-quality judgments. Their result depends on supplied text rather than an injected success flag. No supplied path, code or command is executed.</p>
+<h2 id="atomicity-time-and-recovery">Atomicity, time and recovery</h2>
+<p>The frozen <code>Ledger</code> implementation is reused through a transaction-joining subclass. Claim, renew and reserve mutations use the same SQLite connection as the request journal. A savepoint rolls back rejected action mutations before the rejected receipt is committed. No second ledger transaction can succeed without its durable request binding. Receipt serialization is bounded before commit. Inherited methods that open separate read sessions are not used inside these transactions.</p>
+<p>Dispatch first commits its reservation, exact request bytes and dispatch intent. Only the initial owner enters the fixed fixture. It then commits the result and trusted zero-usage settlement together in a later transaction. Generic test credits are fully refunded after this zero-provider operation; they are not API spend or a change to the project's cumulative financial ledger.</p>
+<p>A service-private <code>authority_invocations</code> row is committed immediately before fixture entry. It records principal, action, request digest, fixed fixture and authority time. This is entry-attempt evidence, not proof of completed execution or a count of provider calls. There is no peer RPC to list these rows.</p>
+<p>A crash after intent without a durable result becomes <code>unknown</code> on restart. Its full reservation remains held; the unresolved action fences task reclaim and further dispatch even after lease expiry. There is no automatic replay, refund, transfer or peer-controlled settlement. A completed action lost before its acknowledgment replays the retained result without another fixture entry. The engineering fault controls are trusted startup CLI arguments only.</p>
+<p>Time is sampled inside the transaction after acquiring the SQLite write lock. The persisted high-water mark clamps backward wall-clock movement. Already expired epochs cannot revive; a backward host-clock jump can delay real-time expiry until the clock catches up. This is not a fixed elapsed-time guarantee under clock faults. The two-second socket deadline does not bound a mutation waiting on SQLite's ten-second busy timeout. A client can time out before a server commits.</p>
+<p>One process owns the service directory via <code>flock</code>. Closing rejects new handlers and retains that lock until active authority handlers finish. Restart preserves the journal and epochs. The service does not offer multi-host consensus, disk loss recovery or a replicated authority; all future study cells need the same qualified availability and fault policy for this shared boundary.</p>
+<h2 id="configuration-and-qualification-scope">Configuration and qualification scope</h2>
+<p>The service configuration has exactly <code>protocol</code>, <code>run_id</code>, <code>budget_units</code>, <code>lease_seconds</code>, <code>principals</code> and <code>tasks</code>. Each principal maps to <code>{key, tasks}</code>; each task maps to <code>{fixture, reservation_units}</code>. There are at most 16 principals, 64 tasks and 256 durable requests per principal. These limits are an engineering fixture contract, not a claim about capacity for a full software study.</p>
+<p>Start <code>python -m gossip_harness.peer_authority_v1 --config CONFIG.json</code> with a process configuration <code>{root, port, authority}</code>. Port zero binds a fresh loopback endpoint; startup reports its PID, port, run and configuration hash. Optional <code>--crash-point</code> and <code>--crash-request-id</code> inject a real process exit at one declared boundary. Peers cannot arm faults or alter the catalog.</p>
+<p>Offline tests cover request identity, fencing, atomic denial, ownership and real localhost crash/restart behavior. Root owns registration, central verification and combined-runtime qualification. This phase does not complete live provider integration, exact Git acceptance, the four-cell placement/transport study, independently held-out statistical confirmation, or autonomous tool-loop and multi-host comparisons.</p>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>

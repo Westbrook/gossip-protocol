@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cumulative financial bridge: prospective design v2 · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Documentation from source commit 052793a02c8e. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="cumulative-financial-bridge-prospective-design-v2">Cumulative financial bridge: prospective design v2</h1>
+<p>This is a reviewed design for connecting peer coding dispatch to the existing cumulative financial ledger. It is <strong>not implemented, qualified, enabled, or an approval to spend</strong>. The current cycle preserves all v1 and frozen scientific sources. The governing machine-readable companion is <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/peer-financial-bridge-plan-v2.json">peer-financial-bridge-plan-v2.json</a>.</p>
+<p>The supplied cycle-7 checkpoint records a <strong>$50 cumulative cap</strong>, <strong>$35.543626 committed</strong>, and <strong>$14.456374 remaining</strong>. The proposal to raise the cap to $80 is unanswered. These are retained context, not a fresh ledger read or a new study allocation. Recheck the actual ledger under exclusive ownership before any future live registration. Neither document changes the cap, authorizes a new cohort, or loads credentials.</p>
+<h2 id="recommended-integration">Recommended integration</h2>
+<p>Keep the existing cumulative SQLite database as the sole spending authority. Use a new versioned authority/dispatch adapter with cohort-scoped storage and reuse the unchanged <code>Ledger</code> mutations and <code>RequestJournal</code>. Do not connect two independently spendable wallets, copy historical spending into a private ledger, or bypass v1's unconditional live-mode rejection with an injected HTTPS wrapper. A two-ledger saga adds partial-admission and settlement reconciliation; escrow would strand an entire allocation during ambiguity and obscure per-request accounting. Neither is needed for this single-host authority.</p>
+<p>The proposed trusted startup API is:</p>
+<pre class="python"><code>CumulativeAuthorityV2.open(
+    existing_ledger_path,
+    service_root,
+    cohort_contract,
+    incremental_cap_micro_usd,
+    expected_global_cap,
+    expected_opening_usage,
+)</code></pre>
+<p>The existing authenticated claim, coding-dispatch and lookup shape remains the peer-facing seam, with an explicit new protocol and financial/cohort bindings. The service validates requested task/profile permissions; it does not choose tasks, models, recipients or winners, expose global candidate context, or accept peer-controlled settlement. Its common policy and available capacity must be the same in all four placement-by-transport study cells. A central financial safety service is not evidence of a centralized work-planning treatment.</p>
+<h2 id="existing-ledger-ownership-and-adoption">Existing ledger, ownership and adoption</h2>
+<p>The registered production path is the existing <code>runs/first-live-budget.sqlite</code>, resolved against the trusted repository configuration. Require an existing file, expected schema, exact registered path/identity and expected budget; reject missing files, aliases, a newly created wallet, incompatible schema and silent adoption. Record the observed file identity and a canonical historical-row snapshot before adding any new cohort metadata. Do not treat the changing live database's raw file hash as a permanent execution identity.</p>
+<p>The <strong>provider-owning service process</strong> must acquire and retain the exact existing lock:</p>
+<pre class="text"><code>str(Path(existing_ledger_path).resolve()) + &quot;.continuation-live.lock&quot;</code></pre>
+<p>For the current path this is <code>runs/first-live-budget.sqlite.continuation-live.lock</code>. The lock is a nonblocking exclusive <code>flock</code>, held for the whole possible-dispatch lifetime, including recovery and in-flight work. Acquire it before any additional service ownership lock and use that order everywhere. A new peer-only lock does not exclude historical runners. A supervisor must not hold the only lock while a child can continue invoking after the supervisor dies.</p>
+<p><code>continuation_experiment</code>, <code>benchmark_experiment</code> and <code>continuation_followup</code> cooperate with this lock. Older pilot/sustained/verification entry points do not all do so and must remain quiescent. SQLite's global cap still limits reservations from other callers, but it does not itself establish cohort exclusivity. This is a same-host cooperative ownership contract, not multi-host consensus or hostile process isolation.</p>
+<p>Do not pass the cumulative database to the v1 Authority constructor: it creates a private authority and correctly rejects adoption of existing work. Its singleton authority config and request/action tables are not scoped for successive cohorts. Use new versioned cohort-scoped tables and the same joined Ledger object for all claims, reservations, settlements and authority transactions. Existing historical rows and budgets remain intact; no mutation algorithm from <code>Ledger</code> is forked.</p>
+<h2 id="stable-cohort-identity-and-admission">Stable cohort identity and admission</h2>
+<p>Registration binds one immutable <code>cohort_id</code> to the contract, complete roster, allowed principals/tasks/profiles, incremental cap, source/evaluator identities, journal namespace and cumulative ledger identity. Output directories are evidence locations, not allowance identities. Restarting with a new directory must not mint a second allowance or a second owner of the same request journal.</p>
+<p>Global task and reservation identifiers are service-derived from a registered cohort and exact task/action identity. Persist their mapping to the cohort, principal, logical task, role, source generation, request ID and profile. Never let an arbitrary peer-supplied namespace establish membership. Bind stable request/action IDs to immutable bytes and authenticated principal; reject changed payloads before considering lease freshness. Historical receipt replay does not grant a new dispatch permission.</p>
+<p>Within one joined <code>BEGIN IMMEDIATE</code> transaction:</p>
+<ol type="1">
+<li>Return an exact historical replay or reject conflicting identity.</li>
+<li>Fence halted or unresolved actions and validate current task ownership using the authority-owned clock and lease epoch. For a new admission, sample fresh authority time <strong>after acquiring the joined <code>BEGIN IMMEDIATE</code> SQLite write transaction</strong>, so time spent waiting for either a process/file lock or the SQLite write lock cannot leave a stale lease check. A timestamp sampled before either wait is not sufficient.</li>
+<li>Sum <code>COALESCE(spent, amount)</code> over exact registered cohort reservation membership. Require that the proposed commitment fits the immutable cohort cap and any preregistered per-slot limits.</li>
+<li>Call unchanged <code>Ledger.reserve</code>, which independently enforces the cumulative cap, using this transaction and the same Ledger instance.</li>
+<li>Persist membership, action/dispatch intent and the authenticated request receipt before committing.</li>
+</ol>
+<p>Do not compute cohort use by subtracting global balances, infer ownership through loose string prefixes, or reserve independently in a second database. Do not call <code>StudyBudget.reserve()</code> within this transaction: its separate read connection and file lock introduce uncommitted-state visibility and lock-order hazards. Reuse its commitment invariant, not that call pattern. No SQLite transaction spans a provider request or a wait on a journal lock.</p>
+<h2 id="registration-differs-from-recovery">Registration differs from recovery</h2>
+<p>Fresh registration checks the exact expected cap, opening commitments, historical quiescence and absence of pending promotion intents, then installs the immutable cohort binding. An existing cohort is resumed only through its recovery path; recovery validates its registered identity and retained records rather than requiring the old opening balance again. A changed cap, source, profile, journal root, roster or protocol requires a prospective new contract and qualification, not an in-place reinterpretation of old requests.</p>
+<p>The journal binds request bytes, provider/profile settings, source scope and stable reservation/call identity. Preserve the existing ordering: reserve before invocation; persist the result before settlement; publish a terminal receipt only with complete bound evidence. Retain authenticated receipts in peer journals. An exact saved successful receipt is historical evidence, not a new admission; replaying it does not require a fresh lease or authorize another invocation. Recovery of a durable intent follows its retained state: an intent without a recoverable result remains unknown, while an exact durable result can be settled after lease expiry. Neither recovery path converts a pre-lock timestamp into current permission. The credential stays inside the trusted provider-owning service and is never included in event payloads, candidate files, logs or sandbox mounts.</p>
+<table>
+<thead>
+<tr>
+<th>Retained crash boundary</th>
+<th>Required behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No committed admission</td>
+<td>Same-ID retry may proceed if no durable action exists</td>
+</tr>
+<tr>
+<td>Reservation committed but no recoverable result</td>
+<td>Keep full reservation, halt and do not automatically invoke</td>
+</tr>
+<tr>
+<td>Durable dispatch intent without result</td>
+<td>Unknown outcome; keep full reservation and prohibit provider retry</td>
+</tr>
+<tr>
+<td>Durable result, missing settlement</td>
+<td>Replay the exact result and settle idempotently even after lease expiry</td>
+</tr>
+<tr>
+<td>Settlement committed, missing receipt</td>
+<td>Reconstruct the receipt without a second invocation or charge</td>
+</tr>
+<tr>
+<td>Result publication interrupted</td>
+<td>Recover publication of the durable result; do not invoke again</td>
+</tr>
+<tr>
+<td>Unknown usage</td>
+<td>Keep full reservation and persistent dispatch halt</td>
+</tr>
+<tr>
+<td>Storage cannot record unknown/halt</td>
+<td>Fence in memory; return nonterminal waiting on the same ID; recover retained work before serving new dispatch</td>
+</tr>
+</tbody>
+</table>
+<p>Known failures with known usage remain charged and replayable. A halt requested by worker metadata is preserved even when usage is known. Claim expiry does not transfer an unresolved paid action. Neither lease expiry, missing acknowledgments, new peer processes nor a new output directory authorizes refunds or retries. There is no peer operation for clearing the halt, increasing the budget, forcing settlement or publishing a release. This provides local dispatch ownership and durable replay, not provider-side exactly-once execution.</p>
+<h2 id="source-purpose-and-qualification-gates">Source, purpose and qualification gates</h2>
+<p>The companion plan pins the actual supporting source bytes and this document. Those are design references, not a frozen implementation contract. A future execution contract must additionally bind every new authority/runtime source, canonical encoding, profile/pricing estimate, complete roster and fault schedule, ledger/cohort identity, ordered suites, evaluator, runtime/image, limits, seed, journal namespace and evaluation purpose. Preserve raw requests, results, settlement proofs, unknowns and failed runs. Token-based microUSD accounting is a conservative estimate, not an invoice or total engineering/compute cost.</p>
+<p>Qualify the actual new adapter against a <strong>disposable existing-format ledger containing historical settled spending</strong>. Never point qualification at the real cumulative ledger. Required offline cases include:</p>
+<ul>
+<li>Missing/changed ledger identity and schema rejection; historical rows and cap preserved; a new output path cannot duplicate an allowance.</li>
+<li>Concurrent admissions at both cohort and global limits; exact prior-request replay and cross-principal conflicts; known failures charged and unknowns kept.</li>
+<li>Authenticated localhost service and peer process restarts at every admission, result, settlement, publication and ACK boundary; retained transport entry counts establish no second invocation.</li>
+<li>Exact shared-lock contention with the cooperating historical runner path and service-owner death; no surviving provider-capable orphan owns dispatch.</li>
+<li>Durable outcome reconciliation after lease expiry, changed contract rejection, corrupt/missing terminal accounting evidence and halted-state recovery.</li>
+<li>Actual owned request/result payload transfer through the common adapter and real <code>OpenAIWorker</code> request/parser/usage code with a closed offline transport. A permissive fake wallet or text-only substitute does not qualify the bridge.</li>
+</ul>
+<p>After cheaper checks pass, one verification owner must qualify the combined financial, peer/controller, Git-bundle, sandboxed merged-source and exact-CAS path, then complete one full zero-API rehearsal of the frozen roster. Independent final evaluation remains behind the whole-cohort source freeze. A local finance pass, a prefix of the roster, or a successful coding proposal cannot replace this rehearsal or project acceptance.</p>
+<p>Future live execution additionally requires a registered complete study/cost contract, adequate authorized funding, current ledger recheck under ownership, credential provisioning through the approved route and matching readiness proofs. The unanswered $80 proposal is not approval. Preserve incomplete or interrupted cohorts honestly; no small affordable prefix completes the full four-cell study or held-out statistical objective. Autonomous coding tool loops and multi-host work also remain separately unfinished.</p>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>

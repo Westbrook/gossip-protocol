@@ -1,0 +1,1237 @@
+{
+  "protocol": "gossip-public-progress-v1",
+  "title": "Gossip × Agents",
+  "source_revision": 331,
+  "snapshot_at": "2026-10-03T02:05:49.358998+00:00",
+  "last_meaningful_update": "2026-10-03T01:57:35+00:00",
+  "recorded_status": "working",
+  "verified_effort": 221,
+  "total_effort": 248,
+  "percent": 89,
+  "tasks": [
+    {
+      "id": "reference",
+      "title": "Inspect the reference",
+      "weight": 1,
+      "status": "complete",
+      "note": "Inspected video visuals and read the full transcript for Anjan Biswas’s 2:15 MURMUR post. Simulation source is unavailable from the post.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T02:23:56+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "prior-art",
+      "title": "Map the prior art",
+      "weight": 3,
+      "status": "complete",
+      "note": "Reviewed implemented systems, research papers, and products; evidence separated from claims.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T02:23:56+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Stress-test the premise",
+      "weight": 3,
+      "status": "complete",
+      "note": "Compared architectures and reviewed seeded dissemination probe results; 11 tests passed. Dissemination speed is not software-project quality.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T02:23:56+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "blueprint",
+      "title": "Define a testable harness",
+      "weight": 3,
+      "status": "complete",
+      "note": "Delivered a versioned research memo, hybrid architecture proposal, staged build plan, and controlled benchmark with explicit stop/go criteria.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T02:25:15+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "git-design",
+      "title": "Design distributed Git integration",
+      "weight": 2,
+      "status": "complete",
+      "note": "Defined hub versus subsystem-maintainer integration authority. The same delegated Git workflow can use GitHub; hosting and decision topology are separate choices.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T02:51:48+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "harness-core",
+      "title": "Build the local comparative harness",
+      "weight": 4,
+      "status": "complete",
+      "note": "Implemented independent Git stores, replaceable modeled transport, transactional task ledger, and local publication/recovery bridge.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T03:02:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "conflict-scenarios",
+      "title": "Exercise conflicts and failures",
+      "weight": 3,
+      "status": "complete",
+      "note": "All 16 cases passed: independent edits, textual conflict, combined semantic conflict, and inherited scope across four topology/transport combinations.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T03:02:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "validation-report",
+      "title": "Measure and report the results",
+      "weight": 3,
+      "status": "complete",
+      "note": "Published exact investigation version with measured outcomes, full operation counts, limitations, and the next experimental boundary.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T03:02:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "pilot-worker-adapter",
+      "title": "Prepare the coding-worker adapter",
+      "weight": 3,
+      "status": "complete",
+      "note": "Pinned-model worker verified through tests and eight live generation requests, including feedback-driven repair.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T12:20:46+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "pilot-dispatcher",
+      "title": "Connect dispatch and validation",
+      "weight": 4,
+      "status": "complete",
+      "note": "Task ownership, lease heartbeats, budget reservations, isolated checks, repair, and exact-release publication completed end to end.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T12:20:46+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "pilot-rehearsal",
+      "title": "Rehearse the complete flow offline",
+      "weight": 3,
+      "status": "complete",
+      "note": "Current-input rehearsal accepted all three arms before generation; exact proof retained with the live results.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T12:20:46+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "pilot-live",
+      "title": "Run the bounded live pilot",
+      "weight": 2,
+      "status": "complete",
+      "note": "All three live arms accepted projects passing 23 full-project checks each. Eight requests accounted for $0.035885 under the $10 cap.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T12:20:46+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "experiments-design",
+      "title": "Freeze the experiment contracts",
+      "weight": 3,
+      "status": "complete",
+      "note": "Frozen feature and recovery contracts define paid coding comparisons separately from deterministic replay controls.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T13:34:16+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "experiments-discovery",
+      "title": "Test worker-visible discovery sharing",
+      "weight": 5,
+      "status": "complete",
+      "note": "Completed all three repetitions: single 1/3, isolated 2/3, shared 3/3 accepted; gossip 3/3 by exact replay. No unexecuted cases.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T15:26:46+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "experiments-repair",
+      "title": "Test semantic integration repair",
+      "weight": 5,
+      "status": "complete",
+      "note": "One model repair passed, then all 24 broker/gossip fault cases accepted exact tested releases. No unexecuted cases.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T15:35:07+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "experiments-analysis",
+      "title": "Repeat, audit, and interpret",
+      "weight": 3,
+      "status": "complete",
+      "note": "Published audited live outcomes, full accounting, limitations, and exact evidence; separate swarm proposal is ready for review.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T15:39:33+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-design",
+      "title": "Assess candidate swarms and selection",
+      "weight": 3,
+      "status": "complete",
+      "note": "Completed research and proposed four-candidate, same-pool selection experiment with matched test/runtime controls, sealed-holdout design, full accounting, and stop/go criteria.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T15:20:56+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-pilot-fixtures",
+      "title": "Freeze the multi-project task roster",
+      "weight": 3,
+      "status": "complete",
+      "note": "Frozen eight synthetic function tasks in three families; both live repetitions completed.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T17:39:38+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-pilot-validator",
+      "title": "Build evaluation and model boundaries",
+      "weight": 3,
+      "status": "complete",
+      "note": "Host-side evaluation and pinned model boundaries verified in component tests and all live task-runs.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T17:39:38+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-pilot-runner",
+      "title": "Implement controlled candidate selection",
+      "weight": 4,
+      "status": "complete",
+      "note": "Five comparisons executed with frozen evidence, deterministic choices, matched extras, and exact Git publication.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T17:39:38+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-pilot-execution",
+      "title": "Prove and run the bounded pilot",
+      "weight": 4,
+      "status": "complete",
+      "note": "Completed 16 live task-runs: strong and all pool selections 16/16 accepted; cheap public-feedback baseline 14/16.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T17:39:38+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "swarm-pilot-analysis",
+      "title": "Audit and publish the pilot findings",
+      "weight": 2,
+      "status": "complete",
+      "note": "Published audited outcomes, counterexamples, label validity, overlap, full accounting, and the public-only post-hoc diagnostic.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T17:39:38+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "sustained-design",
+      "title": "Freeze the sustained-work contract",
+      "weight": 3,
+      "status": "complete",
+      "note": "Frozen 12-trajectory contract executed without changing its primary score definition.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T20:11:03+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "sustained-fixtures",
+      "title": "Build multi-file application milestones",
+      "weight": 4,
+      "status": "complete",
+      "note": "Trusted multi-file application fixtures and cumulative milestone checks are ready.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T18:10:37+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "sustained-runner",
+      "title": "Implement continuity and recovery",
+      "weight": 5,
+      "status": "complete",
+      "note": "Corrected dispatch, exact receipt accounting, same-head publication, and durable continuation verified.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T18:14:48+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "sustained-execution",
+      "title": "Rehearse and run the expansive study",
+      "weight": 5,
+      "status": "complete",
+      "note": "All 12 trajectories executed with no unexecuted work: 10 accepted, 2 retained private-quality failures, 36 visible milestones, and 12 verified handoffs.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T19:57:17+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "sustained-analysis",
+      "title": "Audit completion quality and direction",
+      "weight": 3,
+      "status": "complete",
+      "note": "Audited primary results, all-stages pool diagnostics, and source-informed contract probes published with limitations and the next verification-focused design.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T20:11:03+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-design",
+      "title": "Freeze the adaptive-verification contract",
+      "weight": 3,
+      "status": "complete",
+      "note": "The four-milestone, 18-trajectory contract and runtime-bound core are frozen for qualification.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T00:14:03+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-fixtures",
+      "title": "Build fresh maintenance-project fixtures",
+      "weight": 5,
+      "status": "complete",
+      "note": "Calendar and buildgraph four-milestone fixtures are frozen and qualified; 10 calendar and 8 buildgraph tests passed.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T01:13:30+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-runner",
+      "title": "Implement verification and durable execution",
+      "weight": 6,
+      "status": "complete",
+      "note": "Hash-fix qualification passed: 82 component/fixture checks retained with source fingerprints and affected regression reruns.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T00:20:36+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-rehearsal",
+      "title": "Prove the full workflow offline",
+      "weight": 3,
+      "status": "complete",
+      "note": "6/6 proof trajectories and 24 milestones passed; complete audit certified 120 scripted invocations, 24 billing tasks, and zero API cost.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T01:33:26+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-live",
+      "title": "Run the matched live study",
+      "weight": 4,
+      "status": "complete",
+      "note": "18/18 trajectories evaluated with no unexecuted or censored cases: accepted 3/6 strong, 0/6 cheap, 0/6 portfolio; 64/72 milestones. Audit remains separate.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T05:23:02+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-analysis",
+      "title": "Audit quality and publish the findings",
+      "weight": 4,
+      "status": "complete",
+      "note": "Certified all 18 trajectories and accounting; classified actual failures and supplemental diagnostics; immutable report and focused desktop/mobile verification complete.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T05:52:09+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-inventory",
+      "title": "Inventory verification surfaces",
+      "weight": 3,
+      "status": "complete",
+      "note": "297 project unittest methods, 13 report methods and five browser scripts inventoried; discovery/static-gate gaps documented.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T23:54:12+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-analysis",
+      "title": "Assess fast failure, duplication and reuse",
+      "weight": 3,
+      "status": "complete",
+      "note": "Mapped safe batching, retention and parallelism opportunities; preserved sandbox and independent-evaluation boundaries.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T23:54:12+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-plan",
+      "title": "Deliver the testing improvement plan",
+      "weight": 2,
+      "status": "complete",
+      "note": "Delivered a source-linked plan, proposed AGENTS.md rules, staged implementation and measurable acceptance criteria.",
+      "inScope": true,
+      "updatedAt": "2026-09-30T23:55:50+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-foundation",
+      "title": "Build inventory and cheap failure gates",
+      "weight": 4,
+      "status": "complete",
+      "note": "Current inventory covers 665 project methods across 89 class/lane groups. Pinned early static gates disclose 65 exact source-bound legacy diagnostics.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:27:51+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-scheduling",
+      "title": "Batch tests and preserve useful environments",
+      "weight": 4,
+      "status": "complete",
+      "note": "Explicit exclusive fixture scheduling qualified by isolated passes; passing failed-batch classes are retained/reusable. Real browser SIGTERM cleanup0.573s, no owned-process leaks, normal lifecycle passed.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T00:59:01+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-runtime",
+      "title": "Add explicit versioned validation reuse",
+      "weight": 3,
+      "status": "complete",
+      "note": "Versioned validation adapter and all study integrations qualified. Final fixed-fixture one/two-worker medians 6.919s/4.089s; warm reuse preserves independent final execution.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:27:51+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-policy",
+      "title": "Apply project verification rules",
+      "weight": 1,
+      "status": "complete",
+      "note": "AGENTS.md and VERIFICATION.md prescribe fast-first gates, one owner, bounded nested concurrency, exact evidence reuse and persistent tools.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T00:26:07+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-proof",
+      "title": "Measure and verify the new workflow",
+      "weight": 3,
+      "status": "complete",
+      "note": "Historical initial checkpoint qualified 498 project methods and 13 report checks. Expanded final 665-method qualification is recorded in the final-proof task.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:27:51+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "verification-data-handoff",
+      "title": "Check data across source and policy upgrades",
+      "weight": 2,
+      "status": "complete",
+      "note": "All 15 eligible source chains passed 30 same-database stories and 465 exact steps; three early stops skipped. Separate compatibility evidence, not primary rescoring.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T05:44:31+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-v2",
+      "title": "Integrate versioned study validation",
+      "weight": 6,
+      "status": "complete",
+      "note": "Sustained6/6 trajectories+18milestones, swarm8/8tasks+40arms, probe12attempts, recoveryentry and strict raw audits qualified. No provider calls.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:18:14+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-measurement",
+      "title": "Complete resource measurements and inventory evidence",
+      "weight": 3,
+      "status": "complete",
+      "note": "Complete measured inventory reconciles 665 project and 13 separate report methods. Scoped timing/resources, benchmark and seeded negatives qualified; unsupported peaks and p95 disclosed.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:27:51+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-compatibility",
+      "title": "Qualify historical and cheap-preflight boundaries",
+      "weight": 2,
+      "status": "complete",
+      "note": "29 focused checks pass; actual frozen-runtime audit reproduces original certificate; recovery24 reused executions plus9 new entry guards are explicitly qualified.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T02:30:37+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-final-proof",
+      "title": "Qualify the combined source and v2 rehearsals",
+      "weight": 4,
+      "status": "complete",
+      "note": "665 project +13 report methods; full sustained/swarm/probe and historical/recovery qualification passed. Immutable core certificate and final guide desktop/mobile review complete.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T04:27:51+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "test-efficiency-release",
+      "title": "Commit and publish the finished project",
+      "weight": 2,
+      "status": "complete",
+      "note": "GitHub origin configured; all branches/history and tags pushed and independently matched to local refs. Current snapshot includes ongoing benchmark work.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T17:01:57+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "comparison-metrics",
+      "title": "Bind timing and quality comparisons",
+      "weight": 3,
+      "status": "complete",
+      "note": "Visible historical timing, separate acceptance/coverage ranks and W/D/L are source-bound, independently reviewed and browser-verified; no Elo or speed winner is inferred.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T12:17:42+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "comparison-controller",
+      "title": "Qualify the next continuation controller",
+      "weight": 4,
+      "status": "complete",
+      "note": "Versioned controller and fixture qualified; scientific CORE frozen at d763e301a306. Later auditor fix is outside CORE.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T12:34:25+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "comparison-proof",
+      "title": "Verify the expanded study offline",
+      "weight": 3,
+      "status": "complete",
+      "note": "Exact zero-API proof and independent audit passed 4/4 trajectories and 8/8 milestones on contract d763e301a306.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T12:47:55+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "comparison-live",
+      "title": "Run the expanded comparison",
+      "weight": 4,
+      "status": "complete",
+      "note": "Live execution and final evaluation finished all four trajectories and eight milestones; independent audit is running. Final acceptance comparisons remain unpublished until certification.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T13:05:14+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "comparison-analysis",
+      "title": "Audit results and surface comparisons",
+      "weight": 3,
+      "status": "complete",
+      "note": "Audited historical and new cohort comparisons, scout signal, immutable report and dashboard/detail desktop-mobile verification passed.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T13:17:45+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "benchmark-design",
+      "title": "Freeze a discriminating benchmark contract",
+      "weight": 3,
+      "status": "complete",
+      "note": "Corrected scientific contract 14f4678082f4 frozen; design unchanged, canonical fixture comparison repaired.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T16:22:00+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "benchmark-fixtures",
+      "title": "Qualify fixtures and a fault bank",
+      "weight": 4,
+      "status": "complete",
+      "note": "Fresh qualification 3 passed 41/41 on corrected contract 14f4678082f4; exact result binding independently reconciled.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T16:41:30+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "benchmark-runner",
+      "title": "Qualify the runner and exact offline proof",
+      "weight": 4,
+      "status": "complete",
+      "note": "Corrected rehearsal 2 passed ten trajectories, twenty milestones and 264 physical validations; built-in proof and independent audit certified exact evidence.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T18:06:29+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "benchmark-live",
+      "title": "Execute and independently audit comparisons",
+      "weight": 4,
+      "status": "complete",
+      "note": "Ten primary runs, 103 diagnostic rows and 420 artifact-transport schedules completed with independent certificates/reconciliation; accounting settled.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T21:19:08+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "benchmark-report",
+      "title": "Analyze signal and publish exact results",
+      "weight": 3,
+      "status": "complete",
+      "note": "Final immutable comparison, dashboard metrics and exact review card verified by current central 221-check and desktop/mobile browser gates.",
+      "inScope": true,
+      "updatedAt": "2026-10-01T21:25:04+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-statistical-design",
+      "title": "Define statistical claims and stopping rules",
+      "weight": 4,
+      "status": "complete",
+      "note": "Reviewed estimands, proposed practical margin, exact power grid and fixed-sample rules are source-bound in v4;18 statistical checks included in the passed central gate. Confirmatory preregistration/execution remains separate.",
+      "phase": "Statistical design and retained evidence",
+      "inScope": true,
+      "updatedAt": "2026-10-02T12:29:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-retained-evidence",
+      "title": "Quantify uncertainty in existing evidence",
+      "weight": 3,
+      "status": "complete",
+      "note": "Audited historical2-domain sensitivity quantified; no population confidence interval, calibrated Elo or confirmatory historical p-value asserted.",
+      "phase": "Statistical design and retained evidence",
+      "inScope": true,
+      "updatedAt": "2026-10-02T12:29:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-controller",
+      "title": "Version repair routing and checkpoints",
+      "weight": 4,
+      "status": "complete",
+      "note": "Versioned repair routing, retained checkpoints, focused uncertainty retry and shared-pool import are implemented and independently reviewed;29 controller checks passed centrally. Full cohort integration proof remains pending.",
+      "phase": "Controller and new task pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T12:29:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-fixtures",
+      "title": "Build independent task domains",
+      "weight": 4,
+      "status": "complete",
+      "note": "Warehouse and job-queue fixtures with cumulative milestones, independent reference behavior and negative controls are implemented;37 fixture tests passed centrally. Physical Docker qualification remains pending.",
+      "phase": "Controller and new task pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T12:29:44+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-qualification",
+      "title": "Qualify the combined method offline",
+      "weight": 2,
+      "status": "complete",
+      "note": "Funded contract passed 13 fresh final fast checks and 42 fresh physical Docker fixture cases, with no reuse or API calls. Checkpoint e1d916e89dbb is pushed; the full matching rehearsal is now running.",
+      "phase": "Qualification and bounded pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T19:06:20+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-rehearsal",
+      "title": "Rehearse the exact execution contract",
+      "weight": 3,
+      "status": "complete",
+      "note": "Funded exact-contract rehearsal and independent audit passed: 12 accepted scripted trajectories across two domains, 24 milestones, 384 Docker validations, 228 scripted calls and zero rehearsal API cost. This is execution proof, not live quality evidence.",
+      "phase": "Qualification and bounded pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T19:52:21+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-pilot",
+      "title": "Run and audit a bounded comparative pilot",
+      "weight": 5,
+      "status": "complete",
+      "note": "Certified and published: current-independent 3/4, improved-independent 3/4 and improved-sequential 4/4 accepted across two domains; baseline preservation 18/18 each. Full cohort, accounting, failure interpretation and exact Git publication passed. Exploratory controller/formation evidence; no Elo, population ranking or gossip/orchestrator conclusion.",
+      "phase": "Qualification and bounded pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T21:21:30+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-confirmation",
+      "title": "Seek independent confirmatory evidence",
+      "weight": 6,
+      "status": "queued",
+      "note": "Use the pilot to set a separate frozen confirmatory design and adequate independent task sample; distinguish improvement, practical equivalence and unresolved uncertainty. Pilot completion alone does not finish this goal.",
+      "phase": "Independent confirmation",
+      "inScope": true,
+      "updatedAt": "2026-10-02T11:46:24+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-report-release",
+      "title": "Report uncertainty and push verified cycles",
+      "weight": 3,
+      "status": "complete",
+      "note": "Verified cycle publications retained through 93602c142b75. Cycle 8 adds independently audited live results and uncertainty/failure interpretation; broader research and separate site-publication obligation remain.",
+      "phase": "Independent confirmation",
+      "inScope": true,
+      "updatedAt": "2026-10-02T21:21:30+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-live-coordination-harness",
+      "title": "Build real peer-local coordination controls",
+      "weight": 5,
+      "status": "in_progress",
+      "note": "The 341-check pre-fix gate remains retained. Actual reference browser qualification failed on a locator timeout; driver fix requires new affected checks and matching physical qualification before full role rehearsal.",
+      "phase": "Live coordination",
+      "inScope": true,
+      "updatedAt": "2026-10-03T01:57:35+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-live-coordination-evidence",
+      "title": "Test live gossip against fair orchestration",
+      "weight": 6,
+      "status": "queued",
+      "note": "Freeze a paired statistical protocol, fault schedules and independent task units; execute and audit accepted completion, recovery and safety. Central replay and candidate-formation studies do not complete this task.",
+      "phase": "Live coordination",
+      "inScope": true,
+      "updatedAt": "2026-10-02T11:54:03+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-interface-validity",
+      "title": "Assess tool-interface external validity",
+      "weight": 4,
+      "status": "queued",
+      "note": "Separate later question after core comparisons stabilize; not required for this controller pilot. JSON proposal studies do not establish external validity for autonomous tool-equipped agents.",
+      "phase": "External validity",
+      "inScope": false,
+      "updatedAt": "2026-10-02T11:57:42+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-cohort-implementation",
+      "title": "Verify and publish the full cohort implementation",
+      "weight": 2,
+      "status": "complete",
+      "note": "Lease serialization and fresh-scout JSON-order audit defects are repaired and independently reviewed. Static checks and 174 affected tests passed; 225 inputs/runtime reconciled. Exact repair checkpoint 61a5eabdffea is pushed.",
+      "phase": "Qualification and bounded pilot",
+      "inScope": true,
+      "updatedAt": "2026-10-02T14:44:19+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "followup-large-project-study",
+      "title": "Test a larger project with 20 swarm roles",
+      "weight": 8,
+      "status": "in_progress",
+      "note": "Physical reference qualification 1 failed: five Docker CLI/HTTP cases passed, but fresh Chromium timed out on the Intake type label locator. Cleanup completed and trace retained. Browser-driver investigation and requalification pending; 20-role fixture has not started.",
+      "phase": "Larger project scaling study",
+      "inScope": true,
+      "updatedAt": "2026-10-03T01:57:35+00:00",
+      "tier": "current"
+    },
+    {
+      "id": "github-pages-publication",
+      "title": "Publish progress and outputs on GitHub Pages",
+      "weight": 2,
+      "status": "in_progress",
+      "note": "User selected GitHub Pages. Isolated static build is underway for the read-only progress projection, output pages and documentation. Deployment/public verification pending; local editable report preserved.",
+      "phase": "Documentation publication",
+      "inScope": true,
+      "updatedAt": "2026-10-03T01:54:57+00:00",
+      "tier": "current"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-09-30T02:21:30+00:00",
+      "remaining": 10,
+      "total": 10,
+      "reason": "Initial research scope"
+    },
+    {
+      "at": "2026-09-30T02:21:50+00:00",
+      "remaining": 9,
+      "total": 10,
+      "reason": "Inspected the MURMUR reference video and transcript; seeded dissemination probe added within tradeoff scope."
+    },
+    {
+      "at": "2026-09-30T02:23:56+00:00",
+      "remaining": 3,
+      "total": 10,
+      "reason": "Prior-art and tradeoff review complete; dissemination probe passed 11 tests. Research memo entering final synthesis and layout QA."
+    },
+    {
+      "at": "2026-09-30T02:25:15+00:00",
+      "remaining": 0,
+      "total": 10,
+      "reason": "Research and planning milestone complete: sourced memo, bounded dissemination probe, architecture proposal, and experiment plan verified. No harness or live LLM benchmark is claimed complete."
+    },
+    {
+      "at": "2026-09-30T02:47:38+00:00",
+      "remaining": 12,
+      "total": 22,
+      "reason": "User authorized further investigation, including Linux-style distributed Git integration. Added four tasks (12 effort units); prior research and its exact review version remain intact."
+    },
+    {
+      "at": "2026-09-30T02:51:48+00:00",
+      "remaining": 10,
+      "total": 22,
+      "reason": "Distributed Git integration design verified against official Git/kernel sources and architecture review. Ledger and transport component tests pass; real Git backend and fixture matrix remain in progress."
+    },
+    {
+      "at": "2026-09-30T03:02:44+00:00",
+      "remaining": 0,
+      "total": 22,
+      "reason": "Local distributed-Git investigation completed:16 verified matrix cases,57 unique harness tests across suites, retained traces, and a separate versioned findings artifact. Live-agent and cross-host evaluations remain proposed."
+    },
+    {
+      "at": "2026-09-30T11:55:21+00:00",
+      "remaining": 12,
+      "total": 34,
+      "reason": "User asked to continue toward a practical test. Added four scoped tasks (12 effort units); live pilot remains outstanding pending secure credential provisioning and a spend cap."
+    },
+    {
+      "at": "2026-09-30T12:04:19+00:00",
+      "remaining": 9,
+      "total": 34,
+      "reason": "Coding-worker adapter passed 19 tests and is complete. Sandbox and real Python acceptance fixtures verified; the three-arm offline end-to-end rehearsal is running. No API calls yet."
+    },
+    {
+      "at": "2026-09-30T12:12:24+00:00",
+      "remaining": 2,
+      "total": 34,
+      "reason": "Current-input rehearsal and real repair regression passed. Live three-arm trial is running; single-worker arm accepted after two requests and a successful malformed-CSV repair. Aggregate results and cost remain pending."
+    },
+    {
+      "at": "2026-09-30T12:20:46+00:00",
+      "remaining": 0,
+      "total": 34,
+      "reason": "First live coding smoke test completed: all three arms accepted, eight requests, and $0.035885 conservative usage-based accounting under the shared $10 cap. Ledger reconciled; larger semantic-sharing benchmark remains future work."
+    },
+    {
+      "at": "2026-09-30T13:12:43+00:00",
+      "remaining": 16,
+      "total": 50,
+      "reason": "User requested a couple of more worthwhile experiments. Added four phases (16 effort units) for discovery sharing, stale-evidence semantic repair, repeated evaluation, and interpretation; all prior artifacts and review states remain preserved."
+    },
+    {
+      "at": "2026-09-30T13:34:16+00:00",
+      "remaining": 13,
+      "total": 50,
+      "reason": "Both experiment contracts are frozen; current-input offline runs now cover the four discovery arms and all 24 recovery cases."
+    },
+    {
+      "at": "2026-09-30T15:12:23+00:00",
+      "remaining": 16,
+      "total": 53,
+      "reason": "User explicitly approved both live studies and up to $50 additional budget if needed. Approval blocker resolved; added candidate-swarm research/design (weight 3), preserving all prior scope and versions."
+    },
+    {
+      "at": "2026-09-30T15:20:56+00:00",
+      "remaining": 13,
+      "total": 53,
+      "reason": "Candidate-swarm research/design finished and reviewed; desktop/mobile draft QA passed. Added matched test-count/runtime control and explicit shared-test cost allocation. Live studies continue."
+    },
+    {
+      "at": "2026-09-30T15:26:46+00:00",
+      "remaining": 8,
+      "total": 53,
+      "reason": "All 12 discovery cases completed; genuine candidate failures retained. Live recovery now running under the unchanged cumulative cap."
+    },
+    {
+      "at": "2026-09-30T15:35:07+00:00",
+      "remaining": 3,
+      "total": 53,
+      "reason": "All 24 live recovery replay cases completed successfully. Both live studies are finished; final retained-evidence audit and review publication are underway."
+    },
+    {
+      "at": "2026-09-30T15:39:33+00:00",
+      "remaining": 0,
+      "total": 53,
+      "reason": "Published audited live experiment results and separate candidate-swarm design. All scoped work is complete; prior versions and review state preserved. Final cumulative usage $0.325268 under the unchanged $10 cap."
+    },
+    {
+      "at": "2026-09-30T16:28:48+00:00",
+      "remaining": 16,
+      "total": 69,
+      "reason": "User requested implementing and running the candidate-swarm recommendation. Added five scoped phases (weights 3/3/4/4/2); prior versions, review checkpoints, and budget history remain intact."
+    },
+    {
+      "at": "2026-09-30T16:46:31+00:00",
+      "remaining": 6,
+      "total": 69,
+      "reason": "Core candidate-swarm implementation frozen and component checks passed. The eight-task offline rehearsal is running before live execution."
+    },
+    {
+      "at": "2026-09-30T17:30:43+00:00",
+      "remaining": 2,
+      "total": 69,
+      "reason": "All 16 live task-runs finished successfully as an experiment. Strong and all pool policies accepted 16; the cheap public-feedback baseline accepted 14. Independent retention and final analysis are underway."
+    },
+    {
+      "at": "2026-09-30T17:39:38+00:00",
+      "remaining": 0,
+      "total": 69,
+      "reason": "Candidate-swarm pilot complete and audited. Strong single matched every pool policy at lower API cost; reviewer tests changed no winner. Published the exact final review version with post-hoc public-only diagnostic and explicit experimental limits."
+    },
+    {
+      "at": "2026-09-30T17:54:23+00:00",
+      "remaining": 20,
+      "total": 89,
+      "reason": "Scope expanded at the user’s request: prioritize sustained completion and work quality across multi-file projects. Added 20 effort units while preserving the 69 completed units and all earlier versions. New methods remain provisional until frozen."
+    },
+    {
+      "at": "2026-09-30T18:10:37+00:00",
+      "remaining": 8,
+      "total": 89,
+      "reason": "Sustained-study contract, application fixtures, and continuity runner are implemented. The six-trajectory offline rehearsal is now exercising forced proposal failure, repair, and settled process restart before live calls."
+    },
+    {
+      "at": "2026-09-30T18:11:43+00:00",
+      "remaining": 13,
+      "total": 89,
+      "reason": "The first sustained rehearsal was deliberately interrupted after review found a live-mode fallback risk. The runner now fails closed for unknown models, validates receipt source/status strictly, and handles same-head publication; final runner checks and a fresh exact-contract rehearsal are required. No new API calls occurred."
+    },
+    {
+      "at": "2026-09-30T18:14:48+00:00",
+      "remaining": 8,
+      "total": 89,
+      "reason": "Corrected runner verification passed: 12 runner tests plus 33 stage/checkpoint/budget tests. Runner phase is complete again; the forced-repair process-handoff rehearsal remains in progress."
+    },
+    {
+      "at": "2026-09-30T19:57:17+00:00",
+      "remaining": 3,
+      "total": 89,
+      "reason": "All 12 live trajectories finished: portfolio 4/4 accepted, strong single 3/4, and cheap sequential 3/4. All 36 visible milestones and 12 new-PID handoffs completed. Final independent audit and supplemental quality analyses remain open."
+    },
+    {
+      "at": "2026-09-30T20:11:03+00:00",
+      "remaining": 0,
+      "total": 89,
+      "reason": "Sustained-study milestone complete: all 12 trajectories and independent audits are retained, with primary and supplemental quality clearly separated. The final review artifact recommends adaptive verification before increasing candidate count."
+    },
+    {
+      "at": "2026-09-30T23:49:49+00:00",
+      "remaining": 25,
+      "total": 114,
+      "reason": "The user requested a stronger next testing round. Reopened the existing report with provisional scope while preserving every completed milestone, version, and review state."
+    },
+    {
+      "at": "2026-09-30T23:50:47+00:00",
+      "remaining": 33,
+      "total": 122,
+      "reason": "Add the requested verification-efficiency audit and planning workstream (8 effort units) alongside the ongoing adaptive study; preserve its milestone, handoff, scope and execution state."
+    },
+    {
+      "at": "2026-09-30T23:54:12+00:00",
+      "remaining": 27,
+      "total": 122,
+      "reason": "Completed source inventory and efficiency analysis; drafting the verification plan and proposed AGENTS.md rules. All speedups remain unmeasured hypotheses."
+    },
+    {
+      "at": "2026-09-30T23:55:50+00:00",
+      "remaining": 25,
+      "total": 122,
+      "reason": "Completed the verification-efficiency audit and plan. Source references and factual counts checked; the local review artifact passed focused desktop/mobile Playwright checks. Implementation remains proposed; the concurrent adaptive study remains active."
+    },
+    {
+      "at": "2026-10-01T00:08:19+00:00",
+      "remaining": 40,
+      "total": 137,
+      "reason": "Implement the approved verification-efficiency plan alongside the ongoing study. Add 15 effort units for fast gates/inventory, batching/artifacts, versioned validation reuse, working rules, and measured verification. Preserve scientific study state."
+    },
+    {
+      "at": "2026-10-01T00:13:07+00:00",
+      "remaining": 35,
+      "total": 137,
+      "reason": "Fresh maintenance fixtures and engine/probe/journal components are frozen and qualified; 46 fast engine/probe/journal checks passed. Runner checks and the exact-input rehearsal follow. Shared tooling has an unfinished type gate, so no overall static-green claim is made."
+    },
+    {
+      "at": "2026-10-01T00:14:03+00:00",
+      "remaining": 26,
+      "total": 137,
+      "reason": "The exact current runner passed 12 tests and the first six-case zero-API rehearsal is running. The runtime-bound study core is frozen; 80 focused component checks are covered across owners."
+    },
+    {
+      "at": "2026-10-01T00:16:18+00:00",
+      "remaining": 32,
+      "total": 137,
+      "reason": "The first offline proof was deliberately interrupted after a generated-probe hash mismatch. Full provenance and executable case hashes are now separated in the new modules; affected qualification and a fresh proof are required. No API calls occurred."
+    },
+    {
+      "at": "2026-10-01T00:20:36+00:00",
+      "remaining": 26,
+      "total": 137,
+      "reason": "Corrected implementation qualification is complete again: 82 focused checks retained with exact fingerprints. Fresh proof 2 has demonstrated its first SIGKILL/new-PID replay and is continuing; the whole proof and independent audit remain unfinished."
+    },
+    {
+      "at": "2026-10-01T00:26:07+00:00",
+      "remaining": 22,
+      "total": 137,
+      "reason": "Updated work state and handoff."
+    },
+    {
+      "at": "2026-10-01T00:38:52+00:00",
+      "remaining": 18,
+      "total": 137,
+      "reason": "Updated work state and handoff."
+    },
+    {
+      "at": "2026-10-01T00:53:35+00:00",
+      "remaining": 20,
+      "total": 139,
+      "reason": "Add two scoped effort units for a separately scored post-freeze data-handoff diagnostic: selected source versions must operate on the same candidate-created database. Trusted golden Docker proof is required before evaluating frozen candidate trajectories."
+    },
+    {
+      "at": "2026-10-01T00:59:01+00:00",
+      "remaining": 16,
+      "total": 139,
+      "reason": "Updated work state and handoff."
+    },
+    {
+      "at": "2026-10-01T01:33:26+00:00",
+      "remaining": 13,
+      "total": 139,
+      "reason": "Live study started after the complete exact-input proof and independent audit passed. The cumulative cap is now $40 with prior $8.252813 preserved; outcomes remain pending."
+    },
+    {
+      "at": "2026-10-01T01:39:40+00:00",
+      "remaining": 10,
+      "total": 139,
+      "reason": "Updated work state and handoff."
+    },
+    {
+      "at": "2026-10-01T01:58:52+00:00",
+      "remaining": 27,
+      "total": 156,
+      "reason": "Full-plan continuation reopened: the earlier implementation completed development tooling, but required versioned study integrations, measurements, historical compatibility and combined qualification remain. User now authorizes stable main commits and final publication; destination is still missing."
+    },
+    {
+      "at": "2026-10-01T02:10:28+00:00",
+      "remaining": 24,
+      "total": 156,
+      "reason": "Measured the qualified provider-free validation workload and retained first-negative proofs; original frozen CORE remains unchanged. Full combined qualification and v2 rehearsals still pending final caller-audit freeze."
+    },
+    {
+      "at": "2026-10-01T02:30:37+00:00",
+      "remaining": 22,
+      "total": 156,
+      "reason": "Historical compatibility reproduced the retained certificate exactly with zero candidate/provider executions. Final fixed source snapshot is in combined offline qualification."
+    },
+    {
+      "at": "2026-10-01T04:18:14+00:00",
+      "remaining": 16,
+      "total": 156,
+      "reason": "All versioned rehearsal and diagnostic audits passed. Final documentation, main commit and release assembly are in progress."
+    },
+    {
+      "at": "2026-10-01T04:27:51+00:00",
+      "remaining": 12,
+      "total": 156,
+      "reason": "Completed all verification-plan implementation, full qualification, main commits and release artifacts. Published and checked the final local guide; external publication awaits its destination."
+    },
+    {
+      "at": "2026-10-01T05:23:02+00:00",
+      "remaining": 8,
+      "total": 156,
+      "reason": "All 18 live trajectories finished: 3/6 strong reviewed, 0/6 cheap reviewed, 0/6 portfolio reviewed accepted. Full audit and separate diagnostics remain; all model calls have ended."
+    },
+    {
+      "at": "2026-10-01T05:44:31+00:00",
+      "remaining": 6,
+      "total": 156,
+      "reason": "Completed the separate same-database diagnostic and bound interpretation: all 15 eligible trajectories, 30 stories and 465 command steps matched; three early stops remain explicit skips."
+    },
+    {
+      "at": "2026-10-01T05:52:09+00:00",
+      "remaining": 2,
+      "total": 156,
+      "reason": "Completed and published the independently audited adaptive-verification study. All study tasks and diagnostics are complete; separate external-publication scope remains open."
+    },
+    {
+      "at": "2026-10-01T12:05:53+00:00",
+      "remaining": 19,
+      "total": 173,
+      "reason": "User requested expanded testing and timing/ranking comparisons. Added 17 units of provisional scoped work while retaining all completed studies and the separate publication obligation."
+    },
+    {
+      "at": "2026-10-01T12:17:42+00:00",
+      "remaining": 16,
+      "total": 173,
+      "reason": "Completed the historical comparison metrics phase: reviewed source-bound analysis and visible dashboard passed focused pinned Playwright checks; no user review or feedback state changed."
+    },
+    {
+      "at": "2026-10-01T12:34:25+00:00",
+      "remaining": 12,
+      "total": 173,
+      "reason": "Started the exact four-trajectory zero-API proof on frozen continuation contract d763e301a306. Controller implementation qualification is complete; auditor race repair and proof certification remain pending."
+    },
+    {
+      "at": "2026-10-01T12:47:55+00:00",
+      "remaining": 9,
+      "total": 173,
+      "reason": "Exact proof independently certified all four trajectories; the live continuation study is now running within its $12 reservation-inclusive and $40 cumulative ceilings. No new quality scores are claimed."
+    },
+    {
+      "at": "2026-10-01T13:05:14+00:00",
+      "remaining": 5,
+      "total": 173,
+      "reason": "The four-trajectory live run finished; independent certification and report analysis remain."
+    },
+    {
+      "at": "2026-10-01T13:17:45+00:00",
+      "remaining": 2,
+      "total": 173,
+      "reason": "Completed the audited continuation comparison and final desktop/mobile report verification; retained the separate external-publication obligation."
+    },
+    {
+      "at": "2026-10-01T13:54:00+00:00",
+      "remaining": 20,
+      "total": 191,
+      "reason": "User requested a more useful and discriminating benchmark. Added five provisional phases (18 effort units) while retaining completed history and the separate publication obligation."
+    },
+    {
+      "at": "2026-10-01T14:29:05+00:00",
+      "remaining": 17,
+      "total": 191,
+      "reason": "Frozen scientific design completed. Reconciled 47 physically passing selected checks without rewriting the stale aggregate; 41 Docker fixture/control/fault qualifications are running."
+    },
+    {
+      "at": "2026-10-01T14:57:04+00:00",
+      "remaining": 13,
+      "total": 191,
+      "reason": "Fixture/fault-bank phase verified complete: 41/41 qualified. Started the exact ten-trajectory, twenty-stage zero-API rehearsal; no live benchmark calls or scores."
+    },
+    {
+      "at": "2026-10-01T16:22:00+00:00",
+      "remaining": 17,
+      "total": 191,
+      "reason": "Reopened four fixture effort units for corrected-contract binding; old 41/41 proof and failed full-stage rehearsal preserved. Fresh qualification 3 running without API calls."
+    },
+    {
+      "at": "2026-10-01T16:41:30+00:00",
+      "remaining": 13,
+      "total": 191,
+      "reason": "Fresh fixture qualification passed 41/41 on corrected contract; restored four verified effort units and started exact rehearsal 2, with no API calls."
+    },
+    {
+      "at": "2026-10-01T17:01:57+00:00",
+      "remaining": 11,
+      "total": 191,
+      "reason": "Published current Git project to Westbrook/gossip-protocol: four commits, 223 tracked files, clean working tree and exact branch/tag parity verified. Current benchmark snapshot remains in progress; ignored local files stay local."
+    },
+    {
+      "at": "2026-10-01T18:06:29+00:00",
+      "remaining": 7,
+      "total": 191,
+      "reason": "Independent exact rehearsal audit passed all ten; runner phase verified and live cohort launched under the unchanged corrected contract. No live score or usage claim inferred."
+    },
+    {
+      "at": "2026-10-01T21:19:08+00:00",
+      "remaining": 3,
+      "total": 191,
+      "reason": "Complete audited benchmark and diagnostic results populated. Final exact page frozen for engineering/browser qualification; no ready card or user review invented."
+    },
+    {
+      "at": "2026-10-01T21:25:04+00:00",
+      "remaining": 0,
+      "total": 191,
+      "reason": "Benchmark milestone complete and exact version released for user review after all scientific, engineering and browser gates. Separate publication obligation preserved; no additional study launched."
+    },
+    {
+      "at": "2026-10-02T11:46:24+00:00",
+      "remaining": 36,
+      "total": 227,
+      "reason": "Expanded active scope toward statistical evidence, adding 36 effort units while preserving all 191 completed units. Statistical design, retained-evidence analysis and repair-controller design are active; independent confirmation remains required beyond a small pilot. Git push authorization and the unchanged cumulative budget are recorded."
+    },
+    {
+      "at": "2026-10-02T11:54:03+00:00",
+      "remaining": 51,
+      "total": 242,
+      "reason": "Preserved the original investigation breadth: added 15 effort units for actual peer-local coordination, registered gossip-versus-orchestrator evidence and separately assessed tool-interface validity. Current work remains an offline foundation, with draft pilot and roadmap; no new qualification, provider calls or budget change."
+    },
+    {
+      "at": "2026-10-02T11:57:42+00:00",
+      "remaining": 47,
+      "total": 238,
+      "reason": "Created a working investigation roadmap preview with explicit continuation, formation and live-coordination boundaries. Kept tool-interface validity as a separate later question rather than a new current-pilot requirement; four proposed effort units moved out of active scope. Statistics, engineering qualification and exact review release remain pending."
+    },
+    {
+      "at": "2026-10-02T12:29:44+00:00",
+      "remaining": 32,
+      "total": 238,
+      "reason": "Released exact offline-foundation version60500c182cc0 after161 physically executed targeted checks, static qualification and desktop/mobile/statistics QA. Statistical design, retained-evidence analysis, controller and fixture construction are complete; full runner/audit, physical qualification, rehearsal, pilot and confirmation remain outstanding. No new API spending."
+    },
+    {
+      "at": "2026-10-02T12:33:18+00:00",
+      "remaining": 29,
+      "total": 238,
+      "reason": "Completed and published verified cycle1:161 checks, exact artifact and final ready-card browser QA passed;219 inputs remain current and remote origin/main matches512eba0. Durable handoff binds all receipts. Full cohort runner/audit, physical qualification, rehearsal, funded pilot and independent formation/live-coordination evidence remain active work; no new spend or user review inferred."
+    },
+    {
+      "at": "2026-10-02T13:39:11+00:00",
+      "remaining": 27,
+      "total": 238,
+      "reason": "Published verified cycle2 implementation at ba1dbca: all268 offline checks passed,225 inputs/runtime identities match, and30 historical bindings remain unchanged. Split the existing four-unit qualification phase into two completed implementation units and two pending physical-qualification units without changing total scope. Actual42-row Docker qualification and the complete12/24 physical rehearsal remain next; no new API usage or approved funding increase."
+    },
+    {
+      "at": "2026-10-02T13:56:00+00:00",
+      "remaining": 25,
+      "total": 238,
+      "reason": "Completed physical fixture qualification: all 42 fresh Docker rows qualified in 651.707448 seconds, including both initial baselines; zero reuse or API calls. Root is validating exact receipt bindings before the full 12/24 rehearsal. No model-quality result or funding change is claimed."
+    },
+    {
+      "at": "2026-10-02T14:22:32+00:00",
+      "remaining": 27,
+      "total": 238,
+      "reason": "Retained the completed physical rehearsal and its failed independent audit. Reopened qualification for the required repaired contract; no certified comparison or live readiness is claimed."
+    },
+    {
+      "at": "2026-10-02T15:00:59+00:00",
+      "remaining": 25,
+      "total": 238,
+      "reason": "Completed all 42 corrected-contract qualification rows and launched the full matching zero-API rehearsal after exact production preflight validation."
+    },
+    {
+      "at": "2026-10-02T15:40:06+00:00",
+      "remaining": 22,
+      "total": 238,
+      "reason": "Completed independent certification of the full scripted rehearsal and verified the merged peer transport foundation; publication review is pending and the broader live studies remain unfinished."
+    },
+    {
+      "at": "2026-10-02T18:44:49+00:00",
+      "remaining": 30,
+      "total": 246,
+      "reason": "Applied explicit $80 funding approval and resolved its input blocker. Added eight user-requested larger-project study units without completion credit: total scope rises from 238 to 246 while verified work remains 216."
+    },
+    {
+      "at": "2026-10-02T19:06:20+00:00",
+      "remaining": 33,
+      "total": 246,
+      "reason": "Published the funded qualification and larger-study design, and started the full funded-contract rehearsal. Reopened three rehearsal effort units for the changed contract; prior certified proof remains intact, with no design-only implementation credit."
+    },
+    {
+      "at": "2026-10-02T19:52:21+00:00",
+      "remaining": 30,
+      "total": 246,
+      "reason": "Completed the funded rehearsal and audit, restoring three verified effort units; published readiness and started the approved live cohort. Opening budget is retained as a snapshot, while current API usage is explicitly unreconciled."
+    },
+    {
+      "at": "2026-10-02T21:21:30+00:00",
+      "remaining": 25,
+      "total": 246,
+      "reason": "Completed and published the independently audited live pilot: 10/12 accepted trajectories across two domains, $6.606959 new API usage. Five existing pilot units earned; full larger-project and confirmatory scope preserved."
+    },
+    {
+      "at": "2026-10-03T01:54:57+00:00",
+      "remaining": 27,
+      "total": 248,
+      "reason": "User explicitly selected GitHub Pages for progress and output documentation. Added two units for the separate static-site build/publication/verification deliverable; prior open destination resolved. Existing experiment qualification remains active, with no API spend or completion credit."
+    }
+  ],
+  "review_semantics": "Read-only public projection; no change to any local user review checkpoint."
+}

@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Foundations for a twenty-role project · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Documentation from source commit 052793a02c8e. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="foundations-for-a-twenty-role-project">Foundations for a twenty-role project</h1>
+<p>The prospective project has sixteen builders and four reviewers. These modules provide its accounting and evidence boundaries. They do not yet implement or qualify a twenty-role runtime. The existing studies and their frozen source inventories remain unchanged.</p>
+<h2 id="what-the-components-do">What the components do</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Responsibility</th>
+<th>Required host behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>peer_project_contract_v2.py</code></td>
+<td>Immutable context, action, dispatch, local-view, candidate, selection, release and role records; strict bounded encoding and hashing</td>
+<td>Authenticate actors, obtain evidence from the actual local store, and materialize the bound content</td>
+</tr>
+<tr>
+<td><code>peer_financial_authority_v2.py</code></td>
+<td>Asynchronous admission against one existing cumulative ledger and one immutable cohort allowance; durable result/accounting recovery</td>
+<td>Supply the trusted ledger, owned payload store and registered worker profiles; keep the lifetime owner lock</td>
+</tr>
+<tr>
+<td><code>peer_review_recovery_v2.py</code></td>
+<td>Finite corrections of complete schema-invalid reviews, charged to the existing total reviewer allowance</td>
+<td>Durably reserve the returned state before dispatch, retain the trusted current checkpoint, and provide known provider outcomes</td>
+</tr>
+<tr>
+<td><code>peer_review_release_v2.py</code></td>
+<td>Exact package selection, cumulative mandatory checks and eight explicit review scopes for one immutable public release</td>
+<td>Authenticate selection, contribution, execution and local-view evidence, retain current history, and separately perform fenced Git promotion</td>
+</tr>
+</tbody>
+</table>
+<p>All financial dispatch in this version is restricted to offline fixture transports. A user-approved budget alone does not qualify an execution contract. Changing output directories cannot create a second cohort allowance.</p>
+<h2 id="accounting-and-persistence">Accounting and persistence</h2>
+<p>Capacity waiting creates no reservation or paid backlog. An available executor admits an exact action and lease under the joined ledger transaction, checking the task, cohort and cumulative limits. Provider work runs outside the transaction and caller's handler. All registered trajectories and milestones share the same cohort allowance.</p>
+<p>An admitted request retains its identity and reservation when the caller loses the reply. Replaying that identity cannot invoke the provider again. A durable known response can settle after its lease expires. A missing or indeterminate response blocks new work and retains conservative accounting. The existing request journal supplies local dispatch recovery; it does not claim provider-side exactly-once execution.</p>
+<p>The format-correction policy addresses the completed pilot's malformed reviewer response without changing that historical result. A correction requires a complete, known response that failed the declared whole-response schema. It consumes both a correction allowance and a total reviewer call. Source, target, local view, ordered suite and schema remain bound to the same immutable context. Unknown provider outcomes and infrastructure failures do not permit correction. Semantic rejection remains rejection.</p>
+<h2 id="evidence-and-review">Evidence and review</h2>
+<p>Reviewers return a <code>review.json</code> data artifact through the existing worker's patch protocol. The only writable path is <code>review.json</code>; candidate source and execution evidence may appear as read-only context. The host reconstructs verdict provenance from the actual retained and accounted worker response. A model-authored claim about its own identity or tests is not a receipt.</p>
+<p>The gate requires the registered pair of scopes from each of four distinct reviewers. Two scope decisions in one response count as one reviewer invocation. The eight slots cover the four packages and explicit cross-package requirements. Missing evidence, rejected scopes, unresolved admitted refutations or a failed mandatory check prevent eligibility. Production authors cannot approve their own release.</p>
+<p>The selected package contents plus registered inherited files must exactly cover the target source. Named file hashes are SHA256 of their raw bytes. Component identities use domain-separated canonical JSON; these are distinct from the existing evaluator's source-digest encoding and the journal's receipt encoding. Trusted adapters verify the original bytes and their correspondence.</p>
+<p>Once a test is admitted, later suites must preserve its identity, contents and ordering. Changing the target tree, protected base, suite or release generation requires review of the new target. Unrelated movement on a provisional working branch does not change an immutable release target. A gate receipt establishes public-release eligibility; it neither updates Git nor substitutes for independent final project acceptance.</p>
+<h2 id="what-remains-before-the-practical-experiment">What remains before the practical experiment</h2>
+<p>The next integrated fixture must physically exercise twenty cognitive role processes, private durable journals and Git stores, actual overlapping worker calls, and continuing gossip during model and evaluator waits. Reviewers must consume arrived source and tests, expose a cross-package defect, request a repair, review the changed target and promote the exact tested commit. Partition, restart, lost-reply and unknown-outcome cases must preserve these boundaries. Infrastructure processes are counted separately.</p>
+<p>Passing that fixture is only the first engineering milestone. The <a href="large-swarm-project-plan-v1.html">project plan</a> still requires four cumulative Local Research Library releases and six trajectories: the smaller swarm, twenty-role swarm and equally staffed orchestrated comparison, each under healthy and compound-recovery conditions. Full rehearsal, explicit resource limits and a complete cohort budget precede live execution. The separate decision-placement by transport contrast and independent held-out confirmation remain necessary before claiming a general advantage.</p>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>

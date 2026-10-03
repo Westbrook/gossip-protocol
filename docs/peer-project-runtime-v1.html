@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peer project runtime v1 · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Documentation from source commit 052793a02c8e. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="peer-project-runtime-v1">Peer project runtime v1</h1>
+<p>This additive runtime connects one provided coding task to public Git promotion. It composes the existing coding authority, payload mesh, candidate publisher and receiver promotion bridge. It does not generate a project plan, call a live model, provide independent final acceptance, or complete the registered scientific comparison. All earlier v1 runtimes remain unchanged.</p>
+<p>The CLI module is <code>gossip_harness.peer_project_runtime_v1</code>. Every process has <code>root</code>, <code>node_id</code>, <code>mode</code>, <code>token</code>, <code>port</code>, <code>interval</code>, <code>fanout</code> and <code>role</code> fields. The role determines the remaining trusted configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Additional fields</th>
+<th>Local work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>peer</code></td>
+<td><code>seed</code> (provided JSON or null)</td>
+<td>Event and payload dissemination</td>
+</tr>
+<tr>
+<td><code>candidate-worker</code></td>
+<td><code>coding</code>, <code>authority</code>, <code>candidate</code></td>
+<td>Coding, then durable proposal construction and publication</td>
+</tr>
+<tr>
+<td><code>promotion-service</code></td>
+<td><code>authority</code>, <code>authority_port</code>, <code>task_specs</code>, <code>profiles</code>, <code>promotion</code></td>
+<td>Coding authority plus serial public validation and promotion</td>
+</tr>
+</tbody>
+</table>
+<p><code>candidate</code> contains an exact <code>baseline_sha</code>, <code>allowed_paths</code> and <code>generation: 0</code>. <code>promotion</code> contains the baseline, public host-oracle <code>cases</code>, pinned local image ID, evaluation limits and an explicitly declared <code>initially_enabled</code> gate. Repositories are fixed at each process's own <code>root/repository.git</code>; the candidate and promotion journals are fixed private descendants. Bootstrap may create independent Git clones before launch. The runtime checks baseline ancestry and binds configuration, repository location and runtime identity across restarts. Restoring an ephemeral TCP port does not change this identity.</p>
+<p>The candidate timer continues after the coding peer's local step. It consumes a completed, source-bound result only after the necessary bytes arrived locally, constructs the exact proposal and publishes a real bundle payload followed by its candidate offer. The wire contains hashes and manifests, never a sender path. The service receives its own copy, imports it into its own quarantine, verifies the authoritative dispatch binding, validates the actual merged source using <code>BlackboxValidator</code>, and performs the existing fenced Git/ledger promotion.</p>
+<p>The service owns two bounded TCP surfaces and a separate serial promotion thread. Its event/payload timer continues during Git and Docker work. Observer state uses small cached summaries: it never waits on the validator lock and omits source files, case suites and large receipts. It reports up to eight recent attempt summaries plus counts; full evidence remains in the durable promotion journal. The <code>promotion_gate</code> observer operation changes only the declared timer's durable enabled flag. It neither executes work synchronously nor resets failed or terminal attempts. There is no observer action or promotion RPC.</p>
+<p>The only coding transport remains the closed offline Responses fixture injected into the real <code>OpenAIWorker</code> adapter. No API credential is discovered and no real provider request is made. Candidate Python runs only inside the pinned Docker container; the comparison oracle stays on the host. Docker prerequisites and the image are supplied separately; the runtime neither starts Docker nor pulls an image. Public promotion and task completion in this fixture remain distinct from private project acceptance and a successful scientific study.</p>
+<p>The dedicated Docker test class retains separate fixture directories for:</p>
+<ul>
+<li>Gossip and broker success through a divergent receiver branch. The public oracle requires both the generated change and the receiver's independently changed helper. Neither offered-only nor receiver-only fixture behavior meets the expected outputs. The sender process is killed and its repository renamed after the receiver has the full offer and bytes, before promotion is enabled.</li>
+<li>A wrong-answer proposal that the isolated host-oracle validation rejects, leaving the accepted Git head and task completion unchanged.</li>
+<li>A real service exit after Git CAS, followed by exact journal recovery. The retained validation receipt, container identity and offline coding entry must remain unchanged after restart and additional local timer rounds.</li>
+</ul>
+<p>The service restart check occurs after successful evaluation and verified container cleanup. It does not cover SIGKILL during an active <code>BlackboxValidator</code> call: killing the parent can bypass its timeout and cleanup handlers. Durable container tracking before launch, startup cleanup and a watchdog remain necessary to qualify that stronger recovery guarantee.</p>
+<p>Each fixture retains process configurations/logs, journal and quarantine evidence, an offline transport entry trace, and a <code>pipeline-receipt.json</code> binding the offer, bundle, exact merged source, validation, accepted commit and ledger state. These are complete public-integration rehearsals, not the registered cohort's untouched scientific rehearsal or independent final-project acceptance.</p>
+<p>The largest topology has five owned daemon processes: service, worker, source and two relays. The service has a mesh timer, a serial promotion timer, an authority accept loop and bounded TCP handlers. At most one candidate container is active in a fixture. Native Git, Docker CLI and in-container supervisor/child processes add bounded work; the verification runner's conservative ten-slot exclusive budget is a scheduling bound, not a literal thread count. Successful and failed artifacts are retained. No test lane is implied to have passed merely by the existence of this runtime or documentation.</p>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>

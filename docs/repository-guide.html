@@ -1,0 +1,556 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gossip × Agents: coordination lab · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Uncommitted working-tree documentation snapshot; not included in the source commit below. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="gossip--agents-coordination-lab">Gossip × Agents: coordination lab</h1>
+<p>A provider-neutral experiment in <strong>distributed Git integration authority</strong> and <strong>gossip evidence delivery</strong>. The original matrix uses scripted workers and real independent Git repositories. A separate practical pilot connects bounded coding workers, validation, task ownership, cost reservations, and release publication. Both are small experiments; neither establishes production throughput or general superiority over orchestration.</p>
+<p>The working design follows Linux-style delegated integration:</p>
+<pre class="text"><code>worker repositories → subsystem maintainer repositories
+                    → disposable combined integration tree → accepted release
+
+proposal/evidence announcements travel separately over a broker star or gossip</code></pre>
+<p>Repository hosting and authority are separate choices. This workflow can be hosted on GitHub, a private server, or local paths. Git preserves history and supports selective integration; executable project checks still determine whether a clean merge is correct.</p>
+<h2 id="development-verification">Development verification</h2>
+<p>Use the shared verification workflow before running experiment demonstrations:</p>
+<pre class="sh"><code>scripts/bootstrap-dev
+.venv/bin/python -m devtools.verify --list
+.venv/bin/python -m devtools.verify</code></pre>
+<p>Bootstrap reuses a persistent Python environment with hash-locked development tools. The verification command checks syntax, types and correctness lint first, then runs the offline tests from <code>tests/</code>, <code>simulation/</code> and <code>analysis/</code> in isolated, resource-bounded groups. Results, timings and failure artifacts are retained under <code>runs/verification/</code>. It does not make model requests. Use <code>--reuse</code> to reuse successful checks whose complete inputs still match; reused checks are reported separately from fresh executions.</p>
+<p>Docker and browser checks are explicit lanes. For example:</p>
+<pre class="sh"><code>.venv/bin/python -m devtools.verify --lanes docker
+.venv/bin/python -m devtools.verify --lanes report,browser --workers 8</code></pre>
+<p>See <a href="development-verification.html">VERIFICATION.md</a> for focused checks, resource limits, browser setup, artifact retention and the versioned validation batch API. <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/AGENTS.md">AGENTS.md</a> specifies the scheduling and evidence rules.</p>
+<p>The additive <code>gossip_harness.sustained_experiment_v2</code> and <code>gossip_harness.swarm_experiment_v2</code> entry points batch independent validations within explicit CPU/memory limits. <code>analysis.run_sustained_review_probes_v2</code> uses the same session for independent supplemental observations. Original study runners and frozen evidence remain unchanged; v1 rehearsal results do not qualify v2 contracts. Visible evidence reuse needs an explicit determinism declaration; final and repeatability observations always execute physically.</p>
+<p>Use <code>python -m devtools.inventory_report --help</code> to join the manifest with explicitly selected receipts, and <code>python -m devtools.benchmark_validation --help</code> for the small provider-free measurement workload. CI and portable source contents are documented in <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/.github/README.md">.github/README.md</a>. Optional external integration dependencies are declared separately from offline coverage.</p>
+<h2 id="run-the-original-experiment">Run the original experiment</h2>
+<p>Python 3.11+ and Git 2.28+ on macOS or Linux are required; the local ledger uses POSIX file locks. The original matrix needs no third-party Python packages, network, credentials, or model API calls. Run from this directory:</p>
+<pre class="sh"><code>python3 -m gossip_harness run --output runs/my-first-matrix --seeds 0
+python3 -m gossip_harness inspect runs/my-first-matrix/results.json</code></pre>
+<p>The matrix performs real local Git operations, so it can take several minutes. Every output directory must be fresh. It retains independent bare repositories, <code>results.json</code>, and a causal <code>trace.jsonl</code> for inspection. All experimental Git commands use local file transport and disable inherited Git configuration, hooks, and signing. Existing user repositories are never used as fixture stores.</p>
+<h2 id="what-the-matrix-varies">What the matrix varies</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integration authority</td>
+<td>One integration gate; subsystem maintainers followed by a global gate</td>
+</tr>
+<tr>
+<td>Evidence transport</td>
+<td>Broker-star anti-entropy; bounded-fanout push-pull gossip</td>
+</tr>
+</tbody>
+</table>
+<p>All four combinations receive the same deterministic patch DAG, proposal order, acceptance requirements, and repair policy. Scripted edits exercise:</p>
+<ol type="1">
+<li>Independent changes that should both land.</li>
+<li>Same-line text conflicts that must preserve the accepted state.</li>
+<li>Changes that merge cleanly but violate a global resource-allocation invariant.</li>
+<li>A branch that inherits unaccepted changes outside its subsystem scope.</li>
+</ol>
+<p>The global invariant is <code>alpha + beta &lt;= 10</code>. In the semantic-conflict fixture, each subsystem's allocation of six passes its local checks, while the combined allocation of twelve fails. A passing subsystem tree therefore remains distinct from an accepted project release.</p>
+<p>The retained seed-0 run passed all 16 cases. All variants produced the same accepted release tree for each scenario. The maintainer path ran five validation calls for independent edits, versus two for the single gate. Gossip required fewer modeled delivery rounds in the maintainer cases and more peer contacts; this establishes no wall-clock or cost advantage. Inspect the saved results without rerunning Git:</p>
+<pre class="sh"><code>python3 -m gossip_harness inspect results/git-lab-initial/results.json</code></pre>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">retained run</span> includes the machine-readable results and ordered trace. Across component suites and focused regressions, 57 unique harness tests passed, including seven matrix assertions.</p>
+<p>Report all prepare attempts and validation calls, including maintainer, integration, and release stages. A smaller number of root pulls does not imply a lower total cost. Elapsed times are diagnostics and are not a fair performance benchmark: the host, filesystem, caches and parallel case execution influence them. Transport contacts are modeled exchanges, not bytes, socket operations or LLM tokens. Processing order waits for notices intentionally; this matrix does not test delivery-driven task scheduling.</p>
+<h2 id="implementation-boundaries">Implementation boundaries</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gossip_harness/gitstore.py</code></td>
+<td>Independent bare stores, immutable proposals, ancestry scope checks, private candidate validation, compare-and-swap promotion of the exact tested commit</td>
+</tr>
+<tr>
+<td><code>gossip_harness/transport.py</code></td>
+<td>Immutable hashed events, synchronous broker-star/gossip delivery, bounded batches, drops, partitions and repair</td>
+</tr>
+<tr>
+<td><code>gossip_harness/ledger.py</code></td>
+<td>Transactional claims and fencing epochs, dependencies, reserved credits, durable promotion intents</td>
+</tr>
+<tr>
+<td><code>gossip_harness/promotion.py</code></td>
+<td>Journaled bridge between the task ledger and Git, including interrupted-promotion reconciliation</td>
+</tr>
+<tr>
+<td><code>gossip_harness/experiment.py</code></td>
+<td>Scripted fixtures, 2×2 experiment matrix, complete operation counts and traces</td>
+</tr>
+<tr>
+<td><code>simulation/dissemination.py</code></td>
+<td>Earlier standalone spread model at 1,000 and 10,000 peers</td>
+</tr>
+</tbody>
+</table>
+<p>The ledger/promotion coordinator is exercised separately from the original fixed-order topology matrix and is connected end to end in the practical pilot. Its tests cover ownership reassignment, expired workers, concurrent claims, reserved-budget bounds, stale Git heads, and interruptions before/after a Git update. The pilot uses a fixed task roster with parallel workers; it does not implement autonomous task discovery or planning.</p>
+<p>SQLite and Git do not share a transaction. Promotion first persists an intent that freezes the named task attempts, performs a Git compare-and-swap, then finalizes the ledger. Recovery inspects the accepted ancestry. A local OS lock prevents recovery from canceling a live promotion; an interrupted process releases that lock. An unpublished rejected intent can be retried as a fresh publication generation. All accepted-ref writes must follow this protocol; out-of-band force updates and multi-host failover are outside this milestone.</p>
+<p>Generic integer credits demonstrate reservations; they are not a dollar pricing model. Lease expiry never refunds an in-flight reservation automatically. A trusted accountant settles actual usage, including usage incurred by failed workers.</p>
+<h2 id="limits-and-next-experiments">Limits and next experiments</h2>
+<ul>
+<li>All peers share one trust domain. Topics are metadata; no ACL or signatures are claimed. Events carry observations, not executable commands or authority.</li>
+<li>Gossip is an in-process transport model. The broker baseline is a star anti-entropy model, not a production event-bus performance implementation.</li>
+<li>Repository stores are independent on one host. This tests workflow isolation, not host/network independence or Byzantine resilience.</li>
+<li>The original scripted matrix leaves rejected changes rejected. The practical pilot adds bounded local repair; global integration repair, maintainer replacement, scheduling fairness and emergent planning remain future work.</li>
+<li>The practical pilot adds a common patch-worker runner. Broader trials still need strong single-agent and orchestrated baselines, multiple repositories, repeated runs and realistic feature work before comparing live-agent quality.</li>
+<li>Preserve the gossip-versus-broker ablation. If a simpler shared-state approach delivers equivalent accepted work per dollar, prefer the simpler approach.</li>
+</ul>
+<h2 id="practical-coding-pilot">Practical coding pilot</h2>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">first live trial</span> completed all three variants: each passed 23 acceptance checks after one repair. Eight model requests totaled $0.035885 in conservative usage-based accounting against the $10 cap. The single worker needed two requests; each two-worker variant needed three. These results demonstrate the execution path, not an advantage from gossip.</p>
+<p>The pilot builds a Python CSV task-report CLI. Two scoped tasks implement parsing and summary logic; trusted checks also exercise the complete CLI. It compares a single worker implementing both modules with two parallel workers whose proposals pass through maintainer trees, using either broker or gossip announcements. Maintainer decisions are deterministic validation gates, not additional LLMs. There are 13 parser checks, six summary checks, and 23 complete-project checks.</p>
+<p>Docker must be running. The default image is the immutable Python 3.12 image verified on this host; use <code>--image sha256:...</code> for another locally available immutable image and repeat the rehearsal. The adapter never pulls implicitly. Containers have read-only source and check mounts, no network or model credential, nonroot execution, resource limits, and forced cleanup on timeout.</p>
+<p>First run the offline rehearsal. Its known solutions are excluded from live worker inputs. Each output directory must be fresh:</p>
+<pre class="sh"><code>python3 -m gossip_harness pilot --output runs/my-rehearsal
+python3 -m gossip_harness inspect runs/my-rehearsal/results.json</code></pre>
+<p>Live mode requires a passing rehearsal for the exact fixture, acceptance checks, and image. The approved local credential destination is <code>.env.local</code>, using <code>OPENAI_API_KEY</code>; the loader never executes that file or displays the key.</p>
+<pre class="sh"><code>python3 -m gossip_harness pilot --live --output runs/my-live-trial \
+  --rehearsal runs/my-rehearsal/results.json \
+  --budget-usd 10 --budget-ledger runs/first-live-budget.sqlite</code></pre>
+<p>The first trial's authorized cap is <strong>$10 across all variants and requests</strong>. Keep the same budget-ledger path across further attempts; a fresh output directory does not reset that ledger. Live caps above $10 are rejected. This controls this harness's requests, not other applications using the same API account.</p>
+<p>The worker is pinned to <code>gpt-5.4-mini-2026-03-17</code>, low reasoning, with an 8,192-token output ceiling. At the standard rates verified on September 30, 2026, it reserves $0.336864 before each call: a full 400,000-token input context plus maximum output. Reported usage is settled using integer microUSD; cached input is conservatively priced as uncached. Unknown usage keeps the whole reservation and stops further variants. No HTTP retries or automatic model substitution occur. Rate assumptions must be reviewed before later trials. See the <a href="https://developers.openai.com/api/docs/models/gpt-5.4-mini">official model policy</a>.</p>
+<p>Each worker gets at most two patch attempts, with local test feedback for repair. Leases remain alive while peers and validators work. A task is complete only after every required proposal is ready, the combined project passes all acceptance checks, and the exact tested release is journaled with all task completions. Global integration failures remain failures; this pilot does not repair them.</p>
+<p>Outputs include independent Git stores, an ordered trace, task-ledger state, container/check receipts, request identifiers and usage, and the exact accepted release commit. Interrupted model requests are never automatically replayed. This is a practical smoke test of two small code-generation tasks, not evidence that gossip makes coding faster or cheaper. Model workers propose patches through structured output; they do not yet have an interactive shell/tool loop. Gossip currently carries proposal announcements to integration gates. Workers do not yet consume shared semantic discoveries to revise their plans, so this pilot cannot test that proposed benefit of gossip.</p>
+<table>
+<thead>
+<tr>
+<th>Pilot module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gossip_harness/worker.py</code></td>
+<td>Provider-neutral request/result contract and bounded Responses adapter</td>
+</tr>
+<tr>
+<td><code>gossip_harness/pilot.py</code></td>
+<td>Claims, lease heartbeat, shared reservations, repair attempts, scoped integration and atomic task publication</td>
+</tr>
+<tr>
+<td><code>gossip_harness/sandbox.py</code></td>
+<td>Docker validation and reproducible execution receipts</td>
+</tr>
+<tr>
+<td><code>gossip_harness/pilot_fixture.py</code></td>
+<td>Versioned small project, fixed task contract and external acceptance checks</td>
+</tr>
+</tbody>
+</table>
+<h2 id="expanded-experiments">Expanded experiments</h2>
+<p>Two follow-up studies separate evidence usefulness, communication, and release correctness. Both evolve the saved accepted CSV project. They remain small internal benchmarks, not evaluations across industrial repositories.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">retained offline rehearsals</span> passed all four discovery setups and all 24 recovery cases. The user explicitly approved both live studies on September 30, 2026, with up to $50 additional budget if needed. The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">completed live studies</span> used 29 additional model requests and $0.289383 in conservative token accounting. Cumulative accounting is $0.325268, so the active $10 hard cap was sufficient.</p>
+<p>Across three repetitions, the single worker passed once, the isolated team twice, and the shared-note team three times. Gossip reproduced the shared team's three successes using exact response replay. The shared-versus-isolated difference is one paired outcome; this small result does not establish superiority. Single and team setups also differ in decomposition and permitted total repair attempts. Seven of nine initial parser implementations failed duration checks, illustrating correlated errors across independent samples.</p>
+<p>The live recovery model repaired the deliberately incompatible changes in one request. Its frozen patch passed all 24 delivery/release cases. These are 24 protocol replays of one repair, not 24 independent model successes. The retained record includes failures, accepted project exports, exact tested Git commits, source snapshots, response caches, and reconciled usage accounting.</p>
+<p><strong>Shared discoveries.</strong> Workers add hour/minute estimates and dependency-aware ready/blocked summaries. Each repetition generates two source-citing discovery notes from the full repository and specification. The single worker gets both notes; isolated team members get their own; the shared team gets both. The same notes are reused across arms. Quotes bind notes to source bytes but do not prove their interpretations correct. All workers already have the full requirements.</p>
+<p>The broker and gossip arms wait for identical evidence before coding. Their normalized prompts must match exactly, and gossip replays the broker's recorded response, including known failures. Thus they are a transport control with equal coding outcomes by construction. The live quality comparison is single versus isolated team versus shared team, with three exploratory repetitions. Raw test receipts are preserved; only unittest's elapsed-time line is normalized in repair feedback to make exact response replay possible.</p>
+<p><strong>Conflicting integration and recovery.</strong> Scripted branches add unknown estimates and averaging under divergent assumptions. They pass local checks and merge cleanly, but the full project fails. One bounded model repair receives the actual failing tree, current contract, and test feedback. Its passing patch is frozen and replayed through broker/gossip delivery under healthy, broker-isolated, partition-and-heal, and lossy schedules, over three seeds. Stale epochs and wrong-base notices are rejected. These are deliberate fault injections and protocol replays, not 24 independent model repairs.</p>
+<p>Rehearse both studies before spending:</p>
+<pre class="sh"><code>python3 -m gossip_harness discovery --output runs/discovery-rehearsal --repetitions 1
+python3 -m gossip_harness recovery --output runs/recovery-rehearsal</code></pre>
+<p>The authorized live continuation retains the original shared ledger and <strong>$10 cumulative hard cap</strong>, including the first pilot. The additional $50 authorization does not automatically increase the runner's cap; these studies will use the existing lower limit unless more is needed. Use fresh output directories; do not reset that ledger. The verified rehearsal paths for this session are <code>runs/discovery-rehearsal-2/results.json</code> and <code>runs/recovery-rehearsal-1/results.json</code>.</p>
+<pre class="sh"><code>python3 -m gossip_harness discovery --live --output runs/discovery-live \
+  --rehearsal runs/discovery-rehearsal/results.json --repetitions 3 \
+  --budget-ledger runs/first-live-budget.sqlite --budget-usd 10
+python3 -m gossip_harness recovery --live --output runs/recovery-live \
+  --rehearsal runs/recovery-rehearsal/results.json \
+  --budget-ledger runs/first-live-budget.sqlite --budget-usd 10</code></pre>
+<p>Actual accounting charges frozen discovery production once and response replay zero times. Comparative arm estimates must allocate the discovery production and original coding usage to each arm that logically uses them; replay's zero incremental API charge is not an efficiency finding. Communication remains an in-process model, with trusted single-host ledger authority.</p>
+<h2 id="candidate-swarm-pilot">Candidate swarm pilot</h2>
+<p>The <a href="../outputs/swarm.html">swarm proposal</a> investigates four independent inexpensive implementations, pooled cross-candidate tests, and a stronger reviewer proposing discriminating checks. Compare fixed selection and reviewer-assisted selection on the same frozen candidates and baseline evidence, alongside strong-single and cheap-sequential baselines. Measure whether a correct candidate exists, whether selection finds it, and the full cost of failed candidates and reviews.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">completed live pilot</span> ran all 16 task-runs with 128 API requests. Strong single passed 16/16 for $0.157078 in attributed API-token estimates; the cheap public-feedback baseline passed 14/16 for $0.049400; fixed-pool selection passed 16/16 for $0.370771; reviewer-assisted selection passed 16/16 for $1.158638. Matched fuzz also passed 16/16. Physical requests cost $1.365116 once, bringing cumulative conservative accounting to $1.690384 under the unchanged $10 cap. Attributed policy costs reuse the same candidate pool and must not be added together as physical spending.</p>
+<p>The pool contained seven failing implementations out of 64, but each task-run had a passing candidate. Reviewer extras distinguished candidates on 18 of 91 executed tests, exactly the count for matched fuzz, and changed no winners. The host rejected 19 incorrect expected answers across initial and reviewer test proposals, two invalid reviewer inputs, and nine malformed initial test batches. One of 240 final task-run inputs also appeared in visible evidence.</p>
+<p>A <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">post-hoc public-gate audit</span> found that the frozen tie order plus public tests alone would have selected the identical winner in all 16 cases. This was not a preregistered comparison arm. The pilot therefore verifies the harness and reveals a task-difficulty ceiling; it does not establish incremental value from pooled tests, a stronger reviewer, or gossip. The strong single worker is the simpler observed cost/quality choice. Next compare sequential repair with the same validation evidence, charging for its production, before adding candidates; then use harder repository changes and evaluate test validity without privileged reference answers.</p>
+<p>The <code>swarm</code> command implements this pilot on eight bounded JSON-function tasks across configuration, interval scheduling, and event-ledger families, with two repetitions per task. These are synthetic tasks, not eight industrial projects. Five policies compare a strong single worker (at most two public-feedback attempts), a cheap sequential worker (at most four), and three selectors over the same four independently generated cheap candidates. The selectors use fixed pooled evidence, matched extra fuzz cases, or stronger-reviewer test proposals. Baselines stop after passing public examples; final outcomes never enter repair.</p>
+<p>Generated tests are data only. The host rejects incorrect expected labels using a trusted reference oracle, without correcting the labels. Selection is therefore explicitly <strong>oracle-assisted</strong>. Every candidate faces the same baseline evidence; reviewer and extra-fuzz executions are capped to the same accepted test count. Selection requires passing every public example, then ranks distinct input cases passed, breaking ties with a frozen anonymous order. Similar inputs can still overweight a behavior; this is not semantic test deduplication.</p>
+<p>The new black-box adapter sends only inputs to a Docker container and compares returned JSON with expected values on the host. Winner decisions are saved before final hidden evaluation. Fresh Python processes isolate ordinary memory between cases, but cases share a container's temporary filesystem; this is not a hardened adversarial VM boundary. An accepted release binds the exact tested source hash to its promoted Git commit. The earlier pilots retain their original cooperative validation design.</p>
+<p>Rehearse all eight tasks with scripted failures and repairs before live use:</p>
+<pre class="sh"><code>python3 -m gossip_harness swarm --output runs/swarm-rehearsal --repetitions 1
+python3 -m gossip_harness swarm --live --output runs/swarm-live \
+  --rehearsal runs/swarm-rehearsal/results.json --repetitions 2 \
+  --budget-ledger runs/first-live-budget.sqlite --budget-usd 10</code></pre>
+<p>The rehearsal must match the exact source, fixtures, image and model profiles. Mini and strong profiles are pinned to <code>gpt-5.4-mini-2026-03-17</code> and <code>gpt-5.4-2026-03-05</code>, both with low reasoning and 4,096 output tokens. Each policy has a $6 reservation ceiling and a 900-second deadline for starting new requests; in-flight calls can finish later. The shared cumulative ledger remains capped at $10 for this run, within the user's additional $50 authorization. Unknown usage halts the run and retains its reservation. No implicit retries or model changes occur. The swarm CLI supports caps up to $50, but it cannot silently change an existing ledger's cap.</p>
+<p>Report candidate coverage, selected success, selector regret, invalid/duplicate test proposals, visible/hidden input overlap, and full attributed policy cost. The physical API charge counts reused candidates once; each comparison policy bears their full generation cost. Runtime and container counts are diagnostics, not an equal-latency benchmark. As a predeclared diagnostic, examine nested candidate subsets of one, two and four using prefixes of each case's frozen anonymous order; do not use final outcomes to choose those subsets. Giving the strong baseline the pool's evidence is deferred from this first five-policy pilot. These comparisons do not isolate gossip as a cause of coding quality.</p>
+<p>The matched fuzz arm is a diagnostic control: its test count depends on the reviewer's eligible output, while its attributed API cost excludes the reviewer call. Do not interpret that figure as the price of an independently runnable policy. API-token estimates also exclude reference-oracle development and local compute. Pool comparisons change prompts, evidence and repair policy as well as candidate count.</p>
+<p>Retain and independently reconcile a finished study with:</p>
+<pre class="sh"><code>python3 retain_swarm.py --run runs/swarm-live --output results/swarm-live \
+  --accounting-ledger runs/first-live-budget.sqlite \
+  --rehearsal runs/swarm-rehearsal/results.json</code></pre>
+<p>The retainer reproduces selections from visible matrices, checks that final evaluation follows the winner freeze, verifies candidate and promoted source hashes, and reconciles every request with the shared ledger. It exports failed candidates alongside accepted ones, response records, source snapshots, and per-policy cost and test-signal diagnostics. It does not copy credentials.</p>
+<table>
+<thead>
+<tr>
+<th>Swarm module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>swarm_fixture.py</code></td>
+<td>Frozen task contracts, public/fuzz/final cases and reference oracles</td>
+</tr>
+<tr>
+<td><code>blackbox_validator.py</code></td>
+<td>Bounded input/output execution with host-side expected answers</td>
+</tr>
+<tr>
+<td><code>selection.py</code></td>
+<td>Proposal validation, provenance, input deduplication and deterministic selection</td>
+</tr>
+<tr>
+<td><code>swarm_experiment.py</code></td>
+<td>Candidate generation, baselines, evidence controls, winner freeze and publication</td>
+</tr>
+<tr>
+<td><code>retain_swarm.py</code></td>
+<td>Independent evidence, source and accounting audit plus durable exports</td>
+</tr>
+</tbody>
+</table>
+<p>Focused offline checks are reproducible without a model credential:</p>
+<pre class="sh"><code>.venv/bin/python -m devtools.verify tests.test_swarm_fixture tests.test_selection \
+  tests.test_model_profiles tests.test_swarm_control tests.test_retain_swarm
+.venv/bin/python -m devtools.verify --lanes docker tests.test_blackbox_validator.BlackboxDockerTests</code></pre>
+<h2 id="sustained-quality-study">Sustained quality study</h2>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/sustained-study-plan.json">registered study plan</a> makes sustained project quality the primary question: can a system finish the complete requirements, preserve earlier behavior, and continue after failed attempts and a controller handoff? The implementation compares <code>strong-single</code>, <code>cheap-sequential</code>, and <code>reviewed-portfolio</code> on two persistent SQLite applications: a workflow queue and an inventory/reservation service. Each has three cumulative milestones. Two live repetitions produced <strong>12 project trajectories and 36 milestones</strong>.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">frozen primary results</span> and <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/sustained-live-final.json">descriptive analysis</a> report:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th style="text-align: right;">Whole projects accepted</th>
+<th style="text-align: right;">Final requirement instances passed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reviewed cheap-model portfolio</td>
+<td style="text-align: right;">4/4</td>
+<td style="text-align: right;">54/54</td>
+</tr>
+<tr>
+<td>Strong single worker</td>
+<td style="text-align: right;">3/4</td>
+<td style="text-align: right;">53/54</td>
+</tr>
+<tr>
+<td>Cheap sequential worker</td>
+<td style="text-align: right;">3/4</td>
+<td style="text-align: right;">52/54</td>
+</tr>
+</tbody>
+</table>
+<p>Requirement instances count each requirement separately within each project run; they are not 54 independent projects. All 36 milestones passed their visible checks, and all 12 trajectories completed verified process handoffs. Final hidden checks rejected two workflow implementations despite that visible completion:</p>
+<ul>
+<li><code>workflow-strong-single-1</code> returned <code>{"error":"invalid"}</code> for an invalid second inner batch command, omitting the required <code>"at":1</code> error position.</li>
+<li><code>workflow-cheap-sequential-1</code> claimed a lower-priority pending job instead of reclaiming the expired higher-priority job. This independently fails the unambiguous lease-selection contract. It also recorded only one finish audit event per job, while the hidden expectation requires one per job/token. The written Q3 contract says “FIRST successful finish” without explicitly defining that scope; Q2's token-scoped receipts support the hidden interpretation, but the wording is ambiguous. The frozen score remains unchanged, and this audit mismatch should not be treated as an unambiguous implementation defect.</li>
+</ul>
+<p>The portfolio's primary result is an encouraging quality signal within <strong>two small synthetic applications</strong>. It combines candidate diversity, stronger review and additional calls; this experiment cannot attribute its result to any one of those components. <strong>The portfolio's 4/4 primary score is not evidence of complete robustness:</strong> every portfolio output failed at least one separately reported, source-informed probe below. Further trials should strengthen independent verification and clarify the finish-audit scope before drawing broader quality conclusions.</p>
+<p>Each project has 24 visible and 30 distinct hidden scenarios. Fixed CLI adapters start a fresh subprocess for each command while preserving the scenario database. Builders receive the same cumulative visible checks and repair feedback. The portfolio begins with four independent cheap-model candidates; a stronger reviewer inspects their source and execution evidence, then requests repairs or selects a complete candidate. Reviewers cannot change trusted tests, and this study does not use oracle-validated reviewer test proposals. Hidden checks run only after the trajectory's model work has ended and never become repair feedback. Earlier hidden defects may be repaired at later milestones; historical hidden scores are retrospective diagnostics.</p>
+<p>Primary outcomes are final requirement coverage and whole-project completion: all three milestones must complete and the exact release must pass every final cumulative visible and hidden check. Requirement coverage means all hidden cases assigned to a requirement pass. Additional measures count previously passing checks broken by a revision, repairs, premature completion claims, and stagnation (repeated unchanged source or failure sets). The controller records a worker's premature completion claim separately from its own refusal to accept unfinished work. Cost and elapsed time are secondary diagnostics and safety limits; eventual improvement in either remains a hypothesis.</p>
+<p>After milestone two, the controller settles requests, writes a durable Git-bound checkpoint, exits, and resumes under a verified <strong>new process ID</strong>. This is a real process handoff at a settled boundary, not recovery from a crash or an ambiguous in-flight API request. Model workers remain bounded, stateless patch generators; continuity belongs to the persistent controller and its saved notes, code and requirements. This study does not isolate a causal benefit from gossip. The portfolio also combines candidate diversity, a stronger reviewer and additional calls, so those effects cannot be separated by this comparison alone.</p>
+<p>Docker and a passing rehearsal for the exact source/fixture/image contract are required. Use fresh output directories; rehearsals use known implementations and make no API calls:</p>
+<pre class="sh"><code>python3 -m gossip_harness.sustained_experiment run \
+  --output results/sustained-rehearsal-example
+python3 -m gossip_harness.sustained_experiment run --live \
+  --output results/sustained-live-example \
+  --rehearsal results/sustained-rehearsal-example/results.json \
+  --budget-ledger runs/first-live-budget.sqlite \
+  --budget-units 20000000 --repetitions 2</code></pre>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">audited budget increase</span> raises the existing cumulative ledger ceiling to <strong>$20</strong>, within the user's prior approval. It preserves the <strong>$1.690384</strong> already accounted for before this study; it does not reset spending. Keep the same ledger path. Each run retains its own <code>results.json</code>, request and validation receipts, source snapshot, checkpoints, and accepted exports. The completed primary run made <strong>118 API requests</strong>, accounting for <strong>$6.562429</strong> of new usage and <strong>$8.252813 cumulative</strong> under the $20 cap. These are conservative usage-based estimates. The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">independent retained-evidence audit</span> passed, reconciled all 118 requests and $6.562429 of new usage, and found no unsettled reservations or pending promotions. Evidence consistency does not prove the implementations satisfy every written requirement.</p>
+<p>The retained-evidence audit checks source and Git bindings, completion decisions, feedback, process checkpoints, and ledger accounting without executing candidate code. A separate descriptive analysis measures repair paths, reviewer decisions, and selected-code regressions between milestones:</p>
+<pre class="sh"><code>python3 -m gossip_harness.sustained_audit \
+  --run results/sustained-live-example \
+  --accounting-ledger runs/first-live-budget.sqlite \
+  --output analysis/sustained-audit-example.json
+python3 analysis/sustained_quality.py \
+  --run results/sustained-live-example \
+  --output analysis/sustained-quality-example.json</code></pre>
+<p>Two supplemental diagnostics run only after the primary study finishes. The all-stage pool diagnostic applies each milestone's frozen cumulative hidden suite to the latest retained version of all four portfolio slots. It separates whether a passing implementation existed from whether selection found one; it is not a new selection policy. Matching selected source reuses its retained hidden receipt, while unselected source executes in Docker. Historical milestone-three receipts can differ from final acceptance receipts if code is nondeterministic; the primary result is never replaced.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">completed all-stage pool diagnostic</span> found an eligible candidate passing the milestone's hidden suite in <strong>12/12 latest pools</strong>, and the selected candidate also passed in <strong>12/12</strong>, yielding zero selection regret on that suite. These are three observations within each of four portfolio trajectories, not 12 independent projects. The diagnostic used 36 fresh Docker validations and 12 retained historical receipts, with zero API calls. Unselected earlier candidates were not carried through later milestones, so these results do not establish their counterfactual whole-project quality.</p>
+<pre class="sh"><code>python3 -m gossip_harness.sustained_pool_diagnostic \
+  --run results/sustained-live-example \
+  --output analysis/sustained-pool-example --all-stages</code></pre>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/sustained-posthoc-workflow-1/cases.json">workflow probes</a> and <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/sustained-posthoc-inventory-1/cases.json">inventory probes</a> were chosen after inspecting candidate source, then independently checked against the frozen written contracts and trusted references. They contain three workflow cases and two correlated inventory cases covering one inventory defect family. Apply the same project-specific probes to every final attempt that reached milestone three, including unaccepted attempts; disclose exclusions and denominators. These are source-informed supplemental quality checks, not an unbiased estimate of policy quality. Neither diagnostic feeds repairs, changes releases, or relabels frozen primary acceptance.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">completed supplemental run</span> applied five cases covering four defect families to all 12 final attempts: <strong>30 case executions, no exclusions</strong>. These results stay separate from the primary table:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th style="text-align: right;">Workflow outputs passing all 3 probes</th>
+<th style="text-align: right;">Inventory outputs passing both correlated probes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reviewed cheap-model portfolio</td>
+<td style="text-align: right;">0/2</td>
+<td style="text-align: right;">0/2</td>
+</tr>
+<tr>
+<td>Strong single worker</td>
+<td style="text-align: right;">0/2</td>
+<td style="text-align: right;">2/2</td>
+</tr>
+<tr>
+<td>Cheap sequential worker</td>
+<td style="text-align: right;">0/2</td>
+<td style="text-align: right;">0/2</td>
+</tr>
+</tbody>
+</table>
+<p>All six workflow implementations failed the specified typed-error check for <code>finish</code> with <code>outcome: []</code>. Both cheap and both portfolio inventory outputs returned <code>internal</code> for a non-string inner operation where the contract requires <code>invalid</code>; both strong inventory outputs passed. Thus all four portfolio outputs, all four cheap outputs and the two strong workflow outputs failed at least one supplemental case. The inventory checks confirmed preserved state/audit and key reuse despite the incorrect error response; they did not reveal data corruption. The original static review included a strong inventory implementation as a predicted passing control. Because the cases were selected after source inspection, these counts demonstrate missed contract behavior, not an unbiased replacement ranking of the policies. The frozen primary scores remain unchanged.</p>
+<p>The probe runner verifies both exact case-file hashes and the complete study roster before Docker execution. It makes no API calls and never imports candidate code on the host. Output must be a fresh directory outside the retained study:</p>
+<pre class="sh"><code>python3 analysis/run_sustained_review_probes.py \
+  --run results/sustained-live-example \
+  --output analysis/sustained-review-probes-example \
+  --cases workflow e77dd4f91e797f0e63f59c35d447a8d2fd66128e9b0966a83cc1b8da4f6901bf \
+    analysis/sustained-posthoc-workflow-1/cases.json \
+  --cases inventory a5fe99cc4cb518cfb9e3f3da95f65b560b6a94b80ced6b1e31bfdf567fe24537 \
+    analysis/sustained-posthoc-inventory-1/cases.json</code></pre>
+<h2 id="adaptive-verification-study">Adaptive verification study</h2>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/verification-study-plan.json">registered plan</a> extends the quality question to two synthetic maintenance applications, a build graph and a booking calendar, with four cumulative milestones. <code>strong-reviewed</code>, <code>cheap-reviewed</code>, and <code>portfolio-reviewed</code> share the same strong reviewer, repair limits, and acceptance rule; the portfolio starts with four cheap-model implementations instead of one. Three repetitions per project and policy produced <strong>18 evaluated trajectories</strong>, with no censored or unexecuted cases. The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">finished live run</span> completed <strong>64 of 72 milestones</strong> and accepted <strong>3 of 18 projects</strong>. The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">descriptive summary</span> reports the following primary results; the <a href="../outputs/verification-pilot.html">methods and results report</a> provides the interpretation.</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th style="text-align: right;">Accepted projects</th>
+<th style="text-align: right;">Completed milestones</th>
+<th style="text-align: right;">Private requirement instances satisfied</th>
+<th style="text-align: right;">Estimated API cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strong-reviewed</code></td>
+<td style="text-align: right;">3/6</td>
+<td style="text-align: right;">24/24</td>
+<td style="text-align: right;">86/93</td>
+<td style="text-align: right;">$4.292283</td>
+</tr>
+<tr>
+<td><code>cheap-reviewed</code></td>
+<td style="text-align: right;">0/6</td>
+<td style="text-align: right;">24/24</td>
+<td style="text-align: right;">77/93</td>
+<td style="text-align: right;">$4.562591</td>
+</tr>
+<tr>
+<td><code>portfolio-reviewed</code></td>
+<td style="text-align: right;">0/6</td>
+<td style="text-align: right;">16/24</td>
+<td style="text-align: right;">54/93</td>
+<td style="text-align: right;">$6.833285</td>
+</tr>
+</tbody>
+</table>
+<p>Each requirement denominator covers the six evaluated trajectories, including incomplete projects. Requirement coverage is partial credit; project acceptance requires every final gate. All six cheap-reviewed projects completed their milestones but failed private checks. The wider portfolio did not improve completion or final acceptance in this sample. Builders used pinned GPT-5.4 or GPT-5.4-mini snapshots; all model calls, including the shared GPT-5.4 reviewer, used <strong>low reasoning effort</strong>.</p>
+<p>Reviewers propose bounded JSON checks. A trusted host oracle verifies their expected answers without correcting rejected labels, then admitted checks run against every candidate. Retained checks are revalidated at later milestones; changed contracts can retire them. Completion requires all four milestones and the exact final source passing every cumulative public, active generated, and private check. Private results never enter repair feedback.</p>
+<p>At milestone two, the supervisor sends a real SIGKILL after a reviewer response is durably recorded and before its usage is settled. A new process replays that saved response and reconciles settlement without another provider dispatch. Unknown provider outcomes remain reserved and stop execution. Before milestone four, an independent Git history supplies a trusted policy update and exercises rejection of stale integration evidence. This covers a specific recovery boundary and policy merge, not arbitrary failure recovery or autonomous conflict resolution. The live run recorded 17 kills and successful resumptions among trajectories that reached the fault, and 15 stale-evidence integration checks among those that reached the policy merge.</p>
+<p>Run the development gates above first. The primary study's <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">frozen contract</span> records CPython 3.14.6 at <code>/opt/homebrew/opt/python@3.14/bin/python3.14</code>; its plain <code>python3</code> command resolved to this executable, rather than the development <code>.venv</code>. Use the same controller runtime and locally available immutable Docker image throughout a rehearsal and its live execution. A different runtime requires its own matching rehearsal. Every example output path below must be fresh; preserve earlier runs. The six-case rehearsal and retained-evidence audit make <strong>zero API calls</strong>:</p>
+<pre class="sh"><code>STUDY_PYTHON=/opt/homebrew/opt/python@3.14/bin/python3.14
+&quot;$STUDY_PYTHON&quot; -m gossip_harness.verification_experiment run \
+  --output results/verification-rehearsal-example
+&quot;$STUDY_PYTHON&quot; -m gossip_harness.verification_audit \
+  --run results/verification-rehearsal-example \
+  --output analysis/verification-rehearsal-audit-example.json</code></pre>
+<p>Live mode requires a complete passing rehearsal for the exact source, fixture, plan, runtime, image, and model contract. It uses the approved <code>.env.local</code> credential and the existing cumulative ledger. The following command incurs API charges and documents this study's authorized workflow; it does not authorize future paid runs:</p>
+<pre class="sh"><code>&quot;$STUDY_PYTHON&quot; -m gossip_harness.verification_experiment run --live \
+  --output results/verification-live-example \
+  --rehearsal results/verification-rehearsal-example/results.json \
+  --repetitions 3 --budget-units 40000000 \
+  --budget-ledger runs/first-live-budget.sqlite</code></pre>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">audited cap change</span> sets this study's shared cumulative ceiling to <strong>$40</strong>, preserving all prior charges. This completed study used <strong>$15.688159</strong> in estimated API usage across 289 provider invocations, bringing cumulative usage to <strong>$23.940972</strong>. Earlier sections retain their historical caps. Keep the same ledger path: fresh output directories do not reset spending, and the constructor rejects a silently changed cap. Usage figures are conservative token-based estimates, not provider invoices; they exclude local compute, oracle development, and human work.</p>
+<p>After the entire live study finishes, audit its retained evidence and generate a descriptive summary. These commands do not execute candidate code or call models:</p>
+<pre class="sh"><code>&quot;$STUDY_PYTHON&quot; -m gossip_harness.verification_audit \
+  --run results/verification-live-example \
+  --accounting-ledger runs/first-live-budget.sqlite \
+  --output analysis/verification-live-audit-example.json
+&quot;$STUDY_PYTHON&quot; analysis/summarize_verification.py \
+  results/verification-live-example \
+  --output analysis/verification-live-summary-example.json</code></pre>
+<p>The completed <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">independent audit</span> passed and certified the retained evidence for all 18 trajectories. It reconciled 289 requests across 67 billing tasks, with zero unsettled reservations or pending promotions. This certification covers evidence consistency and accounting; it does not prove that every written requirement is satisfied.</p>
+<p>For an in-progress run, <code>verification_audit --finalized-only</code> can inspect finalized cases, but cannot certify the whole study. Partial summaries label evaluated denominators and charges not yet attributed to evaluated trajectories.</p>
+<p>The following supplementary diagnostics make zero API calls and keep primary scores and releases unchanged. The live-study diagnostics require the <strong>entire finished 18-trajectory roster</strong>, with no active, censored, or unexecuted work, and fresh output directories outside the frozen study. They verify frozen source, runtime, fixture, and receipt bindings before using Docker:</p>
+<pre class="sh"><code>&quot;$STUDY_PYTHON&quot; analysis/run_verification_pool_diagnostic.py \
+  --run results/verification-live-example \
+  --output analysis/verification-final-pool-example
+&quot;$STUDY_PYTHON&quot; analysis/run_verification_persistence_diagnostic.py \
+  --golden-rehearsal analysis/verification-persistence-golden-example
+&quot;$STUDY_PYTHON&quot; analysis/run_verification_persistence_diagnostic.py \
+  --run results/verification-live-example \
+  --qualification analysis/verification-persistence-golden-example \
+  --output analysis/verification-persistence-example</code></pre>
+<p>The eligibility diagnostic is specific to the retained finding in <code>verification-live-1</code>; it is not a general utility for a new run. Its command reads that actual study and still requires a fresh output directory:</p>
+<pre class="sh"><code>&quot;$STUDY_PYTHON&quot; analysis/run_verification_eligibility_diagnostic.py \
+  --run results/verification-live-1 \
+  --output results/verification-eligibility-example</code></pre>
+<p>The final-pool diagnostic tests the latest retained portfolio candidates against the frozen private suite. Matching selected-source receipts are reused for this descriptive purpose; other distinct sources execute in Docker. It distinguishes candidate coverage from selection quality after unequal repairs, not four independent end-to-end projects. The persistence diagnostic first requires a passing, exactly matched golden qualification, which can run before live work finishes. Its two stories per application carry the same database through all four selected code versions and fresh CLI processes, including primary failures that retained all four versions; earlier stops are explicitly excluded.</p>
+<p>The completed <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">final-pool diagnostic</span> found no fully passing private-suite implementation among the 12 retained candidate versions in the three portfolios that reached the final milestone. It reused three selected-source receipts and physically evaluated nine other sources. The other three portfolios stopped earlier and have no final pool.</p>
+<p>After a passing <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">golden qualification</span>, the <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">persistence diagnostic</span> passed all 30 story executions across 15 eligible trajectories, including all six stories for the three primary accepted projects. Three trajectories that stopped early were excluded. This supports continuity of persisted data for the four story designs; primary quality failures remain failures.</p>
+<p>A separate <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">eligibility diagnostic</span> exposed a harness confound in an earlier milestone: an unchanged repair proposal incorrectly made retained candidate B ineligible, although that source passed all 36 private checks through milestone three; retained candidate C passed 27/36. The reviewer also never requested acceptance of B. A source passing that milestone's private suite was therefore available, while the final-pool result concerns different trajectories that reached milestone four. This does not establish that fixing eligibility would make the reviewer accept B or complete the next milestone. The measured portfolio acceptance remains 0/6.</p>
+<p>This study is <strong>oracle-assisted and unequal in compute</strong>: portfolio width changes initial call count, reviewer context, and candidate-aware generated evidence. Two synthetic application identities and three repetitions do not establish production superiority, a best-available-model result, or a causal benefit from gossip. Quality and completion are primary; cost and elapsed time remain secondary.</p>
+<h2 id="comparing-policies-and-continuing-real-module-maintenance">Comparing policies and continuing real-module maintenance</h2>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">historical comparison</span> derives quality ranks, within-application win/draw/loss counts, and observed terminal durations from the certified 18-trajectory study. Acceptance and requirement coverage have separate rankings. Six trajectories per policy and two application identities do not justify a calibrated Elo rating; the 18 cross-run comparisons per policy pair are correlated derived observations. Accepted-only timing always includes its denominator, and a fast incomplete run is not treated as a speed victory.</p>
+<p>The separate <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/continuation-study-plan.json">continuation plan</a> freezes this repository's actual <code>transport.py</code> into isolated candidate repositories. Two cumulative milestones add reproducible snapshots and strict, atomic restore. Two repetitions compare a strong maintainer/reviewer with the same controller plus two independent cheap test scouts. Scouts propose data-only probes whose expected outputs must pass a trusted oracle gate. This measures an additional evidence policy, not equal compute or the causal effect of gossip transport.</p>
+<p>The new controller preserves valid retained source after rejected or unchanged proposals and escalates stalled review within explicit call limits. Acceptance still requires executed evidence and an explicit reviewer decision. All four terminal sources freeze before any private evaluation. Candidate execution uses the pinned Docker validator; provider requests retain journals and budget reservations. Unknown outcomes stop without an automatic retry.</p>
+<p>Use the same Python executable for rehearsal and live execution, with fresh output paths. Live work also requires the registered, quiescent shared ledger and matching authorized budget; these examples do not reset either:</p>
+<pre class="sh"><code>.venv/bin/python -m gossip_harness.continuation_experiment run \
+  --output results/continuation-rehearsal-example
+.venv/bin/python -m analysis.audit_continuation \
+  --run results/continuation-rehearsal-example \
+  --output results/continuation-rehearsal-example/independent-audit.json
+.venv/bin/python -m gossip_harness.continuation_experiment run --live \
+  --output results/continuation-live-example \
+  --rehearsal results/continuation-rehearsal-example/results.json \
+  --budget-ledger runs/first-live-budget.sqlite</code></pre>
+<p>New timing spans distinguish physical provider requests, validation, active trajectory work, and the wait for the whole-cohort private-test barrier. Concurrent and nested durations must not be summed as elapsed wall time.</p>
+<p>The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">complete zero-API rehearsal</span> passed all four trajectories and its independent audit. The subsequent <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">live study</span> and <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">independent audit</span> also finished, with 24 physical provider requests and no unsettled reservations or pending promotions. The <span class="missing-evidence" title="Retained source evidence; this operational artifact is not part of the public site">audited comparison</span> reports:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Accepted</th>
+<th>Requirement coverage</th>
+<th>Median active time</th>
+<th>API estimate, both runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strong maintainer/reviewer</td>
+<td>2/2</td>
+<td>100%</td>
+<td>3.80 minutes</td>
+<td>$0.684577</td>
+</tr>
+<tr>
+<td>Same maintainer/reviewer plus cheap scouts</td>
+<td>2/2</td>
+<td>100%</td>
+<td>4.58 minutes</td>
+<td>$0.879140</td>
+</tr>
+</tbody>
+</table>
+<p>Both policies completed all four assigned milestones. Active time includes model work, Git/controller work, stage checks and final evaluation; deliberate whole-cohort barrier and evaluation-queue waits are reported separately. These times are not comparable to the older cohort's different task and timing contract. Total incremental API usage was $1.563717, bringing the shared ledger to $25.504689 of its unchanged $40 cap.</p>
+<p>The scouts supplied 12 admitted case proposals. Their seven rejection entries comprise three malformed response batches and four rejected parsed proposals; they are not seven individual rejected tests. No admitted scout check failed against the observed public-passing implementations, and no live stage needed a repair or escalation. Because those tests were available before the first build, this does not rule out a preventive benefit. It also does not demonstrate a quality advantage: this one-module pilot reached a ceiling, with only two runs per policy. The forced rehearsal controls establish continuation behavior; the live runs did not exercise stalled-review recovery.</p>
+<p>The separately reviewed <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/continuation-scout-signal.json">scout-signal memo</a> binds 38 retained inputs and distinguishes 12 new admissions from 16 passing probe-stage observations. It also identifies weak requirement labels: correct expected answers do not establish that a probe meaningfully exercises its claimed behavior. A next benchmark should pair harder, multi-module maintenance with a preregistered fault bank to measure incremental defect detection.</p>
+<h2 id="evidence-frontier-benchmark">Evidence-frontier benchmark</h2>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/benchmark-study-plan.json">registered benchmark</a> addresses the previous pilot's quality ceiling with two maintained, three-module SQLite applications: simultaneous build-graph rename/atomic edits, and booking exchanges/transactional waitlist settlement. Both retain earlier behavior through two new milestones.</p>
+<p>The main comparison gives cheap models four initial opportunities either as a sequential revision chain or as independent branches. Both retain all four checkpoints for the same stronger reviewer and bounded repair policy. Two repetitions per application provide four paired comparisons. One stronger-model anchor per application provides additional context; it is not compute-matched. These are centrally instrumented candidate-generation policies, not a claim that gossip itself improves model reasoning.</p>
+<p>Initial candidates freeze before the two independent test scouts run. Their current-stage probes cannot influence those initial implementations. All ten trajectories, source histories, tests and selections then freeze before private evaluation or cross-policy analysis. The separate diagnostic measures:</p>
+<ul>
+<li>Best available initial/final candidate quality versus the selected source.</li>
+<li>Public-only, scout, reviewer and combined-evidence selectors on the same pool.</li>
+<li>Own-history evidence versus pooled evidence available only after the study.</li>
+<li>Detection of preregistered semantic fault families beyond public checks.</li>
+<li>Completion, regression retention, active time, provider overlap and API usage.</li>
+</ul>
+<p>Fault qualification requires golden and equivalent controls to pass, every deliberate fault to produce a runnable wrong answer on a witness, and at least four public-surviving fault families per application/milestone. Candidate code always runs in the pinned Docker boundary. The analysis uses descriptive paired win/draw/loss, with quality before timing; two applications do not justify Elo.</p>
+<p>Use fresh output paths and the pinned Python runtime. The live entry point checks the exact qualification, full rehearsal, scientific contract and shared ledger balance; it never resets earlier charges or automatically retries an unknown provider outcome. A later paid cohort needs a newly registered contract and the corresponding budget decision, not an edited historical result.</p>
+<pre class="sh"><code>.venv/bin/python -m analysis.qualify_benchmark \
+  --output results/benchmark-qualification-example
+.venv/bin/python -m gossip_harness.benchmark_experiment run \
+  --output results/benchmark-rehearsal-example \
+  --qualification results/benchmark-qualification-example/results.json
+.venv/bin/python -m analysis.audit_benchmark \
+  --run results/benchmark-rehearsal-example \
+  --output results/benchmark-rehearsal-example/independent-audit.json
+.venv/bin/python -m gossip_harness.benchmark_experiment run --live \
+  --output results/benchmark-live-example \
+  --qualification results/benchmark-qualification-example/results.json \
+  --rehearsal results/benchmark-rehearsal-example/results.json \
+  --budget-ledger runs/first-live-budget.sqlite</code></pre>
+<p>The separate <code>simulation.benchmark_transport</code> module compares gossip, a durable single broker, and replicated brokers with client failover under equal attempted contact budgets. Its synthetic rehearsal and later frozen-artifact replay are deterministic dissemination experiments, not additional coding trials or production availability estimates. It reports bytes separately because equal contact counts do not imply equal traffic.</p>
+<h2 id="continuation-controller-follow-up">Continuation-controller follow-up</h2>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/continuation-followup-study-plan.json">follow-up plan</a> separates two questions: whether better continuation control helps finish projects, and whether independent candidates help under that controller. The three arms are the current controller with four independent candidates, the improved controller with four independent candidates, and the improved controller with four serial revisions. Warehouse allocation/returns and durable job leasing/ fan-out each have two cumulative milestones and two repetitions: twelve trajectories across <strong>two domains</strong>, not twelve independent project families.</p>
+<p>For each first-milestone block, both candidate formations freeze before common candidate-blind scouts. The two independent arms share the exact initial draw; all three share those scout proposals. Each arm evaluates imported source afresh. Later milestones follow each arm's actual accepted lineage. Shared model work is charged once; attributed opportunities are reported separately.</p>
+<p>The improved controller directs repairs using executed failures, retains pre-repair checkpoints and records newly introduced failures even when the total failure count falls. A passing source with unresolved review concerns gets at most one focused retry within the existing review allowance. Explicit acceptance and the final independent checks remain mandatory. These changes form one controller package; they do not isolate a routing-only effect.</p>
+<p>Use the following zero-API chain after the source contract is frozen and the affected offline verification lanes pass. Every output directory must be new. Docker must already have the pinned image; qualification never pulls it.</p>
+<pre class="sh"><code>.venv/bin/python -m gossip_harness.continuation_followup describe
+.venv/bin/python -m analysis.qualify_continuation_followup \
+  --output results/followup-qualification-example
+.venv/bin/python -m gossip_harness.continuation_followup run \
+  --mode rehearsal --output results/followup-rehearsal-example \
+  --qualification results/followup-qualification-example/results.json
+.venv/bin/python -m analysis.audit_continuation_followup --scope cohort \
+  --run results/followup-rehearsal-example \
+  --output results/followup-rehearsal-example/independent-audit.json
+.venv/bin/python -m analysis.continuation_followup_comparison \
+  --run results/followup-rehearsal-example \
+  --output results/followup-comparison-example/summary.json</code></pre>
+<p>Qualification covers the two exact starting applications plus the forty milestone golden/control/mutant rows. The complete rehearsal uses scripted repairs, regressions, no-op outcomes and uncertainty handling through the real Git, ledger and Docker boundaries. Scripted successes qualify execution; they are not model-quality observations. All terminal trajectories freeze before any candidate's final private evaluation. A later live run must bind the exact qualification, complete rehearsal and independent audit, and satisfy the registered funding/readiness gates before accessing credentials or dispatching. The comparison requires a complete independently audited cohort. It reports acceptance first, then inherited and new requirement coverage, with arm work, shared setup and final grading times separated. Rehearsal comparisons remain explicitly labeled as scripted infrastructure checks. Budget termination keeps its evidence but cannot produce a scored incomplete-cohort comparison.</p>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/followup-funded-authorization-v1.json">funded plan</a> authorizes capped live admission under the approved $80 cumulative ceiling. The runner still requires matching fixture qualification, a complete rehearsal and an independent audit before dispatch. Historical charges remain in the cumulative ledger. Its reservation ceiling is a worst-case bound, not a cost forecast or authorization. A small development pilot cannot establish general superiority: the <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/benchmark-confirmatory-design-v4.json">confirmatory design</a> requires independently held-out task families and a fixed analysis/stopping rule. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/benchmark-live-gossip-followup-design-v2.json">separate live-coordination design</a> tests real peer decision-making and dissemination; this controller pilot does not establish a gossip-versus-orchestrator effect.</p>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/continuation-followup-physical-checkpoint-v1.json">first physical checkpoint</a> records 42 qualified fixture executions and a complete zero-API rehearsal with 12 runner-reported accepted trajectories and 24 completed milestones. Independent audit then exposed two integration defects: serialized promotion-lease field names and fresh scout-response JSON ordering. Audit v2 corrects both, with real Git/SQLite and scout producer regressions; 174 affected checks pass. A diagnostic traversal of all retained evidence found no further audit failure, but is not a certificate. Those original outputs remain retained and uncertified. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/continuation-followup-physical-checkpoint-v2.json">corrected physical checkpoint</a> records a new 42-row fixture qualification and complete rehearsal under the corrected contract. Its independent audit passes without source-comparison waivers: 12 accepted trajectories, 24 completed milestones, 384 fresh Docker executions and zero provider calls. The scripted comparison separates active work, shared setup and waiting time; it assigns no Elo or quality ranking. This qualifies the historical unfunded execution contract, not live model quality or a gossip advantage. The funded plan needs its own matching physical qualification and rehearsal before dispatch. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/continuation-followup-budget-reconciliation-v1.json">request-size reconciliation</a> is likewise diagnostic and does not authorize additional spending. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/continuation-followup-budget-reconciliation-v2.json">certified-evidence budget update</a> binds that rehearsal and retains the conditional $10–13 expected pilot usage. The user subsequently approved its proposed $50-to-$80 cumulative cap increase; the <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/followup-funded-authorization-v1.json">funding authorization</a> records the preserved prior charges and available allowance. The estimate and expanded ceiling do not guarantee completion.</p>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/followup-funded-readiness-checkpoint-v1.json">funded readiness checkpoint</a> now binds 42 fresh fixture qualifications and the complete funded-contract rehearsal: 12 accepted scripted trajectories, 24 milestones, 384 fresh candidate validations and zero provider calls. Its independent cohort audit passes. This qualifies live admission under the existing authorization; live quality requires the separate completed cohort and audit. The prospective <a href="large-swarm-project-plan-v1.html">20-agent project plan</a> remains a separate development study with unqualified runtime and resource limits. Its <a href="peer-project-foundations-v2.html">v2 foundation components</a> now provide strict evidence interfaces, asynchronous cumulative accounting, bounded review format correction and an exact scoped release gate. They are offline building blocks; a configured twenty-role roster is not an executed twenty-agent project. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/peer-project-foundations-v2-checkpoint.json">foundation checkpoint</a> binds passing static checks, 130 freshly executed offline tests and independent review. Transport processes, durable role loops and real Git/validator adapters remain the next integration work; live financial dispatch stays disabled.</p>
+<p>The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/followup-live-checkpoint-v1.json">completed live checkpoint</a> now binds the full 12-trajectory cohort, passing independent audit and prespecified comparison. It retained all failed proposals and the one bounded stop.</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Accepted projects</th>
+<th>Named requirement-group observations</th>
+<th>Median active time, accepted only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current controller, independent candidates</td>
+<td>3/4</td>
+<td>68/70</td>
+<td>4.88 min (3 projects)</td>
+</tr>
+<tr>
+<td>Improved controller, independent candidates</td>
+<td>3/4</td>
+<td>63/70</td>
+<td>4.33 min (3 projects)</td>
+</tr>
+<tr>
+<td>Improved controller, sequential candidates</td>
+<td>4/4</td>
+<td>70/70</td>
+<td>5.39 min (4 projects)</td>
+</tr>
+</tbody>
+</table>
+<p>All approaches preserved 18/18 baseline group observations. Active time includes arm work and final adjudication; shared setup and scheduling waits are separate. These success-conditioned times do not reward the improved independent arm's early stop. That arm tied the current controller in acceptance and lost one paired case to sequential formation. Four paired blocks across two domains support no calibrated Elo or population-level superiority claim; this study did not compare live gossip with orchestration.</p>
+<p>The early stop is a concrete persistence failure: the reviewer returned an approval with notes as a JSON list, while the frozen parser required a string. The controller stopped despite remaining review, repair and escalation allowances. The retained first-stage source was valid; the second milestone was never attempted. A prospectively defined response-recovery policy needs qualification before the larger live study; this result stays unchanged. The other rejection completed both milestones but left exhausted orders marked <code>reserved</code> instead of <code>shipped</code>, failing two final workflow cases after passing visible checks. Neither additional agents nor response-format recovery alone would establish that those state transitions are correct.</p>
+<p>The 145 physical model calls used an estimated <strong>$6.606959</strong>, including shared setup exactly once. Cumulative accounting is <strong>$42.150585 of $80</strong>, leaving <strong>$37.849415</strong>, with no unsettled reservations or pending promotions. These are frozen-price token estimates, not invoices. The next engineering target remains the 16-builder/four-reviewer project harness; its runtime and complete cohort must be qualified before allocating further live spending.</p>
+<p>The <a href="peer-library-project-v3.html">twenty-role integration rehearsal</a> has since completed with twenty actual role processes, authored responses, a failed merged tree, a repair and a protected release. It establishes the integrated mechanism, not live model quality. The <a href="peer-library-project-v4.html">v4 development pilot</a> adds real-model admission, bounded response correction, simultaneous topic repairs and independent CLI/HTTP/browser acceptance. Its complete qualification and live observation are still pending; the larger comparative project study remains separate.</p>
+<h2 id="real-peer-transport-foundation">Real peer transport foundation</h2>
+<p>The <a href="peer-runtime-v1.html">peer runtime</a> adds independently running local processes with private durable stores, bounded TCP gossip, and a two-broker adapter with client fallback. Tests exercise actual partitions, process death, lost acknowledgments, replay and recovery. Events carry evidence; this runtime has no task, spending, candidate-execution or Git-release authority.</p>
+<p>This is the transport foundation for the proposed live comparison. Equivalent worker and relay capacity, durable telemetry across restarts, real agent decisions and the full four-cell experiment remain outstanding. Broker acknowledgments confirm a receiver-local commit with asynchronous replication; they do not provide quorum durability. The <a href="https://github.com/Westbrook/gossip-protocol/blob/052793a02c8e7d7791ab13927fd1633a3b710029/analysis/peer-runtime-foundation-checkpoint-v1.json">foundation checkpoint</a> binds independent source review and 33 passing merged-tree checks, including nine actual-process checks. The earlier sandbox socket-denial failure and corrected test-resource declaration remain separately disclosed.</p>
+<p>The <a href="peer-work-v1.html">peer-local work foundation</a> now connects those stores to autonomous build/review fixture decisions through an authenticated narrow <a href="peer-authority-v1.html">authority</a>. It adds durable exact-request recovery, epoch fencing, conservative unknown-dispatch reservations, an idempotent result outbox and persistent work RPC telemetry. The fixtures transform and review text; they make no model calls or software-quality claims. Provider integration, Git acceptance, full transport accounting and the four-cell comparison remain open.</p>
+<p>The <a href="peer-payload-v1.html">payload transport</a> adds immutable binary objects, verified chunk arrival and retained wire observations for coding requests and Git bundles. The <a href="peer-git-bundle-v1.html">bundle adapter</a> imports received bytes into a fresh quarantine before the existing merged-tree and CAS gates; receivers do not fetch proposals from a sender filesystem path. The <a href="peer-coding-dispatch-v1.html">coding dispatch adapter</a> reuses the bounded worker and durable request journal with an injected offline Responses transport. Live HTTPS remains disabled until a separately qualified cumulative financial ledger adapter is connected. These foundations do not establish coding quality or complete the planned placement-by-transport comparison.</p>
+<p>The <a href="peer-project-runtime-v1.html">project integration runtime</a> connects a source-bound coding result to a private Git proposal, actual bundle delivery, isolated validation of the receiver's merged source and exact public promotion. This path uses offline response fixtures; independent final acceptance and live model comparison remain separate requirements. The <a href="peer-financial-bridge-design-v2.html">financial bridge design</a> specifies the remaining cumulative-ledger integration without enabling live dispatch.</p>
+<p>The <a href="confirmatory-path-checkpoint-v1.html">comparative evidence checkpoint</a> separates existing exploratory quality results from infrastructure checks and records the held-out sampling, funding and statistical decisions still needed.</p>
+<h2 id="research-and-review">Research and review</h2>
+<ul>
+<li><code>research.html</code>: initial evidence review and proposed harness architecture.</li>
+<li><code>investigation.html</code>: distributed-Git follow-up and measured local findings.</li>
+<li><code>pilot.html</code>: practical coding trial, results, and the next experiment.</li>
+<li><code>experiments.html</code>: shared-discovery and integration-recovery follow-up studies.</li>
+<li><code>swarm.html</code>: primary-source research and a proposed candidate-selection study.</li>
+<li><code>swarm-pilot.html</code>: measured candidate-selection pilot and its limitations.</li>
+<li><a href="../outputs/sustained-pilot.html">sustained-pilot.html</a>: cumulative project quality, persistence, retained-evidence audit, and separate supplemental diagnostics.</li>
+<li><a href="../outputs/verification-pilot.html">verification-pilot.html</a>: adaptive verification, persisted-response recovery, and supplementary failure diagnostics.</li>
+<li><a href="../outputs/continuation-comparison.html">continuation-comparison.html</a>: observed quality ranks and timings, plus the separate real-module maintenance comparison.</li>
+<li><a href="../outputs/benchmark-comparison.html">benchmark-comparison.html</a>: stronger maintenance tasks, matched candidate formation, evidence effectiveness and separate transport stress results.</li>
+<li><a href="../outputs/investigation-roadmap.html">investigation-roadmap.html</a>: the reviewed investigation design, evidence limits and proposed confirmatory studies.</li>
+<li><code>.progress-report/project.json</code>: locator for the independent durable progress report, review checkpoints and continuation handoff.</li>
+</ul>
+<p>Primary workflow references:</p>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows">Git distributed workflows</a></li>
+<li><a href="https://docs.kernel.org/process/2.Process.html">Linux development process and next trees</a></li>
+<li><a href="https://docs.kernel.org/maintainer/rebasing-and-merging.html">Kernel rebasing and merging guidance</a></li>
+<li><a href="https://git-scm.com/docs/gitworkflows">Git workflow manual</a></li>
+</ul>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>

@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peer Git bundle quarantine, version 1 · Gossip × Agents</title><link rel="stylesheet" href="../assets/site.css"></head><body><main><nav class="site-nav" aria-label="Site"><a class="brand" href="../index.html">Gossip × Agents</a><a href="../index.html">Progress</a><a href="../outputs/index.html">Study outputs</a><a href="index.html">Documentation</a><a href="https://github.com/Westbrook/gossip-protocol">Repository ↗</a></nav><p class="banner small">Documentation from source commit 052793a02c8e. Exact input and exported hashes are recorded in the <a href="../publication.json">publication manifest</a>. Operational evidence without a public artifact is shown as text.</p><h1 id="peer-git-bundle-quarantine-version-1">Peer Git bundle quarantine, version 1</h1>
+<p>This additive boundary transfers <strong>actual self-contained Git bundle bytes</strong> from a peer-owned proposal into a fresh receiver-owned quarantine. It does not read a sender path during import, execute candidate code, validate project requirements, select a winning proposal, or authorize publication. Existing Git, sandbox, promotion, peer transport and text-work v1 modules remain unchanged.</p>
+<h2 id="public-api">Public API</h2>
+<pre class="python"><code>payload, manifest = export_bundle(peer_store, offered_sha, base_sha)
+quarantine = import_bundle(payload, manifest, fresh_receiver_root)</code></pre>
+<p>Both commit IDs must be full object IDs. The export must already be pinned at <code>refs/harness/proposals/&lt;offered_sha&gt;</code>, as created by <code>GitStore.propose</code>. The base must be an ancestor of the offered commit. Export copies no remote credentials or path into its descriptor. It retains commands, bounded stdout/stderr, bundle, manifest and source inspection in a fresh <code>peer-bundle-exports/&lt;id&gt;</code> directory beside the sender store.</p>
+<p>Import accepts immutable bytes and a detached strict manifest. Its output root must not exist. It retains received bytes and manifest before Git processing, then creates <code>quarantine.git</code>. Bundle v3 must advertise exactly the proposal ref and object format; prerequisites, additional refs and filters are rejected. The receiver verifies the bundle, fetches only that ref, checks strict object connectivity, verifies exact base and offered commits, and reconstructs the reachable-object and source inventories. Extra unreachable objects are rejected. Only a fully inspected repository receives the harness-owned store marker.</p>
+<p>The returned store has a proposal ref and <strong>no accepted branch</strong>. Read it using <code>quarantine.read_files(manifest["offered_sha"])</code>, and pass it as the source of a separate common integration gate. Do not call <code>quarantine.head()</code> as though import had accepted its proposal.</p>
+<p>The descriptor is bounded to 4 KiB and includes packed-byte identity, object format, exact base/offer/tree, ref, object and file inventory digests, counts and expanded sizes. Full inventories stay in retained local receipts. They bind actual Git blob bytes and modes, avoiding a claim that a checkout or test staging operation necessarily consumed every source object.</p>
+<h2 id="supported-repository-profile">Supported repository profile</h2>
+<p>The initial profile intentionally supports small text fixtures. Every reachable historical commit is inspected, including subsequently reverted paths.</p>
+<table>
+<thead>
+<tr>
+<th>Bound</th>
+<th style="text-align: right;">Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packed bundle</td>
+<td style="text-align: right;">8 MiB</td>
+</tr>
+<tr>
+<td>Sum of reachable expanded objects</td>
+<td style="text-align: right;">32 MiB</td>
+</tr>
+<tr>
+<td>Individual text blob</td>
+<td style="text-align: right;">1 MiB</td>
+</tr>
+<tr>
+<td>Reachable objects / commits</td>
+<td style="text-align: right;">4,096 / 256</td>
+</tr>
+<tr>
+<td>Files per historical tree</td>
+<td style="text-align: right;">256</td>
+</tr>
+<tr>
+<td>File path / depth</td>
+<td style="text-align: right;">240 ASCII characters / 16 components</td>
+</tr>
+<tr>
+<td>Git command work per export or import</td>
+<td style="text-align: right;">60 seconds wall budget, plus bounded process/pipe cleanup</td>
+</tr>
+<tr>
+<td>One Git process</td>
+<td style="text-align: right;">At most 20 CPU seconds; 16 MiB per written file</td>
+</tr>
+<tr>
+<td>Captured Git stdout / stderr</td>
+<td style="text-align: right;">At most 2 MiB / 64 KiB</td>
+</tr>
+</tbody>
+</table>
+<p>Only mode <code>100644</code>, UTF-8 text without NUL bytes, and supported ASCII path components are admitted. Symlinks, executable modes, gitlinks, binary files, dot-prefixed components, unsafe paths and case-insensitive directory/file aliases are rejected. The narrow profile must be prospectively expanded and qualified before using ordinary projects that require those features. Task-owned path scope is a separate integration policy; the caller must still supply it to <code>GitStore.prepare</code>.</p>
+<p>Git commands use a shared operation deadline and retained bounded pipe readers. CPU and file limits are installed by a small isolated Python launcher before executing Git. System/global Git configuration, replacement objects, hooks, non-file protocols, automatic maintenance and automatic object unpacking are disabled. Imports remain packed until object inspection.</p>
+<p>Returning the imported store also calls the unchanged <code>GitStore</code> constructor, whose final bare-repository identity check has its own existing 60-second subprocess timeout. Thus the complete import API is not a strict 60-second service deadline. A caller's transport timeout must not be treated as proof that the import did not complete. The success receipt is written only after this constructor check returns.</p>
+<p>These are <strong>not a hard parser-memory sandbox</strong>. Compressed limits and an expanded-object census are insufficient protection against every hostile native Git parser input. This cycle covers trusted harness-generated fixture bundles. Before unrestricted remote or model-influenced repository admission, qualify the parser inside an appropriate bounded container or equivalent isolation boundary. No candidate Python or other candidate code executes on the host.</p>
+<h2 id="integration-and-final-acceptance-remain-separate">Integration and final acceptance remain separate</h2>
+<p>After transport delivers the exact bytes and descriptor, the authority-owned integration service can call:</p>
+<pre class="python"><code>candidate = accepted_store.prepare(
+    quarantine, manifest[&quot;offered_sha&quot;], expected_head,
+    fresh_public_validator, allowed_paths=task_scope,
+)</code></pre>
+<p>That gate merges and validates the actual candidate tree, preserves introduced history scope (including reverted changes), and leaves the accepted reference unchanged. A subsequent fenced promotion must bind the candidate, exact expected head, lease epoch, run/task/source generation, validation contract and durable receipt before delegating to <code>PromotionCoordinator</code>.</p>
+<p><code>GitStore.prepare</code> can return <code>noop</code> without invoking its validator. Preserve this as already incorporated with no fresh validation; never relabel it as a tested candidate. <code>PromotionCoordinator</code> already requires <code>prepared</code>. A candidate pin alone is also insufficient authorization: <code>GitStore.accept</code> checks the pin, ancestry and expected-head CAS, but knows no evaluator or receipt identity. A new integration journal must bind those fields before any remote publication API is enabled.</p>
+<p>Public integration evidence belongs to the autonomous work loop. Independent private acceptance remains behind the whole-cohort freeze barrier and must not be returned as peer feedback. A published integration commit is not final project acceptance. Source selection, supersession/reopening, paid provider ownership and the complete four-cell study remain separate required work.</p>
+<h2 id="qualification-scope">Qualification scope</h2>
+<p>The new test classes are <code>BundleMetadataTests</code> (three fast cases), <code>GitBundleTests</code> (nine real-Git cases), and <code>BundleProcessBoundaryTests</code> (one controlled subprocess-cleanup case). The Git class retains a shared immutable export fixture and individual receiver outputs. It checks supplied-byte import with the sender unavailable, corruption and descriptor mismatch, historical unsafe paths/modes (including empty subtrees), case collisions, reverted scope escapes, divergent merged tree validation, stale expected heads and no-op validation accounting.</p>
+<p>The semantic integration fixtures parse JSON with trusted host test code; they do not execute candidate code. They do not qualify Docker evaluation or final publication recovery. The verification owner runs the registered lanes after static checks and independent source review, and records execution evidence separately from this implementation description.</p>
+<footer>Published snapshot · 2026-10-03T02:05:49.358998+00:00 · <a href="../publication.json">Publication provenance</a><br>This static site is updated when a new snapshot is published. It has no shared review or feedback service.</footer></main></body></html>
