@@ -1,9 +1,9 @@
 {
   "protocol": "gossip-public-progress-v1",
   "title": "Gossip × Agents",
-  "source_revision": 338,
-  "snapshot_at": "2026-10-03T03:01:30.431501+00:00",
-  "last_meaningful_update": "2026-10-03T03:00:33+00:00",
+  "source_revision": 346,
+  "snapshot_at": "2026-10-03T04:26:29.106874+00:00",
+  "last_meaningful_update": "2026-10-03T04:21:41+00:00",
   "recorded_status": "working",
   "verified_effort": 223,
   "total_effort": 248,
@@ -67,7 +67,7 @@
       "note": "Implemented independent Git stores, replaceable modeled transport, transactional task ledger, and local publication/recovery bridge.",
       "inScope": true,
       "updatedAt": "2026-09-30T03:02:44+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "conflict-scenarios",
@@ -77,7 +77,7 @@
       "note": "All 16 cases passed: independent edits, textual conflict, combined semantic conflict, and inherited scope across four topology/transport combinations.",
       "inScope": true,
       "updatedAt": "2026-09-30T03:02:44+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "validation-report",
@@ -87,7 +87,7 @@
       "note": "Published exact investigation version with measured outcomes, full operation counts, limitations, and the next experimental boundary.",
       "inScope": true,
       "updatedAt": "2026-09-30T03:02:44+00:00",
-      "tier": "current"
+      "tier": "collapsed"
     },
     {
       "id": "pilot-worker-adapter",
@@ -683,10 +683,10 @@
       "title": "Build real peer-local coordination controls",
       "weight": 5,
       "status": "in_progress",
-      "note": "RPCV3 repair passed the full 21-class gate and is pushed. Root revalidated 315 inputs/runtime after commit and launched the fresh full role fixture; no new allocation, key use or API request.",
+      "note": "Known-unchanged-proposal recovery passed the full 21-class gate and is published. Root matched runtime/contract and launched whole fixture 3. All earlier failures remain retained; no API/key use or allocation.",
       "phase": "Live coordination",
       "inScope": true,
-      "updatedAt": "2026-10-03T03:00:33+00:00",
+      "updatedAt": "2026-10-03T04:21:41+00:00",
       "tier": "current"
     },
     {
@@ -727,10 +727,10 @@
       "title": "Test a larger project with 20 swarm roles",
       "weight": 8,
       "status": "in_progress",
-      "note": "Published 3019bcf97db8 after 361/361 fresh checks. Complete physical v4 rehearsal 2 is running in root session 83984; actual receipt, audit and live permit are pending. Startup failure 1 preserved; full study unfinished.",
+      "note": "Gate 5 passed 381/381 physically with no failure, skip, reuse or drift. Recovery patch is pushed at 00d51d1d662b. Matching full fixture 3 is running; no terminal physical outcome, audit or live permit yet.",
       "phase": "Larger project scaling study",
       "inScope": true,
-      "updatedAt": "2026-10-03T03:00:33+00:00",
+      "updatedAt": "2026-10-03T04:21:41+00:00",
       "tier": "current"
     },
     {

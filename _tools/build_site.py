@@ -206,6 +206,14 @@ def main() -> None:
             continue
         raw = source.read_bytes()
         original = clean(raw.decode())
+        historical_context = '`3019bcf`, before the retained-topic continuation change.\nThe [published-source checkpoint](../analysis/peer-library-project-v4-checkpoint.json)'
+        if source_name == 'docs/peer-library-project-v4.md' and historical_context in original:
+            if original.count(historical_context) != 1:
+                raise SystemExit('Historical checkpoint context is ambiguous')
+            historical_target = REPOSITORY+'/blob/3019bcf97db8d0f37b3bd1f045c8826155ad438e/analysis/peer-library-project-v4-checkpoint.json'
+            corrected = historical_context.replace('../analysis/peer-library-project-v4-checkpoint.json',historical_target)
+            original = original.replace(historical_context,corrected,1)
+            manifest.setdefault('derivations',[]).append({'path':path,'source':source_name,'change':'Pin the historical 3019bcf / 361-check paragraph to its original immutable checkpoint; current checkpoint link remains bound to current source commit.','target':historical_target,'source_unchanged':True})
         fragment = subprocess.check_output([str(pandoc),"--from=gfm","--to=html5","--wrap=none","--syntax-highlighting=none"],input=original,text=True)
         fragment = links(fragment,path,source_name)
         title_match = re.search(r'^#\s+(.+)',original,re.M)
