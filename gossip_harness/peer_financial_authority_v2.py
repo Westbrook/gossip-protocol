@@ -712,7 +712,12 @@ class CumulativeAuthorityV2:
         result, result_raw = journal_module._read(paths["result"])
         settled, _ = journal_module._read(paths["settled"])
         kind = "result" if reply.state == "completed" else "failure"
-        if (owner != journal_identity or retained_request != {**journal_identity, "request": strict_loads(journal_module._bytes(asdict(request)))}
+        # Compare canonical journal bytes rather than reparsing our own ASCII
+        # encoding under a wire limit. Escaping may expand an already admitted,
+        # digest-bound UTF-8 request; its admission limits remain unchanged.
+        # Byte equality also preserves JSON scalar types (unlike True == 1).
+        expected_request = journal_module._bytes({**journal_identity, "request": asdict(request)})
+        if (owner != journal_identity or journal_module._bytes(retained_request) != expected_request
                 or set(result) != {*journal_identity, "kind", "payload", "payload_sha256"}
                 or any(result.get(key) != value for key, value in journal_identity.items())
                 or result["kind"] != kind or result["payload_sha256"] != _sha(journal_module._bytes(result["payload"]))):

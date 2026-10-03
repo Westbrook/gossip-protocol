@@ -17,7 +17,8 @@ from unittest.mock import patch
 from gossip_harness.ledger import ClaimRejected, Ledger
 from gossip_harness.peer_financial_authority_v2 import CumulativeAuthorityV2, FinancialError, canonical_payload, ledger_identity
 from gossip_harness.peer_project_contract_v2 import ActionRequest, Context, EvidenceRef, WorkKey, identity, to_dict
-from gossip_harness.worker import HTTPResponse, MODEL, OpenAIWorker
+from gossip_harness.peer_store_v1 import StoreError
+from gossip_harness.worker import HTTPResponse, MODEL, STRONG_MODEL, OpenAIWorker
 
 
 class InjectedCrash(BaseException):
@@ -61,6 +62,7 @@ class OfflineTransport:
         self.release.set()
         self.entered = threading.Event()
         self.response_status = 200
+        self.model = MODEL
         self.proposal = {"changes": [{"path": "src/a.py", "content": "fixed\n"}], "summary": "offline patch"}
         self.omit_usage = False
         self.error = None
@@ -73,7 +75,7 @@ class OfflineTransport:
             raise RuntimeError("Offline barrier expired")
         if self.error is not None:
             raise self.error
-        body = {"id": "resp_offline", "model": MODEL, "status": "completed", "service_tier": "default",
+        body = {"id": "resp_offline", "model": self.model, "status": "completed", "service_tier": "default",
                 "output": [{"type": "message", "role": "assistant", "status": "completed",
                             "content": [{"type": "output_text", "text": json.dumps(self.proposal)}]}]}
         if not self.omit_usage:
@@ -176,6 +178,92 @@ class PeerFinancialAuthorityV2Tests(unittest.TestCase):
         self.clock.now += 1000
         self.assertEqual(self.authority.submit("alpha", action, lease), reply)
         self.assertEqual(len(self.transport.calls), 1)
+
+    def test_large_ascii_unicode_and_del_selector_contexts_keep_exact_terminal_proofs(self):
+        # The twenty-role rehearsal reached a valid settled selector outcome but
+        # terminal revalidation accidentally used the 144384-byte peer-wire
+        # limit. Also cover the journal's larger ASCII encoding of Unicode.
+        self.historical.increase_budget("offline-large-context", 12_000_000,
+            expected_old=1_000_000, reason="Disposable fixture full-context reservations", now=self.clock())
+        self.transport.model = STRONG_MODEL
+        self.transport.proposal = {"changes": [{"path": "selection.json", "content": '{"selected":["catalog"]}'}],
+                                  "summary": "Offline selector artifact"}
+        self.worker = OpenAIWorker("offline-fixture-not-a-real-key", model=STRONG_MODEL,
+            max_output_tokens=64, timeout=2, transport=self.transport)
+        for spec in self.contract["task_specs"]:
+            spec.update(kinds=["select_source"], profiles=["strong"],
+                        allowed_paths=["selection.json"], max_reserved_units=6_000_000)
+        self.open(expected_global_cap=12_000_000, incremental_cap_micro_usd=10_000_000,
+                  workers={"strong": self.worker})
+        records = []
+        for index, feedback in enumerate(("e" * 393_000, "é" * 120_000, "\x7f" * 400_000)):
+            context = self.other_context if index == 2 else self.context
+            lease = self.claim(index)
+            request = {"task_id": self.authority.task_id(context, self.works[index]),
+                "instructions": "Select from the complete arrived source context.",
+                "allowed_paths": ["selection.json"], "files": {"src/a.py": "source\n"},
+                "base_sha": "c" * 40, "attempt": 1, "feedback": feedback}
+            raw = canonical_payload({"worker_request": request, "view_manifest_sha256": "d" * 64})
+            self.assertLess(len(raw), 512_000)
+            journal_encoding = json.dumps(request, ensure_ascii=True, sort_keys=True, separators=(",", ":")).encode()
+            self.assertGreater(len(journal_encoding), (390_000, 600_000, 2_100_000)[index])
+            digest = self.payloads.put_owned("alpha", raw)
+            ref = EvidenceRef(hashlib.sha256(("large-" + str(index)).encode()).hexdigest(), "alpha", "worker-request", digest)
+            action = ActionRequest(context, "large-action-" + str(index), "large-request-" + str(index),
+                "alpha", "select_source", self.works[index], "strong", ref, "d" * 64)
+            self.assertEqual(self.authority.submit("alpha", action, lease).state, "pending")
+            reply = self.terminal(action)
+            self.assertEqual((reply.state, reply.usage_units), ("completed", 553))
+            proof = self.authority.verified_terminal(reply.binding)
+            self.assertEqual(proof["worker_request"].feedback, feedback)
+            self.assertEqual(proof["result"].changes, {"selection.json": '{"selected":["catalog"]}'})
+            self.assertEqual(self.authority.lookup("alpha", action.request_id), reply)
+            self.assertEqual(self.authority.submit("alpha", action, lease), reply)
+            records.append((action, lease, reply))
+        self.assertEqual(len(self.transport.calls), 3)
+        self.assertEqual(self.historical.budget()["spent_or_reserved"], 1000 + 3 * 553)
+        self.assertTrue(all(row["state"] == "settled" for row in self.rows("reservations")))
+        self.clock.now += 1000
+        self.open(recovery=True, expected_global_cap=12_000_000, incremental_cap_micro_usd=10_000_000,
+                  workers={"strong": self.worker})
+        for action, lease, reply in records:
+            self.assertEqual(self.authority.lookup("alpha", action.request_id), reply)
+            self.assertEqual(self.authority.verified_terminal(reply.binding)["reply"], reply)
+            self.assertEqual(self.authority.submit("alpha", action, lease), reply)
+        self.assertEqual(len(self.transport.calls), 3)
+
+    def test_terminal_retained_request_keeps_exact_json_scalar_types(self):
+        self.open()
+        action, lease = self.action(), self.claim()
+        self.authority.submit("alpha", action, lease)
+        reply = self.terminal(action)
+        self.assertEqual(reply.state, "completed")
+        path = self.authority.journal.paths(reply.binding.call_id)["request"]
+        request = json.loads(path.read_bytes())
+        self.assertEqual(request["request"]["attempt"], 1)
+        request["request"]["attempt"] = True
+        path.write_text(json.dumps(request), encoding="utf-8")
+        # Python dictionary equality would consider True equal to 1. The
+        # canonical journal envelope must retain the actual JSON scalar type.
+        retained = self.authority.lookup("alpha", action.request_id)
+        self.assertEqual((retained.state, retained.reason), ("unknown", "terminal_evidence_unavailable"))
+        self.assertEqual(len(self.transport.calls), 1)
+        self.assertEqual(self.historical.budget()["spent_or_reserved"], 1166)
+
+    def test_worker_envelope_byte_limit_and_duplicate_json_still_reject_before_admission(self):
+        self.open()
+        lease = self.claim()
+        for index, raw in enumerate((b" " * 600_001,
+                b'{"worker_request":{},"worker_request":{},"view_manifest_sha256":"' + b"d" * 64 + b'"}')):
+            digest = self.payloads.put_owned("alpha", raw)
+            ref = EvidenceRef(hashlib.sha256(("malformed-" + str(index)).encode()).hexdigest(), "alpha", "worker-request", digest)
+            action = ActionRequest(self.context, "malformed-action-" + str(index), "malformed-request-" + str(index),
+                "alpha", "build", self.works[0], "mini", ref, "d" * 64)
+            with self.assertRaises(StoreError):
+                self.authority.submit("alpha", action, lease)
+        self.assertEqual(len(self.transport.calls), 0)
+        self.assertEqual(self.rows("financial_actions_v2"), [])
+        self.assertEqual(len(self.rows("reservations")), 1)  # Historical fixture payment only.
 
     def test_busy_has_no_paid_queue_and_unrelated_workers_overlap(self):
         self.open()

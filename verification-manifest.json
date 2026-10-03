@@ -2215,6 +2215,94 @@
       "boundary": "Pure fixture-contract and negative-evidence checks; does not start the twenty-process scenario.",
       "disposition": "Run before explicit source-bound twenty-role CLI qualification; passing synthetic records are not physical process evidence.",
       "overlap_reason": "Prevents a partial or unrelated observation set from earning runtime qualification without repeating the expensive integrated scenario."
+    },
+    "tests/test_library_m1_reference_v1.py::LibraryM1ReferenceV1Tests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "The authored M1 application satisfies the frozen public histories, preserves immutable seed inputs, and the controlled blob-identity defect fails its designated provenance probe.",
+      "isolation": "Dedicated verification worker with fresh private state; retained failed artifacts are never repurposed as successful observations.",
+      "boundary": "Bounded host subprocesses execute only repository-authored application sources with isolated SQLite files; no model candidate, network or Docker execution.",
+      "disposition": "Authored-reference smoke qualification; not a swarm quality observation, browser qualification or independent acceptance.",
+      "overlap_reason": "Qualifies new project integration contracts not covered by the historical twenty-role plumbing receipt."
+    },
+    "tests/test_library_m1_ingestion_reference_v1.py::LibraryM1IngestionReferenceV1Tests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Directory, ZIP and JSON intake enforce confinement, canonical source identity, resource bounds and atomic admission.",
+      "isolation": "Dedicated verification worker with fresh private state; retained failed artifacts are never repurposed as successful observations.",
+      "boundary": "Bounded authored-source child processes, local files and isolated SQLite; no provider or untrusted candidate execution.",
+      "disposition": "Checks the trusted rehearsal reference only; actual candidate qualification remains sandboxed.",
+      "overlap_reason": "Qualifies new project integration contracts not covered by the historical twenty-role plumbing receipt."
+    },
+    "tests/test_peer_project_views_v3.py::PeerProjectViewsV3Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Project roles materialize full locally arrived target, source, selection and contribution bytes; policy changes preserve aggregate durable action limits.",
+      "isolation": "Dedicated verification worker with fresh private state; retained failed artifacts are never repurposed as successful observations.",
+      "boundary": "Fake mesh and finance interfaces with actual private role journals; no provider, Git or Docker.",
+      "disposition": "Byte-materialization and lifecycle evidence only; authenticity of registered contributions and release remain separate gates.",
+      "overlap_reason": "Qualifies new project integration contracts not covered by the historical twenty-role plumbing receipt."
+    },
+    "tests/test_peer_project_evidence_v3.py::ProjectEvidenceV3Tests": {
+      "lane": "git",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 600,
+      "invariant": "Actual imported candidate bytes match the authenticated settled action, registered scope/base/template and complete selector frontier.",
+      "isolation": "Dedicated verification worker with fresh private state; retained failed artifacts are never repurposed as successful observations.",
+      "boundary": "Real private Git bundles/quarantine and trusted financial proof fixtures; no candidate execution or provider.",
+      "disposition": "Receiver and selection evidence qualification; does not establish model quality or protected release.",
+      "overlap_reason": "Qualifies new project integration contracts not covered by the historical twenty-role plumbing receipt."
+    },
+    "tests/test_peer_project_execution_v3.py::PeerProjectExecutionV3Tests": {
+      "lane": "git",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 480,
+      "invariant": "Execution receipts bind exact Git source, ordered whole cases, image/runtime/limits/purpose and retain ambiguous intent without automatic reexecution.",
+      "boundary": "Real private Git plus mocked validator/runtime and durable local transport; fixture evidence cannot authorize release and no Docker daemon or provider is contacted.",
+      "disposition": "Receipt adapter qualification with explicitly simulated execution; physical candidate outcomes require the separate project rehearsal.",
+      "isolation": "Dedicated class process with isolated Git stores, mutable journals and owned fixture state.",
+      "overlap_reason": "Exercises a real persistence/Git boundary that pure review-policy and materialization tests cannot establish."
+    },
+    "tests/test_peer_project_promotion_v3.py::PeerProjectPromotionV3Tests": {
+      "lane": "git",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 300,
+      "invariant": "Authenticated selections stage exact package-owned trees; all current scoped reviews and execution evidence precede a durable fenced protected Git CAS.",
+      "boundary": "Real private Git, persistent release journal and trusted test callbacks; no candidate execution, Docker or provider.",
+      "disposition": "Promotion mechanics and negative controls only; actual finance/evidence/physical execution are qualified together in the project rehearsal.",
+      "isolation": "Dedicated class process with isolated Git stores, mutable journals and owned fixture state.",
+      "overlap_reason": "Exercises a real persistence/Git boundary that pure review-policy and materialization tests cannot establish."
+    },
+    "tests/test_peer_library_project_v3.py::PeerLibraryProjectV3Tests": {
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "isolation": "Dedicated worker; pure authored registrations and isolated fixtures, without model or Docker calls.",
+      "overlap_reason": "Checks the actual combined controller contracts before its separately invoked twenty-process physical rehearsal.",
+      "lane": "fast",
+      "invariant": "The twenty-role schedule, real sixteen-offer materialization, policy/scopes and receipt qualification preserve exact accounting and bounded inputs.",
+      "boundary": "Actual project materializer and authored source bytes with synthetic immutable offer evidence; no candidate execution or role processes.",
+      "disposition": "Contract qualification only; synthetic observations cannot count as a physical swarm result."
+    },
+    "tests/test_peer_library_project_v3.py::PeerLibraryProjectV3GitTests": {
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "isolation": "Dedicated worker; pure authored registrations and isolated fixtures, without model or Docker calls.",
+      "overlap_reason": "Checks the actual combined controller contracts before its separately invoked twenty-process physical rehearsal.",
+      "lane": "git",
+      "invariant": "An actual conflicting Git proposal preserves the protected head and never reaches the validator.",
+      "boundary": "Fresh private Git stores with trusted fixed control text; no source execution, Docker or provider.",
+      "disposition": "Source conflict negative control; the semantic project control remains a separate physical evaluation."
     }
   },
   "audit": {

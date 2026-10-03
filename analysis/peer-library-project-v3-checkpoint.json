@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "status": "qualified-offline-project-rejection-and-repair",
+  "scientific_classification": "Physical twenty-role engineering rehearsal with authored responses and central phase scheduling; not autonomous-model quality, decentralized planning or independent final project acceptance.",
+  "repository_base_head": "dae7a6bba1932b4cb57afcdc5877b6a14dbb8b27",
+  "recorded_at": "2026-10-03T00:48:55.575809+00:00",
+  "source_files": {
+    "docs/peer-library-project-v3.md": "1dae2ec2b5cc8168698f6a2a1049750c0d6c8095fe3ab5b5e42e7ae5bd052ffe",
+    "gossip_harness/library_m1_clients_reference_v1.py": "e52b6477bb6c5460547d7bde84986e347ab7d16ae07708a6fe28021b5e96a17f",
+    "gossip_harness/library_m1_ingestion_reference_v1.py": "514ad7c5caa546a6b33359af3b9c2d04475a05176a2131ac4b562d38fe1db5ff",
+    "gossip_harness/library_m1_reference_v1.py": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+    "gossip_harness/peer_financial_authority_v2.py": "f208785289ea8ccbc147cab79dcb812342477ffab00f383772bdb678fa8d477c",
+    "gossip_harness/peer_library_project_v3.py": "233bfefeb89abd8e0fa0005f5efdad0edecef2aee6ba5e14fdfbbda2f1e8c667",
+    "gossip_harness/peer_project_evidence_v3.py": "f7b58772761f2bfcf832bd4a8cecb2466c7af54e2619c925500c35d67046ad85",
+    "gossip_harness/peer_project_execution_v3.py": "1ea793c3eebd5d3ea5341c4c044ee6314b27184190eb955c68e1dbaa963a3edc",
+    "gossip_harness/peer_project_promotion_v3.py": "40554927f0087c46009b9d571e6a9f15833bf784cf1f12a0a148b5f084813569",
+    "gossip_harness/peer_project_views_v3.py": "db1ee6cdb941953d6d80281734b980468d7bfac48967c973a49fe161fa2cabd5",
+    "gossip_harness/peer_role_loop_v2.py": "00b9f4904c40eb482328eb616bf01d01b6abb74b93ad0262cbf1250f951d6c2f",
+    "pyproject.toml": "c1594f67ef0e5e1e13a7c1ec254d5b2fbafe94f6ae3ac3d9be4017742cb7205f",
+    "tests/test_library_m1_ingestion_reference_v1.py": "3b90d89c6443c43eb6ab6fa827fa1e667ada8df09aacb80936a93b27f6ebd247",
+    "tests/test_library_m1_reference_v1.py": "f71fb335b4cad503686f0e292e2f8d931af13d9fc4e60c09dd7115cb2d0e4488",
+    "tests/test_peer_financial_authority_v2.py": "23405373e6814f266b946e880804104ffb90ff4f71b8d0063abd3a14ba7f855d",
+    "tests/test_peer_library_project_v3.py": "63354db680861370a08433490b1c3f94794bab91be4009e9432649addbacb870",
+    "tests/test_peer_project_evidence_v3.py": "124ba38c2d1d651caab05bd1acce18c2f23cf6f917a412b85f0b854757aed290",
+    "tests/test_peer_project_execution_v3.py": "25538bbf1f07383918465b2229b903a1417b0db0c405ebd703ed4e7f13b4c224",
+    "tests/test_peer_project_promotion_v3.py": "e8c5f68b82e769af13e2179b1bd8426de105716f0f37f03a8f753a82ab0de1cc",
+    "tests/test_peer_project_views_v3.py": "b2d958def5b77f184f0fe7eadc6a37adb840dfa469a2bd8e6b000cb74c8e7b22",
+    "verification-manifest.json": "b9b2c43f71f9b1d0c9a7361aa44d0ff4a2de110a94769c1a18acf30d0f893bcf"
+  },
+  "physical_execution_sources": {
+    "gossip_harness/__init__.py": "b99240d3dc5cec6237ff098230aa0cc7ff3751d865c4124a23fcc37665a68a82",
+    "gossip_harness/blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+    "gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+    "gossip_harness/ledger.py": "627ac78ba21e1f4817c2f40a93b88201233988aece4240f8a10abaa0540b3b7b",
+    "gossip_harness/library_m1_clients_reference_v1.py": "e52b6477bb6c5460547d7bde84986e347ab7d16ae07708a6fe28021b5e96a17f",
+    "gossip_harness/library_m1_ingestion_reference_v1.py": "514ad7c5caa546a6b33359af3b9c2d04475a05176a2131ac4b562d38fe1db5ff",
+    "gossip_harness/library_m1_reference_v1.py": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+    "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+    "gossip_harness/peer_authority_v1.py": "5750922f03620b9478235eebed52f60e954249a4a9721cd622d0791be6f40e10",
+    "gossip_harness/peer_candidate_v2.py": "8a4eb0b2d5995b4234c5a26047cb1fd104212b9a8be80df4cce792063791e988",
+    "gossip_harness/peer_coding_dispatch_v1.py": "b3fe79f77966f749e54ab151724e007ed502ab54736f176bd79a55e06628cf5c",
+    "gossip_harness/peer_financial_authority_v2.py": "f208785289ea8ccbc147cab79dcb812342477ffab00f383772bdb678fa8d477c",
+    "gossip_harness/peer_financial_rpc_v2.py": "f20f24b344a96beb8b712f927905b44bfe40887f12648715fc7e8c35bd5c9f27",
+    "gossip_harness/peer_git_bundle_v1.py": "5e1010c7bb2e2489ca697fc190bd1e09eaee0c028115db38be8ca03d0cd0da35",
+    "gossip_harness/peer_library_project_v3.py": "233bfefeb89abd8e0fa0005f5efdad0edecef2aee6ba5e14fdfbbda2f1e8c667",
+    "gossip_harness/peer_mesh_finance_v2.py": "11de812ef927664a9092f9cc74b1b3a3d1a2aa373f365be6405f8b0b681b5a06",
+    "gossip_harness/peer_mesh_store_v2.py": "bf0ed3d4e44d7728af265c4f6cd1e118daa6bcdc0ae1ae9dc5de5eafc73d7179",
+    "gossip_harness/peer_mesh_v2.py": "e838734dae4b69f5b21b28d1654b2d93812f2d0fe3cf4b3bd73bc57c94b76b0e",
+    "gossip_harness/peer_project_contract_v2.py": "5af31e3cb5d20b01579903865e418476d9c4aa7c42442f4d9b7f48664f1e711a",
+    "gossip_harness/peer_project_evidence_v3.py": "f7b58772761f2bfcf832bd4a8cecb2466c7af54e2619c925500c35d67046ad85",
+    "gossip_harness/peer_project_execution_v3.py": "1ea793c3eebd5d3ea5341c4c044ee6314b27184190eb955c68e1dbaa963a3edc",
+    "gossip_harness/peer_project_promotion_v3.py": "40554927f0087c46009b9d571e6a9f15833bf784cf1f12a0a148b5f084813569",
+    "gossip_harness/peer_project_views_v3.py": "db1ee6cdb941953d6d80281734b980468d7bfac48967c973a49fe161fa2cabd5",
+    "gossip_harness/peer_review_release_v2.py": "a555d55bb038c2904e251cc1a78f8c8e4bc1e40276f6a3164c036f2cfa61f6e2",
+    "gossip_harness/peer_role_loop_v2.py": "00b9f4904c40eb482328eb616bf01d01b6abb74b93ad0262cbf1250f951d6c2f",
+    "gossip_harness/peer_store_v1.py": "86f80448d090c867fe42c9c78d27f489b8b908ef175a8c39f6079cbd5b97f47f",
+    "gossip_harness/peer_twenty_role_fixture_v2.py": "045ae02c951fd1a8b222722eae206d299cd96a4e0587d545fd79beb914d7b098",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "gossip_harness/verification_journal.py": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+    "gossip_harness/worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+  },
+  "verification": {
+    "session": "runs/investigation-cycle-11-project-qualified/20261003T001938-5e6b662c",
+    "status": "passed",
+    "physically_executed_tests": 203,
+    "selected_counts": {
+      "fast": 106,
+      "fixtures": 24,
+      "git": 73
+    },
+    "class_processes": 11,
+    "reused_classes": 0,
+    "unexpected_skips": 0,
+    "failures": 0,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "bound_authored_inputs": 298,
+    "static_passed": true,
+    "static_authored_sources": 247,
+    "unchanged_legacy_type_diagnostics": 117,
+    "elapsed_seconds": 381.00243345927447,
+    "coverage": "Affected targeted regressions plus combined physical rehearsal; explicit incremental type roots, not universal legacy typing or whole-suite execution."
+  },
+  "physical_observation": {
+    "directory": "runs/twenty-role-library-m1-v3-2",
+    "receipt_sha256": "73ad3403df9e8908b77560898d9b39bdaed714555fbe8dc24216650f2a1c06ef",
+    "execution_contract_sha256": "40be218bd3c8f0639502ec288e35e0b8415f722666b1ff76f4ff69cb895cdbc6",
+    "source_count": 30,
+    "runtime": {
+      "git_executable": "/opt/homebrew/Cellar/git/2.54.0/bin/git",
+      "git_version": "git version 2.54.0",
+      "platform": "macOS-26.6.1-arm64-arm-64bit",
+      "python_executable": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+      "python_version": "3.11.15 (main, Jul 18 2026, 16:57:24) [Clang 22.1.3 ]"
+    },
+    "settings": {
+      "deadline_seconds": 1800,
+      "executor_slots": 4,
+      "interval": 0.08
+    },
+    "counts": {
+      "api_calls": 0,
+      "api_spend_micro_usd": 0,
+      "builder_processes": 16,
+      "fresh_approved_scope_decisions": 8,
+      "infrastructure_members": 2,
+      "injected_calls": 27,
+      "physical_public_evaluations": 2,
+      "private_candidate_bundles": 17,
+      "protected_releases": 1,
+      "rejected_scope_decisions": 8,
+      "reviewer_processes": 4,
+      "role_processes": 20,
+      "textual_conflicts_rejected": 1
+    },
+    "additional_audited_counts": {
+      "unique_candidate_identities": 17,
+      "receiver_quarantine_imports": 29,
+      "private_repair_base_imports": 1
+    },
+    "stages": [
+      {
+        "commit_oid": "4a36caf5fcde5968acc6a1855db2e2d3dd0cbb4b",
+        "failed_checks": [
+          "m1-per-source-provenance"
+        ],
+        "generation": 0,
+        "promoted": false,
+        "scoped_decisions": 8
+      },
+      {
+        "commit_oid": "6500ed224d2cc0129212cfd69daee5cf0df844b2",
+        "failed_checks": [],
+        "generation": 1,
+        "promoted": true,
+        "scoped_decisions": 8
+      }
+    ],
+    "elapsed_seconds_before_cleanup": 1057.478552875109,
+    "total_elapsed_seconds": 1058.7944404156879,
+    "all_twenty_owned_process_exit_codes_zero": true,
+    "cleanup_errors": [],
+    "accounting": {
+      "api_spend": false,
+      "completed_actions": 27,
+      "per_actor_calls": {
+        "B01": 2,
+        "B02": 1,
+        "B03": 1,
+        "B04": 1,
+        "B05": 1,
+        "B06": 1,
+        "B07": 1,
+        "B08": 1,
+        "B09": 1,
+        "B10": 1,
+        "B11": 1,
+        "B12": 1,
+        "B13": 1,
+        "B14": 1,
+        "B15": 1,
+        "B16": 1,
+        "R1": 4,
+        "R2": 2,
+        "R3": 2,
+        "R4": 2
+      },
+      "settled_reservations": 27,
+      "simulated_spend_units": 8352,
+      "unsettled_reservations": 0
+    },
+    "peak_injected_transport_calls": 3,
+    "timing_limit": "Scripted engineering wall time, not live model throughput, a causal speed comparison, or an Elo/ranking result. Nested transport/evaluator intervals are not added to wall time.",
+    "physical_evaluation_timings": [
+      {
+        "basis": "original BlackboxValidator runtime_seconds",
+        "generation": 0,
+        "seconds": 1.599564
+      },
+      {
+        "basis": "original BlackboxValidator runtime_seconds",
+        "generation": 1,
+        "seconds": 1.469295
+      }
+    ],
+    "claims_excluded": [
+      "autonomous-model-quality",
+      "live-provider",
+      "statistical-superiority",
+      "four-milestone-study",
+      "six-trajectory-study",
+      "process-restart",
+      "partition-recovery"
+    ]
+  },
+  "independent_review": {
+    "path": "runs/twenty-role-library-m1-v3-2-independent-review.json",
+    "sha256": "b683d9ea9f69c9e151d1f6eb8de07963d5711a0bb022b154e710a35c9305cd6e",
+    "passed": true,
+    "retained_evidence_files_bound": 324,
+    "audit_script_sha256": "1d8f493b13b63f97e4085f7f8b48aa0b5b4c26a974e8d77e904686762274df4d",
+    "execution": "Read-only reconciliation of original local mesh bytes, journals, immutable Git objects, sandbox receipts, review/repair/release chain and accounting; no replay or candidate execution.",
+    "provider_calls": 0,
+    "docker_calls": 0
+  },
+  "retained_prior_attempts": [
+    {
+      "path": "runs/investigation-cycle-11-project-offline/20261002T234501-3f9eda84",
+      "status": "157 checks passed on earlier source before discovered financial journal size defect; not reused as current qualification."
+    },
+    {
+      "path": "runs/twenty-role-library-m1-v3-1/receipt.json",
+      "sha256": "f5b38d01f8965a8cb49e7123ed3a15e9224c60d6da7d607f0351646d5d3c2861",
+      "status": "Failed integration retained unchanged; twenty roles, sixteen candidate imports, seventeen settled scripted calls, zero candidate evaluations/reviews/releases.",
+      "root_cause": "Admitted selector request exceeded a smaller default parser bound when canonical escaped journal bytes were unnecessarily parsed again. It halted without duplicate invocation."
+    },
+    {
+      "path": "runs/investigation-cycle-11-project-final/20261003T000631-3db2e802",
+      "status": "Intentionally interrupted superseded check run, not qualification:143 passed,1 interrupted,58 not run.",
+      "reason": "Independent review showed a raised parse limit still mishandled sixfold JSON escaping; final fix uses exact canonical envelope byte comparison while keeping admission limits."
+    }
+  ],
+  "budget": {
+    "new_api_calls": 0,
+    "new_api_spend_micro_usd": 0,
+    "production_ledger_accessed": false,
+    "last_audited_cumulative_cap_micro_usd": 80000000,
+    "last_audited_cumulative_spent_micro_usd": 42150585,
+    "last_audited_remaining_micro_usd": 37849415,
+    "fixture_ledger_simulated_usage_units": 8352,
+    "fixture_units_are_real_provider_spend": false,
+    "new_large_live_study_allocation": null
+  },
+  "frozen_previous_live_study": {
+    "sources_unchanged": 39,
+    "audit_path": "runs/investigation-cycle-11-frozen-source-audit.json",
+    "audit_sha256": "e4e7859b48889882e3f66a3fb939a5a34281ced7721684bdd41c5bda9b0d0c01",
+    "classification": "Historical live pilot preserved; no retry or retrospective reinterpretation as a twenty-role result."
+  },
+  "limitations": [
+    "Trusted fixed controller issues role directives and deliberately selects the bad catalog, triggers repair and supplies authored responses. Gossip delivery does not establish decentralized planning.",
+    "Sixteen proposals are mostly copies of the same authored reference within each package, not sixteen independent model designs or best-of-many quality evidence.",
+    "Public release is not independent final project acceptance; actual archive intake, CLI, HTTP and browser completion need additional independent physical acceptance.",
+    "The supported repair changes one package from the failed combined base. Multiple concurrent package repairs need topic-base versus integration-context handling, not relaxed Git scope.",
+    "This one-host trusted mesh run did not inject role restarts, partitions, provider failures or delayed ambiguous paid outcomes.",
+    "Twenty durable role processes do not imply twenty concurrent model invocations; the fixture had four available slots and observed peak three injected completions."
+  ],
+  "next_concrete_step": {
+    "recommendation": "Register a separate healthy M1 developmental pilot with sixteen live builders and four live reviewers under central scheduling and gossip delivery; do not label it the planned peer-local S16-G arm.",
+    "requirements": [
+      "Versioned live financial adapter with credential ownership, current cumulative ledger and prospective cohort allowance.",
+      "Real public task/schema prompts and bounded outcome-driven selection/review/repair instead of authored success scripting.",
+      "Prospective source/context capacity limits or bounded verified retrieval; current full selector is roughly394KB against512KB.",
+      "Finite malformed-review correction and qualified multi-package repair or an explicitly narrower prospective repair contract.",
+      "Independent physical acceptance after source freeze, with private evidence excluded from live feedback.",
+      "Offline qualification and matching complete rehearsal, then audited funding and one retained live attempt."
+    ],
+    "advisory_path": "runs/large-swarm-live-gap-audit-1.json",
+    "advisory_sha256": "d9869bf2c9ff88eb9ae81f3fd3152bf305ee06433999ce3f04b1a82ba674cf5a",
+    "budget_status": "No new allocation or current-price claim. Source-derived conservative reservations in advisory are planning inputs only."
+  },
+  "remaining_required_work": [
+    "Full four-milestone six-trajectory smaller-swarm/larger-swarm/orchestrated study with frozen resource and fault contracts.",
+    "Genuine peer-local planning, model-proposed distinguishing tests and measured reviewer selection benefit.",
+    "Combined partition/restart/unknown-outcome project recovery qualification.",
+    "Separate decision-placement by transport contrast and untouched held-out families before general quality or ranking claims.",
+    "Separately requested report/artifact hosting remains distinct from Git publication."
+  ],
+  "evidence_files": {
+    "runs/investigation-cycle-11-project-qualified/20261003T001938-5e6b662c/summary.json": "aacbc6cb94c57cff2c77b41c7730439789447cfb40ced93c419c1151fc9b3eef",
+    "runs/investigation-cycle-11-project-qualified/20261003T001938-5e6b662c/inputs.json": "c2eba5830f6219264fa5e409797a5a62e5e966622353050d64007a35c84a0cab",
+    "runs/investigation-cycle-11-project-qualified/20261003T001938-5e6b662c/static.json": "08d1aad743f370c16cbee87bd2f9b963660ef91c9a3a4e89573b96e12eab241c",
+    "runs/twenty-role-library-m1-v3-2/receipt.json": "73ad3403df9e8908b77560898d9b39bdaed714555fbe8dc24216650f2a1c06ef",
+    "runs/twenty-role-library-m1-v3-2/execution-contract.json": "40be218bd3c8f0639502ec288e35e0b8415f722666b1ff76f4ff69cb895cdbc6",
+    "runs/twenty-role-library-m1-v3-2/round-0.json": "0cb761740902f1b4309746fd843366f84d61a24ff84e09355c5ec4b4e0c0889f",
+    "runs/twenty-role-library-m1-v3-2/round-1.json": "c6ca22c81fe928814b1dbd301a256240dd1ae441720cd581f3d63f7ce26de72d",
+    "runs/twenty-role-library-m1-v3-2/textual-conflict-control.json": "8978c150a687e7d4090b119c425ee25f8004db97966872a70b48e9e4549273f5",
+    "runs/twenty-role-library-m1-v3-2-independent-review.json": "b683d9ea9f69c9e151d1f6eb8de07963d5711a0bb022b154e710a35c9305cd6e",
+    "runs/investigation-cycle-11-project-cross-boundary-review-2.json": "b291bd94f937e80a9d1f28ef8f4b08eb4af4d3ba5d700f2df8dcc124387b0b12",
+    "runs/investigation-cycle-11-project-failure-1.json": "6784f5d7c908c04ca689204e83ad366901d95464e113843b1abeef4fea2639ed",
+    "runs/investigation-cycle-11-frozen-source-audit.json": "e4e7859b48889882e3f66a3fb939a5a34281ced7721684bdd41c5bda9b0d0c01",
+    "runs/large-swarm-live-gap-audit-1.json": "d9869bf2c9ff88eb9ae81f3fd3152bf305ee06433999ce3f04b1a82ba674cf5a"
+  }
+}

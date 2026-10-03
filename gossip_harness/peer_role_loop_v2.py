@@ -479,7 +479,7 @@ class RoleLoop:
             # A notice without local bytes is not a materializable frontier.
             # Preserve declared ordering while letting later complete views run.
             for value in prepared:
-                result = materialize(WorkDirective.from_dict(value["directive"]), self.mesh, self.policy_sha256)
+                result = self._materialize(WorkDirective.from_dict(value["directive"]))
                 if result is not None:
                     request, view = result
                     body = asdict(request)
@@ -497,6 +497,10 @@ class RoleLoop:
             self._save(value, "pending" if uncertain else "stopped", "financial_denied:" + str(error)[:200],
                        reconcile_only=uncertain)
         return self._snapshot(value)
+
+    def _materialize(self, directive: WorkDirective) -> tuple[WorkerRequest, LocalViewManifest] | None:
+        """Protected recipe hook; the v2 default keeps its original semantics."""
+        return materialize(directive, self.mesh, self.policy_sha256)
 
     def _advance(self, value: dict[str, Any]) -> None:
         directive = WorkDirective.from_dict(value["directive"])
