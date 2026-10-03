@@ -75,13 +75,17 @@ contexts remain isolated even though their installed tools and daemon are reused
 ## Source release scope
 
 `MANIFEST.in` includes authored sources, test/configuration files, source pages,
-the browser lockfile, study plans, and one explicitly retained fixture. It excludes
+the browser lockfile, study plans, public cumulative contracts/documentation, and
+explicitly retained fixtures. It excludes
 runtime caches, node_modules, the virtual environment, runs, private environment
 files, and local report state. Do not stage the entire `results/` tree. Its only
 required test dependency is the seven files under
 `results/practical-live-1/accepted/single` (6,235 bytes at audit time). These bind
 the original accepted task-report source to `tests/test_research_fixture.py` and
-must survive a fresh checkout/source distribution.
+must survive a fresh checkout/source distribution. The six public files under
+`fixtures/library-m4-compatibility-v1` are also declared inputs: two SQLite
+snapshots, their manifests, their constructor and README. These are small public
+compatibility fixtures, not private study execution directories.
 
 The source distribution is the developer verification artifact. Wheel package
 selection is controlled separately by `pyproject.toml`; a wheel does not include

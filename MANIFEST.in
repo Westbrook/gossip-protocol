@@ -21,6 +21,17 @@ include results/practical-live-1/accepted/single/task_report/__main__.py
 include results/practical-live-1/accepted/single/task_report/cli.py
 include results/practical-live-1/accepted/single/task_report/parser.py
 include results/practical-live-1/accepted/single/task_report/summary.py
+# Public cumulative contract and compatibility inputs used by acceptance checks.
+include library-m1-acceptance-inventory-v1.json
+include library-cumulative-product-v1.json library-cumulative-product-v2.json
+include large-swarm-project-plan-v1.json
+recursive-include docs *.md
+include fixtures/library-m4-compatibility-v1/README.md
+include fixtures/library-m4-compatibility-v1/build_snapshots.py
+include fixtures/library-m4-compatibility-v1/v0.manifest.json
+include fixtures/library-m4-compatibility-v1/v0.sqlite3
+include fixtures/library-m4-compatibility-v1/m2.manifest.json
+include fixtures/library-m4-compatibility-v1/m2.sqlite3
 prune runs
 prune .cache
 prune .venv

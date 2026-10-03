@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "checkpoint_id": "cumulative-acceptance-boundary-v1",
+  "recorded_at": "2026-10-03T09:25:54.625787+00:00",
+  "status": "development_acceptance_components_qualified_with_explicit_limits",
+  "whole_project_acceptance": false,
+  "comparative_quality_result": false,
+  "previous_goal_turn_classification": "GitHub Pages publication verified; no new research observations",
+  "current_cycle_classification": "Public contract clarification, complete design compiler, and real packaged-release execution controls; engineering evidence only",
+  "source_branch": "codex/cumulative-project-contract",
+  "base_commit": "c09808a79f388ff22cd847a3457e941bdf8c8247",
+  "main_frozen_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "new_provider_calls": 0,
+  "new_api_spend_usd": 0,
+  "live_pilot_status": "Separate live payload-transfer approval remains unanswered after automatic approval review rejections; no provider retry in this cycle",
+  "sources": {
+    ".github/README.md": "c6d8924e5907591c26abd7c763953565d474d01f719ab6a1ff90e6bff5ee01a7",
+    "MANIFEST.in": "e197c3803876ef79b7c1382de83737a8a905af171eacca43b40d7cc42c4cd214",
+    "README.md": "cac8389ce37366216f92db7d45696cd9fc3d39a5e31e6768c7527af830ca22c8",
+    "docs/candidate-release-execution-v1.md": "fb9116706c58becd9f89a23e6114a674666ddafdb0b969b8c7dbb8c1b9f9b962",
+    "docs/library-cumulative-product-v2.md": "0d35083497080a3317f4e6b2c5d71cff6abf478460914e0f0dc0f6a2c5584e11",
+    "docs/project-acceptance-compiler-v1.md": "7b822e7f5ce1164d69b4d4e606fef3cad78fc270407cf5c800524a4afd7302ec",
+    "gossip_harness/candidate_release_execution_v1.py": "e0e3275f6f97405e7524dd0c53eba820b28ae01b9635694f730ed18d6f463653",
+    "gossip_harness/candidate_release_observer_v1.py": "9e073abb32bf930fdc3667a0d8d25d6d75fcad822933e21d0e1a26011957d997",
+    "gossip_harness/project_acceptance_compiler_v1.py": "a58919361669857831f724c817117d83d531ddf4721e982967558c7a6166c694",
+    "library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "pyproject.toml": "5e80761aa0d00d81907ac5c2977ebce644268f8fa805933ebd47851488cf5dd5",
+    "tests/test_candidate_release_docker_v1.py": "39f98efe8d70c374a4f9841b75811d8ef365044a6bb074a7069cdee115a0fd2f",
+    "tests/test_candidate_release_execution_v1.py": "6c9a9fdeb49671653d4f30558d41f73d83a6610f61dffd4502be97748281b7c1",
+    "tests/test_candidate_release_observer_v1.py": "4733e23420773828a93e241c65ae973d8a8263b9112a7a6ea51b21434ccaf662",
+    "tests/test_library_cumulative_contract_v2.py": "226c45c3c9e24e392bff263cf1d90f0902178c148aba8a08e050dd000159dba1",
+    "tests/test_project_acceptance_compiler_v1.py": "289132acc71f0986e6dc5fddb95460355132514c88dbf7f97afe01f9de3121cb",
+    "verification-manifest.json": "72f3be2f07f54b7e179175e947ba7bacc6f2459dcc749fa33010555e94a0d26e"
+  },
+  "inventory_census": {
+    "common": {
+      "requirement_records": 126,
+      "product_requirement_ids": 123,
+      "inherited_product_ids": 106,
+      "later_product_groups": 17,
+      "prerequisite_ids": 3,
+      "logical_gates": 99,
+      "product_logical_gates": 96,
+      "prerequisite_logical_gates": 3,
+      "qualification_rules": 22,
+      "acceptance_boundary_rules": 8,
+      "inherited_gate_definition_rules": 14,
+      "clarifications": 7,
+      "retained_gap_notes": 188
+    },
+    "v1": {
+      "obligation_units": 233,
+      "product_obligation_units": 228,
+      "prerequisite_obligation_units": 5,
+      "later_group_clauses": 65,
+      "clauses_by_milestone": {
+        "M2": 25,
+        "M3": 23,
+        "M4": 17
+      },
+      "derived_inventory_sha256": "bcfd90d279dfe221206f4a63fcc4057ea0f92264e7da7ae6e129ed0d68d54fd6"
+    },
+    "v2": {
+      "obligation_units": 312,
+      "product_obligation_units": 307,
+      "prerequisite_obligation_units": 5,
+      "later_group_clauses": 75,
+      "clauses_by_milestone": {
+        "M2": 28,
+        "M3": 27,
+        "M4": 20
+      },
+      "derived_inventory_sha256": "ce0852452501153be2ef81495773b99ae70519c5cd577da774372e509d793487"
+    }
+  },
+  "inventory_census_evidence": {
+    "path": "runs/cumulative-acceptance-census-1.json",
+    "sha256": "163876d0dc135b1fb6ab8366423fae07b10ab7a670481c6fe788d1a4193a2e7b"
+  },
+  "contract_v2": {
+    "status": "prospective declaration only; product implementation and qualification outstanding",
+    "predecessor_preserved": {
+      "path": "library-cumulative-product-v1.json",
+      "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c"
+    },
+    "prospective_contract": {
+      "path": "library-cumulative-product-v2.json",
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
+    },
+    "semantic_changes": [
+      "atomic stale-instance migration fences",
+      "explicit successful migration error clearing",
+      "lossless signed-64 counters and transition-local exhaustion",
+      "canonical M1 provenance hash representation",
+      "current-owner worker liveness",
+      "explicit process-only single backup-root adoption with owned-artifact preconditions"
+    ]
+  },
+  "compiler": {
+    "status": "mechanical completeness and registration checks qualified; no production complete ScopePlan",
+    "semantic_scope_approval": "External trusted independent review, not established by hash identity or compiler result",
+    "coverage": "123 product requirements, three separate prerequisites, all clause/class/lane applicability and qualification authorities retained",
+    "candidate_acceptance": false
+  },
+  "verification": {
+    "session": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd",
+    "summary": {
+      "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/summary.json",
+      "sha256": "78b64e6b8b48add49deb5119dac1863cd042700f40dbffe88370f602f716d366"
+    },
+    "static": {
+      "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/static.json",
+      "sha256": "8f32df9c015cdb7f7d6162a68244e759b2639c717e8d5c9bdbc123205aebd538"
+    },
+    "inputs": {
+      "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/inputs.json",
+      "sha256": "565d39eb27ea25336104a050f76b790687596721e51118f2d6d2b9a9a5c8cd6d"
+    },
+    "fingerprint": "d60f2a80882f6f0c459bf236439c72eba6edb5d2f501ebda2fa23d16cf4634d3",
+    "scope": "targeted changed surfaces and their acceptance registry/contract dependencies",
+    "selected": 95,
+    "outcomes": {
+      "passed": 95
+    },
+    "selected_lanes": {
+      "docker": 2,
+      "fast": 81,
+      "git": 12
+    },
+    "classes": 8,
+    "freshly_executed_classes": 8,
+    "reused_classes": 0,
+    "unexpected_skips": 0,
+    "not_run": 0,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "input_count": 391,
+    "current_input_hashes_reconciled": true,
+    "duration_seconds": 227.11243579164147,
+    "timing_scope": "development verification wall time; not a swarm completion/cost metric",
+    "static_status": "passed",
+    "legacy_type_baseline_diagnostics": 117,
+    "static_coverage_limit": "Incremental explicitly declared mypy roots; unchanged 117 legacy diagnostics are baseline, not universal type safety",
+    "rerun_reason": "Actual retained Docker failure required a changed snapshot execution contract; conservative whole-authored fingerprint invalidated matching receipt reuse"
+  },
+  "snapshot_protocol": "docker-paused-local-tmpfs-volume-v1",
+  "physical_controls": [
+    {
+      "control": "corrupted-emitted-package",
+      "purpose": "authored public_release development control; synthetic registration, no actual cohort freeze",
+      "normalized_execution": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/normalized-execution.json",
+        "sha256": "7ae5e535c1ce1d540614c8308be8d3289404012f1cb1d8712eb0abeab69f5426"
+      },
+      "execution_id": "release-3b1feddd7686407aabebe2455cbd5533",
+      "binding": {
+        "environment_sha256": "d74e5545fb6f2f69049645188bbab4422dd3fa423d5891cc4248491a45bb46b0",
+        "evaluator_sha256": "51801000d313e106bafb7b1457ac26121ca0ffc560115527737186e308c3a09b",
+        "execution_protocol": "candidate-release-execution-v1",
+        "limits_sha256": "66469ab5299ea5cf2d6f9d6f529b039de422161d9b20d8c40d7c23bf3c4a5854",
+        "ordered_suite_sha256": "4ae8a8e6f994d7ca3e621e2a71ae94adb146d933faeae68e50aa3b2e2c2061fb",
+        "purpose": "public_release",
+        "runtime_image_sha256": "f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "seed_sha256": "0b549961cfffda66bb197837b48408fab4011777d4ccd0f7c19c45c52aa061b6",
+        "subject": {
+          "cohort_id": "qualified-cohort",
+          "execution_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "milestone": "M4",
+          "requirements_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+          "source_sha256": "3c0a9edab33b7387e430063670a2633146a13a0223ac6f6eadec11d781a56b30",
+          "trajectory_id": "s4-healthy"
+        }
+      },
+      "outcomes": [
+        {
+          "case_id": "release-build",
+          "status": "passed"
+        },
+        {
+          "case_id": "release-manifest",
+          "status": "failed"
+        },
+        {
+          "case_id": "released-cli-roundtrip",
+          "status": "failed"
+        }
+      ],
+      "terminal": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/execution/terminal.json",
+        "sha256": "4ed5781ff768bbc37977bc611cb43fe2b57151973052f0013b6c16830d6274af"
+      },
+      "host_verifier": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/execution/verifier.json",
+        "sha256": "a4d87ae7110b3ffc7d08cd73be71a7ec7259b7639c3733baf1d7778471ed47fb"
+      },
+      "external_checkpoint": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/external-checkpoint.json",
+        "sha256": "da4611cc82fa5af86b64f140b6011c6b0c857cf9946e84aa376d49670bbf6bed"
+      },
+      "intent": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/execution/intent.json",
+        "sha256": "ae12b53d6ae6b6a664374f52696140345a615330e2243a07acded8f2b0a1bb54"
+      },
+      "capsule": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-mutant-rwcb8fqf/execution/capsule-stdout.bin",
+        "sha256": "bd4aa5420a1170db2310fc1d661ee6ae9884f5ef8bccef52f53130ae24ec7910"
+      },
+      "capsule_bytes": 697856,
+      "package_file_count_including_manifest": 56,
+      "package_bytes": 644516,
+      "command_count": 16,
+      "separate_cli_steps": [
+        "import",
+        "list",
+        "show",
+        "export"
+      ],
+      "paused_builder_and_expected_volume_verified": true,
+      "volume_driver": "local",
+      "volume_options": {
+        "device": "tmpfs",
+        "o": "size=32m,mode=1777,nosuid,nodev,noexec",
+        "type": "tmpfs"
+      },
+      "owned_containers_removed": true,
+      "owned_volume_removed_and_daemon_healthy_absence_observed": true,
+      "reopen_returns_original_execution_without_dispatch": "asserted by physically executed Docker test; not an additional observation"
+    },
+    {
+      "control": "valid-frozen-v1-reference",
+      "purpose": "authored public_release development control; synthetic registration, no actual cohort freeze",
+      "normalized_execution": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/normalized-execution.json",
+        "sha256": "8b8f48a3a4a72dad04e3c4a5f1480014541edfa9428bc1b39f35006b360257da"
+      },
+      "execution_id": "release-21cbaebd5c194d0abb5f8712a7d03710",
+      "binding": {
+        "environment_sha256": "d74e5545fb6f2f69049645188bbab4422dd3fa423d5891cc4248491a45bb46b0",
+        "evaluator_sha256": "51801000d313e106bafb7b1457ac26121ca0ffc560115527737186e308c3a09b",
+        "execution_protocol": "candidate-release-execution-v1",
+        "limits_sha256": "66469ab5299ea5cf2d6f9d6f529b039de422161d9b20d8c40d7c23bf3c4a5854",
+        "ordered_suite_sha256": "4ae8a8e6f994d7ca3e621e2a71ae94adb146d933faeae68e50aa3b2e2c2061fb",
+        "purpose": "public_release",
+        "runtime_image_sha256": "f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "seed_sha256": "0b549961cfffda66bb197837b48408fab4011777d4ccd0f7c19c45c52aa061b6",
+        "subject": {
+          "cohort_id": "qualified-cohort",
+          "execution_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "milestone": "M4",
+          "requirements_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+          "source_sha256": "9111e212909c46b04d60f4eef599ca79bf3db47441c560c197434ec3c8bea730",
+          "trajectory_id": "s4-healthy"
+        }
+      },
+      "outcomes": [
+        {
+          "case_id": "release-build",
+          "status": "passed"
+        },
+        {
+          "case_id": "release-manifest",
+          "status": "passed"
+        },
+        {
+          "case_id": "released-cli-roundtrip",
+          "status": "passed"
+        }
+      ],
+      "terminal": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/execution/terminal.json",
+        "sha256": "085bfc8557bbaa3ed457b05f0c54e7b8d6c4aa55b5ece4f4e12f16ceed9e98be"
+      },
+      "host_verifier": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/execution/verifier.json",
+        "sha256": "f45e1436b6686dc32ddfcba1860f89d02e980634ff60982c2a2425e407a50f4d"
+      },
+      "external_checkpoint": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/external-checkpoint.json",
+        "sha256": "e185bb963758fe70d5350626a0055ad401d98b06f4e4b1667e6210f88592a974"
+      },
+      "intent": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/execution/intent.json",
+        "sha256": "8b33a889f2e4909a274f4ae868378c9a0d91f6bcb5a63325eead63ee87589006"
+      },
+      "capsule": {
+        "path": "runs/cumulative-acceptance-qualification-2/20261003T091844-9c3af9fd/classes/7f92b4ad660c8e9d/artifacts/gossip-candidate-release-valid-u35a39xe/execution/capsule-stdout.bin",
+        "sha256": "ea96726d6ae067690be1341c26d7b72d3d145357a9fbba88793f4a8909c121fe"
+      },
+      "capsule_bytes": 697344,
+      "package_file_count_including_manifest": 56,
+      "package_bytes": 644244,
+      "command_count": 16,
+      "separate_cli_steps": [
+        "import",
+        "list",
+        "show",
+        "export"
+      ],
+      "paused_builder_and_expected_volume_verified": true,
+      "volume_driver": "local",
+      "volume_options": {
+        "device": "tmpfs",
+        "o": "size=32m,mode=1777,nosuid,nodev,noexec",
+        "type": "tmpfs"
+      },
+      "owned_containers_removed": true,
+      "owned_volume_removed_and_daemon_healthy_absence_observed": true,
+      "reopen_returns_original_execution_without_dispatch": "asserted by physically executed Docker test; not an additional observation"
+    }
+  ],
+  "source_reviews": [
+    {
+      "path": "runs/cumulative-acceptance-source-review-1.json",
+      "sha256": "c3f69e4a158b7560af5f2f427bb34803b421d1db39ebf332963979e46b9b704b"
+    },
+    {
+      "path": "runs/cumulative-acceptance-compiler-source-review-1.json",
+      "sha256": "6933e27e0372ba2efa280198c88c1b7a8198d363adecb0d3806492cf1edbd805"
+    },
+    {
+      "path": "runs/cumulative-acceptance-volume-review-1.json",
+      "sha256": "99a6ba0f2ca4cfeed70cc18909a0587e3944aa7d8c1254961338f01661fcd9db"
+    }
+  ],
+  "retained_failed_attempts": [
+    {
+      "summary": {
+        "path": "runs/cumulative-acceptance-qualification-1/20261003T090756-06510766/summary.json",
+        "sha256": "1ec94f441091a397f1d137bdc2eb9794754809d15e98cd08b5080b461ab3ca0d"
+      },
+      "outcomes": {
+        "passed": 92,
+        "failed": 1,
+        "not_run": 1
+      },
+      "cause": "Docker cp cannot capture native tmpfs contents; built 55 files but copied a 1,536-byte underlying empty tmp directory",
+      "interpretation": "Harness capture failure; consumer unexecuted; no candidate correctness or acceptance claim",
+      "correction": "Versioned managed bounded tmpfs-volume capture plus exact ownership/mount/cleanup observations; one fresh complete qualification"
+    }
+  ],
+  "historical_evidence": {
+    "m4_reference_checkpoint": {
+      "path": "analysis/library-m4-reference-checkpoint-v1.json",
+      "sha256": "3411774a2e29b4d95a0f81a3e884639ad3f02412c314bc3dc83c6f53e74c4055"
+    },
+    "status": "Historical purpose-bound 74-check reference qualification retained; not repeated or relabeled as current whole-project acceptance",
+    "browser": "No browser change in this cycle; existing browser observations remain historical reference controls"
+  },
+  "source_distribution": {
+    "declaration_updated": "MANIFEST.in now includes public cumulative contracts/docs and six retained compatibility-fixture files",
+    "archive_built_this_cycle": false,
+    "limit": "No source-distribution build performed; declared inclusion is not proof of fresh archive execution"
+  },
+  "qualification_limits": [
+    "Only release build, manifest and four-process positive CLI roundtrip are in this executor gate; not full M4 or whole-product acceptance",
+    "Delivery profile requires the entire admitted Git tree to be public deliverables; source-only files require another registered profile",
+    "Nonzero docker exec remains conservatively infrastructure unknown without independent exec-completion proof",
+    "Controller, Docker daemon and frozen evaluator installation remain trusted; fresh controller process required",
+    "External checkpoint sink and global physical-slot uniqueness are controller responsibilities; write-to-external-checkpoint crash window fails closed",
+    "Independent/repeatability cohort capability interface tested offline; actual six-trajectory dispatch-stop barrier remains to be integrated",
+    "Compiler uses synthetic structural declarations in tests; semantic scope adequacy, selectors and prerequisite receipt consumption are unfinished",
+    "Prospective v2 product behavior is not implemented/qualified by frozen v1 controls",
+    "No independent sample, swarm-ranking update, statistical superiority or model-generated project quality result"
+  ],
+  "remaining_comparison_scope": {
+    "milestones": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "arms": [
+      "S4-G:4 builders+4 reviewers",
+      "S16-G:16 builders+4 reviewers",
+      "O16-G:16 builders+4 reviewers"
+    ],
+    "blocks": [
+      "healthy",
+      "compound recovery"
+    ],
+    "trajectory_count": 6,
+    "required": [
+      "peer-local versus matched central decision placement",
+      "separate transport and placement factors",
+      "generated distinguishing tests",
+      "actual process restart and bounded partition",
+      "source-bound integration and Git promotion",
+      "full-cohort barrier before held-out evaluation",
+      "independent final observations with complete requirement coverage"
+    ]
+  },
+  "next_action": "Produce the real independently reviewed clause-to-test ScopePlan and prerequisite consumer, implement/qualify prospective v2 reference behavior, then integrate these boundaries into the full four-milestone/six-trajectory controller and one complete frozen rehearsal. Preserve the separate pending live-transfer decision.",
+  "physical_evidence_audit": {
+    "path": "runs/cumulative-acceptance-physical-audit-1.json",
+    "sha256": "73097e58789d80002be085c82aa28b0a83681df97154964e312cc21e3303d974"
+  }
+}

@@ -1190,6 +1190,19 @@ The [comparative evidence checkpoint](docs/confirmatory-path-checkpoint-v1.md)
 separates existing exploratory quality results from infrastructure checks and
 records the held-out sampling, funding and statistical decisions still needed.
 
+The next cumulative comparison retains [four milestones and six matched
+trajectories](docs/large-swarm-project-plan-v1.md). The qualified
+[M4 reference](docs/library-m4-reference-v1.md) is a development control. The
+[prospective v2 product contract](docs/library-cumulative-product-v2.md) makes
+migration, counters, worker liveness and backup ownership explicit; it still
+needs product implementation and qualification. The
+[candidate release executor](docs/candidate-release-execution-v1.md) and
+[complete-inventory compiler](docs/project-acceptance-compiler-v1.md) are the next
+acceptance boundaries, now qualified by [95 targeted development checks](analysis/cumulative-acceptance-boundary-checkpoint-v1.json),
+including actual valid and corrupted package controls. A complete production
+coverage plan and v2 product implementation remain outstanding. These components
+do not establish a completed comparative study or an advantage for larger swarms.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

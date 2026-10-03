@@ -1,0 +1,1803 @@
+{
+  "schema_version": 2,
+  "contract_id": "library-cumulative-product-v2",
+  "status": "prospective-unqualified",
+  "product": "Local Research Library",
+  "family": "local-research-library-development",
+  "freeze_policy": {
+    "state": "authored prospective v2; this explicit successor must be independently reviewed and bound before any future cumulative-cohort model work",
+    "release_boundary": "M2, M3 and M4 detailed requirements are released at the same preregistered milestone boundary in every arm; all hashes fixed beforehand",
+    "no_execution_claim": true,
+    "no_private_cases": true,
+    "no_new_spending_authority": true,
+    "qualification_missing": [
+      "independent v2 acceptance definitions and adapters for every amendment",
+      "cumulative product/reference compliance with v2 (v1 qualification is not inherited as v2 evidence)",
+      "source-bound full cumulative v2 acceptance",
+      "exact future-cohort zero-provider rehearsal and cohort-freeze qualification"
+    ]
+  },
+  "inherited_contract": {
+    "fixture": "gossip_harness/library_project_fixture_v1.py",
+    "requirements": [
+      "V0_REQUIREMENTS",
+      "M1_REQUIREMENTS"
+    ],
+    "browser_contract": "gossip_harness/peer_library_contract_v4.py",
+    "plan": "docs/large-swarm-project-plan-v1.md",
+    "status": "all prior obligations remain mandatory; only compatibility-listed M4 changes are allowed; new restore/lifecycle states have declared additional semantics",
+    "source_sha256": {
+      "gossip_harness/library_project_fixture_v1.py": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "gossip_harness/peer_library_contract_v4.py": "a45fd3c06ee3d587c53614463b9621a82713bb57359d1e72cbbf6185fda091ee",
+      "docs/large-swarm-project-plan-v1.md": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2"
+    },
+    "runtime_image": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "python": "3.12 standard library only"
+  },
+  "constants": {
+    "max_documents": 256,
+    "max_file_bytes": 32768,
+    "max_revisions_per_document": 16,
+    "max_retained_revision_blob_bytes": 16777216,
+    "max_note_bytes": 16384,
+    "max_tags_per_document": 32,
+    "max_collections_per_document": 16,
+    "max_collections": 64,
+    "max_name_bytes": 64,
+    "max_query_characters": 256,
+    "max_page_size": 100,
+    "max_post_bytes": 65536,
+    "max_reindex_step": 64,
+    "max_export_bytes": 16777216,
+    "max_backup_bytes": 67108864,
+    "counter_max": 9223372036854775807
+  },
+  "value_types": {
+    "DOCUMENT0": {
+      "document_id": "document identity string",
+      "source_id": "source identity string",
+      "source": "canonical inherited source key",
+      "blob_id": "current blob identity string",
+      "title": "last source segment",
+      "text": "exact decoded current UTF-8"
+    },
+    "RECORD2": {
+      "document": "DOCUMENT0",
+      "revision": "integer 1..16",
+      "edit_version": "integer 1..9223372036854775807, excluding booleans",
+      "deleted": "boolean",
+      "notes": "bounded string",
+      "tags": "sorted normalized string array",
+      "collections": "sorted normalized existing-name array"
+    },
+    "REVISION2": {
+      "revision": "integer 1..16",
+      "blob_id": "blob identity string",
+      "text": "exact decoded UTF-8"
+    },
+    "RECORD4": {
+      "document_id": "unchanged logical ID",
+      "source_id": "unchanged source ID",
+      "source": "unchanged source key",
+      "title": "unchanged title",
+      "current_revision": "REVISION4",
+      "edit_version": "integer 1..9223372036854775807, excluding booleans",
+      "deleted": "boolean",
+      "notes": "bounded string",
+      "tags": "sorted normalized string array",
+      "collections": "sorted normalized existing-name array"
+    },
+    "REVISION4": {
+      "revision_id": "deterministic rev- SHA256 identity",
+      "revision": "integer 1..16",
+      "blob_id": "unchanged blob identity",
+      "text": "exact decoded UTF-8"
+    },
+    "BACKUP3": {
+      "format": "literal local-research-library-backup-v3",
+      "payload": "closed object of the arrays/fields in persistence.backup_rows",
+      "payload_sha256": "64 lowercase hex characters"
+    },
+    "DIAGNOSTICS3": {
+      "schema": "integer 3 or4",
+      "generation": "integer 0..9223372036854775807, excluding booleans",
+      "documents": "{active:nonnegative integer,deleted:nonnegative integer}",
+      "revisions": "nonnegative integer",
+      "blobs": "{count:nonnegative integer,bytes:nonnegative integer}",
+      "jobs": "{queued:integer,running:integer,completed:integer,cancelled:integer,failed:integer}; all >=0",
+      "worker_generation": "integer 0..9223372036854775807, excluding booleans",
+      "worker_state": "stopped without live matching owner; idle with owner/no matching active claim; running with owner/matching active claim",
+      "index_state": "absent|stale|building|current",
+      "last_error": "null or {operation,code}",
+      "recovery_action": "none|restart_worker|retry_reindex|choose_new_backup|validate_backup|run_migration"
+    }
+  },
+  "interfaces": {
+    "common": [
+      "ID is the inherited document_id. Every listed body/output has exactly its stated fields. Missing optional query keys use the declared defaults; unknown/duplicate keys fail invalid_request. List/history outputs are ordered, no timestamps.",
+      "Global --backup-dir DIR is added in M3, defaulting to backups beside the database; the operator creates it explicitly. Product-owned staging/control is confined to <database basename>.maintenance beside the database. No path option rewrites the configured input root. Selecting/configuring that path never binds ownership; fresh/unbound installations must explicitly run backup-root-adopt before backup I/O.",
+      "ASCII decimal query/CLI integers allow leading zeroes; no signs/whitespace/exponents. Path components are decoded once. Malformed UTF-8/percent query syntax fails invalid_request. All mutation JSON is application/json, at most65536 bytes.",
+      "Required Service extensions: lifecycle_list, lifecycle_show, revision_history, refresh_document, replace_annotations, create_collection, remove_collection, delete_document, restore_document; maintenance and v1 adapters delegate to these durable catalog/ingestion operations. Exact Service signatures are interfaces.python; they delegate to persistent Store/JobManager behavior, with no alternative in-memory state."
+    ],
+    "python": [
+      "Service.lifecycle_list(query=\"\", *, tag=None, collection=None, deleted=\"active\", offset=0, limit=100, generation=None); lifecycle_show(document_id); revision_history(document_id). Return the corresponding route outputs.",
+      "Service.refresh_document(document_id, expected_version, *, text=None, path=None) requires exactly one non-None input; replace_annotations(document_id, expected_version, notes, tags, collections); delete_document(document_id, expected_version); restore_document(document_id, expected_version).",
+      "Service.list_collections(); create_collection(name, expected_generation); remove_collection(name, expected_generation); enqueue_job(job_id); reindex_step(limit=64); export_bundle(ids=None, *, include_deleted=False, include_history=False, max_bytes=16777216).",
+      "Service.backup(name); list_backups(offset=0,limit=100); restore_backup(name,expected_generation); diagnostics(). Service(store,root,*,backup_dir=None) preserves the inherited two-positional-argument constructor; None selects backups beside the Store database. Service.adopt_backup_root(expected_root) is process-only: expected_root=None means unbound, otherwise canonical absolute expected binding; TARGET is the explicitly selected backup_dir. It returns {adopted:boolean,registered:integer} and is not routed over HTTP.",
+      "M4 adds Service.list_v1(query=\"\", *, tag=None, collection=None, deleted=\"active\", offset=0, limit=100, generation=None); show_v1(document_id); revisions_v1(document_id,revision_id=None); export_v1(ids=None, *, include_deleted=False, include_history=False, max_bytes=16777216). v1 mutation routes call the lifecycle mutation methods then apply a RECORD4 projection within the same response snapshot. Store.migrate() returns the migration result; worker entry lives in library.ingestion.worker.main(argv=None)."
+    ],
+    "m2": [
+      {
+        "http": "GET /api/lifecycle/documents",
+        "input": "q?,tag?,collection?,deleted?,offset?,limit?,generation? query",
+        "output": "{records:[RECORD2],total,generation}",
+        "cli": "documents [--query TEXT] [--tag NAME] [--collection NAME] [--deleted active|deleted|all] [--offset N] [--limit N] [--generation N]"
+      },
+      {
+        "http": "GET /api/lifecycle/documents/ID",
+        "input": "no query/body",
+        "output": "RECORD2 (including deleted)",
+        "cli": "document ID"
+      },
+      {
+        "http": "GET /api/lifecycle/documents/ID/revisions",
+        "input": "no query/body",
+        "output": "{document_id:ID,revisions:[REVISION2]}",
+        "cli": "revisions ID"
+      },
+      {
+        "http": "POST /api/lifecycle/documents/ID/refresh",
+        "input": "{expected_version,text} OR {expected_version,path}",
+        "output": "{status,record:RECORD2}",
+        "cli": "refresh ID --expected-version N (--text TEXT | --path PATH)"
+      },
+      {
+        "http": "POST /api/lifecycle/documents/ID/annotations",
+        "input": "{expected_version,notes,tags,collections}",
+        "output": "{status,record:RECORD2}",
+        "cli": "annotate ID --expected-version N --notes TEXT [--tag NAME repeated] [--collection NAME repeated]; omitted arrays are empty"
+      },
+      {
+        "http": "POST /api/lifecycle/documents/ID/delete",
+        "input": "{expected_version}",
+        "output": "{status,record:RECORD2}",
+        "cli": "delete ID --expected-version N"
+      },
+      {
+        "http": "POST /api/lifecycle/documents/ID/restore",
+        "input": "{expected_version}",
+        "output": "{status,record:RECORD2}",
+        "cli": "restore-document ID --expected-version N"
+      },
+      {
+        "http": "GET /api/lifecycle/collections",
+        "input": "no query/body",
+        "output": "{collections:[{name,total}],generation}",
+        "cli": "collections"
+      },
+      {
+        "http": "POST /api/lifecycle/collections",
+        "input": "{name,expected_generation}",
+        "output": "{status,name,generation}",
+        "cli": "collection-create NAME --expected-generation N"
+      },
+      {
+        "http": "POST /api/lifecycle/collections/remove",
+        "input": "{name,expected_generation}",
+        "output": "{status,name,generation}",
+        "cli": "collection-remove NAME --expected-generation N"
+      }
+    ],
+    "m3": [
+      {
+        "http": "POST /api/maintenance/jobs/ID/enqueue",
+        "input": "{}",
+        "output": "{status:\"enqueued\"|\"unchanged\",job:JOB}",
+        "cli": "worker-enqueue ID"
+      },
+      {
+        "http": "none (process command only)",
+        "input": "exclusive worker owner; --once optional",
+        "output": "--once: {processed:job_id|null,job:JOB|null}; domain/I/O errors as inherited. Daemon emits no JSON data until stopped.",
+        "cli": "worker [--once]"
+      },
+      {
+        "http": "POST /api/maintenance/reindex",
+        "input": "{limit}",
+        "output": "{state,generation,target_generation,processed,total,cursor}",
+        "cli": "reindex --limit N"
+      },
+      {
+        "http": "POST /api/export-bundle",
+        "input": "{ids,include_deleted,include_history,max_bytes}",
+        "output": "local-research-library-export-v2 payload",
+        "cli": "export-bundle [ID ...] [--include-deleted] [--include-history] [--max-bytes N]; no IDs means null/all; defaults false,false,16777216"
+      },
+      {
+        "http": "POST /api/maintenance/backups",
+        "input": "{name}",
+        "output": "{name,bytes,payload_sha256,generation}",
+        "cli": "backup NAME"
+      },
+      {
+        "http": "GET /api/maintenance/backups",
+        "input": "offset (default0), limit (default100; integer1..100) query",
+        "output": "{backups:[{name,bytes,payload_sha256,generation}],total} sorted by name; only registered complete files, total before pagination; metadata registry read, no full payload scan",
+        "cli": "backups [--offset N] [--limit N]"
+      },
+      {
+        "http": "POST /api/maintenance/restore",
+        "input": "{name,expected_generation}",
+        "output": "{restored:true,generation,documents,jobs}",
+        "cli": "restore-backup NAME --expected-generation N"
+      },
+      {
+        "http": "GET /api/maintenance/diagnostics",
+        "input": "no query/body",
+        "output": "DIAGNOSTICS3",
+        "cli": "diagnostics"
+      },
+      {
+        "http": "none (process-only, no HTTP/browser route)",
+        "input": "explicit global --backup-dir TARGET; exactly one --expect-unbound or --expect-root CURRENT",
+        "output": "{adopted:boolean,registered:nonnegative integer}",
+        "cli": "backup-root-adopt (--expect-unbound | --expect-root CURRENT); explicit --backup-dir required"
+      }
+    ],
+    "m4": [
+      {
+        "http": "GET /api/v1/documents and GET /api/v1/documents/ID",
+        "input": "same as corresponding lifecycle route",
+        "output": "listing {records:[RECORD4],total,generation}; show RECORD4",
+        "cli": "documents-v1 [same options as documents]; document-v1 ID"
+      },
+      {
+        "http": "GET /api/v1/documents/ID/revisions and GET /api/v1/documents/ID/revisions/REVISION_ID",
+        "input": "no query/body",
+        "output": "{document_id:ID,revisions:[REVISION4]}; single REVISION4",
+        "cli": "revisions-v1 ID [--revision-id REVISION_ID]"
+      },
+      {
+        "http": "POST /api/v1/documents/ID/{refresh,annotations,delete,restore}",
+        "input": "same as corresponding lifecycle route",
+        "output": "same {status,record} wrapper with RECORD4",
+        "cli": "existing explicit lifecycle commands keep RECORD2; HTTP/new browser use RECORD4"
+      },
+      {
+        "http": "POST /api/v1/export",
+        "input": "same as export-bundle",
+        "output": "{format:\"local-research-library-export-v4\",generation,documents:[{record:RECORD4,revisions:[REVISION4]}]}",
+        "cli": "export-v1 [same options as export-bundle]"
+      },
+      {
+        "http": "none (maintenance process command only)",
+        "input": "exclusive maintenance authority",
+        "output": "{from_schema,to_schema:4,migrated,documents,jobs}",
+        "cli": "migrate"
+      }
+    ],
+    "browser": [
+      "Preserve the frozen v0/M1 accessible client controls. Add a region named Document lifecycle with a textbox named Query, combobox named Deletion filter (Active, Deleted, All), textboxes named Tag filter and Collection filter, spinbutton named Page size (1..100), buttons Previous page and Next page, and a status showing total and page offset. Disable Previous at offset0 and Next when offset+shown>=total.",
+      "Each lifecycle row has a checkbox named Select SOURCE and a button named Open SOURCE. Show source, current revision and deletion state. Selected record controls: textbox Notes, textbox Tags (one normalized name per line), textbox Collections (one per line), button Save annotations, textbox Refresh text, textbox Refresh path, and buttons Refresh from text and Refresh from path. Display edit_version as text; submit the loaded token.",
+      "Active selected records expose Delete document; tombstones expose Restore document. A region Revision history lists every numbered revision ascending, with text shown literally. A button Reload document discards the visible unsaved draft only after an explicit click. Filter/search/selection state may persist locally but cannot claim nonexistent records.",
+      "Collection name textbox and Create collection/Remove collection buttons use displayed generation. Export selection triggers the new bounded export; Include deleted and Include history checkboxes default false; no selected IDs means an explicit empty array, not all. Export all is a separate button. An Export limit bytes spinbutton defaults16777216. Result download and current error are observable.",
+      "M3 adds a region Recovery with Backup name textbox, Create backup and Restore backup buttons, Reindex button (step limit64), Refresh diagnostics button and a list named Backups. Each eligible job has an Enqueue JOB_ID button; terminal jobs do not. Show literal diagnostics and restore outcome; no automatic restore confirmation loop or hidden write on page load.",
+      "M4 lifecycle screens use /api/v1 and display revision_id alongside revision number; legacy home/import/jobs remain usable. Equivalent actions must work with keyboard and labeled roles, with a current role=status live region. These are public accessibility obligations, not private selector guesses."
+    ]
+  },
+  "persistence": {
+    "scope": "These are portable public snapshot tables required for independent v0/M2 migration fixture authors. SQL indexes, triggers and derived M3 index layout may vary; additional tables must be declared in the future public fixture manifest and cannot alter these columns or meanings. Ordinary acceptance observes declared public APIs/diagnostics, not guessed internals.",
+    "legacy_tables": [
+      "metadata(key TEXT PRIMARY KEY,value TEXT NOT NULL), including schema=\"0\"; blobs(blob_id TEXT PRIMARY KEY,content BLOB NOT NULL); documents(document_id TEXT PRIMARY KEY,source_id TEXT UNIQUE NOT NULL,source TEXT UNIQUE NOT NULL,blob_id TEXT NOT NULL,title TEXT NOT NULL).",
+      "Optional authored M1 jobs(job_id TEXT PRIMARY KEY,epoch INTEGER NOT NULL,state TEXT NOT NULL,total INTEGER NOT NULL,completed INTEGER NOT NULL,error TEXT,manifest TEXT NOT NULL,content_hashes TEXT NOT NULL,receipt TEXT). Manifest is exact canonical admitted entries JSON; receipt is null unless completed, then original receipt JSON. Content hashes align with manifest and may be null for deferred invalid Unicode. The portable content_hashes spelling and preservation contract is V2-M1-HASH-SERIALIZATION: a parsed ordered array of bare lowercase SHA256 hex/null, preserving original serialized text."
+    ],
+    "schema2": [
+      "Preserve legacy columns. metadata.schema=\"2\"; metadata.catalog_generation is an ASCII decimal integer0..9223372036854775807. Leading zeroes may be read but newly written counter text is canonical decimal without leading zeroes. Other counter domains and non-mutating overflow handling follow V2-COUNTER-DOMAIN.",
+      "lifecycle(document_id TEXT PRIMARY KEY REFERENCES documents(document_id),current_revision INTEGER NOT NULL,edit_version INTEGER NOT NULL,deleted INTEGER NOT NULL,notes TEXT NOT NULL,tags TEXT NOT NULL,collections TEXT NOT NULL). deleted is0|1. tags/collections are canonical JSON arrays.",
+      "revisions(document_id TEXT NOT NULL REFERENCES documents(document_id),revision INTEGER NOT NULL,blob_id TEXT NOT NULL REFERENCES blobs(blob_id),PRIMARY KEY(document_id,revision)); exactly1..current_revision, documents.blob_id equals head.",
+      "collections(name TEXT PRIMARY KEY); all memberships reference names. Jobs table exists even if empty; preserve every original job serialization string."
+    ],
+    "schema3": [
+      "Keep every schema2 table/column and set metadata.schema=\"3\". Add control(key TEXT PRIMARY KEY,value TEXT NOT NULL), with incarnation, worker_generation, last_error and cleanup_cursor; last_error is canonical JSON null or the diagnostics error object. New control defaults are a fresh incarnation, worker_generation=0, last_error=null and cleanup_cursor=null (JSON text). control.backup_root is absent/JSON null for unbound or a JSON string canonical absolute path; opening/migration never silently binds. Every persisted counter follows V2-COUNTER-DOMAIN.",
+      "Add job_control(job_id TEXT PRIMARY KEY,epoch_high_water INTEGER NOT NULL,enrolled INTEGER NOT NULL), including retained missing-job fencing tombstones. Epoch high-water is nonnegative; enrolled is0|1. Initial migration copies each current epoch with enrolled=0. Existing M1 methods update high-water transactionally without changing their public responses.",
+      "Add document_control(document_id TEXT PRIMARY KEY,edit_high_water INTEGER NOT NULL), retaining fencing tombstones for documents removed by restore. Initialize from all current edit_version values, and update it with every effective document edit. Add maintenance_artifacts(artifact_id TEXT PRIMARY KEY,kind TEXT NOT NULL,root_kind TEXT NOT NULL,relative_path TEXT NOT NULL,owner_incarnation TEXT NOT NULL,owner_generation INTEGER NOT NULL,state TEXT NOT NULL) with kind=backup_stage|restore_stage|index_generation and state=staging|published|obsolete; control.cleanup_cursor tracks the last scanned artifact_id. root_kind is maintenance|backup and relative_path is confined to that configured root; valid published backups are not cleanup candidates.",
+      "Add backups(name TEXT PRIMARY KEY,bytes INTEGER NOT NULL,payload_sha256 TEXT NOT NULL,generation INTEGER NOT NULL); successful creation records published file metadata, and paginated listing reads this registry. Add search_state(singleton INTEGER PRIMARY KEY,published_generation INTEGER,target_generation INTEGER,processed INTEGER NOT NULL,total INTEGER NOT NULL,cursor TEXT), exactly one row with singleton=1; initial generations/cursor null and processed=total=0. Add search_entries(generation INTEGER NOT NULL,document_id TEXT NOT NULL,source TEXT NOT NULL,text TEXT NOT NULL,PRIMARY KEY(generation,document_id)). Only published and current shadow generations may be retained; derived entries may be dropped/rebuilt without changing catalog semantics."
+    ],
+    "schema4": [
+      "Preserve legacy documents/blobs/jobs/collections and schema3 job_control/document_control/maintenance_artifacts/backups values. Preserve control values except actual migration rotates incarnation and clears only a matching migrate diagnostic; preserve backup_root absence/unbound/bound state. Initialize controls from imported rows when migrating schema0/2. metadata.schema=\"4\". Replace lifecycle/revisions atomically with the following tables. A normal schema4 open preserves logical state, diagnostics, incarnation and counters; only validated implementation-owned mechanisms may be installed under authority. No legacy raw client opens schema4 directly.",
+      "document_revisions(revision_id TEXT PRIMARY KEY,document_id TEXT NOT NULL REFERENCES documents(document_id),revision INTEGER NOT NULL,blob_id TEXT NOT NULL REFERENCES blobs(blob_id),UNIQUE(document_id,revision)). revision_id follows the fixed SHA256 formula.",
+      "document_state(document_id TEXT PRIMARY KEY REFERENCES documents(document_id),head_revision_id TEXT NOT NULL REFERENCES document_revisions(revision_id),edit_version INTEGER NOT NULL,deleted INTEGER NOT NULL,notes TEXT NOT NULL,tags TEXT NOT NULL,collections TEXT NOT NULL). Head belongs to that document; documents.blob_id equals its blob. Canonical JSON arrays and all bounds remain binding."
+    ],
+    "backup_rows": {
+      "schema": "literal integer3; schema4 backup also uses this logical v3 interchange projection, never physical SQL serialization",
+      "generation": "integer0..9223372036854775807 at snapshot",
+      "documents": "array of RECORD2 sorted by source/document_id, including tombstones",
+      "revisions": "array of {document_id,revision,blob_id}, sorted by document_id then revision; content in blobs",
+      "blobs": "array of {blob_id,text}, sorted by blob_id; strict UTF-8 text hashes to blob_id; all retained blobs including receipt references",
+      "collections": "sorted normalized string array",
+      "jobs": "array sorted by job_id of {job:JOB,manifest_json:string,content_hashes_json:string,receipt_json:string|null,enrolled:boolean}; exact serialization strings retained"
+    },
+    "fencing": "Per-job epoch high-water, per-document edit high-water and installation/worker fences are durable target control data updated atomically with state changes; backup payload never replaces their target maxima. Installation incarnation is an opaque nonempty string, not a logical/source/blob/revision ID and never returned in legacy responses. A restore/new-instance fence must be durable in the same activation commit. A separate SQLite control table retained through restore satisfies this rule; raw file swapping without coordinated target control does not. Actual schema migration is also an incarnation boundary under V2-MIGRATION-FENCE; every required counter allocation is preflighted under V2-COUNTER-DOMAIN. Root adoption changes no incarnation/counter.",
+    "integrity": "All documents have one state/head and at least one contiguous revision; shared blobs are referenced by content hash. M1 original receipts are validated against their own document/source/blob identities and immutable manifest, not against current heads. Queued/running/failed/cancelled receipt=null; completed receipt has the original completed JOB and all batch documents. Restore-generated live epochs can differ from an original completed receipt only where explicitly declared; completed restores keep both exact. Deferred invalid admitted job text is representable in escaped JSON serialization strings.",
+    "backup_root": {
+      "control_key": "backup_root",
+      "binding": "absent or JSON null=unbound; otherwise JSON string canonical absolute directory",
+      "mode": "one durable active root",
+      "adoption": "process-only explicit compare-and-rebind after complete registered-file validation",
+      "registry": "existing backups(name PRIMARY KEY,bytes,payload_sha256,generation), preserved without root-ID/schema expansion",
+      "pending_artifacts": "staging or obsolete records, or published records awaiting recovery/registration; active completed index descriptor excluded",
+      "errors": {
+        "unbound": "backup_root_unbound",
+        "selected_or_expected_mismatch": "backup_root_mismatch",
+        "pending_or_live_owner": "maintenance_busy",
+        "symlink_or_path": "invalid_source",
+        "missing_unreadable_or_replaced": "io_error",
+        "invalid_or_registry_mismatch": "invalid_backup",
+        "oversized": "too_large"
+      }
+    }
+  },
+  "requirements": [
+    {
+      "id": "M2-IDENTITY-REVISIONS",
+      "milestone": "M2",
+      "title": "Stable identity, retained revisions and edit tokens",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on": [],
+      "clauses": [
+        "Keep the inherited source_id, document_id and blob_id formulas, exact source spelling, title and six-field legacy projection. Logical identity never derives from content or an absolute root. Every genuinely new imported document starts with revision=1, edit_version=1, deleted=false, notes=\"\", tags=[], collections=[]. Existing v0/M1 records receive these defaults atomically when first opened by M2.",
+        "A revision is immutable {revision,blob_id,text}; revision is a per-document integer starting at 1. Changed refresh appends current revision+1 even if its bytes equal an older revision; it reuses an existing blob hash. An unchanged refresh appends nothing. All revisions, tombstones and annotation state persist across reopen.",
+        "Each effective document change (refresh, annotation replacement, delete, restore) increments edit_version exactly once in the same transaction. No-op writes leave it unchanged. The expected_version request integer is the sole optimistic document edit token; it covers annotations and deletion as well as content, so content ABA never revives an old token.",
+        "The 256-document bound includes deleted records. Retain at most 16 revisions per document; an otherwise valid changed refresh beyond this bound fails revision_capacity without pruning. Across retained revision blobs, distinct raw UTF-8 content may occupy at most 16777216 bytes; any catalog write exceeding that bound fails capacity. Existing legal v0/M1 catalogs fit this bound. Blob references also include every original completed-job receipt; no deletion, refresh, annotation change, reindex or automatic cleanup prunes a retained revision or a blob referenced by a document, revision or original receipt. Explicit backup restore replaces the selected logical state as specified in M3.",
+        "All reads return fresh JSON-compatible values. All document writes, revision/annotation changes, generation changes and source/capacity rechecks commit together. Failures publish no partial state. Concurrent effective writes with one expected_version have one winner and stale_version for the loser.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "independent-integration",
+        "durability"
+      ]
+    },
+    {
+      "id": "M2-REFRESH",
+      "milestone": "M2",
+      "title": "Explicit bounded refresh preserving provenance",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "ingestion",
+        "catalog"
+      ],
+      "depends_on": [
+        "M2-IDENTITY-REVISIONS"
+      ],
+      "clauses": [
+        "Refresh addresses an existing document_id and accepts exactly one input: text (a JSON string) or path (a confined regular .txt/.md/.html file relative to the configured input root). The text is strict UTF-8, at most 32768 encoded bytes; preserve decoded bytes/newlines, including empty text and literal HTML. A path may differ from source; it supplies replacement bytes and never changes source/title/IDs. No original archive or directory location is inferred from the logical source key.",
+        "Path confinement checks the configured root, every ancestor and leaf for symlinks; reject absolute paths, backslashes, NUL, empty/dot/dot-dot segments, more than 16 segments and inherited byte limits. Source/path syntax fails invalid_source; other file types unsupported_type; non-regular/missing/unreadable files io_error; invalid UTF-8 invalid_utf8; byte overflow too_large.",
+        "After transport shape/type validation and input decoding, acquire the write transaction and check document existence, expected_version, then deleted state, then capacity. Missing document is not_found; stale token is stale_version (including on a tombstone); a matching token on a tombstone is document_deleted. Return {status:\"refreshed\"|\"unchanged\",record:RECORD2}. An equal current blob is unchanged; annotations and source identity are retained in either case.",
+        "Original import and M1 batch intake still reject changed current bytes as source_changed. Identical bytes for an existing tombstone return/include the six-field current projection without restoring it. A completed M1 job replays its originally persisted receipt, including the original document text, even after refresh, deletion or restoration."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M2-ANNOTATIONS",
+      "milestone": "M2",
+      "title": "Bounded notes and normalized tags",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on": [
+        "M2-IDENTITY-REVISIONS"
+      ],
+      "clauses": [
+        "Annotations is an atomic complete replacement {expected_version,notes,tags,collections}. Notes is a strict UTF-8 string of at most 16384 bytes with no normalization; empty notes and literal markup are valid. Tags and collections are arrays; duplicates after normalization are invalid_request. There are at most 32 tags and 16 collections per document.",
+        "Normalize each tag and collection name by NFC, Unicode strip(), Unicode casefold(), then NFC. Require a nonempty result of at most 64 UTF-8 bytes, containing neither U+0000..U+001F nor U+007F. Names are stored and returned normalized and sorted by Python Unicode code-point order. Invalid name/type/count/duplicate is invalid_request; note-byte overflow is too_large; malformed Unicode text is invalid_utf8.",
+        "Check existence, expected_version and deleted state in the write transaction before membership existence. Every collection must already exist or the write fails collection_not_found. Equal normalized values return {status:\"unchanged\",record:RECORD2}; otherwise replace all three fields and return status:\"updated\" with edit_version incremented once. The content revision does not change. Deleted records must be restored before annotations can be edited."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M2-COLLECTIONS",
+      "milestone": "M2",
+      "title": "Collection registry and membership consistency",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on": [
+        "M2-ANNOTATIONS"
+      ],
+      "clauses": [
+        "Collections are a flat normalized-name registry, at most 64 names. No hierarchy or implicit collection creation exists. GET lists {collections:[{name,total}],generation}; names are sorted, total counts all members including tombstones. Membership is replaced through annotations under each document edit token.",
+        "Create/remove use {name,expected_generation}; generation is the nonnegative catalog generation. After shape/name validation, compare generation inside the transaction before lookup: a mismatch is stale_generation. Create of an existing name returns unchanged; new creation returns created and increments generation once; exceeding 64 names fails capacity. Remove of an absent name is not_found; a collection with any member, including a tombstone, fails collection_not_empty; successful removal returns removed and increments generation once.",
+        "Collection mutation response is {status:\"created\"|\"removed\"|\"unchanged\",name,generation}. A no-op does not change generation. There is no rename operation, cascade deletion or collection write that silently edits a document token."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M2-DELETE-RESTORE",
+      "milestone": "M2",
+      "title": "Soft deletion and restoration without loss",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on": [
+        "M2-IDENTITY-REVISIONS"
+      ],
+      "clauses": [
+        "Delete and restore each accept {expected_version}. Check request shape, document existence and token in that order. Matching delete sets deleted=true; matching restore sets deleted=false. Each effective transition increments edit_version and catalog generation once and returns {status:\"deleted\"|\"restored\",record:RECORD2}. Repeating the same transition with the current token returns status:\"unchanged\"; repeating with the old token is stale_version.",
+        "Neither operation creates a content revision, changes annotations/memberships, releases document capacity nor deletes a blob. Active legacy list/search/show/export omit tombstones; an explicitly selected tombstone is not_found. A lifecycle show or revision-history read addresses tombstones as well as active records. Only explicit restore reactivates a document; import, receipt replay and query never do."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "durability",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M2-QUERY",
+      "milestone": "M2",
+      "title": "Deterministic current-state query and pagination",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "query"
+      ],
+      "depends_on": [
+        "M2-REFRESH",
+        "M2-COLLECTIONS",
+        "M2-DELETE-RESTORE"
+      ],
+      "clauses": [
+        "Legacy list/search and six-field exports retain the original casefolded literal substring search over source+\"\\n\"+current text only, source then document_id Unicode ordering, exact field sets, total-before-pagination and offset/limit validation. Notes/tags/history never enter the legacy search haystack.",
+        "Lifecycle listing parameters are q (default \"\", at most 256 characters), tag (optional single normalized exact match), collection (optional single normalized exact match), deleted (active|deleted|all, default active), offset (default 0), limit (default 100), and generation (optional nonnegative integer). Filters combine with AND; an absent valid tag or collection matches zero records. Text search is the inherited haystack. Output is {records:[RECORD2...],total,generation}.",
+        "One read transaction selects the catalog generation, filters, total and ordered page. If requested generation differs, fail stale_generation without a page. Mutation between default offset pages can change results; clients requiring a stable pagination series must echo generation and restart on stale_generation. No long-lived cursor or snapshot retention is promised.",
+        "Catalog generation starts at 0 for an empty new database and increments exactly once per effective catalog transaction, including a nonempty batch adding one or more new documents; unchanged imports/commits/edits and job-only transitions do not increment it. A legacy migration starts generation=0 for the complete migrated snapshot. Browser pagination carries generation and resets to the first page after a local mutation or stale_generation.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M2-INTERFACES",
+      "milestone": "M2",
+      "title": "One durable lifecycle contract through API, CLI and browser",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on": [
+        "M2-QUERY"
+      ],
+      "clauses": [
+        "Add the exact routes/commands in interfaces.m2. Preserve all v0/M1 routes and commands. New routes use the inherited JSON/content-type/65536-byte POST bound; missing/extra fields, duplicate/unknown query keys and booleans where integers are expected are invalid_request. JSON objects are closed; unknown route/method is not_found. All successful data commands/routes return their specified single JSON value with status/exit 200/0; domain errors retain {error:CODE}, stderr/exit 2.",
+        "New HTTP conflict codes stale_version, stale_generation, document_deleted, revision_capacity and collection_not_empty are 409; not_found is 404; collection_not_found and other validation/capacity/I/O errors are 400. Existing M1 status mappings remain unchanged. Decimal query/CLI token syntax is ASCII digits without sign; JSON tokens require actual integers, not booleans.",
+        "Add accessible lifecycle controls as enumerated in interfaces.browser. They operate through the same Service and persistent Store as CLI. Display current document text/notes/source/tags/history literally; never execute imported HTML. Every mutation refreshes record, jobs if relevant, total/page and generation, and replaces previous status with the current literal error code or success. A stale edit never auto-retries or overwrites the new server state; preserve the unsaved draft visibly until reload or explicit resubmission with a fresh token.",
+        "Client selection stores document IDs, never row indexes. Display exact sorted record sets without ghost rows; all selected export IDs are validated before producing a result. Reopening the browser or CLI reflects durable state, not a separate client database.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-WORKER-RECOVERY",
+      "milestone": "M3",
+      "title": "Opt-in durable worker recovery and stale-worker fencing",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "ingestion",
+        "catalog"
+      ],
+      "depends_on": [
+        "M2-INTERFACES"
+      ],
+      "clauses": [
+        "M1 submit/prepare/commit remain explicit manual operations. Opening Store, normal CLI invocations and serve alone do not run jobs or change their epochs. A new worker-enqueue operation enrolls a queued/running job for automatic execution; terminal enrollment is job_state, duplicate enrollment is unchanged. Cancelled/failed/completed jobs never automatically retry. Retrying a previously enrolled job retains enrollment but requires the explicit inherited retry transition.",
+        "worker --once takes the exclusive worker-owner lock and processes at most one enrolled queued/running job, selected by job_id Unicode order; worker without --once repeats until stopped and polls once per second when idle. A second live owner returns worker_busy without changing any job. Each successful owner start records a new durable worker generation; worker claims bind installation incarnation, generation, job_id and the inherited epoch. A resumed running job uses its persisted immutable manifest and existing public epoch.",
+        "Before every supported Store write, check the captured installation incarnation inside the write authority before schema-specific reads: stale_instance if it differs. Worker writes then validate worker generation (stale_worker), then the inherited job epoch (stale_epoch), in the same transaction as their write. Normal request shape/range checks occur first. Manual inherited commit(token) keeps its two-field token shape and epoch/state semantics after the incarnation check. Cancellation/retry, restore and actual migration fence stale workers. Enrolling a job never bypasses M1 validation or commit-time conflict/capacity checks.",
+        "An abrupt exit before commit leaves queued/running durable state with completed=0 and no provisional documents/blobs/receipt. A fresh process resumes the enrolled job; an exit after SQLite commit but before response leaves exactly one completed receipt and no duplicate document/revision on recovery. No filesystem source reread is allowed for an admitted manifest. Domain validation failures retain the specified failed job; I/O/worker failures leave a retryable durable queued/running state and diagnostics, without claiming completion.",
+        "Owned staging is confined beneath a db-specific maintenance directory or the configured backup directory, with operation IDs and exclusive locks. Backup stages use hidden unique .partial basenames in the backup directory so final publication is on the same filesystem. At worker-owner startup/idle cycles and after each successful non-migration maintenance operation, a separate bounded cleanup transition must remove abandoned owned backup/restore staging after proving no live owner holds it, and delete superseded shadow/published search generations after the atomic publication switch. Cleanup may visit at most64 recorded artifact entries per pass and must resume from a persisted cursor until all eligible owned artifacts are handled; idle worker cycles perform the next pass. It never removes user inputs, valid published backups or blobs/revisions/receipts still referenced by the retained catalog. All artifacts have durable ownership records before creation; unknown/unowned filesystem entries are left untouched. No broad directory wipe or age-only deletion is allowed. Actual fresh worker processes and abrupt termination at before-commit/after-commit boundaries are required independent evidence; graceful HTTP restart or modeled reopen is insufficient. Normal Store opening/migrate do not invoke cleanup; counter-exhausted transitions have no cleanup side effect. Eligible pending work remains mandatory at the next permitted cleanup trigger.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-MIGRATION-FENCE, V2-COUNTER-DOMAIN, V2-WORKER-LIVENESS, V2-BACKUP-ROOT apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "process-restart",
+        "durability",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-REINDEX",
+      "milestone": "M3",
+      "title": "Bounded restartable index generations",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on": [
+        "M2-QUERY"
+      ],
+      "clauses": [
+        "Index generation is derived data, never the catalog authority. reindex-step accepts {limit} with integer 1..64. It visits at most limit document IDs in source/document_id order from a single captured catalog generation, retaining a durable cursor and shadow index; it indexes only active current source/text. It returns {state:\"running\"|\"completed\",generation,target_generation,processed,total,cursor}, where generation is the published generation (or null), processed is cumulative work for target_generation, total is target active-document count, and cursor is the last processed document_id or null.",
+        "Before each step and publication compare the captured generation with the catalog generation in the same transaction. A changed generation discards only shadow work and restarts at the new generation; the current call still handles at most limit documents. Publish a complete shadow index by an atomic pointer switch. An empty catalog completes immediately with processed=total=0 and cursor=null.",
+        "While an index is absent/stale/building, all list/search/query operations answer from the authoritative catalog in one read snapshot; they never return stale or partial index results. Restart resumes the persisted cursor if its target generation still matches, otherwise rebuilds. A crash at shadow-write/publication boundaries leaves either old published generation or new complete generation, with catalog, revisions, annotations and original job receipts unchanged."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "process-restart",
+        "durability",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-EXPORT",
+      "milestone": "M3",
+      "title": "Bounded explicit portable selection",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on": [
+        "M2-QUERY"
+      ],
+      "clauses": [
+        "Legacy /api/export and export CLI retain exactly local-research-library-v0 and their six-field projection. The new export-bundle operation is separate, with exact body {ids,include_deleted,include_history,max_bytes}. ids is null for all matching records or a distinct array of at most 256 document IDs (empty means none); booleans are actual booleans; max_bytes is integer 1..16777216. Validate the entire selection before emitting any bytes; missing or disallowed deleted IDs are not_found.",
+        "Capture all selected current records and optional immutable histories in one read transaction; order documents by source/document_id and revisions by ascending revision number. The exact payload is {format:\"local-research-library-export-v2\",generation,documents:[{record:RECORD2,revisions:[REVISION2...]}...]}; revisions is [] when include_history=false. Canonical encoding is UTF-8 JSON with ensure_ascii=false, sort_keys=true and separators=(\",\",\":\"); no BOM, trailing newline or timestamps. Encode valid Unicode only. If encoded bytes exceed max_bytes, return too_large and emit no partial result.",
+        "HTTP returns that JSON body; CLI prints one JSON value; browser offers one download named research-library-v2.json with exactly the canonical payload bytes after successful complete validation. A failed export has no download. Browser evidence must trigger its actual Export selection control and inspect the resulting bytes through a bounded, declared download observation; a direct HTTP call alone is not browser evidence. Export is not a restorable backup."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-BACKUP-RESTORE",
+      "milestone": "M3",
+      "title": "Validated bounded backup and atomic activation",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog",
+        "clients"
+      ],
+      "depends_on": [
+        "M3-WORKER-RECOVERY",
+        "M3-REINDEX",
+        "M3-EXPORT"
+      ],
+      "clauses": [
+        "Backup requires a fresh destination basename under the configured backup directory (1..64 ASCII alphanumeric/underscore/hyphen plus .json); no absolute path, nested path, symlink or existing destination may be used. The configured directory is checked for ancestor symlinks. Existing destination is already_exists; invalid path is invalid_source; I/O is io_error. A backup snapshot includes all documents/tombstones, revisions, notes/tags/collections, blobs, schema metadata, canonical job manifests/content hashes and original receipt text, plus enrolled-job state; derived search index and transient claims are excluded. Backup I/O additionally requires the selected directory to match its durable single-root binding; explicit process-only adoption is defined in V2-BACKUP-ROOT.",
+        "The exact closed backup envelope and row types are value_types.BACKUP3 and persistence.backup_rows. Its payload is canonical UTF-8 JSON as for export; payload_sha256 hashes only canonical payload bytes. Envelope size is at most 67108864 bytes. This bounds the backup operation, not the legal number of M1 jobs: a larger valid database gets too_large and stays usable. Write an exclusive staging file, flush/fsync it, then publish without replacing an existing destination and fsync the directory. After publication, persist the completed backup name/size/digest/generation in a durable registry. Recovery registers a complete owned publication if a crash occurred before registration. Listing reads bounded metadata pages, not arbitrary directory contents or every backup payload; partial staging is not a backup. Restore may validate a manually supplied complete basename whether or not this installation created it.",
+        "Restore accepts an existing basename and expected_generation. Read at most 67108865 bytes without following symlinks. Validate envelope exact keys/version/size/digest; schema, row shapes and ordering; uniqueness; all ID/content hashes; revision continuity/head references; normalized annotation bounds; collection memberships; complete job state/manifest/content-hash/receipt invariants; blob references; and resource limits before acquiring activation authority. A malformed or corrupt backup is invalid_backup; over-bound input is too_large; a well-formed unsupported format/schema is unsupported_schema. Semantic invalid entries in queued/running/failed/cancelled M1 manifests remain legal if they satisfy the inherited admission shape and recorded deferred-error semantics.",
+        "Acquire exclusive maintenance authority, fence workers, then compare expected_generation to the live catalog generation. An active owner that cannot be quiesced gives maintenance_busy; a generation mismatch is stale_generation. Validation or lock failure leaves the live catalog unchanged. Activate validated data in one SQLite write transaction, materializing the backup logical schema3 into the current runtime physical schema3 or4 and setting a new catalog generation equal to previous live generation+1. Schema4 restore derives revision IDs deterministically and never downgrades metadata to3. Readers see the entire old or entire new snapshot; existing client handles detect the new incarnation before further writes. Rebuild derived indexes lazily. No copy-over of an open SQLite/WAL file is an atomic restore.",
+        "Restore preserves the selected snapshot logical IDs, every retained content revision, annotations and original completed-job receipt bytes. It intentionally restores the selected snapshot logical document/job set, including tombstones; records created after the snapshot are removed from the logical catalog. Durable per-document edit high-water marks and absent-document fencing tombstones remain target-side. Every incoming record receives edit_version=max(snapshot edit_version,target high-water)+1, and later reimport of a removed document ID starts above its retained high-water; a truly new ID still starts at1. This invalidates every pre-restore document edit token while preserving content revision numbers and data. It also retains target-installation per-job epoch high-water marks outside the replaced payload, including fencing tombstones for jobs absent from the backup. Incoming noncompleted jobs receive epoch=max(incoming epoch,target high-water)+1; completed jobs keep their snapshot epoch/receipt and can only replay. Later creation of a previously removed job ID uses target high-water+1, while genuinely new IDs start at 1. This prevents an old two-field job token from regaining write authority after restore. Every new worker generation/incarnation is fenced independently. These rules apply only after the new explicit restore event; all histories using only v0/M1 retain their original results.",
+        "A failure or abrupt exit before activation commit leaves the old catalog complete; after commit leaves the new one complete, with fencing committed consistently. Startup resolves abandoned owned staging without replacing either catalog. Restore returns {restored:true,generation,documents,jobs}; counts include tombstones and all restored jobs. Repeat restore is a new explicit replacement requiring the current expected_generation; it cannot silently replay with a stale generation.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN, V2-M1-HASH-SERIALIZATION, V2-BACKUP-ROOT apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "process-restart",
+        "durability",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-DIAGNOSTICS",
+      "milestone": "M3",
+      "title": "Durable bounded truthful recovery diagnostics",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog",
+        "query",
+        "clients"
+      ],
+      "depends_on": [
+        "M3-BACKUP-RESTORE"
+      ],
+      "clauses": [
+        "Diagnostics returns the exact DIAGNOSTICS3 value from one durable snapshot: physical schema, catalog generation, active/deleted counts, revision/blob counts and bytes, job counts by all five states, current worker generation/state, index state, last maintenance error and recovery action. It contains no document text, annotations, input-root absolute paths, stack traces, provider keys or fabricated successful state.",
+        "worker_state is stopped without a live current-incarnation owner; idle with such an owner and no matching active job claim; running with such an owner actively processing a matching claim. See worker_state_table and V2-WORKER-LIVENESS. index_state remains absent|stale|building|current by actual generation/cursor. last_error is null or {operation:worker|reindex|backup|restore|migrate,code:declared domain code}. A failure normally replaces it; success clears only a matching operation, with the explicit migration/no-mutation rules in V2-MIGRATION-DIAGNOSTIC. Diagnostics reads do not change state. recovery_action follows that amendment mapping.",
+        "Public diagnostics exposes content graph counts as an observation contract, so independent checks can distinguish no provisional writes from hidden orphan blobs. Browser and CLI display current error code and recovery action literally. A failed action followed by success replaces stale error text; diagnostics itself cannot clear a failed job or silently retry an operation.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-MIGRATION-DIAGNOSTIC, V2-WORKER-LIVENESS apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M3-INTERFACES",
+      "milestone": "M3",
+      "title": "Recovery and portability through real clients",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on": [
+        "M3-DIAGNOSTICS"
+      ],
+      "clauses": [
+        "Add exact interfaces.m3 endpoints/CLI forms and accessible maintenance controls. Path-taking operations accept only a basename under an explicitly configured local backup directory; raw backup bytes are never posted through the inherited 65536-byte body limit. worker_busy, stale_worker, maintenance_busy, already_exists use HTTP409; unsupported_schema/invalid_backup/too_large use400. No shell command, arbitrary filesystem destination or private failure-injection field is exposed over HTTP.",
+        "CLI and HTTP share durable Store/JobManager/Service operations. Browser can enqueue, run a bounded reindex step, export selected documents, create/restore a named backup and inspect diagnostics; restore requires a deliberate button action tied to the displayed generation, with no auto-retry after stale_generation. User-visible state follows committed results and survives browser reload.",
+        "Public hooks used to pause/terminate a real worker or maintenance operation at declared boundaries must be separately frozen as evaluator-only interfaces before execution. They are never user request fields and never contain hidden acceptance data or expected answers. Independent end-to-end recovery uses fresh application processes; study builder-agent restart is a different event.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN, V2-BACKUP-ROOT apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "process-restart",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M4-API-SCHEMA",
+      "milestone": "M4",
+      "title": "Predeclared revision-aware API and storage transition",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on": [
+        "M3-INTERFACES"
+      ],
+      "clauses": [
+        "Physical schema versions are 0 for frozen v0/M1, 2 for M2, 3 for M3 and 4 for the compatibility release. M1 jobs can exist in schema0; absence/presence of that table is validated, never guessed from wire health. M2 adds the exact portable table layout in persistence.schema2; M3 adds maintenance/index tables without changing its document/receipt layout; M4 replaces lifecycle/revisions with persistence.schema4 normalized revision-ID references.",
+        "M4 revision_id is \"rev-\"+sha256(b\"revision\\0\"+document_id.encode(\"ascii\")+b\"\\0\"+str(revision).encode(\"ascii\")+b\"\\0\"+blob_id.encode(\"ascii\")).hexdigest(). It depends on logical document, historical revision number and immutable blob identity; restoring an older snapshot and creating different content at the same number cannot reuse the old revision ID. M4 adds /api/v1 routes returning RECORD4/REVISION4 and versioned export format local-research-library-export-v4. Conversion preserves source/document/blob IDs, text, annotations, deletion and edit_version. Numbered /api/lifecycle projections and v2 export remain supported as adapters.",
+        "The allowed M4 changes remain the health schema0->4 transition, physical schema4, explicit revision-aware /api/v1 routes/new CLI forms, maintained-browser v1 lifecycle views and opt-in v4 export. For the future cumulative v2 cohort, the six amendments additionally declare stale_instance and counter_exhausted errors/ranges, migration diagnostic precedence, lossless counter transport, exact M1 hash serialization, precise worker liveness, and backup-root adoption/refusal behavior. All other inherited shapes, routes, errors, ordering, identities and original receipts remain unchanged; the frozen M1 pilot and v1 reference qualification are unaffected.",
+        "For all /api/v1 document writes the expected_version remains the document edit token, not revision_id or blob hash. A v1 revision path takes a revision_id; an existing ID belonging to another document is not_found. A v1 current/head change never rewrites historical revision identity or receipts."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "browser",
+        "migration",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M4-MIGRATION",
+      "milestone": "M4",
+      "title": "Atomic migration from independently frozen v0/M2 snapshots",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on": [
+        "M4-API-SCHEMA"
+      ],
+      "clauses": [
+        "Before any future study model work, an independent fixture author must freeze byte-identical v0 and M2 database snapshots, manifests and expected semantic inventories under the immutable paths in release_ownership. Snapshot construction must not import or execute the evaluated candidate. Include legal v0 empty/text/shared-byte data and M2 historical/shared revisions, annotations, tombstones, collections and completed/queued/running/cancelled/failed M1 jobs with original receipts. These are public compatibility fixtures; separately authored concealed histories remain outside this contract.",
+        "Opening M4 Store or invoking migrate checks metadata and recognized tables before changing anything. Accept schema0 v0 with no jobs or authored-M1 jobs, exact schema2, schema3, or schema4. Reject unknown versions as unsupported_schema and recognized-but-inconsistent inputs as invalid_database. Never create missing inherited tables to disguise corruption in an existing database; a nonexistent DB is explicitly initialized as new schema4.",
+        "Within one SQLite write transaction validate the old content/reference graph, copy/transform into new tables, preserve raw job manifest/content-hash/receipt strings, verify row/digest correspondence, then change schema metadata last. For schema0 assign revision=1/edit_version=1/active/empty annotations and collection registry; retain every ID/blob/text/title and every job field/receipt. For schema2/3 retain all revision numbers/edit versions and annotations; map revision IDs deterministically. Keep documents.blob_id as an atomic compatibility mirror of the new head.",
+        "An abrupt exit before activation commit leaves original schema/data and incarnation usable by its original release; after commit leaves complete schema4. Actual schema0/2 migration initializes controls from the imported rows; schema3 migration rotates incarnation exactly once while preserving all other controls except a matching migrate diagnostic. Schema4 no-op does not rotate or change rows, tokens, receipt bytes or counters. Successful actual or explicit no-op migrate clears only last_error.operation=migrate; ordinary schema4 opening preserves diagnostics. The command returns {from_schema,to_schema:4,migrated:boolean,documents,jobs}; repeated schema4 migrate returns from_schema:4,migrated:false. No form automatically runs queued jobs. V2-MIGRATION-FENCE and V2-MIGRATION-DIAGNOSTIC define precedence and permitted mechanism installation.",
+        "The operator must stop all legacy v0/M1/M2 processes before migration; those older binaries cannot be retrofitted to obey a new lock. All supported M3/M4 writers participate in the maintenance lock/incarnation fence. Migration starts only with exclusive authority or fails maintenance_busy without touching data. Unknown/corrupt input preserves the original file. Keep original frozen snapshot files immutable; migration always targets isolated copies. Independent evidence must use the frozen author-owned inputs, not only backups produced by the candidate being tested.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-MIGRATION-FENCE, V2-MIGRATION-DIAGNOSTIC, V2-COUNTER-DOMAIN, V2-M1-HASH-SERIALIZATION, V2-BACKUP-ROOT apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "migration",
+        "process-restart",
+        "durability",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M4-COMPATIBILITY",
+      "milestone": "M4",
+      "title": "Legacy CLI/API and receipt meaning across release",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on": [
+        "M4-MIGRATION"
+      ],
+      "clauses": [
+        "Every row of compatibility is mandatory. Original CLI import/list/search/show/export/job commands retain argument forms, JSON shapes, stdout/stderr/exit behavior, ordering, root independence and content-type/status semantics through schema4. New commands use distinct names; no default flag flips legacy export to a new format. Old binaries themselves are not required to open schema4 storage; their documented CLI invocation and HTTP client requests are the compatibility boundary.",
+        "Completed M1 commits, including receipts predating refresh/deletion/migration, return the exact parsed original receipt JSON with six-field historical documents and the original job object, never current projections or revision wrappers. Migration and backup preserve the stored receipt text bytes as well. Matching completed epoch replay is read-only; wrong epoch is stale_epoch before state inspection.",
+        "v0 workflow adapter and M1 milestone=\"m1\" operation grammar/output stay unchanged. New model tasks need a separately versioned cumulative adapter/public manifest; this specification does not modify the frozen solve entry point, public tests or seed. Release-specific public scenarios must call real product modules and transport adapters, never a replacement in-memory solver.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-M1-HASH-SERIALIZATION apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "cli",
+        "http",
+        "migration",
+        "independent-integration"
+      ]
+    },
+    {
+      "id": "M4-RELEASE-HANDOFF",
+      "milestone": "M4",
+      "title": "Pinned installable release and operator workflow",
+      "mandatory": true,
+      "status": "prospective-unqualified",
+      "packages": [
+        "clients"
+      ],
+      "depends_on": [
+        "M4-COMPATIBILITY"
+      ],
+      "clauses": [
+        "Produce the release files in release_ownership using Python3.12 standard library only and the inherited pinned evaluator image digest. No pip download, network retrieval, accounts, external services or product provider calls are needed. The exact release command is python -m library.clients.release --output DIRECTORY; it writes a fresh, previously nonexistent directory or fails already_exists with no replacement. Package all immutable seed files and final owned sources, public docs and dataset; exclude user databases, credentials, private acceptance and test artifacts.",
+        "Release command returns one JSON {format:\"local-research-library-release-v1\",manifest:\"release-manifest.json\",files,source_sha256}. Manifest lists sorted relative POSIX paths, per-file SHA256 and byte size, runtime image/Python version, product-contract hash and API/storage versions. source_sha256 is SHA256 of canonical UTF-8 JSON for the ordered file records excluding the manifest itself. No timestamps, absolute paths or nondeterministic archives; two builds from identical source produce identical bytes. Source symlinks/path escape fail invalid_source.",
+        "INSTALL.md specifies clean pinned environment setup without downloads, start on127.0.0.1, configured input/backup directories and writable DB/maintenance locations. API.md publishes exact old/new schemas/routes/error mappings and M4 compatibility table. RECOVERY.md explains worker ownership, epoch fences, stale edits, generation pagination, backup validation, restore generation/epoch consequences, migration, rollback boundary and diagnostics. USER-GUIDE.md walks import, annotate, refresh, delete/restore, search, selected export and backup/restore.",
+        "The representative dataset contains welcome.txt, notes.md and literal.html with at most32768 UTF-8 bytes each and sources satisfying confinement. It demonstrates two source keys sharing bytes, Unicode search, literal HTML, one refresh revision and annotations through a public workflow.json with at most64 operations and60KiB. Immutable original examples/welcome.txt and README.md remain unchanged; new material is in owned release paths.",
+        "Final independent acceptance runs the documented clean install -> start -> import -> annotate -> refresh -> backup -> explicit restore -> search/export journey across CLI, HTTP and browser against the exact frozen integrated release. All mandatory inherited/new requirement gates and valid source/promotion provenance must pass. Public package passes, a successful home page, line counts, model done claims and this contract document are not whole-project acceptance.",
+        "For the prospective cumulative v2 cohort, the normative amendments V2-COUNTER-DOMAIN, V2-BACKUP-ROOT apply to this requirement. They are mandatory clarifications/explicit changes with the same evidence lanes, not optional implementation choices. All other clauses and inherited obligations remain binding."
+      ],
+      "evidence_lanes": [
+        "public-contract",
+        "release-install",
+        "cli",
+        "http",
+        "browser",
+        "migration",
+        "independent-integration"
+      ]
+    }
+  ],
+  "compatibility": [
+    {
+      "surface": "v0 import/list/search/show/export CLI and /api paths",
+      "M2": "exact legacy shapes over active current records; new tombstones invisible",
+      "M3": "same; separate bounded export",
+      "M4": "same; new v1 routes/commands are explicit opt-in"
+    },
+    {
+      "surface": "M1 JOB/TOKEN/submit/prepare/commit/cancel/retry/jobs",
+      "M2": "exact fields/transitions/original receipt replay",
+      "M3": "same for prior histories; explicit worker enrollment and restore fence new events",
+      "M4": "same, including original receipt text and historical documents"
+    },
+    {
+      "surface": "GET /health",
+      "M2": "exact {status:ok,schema:0} compatibility projection",
+      "M3": "exact {status:ok,schema:0} compatibility projection",
+      "M4": "explicit change to {status:ok,schema:4}"
+    },
+    {
+      "surface": "Physical SQLite schema",
+      "M2": "schema0 upgraded atomically to2; public snapshot tables fixed",
+      "M3": "schema3; schema2 document/receipt layout retained",
+      "M4": "schema0/2/3 migrate atomically to4; old binaries reading raw schema4 unsupported"
+    },
+    {
+      "surface": "M2 lifecycle routes/commands and v2 export",
+      "M2": "RECORD2/REVISION2 numbered histories; export-bundle arrives M3",
+      "M3": "preserved; v2 export introduced",
+      "M4": "preserved adapter; v1 RECORD4/REVISION4 and v4 export added"
+    },
+    {
+      "surface": "Browser",
+      "M2": "legacy controls plus declared lifecycle workflows",
+      "M3": "adds bounded export/download and maintenance workflows",
+      "M4": "lifecycle screens use v1 revision IDs; legacy routes still work"
+    },
+    {
+      "surface": "Original solution.solve/public manifest/immutable seed paths",
+      "M2": "unchanged; cumulative adapter separately versioned before execution",
+      "M3": "unchanged",
+      "M4": "unchanged"
+    },
+    {
+      "surface": "Source/document/blob identity and original receipts",
+      "M2": "unchanged identities; revisions add logical history",
+      "M3": "unchanged by backup/restore; explicit restore adjusts noncompleted job authority",
+      "M4": "unchanged; deterministic revision_id is additive"
+    },
+    {
+      "surface": "Prospective cumulative v2 clarifications (frozen v1/M1 pilot unchanged)",
+      "M2": "signed64 state/token domains, exact transport and atomic counter_exhausted boundary",
+      "M3": "same counter domains; stopped/idle/running liveness; exact M1 hash serialization; explicit verified one-root adoption",
+      "M4": "actual migration incarnation fence, matching-success diagnostic clearing, stale_instance precedence; all earlier six amendments retained"
+    }
+  ],
+  "dependency_graph": {
+    "version": 1,
+    "slots": [
+      {
+        "id": "M2-IDENTITY-REVISIONS",
+        "milestone": "M2",
+        "packages": [
+          "catalog"
+        ],
+        "requirements": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "depends_on_slots": [],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-REFRESH",
+        "milestone": "M2",
+        "packages": [
+          "ingestion",
+          "catalog"
+        ],
+        "requirements": [
+          "M2-REFRESH"
+        ],
+        "depends_on_slots": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-ANNOTATIONS",
+        "milestone": "M2",
+        "packages": [
+          "catalog"
+        ],
+        "requirements": [
+          "M2-ANNOTATIONS"
+        ],
+        "depends_on_slots": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-COLLECTIONS",
+        "milestone": "M2",
+        "packages": [
+          "catalog",
+          "query"
+        ],
+        "requirements": [
+          "M2-COLLECTIONS"
+        ],
+        "depends_on_slots": [
+          "M2-ANNOTATIONS"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-DELETE-RESTORE",
+        "milestone": "M2",
+        "packages": [
+          "catalog"
+        ],
+        "requirements": [
+          "M2-DELETE-RESTORE"
+        ],
+        "depends_on_slots": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-QUERY",
+        "milestone": "M2",
+        "packages": [
+          "query"
+        ],
+        "requirements": [
+          "M2-QUERY"
+        ],
+        "depends_on_slots": [
+          "M2-REFRESH",
+          "M2-COLLECTIONS",
+          "M2-DELETE-RESTORE"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M2-INTERFACES",
+        "milestone": "M2",
+        "packages": [
+          "query",
+          "clients"
+        ],
+        "requirements": [
+          "M2-INTERFACES"
+        ],
+        "depends_on_slots": [
+          "M2-QUERY"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-WORKER-RECOVERY",
+        "milestone": "M3",
+        "packages": [
+          "ingestion",
+          "catalog"
+        ],
+        "requirements": [
+          "M3-WORKER-RECOVERY"
+        ],
+        "depends_on_slots": [
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-REINDEX",
+        "milestone": "M3",
+        "packages": [
+          "catalog",
+          "query"
+        ],
+        "requirements": [
+          "M3-REINDEX"
+        ],
+        "depends_on_slots": [
+          "M2-QUERY",
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-EXPORT",
+        "milestone": "M3",
+        "packages": [
+          "query",
+          "clients"
+        ],
+        "requirements": [
+          "M3-EXPORT"
+        ],
+        "depends_on_slots": [
+          "M2-QUERY",
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-BACKUP-RESTORE",
+        "milestone": "M3",
+        "packages": [
+          "catalog",
+          "clients"
+        ],
+        "requirements": [
+          "M3-BACKUP-RESTORE"
+        ],
+        "depends_on_slots": [
+          "M3-WORKER-RECOVERY",
+          "M3-REINDEX",
+          "M3-EXPORT",
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-DIAGNOSTICS",
+        "milestone": "M3",
+        "packages": [
+          "catalog",
+          "query",
+          "clients"
+        ],
+        "requirements": [
+          "M3-DIAGNOSTICS"
+        ],
+        "depends_on_slots": [
+          "M3-BACKUP-RESTORE",
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M3-INTERFACES",
+        "milestone": "M3",
+        "packages": [
+          "query",
+          "clients"
+        ],
+        "requirements": [
+          "M3-INTERFACES"
+        ],
+        "depends_on_slots": [
+          "M3-DIAGNOSTICS",
+          "M2-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M4-API-SCHEMA",
+        "milestone": "M4",
+        "packages": [
+          "catalog",
+          "query"
+        ],
+        "requirements": [
+          "M4-API-SCHEMA"
+        ],
+        "depends_on_slots": [
+          "M3-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M4-MIGRATION",
+        "milestone": "M4",
+        "packages": [
+          "catalog"
+        ],
+        "requirements": [
+          "M4-MIGRATION"
+        ],
+        "depends_on_slots": [
+          "M4-API-SCHEMA",
+          "M3-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M4-COMPATIBILITY",
+        "milestone": "M4",
+        "packages": [
+          "query",
+          "clients"
+        ],
+        "requirements": [
+          "M4-COMPATIBILITY"
+        ],
+        "depends_on_slots": [
+          "M4-MIGRATION",
+          "M3-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      },
+      {
+        "id": "M4-RELEASE-HANDOFF",
+        "milestone": "M4",
+        "packages": [
+          "clients"
+        ],
+        "requirements": [
+          "M4-RELEASE-HANDOFF"
+        ],
+        "depends_on_slots": [
+          "M4-COMPATIBILITY",
+          "M3-INTERFACES"
+        ],
+        "candidate_lanes_per_package": {
+          "S4-G": 1,
+          "S16-G": 4,
+          "O16-G": 4
+        }
+      }
+    ],
+    "expected_initial_ready_slots": [
+      "M2-IDENTITY-REVISIONS"
+    ],
+    "expected_max_requirement_ready_frontier": 3,
+    "milestone_boundaries": [
+      "Every M3 slot waits for integrated M2-INTERFACES",
+      "Every M4 slot waits for integrated M3-INTERFACES"
+    ],
+    "meaning": "Slots are requirement integration features; packages name the contributors to each slot. After M2 identity is complete, refresh, annotations and deletion can proceed concurrently. After integrated M2, worker recovery, reindex and export can proceed concurrently. Candidate allocation is arm-specific: S4-G starts one builder lane per package, S16-G and O16-G start four. These are treatment annotations from the scaling plan, not product requirements or distinct features. More fine-grained slots require a prospectively versioned graph.",
+    "cross_package_gates": [
+      "M2: catalog revision/CAS + ingestion refresh + query visibility + client token handling",
+      "M3: worker fences + restore high-water + index fallback + recovery UI",
+      "M4: schema migration + old/new projections + original receipts + release installation"
+    ]
+  },
+  "release_ownership": {
+    "package_roots": {
+      "catalog": [
+        "library/catalog/"
+      ],
+      "ingestion": [
+        "library/ingestion/"
+      ],
+      "query": [
+        "library/query/"
+      ],
+      "clients": [
+        "library/clients/"
+      ]
+    },
+    "additional_owned_paths": {
+      "catalog": [
+        "library/catalog/lifecycle.py",
+        "library/catalog/maintenance.py",
+        "library/catalog/migrations.py"
+      ],
+      "ingestion": [
+        "library/ingestion/refresh.py",
+        "library/ingestion/worker.py"
+      ],
+      "query": [
+        "library/query/lifecycle.py",
+        "library/query/portability.py",
+        "library/query/v1.py"
+      ],
+      "clients": [
+        "library/clients/release.py",
+        "release/INSTALL.md",
+        "release/API.md",
+        "release/RECOVERY.md",
+        "release/USER-GUIDE.md",
+        "release/dataset/welcome.txt",
+        "release/dataset/notes.md",
+        "release/dataset/literal.html",
+        "release/dataset/workflow.json"
+      ]
+    },
+    "immutable_preserved_paths": [
+      "README.md",
+      "solution.py",
+      "library/__init__.py",
+      "library/__main__.py",
+      "library/common.py",
+      "examples/welcome.txt",
+      "public_cases.json",
+      "test_public.py"
+    ],
+    "future_fixture_owned_paths": [
+      "compatibility/v0.sqlite3",
+      "compatibility/v0.manifest.json",
+      "compatibility/m2.sqlite3",
+      "compatibility/m2.manifest.json",
+      "compatibility/README.md",
+      "cumulative-public-contract.json",
+      "test_cumulative_public.py"
+    ],
+    "future_fixture_status": "not yet authored or frozen; separate fixture author owns immutable snapshots/public checks before any future model work",
+    "output_only_paths": [
+      "release-manifest.json"
+    ],
+    "ownership_rule": "Future fixture version explicitly grants these paths and existing package files; v4 pilot allowed_paths is unchanged. Release docs/dataset are owned only by clients; immutable compatibility data and public tests are never writable by candidate builders. No unlisted top-level source/doc path becomes writable by implication."
+  },
+  "acceptance_boundary": {
+    "mandatory_requirement_ids": [
+      "M2-IDENTITY-REVISIONS",
+      "M2-REFRESH",
+      "M2-ANNOTATIONS",
+      "M2-COLLECTIONS",
+      "M2-DELETE-RESTORE",
+      "M2-QUERY",
+      "M2-INTERFACES",
+      "M3-WORKER-RECOVERY",
+      "M3-REINDEX",
+      "M3-EXPORT",
+      "M3-BACKUP-RESTORE",
+      "M3-DIAGNOSTICS",
+      "M3-INTERFACES",
+      "M4-API-SCHEMA",
+      "M4-MIGRATION",
+      "M4-COMPATIBILITY",
+      "M4-RELEASE-HANDOFF"
+    ],
+    "finite_coverage": "Each mandatory obligation needs declared positive, boundary, negative and state-transition representatives plus relevant interaction/defect controls; finite coverage does not prove absence of every defect.",
+    "bindings": [
+      "exact integrated source",
+      "product-contract hash",
+      "fixture hash",
+      "ordered suite",
+      "evaluator identity",
+      "runtime/image",
+      "environment",
+      "limits",
+      "seed",
+      "protocol",
+      "purpose",
+      "original execution reference for any reuse"
+    ],
+    "outcomes": [
+      "pass",
+      "fail",
+      "missing",
+      "skipped",
+      "infra"
+    ],
+    "incomplete": "Missing/skipped/unqualified mandatory obligations keep verdict incomplete; separate product failure, protocol/provenance failure and infrastructure unknown. No percentage compensates for a mandatory failure.",
+    "public_reuse": "Qualified source-bound public execution may count only in prospectively declared lanes. Independent final integration/migration/restart/install histories remain mandatory; independent acceptance/repeatability purpose cannot be satisfied by reusing a development observation.",
+    "barrier": "Freeze every trajectory in the complete six-trajectory cohort before any private adjudication; no private result reaches an active model or repair loop.",
+    "authority": "The root acceptance registry owns evidence mechanics/aggregation. This product registry declares obligations and semantic lanes, and grants no acceptance or live-execution authority."
+  },
+  "registry_rules": {
+    "closed": true,
+    "unknown_keys": "reject at every object with an enumerated field set; value_types and backup_rows name complete field sets; no additional response fields are implied",
+    "requirement_record_keys": [
+      "id",
+      "milestone",
+      "title",
+      "mandatory",
+      "status",
+      "packages",
+      "depends_on",
+      "clauses",
+      "evidence_lanes"
+    ],
+    "slot_record_keys": [
+      "id",
+      "milestone",
+      "packages",
+      "requirements",
+      "depends_on_slots",
+      "candidate_lanes_per_package"
+    ],
+    "interface_record_keys": [
+      "http",
+      "input",
+      "output",
+      "cli"
+    ],
+    "compatibility_record_keys": [
+      "surface",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "identifiers": "Requirement IDs are unique and immutable. Every dependency references an earlier topological requirement ID in this registry; graph must be acyclic. Every mandatory ID appears exactly once in acceptance_boundary.mandatory_requirement_ids.",
+    "evidence_lanes": [
+      "public-contract",
+      "cli",
+      "http",
+      "browser",
+      "durability",
+      "process-restart",
+      "migration",
+      "release-install",
+      "independent-integration"
+    ],
+    "document_precedence": "Requirements, the six v2 amendments, counter domains, value types, interfaces, persistence and compatibility form one contract. The explicit semantic_change_map identifies every edit to inherited normative data. V1 remains immutable historical evidence. Any unresolved contradiction blocks future freezing; neither reference behavior nor evaluator convenience can silently amend v2.",
+    "amendment_record_keys": [
+      "id",
+      "title",
+      "requirement_ids",
+      "decision",
+      "clauses",
+      "required_observations"
+    ],
+    "worker_state_record_keys": [
+      "live_matching_owner",
+      "matching_active_claim",
+      "state"
+    ],
+    "hash_vector_record_keys": [
+      "id",
+      "texts",
+      "content_hashes_json",
+      "expected_hashes"
+    ]
+  },
+  "amendments": [
+    {
+      "id": "V2-MIGRATION-FENCE",
+      "title": "Migration incarnation and preserved controls",
+      "requirement_ids": [
+        "M4-MIGRATION",
+        "M4-API-SCHEMA",
+        "M3-WORKER-RECOVERY"
+      ],
+      "decision": "An actual migration to schema4 fences supported old handles by changing incarnation; schema4 open/no-op does not change it.",
+      "clauses": [
+        "For successful schema0/2 to4 migration, create fresh installation control and initialize high-water marks from the imported catalog/jobs. For successful schema3 to4 migration, replace control.incarnation with a fresh opaque nonempty string unequal to every earlier incarnation of that target installation, in the same transaction as table replacement and schema metadata. Its exact bytes are not public output; equality/inequality and publication timing are observable. No supported old handle may write after activation.",
+        "Schema3 migration preserves catalog generation, worker generation, every job/document high-water mark and missing-record tombstone, enrollment, cleanup cursor, backup-root binding, complete backup registry, and historical artifact ownership records. The allowed exceptions are incarnation rotation and the matching successful-migrate diagnostic rule in V2-MIGRATION-DIAGNOSTIC. Historical artifact owner_incarnation fields are not rewritten to impersonate the new owner; cleanup still proves ownership and lack of a live owner.",
+        "All supported Store writes validate their captured incarnation against the durable incarnation before reading schema-specific tables or mutating state, inside the same write authority as the operation. A mismatch returns stale_instance (HTTP409; inherited CLI error JSON/exit2). Precedence is transport/shape/range validation, then incarnation, then the operation-specific existence/epoch/version/state checks already declared. Worker calls check incarnation first (stale_instance), then worker generation (stale_worker), then job epoch (stale_epoch). A supported old schema3 handle therefore returns stale_instance rather than a missing-table error or a partial write.",
+        "A normal validated schema4 open and a successful schema4 no-op migrate preserve incarnation, worker generation, catalog generation, logical rows and receipt strings. Implementations may install their own derived indexes, triggers or fencing mechanisms only after validating the portable data under exclusive authority; that installation is not a logical migration and must not change logical data, counters, ownership, incarnation or diagnostics. An explicit no-op migrate may only clear a matching migrate diagnostic. The legacy-process shutdown precondition remains mandatory. Normal Store opening and migrate (actual or no-op) do not run artifact cleanup as a side effect; required cleanup remains available at worker-owner startup/idle cycles and after other successful maintenance operations, as separate bounded transitions."
+      ],
+      "required_observations": [
+        "actual schema3 migration changes incarnation once and preserves other control values",
+        "old supported handle refuses a write before consulting removed tables",
+        "failure before activation leaves old incarnation and schema",
+        "schema4 normal open/no-op does not rotate; mechanism installation does not fabricate migrated:true"
+      ]
+    },
+    {
+      "id": "V2-MIGRATION-DIAGNOSTIC",
+      "title": "Successful migration clears its own diagnostic",
+      "requirement_ids": [
+        "M4-MIGRATION",
+        "M3-DIAGNOSTICS"
+      ],
+      "decision": "A successful actual migration or explicit no-op migrate clears a prior migrate error, while ordinary schema4 open and unrelated errors remain unchanged.",
+      "clauses": [
+        "last_error is one most-recent maintenance error, not an error queue. A new maintenance failure normally replaces it with that operation/code. A successful operation clears it only when last_error.operation equals that operation; success of another operation preserves it. If last_error is null it stays null. Diagnostics reads never change it.",
+        "An actual successful migration clears last_error only if its operation is migrate, atomically with activation. Explicit migrate on valid schema4 also clears only a migrate error under exclusive authority, even though the result remains migrated:false. Ordinary schema4 open performs no success-clear; merely reading/validating a database cannot erase an operator-visible failure. A pre-commit failure retains the incoming diagnostic.",
+        "Corrupt/unknown input refusal and counter_exhausted are stronger no-mutation boundaries: they do not write diagnostics into the refused source. They return the specified error to the caller. A hot journal may first undergo genuine SQLite recovery under exclusive authority, but recovery is not permission to repair arbitrary invalid input. An unrelated stored worker/reindex/backup/restore error survives a successful migrate.",
+        "recovery_action is derived from the last_error actually retained: null->none; worker->restart_worker; reindex->retry_reindex; backup->choose_new_backup; restore->validate_backup; migrate->run_migration. It never implies that an operation already retried or succeeded."
+      ],
+      "required_observations": [
+        "actual migration with migrate error clears it in same commit",
+        "explicit schema4 no-op clears migrate error but ordinary open preserves it",
+        "unrelated error survives both forms of migration success",
+        "unknown/corrupt/refused source retains bytes and incoming diagnostic"
+      ]
+    },
+    {
+      "id": "V2-COUNTER-DOMAIN",
+      "title": "Signed64 counters and atomic exhaustion",
+      "requirement_ids": [
+        "M2-IDENTITY-REVISIONS",
+        "M2-QUERY",
+        "M3-WORKER-RECOVERY",
+        "M3-BACKUP-RESTORE",
+        "M4-MIGRATION",
+        "M2-INTERFACES"
+      ],
+      "decision": "Durable counters and optimistic tokens use exact signed64 integer domains; a required increment beyond the maximum fails atomically without wrapping.",
+      "clauses": [
+        "COUNTER_MAX is 9223372036854775807 (2**63-1). Document edit_version, M1 live/receipt epoch and non-null expected_version are integers1..COUNTER_MAX. Catalog/backup/index generations, worker generations, epoch/edit high-water values, artifact owner_generation and expected_generation are integers0..COUNTER_MAX. A present document/job high-water is at least its current version/epoch. Revision numbers keep their narrower1..16 bound; bounded page sizes, counts and resource limits keep their existing bounds. Python/JSON booleans, floats and decimal fractions are not integers.",
+        "New and legacy token-taking routes in the future cumulative v2 product validate these ranges before database access; out-of-range or wrongly typed tokens are invalid_request. CLI/query forms retain the declared ASCII-decimal grammar and must reject overflow without converting through floating point. Existing v0 list/search offsets remain unbounded nonnegative integers, and the frozen v0/M1 pilot is untouched. Persisted counter/type violations are invalid_database during migration/open or invalid_backup during restore; no truncation, saturation or repair is permitted.",
+        "Each atomic state transition preflights all required counter increments after its normal identity/token/state checks and before durable changes, provisional catalog writes, claim publication or owned artifact creation. If any exact result exceeds COUNTER_MAX, return counter_exhausted (HTTP409, CLI domain error/exit2) and preserve logical rows, counters, incarnation, control/ownership/registry records, last_error and files. Restore checks live generation+1, every incoming document max(high-water,incoming)+1, and only NONCOMPLETED incoming job max(high-water,incoming)+1 together. Completed jobs preserve their original epoch/receipt and update target high-water to max(target,incoming) without increment. A later failure cannot leave a partial high-water update. Successful worker-owner acquisition and each subsequent job transition are distinct atomic transitions: a later exhausted job does not undo an already completed ownership increment or earlier committed jobs. No automatic cleanup or diagnostic side effect runs on the exhausted transition; later separately invoked recovery/cleanup follows its own contract.",
+        "No-op annotation/refresh/delete/restore-document/collection writes, repeated queued/running prepare, completed receipt replay, reads and schema4 no-op migrate remain usable at COUNTER_MAX when they need no counter increment. Effective cancel/retry/new worker ownership and all effective document/catalog changes fail if their own required counter increment is exhausted. Schema3-to4 migration may rotate incarnation without incrementing already-maximum worker/catalog counters; backup may serialize maximum valid counters. Revision capacity and stale token/state errors keep their specified precedence before allocation exhaustion.",
+        "All interfaces preserve exact counter integers through COUNTER_MAX, including browser parsing, display and resubmission above2**53-1. A browser must use lossless integer parsing/serialization or an equivalent exact transport adapter; JavaScript Number rounding, scientific notation conversion, string-valued JSON token substitution and stale-token repair by rounding are invalid. No lossy numeric coercion may create a matching token."
+      ],
+      "required_observations": [
+        "minimum, maximum, one-below-maximum and out-of-domain counters",
+        "effective increment at maximum refuses without any durable state/file/diagnostic change",
+        "unchanged operation and completed receipt replay at maximum succeed",
+        "multi-counter restore preflights atomically and stale checks precede exhaustion",
+        "browser carries an exact token above2**53-1"
+      ]
+    },
+    {
+      "id": "V2-M1-HASH-SERIALIZATION",
+      "title": "Portable M1 content hash serialization",
+      "requirement_ids": [
+        "M4-MIGRATION",
+        "M4-COMPATIBILITY",
+        "M3-BACKUP-RESTORE"
+      ],
+      "decision": "The portable M1 content_hashes field is an ordered JSON array of bare lowercase SHA256 hex or null, validated semantically and preserved byte-for-byte.",
+      "clauses": [
+        "Parse jobs.content_hashes (and backup content_hashes_json) as one strict JSON array with exactly one element per entry in the stored canonical manifest order. For an entry whose text encodes as strict UTF-8, its element is exactly the64-character lowercase hexadecimal SHA256 of those UTF-8 bytes, without the blob- prefix. For text that cannot encode as strict UTF-8 (including an unpaired surrogate), its element is JSON null. Null for encodable text, a string for unencodable text, upper-case/prefixed/wrong digests, extra/missing elements, nonarray values, NaN/Infinity and trailing non-whitespace are invalid.",
+        "JSON whitespace and equivalent string escapes are permitted on input. Validation compares the parsed ordered array and expected hashes, never its reserialized formatting. Migration, backup and restore retain the exact original manifest, content-hash and receipt strings, including their whitespace/escapes. The export/backup outer canonical serializer does not canonicalize the strings stored inside it. New cumulative admissions produce content_hashes using ensure_ascii=true,separators=(\",\",\":\"),allow_nan=false; older valid spellings remain accepted and unchanged.",
+        "Entries with other deferred semantic failures (unsupported suffix, invalid source, duplicate key, excess count/bytes) still have a hash whenever text encodes. A queued/running/failed/cancelled job containing admitted unencodable text retains its null hash and deferred validation behavior; migration/backup must not eagerly reject that legal state. Completed receipt validation continues to require a successfully committed valid manifest. Empty admission has the array[] (or equivalent whitespace spelling), not null or an object.",
+        "The public hash vectors in portable_m1_hash_vectors freeze only this portable representation and basic byte hashing. They are contract examples, not a concealed acceptance bank, provider output or evidence of candidate execution. The original frozen M1 source/tests/receipts and pilot are not rewritten."
+      ],
+      "required_observations": [
+        "empty manifest, empty UTF8 text, Unicode/newline and unpaired-surrogate vectors",
+        "whitespace/escaped equivalent arrays preserve original string bytes through migration/backup",
+        "null-versus-digest validity and bare lowercase hash representation",
+        "legal deferred errors remain admitted until prepare/commit"
+      ]
+    },
+    {
+      "id": "V2-WORKER-LIVENESS",
+      "title": "Worker liveness: running, idle and stopped",
+      "requirement_ids": [
+        "M3-DIAGNOSTICS",
+        "M3-WORKER-RECOVERY"
+      ],
+      "decision": "Worker state combines current live ownership with an active matching claim; durable job state alone never proves a worker is alive.",
+      "clauses": [
+        "Diagnostics reports stopped exactly when no process currently holds the exclusive worker-owner lock for the active installation incarnation. This includes never-started installations, graceful exit, abrupt process death and the time after worker --once releases ownership. Old durable generation values and jobs marked running do not change stopped to running or idle.",
+        "With a live owner for the current incarnation, report running exactly while that owner has an active claim for one enrolled job (matching incarnation, worker generation and job epoch); this interval includes validation and commit/replay work for that selected job. Report idle while the live owner has no active matching claim, including polling, waiting for eligible work, or bounded owned-artifact cleanup. An enrolled queued job can exist briefly while the live owner is idle before claiming it.",
+        "Take the liveness observation while synchronizing owner/claim transitions with the same authority used for diagnostics state reads. A dead/stale claim cannot establish liveness; generation alone, a persisted PID alone and a stored state flag are insufficient. Diagnostics itself does not acquire worker ownership, increment counters, clear errors or resume a job. Sampling after a completed owner transition must show the new state, while sampling during work may legitimately observe either neighboring committed boundary.",
+        "The state matrix in worker_state_table is normative. A current claim without a live matching owner resolves to stopped; a live matching owner with a stale/nonmatching claim resolves to idle and may not commit using that claim. New enrollment/retry/cancel behavior and exact M1 JOB fields remain unchanged."
+      ],
+      "required_observations": [
+        "never started and stopped --once states",
+        "live daemon without claim is idle",
+        "live matching claim is running",
+        "abrupt death leaves running JOB but diagnostics stopped",
+        "stale incarnation/generation/epoch claim cannot establish running"
+      ]
+    },
+    {
+      "id": "V2-BACKUP-ROOT",
+      "title": "One durable backup root and verified explicit adoption",
+      "requirement_ids": [
+        "M3-BACKUP-RESTORE",
+        "M3-INTERFACES",
+        "M3-WORKER-RECOVERY",
+        "M4-MIGRATION",
+        "M4-RELEASE-HANDOFF"
+      ],
+      "decision": "Keep one durable active backup-root binding; configuration/opening never silently rebinds it, clears registry rows or reinterprets owned paths.",
+      "clauses": [
+        "control.backup_root is either absent/JSON null (unbound) or a JSON string containing the canonical absolute backup-directory path. Absence is accepted for portable schema3/4 inputs and means unbound, without erasing any registry/artifact rows. Migration preserves an existing binding exactly and does not bind an absent one. A copied database keeps its recorded binding while Service computes its default selected directory beside the copied DB in memory. Input-root paths and logical/source/blob IDs are unaffected.",
+        "Every backup, backup listing, backup-root cleanup and restore first compares the selected directory with the durable binding. Unbound is backup_root_unbound; a different selected canonical path is backup_root_mismatch (both HTTP409 and CLI domain errors/exit2). No backup registry listing, backup-root staging scan, backup file creation/deletion or restore admission occurs before this comparison. Unbound backup ownership does not prohibit separately proven maintenance-root cleanup, but pending artifacts of either root still block adoption. Setting --backup-dir or constructing Service only chooses a directory in memory; it never adopts. Ordinary catalog/query/diagnostics/migrate operations remain available when roots differ.",
+        "The only adoption operation is the process-only CLI backup-root-adopt, using an explicitly supplied global --backup-dir TARGET and exactly one of --expect-unbound or --expect-root CURRENT. There is no HTTP/browser adoption route. The expected root is compared to the durable binding under exclusive maintenance authority; mismatch is backup_root_mismatch. Adopt requires no live worker or competing maintenance owner and no pending owned artifacts of any root/kind; otherwise maintenance_busy. Pending means any staging/obsolete row or published row still awaiting recovery/registry finalization. A completed active search-generation descriptor is not pending. Inaccessible bound-root artifacts must be resolved by reconnecting and cleaning under their original root; adoption never waives or rewrites their provenance. An otherwise valid portable database may be unbound while retaining pending artifacts: accept/migrate its catalog, but adoption remains maintenance_busy and backup-root I/O/cleanup remains backup_root_unbound. Do not infer an original root from relative paths, defaults or implementation artifacts. Recovery requires an intact original-root-bound source copy with trustworthy ownership records; without one, the product cannot safely clean or adopt those pending paths. Preserve all such rows/files and keep ordinary catalog reads available. Portable input acceptance does not promise that lost ownership provenance is recoverable.",
+        "Validate TARGET as an existing directory, checking every lexical ancestor for symlinks before normalizing dot/dot-dot components; all registered archive names obey the inherited confined basename grammar. Validate only the names already in backups, in name order, using metadata pages of at most100 rows and reads of at most67108865 bytes per archive. Each must be a regular nonsymlink file, within the backup bound, a valid complete BACKUP3 envelope, and match the registered exact byte length, payload_sha256 and snapshot generation. Validate all registered archives; never adopt a sampled subset. Memory/work is bounded per page/file, with total work at most registered_count*(67108865 read bytes plus fixed envelope-validation work). No directory enumeration, implicit registration, copying, moving or deletion of unowned files is allowed.",
+        "Hold exclusive maintenance authority during validation and the final binding transaction, and recheck the target directory identity and registered file identities after validation before committing. Product writers/cleanup cannot change registry or pending artifacts during adoption. Path/symlink violations are invalid_source; missing/unreadable directory/file or replacement during validation is io_error; corrupt content or registry mismatch is invalid_backup; size overflow is too_large. Any failure leaves binding, catalog, counters, incarnation, registry, cleanup cursor, diagnostics and all source/destination files unchanged.",
+        "On complete success atomically store the new canonical root binding and leave every backups row unchanged. Do not increment catalog/worker counters or rotate incarnation. Return {adopted:boolean,registered:nonnegative integer}; adopted is true exactly when the durable binding changed, and false for a verified same-root no-op. An empty registry permits adoption/rebinding after the same ownership/path checks. Old files remain untouched. Existing Service handles must recheck binding on their next backup operation and fail backup_root_mismatch if still selecting the old root. Concurrent adoption attempts serialize, and an outdated --expect-root/--expect-unbound fails rather than silently replacing a newer binding.",
+        "Fresh installations and unbound portable copies require this explicit adoption before their first backup I/O/listing/restore. Release INSTALL/RECOVERY instructions must include it and explain pending-artifact reconnection. Backup listing remains a bounded metadata view of registered complete publications; it does not imply that an externally altered file has just been revalidated. Backup create/restore validate their own files, and adoption revalidates every registered file. Published valid archives are never cleaned automatically. If a valid complete BACKUP3 file already exists, the separately specified restore route remains available in a fresh empty installation: explicitly adopt its directory with an empty registry/no pending artifacts, then restore the existing basename with expected_generation=0. The contract already permits a complete manually supplied unregistered basename; this route neither recovers nor deletes the stranded original artifacts and does not reconstruct a missing backup. This is a single-root relocation contract, not multi-root history or account management."
+      ],
+      "required_observations": [
+        "fresh/unbound/moved-copy configuration never silently binds or clears records",
+        "root mismatch refuses backup I/O and listing before touching files",
+        "adoption validates every registered archive and preserves all rows/files",
+        "pending artifacts require original-root reconnection and refusal is atomic",
+        "empty-registry and same-root adoption have exact outcomes",
+        "stale expected binding loses concurrent adoption race",
+        "unowned destination files remain untouched"
+      ]
+    }
+  ],
+  "portable_m1_hash_vectors": [
+    {
+      "id": "empty-manifest",
+      "texts": [],
+      "content_hashes_json": " [ ] ",
+      "expected_hashes": []
+    },
+    {
+      "id": "empty-text",
+      "texts": [
+        ""
+      ],
+      "content_hashes_json": "[\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"]",
+      "expected_hashes": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ]
+    },
+    {
+      "id": "unicode-newline",
+      "texts": [
+        "\u00e9\n"
+      ],
+      "content_hashes_json": "[\"edd3a863872a04239eb29ad4bc12fc892b3d4ae57cc7e786a3697816f8e141c2\"]",
+      "expected_hashes": [
+        "edd3a863872a04239eb29ad4bc12fc892b3d4ae57cc7e786a3697816f8e141c2"
+      ]
+    },
+    {
+      "id": "deferred-invalid-unicode",
+      "texts": [
+        "\ud800"
+      ],
+      "content_hashes_json": "[ null ]",
+      "expected_hashes": [
+        null
+      ]
+    }
+  ],
+  "worker_state_table": [
+    {
+      "live_matching_owner": false,
+      "matching_active_claim": false,
+      "state": "stopped"
+    },
+    {
+      "live_matching_owner": false,
+      "matching_active_claim": true,
+      "state": "stopped"
+    },
+    {
+      "live_matching_owner": true,
+      "matching_active_claim": false,
+      "state": "idle"
+    },
+    {
+      "live_matching_owner": true,
+      "matching_active_claim": true,
+      "state": "running"
+    }
+  ],
+  "counter_domains": {
+    "maximum": 9223372036854775807,
+    "positive": [
+      "document.edit_version",
+      "job.epoch",
+      "receipt.job.epoch",
+      "request.expected_version",
+      "request.epoch"
+    ],
+    "nonnegative": [
+      "catalog.generation",
+      "backup.generation",
+      "index.published_generation",
+      "index.target_generation",
+      "worker.generation",
+      "job_control.epoch_high_water",
+      "document_control.edit_high_water",
+      "artifact.owner_generation",
+      "request.expected_generation"
+    ],
+    "nullable": [
+      "index.published_generation",
+      "index.target_generation"
+    ],
+    "overflow_error": "counter_exhausted",
+    "overflow_http_status": 409,
+    "bad_request_error": "invalid_request",
+    "bad_database_error": "invalid_database",
+    "bad_backup_error": "invalid_backup",
+    "legacy_offset_unchanged": true,
+    "browser_lossless_required": true
+  },
+  "revision": {
+    "supersedes": "library-cumulative-product-v1",
+    "superseded_path": "library-cumulative-product-v1.json",
+    "superseded_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "status": "prospective-unqualified",
+    "frozen_m1_pilot_affected": false,
+    "scope": "Only the future cumulative cohort. Preserve frozen v1/source/receipts and published M4 reference; passing v1 observations do not qualify v2.",
+    "unchanged_requirements": [
+      "M2-IDENTITY-REVISIONS",
+      "M2-REFRESH",
+      "M2-ANNOTATIONS",
+      "M2-COLLECTIONS",
+      "M2-DELETE-RESTORE",
+      "M2-QUERY",
+      "M2-INTERFACES",
+      "M3-WORKER-RECOVERY",
+      "M3-REINDEX",
+      "M3-EXPORT",
+      "M3-BACKUP-RESTORE",
+      "M3-DIAGNOSTICS",
+      "M3-INTERFACES",
+      "M4-API-SCHEMA",
+      "M4-MIGRATION",
+      "M4-COMPATIBILITY",
+      "M4-RELEASE-HANDOFF"
+    ],
+    "semantic_change_map": {
+      "/requirements/7/clauses/2": [
+        "V2-MIGRATION-FENCE",
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/requirements/7/clauses/4": [
+        "V2-MIGRATION-FENCE",
+        "V2-COUNTER-DOMAIN",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/11/clauses/1": [
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-WORKER-LIVENESS"
+      ],
+      "/requirements/14/clauses/3": [
+        "V2-MIGRATION-FENCE",
+        "V2-MIGRATION-DIAGNOSTIC"
+      ],
+      "/requirements/13/clauses/2": [
+        "V2-MIGRATION-FENCE",
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-COUNTER-DOMAIN",
+        "V2-M1-HASH-SERIALIZATION",
+        "V2-WORKER-LIVENESS",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/10/clauses/0": [
+        "V2-BACKUP-ROOT"
+      ],
+      "/constants/counter_max": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/value_types/RECORD2/edit_version": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/value_types/RECORD4/edit_version": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/value_types/DIAGNOSTICS3/generation": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/value_types/DIAGNOSTICS3/worker_generation": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/value_types/DIAGNOSTICS3/worker_state": [
+        "V2-WORKER-LIVENESS"
+      ],
+      "/persistence/backup_rows/generation": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/persistence/legacy_tables/1": [
+        "V2-M1-HASH-SERIALIZATION"
+      ],
+      "/persistence/schema2/0": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/persistence/schema3/0": [
+        "V2-COUNTER-DOMAIN",
+        "V2-BACKUP-ROOT"
+      ],
+      "/persistence/schema4/0": [
+        "V2-MIGRATION-FENCE",
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-BACKUP-ROOT"
+      ],
+      "/persistence/fencing": [
+        "V2-MIGRATION-FENCE",
+        "V2-COUNTER-DOMAIN",
+        "V2-BACKUP-ROOT"
+      ],
+      "/persistence/backup_root": [
+        "V2-BACKUP-ROOT"
+      ],
+      "/interfaces/common/1": [
+        "V2-BACKUP-ROOT"
+      ],
+      "/interfaces/python/3": [
+        "V2-BACKUP-ROOT"
+      ],
+      "/interfaces/m3/8": [
+        "V2-BACKUP-ROOT"
+      ],
+      "/compatibility/8": [
+        "V2-MIGRATION-FENCE",
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-COUNTER-DOMAIN",
+        "V2-M1-HASH-SERIALIZATION",
+        "V2-WORKER-LIVENESS",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/0/clauses/5": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/requirements/5/clauses/4": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/requirements/6/clauses/4": [
+        "V2-COUNTER-DOMAIN"
+      ],
+      "/requirements/7/clauses/5": [
+        "V2-MIGRATION-FENCE",
+        "V2-COUNTER-DOMAIN",
+        "V2-WORKER-LIVENESS",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/10/clauses/6": [
+        "V2-COUNTER-DOMAIN",
+        "V2-M1-HASH-SERIALIZATION",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/11/clauses/3": [
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-WORKER-LIVENESS"
+      ],
+      "/requirements/12/clauses/3": [
+        "V2-COUNTER-DOMAIN",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/14/clauses/5": [
+        "V2-MIGRATION-FENCE",
+        "V2-MIGRATION-DIAGNOSTIC",
+        "V2-COUNTER-DOMAIN",
+        "V2-M1-HASH-SERIALIZATION",
+        "V2-BACKUP-ROOT"
+      ],
+      "/requirements/15/clauses/3": [
+        "V2-M1-HASH-SERIALIZATION"
+      ],
+      "/requirements/16/clauses/5": [
+        "V2-COUNTER-DOMAIN",
+        "V2-BACKUP-ROOT"
+      ]
+    },
+    "added_normative_sections": [
+      "amendments",
+      "portable_m1_hash_vectors",
+      "worker_state_table",
+      "counter_domains"
+    ],
+    "metadata_change_paths": [
+      "/schema_version",
+      "/contract_id",
+      "/freeze_policy/state",
+      "/freeze_policy/qualification_missing",
+      "/registry_rules/amendment_record_keys",
+      "/registry_rules/worker_state_record_keys",
+      "/registry_rules/hash_vector_record_keys",
+      "/registry_rules/document_precedence"
+    ]
+  }
+}

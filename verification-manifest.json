@@ -2842,6 +2842,78 @@
       "disposition": "Run before actual v3 Docker observation.",
       "distinct_defect": "Broad coercion or altered expected values could hide output defects.",
       "overlap_reason": "Narrow documented observer boundary correction after retained v2 failure."
+    },
+    "tests/test_library_cumulative_contract_v2.py::ProspectiveProductContractV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The prospective v2 contract preserves the complete inherited product graph and declares every semantic change; structural checks never claim product execution.",
+      "isolation": "class process; immutable public contract files and detached mutations",
+      "boundary": "Pinned predecessor bytes, full scope census, explicit amendments, golden byte hashes and worker/counter domains.",
+      "distinct_defect": "Undeclared semantic drift, missing requirements, lossy counter domains or changed frozen predecessor could otherwise enter the future cohort.",
+      "overlap": "Contract declaration checks only; v1 reference qualification and future v2 product execution remain separate.",
+      "overlap_reason": "New prospective semantics and declaration preservation are not covered by frozen v1 tests.",
+      "disposition": "Run in offline fast lane before compiling a candidate acceptance design."
+    },
+    "tests/test_candidate_release_observer_v1.py::CandidateReleaseObserverTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Bounded candidate release capsules and direct CLI observations are interpreted on the host without importing candidate code.",
+      "isolation": "class process; fresh isolated Git/journal/container/artifact instances",
+      "boundary": "Pure tar/byte parser, fixed public command plan, exact typed host scoring and deliberate malformed observations.",
+      "distinct_defect": "Bounded candidate release capsules and direct CLI observations are interpreted on the host without importing candidate code.",
+      "overlap": "New execution gate qualification only; inherited product/reference checks are not repeated or relabeled as acceptance.",
+      "overlap_reason": "The existing registry aggregates trusted observations but does not execute or authenticate arbitrary delivered releases.",
+      "disposition": "Offline checks precede physical container qualification; fixture results never count as study observations."
+    },
+    "tests/test_candidate_release_execution_v1.py::CandidateReleaseExecutionTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Registered Git, source, suite, environment, purpose, raw artifacts and durable journal identities must agree before physical evidence is normalized.",
+      "isolation": "class process; fresh isolated Git/journal/container/artifact instances",
+      "boundary": "Real immutable Git objects and controller journals with explicitly mocked runtime/dispatch; no product acceptance evidence.",
+      "distinct_defect": "Registered Git, source, suite, environment, purpose, raw artifacts and durable journal identities must agree before physical evidence is normalized.",
+      "overlap": "New execution gate qualification only; inherited product/reference checks are not repeated or relabeled as acceptance.",
+      "overlap_reason": "The existing registry aggregates trusted observations but does not execute or authenticate arbitrary delivered releases.",
+      "disposition": "Offline checks precede physical container qualification; fixture results never count as study observations."
+    },
+    "tests/test_candidate_release_execution_v1.py::CandidateReleaseExecutionCrashTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "An actual process exit after durable intent leaves an unknown occupied slot which cannot automatically execute again.",
+      "isolation": "class process; fresh isolated Git/journal/container/artifact instances",
+      "boundary": "Real subprocess death and journal reopen with externally retained checkpoint; no candidate/model execution.",
+      "distinct_defect": "An actual process exit after durable intent leaves an unknown occupied slot which cannot automatically execute again.",
+      "overlap": "New execution gate qualification only; inherited product/reference checks are not repeated or relabeled as acceptance.",
+      "overlap_reason": "The existing registry aggregates trusted observations but does not execute or authenticate arbitrary delivered releases.",
+      "disposition": "Offline checks precede physical container qualification; fixture results never count as study observations."
+    },
+    "tests/test_candidate_release_docker_v1.py::CandidateReleaseDockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "The real pinned container path captures an immutable delivered package and judges that package in a fresh container with all owned containers removed.",
+      "isolation": "class process; fresh isolated Git/journal/container/artifact instances",
+      "boundary": "Actual paused build container, bounded owned tmpfs-volume capture and separate installed CLI container; valid and defective package controls.",
+      "distinct_defect": "The real pinned container path captures an immutable delivered package and judges that package in a fresh container with all owned containers removed.",
+      "overlap": "New execution gate qualification only; inherited product/reference checks are not repeated or relabeled as acceptance.",
+      "overlap_reason": "The existing registry aggregates trusted observations but does not execute or authenticate arbitrary delivered releases.",
+      "disposition": "Offline checks precede physical container qualification; fixture results never count as study observations."
+    },
+    "tests/test_project_acceptance_compiler_v1.py::AcceptanceCompilerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A candidate registry is emitted only for the exact complete product inventory, declared clause/lane/assertion coverage, separate prerequisites, compatibility and full matched cohort.",
+      "isolation": "class process; pinned public input files and detached declaration fixtures",
+      "boundary": "Known M1 and cumulative v1/v2 source identities, prospective declaration validation and existing Registry construction.",
+      "distinct_defect": "Caller-invented smaller inventories, omitted shared clauses or lanes, fake compatibility and partial cohorts must not produce a complete registry.",
+      "overlap": "Pure design compilation only; no receipt authentication or product evaluation.",
+      "overlap_reason": "Existing registry checks gate coverage after trusted inventory construction but cannot derive the product denominator.",
+      "disposition": "Run offline before any compiled candidate gates may execute."
     }
   },
   "audit": {
