@@ -1,0 +1,489 @@
+{
+  "audit_limits": [
+    "Retained artifact integrity and selected semantic/outcome consistency checks are distinct from a fresh run or an independent rescore of every successful assertion.",
+    "241 executed histories are fewer than251 planned; nine reference histories and one mutant did not execute. All three prospective padded JSON histories remain unrun.",
+    "Five forced reference schedules are unavailable, not passes. Separately instrumentable controls do not constitute a conforming product reference or close those facets.",
+    "All closed reviews use purpose harness_qualification. Separate control identity comes from exact source, review ID, allowed case set, applicability decision and roster purpose; no production authority is inferred.",
+    "Recorded cleanup identity/absence checks establish historical evidence consistency, not current daemon attestation.",
+    "Captures follow an adapter response; same-process Store reopen does not establish process-death or power-loss recovery.",
+    "Authored profiles and finite controls do not close all42 B02 requirements, production ScopePlan, whole-project acceptance, or the matched comparative design.",
+    "The raw qualification remains failed despite the diagnostic interpretation of its unsupported exact-error expectation.",
+    "Mounted candidate/control source staging is ephemeral and not retained. The audit checks frozen identities, current matching inert reference output, source-bound adapter/review and recorded staging checks; it cannot currently rehash historic mounted source bytes.",
+    "No independent secondary-call trace exists for unavailable schedules. Absence of persisted change, explicit markers, bound source and focused offline controls are stated separately from direct observation of call absence."
+  ],
+  "base_development_commit": "b88e51007cd574999c429d5584a0787c65c4c409",
+  "candidate_source": {
+    "changed_generated_files": [
+      "library/ingestion/jobs.py"
+    ],
+    "closed_source_reviews": 7,
+    "generated_files": 61,
+    "production_review_authority": false,
+    "protocol": "candidate-intake-store-driver-v2",
+    "review_purpose": "harness_qualification",
+    "sha256": "d733c498002ae564b2d4e761a0e5d6c0acb40fbc6ce060cf635b8b3881063f01",
+    "source_input_identities": 41
+  },
+  "cycle_classification": "progress: exact source repair and bounded physical diagnostics; overall research goal remains active",
+  "definition": {
+    "histories": 241,
+    "inherited_rows_preserved": 238,
+    "prior_semantic_sha256": "528ad3d27e8244fa4b9f1c5fa8789add0eb430c3cf0e84c284073e328588128d",
+    "prospective_new_rows": 3,
+    "protocol": "candidate-intake-store-cases-v2",
+    "sha256": "d582d6143939b56ef834d951799b305a893bd71578904b497c7c6f020f33db30"
+  },
+  "definition_freeze": {
+    "path": "runs/candidate-b02-v2-definition-freeze-1.json",
+    "sha256": "5cbfbd2f3f57018d5c98a66da6a649f4e45c5697dcd21b309ccc2ffcf12fafc9"
+  },
+  "development_branch": "codex/cumulative-project-contract",
+  "findings": [
+    {
+      "classification": "reference defect repair observed",
+      "detail": "The previous legal escaped-content boundary now matches its unchanged expectation. Complete JSON reading has no invented replacement encoded-byte cap; ZIP and decoded-content bounds are unchanged. Three prospective >6MiB whitespace/decoder controls were not reached and remain physically unverified.",
+      "id": "escaped-json-repair"
+    },
+    {
+      "classification": "five unknown product facets; qualification controls only",
+      "detail": "All five reviewed reference schedules are explicitly unavailable before a secondary Store transition is attempted. Unknown assertions remain null and receive no acceptance credit. Five separately scoped instrumentable controls and one intended false-success mutant exercise detector sensitivity without qualifying reference concurrency.",
+      "id": "forced-schedule-applicability"
+    },
+    {
+      "classification": "overconstrained evaluator expectation; product defect not proven",
+      "detail": "The existing directory is rejected without admission; raw DB and both lock files remain byte-identical. Normative text does not expressly classify this preflight wrong-kind rejection. The inventory coverage-gap example cannot create a normative exact error rule. Author and independent normative reviewer corrected their earlier clearance. Original failed records remain unchanged; no retroactive pass.",
+      "diagnosis": {
+        "path": "runs/candidate-b02-v2-wrong-kind-diagnosis-1.json",
+        "sha256": "05760e5ddd00108853910ef8c3432bb85603ecd6b65df498b1ecd36ab7d417cb"
+      },
+      "expected_error": "io_error",
+      "id": "wrong-kind-exact-error",
+      "observed_error": "invalid_source",
+      "raw_case_id": "intake-zip-wrong-kind",
+      "raw_census_status_preserved": "product-failed"
+    }
+  ],
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "independent_physical_audit": {
+    "artifact_integrity_status": "No discrepancies found within the explicitly checked retained evidence.",
+    "candidate_or_test_executions_by_audit": 0,
+    "path": "runs/candidate-b02-v2-physical-audit-1.json",
+    "qualification_status": "failed",
+    "scope": "Retained raw integrity, source/freeze/binding consistency and selected semantic checks; not every passing assertion independently rescored.",
+    "sha256": "95c6433daec4d3ef596dc2c4673388d6902a1a13cd140aa50259a78be96c69ba"
+  },
+  "new_api_calls": 0,
+  "new_comparative_samples": 0,
+  "next_cycle": "Version and independently review the evaluator disposition for unspecified top-level wrong-kind error codes. Run affected cheap gates before one complete source-matched qualification of the changed contract, preserving prior failures and all remaining obligations. No automatic retry of this unchanged failed run.",
+  "preexecution_plans": [
+    {
+      "path": "runs/candidate-b02-v2-cycle-plan-1.json",
+      "sha256": "f44c7ef53b6459e4f2d3f96f365d397c7071e3bfdedd5aa42eeeb9cfc0ed14d4"
+    },
+    {
+      "path": "runs/candidate-b02-v2-cycle-plan-2.json",
+      "sha256": "3fa4df59e1ce238aa746cd5ee2c96615a584765a12e8f16d01441532a45d53e6"
+    }
+  ],
+  "prior_checkpoint": {
+    "path": "analysis/candidate-b02-diagnostic-checkpoint-v1.json",
+    "sha256": "14d53c490032eb10d37e530081e26a293624e5ed6b6a0f61f443ba2a423cb141"
+  },
+  "publication": {
+    "development_branch": "Commit and push diagnostic source/checkpoint; qualification remains failed.",
+    "links": {
+      "docs": "https://westbrook.github.io/gossip-protocol/docs/",
+      "outputs": "https://westbrook.github.io/gossip-protocol/outputs/",
+      "progress": "https://westbrook.github.io/gossip-protocol/"
+    },
+    "pages": "Previously published gh-pages snapshot revision346 at c8ba24ac7d1792ebf7553447ec0c980b48d02c39 remains unchanged.",
+    "pages_recheck": "GitHub Pages built/public/HTTPS; all three indexes and48 distinct internal links HTTP200. Revision346 exported2026-10-03T04:26:29Z remains unchanged."
+  },
+  "purpose": "harness_qualification; diagnostic engineering evidence, not independent acceptance or comparative evidence",
+  "qualification": {
+    "coverage": "targeted",
+    "current_input_mismatches": [],
+    "duration_seconds": 244.37887054216117,
+    "input_files_reconciled": 439,
+    "inputs": {
+      "path": "runs/candidate-b02-v2-qualification-1/20261003T130227-298615f9/inputs.json",
+      "sha256": "09a2cc1f9d575e81c7f0b7b0817a6e3bceef0d19fa879a7a9bd4793330e4612e"
+    },
+    "method_class_status_source": "Controller summary labels. The intake class is error in the controller summary and failed in the worker result; one method failed and one method was not run.",
+    "method_classes": [
+      {
+        "class": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_accessors_do_not_allow_caller_recipe_or_expected_mutation",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_alias_guard_rejects_identity_digest_and_history_mutations",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_each_original_selected_branch_and_recipe_is_preserved",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_extra_recipes_and_sources_have_explicit_fixed_bindings",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_invalid_utf8_suffix_is_decisive_decoder_error",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_large_legal_whitespace_changes_no_decoded_content",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_malformed_suffix_is_decisive_json_syntax_error",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests.test_original_238_rows_are_exactly_unchanged_and_ordered",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_extra_successes_report_actual_identity_and_explicit_alias",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_negative_case_rejects_admission_or_orphan_despite_correct_error",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_original_score_checks_and_unavailability_are_unchanged",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_precondition_mismatch_remains_unavailable",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_success_rejects_raw_size_cap_as_wrong_outcome",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_syntax_and_utf8_codes_cannot_be_interchanged",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests.test_unavailable_newcase_keeps_earlier_failure_and_masks_dependents",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_adapter_bind_preserves_original_manifest_and_import_dispatches_secondary",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_adapter_keeps_result_history_while_mutating_original_return_alias",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_candidate_operational_error_does_not_become_reviewed_unavailable",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_closed_review_binds_source_components_purpose_and_definition",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_container_inputs_are_independently_readonly_and_candidate_is_unprivileged",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_definition_mismatch_unknown_case_and_existing_output_reject_before_dispatch",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_every_registered_recipe_is_data_only_and_within_physical_bounds",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_interference_orders_second_call_at_exact_public_store_boundary",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_known_ordinary_failure_survives_reviewed_unavailable_schedule",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_late_auxiliary_unavailable_preserves_prior_product_failure",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_limited_control_and_mutants_cannot_escape_their_reviewed_case_scope",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_markers_require_confined_paths_known_references_and_valid_bytes",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_new_source_protocol_binds_same_bytes_differently_and_rejects_mismatch",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_recipe_rejects_executable_hooks_methods_and_unsafe_fixture_ancestors",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_references_persist_before_to_after_and_clear_on_reopen",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_reviewed_unavailable_schedule_never_creates_secondary_store_or_calls_prepare",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_source_binding_includes_transport_definitions_profile_and_mapper",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_source_substitution_and_forged_review_reject_before_dispatch",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_stage_fixture_readback_preserves_links_fifo_and_exact_bytes",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_unavailable_interposition_stops_dependent_actions_and_retains_prefix",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_unsupported_instance_interposition_is_unavailable_not_product_failure",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_versioned_capture_parser_accepts_larger_file_without_changing_frozen_parser",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests.test_versioned_session_retains_three_large_frames_within_new_bound",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests",
+        "lane": "fast",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_all_existing_code_is_unchanged_except_the_json_reader_call",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_changed_generator_dependency_rejects_before_generation",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_input_inventory_covers_transitive_authored_generator_imports",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_loaded_generator_output_drift_and_repair_reapplication_reject",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_new_reader_keeps_descriptor_confinement_close_and_io_translation",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_only_jobs_changes_and_all_returned_maps_are_independent",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests.test_own_source_changed_after_import_rejects_before_generation",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v2.py::CandidateDirectStoreDriverV2DockerTests",
+        "lane": "docker",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateDirectStoreDriverV2DockerTests.test_complete_registered_store_roster",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateDirectStoreDriverV2DockerTests.test_illegal_cancel_defect_is_distinguished",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateDirectStoreDriverV2DockerTests.test_stale_epoch_defect_is_distinguished",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests",
+        "lane": "docker",
+        "status": "error",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests.test_archive_acceptance_defect_is_distinguished",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests.test_complete_registered_intake_roster",
+            "status": "failed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests.test_symlink_acceptance_defect_is_distinguished",
+            "status": "not_run"
+          }
+        ]
+      },
+      {
+        "class": "tests/test_candidate_intake_store_driver_v2.py::CandidateScheduleControlV2DockerTests",
+        "lane": "docker",
+        "status": "passed",
+        "tests": [
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateScheduleControlV2DockerTests.test_all_five_instrumentable_control_schedules",
+            "status": "passed"
+          },
+          {
+            "id": "tests/test_candidate_intake_store_driver_v2.py::CandidateScheduleControlV2DockerTests.test_instrumentable_false_success_mutant_is_distinguished",
+            "status": "passed"
+          }
+        ]
+      }
+    ],
+    "method_outcomes": {
+      "failed": 1,
+      "not_run": 1,
+      "passed": 51
+    },
+    "not_retried": true,
+    "physical_counts": {
+      "actual_total_histories": 241,
+      "executed_limited_positive_controls": 5,
+      "executed_mutants": 4,
+      "executed_reference_histories": 232,
+      "explicitly_unavailable_reference_histories": 5,
+      "historical_product_failed_histories": 1,
+      "ordinary_reference_histories_matched": 226,
+      "planned_limited_positive_controls": 5,
+      "planned_mutants": 5,
+      "planned_reference_histories": 241,
+      "planned_total_histories": 251,
+      "raw_container_cleanup_and_absence_verified": 241,
+      "raw_paused_captures": 723,
+      "raw_volume_cleanup_and_absence_verified": 241,
+      "retained_stream_bytes_rehashed": 153077442,
+      "retained_streams_rehashed": 12050,
+      "retained_transport_records_rehashed": 6025,
+      "unique_containers": 241,
+      "unique_volumes": 241,
+      "unrun_mutants": 1,
+      "unrun_reference_histories": 9
+    },
+    "resource_budget": 4,
+    "reused_classes": 0,
+    "runtime_final": {
+      "path": "runs/candidate-b02-v2-qualification-1/20261003T130227-298615f9/runtime-final.json",
+      "sha256": "1318290223d02eaea4e38e013f03407038fd168376c4e623e34531887d75c457"
+    },
+    "selected_counts": {
+      "docker": 8,
+      "fast": 45
+    },
+    "selected_methods": 53,
+    "source_fingerprint": "2f4a2ed48fd3d3a7a655155aaffee4cf52358d64eb2dbc27565feab78ebaa033",
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": {
+      "path": "runs/candidate-b02-v2-qualification-1/20261003T130227-298615f9/static.json",
+      "sha256": "f0dccd74c9b9b7352a16c6b3a34c77d7106668e6a8202909849955e259f1dcef"
+    },
+    "static_limit": "Explicit type roots and their imports;117 retained baseline diagnostics, no new blocking diagnostics. All authored source receives syntax/correctness lint, not whole-program type proof.",
+    "status": "failed",
+    "summary": {
+      "path": "runs/candidate-b02-v2-qualification-1/20261003T130227-298615f9/summary.json",
+      "sha256": "b1f49c5dcbb9249b884a0575dc0233c87de1a8432f07b18e34045d57f2dacb32"
+    },
+    "unrun": {
+      "intake_reference_case_ids": [
+        "intake-json-missing",
+        "intake-json-wrong-kind",
+        "intake-json-deferred-source-parent",
+        "intake-json-deferred-unsupported",
+        "intake-json-deferred-unencodable",
+        "intake-json-literal-byte-limit",
+        "intake-json-large-whitespace-valid",
+        "intake-json-large-whitespace-syntax",
+        "intake-json-large-whitespace-utf8"
+      ],
+      "mutant_methods": [
+        "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests.test_symlink_acceptance_defect_is_distinguished"
+      ]
+    },
+    "workers_started": 7
+  },
+  "recorded_at": "2026-10-03T13:22:43.675878+00:00",
+  "remaining_work": [
+    "Resolve the wrong-kind exact-error ambiguity prospectively in a versioned evaluator contract; independently review affected definitions and retain all frozen v1/v2 failures.",
+    "Complete B02 qualification including the nine unreached reference histories and symlink mutant; preserve five unknown forced schedules and qualify real concurrent orderings separately.",
+    "Complete the production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind all candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run the four-milestone six-trajectory matched experiment only after required payload-transfer approval and within the existing approved budget.",
+    "Retain S4-G (4 builders plus 4 reviewers), S16-G (16 plus 4) and O16-G (16 plus 4), each under healthy and compound recovery; compare quality and sustained whole-project completion first.",
+    "Keep generated distinguishing tests, real process restart, bounded partitions, a whole-cohort barrier before fresh independent acceptance, and later heldout families.",
+    "Use further independent project families and a preregistered statistical design before any general superiority claim.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets."
+  ],
+  "schema": "candidate-b02-v2-diagnostic-checkpoint-v1",
+  "source_pins": {
+    "docs/candidate-intake-store-cases-v2.md": "eeb6b32f32bd7a013623b519a63cec4b0ce4e0525a18a937e631bcb0fe4219df",
+    "docs/candidate-intake-store-execution-v2.md": "3881a1cfc4f7f44dd769cabea430c442f1cb6e164b9c2dcda28e43c5d7c3d104",
+    "docs/library-v2-json-reference-v2.md": "56081ea751496f7742ce2381aaf047748710f9c5cf8ca68c2b2fbdedeb71a299",
+    "gossip_harness/candidate_intake_fixtures_v1.py": "ab93758a3e4cfb8404c1fdabc9ca65db22b74e624e6454357cbd4744f8c7f59f",
+    "gossip_harness/candidate_intake_store_cases_v1.py": "291811e6c6714e068619c16acac6ad1d2877b949c4ef481e109163bb9324f0fc",
+    "gossip_harness/candidate_intake_store_cases_v2.py": "159ba708edb050a0fe9c715d70c297182874410bac1b6add70e98afb09ebe201",
+    "gossip_harness/candidate_intake_store_driver_v1.py": "582b91c3c3e77d2eab72a30128066174486e06893caad97272402d94f8e26a20",
+    "gossip_harness/candidate_intake_store_driver_v2.py": "cbc0a9215d4564dc66e9cd49c0b1198c1e87bc1144fda718454839defd0fa54f",
+    "gossip_harness/candidate_intake_store_observer_v1.py": "1e873d61e404e57c83afe025f0a78126fb38cfc5fe4a65f4e61e72606bafb98e",
+    "gossip_harness/candidate_intake_store_profile_v1.py": "170747329cd27882624ad788a2283b157a507fe52fc840ac8b38c5aace5c730c",
+    "gossip_harness/candidate_storage_cases_v1.py": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4",
+    "gossip_harness/candidate_storage_driver_v1.py": "52bc3a8a3f7fd50d1da92a8755c4076c1508c119d09c0732b6d86fe9b3c13e2a",
+    "gossip_harness/candidate_storage_observer_v1.py": "84952ce86ca8bd6df4434ca76d44e25febde2c4f88af2664f8765681fa131a15",
+    "gossip_harness/library_v2_json_reference_v2.py": "d334a0539101e63cf0e6c10dd8ee3d7c93819354bd119752b06cc36685a3498c",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "pyproject.toml": "4197c23ba7626b2c6af86bb09822181d0fa3799d07960e5b4a3292bc040a864b",
+    "tests/test_candidate_intake_store_cases_v2.py": "774fdccb6827f294518b835bc6720b71f5ed04aa1ec0b9faf17577d4eadff579",
+    "tests/test_candidate_intake_store_driver_v2.py": "74b129c1438eb4b5caa447001c8432385e8ec297f80bf324333df9c28641546b",
+    "tests/test_library_v2_json_reference_v2.py": "6a6839551a4b477aad261e87eba16b0b1a02d0f368e2543ff4a04536a6a78bf5",
+    "verification-manifest.json": "6a9fa1712882680bce7481849743a141e275826bc7010be95e24b35a4968e449"
+  },
+  "statistical_claim": "None. These are development controls, not statistical evidence of swarm superiority.",
+  "status": "failed",
+  "unchanged": [
+    "Frozen main, historical scientific sources and evidence, cumulative API ledger, published Pages snapshot, full four-milestone/six-trajectory and held-out-family objectives.",
+    "Pending live payload-transfer approval remains separate; this cycle made no API call or new invoice audit.",
+    "Only the user establishes human review checkpoints."
+  ]
+}

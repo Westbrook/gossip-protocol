@@ -3276,6 +3276,90 @@
       "overlap": "Frozen B01 observer remains unchanged; this version qualifies the larger declared B02 input domain.",
       "overlap_reason": "Real driver transport and normative API scoring cannot establish the bounded observer handles escaped persisted representations.",
       "disposition": "Run before the full B02 physical matrix, after expected maximum representation bounds are frozen."
+    },
+    "tests/test_library_v2_json_reference_v2.py::LibraryV2JsonReferenceSourceTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The JSON repair changes only the pinned generated intake read path, preserves all other generated source and rejects stale or substituted generator inputs.",
+      "isolation": "One bounded class worker; source construction and AST inspection only, no candidate Python execution.",
+      "boundary": "Exact generated-source inventory, transformation guards and inherited behavior preservation.",
+      "distinct_defect": "A broad or stale overlay could remove safe path/error behavior, weaken decoded limits or accidentally change unrelated product behavior.",
+      "overlap": "Separate new reference source version; original failed reference and retained B02v1 evidence stay unchanged.",
+      "overlap_reason": "Source preservation does not establish runtime behavior; fresh physical qualification separately exercises repaired JSON cases.",
+      "disposition": "Run with the new B02v2 offline gate before the changed-contract Docker matrix; never treat these source checks as full product acceptance."
+    },
+    "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeStoreDriverV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exact source/purpose/review/recipe binding rejects unregistered applicability and retains prior failures when a declared schedule is unavailable.",
+      "isolation": "One class worker, no nested pool; each physical history uses fresh candidate container and owned volume.",
+      "boundary": "New explicitly versioned source-bound interposition contract and retained before/after/reopened storage evidence.",
+      "distinct_defect": "Impossible forced orderings could be mislabeled as product failures or known failures erased by unavailable observations; source/fixture substitution could invalidate the judgment.",
+      "overlap": "Original B02v1 failures remain historical and unchanged; these classes qualify a changed reference and execution contract.",
+      "overlap_reason": "Expected-unavailable development controls and separately named instrumentable sensitivity checks do not count as product acceptance.",
+      "disposition": "Run combined static and all selected offline classes before the three bounded Docker workers; freeze all source, profiles and recipes before execution."
+    },
+    "tests/test_candidate_intake_store_driver_v2.py::CandidateIntakeDriverV2DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "All124 intake histories run against the corrected reference with fresh state, plus two declared admission mutants; preserve every failed or unrun case.",
+      "isolation": "One class worker, no nested pool; each physical history uses fresh candidate container and owned volume.",
+      "boundary": "New explicitly versioned source-bound interposition contract and retained before/after/reopened storage evidence.",
+      "distinct_defect": "Impossible forced orderings could be mislabeled as product failures or known failures erased by unavailable observations; source/fixture substitution could invalidate the judgment.",
+      "overlap": "Original B02v1 failures remain historical and unchanged; these classes qualify a changed reference and execution contract.",
+      "overlap_reason": "Expected-unavailable development controls and separately named instrumentable sensitivity checks do not count as product acceptance.",
+      "disposition": "Run combined static and all selected offline classes before the three bounded Docker workers; freeze all source, profiles and recipes before execution."
+    },
+    "tests/test_candidate_intake_store_driver_v2.py::CandidateDirectStoreDriverV2DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 1800,
+      "invariant": "All117 direct histories retain ordinary assertions and explicitly distinguish the five unavailable forced schedules; two direct-state mutants remain separate.",
+      "isolation": "One class worker, no nested pool; each physical history uses fresh candidate container and owned volume.",
+      "boundary": "New explicitly versioned source-bound interposition contract and retained before/after/reopened storage evidence.",
+      "distinct_defect": "Impossible forced orderings could be mislabeled as product failures or known failures erased by unavailable observations; source/fixture substitution could invalidate the judgment.",
+      "overlap": "Original B02v1 failures remain historical and unchanged; these classes qualify a changed reference and execution contract.",
+      "overlap_reason": "Expected-unavailable development controls and separately named instrumentable sensitivity checks do not count as product acceptance.",
+      "disposition": "Run combined static and all selected offline classes before the three bounded Docker workers; freeze all source, profiles and recipes before execution."
+    },
+    "tests/test_candidate_intake_store_driver_v2.py::CandidateScheduleControlV2DockerTests": {
+      "lane": "docker",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Five independently instrumentable schedules and one intended false-success mutant qualify detector sensitivity without accepting unavailable product facets.",
+      "isolation": "One class worker, no nested pool; each physical history uses fresh candidate container and owned volume.",
+      "boundary": "New explicitly versioned source-bound interposition contract and retained before/after/reopened storage evidence.",
+      "distinct_defect": "Impossible forced orderings could be mislabeled as product failures or known failures erased by unavailable observations; source/fixture substitution could invalidate the judgment.",
+      "overlap": "Original B02v1 failures remain historical and unchanged; these classes qualify a changed reference and execution contract.",
+      "overlap_reason": "Expected-unavailable development controls and separately named instrumentable sensitivity checks do not count as product acceptance.",
+      "disposition": "Run combined static and all selected offline classes before the three bounded Docker workers; freeze all source, profiles and recipes before execution."
+    },
+    "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2DefinitionsTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The original238 case bodies remain identical while three additional JSON-whitespace/decoder histories receive explicit unique identities and complete fixed expected histories.",
+      "isolation": "One class worker; controller-authored synthetic observations and generated data only.",
+      "boundary": "Immutable inherited definition equivalence, closed aliases and source/recipe/expected-history digest binding.",
+      "distinct_defect": "A renamed or altered case could silently inherit an unrelated score, weaken a frozen expectation or authenticate the unselected ambiguity branch.",
+      "overlap": "Original238 definitions remain frozen; additional fields and three new cases use an explicit v2 contract.",
+      "overlap_reason": "Pure definition/scorer checks do not establish candidate behavior or whole-ID acceptance.",
+      "disposition": "Run in the combined offline gate before freezing and executing the new physical roster; preserve unsupported and failed observations."
+    },
+    "tests/test_candidate_intake_store_cases_v2.py::CandidateIntakeStoreV2ScorerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The v2 scorer preserves frozen typed checks and earlier failures, binds actual selected ambiguity history, and identifies extra-case aliases without hiding changed inputs.",
+      "isolation": "One class worker; controller-authored synthetic observations and generated data only.",
+      "boundary": "Immutable inherited definition equivalence, closed aliases and source/recipe/expected-history digest binding.",
+      "distinct_defect": "A renamed or altered case could silently inherit an unrelated score, weaken a frozen expectation or authenticate the unselected ambiguity branch.",
+      "overlap": "Original238 definitions remain frozen; additional fields and three new cases use an explicit v2 contract.",
+      "overlap_reason": "Pure definition/scorer checks do not establish candidate behavior or whole-ID acceptance.",
+      "disposition": "Run in the combined offline gate before freezing and executing the new physical roster; preserve unsupported and failed observations."
     }
   },
   "audit": {
