@@ -1,0 +1,248 @@
+{
+  "base_commit": "ec6553061a5780e43ed0529fbe60ed4bf4a1495e",
+  "branch": "codex/cumulative-project-contract",
+  "documentation": {
+    "bytes": 8756,
+    "path": "docs/candidate-b03-v3-qualification.md",
+    "sha256": "2192024e170b1a6bea10ac7896a2bc8938fb9f799d79bdf954d1cbaf42c4de70"
+  },
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "goal_turn_classification": "progress",
+  "implementation": {
+    "changes": [
+      "Complete strictly typed top-level Mounts inventories keyed by unique canonical Destination; original raw order retained.",
+      "Separate durable prestart comparison before attach/start; all other arrays retain exact order.",
+      "Strict raw JSON parsing in ordinary controller/transport paths; exceptional raw helper gap explicitly disclosed.",
+      "Inherited runtime-bound OOM-default startup subrule remains separate; running-keeper boundaries do not repeat startup normalization."
+    ],
+    "frozen_prior_versions_preserved": true,
+    "identity_policy_sha256": "a4374b977d9f24826b369b3ea33be26e880ba3cc4792d8837f77c5ff0a0d71dc",
+    "product_definitions_and_control_sources_unchanged": {
+      "assertions": 900,
+      "candidate_container_attempts": 316,
+      "controls": 11,
+      "keepers": 67,
+      "reference_histories": 57,
+      "reference_invocations": 305,
+      "unspecified_assertions": 32,
+      "volumes": 68
+    },
+    "protocols": [
+      "candidate-client-process-v3",
+      "candidate-client-execution-v3",
+      "candidate-client-observer-v3"
+    ],
+    "startup_policy_sha256": "6f30ffc71e226d703b4aa506671e6a7b00324b4a43a8915fefa464749ad7ebf3"
+  },
+  "known_findings": [
+    {
+      "candidate_exit_observed": false,
+      "finding": "Raw missing-executable control has Config.Cmd=null, exact singleton Entrypoint/Path and Args=[]. Frozen validate_sandbox requires a list and rejects before transport.",
+      "intended_start_error_qualified": false,
+      "kind": "observed harness admission error",
+      "starts": 0
+    },
+    {
+      "actual_duplicate_keys_observed": false,
+      "finding": "Four exceptional raw-control inspection sites use plain json.loads. The original all-path strict-decoder clearance was overbroad. Available actual bodies have no duplicate keys; future code must reject duplicates before any use.",
+      "kind": "source-review correction"
+    },
+    {
+      "finding": "Raw startup control accepts start_error without requiring complete retained daemon rejection evidence, while transport exceptions at stage=start can produce the same status. The v3 attempt stopped earlier; no false pass on this path was observed.",
+      "kind": "latent qualification false-positive gap",
+      "observed_in_physical_execution": false,
+      "required_next_version_change": "Authenticate complete request/response and start-response success-of-observation before crediting daemon rejection; keep transport uncertainty distinct."
+    }
+  ],
+  "later_http_design": {
+    "plan": {
+      "bytes": 34252,
+      "path": "runs/candidate-b03-c03-intake-plan-1.json",
+      "sha256": "41ce879443ee4ceafac92577faecec09613a2c595be91bb47eccb8b8307953ae"
+    },
+    "status": "separate prospective intake only; no implementation, normative clearance or execution credit"
+  },
+  "live_launch_status": "Existing payload-transfer approval remains pending; no renewed request or provider attempt. Offline work continues.",
+  "new_budget_authorization": null,
+  "new_comparative_samples": 0,
+  "new_provider_calls": 0,
+  "next_design": {
+    "intermediate_plan_preserved": {
+      "bytes": 54728,
+      "path": "analysis/candidate-b03-empty-command-plan-v2.json",
+      "sha256": "49972f44d5b06ead929e5d4df7b834eaad1bd179b0cdc4985375e2beb47272a9"
+    },
+    "new_pinned_primary_source_capture": {
+      "bytes": 3030,
+      "path": "runs/candidate-b03-empty-command-primary-sources-1/manifest.json",
+      "sha256": "b835aa5e459d3e95a2329bf5814d06bfa96eb92693af78b9939474fee49b574d"
+    },
+    "next_action": "Implement a new source-bound version under the reviewed plan, qualify scoped/offline checks and freeze it. Run one fresh persistence history and all11 unchanged controls under that changed execution contract; launch56 bulk histories only after terminal phase-one success. Do not retry/reclassify v3 or reuse it as new-version qualification.",
+    "plan": {
+      "bytes": 57205,
+      "path": "analysis/candidate-b03-empty-command-plan-v3.json",
+      "sha256": "6c99fe8badb01281f0adb82265e5260d1022a818cf4edc18cf97da41912981d3"
+    },
+    "review": {
+      "bytes": 22815,
+      "path": "runs/candidate-b03-empty-command-design-review-3.json",
+      "sha256": "b4904cb7145443153f6d2c01041a2d58c1b38ffd4d3adad70444277de3faad87"
+    },
+    "status": "reviewed prospective design; not implemented or qualified",
+    "superseded_plan_preserved": {
+      "bytes": 25910,
+      "path": "analysis/candidate-b03-empty-command-plan-v1.json",
+      "sha256": "c3bade4d8ba9adfd5ed817f1ebd6ae540aa12f9027977be84a8294a951d1a650"
+    }
+  },
+  "pages_refresh": false,
+  "physical_audit": {
+    "actual_counts": {
+      "bulk_reference_assertion_cells_not_launched": 873,
+      "bulk_reference_histories_not_launched": 56,
+      "bulk_reference_invocations_not_launched": 296,
+      "bulk_unspecified_reference_cells_not_launched": 30,
+      "candidate_complete_stream_observations": 17,
+      "candidate_containers_created": 20,
+      "candidate_containers_removed": 20,
+      "candidate_output_limit_with_known_natural_exit": 1,
+      "candidate_pre_transport_admission_failures": 1,
+      "candidate_processes_naturally_completed": 18,
+      "candidate_processes_started": 19,
+      "candidate_timeout_and_controller_kill": 1,
+      "comparisons_with_mount_order_transformation": 13,
+      "comparisons_with_phase_gated_oom_transformation": 29,
+      "docker_cli_control_records": 318,
+      "docker_cli_raw_stream_bytes": 650665,
+      "docker_cli_raw_streams": 636,
+      "external_checkpoints": 1547,
+      "http_request_response_pairs": 153,
+      "incomplete_http_responses_retained": 1,
+      "independently_recomputed_identity_comparisons": 86,
+      "journal_files_excluding_locks": 1547,
+      "keepers_created": 11,
+      "keepers_removed": 11,
+      "keepers_started": 11,
+      "new_provider_calls_in_this_qualification": 0,
+      "ordinary_controller_histories": 11,
+      "physical_histories_entered": 12,
+      "raw_startup_admission_histories": 1,
+      "reference_assertion_cells": 27,
+      "reference_assertions_failed": 0,
+      "reference_assertions_supported_true": 25,
+      "reference_assertions_unavailable": 0,
+      "reference_assertions_unspecified_null": 2,
+      "reference_histories_entered": 1,
+      "reference_histories_locally_qualified_with_policy_limits": 1,
+      "reference_invocations_started_and_completed": 9,
+      "synthetic_controls_entered": 11,
+      "synthetic_controls_not_run": 0,
+      "synthetic_controls_qualification_error": 1,
+      "synthetic_controls_qualification_verified": 10,
+      "volumes_created": 12,
+      "volumes_removed": 12
+    },
+    "check_count_note": "2496 controls/runner checks and4936 persistence checks are retained separately, plus aggregate reconciliation. These audit operations are not additional test executions or independent scientific observations; some shared source/policy checks overlap.",
+    "discrepancies": [],
+    "judgment": {
+      "no_retrospective_promotion": true,
+      "production_acceptance_credit": false,
+      "qualification": "failed",
+      "raw_startup_failure": "Path is the singleton missing executable, Args is [], and Config.Cmd is null; frozen validate_sandbox rejects the null command representation before run_process. No start or candidate exit was observed for that control.",
+      "reason": "Raw startup-missing-executable control failed admission before transport. Other ten control observations and persistence supported assertions remain valid local observations; they do not make the combined phase pass.",
+      "retained_evidence": "reconciled",
+      "source_review_correction": "The frozen raw startup helper has four plain json.loads callsites outside the ordinary controller strict decoder. Three available retained raw CLI bodies contain no duplicate keys; the fourth after-start body was never produced. This separate prospective decoder gap did not cause the observed admission error."
+    },
+    "limitations": [
+      "All evidence is local trusted-controller retention and raw Engine traffic, not external attestation. No fresh daemon/socket/resource census was performed.",
+      "Cleanup is supported by exact created/inspected IDs, raw removal records and subsequent successful empty listings; it does not establish state outside those retained observations.",
+      "Attach/start request ordering is proven through cumulative checkpoint first occurrences. Raw frames corroborate byte identity; the audit does not independently measure socket/EOF wall-clock ordering.",
+      "Timeout retains an incomplete HTTP wait response and forged marker bytes without candidate completion authority. Overflow retains a genuine exit0 with unavailable/truncated output; neither becomes a product pass.",
+      "Historical source, runtime, limits and environment digests are bound across retained registration/intent/configuration. The historical parent environment itself is not independently reconstructed from the current shell.",
+      "The raw startup failure and permissive-parser source gap remain frozen and disclosed. No retries, retrospective result changes or candidate exit inference were performed.",
+      "No bulk histories, whole B03 acceptance, Registry bridge, repeatability, unseen candidate cohort, comparative statistical sample, speed advantage or cost advantage is established.",
+      "Auditors ran no tests, imported no evaluator/candidate modules, invoked no Engine/Docker/provider calls, and made no frozen-source edits. Read-only Git object reads and independent retained-byte computations only."
+    ],
+    "original": {
+      "bytes": 2417535,
+      "path": "runs/candidate-b03-v3-physical-audit-1.json",
+      "sha256": "96eea3765121893aa39791078aa004cb8e61a79452fc9aef36c65fdf674a894a"
+    },
+    "receipt": {
+      "bytes": 2417535,
+      "path": "analysis/candidate-b03-v3-physical-audit.json",
+      "sha256": "96eea3765121893aa39791078aa004cb8e61a79452fc9aef36c65fdf674a894a"
+    }
+  },
+  "recorded_at": "2026-10-03T17:39:19.468136+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "schema": "candidate-b03-v3-qualification-checkpoint-v1",
+  "scope": "Finite C01/C02 CLI harness qualification; no whole-product or comparative acceptance.",
+  "statistical_conclusion": "No new evidence for or against swarm advantage. Harness tests, controls and audit checks are not independent software-project samples.",
+  "status": "failed physical qualification; audited partial observations and prospective correction design",
+  "transport_causality_limit": "The planned peer-local versus central policy comparison uses the same gossip transport. It cannot alone identify gossip's causal contribution; a separately designed transport-by-policy comparison remains necessary for that claim.",
+  "verification": {
+    "assertion_review": {
+      "bytes": 6660,
+      "path": "runs/candidate-b03-v3-assertion-review-1.json",
+      "sha256": "f410f8db991d9ccba79aa92b4fa569d4c473dda15dbede1dc51b8387aba15073"
+    },
+    "current_runner_inputs": 468,
+    "docker_methods_error": 1,
+    "docker_methods_passed": 7,
+    "elapsed_seconds": 206.41068275086582,
+    "focused_checks": {
+      "bytes": 4624,
+      "path": "runs/candidate-b03-v3-focused-checks-1/receipt.json",
+      "sha256": "14be69b1af259b3fbd292e2177c6d67d566b979b8503a4d29796d9c1d25e9deb"
+    },
+    "freeze": {
+      "bytes": 189283,
+      "path": "runs/candidate-b03-v3-definition-freeze-1/freeze.json",
+      "sha256": "28f4b72174ee5fea4263f348202cb3c4bcdebc12609f1f78293b489d08cca884"
+    },
+    "offline_methods_passed": 139,
+    "outcomes": {
+      "error": 1,
+      "passed": 146
+    },
+    "resource_tokens": 4,
+    "reused_classes": 0,
+    "scope": "Fresh combined static/offline/first physical group; independent audit reads retained evidence, not reexecution. No browser surface changed; no browser qualification claimed.",
+    "selected_methods": 147,
+    "source_review": {
+      "bytes": 10202,
+      "path": "runs/candidate-b03-v3-source-review-1.json",
+      "sha256": "5081dea888d89dd1ea08a2d81813a91c35fe6ec2db5147282b214d6d4e5c8368"
+    },
+    "source_review_correction": {
+      "bytes": 9236,
+      "path": "analysis/candidate-b03-v3-source-review-supplement.json",
+      "sha256": "1d66e9b2a2a8725a3a6ec73d4d7b904df5e5812fb8c5d26aa76b13d39b29960d"
+    },
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": "passed:402 source files,119 explicit type roots,117 unchanged baselined diagnostic debts",
+    "summary": {
+      "bytes": 95846,
+      "path": "analysis/candidate-b03-v3-controls-result.json",
+      "sha256": "e61fcad90e2ec182191513170edc82f8848429329c05f04d2a7633423754ccc5"
+    },
+    "terminal_reconciliation": {
+      "bytes": 1512,
+      "path": "runs/candidate-b03-v3-terminal-reconciliation-1.json",
+      "sha256": "c8fe8928b6776842cb781ec3db696e710738b76451e203d94640bc45754cfc54"
+    },
+    "unlaunched_bulk_methods": 3,
+    "workers_started": 11
+  }
+}

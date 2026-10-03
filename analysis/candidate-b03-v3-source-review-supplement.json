@@ -1,0 +1,178 @@
+{
+  "activity": {
+    "candidate_executions": 0,
+    "engine_calls": 0,
+    "provider_calls": 0,
+    "source_edits": 0,
+    "test_executions": 0,
+    "writes": "This new supplemental receipt only."
+  },
+  "actual_retained_observations": {
+    "causal_distinction": "The recorded run failed before run_process at _validate_created -> validate_sandbox because Config.Cmd is null while the frozen predicate requires a list; Path and the single Entrypoint identify the missing executable and Args is an empty list. No duplicate JSON keys were found in the three retained relevant CLI bodies. The parser gap is a source-level generalization defect, not the demonstrated cause of this terminal error.",
+    "outcome": {
+      "acceptance_credit": false,
+      "observation": null,
+      "qualification_error": "ProcessError: Candidate argv differs",
+      "qualification_verified": false,
+      "record": {
+        "bytes": 281,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/outcome-startup-missing-executable.json",
+        "sha256": "a287a7a572c90f1179240001f000520cfc94f31bdac8e32f9b0f6f57f53dad55"
+      },
+      "status": "control-qualification-failure"
+    },
+    "raw_after_start_response_exists": false,
+    "raw_cli_records": [
+      {
+        "duplicate_json_keys_observed": [],
+        "label": "raw-volume-created",
+        "raw": {
+          "bytes": 454,
+          "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-volume-created-stdout.bin",
+          "sha256": "fa18c5f1333332da7a156c78d8a342c504575644d15b376a708d3fc66c1f9a61"
+        }
+      },
+      {
+        "duplicate_json_keys_observed": [],
+        "label": "raw-container-created",
+        "observed_fields": {
+          "Args": [],
+          "Config.Cmd": null,
+          "Config.Entrypoint": [
+            "/workspace/absent-control-executable"
+          ],
+          "Id": "e6ddc6a0d2ef18d44f3ff42eb2b77450e915f14c0b347bd72951830e432e8a05",
+          "Path": "/workspace/absent-control-executable",
+          "state_status": "created"
+        },
+        "raw": {
+          "bytes": 6610,
+          "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-container-created-stdout.bin",
+          "sha256": "30da3a344931cb0badea28e313f831363842cc30026d07c77d505ced2324dbef"
+        }
+      },
+      {
+        "duplicate_json_keys_observed": [],
+        "label": "raw-volume-cleanup-inspect",
+        "raw": {
+          "bytes": 454,
+          "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-volume-cleanup-inspect-stdout.bin",
+          "sha256": "fa18c5f1333332da7a156c78d8a342c504575644d15b376a708d3fc66c1f9a61"
+        }
+      }
+    ],
+    "raw_startup_transport_record_paths": [],
+    "raw_terminal": {
+      "candidate_naturally_completed": 0,
+      "candidate_started": 0,
+      "cleanup": {
+        "container": true,
+        "volume": true
+      },
+      "record": {
+        "bytes": 404,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/raw-transport-terminal.json",
+        "sha256": "4f148d178a16b5a199de1bb8e75513fa9823322e7b49518260acbeba5fd63030"
+      },
+      "transport_record": null
+    }
+  },
+  "correction": {
+    "actual_scope": "The normal controller path and retained-inspection qualification helpers use strict raw decoding, but startup_transport_control has four ordinary json.loads callsites on raw CLI inspection bytes. The earlier clearance generalized beyond the reviewed strict helper paths.",
+    "affected_source": "tests/test_candidate_clients_docker_v3.py",
+    "callsites": [
+      {
+        "line": 723,
+        "record": "raw-volume-created",
+        "use": "Volume ownership validation before raw container creation."
+      },
+      {
+        "line": 732,
+        "record": "raw-container-created",
+        "use": "Initial candidate expected inspection passed to _validate_created and, if validation succeeds, run_process."
+      },
+      {
+        "line": 741,
+        "record": "raw-container-after-start",
+        "use": "Post-attempt inspection identity check; not reached in this run."
+      },
+      {
+        "line": 761,
+        "record": "raw-volume-cleanup-inspect",
+        "use": "Volume ownership validation before removal."
+      }
+    ],
+    "finding": "The exceptional missing-executable raw control bypasses duplicate-key rejection before initial validation and volume ownership/cleanup decisions. A later strict evidence read cannot establish that the earlier boundary was strict.",
+    "function": "startup_transport_control",
+    "normal_paths_distinguished": [
+      "candidate_client_execution_v3 uses process_transport.strict_json_loads for candidate/keeper/volume raw inspection paths.",
+      "candidate_client_process_v3._request_json uses strict_json_loads for Engine bodies.",
+      "Physical retained_command_json and retained_engine_json use strict_inspection_json; these later evidence readers do not replace strict decoding before raw-control use."
+    ],
+    "prior_overbroad_claim": "Raw CLI and Engine inspection parsing rejects duplicate object keys before dictionary conversion and rejects nonfinite literal constants; later canonical JSON encoding retains strict type distinctions.",
+    "recommended_action": "In a prospectively versioned successor, route every exceptional raw-control inspection through the same bounded strict decoder before dictionary-based validation or ownership decisions, and add focused raw-byte regressions for those callsites. Do not alter frozen v3 source or relabel historical results."
+  },
+  "freeze": {
+    "bytes": 189283,
+    "path": "runs/candidate-b03-v3-definition-freeze-1/freeze.json",
+    "sha256": "28f4b72174ee5fea4263f348202cb3c4bcdebc12609f1f78293b489d08cca884"
+  },
+  "limits": [
+    "This is a read-only source/retained-byte review, not a rerun or a full physical evidence audit.",
+    "Absence of duplicates in these three historical responses does not prove duplicate-key rejection by the permissive source paths.",
+    "Config.Cmd null compatibility remains a separate prospective design question; this receipt does not approve an arbitrary null-to-empty normalization or altered candidate argv.",
+    "The failed v3 phase cannot authorize bulk histories or be upgraded by this diagnosis. Root owns central verification and boundary reviewer owns the broader retained physical audit.",
+    "No product acceptance, independent repeatability, statistical sample, performance advantage or swarm-versus-orchestrator conclusion follows."
+  ],
+  "original_review": {
+    "bytes": 6660,
+    "path": "runs/candidate-b03-v3-assertion-review-1.json",
+    "sha256": "f410f8db991d9ccba79aa92b4fa569d4c473dda15dbede1dc51b8387aba15073"
+  },
+  "original_review_preserved": true,
+  "protocol": "candidate-b03-v3-assertion-source-review-supplement-v1",
+  "qualification_result": {
+    "outcomes": {
+      "error": 1,
+      "passed": 146
+    },
+    "reclassification": false,
+    "selected_counts": {
+      "docker": 8,
+      "fast": 139
+    },
+    "selected_total": 147,
+    "status": "failed",
+    "summary": {
+      "bytes": 95846,
+      "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/summary.json",
+      "sha256": "e61fcad90e2ec182191513170edc82f8848429329c05f04d2a7633423754ccc5"
+    }
+  },
+  "recorded_at": "2026-10-03T17:04:21.824222+00:00",
+  "reviewed_source_pins": [
+    {
+      "bytes": 55876,
+      "path": "tests/test_candidate_clients_docker_v3.py",
+      "sha256": "f618005a72bc915be2d9efeff72ceacaff7017d8ecf9546ac34432d2c86fed81"
+    },
+    {
+      "bytes": 54019,
+      "path": "gossip_harness/candidate_client_execution_v3.py",
+      "sha256": "4cdb530824cf8b096d4e559c48d7f05e0096ee3219a4220a7904716e1d758610"
+    },
+    {
+      "bytes": 50613,
+      "path": "gossip_harness/candidate_client_process_v3.py",
+      "sha256": "0a9efedfb60228bab5d769fdc8da88afd27412ef9875e913ca3793a7686cba5e"
+    },
+    {
+      "bytes": 11455,
+      "path": "docs/candidate-client-qualification-plan-v3.md",
+      "sha256": "b0d1a575b198d8c03452c47beda6faa10e3d73380d26e3b5825021f835168aab"
+    }
+  ],
+  "reviewer": "/root/b03_assertion_review",
+  "status": "material source-review correction; prospective fix required; frozen sources unchanged",
+  "unchanged_prior_findings": "The shared product provider, control source/argv/expectations, observer scoring, complete unknown/unrun census and score-before-later-qualification behavior are unchanged. This supplement corrects only the broad raw-decoder boundary clearance and records the newly inspected failure boundary."
+}

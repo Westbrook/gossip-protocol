@@ -1,0 +1,367 @@
+{
+  "author_scope": "Read pinned official sources and retained metadata; rely on the physical author and independent assertion reviewer for the raw-body audit. Write only this new receipt. No Docker, Engine, provider, key reads, candidate execution or test rerun.",
+  "created_at": "2026-10-03T17:09:13.254105+00:00",
+  "limits": [
+    "The supplied missing executable has not reached an actual Engine start in v3, so its intended start-error observation remains unqualified.",
+    "Primary Engine evidence justifies schema handling, not a guarantee that a future full qualification will pass.",
+    "Installed CLI version is unavailable from the retained evidence inspected; the CLI sources are explicitly illustrative and pinned, while the Engine sources match the recorded server.",
+    "This design does not authorize provider spending, candidate product execution, new samples, changed timing limits or any implementation before the failed v3 checkpoint is published."
+  ],
+  "options_considered": [
+    {
+      "option": "Recipe/runtime-bound explicit-null validation with unchanged raw identity",
+      "recommendation": "Choose this narrow supported-schema repair; it models the authoritative Engine invocation semantics."
+    },
+    {
+      "option": "Normalize null Cmd to [] in comparisons",
+      "recommendation": "Reject; it would weaken raw identity and hide a later representation/configuration change."
+    },
+    {
+      "option": "Treat missing Cmd as null",
+      "recommendation": "Reject; an absent required inspection field is incomplete evidence."
+    },
+    {
+      "option": "Add a dummy argument to the missing-executable control",
+      "recommendation": "Reject; it changes the prospective control to avoid the unsupported validator branch."
+    },
+    {
+      "option": "Keep list-only validation and report unsupported empty-argument invocation",
+      "recommendation": "Scientifically honest but leaves the required startup-failure qualification incomplete. Do not describe that control as passed."
+    }
+  ],
+  "preserved_baseline": {
+    "description": "139 offline test methods and 7 Docker methods passed; the raw missing-executable method ended in an error before transport dispatch. The overall qualification remains failed.",
+    "duration_seconds": 206.41068275086582,
+    "freeze": {
+      "bytes": 189283,
+      "path": "runs/candidate-b03-v3-definition-freeze-1/freeze.json",
+      "sha256": "28f4b72174ee5fea4263f348202cb3c4bcdebc12609f1f78293b489d08cca884"
+    },
+    "no_product_or_statistical_acceptance": true,
+    "no_reclassification": true,
+    "outcomes": {
+      "error": 1,
+      "passed": 146
+    },
+    "remaining_56_histories": "not launched in this failed cycle",
+    "session": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075",
+    "status": "failed",
+    "summary": {
+      "bytes": 95846,
+      "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/summary.json",
+      "sha256": "e61fcad90e2ec182191513170edc82f8848429329c05f04d2a7633423754ccc5"
+    }
+  },
+  "primary_sources": [
+    {
+      "authority": "authoritative pinned runtime source",
+      "bytes": 3175,
+      "commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "path": "api/types/container/config.go",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/api/types/container/config.go",
+      "sha256": "06f5e71501399a33906ef7b006d49d71a700e6c84d7442a90e9d240cb52b81ee",
+      "supports": "Cmd and Entrypoint are string slices with no omitempty tag. A nil Cmd remains an explicit JSON null under the Go encoding/json contract.",
+      "symbol": "Config.Cmd and Config.Entrypoint",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/api/types/container/config.go"
+    },
+    {
+      "authority": "authoritative pinned runtime source",
+      "bytes": 5537,
+      "commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "path": "daemon/commit.go",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/commit.go",
+      "sha256": "43476262db6bc9431c91002a2fdf52ecf1c7db6fa2110867c3be6d20314644f0",
+      "supports": "Image Cmd inheritance is inside the branch for an empty user Entrypoint. A supplied nonempty Entrypoint prevents that image command fallback.",
+      "symbol": "merge (raw line 73 onward)",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/commit.go"
+    },
+    {
+      "authority": "authoritative pinned runtime source",
+      "bytes": 13023,
+      "commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "path": "daemon/create.go",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/create.go",
+      "sha256": "6132c19fd4828981d3e57667eaf9a9b1d79ab75f805728cb7119c1f3985c738f",
+      "supports": "Configuration fails for no command only if both Entrypoint and Cmd have zero length. A nonempty Entrypoint with nil Cmd is permitted.",
+      "symbol": "mergeAndVerifyConfig (raw line 358)",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/create.go"
+    },
+    {
+      "authority": "authoritative pinned runtime source",
+      "bytes": 12968,
+      "commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "path": "daemon/container.go",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container.go",
+      "sha256": "d7a51fa9bf52fc1af3ce1b909c6d19bb42cd2e6e00c08d1fec7aec40323ac919",
+      "supports": "The container Path uses the first entrypoint element; effective Args are the remaining entrypoint elements followed by Cmd. A singleton entrypoint with nil Cmd has no arguments.",
+      "symbol": "newContainer and getEntrypointAndArgs (raw line 156 onward)",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container.go"
+    },
+    {
+      "authority": "illustrative pinned v29.2.1 CLI source; installed CLI version not established",
+      "bytes": 44003,
+      "commit": "a5c7197d720daef7d8b9e6174ee78c0743cea166",
+      "path": "cli/command/container/opts.go",
+      "raw_url": "https://raw.githubusercontent.com/docker/cli/a5c7197d720daef7d8b9e6174ee78c0743cea166/cli/command/container/opts.go",
+      "sha256": "1dc21142d2dd51990dede8bbad29cab4111de18d0d73cffc100460f880f42b3c",
+      "supports": "runCmd starts as a nil string slice and is assigned only when command arguments exist. An explicit nonempty entrypoint becomes a singleton slice; Config.Cmd receives runCmd.",
+      "symbol": "parse (raw lines 410 onward and 656)",
+      "url": "https://github.com/docker/cli/blob/a5c7197d720daef7d8b9e6174ee78c0743cea166/cli/command/container/opts.go"
+    },
+    {
+      "authority": "illustrative pinned v29.2.1 CLI source; installed CLI version not established",
+      "bytes": 13402,
+      "commit": "a5c7197d720daef7d8b9e6174ee78c0743cea166",
+      "path": "cli/command/container/create.go",
+      "raw_url": "https://raw.githubusercontent.com/docker/cli/a5c7197d720daef7d8b9e6174ee78c0743cea166/cli/command/container/create.go",
+      "sha256": "c266d9048731f5180bb2cd3bc336a3e287e8037c72cb9463f5c7797a56f8a169",
+      "supports": "Positional arguments after the image populate copts.Args only when present; this is consistent with leaving Cmd nil for the retained create command.",
+      "symbol": "newCreateCommand (raw line 59)",
+      "url": "https://github.com/docker/cli/blob/a5c7197d720daef7d8b9e6174ee78c0743cea166/cli/command/container/create.go"
+    },
+    {
+      "authority": "official language-library documentation; live page, no byte pin claimed",
+      "supports": "The official Go JSON encoder documents nil slice serialization as JSON null, unlike an allocated empty slice serialized as an empty array.",
+      "url": "https://pkg.go.dev/encoding/json#Marshal"
+    },
+    {
+      "authority": "official Docker documentation; live page, no byte pin claimed",
+      "supports": "Docker documents that an explicit entrypoint replaces the image entrypoint and clears the image default command; positional arguments supply any additional entrypoint arguments.",
+      "url": "https://docs.docker.com/engine/containers/run/#default-entrypoint"
+    }
+  ],
+  "principle": "Validate the effective registered process invocation against the Engine configuration schema. An explicit null Cmd is a supported representation of no command arguments when an explicit singleton Entrypoint supplies the executable. It is not a permission to omit fields, inherit an unregistered image command, coerce arbitrary null values or equate distinct raw identities.",
+  "prospective_physical_qualification": "After independent source review, scoped/offline checks and a new frozen definition, root owns one new complete phase-one run with one persistence history and all 11 unchanged controls. The v3 passes cannot supply new-version qualification because evaluator/binding changes. If the new phase genuinely passes, run the remaining 56 histories under the same frozen version without repeating its already passed persistence history. Do not rerun frozen v3 or reinterpret its error.",
+  "protocol": "candidate-b03-empty-command-design-v1",
+  "raw_helper_decoder_gap": {
+    "affected_raw_sites": [
+      {
+        "line": 723,
+        "role": "created volume inspection"
+      },
+      {
+        "line": 732,
+        "role": "created container inspection"
+      },
+      {
+        "line": 741,
+        "role": "post-start container inspection"
+      },
+      {
+        "line": 761,
+        "role": "cleanup volume ownership inspection"
+      }
+    ],
+    "affected_source": "tests/test_candidate_clients_docker_v3.py",
+    "independent_audit_limit": "Independent strict decoding of the actual retained bodies found no duplicate-key issue; this supports the diagnosis only. It neither tests the malformed-body branch of the frozen helper nor changes its implementation.",
+    "original_review_preserved": {
+      "bytes": 6660,
+      "path": "runs/candidate-b03-v3-assertion-review-1.json",
+      "sha256": "f410f8db991d9ccba79aa92b4fa569d4c473dda15dbede1dc51b8387aba15073"
+    },
+    "prospective_correction": "Route every raw inspection body in the raw startup helper through the same bounded duplicate-key-rejecting decoder before any dictionary conversion or use, including create, post-start, cleanup and volume paths. Review remaining raw parser callsites systematically; do not mistake parsing already-canonical owned observation JSON for raw inspection parsing.",
+    "review_correction": "Earlier source-readiness wording that all raw CLI inspection paths used the strict decoder was too broad. Ordinary controller paths and Engine JSON decoding do so, but frozen startup_transport_control contains four plain json.loads(controller._raw(...)) sites. This limitation remains part of the v3 review and failed qualification record.",
+    "supplement": {
+      "bytes": 9236,
+      "path": "runs/candidate-b03-v3-assertion-review-supplement-1.json",
+      "sha256": "1d66e9b2a2a8725a3a6ec73d4d7b904df5e5812fb8c5d26aa76b13d39b29960d"
+    }
+  },
+  "recommended_prospective_contract": {
+    "api_and_ordering": {
+      "existing_limitation": "The frozen validate_sandbox(value, policy) has no runtime or recipe argument; this plan does not claim it does. The fresh runtime check occurs later inside run_process.",
+      "ordering": [
+        "Controller validates the created inspection against its prospectively bound recipe argv and frozen runtime before transport setup.",
+        "At run_process entry validate the full initial inspection against the supplied declared argv and expected_runtime; record raw Config.Cmd, full inspection, actual argv and policy identities without changing raw values.",
+        "Read fresh runtime identity before dispatch and require canonical type-exact equality with expected_runtime, as before.",
+        "Read the independent prestart inspection, durably retain the existing identity comparison, and validate again with the same declared argv and freshly observed runtime before attachment/start. A stale/mismatched runtime or recipe must prevent dispatch."
+      ],
+      "proposed_signature": "validate_sandbox(value, policy, *, expected_argv: list[str], runtime: dict[str, Any]) -> None",
+      "transport_signature_delta": "The new run_process requires expected_argv from the independently registered controller/raw-control intent, alongside expected_runtime; freeze a copy/digest of that declared list in process intent."
+    },
+    "cmd_branches": [
+      {
+        "allowed_only_if": "The declared argv has exactly one element, Config.Entrypoint is that singleton, Path matches, and top-level Args is exactly []. The bound runtime must satisfy the explicit supported profile.",
+        "observed": "explicit JSON null with key present"
+      },
+      {
+        "allowed_only_if": "Cmd equals both top-level Args and the declared argv tail in exact type/order/value. An empty-string argument remains one real argument, not no arguments.",
+        "observed": "JSON array of strings, including an explicit empty array"
+      },
+      {
+        "allowed": false,
+        "observed": "missing, bool, number, string, object or mixed-type array"
+      }
+    ],
+    "declared_argv_binding": "The independent controller recipe or prospectively registered raw-control actual_step supplies a nonempty list of strings without NUL. Do not derive the expected argv from the inspected container. Entrypoint must equal [declared_argv[0]], Path must equal declared_argv[0], and Args must equal declared_argv[1:] with exact JSON types and order.",
+    "kind": "Narrow initial argv validation extension, not identity comparison normalization.",
+    "policy_id_proposal": "docker-explicit-entrypoint-empty-command-v1",
+    "preserved_control": "Use exactly /workspace/absent-control-executable with no additional arguments. Do not insert a sentinel/dummy argument, change the executable, special-case the control ID or replace the expected startup error with validation unavailability.",
+    "raw_identity_preservation": [
+      "Keep Config.Cmd exactly as inspected: null and [] are separate raw values with different full/projection/comparison hashes.",
+      "A null-to-[] or []-to-null change between created, prestart and final inspections remains an identity mismatch, even though either unchanged representation can independently describe no arguments.",
+      "Do not add a Cmd transformation to identity_comparison. Retain only the prior top-level Mounts order rule and narrowly phase/runtime-gated OomKillDisable rule.",
+      "Retain complete Config, HostConfig, mounts, ID/image/argv/source/fixture identities and all raw inspections. No additional fields or arrays are normalized."
+    ],
+    "required_key_presence": [
+      "Config must contain both Entrypoint and Cmd; the full inspection must contain Path and Args. Missing keys are unavailable, including missing Cmd even though dict.get would otherwise return None.",
+      "Config.Entrypoint must be an exact list containing one nonempty string without NUL. Path must be the same exact string. Top-level Args must be an actual JSON list; null Args is rejected."
+    ],
+    "runtime_gate": "Use the bound Linux Engine29.2.1/commit6bc6209b88a7a834c91f77d848e025c79e0227a1/API1.47 profile, pinned image/endpoint/daemon and existing cgroup/capability identity. No inferred CLI version is part of the grant. Different runtime profiles remain unqualified pending a prospective policy revision.",
+    "scope_authority": "No product case grammar, completion requirement, acceptance bar, deadline, stream bound, exit-code rule, test source or sample-purpose changes.",
+    "versioning": "Implement a new process/controller/qualification version and binding with this plan in evaluator/policy fingerprints. Preserve v1/v2/v3 sources, failed run evidence, authored control bytes, expected observations and actual control argv."
+  },
+  "required_offline_regressions": [
+    "Explicit Cmd:null and unchanged Cmd:[] each validate only with exact singleton entrypoint/path, declared one-element argv and Args:[]. Missing Cmd, missing Args and Args:null must reject.",
+    "Reject null Cmd with nonempty Args, any additional declared argument (including empty string), mismatched Path/Entrypoint, multi-element or empty/non-string entrypoint and malformed Cmd/Args types.",
+    "Nonempty Cmd arrays remain type/order-exact; changed, inserted, reordered or removed arguments and boolean/numeric substitutions reject. Empty-string arguments are preserved distinctly.",
+    "Raw identity comparisons reject null-to-empty and empty-to-null Cmd changes at prestart/final even when individual endpoint values are valid. Existing mount and OOM exceptions remain the only comparison rules.",
+    "Pure runtime/recipe substitution tests prove null permission cannot dispatch under missing/wrong runtime, image, endpoint, source/fixture or invocation binding.",
+    "Mocked raw-startup integration feeds a created inspection with exact Cmd:null and the original actual argv; it must reach the fake Engine start once, retain start_error with no candidate exit/output authority, and clean up. No host candidate execution is used.",
+    "Malformed raw container and volume JSON with duplicate keys at each of the four helper boundaries must reject before validation/dispatch or before cleanup ownership is trusted. Include duplicates nested in Config.Cmd/Entrypoint, mount rows and volume options; reject nonfinite values and oversized bodies.",
+    "Keep copied existing framing, EOF/start acknowledgement, wait/final-inspect, timeout/overflow, no-redispatch, durability, source identity, keeper lifetime, receipt authentication and cleanup regressions."
+  ],
+  "retained_failure": {
+    "cleanup_verified": {
+      "container": true,
+      "volume": true
+    },
+    "create_argv_suffix": [
+      "--entrypoint",
+      "/workspace/absent-control-executable",
+      "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f"
+    ],
+    "create_has_trailing_arguments": false,
+    "declared_actual_argv": [
+      "/workspace/absent-control-executable"
+    ],
+    "diagnosis_owner": "/root/b03_physical_tests read-only raw audit; confirmed independently by /root/b03_assertion_review",
+    "first_failure": "startup_transport_control calls controller._validate_created, which calls process.validate_sandbox. The frozen validator requires Config.Cmd to be a list and rejects explicit null. It does not reach run_process, the external before-start checkpoint, attachment or start.",
+    "inspection_fields": {
+      "Args": [],
+      "Config.Cmd": null,
+      "Config.Entrypoint": [
+        "/workspace/absent-control-executable"
+      ],
+      "Path": "/workspace/absent-control-executable",
+      "State.FinishedAt": "0001-01-01T00:00:00Z",
+      "State.Pid": 0,
+      "State.StartedAt": "0001-01-01T00:00:00Z",
+      "State.Status": "created"
+    },
+    "natural_finishes": 0,
+    "records": [
+      {
+        "bytes": 2773,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/prospective-raw-transport.json",
+        "sha256": "efb73835732b945d10a33ebd1ea46c810f9d08555959ebad16b73c2f854b9881"
+      },
+      {
+        "bytes": 404,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/raw-transport-terminal.json",
+        "sha256": "4f148d178a16b5a199de1bb8e75513fa9823322e7b49518260acbeba5fd63030"
+      },
+      {
+        "bytes": 8365,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/config.json",
+        "sha256": "dc4f52297925c659f7a1dec910b70e8b1ec2997cf467b9d82c2ca3fe7e6980ed"
+      },
+      {
+        "bytes": 2419,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-container-create.json",
+        "sha256": "7c96c5837b34daf093e5d5df3d2d83e6f70ec4ad3d957893f274b7cf6e6cfdc8"
+      },
+      {
+        "bytes": 6610,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-container-created-stdout.bin",
+        "sha256": "30da3a344931cb0badea28e313f831363842cc30026d07c77d505ced2324dbef"
+      },
+      {
+        "bytes": 6610,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-container-cleanup-inspect-stdout.bin",
+        "sha256": "30da3a344931cb0badea28e313f831363842cc30026d07c77d505ced2324dbef"
+      },
+      {
+        "bytes": 454,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-volume-created-stdout.bin",
+        "sha256": "fa18c5f1333332da7a156c78d8a342c504575644d15b376a708d3fc66c1f9a61"
+      },
+      {
+        "bytes": 454,
+        "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/raw-volume-cleanup-inspect-stdout.bin",
+        "sha256": "fa18c5f1333332da7a156c78d8a342c504575644d15b376a708d3fc66c1f9a61"
+      }
+    ],
+    "result_limit": "This is a harness validation error, not the intended observed Engine startup error and not a candidate process exit. Created State.ExitCode zero is not execution evidence.",
+    "root": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable",
+    "starts": 0,
+    "strict_raw_audit": "Physical author reports independent strict JSON acceptance of created and cleanup container bodies (same SHA) and created/cleanup volume bodies (same SHA); no duplicate keys/nonfinite tokens observed. This diagnostic audit does not repair the frozen helper or reclassify the control.",
+    "transport_record": null
+  },
+  "runtime_and_cli_identity": {
+    "architecture": "arm64",
+    "cgroup_driver": "cgroupfs",
+    "cgroup_version": "2",
+    "engine_git_commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+    "engine_version": "29.2.1",
+    "evidence": {
+      "bytes": 8365,
+      "path": "runs/candidate-b03-v3-controls-qualification-1/20261003T165443-c4f81075/classes/b714fe0398b37a2c/artifacts/gossip-candidate-b03-v3-process-controls-55kqs2pa/startup-missing-executable/execution/config.json",
+      "sha256": "dc4f52297925c659f7a1dec910b70e8b1ec2997cf467b9d82c2ca3fe7e6980ed"
+    },
+    "illustrative_cli_source": {
+      "annotated_tag": "8546a6364295fb3bd2420a002543e71f91c7c698",
+      "commit": "a5c7197d720daef7d8b9e6174ee78c0743cea166",
+      "installed_binary_match_claimed": false,
+      "tag": "v29.2.1",
+      "tag_object_response_sha256": "6c8da0dff2de1ffac4eab3b6d1065e6d0351b71325ab073039eeb1de0ea50631",
+      "tag_object_url": "https://api.github.com/repos/docker/cli/git/tags/8546a6364295fb3bd2420a002543e71f91c7c698",
+      "tag_ref_response_sha256": "23987ab6fb3beef467e6c3f7f0e62bac0e59ec6e849fcfad710353f95b506554",
+      "tag_ref_url": "https://api.github.com/repos/docker/cli/git/ref/tags/v29.2.1"
+    },
+    "installed_cli_limit": "No CLI version is present in the inspected retained v3 freeze/runtime/config evidence or physical author handoff. No new docker version command was run. Do not infer the client version from the Engine version.",
+    "installed_cli_version": null,
+    "kernel": "6.12.72-linuxkit",
+    "os": "linux",
+    "reported_engine_git_commit": "6bc6209",
+    "transport_api_version": "1.47"
+  },
+  "source_pins": [
+    {
+      "bytes": 50613,
+      "path": "gossip_harness/candidate_client_process_v3.py",
+      "sha256": "0a9efedfb60228bab5d769fdc8da88afd27412ef9875e913ca3793a7686cba5e"
+    },
+    {
+      "bytes": 54019,
+      "path": "gossip_harness/candidate_client_execution_v3.py",
+      "sha256": "4cdb530824cf8b096d4e559c48d7f05e0096ee3219a4220a7904716e1d758610"
+    },
+    {
+      "bytes": 20374,
+      "path": "gossip_harness/candidate_client_observer_v3.py",
+      "sha256": "414239c9692b5983538cf4f11e3bad04fe6a0a42cb93e73eeb43c9b9d22877fa"
+    },
+    {
+      "bytes": 55876,
+      "path": "tests/test_candidate_clients_docker_v3.py",
+      "sha256": "f618005a72bc915be2d9efeff72ceacaff7017d8ecf9546ac34432d2c86fed81"
+    },
+    {
+      "bytes": 16778,
+      "path": "docs/candidate-client-process-v3.md",
+      "sha256": "7da4a48c53c3fd6607ad5d39a18a37e9a3028d2ee2e0ff59fc2ffe62905878bd"
+    },
+    {
+      "bytes": 20918,
+      "path": "analysis/candidate-b03-runtime-compatibility-plan-v1.json",
+      "sha256": "7b8d89a9003594551c2677a9975d715b4b4e3584746874cc446601722f411b2d"
+    },
+    {
+      "bytes": 60749,
+      "path": "analysis/candidate-b03-mount-inventory-plan-v1.json",
+      "sha256": "f574060cfa8192c7e67da8a000309da5a7d2f01e4fe69edff4d2ea011c35a521"
+    }
+  ],
+  "status": "design-only; prospective next version; no implementation or physical qualification"
+}
