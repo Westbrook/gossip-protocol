@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "checkpoint_id": "library-m2-reference-qualification-v1",
+  "recorded_at": "2026-10-03T06:27:57.245209+00:00",
+  "status": "authored_reference_qualified_with_explicit_scope_limits",
+  "whole_project_acceptance": false,
+  "whole_m1_acceptance": false,
+  "whole_m2_acceptance": false,
+  "comparative_quality_result": false,
+  "goal": "Continue the full comparative investigation, including six four-milestone trajectories and independent held-out confirmation.",
+  "source_branch": "codex/cumulative-project-contract",
+  "base_commit": "44a8ae0f3c66951b4006d89c22d9a478b64a166e",
+  "main_frozen_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "new_provider_calls": 0,
+  "new_api_spend_usd": 0,
+  "live_pilot_status": "Not launched; same explicit payload-to-OpenAI approval remains pending after automatic approval review rejected sending benchmark source, outputs and operational metadata. Offline qualification has no credential or ledger dependency.",
+  "implemented": [
+    "Atomic schema0-to-2 migration and immutable revisions",
+    "Edit-version CAS and catalog-generation snapshots",
+    "Content refresh, normalized annotations and collection registry",
+    "Soft deletion/restoration with retained ingestion conflict/capacity checks",
+    "Original completed-job receipt replay after later lifecycle changes",
+    "Shared durable Python Service, CLI, HTTP and accessible browser workflows"
+  ],
+  "sources": {
+    "devtools/browser/library_m2_reference.cjs": "58c551f9f27ec7fe7da3b66789962063d575a7341806beda73387544cc526df4",
+    "gossip_harness/library_m2_acceptance_cases_v1.py": "ae3bd3381caf6149b9e5136ce50aa37b9c4d80c4b8589ddfda7f1a77a628d09b",
+    "gossip_harness/library_m2_browser_reference_v1.py": "63e047e4c277e49160bbaba2fd14061772f75bf832923c31542cb5ef51e1b825",
+    "gossip_harness/library_m2_catalog_reference_v1.py": "4ad0e946e24c986c7b4c0d5ef41ccf7da0096555ececd9c9e62deb9d55754d56",
+    "gossip_harness/library_m2_clients_reference_v1.py": "49ccc15b651e7b650b30bbae7b1a1ac9c4b67e7bfa398577fbc00e0b78040d2d",
+    "gossip_harness/library_m2_reference_v1.py": "000bdcd8cf167348899875448fa49f1ed599c5ac7273731bbb94accdc35979be",
+    "pyproject.toml": "116087b5e0dbad6ca802cdb3f52ca4ffc0b1eb498ba3cdb262909b7449ad44b2",
+    "tests/test_library_m2_acceptance_cases_v1.py": "84ebab7497bfc0dd26a3b3d1b8cdbab1e6eb25c65e4da3869de0c8b952b74876",
+    "tests/test_library_m2_browser_reference_v1.py": "85589539e927d6f615fc05721b29ec991fc394bf88b01fb631a9d96be0f542c8",
+    "tests/test_library_m2_catalog_reference_v1.py": "d7ecc419fa31df9617b41752a494e525bcf3e4e7941938c1bdc87eaa2f82ac32",
+    "tests/test_library_m2_clients_reference_v1.py": "1d9e0b1e4cc541ac0f27d83e0606bda0442ff9d4a0ca801fd6a2dae72c7721d1",
+    "tests/test_library_m2_docker_reference_v1.py": "41a8aa49d5b6a63b60626768f74cf6db084b4846057e8e579619481608a2ffc0",
+    "tests/test_library_m2_reference_v1.py": "7651d7decac5ee6082c92b7262d28ff715c1614531c750764e1783ad1e977d37",
+    "verification-manifest.json": "0dad5abb35b9ce1e3d2f85c252101d59b3e0a49c0fe5e9f0dcd21ca2db345dae"
+  },
+  "normative_contract": {
+    "path": "library-cumulative-product-v1.json",
+    "sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c"
+  },
+  "independent_cases": {
+    "protocol": "library-m2-independent-cases-v1",
+    "purpose": "independent_acceptance",
+    "status": "unqualified_definition",
+    "contract_sha256": "3353dbaa0c2474527cbffb0d87a4091b5f77ed3f98418fff2f216d90b6a8487c",
+    "case_ids": [
+      "m2-migrate-aba-receipt",
+      "m2-normalized-membership-tombstone",
+      "m2-query-generation-pages",
+      "m2-competing-connections",
+      "m2-revision-boundary",
+      "m2-document-capacity-tombstones",
+      "m2-retained-blob-capacity",
+      "m2-refresh-input-boundaries",
+      "m2-annotation-input-boundaries",
+      "m2-collection-boundary",
+      "m2-service-route-contract",
+      "m2-batch-generation-replay"
+    ],
+    "ordered_inputs_sha256": "e7816435100538d9f4d23166f61d084c8c67617400ba80055582f15a7f2e7744",
+    "ordered_expected_sha256": "f7377ea25ed5c0c88fb1750ab8330ce6bf46cbe31bf37a9516c3132a3963fe80",
+    "ordered_cases_sha256": "91ea061bb949a4ce42fdd3e8a8d49e765b7348e602f251df0cb091c5ef20df9c",
+    "adapter_sha256": "0b1d19f959dcb36226c4bd4ac606378b0e62e3af920fb5fa4e21453ddd13ee86",
+    "requirement_cases": {
+      "M2-IDENTITY-REVISIONS": [
+        "m2-migrate-aba-receipt",
+        "m2-query-generation-pages",
+        "m2-competing-connections",
+        "m2-revision-boundary",
+        "m2-document-capacity-tombstones",
+        "m2-retained-blob-capacity",
+        "m2-refresh-input-boundaries",
+        "m2-batch-generation-replay"
+      ],
+      "M2-REFRESH": [
+        "m2-migrate-aba-receipt",
+        "m2-query-generation-pages",
+        "m2-revision-boundary",
+        "m2-retained-blob-capacity",
+        "m2-refresh-input-boundaries",
+        "m2-batch-generation-replay"
+      ],
+      "M2-ANNOTATIONS": [
+        "m2-normalized-membership-tombstone",
+        "m2-competing-connections",
+        "m2-annotation-input-boundaries"
+      ],
+      "M2-COLLECTIONS": [
+        "m2-normalized-membership-tombstone",
+        "m2-collection-boundary"
+      ],
+      "M2-DELETE-RESTORE": [
+        "m2-migrate-aba-receipt",
+        "m2-normalized-membership-tombstone",
+        "m2-document-capacity-tombstones",
+        "m2-service-route-contract"
+      ],
+      "M2-QUERY": [
+        "m2-migrate-aba-receipt",
+        "m2-normalized-membership-tombstone",
+        "m2-query-generation-pages",
+        "m2-competing-connections",
+        "m2-document-capacity-tombstones",
+        "m2-annotation-input-boundaries",
+        "m2-collection-boundary",
+        "m2-service-route-contract",
+        "m2-batch-generation-replay"
+      ],
+      "M2-INTERFACES": [
+        "m2-service-route-contract"
+      ]
+    },
+    "limitations": [
+      "No browser observations or actual HTTP transport/content-type/body bounds.",
+      "Service.request observations cover routing, not server wire parsing or CLI.",
+      "No process kill, migration power-loss, malicious candidate or cohort barrier qualification.",
+      "Races overlap calls from two real SQLite connections; no forced internal transaction schedule.",
+      "Boundary snapshots use only declared portable schema0/schema2 tables; they do not prove every construction path.",
+      "No complete source/path/error Cartesian product, and no oracle-specified precedence among unrelated malformed fields."
+    ]
+  },
+  "pre_execution_freeze": {
+    "path": "runs/m2-cases-pre-reference-freeze-2.json",
+    "sha256": "c3716c0a38c4d74294f247b90c7fb0694c18e85779d6f4ed53ae085bcfebee0f"
+  },
+  "verification": {
+    "summary": {
+      "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/summary.json",
+      "sha256": "52ad07a92758e547d404bbea4316365e002f3cd7680c0f6cf4c9585eeaf9ebcb"
+    },
+    "inputs": {
+      "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/inputs.json",
+      "sha256": "ad7872ea7bc5a525478f7e251015e7626b36750aea9dfc5e64b9a53e908be5fd"
+    },
+    "status": "passed",
+    "physically_passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "reused": 0,
+    "classes": 7,
+    "duration_seconds": 12.794134832918644,
+    "static": {
+      "duration_seconds": 0.9270626250654459,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "current_input_hashes_reconciled": 332,
+    "docker": [
+      {
+        "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/classes/661009ad47a499d5/artifacts/gossip-m2-independent-reference-2fv_60qj/execution-receipt.json",
+        "sha256": "5a3de92b26ddec79014ed4712d3822bab2b0e0637fdc019a899b4a90014cd6fd",
+        "status": "passed",
+        "case_count": 12,
+        "source_sha256": "ae6a4f2f125841e43f3258aae86b6c59361c74008656e3fd764b5fd5d3200d4b",
+        "suite_sha256": "fd358d78b5052cd406a3aaf870798fd226afcf9070d4c4691af8931d077505c7",
+        "adapter_sha256": "6d1135d5557df063df34fd0544af9b2f0d713b8f5d605cfc92a165d534549e16",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "runtime_seconds": 2.103954,
+        "cleanup_verified": true
+      },
+      {
+        "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/classes/661009ad47a499d5/artifacts/gossip-m2-inherited-public-srtyj3wu/execution-receipt.json",
+        "sha256": "e38a5234d5e89f9e9451025665a56d67245e891d0430b3087afeaef4de63d0f9",
+        "status": "passed",
+        "case_count": 8,
+        "source_sha256": "ae6a4f2f125841e43f3258aae86b6c59361c74008656e3fd764b5fd5d3200d4b",
+        "suite_sha256": "97de89a67c0074290543230f5620a110b0d88dc0bbf546b31aafce1ca607093b",
+        "adapter_sha256": "03cf49353c3189e644f8b73dba9bf6943d7bfdd08be74e02949d578e50546b51",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "runtime_seconds": 1.316613,
+        "cleanup_verified": true
+      },
+      {
+        "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/classes/661009ad47a499d5/artifacts/gossip-m2-stale-token-defect-j0s82n9r/execution-receipt.json",
+        "sha256": "b715785988fb5a5f9e164bcde5936044500dc82d7c04ae284355641e0061e979",
+        "status": "failed",
+        "case_count": 1,
+        "source_sha256": "50afe6a814f99ddedaef87811d76a2879414a9e60d29a6722e5c851d3aa72b61",
+        "suite_sha256": "a743a07891a8a487f0af756ce8fbf16f889d4bb28d0eaaaf9c6f7a46890fca9b",
+        "adapter_sha256": "6d1135d5557df063df34fd0544af9b2f0d713b8f5d605cfc92a165d534549e16",
+        "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+        "runtime_seconds": 0.491617,
+        "cleanup_verified": true
+      }
+    ],
+    "browser": {
+      "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/classes/0bcb7fc252d99104/artifacts/gossip-LibraryM2BrowserReferenceTests-tufqjqx5/run/browser/receipt.json",
+      "sha256": "d71eefe47cec930fd3c13f29ca5c3df06e1c76d5c4c07b5ae6545c7acf2614da",
+      "completed_checks": [
+        "inherited_import_and_job_cancel_retry_commit_controls",
+        "accessible_keyboard_filters_pagination_and_id_selection",
+        "normalized_annotations_collection_registry_and_nonempty_removal_guard",
+        "two_context_stale_token_draft_preservation_explicit_reload_and_stale_pagination",
+        "text_path_refresh_noop_literal_history_and_cross_action_draft_preservation",
+        "external_delete_reopened_draft_keeps_stale_token_and_latest_deleted_state",
+        "delete_restore_tombstone_filters_and_reload_persistence",
+        "desktop_and_mobile_document_fit_viewport"
+      ],
+      "viewport_checks": [
+        {
+          "contextIndex": 0,
+          "viewportWidth": 1280,
+          "viewportHeight": 980,
+          "innerWidth": 1280,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 992,
+          "passed": true
+        },
+        {
+          "contextIndex": 1,
+          "viewportWidth": 430,
+          "viewportHeight": 932,
+          "innerWidth": 430,
+          "documentScrollWidth": 430,
+          "bodyScrollWidth": 430,
+          "passed": true
+        }
+      ],
+      "page_errors": [],
+      "blocked_requests": [],
+      "fresh_contexts": 2,
+      "cleanup": {
+        "browser": "complete",
+        "api": "complete",
+        "ownedServer": "complete"
+      }
+    },
+    "persistence": {
+      "path": "runs/m2-reference-final-qualification-3/20261003T062450-be3f5ca3/classes/0bcb7fc252d99104/artifacts/gossip-LibraryM2BrowserReferenceTests-tufqjqx5/run/persistence-receipt.json",
+      "sha256": "7669ab6a24353213922d189c317b6b29ffc24645105b4f8fd6a67e8340faf93c"
+    },
+    "visual_review": "Root inspected final mobile screenshot:430px document width matches430px viewport; long hash wraps without changing literal content."
+  },
+  "retained_history": [
+    {
+      "summary": {
+        "path": "runs/m2-reference-offline-qualification-1/20261003T061617-11d26277/summary.json",
+        "sha256": "7a6d531519e98be7919614fe06bcda5aa9344507ffcca186e1858ef6baf6a161"
+      },
+      "meaning": "30 original offline checks passed; later evaluator/driver/layout/configuration revisions required fresh final qualification."
+    },
+    {
+      "summary": {
+        "path": "runs/m2-reference-physical-qualification-1/20261003T061704-aba2d21e/summary.json",
+        "sha256": "b239494059e4caf175046bb07e6e20ac47628f40ec1643074964013f350085fe"
+      },
+      "meaning": "Three Docker checks passed; browser failed because the authored fixture tried importing .html through inherited single-file import that allows .txt/.md. Fixture corrected to alpha.txt; content stayed literal HTML."
+    },
+    {
+      "freeze": {
+        "path": "runs/m2-cases-pre-reference-freeze-1.json",
+        "sha256": "75f3d80c703e3ad6ea08c7956a14c4133fb853940f192a9ae2ee16547f3eb9e3"
+      },
+      "source_snapshot_directory": "runs/m2-cases-pre-reference-source-1",
+      "meaning": "Schema2 capacity fixture originally used unreachable generation0. Corrected to479, representing33 migrated docs plus479 refreshes. Expected outputs and input recipes unchanged; changed evaluator frozen before a new execution."
+    },
+    {
+      "summary": {
+        "path": "runs/m2-reference-combined-qualification-2/20261003T062101-c6069780/summary.json",
+        "sha256": "6a1105ca72f171c568296f26dc834aa7aac2fefca457600572be2adc2f05e493"
+      },
+      "meaning": "34 checks passed before screenshot review found mobile overflow; wrapping and a real viewport assertion added, followed by full affected qualification."
+    }
+  ],
+  "defect_signal": {
+    "intentional_defect": "Content refresh omits edit_version increment.",
+    "independent_probe": "m2-migrate-aba-receipt",
+    "observation": "wrong_answer under the sandbox, not an infrastructure failure",
+    "inference_limit": "One authored negative control demonstrates sensitivity to this defect; it does not measure swarm reviewer effectiveness or general test quality."
+  },
+  "limits": [
+    "No browser observations or actual HTTP transport/content-type/body bounds.",
+    "Service.request observations cover routing, not server wire parsing or CLI.",
+    "No process kill, migration power-loss, malicious candidate or cohort barrier qualification.",
+    "Races overlap calls from two real SQLite connections; no forced internal transaction schedule.",
+    "Boundary snapshots use only declared portable schema0/schema2 tables; they do not prove every construction path.",
+    "No complete source/path/error Cartesian product, and no oracle-specified precedence among unrelated malformed fields.",
+    "This cycle qualifies authored reference behavior, not model-produced completion, swarm quality, decentralization, causal speed/cost effects or statistical superiority.",
+    "Browser qualification runs trusted authored application code on host Python3.11; independent candidate browser execution still needs its own frozen container/barrier adapter. Docker API histories use the pinned Python3.12 image.",
+    "Fresh HTTP server-reopen equivalence was asserted during execution, but its raw reopened response bodies were not separately retained; retained persistence values are CLI observations.",
+    "No full requirement-level M1 or M2 acceptance claim is made. Definitions and representative histories do not prove every contract clause."
+  ],
+  "remaining": [
+    "Close M1 trusted acceptance receipt and prerequisite adapters",
+    "Prepare M2 public development fixtures and complete independent acceptance coverage/bindings",
+    "Implement and qualify M3 recovery/reindex/backup/export and M4 migration/release",
+    "Peer-local policy and matched central control with equal feature work",
+    "Generated distinguishing tests and real restart/partition recovery",
+    "All six trajectory terminal states before independent acceptance",
+    "Full placement-by-transport comparison and independent held-out confirmation"
+  ],
+  "independent_review": {
+    "path": "runs/m2-reference-independent-review-3.json",
+    "sha256": "d4135771e9a834b1824dce990fc1e4510ab9a86b7b96b02df9c8b56bd6d8b1f4",
+    "kind": "read_only_source_and_retained_receipt_review"
+  }
+}

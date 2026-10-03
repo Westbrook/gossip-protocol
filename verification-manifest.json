@@ -36,7 +36,8 @@
     "fast",
     "fixtures",
     "git",
-    "docker"
+    "docker",
+    "browser"
   ],
   "default_lanes": [
     "fast",
@@ -2456,6 +2457,90 @@
       "boundary": "Actual prospective M1 inventory and cumulative M2-M4 registry, their source citations and exact finite feature graph.",
       "disposition": "Run in fast lane when either prospective contract or referenced inherited source changes.",
       "overlap_reason": "AcceptanceRegistryTests exercises normalized evidence aggregation; this class checks the separate declared inputs and explicitly excludes interpreting definitions as execution receipts."
+    },
+    "tests/test_library_m2_reference_v1.py::LibraryM2CompositionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "The cumulative M2 overlays preserve frozen inherited inputs and exact package ownership.",
+      "isolation": "Dedicated class process with private mutable state and owned service lifetime.",
+      "boundary": "Source composition and compile only; no execution of generated application.",
+      "disposition": "Complete offline gates before Docker or browser qualification; retain all failures and exact source bindings.",
+      "overlap_reason": "Distinct cumulative M2 trust boundary; does not requalify frozen studies or claim swarm superiority.",
+      "distinct_defect": "An overwritten immutable adapter or overlapping package overlay can invalidate cumulative qualification."
+    },
+    "tests/test_library_m2_reference_v1.py::LibraryM2CumulativeReferenceTests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "The actual combined M2 application preserves frozen M1 histories and original job receipts after later lifecycle changes.",
+      "isolation": "Dedicated class process with private mutable state and owned service lifetime.",
+      "boundary": "Bounded fresh trusted-authored subprocesses, isolated SQLite state; no arbitrary candidate or provider.",
+      "disposition": "Complete offline gates before Docker or browser qualification; retain all failures and exact source bindings.",
+      "overlap_reason": "Distinct cumulative M2 trust boundary; does not requalify frozen studies or claim swarm superiority.",
+      "distinct_defect": "M2 visibility rules could silently weaken inherited tombstone admission or rewrite completed receipts."
+    },
+    "tests/test_library_m2_catalog_reference_v1.py::LibraryM2CatalogReferenceV1Tests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "M2 catalog migration, versions, generations, capacities, snapshots and concurrent writes are atomic and durable.",
+      "isolation": "Dedicated class process with private mutable state and owned service lifetime.",
+      "boundary": "Real SQLite and competing connections in bounded authored-reference subprocesses; not experimental candidate evidence.",
+      "disposition": "Complete offline gates before Docker or browser qualification; retain all failures and exact source bindings.",
+      "overlap_reason": "Distinct cumulative M2 trust boundary; does not requalify frozen studies or claim swarm superiority.",
+      "distinct_defect": "Partial migration, duplicate generation increments, stale token success or leaked capacity-failure writes would violate the public contract."
+    },
+    "tests/test_library_m2_clients_reference_v1.py::LibraryM2ClientsReferenceV1Tests": {
+      "lane": "fixtures",
+      "weight": 2,
+      "exclusive": true,
+      "timeout_seconds": 180,
+      "invariant": "Lifecycle Service, CLI and HTTP expose the same durable contract with strict parsing and confined refresh input.",
+      "isolation": "Dedicated class process with private mutable state and owned service lifetime.",
+      "boundary": "Owned loopback HTTP service and fresh CLI processes using only the authored reference.",
+      "disposition": "Complete offline gates before Docker or browser qualification; retain all failures and exact source bindings.",
+      "overlap_reason": "Distinct cumulative M2 trust boundary; does not requalify frozen studies or claim swarm superiority.",
+      "distinct_defect": "Transport parsing or path-boundary errors can disagree with correct direct Store behavior."
+    },
+    "tests/test_library_m2_browser_reference_v1.py::LibraryM2BrowserReferenceTests": {
+      "lane": "browser",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 300,
+      "invariant": "Actual browser controls preserve tokens, drafts, literal content and durable lifecycle state across isolated clients.",
+      "isolation": "Dedicated class process with private mutable state and owned service lifetime.",
+      "boundary": "Pinned Playwright/Chromium with owned authored-app server; no arbitrary candidate host execution or independent study acceptance.",
+      "disposition": "Complete offline gates before Docker or browser qualification; retain all failures and exact source bindings.",
+      "overlap_reason": "Distinct cumulative M2 trust boundary; does not requalify frozen studies or claim swarm superiority.",
+      "distinct_defect": "A correct backend can still lose unsaved drafts, show stale rows or overwrite competing edits through the UI."
+    },
+    "tests/test_library_m2_acceptance_cases_v1.py::LibraryM2AcceptanceCasesTests": {
+      "lane": "fast",
+      "weight": 1,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Independently authored case definitions are deterministic, contract-bound, resource-bounded and keep expected answers outside the generic child.",
+      "boundary": "Definition and declared-schema fixture self-checks only; does not execute the authored M2 application.",
+      "isolation": "Dedicated class process and unique retained artifact directories.",
+      "disposition": "Run definition checks offline before explicit Docker qualification; retain all failed observations.",
+      "overlap_reason": "Separates independent case-definition integrity from physical generated-app execution and deliberate defect sensitivity.",
+      "distinct_defect": "Self-scored outputs, stale expectations or an insensitive ABA probe could create false acceptance."
+    },
+    "tests/test_library_m2_docker_reference_v1.py::LibraryM2DockerReferenceTests": {
+      "lane": "docker",
+      "weight": 4,
+      "exclusive": true,
+      "timeout_seconds": 420,
+      "invariant": "The cumulative authored app passes inherited and independently defined histories under the pinned Python sandbox, and a missing edit-token increment is detected.",
+      "boundary": "Fresh network-isolated read-only Docker containers and case processes, host-only comparison, retained raw receipts and pre-execution definitions; not model quality evidence.",
+      "isolation": "Dedicated class process and unique retained artifact directories.",
+      "disposition": "Run definition checks offline before explicit Docker qualification; retain all failed observations.",
+      "overlap_reason": "Separates independent case-definition integrity from physical generated-app execution and deliberate defect sensitivity.",
+      "distinct_defect": "Self-scored outputs, stale expectations or an insensitive ABA probe could create false acceptance."
     }
   },
   "audit": {
