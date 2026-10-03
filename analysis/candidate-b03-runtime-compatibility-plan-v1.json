@@ -1,0 +1,347 @@
+{
+  "artifact_id": "candidate-b03-runtime-compatibility-plan-1",
+  "author": "/root/b03_process_transport",
+  "base_commit": "08c9fb2e68a4c92db2a5d870908ab9acf8fb2ebd",
+  "failed_baseline": {
+    "claim": "The 94 passing methods are offline checks. Two Docker methods failed at keeper startup identity comparison; no finite candidate invocation occurred in these two retained histories.",
+    "freeze": {
+      "bytes": 146453,
+      "path": "runs/candidate-b03-definition-freeze-3/freeze.json",
+      "sha256": "0a3ced5ffb3ad9c79eb74c5c6e50a8505dfe394e410c8213e5ea11f771864f7c"
+    },
+    "histories": [
+      {
+        "after": {
+          "bytes": 5517,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-running-stdout.bin",
+          "sha256": "1d0c7fe38dc25f0f13e06d0850792fa302b7e069e39b9611a88cc6cbfd826ac2"
+        },
+        "after_state_oom_killed": false,
+        "after_status": "running",
+        "before": {
+          "bytes": 4980,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-created-stdout.bin",
+          "sha256": "13f2fd0d4a9c68b0be287c17d5b23b13328cc63796aff6efcbefc623312434aa"
+        },
+        "before_state_oom_killed": false,
+        "candidate_results": 0,
+        "case_id": "cli-db-root-isolation",
+        "checked_invariant_projection_paths": [
+          "Id",
+          "Image",
+          "Name",
+          "Path",
+          "Args",
+          "Config",
+          "HostConfig",
+          "Mounts",
+          "RestartCount"
+        ],
+        "container_id": "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee",
+        "infrastructure": [
+          "ExecutionError:Keeper initial configuration changed during start"
+        ],
+        "initial_status": "created",
+        "keeper_cleanup": true,
+        "projection_differences": [
+          {
+            "after": null,
+            "before": false,
+            "path": "HostConfig.OomKillDisable"
+          }
+        ],
+        "scope": "This design inspection compares the named raw configuration projection only; it does not replace the separate full retained-evidence audit.",
+        "terminal": {
+          "bytes": 5003,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/terminal.json",
+          "sha256": "d4fc9dc2e1e3e60b628ac5a0f093e83653224a89ccfe2c81b91e7ae1b0567d28"
+        },
+        "volume_cleanup": true
+      },
+      {
+        "after": {
+          "bytes": 5515,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-running-stdout.bin",
+          "sha256": "84b71fa01faa40d02bdda01a044ced112083b77d08bb4990781fd5c4e9a062cb"
+        },
+        "after_state_oom_killed": false,
+        "after_status": "running",
+        "before": {
+          "bytes": 4979,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-created-stdout.bin",
+          "sha256": "3533b7128f7fb4931ed20e7ba2fd1e93ebfd07757f44edacf3ed82edeaf059d3"
+        },
+        "before_state_oom_killed": false,
+        "candidate_results": 0,
+        "case_id": "semantic-success",
+        "checked_invariant_projection_paths": [
+          "Id",
+          "Image",
+          "Name",
+          "Path",
+          "Args",
+          "Config",
+          "HostConfig",
+          "Mounts",
+          "RestartCount"
+        ],
+        "container_id": "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a",
+        "infrastructure": [
+          "ExecutionError:Keeper initial configuration changed during start"
+        ],
+        "initial_status": "created",
+        "keeper_cleanup": true,
+        "projection_differences": [
+          {
+            "after": null,
+            "before": false,
+            "path": "HostConfig.OomKillDisable"
+          }
+        ],
+        "scope": "This design inspection compares the named raw configuration projection only; it does not replace the separate full retained-evidence audit.",
+        "terminal": {
+          "bytes": 5000,
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/terminal.json",
+          "sha256": "aca7a7f8fa938b13a0de32824465920c2fe9ce8e76273fbff68aa46729af8c2e"
+        },
+        "volume_cleanup": true
+      }
+    ],
+    "status": "failed",
+    "summary": {
+      "bytes": 82143,
+      "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/summary.json",
+      "sha256": "decefb6f1b2b8e5665f01810e6091c1b81e974662f01c6f8c27279891915ec25"
+    },
+    "test_counts": {
+      "failed": 2,
+      "not_run": 6,
+      "passed": 94,
+      "skipped": 0
+    }
+  },
+  "next_action": "After the v1 diagnostic commit is published, author the narrowly scoped v2 process/controller/observer contract, preserve all frozen product definitions, review its typed comparison and runtime binding, freeze it and run the root-owned affected qualification once.",
+  "official_primary_sources": {
+    "annotated_tag_sha": "44c018957ecd6eef2f4ce831cf8c776e6e559601",
+    "commit_sha": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+    "files": [
+      {
+        "bytes": 60561,
+        "finding": "Resource validation assigns nil when the pointer is set but the daemon reports OomKillDisable unsupported; only a true requested value generates the discard warning. The memory resource constructor forwards a nonnil pointer to OCI and otherwise omits it.",
+        "path": "daemon/daemon_unix.go",
+        "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/daemon_unix.go",
+        "relevant_lines_1_based": [
+          420,
+          427
+        ],
+        "sha256": "82302f1b49f30da57f4bafd837fc4ca67c4df1bcd734128f066621a9be21cd57",
+        "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/daemon_unix.go"
+      },
+      {
+        "bytes": 11192,
+        "finding": "ContainerStart revalidates the existing HostConfig against current system settings before starting the container.",
+        "path": "daemon/start.go",
+        "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/start.go",
+        "relevant_lines_1_based": [
+          57,
+          63
+        ],
+        "sha256": "d0dade1a2b5407a2c3cbae8018902e5b52188a380d6ae6c1bb95492877f72987",
+        "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/start.go"
+      },
+      {
+        "bytes": 16368,
+        "finding": "The info response exposes cgroup version and the sysinfo OomKillDisable capability; the source separately notes that the feature is unavailable on cgroup v2.",
+        "path": "daemon/info_unix.go",
+        "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/info_unix.go",
+        "relevant_lines_1_based": [
+          23,
+          37
+        ],
+        "sha256": "57739857033ac173b64f651360b78ba39090394aaa3e4bfc15c25e2be84fb6a3",
+        "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/info_unix.go"
+      },
+      {
+        "bytes": 19254,
+        "finding": "The container resource type represents OomKillDisable as an optional boolean pointer, allowing distinct null and false serialization.",
+        "path": "api/types/container/hostconfig.go",
+        "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/api/types/container/hostconfig.go",
+        "relevant_lines_1_based": [
+          363,
+          367
+        ],
+        "sha256": "3c04a5a408a6865f4b74ae9c7a6383afcdb37db452e1760c4752a2ee6c1f24c1",
+        "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/api/types/container/hostconfig.go"
+      }
+    ],
+    "interpretation": "The observed false-to-null change is consistent with source-defined removal of an unsupported option during start revalidation. This establishes a bounded compatibility rationale, not a claim that arbitrary null-valued HostConfig changes are safe.",
+    "release_tag_matches_retained_engine_git_prefix": true,
+    "tag": "docker-v29.2.1"
+  },
+  "proposed_compatibility_contract": {
+    "allowed_transition": {
+      "after": null,
+      "before": false,
+      "requires_all_other_projected_fields_exact": true,
+      "reverse_null_to_false": "Reject as an unexplained lifecycle mutation; it is not needed by the observed source-defined start transition.",
+      "unchanged_pairs": [
+        [
+          false,
+          false
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "comparison_design": [
+      "Keep exact full raw inspect records and their hashes. Produce a separate typed comparison view and an explicit transformation record containing policy ID/digest, field path, raw before/after, lifecycle phase and runtime-capability digest.",
+      "Validate the sandbox and reject enabled/malformed OomKillDisable before any canonical comparison. Deep-copy the view; never mutate retained raw data.",
+      "For an authorized created-to-started false-to-null pair only, substitute false in the comparison view for that single field and compare the entire remaining original identity/configuration with deterministic JSON bytes, preserving type distinctions and every unlisted key.",
+      "Reject every other changed HostConfig field, added/missing field, mount, image, argv, source label, namespace, memory/swap/CPU/PID/fd limit, security option, or ownership identifier. Do not drop HostConfig or compare only the currently hand-picked sandbox restrictions.",
+      "Keep candidate expected-created versus immediately-before-start comparison raw-exact. Apply the narrow transition rule only when comparing the original created identity to the final independently authenticated exited identity.",
+      "Apply the same rule to keeper created versus first-running comparison. Thereafter retain and compare the complete raw first-running keeper identity exactly on every before/after boundary; no mid-history null/false normalization.",
+      "State.OOMKilled, exit agreement, start/finish timestamps, restart count, conservative EOF confirmation, stream framing, cleanup, source staging, volume ownership and no-redispatch barriers are untouched."
+    ],
+    "policy_id": "docker-hostconfig-oom-kill-default-v1",
+    "raw_field_policy": {
+      "allowed_typed_values": [
+        false,
+        null
+      ],
+      "field_must_be_present": true,
+      "reason": "Disabling the OOM killer is never authorized; use strict type/identity checks, not Python equality that equates false with zero.",
+      "reject": [
+        "true",
+        "missing key",
+        "integer 0 or 1",
+        "string values",
+        "array/object values",
+        "any unreviewed representation"
+      ]
+    },
+    "runtime_gate": {
+      "api_version": "1.47",
+      "cgroup_version": "2",
+      "engine_git_commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "engine_git_prefix": "6bc6209",
+      "engine_version": "29.2.1",
+      "oom_kill_disable_supported": false,
+      "os": "linux",
+      "other_identities": "Keep existing daemon/socket/image/kernel/architecture binding. Freeze and recheck these capability fields with the stable runtime identity; a changed or unavailable capability cannot authorize normalization."
+    },
+    "scope": "Exactly HostConfig.OomKillDisable during the declared created-to-started lifecycle transition of the same fresh owned container."
+  },
+  "recommended_versioning": {
+    "new_files": [
+      "gossip_harness/candidate_client_process_v2.py",
+      "gossip_harness/candidate_client_execution_v2.py",
+      "gossip_harness/candidate_client_observer_v2.py",
+      "tests/test_candidate_client_process_v2.py",
+      "tests/test_candidate_client_execution_v2.py",
+      "tests/test_candidate_client_observer_v2.py",
+      "tests/test_candidate_clients_docker_v2.py"
+    ],
+    "new_protocols": [
+      "candidate-client-process-v2",
+      "candidate-client-execution-v2",
+      "candidate-client-observer-v2"
+    ],
+    "preserve": [
+      "All frozen v1 modules, helpers, tests, freeze snapshots and failed outputs remain byte-identical.",
+      "Keep the v1 57-case definitions, ordered recipes, expectations, controls and candidate bytes unchanged; reuse definitions as read-only input where imports permit.",
+      "A new source-domain execution identifier may change because the transport protocol changes; do not describe this as a candidate behavior change.",
+      "New outputs, prospective freeze, source hashes, runtime capability identity and policy digest are required. No overwrite, no automatic retry and no old observation reuse for acceptance."
+    ],
+    "why_observer_version": "The frozen observer v1 accepts only binding protocol candidate-client-execution-v1. A v2 binding adapter/observer must explicitly accept the new controller contract while preserving all existing product assertions and unsupported dispositions; never relabel a v2 execution as v1."
+  },
+  "recorded_at": "2026-10-03T15:36:14.270376+00:00",
+  "required_regressions": [
+    "Pure strict-type matrix: false->null accepted only in the named phase/profile; false->false and null->null accepted; true on either side, missing, numeric zero, strings, collections and reverse transition rejected.",
+    "Full identity sensitivity: retain the allowed false->null transition while mutating each relevant sandbox field, an otherwise-unlisted HostConfig field, field presence, container ID, source/fixture label, mount, argv or image; every independent mutation must still fail.",
+    "The comparison helper must preserve input object and raw byte identities; the transformation census must contain exactly the one allowed field and bind before/after/config/runtime/policy hashes.",
+    "Keeper lifecycle: initial false->running null accepted; running null->false or changed StartedAt/restart count/source mount denied; keeper/volume cleanup and continuous volume authority remain required.",
+    "Candidate lifecycle: created false remains raw-exact at pre-start; final null can match only alongside known natural wait/inspect agreement; OOM, kill, startup failure, timeout and capture uncertainty remain unqualified under existing rules.",
+    "Runtime binding: omit or change cgroup/capability/version/git/image/socket information, or report capability true; no compatibility exception. Retain complete runtime response evidence without using transient container counters in identity.",
+    "Observer v2 binding rejects v1 or substituted protocol/purpose/source/config while unchanged semantic assertions, unsupported-wrapper dispositions and known-exit preservation remain identical.",
+    "Root runs combined syntax/types/lint plus all affected offline classes after source review/freeze, then one new complete physical control and independent-process persistence qualification under the revised contract. If it fails, retain the result and diagnose before proposing another version.",
+    "Only after required controls qualify does root proceed to the prospectively registered remaining CLI histories; the failed v1 run supplies no passing candidate observations or statistical sample evidence."
+  ],
+  "risks_and_limits": [
+    "Null does not universally mean false for Docker configuration. This exception is limited to one field, one typed transition and a runtime profile supported by inspected primary source.",
+    "A general recursive null/false normalizer would conceal real configuration changes and is explicitly excluded.",
+    "Runtime API response fields describe daemon capabilities and configuration; they do not independently prove kernel cgroup enforcement. Existing physical restrictions and qualification obligations remain.",
+    "Candidate created-to-exited normalization is prospective: no candidate reached start in the retained failed histories. It needs a new physical control, not extrapolated passing evidence.",
+    "Later daemon/API versions or lifecycle representation changes require separate evidence and a new prospective policy revision; do not widen the exception reactively during a frozen run.",
+    "No quality, ranking, timing advantage or statistical support for swarm versus orchestrator follows from this compatibility design."
+  ],
+  "runtime_evidence": {
+    "info_projection": {
+      "CgroupDriver": "cgroupfs",
+      "CgroupVersion": "2",
+      "CpuCfsPeriod": true,
+      "CpuCfsQuota": true,
+      "MemoryLimit": true,
+      "OomKillDisable": false,
+      "PidsLimit": true,
+      "ServerVersion": "29.2.1",
+      "SwapLimit": true
+    },
+    "info_response": {
+      "bytes": 9296,
+      "path": "runs/candidate-b03-definition-freeze-3/runtime-preflight-info-response.bin",
+      "sha256": "d7f039448ec2042171ec1db4cdce1a77f794324be62845f078c03d667a566976"
+    },
+    "limitation": "Freeze-3 retained raw capability evidence supports this diagnosis. The v1 per-process runtime identity omits these capability fields, so the new contract must prospectively bind them before using compatibility normalization.",
+    "local_runtime_config": {
+      "bytes": 13001,
+      "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/config.json",
+      "sha256": "5e4d1cf58f60fdaae52cb4a851bfed318349e1b3e05c4cf6f638ebbbde0f5113"
+    },
+    "selected_api_version": "1.47",
+    "version_projection": {
+      "ApiVersion": "1.53",
+      "Arch": "arm64",
+      "GitCommit": "6bc6209",
+      "MinAPIVersion": "1.44",
+      "Os": "linux",
+      "Version": "29.2.1"
+    },
+    "version_response": {
+      "bytes": 1066,
+      "path": "runs/candidate-b03-definition-freeze-3/runtime-preflight-version-response.bin",
+      "sha256": "faea5e4186a98bd85fbd3fce42085ed8a71f0de8d20fe3419f4ff2827842afaf"
+    }
+  },
+  "schema": "candidate-b03-runtime-compatibility-plan-v1",
+  "scope": {
+    "artifact_writes": [
+      "runs/candidate-b03-runtime-compatibility-plan-1.json"
+    ],
+    "candidate_executions": 0,
+    "docker_calls": 0,
+    "provider_calls": 0,
+    "public_source_network_reads": "Official Moby repository, exact Docker release tag resolved to commit; no registry or provider calls.",
+    "purpose": "Design the next version after a retained infrastructure failure; no retrospective qualification or acceptance conversion.",
+    "source_edits": 0,
+    "tests_executed": 0
+  },
+  "source_hashes": {
+    "docs/candidate-client-observation-v1.md": "63a74a700bcf14f507a9986a0c2f364ef8f6deab81eaecfbeae63684d1a4ab85",
+    "docs/candidate-client-process-v1.md": "3ff6b38da866d1415aa0f33d0b4144a454a3ccf67510db09233c3c6139588ff2",
+    "docs/candidate-client-qualification-plan-v1.md": "1d03f887b3deca8170b0337774da963b830ab13ac71b851bc36c458287165f7d",
+    "gossip_harness/candidate_cli_cases_v1.py": "4bcd1f7d1d009bb158e45367396d2254b68cb00ae02df4fb460fb52361948e1c",
+    "gossip_harness/candidate_client_execution_v1.py": "bb796c2d0a31868f4d58e7179b8fea396748ecf1942ee2d8837fa2a48ff6d6df",
+    "gossip_harness/candidate_client_observer_v1.py": "cee46a9c0957344f150e2b9adfa0fc17b343740a5ae2df1b11ceeb7e38a4c9cd",
+    "gossip_harness/candidate_client_process_v1.py": "dd9c555522f6e7663da522bf0a4525ad948e5d25974a8e3b766ed76cb9df4a34",
+    "pyproject.toml": "158d4c238847ee1bb31b07c2b9602d71f7ce88e384255da9ab485f4936c06e9b",
+    "tests/test_candidate_cli_cases_v1.py": "f35bc3a9acb07666cf172105330151753fb0345e8cde2381d5f72f93318c24d6",
+    "tests/test_candidate_client_execution_v1.py": "1aff5be690c3285f1fb8a20f56a42ae88d9452500af332d47ad584d15f876cb9",
+    "tests/test_candidate_client_observer_v1.py": "8c6615341b197fe04714b851b7092f97523cae8d28c9256a6cf16bacde1a60c1",
+    "tests/test_candidate_client_process_v1.py": "ec0a3ad446c4266957463efed80ec57a0b1a030867a6a0cd849815f3e27744d6",
+    "tests/test_candidate_clients_docker_v1.py": "4fa264021cf305727e263ae5dd15b4bc82426fbf64c9fcaeb93c904c400ee1d5",
+    "verification-manifest.json": "9bb7969ddc1d46cda5be0fa2144c2cdc3514fe197045924ebdc98b026aef1c11"
+  },
+  "status": "prospective_design_only"
+}

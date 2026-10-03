@@ -1,0 +1,1469 @@
+{
+  "coverage": "targeted",
+  "discovered_total": 2834,
+  "duration_seconds": 96.75920545868576,
+  "fingerprint": "40689f91ee85c5f04bceaceb5e10f32f5ce193ed4b9036d637b0418f674eed92",
+  "first_negative_seconds": 36.45555983297527,
+  "inventory_counts": {
+    "browser": 5,
+    "docker": 83,
+    "fast": 2093,
+    "fixtures": 352,
+    "git": 301
+  },
+  "io_accounting": {
+    "lock_wait_seconds": {
+      "reason": "No lock acquisitions instrumented",
+      "scope": "sum of instrumented acquire latencies; concurrent waits may overlap in wall time",
+      "status": "unavailable",
+      "unit": "seconds",
+      "value": null
+    },
+    "read_bytes": {
+      "channels": {
+        "source_fingerprints": {
+          "bytes": 20195676,
+          "operations": 904
+        }
+      },
+      "scope": "instrumented logical payload operations; excludes uninstrumented and physical disk I/O",
+      "status": "measured",
+      "unit": "bytes",
+      "value": 20195676
+    },
+    "schema": "verification-io-telemetry-v1",
+    "scope": "verification controller source fingerprint reads",
+    "staged_bytes": {
+      "reason": "No operations instrumented",
+      "scope": "instrumented logical payload operations; excludes uninstrumented and physical disk I/O",
+      "status": "unavailable",
+      "unit": "bytes",
+      "value": null
+    }
+  },
+  "jobs": [
+    {
+      "class": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests",
+      "cleanup_seconds": 1.3764947652816772e-06,
+      "cleanup_status": "completed",
+      "duration_seconds": 0.0801074169576168,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/40d02a90507f6df3/result.json",
+      "evidence_sha256": "cf5492741a8b46d83019e15d0f11a305940bb83078751f374ab207ac48e6320a",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/40d02a90507f6df3/worker.log",
+      "log_sha256": "5a49c731d4145219049c426758b178bad85bdb75240edcb1809089c02653bd50",
+      "physical": true,
+      "preparation_seconds": 0.017293792217969894,
+      "queue_seconds": 0.002839416265487671,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.909711153043181
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.007345999999999998,
+          "unit": "seconds",
+          "user_seconds": 0.06570100000000001,
+          "value": 0.073047
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 36831232
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.0,
+          "unit": "seconds",
+          "user_seconds": 0.0,
+          "value": 0.0
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 0.08029691595584154
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 0.0619478365406394,
+      "schema_version": 1,
+      "setup_seconds": 4.172325134277344e-07,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {},
+      "tests": [
+        {
+          "cleanup_seconds": 9.164214134216309e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_cancel_retry_fence_expected_epochs",
+          "run_seconds": 0.001020750030875206,
+          "setup_seconds": 8.344650268554688e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.25031578540802e-06,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_closed_roster_and_order",
+          "run_seconds": 0.0004752920940518379,
+          "setup_seconds": 5.41098415851593e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.497146725654602e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_db_root_isolation_retains_identity_changes_blob",
+          "run_seconds": 0.0004204995930194855,
+          "setup_seconds": 8.326023817062378e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_fixture_scope_and_bounded_sizes",
+          "run_seconds": 0.00046354159712791443,
+          "setup_seconds": 5.830079317092896e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.0402873158454895e-06,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_fresh_checkout_needs_no_historical_run_receipt",
+          "run_seconds": 0.0071316249668598175,
+          "setup_seconds": 5.00120222568512e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_identity_and_shared_blob_follow_normative_bytes",
+          "run_seconds": 0.0005359165370464325,
+          "setup_seconds": 5.830079317092896e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.906928658485413e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_lawful_zip_and_json_intake_fixtures",
+          "run_seconds": 0.001794750802218914,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.374422132968903e-06,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_literal_casefold_pagination_and_selected_order",
+          "run_seconds": 0.0004585413262248039,
+          "setup_seconds": 6.668269634246826e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 9.164214134216309e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_recipes_and_definitions_are_fresh",
+          "run_seconds": 0.005423959344625473,
+          "setup_seconds": 5.83939254283905e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.0421499609947205e-06,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_recipes_never_include_expected_answers",
+          "run_seconds": 0.03115679230540991,
+          "setup_seconds": 6.249174475669861e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.591420292854309e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_rejections_retain_completion_and_qualification_limits",
+          "run_seconds": 0.0004108333960175514,
+          "setup_seconds": 6.658956408500671e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.677582859992981e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_source_pins_and_policy_disclosure",
+          "run_seconds": 0.003916624933481216,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.000240445137024e-06,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_state_action_outcomes_and_terminal_receipts",
+          "run_seconds": 0.007019166834652424,
+          "setup_seconds": 5.420297384262085e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_step_expectation_and_assertion_census",
+          "run_seconds": 0.0006447089836001396,
+          "setup_seconds": 7.916241884231567e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests.test_wrapper_and_unknown_error_facets_not_promoted",
+          "run_seconds": 0.001074833795428276,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 0.14053783379495144
+    },
+    {
+      "class": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests",
+      "cleanup_seconds": 0.00014504138380289078,
+      "cleanup_status": "completed",
+      "duration_seconds": 23.098621666431427,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/1afb685a5e1975f5/result.json",
+      "evidence_sha256": "b7945c2322316f426f77976d11555ef6110e7d9dd965f5e9515f35213dcac38b",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/1afb685a5e1975f5/worker.log",
+      "log_sha256": "7e61ee1d66f15fbce28eeb0df6983ce5f7b643e5d5429d10f1088da0a91df595",
+      "physical": true,
+      "preparation_seconds": 0.02654924988746643,
+      "queue_seconds": 0.005370707251131535,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.03551013332165651
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.362845,
+          "unit": "seconds",
+          "user_seconds": 0.45739599999999997,
+          "value": 0.820241
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 39501824
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.773076,
+          "unit": "seconds",
+          "user_seconds": 0.571086,
+          "value": 1.3441619999999999
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 23.098786832764745
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 21.317668294534087,
+      "schema_version": 1,
+      "setup_seconds": 1.6183655839413404,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {
+        "git": 211
+      },
+      "tests": [
+        {
+          "cleanup_seconds": 1.0833144187927246e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_active_owner_excludes_second_controller",
+          "run_seconds": 0.5225951662287116,
+          "setup_seconds": 0.005973082967102528,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.5584751963615417e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_changed_loaded_evaluator_or_normative_source_fails_before_dispatch",
+          "run_seconds": 0.5127547094598413,
+          "setup_seconds": 0.005691832862794399,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.3758038878440857e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_changed_source_recipe_suite_runtime_evaluator_and_limits_do_not_register",
+          "run_seconds": 4.504085208289325,
+          "setup_seconds": 0.007394374348223209,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.500150680541992e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_checkpoint_rejects_appended_changed_and_missing_journal_files",
+          "run_seconds": 2.682791916653514,
+          "setup_seconds": 0.005099833942949772,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.4834105968475342e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_checkpoint_sink_runs_after_fsynced_creation",
+          "run_seconds": 0.52674241643399,
+          "setup_seconds": 0.005438083782792091,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.2292526662349701e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_cleanup_exception_blocks_keeper_and_volume_removal",
+          "run_seconds": 1.0807173326611519,
+          "setup_seconds": 0.007635666988790035,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.5916302800178528e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_cleanup_refuses_foreign_container_even_with_requested_name",
+          "run_seconds": 0.5278649171814322,
+          "setup_seconds": 0.005567583255469799,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.1671876311302185e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_close_disables_controller_capability",
+          "run_seconds": 0.5502812499180436,
+          "setup_seconds": 0.0071120839565992355,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.0667368769645691e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_complete_git_source_binding_and_no_candidate_import",
+          "run_seconds": 0.5463527925312519,
+          "setup_seconds": 0.0048653744161129,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.7541460692882538e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_create_argv_uses_exact_main_process_and_only_source_inputs_volume_mounts",
+          "run_seconds": 0.8912611659616232,
+          "setup_seconds": 0.00446112547069788,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.3707205653190613e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_created_container_matches_registered_argv_labels_and_staging_before_start",
+          "run_seconds": 0.8573995418846607,
+          "setup_seconds": 0.005404499359428883,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.9175931811332703e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_every_closed_recipe_fits_prospective_fixture_step_and_argument_bounds",
+          "run_seconds": 0.02984870970249176,
+          "setup_seconds": 0.004320290870964527,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.2833625078201294e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_existing_root_requires_exact_external_checkpoint_and_reopens_without_execution",
+          "run_seconds": 0.9839681247249246,
+          "setup_seconds": 0.004584167152643204,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.7416663467884064e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_fixture_journal_cannot_authenticate_physical_execution",
+          "run_seconds": 1.3387597920373082,
+          "setup_seconds": 0.004416541196405888,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.5042722225189209e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_keeper_has_bounded_lifetime_readonly_volume_and_no_candidate_mount",
+          "run_seconds": 1.1478824578225613,
+          "setup_seconds": 0.0053460001945495605,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 0.00022566597908735275,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_keeper_restart_death_and_writable_or_foreign_mount_are_unavailable",
+          "run_seconds": 1.1832158751785755,
+          "setup_seconds": 0.004766499623656273,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.9175931811332703e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_only_qualification_m1_purpose_is_admitted",
+          "run_seconds": 0.00017745885998010635,
+          "setup_seconds": 0.0075577497482299805,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.62515789270401e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_policy_rejects_boolean_unbounded_and_unpinned_inputs",
+          "run_seconds": 0.0002354579046368599,
+          "setup_seconds": 0.007677832618355751,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.625398337841034e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_recipe_rejects_path_collisions_traversal_noncanonical_bytes_and_duplicate_steps",
+          "run_seconds": 0.0012320000678300858,
+          "setup_seconds": 0.008158667013049126,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.250075340270996e-06,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_staged_source_and_empty_directory_census_detects_substitution",
+          "run_seconds": 0.0011402498930692673,
+          "setup_seconds": 0.006884791888296604,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.00422140955925e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_step_binding_carries_exact_argv_order_source_and_full_suite",
+          "run_seconds": 1.2251189593225718,
+          "setup_seconds": 0.007658124901354313,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.1375173926353455e-05,
+          "id": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests.test_unknown_intent_is_retained_and_never_redispatched",
+          "run_seconds": 2.203242791816592,
+          "setup_seconds": 0.006927833892405033,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 23.16684670932591
+    },
+    {
+      "class": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests",
+      "cleanup_seconds": 1.000240445137024e-06,
+      "cleanup_status": "completed",
+      "duration_seconds": 0.0036522094160318375,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/74ce6443536a5c68/result.json",
+      "evidence_sha256": "9ca32f709ca7c48185e6f838529a3dc265b4454a3479e0878d8d40a495cdc668",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/74ce6443536a5c68/worker.log",
+      "log_sha256": "745c4bf4598830ed6be1d2e43fda6dcb50d4c1a10770c1eab68fa0f52a01f26b",
+      "physical": true,
+      "preparation_seconds": 0.0016727093607187271,
+      "queue_seconds": 0.007901666685938835,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.8977222598195855
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.0006969999999999997,
+          "unit": "seconds",
+          "user_seconds": 0.002716999999999997,
+          "value": 0.003413999999999997
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 31817728
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.0,
+          "unit": "seconds",
+          "user_seconds": 0.0,
+          "value": 0.0
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 0.003802957944571972
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 0.0016612503677606583,
+      "schema_version": 1,
+      "setup_seconds": 2.905726432800293e-07,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {},
+      "tests": [
+        {
+          "cleanup_seconds": 7.506459951400757e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_binding_exact_fields_identity_order_and_types",
+          "run_seconds": 0.000347750261425972,
+          "setup_seconds": 8.754432201385498e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.7532299757003784e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_bytes_and_metadata_are_immutable",
+          "run_seconds": 0.00014095846563577652,
+          "setup_seconds": 4.591420292854309e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.163011908531189e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_changed_raw_hash_or_length_is_unavailable",
+          "run_seconds": 0.0001437915489077568,
+          "setup_seconds": 4.591420292854309e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.668269634246826e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_completed_status_requires_real_agreed_natural_exit",
+          "run_seconds": 0.000508124940097332,
+          "setup_seconds": 4.163011908531189e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_digest_binds_streams_binding_and_provenance",
+          "run_seconds": 0.0002638334408402443,
+          "setup_seconds": 5.00120222568512e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.3248215913772583e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_forged_candidate_supervisor_marker_does_not_prove_completion",
+          "run_seconds": 0.0001371251419186592,
+          "setup_seconds": 4.163011908531189e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.3248215913772583e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_noncanonical_or_mutable_metadata_cannot_bypass_factory",
+          "run_seconds": 8.38330015540123e-05,
+          "setup_seconds": 4.172325134277344e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.343448042869568e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests.test_partial_stream_metadata_cannot_claim_complete",
+          "run_seconds": 3.583356738090515e-05,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 0.08207554090768099
+    },
+    {
+      "class": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests",
+      "cleanup_seconds": 1.1669471859931946e-06,
+      "cleanup_status": "completed",
+      "duration_seconds": 0.0116566251963377,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/532fcac5077aa619/result.json",
+      "evidence_sha256": "31cdb6637faa14052aa8c732b1da697f027c4839a2e3d0797883573cc0d53736",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/532fcac5077aa619/worker.log",
+      "log_sha256": "5be2b010c80994f79e880d792ebcf7c85a9786434eb4fd8dc94c2778c5ed6879",
+      "physical": true,
+      "preparation_seconds": 0.0012966673821210861,
+      "queue_seconds": 0.010805416852235794,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.9720672780074823
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.0010220000000000003,
+          "unit": "seconds",
+          "user_seconds": 0.010407,
+          "value": 0.011429
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 31571968
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.0,
+          "unit": "seconds",
+          "user_seconds": 0.0,
+          "value": 0.0
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 0.011757416650652885
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 0.00921058189123869,
+      "schema_version": 1,
+      "setup_seconds": 4.172325134277344e-07,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {},
+      "tests": [
+        {
+          "cleanup_seconds": 1.125037670135498e-06,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_complete_prose_with_no_object_token_proves_required_message_absent",
+          "run_seconds": 0.0011944165453314781,
+          "setup_seconds": 9.583309292793274e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.000240445137024e-06,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_domain_error_allows_auxiliary_stdout",
+          "run_seconds": 0.00021054130047559738,
+          "setup_seconds": 7.906928658485413e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 9.583309292793274e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_duplicate_members_and_depth_limits_are_unavailable",
+          "run_seconds": 0.0006235428154468536,
+          "setup_seconds": 8.335337042808533e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_expectation_census_missing_extra_duplicate_or_empty_fails_closed",
+          "run_seconds": 8.354149758815765e-05,
+          "setup_seconds": 7.916241884231567e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.497146725654602e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_extra_value_prose_empty_invalid_utf8_nonfinite_are_failures",
+          "run_seconds": 0.001297416165471077,
+          "setup_seconds": 5.00120222568512e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.078051567077637e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_full_capture_after_kill_cannot_grade_expected_prefix_or_wrong_value",
+          "run_seconds": 0.0005329996347427368,
+          "setup_seconds": 6.249174475669861e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.830079317092896e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_identity_unproven_full_capture_cannot_establish_product_verdict",
+          "run_seconds": 0.00021083280444145203,
+          "setup_seconds": 5.830079317092896e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.041218638420105e-06,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_large_lawful_numbers_not_confused_with_parser_integer_limit",
+          "run_seconds": 0.000256500206887722,
+          "setup_seconds": 8.326023817062378e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_lost_history_state_blocks_semantics_without_erasing_proven_exit",
+          "run_seconds": 0.0003437083214521408,
+          "setup_seconds": 7.078051567077637e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.915039658546448e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_missing_step_preserves_exact_roster_unknown_and_unspecified",
+          "run_seconds": 1.8999911844730377e-05,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.497146725654602e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_mixed_domain_error_framing_is_ungraded_without_substring_extraction",
+          "run_seconds": 0.0005994169041514397,
+          "setup_seconds": 2.9243528842926025e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 3.334134817123413e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_null_is_a_supported_semantic_value",
+          "run_seconds": 0.0001276656985282898,
+          "setup_seconds": 6.249174475669861e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.915039658546448e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_other_stream_limit_does_not_hide_complete_supported_stdout",
+          "run_seconds": 0.00012691691517829895,
+          "setup_seconds": 3.334134817123413e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.249174475669861e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_pure_stderr_shape_and_code_are_separate",
+          "run_seconds": 0.0007091658189892769,
+          "setup_seconds": 3.334134817123413e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.249174475669861e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_stream_limit_does_not_hide_known_wrong_exit",
+          "run_seconds": 0.00025250017642974854,
+          "setup_seconds": 1.5422701835632324e-06,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_success_accepts_semantic_whitespace_order_escape_and_diagnostics",
+          "run_seconds": 0.00024362560361623764,
+          "setup_seconds": 5.420297384262085e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.905726432800293e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_supported_wrong_code_and_wrong_channel_fail",
+          "run_seconds": 0.0002577081322669983,
+          "setup_seconds": 4.5727938413619995e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.125037670135498e-06,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_timeout_has_no_invented_latency_or_forced_exit_failure",
+          "run_seconds": 0.00019516702741384506,
+          "setup_seconds": 4.163011908531189e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 9.164214134216309e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_true_and_false_never_equal_json_numbers",
+          "run_seconds": 0.0012560421600937843,
+          "setup_seconds": 7.506459951400757e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.420297384262085e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_unspecified_error_code_not_learned_from_candidate",
+          "run_seconds": 0.00015845801681280136,
+          "setup_seconds": 5.00120222568512e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 1.0831281542778015e-06,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_unspecified_success_wrapper_is_not_inferred",
+          "run_seconds": 0.00019408296793699265,
+          "setup_seconds": 4.172325134277344e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 7.925555109977722e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_usage_only_grades_actual_exit",
+          "run_seconds": 0.00016800034791231155,
+          "setup_seconds": 7.925555109977722e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.915039658546448e-07,
+          "id": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests.test_wrong_exit_survives_unavailable_error_framing",
+          "run_seconds": 0.0001493329182267189,
+          "setup_seconds": 4.591420292854309e-07,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 0.07943320740014315
+    },
+    {
+      "class": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests",
+      "cleanup_seconds": 1.0831281542778015e-06,
+      "cleanup_status": "completed",
+      "duration_seconds": 0.0224388325586915,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/5ef6d9b71579a4c6/result.json",
+      "evidence_sha256": "939c970b2746cb247989e2a8af7503905f27c94d853bced0e2035345473ffa60",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/5ef6d9b71579a4c6/worker.log",
+      "log_sha256": "2784888d1afb9c668cc39e4b7cbd7cd5e0068fcec24bc98f1c22cb93d5b53a99",
+      "physical": true,
+      "preparation_seconds": 0.00982395838946104,
+      "queue_seconds": 0.11667091678828001,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.9927800948799453
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.004463000000000002,
+          "unit": "seconds",
+          "user_seconds": 0.017915999999999998,
+          "value": 0.022379
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 35635200
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.0,
+          "unit": "seconds",
+          "user_seconds": 0.0,
+          "value": 0.0
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 0.02254174929112196
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 0.011990292929112911,
+      "schema_version": 1,
+      "setup_seconds": 1.6670674085617065e-07,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {},
+      "tests": [
+        {
+          "cleanup_seconds": 9.583309292793274e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_closed_attach_before_start_is_not_empty_output_completion",
+          "run_seconds": 0.001171124167740345,
+          "setup_seconds": 9.164214134216309e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.420297384262085e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_completed_binary_streams_use_attach_before_start_then_wait",
+          "run_seconds": 0.0015901252627372742,
+          "setup_seconds": 4.163011908531189e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.668269634246826e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_confirmed_start_eof_during_slow_retention_is_complete",
+          "run_seconds": 0.001106124371290207,
+          "setup_seconds": 6.249174475669861e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_disagreement_oom_kill_restart_and_missing_timestamps_unknown",
+          "run_seconds": 0.00022525060921907425,
+          "setup_seconds": 4.5821070671081543e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.41098415851593e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_eof_during_start_response_is_unknown_capture_but_exit_survives",
+          "run_seconds": 0.0008942503482103348,
+          "setup_seconds": 4.172325134277344e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.658956408500671e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_final_identity_substitution_cannot_prove_completion",
+          "run_seconds": 0.0008618757128715515,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_output_limit_is_unknown_output_not_product_latency_failure",
+          "run_seconds": 0.0009504994377493858,
+          "setup_seconds": 4.172325134277344e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.00120222568512e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_response_callback_requires_complete_framing_before_retention",
+          "run_seconds": 0.00032683368772268295,
+          "setup_seconds": 5.41098415851593e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_runtime_mismatch_prevents_start",
+          "run_seconds": 0.0003657909110188484,
+          "setup_seconds": 3.7439167499542236e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_runtime_preflight_uses_declared_transport_budget",
+          "run_seconds": 0.0009669167920947075,
+          "setup_seconds": 3.334134817123413e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.153698682785034e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_sandbox_and_exact_configuration_projection",
+          "run_seconds": 0.0005869176238775253,
+          "setup_seconds": 4.172325134277344e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.591420292854309e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_start_error_never_becomes_candidate_stderr_or_exit",
+          "run_seconds": 0.0007573338225483894,
+          "setup_seconds": 4.5727938413619995e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.153698682785034e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_terminal_container_cannot_be_redispatched",
+          "run_seconds": 0.00023479200899600983,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.830079317092896e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_timeout_kills_owned_container_and_leaves_exit_unknown",
+          "run_seconds": 0.001013125292956829,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.5821070671081543e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_truncated_output_preserves_known_natural_exit",
+          "run_seconds": 0.0009039584547281265,
+          "setup_seconds": 4.591420292854309e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.4959444999694824e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests.test_valid_exit_zero_and_two_independently_proven",
+          "run_seconds": 3.537442535161972e-05,
+          "setup_seconds": 4.153698682785034e-07,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 0.14942187443375587
+    },
+    {
+      "class": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests",
+      "cleanup_seconds": 3.417953848838806e-06,
+      "cleanup_status": "completed",
+      "duration_seconds": 0.03373687528073788,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/3681a2f97d838692/result.json",
+      "evidence_sha256": "7c75f28bf7f2c351d0b8c41f5d02f06e0a861334281340a9df373abe9be61732",
+      "first_negative_seconds": null,
+      "fixture_errors": [],
+      "lane": "fast",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/3681a2f97d838692/worker.log",
+      "log_sha256": "8a160f91f04c412ac8b3fd9e129bf5e6bab599492a28d61838239cfd58b22905",
+      "physical": true,
+      "preparation_seconds": 0.009159834124147892,
+      "queue_seconds": 0.11856099963188171,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.991732879928844
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.0024730000000000012,
+          "unit": "seconds",
+          "user_seconds": 0.031096000000000002,
+          "value": 0.033569
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 35192832
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.0,
+          "unit": "seconds",
+          "user_seconds": 0.0,
+          "value": 0.0
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 0.03384883236140013
+        }
+      },
+      "returncode": 0,
+      "run_seconds": 0.024094832129776478,
+      "schema_version": 1,
+      "setup_seconds": 2.9243528842926025e-07,
+      "status": "passed",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {},
+      "tests": [
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_control_or_stdin_frames_cannot_be_candidate_stderr",
+          "run_seconds": 3.008265048265457e-05,
+          "setup_seconds": 8.754432201385498e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 4.172325134277344e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_endpoint_rejects_remote_or_ambiguous_selection_without_fallback",
+          "run_seconds": 0.00023358315229415894,
+          "setup_seconds": 3.343448042869568e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 6.658956408500671e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_http_body_and_wire_bounds_are_not_unbounded_allocations",
+          "run_seconds": 0.000866791233420372,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 5.420297384262085e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_http_content_length_chunked_and_close_framing",
+          "run_seconds": 0.0008936244994401932,
+          "setup_seconds": 6.249174475669861e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 8.335337042808533e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_http_header_byte_and_count_bounds",
+          "run_seconds": 0.02053937502205372,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 9.57399606704712e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_http_rejects_truncation_ambiguity_trailing_and_header_injection",
+          "run_seconds": 0.0014164168387651443,
+          "setup_seconds": 7.906928658485413e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.4959444999694824e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_multiplex_preserves_arbitrary_binary_and_empty_frames",
+          "run_seconds": 4.2708590626716614e-05,
+          "setup_seconds": 5.830079317092896e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.905726432800293e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_partial_header_and_partial_payload_never_complete",
+          "run_seconds": 1.1583790183067322e-05,
+          "setup_seconds": 5.00120222568512e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.4959444999694824e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_policy_rejects_invalid_deadlines_limits_and_unpinned_image",
+          "run_seconds": 3.950018435716629e-05,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        },
+        {
+          "cleanup_seconds": 2.505257725715637e-07,
+          "id": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests.test_stream_frame_and_frame_count_bounds",
+          "run_seconds": 2.116616815328598e-05,
+          "setup_seconds": 3.7532299757003784e-07,
+          "status": "passed"
+        }
+      ],
+      "tokens": 1,
+      "wall_seconds": 0.2557172076776624
+    },
+    {
+      "class": "tests/test_candidate_clients_docker_v1.py::CandidateCliPersistenceDockerTests",
+      "cleanup_seconds": 0.00010658241808414459,
+      "cleanup_status": "completed",
+      "duration_seconds": 69.80428912490606,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/result.json",
+      "evidence_sha256": "12512ac1860262c14c8908618a2a645655d0d73e834078bf529f949638f35def",
+      "first_negative_seconds": 69.76555129233748,
+      "fixture_errors": [],
+      "lane": "docker",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/worker.log",
+      "log_sha256": "d6e358523cca61bfe842c3c07778e024faa5601b1de92346c4c5c0856b8b6c10",
+      "physical": true,
+      "preparation_seconds": 0.038032458163797855,
+      "queue_seconds": 23.174563749693334,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.019590979961344984
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.9948940000000001,
+          "unit": "seconds",
+          "user_seconds": 0.372642,
+          "value": 1.367536
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 45629440
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 2.398534,
+          "unit": "seconds",
+          "user_seconds": 1.8521889999999999,
+          "value": 4.250723
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 69.80436929129064
+        }
+      },
+      "returncode": 1,
+      "run_seconds": 63.21375900041312,
+      "schema_version": 1,
+      "setup_seconds": 6.551991292275488,
+      "status": "error",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {
+        "docker": 15,
+        "git": 635
+      },
+      "tests": [
+        {
+          "cleanup_seconds": 1.2507662177085876e-06,
+          "detail": "Traceback (most recent call last):\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 57, in testPartExecutor\n    yield\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 538, in subTest\n    yield\n  File \"/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/tests/test_candidate_clients_docker_v1.py\", line 365, in run_roster\n    test.assertEqual(result.status, \"completed\", outcome)\nAssertionError: 'observation_unavailable' != 'completed'\n- observation_unavailable\n+ completed\n : {'case_id': 'cli-db-root-isolation', 'status': 'observation-unavailable', 'assertions': {'s01.process.exit': None, 's01.stdout.json': None, 's01.stdout.wrapper': None, 's02.process.exit': None, 's02.stdout.json': None, 's02.stdout.value': None, 's03.process.exit': None, 's03.stdout.json': None, 's03.stdout.value': None, 's04.process.exit': None, 's04.stdout.json': None, 's04.stdout.wrapper': None, 's05.process.exit': None, 's05.stdout.json': None, 's05.stdout.value': None, 's06.process.exit': None, 's06.stdout.json': None, 's06.stdout.value': None, 's07.process.exit': None, 's07.stdout.json': None, 's07.stdout.value': None, 's08.process.exit': None, 's08.stdout.json': None, 's08.stdout.value': None, 's09.process.exit': None, 's09.stdout.json': None, 's09.stdout.value': None}, 'assertion_dispositions': {'s01.process.exit': 'unavailable', 's01.stdout.json': 'unavailable', 's01.stdout.wrapper': 'unspecified', 's02.process.exit': 'unavailable', 's02.stdout.json': 'unavailable', 's02.stdout.value': 'unavailable', 's03.process.exit': 'unavailable', 's03.stdout.json': 'unavailable', 's03.stdout.value': 'unavailable', 's04.process.exit': 'unavailable', 's04.stdout.json': 'unavailable', 's04.stdout.wrapper': 'unspecified', 's05.process.exit': 'unavailable', 's05.stdout.json': 'unavailable', 's05.stdout.value': 'unavailable', 's06.process.exit': 'unavailable', 's06.stdout.json': 'unavailable', 's06.stdout.value': 'unavailable', 's07.process.exit': 'unavailable', 's07.stdout.json': 'unavailable', 's07.stdout.value': 'unavailable', 's08.process.exit': 'unavailable', 's08.stdout.json': 'unavailable', 's08.stdout.value': 'unavailable', 's09.process.exit': 'unavailable', 's09.stdout.json': 'unavailable', 's09.stdout.value': 'unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['s01.process.exit', 's01.stdout.json', 's02.process.exit', 's02.stdout.json', 's02.stdout.value', 's03.process.exit', 's03.stdout.json', 's03.stdout.value', 's04.process.exit', 's04.stdout.json', 's05.process.exit', 's05.stdout.json', 's05.stdout.value', 's06.process.exit', 's06.stdout.json', 's06.stdout.value', 's07.process.exit', 's07.stdout.json', 's07.stdout.value', 's08.process.exit', 's08.stdout.json', 's08.stdout.value', 's09.process.exit', 's09.stdout.json', 's09.stdout.value'], 'unspecified_assertion_ids': ['s01.stdout.wrapper', 's04.stdout.wrapper'], 'assertion_census_sha256': 'fa81fe893151b1df9d3fd910a6b8c1990486d3774c4857095761edabb70dfc44', 'steps': {'s01': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '44d8e2f0e5b362392ed7e88a18c53fe157f1293dfb406a813501af37734bc11c', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.wrapper': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.wrapper': 'unspecified'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.wrapper': 'unspecified by the frozen product contract'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json'], 'unspecified_assertion_ids': ['stdout.wrapper'], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's02': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '656e963ff946b67fb5d061d247e476be7c2ff9543cbf2c9ebc2e124ed14b1dc5', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's03': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '4ec2f622817e65bfc3aa586faa3750123f82efbd7e619a38bc65f284c463da7e', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's04': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '44d8e2f0e5b362392ed7e88a18c53fe157f1293dfb406a813501af37734bc11c', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.wrapper': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.wrapper': 'unspecified'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.wrapper': 'unspecified by the frozen product contract'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json'], 'unspecified_assertion_ids': ['stdout.wrapper'], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's05': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '6ff071f0c124350175773bf5e46c2900a708561ed474c248c4b232b13cd0a610', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's06': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '82b25b5ac05c4380fd4d8c4328d6cebdf354fd99c53c7b5e696820c047a57603', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's07': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': '3a50da8c8e6f929b826bceaf37b7b8e8f6b3333dc3c19a8b5fa058504490af07', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's08': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': 'd4d0101084d0444eaf9aa77f6be9d77682f38caa7ff974ee66ae837ecf34ab12', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}, 's09': {'protocol': 'candidate-client-observer-v1', 'expectation_sha256': 'c2b37ec446dc862bf585eb11a02d9d7b93444e3e3e8d7a7bfabd21ab05e7931f', 'observation_sha256': None, 'status': 'observation-unavailable', 'assertions': {'process.exit': None, 'stdout.json': None, 'stdout.value': None}, 'assertion_dispositions': {'process.exit': 'unavailable', 'stdout.json': 'unavailable', 'stdout.value': 'unavailable'}, 'assertion_reasons': {'process.exit': 'process observation unavailable', 'stdout.json': 'process observation unavailable', 'stdout.value': 'process observation unavailable'}, 'failed_assertion_ids': [], 'unavailable_assertion_ids': ['process.exit', 'stdout.json', 'stdout.value'], 'unspecified_assertion_ids': [], 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'production_acceptance_authority': False}}, 'supported_assertions_passed': False, 'all_local_assertions_passed': False, 'qualification_verified': False, 'acceptance_credit': False, 'production_acceptance_authority': False, 'family_id': 'configuration', 'missing_step_ids': ['s01', 's02', 's03', 's04', 's05', 's06', 's07', 's08', 's09'], 'history_transport_status': 'observation_unavailable', 'cleanup_verified': True, 'infrastructure': ['ExecutionError:Keeper initial configuration changed during start'], 'lifecycle': {'trusted_volume_holder': {'Args': ['-I', '-c', 'import time;time.sleep(3900)'], 'Config': {'AttachStderr': True, 'AttachStdin': False, 'AttachStdout': True, 'Cmd': ['-I', '-c', 'import time;time.sleep(3900)'], 'Domainname': '', 'Entrypoint': ['python'], 'Env': ['PYTHONNOUSERSITE=1', 'HTTP_PROXY=', 'HTTPS_PROXY=', 'FTP_PROXY=', 'ALL_PROXY=', 'http_proxy=', 'https_proxy=', 'HOME=/tmp', 'NO_PROXY=', 'ftp_proxy=', 'no_proxy=', 'all_proxy=', 'PYTHONDONTWRITEBYTECODE=1', 'PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG=C.UTF-8', 'GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305', 'PYTHON_VERSION=3.12.14', 'PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a'], 'Healthcheck': {'Test': ['NONE']}, 'Hostname': 'gossip-validator', 'Image': 'sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f', 'Labels': {'gossip.execution': 'client-fc51f9c4de4147cf9a8bd8042c848c18', 'gossip.role': 'volume-keeper'}, 'OpenStdin': False, 'StdinOnce': False, 'StopTimeout': 1, 'Tty': False, 'User': '65534:65534', 'Volumes': None, 'WorkingDir': '/'}, 'HostConfig': {'AutoRemove': False, 'Binds': None, 'BlkioDeviceReadBps': [], 'BlkioDeviceReadIOps': [], 'BlkioDeviceWriteBps': [], 'BlkioDeviceWriteIOps': [], 'BlkioWeight': 0, 'BlkioWeightDevice': [], 'CapAdd': None, 'CapDrop': ['ALL'], 'Cgroup': '', 'CgroupParent': '', 'CgroupnsMode': 'private', 'ConsoleSize': [0, 0], 'ContainerIDFile': '', 'CpuCount': 0, 'CpuPercent': 0, 'CpuPeriod': 0, 'CpuQuota': 0, 'CpuRealtimePeriod': 0, 'CpuRealtimeRuntime': 0, 'CpuShares': 0, 'CpusetCpus': '', 'CpusetMems': '', 'DeviceCgroupRules': None, 'DeviceRequests': None, 'Devices': [], 'Dns': None, 'DnsOptions': [], 'DnsSearch': [], 'ExtraHosts': None, 'GroupAdd': None, 'IOMaximumBandwidth': 0, 'IOMaximumIOps': 0, 'IpcMode': 'private', 'Isolation': '', 'Links': None, 'LogConfig': {'Config': {}, 'Type': 'none'}, 'MaskedPaths': ['/proc/acpi', '/proc/asound', '/proc/interrupts', '/proc/kcore', '/proc/keys', '/proc/latency_stats', '/proc/sched_debug', '/proc/scsi', '/proc/timer_list', '/proc/timer_stats', '/sys/devices/virtual/powercap', '/sys/firmware'], 'Memory': 268435456, 'MemoryReservation': 0, 'MemorySwap': 268435456, 'MemorySwappiness': None, 'Mounts': [{'ReadOnly': True, 'Source': 'gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume', 'Target': '/tmp', 'Type': 'volume', 'VolumeOptions': {'NoCopy': True}}], 'NanoCpus': 1000000000, 'NetworkMode': 'none', 'OomKillDisable': None, 'OomScoreAdj': 0, 'PidMode': '', 'PidsLimit': 64, 'PortBindings': {}, 'Privileged': False, 'PublishAllPorts': False, 'ReadonlyPaths': ['/proc/bus', '/proc/fs', '/proc/irq', '/proc/sys', '/proc/sysrq-trigger'], 'ReadonlyRootfs': True, 'RestartPolicy': {'MaximumRetryCount': 0, 'Name': 'no'}, 'Runtime': 'runc', 'SecurityOpt': ['no-new-privileges:true'], 'ShmSize': 67108864, 'UTSMode': '', 'Ulimits': [{'Hard': 256, 'Name': 'nofile', 'Soft': 256}], 'UsernsMode': '', 'VolumeDriver': '', 'VolumesFrom': None}, 'Id': '2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee', 'Image': 'sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f', 'Mounts': [{'Destination': '/tmp', 'Driver': 'local', 'Mode': 'z', 'Name': 'gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume', 'Propagation': '', 'RW': False, 'Source': '/var/lib/docker/volumes/gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume/_data', 'Type': 'volume'}], 'Name': '/gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-keeper', 'Path': 'python', 'RestartCount': 0, 'StartedAt': '2026-10-03T15:27:13.806622711Z'}, 'trusted_volume_holder_cleanup_verified': True, 'created_container_records': [], 'observed_container_results': [], 'successfully_started_processes': [], 'naturally_completed_processes': [], 'controller_kill_requested': [], 'startup_unavailable': [], 'incomplete_process_observations': [], 'note': 'A controller kill request is retained separately from proof of a killed process.', 'keeper_boundaries': []}, 'terminal_sha256': 'd4fc9dc2e1e3e60b628ac5a0f093e83653224a89ccfe2c81b91e7ae1b0567d28'}\n",
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateCliPersistenceDockerTests.test_independent_process_persistence_and_root_isolation",
+          "run_seconds": 63.21375900041312,
+          "setup_seconds": 2.4586915969848633e-06,
+          "status": "failed"
+        }
+      ],
+      "tokens": 2,
+      "wall_seconds": 69.95352787524462
+    },
+    {
+      "class": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests",
+      "cleanup_seconds": 0.0004002070054411888,
+      "cleanup_status": "completed",
+      "duration_seconds": 10.019307250156999,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/result.json",
+      "evidence_sha256": "e2a5fe0631422bf211d68b7f84a2115968be03c9a918a8ed47bb27790de29467",
+      "first_negative_seconds": 9.980338707566261,
+      "fixture_errors": [],
+      "lane": "docker",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/worker.log",
+      "log_sha256": "a653ab79319e6bdd37d4a704a4d392824ba3e4c096eb6e267d97bf998d57dce4",
+      "physical": true,
+      "preparation_seconds": 0.03804445918649435,
+      "queue_seconds": 23.176699582487345,
+      "resources": {
+        "peak_cpu_cores": {
+          "reason": "No CPU sampling; an interval average is not a peak",
+          "scope": "observer process",
+          "status": "unavailable",
+          "unit": "cores",
+          "value": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+          "scope": "observer process tree",
+          "status": "unavailable",
+          "unit": "bytes",
+          "value": null
+        },
+        "schema": "verification-process-telemetry-v1",
+        "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+        "self_average_cpu_cores": {
+          "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+          "status": "measured",
+          "unit": "cores",
+          "value": 0.025386550726137186
+        },
+        "self_cpu_seconds": {
+          "scope": "observer process during interval",
+          "status": "measured",
+          "system_seconds": 0.146871,
+          "unit": "seconds",
+          "user_seconds": 0.107487,
+          "value": 0.254358
+        },
+        "self_lifetime_peak_rss_bytes": {
+          "scope": "observer process lifetime; not an interval delta",
+          "status": "measured",
+          "unit": "bytes",
+          "value": 39682048
+        },
+        "waited_children_cpu_seconds": {
+          "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+          "status": "measured",
+          "system_seconds": 0.261395,
+          "unit": "seconds",
+          "user_seconds": 0.20735099999999998,
+          "value": 0.468746
+        },
+        "wall_seconds": {
+          "scope": "observer interval",
+          "status": "measured",
+          "unit": "seconds",
+          "value": 10.019399750046432
+        }
+      },
+      "returncode": 1,
+      "run_seconds": 9.349409291520715,
+      "schema_version": 1,
+      "setup_seconds": 0.6311403326690197,
+      "status": "error",
+      "subprocess_counter_scope": "direct child launches observed by this worker only",
+      "subprocess_starts": {
+        "docker": 15,
+        "git": 37
+      },
+      "tests": [
+        {
+          "cleanup_seconds": 3.082677721977234e-06,
+          "detail": "Traceback (most recent call last):\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 57, in testPartExecutor\n    yield\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 538, in subTest\n    yield\n  File \"/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/tests/test_candidate_clients_docker_v1.py\", line 656, in test_actual_exit_zero_two_usage_and_opposite_diagnostics\n    self.run_control(name)\n  File \"/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/tests/test_candidate_clients_docker_v1.py\", line 578, in run_control\n    self.assertFalse(result.missing_step_ids)\nAssertionError: ('s01',) is not false\n",
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_actual_exit_zero_two_usage_and_opposite_diagnostics",
+          "run_seconds": 9.349409291520715,
+          "setup_seconds": 1.2498348951339722e-06,
+          "status": "failed"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_binary_raw_stream_demultiplexing",
+          "status": "not_run"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_capture_overflow_remains_observation_limit",
+          "status": "not_run"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_completed_wrong_exit_channel_and_value_are_distinguished",
+          "status": "not_run"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_forged_completion_and_hang_remain_unknown",
+          "status": "not_run"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_mixed_stderr_framing_remains_unqualified",
+          "status": "not_run"
+        },
+        {
+          "id": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests.test_startup_failure_is_not_candidate_exit",
+          "status": "not_run"
+        }
+      ],
+      "tokens": 2,
+      "wall_seconds": 10.156642625108361
+    }
+  ],
+  "lanes": [
+    "fast",
+    "docker"
+  ],
+  "outcomes": {
+    "failed": 2,
+    "not_run": 6,
+    "passed": 94
+  },
+  "peak_resource_tokens": 4,
+  "resources": {
+    "peak_cpu_cores": {
+      "reason": "No CPU sampling; an interval average is not a peak",
+      "scope": "observer process",
+      "status": "unavailable",
+      "unit": "cores",
+      "value": null
+    },
+    "process_tree_peak_rss_bytes": {
+      "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+      "scope": "observer process tree",
+      "status": "unavailable",
+      "unit": "bytes",
+      "value": null
+    },
+    "schema": "verification-process-telemetry-v1",
+    "scope": "verification controller; child CPU overlaps worker observations",
+    "self_average_cpu_cores": {
+      "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+      "status": "measured",
+      "unit": "cores",
+      "value": 0.01970671421849053
+    },
+    "self_cpu_seconds": {
+      "scope": "observer process during interval",
+      "status": "measured",
+      "system_seconds": 0.386138,
+      "unit": "seconds",
+      "user_seconds": 1.520667,
+      "value": 1.9068049999999999
+    },
+    "self_lifetime_peak_rss_bytes": {
+      "scope": "observer process lifetime; not an interval delta",
+      "status": "measured",
+      "unit": "bytes",
+      "value": 190578688
+    },
+    "waited_children_cpu_seconds": {
+      "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+      "status": "measured",
+      "system_seconds": 5.239192,
+      "unit": "seconds",
+      "user_seconds": 4.7472,
+      "value": 9.986392
+    },
+    "wall_seconds": {
+      "scope": "observer interval",
+      "status": "measured",
+      "unit": "seconds",
+      "value": 96.75915420800447
+    }
+  },
+  "reused_classes": 0,
+  "runtime_reconciliation": {
+    "final_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+    "initial_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+    "matches": true
+  },
+  "schema_version": 1,
+  "selected_counts": {
+    "docker": 8,
+    "fast": 94
+  },
+  "selected_total": 102,
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": {
+    "duration_seconds": 1.2576605407521129,
+    "returncode": 0,
+    "status": "passed"
+  },
+  "status": "failed",
+  "workers": 4,
+  "workers_started": 8
+}

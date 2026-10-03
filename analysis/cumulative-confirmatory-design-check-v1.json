@@ -1,0 +1,402 @@
+{
+  "schema": "cumulative-confirmatory-design-check-v1",
+  "status": "design_only_read_only_source_review",
+  "scope": {
+    "active_worktree": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol",
+    "inspected_head": "08c9fb2e68a4c92db2a5d870908ab9acf8fb2ebd",
+    "receipt_location_note": "Saved in the original permitted workspace. Every inspected input is bound to the active worktree. Root may copy this unchanged receipt into the active worktree.",
+    "new_provider_calls": 0,
+    "new_api_spend_usd": 0,
+    "new_candidate_executions": 0,
+    "new_docker_executions": 0,
+    "new_tests": 0,
+    "new_power_calculations": 0,
+    "source_test_configuration_or_report_edits": false,
+    "existing_cohort_changed": false,
+    "execution_authorized": false,
+    "adds_C01_C02_prerequisite": false,
+    "root_ownership": "Root retains implementation, qualification, provider dispatch, ledger, report and commit ownership. This parallel recommendation does not block or add a requirement to C01/C02."
+  },
+  "objective": "Evidence for and against swarm approaches on sustained, independently accepted whole-project completion. Quality and inherited correctness are primary; speed and cost are secondary.",
+  "findings": [
+    {
+      "id": "unit",
+      "claim": "The planned six trajectories form two matched three-arm condition blocks in one development application family. Independent project-family n remains one.",
+      "references": [
+        {
+          "source": "large-swarm-project-plan-v1.json",
+          "pointer": "/cohort"
+        }
+      ]
+    },
+    {
+      "id": "contrasts",
+      "claim": "S16-G versus S4-G concerns the builder population/allocation/diversity package under equal aggregate offered resources. S16-G versus O16-G concerns peer-local versus matched durable central decision placement with the same gossip transport.",
+      "references": [
+        {
+          "source": "large-swarm-project-plan-v1.json",
+          "pointer": "/contrasts"
+        }
+      ]
+    },
+    {
+      "id": "nested_observations",
+      "claim": "Four cumulative milestones, many scenarios, 8 or 20 roles, candidate branches, repeat evaluator executions and model turns are nested measurements or opportunities. They are not independent project replications.",
+      "references": [
+        {
+          "source": "large-swarm-project-plan-v1.json",
+          "pointer": "/cohort"
+        },
+        {
+          "source": "analysis/benchmark-confirmatory-design-v4.json",
+          "pointer": "/primary_design/unit"
+        }
+      ]
+    },
+    {
+      "id": "retained_limit",
+      "claim": "The inspected acceptance-boundary checkpoint explicitly reports engineering acceptance components with limits, no whole-project acceptance and no comparative quality result. It does not certify the eventual six-trajectory comparison.",
+      "references": [
+        {
+          "source": "analysis/cumulative-acceptance-boundary-checkpoint-v1.json",
+          "pointer": "/whole_project_acceptance"
+        },
+        {
+          "source": "analysis/cumulative-acceptance-boundary-checkpoint-v1.json",
+          "pointer": "/comparative_quality_result"
+        },
+        {
+          "source": "analysis/cumulative-acceptance-boundary-checkpoint-v1.json",
+          "pointer": "/qualification_limits"
+        }
+      ],
+      "limit": "This is the retained checkpoint's dated scope, not a new audit of active B03/C01/C02 implementation or newer receipts."
+    },
+    {
+      "id": "method_not_new_preregistration",
+      "claim": "The retained v4 statistical design is a proposal for formation and separately defined live-protocol claims. Its paired binary method and illustrative power assumptions can inform a future scaling/placement design; they are not an already frozen analysis or sample size for S16-G/S4-G/O16-G.",
+      "references": [
+        {
+          "source": "analysis/benchmark-confirmatory-design-v4.json",
+          "pointer": "/status"
+        },
+        {
+          "source": "analysis/benchmark-confirmatory-design-v4.json",
+          "pointer": "/hypothesis_families"
+        },
+        {
+          "source": "analysis/benchmark-confirmatory-design-v4.json",
+          "pointer": "/power/sample_size_status"
+        }
+      ]
+    }
+  ],
+  "independent_units": {
+    "treatment_execution_unit": "One whole-project trajectory: one arm, one source lineage, all four milestones, bounded public work and independent final adjudication.",
+    "matched_block": "One family and one preassigned fault condition, shared source/specification/evaluation/opportunity contract across all compared arms, with fresh arm-specific model draws and isolated mutable state.",
+    "population_generalization_unit": "Independently sampled held-out application family, with one matched block per family for the existing iid paired analysis.",
+    "current_counts": {
+      "planned_trajectories": 6,
+      "arms": 3,
+      "related_condition_blocks": 2,
+      "development_families": 1,
+      "planned_cumulative_milestones_per_trajectory": 4
+    },
+    "conditional_replication": "Fresh model draws can probe stochastic behavior on this application. Two differing condition blocks do not estimate stable per-condition success probabilities, and neither provides independent application-family replication.",
+    "family_registry": "Record shared seed/source/specification lineage and development exposure. New paths, repository names, fixtures or private scenarios alone do not create new independent families. Related variants remain a cluster."
+  },
+  "permitted_current_interpretation": [
+    "After execution and audit, describe exact source-bound acceptance or failure in each planned arm/condition cell, inherited/new-feature failures, unresolved obligations, retained/regressed work, and mechanisms supported by journals.",
+    "Describe whether each scheduled fault actually triggered, its absolute and relative role exposure, and whether the specific trajectory continued afterward. An unreached trigger is unexposed, not a recovery success.",
+    "Treat the recovery cell as a compound builder-restart plus bounded-partition condition. It cannot separately estimate either intervention's effect.",
+    "Keep outcome ordering descriptive and conditional on this application, implementation, models, limits, faults and host environment.",
+    "No outcomes of the planned six-trajectory cohort are claimed by this receipt."
+  ],
+  "unsupported_current_conclusions": [
+    "Population superiority, a stable Elo league, a reliable acceptance probability, or a general ranking of swarm versus orchestration.",
+    "Gossip superiority over a broker: all three scaling arms use gossip. The separate placement-by-transport four-cell obligation remains open.",
+    "Pure parallelism or diversity benefit: builder count, allocation, local context and candidate diversity change together within fixed offered capacities.",
+    "Equal realized computation from equal offered caps: actual calls, tokens, evaluator work, concurrency, queues and latency may differ.",
+    "General recovery reliability, separate restart/partition causal effects, multi-host availability, or equivalence of conditions.",
+    "Proof of no benefit from a null or mixed one-family outcome, or proof of safety from observing no rare integrity violation.",
+    "Whole-project model quality from passing B03/C01/C02 subsystem qualifications, synthetic controls, mutation banks or many acceptance scenarios."
+  ],
+  "smallest_scope_preserving_confirmation": {
+    "status": "Prospective recommendation; no executable roster, sample size, funding or authorization is selected.",
+    "structure": "F independently selected held-out families, one complete matched S4-G/S16-G/O16-G block per family: 3F trajectories, each with four cumulative milestones.",
+    "why_not_six_per_family": "Independently draw one healthy or recovery condition per family from a frozen target mixture and use the same condition across its three arms. The existing iid paired analysis then targets the mixture; repeating both conditions within each family would require a clustered estimand/analysis and does not double family n.",
+    "primary_recommendation": "S16-G versus O16-G, binary independently accepted whole-project completion. This directly targets the peer-versus-central decision-placement question while holding gossip transport and the 20-role mix constant.",
+    "scale_contrast": "Retain S4-G in the roster. S16-G versus S4-G is descriptive unless it receives a prospectively allocated confirmatory error budget.",
+    "two_primary_option": "If both placement and scale are confirmatory, allocate alpha 0.025 per paired interval for familywise error at most 0.05, or preregister another justified multiplicity procedure before outcomes. The shared S16-G arm does not invalidate Bonferroni protection.",
+    "one_primary_option": "If placement alone is confirmatory and all other analyses descriptive, alpha 0.05 for that one paired interval is the retained standalone option.",
+    "narrow_two_arm_option": "S16-G versus O16-G alone is the minimum two-arm scientific contrast, but it explicitly defers builder-scale confirmation and narrows the planned roster. It must not be described as completion of the three-arm or four-cell scope.",
+    "separate_obligations": [
+      "Placement-by-transport four-cell study",
+      "Unrestricted autonomous tool-loop investigation",
+      "Multi-host availability investigation"
+    ],
+    "condition_claims": "No separate healthy/recovery efficacy or interaction claim from a mixture-level primary result. Such claims require prespecified stratum/cluster analysis and multiplicity/sample planning.",
+    "registry_exclusions": "Exclude the Local Research Library development family and all other families or derivatives used for controller/fixture/model selection, including Graph/Calendar and the warehouse/job-queue development pilot.",
+    "sampling_limit": "A fixed convenience benchmark supports a result on that benchmark. Population claims require the frozen target sampling frame/mixture and independence assumptions, not just unique family IDs."
+  },
+  "endpoint_and_decision": {
+    "primary_endpoint": "Success only if exact source completes all four required milestones under the common active horizon/offered budget and public policy, is frozen at the complete-cohort barrier, then passes every inherited/new-feature/integration final gate and valid source/promotion provenance. A stopped or incomplete trajectory fails this whole-project endpoint.",
+    "inherited_correctness": "Include inherited preservation in the mandatory all-or-nothing success gate and report violations separately. A distinct preservation noninferiority/co-primary claim would need its own prospective rule and error allocation; absence of observed violations does not prove safety.",
+    "proposed_practical_margin": 0.1,
+    "margin_status": "Retained engineering proposal of ten additional independently accepted projects per hundred attempts; not user-approved and not estimated from the pilot.",
+    "retained_interval": "Bonferroni-Clopper-Pearson bounds for the two discordant-cell probabilities, differenced into a paired acceptance-risk-difference interval.",
+    "rules": {
+      "worthwhile_benefit": "Lower endpoint exceeds +0.10.",
+      "rules_out_worthwhile_benefit": "Upper endpoint is below +0.10 within the tested population/model/resource/fault contract; this does not establish equality or universal swarm failure.",
+      "otherwise": "Inconclusive; do not change margin or append cases after inspecting efficacy."
+    },
+    "secondary_test": "Exact McNemar tests direction versus zero. Rejecting zero does not establish an advantage above the +10pp practical margin.",
+    "guardrails": "A promoted release with violated mandatory source/sandbox/receipt/acceptance invariants is a protocol failure, even if coverage or speed looks good. A model's provisional accept request correctly blocked by a gate is reported separately.",
+    "stopping": "Choose fixed complete roster and analysis before outcomes; retain every failed/stopped trajectory. No difficult-case replacement or efficacy-driven sample extension. An incomplete/unsettled cohort receives no confirmatory declaration."
+  },
+  "sample_needs": {
+    "no_selected_minimum": "The one-family study supplies no defensible minimum F or empirically established paired discordance for held-out projects. The retained numbers below are illustrative planning calculations copied without rerunning the statistical code.",
+    "assumptions": "Independent identically sampled family pairs and fresh model randomness. Benefit scenario p(treatment-only)=0.30, p(control-only)=0.10: true gain +20pp and discordance 40%. Exclusion scenario p(treatment-only)=p(control-only)=0.15: no gain and discordance 30%. Margin +10pp; per-claim alpha 0.025.",
+    "grid_interpretation": "Among the displayed retained 100/200/400/800 rows, 800 is the smallest row reaching at least 80% probability of each relevant decision under its respective scenario. This is a coarse-grid example, not an exact minimum, a selected sample size, evidence those assumptions hold, or a funding proposal.",
+    "resource_translation": "If F=800 were selected for the full three-arm design it would mean 2400 whole-project trajectories, not 800 tests. No spend or duration forecast follows from historical small-task API prices.",
+    "boundary": "If the true gain equals exactly +10pp, a valid procedure should usually remain inconclusive about exceeding +10pp. Power to reject zero is a different design target.",
+    "efficient_method": "Before selecting/funding confirmation, qualify a more efficient established paired score/profile-likelihood or exact-unconditional/melded interval already identified in the retained docs, then recalculate fixed-sample planning under the same declared assumptions. Do not adopt a method or sample size after confirmatory outcomes. This is later study design work, not a prerequisite for current C01/C02 engineering gates.",
+    "retained_planning_rows": [
+      {
+        "pointer": "/power/grid/15",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "20pp_gain_40pct_discordance",
+        "family_pairs": 100,
+        "alpha": 0.025,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "discordance": 0.4,
+        "true_difference": 0.19999999999999998,
+        "decision_probabilities": {
+          "meaningful_benefit": 0.03980454359626085,
+          "rules_out_meaningful_benefit": 3.389267429951685e-7,
+          "inconclusive": 0.9601951174769962
+        }
+      },
+      {
+        "pointer": "/power/grid/17",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "20pp_gain_40pct_discordance",
+        "family_pairs": 200,
+        "alpha": 0.025,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "discordance": 0.4,
+        "true_difference": 0.19999999999999998,
+        "decision_probabilities": {
+          "meaningful_benefit": 0.15997249966021673,
+          "rules_out_meaningful_benefit": 9.352534915308155e-9,
+          "inconclusive": 0.8400274909872483
+        }
+      },
+      {
+        "pointer": "/power/grid/19",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "20pp_gain_40pct_discordance",
+        "family_pairs": 400,
+        "alpha": 0.025,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "discordance": 0.4,
+        "true_difference": 0.19999999999999998,
+        "decision_probabilities": {
+          "meaningful_benefit": 0.5131388943287258,
+          "rules_out_meaningful_benefit": 2.5709641454907742e-11,
+          "inconclusive": 0.4868611056455645
+        }
+      },
+      {
+        "pointer": "/power/grid/21",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "20pp_gain_40pct_discordance",
+        "family_pairs": 800,
+        "alpha": 0.025,
+        "p_treatment_only": 0.3,
+        "p_control_only": 0.1,
+        "discordance": 0.4,
+        "true_difference": 0.19999999999999998,
+        "decision_probabilities": {
+          "meaningful_benefit": 0.9248244137007211,
+          "rules_out_meaningful_benefit": 1.0887499459175247e-15,
+          "inconclusive": 0.07517558629927781
+        }
+      },
+      {
+        "pointer": "/power/grid/27",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "no_gain_30pct_discordance",
+        "family_pairs": 100,
+        "alpha": 0.025,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "discordance": 0.3,
+        "true_difference": 0,
+        "decision_probabilities": {
+          "meaningful_benefit": 6.33329042269909e-8,
+          "rules_out_meaningful_benefit": 0.055670149359361154,
+          "inconclusive": 0.9443297873077345
+        }
+      },
+      {
+        "pointer": "/power/grid/29",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "no_gain_30pct_discordance",
+        "family_pairs": 200,
+        "alpha": 0.025,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "discordance": 0.3,
+        "true_difference": 0,
+        "decision_probabilities": {
+          "meaningful_benefit": 1.2946773650289783e-9,
+          "rules_out_meaningful_benefit": 0.21741550722554087,
+          "inconclusive": 0.7825844914797817
+        }
+      },
+      {
+        "pointer": "/power/grid/31",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "no_gain_30pct_discordance",
+        "family_pairs": 400,
+        "alpha": 0.025,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "discordance": 0.3,
+        "true_difference": 0,
+        "decision_probabilities": {
+          "meaningful_benefit": 1.5225445073336566e-12,
+          "rules_out_meaningful_benefit": 0.6256792951570973,
+          "inconclusive": 0.37432070484138014
+        }
+      },
+      {
+        "pointer": "/power/grid/33",
+        "source": "analysis/benchmark-confirmatory-design-v4.json",
+        "scenario": "no_gain_30pct_discordance",
+        "family_pairs": 800,
+        "alpha": 0.025,
+        "p_treatment_only": 0.15,
+        "p_control_only": 0.15,
+        "discordance": 0.3,
+        "true_difference": 0,
+        "decision_probabilities": {
+          "meaningful_benefit": 1.2523126575027226e-17,
+          "rules_out_meaningful_benefit": 0.9682601271075376,
+          "inconclusive": 0.031739872892462384
+        }
+      }
+    ]
+  },
+  "report_guidance": {
+    "primary_display": "Block-by-arm whole-project accepted count/denominator, mandatory inherited preservation, new-feature coverage, critical integrity failures, unresolved obligations and actual fault exposure.",
+    "timing": "Separate active time to source freeze, cohort wait and private adjudication/promotion. Early terminal failure remains unsuccessful through the active horizon; it is not fast completion or ordinary noninformative censoring.",
+    "resources": "Show actual calls/tokens/spend and concurrency separately from offered caps and role counts. Summed overlapping provider/evaluator spans are not wall time.",
+    "ranking": "Descriptive quality ordering only for the one-family engineering study; no Elo/population confidence claim.",
+    "zero_acceptance": "Cost per accepted project is undefined at zero acceptance; show total cost and denominator.",
+    "denominator_warning": "Scenario, case, clause, fault-bank and milestone denominators describe coverage, not independent project/sample size."
+  },
+  "prioritized_remaining_actions": [
+    {
+      "priority": 1,
+      "when": "Current implementation",
+      "action": "Continue root's B03/C01/C02 and existing engineering qualification gates unchanged. This statistical receipt adds no blocking gate or implementation work."
+    },
+    {
+      "priority": 2,
+      "when": "Existing six-trajectory development/scaling cohort",
+      "action": "When its already required engineering, source-freeze and funding gates are satisfied, retain the complete four-milestone three-arm healthy/recovery cohort and audit its evidence. Use it for mechanism and feasibility decisions, not confirmatory population claims."
+    },
+    {
+      "priority": 3,
+      "when": "Before a later held-out confirmatory roster",
+      "action": "Freeze the selected controller/models, independent family registry and exclusions, common four-milestone acceptance contract, fault mixture, primary contrast(s), practical margin and multiplicity policy. Do not select them from held-out outcomes."
+    },
+    {
+      "priority": 4,
+      "when": "Before selecting confirmation scale",
+      "action": "Reuse the retained paired framework as a baseline; qualify any efficiency alternative and select fixed F under explicit acceptance/discordance assumptions and desired benefit/exclusion power. No current minimum or budget is implied."
+    },
+    {
+      "priority": 5,
+      "when": "Confirmatory execution and reporting",
+      "action": "Freeze the full cohort and private barrier, keep failures and bounded stops, make one final primary analysis, and report limitations of the sampled families and conditions. Preserve the separate transport and multi-host scopes."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/benchmark_challenge/confirmatory_units_review",
+    "status": "passed independent read-only design and final artifact binding review",
+    "reviewed_artifact_sha256": "587d9ebda6cb30a40e07547db2a1ef695b21d421f8a216638e23cfa27b704daf",
+    "post_review_changes": "Only this review record and binding-validation status were updated after clearance.",
+    "findings": "Agrees on one family, nested measurements, three-arm 3F scope-preserving confirmation, fault-mixture sampling, one/two primary options, explicit retained-grid assumptions and no added C01/C02 prerequisite.",
+    "no_new_executions": true
+  },
+  "created_at_utc": "2026-10-03T14:59:13.150Z",
+  "inspected_sources": [
+    {
+      "relative_path": "AGENTS.md",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/AGENTS.md",
+      "sha256": "21a97036894f4030d5b989de07d8817c004bc3e9d57b9f84305620a4961557c1"
+    },
+    {
+      "relative_path": "docs/large-swarm-project-plan-v1.md",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/docs/large-swarm-project-plan-v1.md",
+      "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2"
+    },
+    {
+      "relative_path": "large-swarm-project-plan-v1.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/large-swarm-project-plan-v1.json",
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e"
+    },
+    {
+      "relative_path": "docs/confirmatory-path-checkpoint-v1.md",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/docs/confirmatory-path-checkpoint-v1.md",
+      "sha256": "e9b03b82c9ba41ccfccb7b1e309ec967647db6ceb3f2af3a89e9360219b1ebe4"
+    },
+    {
+      "relative_path": "analysis/benchmark-confirmatory-design-v4.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/analysis/benchmark-confirmatory-design-v4.json",
+      "sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587"
+    },
+    {
+      "relative_path": "analysis/confirmatory_statistics.py",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/analysis/confirmatory_statistics.py",
+      "sha256": "5289b38ed2f174a37b329094d09f97864857dd45ec472a459f04d0e9302c9740"
+    },
+    {
+      "relative_path": "analysis/confirmatory-path-checkpoint-v1.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/analysis/confirmatory-path-checkpoint-v1.json",
+      "sha256": "0a8e1b39f8b1d4161ed88e57e7195ece23e3f7bcf16563ac1caf27e979abe40e"
+    },
+    {
+      "relative_path": "analysis/cumulative-acceptance-boundary-checkpoint-v1.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/analysis/cumulative-acceptance-boundary-checkpoint-v1.json",
+      "sha256": "338f8a6a06f615cfa02d1f38084970add1c2f586ef9ee6bfcf2b0a35a648ff1f"
+    },
+    {
+      "relative_path": "library-cumulative-product-v2.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/library-cumulative-product-v2.json",
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
+    },
+    {
+      "relative_path": "runs/candidate-b03-interface-plan-1.json",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-b03-interface-plan-1.json",
+      "sha256": "2674ed1da61b9a73991473d2205eab55e5a424437813d34e794d67d7914d5050"
+    }
+  ],
+  "inspection_limits": [
+    "Read plans, design notes, relevant statistical-source functions and compact checkpoint metadata; no raw trajectory/candidate execution artifacts or partial ongoing outputs were evaluated.",
+    "Some inspected source files are historical design/checkpoint documents. Their execution/funding/readiness statements are not treated as current authorization or root implementation status.",
+    "File hashes establish exactly which planning evidence was inspected; they do not independently requalify the statistical implementation, project evaluator, or runtime.",
+    "AGENTS.md and product-v2/B03 metadata were inventoried for identity/context; this is not a semantic audit of their complete implementation requirements.",
+    "No new power computation was run. The eight retained planning rows are copied with exact JSON pointers and unchanged probabilities."
+  ],
+  "binding_validation": {
+    "statistical_source_hash_matches_design_binding": true,
+    "evidence_pointers": "Independent read-only review confirmed all 10 inspected source hashes, all 10 finding pointers, and every field/probability in the 8 copied retained power rows. No remaining findings."
+  }
+}

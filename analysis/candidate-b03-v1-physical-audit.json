@@ -1,0 +1,3626 @@
+{
+  "archived_source_identities": [
+    {
+      "bytes": 26320,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/analysis/cumulative-confirmatory-design-check-v1.json",
+      "sha256": "42ecfbf0baf92936b91192456e9730acec2efb4924f8c2d00a5f206877241fdb"
+    },
+    {
+      "bytes": 8899,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/candidate-cli-cases-v1.md",
+      "sha256": "e9575257166ab5b25a7c775a76e808aac8b8c9e5ab7e3aca1dc8bc864afcb911"
+    },
+    {
+      "bytes": 9761,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/candidate-client-execution-v1.md",
+      "sha256": "dfc7ba0897c96f1b4b5f80cfc550ae43b8a7e1323b05927f760f820686bd997d"
+    },
+    {
+      "bytes": 7977,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/candidate-client-observation-v1.md",
+      "sha256": "63a74a700bcf14f507a9986a0c2f364ef8f6deab81eaecfbeae63684d1a4ab85"
+    },
+    {
+      "bytes": 7253,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/candidate-client-process-v1.md",
+      "sha256": "3ff6b38da866d1415aa0f33d0b4144a454a3ccf67510db09233c3c6139588ff2"
+    },
+    {
+      "bytes": 8685,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/candidate-client-qualification-plan-v1.md",
+      "sha256": "1d03f887b3deca8170b0337774da963b830ab13ac71b851bc36c458287165f7d"
+    },
+    {
+      "bytes": 4915,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/docs/cumulative-confirmatory-design-check-v1.md",
+      "sha256": "0d630da9ec38463df261b77be2e60f350f745e3e2d7963b10659baafc4bb357a"
+    },
+    {
+      "bytes": 23646,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/gossip_harness/candidate_cli_cases_v1.py",
+      "sha256": "4bcd1f7d1d009bb158e45367396d2254b68cb00ae02df4fb460fb52361948e1c"
+    },
+    {
+      "bytes": 50889,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/gossip_harness/candidate_client_execution_v1.py",
+      "sha256": "bb796c2d0a31868f4d58e7179b8fea396748ecf1942ee2d8837fa2a48ff6d6df"
+    },
+    {
+      "bytes": 20136,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/gossip_harness/candidate_client_observer_v1.py",
+      "sha256": "cee46a9c0957344f150e2b9adfa0fc17b343740a5ae2df1b11ceeb7e38a4c9cd"
+    },
+    {
+      "bytes": 34312,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/gossip_harness/candidate_client_process_v1.py",
+      "sha256": "dd9c555522f6e7663da522bf0a4525ad948e5d25974a8e3b766ed76cb9df4a34"
+    },
+    {
+      "bytes": 7689,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/pyproject.toml",
+      "sha256": "158d4c238847ee1bb31b07c2b9602d71f7ce88e384255da9ab485f4936c06e9b"
+    },
+    {
+      "bytes": 12620,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/tests/test_candidate_cli_cases_v1.py",
+      "sha256": "f35bc3a9acb07666cf172105330151753fb0345e8cde2381d5f72f93318c24d6"
+    },
+    {
+      "bytes": 21609,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/tests/test_candidate_client_execution_v1.py",
+      "sha256": "1aff5be690c3285f1fb8a20f56a42ae88d9452500af332d47ad584d15f876cb9"
+    },
+    {
+      "bytes": 18994,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/tests/test_candidate_client_observer_v1.py",
+      "sha256": "8c6615341b197fe04714b851b7092f97523cae8d28c9256a6cf16bacde1a60c1"
+    },
+    {
+      "bytes": 24543,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/tests/test_candidate_client_process_v1.py",
+      "sha256": "ec0a3ad446c4266957463efed80ec57a0b1a030867a6a0cd849815f3e27744d6"
+    },
+    {
+      "bytes": 41486,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/tests/test_candidate_clients_docker_v1.py",
+      "sha256": "4fa264021cf305727e263ae5dd15b4bc82426fbf64c9fcaeb93c904c400ee1d5"
+    },
+    {
+      "bytes": 303901,
+      "path": "runs/candidate-b03-definition-freeze-3/sources/verification-manifest.json",
+      "sha256": "9bb7969ddc1d46cda5be0fa2144c2cdc3514fe197045924ebdc98b026aef1c11"
+    }
+  ],
+  "checks": [
+    {
+      "check": "runner inputs exactly equal prospective freeze3",
+      "passed": true
+    },
+    {
+      "check": "452 runner inputs retained",
+      "passed": true
+    },
+    {
+      "check": "runner fingerprint recomputes",
+      "passed": true
+    },
+    {
+      "check": "runner_input_pins matches current unchanged files",
+      "passed": true
+    },
+    {
+      "check": "source_pins matches current unchanged files",
+      "passed": true
+    },
+    {
+      "check": "normative_sources matches current unchanged files",
+      "passed": true
+    },
+    {
+      "check": "reference_source_pins matches current unchanged files",
+      "passed": true
+    },
+    {
+      "check": "archive analysis/cumulative-confirmatory-design-check-v1.json",
+      "passed": true
+    },
+    {
+      "check": "archive docs/candidate-cli-cases-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive docs/candidate-client-execution-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive docs/candidate-client-observation-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive docs/candidate-client-process-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive docs/candidate-client-qualification-plan-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive docs/cumulative-confirmatory-design-check-v1.md",
+      "passed": true
+    },
+    {
+      "check": "archive gossip_harness/candidate_cli_cases_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive gossip_harness/candidate_client_execution_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive gossip_harness/candidate_client_observer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive gossip_harness/candidate_client_process_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive pyproject.toml",
+      "passed": true
+    },
+    {
+      "check": "archive tests/test_candidate_cli_cases_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive tests/test_candidate_client_execution_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive tests/test_candidate_client_observer_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive tests/test_candidate_client_process_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive tests/test_candidate_clients_docker_v1.py",
+      "passed": true
+    },
+    {
+      "check": "archive verification-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "terminal runner source/runtime reconciliation unchanged",
+      "passed": true
+    },
+    {
+      "check": "runner runtime exact retained match",
+      "passed": true
+    },
+    {
+      "check": "runner expected terminal partition",
+      "passed": true
+    },
+    {
+      "check": "runner zero reused classes",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_clients_docker_v1.py::CandidateCliPersistenceDockerTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_clients_docker_v1.py::CandidateCliPersistenceDockerTests",
+      "passed": true
+    },
+    {
+      "check": "class result identity tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests",
+      "passed": true
+    },
+    {
+      "check": "class log identity tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests",
+      "passed": true
+    },
+    {
+      "check": "method census independently matches summary",
+      "passed": true
+    },
+    {
+      "check": "frozen reference bytes match full61-file manifest",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation configuration intent/terminal hashes",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation exact qualification-only subject",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation exact frozen runtime/policy",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation evaluator before/after and frozen input identities",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation normative before/after/freeze identities",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation source domain digest recomputes",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation frozen source manifest",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation retained Git tree matches registration",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob README.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob compatibility/README.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob compatibility/m2.manifest.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob compatibility/m2.sqlite3",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob compatibility/v0.manifest.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob compatibility/v0.sqlite3",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob cumulative-public-contract.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob examples/welcome.txt",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library-cumulative-product-v1.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library-cumulative-product-v2.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/backup.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/backup_format.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/control.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/legacy_m1.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/legacy_m2.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/m4_backup.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/m4_control.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/m4_legacy.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/m4_store.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/m4_validation.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/maintenance.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/store.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/v2_maintenance.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/validation.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/catalog/worker.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/cli.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/http.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/index.html",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/legacy_m2_cli.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/legacy_m3_cli.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/release.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/clients/workflow.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/common.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/counters.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/ingestion/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/ingestion/jobs.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/ingestion/local.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/ingestion/worker.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/legacy_m1_service.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/legacy_m2_service.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/legacy_m3_service.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/legacy_v1_service.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob library/query/service.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob public_cases.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/API.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/CUMULATIVE-CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/RECOVERY.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/USER-GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/dataset/literal.html",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/dataset/notes.md",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/dataset/welcome.txt",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob release/dataset/workflow.json",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob solution.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob test_cumulative_public.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation Git regular blob test_public.py",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation retained Git blobs exact manifest",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 0 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 1 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 2 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 3 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 4 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 5 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 6 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 7 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 8 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 9 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 10 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 11 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 12 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 13 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 14 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 15 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 16 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 17 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 18 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 19 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 20 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 21 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 22 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 23 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 24 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 25 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 26 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 27 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 28 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 29 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 30 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 31 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 32 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 33 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 34 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 35 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 36 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 37 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 38 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 39 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 40 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 41 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 42 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 43 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 44 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 45 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation checkpoint 46 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation final independent checkpoint exactly covers journal",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation intent precedes dispatch evidence",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation no candidate intent/dispatch/result",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-absent",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-absent-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-absent-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-before",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-before-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-before-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-cleanup-inspect-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-cleanup-inspect-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-create",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-create-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-create-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-created",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-created-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-created-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-remove",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-remove-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-remove-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-running",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-running-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-running-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control keeper-start",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-start-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor keeper-start-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-after",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-after-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-after-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-before",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-before-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-before-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-cleanup-inspect-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-cleanup-inspect-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-create",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-create-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-create-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-created",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-created-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-created-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation clean control volume-remove",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-remove-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation raw descriptor volume-remove-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation exact14 control records",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation keeper exact created/started/cleanup identity",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation sole compared field difference confirmed",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation trusted keeper only fixed sleep command",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation keeper natural created-to-running transition",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation owned bounded volume created",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation owned bounded volume cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation all owned resources removed and absent",
+      "passed": true
+    },
+    {
+      "check": "cli-db-root-isolation exact retained stop reason",
+      "passed": true
+    },
+    {
+      "check": "semantic-success configuration intent/terminal hashes",
+      "passed": true
+    },
+    {
+      "check": "semantic-success exact qualification-only subject",
+      "passed": true
+    },
+    {
+      "check": "semantic-success exact frozen runtime/policy",
+      "passed": true
+    },
+    {
+      "check": "semantic-success evaluator before/after and frozen input identities",
+      "passed": true
+    },
+    {
+      "check": "semantic-success normative before/after/freeze identities",
+      "passed": true
+    },
+    {
+      "check": "semantic-success source domain digest recomputes",
+      "passed": true
+    },
+    {
+      "check": "semantic-success frozen source manifest",
+      "passed": true
+    },
+    {
+      "check": "semantic-success retained Git tree matches registration",
+      "passed": true
+    },
+    {
+      "check": "semantic-success Git regular blob library/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "semantic-success Git regular blob library/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "semantic-success retained Git blobs exact manifest",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 0 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 1 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 2 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 3 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 4 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 5 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 6 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 7 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 8 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 9 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 10 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 11 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 12 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 13 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 14 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 15 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 16 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 17 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 18 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 19 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 20 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 21 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 22 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 23 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 24 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 25 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 26 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 27 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 28 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 29 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 30 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 31 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 32 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 33 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 34 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 35 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 36 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 37 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 38 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 39 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 40 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 41 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 42 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 43 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 44 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 45 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success checkpoint 46 exact incremental inventory",
+      "passed": true
+    },
+    {
+      "check": "semantic-success final independent checkpoint exactly covers journal",
+      "passed": true
+    },
+    {
+      "check": "semantic-success intent precedes dispatch evidence",
+      "passed": true
+    },
+    {
+      "check": "semantic-success no candidate intent/dispatch/result",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-absent",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-absent-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-absent-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-before",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-before-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-before-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-cleanup-inspect-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-cleanup-inspect-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-create",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-create-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-create-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-created",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-created-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-created-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-remove",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-remove-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-remove-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-running",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-running-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-running-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control keeper-start",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-start-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor keeper-start-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-after",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-after-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-after-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-before",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-before-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-before-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-cleanup-inspect-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-cleanup-inspect-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-create",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-create-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-create-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-created",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-created-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-created-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success clean control volume-remove",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-remove-stdout.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success raw descriptor volume-remove-stderr.bin",
+      "passed": true
+    },
+    {
+      "check": "semantic-success exact14 control records",
+      "passed": true
+    },
+    {
+      "check": "semantic-success keeper exact created/started/cleanup identity",
+      "passed": true
+    },
+    {
+      "check": "semantic-success sole compared field difference confirmed",
+      "passed": true
+    },
+    {
+      "check": "semantic-success trusted keeper only fixed sleep command",
+      "passed": true
+    },
+    {
+      "check": "semantic-success keeper natural created-to-running transition",
+      "passed": true
+    },
+    {
+      "check": "semantic-success owned bounded volume created",
+      "passed": true
+    },
+    {
+      "check": "semantic-success owned bounded volume cleanup-inspect",
+      "passed": true
+    },
+    {
+      "check": "semantic-success all owned resources removed and absent",
+      "passed": true
+    },
+    {
+      "check": "semantic-success exact retained stop reason",
+      "passed": true
+    },
+    {
+      "check": "two unique physical keepers and volumes",
+      "passed": true
+    },
+    {
+      "check": "sourcehold final452 reconciliation",
+      "passed": true
+    }
+  ],
+  "class_records": [
+    {
+      "class": "tests/test_candidate_cli_cases_v1.py::CandidateCliV1DefinitionTests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 15
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 8439,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/40d02a90507f6df3/request.json",
+        "sha256": "c68826962c8efe3506786c4fecf8322d5daf5b396f0b542762a6dbb7aab87c4a"
+      },
+      "result": {
+        "bytes": 6877,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/40d02a90507f6df3/result.json",
+        "sha256": "cf5492741a8b46d83019e15d0f11a305940bb83078751f374ab207ac48e6320a"
+      }
+    },
+    {
+      "class": "tests/test_candidate_client_execution_v1.py::CandidateClientExecutionV1Tests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 22
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 13502,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/1afb685a5e1975f5/request.json",
+        "sha256": "66edf2be1b54dbcde4994be86f6360278b689ce59a815e790ad7bfe0f4c61a4d"
+      },
+      "result": {
+        "bytes": 9615,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/1afb685a5e1975f5/result.json",
+        "sha256": "b7945c2322316f426f77976d11555ef6110e7d9dd965f5e9515f35213dcac38b"
+      }
+    },
+    {
+      "class": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationBindingTests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 8
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 5400,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/74ce6443536a5c68/request.json",
+        "sha256": "d9d93ef0de5e907bc6e7c8d56f04b02fcdd45f1efa427ae8b381786e2dc8ddec"
+      },
+      "result": {
+        "bytes": 4966,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/74ce6443536a5c68/result.json",
+        "sha256": "9ca32f709ca7c48185e6f838529a3dc265b4454a3479e0878d8d40a495cdc668"
+      }
+    },
+    {
+      "class": "tests/test_candidate_client_observer_v1.py::CandidateClientObservationScoringTests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 23
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 14243,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/532fcac5077aa619/request.json",
+        "sha256": "3aa086163a10073811d2a23fe73c426c266a87a3d3aa29997821d0388b45b643"
+      },
+      "result": {
+        "bytes": 9970,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/532fcac5077aa619/result.json",
+        "sha256": "31cdb6637faa14052aa8c732b1da697f027c4839a2e3d0797883573cc0d53736"
+      }
+    },
+    {
+      "class": "tests/test_candidate_client_process_v1.py::CandidateClientProcessLifecycleTests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 16
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 9973,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/5ef6d9b71579a4c6/request.json",
+        "sha256": "fe908f37384569ede614e404b6e2cf59fced164a5e8dc6e20172810fc68b8312"
+      },
+      "result": {
+        "bytes": 7584,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/5ef6d9b71579a4c6/result.json",
+        "sha256": "939c970b2746cb247989e2a8af7503905f27c94d853bced0e2035345473ffa60"
+      }
+    },
+    {
+      "class": "tests/test_candidate_client_process_v1.py::CandidateClientProcessProtocolTests",
+      "lane": "fast",
+      "method_counts": {
+        "passed": 10
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 6500,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/3681a2f97d838692/request.json",
+        "sha256": "5e92b44e4abc890087c5255fd547aac429c766187eafc30ddb75215b5c10c4e7"
+      },
+      "result": {
+        "bytes": 5603,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/3681a2f97d838692/result.json",
+        "sha256": "7c75f28bf7f2c351d0b8c41f5d02f06e0a861334281340a9df373abe9be61732"
+      }
+    },
+    {
+      "class": "tests/test_candidate_clients_docker_v1.py::CandidateCliPersistenceDockerTests",
+      "lane": "docker",
+      "method_counts": {
+        "failed": 1
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 1407,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/request.json",
+        "sha256": "9f45b38e7f8ac90063c340bbad3f5770d25be5cc680923a8004903a1a5a24421"
+      },
+      "result": {
+        "bytes": 18064,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/result.json",
+        "sha256": "12512ac1860262c14c8908618a2a645655d0d73e834078bf529f949638f35def"
+      }
+    },
+    {
+      "class": "tests/test_candidate_clients_docker_v1.py::CandidateClientProcessControlDockerTests",
+      "lane": "docker",
+      "method_counts": {
+        "failed": 1,
+        "not_run": 6
+      },
+      "physical_worker_executed": true,
+      "request": {
+        "bytes": 4841,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/request.json",
+        "sha256": "f82f8874f1699e3b8195e73de0227f67cdd97a774ec63db691b8b64fc3c4a1ef"
+      },
+      "result": {
+        "bytes": 4668,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/result.json",
+        "sha256": "e2a5fe0631422bf211d68b7f84a2115968be03c9a918a8ed47bb27790de29467"
+      }
+    }
+  ],
+  "discrepancies": [],
+  "freeze": {
+    "bytes": 146453,
+    "path": "runs/candidate-b03-definition-freeze-3/freeze.json",
+    "sha256": "0a3ced5ffb3ad9c79eb74c5c6e50a8505dfe394e410c8213e5ea11f771864f7c"
+  },
+  "histories": [
+    {
+      "actual_candidate_creates": 0,
+      "actual_candidate_starts": 0,
+      "candidate_dispatch_evidence_scope": "Complete authenticated local journal census plus the frozen source dispatch order; no independent OS/daemon event ledger was retained.",
+      "config": {
+        "bytes": 13001,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/config.json",
+        "sha256": "5e4d1cf58f60fdaae52cb4a851bfed318349e1b3e05c4cf6f638ebbbde0f5113"
+      },
+      "execution_root": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution",
+      "external_checkpoint_chain": [
+        {
+          "added": [
+            "config.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0000.json",
+          "sha256": "2be8f6b2b502c11f5bf71dad12305921342455ee562c8ee12c3a2a6101dc204b"
+        },
+        {
+          "added": [
+            "intent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0001.json",
+          "sha256": "8a66fb4dc032201efc1aff4b7dda4ba9cf32fcb52828b638f3e4660dccc36dad"
+        },
+        {
+          "added": [
+            "staging.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0002.json",
+          "sha256": "24138e08b41f20273b02e7ac46fed11cf08d5b6e99863e49c59fbd205ed3c003"
+        },
+        {
+          "added": [
+            "volume-before-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0003.json",
+          "sha256": "b7c81fe56a30107747ee378498568c78091f53015a5104b8b37eec3e4d487439"
+        },
+        {
+          "added": [
+            "volume-before-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0004.json",
+          "sha256": "c6c3671f745a73feb3a8001e765eb492fc46cad2167fb5b72a8e1ce8952c12c7"
+        },
+        {
+          "added": [
+            "volume-before.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0005.json",
+          "sha256": "fa3689c733b4c80dc897958b5c78732068d90d4fdae33422975f303c8b758f83"
+        },
+        {
+          "added": [
+            "volume-create-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0006.json",
+          "sha256": "8976ef94422248c25a98f3db6f2d080e8373255446f554ef7eba6df518941391"
+        },
+        {
+          "added": [
+            "volume-create-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0007.json",
+          "sha256": "2062bf4dc4218c14c47cf65a4b387f47ce74191d2fce53c831992137f1c58be1"
+        },
+        {
+          "added": [
+            "volume-create.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0008.json",
+          "sha256": "5dfe5fa5507d8ac904f5a03fe585b1214a09bbcc973f436d7b203dd30ff9a574"
+        },
+        {
+          "added": [
+            "volume-created-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0009.json",
+          "sha256": "e7363aac5f2da72af335fff552f29afba903b9d3eff67e0569ba37729598166c"
+        },
+        {
+          "added": [
+            "volume-created-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0010.json",
+          "sha256": "ae6cc3f62e1e40b316715190edf3da05e148f807ef3dd7ab3de8b7174e204d71"
+        },
+        {
+          "added": [
+            "volume-created.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0011.json",
+          "sha256": "cbf1d31aa4bdca56e60aca61c65406c28cb276cf6ce509a13c5d21da8591903f"
+        },
+        {
+          "added": [
+            "keeper-before-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0012.json",
+          "sha256": "e4f87345a3c2f674ad90717ee5d3efcefcf147e9af01906519cb9a7465e74a08"
+        },
+        {
+          "added": [
+            "keeper-before-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0013.json",
+          "sha256": "5af0a8965018c2aad531d32f1f6a0ba5e6aacd0eabe50ff45a807d9f77e3f81d"
+        },
+        {
+          "added": [
+            "keeper-before.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0014.json",
+          "sha256": "8f6ac8c40cb1af66d5cf513fb86e2637f7e1f028d4cd43222b117460ee7dd4fa"
+        },
+        {
+          "added": [
+            "keeper-intent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0015.json",
+          "sha256": "936988a590a715d0979736c5ed05e9e574b1d77d7f52c3f95da719e22f9cc72b"
+        },
+        {
+          "added": [
+            "keeper-create-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0016.json",
+          "sha256": "b3f49ab416c2cb0fe53ab4d7a199f8ec189bec5933b8c1fce0292e07e2ac8e64"
+        },
+        {
+          "added": [
+            "keeper-create-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0017.json",
+          "sha256": "25a5261c743fb307f45892c77946d8b1e913760d6660a77e33a8734f8b5036b8"
+        },
+        {
+          "added": [
+            "keeper-create.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0018.json",
+          "sha256": "8038b52d1093ccf59e0488037ad4b937fd6caa2da15df3dead2b25e38e3e580e"
+        },
+        {
+          "added": [
+            "keeper-created-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0019.json",
+          "sha256": "e9f659ad55a883c756d6c4d0e67d0e60d1c1e96878ea2a46eba6f370bc1292be"
+        },
+        {
+          "added": [
+            "keeper-created-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0020.json",
+          "sha256": "dc5fb8b0a18990fedf109dea64784e9d8e2de243340e24b9f5389bf0675ae6e9"
+        },
+        {
+          "added": [
+            "keeper-created.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0021.json",
+          "sha256": "210e9a483b2b893218cc3283022dd7ab3f3ca1261fed1dc2edf90363fa149b58"
+        },
+        {
+          "added": [
+            "keeper-start-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0022.json",
+          "sha256": "6cbf6a4a32be91879a183c1ebdc6ad5cdb6d447d9b73198bea0fe028c0167a47"
+        },
+        {
+          "added": [
+            "keeper-start-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0023.json",
+          "sha256": "f45942b91089d5aa9211d1244d8daab4a94255083798510a7aa85b90d8be95b3"
+        },
+        {
+          "added": [
+            "keeper-start.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0024.json",
+          "sha256": "d77e273847ac2ef4b13a6375392134b0922844a720f5d61212c5875b1f12b9e2"
+        },
+        {
+          "added": [
+            "keeper-running-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0025.json",
+          "sha256": "7087ba93bbe1c44a0e6a95645fb4d84f8915918b51a9c1174201e6b117f52de2"
+        },
+        {
+          "added": [
+            "keeper-running-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0026.json",
+          "sha256": "b698faba218e1f51c2644950b4658b7f42b2ce32411bcb74a0128dbfced68724"
+        },
+        {
+          "added": [
+            "keeper-running.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0027.json",
+          "sha256": "7169202612c38303a9db7a8311b6feaf73dd0c363259be861f59867082771f6e"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0028.json",
+          "sha256": "0157915b54c65a75dc264383664d69bf719e6275d9fe1a81f4e7dce9e720ea4b"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0029.json",
+          "sha256": "ef67630c86eadf6c95ba34c00e42394850d8aeb9a036661edea969c7d427a4b8"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0030.json",
+          "sha256": "408311252100eff54ccb307aca77ac05a6be90bf22228d21c65896a7b7c8f9eb"
+        },
+        {
+          "added": [
+            "keeper-remove-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0031.json",
+          "sha256": "507dfefe7f11a5b3b2d0d0aad12f6b773c23cc0a03884aade21500a1e9005d0a"
+        },
+        {
+          "added": [
+            "keeper-remove-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0032.json",
+          "sha256": "3930f5d3225fcb5a7e0ea3a22d58643ee1223cabc97dcf04805a00ceef818908"
+        },
+        {
+          "added": [
+            "keeper-remove.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0033.json",
+          "sha256": "6358d806c6ccefa095e095ea5cd5a345ac3bd7faca6e0d362a08f2528c221ea7"
+        },
+        {
+          "added": [
+            "keeper-absent-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0034.json",
+          "sha256": "bd9f514c6abddb5845c6e750b12df4e9b52b9289ee53b186bc214779e38ba94d"
+        },
+        {
+          "added": [
+            "keeper-absent-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0035.json",
+          "sha256": "637f820048868b43661798442802d5d1d01941dd128e1d2f15099cd5d3364635"
+        },
+        {
+          "added": [
+            "keeper-absent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0036.json",
+          "sha256": "fdf176c8bcfdf4b929fdc05bdda9a19276b096053b71474d32c25f0b2fce7af3"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0037.json",
+          "sha256": "51ed46f224e32c00d42fb6cd4b0080594e0561f3450e72e9f00d399f3a261f94"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0038.json",
+          "sha256": "9d948bae82402792a43a62dc84b26ae97ed91dec6b85538654dd7cc1247f3402"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0039.json",
+          "sha256": "b0932d71e7e7f400b1ac414db33426d2aacf689a15afb575e09209efeb64e2d4"
+        },
+        {
+          "added": [
+            "volume-remove-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0040.json",
+          "sha256": "e7b3d1f9b0a7ee6584356106f9686122fd9771611e852c59d450ab96fc62fe45"
+        },
+        {
+          "added": [
+            "volume-remove-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0041.json",
+          "sha256": "038531569a4e301cc8be3be1c4468e19830b978b1a54f8c4967dfca8665886ce"
+        },
+        {
+          "added": [
+            "volume-remove.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0042.json",
+          "sha256": "1766e4ba91447f4253f2f30438947e02f28012839f8089aa03fc939c6cc968ab"
+        },
+        {
+          "added": [
+            "volume-after-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0043.json",
+          "sha256": "218af3ae98b3bfa96e7d0488579d525915187f493cd831a11d92263ca6b7f166"
+        },
+        {
+          "added": [
+            "volume-after-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0044.json",
+          "sha256": "d5733edec7a90de9617a06668649587e24b6223374011e5295dcaccd1cbd5d8d"
+        },
+        {
+          "added": [
+            "volume-after.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0045.json",
+          "sha256": "4cf27ad335fde914249f1170a7e708acbc9b079aa4d42945dbb4e41357f47789"
+        },
+        {
+          "added": [
+            "terminal.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/external-checkpoint-0046.json",
+          "sha256": "d8cffb9b67de3d479361faed5d7800e19827689a74b9705d45c9eeae9ef1635f"
+        }
+      ],
+      "full_keeper_inspection_differences": [
+        {
+          "after": null,
+          "before": false,
+          "path": "/HostConfig/OomKillDisable"
+        },
+        {
+          "after": "/var/lib/docker/containers/2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee/hostname",
+          "before": "",
+          "path": "/HostnamePath"
+        },
+        {
+          "after": "/var/lib/docker/containers/2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee/hosts",
+          "before": "",
+          "path": "/HostsPath"
+        },
+        {
+          "after": "ef24a6610ae8d734b8b15f1100b6e6369f15f5c4c667f1f0d60c07359b5e3c5b",
+          "before": "",
+          "path": "/NetworkSettings/Networks/none/EndpointID"
+        },
+        {
+          "after": "07c4f3657d456bdcf2bb91d5e2b4029234b04fe504b272e26e234ccf869b16b7",
+          "before": "",
+          "path": "/NetworkSettings/Networks/none/NetworkID"
+        },
+        {
+          "after": "c6bd45bd0d129d4bef40eba9fee322111cfa8dd197b89cde8c59598c41028780",
+          "before": "",
+          "path": "/NetworkSettings/SandboxID"
+        },
+        {
+          "after": "/var/run/docker/netns/c6bd45bd0d12",
+          "before": "",
+          "path": "/NetworkSettings/SandboxKey"
+        },
+        {
+          "after": "/var/lib/docker/containers/2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee/resolv.conf",
+          "before": "",
+          "path": "/ResolvConfPath"
+        },
+        {
+          "after": 6261,
+          "before": 0,
+          "path": "/State/Pid"
+        },
+        {
+          "after": true,
+          "before": false,
+          "path": "/State/Running"
+        },
+        {
+          "after": "2026-10-03T15:27:13.806622711Z",
+          "before": "0001-01-01T00:00:00Z",
+          "path": "/State/StartedAt"
+        },
+        {
+          "after": "running",
+          "before": "created",
+          "path": "/State/Status"
+        }
+      ],
+      "history": "cli-db-root-isolation",
+      "intent": {
+        "bytes": 974,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/intent.json",
+        "sha256": "fc78c7605e7aebc906502ed237867a6e545a2b278ca9c1fb3a5ca9100d95cb47"
+      },
+      "journal_addition_order": [
+        "config.json",
+        "intent.json",
+        "staging.json",
+        "volume-before-stdout.bin",
+        "volume-before-stderr.bin",
+        "volume-before.json",
+        "volume-create-stdout.bin",
+        "volume-create-stderr.bin",
+        "volume-create.json",
+        "volume-created-stdout.bin",
+        "volume-created-stderr.bin",
+        "volume-created.json",
+        "keeper-before-stdout.bin",
+        "keeper-before-stderr.bin",
+        "keeper-before.json",
+        "keeper-intent.json",
+        "keeper-create-stdout.bin",
+        "keeper-create-stderr.bin",
+        "keeper-create.json",
+        "keeper-created-stdout.bin",
+        "keeper-created-stderr.bin",
+        "keeper-created.json",
+        "keeper-start-stdout.bin",
+        "keeper-start-stderr.bin",
+        "keeper-start.json",
+        "keeper-running-stdout.bin",
+        "keeper-running-stderr.bin",
+        "keeper-running.json",
+        "keeper-cleanup-inspect-stdout.bin",
+        "keeper-cleanup-inspect-stderr.bin",
+        "keeper-cleanup-inspect.json",
+        "keeper-remove-stdout.bin",
+        "keeper-remove-stderr.bin",
+        "keeper-remove.json",
+        "keeper-absent-stdout.bin",
+        "keeper-absent-stderr.bin",
+        "keeper-absent.json",
+        "volume-cleanup-inspect-stdout.bin",
+        "volume-cleanup-inspect-stderr.bin",
+        "volume-cleanup-inspect.json",
+        "volume-remove-stdout.bin",
+        "volume-remove-stderr.bin",
+        "volume-remove.json",
+        "volume-after-stdout.bin",
+        "volume-after-stderr.bin",
+        "volume-after.json",
+        "terminal.json"
+      ],
+      "journal_inventory": {
+        "config.json": "5e4d1cf58f60fdaae52cb4a851bfed318349e1b3e05c4cf6f638ebbbde0f5113",
+        "intent.json": "fc78c7605e7aebc906502ed237867a6e545a2b278ca9c1fb3a5ca9100d95cb47",
+        "keeper-absent-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-absent-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-absent.json": "6f32b1a8bcc6aa84a445801f027892375c42e32229a7484a56ba9e97a100ff88",
+        "keeper-before-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-before-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-before.json": "0bf576412180b877589e48dcdc44d7ee50c90ea8bb2adeb7cd13e42b9e93e572",
+        "keeper-cleanup-inspect-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-cleanup-inspect-stdout.bin": "1d0c7fe38dc25f0f13e06d0850792fa302b7e069e39b9611a88cc6cbfd826ac2",
+        "keeper-cleanup-inspect.json": "e17763175575513bd9ec7574b7dec4b8670f74c723378cacdd8c97b85b202577",
+        "keeper-create-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-create-stdout.bin": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6",
+        "keeper-create.json": "208e8fac7c7a1883affb5c3cbf51fc66fb11d426dd6a4b72df39ca6db00b6d17",
+        "keeper-created-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-created-stdout.bin": "13f2fd0d4a9c68b0be287c17d5b23b13328cc63796aff6efcbefc623312434aa",
+        "keeper-created.json": "5de5f5b217574bc03f6dca20b498461aed0198eabebe3147f86e0189c2613f30",
+        "keeper-intent.json": "d232a17d92e4c72692ae0427ee3411a8e63ff7c94652fc937f8e027ee586e65e",
+        "keeper-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-remove-stdout.bin": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6",
+        "keeper-remove.json": "d530d49dc8544dfbfccf793d88fc15db423785dd349001888d013619fa053767",
+        "keeper-running-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-running-stdout.bin": "1d0c7fe38dc25f0f13e06d0850792fa302b7e069e39b9611a88cc6cbfd826ac2",
+        "keeper-running.json": "b940e1a74716c105def28b142f1c10e0c29840c2d5c82967756f2a78d94f58dc",
+        "keeper-start-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-start-stdout.bin": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6",
+        "keeper-start.json": "f6a4a82d70ef27798ff7413eab9f6e057d1b0a6b4e5fa62595476a475731d5d9",
+        "staging.json": "6ea06b045ac59b647931c2c8a898654a556c50ce19098a0efb6ebdf0e576a29c",
+        "terminal.json": "d4fc9dc2e1e3e60b628ac5a0f093e83653224a89ccfe2c81b91e7ae1b0567d28",
+        "volume-after-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-after-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-after.json": "e3348db6fc83f3e7ea225eca01e0b8bbdc625593a3df65822ea0852bd534cb20",
+        "volume-before-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-before-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-before.json": "33508a1fae0d5821f2fdf176d36f70b512bcc444fa7979c938ba04ff8aa6a853",
+        "volume-cleanup-inspect-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-cleanup-inspect-stdout.bin": "84393bcc9a462d5efef4a5634ebf29214dcf2b3c2f1ce5f995794c2a5657a93a",
+        "volume-cleanup-inspect.json": "41127d5385e64eb6660ad0699a58c9e844cafb3ef207c90b3ee792184517b85e",
+        "volume-create-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-create-stdout.bin": "e8b877400f0d5ea9ebd450f8dae5d46c30219bc4032ecfca83e9cb947815d178",
+        "volume-create.json": "763f57bdb691039c04dfc1c1acd8d43ba6281834c923ff845b484e3e2cca2e82",
+        "volume-created-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-created-stdout.bin": "84393bcc9a462d5efef4a5634ebf29214dcf2b3c2f1ce5f995794c2a5657a93a",
+        "volume-created.json": "b29d7967908046a0ff028089e6e28deb95416473953b28ec29915cd992f66bba",
+        "volume-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-remove-stdout.bin": "e8b877400f0d5ea9ebd450f8dae5d46c30219bc4032ecfca83e9cb947815d178",
+        "volume-remove.json": "cb4fafe8b457cd9a634b21340f621ee513c190e142937fc82de88c6e4378c6a8"
+      },
+      "keeper_compared_projection_differences": [
+        {
+          "after": null,
+          "before": false,
+          "path": "/HostConfig/OomKillDisable"
+        }
+      ],
+      "keeper_id": "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee",
+      "keeper_lifetime_seconds": 3900,
+      "kind": "reference-history",
+      "physical_lifecycle": {
+        "bytes": 3710,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/physical-lifecycle.json",
+        "sha256": "f9be07b4e3aa8e27f49b1852c49778202a0b42f7092d45837b0c0f46c3e53ebe"
+      },
+      "planned_candidate_invocations": 9,
+      "raw_control_records": [
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "container",
+            "ls",
+            "--all",
+            "--quiet",
+            "--filter",
+            "name=^/gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-keeper$"
+          ],
+          "record": {
+            "bytes": 580,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-absent.json",
+            "sha256": "6f32b1a8bcc6aa84a445801f027892375c42e32229a7484a56ba9e97a100ff88"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-absent-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "keeper-absent-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "container",
+            "ls",
+            "--all",
+            "--quiet",
+            "--filter",
+            "name=^/gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-keeper$"
+          ],
+          "record": {
+            "bytes": 580,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-before.json",
+            "sha256": "0bf576412180b877589e48dcdc44d7ee50c90ea8bb2adeb7cd13e42b9e93e572"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-before-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "keeper-before-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-keeper"
+          ],
+          "record": {
+            "bytes": 584,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-cleanup-inspect.json",
+            "sha256": "e17763175575513bd9ec7574b7dec4b8670f74c723378cacdd8c97b85b202577"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-cleanup-inspect-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 5517,
+            "path": "keeper-cleanup-inspect-stdout.bin",
+            "sha256": "1d0c7fe38dc25f0f13e06d0850792fa302b7e069e39b9611a88cc6cbfd826ac2"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "create",
+            "--name",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-keeper",
+            "--pull=never",
+            "--network=none",
+            "--read-only",
+            "--cap-drop=ALL",
+            "--security-opt=no-new-privileges:true",
+            "--user=65534:65534",
+            "--pids-limit=64",
+            "--memory=256m",
+            "--memory-swap=256m",
+            "--cpus=1",
+            "--ulimit=nofile=256:256",
+            "--no-healthcheck",
+            "--restart=no",
+            "--log-driver=none",
+            "--hostname=gossip-validator",
+            "--env=HOME=/tmp",
+            "--env=PYTHONDONTWRITEBYTECODE=1",
+            "--env=PYTHONNOUSERSITE=1",
+            "--workdir=/",
+            "--env=HTTP_PROXY=",
+            "--env=HTTPS_PROXY=",
+            "--env=FTP_PROXY=",
+            "--env=NO_PROXY=",
+            "--env=ALL_PROXY=",
+            "--env=http_proxy=",
+            "--env=https_proxy=",
+            "--env=ftp_proxy=",
+            "--env=no_proxy=",
+            "--env=all_proxy=",
+            "--mount",
+            "type=volume,source=gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume,target=/tmp,readonly,volume-nocopy",
+            "--label",
+            "gossip.execution=client-fc51f9c4de4147cf9a8bd8042c848c18",
+            "--label",
+            "gossip.role=volume-keeper",
+            "--entrypoint",
+            "python",
+            "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+            "-I",
+            "-c",
+            "import time;time.sleep(3900)"
+          ],
+          "record": {
+            "bytes": 1499,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-create.json",
+            "sha256": "208e8fac7c7a1883affb5c3cbf51fc66fb11d426dd6a4b72df39ca6db00b6d17"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-create-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-create-stdout.bin",
+            "sha256": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee"
+          ],
+          "record": {
+            "bytes": 579,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-created.json",
+            "sha256": "5de5f5b217574bc03f6dca20b498461aed0198eabebe3147f86e0189c2613f30"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-created-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 4980,
+            "path": "keeper-created-stdout.bin",
+            "sha256": "13f2fd0d4a9c68b0be287c17d5b23b13328cc63796aff6efcbefc623312434aa"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "rm",
+            "--force",
+            "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee"
+          ],
+          "record": {
+            "bytes": 554,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-remove.json",
+            "sha256": "d530d49dc8544dfbfccf793d88fc15db423785dd349001888d013619fa053767"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-remove-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-remove-stdout.bin",
+            "sha256": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee"
+          ],
+          "record": {
+            "bytes": 579,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-running.json",
+            "sha256": "b940e1a74716c105def28b142f1c10e0c29840c2d5c82967756f2a78d94f58dc"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-running-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 5517,
+            "path": "keeper-running-stdout.bin",
+            "sha256": "1d0c7fe38dc25f0f13e06d0850792fa302b7e069e39b9611a88cc6cbfd826ac2"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "start",
+            "2a9e24b2bb0f26d65a5572d3bb4cc01df734f1997d02b88bbf64609b68a37eee"
+          ],
+          "record": {
+            "bytes": 545,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/keeper-start.json",
+            "sha256": "f6a4a82d70ef27798ff7413eab9f6e057d1b0a6b4e5fa62595476a475731d5d9"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-start-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-start-stdout.bin",
+            "sha256": "72bb9d1c8c2258992c5d0bac37df0ff942e40e7362959c1e092cfb2e7bc3c1f6"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "ls",
+            "--quiet",
+            "--filter",
+            "name=^gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume$"
+          ],
+          "record": {
+            "bytes": 566,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-after.json",
+            "sha256": "e3348db6fc83f3e7ea225eca01e0b8bbdc625593a3df65822ea0852bd534cb20"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-after-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "volume-after-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "ls",
+            "--quiet",
+            "--filter",
+            "name=^gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume$"
+          ],
+          "record": {
+            "bytes": 568,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-before.json",
+            "sha256": "33508a1fae0d5821f2fdf176d36f70b512bcc444fa7979c938ba04ff8aa6a853"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-before-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "volume-before-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume"
+          ],
+          "record": {
+            "bytes": 591,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-cleanup-inspect.json",
+            "sha256": "41127d5385e64eb6660ad0699a58c9e844cafb3ef207c90b3ee792184517b85e"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-cleanup-inspect-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 453,
+            "path": "volume-cleanup-inspect-stdout.bin",
+            "sha256": "84393bcc9a462d5efef4a5634ebf29214dcf2b3c2f1ce5f995794c2a5657a93a"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "create",
+            "--driver",
+            "local",
+            "--label",
+            "gossip.execution=client-fc51f9c4de4147cf9a8bd8042c848c18",
+            "--label",
+            "gossip.snapshot=docker-owned-finite-cli-tmpfs-keeper-v1",
+            "--opt",
+            "type=tmpfs",
+            "--opt",
+            "device=tmpfs",
+            "--opt",
+            "o=size=32m,mode=1777,nosuid,nodev,noexec",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume"
+          ],
+          "record": {
+            "bytes": 797,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-create.json",
+            "sha256": "763f57bdb691039c04dfc1c1acd8d43ba6281834c923ff845b484e3e2cca2e82"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-create-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 54,
+            "path": "volume-create-stdout.bin",
+            "sha256": "e8b877400f0d5ea9ebd450f8dae5d46c30219bc4032ecfca83e9cb947815d178"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume"
+          ],
+          "record": {
+            "bytes": 575,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-created.json",
+            "sha256": "b29d7967908046a0ff028089e6e28deb95416473953b28ec29915cd992f66bba"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-created-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 453,
+            "path": "volume-created-stdout.bin",
+            "sha256": "84393bcc9a462d5efef4a5634ebf29214dcf2b3c2f1ce5f995794c2a5657a93a"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "rm",
+            "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume"
+          ],
+          "record": {
+            "bytes": 542,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/volume-remove.json",
+            "sha256": "cb4fafe8b457cd9a634b21340f621ee513c190e142937fc82de88c6e4378c6a8"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-remove-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 54,
+            "path": "volume-remove-stdout.bin",
+            "sha256": "e8b877400f0d5ea9ebd450f8dae5d46c30219bc4032ecfca83e9cb947815d178"
+          }
+        }
+      ],
+      "registration": {
+        "binding": {
+          "case_id": "cli-db-root-isolation",
+          "definition_sha256": "eaf6f5f23d31972a5afed0cfce3031eea9db2d9ad814dbf6ce1e22ab680464a7",
+          "environment_sha256": "81fe7d63fbf5e24d6a9654c612d43a6cc2897b19b54f64a9743a711003e7ca51",
+          "evaluator_sha256": "ca24e99200376b4989d25ef6d822d58bc84640b684e6282581081e4a78337406",
+          "limits_sha256": "0add3cc524dd93b91b1058492c2a2e36e3d1baca3b12650debcc009ba2df1ed6",
+          "milestone": "M1",
+          "ordered_suite_sha256": "8c7572223726ac518a4a214f375ce090139b48ce5da0237e218560e5e5e6d054",
+          "protocol": "candidate-client-execution-v1",
+          "purpose": "harness_qualification",
+          "requirements_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+          "runtime_sha256": "3b2b6e171f11485aa6d467ca5d0709a6a1637f52dc045e9fef213ff41f9fe642",
+          "seed_sha256": "efdd6b859d17242fc0897e880220bf2736fab936fa3ad45401bde6b2052fecb5",
+          "source_sha256": "0054cf028145d15d6bfa94e421d80f59714e9b21f5f250727510aca59fda71fe"
+        },
+        "commit_oid": "d5cf15c8a0ce365e0f0142b158f72ef158f44db9",
+        "repetition_id": "physical-qualification-1",
+        "tree_oid": "732e0770d54a8a5aca6ca38c5369f62c1de3ba16"
+      },
+      "source_file_count": 61,
+      "terminal": {
+        "bytes": 5003,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/23ad7933b7f56dd3/artifacts/gossip-candidate-b03-cli-persistence-fx5an37p/cli-db-root-isolation/execution/terminal.json",
+        "sha256": "d4fc9dc2e1e3e60b628ac5a0f093e83653224a89ccfe2c81b91e7ae1b0567d28"
+      },
+      "volume_name": "gossip-client-fc51f9c4de4147cf9a8bd8042c848c18-volume"
+    },
+    {
+      "actual_candidate_creates": 0,
+      "actual_candidate_starts": 0,
+      "candidate_dispatch_evidence_scope": "Complete authenticated local journal census plus the frozen source dispatch order; no independent OS/daemon event ledger was retained.",
+      "config": {
+        "bytes": 4391,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/config.json",
+        "sha256": "d980a04d7ce02141505033e118d2cbb77af63cd9ff023d490033533ae66c182b"
+      },
+      "execution_root": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution",
+      "external_checkpoint_chain": [
+        {
+          "added": [
+            "config.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0000.json",
+          "sha256": "ec58677844e6e37785bc4a8b1001f37ce4aedb26ce771519f4b9ccc87da82557"
+        },
+        {
+          "added": [
+            "intent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0001.json",
+          "sha256": "7bb36cb70e43f68397f23217ca44c873126ab51be10bfd532ab044d07e0c7c31"
+        },
+        {
+          "added": [
+            "staging.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0002.json",
+          "sha256": "f72a4e940365f06142a6a65ecc99f44ac2cad54083a14ce322dc198195c2f937"
+        },
+        {
+          "added": [
+            "volume-before-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0003.json",
+          "sha256": "f6b863917922de58e3a15b0091a88ad3cc044a7c2f28ba85dff9578c72ed50a5"
+        },
+        {
+          "added": [
+            "volume-before-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0004.json",
+          "sha256": "1c240ae6920d7dde7e1813a32ecc26da8b58432cad21e5957492758d55dc9dd3"
+        },
+        {
+          "added": [
+            "volume-before.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0005.json",
+          "sha256": "59eabc6232f74f150b9933081648c40d9120b7803b91cc507dbda4530d29d4b5"
+        },
+        {
+          "added": [
+            "volume-create-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0006.json",
+          "sha256": "c88b890f9d55eec709e0887bb336c8ba17d7b48e8d5f2186ba01cbdcb48f7f2f"
+        },
+        {
+          "added": [
+            "volume-create-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0007.json",
+          "sha256": "fd6e3f90061aebb7d7a1e557d3126e4493385575a1ce21c30ebfc98b3d6f08c9"
+        },
+        {
+          "added": [
+            "volume-create.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0008.json",
+          "sha256": "65a4dc124af1b4be60f0ef5d591d2f1bf5092f71edec19f72ca474cc2674bbd1"
+        },
+        {
+          "added": [
+            "volume-created-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0009.json",
+          "sha256": "c6fa9936fb963a8511717f8de5a4f1d8dce7196d3de17dbba8ff9df2545d4dcc"
+        },
+        {
+          "added": [
+            "volume-created-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0010.json",
+          "sha256": "e82eee3946f8f2e539fcce36ce391379592d81c29c0fceff44d5a66c18d9bd90"
+        },
+        {
+          "added": [
+            "volume-created.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0011.json",
+          "sha256": "a916129ce6ebddb60680da6d6b81c38a4279a4a8dd639803f19d133a63eb2ab9"
+        },
+        {
+          "added": [
+            "keeper-before-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0012.json",
+          "sha256": "0b03496af6fb59d05a7f479bbca5c7c44367a8218843659cec4803cfb810a150"
+        },
+        {
+          "added": [
+            "keeper-before-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0013.json",
+          "sha256": "b844f3eae8776f43140cd45a4b0a1ad5517ace4f01bb948f87a172ce3272fe5c"
+        },
+        {
+          "added": [
+            "keeper-before.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0014.json",
+          "sha256": "476e3bfa85d2207f83553382cc75ec0561ded47376d939dbe272d47fb439d222"
+        },
+        {
+          "added": [
+            "keeper-intent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0015.json",
+          "sha256": "797284b76f1f3a76bb686cf332a9f6b898463e54055906d1d9c3f35c29659751"
+        },
+        {
+          "added": [
+            "keeper-create-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0016.json",
+          "sha256": "10254204cc750187189f8e94d6356cd02c611f0e55799871dcfa6530c7902f56"
+        },
+        {
+          "added": [
+            "keeper-create-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0017.json",
+          "sha256": "79d199d4a174339972c3e88d0066109a42f5271da6b3d62519f63278dd06f780"
+        },
+        {
+          "added": [
+            "keeper-create.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0018.json",
+          "sha256": "8e1d8948c3c76431375fe29cb18aa81e875496e186e91044fdbd73f103b9bd8f"
+        },
+        {
+          "added": [
+            "keeper-created-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0019.json",
+          "sha256": "ac26d98de94602c7ed4bfb066921549a7c29be5dc1d5a89fcec75999af3d399e"
+        },
+        {
+          "added": [
+            "keeper-created-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0020.json",
+          "sha256": "d8410e4a3b972bb458ec573d5c2a9646d9e456816910790e5494f320612b1184"
+        },
+        {
+          "added": [
+            "keeper-created.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0021.json",
+          "sha256": "3ac37b54e3d5991f5803cc7ece40ef831354c47dd6c9ba8af9706f5a41e38b47"
+        },
+        {
+          "added": [
+            "keeper-start-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0022.json",
+          "sha256": "bad2928bd8a5c6c576fce7e5d5c49eeb1af72b3ac122f778839be7f12efa0a0d"
+        },
+        {
+          "added": [
+            "keeper-start-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0023.json",
+          "sha256": "30f26e9cb6383bfea4f785d296f4e35ea5a552c5abe799f0a962e0c15c8452fc"
+        },
+        {
+          "added": [
+            "keeper-start.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0024.json",
+          "sha256": "36822ca8adf65b42df8faf968cdc83552e6ada0b6adaa500e88cd44279e8bf85"
+        },
+        {
+          "added": [
+            "keeper-running-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0025.json",
+          "sha256": "7d54f1fc50706ebfece2b7bf1f7e8fd743fdfaef32b21a953341cfb8dcdb2067"
+        },
+        {
+          "added": [
+            "keeper-running-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0026.json",
+          "sha256": "9e4d9d169f4b048997a19184a1118c3456ca1005af93c6fa48f2db42948cece7"
+        },
+        {
+          "added": [
+            "keeper-running.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0027.json",
+          "sha256": "d53d1e18306965b560e82a9b871c24e5dbdadffc7674e29a007dd1a892581a36"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0028.json",
+          "sha256": "89c928e7218b4d238f7fdc3651fc103c57140df85e55b80b1b9de034aec46529"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0029.json",
+          "sha256": "f83b9df4faef8843a7ff5b40c2e628821b56aca4be569bd26773012690f03380"
+        },
+        {
+          "added": [
+            "keeper-cleanup-inspect.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0030.json",
+          "sha256": "ff5919339224ec062e9f2fb7953a629630ee0161f296022df28c650709181367"
+        },
+        {
+          "added": [
+            "keeper-remove-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0031.json",
+          "sha256": "94b7bced83227ac1f1444c9321dfa3e4ebd2ca0dd5df381108013c84e86ad51b"
+        },
+        {
+          "added": [
+            "keeper-remove-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0032.json",
+          "sha256": "7cd8d1a72052fb3cbb96fa87b37e82c413dacafd53c7123611638ea63f9a176e"
+        },
+        {
+          "added": [
+            "keeper-remove.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0033.json",
+          "sha256": "9e98726ad9b49275aafdc0ecb304fa9d3a33eba075343034ef74056bdbbb5140"
+        },
+        {
+          "added": [
+            "keeper-absent-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0034.json",
+          "sha256": "49bd30586efae35573d66681e5a5d488e40ebb9302a246404af9a1477ef79c02"
+        },
+        {
+          "added": [
+            "keeper-absent-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0035.json",
+          "sha256": "75fffc670272fbd6144627e721a3a472adfd23171ecb802176df9d9de40e2243"
+        },
+        {
+          "added": [
+            "keeper-absent.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0036.json",
+          "sha256": "97b2e1340e49d0f2aee8ae9b83fa4ee24f61550a22f5be001fe7eb99fc4fd217"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0037.json",
+          "sha256": "50ed6deb0ba28b3efabdec687b69a42677ea8586b46ac1deee8d723a8293f349"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0038.json",
+          "sha256": "53f3f6f312a4f5bb6400fb71693c331ee9b15e1c3ed1c8fe1d1fe666d3283faa"
+        },
+        {
+          "added": [
+            "volume-cleanup-inspect.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0039.json",
+          "sha256": "0dbf244325cd3e6b20ae3f53ea607b1ca232ef726b1953c61c4cc1d8352a8364"
+        },
+        {
+          "added": [
+            "volume-remove-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0040.json",
+          "sha256": "80a7354412dd43657ac268f548f939e2bcd921b8937ef2ee48eb8f606d964d13"
+        },
+        {
+          "added": [
+            "volume-remove-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0041.json",
+          "sha256": "b2c3e3df81ab5324c685140fffca816964365e92de36b8b859e231f22edfa107"
+        },
+        {
+          "added": [
+            "volume-remove.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0042.json",
+          "sha256": "5f1b63f3902dbb2a76b1a71b9254ae04531742c6f8049803b341bd753897773d"
+        },
+        {
+          "added": [
+            "volume-after-stdout.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0043.json",
+          "sha256": "d1c353229b12037cd73920cc4bfd8c355f8aa9a40119ba75a7c882a7594805cf"
+        },
+        {
+          "added": [
+            "volume-after-stderr.bin"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0044.json",
+          "sha256": "0af2ddf53fa90aec565ed5794f12170b1e90b42fed49aac908b8cab67ac510ad"
+        },
+        {
+          "added": [
+            "volume-after.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0045.json",
+          "sha256": "ad9d9d6c8d6fc8f3664d65b1d2a91e44adaacc38d629711ca5714271249c24c3"
+        },
+        {
+          "added": [
+            "terminal.json"
+          ],
+          "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/external-checkpoint-0046.json",
+          "sha256": "120370913aba352c37081b16e144acf3eee0593f1ab8a6d1257e960748c93930"
+        }
+      ],
+      "full_keeper_inspection_differences": [
+        {
+          "after": null,
+          "before": false,
+          "path": "/HostConfig/OomKillDisable"
+        },
+        {
+          "after": "/var/lib/docker/containers/652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a/hostname",
+          "before": "",
+          "path": "/HostnamePath"
+        },
+        {
+          "after": "/var/lib/docker/containers/652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a/hosts",
+          "before": "",
+          "path": "/HostsPath"
+        },
+        {
+          "after": "2eab26dc661bc0e9f84baa6cc9e4164813b52c96b4c4c853b774ec1fa3842ce5",
+          "before": "",
+          "path": "/NetworkSettings/Networks/none/EndpointID"
+        },
+        {
+          "after": "07c4f3657d456bdcf2bb91d5e2b4029234b04fe504b272e26e234ccf869b16b7",
+          "before": "",
+          "path": "/NetworkSettings/Networks/none/NetworkID"
+        },
+        {
+          "after": "82af2b65f8393992cd529bf7c38f3d2e0d556a19819381b1bbb824148cc9aa3b",
+          "before": "",
+          "path": "/NetworkSettings/SandboxID"
+        },
+        {
+          "after": "/var/run/docker/netns/82af2b65f839",
+          "before": "",
+          "path": "/NetworkSettings/SandboxKey"
+        },
+        {
+          "after": "/var/lib/docker/containers/652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a/resolv.conf",
+          "before": "",
+          "path": "/ResolvConfPath"
+        },
+        {
+          "after": 5621,
+          "before": 0,
+          "path": "/State/Pid"
+        },
+        {
+          "after": true,
+          "before": false,
+          "path": "/State/Running"
+        },
+        {
+          "after": "2026-10-03T15:26:35.65847143Z",
+          "before": "0001-01-01T00:00:00Z",
+          "path": "/State/StartedAt"
+        },
+        {
+          "after": "running",
+          "before": "created",
+          "path": "/State/Status"
+        }
+      ],
+      "history": "semantic-success",
+      "intent": {
+        "bytes": 564,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/intent.json",
+        "sha256": "5edad063e7da1f90b8aaa0ee46e8f732efa64ebe0d0ab5df4ddcff87f684c1f0"
+      },
+      "journal_addition_order": [
+        "config.json",
+        "intent.json",
+        "staging.json",
+        "volume-before-stdout.bin",
+        "volume-before-stderr.bin",
+        "volume-before.json",
+        "volume-create-stdout.bin",
+        "volume-create-stderr.bin",
+        "volume-create.json",
+        "volume-created-stdout.bin",
+        "volume-created-stderr.bin",
+        "volume-created.json",
+        "keeper-before-stdout.bin",
+        "keeper-before-stderr.bin",
+        "keeper-before.json",
+        "keeper-intent.json",
+        "keeper-create-stdout.bin",
+        "keeper-create-stderr.bin",
+        "keeper-create.json",
+        "keeper-created-stdout.bin",
+        "keeper-created-stderr.bin",
+        "keeper-created.json",
+        "keeper-start-stdout.bin",
+        "keeper-start-stderr.bin",
+        "keeper-start.json",
+        "keeper-running-stdout.bin",
+        "keeper-running-stderr.bin",
+        "keeper-running.json",
+        "keeper-cleanup-inspect-stdout.bin",
+        "keeper-cleanup-inspect-stderr.bin",
+        "keeper-cleanup-inspect.json",
+        "keeper-remove-stdout.bin",
+        "keeper-remove-stderr.bin",
+        "keeper-remove.json",
+        "keeper-absent-stdout.bin",
+        "keeper-absent-stderr.bin",
+        "keeper-absent.json",
+        "volume-cleanup-inspect-stdout.bin",
+        "volume-cleanup-inspect-stderr.bin",
+        "volume-cleanup-inspect.json",
+        "volume-remove-stdout.bin",
+        "volume-remove-stderr.bin",
+        "volume-remove.json",
+        "volume-after-stdout.bin",
+        "volume-after-stderr.bin",
+        "volume-after.json",
+        "terminal.json"
+      ],
+      "journal_inventory": {
+        "config.json": "d980a04d7ce02141505033e118d2cbb77af63cd9ff023d490033533ae66c182b",
+        "intent.json": "5edad063e7da1f90b8aaa0ee46e8f732efa64ebe0d0ab5df4ddcff87f684c1f0",
+        "keeper-absent-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-absent-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-absent.json": "a8f14901d4590b7ebf96c11b48f9412f54b80b19bcc6a84f24e352044f0db1a6",
+        "keeper-before-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-before-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-before.json": "b44ee3d5f5a0514c1e726bb88aafdc1f4b980cf71c9e1bd3555c3ade79fec52a",
+        "keeper-cleanup-inspect-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-cleanup-inspect-stdout.bin": "84b71fa01faa40d02bdda01a044ced112083b77d08bb4990781fd5c4e9a062cb",
+        "keeper-cleanup-inspect.json": "4ad90cb682346d706a3ec51f8bf967d72cd8218cbc618c4c23e6fc574ebf487a",
+        "keeper-create-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-create-stdout.bin": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455",
+        "keeper-create.json": "4c3d8a221e2fb460a9887b98f2acfe039b293c7418527c77d12c2117c2609c4b",
+        "keeper-created-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-created-stdout.bin": "3533b7128f7fb4931ed20e7ba2fd1e93ebfd07757f44edacf3ed82edeaf059d3",
+        "keeper-created.json": "980c0f69fef32b2b844f79ef548904c2a5f1e4de01e6040e112911b8a9e8ce0a",
+        "keeper-intent.json": "bf28078a2faf7d23b64169eba226b510007969f6aad102cff791bcd0cba9b1f1",
+        "keeper-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-remove-stdout.bin": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455",
+        "keeper-remove.json": "5befb5f88ea054c66826f51627717a3d2f4e3c3eb46bbed854aca91314605ae4",
+        "keeper-running-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-running-stdout.bin": "84b71fa01faa40d02bdda01a044ced112083b77d08bb4990781fd5c4e9a062cb",
+        "keeper-running.json": "4c50abe849949310b59058d006dd0e7ad3d09862353f88aaaf55b6d21b6d4971",
+        "keeper-start-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "keeper-start-stdout.bin": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455",
+        "keeper-start.json": "bab30984a6fa16ced324e2b62f6927a0e3da13d000c85ebf0472a9d201f92044",
+        "staging.json": "164f1fe64e0ade9cb3deaff14fee0f591219531cda6e7130efef921ca1360fac",
+        "terminal.json": "aca7a7f8fa938b13a0de32824465920c2fe9ce8e76273fbff68aa46729af8c2e",
+        "volume-after-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-after-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-after.json": "3e9366571d3a21127980c33ab9fdfed38caa702d2a1a776e67f058cce4b6c0a0",
+        "volume-before-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-before-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-before.json": "232bb62fe5d286a5a17308a10c8fa5a50716856da00b66af4a8737eb71c3e8fc",
+        "volume-cleanup-inspect-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-cleanup-inspect-stdout.bin": "a855fb55482859f7bca3f6a8b1209089c1c3eeebb31787c2f4ef9602e3e91a96",
+        "volume-cleanup-inspect.json": "d164ed58f647d07be9c719745fe6b97dedddf1bbc59b886e723042b54621200c",
+        "volume-create-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-create-stdout.bin": "99d61c8b789e24c53179e5a980b124b08f0c5326ff322bcda66c652c57867247",
+        "volume-create.json": "ce39c122377f48e2d985d2fcd49e5e1f35771a036ccec0763c1546809610e600",
+        "volume-created-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-created-stdout.bin": "a855fb55482859f7bca3f6a8b1209089c1c3eeebb31787c2f4ef9602e3e91a96",
+        "volume-created.json": "c865856d9f51ebb7dda1f9e57a5fbe5e8630f67be64f4a5a448a8523ddba0791",
+        "volume-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "volume-remove-stdout.bin": "99d61c8b789e24c53179e5a980b124b08f0c5326ff322bcda66c652c57867247",
+        "volume-remove.json": "b33f17dcfe033f4bbb3b8f2659bb69fbaa57e2d24637ede0e956e564e6ce15b1"
+      },
+      "keeper_compared_projection_differences": [
+        {
+          "after": null,
+          "before": false,
+          "path": "/HostConfig/OomKillDisable"
+        }
+      ],
+      "keeper_id": "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a",
+      "keeper_lifetime_seconds": 540,
+      "kind": "synthetic-control-history",
+      "physical_lifecycle": {
+        "bytes": 3707,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/physical-lifecycle.json",
+        "sha256": "78cdc8c43b3c79fd57b922ddbdea64c64c2aee3936586dce29d731e1149551a6"
+      },
+      "planned_candidate_invocations": 1,
+      "raw_control_records": [
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "container",
+            "ls",
+            "--all",
+            "--quiet",
+            "--filter",
+            "name=^/gossip-client-13ebf9866b1943fa8048220a9986c3e0-keeper$"
+          ],
+          "record": {
+            "bytes": 580,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-absent.json",
+            "sha256": "a8f14901d4590b7ebf96c11b48f9412f54b80b19bcc6a84f24e352044f0db1a6"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-absent-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "keeper-absent-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "container",
+            "ls",
+            "--all",
+            "--quiet",
+            "--filter",
+            "name=^/gossip-client-13ebf9866b1943fa8048220a9986c3e0-keeper$"
+          ],
+          "record": {
+            "bytes": 580,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-before.json",
+            "sha256": "b44ee3d5f5a0514c1e726bb88aafdc1f4b980cf71c9e1bd3555c3ade79fec52a"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-before-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "keeper-before-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-keeper"
+          ],
+          "record": {
+            "bytes": 584,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-cleanup-inspect.json",
+            "sha256": "4ad90cb682346d706a3ec51f8bf967d72cd8218cbc618c4c23e6fc574ebf487a"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-cleanup-inspect-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 5515,
+            "path": "keeper-cleanup-inspect-stdout.bin",
+            "sha256": "84b71fa01faa40d02bdda01a044ced112083b77d08bb4990781fd5c4e9a062cb"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "create",
+            "--name",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-keeper",
+            "--pull=never",
+            "--network=none",
+            "--read-only",
+            "--cap-drop=ALL",
+            "--security-opt=no-new-privileges:true",
+            "--user=65534:65534",
+            "--pids-limit=64",
+            "--memory=256m",
+            "--memory-swap=256m",
+            "--cpus=1",
+            "--ulimit=nofile=256:256",
+            "--no-healthcheck",
+            "--restart=no",
+            "--log-driver=none",
+            "--hostname=gossip-validator",
+            "--env=HOME=/tmp",
+            "--env=PYTHONDONTWRITEBYTECODE=1",
+            "--env=PYTHONNOUSERSITE=1",
+            "--workdir=/",
+            "--env=HTTP_PROXY=",
+            "--env=HTTPS_PROXY=",
+            "--env=FTP_PROXY=",
+            "--env=NO_PROXY=",
+            "--env=ALL_PROXY=",
+            "--env=http_proxy=",
+            "--env=https_proxy=",
+            "--env=ftp_proxy=",
+            "--env=no_proxy=",
+            "--env=all_proxy=",
+            "--mount",
+            "type=volume,source=gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume,target=/tmp,readonly,volume-nocopy",
+            "--label",
+            "gossip.execution=client-13ebf9866b1943fa8048220a9986c3e0",
+            "--label",
+            "gossip.role=volume-keeper",
+            "--entrypoint",
+            "python",
+            "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+            "-I",
+            "-c",
+            "import time;time.sleep(540)"
+          ],
+          "record": {
+            "bytes": 1498,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-create.json",
+            "sha256": "4c3d8a221e2fb460a9887b98f2acfe039b293c7418527c77d12c2117c2609c4b"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-create-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-create-stdout.bin",
+            "sha256": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a"
+          ],
+          "record": {
+            "bytes": 579,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-created.json",
+            "sha256": "980c0f69fef32b2b844f79ef548904c2a5f1e4de01e6040e112911b8a9e8ce0a"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-created-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 4979,
+            "path": "keeper-created-stdout.bin",
+            "sha256": "3533b7128f7fb4931ed20e7ba2fd1e93ebfd07757f44edacf3ed82edeaf059d3"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "rm",
+            "--force",
+            "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a"
+          ],
+          "record": {
+            "bytes": 554,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-remove.json",
+            "sha256": "5befb5f88ea054c66826f51627717a3d2f4e3c3eb46bbed854aca91314605ae4"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-remove-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-remove-stdout.bin",
+            "sha256": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a"
+          ],
+          "record": {
+            "bytes": 579,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-running.json",
+            "sha256": "4c50abe849949310b59058d006dd0e7ad3d09862353f88aaaf55b6d21b6d4971"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-running-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 5515,
+            "path": "keeper-running-stdout.bin",
+            "sha256": "84b71fa01faa40d02bdda01a044ced112083b77d08bb4990781fd5c4e9a062cb"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "start",
+            "652b2b8f1317053aaee0c2845f8259f8f69851f44a05904b8d576ab7bc9a143a"
+          ],
+          "record": {
+            "bytes": 545,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/keeper-start.json",
+            "sha256": "bab30984a6fa16ced324e2b62f6927a0e3da13d000c85ebf0472a9d201f92044"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "keeper-start-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 65,
+            "path": "keeper-start-stdout.bin",
+            "sha256": "450c24e572f3799abe26864aed049a8191f7eb8065b78c6ba6642d7757b8b455"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "ls",
+            "--quiet",
+            "--filter",
+            "name=^gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume$"
+          ],
+          "record": {
+            "bytes": 566,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-after.json",
+            "sha256": "3e9366571d3a21127980c33ab9fdfed38caa702d2a1a776e67f058cce4b6c0a0"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-after-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "volume-after-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "ls",
+            "--quiet",
+            "--filter",
+            "name=^gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume$"
+          ],
+          "record": {
+            "bytes": 568,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-before.json",
+            "sha256": "232bb62fe5d286a5a17308a10c8fa5a50716856da00b66af4a8737eb71c3e8fc"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-before-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "volume-before-stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume"
+          ],
+          "record": {
+            "bytes": 591,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-cleanup-inspect.json",
+            "sha256": "d164ed58f647d07be9c719745fe6b97dedddf1bbc59b886e723042b54621200c"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-cleanup-inspect-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 453,
+            "path": "volume-cleanup-inspect-stdout.bin",
+            "sha256": "a855fb55482859f7bca3f6a8b1209089c1c3eeebb31787c2f4ef9602e3e91a96"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "create",
+            "--driver",
+            "local",
+            "--label",
+            "gossip.execution=client-13ebf9866b1943fa8048220a9986c3e0",
+            "--label",
+            "gossip.snapshot=docker-owned-finite-cli-tmpfs-keeper-v1",
+            "--opt",
+            "type=tmpfs",
+            "--opt",
+            "device=tmpfs",
+            "--opt",
+            "o=size=32m,mode=1777,nosuid,nodev,noexec",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume"
+          ],
+          "record": {
+            "bytes": 797,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-create.json",
+            "sha256": "ce39c122377f48e2d985d2fcd49e5e1f35771a036ccec0763c1546809610e600"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-create-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 54,
+            "path": "volume-create-stdout.bin",
+            "sha256": "99d61c8b789e24c53179e5a980b124b08f0c5326ff322bcda66c652c57867247"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "inspect",
+            "--format",
+            "{{json .}}",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume"
+          ],
+          "record": {
+            "bytes": 575,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-created.json",
+            "sha256": "c865856d9f51ebb7dda1f9e57a5fbe5e8630f67be64f4a5a448a8523ddba0791"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-created-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 453,
+            "path": "volume-created-stdout.bin",
+            "sha256": "a855fb55482859f7bca3f6a8b1209089c1c3eeebb31787c2f4ef9602e3e91a96"
+          }
+        },
+        {
+          "argv": [
+            "docker",
+            "--host",
+            "unix:///Users/westbrook/.docker/run/docker.sock",
+            "volume",
+            "rm",
+            "gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume"
+          ],
+          "record": {
+            "bytes": 542,
+            "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/volume-remove.json",
+            "sha256": "b33f17dcfe033f4bbb3b8f2659bb69fbaa57e2d24637ede0e956e564e6ce15b1"
+          },
+          "stderr": {
+            "bytes": 0,
+            "path": "volume-remove-stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 54,
+            "path": "volume-remove-stdout.bin",
+            "sha256": "99d61c8b789e24c53179e5a980b124b08f0c5326ff322bcda66c652c57867247"
+          }
+        }
+      ],
+      "registration": {
+        "binding": {
+          "case_id": "cli-grammar-missing-command",
+          "definition_sha256": "932456e598e73f8a0dc862cc6443cfdc253cbc53dc3278ad5b152b63475c06d7",
+          "environment_sha256": "81fe7d63fbf5e24d6a9654c612d43a6cc2897b19b54f64a9743a711003e7ca51",
+          "evaluator_sha256": "ca24e99200376b4989d25ef6d822d58bc84640b684e6282581081e4a78337406",
+          "limits_sha256": "9ca66aaadf16b6e1a5a3b3557139479b02c05828c32f345a523276b638ba3a39",
+          "milestone": "M1",
+          "ordered_suite_sha256": "8c7572223726ac518a4a214f375ce090139b48ce5da0237e218560e5e5e6d054",
+          "protocol": "candidate-client-execution-v1",
+          "purpose": "harness_qualification",
+          "requirements_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+          "runtime_sha256": "3b2b6e171f11485aa6d467ca5d0709a6a1637f52dc045e9fef213ff41f9fe642",
+          "seed_sha256": "efdd6b859d17242fc0897e880220bf2736fab936fa3ad45401bde6b2052fecb5",
+          "source_sha256": "1fa6b5353a95ebb753526c9bfd65190eefadb6fc6876fe15d2e4eee180bad9ff"
+        },
+        "commit_oid": "c242039d7d8ffd3998b884f8d3c74fb7d44ce2d0",
+        "repetition_id": "physical-qualification-1",
+        "tree_oid": "f4d1b399086344f8e68e5dec6e4b1bf9e9a5cb97"
+      },
+      "source_file_count": 2,
+      "terminal": {
+        "bytes": 5000,
+        "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/classes/84b3e9a21bc8ffe8/artifacts/gossip-candidate-b03-process-controls-88p5sfvw/semantic-success/execution/terminal.json",
+        "sha256": "aca7a7f8fa938b13a0de32824465920c2fe9ce8e76273fbff68aa46729af8c2e"
+      },
+      "volume_name": "gossip-client-13ebf9866b1943fa8048220a9986c3e0-volume"
+    }
+  ],
+  "independent_method_census": {
+    "docker": {
+      "failed": 2,
+      "not_run": 6
+    },
+    "fast": {
+      "passed": 94
+    }
+  },
+  "inputs": {
+    "bytes": 52966,
+    "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/inputs.json",
+    "sha256": "5886199fe5578bd4d8de8b84260346e0b4350ae082fa5c7f355b278977706bf3"
+  },
+  "limits": [
+    "Audits controller-owned retained artifacts, not external attestation or a fresh daemon census.",
+    "No candidate execution occurred; zero-dispatch finding is supported by complete local command/checkpoint census and frozen source order.",
+    "Transient staging directory bytes were not independently retained; Git source blobs and source/fixture manifests were reconciled.",
+    "Exact created-to-running keeper projection falsely treated one Engine field representation change as immutable; no normalization or retrospective pass is applied.",
+    "Frozen sources and failed run remain unchanged; any fix needs new source identity and qualification."
+  ],
+  "physical_counts": {
+    "candidate_containers_created": 0,
+    "candidate_invocations_planned_in_entered_histories": 10,
+    "candidate_natural_completions": 0,
+    "candidate_processes_started": 0,
+    "candidate_stream_captures": 0,
+    "checkpoint_records": 94,
+    "histories_entered": 2,
+    "journal_files_excluding_owner_locks": 94,
+    "owned_volumes_created": 2,
+    "owned_volumes_removed_with_absence": 2,
+    "raw_control_records": 28,
+    "raw_control_stream_bytes": 34441,
+    "raw_control_streams": 56,
+    "reference_histories_entered": 1,
+    "synthetic_control_histories_entered": 1,
+    "trusted_keepers_created": 2,
+    "trusted_keepers_removed_with_absence": 2,
+    "trusted_keepers_started": 2
+  },
+  "recorded_at": "2026-10-03T15:33:48.223180+00:00",
+  "reviewer": "/root/b03_boundary_review",
+  "run": {
+    "bytes": 82143,
+    "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/summary.json",
+    "sha256": "decefb6f1b2b8e5665f01810e6091c1b81e974662f01c6f8c27279891915ec25"
+  },
+  "runner_outcome": {
+    "duration_seconds": 96.75920545868576,
+    "fingerprint": "40689f91ee85c5f04bceaceb5e10f32f5ce193ed4b9036d637b0418f674eed92",
+    "outcomes": {
+      "failed": 2,
+      "not_run": 6,
+      "passed": 94
+    },
+    "reused_classes": 0,
+    "runtime_reconciliation": {
+      "final_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "initial_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "matches": true
+    },
+    "selected_counts": {
+      "docker": 8,
+      "fast": 94
+    },
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": {
+      "duration_seconds": 1.2576605407521129,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "status": "failed",
+    "workers_started": 8
+  },
+  "runtime_final": {
+    "bytes": 1435,
+    "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/runtime-final.json",
+    "sha256": "1318290223d02eaea4e38e013f03407038fd168376c4e623e34531887d75c457"
+  },
+  "schema": "candidate-b03-retained-physical-audit-v1",
+  "scientific_disposition": "Both histories stopped at keeper identity comparison before any candidate invocation. This is harness/infrastructure failure, not a product result, acceptance receipt or statistical comparison.",
+  "scope": "Independent read-only audit of retained failed phase-one qualification. No tests, Docker, API, candidate code, or provider executions. Git read-only object inspection only; this file is the sole newly written artifact.",
+  "source_pin_reconciliation": {
+    "normative_sources": {
+      "count": 5,
+      "mismatches": []
+    },
+    "reference_source_pins": {
+      "count": 41,
+      "mismatches": []
+    },
+    "runner_input_pins": {
+      "count": 452,
+      "mismatches": []
+    },
+    "source_pins": {
+      "count": 18,
+      "mismatches": []
+    }
+  },
+  "status": "retained-evidence-reconciled"
+}

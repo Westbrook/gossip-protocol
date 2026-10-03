@@ -1,0 +1,251 @@
+{
+  "authorization": "No provider execution, key reads, new spending, ledger reset or Pages refresh. Existing payload-transfer question remains pending; offline investigation continues.",
+  "failure": {
+    "created": false,
+    "field": "HostConfig.OomKillDisable",
+    "histories": [
+      "cli-db-root-isolation",
+      "semantic-success"
+    ],
+    "meaning": "Infrastructure compatibility failure, not candidate defect, acceptance observation or comparative sample.",
+    "other_compared_field_differences": [],
+    "retrospective_normalization_applied": false,
+    "running": null,
+    "stage": "Keeper created-to-running identity reconciliation; before any candidate step intent/create/start."
+  },
+  "full_b03_closed": false,
+  "implemented": [
+    "Tracked normative provider:57histories/19families/305commands/900assertions,32explicitly unspecified.",
+    "Bounded independent stdout/stderr and natural-completion observation over a fixed local Engine.",
+    "Source/recipe/runtime/limit binding, exclusive durable journal, no uncertain redispatch, trusted bounded persistence keeper.",
+    "Explicit manifest classes and four new type roots; independent source review and frozen execution contract."
+  ],
+  "new_comparative_project_samples": 0,
+  "new_provider_calls": 0,
+  "next_action": "Create a separately versioned compatibility profile for the exact created-to-started Engine representation transition, preserving full raw inspection and all other identity/security checks. Add focused regressions, freeze new source, and qualify controls/persistence before remaining56referencehistories. Do not retry frozenv1 until green.",
+  "objective": "Measure actual candidate CLI behavior and completion reliably before executing the preserved matched whole-project study.",
+  "physical_audit": {
+    "actual_counts": {
+      "candidate_containers_created": 0,
+      "candidate_invocations_planned_in_entered_histories": 10,
+      "candidate_natural_completions": 0,
+      "candidate_processes_started": 0,
+      "candidate_stream_captures": 0,
+      "checkpoint_records": 94,
+      "histories_entered": 2,
+      "journal_files_excluding_owner_locks": 94,
+      "owned_volumes_created": 2,
+      "owned_volumes_removed_with_absence": 2,
+      "raw_control_records": 28,
+      "raw_control_stream_bytes": 34441,
+      "raw_control_streams": 56,
+      "reference_histories_entered": 1,
+      "synthetic_control_histories_entered": 1,
+      "trusted_keepers_created": 2,
+      "trusted_keepers_removed_with_absence": 2,
+      "trusted_keepers_started": 2
+    },
+    "checks": 332,
+    "discrepancies": [],
+    "limits": [
+      "Audits controller-owned retained artifacts, not external attestation or a fresh daemon census.",
+      "No candidate execution occurred; zero-dispatch finding is supported by complete local command/checkpoint census and frozen source order.",
+      "Transient staging directory bytes were not independently retained; Git source blobs and source/fixture manifests were reconciled.",
+      "Exact created-to-running keeper projection falsely treated one Engine field representation change as immutable; no normalization or retrospective pass is applied.",
+      "Frozen sources and failed run remain unchanged; any fix needs new source identity and qualification."
+    ],
+    "receipt": {
+      "path": "runs/candidate-b03-physical-audit-1.json",
+      "sha256": "1352c0691dec8153fabe40316b948bea4a16f661d65450d61e19e741de9a234e"
+    },
+    "retained_copy": {
+      "path": "analysis/candidate-b03-v1-physical-audit.json",
+      "sha256": "1352c0691dec8153fabe40316b948bea4a16f661d65450d61e19e741de9a234e"
+    },
+    "status": "retained-evidence-reconciled"
+  },
+  "prospective_compatibility_plan": {
+    "path": "analysis/candidate-b03-runtime-compatibility-plan-v1.json",
+    "sha256": "7b8d89a9003594551c2677a9975d715b4b4e3584746874cc446601722f411b2d",
+    "status": "design only; no fix or qualification yet"
+  },
+  "prospective_roster": {
+    "candidate_assertions_observed": 0,
+    "candidate_container_attempts": 316,
+    "control_histories_entered": 1,
+    "controls": 11,
+    "keepers": 67,
+    "other_histories_unrun": 66,
+    "partitions": {
+      "jobs": {
+        "assertions": 585,
+        "case_ids": [
+          "cli-intake-directory",
+          "cli-intake-zip",
+          "cli-intake-json",
+          "cli-jobs-replay-conflict",
+          "cli-action-queued-prepare",
+          "cli-action-queued-commit",
+          "cli-action-queued-cancel",
+          "cli-action-queued-retry",
+          "cli-action-running-prepare",
+          "cli-action-running-commit",
+          "cli-action-running-cancel",
+          "cli-action-running-retry",
+          "cli-action-completed-prepare",
+          "cli-action-completed-commit",
+          "cli-action-completed-cancel",
+          "cli-action-completed-retry",
+          "cli-action-cancelled-prepare",
+          "cli-action-cancelled-commit",
+          "cli-action-cancelled-cancel",
+          "cli-action-cancelled-retry",
+          "cli-action-failed-prepare",
+          "cli-action-failed-commit",
+          "cli-action-failed-cancel",
+          "cli-action-failed-retry",
+          "cli-failed-prepare-retry",
+          "cli-prepare-import-conflict",
+          "cli-cancel-retry-epoch-fence"
+        ],
+        "histories": 27,
+        "invocations": 195,
+        "unspecified": 6
+      },
+      "legacy": {
+        "assertions": 108,
+        "case_ids": [
+          "cli-empty",
+          "cli-legacy-persistence",
+          "cli-source-changed",
+          "cli-export-duplicate",
+          "cli-export-missing",
+          "cli-show-missing"
+        ],
+        "histories": 6,
+        "invocations": 36,
+        "unspecified": 9
+      },
+      "persistence": {
+        "assertions": 27,
+        "case_ids": [
+          "cli-db-root-isolation"
+        ],
+        "histories": 1,
+        "invocations": 9,
+        "unspecified": 2
+      },
+      "rejection": {
+        "assertions": 180,
+        "case_ids": [
+          "cli-intake-io-directory",
+          "cli-intake-io-zip",
+          "cli-intake-io-json",
+          "cli-namespace-directory",
+          "cli-namespace-zip",
+          "cli-namespace-json",
+          "cli-invalid-kind",
+          "cli-grammar-missing-command",
+          "cli-grammar-unknown-command",
+          "cli-grammar-missing-import-source",
+          "cli-grammar-missing-show-id",
+          "cli-grammar-missing-epoch",
+          "cli-grammar-noninteger-epoch",
+          "cli-grammar-unknown-flag",
+          "cli-invalid-offset-negative",
+          "cli-invalid-limit-zero",
+          "cli-invalid-limit-over",
+          "cli-invalid-query-over",
+          "cli-syntax-zip",
+          "cli-syntax-json",
+          "cli-utf8-directory",
+          "cli-utf8-zip",
+          "cli-utf8-json"
+        ],
+        "histories": 23,
+        "invocations": 65,
+        "unspecified": 15
+      }
+    },
+    "reference_histories": 57,
+    "reference_histories_entered": 1,
+    "reference_invocations": 305,
+    "supported_assertions": 868,
+    "unspecified_assertions": 32,
+    "volumes": 68
+  },
+  "qualification": {
+    "duration_seconds": 96.75920545868576,
+    "failed_docker_methods": 2,
+    "legacy_type_diagnostics_baselined": 117,
+    "passed_offline_methods": 94,
+    "physically_run_test_methods": 96,
+    "planned_total_methods": 105,
+    "prior_attempts": [
+      {
+        "candidate_dispatch": false,
+        "outcomes": {
+          "not_run": 102
+        },
+        "path": "runs/candidate-b03-controls-qualification-1/20261003T152204-196d263a/summary.json",
+        "sha256": "8ac4bd594b79e5da80653ed83846c19fb65348945c7098a0b24b5e78d58c6db8",
+        "status": "failed",
+        "workers_started": 0
+      },
+      {
+        "candidate_dispatch": false,
+        "outcomes": {
+          "error": 1,
+          "not_run": 24,
+          "passed": 77
+        },
+        "path": "runs/candidate-b03-controls-qualification-2/20261003T152357-9c1c93e9/summary.json",
+        "sha256": "0b7d080863f3dd360bed6ee6b34cb22c2dd13174bf816947d6ba78abff5bea98",
+        "status": "failed",
+        "workers_started": 6
+      }
+    ],
+    "retained_summary_copy": {
+      "path": "analysis/candidate-b03-v1-controls-result.json",
+      "sha256": "decefb6f1b2b8e5665f01810e6091c1b81e974662f01c6f8c27279891915ec25"
+    },
+    "reused_classes": 0,
+    "runtime_unchanged": true,
+    "source_freeze": {
+      "path": "runs/candidate-b03-definition-freeze-3/freeze.json",
+      "sha256": "0a3ced5ffb3ad9c79eb74c5c6e50a8505dfe394e410c8213e5ea11f771864f7c"
+    },
+    "source_inputs": 452,
+    "source_unchanged": true,
+    "static": {
+      "duration_seconds": 1.2576605407521129,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "status": "failed",
+    "summary": {
+      "path": "runs/candidate-b03-controls-qualification-3/20261003T152602-1855c3f3/summary.json",
+      "sha256": "decefb6f1b2b8e5665f01810e6091c1b81e974662f01c6f8c27279891915ec25"
+    },
+    "unrun_bulk_docker_methods": 3,
+    "unrun_phase_one_methods": 6
+  },
+  "recorded_at": "2026-10-03T15:36:53.316368+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "schema": "candidate-b03-v1-qualification-checkpoint",
+  "statistical_design_review": {
+    "path": "analysis/cumulative-confirmatory-design-check-v1.json",
+    "sha256": "42ecfbf0baf92936b91192456e9730acec2efb4924f8c2d00a5f206877241fdb"
+  },
+  "status": "physical-qualification-failed; source and offline qualification complete",
+  "whole_project_acceptance": false
+}
