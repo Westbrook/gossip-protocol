@@ -4313,6 +4313,54 @@
       "boundary": "Offline definition/fixture qualification only. Declared identities and supplied facts do not prove registration chronology, physical origin, fresh execution, full catalog coverage or acceptance.",
       "disposition": "Root runs combined static and affected new classes after independent source review; future changed mechanics and production acceptance require their own qualification.",
       "overlap_reason": "No prior test exercises these new definition and independent derivation modules. This lane does not replace all276 materialized cases, changed root/link/CLI mechanics or the complete project experiment."
+    },
+    "tests/test_candidate_http_relations_v1.py::HttpRelationDeclarationsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Immutable fixed-field relations bind literal jobs, source/census/subject identities and statuses without allowing supplied values to acquire execution or acceptance authority.",
+      "isolation": "Separate class worker with synthetic immutable values only; no candidate, reference, Engine, provider or original-run access.",
+      "overlap": "Prospective partial declarations and supplied-value comparisons are distinct from authenticated raw observation and literal independent fixture derivation.",
+      "distinct_defect": "Immutable fixed-field relations bind literal jobs, source/census/subject identities and statuses without allowing supplied values to acquire execution or acceptance authority.",
+      "boundary": "Pure supplied-value diagnostic only; no registration chronology, request authenticity, physical completeness, fresh execution or candidate acceptance is established.",
+      "disposition": "Root verifies the coherent combined change after independent review; qualified registration and observation bridge remain required.",
+      "overlap_reason": "New tests cover fixed cross-response equality and partial exact-state behavior absent from the held whole-value expectation module."
+    },
+    "tests/test_candidate_http_relations_v1.py::HttpRelationComparisonsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Error equality, exact literal job state and source envelope remain independent; missing, malformed, ambiguous or duplicate evidence cannot become a passing relational assertion.",
+      "isolation": "Separate class worker with synthetic immutable values only; no candidate, reference, Engine, provider or original-run access.",
+      "overlap": "Prospective partial declarations and supplied-value comparisons are distinct from authenticated raw observation and literal independent fixture derivation.",
+      "distinct_defect": "Error equality, exact literal job state and source envelope remain independent; missing, malformed, ambiguous or duplicate evidence cannot become a passing relational assertion.",
+      "boundary": "Pure supplied-value diagnostic only; no registration chronology, request authenticity, physical completeness, fresh execution or candidate acceptance is established.",
+      "disposition": "Root verifies the coherent combined change after independent review; qualified registration and observation bridge remain required.",
+      "overlap_reason": "New tests cover fixed cross-response equality and partial exact-state behavior absent from the held whole-value expectation module."
+    },
+    "tests/test_candidate_http_cases_v1.py::CandidateHttpCatalogMaterializationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Every retained row preserves its exact identity, literal wire requests, fixtures, full state histories and requirement interactions with no candidate-derived expected values or silent truncated lifecycle.",
+      "isolation": "Separate class worker with pure portable authored catalog construction and synthetic declaration mutations; no candidate, reference, Engine, provider or original-run access.",
+      "overlap": "Full literal history and closed catalog-schema validation differ from lower-level fixture derivation, error relation comparisons and original physical executor qualification.",
+      "distinct_defect": "Every retained row preserves its exact identity, literal wire requests, fixtures, full state histories and requirement interactions with no candidate-derived expected values or silent truncated lifecycle.",
+      "boundary": "Declaration qualification only. Roster completeness is not full requirement discharge; the catalog remains nondispatchable until qualified mechanics, prospective registration and the fresh observation bridge exist.",
+      "disposition": "Root runs coherent combined static and new offline classes after independent source review; no new costly integration or candidate study is implied.",
+      "overlap_reason": "These tests cover the newly materialized276-case roster, full histories and versioned schema; earlier fixtures, observer and old limited executor cannot establish this new coverage."
+    },
+    "tests/test_candidate_http_cases_v1.py::CandidateHttpCatalogDeclarationBoundaryTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Invalid lifecycle, staging, request binding, prerequisite and relational declarations reject while inert records retain no dispatch, fresh execution or acceptance authority.",
+      "isolation": "Separate class worker with pure portable authored catalog construction and synthetic declaration mutations; no candidate, reference, Engine, provider or original-run access.",
+      "overlap": "Full literal history and closed catalog-schema validation differ from lower-level fixture derivation, error relation comparisons and original physical executor qualification.",
+      "distinct_defect": "Invalid lifecycle, staging, request binding, prerequisite and relational declarations reject while inert records retain no dispatch, fresh execution or acceptance authority.",
+      "boundary": "Declaration qualification only. Roster completeness is not full requirement discharge; the catalog remains nondispatchable until qualified mechanics, prospective registration and the fresh observation bridge exist.",
+      "disposition": "Root runs coherent combined static and new offline classes after independent source review; no new costly integration or candidate study is implied.",
+      "overlap_reason": "These tests cover the newly materialized276-case roster, full histories and versioned schema; earlier fixtures, observer and old limited executor cannot establish this new coverage."
     }
   },
   "audit": {

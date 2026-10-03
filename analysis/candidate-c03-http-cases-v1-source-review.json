@@ -1,0 +1,322 @@
+{
+  "schema": "candidate-c03-http-cases-source-review-public-projection-v1",
+  "meaning": "Root-authored path-normalized projection of the retained independent source review; not a new independent audit.",
+  "original": {
+    "path": "runs/candidate-c03-http-relations-catalog-source-review-1.json",
+    "sha256": "de627cfd98b98b8d39168d0630ad4bd27035634f88dcc4c4e5b428b0f7c5a83b",
+    "bytes": 16108
+  },
+  "review": {
+    "schema": "candidate-c03-http-relations-catalog-source-review-v1",
+    "created_at": "2026-10-03T23:35:18.032191+00:00",
+    "reviewer": "/root/b03_assertion_review",
+    "baseline": "09200a25218a31ce01add5e872bfb6e677b8d662",
+    "status": "clear_with_explicit_scope_limits",
+    "unresolved_material_source_findings": [],
+    "activity": "Independent read-only source/test/documentation/configuration review and inert retained-artifact reconciliation; no project imports, test execution, candidate, Engine, Docker, provider or key calls by reviewer.",
+    "reviewed_sources": [
+      {
+        "path": "gossip_harness/candidate_http_relations_v1.py",
+        "bytes": 15359,
+        "sha256": "bdc88bb00fbbb82c654affdb6d341d69494b7668abe44bddc2919a91ddbecf0c"
+      },
+      {
+        "path": "tests/test_candidate_http_relations_v1.py",
+        "bytes": 33857,
+        "sha256": "513a4b0bb15c75dfbdd7809696b8229d2048e4b594118b9642751be823049871"
+      },
+      {
+        "path": "docs/candidate-c03-http-relations-v1.md",
+        "bytes": 7434,
+        "sha256": "9f10f8c7d71257cf813a26669f20b0a7a21e491fe7dfc0ab00ff126e8a144a40"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_core_v1.py",
+        "bytes": 33598,
+        "sha256": "4cea9398bcaacdb6a15b5bd2ddd754ba431ab2029fd6ac19ba4586d5023a7793"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_v1.py",
+        "bytes": 19026,
+        "sha256": "17a72d2d4826e27f3631bfcb0ac74a04bfa2a8569d3a6ad5f6debedae5ece27b"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_documents_v1.py",
+        "bytes": 9568,
+        "sha256": "104d22e1e7c519c2e27aeae50d1aed1eb2ddcdba71bf3f5e06b4705dce5a1396"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_shapes_v1.py",
+        "bytes": 9449,
+        "sha256": "8fe11b7537e87bc10fbef47cf8ed9acf179ea38bf548bf936ee137494c844a80"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_intake_v1.py",
+        "bytes": 7236,
+        "sha256": "3ffe5cf9ddc7623168a0f785455afa352b0512794d19bf6b97b46a432c786efc"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_paths_v1.py",
+        "bytes": 9393,
+        "sha256": "1237aae61a14d97fd897b48ee390447466021d9dcc15677f41bbd276803b57fe"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_actions_v1.py",
+        "bytes": 11451,
+        "sha256": "51f875a7bfd567648cd0c5d2cbe0dd3afed7d782b7104696daf6edad4703b2de"
+      },
+      {
+        "path": "gossip_harness/candidate_http_cases_persistence_v1.py",
+        "bytes": 10694,
+        "sha256": "001223d0b49a579b111992c592a8bfc375e565f65b4ddb5e894c546685e4c2a0"
+      },
+      {
+        "path": "tests/test_candidate_http_cases_v1.py",
+        "bytes": 40501,
+        "sha256": "7986a16666ba095ae5093fbe28d66638c568037bd1567ab20c3d77390b49bf1c"
+      },
+      {
+        "path": "docs/candidate-c03-http-cases-v1.md",
+        "bytes": 11855,
+        "sha256": "856099eef4d622bfa06f6309c4a5b4b2a2c50e6768a7c515597230bb346f015b"
+      }
+    ],
+    "reviewed_configuration": [
+      {
+        "path": "pyproject.toml",
+        "bytes": 8994,
+        "sha256": "0253486a28057228d8b3e2ca9ef474089a169c2ae78f4a2ac253164791fe087c"
+      },
+      {
+        "path": "verification-manifest.json",
+        "bytes": 399549,
+        "sha256": "a55eb184c0482e6ab038a0ad3ed15584aa2afc3af577f7244a3b21978d61c0e4"
+      }
+    ],
+    "review_scopes": {
+      "relations": "Immutable prescribed comparison of one direct error CODE with a literal-ID failed JOB.error; complete ordered jobs known fields and source status/envelope facets remain independent of equality. Duplicate-aware single-pass subject index, strict held body eligibility, immutable typed diagnostics, and no learned expected code or authority promotion.",
+      "catalog": "All 276 exact proposal FAMILY/row IDs materialized as literal immutable declarations across ten families and eight targets. Closed source-root/fixture/request/history records, real typed relation roundtrip, actual earlier prerequisite facets, declared port consistency and inert CLI public-state snapshots reviewed. R05 literal materialization only; no complete acceptance or dispatch claim.",
+      "tests": "Read-only review of 35 relation methods and 46 catalog methods, including independent negative-test precondition checks. No reviewer test execution.",
+      "config": "Exactly nine new type roots and four fast class records; prior class records and prior type-root relative order preserved against baseline.",
+      "delegation": [
+        {
+          "reviewer": "/root/b03_assertion_review/c03_expected_fixture_review",
+          "scope": "Relation tests, declaration assertions and final bounded negative-test delta; clear at held test SHA."
+        },
+        {
+          "reviewer": "/root/b03_assertion_review/c03_catalog_materialization_review",
+          "scope": "Catalog source/test/docs, including disjoint intake+path 96-row and action+persistence 64-row reviews, remaining 116 rows, and source descriptor reconciliation; clear at final held hashes."
+        }
+      ]
+    },
+    "resolved_findings": [
+      "Replaced per-reference full jobs scans with one duplicate-aware subject index; no timing or product performance claim.",
+      "Qualified body-completeness documentation: supplied bytes cannot prove capture completeness; incomplete or unqualified captures must be Missing.",
+      "Isolated relation count-bound negatives using unique valid IDs, plus 514-job/two-relation semantic coverage and Missing-status independent equality.",
+      "Enforced request port against literal server/listener port at Step construction.",
+      "Replaced duplicate relation schema validation with closed parse into shared typed relation definitions and exact roundtrip.",
+      "Replaced nonexistent dependency labels with actual earlier semantic facets; preserved distinct error-code-equality diagnostics.",
+      "Retained literal CLI before/after public state snapshots while withholding stdout-wrapper and physical-observation authority.",
+      "Corrected catalog test preconditions and narrowed documentation to HTTP mutation censuses; no predicate relaxed to claim execution."
+    ],
+    "retained_offline_gate": {
+      "owner": "/root",
+      "session": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee",
+      "artifacts": [
+        {
+          "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/summary.json",
+          "bytes": 46342,
+          "sha256": "ebd7158e768e395526c262cecb4ddc1d9eb590c425dd1cf4c930b17e60b2fd14"
+        },
+        {
+          "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/static.json",
+          "bytes": 78654,
+          "sha256": "ab1c23c15c159785269745a8c9ea8f49cf29ee798c59b0736f2eef38cb80f485"
+        },
+        {
+          "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/inputs.json",
+          "bytes": 59496,
+          "sha256": "2af1a4f03517c9e66056f71eae9b5a5e526265af480eda4ac6f1487f5bbb8936"
+        }
+      ],
+      "status": "passed",
+      "fresh_methods": 81,
+      "classes": 4,
+      "skips": 0,
+      "failures": 0,
+      "reused_classes": 0,
+      "duration_seconds": 4.228973499499261,
+      "input_hashes_reconciled": 506,
+      "input_mismatches": 0,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static_sources": 437,
+      "unchanged_type_baseline_diagnostics": 117,
+      "workers": [
+        {
+          "class": "tests/test_candidate_http_cases_v1.py::CandidateHttpCatalogDeclarationBoundaryTests",
+          "passed_methods": 23,
+          "result": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/7c103d4fcd3d9664/result.json",
+            "sha256": "48be2cec0910f281157c20481e90d79fe9dc4e06faf3ed99a8ce7667cada4a7c"
+          },
+          "log": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/7c103d4fcd3d9664/worker.log",
+            "sha256": "c7bb5f80c8923822b7004722996142f5babc37b13fa545f4deb38189d7233636"
+          }
+        },
+        {
+          "class": "tests/test_candidate_http_cases_v1.py::CandidateHttpCatalogMaterializationTests",
+          "passed_methods": 23,
+          "result": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/2a1ba173319a230d/result.json",
+            "sha256": "0d0763018bf1b43d48fb6ad18063e24f0fd4b7c16498275e5d074240ad873e1b"
+          },
+          "log": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/2a1ba173319a230d/worker.log",
+            "sha256": "c1908144da4d385e0f21811a3974409e852648e7ee473f592ad7c14da61e4c6c"
+          }
+        },
+        {
+          "class": "tests/test_candidate_http_relations_v1.py::HttpRelationComparisonsV1Tests",
+          "passed_methods": 26,
+          "result": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/a2f0eae8ff2141c9/result.json",
+            "sha256": "39d52ea3dd53ebe28ae30ad9aa650e11f8445aaca4a43d41317cc7a6c66c2816"
+          },
+          "log": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/a2f0eae8ff2141c9/worker.log",
+            "sha256": "5c8bde7bbc6c49f5621410916a7c54698de91e187bc27234a4648b61ea316fa8"
+          }
+        },
+        {
+          "class": "tests/test_candidate_http_relations_v1.py::HttpRelationDeclarationsV1Tests",
+          "passed_methods": 9,
+          "result": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/99ab2d4e25b6548b/result.json",
+            "sha256": "152a20c65966327e1b01f31a02982af34eb7e873e83e912cd3cc63ecc8e65691"
+          },
+          "log": {
+            "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/classes/99ab2d4e25b6548b/worker.log",
+            "sha256": "4f34d19fbc21697a353f84a1e9a538d7994c3195ce8ea5f5208ffb39573d5713"
+          }
+        }
+      ],
+      "scope": "Actual fresh offline verification workers only. The runner physical=true field denotes fresh test-worker execution; it is not candidate or Docker execution."
+    },
+    "retained_declarations": {
+      "author_construction": {
+        "path": "runs/candidate-c03-http-cases-design-1/construction.json",
+        "bytes": 50794,
+        "sha256": "342d435017d634fd94df5f8c4a784fdb615fa239170ee6dce942fcb7f81ec004"
+      },
+      "root_export": {
+        "path": "runs/candidate-c03-http-cases-offline-1/20261003T232804-c76153ee/definition-manifest.json",
+        "bytes": 45614,
+        "sha256": "ab017611126a9ecca285f61b1dc992db4c4b35dba16e08aad7617f8ac58f2b30"
+      },
+      "definition_value_sha256": "b0430f5b799fc12b2a6398f588501bf19a47c7de9ab6368d76f8fbf81dbc8024",
+      "exports_value_equal": true,
+      "unique_case_hash_rows": 276,
+      "retained_roster_sha256": "2c716eea838784446f73f5d1434d4308f80cbd070ff5d9c04976ba287abfc32e",
+      "row_ids_sha256": "5f734fc893a8d9387d043c110efa90dcb3dfdfd520e10b7712fd42127b10d171",
+      "frozen_dependency_pins": [
+        {
+          "path": "gossip_harness/library_project_fixture_v1.py",
+          "sha256": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf"
+        },
+        {
+          "path": "analysis/candidate-b03-c03-policy-review-v1.json",
+          "sha256": "bec2139ba2b6e99d5ac6da01296842cc690af5c84f3428aaa5183eaf2ec54570"
+        },
+        {
+          "path": "analysis/candidate-c03-http-catalog-norms-v1.json",
+          "sha256": "24a9c469ec994c3e17bcfb0da7e89f171ac55022e6415a5bcc1d61d6817d71a4"
+        },
+        {
+          "path": "docs/candidate-c03-http-catalog-norms-v1.md",
+          "sha256": "d075a3adc03fae8f7ee14631643fead57144be69c1f5072b79574c04ef3dfbc6"
+        },
+        {
+          "path": "gossip_harness/candidate_http_fixtures_v1.py",
+          "sha256": "ddcb37083efdfaee47b857438d592bfad4bfdff433dbcbad343512feb115c257"
+        },
+        {
+          "path": "gossip_harness/candidate_http_semantics_v1.py",
+          "sha256": "ce59b1a1cfb2cfb2b39632486c90a0023789ab72b51c13987c654a57f240958f"
+        },
+        {
+          "path": "gossip_harness/candidate_http_transport_v1.py",
+          "sha256": "a283e205ac3228085da1cf19c1ac60c720f13a0841463134605f0eb984f98ddd"
+        }
+      ],
+      "reported_counts": {
+        "rows": 276,
+        "families": 10,
+        "targets": 8,
+        "totals": {
+          "steps": 8203,
+          "http_requests": 7602,
+          "server_epochs": 286,
+          "server_stops": 286,
+          "finite_cli_processes": 29,
+          "planned_probe_processes": 7602,
+          "planned_keeper_processes": 276,
+          "planned_total_processes": 8193,
+          "fixture_files": 1517,
+          "fixture_directories": 653,
+          "fixture_symlinks": 6,
+          "fixture_bytes": 79993,
+          "request_body_bytes": 164851,
+          "request_wire_bytes": 801462
+        },
+        "max_per_case": {
+          "steps": 87,
+          "http_requests": 70,
+          "server_epochs": 2,
+          "server_stops": 2,
+          "finite_cli_processes": 29,
+          "planned_probe_processes": 70,
+          "planned_keeper_processes": 1,
+          "planned_total_processes": 86,
+          "fixture_files": 66,
+          "fixture_directories": 17,
+          "fixture_symlinks": 1,
+          "fixture_bytes": 5943,
+          "request_body_bytes": 65605,
+          "request_wire_bytes": 68539
+        },
+        "cases_exceeding_v2_64_steps": [
+          "HTTP-ACTION-STATE/old-token-after-successor-completed",
+          "HTTP-ACTION-STATE/old-token-after-successor-failed",
+          "HTTP-PERSIST-LISTENER/http-normal-restart-cancel-retry",
+          "HTTP-PERSIST-LISTENER/http-cli-http-same-db"
+        ],
+        "max_request_body_bytes": 65537,
+        "max_request_wire_bytes": 65661,
+        "max_fixture_file_bytes": 5937
+      },
+      "count_scope": "Root-generated pure constructor export reconciled exactly with the independent author construction artifact and source pins. Aggregate workload counts are declarations, not observed process counts. These exports contain row hashes but not per-row counts; reviewer did not regenerate candidate definitions or independently sum every workload aggregate."
+    },
+    "remaining_limits": [
+      "No candidate, HTTP server, Docker, Engine, provider or comparative trajectory was executed in this cycle; no new physical product judgment or swarm advantage is established.",
+      "Declarations and supplied-value comparison do not establish chronology, physical origin, causation, capture completeness or production acceptance. A future versioned bridge must bind declarations/source/runtime/image/environment/limits/seed/purpose before dispatch and authenticate fresh evidence and prerequisite applicability.",
+      "Every supported source/jobs/relation facet remains required by a future consumer; readable equality alone cannot hide unrelated wrong status, state, counter, order or sibling values.",
+      "P01–P10 remain open at full acceptance scope where evidence is missing; R05 materialization is not complete prospective execution registration.",
+      "Descendant/root-changing fixtures, confined symlinks, CLI handoffs, raw root observations and longer histories require separately qualified mechanics. Four declared histories exceed held v2 64-step bounds and were not split or truncated.",
+      "Exact FAMILY/row identifiers retain slashes and do not directly fit the old v1 CasePlan/SuitePlan identifier contract. No compatibility or dispatch authority is inferred.",
+      "CLI snapshots do not define unpromised CLI wrappers or prove public-state reads; raw root observations do not invent status, JSON, MIME, markup or browser success requirements.",
+      "No whole-ID architecture, rollback, hidden storage conservation, atomicity, browser/delivery, repeatability or final acceptance claim follows from these pure definitions.",
+      "Original frozen mechanics/observer/fixtures/norms remain unchanged. Pending three B03 CLI file additions and provider approval remain unresolved; absence checked.",
+      "The full project goal, four milestones, six matched trajectories, final-evaluation barriers and statistical plan remain unchanged."
+    ],
+    "pending_paths_checked_absent": [
+      "tests/test_candidate_clients_docker_v4.py",
+      "tests/test_candidate_client_rejection_v4.py",
+      "docs/candidate-client-qualification-plan-v4.md"
+    ],
+    "dispatch_authority": false,
+    "acceptance_authority": false,
+    "product_verdict": "not_evaluated"
+  }
+}
