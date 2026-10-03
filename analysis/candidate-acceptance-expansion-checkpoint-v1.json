@@ -1,0 +1,440 @@
+{
+  "base_development_commit": "bc1aff0f160744b47c4d26444375e2d62511e8bc",
+  "definition_freezes": [
+    {
+      "path": "runs/candidate-storage-definition-freeze-1.json",
+      "sha256": "94cacddce6054a6373d6bcbfa9e99f3c8ecca32cacefc87bcc8f3b7b511e46c8",
+      "status": "Superseded before physical candidate histories; retained."
+    },
+    {
+      "path": "runs/candidate-storage-definition-freeze-2.json",
+      "sha256": "524c6dbb0945ed002f20e6d4ebffb2facb93f3b87feb1581659d4f1a484b7886",
+      "status": "Final prospective public development definition; independently reviewed before first physical history."
+    }
+  ],
+  "development_branch": "codex/cumulative-project-contract",
+  "evidence_limits": [
+    "These are authored positive and intentional defect controls, not comparative model samples or statistical evidence for swarm superiority.",
+    "Storage schema profiles are authored fixture qualification only and explicitly lack production source-review authority; eight histories cover finite requirement facets, not all B01 IDs or full requirement closure.",
+    "Only three public release cases are exercised, not complete M4 delivery or the full four-milestone six-trajectory study.",
+    "Container cleanup is retained controller boolean evidence. Successful volume removal and empty final listings are retained raw evidence; raw container-removal subprocess records are absent. No independent daemon cleanup attestation was performed.",
+    "Release reopen is supported by passing same-process close/reopen test assertions and unchanged checkpoint/bridge data, not a separate persisted reopen receipt or independent process restart.",
+    "Checkpoints are cumulative authenticated-by-controller file inventories, not signed predecessor-hash chains or external attestations.",
+    "The audit rechecked artifacts and current bound authored source bytes. It did not reopen production journals, execute candidate modules, rerun tests, perform new Docker dispatches or call a provider API.",
+    "Pausing follows a returned adapter response and is not an atomic method-return boundary or concurrency proof.",
+    "Storage close/reopen is not process-death recovery. The separate Git crash test exercises journal intent admission, not product restart.",
+    "Profile-specific private-table conservation does not define the universal product grammar.",
+    "Development definitions and authored controls are public. None are independent unseen final-acceptance observations."
+  ],
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "independent_physical_audit": {
+    "authority": "Engineering evidence audit only; not a full acceptance or cohort-freeze authorization.",
+    "counts": {
+      "release_capsules": 3,
+      "release_checkpoint_entry_hashes_verified": 4293,
+      "release_checkpoint_snapshots_verified": 159,
+      "release_controls": 3,
+      "storage_histories": 10,
+      "storage_paused_captures": 30,
+      "stream_hashes_and_lengths_verified": 536
+    },
+    "findings": [],
+    "path": "runs/candidate-acceptance-expansion-physical-audit-1.json",
+    "sha256": "45fcdbabb12560614c8ffc6f4f9215e0db7a0b7f14846400df0f7b22d5e2eb28"
+  },
+  "new_api_calls": 0,
+  "new_comparative_samples": 0,
+  "preexecution_findings_resolved": [
+    "Replay histories no longer claim direct-import coverage; requirement and phase labels bind the actual finite observations.",
+    "Boolean/integer and integer/float substitutions use typed JSON comparison.",
+    "Returned-value mutation uses the direct Store API and rereads the same producer instance.",
+    "Ordinary authored write triggers are observed as schema data rather than rejected universally; immutable reads never execute them.",
+    "Storage capture framing, error memory, source staging and loaded-source hashes are bounded and checked.",
+    "Scope evidence forbids duplicate receipt origins and cannot erase an earlier authenticated failure with later invalid or unavailable evidence.",
+    "V2 release accepts valid manifest formatting while retaining exact payload integrity."
+  ],
+  "preexecution_plan": {
+    "path": "runs/candidate-acceptance-expansion-plan-1.json",
+    "sha256": "baaf5ad82e281d4105c4549ee4b085552d1e9238ac1daa7a9606f4e517d6f0b3"
+  },
+  "publication": "Commit and push this qualified cycle to the existing development branch; no merge to frozen main or Pages refresh is implied. A separate local publication receipt binds the final commit.",
+  "purpose": "Qualify candidate-side storage observation, scope evidence consumption and explicit product-v2 public delivery before a full software-project comparison.",
+  "qualification": {
+    "browser": "No page or browser implementation changed in this cycle; no new browser test performed.",
+    "classes": [
+      {
+        "checks": 12,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/b1a69b68aea2058f/result.json",
+          "sha256": "d316627d8afc80fe32ff55b12c0164b202fdeac6794b98fbe8c678ae804de16b"
+        },
+        "id": "tests/test_candidate_release_observer_v2.py::CandidateReleaseV2ObserverTests",
+        "lane": "fast",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/b1a69b68aea2058f/worker.log",
+          "sha256": "8f043288aa5c4ab519968cad536a7a26678213183ffc0da01e3d83d6f3dbfd71"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 32,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/995b4834cfdec311/result.json",
+          "sha256": "457c0c9d73a2637fbb1b50a57fbc389b42f9c886db9d358504137b675d46e5f2"
+        },
+        "id": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "lane": "fast",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/995b4834cfdec311/worker.log",
+          "sha256": "9d291b9cdf9a7b9f464b1d3aada7aa443704258a38a2d5b5f0528542be69ed1a"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 12,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/0ceacbd45908e058/result.json",
+          "sha256": "a24bb11d8eb6e13893941e73b04cde011423b8ba5c998fb2dbd29e3ef5452966"
+        },
+        "id": "tests/test_candidate_storage_driver_v1.py::CandidateStorageDriverTests",
+        "lane": "fast",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/0ceacbd45908e058/worker.log",
+          "sha256": "74b3ecea3b91b86d8df1a49020b4f1fade8bad6ec8564317f57eefad4794fef6"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 18,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/6a465dbb3710ccac/result.json",
+          "sha256": "05cd37cf9157a7e96a8144b53cdec0a1d3e86a776a2c4c98e38d6a8bd4aed62e"
+        },
+        "id": "tests/test_candidate_storage_observer_v1.py::CandidateStorageObserverV1Tests",
+        "lane": "fast",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/6a465dbb3710ccac/worker.log",
+          "sha256": "14145fec43efc9f50b7d6083ada87d58dca2174ffbcb8d57d2e884debcea85c0"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 1,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/0d11edde7bc60823/result.json",
+          "sha256": "e82b25735e717ac6947919cf5a6b53e49ba52c62336ffb8ccfb95aeb2367ceb3"
+        },
+        "id": "tests/test_candidate_release_execution_v2.py::CandidateReleaseV2ExecutionCrashTests",
+        "lane": "git",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/0d11edde7bc60823/worker.log",
+          "sha256": "8f1fe52af08d757e8acfc74ea94e810192b238b4284b7d3eb9a62073f50b528a"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 15,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/597d27e9ffdf01ee/result.json",
+          "sha256": "42421f8d085283bf9e9ba1c58def370eff0928edaab5a8a8b0d4d2233005b14e"
+        },
+        "id": "tests/test_candidate_release_execution_v2.py::CandidateReleaseV2ExecutionTests",
+        "lane": "git",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/597d27e9ffdf01ee/worker.log",
+          "sha256": "57bec44f61b0b8e858181b857c1168b0f9138dda8573b258d188daf109cffacf"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 4,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/c25a48764acbd650/result.json",
+          "sha256": "3fbf8323af3e68f1b75f982ef35a9cb6b3f11d3bd8f574c13195ff33d4ced223"
+        },
+        "id": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "lane": "git",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/c25a48764acbd650/worker.log",
+          "sha256": "1e10392e42e9ecc9cf76e18cf9825638dbc93283b791f7afb62b00040b249f33"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 3,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/3c56ac56c6cce86d/result.json",
+          "sha256": "9813c07e533ac669d008c8a9c095c8fbec96745b3a5189c36aa296866180470f"
+        },
+        "id": "tests/test_candidate_release_docker_v2.py::CandidateReleaseV2DockerTests",
+        "lane": "docker",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/3c56ac56c6cce86d/worker.log",
+          "sha256": "be66978dab637343124dbafd0a74da9f61ea0b71b846975184657462e55d251f"
+        },
+        "physical": true,
+        "status": "passed"
+      },
+      {
+        "checks": 10,
+        "evidence": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/d7be9fa20a134d1d/result.json",
+          "sha256": "0285eda9eea9a5bccf30bb9c4856ee19a2d2d6bbffd93dea9d70f9b63c3f4d6d"
+        },
+        "id": "tests/test_candidate_storage_driver_v1.py::CandidateStorageDriverDockerTests",
+        "lane": "docker",
+        "log": {
+          "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/classes/d7be9fa20a134d1d/worker.log",
+          "sha256": "25db4e14a537a9ecbf50cda7ded16d1f9048d8a326561463f7c0b47dec664b46"
+        },
+        "physical": true,
+        "status": "passed"
+      }
+    ],
+    "counts_by_lane": {
+      "docker": 13,
+      "fast": 74,
+      "git": 20
+    },
+    "coverage": "targeted",
+    "current_source_reconciliation": {
+      "matching_inputs": 424,
+      "meaning": "Every recorded qualification input rehashed at this checkpoint. This checkpoint is descriptive metadata added after execution.",
+      "mismatches": []
+    },
+    "duration_seconds": 456.9028415000066,
+    "fingerprint": "b0fa5a623942cc9db26f81785013eb4d869245bf8237ffaa7a9cc6fd4a00f8c8",
+    "inputs": {
+      "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/inputs.json",
+      "sha256": "e15db2a69e21a74acb0ac2536c5b68d0a5b4af55b118cdb1da14cf635cfa052a"
+    },
+    "outcomes": {
+      "passed": 107
+    },
+    "physical_classes": 9,
+    "receipt_reuse": "No current checks reused. Prior v1 and reference qualifications were read as baselines and not rerun or promoted to a new purpose.",
+    "reused_classes": 0,
+    "runtime_reconciliation": {
+      "final_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "initial_sha256": "26401197a441167f53543249e4f5e06697566e1df245e75d591609ada6be1ff5",
+      "matches": true
+    },
+    "selected_checks": 107,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": {
+      "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/static.json",
+      "sha256": "df387462cd7974586e16aeae034c8568a231bffcff3d99e236140c415264f2c1"
+    },
+    "static_status": "passed",
+    "status": "passed",
+    "summary": {
+      "path": "runs/candidate-acceptance-expansion-qualification-1/20261003T111306-0cc245f5/summary.json",
+      "sha256": "29036110dd095d9351ee17b90edfd8dd92cbeab0483c198748e040f463509030"
+    },
+    "type_baseline": {
+      "active_debt": 117,
+      "baseline_sha256": "3ace625c18000d0f5a82107228172800d81692df48f64cad3cdc11fc0c92759f",
+      "path": "devtools/type-baseline.json",
+      "recorded_debt": 117,
+      "scope": "Explicit roots and their imports; all other authored files receive syntax/correctness lint checks",
+      "source_sha256": {
+        "analysis/audit_benchmark.py": "65db31ef66940dd3adaa0ce598f554565ab4cc57d86e9e5e18318b713dfcf9f8",
+        "analysis/audit_continuation.py": "54cf10f5d651510d8df3fc87b1bc916e63f030d90ea41999cdd64fd91cbce4ed",
+        "analysis/qualify_benchmark.py": "481fb19a5dc555846ec339f9f501d7dd1c06c36bbbb64d4a8efd3033941855d9",
+        "analysis/run_sustained_review_probes.py": "c93d6eedc99dc992ef82169503531fc118fb310abb335fade5c598d9ab20d434",
+        "gossip_harness/blackbox_validator.py": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+        "gossip_harness/continuation_transport.py": "de79df63641a14e947eba6896d4ffd52f450c47ec4993e61a49d5797d6cb8498",
+        "gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+        "gossip_harness/pilot.py": "932d741a028ca5c12b4726b62d3ca64516d222ad58d1d2b744a546768eb9954e",
+        "gossip_harness/promotion.py": "a29d6763ff161ef59ab4a01ac3a97b7c9453c2375bf0ce82cd780691d786d972",
+        "gossip_harness/recovery_experiment.py": "0c1513b714c54cab894e96559c9c50407b1f23fb40ae74e9810b527cf087f845",
+        "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+        "gossip_harness/selection.py": "54b2ea491646f8930a13b00ddb79359c35493b01991a9d183bafeb0da0b1e34d",
+        "gossip_harness/sustained_experiment.py": "fcb4ce3570a9e4a4864b136a4b1fb8b9997948b6cfcfab85c15fbb911036b984",
+        "gossip_harness/sustained_inventory.py": "d7ddc51fac36097f894973e6f1d39337176aebf785d6ac71c310aa7f80067829",
+        "gossip_harness/sustained_stage.py": "a29da102b594159c0941e8140312ae0d183b9a4a08fe608c38c1f6e6fc2f0a20",
+        "gossip_harness/swarm_fixture.py": "23aadf7e31474bdf07aadd4d269b1a0c215ab43c451ae5de50c92032708510ac",
+        "gossip_harness/verification_audit.py": "dd6c538c81bd71ce8b031b7f38cbd679741b667391074017daf9bd337524422d",
+        "gossip_harness/verification_buildgraph.py": "9a6f175c7af265221afa98051fb555abbafb08fa28e447fbf3245c63580dd717",
+        "gossip_harness/verification_calendar.py": "6b9a39daf5256e1f3ea440847dc847b00af4b1169640d62a3f92b21d87e68c62",
+        "gossip_harness/verification_experiment.py": "b10c646b60108fbc23b16de345034f9dccb635aa53cacc5c7c6ead07f99569bc",
+        "gossip_harness/verification_integration.py": "bb0d33a085f27c0100874a6062d8d258438117ee4a1867200825625e762b7992",
+        "gossip_harness/verification_journal.py": "0072f4b5a0f4dda68a58608e7a51f89d6bfa4a4213d7b760fbec36eec1b036b9",
+        "gossip_harness/verification_stage.py": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+        "gossip_harness/worker.py": "a64dd72166b42d26b15bf08ba31ea27da19d6ca1168aa62b3e2a35e2d4562104"
+      }
+    },
+    "type_coverage_limit": "Incremental explicit mypy roots and retained legacy baseline do not establish whole-repository type safety.",
+    "workers": 4
+  },
+  "recorded_at": "2026-10-03T11:29:25.673446+00:00",
+  "remaining_work": [
+    "Complete the production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Implement remaining B02 intake/direct Store, B03 client/browser, B04 process/wire and B05 full delivery observations, plus unclosed B01 facets.",
+    "Bind all candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run the four-milestone six-trajectory matched experiment only after required payload-transfer approval and within the existing approved budget.",
+    "Retain S4-G (4 builders plus 4 reviewers), S16-G (16 plus 4) and O16-G (16 plus 4), each under healthy and compound recovery; compare quality and sustained whole-project completion first.",
+    "Keep generated distinguishing tests, real process restart, bounded partitions, a whole-cohort barrier before fresh independent acceptance, and later heldout families.",
+    "Use further independent project families and a preregistered statistical design before any general superiority claim."
+  ],
+  "schema": "candidate-acceptance-expansion-checkpoint-v1",
+  "scope_consumer": {
+    "boundary": "Assessment accepts controller-installed authority capabilities, not uploaded receipts, expected hashes or callbacks.",
+    "bridges": "Explicit v1 and v2 original release observations reconstructed from real executor journals and externally retained checkpoints without redispatch; v2 bridge tested for all three physical controls before and after same-process journal reopen.",
+    "checks": "Prospective source/scope/declaration registration, distinct SCOPE/CONTROL/ADMISSION qualification, source-purpose-bound reuse, complete cohort freeze, promotion evidence, duplicate-origin refusal and known-failure retention.",
+    "limit": "Engineering consumer boundary only. A Python interface alone authenticates nothing; a production authority and actual SCOPE/CONTROL/ADMISSION proof are still required. No production ScopePlan was fabricated.",
+    "preserved_denominator": {
+      "prerequisites": 3,
+      "product_requirements": 123
+    }
+  },
+  "source_files": {
+    "docs/candidate-release-delivery-v2.md": "ef5ecdf63cbc394c049b13a69f2051021f0f2a0c8a84fcd4e6a4d22d0ca78c53",
+    "docs/candidate-scope-consumer-v1.md": "76917b52668051a0f184433b5fc9ace2ed6808e170bee011ba10bd62d3b57c12",
+    "docs/candidate-storage-observation-v1.md": "015c60dbf835d97e7c88f974edccbf1f91f816990ec1b2c97c42791d51c3a1b1",
+    "gossip_harness/candidate_release_execution_v2.py": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+    "gossip_harness/candidate_release_observer_v2.py": "a2091ba7e410c548fd0f7b150db2ab02f0b0eec4f7ff939d86e2f48c85d0da68",
+    "gossip_harness/candidate_scope_consumer_v1.py": "4375c42d82dbdf7407b01828019174de439f7e9611e5a3dc883ec1328f41e5b0",
+    "gossip_harness/candidate_storage_cases_v1.py": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4",
+    "gossip_harness/candidate_storage_driver_v1.py": "52bc3a8a3f7fd50d1da92a8755c4076c1508c119d09c0732b6d86fe9b3c13e2a",
+    "gossip_harness/candidate_storage_observer_v1.py": "84952ce86ca8bd6df4434ca76d44e25febde2c4f88af2664f8765681fa131a15",
+    "pyproject.toml": "843309ba3ba829456b4f7be9aa656f7bf93714e9dab0a82c98697c230c6daa7a",
+    "tests/test_candidate_release_docker_v2.py": "17c7171a16b02034875d0a67f9b77972299b1c53855864286f205a299c877033",
+    "tests/test_candidate_release_execution_v2.py": "11933f9786829a5ed2332fd4c3d1bf14f8e18db4bf8273fd0843f066f6114948",
+    "tests/test_candidate_release_observer_v2.py": "2f1172a78b6d5a07912b23592abf87a83c6433befe0deb80a9c74ff6824b18c2",
+    "tests/test_candidate_scope_consumer_v1.py": "852d9a3735485410f61441f211cdf18f40ccffe867827c6292a2424f879263d5",
+    "tests/test_candidate_storage_driver_v1.py": "52b0f3777e1c4dba7b5b813b24a6ff7d577d89cb229a2dc581145bf101be2b1f",
+    "tests/test_candidate_storage_observer_v1.py": "71f7147fc6eece0d31514d0e0e6af70cf20075069a5660cf118c26d84471a780",
+    "verification-manifest.json": "caacb3eba854c76b9856f3e50d8caa163e032cca1d768b6e87a14363f9b77941"
+  },
+  "statistical_claim": "No new ranking, superiority, confidence interval or causal speed/cost conclusion.",
+  "status": "Targeted engineering qualification passed; full candidate acceptance and comparative study remain incomplete.",
+  "storage": {
+    "availability": "Unknown layouts, WAL/sidecars, malformed persisted records or unqualified profiles remain observation unavailable; they are not automatic product failures or passes.",
+    "capture": "Three host-captured paused-container storage snapshots per history: before, after response, and after same-process close/reopen; 30 total.",
+    "defect_controls": [
+      {
+        "id": "rollback-orphan",
+        "observation": "Public injected-failure error is correct but one unreferenced blob is added. After-response and reopened storage invariants fail."
+      },
+      {
+        "id": "cached-return-alias",
+        "observation": "Persistent storage stays unchanged but direct Store-return mutation changes immediate same-producer rereads. Value isolation fails."
+      }
+    ],
+    "defect_controls_detected": 2,
+    "limits": "Bounded immutable/read-only SQLite with extension loading disabled and SELECT/READ authorizer. Profile-specific auxiliary-table and coordination-file conservation; valid alternate implementations need a reviewed mapper.",
+    "mapping": "All 14 actual SQLite tables and raw manifest/hash/receipt strings are observed under an explicitly authored and reviewed source profile. Split-JSON fixtures qualify a separate mapper, not a second compliant product.",
+    "partial_coverage": "Eight finite histories cover selected B01 facets. They do not close all 23 inherited requirement IDs, hook placement, concurrency, process death, or power loss.",
+    "positive_histories": [
+      "rollback",
+      "capacity",
+      "invalid-admission",
+      "deferred-semantic",
+      "empty-batch",
+      "canonical-replay",
+      "completed-replay",
+      "value-mutation"
+    ],
+    "positive_histories_passed": 8,
+    "schema_authority": "Prospective fixture DDL comes from authored AST literal data. Candidate Python never executes on the controller. Fixture review is not production source-review authority."
+  },
+  "storage_definition": {
+    "concealed_holdout": false,
+    "semantic_sha256": "efefb735a6d43de34e7c0e0f07e6541703cb60db2b897e3d140f02fb6b62e672",
+    "source_sha256": "42c92d98f88e178d2fc1ae6afe5013ab2271a85cfd22d5ef4d34f64eb8cd90a4"
+  },
+  "unchanged": {
+    "coverage_map": {
+      "meaning": "Earlier source-inspection baseline; this cycle does not silently recalculate qualified closure.",
+      "path": "analysis/cumulative-coverage-map-v1.json",
+      "sha256": "421635d4282a218a267059d161f3245daa8e0d24018b5552d7c594f18f43823c"
+    },
+    "frozen_v1_and_product_contracts": true,
+    "main": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+    "public_report_snapshot_revision": 346,
+    "source_pages_deployment": "c8ba24ac7d1792ebf7553447ec0c980b48d02c39"
+  },
+  "v2_release": {
+    "contract_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "controls": [
+      {
+        "capsule_sha256": "0de98f33ba0c78b7f9a44582ace720e2ebe4674da992a2ca81e1199e933c8dc3",
+        "id": "valid",
+        "outcomes": [
+          {
+            "case_id": "release-build",
+            "status": "passed"
+          },
+          {
+            "case_id": "release-manifest",
+            "status": "passed"
+          },
+          {
+            "case_id": "released-cli-roundtrip",
+            "status": "passed"
+          }
+        ],
+        "source_sha256": "33318ae07163934cdb1770e40d548671522b9662662c565707e52f11cd911071"
+      },
+      {
+        "capsule_sha256": "ac8d70da6b52d87c5d6c29e6be836221094423bc5b84288e5316413b0fb86167",
+        "id": "alternate-manifest",
+        "outcomes": [
+          {
+            "case_id": "release-build",
+            "status": "passed"
+          },
+          {
+            "case_id": "release-manifest",
+            "status": "passed"
+          },
+          {
+            "case_id": "released-cli-roundtrip",
+            "status": "passed"
+          }
+        ],
+        "source_sha256": "c843e74fa04b7483faa222f8edd6eddf1dbc662abf79323a5029cf9b2402f290"
+      },
+      {
+        "capsule_sha256": "e89a46fbe29dcb0630c597d5f16d9996dc9c9e60b56d727615f1e24d551a95bc",
+        "id": "mutant",
+        "outcomes": [
+          {
+            "case_id": "release-build",
+            "status": "passed"
+          },
+          {
+            "case_id": "release-manifest",
+            "status": "failed"
+          },
+          {
+            "case_id": "released-cli-roundtrip",
+            "status": "failed"
+          }
+        ],
+        "source_sha256": "83a072cead29d3e5ded66c9526a12740c65806790c7e5a6137398c40baf404e0"
+      }
+    ],
+    "execution": "Three isolated build/capsule/fresh-consumer controls, six containers, three volumes, twelve actual CLI processes. Exact Git blobs including binaries bind the delivery inventory.",
+    "manifest_validity_fix": "V2 authenticates observed manifest bytes, compares exact nonmanifest payload, and scores manifest semantics. Legal JSON whitespace and object-key order no longer cause rejection. Frozen v1 unchanged.",
+    "milestone": "M4",
+    "ordered_cases": [
+      "release-build",
+      "release-manifest",
+      "released-cli-roundtrip"
+    ],
+    "partial_coverage": "Only three public delivery cases. Full M4 release behavior, independent final acceptance, full-cohort authorization and repeatability remain outstanding.",
+    "requirement_association": [
+      "M4-RELEASE-HANDOFF"
+    ]
+  }
+}
