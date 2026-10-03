@@ -1,0 +1,1027 @@
+{
+  "author_scope": "Read retained local evidence and immutable official sources; write only this new design receipt. No candidate, Docker, provider, test retry or source changes.",
+  "created_at": "2026-10-03T16:14:57.067295+00:00",
+  "first_failure_condition": {
+    "api_note": "Controller retained CLI inspect with no explicit API-version flag; process request explicitly uses API 1.47. These interfaces have additional raw response fields outside the existing immutable projection. The primary cause does not require an API-version explanation: the daemon map-to-slice implementation can permute on repeated inspections within one API version.",
+    "independent_confirmation": "Controller owner independently found the same sole array permutation in both cases.",
+    "location": "candidate_client_process_v2.run_process, immediately after independently retained Engine inspect-before response and before attach construction",
+    "not_observed": [
+      "candidate start in either failed history",
+      "early attach EOF",
+      "candidate exit or candidate product failure",
+      "changed mount content or source identity"
+    ],
+    "observed": "State is created in both raw views. All immutable fields except Mounts match. Only the ordering of the three complete top-level Mounts records differs. The frozen v2 predicate correctly rejects that raw inequality.",
+    "predicate": "Canonical JSON of immutable_inspection(prestart) must equal frozen canonical JSON of immutable_inspection(controller-created inspection), and State.Status must remain created."
+  },
+  "official_primary_sources": [
+    {
+      "bytes": 7592,
+      "git_commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/inspect.go",
+      "sha256": "9b9c53de7e054477be0c7986921a15a34a455b39e6edb977457fee73f18e122e",
+      "supports": "Fetches GetMountPoints and assigns the result to the top-level inspection Mounts field.",
+      "symbol": "ContainerInspect",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/inspect.go"
+    },
+    {
+      "bytes": 29282,
+      "git_commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container/container.go",
+      "sha256": "f09bf508b7d6214840458436f42a4d38ede4b473f562aedc4ccb9b649d527995",
+      "supports": "Declares MountPoints as a map indexed by string, rather than an ordered slice.",
+      "symbol": "Container.MountPoints",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container/container.go"
+    },
+    {
+      "bytes": 13808,
+      "git_commit": "6bc6209b88a7a834c91f77d848e025c79e0227a1",
+      "raw_url": "https://raw.githubusercontent.com/moby/moby/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container/container_unix.go",
+      "sha256": "51ccbea6bca2cb78b411976ea7e165af5d80fcc4bc53a0ac3bd4ef7857734c4a",
+      "supports": "Builds the returned inspection slice by appending each map value; no ordering step occurs.",
+      "symbol": "GetMountPoints (raw source lines 419-434)",
+      "url": "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container/container_unix.go"
+    },
+    {
+      "pinning": "Live official specification consulted; no byte identity claimed.",
+      "section": "For statements with range clause, map iteration rule",
+      "supports": "Go does not guarantee map traversal order between iterations. This supplies the language-level explanation for the pinned map-to-slice code.",
+      "url": "https://go.dev/ref/spec#For_range"
+    }
+  ],
+  "preserved_baseline": {
+    "duration_seconds": 101.98584649991244,
+    "freeze": {
+      "bytes": 169830,
+      "path": "runs/candidate-b03-v2-definition-freeze-1/freeze.json",
+      "sha256": "c42317fe4379cf0f9281cf82e9ea6cee9288e89f40061b3aa4f9fe690c485ed5"
+    },
+    "no_new_product_acceptance_or_statistical_sample": true,
+    "no_reclassification": true,
+    "outcomes": {
+      "failed": 2,
+      "not_run": 6,
+      "passed": 117
+    },
+    "selected_counts": {
+      "docker": 8,
+      "fast": 117
+    },
+    "session": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f",
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "status": "failed",
+    "summary": {
+      "bytes": 100499,
+      "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/summary.json",
+      "sha256": "79b4e9d114761c63cc52aee54794d653cf48038279b290082fd4dc292489360a"
+    }
+  },
+  "principle": {
+    "counterfactual": "The proposed rule would recognize both retained inventories as equal, but this does not retroactively complete their unstarted commands or turn failed v2 qualification into passes.",
+    "fit": "Canonicalizing exactly this proven representation artifact preserves detection of source, target, type, mode, propagation, volume identity, permissions, unknown fields and JSON type changes. It avoids incidental nondeterministic rejection without forgiving semantic changes.",
+    "identity_object": "The effective container mount inventory: unique destination plus every field of each full inspection mount record.",
+    "representation_detail": "The order of the top-level inspection Mounts array is a serialization of an unordered map, not an authenticated declaration of mount precedence.",
+    "scope_limit": "Do not infer that other arrays, mount subfields, input argv or HostConfig.Mounts are unordered; those remain type-and-order-exact."
+  },
+  "prospective_design": {
+    "allowed_path": "Mounts at the top level of the existing immutable inspection projection only",
+    "canonicalization": "After validation, create a comparison-only mapping from exact Destination to its complete unmodified row, or equivalently sort a comparison-only copy by exact Destination. Choose and freeze one format. Do not deduplicate, omit fields, mutate raw input or recursively sort lists.",
+    "phases": [
+      "Candidate created-to-prestart: allow only top-level Mounts inventory order equivalence; every other raw projection field stays exact, including OomKillDisable.",
+      "Candidate created-to-exited: compose the same mount inventory comparison with only the previously authorized typed runtime/phase-gated OomKillDisable false-to-null startup rule.",
+      "Keeper created-to-running: same inventory rule may share the helper, but one mount makes ordering trivial; preserve the independently defined startup transition rule.",
+      "Keeper subsequent running boundaries: all fields stay exact except representation by the same validated single-row inventory, with no startup OOM normalization."
+    ],
+    "required_records": [
+      "Retain all complete raw CLI stdout and Engine HTTP inspection responses with their hashes.",
+      "Retain raw full-view and immutable-projection hashes separately from canonical inventory and canonical comparison-view hashes.",
+      "Retain rule ID, policy definition and digest, runtime/source/role/phase binding, original destination sequences, exact per-destination full-row hashes and all transformations.",
+      "Use distinct prestart and final comparison records, each with its own complete-record digest. Prestart comparison must be durably retained before attach/start; failure remains transport unavailability.",
+      "Compose the startup rule explicitly without treating an inventory match as proof of completion. Retain exact operation intent before each action and controller/process evidence namespace separation."
+    ],
+    "rule_id": "docker-inspect-mount-inventory-v1",
+    "runtime_gate": "Initially pin the same known Linux Engine 29.2.1 commit 6bc6209b88a7a834c91f77d848e025c79e0227a1 (or its exact reported abbreviation), selected API 1.47 and stable endpoint/image/runtime profile used by v2; no arbitrary runtime fallback.",
+    "unchanged_authority": [
+      "No product expectation, accepted exit convention, CLI grammar, signal test, candidate fixture or source change.",
+      "No candidate completion marker; attach before start, bounded framing, EOF/start confirmation ordering, independent wait/final inspection and natural-exit policy unchanged.",
+      "No relaxation of enabled OOM-killer-disable, network, root/user, capability, CPU/memory/PID/fd, read-only, volume lifetime or cleanup requirements.",
+      "No run retry until green, new provider spend, sample reuse or acceptance authority from this design.",
+      "No broad suppression of HostConfig, Config, Mounts row fields, State checks, evaluator identity, purpose, case order or source hashes."
+    ],
+    "validation": [
+      "Require a bounded strict JSON list of object records; reject null, missing, tuples, non-JSON or excessive values before normalization. Duplicate JSON object keys must be rejected by the raw inspection JSON decoder before dictionary conversion, for both controller CLI inspection stdout and Engine HTTP JSON responses. This is an explicit prospective v3 decoder requirement; a comparison helper receiving dictionaries cannot recover or detect keys already discarded by parsing.",
+      "Require each Destination to be a nonempty exact canonical absolute POSIX path, without NUL, and unique before constructing an inventory. Do not normalize path spelling.",
+      "Retain role-specific mount cardinality/destination checks: finite candidate exactly /workspace, /inputs, /tmp; keeper exactly /tmp. Preserve source/fixture read-only binds and bounded owned volume checks.",
+      "Retain each entire row with all known and unknown fields and exact JSON types. Missing versus null, false versus zero, added/removed keys and nested array changes must remain unequal."
+    ],
+    "versioning": "Introduce new process/controller/observer binding protocol versions and new tests/docs. Keep every frozen v1/v2 source, failure artifact and receipt. Bind this design and the unchanged OOM compatibility design into new evaluator/configuration fingerprints."
+  },
+  "protocol": "candidate-b03-mount-inventory-plan-v1",
+  "required_regressions": [
+    "Every permutation of the exact three mount records compares equal at created/prestart/final boundaries while raw hashes/order remain visibly distinct.",
+    "Duplicate destinations, even identical duplicated rows, fail; missing destination, non-string/numeric/null/empty/path-alias destinations and malformed/non-list structures fail.",
+    "Changed Source, Destination, RW, Type, Name, Driver, Mode or Propagation fails; unknown added/deleted/changed fields and nested JSON type changes fail.",
+    "Permuting Args, Config.Cmd, Config.Env, HostConfig.Mounts, SecurityOpt, Ulimits or any nested row list still fails; no generic array sorting.",
+    "Prestart OomKillDisable false-to-null remains unavailable, while the already allowed startup phases admit only the existing pinned typed transition.",
+    "Unqualified runtime/phase, changed endpoint/image/source/configuration and forged policy or raw/canonical digest fail authentication.",
+    "Retained regression fixtures derived from these failed raw pairs exercise only offline comparison, clearly labeled diagnostic and not candidate success receipts.",
+    "Mocked controller-to-transport integration must vary top-level mount order across initial/prestart/final reads, preserve durable comparison-before-start ordering and reject an actual mount change before start.",
+    "Raw inspection JSON decoding must reject duplicate keys, including duplicate Destination and nested mount-row keys, before dictionary conversion on both CLI and Engine paths. Offline helper tests alone cannot prove this decoder property; exercise retained raw bytes through each parser.",
+    "All existing offline protocol/lifecycle/observer/controller/definition tests remain applicable. Root then freezes the new version and physically runs exactly one persistence history plus all 11 registered controls. Only if that phase genuinely passes, run the remaining 56 provider histories; do not repeat the already passed persistence history. Together the one persistence history and remaining 56 form the complete 57-history qualification."
+  ],
+  "retained_case_proofs": [
+    {
+      "before_mount_order": [
+        "/tmp",
+        "/workspace",
+        "/inputs"
+      ],
+      "before_projection_sha256": "87c1992ed28719b32e6d5a788dd672ac89ca3274f99d4d848ce070355040186b",
+      "before_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "checkpoint_evidence": {
+        "step-000-controller-intent.json": {
+          "checkpoint": {
+            "bytes": 3507,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0036.json",
+            "sha256": "b5dd6cb3bce0074838c1edac712175aec5a46580f4883a826cb2c2484b8c3e87"
+          },
+          "record_sha256": "2cd50216a28afed0426bd02ec9813d8b4ed6e0c8d2c16fb5f7bf4e904b324749"
+        },
+        "step-000-create.json": {
+          "checkpoint": {
+            "bytes": 3795,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0039.json",
+            "sha256": "e4525c266c2362649d6721fceeb494506ba9b44b3705b3ee032c8ead37b22eac"
+          },
+          "record_sha256": "77900fc827f202bdae9da5713ea4735828fb932565c4a60202b7027e36832e7b"
+        },
+        "step-000-created-stdout.bin": {
+          "checkpoint": {
+            "bytes": 3894,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0040.json",
+            "sha256": "8a442fe28b48c0304362e29472f5314d24070c031c0910b80b25875427ef7eba"
+          },
+          "record_sha256": "ed55887ee7ba6de2d582736cad4cec06389dbaaf30e89add2c134f4b470f9318"
+        },
+        "step-000-created.json": {
+          "checkpoint": {
+            "bytes": 4086,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0042.json",
+            "sha256": "48b70d4ef4c9f75b8791d86d138e4ffcc9389d4c25b312d5bde403556e54d6a6"
+          },
+          "record_sha256": "f4919987351c24221a4bdd90c4c5b00cacc805b35d3754a4e602b58cc68442d2"
+        },
+        "step-000-inspect-before-request.bin": {
+          "checkpoint": {
+            "bytes": 5068,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0051.json",
+            "sha256": "5bd33e179907514e560e1f84a6999f28da4ec6789a331f8445a1a262c163bac3"
+          },
+          "record_sha256": "1a8793e33af31d950524b3f9a25c358016bfe38b1126c9c303ed9d0082d0b6ce"
+        },
+        "step-000-inspect-before-response.bin": {
+          "checkpoint": {
+            "bytes": 5176,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0052.json",
+            "sha256": "98860b5249d655c5f4d18433c489e669cbda7eebe043d739f3a1796f7f5c1db1"
+          },
+          "record_sha256": "695c677001acbd441a6df6ea5969320c44f7cd05c1776d092e9b76eb42a88e26"
+        },
+        "step-000-intent.json": {
+          "checkpoint": {
+            "bytes": 4178,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0043.json",
+            "sha256": "8dbc772cef13a334cd623ff53e06eb6f7de6b7f3aecf65b7fdd992fb5ef0d5e7"
+          },
+          "record_sha256": "ed2f329249af6124f71396657b632ed504fcb2383a6b9f97cc7e91db04649a96"
+        },
+        "step-000-kill-request.bin": {
+          "checkpoint": {
+            "bytes": 5273,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0053.json",
+            "sha256": "72ee2219b08345f5e2df33f834d56ab3f5b6bf2c8a4fd19cef736b3161ba6657"
+          },
+          "record_sha256": "fab82192e1828f5b3469057e84674f231bd5ca95e030778c23bc7bcde1186fdd"
+        },
+        "step-000-kill-response.bin": {
+          "checkpoint": {
+            "bytes": 5371,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0054.json",
+            "sha256": "1fa5e9d3e439c3a83d2a7cc73777c6c406a16cec06e805e819e9fe639deaf0f7"
+          },
+          "record_sha256": "90accd189988bdca8d00db67c6bea1262487f1deadc16c546467121a10586181"
+        },
+        "step-000-process.json": {
+          "checkpoint": {
+            "bytes": 5968,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/external-checkpoint-0060.json",
+            "sha256": "c5da4a15a664d3e89a5bf39ada9fe2c7f52aada44dfd1cf2a941b378c23d5c67"
+          },
+          "record_sha256": "f9ec134656c2bfb394ae4e557368dae397f21a6a8dab1562e74c730c9f6c5a37"
+        }
+      },
+      "container_id": "fd3a0fe9fb958c0dba5a172d9367710c0e63683c3e308faad0c84933d59e4c59",
+      "execution_path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution",
+      "first_external_checkpoint_indices": {
+        "step-000-attach-request.bin": null,
+        "step-000-controller-intent.json": 36,
+        "step-000-create.json": 39,
+        "step-000-created-stdout.bin": 40,
+        "step-000-created.json": 42,
+        "step-000-inspect-before-request.bin": 51,
+        "step-000-inspect-before-response.bin": 52,
+        "step-000-intent.json": 43,
+        "step-000-kill-request.bin": 53,
+        "step-000-kill-response.bin": 54,
+        "step-000-process.json": 60,
+        "step-000-start-request.bin": null,
+        "step-000-start-response.bin": null
+      },
+      "mount_inventory_after_sha256": "7c4b91df058359d1241b21ffafbbdc3c66d95623ddcb68534ace07b957216519",
+      "mount_inventory_before_sha256": "7c4b91df058359d1241b21ffafbbdc3c66d95623ddcb68534ace07b957216519",
+      "mount_inventory_type_exact_equal": true,
+      "name": "persistence",
+      "no_attach_or_start_evidence": true,
+      "only_immutable_differences": [
+        "Mounts"
+      ],
+      "prestart_mount_order": [
+        "/workspace",
+        "/inputs",
+        "/tmp"
+      ],
+      "prestart_projection_sha256": "91aea0dbe7d0095c44112c5570ea2c7a350b1a1c0416a0ade0008caba97e2be4",
+      "prestart_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "process_intent_binds_original_projection": true,
+      "retained_records": [
+        {
+          "bytes": 1181,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-controller-intent.json",
+          "sha256": "2cd50216a28afed0426bd02ec9813d8b4ed6e0c8d2c16fb5f7bf4e904b324749"
+        },
+        {
+          "bytes": 2107,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-create.json",
+          "sha256": "77900fc827f202bdae9da5713ea4735828fb932565c4a60202b7027e36832e7b"
+        },
+        {
+          "bytes": 6001,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-created-stdout.bin",
+          "sha256": "ed55887ee7ba6de2d582736cad4cec06389dbaaf30e89add2c134f4b470f9318"
+        },
+        {
+          "bytes": 583,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-created.json",
+          "sha256": "f4919987351c24221a4bdd90c4c5b00cacc805b35d3754a4e602b58cc68442d2"
+        },
+        {
+          "bytes": 2470,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-intent.json",
+          "sha256": "ed2f329249af6124f71396657b632ed504fcb2383a6b9f97cc7e91db04649a96"
+        },
+        {
+          "bytes": 156,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-inspect-before-request.bin",
+          "sha256": "1a8793e33af31d950524b3f9a25c358016bfe38b1126c9c303ed9d0082d0b6ce"
+        },
+        {
+          "bytes": 5352,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-inspect-before-response.bin",
+          "sha256": "695c677001acbd441a6df6ea5969320c44f7cd05c1776d092e9b76eb42a88e26"
+        },
+        {
+          "bytes": 606,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-runtime-before.json",
+          "sha256": "30e76c199ac5b4613314b8b86fa2f1847af8a2211efac18139e58f6b5f131fc0"
+        },
+        {
+          "bytes": 1527,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-process.json",
+          "sha256": "f9ec134656c2bfb394ae4e557368dae397f21a6a8dab1562e74c730c9f6c5a37"
+        },
+        {
+          "bytes": 1557,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-result.json",
+          "sha256": "31fb06b7575e91a8c205f2bbbfddcae638b55d3b80763b9371df747596d05b8a"
+        },
+        {
+          "bytes": 438,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-kill-response.bin",
+          "sha256": "90accd189988bdca8d00db67c6bea1262487f1deadc16c546467121a10586181"
+        },
+        {
+          "bytes": 5352,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-inspect-after-kill-response.bin",
+          "sha256": "695c677001acbd441a6df6ea5969320c44f7cd05c1776d092e9b76eb42a88e26"
+        },
+        {
+          "bytes": 5110,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/2afb7b40d9bf8e79/artifacts/gossip-candidate-b03-v2-cli-persistence-nu0hjvc8/cli-db-root-isolation/execution/step-000-cleanup-state.json",
+          "sha256": "6d541c4e7c4acd6bac669053b7e0e5f5f6bc21877a6960f6d2b16a062a4ed076"
+        }
+      ],
+      "row_equality_proof": [
+        {
+          "after_row_sha256": "7d9a7fc41a76ff104a0046e454c072b09e19663ae4170e69cca93ad825c3f011",
+          "before_row_sha256": "7d9a7fc41a76ff104a0046e454c072b09e19663ae4170e69cca93ad825c3f011",
+          "complete_row": {
+            "Destination": "/inputs",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-adn9d54w/inputs",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/inputs"
+        },
+        {
+          "after_row_sha256": "291c53c93bd60b9cc9c570a7f009a301e07e317cd5f5897e4f5551dd69a077c5",
+          "before_row_sha256": "291c53c93bd60b9cc9c570a7f009a301e07e317cd5f5897e4f5551dd69a077c5",
+          "complete_row": {
+            "Destination": "/tmp",
+            "Driver": "local",
+            "Mode": "z",
+            "Name": "gossip-client-886202ccd20d4579a2e6ddae40185bee-volume",
+            "Propagation": "",
+            "RW": true,
+            "Source": "/var/lib/docker/volumes/gossip-client-886202ccd20d4579a2e6ddae40185bee-volume/_data",
+            "Type": "volume"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/tmp"
+        },
+        {
+          "after_row_sha256": "e4d650aa0402ee918b8291b77119486abf63dc2025ecc7c1afd94bba98f29334",
+          "before_row_sha256": "e4d650aa0402ee918b8291b77119486abf63dc2025ecc7c1afd94bba98f29334",
+          "complete_row": {
+            "Destination": "/workspace",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-adn9d54w/workspace",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/workspace"
+        }
+      ],
+      "timing_limit": "Durable checkpoint sequence proves retained ordering; these command records do not provide independently measured per-operation wall times. No new latency claim is inferred.",
+      "transport": {
+        "attach_eof_after_start_confirmation": null,
+        "capture_complete": false,
+        "completion": {
+          "container_id": null,
+          "finished_at": null,
+          "identity_verified": false,
+          "inspect_exit_code": null,
+          "killed_by_controller": true,
+          "natural": false,
+          "oom_killed": null,
+          "signal_exit_ambiguous": false,
+          "started": false,
+          "started_at": null,
+          "state_error": null,
+          "wait_error": null,
+          "wait_status_code": null
+        },
+        "error": "ProcessError: Container changed before start",
+        "exit_code": null,
+        "frames": 0,
+        "status": "transport_error"
+      }
+    },
+    {
+      "before_mount_order": [
+        "/inputs",
+        "/tmp",
+        "/workspace"
+      ],
+      "before_projection_sha256": "73b2ab4b49aa293b617adba949ed5480fe278b655cdba767d1b5baf7ca9f43b9",
+      "before_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "checkpoint_evidence": {
+        "step-000-controller-intent.json": {
+          "checkpoint": {
+            "bytes": 3507,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0036.json",
+            "sha256": "690f7cfa22ed10189627b6c832c0e2c8b9b334c3974aeb5afe2aef995ba7350b"
+          },
+          "record_sha256": "bf2f9191984ca4ea8ed42638503b200aa28267fd32fe8b8bf2b583f072ff5389"
+        },
+        "step-000-create.json": {
+          "checkpoint": {
+            "bytes": 3795,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0039.json",
+            "sha256": "4bb3952d57dd2e9b443389cae3dcf56fb5a997039b0be8f3a05e57d5f86dceb0"
+          },
+          "record_sha256": "e863a55d3e0da0e18e65536384c6b5841fd33415e7d34d87837ec489d7d3a3a2"
+        },
+        "step-000-created-stdout.bin": {
+          "checkpoint": {
+            "bytes": 3894,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0040.json",
+            "sha256": "3e92ed804f8692dba971843b09f205c6f3a75518531e4a49ca7f170891f7f734"
+          },
+          "record_sha256": "7f469193511b13cd1194276684585160c6c686af12eb573b1a84963015ff1ee9"
+        },
+        "step-000-created.json": {
+          "checkpoint": {
+            "bytes": 4086,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0042.json",
+            "sha256": "3cf4ffd5332604cc96f56a03451aeabae98f912acf880608c8acbece68cef9a8"
+          },
+          "record_sha256": "7560fe8de23936916fd5e0bafe1f067ed67e851b20029803cf9574456274a1b6"
+        },
+        "step-000-inspect-before-request.bin": {
+          "checkpoint": {
+            "bytes": 5068,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0051.json",
+            "sha256": "9d0d4358aae76c1cae392eefdcf98428b2d95144891b2f608a6b39b0800365b5"
+          },
+          "record_sha256": "40fabac953fa3be4fc535383794df46f3463f09a8134933372797650f4362270"
+        },
+        "step-000-inspect-before-response.bin": {
+          "checkpoint": {
+            "bytes": 5176,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0052.json",
+            "sha256": "98f34accf66207109bde8cd3d7a69e1274ca88ddd52547dec6d1cba94996e116"
+          },
+          "record_sha256": "343d7fbd8137000cd3f3124a7333a992295caad9919c2fa741335e8925f65513"
+        },
+        "step-000-intent.json": {
+          "checkpoint": {
+            "bytes": 4178,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0043.json",
+            "sha256": "a3e5a35010b6bd147d041c6a2dc1dd52748d4c27e1c843caa602ad10e4afa717"
+          },
+          "record_sha256": "72790cd0994f28eb5e87a2e5e3bf2c865136134c4176d88487e9f0b06b6bda48"
+        },
+        "step-000-kill-request.bin": {
+          "checkpoint": {
+            "bytes": 5273,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0053.json",
+            "sha256": "7dc2bfcd5858cb56de58e48109a52ef9bab3858095727af7401c3c2dfb488e9e"
+          },
+          "record_sha256": "9284d52067d838b02c7e70a4df38e17484a127aad94765c615ffda6ff77c69e3"
+        },
+        "step-000-kill-response.bin": {
+          "checkpoint": {
+            "bytes": 5371,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0054.json",
+            "sha256": "aa0b34a15d5b7b3dccc3a2d45adabc318e280886d8d7e901f536fb389aa7c401"
+          },
+          "record_sha256": "f1b384340263c14b45deed7518acc9f7fde1677e94a84ed87df5388a3d2fefd9"
+        },
+        "step-000-process.json": {
+          "checkpoint": {
+            "bytes": 5968,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/external-checkpoint-0060.json",
+            "sha256": "7e8a2e03a91334f6a7a8487128519e6da84d00df985ac7be429bc0862ea5a24d"
+          },
+          "record_sha256": "f9ec134656c2bfb394ae4e557368dae397f21a6a8dab1562e74c730c9f6c5a37"
+        }
+      },
+      "container_id": "a2ac71636dae8cd76ee45bf6be21a0c4d9de988cc6af65474b9dbbf2de755449",
+      "execution_path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution",
+      "first_external_checkpoint_indices": {
+        "step-000-attach-request.bin": null,
+        "step-000-controller-intent.json": 36,
+        "step-000-create.json": 39,
+        "step-000-created-stdout.bin": 40,
+        "step-000-created.json": 42,
+        "step-000-inspect-before-request.bin": 51,
+        "step-000-inspect-before-response.bin": 52,
+        "step-000-intent.json": 43,
+        "step-000-kill-request.bin": 53,
+        "step-000-kill-response.bin": 54,
+        "step-000-process.json": 60,
+        "step-000-start-request.bin": null,
+        "step-000-start-response.bin": null
+      },
+      "mount_inventory_after_sha256": "af0904746a55c5f390d57df095cd4d331b31a104f5a3ccd168977b549f60ff1c",
+      "mount_inventory_before_sha256": "af0904746a55c5f390d57df095cd4d331b31a104f5a3ccd168977b549f60ff1c",
+      "mount_inventory_type_exact_equal": true,
+      "name": "domain-error",
+      "no_attach_or_start_evidence": true,
+      "only_immutable_differences": [
+        "Mounts"
+      ],
+      "prestart_mount_order": [
+        "/workspace",
+        "/inputs",
+        "/tmp"
+      ],
+      "prestart_projection_sha256": "d15bd8d51d6d9ce898d59961cf078362bb66037b7eaa0d9a0757f53734246670",
+      "prestart_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "process_intent_binds_original_projection": true,
+      "retained_records": [
+        {
+          "bytes": 1167,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-controller-intent.json",
+          "sha256": "bf2f9191984ca4ea8ed42638503b200aa28267fd32fe8b8bf2b583f072ff5389"
+        },
+        {
+          "bytes": 2087,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-create.json",
+          "sha256": "e863a55d3e0da0e18e65536384c6b5841fd33415e7d34d87837ec489d7d3a3a2"
+        },
+        {
+          "bytes": 5961,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-created-stdout.bin",
+          "sha256": "7f469193511b13cd1194276684585160c6c686af12eb573b1a84963015ff1ee9"
+        },
+        {
+          "bytes": 583,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-created.json",
+          "sha256": "7560fe8de23936916fd5e0bafe1f067ed67e851b20029803cf9574456274a1b6"
+        },
+        {
+          "bytes": 2470,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-intent.json",
+          "sha256": "72790cd0994f28eb5e87a2e5e3bf2c865136134c4176d88487e9f0b06b6bda48"
+        },
+        {
+          "bytes": 156,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-inspect-before-request.bin",
+          "sha256": "40fabac953fa3be4fc535383794df46f3463f09a8134933372797650f4362270"
+        },
+        {
+          "bytes": 5312,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-inspect-before-response.bin",
+          "sha256": "343d7fbd8137000cd3f3124a7333a992295caad9919c2fa741335e8925f65513"
+        },
+        {
+          "bytes": 606,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-runtime-before.json",
+          "sha256": "30e76c199ac5b4613314b8b86fa2f1847af8a2211efac18139e58f6b5f131fc0"
+        },
+        {
+          "bytes": 1527,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-process.json",
+          "sha256": "f9ec134656c2bfb394ae4e557368dae397f21a6a8dab1562e74c730c9f6c5a37"
+        },
+        {
+          "bytes": 1557,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-result.json",
+          "sha256": "31fb06b7575e91a8c205f2bbbfddcae638b55d3b80763b9371df747596d05b8a"
+        },
+        {
+          "bytes": 438,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-kill-response.bin",
+          "sha256": "f1b384340263c14b45deed7518acc9f7fde1677e94a84ed87df5388a3d2fefd9"
+        },
+        {
+          "bytes": 5312,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-inspect-after-kill-response.bin",
+          "sha256": "343d7fbd8137000cd3f3124a7333a992295caad9919c2fa741335e8925f65513"
+        },
+        {
+          "bytes": 5070,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/domain-error/execution/step-000-cleanup-state.json",
+          "sha256": "c0cabe05c45676dada9c0e1080931e46058bc2d1d4596b3a904922b87cb972f3"
+        }
+      ],
+      "row_equality_proof": [
+        {
+          "after_row_sha256": "b029a374aada6c330650d9f1c8bd3c46abe403f1883c1e64d9c89a02a3d0eee7",
+          "before_row_sha256": "b029a374aada6c330650d9f1c8bd3c46abe403f1883c1e64d9c89a02a3d0eee7",
+          "complete_row": {
+            "Destination": "/inputs",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-3uw_4tk9/inputs",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/inputs"
+        },
+        {
+          "after_row_sha256": "c5d6bd8108a615555809cd53413d2375dd725e9cabc0ea35d80c675ce39d9d59",
+          "before_row_sha256": "c5d6bd8108a615555809cd53413d2375dd725e9cabc0ea35d80c675ce39d9d59",
+          "complete_row": {
+            "Destination": "/tmp",
+            "Driver": "local",
+            "Mode": "z",
+            "Name": "gossip-client-2ce90f2babdc426daa977c303ef17eb5-volume",
+            "Propagation": "",
+            "RW": true,
+            "Source": "/var/lib/docker/volumes/gossip-client-2ce90f2babdc426daa977c303ef17eb5-volume/_data",
+            "Type": "volume"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/tmp"
+        },
+        {
+          "after_row_sha256": "19df42b3e11819befc993873e03a2dbed86153e810badbd0c5d0d5f07f9439eb",
+          "before_row_sha256": "19df42b3e11819befc993873e03a2dbed86153e810badbd0c5d0d5f07f9439eb",
+          "complete_row": {
+            "Destination": "/workspace",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-3uw_4tk9/workspace",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/workspace"
+        }
+      ],
+      "timing_limit": "Durable checkpoint sequence proves retained ordering; these command records do not provide independently measured per-operation wall times. No new latency claim is inferred.",
+      "transport": {
+        "attach_eof_after_start_confirmation": null,
+        "capture_complete": false,
+        "completion": {
+          "container_id": null,
+          "finished_at": null,
+          "identity_verified": false,
+          "inspect_exit_code": null,
+          "killed_by_controller": true,
+          "natural": false,
+          "oom_killed": null,
+          "signal_exit_ambiguous": false,
+          "started": false,
+          "started_at": null,
+          "state_error": null,
+          "wait_error": null,
+          "wait_status_code": null
+        },
+        "error": "ProcessError: Container changed before start",
+        "exit_code": null,
+        "frames": 0,
+        "status": "transport_error"
+      }
+    },
+    {
+      "before_mount_order": [
+        "/workspace",
+        "/inputs",
+        "/tmp"
+      ],
+      "before_projection_sha256": "b392323c7b62e44578dc0ee392c04badfe570c3bd9a63beae6144840d97c59db",
+      "before_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "checkpoint_evidence": {
+        "step-000-attach-request.bin": {
+          "checkpoint": {
+            "bytes": 5275,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0053.json",
+            "sha256": "3b9a234d719827cded28903e37486f34ff8bb9960e0269a63a1354c7c781e65a"
+          },
+          "record_sha256": "e2eacb2474404072dc972b860f9ce10f2a85804440d12f13b2312120466c9140"
+        },
+        "step-000-controller-intent.json": {
+          "checkpoint": {
+            "bytes": 3507,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0036.json",
+            "sha256": "b5a4a8494ada7cc6a6e779290977d8158099d21af8ccd4c46a47081b6a4c553c"
+          },
+          "record_sha256": "59d37bb7029a5189b4e11a071927965b3359bced62c723bbc7a5e26ab44914ee"
+        },
+        "step-000-create.json": {
+          "checkpoint": {
+            "bytes": 3795,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0039.json",
+            "sha256": "db6c74d637c32efb3ec61c6ae56612d55ad0ca89b5afe7abeefd708ea1286c31"
+          },
+          "record_sha256": "114fd7516169262c683a00698f716f8153d14121f7379d080839a7caeda7146c"
+        },
+        "step-000-created-stdout.bin": {
+          "checkpoint": {
+            "bytes": 3894,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0040.json",
+            "sha256": "e59389de41e24ca6433d0e3af8b81e09d016f8a733c42e3857889a2c18fd40b2"
+          },
+          "record_sha256": "e4decbb874f18bddaec90d2e552c71a59388fe887869628074793534dd0be0db"
+        },
+        "step-000-created.json": {
+          "checkpoint": {
+            "bytes": 4086,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0042.json",
+            "sha256": "96343b8b7bf445da57b8a30ec4b0ba9c4348c0c34b4f970a7959510d4f82997d"
+          },
+          "record_sha256": "ad6bdc4860e1e444479e7a03f7dfeb86535fe6fa62d8c2505fda7ebe33bdc746"
+        },
+        "step-000-inspect-before-request.bin": {
+          "checkpoint": {
+            "bytes": 5068,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0051.json",
+            "sha256": "72ae70e61199abbd28617ebd83b842567067d77e28821bae55f6bede625ef70a"
+          },
+          "record_sha256": "3182307fd71fdea2f2d1bdd4d3442a7afabfaf7cb04563d6d276e7ad2a833dd7"
+        },
+        "step-000-inspect-before-response.bin": {
+          "checkpoint": {
+            "bytes": 5176,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0052.json",
+            "sha256": "0a0ec9239c6527aff4c4de74f9cd82492349a3ead58dd5b163dd383881089a90"
+          },
+          "record_sha256": "92d4f78506c92b54164f39c4656af366c25c47c77bc5672e801c5b2665293373"
+        },
+        "step-000-intent.json": {
+          "checkpoint": {
+            "bytes": 4178,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0043.json",
+            "sha256": "154b2a55b2d9519569d647681771ada2aaeb56385dde3a30642dc3321d216edf"
+          },
+          "record_sha256": "29a9944eb42ebc6f3d4c96dc9ac1035861084afbfad201ce63fc480efbb00cbb"
+        },
+        "step-000-process.json": {
+          "checkpoint": {
+            "bytes": 6359,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0064.json",
+            "sha256": "cfcfa3b12d0976d7a68a1e05bed073052edcebf9af311427ad10eba67d502985"
+          },
+          "record_sha256": "3a5088b73d2d81d801c6c4b17e82947f2d25521b6ee4601a78ef973b707243ea"
+        },
+        "step-000-start-request.bin": {
+          "checkpoint": {
+            "bytes": 5373,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0054.json",
+            "sha256": "670c40317ac9e39e58170083a725ac3525350687844dd3c507ad5b565a0e9da1"
+          },
+          "record_sha256": "0bfb68d8e5e526408c1184f85240702433cede017c191a785de52d5ee5ac5005"
+        },
+        "step-000-start-response.bin": {
+          "checkpoint": {
+            "bytes": 5472,
+            "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/external-checkpoint-0055.json",
+            "sha256": "afb1650184364b9554e6a5e146f8ac47c13faf8ae0ddc8dcc30523919d06a423"
+          },
+          "record_sha256": "9963ab79776fb85501bbb1dcf6e8321f5b6bf4c31611b1489b235251521f4953"
+        }
+      },
+      "container_id": "b394eecdaadd037c1800cdd8ace6ad822d77f007f1e42a17399a819afc44d1ae",
+      "execution_path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution",
+      "first_external_checkpoint_indices": {
+        "step-000-attach-request.bin": 53,
+        "step-000-controller-intent.json": 36,
+        "step-000-create.json": 39,
+        "step-000-created-stdout.bin": 40,
+        "step-000-created.json": 42,
+        "step-000-inspect-before-request.bin": 51,
+        "step-000-inspect-before-response.bin": 52,
+        "step-000-intent.json": 43,
+        "step-000-kill-request.bin": null,
+        "step-000-kill-response.bin": null,
+        "step-000-process.json": 64,
+        "step-000-start-request.bin": 54,
+        "step-000-start-response.bin": 55
+      },
+      "mount_inventory_after_sha256": "6c96694be586ed9a2d9e7e8bccd48f6a1627d6f1e5023102d963398707dd1144",
+      "mount_inventory_before_sha256": "6c96694be586ed9a2d9e7e8bccd48f6a1627d6f1e5023102d963398707dd1144",
+      "mount_inventory_type_exact_equal": true,
+      "name": "semantic-success",
+      "no_attach_or_start_evidence": false,
+      "only_immutable_differences": [],
+      "prestart_mount_order": [
+        "/workspace",
+        "/inputs",
+        "/tmp"
+      ],
+      "prestart_projection_sha256": "b392323c7b62e44578dc0ee392c04badfe570c3bd9a63beae6144840d97c59db",
+      "prestart_state": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "0001-01-01T00:00:00Z",
+        "Status": "created"
+      },
+      "process_intent_binds_original_projection": true,
+      "retained_records": [
+        {
+          "bytes": 1167,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-controller-intent.json",
+          "sha256": "59d37bb7029a5189b4e11a071927965b3359bced62c723bbc7a5e26ab44914ee"
+        },
+        {
+          "bytes": 2087,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-create.json",
+          "sha256": "114fd7516169262c683a00698f716f8153d14121f7379d080839a7caeda7146c"
+        },
+        {
+          "bytes": 5961,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-created-stdout.bin",
+          "sha256": "e4decbb874f18bddaec90d2e552c71a59388fe887869628074793534dd0be0db"
+        },
+        {
+          "bytes": 583,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-created.json",
+          "sha256": "ad6bdc4860e1e444479e7a03f7dfeb86535fe6fa62d8c2505fda7ebe33bdc746"
+        },
+        {
+          "bytes": 2470,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-intent.json",
+          "sha256": "29a9944eb42ebc6f3d4c96dc9ac1035861084afbfad201ce63fc480efbb00cbb"
+        },
+        {
+          "bytes": 156,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-inspect-before-request.bin",
+          "sha256": "3182307fd71fdea2f2d1bdd4d3442a7afabfaf7cb04563d6d276e7ad2a833dd7"
+        },
+        {
+          "bytes": 5312,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-inspect-before-response.bin",
+          "sha256": "92d4f78506c92b54164f39c4656af366c25c47c77bc5672e801c5b2665293373"
+        },
+        {
+          "bytes": 606,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-runtime-before.json",
+          "sha256": "30e76c199ac5b4613314b8b86fa2f1847af8a2211efac18139e58f6b5f131fc0"
+        },
+        {
+          "bytes": 2653,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-process.json",
+          "sha256": "3a5088b73d2d81d801c6c4b17e82947f2d25521b6ee4601a78ef973b707243ea"
+        },
+        {
+          "bytes": 2683,
+          "path": "runs/candidate-b03-v2-controls-qualification-1/20261003T160224-d190033f/classes/043a1624de399d6a/artifacts/gossip-candidate-b03-v2-process-controls-wk9zs7br/semantic-success/execution/step-000-result.json",
+          "sha256": "02e961a26091d594a93b8eb5b71620599d53b0768418eed4225816f7c3772964"
+        }
+      ],
+      "row_equality_proof": [
+        {
+          "after_row_sha256": "980578f367b79da5c07f3af2c97de5d22510a5f554d1657ad6a9446e0564b518",
+          "before_row_sha256": "980578f367b79da5c07f3af2c97de5d22510a5f554d1657ad6a9446e0564b518",
+          "complete_row": {
+            "Destination": "/inputs",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-lu2cyijw/inputs",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/inputs"
+        },
+        {
+          "after_row_sha256": "ec10d1145d0e9bce81fe3f1a941103df68c10e180efb956ad4a7153726ac7099",
+          "before_row_sha256": "ec10d1145d0e9bce81fe3f1a941103df68c10e180efb956ad4a7153726ac7099",
+          "complete_row": {
+            "Destination": "/tmp",
+            "Driver": "local",
+            "Mode": "z",
+            "Name": "gossip-client-83ffc789bedf448584ac6f4ccac30f20-volume",
+            "Propagation": "",
+            "RW": true,
+            "Source": "/var/lib/docker/volumes/gossip-client-83ffc789bedf448584ac6f4ccac30f20-volume/_data",
+            "Type": "volume"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/tmp"
+        },
+        {
+          "after_row_sha256": "cae067e68c0f0c28526bf93d6f0e6903a01c070246ee9e8c7c4fb87d43c40df3",
+          "before_row_sha256": "cae067e68c0f0c28526bf93d6f0e6903a01c070246ee9e8c7c4fb87d43c40df3",
+          "complete_row": {
+            "Destination": "/workspace",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": false,
+            "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-client-stage-lu2cyijw/workspace",
+            "Type": "bind"
+          },
+          "complete_row_type_exact_equal": true,
+          "destination": "/workspace"
+        }
+      ],
+      "timing_limit": "Durable checkpoint sequence proves retained ordering; these command records do not provide independently measured per-operation wall times. No new latency claim is inferred.",
+      "transport": {
+        "attach_eof_after_start_confirmation": true,
+        "capture_complete": true,
+        "completion": {
+          "container_id": "b394eecdaadd037c1800cdd8ace6ad822d77f007f1e42a17399a819afc44d1ae",
+          "finished_at": "2026-10-03T16:02:59.667928344Z",
+          "identity_verified": true,
+          "inspect_exit_code": 0,
+          "killed_by_controller": false,
+          "natural": true,
+          "oom_killed": false,
+          "signal_exit_ambiguous": false,
+          "started": true,
+          "started_at": "2026-10-03T16:02:59.59237901Z",
+          "state_error": "",
+          "wait_error": null,
+          "wait_status_code": 0
+        },
+        "error": null,
+        "exit_code": 0,
+        "frames": 2,
+        "status": "completed"
+      }
+    }
+  ],
+  "risks_and_limits": [
+    "Current evidence establishes representation nondeterminism for the pinned daemon; it does not qualify a new implementation or other runtimes.",
+    "Mount order must not be generalized to product argument order or nested mount options; destination uniqueness is essential to prevent silent overwriting.",
+    "CLI and Engine API version alignment can reduce unrelated representation variance but does not remove Go map iteration nondeterminism. It is a separate prospective decision, not a substitute for inventory comparison.",
+    "Preserve raw views to expose any future unrecognized field/type change; fail closed rather than extending normalization from a failing candidate result.",
+    "This failed run still leaves six Docker test methods not run, the two attempted methods failed, and the complete 57-history qualification unavailable. A successful semantic-success subcontrol is not a passing parent control method."
+  ],
+  "source_pins": [
+    {
+      "bytes": 43825,
+      "path": "gossip_harness/candidate_client_process_v2.py",
+      "sha256": "8754fbf5b7b28d8606316d7304be41116754fed02e3a9dd70fe02fd6b68e36d9"
+    },
+    {
+      "bytes": 52120,
+      "path": "gossip_harness/candidate_client_execution_v2.py",
+      "sha256": "b9366b1aae5717ab0f207a64880ec7a958cb468c759d2f724cf4f997c3a43c18"
+    },
+    {
+      "bytes": 20371,
+      "path": "gossip_harness/candidate_client_observer_v2.py",
+      "sha256": "ef92ee98fd13264d50f62cb56603bf008a8ebd545d99e3b344389a04acc11d8d"
+    },
+    {
+      "bytes": 37031,
+      "path": "tests/test_candidate_client_process_v2.py",
+      "sha256": "01812bbdf153d86e1d80289a3b21e4a12c2b940ac6f567872b69c1533f95efb6"
+    },
+    {
+      "bytes": 48697,
+      "path": "tests/test_candidate_clients_docker_v2.py",
+      "sha256": "084cf369a9b7a9a016f5902b58ad608d06549a5c3cd4762f514447a9519e6e43"
+    },
+    {
+      "bytes": 20918,
+      "path": "analysis/candidate-b03-runtime-compatibility-plan-v1.json",
+      "sha256": "7b8d89a9003594551c2677a9975d715b4b4e3584746874cc446601722f411b2d"
+    }
+  ],
+  "status": "design-only; prospective next version; not implemented or physically qualified",
+  "supersedes": {
+    "path": "runs/candidate-b03-mount-inventory-plan-1.json",
+    "preserved": true,
+    "reason": "Clarify bounded physical qualification staging and the raw decoder responsibility for duplicate JSON object keys; no observed outcome or identity rule changed.",
+    "sha256": "cccec52556661b79976e4cae6a3f54d9bab6f4bc3850d137a2a6852f384b32bf"
+  }
+}

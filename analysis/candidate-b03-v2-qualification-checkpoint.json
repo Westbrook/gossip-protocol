@@ -1,0 +1,179 @@
+{
+  "base_commit": "3ff8d94238f673a0af0660e7ddff196dceec4130",
+  "branch": "codex/cumulative-project-contract",
+  "diagnosis": {
+    "candidate_creates": 3,
+    "candidate_starts": 1,
+    "completed_synthetic_control": "semantic-success",
+    "first_failing_condition": "Two raw immutable inspection projections differ only by top-level Mounts array order before attach/start.",
+    "natural_completions": 1,
+    "persistence_assertions": {
+      "unavailable": 25,
+      "unspecified": 2
+    },
+    "reference_candidate_starts": 0,
+    "retrospective_pass": false,
+    "same_full_mount_rows": true,
+    "same_other_immutable_fields": true,
+    "unlaunched_bulk_commands": 296,
+    "unlaunched_bulk_histories": 56,
+    "unrun_controls": 9,
+    "unstarted_abort_histories": [
+      "cli-db-root-isolation",
+      "domain-error"
+    ],
+    "v2_retry_launched": false
+  },
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "goal_turn_classification": "progress",
+  "implementation": {
+    "changes": [
+      "Typed runtime-bound false-to-null OomKillDisable startup compatibility with retained raw and transformed views.",
+      "Distinct durable controller-intent/process-intent artifact names.",
+      "Strict initial sandbox JSON types; other identities, lifecycle and limits unchanged."
+    ],
+    "frozen_v1_preserved": true,
+    "product_definitions_unchanged": {
+      "assertions": 900,
+      "candidate_container_attempts": 316,
+      "controls": 11,
+      "keepers": 67,
+      "reference_histories": 57,
+      "reference_invocations": 305,
+      "unspecified_assertions": 32,
+      "volumes": 68
+    },
+    "protocols": [
+      "candidate-client-process-v2",
+      "candidate-client-execution-v2",
+      "candidate-client-observer-v2"
+    ],
+    "startup_policy_sha256": "cfd4c20bddf73b8e80f940f94c66b28741c47f0c0792dab0ae241697a6fa9a73"
+  },
+  "live_launch_status": "Existing payload-transfer approval remains pending; no renewed request or provider attempt. Offline work continues.",
+  "new_budget_authorization": null,
+  "new_comparative_samples": 0,
+  "new_provider_calls": 0,
+  "next_design": {
+    "next_action": "Implement a newly versioned unique-destination full-mount-inventory comparison and raw duplicate-key checks; preserve all other field/array/type checks and frozen v1/v2 failures. Run offline gates, then one persistence history plus11controls, then56bulk histories only if phaseonepasses.",
+    "plan": {
+      "bytes": 60749,
+      "path": "analysis/candidate-b03-mount-inventory-plan-v1.json",
+      "sha256": "f574060cfa8192c7e67da8a000309da5a7d2f01e4fe69edff4d2ea011c35a521"
+    },
+    "review": {
+      "bytes": 1209,
+      "path": "runs/candidate-b03-mount-inventory-design-review-1.json",
+      "sha256": "c0bd56799760fbb8ec242922649fd94bda374a4979159e382e48aec0006e51fd"
+    },
+    "source_basis": "Pinned Moby map-to-slice inspection construction and Go map iteration semantics; references and exact source hashes in plan.",
+    "status": "reviewed design only; not implemented or physically qualified"
+  },
+  "pages_refresh": false,
+  "physical_audit": {
+    "actual_counts": {
+      "candidate_creates": 3,
+      "candidate_removals": 3,
+      "candidate_starts": 1,
+      "complete_stream_observations": 1,
+      "control_records": 66,
+      "control_stream_bytes": 121395,
+      "control_streams": 132,
+      "external_checkpoints": 283,
+      "histories_entered": 3,
+      "http_request_records": 20,
+      "http_response_records": 20,
+      "journal_files": 283,
+      "keeper_creates": 3,
+      "keeper_removals": 3,
+      "keeper_starts": 3,
+      "kill_conflicts_not_actual_kills": 2,
+      "kill_requests": 2,
+      "natural_completions": 1,
+      "prestart_aborts": 2,
+      "volume_creates": 3,
+      "volume_removals": 3
+    },
+    "discrepancies": 0,
+    "limitations": [
+      "This receipt audits local controller-retained files and raw Engine responses, not externally attested daemon behavior.",
+      "No fresh Engine resource census was performed; cleanup is corroborated by retained exact-ID removal plus subsequent successful empty listings.",
+      "Retained transport ordering confirms durable request intentions and preserved responses; the receipt does not independently observe socket wall-clock scheduling or retrospectively prove attach handshake timing beyond frozen source and retained protocol evidence.",
+      "Environment digest is consistently bound but historical parent environment values are not reconstructed from current shell state.",
+      "The failed v2 qualification remains failed. Mount permutation diagnosis does not grant retrospective compatibility or product correctness credit.",
+      "Only semantic-success synthetic control naturally completed; no reference candidate process started, persistence was not exercised, nine controls and all bulk remained unrun.",
+      "Frozen v1 history is preserved and not reclassified; no Registry, acceptance, repeatability, statistical or performance claims."
+    ],
+    "original": {
+      "bytes": 589313,
+      "path": "runs/candidate-b03-v2-physical-audit-1.json",
+      "sha256": "4edec127b223db80a6412651c9489013b57ab27336922d1513fccb4370bc31a5"
+    },
+    "overlap": "Supplemental checks overlap primary checks and are not summed.",
+    "primary_checks": 775,
+    "receipt": {
+      "bytes": 589313,
+      "path": "analysis/candidate-b03-v2-physical-audit.json",
+      "sha256": "4edec127b223db80a6412651c9489013b57ab27336922d1513fccb4370bc31a5"
+    },
+    "supplemental_source_checks": 724
+  },
+  "recorded_at": "2026-10-03T16:20:01.248686+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "schema": "candidate-b03-v2-qualification-checkpoint-v1",
+  "scope": "Prospective C01/C02 finite CLI harness qualification; no whole-product or comparative acceptance.",
+  "statistical_conclusion": "No new evidence for or against swarm advantage. Harness controls and offline tests are not independent software-project samples.",
+  "status": "failed physical qualification; audited diagnostic and prospective next comparison plan",
+  "verification": {
+    "elapsed_seconds": 101.98584649991244,
+    "final_current_runner_inputs": 459,
+    "focused_checks": {
+      "bytes": 4056,
+      "path": "runs/candidate-b03-v2-focused-checks-1/receipt.json",
+      "sha256": "cf00f767c8025fc8eb2be599936c27bb3964a131e5e2ab4454bea2bbfc45bbad"
+    },
+    "freeze": {
+      "bytes": 169830,
+      "path": "runs/candidate-b03-v2-definition-freeze-1/freeze.json",
+      "sha256": "c42317fe4379cf0f9281cf82e9ea6cee9288e89f40061b3aa4f9fe690c485ed5"
+    },
+    "outcomes": {
+      "failed": 2,
+      "not_run": 6,
+      "passed": 117
+    },
+    "resource_tokens": 4,
+    "reused_classes": 0,
+    "selected_methods": 125,
+    "source_review": {
+      "bytes": 3554,
+      "path": "runs/candidate-b03-v2-source-review-1.json",
+      "sha256": "58b68f9278318316fa5c34d2ff522b63ddd8041b33e5d93cc5a03a1d7779e676"
+    },
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": "passed;117 existing baselined diagnostics unchanged",
+    "summary": {
+      "bytes": 100499,
+      "path": "analysis/candidate-b03-v2-controls-result.json",
+      "sha256": "79b4e9d114761c63cc52aee54794d653cf48038279b290082fd4dc292489360a"
+    },
+    "terminal_reconciliation": {
+      "bytes": 1233,
+      "path": "runs/candidate-b03-v2-terminal-reconciliation-1.json",
+      "sha256": "0b405a80f5bd0fdb46c45f02e9f157feef816987abf6c0ef3b43cbc3d8a66e15"
+    },
+    "unlaunched_bulk_methods": 3,
+    "verification_scope": "Fresh central offline and Docker execution; independent audit reads retained evidence, not reexecution. No browser surface change, so no browser lane run.",
+    "workers_started": 10
+  }
+}
