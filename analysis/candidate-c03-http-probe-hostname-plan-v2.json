@@ -1,0 +1,49 @@
+{
+  "implementation_paths": [
+    "gossip_harness/candidate_http_execution_v2.py",
+    "tests/test_candidate_http_execution_v2.py",
+    "tests/test_candidate_http_docker_v2.py",
+    "docs/candidate-http-execution-v2.md",
+    "docs/candidate-http-mechanics-v2.md"
+  ],
+  "observed_failure": "M01 first probe exited with status zero and complete streams, but Config.Hostname changed from the helper short ID to the current server hostname. The frozen v1 immutable comparison rejected it; no observation was authenticated.",
+  "physical_requirement": "After independent source review and the combined affected static/offline gate, freeze the complete v2 contract and execute one complete nine-control/fourteen-row mechanics roster afresh. Audit actual runtime/environment/donor/source bindings, all outcome categories and owned cleanup. Do not reuse v1 diagnostic bytes as new correctness evidence.",
+  "preservation": "Keep all v1 sources, fixtures, policy, definition freeze and failed evidence unchanged. Never reinterpret this failure as a v2 pass.",
+  "primary_sources": [
+    "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container.go#L117-L126",
+    "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container_operations.go#L411-L424",
+    "https://github.com/moby/moby/blob/6bc6209b88a7a834c91f77d848e025c79e0227a1/daemon/container_operations_unix.go#L543-L547",
+    "https://docs.docker.com/engine/network/#container-networks"
+  ],
+  "recorded_at": "2026-10-03T20:00:37.815326+00:00",
+  "required_offline_regressions": [
+    "Exact retained startup transition with independently bound donor evidence; preserve v1 rejection separately.",
+    "Spoofed hostname; wrong donor ID, epoch or network target; missing or changed donor inspection; unsupported runtime or phase; server/keeper role substitution.",
+    "Missing versus null fields, wrong JSON types, unexpected domain change and unrelated Config, HostConfig or complete mount-row drift remain rejected.",
+    "Composed real controller, finite probe runner and wire decoder over inert low-level Engine IO must model the documented hostname mutation and preserve negative attribution and cleanup behavior."
+  ],
+  "required_policy": [
+    "Version the HTTP execution and role identity protocol. Bind the policy and its source/definition hashes into registration, journals and retained results.",
+    "Before helper creation, independently validate the current source-bound server and freeze its full ID, epoch, explicit hostname/domain, runtime and complete inspection hash. Retain the server evidence; do not derive the expected donor hostname from the helper result.",
+    "Admit only the declared probe created-to-exited transition under the exact qualified runtime and container:<full donor ID> network mode. Require the created helper hostname to be its own default short ID and the terminal hostname to match the independently bound donor.",
+    "For the current closed profile require explicit string hostnames and unchanged explicit empty domain values matching the donor. Do not introduce general domain normalization or allow arbitrary hostname changes.",
+    "Preserve raw before/after inspections, donor provenance, source/fixture checks, server continuity and every other immutable field. Prestart, server, keeper and running comparisons remain exact.",
+    "Document Engine-managed hostname, hosts and resolver path inheritance separately from candidate source/input/database mounts. No additional candidate mount or namespace access is authorized."
+  ],
+  "schema": "candidate-c03-http-probe-hostname-plan-v2",
+  "scope_limits": "No product predicate, fixture response, deadline, wire cap, scientific treatment, study denominator, spending authority or pending approval changes. Full HTTP product catalog and semantic observer remain unfinished.",
+  "status": "prospective correction; not implemented or physically qualified",
+  "trigger": {
+    "frozen_contract": {
+      "bytes": 86859,
+      "path": "runs/candidate-c03-http-definition-freeze-1/freeze.json",
+      "sha256": "7d5d36278af5deacd966a273e3e6747c7ae60407a0641ff3fee9a3555b9a7357"
+    },
+    "physical_summary": {
+      "bytes": 9807,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/summary.json",
+      "sha256": "8c4fbd678fbbfc0b1693ff70cdcdbd90f4f5d6ab9ee2ed8677ee8d02882754ff"
+    }
+  },
+  "unchanged_transport": "gossip_harness/candidate_http_transport_v1.py"
+}

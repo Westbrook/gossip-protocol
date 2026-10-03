@@ -1,0 +1,276 @@
+{
+  "check_accounting": {
+    "categories": {
+      "bindings": 11,
+      "checkpoints": 302,
+      "cleanup": 16,
+      "commands": 63,
+      "counts": 3,
+      "freeze": 532,
+      "identity": 4,
+      "journal": 152,
+      "raw HTTP": 11,
+      "result": 6,
+      "runtime": 14,
+      "source": 2,
+      "start": 6
+    },
+    "coordinator_checks": 1122,
+    "failed_checks": 0,
+    "meaning": "Read-only evidence checks, not tests or product samples. Earlier provisional reads and delegated overlapping checks are not added to this total."
+  },
+  "cleanup": {
+    "absence_precedes_terminal": true,
+    "containers": [
+      {
+        "absence_verified_from_retained_record": true,
+        "role": "probe"
+      },
+      {
+        "absence_verified_from_retained_record": true,
+        "role": "server"
+      },
+      {
+        "absence_verified_from_retained_record": true,
+        "role": "keeper"
+      }
+    ],
+    "counter_scope": "Twenty-one retained controller Docker command records; runner telemetry separately counted twenty-two Docker launches. These are different scopes, not twenty-two authenticated command records.",
+    "owned_volumes_removed": 1,
+    "retained_controller_command_records": 21
+  },
+  "diagnostic_wire_audit": {
+    "before_after_listener": "Each tcp snapshot has one LISTEN at127.0.0.1:8765; tcp6 header only. These remain unauthenticated diagnostics because helper identity failed.",
+    "body_bytes": 48,
+    "body_sha256": "9bee38e6e96e323a181afbaffc2f96928766f7be9ea735ec5ec766831ac645e0",
+    "connection_attempts": 1,
+    "connection_refusals": 0,
+    "counts_not_added_to_coordinator_checks": true,
+    "diagnostic_status": 200,
+    "header_bytes": 109,
+    "helper_stdout_envelope_bytes": 1668452,
+    "io_operations": 3,
+    "nested_raw_records_checked": 6,
+    "observed_stdout_bytes": 3638,
+    "received_bytes": 157,
+    "received_sha256": "3d855fc9d05378ea39f584e748976ba48ff6fdb87a8ab8d4d15489cd0b5f909a",
+    "result": "No material internal inconsistency; no authenticated wire qualification.",
+    "reviewer": "/root/b03_assertion_review/c03_transport_review",
+    "scope": "One diagnostic helper transcript using independent duplicate-aware JSON/base64/hash/frame and kernel-table parsing; no source imports or execution.",
+    "sent_bytes": 76,
+    "sent_sha256": "3da183ef867b3b18457cc1c20a3a1e074b6891e644f630a2c0fc37211f6d3374",
+    "socket_eof": false,
+    "termination": "message_complete"
+  },
+  "evidence_descriptors": [
+    {
+      "bytes": 86859,
+      "path": "runs/candidate-c03-http-definition-freeze-1/freeze.json",
+      "sha256": "7d5d36278af5deacd966a273e3e6747c7ae60407a0641ff3fee9a3555b9a7357"
+    },
+    {
+      "bytes": 9388,
+      "path": "runs/candidate-c03-http-definition-freeze-1/predispatch-supplement.json",
+      "sha256": "26a178953d4f320238b11e3748283f6111bfaf1fe32ced55b64785df6ee3f93c"
+    },
+    {
+      "bytes": 7757,
+      "path": "runs/candidate-c03-http-definition-freeze-1/construction-script.py",
+      "sha256": "15d736ec3580f6c4484ba53152132199b7465c93cd0d3a933cc446617be65e3d"
+    },
+    {
+      "bytes": 9807,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/summary.json",
+      "sha256": "8c4fbd678fbbfc0b1693ff70cdcdbd90f4f5d6ab9ee2ed8677ee8d02882754ff"
+    },
+    {
+      "bytes": 56210,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/inputs.json",
+      "sha256": "a102306356ae2b59958b52e90822f343780fe464f41a79fe539ab0c2f959ea56"
+    },
+    {
+      "bytes": 4766,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/result.json",
+      "sha256": "d89e8ae0ad16c2e6ad347e41d1f4e1325615450727ee76a3694ac14d96257d6d"
+    },
+    {
+      "bytes": 1834,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/worker.log",
+      "sha256": "36614ab768f8e53c17afa3e6a27e99ae79d8f421879b33fa83b2d2073986ac6c"
+    },
+    {
+      "bytes": 8437,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/prospective-controls.json",
+      "sha256": "9d4ddad51313d77e2f54cac005744d2eae5aa61b51f8d4c8eed83e46ab3d5e20"
+    },
+    {
+      "bytes": 606,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/class-runtime.json",
+      "sha256": "b721b93ebf7c53e37006b21b2c744859ce2774f4a6774f14e5f8b3bbdf17177d"
+    },
+    {
+      "bytes": 1656,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/completion-census.json",
+      "sha256": "38304ea2b442989f94b5153f54f72281345ae772793cc54516355b153c7b33d6"
+    },
+    {
+      "bytes": 2739,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/prospective-registration.json",
+      "sha256": "ed1671dc9aa59c0726839b534324b38889ab8afb333d5c91397508577b521446"
+    },
+    {
+      "bytes": 767,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/physical-census.json",
+      "sha256": "cfb28b0e4803f8fb9c605830011d535101313b31e1392552ee14eace6b63d237"
+    },
+    {
+      "bytes": 5742,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/config.json",
+      "sha256": "e0cf7c88473126b82b176b323451f76905247e6c0ded2e861dcba034aa928030"
+    },
+    {
+      "bytes": 11953,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/terminal.json",
+      "sha256": "77001cabac3850756620821a2f4832c485c675fb4dbf2d03c3996f7be2c7d548"
+    },
+    {
+      "bytes": 4579,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-process.json",
+      "sha256": "4b90de97f641347a89ea9be659088e7a23c0fe167802c9b57c39ecb2370778d6"
+    },
+    {
+      "bytes": 7934,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-observation.json",
+      "sha256": "0cc630abdee3aa1c9d3dfa5ce3e39ff439f41cca7bd23582ce5b5d70971fba4a"
+    },
+    {
+      "bytes": 497,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-input.json",
+      "sha256": "e41b9236505bd3c41f451df8b2271362a952b1149d19c3a2103af6f5fe78be83"
+    },
+    {
+      "bytes": 3638,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-stdout.bin",
+      "sha256": "7429de76f763e0f5d1d82b80d32b5f38202b629b01d7b09ec7ed7bcb648dfb48"
+    },
+    {
+      "bytes": 517,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-identity-comparison.json",
+      "sha256": "fcfbdcf96b8e4e0f14793bf70a8e6bc34c28ff05ca57485544bc0974673fe43a"
+    },
+    {
+      "bytes": 4473,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-prestart-response.bin",
+      "sha256": "4e59b959553c7f9293ea51c749538ef066450744af3c947d13340a66c2a92010"
+    },
+    {
+      "bytes": 4791,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/execution/step-001-probe-final-response.bin",
+      "sha256": "15970541b1a5a080a6b2271ed8cfc072f00ed32d6311350b1de31c9f90e87025"
+    },
+    {
+      "bytes": 15182,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/classes/567771075975f017/artifacts/gossip-candidate-c03-http-mechanics-v1-_97rxi43/m01/external-checkpoint-00150.json",
+      "sha256": "682d2b22d5e08ff38a34f22400e30bd07f3336a89be2cca797862c775dca8ebf"
+    }
+  ],
+  "failure": {
+    "assertion_surface": "The test later fails its one-observed-versus-four-planned row assertion; the earlier retained identity failure explains the unavailable history.",
+    "conclusion": "The sole remaining difference inside the frozen complete immutable projection is Config.Hostname. Version1 correctly withholds identity_verified, natural helper completion and authenticated wire evidence. Successful exit0/capture alone does not qualify it.",
+    "control": "M01",
+    "gate": "probe created-to-exited identity comparison",
+    "prospective_correction": "A separate source-grounded donor-bound future version may be planned; this audit neither implements nor qualifies it.",
+    "raw_other_differences": [
+      "HostnamePath",
+      "HostsPath",
+      "ResolvConfPath",
+      "State.StartedAt",
+      "State.FinishedAt",
+      "State.Status"
+    ],
+    "retroactive_qualification": false,
+    "separate_permitted_difference": {
+      "after": null,
+      "before": false,
+      "path": "HostConfig.OomKillDisable"
+    }
+  },
+  "full_requirement_verdict": null,
+  "identity_difference": "Config.Hostname changed from the helper short ID to the independently observed current server hostname; explicit empty Domainname was unchanged.",
+  "limitations": [
+    "Only M01 reached a probe; M02-M09 did not run. The complete nine-history mechanics contract remains unqualified.",
+    "Read-only audit of retained evidence; no tests, candidate/helper execution or imports, Engine/Docker/provider calls, source edits or redispatch by auditors. Git plumbing read inert retained blobs only.",
+    "This is synthetic machinery qualification failure, not a candidate software defect or swarm-versus-orchestrator comparison.",
+    "All frozen v1 sources, failed artifacts and original source review remain preserved; no automatic retry or relaxed predicate is applied.",
+    "Full C03 product catalog/semantic observer, pending CLI additions/qualification, other product boundaries and whole-project comparative study remain unfinished.",
+    "No product acceptance, new scientific scope, provider transfer, spending or publication authorization is inferred."
+  ],
+  "no_retry": true,
+  "observed_result": {
+    "attempted_histories": 1,
+    "authenticated_complete_exchanges": 0,
+    "authenticated_sent_complete_requests": 0,
+    "confirmed_helper_creates": 1,
+    "confirmed_keeper_creates": 1,
+    "confirmed_server_creates": 1,
+    "create_intents": 3,
+    "declared_request_rows": 14,
+    "helper_starts": 1,
+    "keeper_starts": 1,
+    "new_comparative_samples": 0,
+    "new_provider_calls": 0,
+    "offline_fresh_passed": 80,
+    "owned_containers_removed": 3,
+    "owned_volumes_removed": 1,
+    "physical_failed": 1,
+    "physical_methods_selected": 9,
+    "physical_not_run": 8,
+    "physical_passed": 0,
+    "physical_run_duration_seconds": 15.58697250019759,
+    "qualified_controls": 0,
+    "retained_diagnostic_probe_rows": 1,
+    "rows_without_probe_transcript": 13,
+    "server_epochs": 1,
+    "unconfirmed_creates": 0,
+    "unknown_attributed_request_outcomes": 1
+  },
+  "offline_audit": {
+    "counts_not_added_to_coordinator_checks": true,
+    "fresh_classes": 9,
+    "lanes": {
+      "fast": 59,
+      "git": 21
+    },
+    "logged_method_outcomes_checked": 80,
+    "mismatches": 0,
+    "passed_methods": 80,
+    "request_order_bindings_checked": 9,
+    "result_and_log_hashes_checked": 18,
+    "reused_classes": 0,
+    "reviewer": "/root/b03_assertion_review/c03_lifecycle_review",
+    "scoped_source_test_config_pins_checked": 8,
+    "static_note": "All six baseline-aware static gates passed;117 unchanged legacy type diagnostics and zero blocking diagnostics. No claim of repository-wide zero type errors.",
+    "summary_sha256": "44babd22cdccfc42a479cd6ee4f0e867e84a4d46ccefd0eef90c8492448f5a84"
+  },
+  "original_audit": {
+    "bytes": 152755,
+    "path": "runs/candidate-c03-http-physical-audit-1.json",
+    "sha256": "c3e98f9934c0cca3ad46ec9d8b0913804c9658b46fbc40215fca24f80d725550"
+  },
+  "product_acceptance_credit": false,
+  "provenance": "Root-authored publication projection of the independent retained audit; not a second independent audit or a new execution. Full checks, raw evidence and resource identities remain in the original local receipt.",
+  "recorded_at": "2026-10-03T19:58:58.974268+00:00",
+  "reviewer": "/root/b03_assertion_review",
+  "runtime": {
+    "actual_binding_matches_predispatch_supplement": true,
+    "class_and_execution_match_freeze": true,
+    "engine_git_commit": "6bc6209",
+    "engine_version": "29.2.1",
+    "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "raw_class_runtime_reconstructed": true,
+    "source_and_runtime_drift_reported": false
+  },
+  "schema": "candidate-c03-http-retained-audit-summary-v1",
+  "status": "audit consistent with failed frozen v1 qualification; no material evidence mismatch",
+  "v1_physical_qualification_passed": false
+}

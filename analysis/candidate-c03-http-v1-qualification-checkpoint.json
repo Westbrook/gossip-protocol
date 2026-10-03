@@ -1,0 +1,152 @@
+{
+  "base_commit": "ba8f53b3244c5747965e13308ab7af0956448842",
+  "branch": "codex/cumulative-project-contract",
+  "definition_freeze": {
+    "bytes": 86859,
+    "path": "runs/candidate-c03-http-definition-freeze-1/freeze.json",
+    "sha256": "7d5d36278af5deacd966a273e3e6747c7ae60407a0641ff3fee9a3555b9a7357"
+  },
+  "freeze_construction_script": {
+    "bytes": 7757,
+    "path": "runs/candidate-c03-http-definition-freeze-1/construction-script.py",
+    "sha256": "15d736ec3580f6c4484ba53152132199b7465c93cd0d3a933cc446617be65e3d"
+  },
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "goal_turn_classification": "progress: actual physical evidence identified a missing runtime transition and changed the next implementation action",
+  "independent_evidence_audit": {
+    "bytes": 13615,
+    "path": "analysis/candidate-c03-http-v1-evidence-audit.json",
+    "sha256": "da89fa6ab4aae57c4f668628bbbdef4278859b8e0ca7efb3166d6b795654de88"
+  },
+  "independent_evidence_audit_original": {
+    "bytes": 152755,
+    "path": "runs/candidate-c03-http-physical-audit-1.json",
+    "sha256": "c3e98f9934c0cca3ad46ec9d8b0913804c9658b46fbc40215fca24f80d725550"
+  },
+  "independent_source_review": {
+    "bytes": 21268,
+    "path": "runs/candidate-c03-http-source-review-1.json",
+    "sha256": "93ff07815b1570c000ddb1c0cef09607151a397c38cbfe8904175b7afb08c506"
+  },
+  "limitations": [
+    "No HTTP control or product acceptance is qualified by this failed physical run. No whole-project, repeatability, recovery or swarm superiority claim follows.",
+    "Complete framed bytes in an unauthenticated helper transcript remain diagnostic only; retrospective parsing does not repair missing execution provenance.",
+    "Static type coverage follows explicit pyproject roots and the retained legacy diagnostic baseline; it is not whole-repository type safety.",
+    "No provider request, key access, ledger reset, new spend or Pages refresh occurred. Pending approvals remain separate."
+  ],
+  "live_launch_status": "Existing separate payload-transfer approval remains pending; no renewed provider request.",
+  "new_budget_authorization": false,
+  "new_comparative_samples": 0,
+  "new_provider_calls": 0,
+  "next_actions": [
+    "Implement and independently review the narrowly donor-bound v2 correction without altering frozen v1 evidence.",
+    "Run affected offline gates, freeze v2 and execute a fresh complete physical mechanics roster; independently audit all result categories before claiming success.",
+    "After mechanics qualify, implement the full source-grounded HTTP catalog/semantic observer and required cross-interface evidence, then the production acceptance bridge and complete cumulative study."
+  ],
+  "next_correction": {
+    "bytes": 4501,
+    "path": "analysis/candidate-c03-http-probe-hostname-plan-v2.json",
+    "sha256": "567b9c72ce36fa123e10b85297931f8d6f98f4cabe3d0a56e615e5cf696b194b"
+  },
+  "offline_gate": {
+    "execution_methods": 37,
+    "meaning": "Executed targeted offline verification; simulated Engine/socket IO does not prove actual container lifecycle compatibility.",
+    "passed": 80,
+    "reused_classes": 0,
+    "runner_inputs_reconciled": 479,
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75594,
+      "path": "runs/candidate-c03-http-offline-1/20261003T194316-471fe241/static.json",
+      "sha256": "2c7732ed4ac181cfd900e238038ef7afec5997250e88f8cdb86281b417964a79"
+    },
+    "summary": {
+      "bytes": 60992,
+      "path": "runs/candidate-c03-http-offline-1/20261003T194316-471fe241/summary.json",
+      "sha256": "44babd22cdccfc42a479cd6ee4f0e867e84a4d46ccefd0eef90c8492448f5a84"
+    },
+    "transport_methods": 43
+  },
+  "pages_refresh": false,
+  "physical_gate": {
+    "authenticated_request_outcomes": 0,
+    "containers_created": 3,
+    "containers_started": 3,
+    "declared_request_rows": 14,
+    "diagnostic_probe_rows": 1,
+    "duration_seconds": 15.58697250019759,
+    "failed_controls": 1,
+    "not_run_controls": 8,
+    "owned_container_absence_verified": 3,
+    "owned_volume_absence_verified": true,
+    "qualified_controls": 0,
+    "result": "M01 stopped after its first probe failed the immutable identity check. M02 through M09 never ran. The helper stdout is retained diagnostic data and cannot authorize a product judgment.",
+    "retry_performed": false,
+    "rows_without_transcripts": 13,
+    "selected_controls": 9,
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75593,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/static.json",
+      "sha256": "57aff00446ff982e7750cacdf27ac0c0c6de9b9bd4fbea5965b41e79a4e44b80"
+    },
+    "summary": {
+      "bytes": 9807,
+      "path": "runs/candidate-c03-http-physical-1/20261003T194953-06c9a339/summary.json",
+      "sha256": "8c4fbd678fbbfc0b1693ff70cdcdbd90f4f5d6ab9ee2ed8677ee8d02882754ff"
+    },
+    "unknown_attributed_request_outcomes": 1
+  },
+  "predispatch_supplement": {
+    "bytes": 9388,
+    "path": "runs/candidate-c03-http-definition-freeze-1/predispatch-supplement.json",
+    "sha256": "26a178953d4f320238b11e3748283f6111bfaf1fe32ced55b64785df6ee3f93c"
+  },
+  "recorded_at": "2026-10-03T20:00:37.819387+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "schema": "candidate-c03-http-v1-qualification-checkpoint",
+  "scope": "Source-bound long-lived HTTP server, isolated fixed wire helper, explicit normal restart, durable no-redispatch controller and nine synthetic mechanics controls. No product semantic observer or comparative study.",
+  "source_pins": {
+    "analysis/candidate-b03-c03-policy-review-v1.json": "bec2139ba2b6e99d5ac6da01296842cc690af5c84f3428aaa5183eaf2ec54570",
+    "analysis/candidate-b03-empty-command-plan-v3.json": "6c99fe8badb01281f0adb82265e5260d1022a818cf4edc18cf97da41912981d3",
+    "analysis/candidate-b03-mount-inventory-plan-v1.json": "f574060cfa8192c7e67da8a000309da5a7d2f01e4fe69edff4d2ea011c35a521",
+    "analysis/candidate-b03-runtime-compatibility-plan-v1.json": "7b8d89a9003594551c2677a9975d715b4b4e3584746874cc446601722f411b2d",
+    "docs/candidate-http-execution-v1.md": "b391ad19e9b37a49685b5cd9ce4eced1b9341d779b6dcabaa4ea7f5825436fd0",
+    "docs/candidate-http-mechanics-v1.md": "bb23543f85d553ac583637fd5219c8fd4fcd5654adcabb3c17ff00adba03b1b3",
+    "docs/candidate-http-transport-v1.md": "ebfd12de025dabe1c0d32b51358f94965198fee9510576e58c21568672f929f7",
+    "gossip_harness/candidate_cli_cases_v1.py": "4bcd1f7d1d009bb158e45367396d2254b68cb00ae02df4fb460fb52361948e1c",
+    "gossip_harness/candidate_client_execution_v4.py": "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1",
+    "gossip_harness/candidate_client_observer_v4.py": "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d64a31208235",
+    "gossip_harness/candidate_client_process_v4.py": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b",
+    "gossip_harness/candidate_http_execution_v1.py": "00812a0d890c0607a9316fd8b3d489b48d88dfeb30633cdec0fe692fe35736eb",
+    "gossip_harness/candidate_http_transport_v1.py": "a283e205ac3228085da1cf19c1ac60c720f13a0841463134605f0eb984f98ddd",
+    "gossip_harness/candidate_release_execution_v2.py": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+    "gossip_harness/candidate_release_observer_v2.py": "a2091ba7e410c548fd0f7b150db2ab02f0b0eec4f7ff939d86e2f48c85d0da68",
+    "gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "pyproject.toml": "9f74c1260020636613c3db4a3c2331442a9818a86685aef4039127c38be2220e",
+    "tests/test_candidate_http_docker_v1.py": "9c85984dc7db28fbbac8277829c4a8269ef1bab9f9581ad1d1792fd4a3bd6140",
+    "tests/test_candidate_http_execution_v1.py": "044d27a05ce39ac7c9ab3ab6a56299dbb6cacb207d5bf6a99edaf870520fe543",
+    "tests/test_candidate_http_transport_v1.py": "ef10acee9f382708d0a9ca3947e67a5e665b9653424dc84077071a69f0299248",
+    "verification-manifest.json": "d582d6d5f1dad2978c8361ad7364952696e2e5566ff8d6b750890d9a7c51a2ae"
+  },
+  "status": "offline qualified; physical mechanics attempt failed; no HTTP acceptance authority",
+  "write_approval": {
+    "paths": [
+      "tests/test_candidate_clients_docker_v4.py",
+      "tests/test_candidate_client_rejection_v4.py",
+      "docs/candidate-client-qualification-plan-v4.md"
+    ],
+    "reason": "Automatic approval review rejected source writes under an earlier read-only assignment; later review was canceled. No further installation attempts.",
+    "status": "explicit human approval requested; no answer at checkpoint"
+  }
+}
