@@ -33,7 +33,9 @@
     "results/practical-live-1/accepted/single",
     "fixtures/library-m4-compatibility-v1",
     "analysis/candidate-b03-runtime-compatibility-plan-v1.json",
-    "analysis/candidate-b03-mount-inventory-plan-v1.json"
+    "analysis/candidate-b03-mount-inventory-plan-v1.json",
+    "fixtures/candidate-http-probe-hostname-v1",
+    "analysis/candidate-c03-http-probe-hostname-plan-v2.json"
   ],
   "lanes": [
     "fast",
@@ -4106,6 +4108,78 @@
       "boundary": "Real isolated Git stores and durable journals through actual execute_once, dispatch, run_probe and wire decoding; only Engine/socket IO is inert.",
       "disposition": "Run once with affected offline classes after the static gate and before fresh Docker mechanics qualification.",
       "overlap_reason": "This inert controller contract does not prove actual Docker isolation, listener state, physical server continuity or product semantics."
+    },
+    "tests/test_candidate_http_execution_v2.py::HttpRoleProfileV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "HTTP server, keeper and probe roles have closed, phase-specific configurations and identities.",
+      "isolation": "Class process with isolated retained mutable fixtures; no candidate source runs on the host.",
+      "overlap": "Transport parser tests, composed controller tests and physical Docker controls establish different boundaries.",
+      "distinct_defect": "Wrong networking, candidate mounts, source identity or invalid lifecycle recipes could cross isolation boundaries.",
+      "boundary": "Inert Engine inspection objects and pure role/policy/recipe validation. Version 2 binds the independently observed current server before a narrowly scoped probe hostname transition.",
+      "disposition": "Run once with affected offline classes after the static gate and before fresh Docker mechanics qualification.",
+      "overlap_reason": "This inert controller contract does not prove actual Docker isolation, listener state, physical server continuity or product semantics."
+    },
+    "tests/test_candidate_http_execution_v2.py::HttpControllerJournalV2Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A source-bound HTTP history journals one dispatch and preserves replay and rejection evidence.",
+      "isolation": "Class process with isolated retained mutable fixtures; no candidate source runs on the host.",
+      "overlap": "Transport parser tests, composed controller tests and physical Docker controls establish different boundaries.",
+      "distinct_defect": "Changed source, fixtures, runtime or intent could be replayed as a valid execution or redispatched.",
+      "boundary": "Real isolated Git stores and retained journal files with inert Engine transport. Version 2 binds the independently observed current server before a narrowly scoped probe hostname transition.",
+      "disposition": "Run once with affected offline classes after the static gate and before fresh Docker mechanics qualification.",
+      "overlap_reason": "This inert controller contract does not prove actual Docker isolation, listener state, physical server continuity or product semantics."
+    },
+    "tests/test_candidate_http_execution_v2.py::HttpProbeLifecycleV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A finite probe authenticates its wire response independently from its bounded owned cleanup.",
+      "isolation": "Class process with isolated retained mutable fixtures; no candidate source runs on the host.",
+      "overlap": "Transport parser tests, composed controller tests and physical Docker controls establish different boundaries.",
+      "distinct_defect": "Cleanup errors, absent natural exit or ambiguous create outcomes could erase or falsely authenticate observations.",
+      "boundary": "Inert Engine/socket IO with the real finite probe lifecycle and wire decoder. Version 2 binds the independently observed current server before a narrowly scoped probe hostname transition.",
+      "disposition": "Run once with affected offline classes after the static gate and before fresh Docker mechanics qualification.",
+      "overlap_reason": "This inert controller contract does not prove actual Docker isolation, listener state, physical server continuity or product semantics."
+    },
+    "tests/test_candidate_http_execution_v2.py::HttpHistoryOrchestrationV2Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "The composed HTTP controller preserves per-step source authorization, restart epochs and confirmed versus unknown resource counts.",
+      "isolation": "Class process with isolated retained mutable fixtures; no candidate source runs on the host.",
+      "overlap": "Transport parser tests, composed controller tests and physical Docker controls establish different boundaries.",
+      "distinct_defect": "Post-step source loss, server death, uncertain resource creation or failed cleanup could authorize current rows or corrupt earlier evidence.",
+      "boundary": "Real isolated Git stores and durable journals through actual execute_once, dispatch, run_probe and wire decoding; only Engine/socket IO is inert. Version 2 binds the independently observed current server before a narrowly scoped probe hostname transition.",
+      "disposition": "Run once with affected offline classes after the static gate and before fresh Docker mechanics qualification.",
+      "overlap_reason": "This inert controller contract does not prove actual Docker isolation, listener state, physical server continuity or product semantics."
+    },
+    "tests/test_candidate_http_execution_v2.py::HttpProbeDonorV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only the typed probe created-to-exited transition may replace its own short hostname with the independently bound current source/epoch/runtime donor hostname.",
+      "isolation": "Separate class worker, inert complete inspection records and retained portable diagnostic fixture; no Engine, provider or candidate execution.",
+      "overlap": "Role and composed controller checks complement direct hostile donor, phase, runtime and complete-field regressions.",
+      "distinct_defect": "Matching hashes or a helper-reported hostname could otherwise substitute a wrong donor or hide unrelated configuration and mount drift.",
+      "boundary": "Pure comparison and immutable donor binding with a reserialized retained v1 failure fixture; no retrospective qualification of that failure.",
+      "disposition": "Run in the affected offline gate before freezing and physically qualifying the new v2 execution contract.",
+      "overlap_reason": "Diagnostic fixture reuse establishes regression behavior only; new physical observations and independent acceptance remain distinct."
+    },
+    "tests/test_candidate_http_docker_v2.py::CandidateHttpMechanicsV2DockerTests": {
+      "lane": "docker",
+      "weight": 3,
+      "timeout_seconds": 1800,
+      "invariant": "Nine frozen histories and fourteen declared requests exercise actual isolated HTTP framing, listener evidence, server continuity, normal held-volume restart and prestart probe-role rejection. Version 2 independently reconstructs donor binding and actual hostname inheritance from retained Engine replies.",
+      "isolation": "One serial class worker; per-history owned Git source, state volume, keeper, servers and disposable probes. Only current history containers coexist; count all nested containers and readiness attempts.",
+      "overlap": "Fast tests establish request/parser/role/journal rules; these controls observe their real Docker, TCP, kernel and storage composition.",
+      "distinct_defect": "A complete response is not synonymous with EOF or helper exit. Truncation, cap, timeout, server death, wildcard listeners, wrong namespaces and ambiguous framing remain distinguishable.",
+      "boundary": "Synthetic evaluator-authored mechanics only; no HTTP product-catalog, whole-project acceptance or swarm superiority claim. Both pending user approvals remain independent.",
+      "disposition": "Run once only after combined static/offline qualification, exact source review and a fresh complete source/runtime/control freeze; preserve failures without automatic retry or output-tuned predicates.",
+      "overlap_reason": "The v1 physical failure remains frozen; changed donor-bound v2 semantics require one complete new physical run with the same nine controls and fourteen declared request rows."
     }
   },
   "audit": {

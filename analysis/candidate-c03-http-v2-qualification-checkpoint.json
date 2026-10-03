@@ -1,0 +1,214 @@
+{
+  "base_commit": "5048d52ba31ec9a06a87c82b983818a3e284a044",
+  "branch": "codex/cumulative-project-contract",
+  "construction_script": {
+    "bytes": 11378,
+    "path": "runs/candidate-c03-http-v2-definition-freeze-1/construction-script.py",
+    "sha256": "6bf8df30b4ee69da7e5524c709f520e9aef90a3a09557dd3c415393415777fa4"
+  },
+  "definition_freeze": {
+    "bytes": 89702,
+    "path": "runs/candidate-c03-http-v2-definition-freeze-1/freeze.json",
+    "sha256": "2127b54a9ff4cf8c4514b02dd17d61844b5017343adca770a3bf3209352935b7"
+  },
+  "frozen_main_commit": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "goal_turn_classification": "progress: a source-reviewed v2 correction passed a new complete frozen physical run, independently audited against raw evidence.",
+  "independent_evidence_audit_original": {
+    "bytes": 22374,
+    "path": "runs/candidate-c03-http-v2-physical-audit-1.json",
+    "sha256": "bd71d5685d365722b3533a601a46c366dfcbbcdae76b95236b98be09a6fa8fd9"
+  },
+  "independent_evidence_audit_public_projection": {
+    "bytes": 10313,
+    "path": "analysis/candidate-c03-http-v2-evidence-audit.json",
+    "sha256": "94678a2814a7571fceaefc57c5a0a1bd1390d580b9d8ff6c21d4fb819ce5aa0b"
+  },
+  "independent_source_review": {
+    "bytes": 27991,
+    "path": "runs/candidate-c03-http-v2-source-review-1.json",
+    "sha256": "f3e385cad0dcb4b83b59b7fa3df18413ef92d64a92e5aea3490ec4d1feee517a"
+  },
+  "limitations": [
+    "Nine synthetic mechanics controls are not independent project samples, full HTTP product-catalog coverage or swarm superiority.",
+    "The intentional server-death outcome remains unknown; diagnostic response bytes do not authorize a product judgment.",
+    "Normal same-volume server restart does not prove crash or compound recovery.",
+    "Current execution bindings remain M1 harness_qualification; independent acceptance requires its own fresh purpose-bound execution.",
+    "No provider request, key access, new spend or new ledger/invoice audit occurred. Separate pending approvals and full project scope remain unchanged."
+  ],
+  "live_launch_status": "Existing separate payload-transfer approval remains pending; no renewed provider request.",
+  "new_budget_authorization": false,
+  "new_comparative_samples": 0,
+  "new_provider_calls": 0,
+  "next_actions": [
+    "Integrate the reviewed pure semantic observer under root-owned static/offline verification, preserving independent pass/fail/unavailable/unspecified facets.",
+    "Implement the original-journal adapter and bounded host response extractor under the retained prospective design; verify temporal provenance and reject data-only authority substitutes.",
+    "Complete the full ten-family HTTP catalog, expected state transitions, symlink/path controls and cross-interface evidence, then bind the production acceptance bridge and complete cumulative study."
+  ],
+  "offline_gate": {
+    "duration_seconds": 64.16652362514287,
+    "execution_methods": 51,
+    "fresh_passed_methods": 94,
+    "lanes": {
+      "fast": 71,
+      "git": 23
+    },
+    "reused_classes": 0,
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75877,
+      "path": "runs/candidate-c03-http-v2-offline-1/20261003T202427-441d098d/static.json",
+      "sha256": "2c872386aef908c36c2fe543bb0cf34d7acd22aee34472ea29805da6cf74f1eb"
+    },
+    "summary": {
+      "bytes": 69227,
+      "path": "runs/candidate-c03-http-v2-offline-1/20261003T202427-441d098d/summary.json",
+      "sha256": "31b6ae60f795b535bc238cf533104a8618e7effdfd7181c4b80a429f9a9f0a70"
+    },
+    "transport_methods": 43,
+    "worker_budget": 4,
+    "workers_started": 10
+  },
+  "pages_refresh": false,
+  "physical_gate": {
+    "actual_census": {
+      "authenticated_but_incomplete_exchanges": 4,
+      "authenticated_sent_complete_requests": 13,
+      "complete_http_exchanges": 9,
+      "container_create_intents": 34,
+      "created_containers": 34,
+      "created_volumes": 9,
+      "declared_request_rows": 14,
+      "diagnostic_only_sent_complete_requests": 1,
+      "helper_creates": 15,
+      "helper_starts": 14,
+      "histories": 9,
+      "keeper_creates": 9,
+      "keeper_starts": 9,
+      "observed_probe_records": 14,
+      "removed_containers": 34,
+      "removed_volumes": 9,
+      "server_creates": 10,
+      "server_running_epochs": 10,
+      "unattempted_request_rows": 0,
+      "unconfirmed_creates": 0,
+      "unknown_request_attributions": 1
+    },
+    "census": {
+      "bytes": 8785,
+      "path": "runs/candidate-c03-http-v2-physical-1/20261003T203459-b15b3e14/classes/e9231632232b0e7c/artifacts/gossip-candidate-c03-http-mechanics-v2-rtpevvpx/completion-census.json",
+      "sha256": "2750a7ef1907eb49644f6b024af12022434a1cc0c62693baf7564165d43e3503"
+    },
+    "duration_seconds": 170.17127887438983,
+    "fresh_passed_methods": 9,
+    "retry_performed": false,
+    "reused_classes": 0,
+    "source_or_runtime_drift": false,
+    "static": {
+      "bytes": 75885,
+      "path": "runs/candidate-c03-http-v2-physical-1/20261003T203459-b15b3e14/static.json",
+      "sha256": "cda09decd2350414eef2ac55bcdf49bb2e3bad5de66755eaf69e239ef4e63590"
+    },
+    "summary": {
+      "bytes": 10318,
+      "path": "runs/candidate-c03-http-v2-physical-1/20261003T203459-b15b3e14/summary.json",
+      "sha256": "88c7597285f75935c8bdfa73b642c4cb946c84d66d4e9148fa32f11ad57ff88e"
+    }
+  },
+  "predispatch_supplement": {
+    "bytes": 12617,
+    "path": "runs/candidate-c03-http-v2-definition-freeze-1/predispatch-supplement.json",
+    "sha256": "29af3f4098b686b2e81d8ae8cb4b4071d688a6e7f6aacffcbb7059c725502405"
+  },
+  "prior_failure": {
+    "checkpoint": {
+      "bytes": 9999,
+      "path": "analysis/candidate-c03-http-v1-qualification-checkpoint.json",
+      "sha256": "6c0cdd312d7574f0d27faedae73d7bce7f17231da286468c4f6da7fc21649403"
+    },
+    "observations_reused": false,
+    "source_and_evidence_unchanged": true
+  },
+  "recorded_at": "2026-10-03T20:53:13.066293+00:00",
+  "remaining_full_goal": [
+    "Qualify genuine B02 concurrent orderings independently of the limited instrumentable control; complete remaining B02 facets and actual I/O-error coverage. Unsupported exact-code assertions are not product obligations or permanent acceptance blockers.",
+    "Complete B03 client/browser, B04 process/wire, B05 full delivery and unclosed B01 facets.",
+    "Complete production ScopePlan, requirement-to-assertion mapping and actual prerequisite authorities with whole-denominator closure.",
+    "Bind candidate observers, source promotions and cohort freeze to one production controller; qualify a complete source-matched rehearsal.",
+    "Run four cumulative milestones across six matched trajectories: S4-G (4 builders+4 reviewers), S16-G (16+4) and O16-G (16+4), each healthy and compound recovery. Quality and sustained whole-project completion remain primary.",
+    "Retain generated distinguishing tests, real process restart, bounded partitions, whole-cohort barrier before fresh independent acceptance and later held-out project families.",
+    "No provider launch before pending payload-transfer approval; preserve existing budget and cumulative ledger. No new invoice or ledger audit is claimed in this cycle.",
+    "Use independent project families and a preregistered statistical design before claiming general superiority."
+  ],
+  "retained_future_work": {
+    "adapter_cases_executed": 0,
+    "adapter_design": {
+      "bytes": 15208,
+      "path": "runs/candidate-c03-observer-adapter-plan-1/ADAPTER-DESIGN.md",
+      "sha256": "0e7e2d698053f4d035e1a847f67767845224b3981927fe4f4d1b65ca8e71c59e"
+    },
+    "adapter_matrix": {
+      "bytes": 6269,
+      "path": "runs/candidate-c03-observer-adapter-plan-1/REGRESSION-MATRIX.md",
+      "sha256": "4a10158d3a08052c52d8c248d13090c86f243a32c11ee392ed8a23e4ca3d86a2"
+    },
+    "adapter_prospective_cases": 37,
+    "semantic_component_methods": 39,
+    "semantic_draft": {
+      "bytes": 3173,
+      "path": "runs/candidate-c03-http-semantics-draft-1/receipt-2.json",
+      "sha256": "adc0f3bae067775a8cc6363e5ab7e1ac7a6e59d6a38a4657fba9835bd28fce16"
+    },
+    "semantic_handoff": {
+      "bytes": 6913,
+      "path": "runs/candidate-c03-http-semantics-draft-1/HANDOFF.md",
+      "sha256": "e5a8260ce35d051820b4b6674ab7f444987e5534847451bdff8d3cdffee1ab9b"
+    },
+    "semantic_installed": false
+  },
+  "schema": "candidate-c03-http-v2-qualification-checkpoint",
+  "scope": "Frozen v2 donor correction plus unchanged nine-control/fourteen-row synthetic HTTP mechanics roster; no product catalog or swarm-performance evaluation.",
+  "source_pins": {
+    "analysis/candidate-b03-c03-policy-review-v1.json": "bec2139ba2b6e99d5ac6da01296842cc690af5c84f3428aaa5183eaf2ec54570",
+    "analysis/candidate-b03-empty-command-plan-v3.json": "6c99fe8badb01281f0adb82265e5260d1022a818cf4edc18cf97da41912981d3",
+    "analysis/candidate-b03-mount-inventory-plan-v1.json": "f574060cfa8192c7e67da8a000309da5a7d2f01e4fe69edff4d2ea011c35a521",
+    "analysis/candidate-b03-runtime-compatibility-plan-v1.json": "7b8d89a9003594551c2677a9975d715b4b4e3584746874cc446601722f411b2d",
+    "analysis/candidate-c03-http-probe-hostname-plan-v2.json": "567b9c72ce36fa123e10b85297931f8d6f98f4cabe3d0a56e615e5cf696b194b",
+    "docs/candidate-http-execution-v2.md": "1bbdcc6b1e50636cc06944f2d1585821a60a16a9ab965a10bcd154964b2da65f",
+    "docs/candidate-http-mechanics-v2.md": "c174146444d63b9170d0c5a7d8dbc000b50874f8b0af05ad39358d60422b1492",
+    "docs/candidate-http-transport-v1.md": "ebfd12de025dabe1c0d32b51358f94965198fee9510576e58c21568672f929f7",
+    "fixtures/candidate-http-probe-hostname-v1/inspection-records.json": "e8ac8078e01e5d9e19fabe12811176ff3b83e1b6200f22517339e0dd3798a30e",
+    "gossip_harness/candidate_cli_cases_v1.py": "4bcd1f7d1d009bb158e45367396d2254b68cb00ae02df4fb460fb52361948e1c",
+    "gossip_harness/candidate_client_execution_v4.py": "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1",
+    "gossip_harness/candidate_client_observer_v4.py": "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d64a31208235",
+    "gossip_harness/candidate_client_process_v4.py": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b",
+    "gossip_harness/candidate_http_execution_v2.py": "984207582f6ea4e1fa72a3eaba8fa66a99c490e6cb7a309c6101f9687ff05e12",
+    "gossip_harness/candidate_http_transport_v1.py": "a283e205ac3228085da1cf19c1ac60c720f13a0841463134605f0eb984f98ddd",
+    "gossip_harness/candidate_release_execution_v2.py": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+    "gossip_harness/candidate_release_observer_v2.py": "a2091ba7e410c548fd0f7b150db2ab02f0b0eec4f7ff939d86e2f48c85d0da68",
+    "gossip_harness/gitstore.py": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+    "gossip_harness/sandbox.py": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+    "pyproject.toml": "bb67a9aa480fd9fca34bea17bd6db089df32d0cbefcdc54b10b60ec857f5edf5",
+    "tests/test_candidate_http_docker_v2.py": "39644aaa361e4fa8189a67bded6e934f62f0364218a2cce1294500ae37cc0f27",
+    "tests/test_candidate_http_execution_v2.py": "43d038026ac9f18f4b083a542a072769b85beb6dc860a36a51f54c8e90853bfb",
+    "tests/test_candidate_http_transport_v1.py": "ef10acee9f382708d0a9ca3947e67a5e665b9653424dc84077071a69f0299248",
+    "verification-manifest.json": "93616a36fb7aa162ed50ac68795895bf66e3b5b6b952a0650927ee548662a97d"
+  },
+  "status": "offline and physical mechanics qualified; no product acceptance authority",
+  "verification_limits": {
+    "blocking_static_diagnostics": 0,
+    "frozen_source_config_pins": 24,
+    "runner_input_pins": 484,
+    "type_coverage": "Explicit pyproject roots and their imports; remaining owned sources receive syntax/correctness lint. Not whole-repository type safety.",
+    "unchanged_type_baseline_diagnostics": 117,
+    "whitespace_note": "Optional git diff --cached --check reports one inherited trailing space in tests/test_candidate_http_execution_v2.py:338; retained to preserve exact already frozen/evaluated bytes. Required central static gate passed."
+  },
+  "write_approval": {
+    "paths": [
+      "tests/test_candidate_clients_docker_v4.py",
+      "tests/test_candidate_client_rejection_v4.py",
+      "docs/candidate-client-qualification-plan-v4.md"
+    ],
+    "reason": "Automatic approval review rejected source writes under an earlier read-only assignment; later review was canceled. No further installation attempts.",
+    "status": "explicit human approval requested; no answer at checkpoint"
+  }
+}
