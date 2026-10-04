@@ -1,0 +1,277 @@
+{
+  "protocol": "cumulative-rehearsal-reader-integration-v1",
+  "status": "targeted_reader_controls_passed_whole_rehearsal_unqualified",
+  "base_commit": "46cf850d53df6e5dd4b0decfd9711c719b388805",
+  "workspace": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "branch": "codex/cumulative-rehearsal-readers",
+  "isolation": "Separate worktree preserves the concurrently executing product physical source freeze. Root is sole verification owner; Docker runner3slots plus reader1slot.",
+  "files": [
+    {
+      "path": "gossip_harness/cumulative_rehearsal_capsule_v1.py",
+      "sha256": "d90dcf0f5d93d592714309a3d6638e059c428c06f854172a43a086ed44448317",
+      "bytes": 7714
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_inventory_v1.py",
+      "sha256": "6fe9601e81bf71d069f7c0411d3ae910c75ef31bb4eec9ca5e7c83034148fc04",
+      "bytes": 5019
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_process_v1.py",
+      "sha256": "928ffe53f755a317493b5241ec6d87c8b7ddfa750619bad7b9416bcf72dc0da4",
+      "bytes": 17254
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_validator_v1.py",
+      "sha256": "eacc385042b1310f29c1056d6ff4e9e0ce3c5f2c3ccec1bc785a0272ce6d143a",
+      "bytes": 52195
+    },
+    {
+      "path": "gossip_harness/cumulative_role_originals_v1.py",
+      "sha256": "30f6d43bea13b6e8625d6e43832fe00675aeaf5eedf1dcc60c5f2c9f722f47c7",
+      "bytes": 18742
+    },
+    {
+      "path": "gossip_harness/financial_rehearsal_originals_v1.py",
+      "sha256": "a404a14cfb054a08b4c05432e05af7ec04140bbf2f847c0e53519e3cc0e8ff5a",
+      "bytes": 26321
+    },
+    {
+      "path": "tests/financial_rehearsal_fixture_v1.py",
+      "sha256": "45739a37120235253caaea8503972afaf793b7b425cbdac1ed4e778845b43775",
+      "bytes": 2745
+    },
+    {
+      "path": "tests/test_cumulative_rehearsal_capsule_v1.py",
+      "sha256": "5d5683f7f2d4225adfc15f6b917ee2d9f323b74966ebde5e6615b5291b0d65ed",
+      "bytes": 8799
+    },
+    {
+      "path": "tests/test_cumulative_rehearsal_inventory_v1.py",
+      "sha256": "3cb2cf396f50efae3e0f3a4dd9a6f7c154f89795c269dc963df99811de5c0af1",
+      "bytes": 2678
+    },
+    {
+      "path": "tests/test_cumulative_rehearsal_process_v1.py",
+      "sha256": "b7742bceb7141e578e8c0345dbaef2522e93e924161ef16afce8f65d96a9de90",
+      "bytes": 10496
+    },
+    {
+      "path": "tests/test_cumulative_rehearsal_validator_v1.py",
+      "sha256": "57a028d7311f52ad7118acff24e80861d9570ef339c474938c0025b323d1da96",
+      "bytes": 24063
+    },
+    {
+      "path": "tests/test_cumulative_role_originals_v1.py",
+      "sha256": "6b7100073f0c4d5f40ed55d8545a85ec4821df9b1303e54680330469effee42d",
+      "bytes": 14072
+    },
+    {
+      "path": "tests/test_financial_rehearsal_originals_v1.py",
+      "sha256": "00898dafe944f77a820ff200ca9f9d7ab95bfeb21f461d666c5c0a684e1460cd",
+      "bytes": 13367
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "433092f4d101893c532a2ce5060e20fe405c5acf75418043ee8bc1a1e58b0a93",
+      "bytes": 10980
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "970a99b6698ccce782e00aff8218ad8b785142f92ed409e3e1366b0bed339f20",
+      "bytes": 504946
+    }
+  ],
+  "source_review": {
+    "path": "runs/cumulative-rehearsal-reader-retention-1/source-review.json",
+    "sha256": "a3eeaad763a97274c8b6d605e9790b59ae7a69224288fd0950139242e9c5ab5c",
+    "bytes": 21355
+  },
+  "handoff": {
+    "path": "runs/cumulative-rehearsal-reader-retention-1/handoff-1.json",
+    "sha256": "d665e67a0f448de087a0b777cad3cffd661f17f3519dbb489b37ad2b11fcb625",
+    "bytes": 31042
+  },
+  "dependency_reconciliation": {
+    "path": "runs/cumulative-rehearsal-reader-retention-1/installation.json",
+    "sha256": "34c948e21b4d9085008953008fe8cdc05ab9f88801b6b8e6ae891c94fedffd15",
+    "bytes": 4362
+  },
+  "qualification": {
+    "summary": {
+      "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/summary.json",
+      "sha256": "ed4bb8529a93ae752317183d94ec9c5705c468da524554460168275706cbd9fc",
+      "bytes": 52811
+    },
+    "inputs": {
+      "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/inputs.json",
+      "sha256": "e8fca21d8d81c16bf2db3cdfef3c5969d205718fa5e7f8fe73c4c7dde0746080",
+      "bytes": 70170
+    },
+    "fingerprint": "e1d99e1293e0848e7506228c2f269a16227b93f71387e2d922753fd6bb721eaf",
+    "source_inputs": 594,
+    "static": {
+      "duration_seconds": 1.6452717501670122,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "unchanged_legacy_type_diagnostics": 117,
+    "classes": [
+      {
+        "class": "tests/test_cumulative_rehearsal_capsule_v1.py::CumulativeRehearsalCapsuleV1Tests",
+        "methods": 13,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/95dd3eb4940e8890/result.json",
+          "sha256": "1a8211b4eb6d50a20c6034390d565cea5fdb4360faee40d1311090a1fa0ca229",
+          "bytes": 6683
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/95dd3eb4940e8890/request.json",
+          "sha256": "a1b590706c7063a19eff485effe182a001349dda63c19a9fc801f6852a9ae012",
+          "bytes": 8494
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/95dd3eb4940e8890/worker.log",
+          "sha256": "0985e032d73fb015484bd0bef7d1605d2cf7ddf5090ba28f6a603e4fe33ec592",
+          "bytes": 2819
+        }
+      },
+      {
+        "class": "tests/test_cumulative_rehearsal_inventory_v1.py::CumulativeRehearsalInventoryV1Tests",
+        "methods": 7,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b024e07fc7a6d919/result.json",
+          "sha256": "94823ae0b0e6dfdec1f89b2b0ad226ce44d4d987ad1592d440facb6c239b9ee9",
+          "bytes": 4612
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b024e07fc7a6d919/request.json",
+          "sha256": "5605bf6185cda995c62428545b147a025d0ee4de6e9eeca288aaccc32b0c88a8",
+          "bytes": 4816
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b024e07fc7a6d919/worker.log",
+          "sha256": "56307bba2130c867ec682bf5a19879d69bed0bad149aacb2528095612aec8fec",
+          "bytes": 1330
+        }
+      },
+      {
+        "class": "tests/test_cumulative_rehearsal_process_v1.py::CumulativeRehearsalProcessV1Tests",
+        "methods": 10,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/48c28724e89fd175/result.json",
+          "sha256": "ed435386fa622d306dadaabb8e19d101503bc1c2eb6d7715fd01d8342ea5e79a",
+          "bytes": 5535
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/48c28724e89fd175/request.json",
+          "sha256": "5da67ee0279d9814484148c7fcd650bc797d128b3853a4de7e91e888fe06a6af",
+          "bytes": 6527
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/48c28724e89fd175/worker.log",
+          "sha256": "14f672dd9678dbef92c7b0767a6700350a20d84d97b06520b86b529cdafa2f46",
+          "bytes": 1999
+        }
+      },
+      {
+        "class": "tests/test_cumulative_rehearsal_validator_v1.py::CumulativeRehearsalValidatorV1Tests",
+        "methods": 20,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b9d628d9a0b6ea1a/result.json",
+          "sha256": "4bca65aa9da39abb9f67e7f1711d4dba2103f78aefbe9dcf5d730651d991d5cd",
+          "bytes": 8957
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b9d628d9a0b6ea1a/request.json",
+          "sha256": "209c4865470053d0630fee9a862caa95c8d612857c6a728f90d6028ac61034c0",
+          "bytes": 12729
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/b9d628d9a0b6ea1a/worker.log",
+          "sha256": "28a69c48863e5fd528eb6b5052b9c3dee6d1b413ff16ca8984b62e216ebf065c",
+          "bytes": 4218
+        }
+      },
+      {
+        "class": "tests/test_cumulative_role_originals_v1.py::CumulativeRoleOriginalsV1Tests",
+        "methods": 14,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/a1fcbbee74801f64/result.json",
+          "sha256": "4db1ac1b32a9012a14462f7163321e767bf71dd7f8057690edfd66f32a2acc80",
+          "bytes": 6851
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/a1fcbbee74801f64/request.json",
+          "sha256": "e6788018431fac07f829f8e7adf5ab8118a845c01a304dbf86ea88906b078edc",
+          "bytes": 8677
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/a1fcbbee74801f64/worker.log",
+          "sha256": "b4b7605417d5f6d89ef7853396ab9f0bf5f7fc5be57611397aaa7d4cd83c9f20",
+          "bytes": 2791
+        }
+      },
+      {
+        "class": "tests/test_financial_rehearsal_originals_v1.py::FinancialRehearsalOriginalsV1Tests",
+        "methods": 17,
+        "result": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/04baa46d6d995cb6/result.json",
+          "sha256": "d57df48c3324457a115f72c961bd274e797ed3fd6536492d402c2e61d99ba4ae",
+          "bytes": 7995
+        },
+        "request": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/04baa46d6d995cb6/request.json",
+          "sha256": "9808a0858b02a8101761c7a232f70b6de3b2b0383bf57f6d6d3bc662248b6da1",
+          "bytes": 10986
+        },
+        "log": {
+          "path": "runs/cumulative-rehearsal-reader-offline-2/20261004T093107-49989237/classes/04baa46d6d995cb6/worker.log",
+          "sha256": "54e298232899b518d16bb223f3ffdff8a83aa1f885d2a6e0cbc0acda75bc0ddf",
+          "bytes": 3687
+        }
+      }
+    ],
+    "methods": 81,
+    "workers_started": 6,
+    "resource_budget": 1,
+    "reused_classes": 0,
+    "outcomes": {
+      "passed": 81
+    },
+    "duration_seconds": 24.9771492080763,
+    "stale_inputs": false,
+    "stale_runtime": false
+  },
+  "retained_failure": {
+    "session": "runs/cumulative-rehearsal-reader-offline-1/20261004T092957-9e395bbc",
+    "outcomes": {
+      "not_run": 81
+    },
+    "workers_started": 0,
+    "cause": "Project no-untyped-def rejected missing release parameter annotation.",
+    "correction": "Import Release and annotate release:Release; retained before-root-type-fix-validator.py.",
+    "before_sha256": "3e1295258606cc42b47601b6a3d5f1b9d6850d1d725823a7dbc265cef79b509d",
+    "after_sha256": "eacc385042b1310f29c1056d6ff4e9e0ce3c5f2c3ccec1bc785a0272ce6d143a"
+  },
+  "scope_limits": [
+    "Financial V4 live entry unchanged and remains unavailable.",
+    "No complete positive six-child originals fixture or whole rehearsal was executed.",
+    "History/process fixtures mock Git reads; no Git/process/Docker/provider execution.",
+    "Capsule lifecycle fixtures stub whole audit body and do not qualify a study.",
+    "Historical retained Popen and financial facts trust the pinned host producer; no remote attestation, hostile filesystem ABA immunity, or cross-database atomic snapshot claim.",
+    "All original writers must be closed; active owner cannot be borrowed. External head reopen takes lock/fsync without changing evidence bytes.",
+    "A separate terminal/outcome reader for actual failures/partial runs is not among these13 files and is next work."
+  ],
+  "pending_required": [
+    "Merge reader and physical branches without changing any active frozen execution checkout.",
+    "Reconcile final combined source/configuration and run missing affected producer/regression checks; do not relabel historical results as exact-fingerprint reuse.",
+    "Complete separate terminal/outcome reader preserving all6planned slots.",
+    "Complete actual independent final acceptance with full reviewed scope/prerequisites/promotion originals.",
+    "Execute one complete matching physical rehearsal; component fixtures cannot qualify live entry.",
+    "Complete larger live study, held-out-family confirmation and separate placement-by-transport comparison."
+  ],
+  "new_comparative_quality_samples": 0,
+  "physical_candidate_or_provider_calls": 0,
+  "goal_complete": false
+}

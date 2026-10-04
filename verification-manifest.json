@@ -5157,6 +5157,78 @@
       "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
       "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
       "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
+    },
+    "tests/test_financial_rehearsal_originals_v1.py::FinancialRehearsalOriginalsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_cumulative_role_originals_v1.py::CumulativeRoleOriginalsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_cumulative_rehearsal_process_v1.py::CumulativeRehearsalProcessV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_cumulative_rehearsal_inventory_v1.py::CumulativeRehearsalInventoryV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_cumulative_rehearsal_capsule_v1.py::CumulativeRehearsalCapsuleV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_cumulative_rehearsal_validator_v1.py::CumulativeRehearsalValidatorV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Authenticate original bounded financial, role, process, inventory, Git/history and prospective design evidence; absent or mismatched originals cannot grant rehearsal qualification.",
+      "isolation": "One class-isolated worker with fresh local fixture databases/checkpoints; no candidate, provider or Docker dispatch. Git/process/history reads are explicitly mocked where declared.",
+      "overlap": "Reader controls complement existing producer/financial checks; they do not replace complete physical rehearsal or independent product acceptance.",
+      "distinct_defect": "Self-described or rehashed receipts, unbounded rereads, mismatched role/provider replies, changed design scalar types, missing Git provenance and incomplete actors cannot stand in for original complete evidence.",
+      "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
+      "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
+      "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
     }
   },
   "audit": {
