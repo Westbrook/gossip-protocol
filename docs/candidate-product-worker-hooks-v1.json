@@ -1,0 +1,42 @@
+{
+  "protocol": "candidate-product-worker-hooks-v1",
+  "phases": [
+    "owner_acquired",
+    "after_claim",
+    "before_commit",
+    "after_commit_before_output"
+  ],
+  "maximum_hold_seconds": 90,
+  "hook_import": "gossip_worker_hook_v1.boundary",
+  "root": "/tmp/.gossip-worker-hooks-v1",
+  "candidate_claims_are_authority": false,
+  "phase_semantics": {
+    "owner_acquired": "After durable generation publication and live exclusive owner acquisition; no active claim.",
+    "after_claim": "After selected claim capture/publication, outside any write transaction and before commit work.",
+    "before_commit": "After provisional catalog work, immediately before SQLite commit while transaction is active.",
+    "after_commit_before_output": "After SQLite commit returns, before any once response byte is written."
+  },
+  "unsupported_or_missing": "unavailable; never infer a boundary from elapsed time",
+  "publication": "Write all bytes and fsync a private same-directory file; publish with exclusive hard link and fsync directory; never overwrite event or release.",
+  "hold_expiry": "Each action is bounded by the original host monotonic timestamp before worker start plus 90 seconds until release is acknowledged. Expiry, missing acknowledgement or an exceeded host bound makes affected observations unavailable.",
+  "release_acknowledgement_seconds": 10,
+  "sources": {
+    "hook": "08c68d84c36b6c4a87dba8e20c3bc614e5b2b8f4e114208fe42ff04a68257614",
+    "launcher": "3777551d5950495ce9b21457b61c8b29abdbb3d7804f9af60dcdd1affb4cc080",
+    "sqlite_reader": "5bdd7fbfe4f350a9ae73cfaadf8245998ecb0aab678cc680fe6d20ecb52474ff",
+    "kernel_reader": "e70e9b7d3beff88d5e4ab2234e00322ed8b1a488e31a86f4444dc8942d84eb2b",
+    "event_reader": "ce278ab104dedb3eb04309a64f36e847fbb1358d5b159bd9327665c2c6d40f0f",
+    "release": "ed55663229e1fbb52ff75564b9079f8f8348e1d2f691b404b55603912b79cdd0",
+    "hook_setup": "34b6f3342aae3cc6250b30641f924751ef7da337772c23c1475109240dbfe698",
+    "initial_directories": "5e227a88b23b8d99424b1e1e11c43a3a9fcadead0a6fe00a59cf07a648b0720a"
+  },
+  "limits": {
+    "event_bytes": 16384,
+    "snapshot_bytes": 4194304
+  },
+  "unresolved": [
+    "Markers do not independently prove a matching application claim.",
+    "A SQLite write lock alone does not prove provisional catalog rows were written.",
+    "Lock attribution only qualifies visible POSIX/FLOCK WRITE locks with the event PID."
+  ]
+}

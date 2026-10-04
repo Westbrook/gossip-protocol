@@ -16,6 +16,7 @@ import sqlite3
 import hashlib
 from pathlib import Path
 from typing import Any, Callable, ParamSpec, TypeVar
+from types import ModuleType
 
 from . import candidate_checkpoint_chain_v1 as checkpoint
 from .candidate_checkpoint_head_v1 import ExternalHead
@@ -25,6 +26,9 @@ from . import candidate_http_execution_v4 as http
 from . import candidate_http_observation_source_v1 as http_source
 from . import candidate_product_process_execution_v1 as product
 from . import candidate_product_process_observation_v1 as product_source
+from . import candidate_storage_product_execution_v1 as storage
+from . import candidate_storage_product_observation_v1 as storage_source
+from . import cumulative_observation_recipe_factory_v1 as recipe_factory
 from . import candidate_observation_admission_v1 as admission
 from . import candidate_scope_consumer_v1 as consumer
 from . import cumulative_scope_authority_v1 as scope_authority
@@ -59,16 +63,26 @@ def implementation_sources() -> dict[str, str]:
     root = Path(__file__).resolve().parent.parent
     original_catalog = scope_authority.source.load_catalog(root)
     return _canonical_sources((
-        {'gossip_harness/cumulative_final_acceptance_v1.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
+        {'gossip_harness/cumulative_final_acceptance_v1.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+         'gossip_harness/cumulative_observation_recipe_factory_v1.py': recipe_factory.LOADED_SOURCE_SHA256,
+         'gossip_harness/cumulative_study_controller_v1.py':
+             hashlib.sha256((root / 'gossip_harness/cumulative_study_controller_v1.py').read_bytes()).hexdigest()},
         cli.evaluator_sources(), http.evaluator_sources(), product.evaluator_sources(),
+        storage.evaluator_sources(), storage.profile.definition_sources(),
         cli.cases.definition_sources(), cli.cumulative.definition_sources(), product.core.definition_sources(),
         scope_authority.implementation_sources(), dict(original_catalog.source_pins)))
 
 
 def terminal_implementation_sources() -> dict[str, str]:
     """Missing concrete reader rejects public launch, before any spend."""
+    return _terminal_sources('cumulative_terminal_originals_v1')
+
+
+def _terminal_sources(module_name: str) -> dict[str, str]:
+    require(module_name in ('cumulative_terminal_originals_v1', 'cumulative_terminal_originals_v2'),
+            'Unknown terminal-originals contract')
     try:
-        terminal = importlib.import_module('.cumulative_terminal_originals_v1', __package__)
+        terminal = importlib.import_module('.' + module_name, __package__)
     except ImportError as error:
         raise consumer.AuthorityUnavailable('Concrete terminal-originals reader unavailable') from error
     sources = _canonical_sources((terminal.terminal_reader_sources(),))
@@ -89,7 +103,7 @@ def normalize_authority(operation: Callable[_P, _R]) -> Callable[_P, _R]:
         except (consumer.AuthorityError, consumer.AuthorityUnavailable):
             raise
         except (checkpoint.ChainUnknown, admission.AdmissionUnavailable, cli.ExecutionUnknown,
-                http.ExecutionUnknown, product.ExecutionUnknown, OSError, GitError,
+                http.ExecutionUnknown, product.ExecutionUnknown, storage.ExecutionUnknown, OSError, GitError,
                 subprocess.SubprocessError, sqlite3.DatabaseError) as error:
             raise consumer.AuthorityUnavailable(str(error)) from error
         except (ValueError, KeyError, TypeError) as error:
@@ -125,8 +139,19 @@ class ObservationSpec:
     profile: Any = None
     cumulative_profile: Any = None
     endpoint: Any = None
+    layout_plan: Any = None
+    layout_authority: Any = None
 
     def observation_registration(self) -> admission.ObservationRegistration:
+        if self.kind == 'storage':
+            require(type(self.registration) is storage.StorageRegistration and type(self.policy) is storage.StoragePolicy
+                and type(self.profile) is storage.profile.StorageProductProfile
+                and type(self.layout_plan) is storage.review.LayoutPlan
+                and type(self.layout_authority) is storage.review.StorageReviewAuthority
+                and self.recipe is None and self.cumulative_profile is None, 'Exact storage inputs required')
+            return storage.observation_registration(self.registration)
+        require(self.layout_plan is None and self.layout_authority is None,
+                'Layout authority applies only to the explicit storage family')
         if self.kind == 'cli':
             require(type(self.registration) is cli.ClientRegistration and type(self.policy) is cli.ClientPolicy
                     and self.recipe is None and self.profile is None, 'Exact CLI inputs required')
@@ -154,6 +179,30 @@ class _Enrollment:
     history: dict[str, Any] | None = None
 
 
+@dataclass(frozen=True)
+class _KnownContract:
+    protocol: str
+    plan_type: type
+    scope: ModuleType
+    sources: Callable[[], dict[str, str]]
+    terminal_module: str
+    terminal_sources: Callable[[], dict[str, str]]
+    families: tuple[str, ...]
+
+
+def _known_contract(owner: FinalAcceptance) -> _KnownContract:
+    """Closed version selection; never accept an injected evaluator/backend."""
+    if type(owner) is FinalAcceptance:
+        return _KnownContract(PROTOCOL, StudyPlan, scope_authority, implementation_sources,
+            'cumulative_terminal_originals_v1', terminal_implementation_sources, ('cli', 'http', 'product'))
+    from . import cumulative_final_acceptance_v2 as v2
+    if type(owner) is v2.FinalAcceptanceV2:
+        return _KnownContract(v2.PROTOCOL, v2.StudyPlan, v2.scope_authority, v2.implementation_sources,
+            'cumulative_terminal_originals_v2', v2.terminal_implementation_sources,
+            ('cli', 'http', 'product', 'storage'))
+    raise consumer.AuthorityError('Unknown final acceptance owner version')
+
+
 class FinalAcceptance(consumer.EvidenceAuthority):
     """Own the new acceptance journal, borrow immutable study/scope authorities.
 
@@ -162,23 +211,24 @@ class FinalAcceptance(consumer.EvidenceAuthority):
     proof roots must be disjoint. Owner construction may inspect Docker runtime;
     dispatch() performs real candidate work only when every admission holds.
     """
-    def __init__(self, *, plan: StudyPlan, repository: Path, ledger_identity: dict[str, Any],
+    def __init__(self, *, plan: Any, repository: Path, ledger_identity: dict[str, Any],
                  study_chain: checkpoint.CheckpointChain, study_expected: checkpoint.PrefixCommitment,
                  journal: checkpoint.CheckpointChain, expected: checkpoint.PrefixCommitment,
-                 scope: scope_authority.ScopeRegistrationController,
-                 submissions: tuple[scope_authority.ScopeSubmission, ...]):
-        require(type(plan) is StudyPlan and type(scope) is scope_authority.ScopeRegistrationController,
+                 scope: Any, submissions: tuple[Any, ...]):
+        contract = _known_contract(self)
+        require(type(plan) is contract.plan_type and type(scope) is contract.scope.ScopeRegistrationController,
                 'Actual prospective plan and semantic scope controller required')
+        plan.__post_init__()
         require(all(type(chain) is checkpoint.CheckpointChain and type(chain.authority) is ExternalHead
                     for chain in (study_chain, journal)), 'Durable independently owned proof chains required')
         require(study_chain is not journal and scope.chain is not journal,
                 'Acceptance append journal must be separate from frozen authorities')
-        require(type(submissions) is tuple and all(type(row) is scope_authority.ScopeSubmission for row in submissions),
+        require(type(submissions) is tuple and all(type(row) is contract.scope.ScopeSubmission for row in submissions),
                 'Exact typed scope submissions required')
         require(len({row.subject.trajectory_id for row in submissions}) == len(submissions), 'Duplicate subject submission')
         require(plan.runtime.get('final_acceptance_financial_mode') in ('live', 'fixture'),
                 'Original contract must declare the financial origin for final interpretation')
-        require(plan.runtime.get('final_acceptance_protocol') == PROTOCOL,
+        require(plan.runtime.get('final_acceptance_protocol') == contract.protocol,
                 'Old public-only execution contract cannot adopt final acceptance')
         assert isinstance(journal.authority, ExternalHead)
         require(expected.sequence == expected.raw_file_count == 0,
@@ -190,11 +240,10 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         self.study_chain, self.study_expected = study_chain, study_expected
         self.chain, self.expected, self.records = journal, expected, Records(journal)
         snapshot = scope.open_snapshot()
-        require(type(snapshot) is scope_authority.ScopeSnapshot, 'Exact original scope snapshot required')
-        assert isinstance(snapshot, scope_authority.ScopeSnapshot)
+        require(type(snapshot) is contract.scope.ScopeSnapshot, 'Exact original scope snapshot required')
         self.scope_owner, self.scope_snapshot = scope, snapshot
         self.submissions = {row.subject.trajectory_id: row for row in submissions}
-        self.sources = implementation_sources()
+        self.sources = contract.sources()
         require(all(plan.source_pins.get(name) == pin for name, pin in self.sources.items()),
                 'Adapter and source authorities were not prospectively pinned')
         self.originals: Any = None
@@ -204,18 +253,27 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         self.closed = False
         self.dispatch_halt: dict[str, Any] | None = None
         self._current()
-        self._put('final.contract', {'protocol': PROTOCOL, 'study_sha256': plan.sha256,
+        self._put('final.contract', {'protocol': self.protocol, 'study_sha256': plan.sha256,
             'study_checkpoint': asdict(study_expected), 'scope_checkpoint': self.scope_snapshot.checkpoint,
             'ledger_identity': self.ledger_identity, 'sources': self.sources,
             'scope_subjects': [asdict(row.subject) for row in submissions]})
 
+    @property
+    def protocol(self) -> str:
+        return _known_contract(self).protocol
+
     def _current(self) -> None:
+        contract = _known_contract(self)
+        require(type(self.plan) is contract.plan_type and type(self.scope_owner) is contract.scope.ScopeRegistrationController,
+                'Prospective contract version changed')
+        self.plan.__post_init__()
+        require(self.plan.runtime.get('final_acceptance_protocol') == contract.protocol, 'Final protocol changed')
         require(not self.closed, 'Closed acceptance owner')
         self.chain.validate_boundary(expected=self.expected)
         self.study_chain.validate_boundary(expected=self.study_expected)
         self.scope_snapshot.check_current(self.scope_snapshot.checkpoint)
         self.plan.verify_sources(self.repository)
-        require(implementation_sources() == self.sources, 'Acceptance implementation changed')
+        require(contract.sources() == self.sources, 'Acceptance implementation changed')
         admission.verify_loaded_sources(self.sources)
 
     def _put(self, key: str, value: dict[str, Any]) -> dict[str, Any]:
@@ -225,15 +283,16 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         return out
 
     def _read_terminal(self) -> Any:
+        contract = _known_contract(self)
         try:
-            terminal = importlib.import_module('.cumulative_terminal_originals_v1', __package__)
+            terminal = importlib.import_module('.' + contract.terminal_module, __package__)
         except ImportError as error:
             raise consumer.AuthorityUnavailable('Concrete terminal-originals reader unavailable') from error
-        name = 'gossip_harness/cumulative_terminal_originals_v1.py'
+        name = 'gossip_harness/' + contract.terminal_module + '.py'
         path = self.repository / name
         require(path.is_file() and self.plan.source_pins.get(name) == hashlib.sha256(path.read_bytes()).hexdigest(),
                 'Original terminal reader was not prospectively pinned')
-        terminal_sources = terminal_implementation_sources()
+        terminal_sources = contract.terminal_sources()
         require(type(terminal_sources) is dict and all(self.plan.source_pins.get(name) == pin
                     for name, pin in terminal_sources.items()), 'Full terminal reader closure was not pinned')
         admission.verify_loaded_sources(terminal_sources)
@@ -267,7 +326,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             submission = self.submissions.get(subject.trajectory_id)
             require(submission is None or submission.subject == subject,
                     'Scope submission substituted a final source or requirements subject')
-        verifier = {'protocol': PROTOCOL, 'purpose': 'independent-terminal-originals-verifier',
+        verifier = {'protocol': self.protocol, 'purpose': 'independent-terminal-originals-verifier',
             'study_checkpoint': asdict(self.study_expected), 'originals': _material(originals),
             'subjects': [asdict(subject) for subject in subjects], 'sources': self.sources,
             'acceptance_authority': False}
@@ -283,7 +342,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             verified_raw = self.chain.read(Records.name('final.terminal-verifier'))
             self.freeze = registry.CohortFreeze(subjects, originals.barrier_sha256,
                                                 hashlib.sha256(verified_raw).hexdigest(), True)
-            self._put('final.freeze', {'protocol': PROTOCOL, 'freeze': asdict(self.freeze),
+            self._put('final.freeze', {'protocol': self.protocol, 'freeze': asdict(self.freeze),
                 'barrier_name': originals.barrier_name, 'barrier_position': originals.barrier_position,
                 'original_context_sha256': self.study_expected.context_sha256,
                 'verifier_name': Records.name('final.terminal-verifier')})
@@ -339,6 +398,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
     def _construct(self, spec: ObservationSpec, issued: admission.ObservationAdmission) -> Any:
         common = {'checkpoint_authority': spec.checkpoint_authority, 'delta_root': spec.delta_root,
                   'cleanup_root': spec.cleanup_root, 'endpoint': spec.endpoint, 'mode': 'physical'}
+        if spec.kind == 'storage':
+            return recipe_factory.construct_storage_owner(spec, issued, mode='physical')
         if spec.kind == 'cli':
             return cli.CandidateClientExecution(spec.root, spec.store, spec.registration, spec.policy,
                 admission_authority=issued, cumulative_profile=spec.cumulative_profile, **common)
@@ -350,6 +411,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
     def dispatch(self, spec: ObservationSpec) -> registry.Observation:
         """Run one fresh actual owner; unknown intent cannot be resumed/retried."""
         require(type(spec) is ObservationSpec, 'Exact construction specification required')
+        require(spec.kind in _known_contract(self).families, 'Observation family is not in this contract version')
         if self.dispatch_halt is not None:
             raise consumer.AuthorityUnavailable('Prior physical execution halted further dispatch')
         require(self.records.read('final.assessment') is None, 'Assessment already sealed the observation census')
@@ -368,13 +430,17 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             require(type(authority) is ExternalHead, 'Proof head authority changed')
             assert isinstance(authority, ExternalHead)
             protected.extend(Path(path).resolve() for path in (chain.raw_root, chain.delta_root, authority.root))
+        if spec.kind == 'storage':
+            review_chain = spec.layout_authority.journal
+            require(type(review_chain.authority) is ExternalHead, 'Layout review head authority changed')
+            protected.extend((review_chain.raw_root, review_chain.delta_root, review_chain.authority.root))
         candidate_roots = (spec.root, spec.delta_root, spec.cleanup_root, spec.checkpoint_authority.root)
         require(all(path.is_absolute() and path.resolve() == path for path in candidate_roots)
                 and not spec.root.exists() and not spec.delta_root.exists() and not spec.cleanup_root.exists()
                 and all(not a.is_relative_to(b) and not b.is_relative_to(a) for a in candidate_roots for b in protected),
                 'Fresh execution roots must be outside all original proof roots')
         assert isinstance(self.freeze, registry.CohortFreeze)
-        record = {'protocol': PROTOCOL, 'registration': asdict(registration), 'scope': asdict(provenance),
+        record = {'protocol': self.protocol, 'registration': asdict(registration), 'scope': asdict(provenance),
             'freeze': asdict(self.freeze), 'study_checkpoint': asdict(self.study_expected),
             'kind': spec.kind, 'root': str(spec.root), 'delta_root': str(spec.delta_root),
             'cleanup_root': str(spec.cleanup_root), 'head_root': str(spec.checkpoint_authority.root)}
@@ -387,10 +453,11 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         try:
             owner = self._construct(spec, issued)
             row.owner = owner
-            expected_type = cli.CandidateClientExecution if spec.kind == 'cli' else (
-                http.CandidateHttpExecution if spec.kind == 'http' else product.CandidateHttpExecution)
+            expected_type = storage.CandidateStorageExecution if spec.kind == 'storage' else (
+                cli.CandidateClientExecution if spec.kind == 'cli' else (
+                http.CandidateHttpExecution if spec.kind == 'http' else product.CandidateHttpExecution))
             require(type(owner) is expected_type, 'Factory did not construct the exact physical owner')
-            actual = owner.observation_registration if spec.kind == 'cli' else owner.actual_registration
+            actual = owner.observation_registration if spec.kind in ('cli', 'storage') else owner.actual_registration
             before = owner.checkpoint()
             require(owner.admission is issued and owner.mode == 'physical' and actual == registration
                     and before.sequence == before.raw_file_count == 1,
@@ -400,26 +467,34 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                 'config_sha256': hashlib.sha256(config).hexdigest()})
             require(owner.checkpoint() == before, 'Owner changed before dispatch')
             row.phase = 'bound'
-            self._put(key + '.dispatch', {'protocol': PROTOCOL, 'registration_sha256': digest(asdict(registration)),
+            self._put(key + '.dispatch', {'protocol': self.protocol, 'registration_sha256': digest(asdict(registration)),
                                         'owner_checkpoint': asdict(before)})
             row.phase = 'dispatching'
             history = owner.execute_once()
-            history_type = cli.ClientHistoryResult if spec.kind == 'cli' else (
-                http.HttpHistoryResult if spec.kind == 'http' else product.HttpHistoryResult)
-            require(type(history) is history_type and owner.checkpoint() == history.checkpoint,
-                    'Actual executor history or checkpoint changed')
-            self._history(key, row, history)
-            row.phase = 'observing'
-            if spec.kind == 'cli':
-                verified = cli_source.publish_verifier(owner)
-                bridge = cli_source.ClientObservationSource(owner, verified)
+            bridge: Any
+            if spec.kind == 'storage':
+                row.phase = 'observing'
+                verified = storage_source.publish_verifier(owner)
+                history = recipe_factory.storage_history(owner, history)
+                self._history(key, row, history)
+                bridge = storage_source.StorageObservationSource(owner, verified)
             else:
-                module = http_source if spec.kind == 'http' else product_source
-                bridge = module.HttpObservationSource(owner, owner.checkpoint(), receipt_path=owner.root / 'semantic-verifier.json')
+                history_type = cli.ClientHistoryResult if spec.kind == 'cli' else (
+                    http.HttpHistoryResult if spec.kind == 'http' else product.HttpHistoryResult)
+                require(type(history) is history_type and owner.checkpoint() == history.checkpoint,
+                        'Actual executor history or checkpoint changed')
+                self._history(key, row, history)
+                row.phase = 'observing'
+                if spec.kind == 'cli':
+                    verified = cli_source.publish_verifier(owner)
+                    bridge = cli_source.ClientObservationSource(owner, verified)
+                else:
+                    module = http_source if spec.kind == 'http' else product_source
+                    bridge = module.HttpObservationSource(owner, owner.checkpoint(), receipt_path=owner.root / 'semantic-verifier.json')
             observation = bridge.observation(registration.gate,
                 None if registration.gate.binding.purpose == 'public_release' else self.freeze)
             row.source, row.observation, row.post_checkpoint = bridge, observation, owner.checkpoint()
-            self._put(key + '.verified', {'protocol': PROTOCOL, 'observation': asdict(observation),
+            self._put(key + '.verified', {'protocol': self.protocol, 'observation': asdict(observation),
                 'post_checkpoint': asdict(row.post_checkpoint), 'history': row.history,
                 'intent_sha256': hashlib.sha256(owner.read_authenticated('intent.json')).hexdigest(),
                 'terminal_sha256': hashlib.sha256(owner.read_authenticated('terminal.json')).hexdigest()})
@@ -483,7 +558,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                     if row.phase == 'unavailable' and row.registration.gate.binding.subject.trajectory_id == slot.trajectory],
                 'accepted_against_registry': assessed is not None and assessed.accepted_against_registry})
         self._current_originals()
-        out = {'protocol': PROTOCOL, 'study_sha256': self.plan.sha256, 'planned_trajectories': 6,
+        out = {'protocol': self.protocol, 'study_sha256': self.plan.sha256, 'planned_trajectories': 6,
             'freeze_available': self.freeze is not None, 'slots': results,
             'dispatch_halt': self.dispatch_halt,
             'financial_mode': self.plan.runtime['final_acceptance_financial_mode'],
@@ -512,7 +587,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
 class _Snapshot(consumer.AuthoritySnapshot):
     def __init__(self, owner: FinalAcceptance):
         self.owner, self.expected = owner, owner.expected
-        self._checkpoint = digest({'protocol': PROTOCOL, 'acceptance_context': self.expected.context_sha256,
+        self._checkpoint = digest({'protocol': owner.protocol, 'acceptance_context': self.expected.context_sha256,
             'sources': owner.sources, 'freeze': None if owner.freeze is None else asdict(owner.freeze),
             'study': asdict(owner.study_expected), 'scope': owner.scope_snapshot.checkpoint,
             'observations': {key:None if row.post_checkpoint is None else asdict(row.post_checkpoint)

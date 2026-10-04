@@ -18,8 +18,9 @@ from . import candidate_observation_admission_v1 as admission
 from . import candidate_storage_observer_v1 as storage
 from . import candidate_intake_store_observer_v1 as intake
 from . import project_acceptance_registry_v1 as registry
+from .candidate_storage_product_profile_v1 import encoded, decode
 
-PROTOCOL = "candidate-storage-review-authority-v1"
+PROTOCOL = "candidate-storage-review-authority-v1-ascii-json-v1"
 PURPOSE = "independent_final_m4_storage_layout_and_invocation"
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 DUTIES = (
@@ -109,10 +110,9 @@ class StorageReviewAuthority:
             (enrollment.report_name, enrollment.report_sha256), (enrollment.delivery_name, enrollment.delivery_sha256)):
             raw = self.journal.read(name)
             admission.require(hashlib.sha256(raw).hexdigest() == digest, "Original review bytes differ")
-            from .candidate_http_journal_v3 import decode
             values.append(decode(raw))
         request, report, delivery = values
-        admission.require(admission.encoded(request) == admission.encoded(plan.request()),
+        admission.require(encoded(request) == encoded(plan.request()),
                           "Review request differs from complete exact layout/source/recipe plan")
         admission.require(type(report) is dict and set(report) == {
             "protocol", "purpose", "reviewer_id", "request_sha256", "decisions", "remaining_obligations"}

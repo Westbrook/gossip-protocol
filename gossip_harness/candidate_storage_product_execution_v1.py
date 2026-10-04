@@ -37,12 +37,12 @@ from .gitstore import GitStore
 from .sandbox import DockerValidator
 from . import project_acceptance_registry_v1 as registry
 
-PROTOCOL = "candidate-storage-product-execution-v1"
+PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1"
 TARGET_CONTRACT = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 LIMITS = chain.Limits()
 CHUNK_BYTES = 16 * 1024 * 1024
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
-encoded, digest = admission.encoded, admission.digest
+encoded, digest = profile.encoded, profile.digest
 
 
 class ExecutionError(ValueError):

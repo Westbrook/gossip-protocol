@@ -33,14 +33,14 @@ def enroll(root, plan, *, changes=None, delivery_first=False):
     raw_root, delta_root = root / 'review-raw', root / 'review-deltas'
     head = ExternalHead.create(root / 'review-head', journal_roots=(raw_root, delta_root))
     journal = chain.CheckpointChain.create(raw_root, delta_root, context={'fixture': 'not actual semantic approval'}, authority=head)
-    request = admission.encoded(plan.request())
+    request = review.encoded(plan.request())
     report = {'protocol': review.PROTOCOL, 'purpose': review.PURPOSE, 'reviewer_id': 'fixture-reviewer',
         'request_sha256': execution.sha(request), 'decisions': [{'id': duty, 'decision': 'approved',
             'rationale': 'Fixture linkage only, never a real source review.', 'source_references': ['fixture-only']}
             for duty in review.DUTIES], 'remaining_obligations': ['Everything outside this fixture remains unqualified.']}
     report.update(changes or {})
-    report_raw = admission.encoded(report)
-    delivery = admission.encoded({'protocol': review.PROTOCOL, 'purpose': review.PURPOSE,
+    report_raw = review.encoded(report)
+    delivery = review.encoded({'protocol': review.PROTOCOL, 'purpose': review.PURPOSE,
         'reviewer_id': 'fixture-reviewer', 'request_sha256': execution.sha(request),
         'report_sha256': execution.sha(report_raw), 'origin': 'independently_delivered_host_review'})
     journal.retain('request.json', request)

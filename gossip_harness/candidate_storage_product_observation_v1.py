@@ -22,7 +22,7 @@ from . import project_acceptance_registry_v1 as registry
 from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
 
-PROTOCOL = 'candidate-storage-product-observation-v1'
+PROTOCOL = 'candidate-storage-product-observation-v1-ascii-json-v1'
 VERIFIER_FILE = 'storage-product-verifier.json'
 
 

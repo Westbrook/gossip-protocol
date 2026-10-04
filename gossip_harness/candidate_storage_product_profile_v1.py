@@ -22,8 +22,10 @@ from . import candidate_intake_store_cases_v3 as b02
 from . import candidate_intake_store_observer_v1 as intake_observer
 from . import candidate_observation_admission_v1 as admission
 from . import project_acceptance_registry_v1 as registry
+from . import candidate_http_journal_v3 as journal_json
 
-PROTOCOL = "candidate-storage-product-profile-v1"
+PROTOCOL = "candidate-storage-product-profile-v1-ascii-json-v1"
+JSON_ENCODING_PROTOCOL = "storage-canonical-ascii-json-v1"
 ROOT = Path(__file__).resolve().parents[1]
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 ORIGINAL_CONTRACT = "library-m1-acceptance-inventory-v1.json"
@@ -48,7 +50,7 @@ _MODULES = (
     "candidate_intake_fixtures_v1.py", "candidate_intake_store_observer_v1.py",
     "candidate_intake_store_driver_v1.py", "candidate_intake_store_driver_v2.py", "candidate_intake_store_driver_v3.py",
     "candidate_intake_store_profile_v1.py", "candidate_observation_admission_v1.py",
-    "project_acceptance_registry_v1.py", "candidate_storage_product_profile_v1.py",
+    "project_acceptance_registry_v1.py", "candidate_storage_product_profile_v1.py", "candidate_http_journal_v3.py",
 )
 
 
@@ -63,6 +65,25 @@ def require(condition: bool, message: str) -> None:
 
 def encoded(value: Any) -> bytes:
     return json.dumps(value, sort_keys=True, ensure_ascii=True, separators=(",", ":"), allow_nan=False).encode()
+
+
+
+def decode(raw: bytes) -> Any:
+    """Bounded product-profile JSON; escaped surrogate test data remains data.
+
+    Reuse the frozen lexical/size/depth/node and duplicate/nonfinite guards. The
+    journal's Unicode-scalar restriction intentionally does not apply to these
+    authored invalid-input payloads. No global journal/parser policy is changed.
+    """
+    require(type(raw) is bytes and len(raw) <= journal_json.MAX_RECORD_BYTES,
+            "Storage JSON requires bounded immutable bytes")
+    try:
+        text = raw.decode("utf-8", errors="strict")
+        journal_json._budget(text)
+        return json.loads(text, object_pairs_hook=journal_json._object,
+                          parse_constant=journal_json._constant, parse_float=journal_json._float)
+    except (ValueError, UnicodeError, RecursionError, OverflowError) as error:
+        raise ProfileError("Invalid bounded storage JSON") from error
 
 
 def digest(value: Any) -> str:
@@ -235,7 +256,7 @@ def _profile_bytes(family: str, case_id: str, purpose: str) -> bytes:
                           for row in assertions if applicability == "normative"],
                       "semantic_review_required": True})
     contract = json.loads((ROOT / TARGET_CONTRACT).read_bytes())
-    return encoded({"protocol": PROTOCOL, "family": family, "case_id": case_id,
+    return encoded({"protocol": PROTOCOL, "canonical_json_protocol": JSON_ENCODING_PROTOCOL, "family": family, "case_id": case_id,
         "execution_purpose": purpose, "original_definition_purpose": ORIGINAL_DEFINITION_PURPOSE,
         "original_milestone": "M1", "target_milestone": "M4",
         "original_contract": ORIGINAL_CONTRACT, "original_contract_sha256": ORIGINAL_CONTRACT_SHA256,

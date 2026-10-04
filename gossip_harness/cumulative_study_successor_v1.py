@@ -21,8 +21,9 @@ LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 def validate_successor(plan: StudyPlan, repository: Path) -> dict[str, Any]:
     """Require prior inclusion in the original financial/execution contract."""
-    consumer.require(type(plan) is StudyPlan
-        and plan.runtime.get('final_acceptance_protocol') == final.PROTOCOL
+    consumer.require(type(plan) is StudyPlan, 'Exact V1 prospective study plan required')
+    plan.__post_init__()  # Nested plan dictionaries remain mutable after construction.
+    consumer.require(plan.runtime.get('final_acceptance_protocol') == final.PROTOCOL
         and plan.runtime.get('study_successor_protocol') == PROTOCOL
         and plan.runtime.get('final_acceptance_financial_mode') in ('live', 'fixture'),
         'A historical public-only study cannot be relabeled as this successor')
@@ -76,13 +77,22 @@ def run_final_phase(owner: final.FinalAcceptance, specifications: tuple[final.Ob
     consumer.require(type(owner) is final.FinalAcceptance and type(specifications) is tuple
                      and all(type(item) is final.ObservationSpec for item in specifications),
                      'Exact prospective final owner and execution specifications required')
-    contract: dict[str, Any] = {'protocol': PROTOCOL, 'unverified_contract': True}
+    return _run_final_phase(owner, specifications)
+
+
+def _run_final_phase(owner: final.FinalAcceptance,
+                     specifications: tuple[final.ObservationSpec, ...]) -> dict[str, Any]:
+    # Only the two source-defined public compositions are eligible.
+    protocol, validate = _known_successor(owner)
+    consumer.require(type(specifications) is tuple
+        and all(type(item) is final.ObservationSpec for item in specifications), 'Exact observation roster required')
+    contract: dict[str, Any] = {'protocol': protocol, 'unverified_contract': True}
     try:
-        contract = final.normalize_authority(validate_successor)(owner.plan, owner.repository)
+        contract = final.normalize_authority(validate)(owner.plan, owner.repository)
         final.normalize_authority(owner._put)('successor.contract', {**contract, 'contract_sha256': digest(contract)})
         final.normalize_authority(owner.prepare)()
         registrations = [asdict(final.normalize_authority(spec.observation_registration)()) for spec in specifications]
-        final.normalize_authority(owner._put)('successor.observation-roster', {'protocol': PROTOCOL,
+        final.normalize_authority(owner._put)('successor.observation-roster', {'protocol': protocol,
             'registrations': registrations})
     except (consumer.AuthorityError, consumer.AuthorityUnavailable) as error:
         return _incomplete(owner, contract, [{'gate': None, 'phase': 'pre_dispatch',
@@ -116,7 +126,7 @@ def run_final_phase(owner: final.FinalAcceptance, specifications: tuple[final.Ob
             'status': 'invalid' if isinstance(error, consumer.AuthorityError) else 'unavailable',
             'error': type(error).__name__ + ': ' + str(error)})
         return _incomplete(owner, contract, errors)
-    return {'protocol': PROTOCOL, 'contract_sha256': digest(contract),
+    return {'protocol': protocol, 'contract_sha256': digest(contract),
         'original_execution_contract_sha256': owner.plan.sha256, 'final_phase': assessed,
         'observation_errors': errors, 'accepted': assessed['accepted'] and not errors,
         'completed_and_accepted': assessed['completed_and_accepted'] and not errors}
@@ -124,7 +134,8 @@ def run_final_phase(owner: final.FinalAcceptance, specifications: tuple[final.Ob
 
 def _incomplete(owner: final.FinalAcceptance, contract: dict[str, Any], errors: list[dict[str, Any]]) -> dict[str, Any]:
     """Return all planned slots without treating revoked originals as current."""
-    return {'protocol': PROTOCOL, 'contract_sha256': digest(contract), 'accepted': False,
+    protocol, _ = _known_successor(owner)
+    return {'protocol': protocol, 'contract_sha256': digest(contract), 'accepted': False,
         'completed_and_accepted': False, 'status': 'invalid_evidence' if any(row['status'] == 'invalid' for row in errors)
             else 'unavailable', 'observation_errors': errors,
         'planned_trajectories': [{'trajectory': child.trajectory, 'current_status': 'evidence_unknown',
@@ -132,3 +143,13 @@ def _incomplete(owner: final.FinalAcceptance, contract: dict[str, Any], errors: 
             'last_authenticated_physical_diagnostics': [asdict(row.observation) for row in owner.enrollments.values()
                 if row.observation is not None and row.registration.gate.binding.subject.trajectory_id == child.trajectory]}
             for child in owner.plan.roster.children]}
+
+
+def _known_successor(owner: final.FinalAcceptance) -> tuple[str, Any]:
+    if type(owner) is final.FinalAcceptance:
+        return PROTOCOL, validate_successor
+    from . import cumulative_final_acceptance_v2 as v2
+    from . import cumulative_study_successor_v2 as successor_v2
+    if type(owner) is v2.FinalAcceptanceV2:
+        return successor_v2.PROTOCOL, successor_v2.validate_successor
+    raise consumer.AuthorityError('Unknown final acceptance successor')

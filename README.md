@@ -1279,6 +1279,13 @@ missing or reused evidence. The 4096 aggregate limit is opt-in; per-history limi
 remain unchanged. This is offline structural qualification, and the expanded
 contract still requires a complete matching rehearsal.
 
+The [V2 storage, repaired completion and final evidence integration](docs/cumulative-successor-v2-integration-v1.md)
+passed [278 targeted controls](analysis/cumulative-successor-v2-integration-v1.json)
+after combined review caught a missing shared-controller source dependency. Failed
+attempts and their corrections remain recorded. Required multiworker regression
+classes, worker Docker controls, complete semantic scope and the full matching
+rehearsal remain outstanding; no new comparative model-quality sample is claimed.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

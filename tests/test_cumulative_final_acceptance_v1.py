@@ -293,3 +293,16 @@ class CumulativeFinalAcceptanceV1Tests(unittest.TestCase):
                 plan=replace(self.plan,runtime=runtime,cohort=replace(self.plan.cohort,resource_contract_sha256=digest(limits)))
                 with self.assertRaisesRegex(consumer.AuthorityError,'pairwise disjoint'):
                     successor.run_public_phase(plan,repository=self.repository,mode='fixture')
+
+    def test_v1_rejects_new_storage_family_before_registration_or_construction(self):
+        spec=final.ObservationSpec('storage',self.root/'candidate',self.root/'delta',self.root/'cleanup',None,None,{}, {})
+        with patch.object(self.owner,'_registered_gate',side_effect=AssertionError('No new family admission')):
+            with self.assertRaisesRegex(consumer.AuthorityError,'contract version'):self.owner.dispatch(spec)
+        self.assertEqual(self.owner.protocol,final.PROTOCOL)
+        self.assertIs(type(self.owner.scope_owner),scope.ScopeRegistrationController)
+
+    def test_mutated_v1_runtime_with_stale_resource_hash_cannot_enter_public_runtime(self):
+        self.plan.runtime['final_acceptance_financial_mode']='live'
+        # An effect call would fail its missing mandatory arguments with TypeError.
+        with self.assertRaisesRegex(ValueError,'resource pin differs'):
+            successor.run_public_phase(self.plan,repository=self.repository,mode='live')
