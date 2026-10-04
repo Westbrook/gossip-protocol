@@ -20,6 +20,7 @@ from types import ModuleType
 
 from . import candidate_checkpoint_chain_v1 as checkpoint
 from .candidate_checkpoint_head_v1 import ExternalHead
+from .candidate_source_capture_policy_v1 import SourceCaptureUnavailable
 from . import candidate_client_execution_v5 as cli
 from . import candidate_client_observation_source_v1 as cli_source
 from . import candidate_http_execution_v4 as http
@@ -104,7 +105,7 @@ def normalize_authority(operation: Callable[_P, _R]) -> Callable[_P, _R]:
             raise
         except (checkpoint.ChainUnknown, admission.AdmissionUnavailable, cli.ExecutionUnknown,
                 http.ExecutionUnknown, product.ExecutionUnknown, storage.ExecutionUnknown, OSError, GitError,
-                subprocess.SubprocessError, sqlite3.DatabaseError) as error:
+                subprocess.SubprocessError, sqlite3.DatabaseError, SourceCaptureUnavailable) as error:
             raise consumer.AuthorityUnavailable(str(error)) from error
         except (ValueError, KeyError, TypeError) as error:
             raise consumer.AuthorityError(str(error)) from error
@@ -143,6 +144,13 @@ class ObservationSpec:
     layout_authority: Any = None
 
     def observation_registration(self) -> admission.ObservationRegistration:
+        if self.kind == 'm2':
+            from . import candidate_m2_product_execution_v1 as m2
+            require(type(self.registration) is m2.M2Registration and type(self.policy) is m2.M2Policy
+                and type(self.profile) is m2.profile.M2Profile and type(self.layout_plan) is m2.review.LayoutPlan
+                and type(self.layout_authority) is m2.review.M2ReviewAuthority
+                and self.recipe is None and self.cumulative_profile is None, 'Exact M2 inputs required')
+            return m2.observation_registration(self.registration)
         if self.kind == 'storage':
             require(type(self.registration) is storage.StorageRegistration and type(self.policy) is storage.StoragePolicy
                 and type(self.profile) is storage.profile.StorageProductProfile
@@ -200,6 +208,11 @@ def _known_contract(owner: FinalAcceptance) -> _KnownContract:
         return _KnownContract(v2.PROTOCOL, v2.StudyPlan, v2.scope_authority, v2.implementation_sources,
             'cumulative_terminal_originals_v2', v2.terminal_implementation_sources,
             ('cli', 'http', 'product', 'storage'))
+    from . import cumulative_final_acceptance_v3 as v3
+    if type(owner) is v3.FinalAcceptanceV3:
+        return _KnownContract(v3.PROTOCOL, v3.StudyPlan, v3.scope_authority, v3.implementation_sources,
+            'cumulative_terminal_originals_v2', v3.terminal_implementation_sources,
+            ('cli', 'http', 'product', 'storage', 'm2'))
     raise consumer.AuthorityError('Unknown final acceptance owner version')
 
 
@@ -395,17 +408,32 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                 'Original prospective cross-journal admission changed')
         return row.registration
 
+    def _storage_factory(self) -> ModuleType:
+        return recipe_factory
+
     def _construct(self, spec: ObservationSpec, issued: admission.ObservationAdmission) -> Any:
         common = {'checkpoint_authority': spec.checkpoint_authority, 'delta_root': spec.delta_root,
                   'cleanup_root': spec.cleanup_root, 'endpoint': spec.endpoint, 'mode': 'physical'}
+        if spec.kind == 'm2':
+            from . import cumulative_m2_observation_recipe_v1 as m2_factory
+            return m2_factory.construct_m2_owner(spec, issued, mode='physical')
         if spec.kind == 'storage':
-            return recipe_factory.construct_storage_owner(spec, issued, mode='physical')
+            return self._storage_factory().construct_storage_owner(spec, issued, mode='physical')
         if spec.kind == 'cli':
             return cli.CandidateClientExecution(spec.root, spec.store, spec.registration, spec.policy,
                 admission_authority=issued, cumulative_profile=spec.cumulative_profile, **common)
         module = http if spec.kind == 'http' else product
         return module.CandidateHttpExecution(spec.root, spec.store, spec.registration, spec.recipe, spec.policy,
             profile=spec.profile, observation_admission=issued, **common)
+
+    def _protected_roots(self) -> list[Path]:
+        protected: list[Path] = []
+        for chain in (self.chain, self.study_chain, self.scope_owner.chain):
+            authority = chain.authority
+            require(type(authority) is ExternalHead, 'Proof head authority changed')
+            assert isinstance(authority, ExternalHead)
+            protected.extend(Path(path).resolve() for path in (chain.raw_root, chain.delta_root, authority.root))
+        return protected
 
     @normalize_authority
     def dispatch(self, spec: ObservationSpec) -> registry.Observation:
@@ -424,13 +452,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                 'Actual external checkpoint and protected Git store required')
         slot = next(row for row in self.originals.slots if row.trajectory == registration.gate.binding.subject.trajectory_id)
         require(str(spec.store.path.resolve()) == slot.final_source['repository'], 'Another final Git store supplied')
-        protected: list[Path] = []
-        for chain in (self.chain, self.study_chain, self.scope_owner.chain):
-            authority = chain.authority
-            require(type(authority) is ExternalHead, 'Proof head authority changed')
-            assert isinstance(authority, ExternalHead)
-            protected.extend(Path(path).resolve() for path in (chain.raw_root, chain.delta_root, authority.root))
-        if spec.kind == 'storage':
+        protected = self._protected_roots()
+        if spec.kind in ('storage','m2'):
             review_chain = spec.layout_authority.journal
             require(type(review_chain.authority) is ExternalHead, 'Layout review head authority changed')
             protected.extend((review_chain.raw_root, review_chain.delta_root, review_chain.authority.root))
@@ -453,11 +476,16 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         try:
             owner = self._construct(spec, issued)
             row.owner = owner
-            expected_type = storage.CandidateStorageExecution if spec.kind == 'storage' else (
-                cli.CandidateClientExecution if spec.kind == 'cli' else (
-                http.CandidateHttpExecution if spec.kind == 'http' else product.CandidateHttpExecution))
+            expected_type: type[Any]
+            if spec.kind == 'm2':
+                from . import candidate_m2_product_execution_v1 as m2
+                expected_type = m2.CandidateM2Execution
+            else:
+                expected_type = storage.CandidateStorageExecution if spec.kind == 'storage' else (
+                    cli.CandidateClientExecution if spec.kind == 'cli' else (
+                    http.CandidateHttpExecution if spec.kind == 'http' else product.CandidateHttpExecution))
             require(type(owner) is expected_type, 'Factory did not construct the exact physical owner')
-            actual = owner.observation_registration if spec.kind in ('cli', 'storage') else owner.actual_registration
+            actual = owner.observation_registration if spec.kind in ('cli', 'storage', 'm2') else owner.actual_registration
             before = owner.checkpoint()
             require(owner.admission is issued and owner.mode == 'physical' and actual == registration
                     and before.sequence == before.raw_file_count == 1,
@@ -472,10 +500,18 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             row.phase = 'dispatching'
             history = owner.execute_once()
             bridge: Any
-            if spec.kind == 'storage':
+            if spec.kind == 'm2':
+                from . import candidate_m2_product_observation_v1 as m2_source
+                from . import cumulative_m2_observation_recipe_v1 as m2_factory
+                row.phase = 'observing'
+                verified = m2_source.publish_verifier(owner)
+                history = m2_factory.m2_history(owner, history)
+                self._history(key, row, history)
+                bridge = m2_source.M2ObservationSource(owner, verified)
+            elif spec.kind == 'storage':
                 row.phase = 'observing'
                 verified = storage_source.publish_verifier(owner)
-                history = recipe_factory.storage_history(owner, history)
+                history = self._storage_factory().storage_history(owner, history)
                 self._history(key, row, history)
                 bridge = storage_source.StorageObservationSource(owner, verified)
             else:
@@ -566,10 +602,16 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             'accepted': self.dispatch_halt is None and self.freeze is not None and all(row['accepted_against_registry'] for row in results),
             'completed_and_accepted': self.dispatch_halt is None and self.freeze is not None and all(row['accepted_against_registry']
                 and row['terminal_outcome'] == 'completed' for row in results),
-            'missing_producers': ['original SCOPE/ADMISSION/CONTROL qualification', 'original promotion/CAS/review authority']}
+            'missing_producers': self.missing_producers(), 'authority_diagnostics': self.authority_diagnostics()}
         self._put('final.assessment', out)
         self._current_originals()
         return out
+
+    def authority_diagnostics(self) -> list[dict[str, Any]]:
+        return []
+
+    def missing_producers(self) -> list[str]:
+        return ['original SCOPE/ADMISSION/CONTROL qualification', 'original promotion/CAS/review authority']
 
     def close(self) -> None:
         errors = []

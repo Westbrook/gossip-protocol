@@ -152,4 +152,8 @@ def _known_successor(owner: final.FinalAcceptance) -> tuple[str, Any]:
     from . import cumulative_study_successor_v2 as successor_v2
     if type(owner) is v2.FinalAcceptanceV2:
         return successor_v2.PROTOCOL, successor_v2.validate_successor
+    from . import cumulative_final_acceptance_v3 as v3
+    from . import cumulative_study_successor_v3 as successor_v3
+    if type(owner) is v3.FinalAcceptanceV3:
+        return successor_v3.PROTOCOL, successor_v3.validate_successor
     raise consumer.AuthorityError('Unknown final acceptance successor')

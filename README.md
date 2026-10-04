@@ -1291,6 +1291,13 @@ fixes the sandbox staging prerequisite and passed [227 affected checks](analysis
 Actual owner execution, complete scope/final-factory composition and the matching
 full rehearsal remain required; these checks add no model-quality samples.
 
+The [original authority and final acceptance integration](docs/original-authority-v3-integration-v1.md)
+passed [517 affected offline checks](analysis/original-authority-v3-integration-v1.json), including 204 previously deferred checks.
+It connects exact original review, Git/financial promotion and M2/storage recipe
+routes. Complete semantic scope, physical qualification and full rehearsal remain
+required. A separately frozen physical run failed its work-window guard; the
+original failure and independently verified cleanup are retained.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
