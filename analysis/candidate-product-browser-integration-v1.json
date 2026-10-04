@@ -1,0 +1,119 @@
+{
+  "protocol": "candidate-product-browser-integration-checkpoint-v1",
+  "base_commit": "038837fb6cb2993f2e2e38989cb5556453f47e09",
+  "status": "offline-integrated; physical-qualification-failed",
+  "offline": {
+    "path": "runs/browser-root-offline-1/20261004T143040-d421b45b",
+    "summary_sha256": "315e08456447969f2fd9cef84cb62de601f53ce9aafa80abf2fb0520a38f919d",
+    "inputs_sha256": "1df9e1ac8abd4ae16b21959558ff4a3b0c5b63c10b3d2b45a93f58ab7afaf3b1",
+    "status": "passed",
+    "outcomes": {
+      "passed": 97
+    },
+    "selected_methods": 97,
+    "static": "passed",
+    "duration_seconds": 42.543971959501505,
+    "receipt_reuse": false,
+    "source_inputs": 686,
+    "current_source_matches": true,
+    "original_final_runtime_matches": true
+  },
+  "physical": {
+    "path": "runs/browser-root-physical-1/20261004T143914-73e681cf",
+    "summary_sha256": "6317d7df172ea4d913093f0e4702afd224cb898d7d18835a5c6769dcbc9ee012",
+    "inputs_sha256": "1df9e1ac8abd4ae16b21959558ff4a3b0c5b63c10b3d2b45a93f58ab7afaf3b1",
+    "status": "failed",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 6
+    },
+    "selected_methods": 7,
+    "static": "passed",
+    "duration_seconds": 228.83756204135716,
+    "receipt_reuse": false,
+    "source_inputs": 686,
+    "current_source_matches": true,
+    "original_final_runtime_matches": true
+  },
+  "scope": {
+    "prospective_reference_histories": 4,
+    "prospective_negative_controls": 3,
+    "candidate_scope": "M1 declared DOM/UI over an authenticated HTTP bridge",
+    "whole_product_qualified": false,
+    "twenty_role_live_comparison": false,
+    "new_model_quality_samples": 0
+  },
+  "observed_failure": {
+    "control": [
+      "D01",
+      "m1-browser-high-epoch",
+      "stale-commit",
+      "known-mutation-discrepancy"
+    ],
+    "assertion": "Expected m1-browser-high-epoch:a004:mutation discrepancy was absent.",
+    "started_actions": 1,
+    "planned_actions": 6,
+    "authenticated_sent_requests": 2,
+    "control_requests": 0,
+    "node_returncode": 2,
+    "browser_errors": [
+      "BrokenPipeError:[Errno 32] Broken pipe"
+    ],
+    "ordinary_terminal_received": false,
+    "browser_close_acknowledged": false,
+    "engine_cleanup_verified": true,
+    "known_discrepancies": [],
+    "unavailable_selectors": [
+      "m1-browser-high-epoch:a000:dom",
+      "m1-browser-high-epoch:a000:api",
+      "m1-browser-high-epoch:a001:dom",
+      "m1-browser-high-epoch:a001:mutation",
+      "m1-browser-high-epoch:a001:api",
+      "m1-browser-high-epoch:a002:dom",
+      "m1-browser-high-epoch:a002:mutation",
+      "m1-browser-high-epoch:a002:api",
+      "m1-browser-high-epoch:a003:dom",
+      "m1-browser-high-epoch:a003:mutation",
+      "m1-browser-high-epoch:a003:api",
+      "m1-browser-high-epoch:a004:dom",
+      "m1-browser-high-epoch:a004:mutation",
+      "m1-browser-high-epoch:a004:api",
+      "m1-browser-high-epoch:a005:dom",
+      "m1-browser-high-epoch:a005:api",
+      "m1-browser-high-epoch:mechanics"
+    ],
+    "underlying_node_exit_cause": "Not established by retained originals; source diagnosis is in progress.",
+    "not_a_model_failure": true
+  },
+  "evidence": {
+    "completion_census": {
+      "path": "runs/browser-root-physical-1/20261004T143914-73e681cf/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-xg1rkd7g/completion-census.json",
+      "sha256": "60e2a1a3c21a1a8bb33298ab444677bf426ad20eebe75acf24ddbc4b864ee4a1"
+    },
+    "observation": {
+      "path": "runs/browser-root-physical-1/20261004T143914-73e681cf/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-xg1rkd7g/original-observation.json",
+      "sha256": "6a3a8c5535c7bc393090692cc61e07a64b4548711dac84eb58f589028db1aeff"
+    },
+    "terminal": {
+      "path": "runs/browser-root-physical-1/20261004T143914-73e681cf/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-xg1rkd7g/journal/terminal.json",
+      "sha256": "0cce19825a1a89c354e838bdefba74759b999755976535be3d87c51bf736f284"
+    }
+  },
+  "remaining": [
+    "Diagnose and correct actual browser driver/bridge failure; preserve this original.",
+    "Qualify all seven controls against the corrected prospective source and execution contract.",
+    "Complete remaining evaluator scope and original authorities, matching rehearsal, live comparisons and independent task-family confirmation."
+  ],
+  "retry_policy": "No automatic retry or deadline widening.",
+  "publication": "Local checkpoint; public-push approval remains pending.",
+  "independent_original_audit": {
+    "path": "runs/browser-integration-retention-1/physical-d01-original-audit-20261004-v1.json",
+    "sha256": "5cbbee2dd391d2292047d9260c118a01ddfb9e1f18f2602bdede5a8665ae317b",
+    "raw_chain_files": 245,
+    "raw_chain_bytes": 942963,
+    "engine_cleanup": "four containers and one volume removed",
+    "chromium_close": "unconfirmed",
+    "finding": "The intended mutated page was served, but a004 was never reached. The owner abandons the read loop on BrokenPipe and closes stdout/stderr without final drain, leaving the underlying driver exception unretained.",
+    "timing_limit": "Observed owner request/reply intervals are about45 seconds; helper executions about0.2seconds. Exact slow subcall timing and Node exit exception are not established."
+  }
+}
