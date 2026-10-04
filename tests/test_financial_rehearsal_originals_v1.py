@@ -234,3 +234,39 @@ class FinancialRehearsalOriginalsV1Tests(Fixture, unittest.TestCase):
         changed = replace(originals.terminal_replies[0], state='failed')
         with self.assertRaisesRegex(FinancialError, 'role reply differs'):
             audit_financial_originals(replace(originals, terminal_replies=(changed,)))
+
+    def test_actual_sql_profiles_preserve_bare_approval_and_enriched_observation(self):
+        from gossip_harness.cumulative_rehearsal_validator_v1 import _checked_profiles
+        from gossip_harness.financial_rehearsal_originals_v1 import readonly_database
+        from gossip_harness.peer_store_v1 import strict_loads
+        originals=self.originals()
+        with readonly_database(originals.ledger_identity) as db:
+            row=db.execute('SELECT config FROM financial_cohorts_v2 WHERE cohort=?',(originals.cohort,)).fetchone()
+            config=strict_loads(row['config'],max_bytes=2_100_000)
+        permit=config['operator_permit']
+        self.assertNotEqual(permit['profiles'],config['profiles'])
+        self.assertEqual(set(config['profiles']['mini'])-set(permit['profiles']['mini']),{'transport_identity','observation_kind'})
+        _checked_profiles(config,permit)
+
+    def test_actual_sql_profile_cannot_drop_enrichment_or_change_transport(self):
+        from copy import deepcopy
+        from gossip_harness.cumulative_rehearsal_validator_v1 import _checked_profiles
+        originals=self.originals()
+        config=deepcopy(originals.config)
+        config['profiles']=deepcopy(config['operator_permit']['profiles'])
+        with self.assertRaisesRegex(FinancialError,'Enriched financial profiles'):
+            _checked_profiles(config,config['operator_permit'])
+        config=deepcopy(originals.config)
+        config['profiles']['mini']['transport_identity']='foreign'
+        with self.assertRaisesRegex(FinancialError,'Enriched financial profiles'):
+            _checked_profiles(config,config['operator_permit'])
+
+    def test_actual_sql_profile_cannot_relabel_fixture_as_provider(self):
+        from copy import deepcopy
+        from gossip_harness.cumulative_rehearsal_validator_v1 import _checked_profiles
+        originals=self.originals()
+        config=deepcopy(originals.config)
+        config['observation_kind']='provider'
+        config['profiles']['mini']['observation_kind']='provider'
+        with self.assertRaisesRegex(FinancialError,'transport differs'):
+            _checked_profiles(config,config['operator_permit'])

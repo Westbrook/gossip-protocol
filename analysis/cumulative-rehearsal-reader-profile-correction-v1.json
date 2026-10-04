@@ -1,0 +1,76 @@
+{
+  "protocol": "cumulative-rehearsal-reader-profile-correction-v1",
+  "status": "targeted_84_controls_passed_whole_rehearsal_unqualified",
+  "predecessor_commit": "3d9c3c721e270244b786db3556dd9326ca4b63b0",
+  "predecessor_checkpoint": {
+    "path": "analysis/cumulative-rehearsal-reader-integration-v1.json",
+    "sha256": "9e681803c96d9c1138e4d41efbe799ef687a6c70a9605c16e483eca13e5baf4d",
+    "bytes": 12700
+  },
+  "finding": "81 component controls and first source review missed the producer enriching approved bare profiles with transport_identity and observation_kind; direct equality rejected actual originals. A real SQL producer composition exposed the mismatch before branch publication.",
+  "correction": "Require canonical equality with exact mode-specific V3 enrichment while continuing to bind the bare approval manifest to the study hash.",
+  "new_controls": 3,
+  "source_review": {
+    "path": "runs/cumulative-rehearsal-reader-profile-correction-1/source-review.json",
+    "sha256": "a2117ad7207f343b623c2b7644b08c1126fface1ed1fba82785b0be6492483bc",
+    "bytes": 17738
+  },
+  "author_handoff": {
+    "path": "runs/cumulative-rehearsal-reader-profile-correction-1/gossip-strict-reader-profile-delta-handoff-1.json",
+    "sha256": "4061436b9c508a9a20e007aab2514481d3b9958f84b7a4e9f258d80d3c58b636",
+    "bytes": 5070
+  },
+  "changed_files": [
+    {
+      "path": "gossip_harness/cumulative_rehearsal_validator_v1.py",
+      "sha256": "f61bfa300e2dde8ed4a0024274781fbded8e3593e956a1466a460c2fb27c9786",
+      "bytes": 53377
+    },
+    {
+      "path": "tests/test_financial_rehearsal_originals_v1.py",
+      "sha256": "aba5bf9be2ea136d7a85fe5a5ca7cd473a77b302a28b2147dd19e043dc31ce01",
+      "bytes": 15536
+    }
+  ],
+  "verification": {
+    "summary": {
+      "path": "runs/cumulative-rehearsal-reader-offline-3/20261004T095033-992dd09d/summary.json",
+      "sha256": "d0dfa6b6aaf2ade1c5d63d23486fcbc05e25595152d184129e4438c517355095",
+      "bytes": 53858
+    },
+    "inputs": {
+      "path": "runs/cumulative-rehearsal-reader-offline-3/20261004T095033-992dd09d/inputs.json",
+      "sha256": "7e6521cfee7ca9e4828383bde633e2c7f063c68d94dca007979a6634996c965a",
+      "bytes": 70170
+    },
+    "fingerprint": "75f0d378d829623d00d4bffebbd61cec9f2677cd96d5f7271bef8c9146c91804",
+    "source_inputs": 594,
+    "current_source_mismatches": [],
+    "static": {
+      "duration_seconds": 1.9442802919074893,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "outcomes": {
+      "passed": 84
+    },
+    "duration_seconds": 24.616928208619356,
+    "reused_classes": 0,
+    "classes": 6,
+    "skips": 0,
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    }
+  },
+  "preserved_evidence": "Previous81-pass receipt and source review remain unchanged; this correction records their missed composition defect. Failed type gate and author missing-dependency failure remain retained.",
+  "limits": [
+    "No complete positive six-child rehearsal or live quality observation.",
+    "Targeted reader tests include actual disposable financial SQL originals; higher-level process/Git/capsule components use stubs.",
+    "Combined physical branch integration, producer regressions and complete rehearsal remain required.",
+    "No provider calls or production ledger access."
+  ],
+  "new_comparative_quality_samples": 0,
+  "goal_complete": false
+}

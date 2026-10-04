@@ -522,6 +522,22 @@ def _faults(originals: _Originals, plan: StudyPlan, index: int, process: Process
             'Actual successful recovery partition ended before its registered duration')
 
 
+def _checked_profiles(config: dict, permit: dict) -> None:
+    """Bind V3's enriched financial profiles to the bare approved manifests."""
+    from .peer_financial_authority_v3 import FIXTURE_TRANSPORT, LIVE_TRANSPORT
+    require(config['mode'] in ('fixture', 'live') and permit['mode'] == config['mode'],
+            'Financial/permit observation mode differs')
+    observation = 'provider' if config['mode'] == 'live' else 'simulated'
+    transport = LIVE_TRANSPORT if config['mode'] == 'live' else FIXTURE_TRANSPORT
+    require(config['observation_kind'] == observation and config['contract']['transport_identity'] == transport
+            and type(permit['profiles']) is dict and bool(permit['profiles'])
+            and all(type(profile) is dict and set(profile) == {'manifest', 'timeout'} for profile in permit['profiles'].values()),
+            'Original bare financial profile or transport differs')
+    expected = {name: {**profile, 'transport_identity': transport, 'observation_kind': observation}
+                for name, profile in permit['profiles'].items()}
+    require(digest(config['profiles']) == digest(expected), 'Enriched financial profiles differ from approved bare manifests')
+
+
 def checked_design_envelope(envelope: dict, plan: StudyPlan) -> tuple[dict, ...]:
     """Validate structure/linkage; caller must independently authenticate bytes."""
     require(type(envelope) is dict and set(envelope) == {'protocol', 'execution_contract_sha256',
@@ -602,6 +618,7 @@ def audit_cohort_originals(chain: CheckpointChain, expected: PrefixCommitment, *
                 'Original database identity is outside complete child inventory')
         config, permit, contract = (originals.get(rkey + suffix) for suffix in
                                     ('.financial-config', '.permit', '.financial-contract'))
+        _checked_profiles(config, permit)
         require(manifest['config'] == config and manifest['config_sha256'] == digest(config)
                 and config['operator_permit'] == permit and config['operator_permit_sha256'] == digest(permit)
                 and config['contract'] == contract and permit['cohort_contract_sha256'] == digest(contract)
@@ -610,7 +627,6 @@ def audit_cohort_originals(chain: CheckpointChain, expected: PrefixCommitment, *
                 and digest(permit['execution_design']) == digest(expected_designs[index])
                 and permit['execution_design_sha256'] == digest(permit['execution_design'])
                 and permit['execution_design']['terminal_roster'] == plan.roster.record()
-                and permit['profiles'] == config['profiles']
                 and digest(permit['profiles']) == plan.cohort.model_profiles_sha256
                 and permit['max_workers'] == plan.executor_slots
                 and contract['journal_root'] == str(root / 'provider-journals'),
@@ -671,7 +687,7 @@ def audit_cohort_originals(chain: CheckpointChain, expected: PrefixCommitment, *
                     and role_config['mesh']['cohort_id'] == child.cohort
                     and role_config['mesh']['execution_contract_sha256'] == plan.sha256
                     and role_config['mesh']['root'] == str(root / 'roles' / actor / 'mesh')
-                    and role_config['crash_once'] is (plan.cohort.trajectories[index].block == 'compound_recovery' and actor.endswith('.B01')), 
+                    and role_config['crash_once'] is (plan.cohort.trajectories[index].block == 'compound_recovery' and actor.endswith('.B01')),
                     'Actual role limits or placement differ')
             role = audit_role_originals(actor=actor, role_config=role_config,
                 role_root=Path(manifest['original_paths']['roles'][actor]),
