@@ -27,6 +27,7 @@ from .gitstore import GitError
 from . import candidate_storage_prestart_v1 as prestart
 
 PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1'
+MAPPED_PROTOCOL = PROTOCOL + '-' + profile.finite.M2_MAPPING
 VERIFIER_FILE = 'm2-product-verifier.json'
 
 
@@ -137,13 +138,13 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
     intent = _json(intent_raw)
     freeze = owner.retained_freeze()
     owner.current(freeze)
-    require(intent['protocol'] == execution.PROTOCOL and intent['registration'] == json.loads(execution.encoded(asdict(owner.observation_registration)))
+    require(intent['protocol'] == owner.binding.protocol and intent['registration'] == json.loads(execution.encoded(asdict(owner.observation_registration)))
         and intent['original_binding'] == json.loads(execution.encoded(asdict(owner.binding)))
         and intent['source_sha256'] == owner.binding.source_sha256
         and intent['ordered_phases'] == list(owner.profile.phases), 'Original intent identity differs')
     terminal = None if not owner.has_retained('terminal.json') else _json(owner.read_authenticated('terminal.json'))
     if terminal is not None:
-        require(terminal['protocol'] == execution.PROTOCOL and terminal['intent_sha256'] == execution.sha(intent_raw)
+        require(terminal['protocol'] == owner.binding.protocol and terminal['intent_sha256'] == execution.sha(intent_raw)
             and terminal['source_sha256'] == owner.binding.source_sha256
             and terminal['native_source_sha256'] == owner.binding.native_source_sha256
             and terminal['execution_id'] == intent['execution_id'] and terminal['case_id'] == owner.binding.case_id
@@ -329,7 +330,8 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
     final_staging = owner.has_retained('staging-final.json') and _json(owner.read_authenticated('staging-final.json')) == expected_stage
     mechanics = bool(completed_session and cleaned and final_staging and not unavailable and terminal is not None
         and not terminal['infrastructure'] and all(row['capture_authenticated'] for row in phase_facts))
-    result = {'protocol': PROTOCOL, 'execution_protocol': execution.PROTOCOL,
+    result = {'protocol': PROTOCOL if owner.profile.mapping_profile is None else MAPPED_PROTOCOL,
+        'execution_protocol': owner.binding.protocol,
         'execution_id': intent['execution_id'], 'registration': asdict(owner.observation_registration),
         'original_binding': asdict(owner.binding), 'original_intent_sha256': execution.sha(intent_raw),
         'original_terminal_sha256': None if terminal is None else execution.sha(owner.read_authenticated('terminal.json')),
@@ -348,14 +350,14 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
     return result
 
 
-def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
-    value = profile.profile_for(case_id, purpose)
+def selector_catalog(case_id: str, *, purpose: str, mapping_profile: str | None = None) -> dict[str, Any]:
+    value = profile.profile_for(case_id, purpose, mapping_profile=mapping_profile)
     rows = [{**row, 'value_domain': ['pass', 'fail', 'unavailable'],
         'physical_capture_qualified': False, 'whole_source_unit_qualified': False} for row in value.selectors()]
     rows.append({'case_id': execution.mechanics_case_id(value), 'pointer': '/mechanics/status',
         'value_domain': ['passed', 'infrastructure_error'], 'source_unit_ids': [],
         'scope': 'All authored actions, exact owner/capture/session/cleanup only'})
-    return {'protocol': PROTOCOL, 'family': value.family, 'history_id': case_id,
+    result = {'protocol': PROTOCOL, 'family': value.family, 'history_id': case_id,
         'original_definition_purpose': profile.ORIGINAL_DEFINITION_PURPOSE,
         'execution_purpose': purpose, 'target_contract_sha256': execution.TARGET_CONTRACT,
         'target_milestone': 'M4', 'profile_sha256': value.sha256,
@@ -364,6 +366,9 @@ def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
         'selectors': rows, 'required_unfinished_coverage': list(profile.LIMITATIONS),
         'capabilities': ['public-contract', 'direct-api', 'reviewed-sqlite-capture'],
         'scope_factory_registered': False, 'semantic_authority': False}
+    if value.mapping_profile is not None:
+        result.update(protocol=MAPPED_PROTOCOL, mapping_profile=value.mapping_profile)
+    return result
 
 
 def publish_verifier(owner: execution.CandidateM2Execution) -> execution.chain.PrefixCommitment:

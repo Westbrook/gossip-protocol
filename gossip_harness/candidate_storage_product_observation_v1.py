@@ -272,20 +272,24 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
         'cohort_freeze': None if freeze is None else asdict(freeze),
         'production_scope_authority': False, 'independent_semantic_scope_review_supplied': False,
         'whole_project_acceptance': False}
+    if execution.mapping_profile_for(owner.binding.protocol) is not None:
+        result['protocol'] += '-finite-b02-mapping-v1'
+        result['mapping_profile'] = execution.mapping_profile_for(owner.binding.protocol)
     owner.current(freeze)
     require(owner.checkpoint() == before, 'Original storage journal changed during projection')
     return result
 
 
 def selector_catalog(family: str, case_id: str, *, purpose: str,
-                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None) -> dict[str, Any]:
+                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None,
+                     mapping_profile: str | None = None) -> dict[str, Any]:
     """Closed prospective selectors, with authored partial source-unit facets.
 
     This supplies concrete compiler review input; installing the new storage
     factory into the complete ScopePlan authority remains an explicit versioned
     integration step. It does not self-enroll as a semantic reviewer.
     """
-    value = profile.profile_for(family, case_id, purpose)
+    value = profile.profile_for(family, case_id, purpose, mapping_profile=mapping_profile)
     rows = []
     for row in value.record()['diagnostics']:
         rows.append({**row, 'case_id': row['check_id'],
@@ -295,7 +299,7 @@ def selector_catalog(family: str, case_id: str, *, purpose: str,
     rows.append({'case_id': execution.mechanics_case_id(value), 'applicability': 'normative',
         'observation_pointer': '/mechanics/status', 'value_domain': ['passed', 'infrastructure_error'],
         'source_unit_facets': [], 'scope': 'Owned capture/session/cleanup mechanics only; no semantic clause inferred'})
-    result = {'protocol': PROTOCOL, 'family': family, 'history_id': case_id,
+    result: dict[str, Any] = {'protocol': PROTOCOL, 'family': family, 'history_id': case_id,
         'original_definition_purpose': profile.ORIGINAL_DEFINITION_PURPOSE,
         'execution_purpose': purpose, 'target_contract_sha256': execution.TARGET_CONTRACT,
         'target_milestone': 'M4', 'profile_sha256': value.sha256,
@@ -307,6 +311,10 @@ def selector_catalog(family: str, case_id: str, *, purpose: str,
         require(type(capture_policy) is execution.source_capture.BatchCapturePolicy, 'Exact capture policy required')
         result.update(protocol=PROTOCOL + '-git-source-batch-v1',
             source_capture=capture_policy.record(), execution_protocol=execution.BATCH_PROTOCOL)
+    if mapping_profile is not None:
+        result['protocol'] += '-finite-b02-mapping-v1'
+        result['mapping_profile'] = mapping_profile
+        result['execution_protocol'] = execution.protocol_for(mapping_profile, capture_policy)
     return result
 
 

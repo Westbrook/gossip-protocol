@@ -47,7 +47,8 @@ MALFORMED = (('duplicate', b'{"x":1,"x":2}'), ('nonfinite', b'{"x":NaN}'),
 
 
 def implementation_sources() -> dict[str, str]:
-    names = ('cumulative_prerequisite_qualification_v1.py', 'cumulative_final_acceptance_v1.py',
+    names = ('cumulative_finite_mapping_v1.py', 'cumulative_rehearsal_codec_v1.py',
+        'cumulative_prerequisite_qualification_v1.py', 'cumulative_final_acceptance_v1.py',
         'cumulative_final_acceptance_v2.py', 'cumulative_final_acceptance_v3.py',
         'cumulative_scope_source_v1.py', 'cumulative_scope_source_v2.py', 'cumulative_scope_authority_v1.py',
         'cumulative_scope_authority_v2.py', 'cumulative_scope_source_v3.py', 'cumulative_scope_authority_v3.py', 'candidate_release_execution_v1.py',

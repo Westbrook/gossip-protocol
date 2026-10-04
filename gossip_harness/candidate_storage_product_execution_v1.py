@@ -41,6 +41,9 @@ from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1"
 BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
+MAPPED_PROTOCOL = PROTOCOL + "-finite-b02-mapping-v1"
+MAPPED_BATCH_PROTOCOL = MAPPED_PROTOCOL + "-git-source-batch-v1"
+EXECUTION_PROTOCOLS = (PROTOCOL, BATCH_PROTOCOL, MAPPED_PROTOCOL, MAPPED_BATCH_PROTOCOL)
 TARGET_CONTRACT = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 LIMITS = chain.Limits()
 CHUNK_BYTES = 16 * 1024 * 1024
@@ -78,13 +81,29 @@ def evaluator_sources() -> dict[str, str]:
     root = Path(__file__).resolve().parent
     result = {'gossip_harness/' + name: sha((root / name).read_bytes()) for name in sorted(names)}
     result.update(source_capture.evaluator_sources())
+    result.update(profile.finite.sources())
     admission.verify_loaded_sources(result)
     return result
 
 
 def capture_policy_for(protocol: str) -> source_capture.BatchCapturePolicy | None:
-    require(protocol in (PROTOCOL, BATCH_PROTOCOL), 'Unknown storage source-capture protocol')
-    return None if protocol == PROTOCOL else source_capture.BatchCapturePolicy()
+    require(type(protocol) is str and protocol in EXECUTION_PROTOCOLS, 'Unknown storage source-capture protocol')
+    return None if protocol in (PROTOCOL, MAPPED_PROTOCOL) else source_capture.BatchCapturePolicy()
+
+
+def mapping_profile_for(protocol: str) -> str | None:
+    require(type(protocol) is str and protocol in EXECUTION_PROTOCOLS, 'Unknown storage mapping protocol')
+    return profile.finite.STORAGE_MAPPING if protocol in (MAPPED_PROTOCOL, MAPPED_BATCH_PROTOCOL) else None
+
+
+def protocol_for(mapping_profile: str | None, capture_policy: source_capture.BatchCapturePolicy | None) -> str:
+    require(mapping_profile is None or type(mapping_profile) is str and mapping_profile == profile.finite.STORAGE_MAPPING,
+            'Unknown storage mapping profile')
+    require(capture_policy is None or type(capture_policy) is source_capture.BatchCapturePolicy,
+            'Exact closed source-capture policy required')
+    if mapping_profile is None:
+        return PROTOCOL if capture_policy is None else BATCH_PROTOCOL
+    return MAPPED_PROTOCOL if capture_policy is None else MAPPED_BATCH_PROTOCOL
 
 
 def capture_source(store: GitStore, commit_oid: str, *,
@@ -126,13 +145,24 @@ class StorageBinding:
     protocol: str = PROTOCOL
 
     def __post_init__(self) -> None:
-        require(self.protocol in (PROTOCOL, BATCH_PROTOCOL) and self.milestone == 'M4'
+        require(self.protocol in EXECUTION_PROTOCOLS and self.milestone == 'M4'
             and self.requirements_sha256 == TARGET_CONTRACT, 'Explicit current final-M4 contract required')
         require(self.family in ('b01', 'b02') and self.purpose in registry.PURPOSES, 'Product family/purpose required')
+        require(mapping_profile_for(self.protocol) is None or self.family == 'b02' and self.purpose == 'independent_acceptance',
+                'Mapped storage requires B02 independent acceptance')
         for name, value in asdict(self).items():
             if name.endswith('_sha256'):
                 registry.sha256(value)
         registry.identifier(self.case_id)
+
+
+def profile_for_binding(binding: StorageBinding) -> profile.StorageProductProfile:
+    require(type(binding) is StorageBinding, 'Exact storage binding required')
+    value = profile.profile_for(binding.family, binding.case_id, binding.purpose,
+        mapping_profile=mapping_profile_for(binding.protocol))
+    require(binding.profile_sha256 == value.sha256 and binding.definition_sha256 == digest(value.record()),
+            'Stored binding differs from exact closed profile')
+    return value
 
 
 def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runtime: dict[str, Any],
@@ -141,13 +171,14 @@ def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runt
     require(type(review_authority) is review.StorageReviewAuthority, 'Exact original layout authority required')
     provenance = review_authority.provenance(plan)
     review_sha256 = review_authority.enrollment.report_sha256
-    actual = profile.profile_for(value.family, value.case_id, purpose=value.purpose)
+    actual = profile.reconstruct(value)
     require(value == actual, 'Exact source-derived storage profile required')
     native = (b01 if value.family == 'b01' else b02).source_sha256(files)
-    require(type(policy) is StoragePolicy and type(plan) is review.LayoutPlan
+    require(type(policy) is StoragePolicy and review.accepted_layout_plan(plan)
         and plan.source_sha256 == admission.source_sha256(files) and plan.native_source_sha256 == native
         and plan.family == value.family and plan.case_id == value.case_id and plan.profile_sha256 == value.sha256
-        and plan.purpose == value.purpose,
+        and plan.purpose == value.purpose
+        and getattr(plan, 'mapping_profile', None) == profile.mapping_profile_for(actual),
         'Source, original driver identity, profile and reviewed layout differ')
     require(capture_policy is None or type(capture_policy) is source_capture.BatchCapturePolicy,
             'Exact closed source-capture policy required')
@@ -166,7 +197,7 @@ def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runt
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
         digest(limits), digest({'seed': policy.seed}),
-        protocol=PROTOCOL if capture_policy is None else BATCH_PROTOCOL)
+        protocol=protocol_for(profile.mapping_profile_for(actual), capture_policy))
 
 
 def mechanics_case_id(value: Any) -> str:
@@ -174,7 +205,7 @@ def mechanics_case_id(value: Any) -> str:
 
 
 def gate_for(subject: registry.Subject, binding: StorageBinding, *, gate_id: str) -> registry.Gate:
-    value = profile.profile_for(binding.family, binding.case_id, purpose=binding.purpose)
+    value = profile_for_binding(binding)
     require(type(binding) is StorageBinding and binding.profile_sha256 == value.sha256
         and subject.source_sha256 == binding.source_sha256 and subject.milestone == 'M4'
         and subject.requirements_sha256 == TARGET_CONTRACT, 'Prospective subject/profile differs')
@@ -536,6 +567,11 @@ class CandidateStorageExecution:
         self._owner()
         require(evaluator_sources() == self.sources, 'Storage evaluator changed')
         require(self.capture_policy == capture_policy_for(self.binding.protocol), 'Source-capture policy changed')
+        if mapping_profile_for(self.binding.protocol) is not None:
+            require(self.profile == profile_for_binding(self.binding)
+                and review.accepted_layout_plan(self.plan)
+                and getattr(self.plan, 'mapping_profile', None) == mapping_profile_for(self.binding.protocol),
+                'Current mapped owner profile/layout differs from registered protocol')
         tree, files = capture_source(self.store, self.registration.commit_oid, policy=self.capture_policy)
         require(tree == self.tree and files == self.files, 'Final Git source changed')
         require(self.review_authority.authenticate(self.plan) == self.review_sha256

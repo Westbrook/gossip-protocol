@@ -38,6 +38,7 @@ from . import candidate_storage_prestart_v1 as prestart
 from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = 'candidate-m2-product-execution-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1'
+MAPPED_PROTOCOL = PROTOCOL + '-' + profile.finite.M2_MAPPING
 TARGET_CONTRACT = transport.TARGET_CONTRACT
 FAMILY = 'm2-direct-api'
 SOURCE_CAPTURE_POLICY = source_capture.BatchCapturePolicy()
@@ -52,6 +53,7 @@ _verify_regular_tree = transport._verify_regular_tree
 
 def evaluator_sources() -> dict[str, str]:
     result = transport.evaluator_sources()
+    result.update(profile.finite.sources())
     result.update(source_capture.evaluator_sources())
     names: tuple[str, ...] = ('candidate_m2_product_execution_v1.py', 'candidate_m2_product_profile_v1.py',
              'candidate_m2_product_observation_v1.py', 'candidate_m2_review_authority_v1.py',
@@ -106,13 +108,27 @@ class M2Binding:
     protocol: str = PROTOCOL
 
     def __post_init__(self) -> None:
-        require(self.protocol == PROTOCOL and self.milestone == 'M4'
+        require(self.protocol in (PROTOCOL, MAPPED_PROTOCOL) and self.milestone == 'M4'
             and self.requirements_sha256 == TARGET_CONTRACT, 'Explicit final-M4 contract required')
         require(self.family == FAMILY and self.purpose in registry.PURPOSES, 'Closed M2 family/purpose required')
         for name, value in asdict(self).items():
             if name.endswith('_sha256'):
                 registry.sha256(value)
         registry.identifier(self.case_id)
+
+
+def mapping_profile_for_protocol(protocol: str) -> str | None:
+    require(type(protocol) is str and protocol in (PROTOCOL, MAPPED_PROTOCOL), 'Closed M2 execution protocol required')
+    return None if protocol == PROTOCOL else profile.finite.M2_MAPPING
+
+
+def profile_for_binding(binding: M2Binding) -> profile.M2Profile:
+    require(type(binding) is M2Binding, 'Exact M2 binding required')
+    value = profile.profile_for(binding.case_id, binding.purpose,
+        mapping_profile=mapping_profile_for_protocol(binding.protocol))
+    require(value.sha256 == binding.profile_sha256 and digest(value.record()) == binding.definition_sha256,
+            'M2 mapping marker/profile/definition differs')
+    return value
 
 
 def fixture_identity(case_id: str) -> str:
@@ -123,16 +139,17 @@ def fixture_identity(case_id: str) -> str:
 
 def binding_for(files: dict[str, bytes], value: profile.M2Profile, policy: M2Policy, runtime: dict[str, Any],
                 plan: review.LayoutPlan, *, review_authority: review.M2ReviewAuthority) -> M2Binding:
-    require(type(value) is profile.M2Profile and type(policy) is M2Policy
-        and type(plan) is review.LayoutPlan and type(review_authority) is review.M2ReviewAuthority,
+    require(profile.accepted_profile(value) and type(policy) is M2Policy
+        and review.accepted_layout_plan(plan) and type(review_authority) is review.M2ReviewAuthority,
         'Exact M2 profile, policy and original layout authority required')
     provenance = review_authority.provenance(plan)
-    actual = profile.profile_for(value.case_id, purpose=value.purpose)
+    actual = profile.reconstruct(value)
     require(value == actual, 'Exact source-derived M2 profile required')
     native = profile.source_sha256(files)
     require(plan.source_sha256 == admission.source_sha256(files) and plan.native_source_sha256 == native
         and plan.family == FAMILY and plan.case_id == value.case_id and plan.profile_sha256 == value.sha256
-        and plan.purpose == value.purpose and plan.schedule == 'ordinary_public_operations',
+        and plan.purpose == value.purpose and plan.mapping_profile == value.mapping_profile
+        and plan.schedule == 'ordinary_public_operations',
         'Source, native identity, profile, purpose or independently reviewed layout differs')
     return M2Binding(admission.source_sha256(files), TARGET_CONTRACT, 'M4', value.purpose,
         FAMILY, value.case_id, native, digest(value.record()), value.sha256, fixture_identity(value.case_id),
@@ -144,7 +161,7 @@ def binding_for(files: dict[str, bytes], value: profile.M2Profile, policy: M2Pol
             'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES, 'prestart_policy': prestart.definition(),
             'capture_bytes': b02.MAX_CAPTURE_BYTES, 'original_stream_bytes': b02.MAX_STREAM_BYTES,
             'action_count': len(value.phases), 'cleanup': asdict(cleanup.CleanupLimits())}),
-        digest({'seed': policy.seed}))
+        digest({'seed': policy.seed}), protocol=PROTOCOL if value.mapping_profile is None else MAPPED_PROTOCOL)
 
 
 def mechanics_case_id(value: profile.M2Profile) -> str:
@@ -153,7 +170,7 @@ def mechanics_case_id(value: profile.M2Profile) -> str:
 
 def gate_for(subject: registry.Subject, binding: M2Binding, *, gate_id: str) -> registry.Gate:
     require(type(binding) is M2Binding, 'Exact M2 binding required')
-    value = profile.profile_for(binding.case_id, purpose=binding.purpose)
+    value = profile_for_binding(binding)
     require(binding.profile_sha256 == value.sha256 and subject.source_sha256 == binding.source_sha256
         and subject.milestone == 'M4' and subject.requirements_sha256 == TARGET_CONTRACT,
         'Prospective subject/profile differs')
@@ -161,7 +178,7 @@ def gate_for(subject: registry.Subject, binding: M2Binding, *, gate_id: str) -> 
     return registry.Gate(gate_id, value.requirement_ids, roster,
         registry.Binding(subject, digest({'profile': value.record(), 'ordered_cases': roster}),
             binding.evaluator_sha256, binding.runtime_sha256, binding.environment_sha256,
-            binding.limits_sha256, binding.seed_sha256, PROTOCOL, binding.purpose))
+            binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose))
 
 
 @dataclass(frozen=True, slots=True)
@@ -284,7 +301,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
                  admission_authority: admission.ObservationAdmission, checkpoint_authority: chain.HeadAuthority,
                  delta_root: Path, cleanup_root: Path, endpoint: Any = None, mode: str = 'physical',
                  expected_checkpoint: chain.PrefixCommitment | None = None):
-        require(type(registration) is M2Registration and type(value) is profile.M2Profile, 'Exact M2 registration/profile required')
+        require(type(registration) is M2Registration and profile.accepted_profile(value), 'Exact M2 registration/profile required')
         require(mode in ('physical', 'fixture') and type(policy) is M2Policy, 'Exact owner mode/policy required')
         require(type(review_authority) is review.M2ReviewAuthority
             and type(admission_authority) is admission.ObservationAdmission, 'Actual review and prospective admission required')
@@ -323,7 +340,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
             require(self.binding == registration.binding, 'Complete registered M2 binding differs')
             self.observation_registration = observation_registration(registration)
             require(self.admission.registration == self.observation_registration, 'Admission belongs to another M2 execution')
-            self.config = {'protocol': PROTOCOL, 'mode': mode, 'root': str(self.root), 'delta_root': str(self.delta_root),
+            self.config = {'protocol': self.binding.protocol, 'mode': mode, 'root': str(self.root), 'delta_root': str(self.delta_root),
                 'cleanup_root': str(self.cleanup_root), 'repository': str(store.path.resolve()), 'registration': asdict(registration),
                 'profile': value.record(), 'plan': asdict(plan), 'review_sha256': self.review_sha256,
                 'review_provenance': review_authority.provenance(plan),
@@ -331,7 +348,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
                 'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
-            context = {'protocol': PROTOCOL, 'config_sha256': digest(self.config),
+            context = {'protocol': self.binding.protocol, 'config_sha256': digest(self.config),
                 'source_sha256': self.binding.source_sha256, 'purpose': self.binding.purpose,
                 'original_binding_sha256': digest(asdict(self.binding))}
             existed = self.root.exists()
@@ -349,6 +366,8 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
 
     def current(self, freeze: registry.CohortFreeze | None) -> None:
         self._owner()
+        require(self.profile == profile_for_binding(self.binding)
+            and self.plan.mapping_profile == self.profile.mapping_profile, 'Original M2 mapping profile differs')
         require(evaluator_sources() == self.sources, 'M2 evaluator changed')
         tree, files = capture_git_source(self.store, self.registration.commit_oid)
         require(tree == self.tree and files == self.files, 'Final Git source changed')
@@ -364,7 +383,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
         self._freeze = self.admission.before_intent(self.observation_registration)
         self.current(self._freeze)
         execution_id = 'm2-product-' + uuid.uuid4().hex
-        intent = {'protocol': PROTOCOL, 'execution_id': execution_id,
+        intent = {'protocol': self.binding.protocol, 'execution_id': execution_id,
             'source_sha256': self.binding.source_sha256, 'original_binding': asdict(self.binding),
             'registration': asdict(self.observation_registration),
             'cohort_freeze': None if self._freeze is None else asdict(self._freeze),
@@ -570,7 +589,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
         assert self.journal is not None
         if self.journal.uncertain:
             raise ExecutionUnknown('Original M2 journal became uncertain; redispatch forbidden') from primary
-        terminal = {'protocol': PROTOCOL, 'intent_sha256': sha(self.read_authenticated('intent.json')),
+        terminal = {'protocol': self.binding.protocol, 'intent_sha256': sha(self.read_authenticated('intent.json')),
             'execution_id': intent['execution_id'], 'case_id': case, 'family': self.binding.family,
             'source_sha256': self.binding.source_sha256, 'native_source_sha256': self.binding.native_source_sha256,
             'commands': list(commands.records), 'infrastructure': errors,

@@ -38,14 +38,14 @@ def _derive(store: GitStore, registration: storage.M2Registration, policy: stora
             value: profile.M2Profile, runtime: dict[str, Any], plan: review.LayoutPlan,
             authority: review.M2ReviewAuthority) -> dict[str, Any]:
     require(type(store) is GitStore and type(registration) is storage.M2Registration
-        and type(policy) is storage.M2Policy and type(value) is profile.M2Profile
-        and type(plan) is review.LayoutPlan and type(authority) is review.M2ReviewAuthority,
+        and type(policy) is storage.M2Policy and profile.accepted_profile(value)
+        and review.accepted_layout_plan(plan) and type(authority) is review.M2ReviewAuthority,
         'Concrete M2 source, recipe and original layout authority required')
     require(store.head() == registration.commit_oid == plan.commit_oid,
             'Recipe source is not the current protected final Git head')
     tree, files = storage.capture_git_source(store, registration.commit_oid)
     require(tree == registration.tree_oid == plan.tree_oid, 'Recipe final Git tree differs')
-    original_profile = profile.profile_for(value.case_id, value.purpose)
+    original_profile = profile.reconstruct(value)
     require(original_profile == value, 'Recipe profile differs from source-authored definition')
     original_binding = storage.binding_for(files, value, policy, runtime, plan, review_authority=authority)
     require(original_binding == registration.binding, 'Complete recipe binding differs')
@@ -121,15 +121,16 @@ class ProspectiveM2Recipe:
 def build_m2_recipe(store: GitStore, subject: registry.Subject, *, case_id: str,
         purpose: str, policy: storage.M2Policy, runtime: dict[str, Any],
         layout_plan: review.LayoutPlan, layout_authority: review.M2ReviewAuthority,
-        gate_id: str, repetition_id: str, cohort_trajectory_ids: tuple[str, ...]) -> ProspectiveM2Recipe:
+        gate_id: str, repetition_id: str, cohort_trajectory_ids: tuple[str, ...],
+        mapping_profile: str | None = None) -> ProspectiveM2Recipe:
     """Create the complete versioned recipe from original inputs, never a verdict."""
     require(type(store) is GitStore and type(subject) is registry.Subject
-        and type(layout_plan) is review.LayoutPlan and type(layout_authority) is review.M2ReviewAuthority,
+        and review.accepted_layout_plan(layout_plan) and type(layout_authority) is review.M2ReviewAuthority,
         'Exact final source subject and original layout authority required')
     require(type(cohort_trajectory_ids) is tuple and len(cohort_trajectory_ids) == 6
         and len(set(cohort_trajectory_ids)) == 6 and subject.trajectory_id in cohort_trajectory_ids,
         'Exact six distinct prospective trajectory IDs required')
-    value = profile.profile_for(case_id, purpose)
+    value = profile.profile_for(case_id, purpose, mapping_profile=mapping_profile)
     tree, files = storage.capture_git_source(store, layout_plan.commit_oid)
     binding = storage.binding_for(files, value, policy, runtime, layout_plan, review_authority=layout_authority)
     gate = storage.gate_for(subject, binding, gate_id=gate_id)
@@ -150,7 +151,7 @@ def construct_m2_owner(spec: ObservationSpec, issued: admission.ObservationAdmis
     require(type(spec) is ObservationSpec and spec.kind == 'm2' and mode in ('physical', 'fixture'),
             'Exact M2 specification and explicit construction mode required')
     require(type(spec.registration) is storage.M2Registration and type(spec.policy) is storage.M2Policy
-        and type(spec.profile) is profile.M2Profile and type(spec.layout_plan) is review.LayoutPlan
+        and profile.accepted_profile(spec.profile) and review.accepted_layout_plan(spec.layout_plan)
         and type(spec.layout_authority) is review.M2ReviewAuthority
         and spec.recipe is None and spec.cumulative_profile is None, 'Exact closed M2 construction inputs required')
     registered = storage.observation_registration(spec.registration)

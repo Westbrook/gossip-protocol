@@ -337,7 +337,9 @@ class HttpObservationSource:
             "physical_execution_reused": False, "whole_project_acceptance": False,
             "held_out_claim": False}
         if owner.profile.mapping_profile is not None:
-            record.update(protocol=protocol + "-map-a-v1", mapping_profile=owner.profile.mapping_record())
+            suffix = ("-finite-readbacks-v1" if owner.profile.mapping_profile == execution.map_a.HTTP_READBACK_MAPPING
+                      else "-map-a-v1")
+            record.update(protocol=protocol + suffix, mapping_profile=owner.profile.mapping_record())
         raw = execution.encoded(record)
         if owner.has_authenticated(self.receipt_path.name):
             execution.require(owner.read_authenticated(self.receipt_path.name) == raw,

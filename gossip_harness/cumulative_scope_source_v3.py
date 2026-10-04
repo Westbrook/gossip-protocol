@@ -92,8 +92,9 @@ def m2_slice(registration: Any) -> ExecutableSlice:
     require(type(registration) is execution.M2Registration, 'Exact M2 prospective registration required')
     normalized = execution.observation_registration(registration)
     binding = registration.binding
-    value = profile.profile_for(binding.case_id, binding.purpose)
-    catalog_record = observer.selector_catalog(binding.case_id, purpose=binding.purpose)
+    value = execution.profile_for_binding(binding)
+    catalog_record = observer.selector_catalog(binding.case_id, purpose=binding.purpose,
+        mapping_profile=value.mapping_profile)
     sources = execution.evaluator_sources()
     admission.verify_loaded_sources(sources)
     require(binding.definition_sha256 == execution.digest(value.record()) == catalog_record['definition_sha256']
@@ -211,4 +212,3 @@ def assemble_declaration(catalog: SourceCatalog, cohort: compiler.CohortDesign,
             unit.ownership_reason))
     return compiler.Declaration(catalog.inventory.sha256, tuple(plans), tuple(suites), tuple(gates),
                                 tuple(edges), purposes, compatibility, cohort, capacity_profile=capacity_profile)
-

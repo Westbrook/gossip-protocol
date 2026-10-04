@@ -45,7 +45,7 @@ def _derive(store: GitStore, registration: storage.StorageRegistration, policy: 
             authority: review.StorageReviewAuthority) -> dict[str, Any]:
     require(type(store) is GitStore and type(registration) is storage.StorageRegistration
         and type(policy) is storage.StoragePolicy and type(value) is profile.StorageProductProfile
-        and type(plan) is review.LayoutPlan and type(authority) is review.StorageReviewAuthority
+        and review.accepted_layout_plan(plan) and type(authority) is review.StorageReviewAuthority
         and type(runtime) is dict,
         'Concrete storage source, recipe and original layout authority required')
     require(store.head() == registration.commit_oid == plan.commit_oid,
@@ -54,7 +54,7 @@ def _derive(store: GitStore, registration: storage.StorageRegistration, policy: 
     capture_record = _policy_record(selected)
     tree, files = storage.capture_source(store, registration.commit_oid, policy=selected)
     require(tree == registration.tree_oid == plan.tree_oid, 'Recipe final Git tree differs')
-    original_profile = profile.profile_for(value.family, value.case_id, value.purpose)
+    original_profile = storage.profile_for_binding(registration.binding)
     require(original_profile == value, 'Recipe profile differs from source-authored definition')
     original_binding = storage.binding_for(files, value, policy, runtime, plan,
         review_authority=authority, capture_policy=selected)
@@ -117,16 +117,17 @@ def build_storage_recipe(store: GitStore, subject: registry.Subject, *, family: 
         purpose: str, policy: storage.StoragePolicy, runtime: dict[str, Any],
         layout_plan: review.LayoutPlan, layout_authority: review.StorageReviewAuthority,
         gate_id: str, repetition_id: str, cohort_trajectory_ids: tuple[str, ...],
-        capture_policy: source_capture.BatchCapturePolicy | None) -> ProspectiveStorageRecipe:
+        capture_policy: source_capture.BatchCapturePolicy | None,
+        mapping_profile: str | None = None) -> ProspectiveStorageRecipe:
     """Build from exact original inputs and an explicit batch-or-legacy choice."""
     require(type(store) is GitStore and type(subject) is registry.Subject
-        and type(layout_plan) is review.LayoutPlan and type(layout_authority) is review.StorageReviewAuthority,
+        and review.accepted_layout_plan(layout_plan) and type(layout_authority) is review.StorageReviewAuthority,
         'Exact final source subject and original layout authority required')
     require(type(cohort_trajectory_ids) is tuple and len(cohort_trajectory_ids) == 6
         and len(set(cohort_trajectory_ids)) == 6 and subject.trajectory_id in cohort_trajectory_ids,
         'Exact six distinct prospective trajectory IDs required')
     _policy_record(capture_policy)
-    value = profile.profile_for(family, case_id, purpose)
+    value = profile.profile_for(family, case_id, purpose, mapping_profile=mapping_profile)
     tree, files = storage.capture_source(store, layout_plan.commit_oid, policy=capture_policy)
     binding = storage.binding_for(files, value, policy, runtime, layout_plan,
         review_authority=layout_authority, capture_policy=capture_policy)

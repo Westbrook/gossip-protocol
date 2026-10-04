@@ -1,0 +1,102 @@
+{
+  "protocol": "finite-mapping-failed-attempt-audit-v1",
+  "runs": [
+    {
+      "run": "runs/finite-mapping-combined-offline-1/20261004T174531-14f1e90f",
+      "summary_sha256": "cfbe06baae19fbae08631c75f7fc8b5234b0e963db1b804344db3a84555007e8",
+      "status": "failed",
+      "static": "failed",
+      "selected": 999,
+      "outcomes": {
+        "not_run": 999
+      },
+      "duration_seconds": 6.003780458122492,
+      "runtime_matches": true,
+      "inputs_stable_at_execution": true,
+      "authenticated_original_job_files": 0,
+      "negatives": []
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-2/20261004T174733-b6de9aee",
+      "summary_sha256": "762aade2df220ca1909260aa7140b5990c7b49f10e9f2de16c6386dac7f2ccee",
+      "status": "failed",
+      "static": "passed",
+      "selected": 999,
+      "outcomes": {
+        "passed": 652,
+        "not_run": 346,
+        "error": 1
+      },
+      "duration_seconds": 184.7975251255557,
+      "runtime_matches": true,
+      "inputs_stable_at_execution": true,
+      "authenticated_original_job_files": 58,
+      "negatives": [
+        {
+          "id": "tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests.test_mismatched_definition_and_evaluator_reject_before_slice_creation",
+          "status": "error",
+          "evidence_sha256": "f145d585c3dde732b35afd0ddd6b658dc331bba7f65d953335c90ea4a9cc9456",
+          "log_sha256": "3c9343fd4418ff769ef683747c93efec55279b26bbbd1809b99e632d75ba3402"
+        }
+      ]
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-3/20261004T175330-691b59db",
+      "summary_sha256": "ddb64fd4a9699fe14e420055bb0ecbd1d20e250d7dc0cdfbe4a3c5c0ec12fbcf",
+      "status": "failed",
+      "static": "passed",
+      "selected": 49,
+      "outcomes": {
+        "passed": 44,
+        "failed": 1,
+        "not_run": 3,
+        "error": 1
+      },
+      "duration_seconds": 107.79625637456775,
+      "runtime_matches": true,
+      "inputs_stable_at_execution": true,
+      "authenticated_original_job_files": 7,
+      "negatives": [
+        {
+          "id": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests.test_real_recipe_binding_scope_final_spec_codec_and_fixture_owner_keep_mapping",
+          "status": "failed",
+          "evidence_sha256": "c9ab5823939986d40e02309fa2dce28fdc6f07cac79ea22416ba7f69dc976b4c",
+          "log_sha256": "8f0706e004a591709d3837ba20b04e589371828680c9331257244df49e0e2f91"
+        },
+        {
+          "id": "tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests.test_b02_capsule_bound_input_cold_named_types_and_missing_scope_refusal",
+          "status": "error",
+          "evidence_sha256": "dfc3e40fec47c17478be3de8308a2dac9d3e964cddb14b7974a98cbc9f21f4dd",
+          "log_sha256": "8cc161a1e9d89661132aa6d13b7310087ae325932d6725d3b78217a9be81f5ed"
+        }
+      ]
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-4/20261004T180002-c1267e6d",
+      "summary_sha256": "2f841ccd59a95408d4b5773ee148048c33ff13b33404aaab16452f250d747730",
+      "status": "failed",
+      "static": "passed",
+      "selected": 10,
+      "outcomes": {
+        "passed": 9,
+        "error": 1
+      },
+      "duration_seconds": 86.20276250038296,
+      "runtime_matches": true,
+      "inputs_stable_at_execution": true,
+      "authenticated_original_job_files": 2,
+      "negatives": [
+        {
+          "id": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests.test_unpaired_surrogate_roundtrip_preserves_original_input_and_mapping",
+          "status": "error",
+          "evidence_sha256": "58e084b3a89e4902a8f99c969fcfc87f14e8fe3e988bdd00283f49b4f392c8fa",
+          "log_sha256": "28ae29c34404fbc51f94525224262c841a3022a48da188474758b6572edb0e1d"
+        }
+      ]
+    }
+  ],
+  "audit_only": true,
+  "new_execution": false,
+  "current_source_reuse_claimed": false,
+  "interpretation": "All four original runs remain failed. Counts and retained original result/log files reconciled; later fixes do not convert these into passing evidence."
+}

@@ -1,0 +1,288 @@
+{
+  "protocol": "finite-mapping-offline-qualification-v1",
+  "recorded_at": "2026-10-04T18:42:46.994432+00:00",
+  "source_base": "767abd989ca3081be04fa169948b187289cf79a8",
+  "status": "Targeted offline qualification passed; full semantic approval, physical qualification and matching whole rehearsal remain unproven.",
+  "installation": {
+    "path": "runs/finite-mapping-integration-1/installation.json",
+    "sha256": "24eee7d0b6576cdfe1acc819ab413177e4f0b08e473d2ae59f902d04b3e1801b"
+  },
+  "changes": [
+    "Closed140allocations:116HTTP across38histories/13partial units and24B02 across3partial units;21additional B02 A03/A04/A06 edges. This is association coverage, not complete-unit approval.",
+    "M2 mapping adds8and removes20precise associations while preserving12histories,224actions and140observations.",
+    "Mapping and purpose identities flow through profile/executor/observer, scope, recipe, codec, cold-original and final/prerequisite guards. Missing mandatory authority still refuses acceptance.",
+    "38new methods in6manifest classes, new strict type root,3annotation-only fixes and test-fixture corrections; prior failures retained."
+  ],
+  "preserved_census": {
+    "source_units": 312,
+    "histories": 602,
+    "product_requirements": 123,
+    "prerequisites": 3,
+    "authorities": 22,
+    "gap_duties": 188
+  },
+  "source_and_config_files": [
+    {
+      "path": "gossip_harness/candidate_http_execution_v4.py",
+      "sha256": "e742e37487bf2ab1139f246baf8006b607ff95b67903529a6d3b4511708fc37f"
+    },
+    {
+      "path": "gossip_harness/candidate_http_observation_source_v1.py",
+      "sha256": "508cfa0ec7bf53d55c296607bc7dc861cfd9a265dbcd16c0f364ae8910cdcc8a"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_execution_v1.py",
+      "sha256": "8a55c35fee3b2af92a510eef43a1cbe36b00ae0f72a43bb71a89f4d188ecebb2"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_observation_v1.py",
+      "sha256": "418db9ac8e8eec5e99de7b682e309c64f8dc28ff337d42be3e76c39ab76be8b0"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_profile_v1.py",
+      "sha256": "2450f8e4ed4406c2944dafb8292fad95c18946db369c8a1e28726b138a9e59e6"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_review_authority_v1.py",
+      "sha256": "5b5db401132f91dce38741a551b0be434604149f4ff19c13d13b07cdaa5d03a4"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "d0f5becc1d5f6283dc3b65f093965d6e87fde24e71ed025aee4844f3baefba51"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "sha256": "0960c8e0584a8bdf73e797f58f62aefdace58406bbf056cec1e7ca0e5aa35803"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_profile_v1.py",
+      "sha256": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_review_authority_v1.py",
+      "sha256": "fce56a37bc101283294f826161d54a0998453865fe3ac241deeaaf15f69902fe"
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v1.py",
+      "sha256": "4fbff400d11906ea4a2b535cff36d9801e6c4930ddc8052da76c2db16ab63034"
+    },
+    {
+      "path": "gossip_harness/cumulative_finite_mapping_v1.py",
+      "sha256": "74dcb92e0d0d129dd607bd593a218efcb974813719dc5f9dbd364670e083009c"
+    },
+    {
+      "path": "gossip_harness/cumulative_m2_observation_recipe_v1.py",
+      "sha256": "e7e74a92f6a1f6e89d010c910e1c24aa6f25629ee29856bd0ab0020186c4d80f"
+    },
+    {
+      "path": "gossip_harness/cumulative_observation_recipe_factory_v2.py",
+      "sha256": "5ddb35c42a0aef9b8d7b1f77dc50d65e7410d31667c040d7ae797854a2f7d063"
+    },
+    {
+      "path": "gossip_harness/cumulative_prerequisite_qualification_v1.py",
+      "sha256": "24f4e5f30cf9ef95307582c52288c734a806f8557b2e3f6a1f0b2e4b662ad75b"
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v1.py",
+      "sha256": "f58a8ccefb38ae1e3a218ec451e26f386fe802007a137eca14e39589bb78703c"
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v2.py",
+      "sha256": "281e8c55f493bfe9ed51fdacf3cb1a70742350366ec715e637cbcd0873a0540e"
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v3.py",
+      "sha256": "dada66adee1c6cd525beba015b5e335b665ed187bed9c1f7f541bc1500c257cb"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "5dc8c5c96ff351b2347a07bdadbf06c7ab533c1bf827db329b375098c8851992"
+    },
+    {
+      "path": "tests/test_candidate_m2_finite_mapping_v2.py",
+      "sha256": "411b045b597e77051962fdf548aa3adf392f2928da8057cd22694ceebab248b7"
+    },
+    {
+      "path": "tests/test_candidate_storage_finite_mapping_v1.py",
+      "sha256": "7f0724f08aeb951a0fd3d82f498d88202c5686ec2e82d0019ebc8a2295911674"
+    },
+    {
+      "path": "tests/test_cumulative_finite_http_mapping_v1.py",
+      "sha256": "fe2c52a0a3906e04b1bc6a3dad5a349b5bfe741b29a8182574f68b147d9ee4ac"
+    },
+    {
+      "path": "tests/test_cumulative_finite_original_transport_v1.py",
+      "sha256": "4956cc317fbae6321a375d61cd3488247be71b240f80b242166b7e8dde62e61c"
+    },
+    {
+      "path": "tests/test_cumulative_scope_source_v2.py",
+      "sha256": "cce6497436eb73371da06c370e290a019e3ff7da525bf7511daa26bc7906ead2"
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "d8115761d0e45d404926cff1ee826548bd904edd5754768151506f62f2d3cd3c"
+    }
+  ],
+  "verification": {
+    "run": "runs/finite-mapping-combined-offline-5/20261004T181103-d1558611",
+    "summary_sha256": "c645327c4dc4b05ce47388072d7cb950b18960acb69d8caaf28a0d0731c97d76",
+    "selected_tests": 999,
+    "classes": 92,
+    "discovered_tests": 5247,
+    "coverage": "targeted",
+    "lanes": {
+      "fast": 790,
+      "fixtures": 4,
+      "git": 205
+    },
+    "fresh_tests": 993,
+    "reused_tests": 6,
+    "reused_classes": 1,
+    "outcomes": {
+      "passed": 999
+    },
+    "skipped": 0,
+    "not_run": 0,
+    "duration_seconds": 1722.9097161674872,
+    "workers": 4,
+    "source_inputs": 712,
+    "source_mismatches": 0,
+    "runtime_reconciliation": {
+      "final_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "initial_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "matches": true
+    },
+    "fingerprint": "9989456e5fcbaf63a99278b11a3a382c9cb35f4e9732ae92f69159612df4df0b",
+    "static": "Passed with117unchanged baseline type diagnostics; no new blocking diagnostics.",
+    "reuse": "Exact original six-method local regression class from180836-1bb158f9; no scientific acceptance/repeatability reuse.",
+    "independent_reviewer_reran_tests": false
+  },
+  "independent_audit": {
+    "path": "analysis/finite-mapping-offline-audit-v1.json",
+    "sha256": "5afb9e843f9345a076e37dff4a0cc51bc46d3b8ada8301bae71e0400bcd42c0d"
+  },
+  "retained_audit_detail": {
+    "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-mapping-offline-terminal-details-20261004-v1.json",
+    "sha256": "9b43522f3e8c4d6bdb8d2785c74cc4dc47ffe5103459484da9c4ca87af3cdf51"
+  },
+  "prior_failures": {
+    "path": "analysis/finite-mapping-failed-attempts-v1.json",
+    "sha256": "907a95a78e8237dc725c6fb32a2db2b684123b0ad09f78e0816d477423b48d78"
+  },
+  "failed_runs": [
+    {
+      "run": "runs/finite-mapping-combined-offline-1/20261004T174531-14f1e90f",
+      "status": "failed",
+      "outcomes": {
+        "not_run": 999
+      },
+      "summary_sha256": "cfbe06baae19fbae08631c75f7fc8b5234b0e963db1b804344db3a84555007e8"
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-2/20261004T174733-b6de9aee",
+      "status": "failed",
+      "outcomes": {
+        "passed": 652,
+        "not_run": 346,
+        "error": 1
+      },
+      "summary_sha256": "762aade2df220ca1909260aa7140b5990c7b49f10e9f2de16c6386dac7f2ccee"
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-3/20261004T175330-691b59db",
+      "status": "failed",
+      "outcomes": {
+        "passed": 44,
+        "failed": 1,
+        "not_run": 3,
+        "error": 1
+      },
+      "summary_sha256": "ddb64fd4a9699fe14e420055bb0ecbd1d20e250d7dc0cdfbe4a3c5c0ec12fbcf"
+    },
+    {
+      "run": "runs/finite-mapping-combined-offline-4/20261004T180002-c1267e6d",
+      "status": "failed",
+      "outcomes": {
+        "passed": 9,
+        "error": 1
+      },
+      "summary_sha256": "2f841ccd59a95408d4b5773ee148048c33ff13b33404aaab16452f250d747730"
+    }
+  ],
+  "corrections": [
+    {
+      "path": "runs/finite-mapping-integration-1/type-correction-1/receipt.json",
+      "sha256": "43187a8a144f8a5ce2e7ef72c86ddb9390456f6262cf93fffaadcc508ad4c16b"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/guard-regression-correction-1/receipt.json",
+      "sha256": "5474674ab16de727c294f590dbece4f1a1404ea01cbb2af3615b408ce4707b4d"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/fixture-correction-1/installation.json",
+      "sha256": "aae1e9e0b6be722d3c91b291eb8028c732c59408881d7e325b9710bb35c0cefc"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/fixture-correction-2/installation.json",
+      "sha256": "37b8e82557b42ee0bffdabbf28e505cc0dbbd1bbb4129bbc7a7faa9adbcb2c9b"
+    }
+  ],
+  "source_reviews": [
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/coverage-guard-retention-1.json",
+      "sha256": "375a38b4c7d70ae663fc53593a533e1b9464282aaf3761b949d42bd3fe8fc762"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/decision.json",
+      "sha256": "6f65bda2c6cde7959e873f3461223907faa8cb7b9bc54782f661367c3dbdb27c"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-journal-affected-coverage-inventory-20261004-v1.json",
+      "sha256": "33493f71c8b5817e8af3e3f00c8094b4965a0274dcfe4c6235bb52f4b060fe64"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-journal-affected-coverage-review-20261004-v1.json",
+      "sha256": "4509a0268bc693ead8645e58233d70d20634bc04f926eb4f0da50b1deedccf2b"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-mapping-fixture-corrections-review-20261004-v1.json",
+      "sha256": "70b866e84b43046b984862722bf760e16802d6d850ae7ff5ce6a596b857443cd"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-mapping-guard-regression-review-20261004-v1.json",
+      "sha256": "f92b8729d0b11a194543fc0fd834d4bf75995d1d2094de31c0b17b84fb9945fe"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-finite-mapping-schema-fixture-review-20261004-v1.json",
+      "sha256": "b4e1f4b74f7c2367245b6f852c71d848aa99ac0c9eccd9f675c7b2191e997737"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-root-finite-shared-transport-source-review-v1.json",
+      "sha256": "667a23fee5cb871659a0313607fd9ac52b8ad36aba4e905db858bac0f387e2c5"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-root-http-finite-mapping-source-review-v1.json",
+      "sha256": "2b601c57761d1a23d701c2183436063b7c848bf2b1a29e032f12b66990693f9a"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-root-m2-finite-mapping-source-review-v1.json",
+      "sha256": "dcc7431868fc08fba3a7f5249a1f3b695a695dfb4ab50bf6f93064f8cf306e22"
+    },
+    {
+      "path": "runs/finite-mapping-integration-1/reviews/gossip-storage-finite-mapping-source-review-1.json",
+      "sha256": "afba3f9a9ca25fa21d007e1db2e8c0a7d797b9ea973e698bbcc3d040828888cb"
+    }
+  ],
+  "new_model_quality_samples": 0,
+  "provider_calls": 0,
+  "docker_runs": 0,
+  "remaining": [
+    "Actually enroll complete independent semantic/layout/purpose review originals; finite mappings and source reviews alone do not grant full scope approval.",
+    "Integrate and qualify the separately versioned CLI clarification after its legacy dependency-binding correction and independent re-review.",
+    "Qualify changed HTTP/B02/M2 profiles and browser journal mode physically after coherent offline source; preserve previous physical failures.",
+    "Complete the remaining workflow/intake/V2/release families and their source/final/prerequisite joins. Resolve the workflow/V2 token-contract contradiction through an exact prospective reviewed clarification.",
+    "Execute a matching complete four-milestone, six-trajectory rehearsal before the20-role live study.",
+    "The three shared-gossip arms test population/allocation and decision placement. Separate full placement-by-transport and held-out confirmation remain required."
+  ],
+  "publication": "Local checkpoint; explicit public disclosure approval remains pending. No push attempted."
+}

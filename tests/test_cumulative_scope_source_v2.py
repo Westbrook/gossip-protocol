@@ -140,11 +140,22 @@ class CumulativeScopeSourceV2Tests(unittest.TestCase):
 
     def test_mismatched_definition_and_evaluator_reject_before_slice_creation(self):
         registration = storage_registration()
-        for key in ('definition_sha256', 'evaluator_sha256'):
-            binding = replace(registration.binding, **{key: '0' * 64})
-            gate = execution.gate_for(registration.gate.binding.subject, binding, gate_id=registration.gate.gate_id)
-            with self.assertRaises(source.ScopeSourceError):
-                source.storage_slice(replace(registration, binding=binding, gate=gate))
+        for key in ('definition_sha256', 'profile_sha256'):
+            with self.subTest(key=key):
+                binding = replace(registration.binding, **{key: '0' * 64})
+                with self.assertRaisesRegex(execution.ExecutionError,
+                                            'Stored binding differs from exact closed profile'):
+                    execution.gate_for(registration.gate.binding.subject, binding,
+                                       gate_id=registration.gate.gate_id)
+                with self.assertRaisesRegex(execution.ExecutionError,
+                                            'Stored binding differs from exact closed profile'):
+                    source.storage_slice(replace(registration, binding=binding))
+        binding = replace(registration.binding, evaluator_sha256='0' * 64)
+        gate = execution.gate_for(registration.gate.binding.subject, binding,
+                                   gate_id=registration.gate.gate_id)
+        with self.assertRaisesRegex(source.ScopeSourceError,
+                                    'Storage definition/profile/evaluator/ordered roster differs'):
+            source.storage_slice(replace(registration, binding=binding, gate=gate))
 
     def test_actual_enrolled_layout_binding_composes_without_claiming_real_review(self):
         value = profiles.profile_for('b02', 'intake-json-missing', 'public_release')

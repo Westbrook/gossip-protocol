@@ -46,6 +46,10 @@ class LayoutPlan:
     schedule: str = "ordinary_public_operations"
     purpose: str = "public_release"
 
+    @property
+    def mapping_profile(self) -> str | None:
+        return None
+
     def __post_init__(self) -> None:
         admission.require(self.family == "m2-direct-api", "Closed storage family required")
         for value in (self.source_sha256, self.native_source_sha256, self.profile_sha256, self.schema_sha256):
@@ -64,11 +68,33 @@ class LayoutPlan:
 
     def request(self) -> dict[str, Any]:
         from . import candidate_m2_product_profile_v1 as profile
-        value = profile.profile_for(self.case_id, self.purpose)
+        admission.require(accepted_layout_plan(self), "Exact named M2 layout plan required")
+        value = profile.profile_for(self.case_id, self.purpose, mapping_profile=self.mapping_profile)
         admission.require(value.sha256 == self.profile_sha256, "Review profile differs from actual definitions")
         return {"protocol": PROTOCOL, "purpose": PURPOSE, "plan": asdict(self),
                 "profile": value.record(), "duties": list(DUTIES), "scope": "named inherited M2 direct-API slice only",
                 "forced_schedule_qualification_supplied": False}
+
+
+@dataclass(frozen=True, slots=True)
+class MappedLayoutPlan(LayoutPlan):
+    """Closed MAP-B request type; no additional legacy serialized fields."""
+
+    @property
+    def mapping_profile(self) -> str:
+        from .cumulative_finite_mapping_v1 import M2_MAPPING
+        return M2_MAPPING
+
+
+def accepted_layout_plan(value: Any) -> bool:
+    return type(value) in (LayoutPlan, MappedLayoutPlan)
+
+
+def layout_plan_from_record(record: dict[str, Any], *, mapping_profile: str | None = None) -> LayoutPlan:
+    from .cumulative_finite_mapping_v1 import M2_MAPPING
+    admission.require(mapping_profile is None or (type(mapping_profile) is str and mapping_profile == M2_MAPPING),
+                      "Closed M2 layout mapping required")
+    return LayoutPlan(**record) if mapping_profile is None else MappedLayoutPlan(**record)
 
 
 @dataclass(frozen=True, slots=True)
@@ -100,7 +126,7 @@ class M2ReviewAuthority:
 
     def authenticate(self, plan: LayoutPlan) -> str:
         """Read all originals and chronology each time; no hash-as-approval shortcut."""
-        admission.require(type(plan) is LayoutPlan, "Exact prospective layout plan required")
+        admission.require(accepted_layout_plan(plan), "Exact prospective layout plan required")
         before = self.journal.validate_boundary().commitment
         admission.require(before == self.expected, "Review external prefix changed")
         enrollment = self.enrollment
@@ -152,4 +178,3 @@ class M2ReviewAuthority:
         admission.require(self.journal.validate_boundary().commitment == self.expected,
                           'Review origin changed while binding provenance')
         return result
-

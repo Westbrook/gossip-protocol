@@ -17,7 +17,10 @@ from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = 'cumulative-scope-source-v1'
 HTTP_BODY_BOUNDARY_MAPPING = 'cumulative-http-body-boundary-mapping-v1'
+from . import cumulative_finite_mapping_v1 as finite
+
 MAP_A_MAPPING = 'cumulative-finite-semantic-map-a-v1'
+HTTP_READBACK_MAPPING = finite.HTTP_MAPPING
 # Closed source-defined exceptions: these exact shape-valid submit bodies fail
 # discovery/value validation, not the four-form HTTP body grammar (IFACE-D06).
 _MAP_A_DISCOVERY_FAILURES = frozenset('HTTP-INTAKE-ROUTES/' + name for name in (
@@ -206,7 +209,10 @@ class ExecutableSlice:
         registry.identifier(suite_id)
         registry.identifier(physical_slot)
         logical_ids = tuple(dict.fromkeys(key for item in self.assertions for key in item.assertion.logical_gate_ids))
-        capabilities = ('cli',) if self.family == 'cli' else (('cli', 'http', 'public-contract', 'process-restart', 'migration') if self.family == 'product-process' else ('http',))
+        capabilities: tuple[str, ...] = ('cli',) if self.family == 'cli' else (('cli', 'http', 'public-contract', 'process-restart', 'migration') if self.family == 'product-process' else ('http',))
+        if (self.family == 'http' and json.loads(self.factory_input_json).get('mapping_profile')
+                == HTTP_READBACK_MAPPING):
+            capabilities = finite.HTTP_CAPABILITIES
         binding = self.gate.binding
         suite = compiler.SuiteDefinition(suite_id, self.gate.ordered_case_ids, binding.ordered_suite_sha256,
             self.definition_sha256, self.original_definition_purpose, binding.purpose,
@@ -278,7 +284,7 @@ def http_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile:
     from . import candidate_observation_admission_v1 as admission
     require(type(registration) is execution.HttpRegistration and type(profile) is execution.HttpProductProfile
             and type(policy) is execution.HttpPolicy, 'Exact HTTP registration/profile/policy required')
-    require(mapping_profile in (None, MAP_A_MAPPING), 'Unknown prospective mapping profile')
+    require(mapping_profile in (None, MAP_A_MAPPING, HTTP_READBACK_MAPPING), 'Unknown prospective mapping profile')
     mapping_profile = profile.mapping_profile if mapping_profile is None else mapping_profile
     require(mapping_profile == profile.mapping_profile, 'Mapping must be bound in the original observer profile')
     value = profile.cumulative_profile
@@ -307,6 +313,11 @@ def http_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile:
 def _http_declarations(profile: Any, *, mapping_profile: str | None) -> tuple[list[Selector], list[AssertionDeclaration]]:
     """Pure original-definition mapping shared by the registered profile and scope."""
     from . import candidate_http_fixtures_v1 as fixtures
+    readbacks = mapping_profile == HTTP_READBACK_MAPPING
+    if readbacks:
+        require(profile.cumulative_profile is not None and profile.cumulative_profile.purpose == "independent_acceptance",
+                "Mixed HTTP/public-contract mappings require fresh independent acceptance")
+        mapping_profile = MAP_A_MAPPING  # Preserve the exact original MAP-A edges.
     value = profile.cumulative_profile
     selectors, assertions = [], []
     for index, cell in enumerate(value.diagnostic_cells):
@@ -399,6 +410,17 @@ def _http_declarations(profile: Any, *, mapping_profile: str | None) -> tuple[li
             assertions.append(AssertionDeclaration(unit.obligation.id,
                 compiler.Assertion(identifier, 'positive', logical), cell.case_id, path,
                 'Only the source-declared exact M4 health schema4 successor; physical schema, migration, other routes and semantic compatibility approval remain separate.'))
+    if readbacks:
+        for resolved in finite.resolve_http(profile):
+            item, index = resolved.allocation, resolved.step_index
+            cell = value.diagnostic_cells[index]
+            require(cell.applicability == 'normative', 'Finite readback selector is not normative')
+            path = '/diagnostics/' + str(index) + '/status'
+            identifier = 'readback-' + sha(encoded([HTTP_READBACK_MAPPING, item.unit_id,
+                item.history_id, item.predicate_id, item.kind, item.logical_gate_id, cell.case_id]))[:24]
+            assertions.append(AssertionDeclaration(item.unit_id,
+                compiler.Assertion(identifier, item.kind, (item.logical_gate_id,)), cell.case_id, path,
+                finite.RATIONALES[item.rationale_id] + ' Full independent semantic applicability, exact purpose conversion and compatibility authorities remain required.'))
     selectors.append(Selector(profile.mechanics_case_id, '/mechanics_guard/status', 'normative',
                               '/mechanics_guard', 'mechanics'))
     return selectors, assertions
@@ -597,6 +619,7 @@ def map_a_sources() -> dict[str, str]:
     result = {'gossip_harness/' + name: sha((root / 'gossip_harness' / name).read_bytes())
         for name in ('cumulative_scope_source_v1.py', 'project_acceptance_compiler_v1.py')}
     result.update(dict(load_catalog(root).source_pins))
+    result.update(finite.sources())
     return result
 
 
@@ -606,13 +629,15 @@ def map_a_profile_record(family: str, profile: Any) -> dict[str, Any]:
     This is prospective source material, never a caller-supplied requirement list
     or semantic approval. No profile.record/sha property is called recursively.
     """
-    require(profile.mapping_profile == MAP_A_MAPPING, 'Exact MAP-A opt-in required')
+    require(profile.mapping_profile in (MAP_A_MAPPING, HTTP_READBACK_MAPPING), 'Exact closed mapping opt-in required')
+    marker = profile.mapping_profile
     if family == 'http':
         from . import candidate_http_execution_v4 as execution
         require(type(profile) is execution.HttpProductProfile and profile.cumulative_profile is not None,
                 'Exact final-M4 HTTP profile required')
-        _, assertions = _http_declarations(profile, mapping_profile=MAP_A_MAPPING)
+        _, assertions = _http_declarations(profile, mapping_profile=marker)
     elif family == 'product-process':
+        require(marker == MAP_A_MAPPING, 'HTTP readback mapping cannot enroll product-process observations')
         from . import candidate_product_process_execution_v1 as product
         from . import candidate_product_process_observation_v1 as observation
         require(type(profile) is product.HttpProductProfile and profile.milestone == 'M4',
@@ -628,7 +653,12 @@ def map_a_profile_record(family: str, profile: Any) -> dict[str, Any]:
         unit = catalog.unit(item.obligation_id)
         for lane in item.assertion.logical_gate_ids:
             owners.update(set(unit.requirement_ids) & set(logical[lane].requirement_ids))
-    return {'protocol': MAP_A_MAPPING, 'family': family, 'history_id': profile.case.row_id,
+    return {'protocol': marker, 'family': family, 'history_id': profile.case.row_id,
+        **({'capabilities': list(finite.HTTP_CAPABILITIES),
+            'required_purpose_conversions': [list(row) for row in finite.HTTP_PURPOSE_CONVERSIONS],
+            'required_execution_purpose': 'independent_acceptance',
+            'purpose_conversion_approval': 'independently registered authority required; absent here'}
+            if marker == HTTP_READBACK_MAPPING else {}),
         'inventory_sha256': catalog.inventory.sha256,
         'mapping_source_sha256': LOADED_SOURCE_SHA256,
         'assertions_sha256': sha(encoded([asdict(row) for row in assertions])),

@@ -82,10 +82,11 @@ def storage_slice(registration: Any) -> ExecutableSlice:
     require(type(registration) is execution.StorageRegistration, 'Exact storage registration required')
     actual = execution.observation_registration(registration)
     binding = registration.binding
-    value = profiles.profile_for(binding.family, binding.case_id, binding.purpose)
+    value = execution.profile_for_binding(binding)
+    mapping_profile = execution.mapping_profile_for(binding.protocol)
     capture_policy = execution.capture_policy_for(binding.protocol)
     record = observer.selector_catalog(binding.family, binding.case_id, purpose=binding.purpose,
-        capture_policy=capture_policy)
+        capture_policy=capture_policy, mapping_profile=mapping_profile)
     sources = execution.evaluator_sources()
     admission.verify_loaded_sources(sources)
     require(binding.definition_sha256 == execution.digest(value.record()) == record['definition_sha256']
@@ -125,9 +126,20 @@ def storage_slice(registration: Any) -> ExecutableSlice:
                 codes = ('invalid_archive', 'invalid_json') if unit.obligation.id == 'm1:M1-I27' else ('io_error',)
                 if type(expected) is not dict or set(expected) != {'error'} or expected['error'] not in codes:
                     continue  # State conservation cannot prove an exact error classification.
-            logical = tuple(gate.id for gate in catalog.inventory.logical_gates
-                if gate.role == 'product' and gate.lane in STORAGE_LANES
-                and set(unit.requirement_ids) & set(gate.requirement_ids) & set(value.requirement_ids))
+            if 'logical_gate_ids' in facet:
+                require(mapping_profile == profiles.finite.STORAGE_MAPPING
+                    and facet.get('mapping_profile') == mapping_profile,
+                    'Finite allocation requires the exact mapping opt-in')
+                logical = tuple(facet['logical_gate_ids'])
+                require(len(logical) == 1 and all(any(gate.id == name and gate.role == 'product'
+                    and gate.lane in STORAGE_LANES
+                    and set(unit.requirement_ids) & set(gate.requirement_ids) & set(value.requirement_ids)
+                    for gate in catalog.inventory.logical_gates) for name in logical),
+                    'Finite allocation changed its source owner or supported storage gate')
+            else:
+                logical = tuple(gate.id for gate in catalog.inventory.logical_gates
+                    if gate.role == 'product' and gate.lane in STORAGE_LANES
+                    and set(unit.requirement_ids) & set(gate.requirement_ids) & set(value.requirement_ids))
             require(bool(logical), 'Authored facet has no supported storage logical lane')
             identifier = 'storage-' + sha(encoded([binding.family, binding.case_id, row['case_id'],
                 row['observation_pointer'], facet]))[:24]
@@ -138,9 +150,11 @@ def storage_slice(registration: Any) -> ExecutableSlice:
                 'it does not prove every case label or the whole source unit. Independent relevance, '
                 'M4 inheritance, layout completeness and lane adequacy remain review duties under the complete history conjunction. '
                 'Store reopen is not process death; ordinary phase captures are not forced interleavings.'))
-    factory_input = {'registration': asdict(registration)}
+    factory_input: dict[str, Any] = {'registration': asdict(registration)}
     if capture_policy is not None:
         factory_input['source_capture'] = capture_policy.record()
+    if mapping_profile is not None:
+        factory_input['mapping_profile'] = mapping_profile
     return ExecutableSlice('storage-' + binding.family, binding.case_id, actual.gate,
         actual.definition_sha256, actual.original_definition_purpose, profiles.ORIGINAL_CONTRACT_SHA256,
         value.sha256, tuple(sorted(sources.items())), tuple(selectors), tuple(assertions),
@@ -158,12 +172,20 @@ def verify_slice(value: previous.ExecutableSlice) -> None:
     require(value.family in ('storage-b01', 'storage-b02'), 'Unknown version2 executable factory')
     from . import candidate_storage_product_execution_v1 as execution
     record = json.loads(value.factory_input_json)
-    require(type(record) is dict and set(record) in ({'registration'}, {'registration', 'source_capture'}),
+    require(type(record) is dict and set(record) in ({'registration'}, {'registration', 'source_capture'},
+            {'registration', 'mapping_profile'}, {'registration', 'source_capture', 'mapping_profile'}),
             'Unexpected storage factory input')
     row = record['registration']
     registration = execution.StorageRegistration(execution.StorageBinding(**row['binding']),
         row['commit_oid'], row['tree_oid'], row['repetition_id'], previous._gate(row['gate']),
         tuple(row['cohort_trajectory_ids']))
+    mapping_profile = execution.mapping_profile_for(registration.binding.protocol)
+    require(('mapping_profile' in record) == (mapping_profile is not None)
+        and record.get('mapping_profile') == mapping_profile, 'Storage mapping marker differs from protocol')
+    capture_policy = execution.capture_policy_for(registration.binding.protocol)
+    require(('source_capture' in record) == (capture_policy is not None)
+        and record.get('source_capture') == (None if capture_policy is None else capture_policy.record()),
+        'Storage source-capture marker differs from protocol')
     require(storage_slice(registration) == value, 'Source-derived storage selectors/purpose were substituted')
 
 
@@ -225,4 +247,3 @@ def assemble_declaration(catalog: SourceCatalog, cohort: compiler.CohortDesign,
             unit.ownership_reason))
     return compiler.Declaration(catalog.inventory.sha256, tuple(plans), tuple(suites), tuple(gates),
                                 tuple(edges), purposes, compatibility, cohort, capacity_profile=capacity_profile)
-

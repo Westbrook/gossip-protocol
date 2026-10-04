@@ -1,0 +1,55 @@
+{
+  "counts": {
+    "classes": 92,
+    "fresh_classes": 91,
+    "fresh_methods": 993,
+    "lane_methods": {
+      "fast": 790,
+      "fixtures": 4,
+      "git": 205
+    },
+    "methods": 999,
+    "not_run": 0,
+    "reused_classes": 1,
+    "reused_methods": 6,
+    "skipped": 0
+  },
+  "current_input_count": 712,
+  "detail": {
+    "bytes": 548371,
+    "path": "/private/tmp/gossip-finite-mapping-offline-terminal-details-20261004-v1.json",
+    "sha256": "9b43522f3e8c4d6bdb8d2785c74cc4dc47ffe5103459484da9c4ca87af3cdf51"
+  },
+  "duration_seconds": 1722.9097161674872,
+  "limits": [
+    "Reviewer performed only filesystem/JSON/AST/hash reads and wrote these fresh /private/tmp receipts. No project imports, tests, static checker, Docker, Engine, browser, provider or Git execution.",
+    "Runner physical=true means fresh offline worker versus reused record, not Docker/Chromium execution.",
+    "993methods freshly ran here;6methods reused the exact pinned same-folder original. No candidate acceptance or repeatability observation reuse.",
+    "Targeted affected gate only; no complete repository/full rehearsal or new physical qualification. Prior failed gate/browser runs remain failed.",
+    "Live environment/package commands were not repeated; recorded initial/final/origin runtime identity was reconciled and current runtime/tool binary bytes were rehashed."
+  ],
+  "plan": {
+    "bytes": 20353,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/finite-mapping-integration-1/root-plan-3.json",
+    "sha256": "3436e83a1a5fed8d6b4e56fce7dd34271faa1167147a9db28998dc020b90bd5c"
+  },
+  "protocol": "independent-finite-mapping-offline-terminal-audit-v1",
+  "reuse_full_fingerprint": "9989456e5fcbaf63a99278b11a3a382c9cb35f4e9732ae92f69159612df4df0b",
+  "reuse_original": {
+    "bytes": 9561,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/finite-mapping-combined-offline-5/20261004T180836-1bb158f9/summary.json",
+    "sha256": "e828c125257026dc715f6d01d6aa9874475fe5004ce44cf08947047a20bb5c76"
+  },
+  "reviewer": "/root/b03_physical_tests",
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/finite-mapping-combined-offline-5/20261004T181103-d1558611",
+  "runtime_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": "Passed under117unchanged baseline type diagnostics; no new blocking diagnostics.",
+  "summary": {
+    "bytes": 671214,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/finite-mapping-combined-offline-5/20261004T181103-d1558611/summary.json",
+    "sha256": "c645327c4dc4b05ce47388072d7cb950b18960acb69d8caaf28a0d0731c97d76"
+  },
+  "verdict": "Retained targeted999-method offline success reconciles with current712source/config inputs, exact ordered suite and one eligible six-method original receipt."
+}

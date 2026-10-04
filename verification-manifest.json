@@ -6512,6 +6512,78 @@
       "boundary": "Prospective journal-reader and browser original-evidence successor; no performance adequacy or product acceptance claim.",
       "disposition": "Root-owned offline execution after coherent independent source review; no automatic retry.",
       "overlap_reason": "New opt-in per-file ancestry/descriptor lifetime and incomplete-prefix observer path are absent from prior physical receipts."
+    },
+    "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; source-defined finite histories, no candidate execution",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 360,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; disposable Git, proof journals and fixture-only owners",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; source-defined finite histories, no candidate execution",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 360,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; disposable Git, proof journals and fixture-only owners",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; source-defined finite histories, no candidate execution",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 360,
+      "invariant": "Closed prospective finite mapping retains original case, exact per-selector meaning, registered purpose and named profile across actual reconstruction boundaries.",
+      "isolation": "class process; disposable Git, proof journals and fixture-only owners",
+      "overlap": "Complements original mapping/default-profile controls; no inherited test methods.",
+      "distinct_defect": "Dropped or substituted mapping/profile/type/purpose, overbroad kind/lane attribution, or narrowed diagnostic roster.",
+      "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
+      "disposition": "new prospective mapping control; runtime unrun",
+      "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
     }
   },
   "audit": {

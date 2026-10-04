@@ -390,13 +390,18 @@ class HttpProductProfile:
         self.check_current()
 
     def check_current(self, *, purpose: str | None = None, requirements_sha256: str | None = None) -> None:
-        require(self.mapping_profile in (None, map_a.MAP_A_MAPPING), "Unknown mapping profile")
+        require(self.mapping_profile in (None, map_a.MAP_A_MAPPING, map_a.HTTP_READBACK_MAPPING), "Unknown mapping profile")
         require(self.mapping_profile is None or self.cumulative_profile is not None, "MAP-A requires an explicit M4 profile")
         if self.cumulative_profile is None:
             return
         target = self.cumulative_profile
         require(type(target) is cumulative.CumulativeProfile and target.family == "http",
                 "Exact cumulative HTTP applicability profile required")
+        if self.mapping_profile == map_a.HTTP_READBACK_MAPPING:
+            require(target.purpose == "independent_acceptance" and purpose in (None, "independent_acceptance"),
+                    "Mixed HTTP readback gates require fresh independent_acceptance")
+            require(self.case.row_id in {row.history_id for row in map_a.finite.allocations("http")},
+                    "Finite HTTP mapping has no authored allocation for this history")
         cumulative.assert_profile_current(target)
         record = target.record()
         require(self.original_definition_purpose == cumulative.ORIGINAL_DEFINITION_PURPOSE
@@ -450,7 +455,8 @@ class HttpProductProfile:
                     "semantic_credit": False, "raw_only_body_status_credit": False},
                 remaining_coverage=list(cumulative.REMAINING_COVERAGE), whole_project_acceptance=False)
         if self.mapping_profile is not None:
-            value.update(protocol=value["protocol"] + "-map-a-v1", mapping_profile=self.mapping_record())
+            suffix = "-finite-readbacks-v1" if self.mapping_profile == map_a.HTTP_READBACK_MAPPING else "-map-a-v1"
+            value.update(protocol=value["protocol"] + suffix, mapping_profile=self.mapping_record())
         return value
 
     def mapping_record(self) -> dict[str, Any]:

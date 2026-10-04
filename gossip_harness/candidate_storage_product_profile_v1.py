@@ -23,6 +23,7 @@ from . import candidate_intake_store_observer_v1 as intake_observer
 from . import candidate_observation_admission_v1 as admission
 from . import project_acceptance_registry_v1 as registry
 from . import candidate_http_journal_v3 as journal_json
+from . import cumulative_finite_mapping_v1 as finite
 
 PROTOCOL = "candidate-storage-product-profile-v1-ascii-json-v1"
 JSON_ENCODING_PROTOCOL = "storage-canonical-ascii-json-v1"
@@ -51,6 +52,7 @@ _MODULES = (
     "candidate_intake_store_driver_v1.py", "candidate_intake_store_driver_v2.py", "candidate_intake_store_driver_v3.py",
     "candidate_intake_store_profile_v1.py", "candidate_observation_admission_v1.py",
     "project_acceptance_registry_v1.py", "candidate_storage_product_profile_v1.py", "candidate_http_journal_v3.py",
+    "cumulative_finite_mapping_v1.py",
 )
 
 
@@ -97,6 +99,7 @@ def source_sha256(files: dict[str, bytes]) -> str:
 
 def definition_sources() -> dict[str, str]:
     sources = b02.definition_sources()
+    sources.update(finite.sources())
     for name in _MODULES:
         path = "gossip_harness/" + name
         sources[path] = hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
@@ -284,12 +287,149 @@ def _profile_bytes(family: str, case_id: str, purpose: str) -> bytes:
         "execution_authenticated": False, "full_requirement_verdict": None})
 
 
-def profile_for(family: str, case_id: str, purpose: str) -> StorageProductProfile:
+def mapping_profile_for(value: StorageProductProfile) -> str | None:
+    require(type(value) is StorageProductProfile, "Exact storage profile required")
+    marker = value.record().get("mapping_profile")
+    require(marker is None or type(marker) is str and marker == finite.STORAGE_MAPPING,
+            "Unknown storage mapping profile")
+    return marker
+
+
+def _response_meaning(case: dict[str, Any], check: str) -> tuple[str, Any]:
+    parts = check.split(".")
+    if len(parts) == 3 and parts[1] == "result" and parts[2].isdigit():
+        frame = case["expected"]["results"][parts[0]][int(parts[2])]
+        if type(frame) is dict and set(frame) == {"value"}:
+            frame = frame["value"]
+        if type(frame) is dict:
+            if set(frame) == {"job_id", "epoch", "state", "total", "completed", "error"}:
+                return "JOB", frame
+            if set(frame) == {"job_id", "epoch"}:
+                return "TOKEN", frame
+            if set(frame) == {"job", "documents"}:
+                return "RECEIPT", frame
+            if set(frame) == {"error"}:
+                return "ERROR", frame
+        return "VALUE", frame
+    return ("PAUSED_STATE" if check.endswith(".persisted-state") else "STORED_STRING"), None
+
+
+def _mapped_facet(unit: str, kind: str, gate: str, scope: str, rationale: str,
+                  *, allocation_group: str) -> dict[str, Any]:
+    return {"source_unit_id": unit, "source_sha256": ORIGINAL_CONTRACT_SHA256,
+        "class": kind, "lane": "direct-api-storage", "scope": scope,
+        "full_source_unit": False, "mapping_profile": finite.STORAGE_MAPPING,
+        "logical_gate_ids": [gate], "rationale_id": rationale,
+        "allocation_group": allocation_group}
+
+
+def _precise_facets(case: dict[str, Any], cell: dict[str, Any]) -> list[dict[str, Any]]:
+    """Narrow inherited labels using authored values, never candidate output."""
+    check, case_id = cell["check_id"], case["case_id"]
+    meaning, frame = _response_meaning(case, check)
+    result = []
+    for original in cell["source_unit_facets"]:
+        facet = deepcopy(original)
+        unit = facet["source_unit_id"]
+        if unit == "m1:M1-T08" and case_id.startswith("token-domain-"):
+            continue  # V2 invalid_request amendment has no enrolled V2 owner join.
+        if unit == "m1:M1-J01":
+            if ".result." in check and meaning != "JOB":
+                continue
+            if meaning == "PAUSED_STATE" and not any(row["public"]["job_id"] != "untouched"
+                    for row in case["expected"][check.split(".")[0]]["jobs"]):
+                continue
+            if meaning == "JOB":
+                facet["class"] = "boundary" if original["class"] == "boundary" else "positive"
+                facet["scope"] = "Exact successful JOB keys and field values, including a nullable error field"
+        if case_id == "cancel-retry-token-history" and ".result." in check:
+            allowed = {"m1:M1-J07": {"after.result.0", "after.result.3"},
+                "m1:M1-J08": {"after.result.1", "after.result.4", "after.result.7"},
+                "m1:M1-A06": {"after.result.10", "after.result.11", "after.result.12"}}
+            if unit in allowed and check not in allowed[unit]:
+                continue
+        detail = {"JOB": "Exact candidate JOB result; other state/history claims need their own observations",
+            "TOKEN": "Exact candidate TOKEN result; this is not a JOB representation",
+            "RECEIPT": "Exact candidate RECEIPT result, whose JOB is nested at receipt.job",
+            "ERROR": "Exact candidate error-only result: " + str(frame.get("error") if type(frame) is dict else ""),
+            "VALUE": "Exact candidate value result; adapter bind/mutate None provides no semantic evidence",
+            "PAUSED_STATE": "Exact paused persisted-state comparison; no transaction-internal visibility or process restart",
+            "STORED_STRING": "Exact declared stored-string comparison only"}[meaning]
+        if unit == "m1:M1-T08" and meaning in ("JOB", "TOKEN", "RECEIPT"):
+            detail += "; successful current-epoch matrix control, not a stale/error outcome"
+        facet["scope"] += ". " + detail
+        facet["observation_meaning"] = meaning
+        result.append(facet)
+    return result
+
+
+@lru_cache(maxsize=256)
+def _mapped_profile_bytes(case_id: str, purpose: str) -> bytes:
+    record = decode(_profile_bytes("b02", case_id, purpose))
+    case = record["original_definition"]
+    cells = {row["check_id"]: row for row in record["diagnostics"]}
+    for cell in cells.values():
+        cell["source_unit_facets"] = _precise_facets(case, cell)
+    for allocation in finite.allocations("storage-b02"):
+        if allocation.history_id != case_id:
+            continue
+        check = allocation.predicate_id.removeprefix("storage:")
+        require(check in cells and cells[check]["applicability"] == "normative",
+                "Finite allocation requires an original normative selector")
+        cells[check]["source_unit_facets"].append(_mapped_facet(allocation.unit_id, allocation.kind,
+            allocation.logical_gate_id, finite.RATIONALES[allocation.rationale_id], allocation.rationale_id,
+            allocation_group="new-unit-24"))
+    selected: list[tuple[str, str, str, str, str]] = []
+    if case_id.startswith("store-commit_job-"):
+        state, relation = case_id.removeprefix("store-commit_job-").rsplit("-", 1)
+        if relation in ("lower", "higher") or state in ("queued", "cancelled", "failed"):
+            selected.append(("after.result.0", "m1:M1-A03", "negative", "commit-refusal",
+                "Exact stale_epoch for a lower/higher valid epoch, or job_state for a matching queued/cancelled/failed token"))
+        elif state == "completed":
+            selected.append(("after.result.0", "m1:M1-A03", "history", "completed-replay",
+                "Exact original completed receipt replay for the matching epoch; no intervening unrelated writes"))
+        elif state == "running":
+            for check in ("after.result.0", "after.persisted-state", "reopened.persisted-state"):
+                selected.append((check, "m1:M1-A04", "positive", "pair-commit",
+                    "Exact two-source sorted receipt with completed receipt.job and one equal-content blob in the persisted state conjunction; no mixed existing/new-source claim"))
+    if case_id == "fresh-value-commit_job":
+        selected.append(("after.result.2", "m1:M1-A03", "history", "mutated-return-replay",
+            "Exact completed receipt replay after mutating a previously returned receipt; no unrelated writes"))
+    if case_id == "cancel-retry-token-history":
+        for index in range(3):
+            selected.append((f"reopened.result.{index}", "m1:M1-A06", "history", "reopened-old-token",
+                "Old epoch " + str((1, 3, 5)[index]) + " returns stale_epoch against completed epoch6 after Store close/reopen; no process death or immediate intermediate-state fence claim"))
+    for check, unit, kind, rationale, scope in selected:
+        require(check in cells and cells[check]["applicability"] == "normative", "MAP-C selector unavailable")
+        cells[check]["source_unit_facets"].append(_mapped_facet(unit, kind, "M1-GATE-ATOMIC", scope,
+            rationale, allocation_group="existing-unit-map-c"))
+    record["mapping_profile"] = finite.STORAGE_MAPPING
+    record["original_requirement_ids"] = record["requirement_ids"]
+    record["requirement_ids"] = sorted(set(record["requirement_ids"]) | {
+        facet["source_unit_id"].removeprefix("m1:") for cell in cells.values() for facet in cell["source_unit_facets"]})
+    record["mapping_limitations"] = ["Only the 24 named new-unit allocations and selected existing-unit MAP-C facets",
+        "The 42 intake admission associations are excluded", "Malformed-epoch V2 amendment owners remain unjoined",
+        "Independent layout, source, semantic and purpose authority remain mandatory; no whole-unit approval"]
+    return encoded(record)
+
+
+def profile_for(family: str, case_id: str, purpose: str, *, mapping_profile: str | None = None) -> StorageProductProfile:
     require(type(family) is str and family in ("b01", "b02"), "Unknown storage family")
     require(type(case_id) is str and case_id in (b01.CASE_IDS if family == "b01" else b02.CASE_IDS), "Unknown storage case")
     require(type(purpose) is str and purpose in registry.PURPOSES, "Unknown product execution purpose")
+    require(mapping_profile is None or type(mapping_profile) is str and mapping_profile == finite.STORAGE_MAPPING,
+            "Unknown storage mapping profile")
+    require(mapping_profile is None or family == "b02" and purpose == "independent_acceptance",
+            "Finite B02 mapping requires fresh independent acceptance")
     _check_sources()
-    return StorageProductProfile(family, case_id, purpose, _profile_bytes(family, case_id, purpose))
+    raw = _profile_bytes(family, case_id, purpose) if mapping_profile is None else _mapped_profile_bytes(case_id, purpose)
+    return StorageProductProfile(family, case_id, purpose, raw)
+
+
+def reconstruct(value: StorageProductProfile) -> StorageProductProfile:
+    actual = profile_for(value.family, value.case_id, value.purpose, mapping_profile=mapping_profile_for(value))
+    require(value == actual, "Profile differs from complete prospective declaration")
+    return actual
 
 
 def _same(left: Any, right: Any) -> bool:
@@ -413,7 +553,7 @@ def project(profile: StorageProductProfile, observations: dict[str, Any], respon
     alone are never accepted as proof that a candidate executed.
     """
     require(type(profile) is StorageProductProfile, "Exact storage profile required")
-    expected_profile = profile_for(profile.family, profile.case_id, profile.purpose)
+    expected_profile = reconstruct(profile)
     require(profile == expected_profile, "Profile differs from complete prospective declaration")
     require(type(observations) is dict and set(observations) <= set(PHASES), "Unknown observation phases")
     require(type(responses) is dict and set(responses) <= set(PHASES), "Unknown response phases")

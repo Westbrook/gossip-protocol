@@ -147,16 +147,26 @@ class ObservationSpec:
         if self.kind == 'm2':
             from . import candidate_m2_product_execution_v1 as m2
             require(type(self.registration) is m2.M2Registration and type(self.policy) is m2.M2Policy
-                and type(self.profile) is m2.profile.M2Profile and type(self.layout_plan) is m2.review.LayoutPlan
+                and m2.profile.accepted_profile(self.profile) and m2.review.accepted_layout_plan(self.layout_plan)
                 and type(self.layout_authority) is m2.review.M2ReviewAuthority
                 and self.recipe is None and self.cumulative_profile is None, 'Exact M2 inputs required')
+            m2_profile = m2.profile_for_binding(self.registration.binding)
+            require(m2.profile.reconstruct(self.profile) == m2_profile
+                and self.layout_plan.profile_sha256 == m2_profile.sha256
+                and self.layout_plan.mapping_profile == m2_profile.mapping_profile,
+                'Original M2 profile/layout mapping differs from registered execution')
             return m2.observation_registration(self.registration)
         if self.kind == 'storage':
             require(type(self.registration) is storage.StorageRegistration and type(self.policy) is storage.StoragePolicy
                 and type(self.profile) is storage.profile.StorageProductProfile
-                and type(self.layout_plan) is storage.review.LayoutPlan
+                and storage.review.accepted_layout_plan(self.layout_plan)
                 and type(self.layout_authority) is storage.review.StorageReviewAuthority
                 and self.recipe is None and self.cumulative_profile is None, 'Exact storage inputs required')
+            storage_profile = storage.profile_for_binding(self.registration.binding)
+            require(storage.profile.reconstruct(self.profile) == storage_profile
+                and self.layout_plan.profile_sha256 == storage_profile.sha256
+                and getattr(self.layout_plan, 'mapping_profile', None) == storage_profile.record().get('mapping_profile'),
+                'Original storage profile/layout mapping differs from registered execution')
             return storage.observation_registration(self.registration)
         require(self.layout_plan is None and self.layout_authority is None,
                 'Layout authority applies only to the explicit storage family')

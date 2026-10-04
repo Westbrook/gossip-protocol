@@ -19,6 +19,7 @@ from . import candidate_storage_observer_v1 as storage
 from . import candidate_intake_store_observer_v1 as intake
 from . import project_acceptance_registry_v1 as registry
 from .candidate_storage_product_profile_v1 import encoded, decode
+from . import cumulative_finite_mapping_v1 as finite
 
 PROTOCOL = "candidate-storage-review-authority-v1-ascii-json-v1"
 PURPOSE = "independent_final_m4_storage_layout_and_invocation"
@@ -72,6 +73,31 @@ class LayoutPlan:
                 "forced_schedule_qualification_supplied": False}
 
 
+@dataclass(frozen=True, slots=True, kw_only=True)
+class MappedLayoutPlan(LayoutPlan):
+    """Separate exact review request for the named prospective B02 mapping."""
+    mapping_profile: str
+
+    def __post_init__(self) -> None:
+        LayoutPlan.__post_init__(self)
+        admission.require(type(self.mapping_profile) is str and self.mapping_profile == finite.STORAGE_MAPPING
+            and self.family == "b02" and self.purpose == "independent_acceptance",
+            "Exact finite B02 mapping and independent acceptance purpose required")
+
+    def request(self) -> dict[str, Any]:
+        from . import candidate_storage_product_profile_v1 as profile
+        value = profile.profile_for(self.family, self.case_id, self.purpose, mapping_profile=self.mapping_profile)
+        admission.require(value.sha256 == self.profile_sha256, "Mapped review profile differs from actual definitions")
+        return {"protocol": PROTOCOL, "purpose": PURPOSE, "plan": asdict(self),
+                "profile": value.record(), "duties": list(DUTIES), "scope": "named inherited storage slice only",
+                "forced_schedule_qualification_supplied": False}
+
+
+def accepted_layout_plan(value: Any) -> bool:
+    """Closed union, never structural/subclass admission of a review plan."""
+    return type(value) in (LayoutPlan, MappedLayoutPlan)
+
+
 @dataclass(frozen=True, slots=True)
 class ReviewEnrollment:
     """Protected host configuration; constructing it is not reviewer proof."""
@@ -101,7 +127,7 @@ class StorageReviewAuthority:
 
     def authenticate(self, plan: LayoutPlan) -> str:
         """Read all originals and chronology each time; no hash-as-approval shortcut."""
-        admission.require(type(plan) is LayoutPlan, "Exact prospective layout plan required")
+        admission.require(accepted_layout_plan(plan), "Exact prospective layout plan required")
         before = self.journal.validate_boundary().commitment
         admission.require(before == self.expected, "Review external prefix changed")
         enrollment = self.enrollment

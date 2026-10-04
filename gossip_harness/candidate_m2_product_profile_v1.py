@@ -21,8 +21,10 @@ from . import library_v2_inherited_cases_v1 as inherited
 from . import candidate_observation_admission_v1 as admission
 from .candidate_storage_product_profile_v1 import encoded, decode, digest
 from . import project_acceptance_registry_v1 as registry
+from . import cumulative_finite_mapping_v1 as finite
 
 PROTOCOL = 'candidate-m2-product-profile-v1-ascii-json-v1'
+MAPPED_PROTOCOL = PROTOCOL + '-' + finite.M2_MAPPING
 ADAPTER_PROTOCOL = 'candidate-m2-action-adapter-v1'
 ORIGINAL_DEFINITION_PURPOSE = native.PURPOSE
 TARGET_CONTRACT = inherited.CONTRACT_SHA256
@@ -241,9 +243,70 @@ _FACETS: dict[str, tuple[tuple[tuple[int, ...], str, str], ...]] = {
 }
 
 
-def _facets(case_id: str, observation_index: int) -> list[dict[str, str]]:
+# MAP-B is a closed prospective mapping, never a mutation of the original table
+# or its twelve histories. Each replacement below names the actual observation.
+_MAPPED_FACETS = {
+    **_FACETS,
+    'm2-migrate-aba-receipt': _FACETS['m2-migrate-aba-receipt'] + (
+        ((12,), 'ID1 ID3', 'Exact three-entry ABA revision history before reopen; this target history only, not a global retained-blob census.'),
+        ((14,), 'ID1', 'Exact reopened tombstone current record; no reread of complete revision history.')),
+    'm2-normalized-membership-tombstone': (
+        ((0, 1, 18, 19, 20, 21), 'C1 C2', 'Declared normalized mutation/no-op/generation ordering results.'),
+        ((2, 3, 4, 17), 'A0 A1 A2', 'Exact authored annotation replacement, normalized no-op or duplicate-normalized-name rejection.'),
+        ((5,), 'A2', 'Exact stale_version for the old token before missing-collection lookup; no normalization or conservation inferred.'),
+        ((6,), 'A2', 'Exact collection_not_found with the current token; no normalization or conservation inferred.'),
+        ((13,), 'A2', 'Exact document_deleted with the current tombstone token; no normalization or conservation inferred.'),
+        ((14,), 'A2', 'Exact stale_version for the old tombstone token; no normalization or conservation inferred.'),
+        ((7, 8), 'Q0', 'Notes/tags excluded from these legacy queries.'),
+        ((9, 15), 'Q1', 'Declared filter and page values.'),
+        ((10, 16), 'D0', 'Declared delete/restore responses.'),
+        ((11, 12), 'C0 C1', 'Tombstone membership count and removal refusal.'),
+        ((22,), 'A2 D1 ID1', 'Exact unchanged one-entry revision history after this annotation/tombstone sequence; no per-refusal atomicity claim.')),
+    'm2-query-generation-pages': (
+        ((0, 1, 2, 3, 4, 10, 11, 12), 'Q1 Q2', 'Finite filter/total/page/generation validation results; no transaction-snapshot proof.'),
+        ((13,), 'Q1', 'Exact invalid_request for boolean offset; no generation-fence observation.'),
+        ((14,), 'Q1', 'Exact invalid_request for limit zero; no generation-fence observation.'),
+        ((15,), 'Q1', 'Exact invalid_request for the 257-character query; no generation-fence observation.'),
+        ((16,), 'Q1', 'Exact invalid_request for unknown deleted filter; no generation-fence observation.'),
+        ((5,), 'ID1 ID2 R2', 'Declared changed refresh result.'),
+        ((6,), 'Q2', 'Exact stale-generation response.'),
+        ((7,), 'ID2', 'Annotation token increments once here.'),
+        ((8,), 'Q0', 'Exact empty legacy listing for old text retained only in history/notes.'),
+        ((9,), 'Q1', 'Exact empty lifecycle listing and generation2 for that old-text query.'),
+        ((17,), 'ID4', 'Mutating returned tags does not change next returned value.')),
+    'm2-revision-boundary': (
+        ((0,), 'ID1', 'Current head has text16, revision16 and token16 after the fifteen setup refreshes; no retained-history enumeration.'),
+        ((3,), 'ID1 ID3', 'Exact sixteen-entry ordered revision history with full text/blob identities before reopen.'),
+        ((6,), 'ID1', 'Reopened current head has text16, revision16 and token16; no complete history reread or process restart.'),
+        ((1,), 'ID3', 'Declared revision-capacity refusal.'),
+        ((2,), 'ID1 ID2 R2', 'Unchanged text remains no-op at capacity.'),
+        ((4,), 'Q3', 'Exact lifecycle listing has catalog generation15 after fifteen effective refreshes, capacity refusal and no-op.')),
+    'm2-retained-blob-capacity': _FACETS['m2-retained-blob-capacity'] + (
+        ((3,), 'ID3', 'Exact two-entry retained history of this target document, host-hashed from the full returned value; no global blob or receipt-only retention census.'),),
+    'm2-refresh-input-boundaries': (
+        ((0,), 'R0', 'Declared identity-preserving path refresh.'),
+        ((1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 'R1', 'This authored path/file error only; not every path class.'),
+        ((11, 12, 13), 'R0 R2', 'Declared input shape/token response.'),
+        ((14,), 'R0', 'Exact too_large for direct text containing 16385 multibyte characters; no file/path decoding observation.'),
+        ((15,), 'R0', 'Exact invalid_utf8 for direct text containing an unencodable surrogate; no file/path decoding observation.'),
+        ((16, 17), 'ID1 ID4', 'Final record/history conservation after this sequence, not each-failure atomicity.')),
+    'm2-service-route-contract': (
+        ((0, 3, 4, 5, 6, 7, 8, 17), 'I0 I1', 'Returned Python route syntax/error/status result only, no wire/CLI/browser authority.'),
+        ((1,), 'I0', 'Exact successful direct Python lifecycle-show route value; no syntax/error validation inferred.'),
+        ((2,), 'I0', 'Exact successful direct Python revision-history route value; no syntax/error validation inferred.'),
+        ((9, 15), 'D0 I0', 'Returned direct-routing delete/restore value.'),
+        ((10,), 'I1 R2', 'Exact direct Python route [409, stale_version] for refresh with the old tombstone token.'),
+        ((11,), 'I1 R2', 'Exact direct Python route [409, document_deleted] for refresh with the current tombstone token.'),
+        ((12, 13, 16), 'I1', 'Direct Python error/status value mapping.'),
+        ((12,), 'D1', 'Direct route tombstone exclusion.'),
+        ((14,), 'Q2 I1', 'Direct route stale-generation response.')),
+}
+
+
+def _facets(case_id: str, observation_index: int, mapping_profile: str | None = None) -> list[dict[str, str]]:
     result = []
-    for indices, tokens, rationale in _FACETS[case_id]:
+    table = _FACETS if mapping_profile is None else _MAPPED_FACETS
+    for indices, tokens, rationale in table[case_id]:
         if observation_index in indices:
             for token in tokens.split():
                 alias = token[:-1]
@@ -256,6 +319,10 @@ def _facets(case_id: str, observation_index: int) -> list[dict[str, str]]:
 class M2Profile:
     case_id: str
     purpose: str
+
+    @property
+    def mapping_profile(self) -> str | None:
+        return None
 
     @property
     def family(self) -> str:
@@ -288,8 +355,8 @@ class M2Profile:
             output.append({'case_id': self.case_id + ':observation-%03d' % observation_index,
                 'action_index': index, 'observation_index': observation_index,
                 'pointer': '/projection/observations/' + str(observation_index) + '/disposition',
-                'source_unit_ids': list(dict.fromkeys(row['source_unit_id'] for row in _facets(self.case_id, observation_index))),
-                'source_unit_facets': _facets(self.case_id, observation_index),
+                'source_unit_ids': list(dict.fromkeys(row['source_unit_id'] for row in _facets(self.case_id, observation_index, self.mapping_profile))),
+                'source_unit_facets': _facets(self.case_id, observation_index, self.mapping_profile),
                 'evidence_kind': 'captured_sqlite' if action['op'] == 'job_serialization' else 'direct_api',
                 'comparison': 'host_canonical_sha256' if action.get('digest') else 'exact_typed_json',
                 'rationale': 'Exact result of this declared finite action only; no whole-clause, wire, browser, forced schedule or crash credit.',
@@ -299,7 +366,7 @@ class M2Profile:
 
     def record(self) -> dict[str, Any]:
         case = case_definition(self.case_id)
-        return {'protocol': PROTOCOL, 'family': self.family, 'case_id': self.case_id,
+        result = {'protocol': PROTOCOL, 'family': self.family, 'case_id': self.case_id,
             'purpose': self.purpose, 'original_definition_purpose': ORIGINAL_DEFINITION_PURPOSE,
             'previous_execution_purpose': inherited.PURPOSE, 'original_contract_sha256': native.CONTRACT_SHA256,
             'target_contract_sha256': TARGET_CONTRACT, 'target_milestone': 'M4',
@@ -312,16 +379,41 @@ class M2Profile:
             'ordered_actions': list(self.phases), 'selectors': self.selectors(),
             'requirement_ids': list(self.requirement_ids), 'limitations': list(LIMITATIONS),
             'independent_semantic_scope_review_supplied': False, 'whole_project_acceptance': False}
+        if self.mapping_profile is not None:
+            result.update(protocol=MAPPED_PROTOCOL, mapping_profile=self.mapping_profile,
+                original_requirement_ids=list(case['requirement_ids']), mapping_sources=finite.sources(),
+                mapping_scope='Selected MAP-B per-selector precision and existing-observation owner joins only; no shared constants or V2 amendment credit.')
+        return result
 
     @property
     def sha256(self) -> str:
         return digest(self.record())
 
 
-def profile_for(case_id: str, purpose: str = 'public_release') -> M2Profile:
+@dataclass(frozen=True, slots=True)
+class MappedM2Profile(M2Profile):
+    """Exact named opt-in; legacy dataclass fields and bytes stay unchanged."""
+
+    @property
+    def mapping_profile(self) -> str:
+        return finite.M2_MAPPING
+
+
+def accepted_profile(value: Any) -> bool:
+    return type(value) in (M2Profile, MappedM2Profile)
+
+
+def profile_for(case_id: str, purpose: str = 'public_release', *, mapping_profile: str | None = None) -> M2Profile:
+    admission.require(mapping_profile is None or (type(mapping_profile) is str and mapping_profile == finite.M2_MAPPING),
+                      'Closed M2 mapping profile required')
     admission.require(purpose in registry.PURPOSES, 'Prospective product purpose required')
     case_definition(case_id)
-    return M2Profile(case_id, purpose)
+    return M2Profile(case_id, purpose) if mapping_profile is None else MappedM2Profile(case_id, purpose)
+
+
+def reconstruct(value: M2Profile) -> M2Profile:
+    admission.require(accepted_profile(value), 'Exact named M2 profile required')
+    return profile_for(value.case_id, value.purpose, mapping_profile=value.mapping_profile)
 
 
 def exact(expected: Any, actual: Any) -> bool:
@@ -335,7 +427,7 @@ def exact(expected: Any, actual: Any) -> bool:
 
 
 def project(value: M2Profile, responses: dict[int, Any], sqlite_values: dict[int, Any]) -> dict[str, Any]:
-    admission.require(type(value) is M2Profile and value == profile_for(value.case_id, value.purpose), 'Exact profile required')
+    admission.require(accepted_profile(value) and value == reconstruct(value), 'Exact profile required')
     case = case_definition(value.case_id)
     rows, diagnostics = [], []
     observation_index = 0
