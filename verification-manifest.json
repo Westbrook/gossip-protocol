@@ -5229,6 +5229,102 @@
       "boundary": "81 focused reader/component controls, not a successful six-child cohort; current live qualification and independent acceptance remain unavailable.",
       "disposition": "Run combined static and new reader classes on the installed canonical tree. Reconcile unchanged producers before final integration; complete whole-contract rehearsal remains mandatory.",
       "overlap_reason": "New original-evidence readers and capsule lifecycle require their own checks even though frozen producer qualification is retained."
+    },
+    "tests/test_candidate_storage_product_execution_v1.py::StorageReviewAuthorityV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Bind fresh storage profiles and original review/source/admission/capture evidence; preserve unavailable and prior failed assertions independently.",
+      "isolation": "class process; disposable Git, journal, database and checkpoint owners; no Docker or provider",
+      "overlap": "New owner/profile composition with original storage driver/observer regressions; physical qualification remains separate.",
+      "distinct_defect": "Changed layout review, source or purpose; incomplete capture and phase contradiction; lost process ownership; or missing declared selectors could produce false acceptance.",
+      "boundary": "Real local Git/journals and typed authorities; synthetic review originals and fixture subprocess endpoints; no actual candidate container.",
+      "disposition": "Required affected offline gate before new storage physical histories.",
+      "overlap_reason": "Existing definitions and low-level observers do not exercise new review/admission and raw replay composition."
+    },
+    "tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Bind fresh storage profiles and original review/source/admission/capture evidence; preserve unavailable and prior failed assertions independently.",
+      "isolation": "class process; disposable Git, journal, database and checkpoint owners; no Docker or provider",
+      "overlap": "New owner/profile composition with original storage driver/observer regressions; physical qualification remains separate.",
+      "distinct_defect": "Changed layout review, source or purpose; incomplete capture and phase contradiction; lost process ownership; or missing declared selectors could produce false acceptance.",
+      "boundary": "Real local Git/journals and typed authorities; synthetic review originals and fixture subprocess endpoints; no actual candidate container.",
+      "disposition": "Required affected offline gate before new storage physical histories.",
+      "overlap_reason": "Existing definitions and low-level observers do not exercise new review/admission and raw replay composition."
+    },
+    "tests/test_candidate_storage_product_profile_v1.py::CandidateStorageProductProfileTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Bind fresh storage profiles and original review/source/admission/capture evidence; preserve unavailable and prior failed assertions independently.",
+      "isolation": "class process; disposable Git, journal, database and checkpoint owners; no Docker or provider",
+      "overlap": "New owner/profile composition with original storage driver/observer regressions; physical qualification remains separate.",
+      "distinct_defect": "Changed layout review, source or purpose; incomplete capture and phase contradiction; lost process ownership; or missing declared selectors could produce false acceptance.",
+      "boundary": "Real local Git/journals and typed authorities; synthetic review originals and fixture subprocess endpoints; no actual candidate container.",
+      "disposition": "Required affected offline gate before new storage physical histories.",
+      "overlap_reason": "Existing definitions and low-level observers do not exercise new review/admission and raw replay composition."
+    },
+    "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalProcessV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Read exact original terminal/process/source/financial facts for all six slots; independently gated final admission never converts missing authority or cleanup into acceptance.",
+      "isolation": "class process; disposable original SQL/checkpoint fixtures; no provider/Docker",
+      "overlap": "Strict successful-only rehearsal reader remains separate; these cover terminal failure denominators and actual acceptance-owner admission.",
+      "distinct_defect": "Missing child outcomes, forged barrier/financial origin, historical wallet drift, duplicate identity or unverified cleanup could manufacture acceptance.",
+      "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
+      "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
+      "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
+    },
+    "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalFinancialV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Read exact original terminal/process/source/financial facts for all six slots; independently gated final admission never converts missing authority or cleanup into acceptance.",
+      "isolation": "class process; disposable original SQL/checkpoint fixtures; no provider/Docker",
+      "overlap": "Strict successful-only rehearsal reader remains separate; these cover terminal failure denominators and actual acceptance-owner admission.",
+      "distinct_defect": "Missing child outcomes, forged barrier/financial origin, historical wallet drift, duplicate identity or unverified cleanup could manufacture acceptance.",
+      "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
+      "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
+      "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
+    },
+    "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalCohortV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Read exact original terminal/process/source/financial facts for all six slots; independently gated final admission never converts missing authority or cleanup into acceptance.",
+      "isolation": "class process; disposable original SQL/checkpoint fixtures; no provider/Docker",
+      "overlap": "Strict successful-only rehearsal reader remains separate; these cover terminal failure denominators and actual acceptance-owner admission.",
+      "distinct_defect": "Missing child outcomes, forged barrier/financial origin, historical wallet drift, duplicate identity or unverified cleanup could manufacture acceptance.",
+      "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
+      "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
+      "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
+    },
+    "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalCompositionV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Read exact original terminal/process/source/financial facts for all six slots; independently gated final admission never converts missing authority or cleanup into acceptance.",
+      "isolation": "class process; disposable original SQL/checkpoint fixtures; no provider/Docker",
+      "overlap": "Strict successful-only rehearsal reader remains separate; these cover terminal failure denominators and actual acceptance-owner admission.",
+      "distinct_defect": "Missing child outcomes, forged barrier/financial origin, historical wallet drift, duplicate identity or unverified cleanup could manufacture acceptance.",
+      "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
+      "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
+      "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
+    },
+    "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Read exact original terminal/process/source/financial facts for all six slots; independently gated final admission never converts missing authority or cleanup into acceptance.",
+      "isolation": "class process; disposable original SQL/checkpoint fixtures; no provider/Docker",
+      "overlap": "Strict successful-only rehearsal reader remains separate; these cover terminal failure denominators and actual acceptance-owner admission.",
+      "distinct_defect": "Missing child outcomes, forged barrier/financial origin, historical wallet drift, duplicate identity or unverified cleanup could manufacture acceptance.",
+      "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
+      "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
+      "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
     }
   },
   "audit": {

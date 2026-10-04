@@ -1258,11 +1258,19 @@ reviewed full scope, matching complete rehearsal and larger live comparison
 remain required. Held-out confirmation and the separate placement-by-transport
 study remain part of the investigation.
 
-The [original-evidence readers](docs/cumulative-rehearsal-readers-v1.md) now pass
-[81 focused controls](analysis/cumulative-rehearsal-reader-integration-v1.json)
-in a separate integration checkout. They bind accounting, role/process originals,
-Git history and the ordered six-child design. These component fixtures do not
-supply a complete rehearsal or independent acceptance; both remain required.
+The [original-evidence readers](docs/cumulative-rehearsal-readers-v1.md) passed
+[84 focused controls](analysis/cumulative-rehearsal-reader-profile-correction-v1.json)
+after actual financial records exposed a profile mismatch missed by the earlier81
+component checks. They bind accounting, role/process originals, Git history and
+the ordered six-child design. The original result and correction are retained.
+
+The [terminal outcome reader and final-admission adapter](docs/cumulative-terminal-acceptance-v1.md)
+now preserve all six planned slots and require original scope, source, barrier
+and cleanup evidence before independent acceptance. New [storage observations](docs/candidate-storage-product-observation-v1.md)
+retain raw captures and independently enrolled layout reviews. Complete scope,
+storage dispatch integration, aggregate capacity, physical qualification and a
+matching full rehearsal remain required; these components add no comparative
+model-quality samples.
 
 ## Research and review
 

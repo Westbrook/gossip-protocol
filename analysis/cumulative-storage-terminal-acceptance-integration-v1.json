@@ -1,0 +1,526 @@
+{
+  "protocol": "cumulative-storage-terminal-acceptance-integration-v1",
+  "status": "271_targeted_offline_controls_passed_full_qualification_incomplete",
+  "base_commit": "6d3e71d6728a06b96cf6148f07f9a2f693de7e3f",
+  "branch": "codex/cumulative-rehearsal-readers",
+  "workspace": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "verification_owner": "root",
+  "files": [
+    {
+      "path": "gossip_harness/candidate_storage_review_authority_v1.py",
+      "sha256": "b99e282dfc08f7432bbf219adf3bf8f3f42cafa446afdaad32e0f1a2be0ea696",
+      "bytes": 9084
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "6da239ef8f595436a9f970bb6e59c729b4efa0fd7fed0ad44900dbd4a19bb9b0",
+      "bytes": 42419
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "sha256": "da033dceb6fe4ac34ff2eb878d74d852aa27d1a6b175e3317dd30f558d7860b1",
+      "bytes": 19920
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_profile_v1.py",
+      "sha256": "bd3f5c0ccb5e3cc5a40d6b0afed9712a03cdd8ce7d98595600f34f15c5c4fb1e",
+      "bytes": 27481
+    },
+    {
+      "path": "tests/test_candidate_storage_product_execution_v1.py",
+      "sha256": "1f40659c3100f2529c2b43ed175033dcf0bc79253e049ac1e2a29bf28b341ee3",
+      "bytes": 33384
+    },
+    {
+      "path": "tests/test_candidate_storage_product_profile_v1.py",
+      "sha256": "7e6cb7157ed6003b893514fc7a11e269b4e91bbb819027c81f0cd2cca8d9f53c",
+      "bytes": 18379
+    },
+    {
+      "path": "docs/candidate-storage-product-observation-v1.md",
+      "sha256": "686a1d8613889525556c0edfc1eccd018a32c6b689d7d201356e2d73c81cafc9",
+      "bytes": 7387
+    },
+    {
+      "path": "gossip_harness/cumulative_terminal_originals_v1.py",
+      "sha256": "cf006e652b1c53817e973cacddb2facfda7706ef884685642f8834dd68b22ab0",
+      "bytes": 47620
+    },
+    {
+      "path": "tests/test_cumulative_terminal_originals_v1.py",
+      "sha256": "5a984cdd481360c194aecebc1f5a3c2c8f5a2c55ba746c84d1c2052439184ad8",
+      "bytes": 31895
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v1.py",
+      "sha256": "0393877565e77dd69dd0aaec6deb7a2a968f1302cb37fe60201070fac74312ae",
+      "bytes": 34556
+    },
+    {
+      "path": "gossip_harness/cumulative_study_successor_v1.py",
+      "sha256": "2051f601d43892265da677e29000c0be96734cf5bfdb23cf4b4b334e29845ecb",
+      "bytes": 8757
+    },
+    {
+      "path": "tests/test_cumulative_final_acceptance_v1.py",
+      "sha256": "8afae3452f305d67baffd4edbad5d42d8844ce24544ea8ef1eb108095b3ea20d",
+      "bytes": 19045
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "083019729a8159f2551f0ff3c42490ed4470dbf59592a88bcaf0d9f07b5b4c19",
+      "bytes": 514456
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "c9b7d20ec65dba2f1cbe7c2ceab332d5ade24e45a53942a9a4b26616f6cc96a1",
+      "bytes": 11376
+    }
+  ],
+  "qualification": {
+    "summary": {
+      "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/summary.json",
+      "sha256": "c33a4604b832cf14fe69db53401b984840887ae11f77afe53235355c9f66f1ca",
+      "bytes": 165158
+    },
+    "inputs": {
+      "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/inputs.json",
+      "sha256": "cf3e8d02c0300f05c0253d27d81e8a0f9530b286c0360c2e52a9010cc702c353",
+      "bytes": 71566
+    },
+    "fingerprint": "4e14668fdab156c59bfa59ac648c19afa290e5aabccddb4c104c3a394667556a",
+    "static": {
+      "duration_seconds": 1.4554174588993192,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "unchanged_type_diagnostics": 117,
+    "source_inputs": 605,
+    "current_source_mismatches": [],
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    },
+    "selected_counts": {
+      "fast": 242,
+      "git": 29
+    },
+    "methods": 271,
+    "classes": 19,
+    "outcomes": {
+      "passed": 271
+    },
+    "reused_classes": 0,
+    "duration_seconds": 232.48664329200983,
+    "jobs": [
+      {
+        "class": "tests/test_candidate_intake_store_observer_v1.py::CandidateIntakeStoreObserverTests",
+        "methods": 7,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/ac620c8877d2471d/result.json",
+          "sha256": "5bd5ee3a37b1a42637d43658aefc1df581c2d355946198a8b3e7f628a68a2ed7",
+          "bytes": 4632
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/ac620c8877d2471d/worker.log",
+          "sha256": "0d2547a48e35c008a4ac6afb49eb272ad1d1470e1f86328d34008908e0298df4",
+          "bytes": 1417
+        }
+      },
+      {
+        "class": "tests/test_candidate_intake_store_profile_v1.py::CandidateIntakeStoreProfileTests",
+        "methods": 16,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/bdf88c6ef7b7a444/result.json",
+          "sha256": "e0df28262e1039072b1e064634d7b41c170f4e8b6477ae5e6eb807fa0916e905",
+          "bytes": 7657
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/bdf88c6ef7b7a444/worker.log",
+          "sha256": "cf15ac89e4d34f61b3c23075ca5170fa53939b33e259f0694cf4f2fe14f382b8",
+          "bytes": 3389
+        }
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+        "methods": 12,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/cdb18e35e74521c2/result.json",
+          "sha256": "e8a9247a5d3d211ca549c6b6c42fc65cc124acab8139d6ce971cefe14af856cf",
+          "bytes": 6379
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/cdb18e35e74521c2/worker.log",
+          "sha256": "ee4be14cfd66a7ddbf03f8fc01dcd58f7d7c13c769bffb776ebcaa588a3cec1c",
+          "bytes": 2567
+        }
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateObservationAdmissionTests",
+        "methods": 27,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/ec139b89df3a86a3/result.json",
+          "sha256": "be18ba4cbbb0794771f9951d3f19992fc2d72ca60bd8e5457602bf16da39cc2b",
+          "bytes": 11455
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/ec139b89df3a86a3/worker.log",
+          "sha256": "24e1932b4350d2329a6b856e5310f2443aea97a5e0d4272faa80e7bc5d30de55",
+          "bytes": 5617
+        }
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "methods": 32,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/995b4834cfdec311/result.json",
+          "sha256": "1896a66c1ceac1c3b0128609f0795efa338e34fc0806e791a328eaeb552dd788",
+          "bytes": 12561
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/995b4834cfdec311/worker.log",
+          "sha256": "5209631edefc2977f00657e641cf70d578dc2e10804579219ec3de73ed08a113",
+          "bytes": 6380
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_driver_v1.py::CandidateStorageDriverTests",
+        "methods": 12,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/0ceacbd45908e058/result.json",
+          "sha256": "151152669c79ae445f584c244470bada07730c4081af031b39aa3c36a19e90ed",
+          "bytes": 6287
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/0ceacbd45908e058/worker.log",
+          "sha256": "3182914d5d4ca47ce3d9370c8f352af3929f8b9d4f456682acfa54a520bc4f28",
+          "bytes": 2555
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_observer_v1.py::CandidateStorageObserverV1Tests",
+        "methods": 18,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/6a465dbb3710ccac/result.json",
+          "sha256": "39ce5374b68d166f58cbdf74e77c8d81d3ea0470e49e2568500828d77a2fa77c",
+          "bytes": 8232
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/6a465dbb3710ccac/worker.log",
+          "sha256": "3e4e2dd1f88f918fc6785291824b28bb9cca3667ecc6c5234f8c8cd88e31e820",
+          "bytes": 3645
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_execution_v1.py::StorageReviewAuthorityV1Tests",
+        "methods": 7,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/6ce746ce94b5083a/result.json",
+          "sha256": "d1de66caba5c178703a3fc539453074b6e307bacfa717e82e3a56b0ec8831dc7",
+          "bytes": 4626
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/6ce746ce94b5083a/worker.log",
+          "sha256": "8c29bfb66401b0bb80a31c8aaa7289532691c7cce0f000ad288133ed45400860",
+          "bytes": 1455
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_profile_v1.py::CandidateStorageProductProfileTests",
+        "methods": 16,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/7c2bb074d97becc0/result.json",
+          "sha256": "4e9fc6f7466cecab083768aa6c14d16d9f30fc08e4db175aaeee2f38f95ed448",
+          "bytes": 7744
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/7c2bb074d97becc0/worker.log",
+          "sha256": "75a671920f37f786158470e7bf3c39d634d7627b175985fe3189915398532150",
+          "bytes": 3463
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+        "methods": 22,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/4f5ebf8f047f33ee/result.json",
+          "sha256": "ed23749226c8dd9f7b1d5076e749611b36b92623df2c73a953a0c457f51a3aa0",
+          "bytes": 9526
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/4f5ebf8f047f33ee/worker.log",
+          "sha256": "06c2052cdb201daebbb4064e2788bd847c271b30724652956b113a1e2a4079ae",
+          "bytes": 4654
+        }
+      },
+      {
+        "class": "tests/test_cumulative_rehearsal_inventory_v1.py::CumulativeRehearsalInventoryV1Tests",
+        "methods": 7,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/b024e07fc7a6d919/result.json",
+          "sha256": "499857fda92ba3bbd71dfc7292c08f840a7b4fb868ca687a0597a5e8351aabce",
+          "bytes": 4614
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/b024e07fc7a6d919/worker.log",
+          "sha256": "40673498adc92e69d476b20f3ced5cb63463f38999402b08f91ebbbfb50cf485",
+          "bytes": 1330
+        }
+      },
+      {
+        "class": "tests/test_cumulative_rehearsal_process_v1.py::CumulativeRehearsalProcessV1Tests",
+        "methods": 10,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/48c28724e89fd175/result.json",
+          "sha256": "ee6895943b4e965eac7aa3efbf414dfda2c160e71aead8ba2b6fc36be4d8dd15",
+          "bytes": 5547
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/48c28724e89fd175/worker.log",
+          "sha256": "b77bdbd8dc4bf4a05a0146ef53be0d861dec92c969a2d2711e22d4155e8e8878",
+          "bytes": 1999
+        }
+      },
+      {
+        "class": "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalCohortV1Tests",
+        "methods": 8,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/04e6442cfd3faf59/result.json",
+          "sha256": "300fbfd06a5f6a80ee1c91b77719739b99ab791f1fc4ee8056a56ad60dd6597a",
+          "bytes": 4962
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/04e6442cfd3faf59/worker.log",
+          "sha256": "f27e8343523c6b0cefb3de10751c043813cc4279bcea891b10bdfdc85ab47854",
+          "bytes": 1744
+        }
+      },
+      {
+        "class": "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalCompositionV1Tests",
+        "methods": 10,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/049b2de9829a4665/result.json",
+          "sha256": "402cb90b0ca9f09b6c9b2f5577825f4853dbeb311a05664c62e30d51837682c1",
+          "bytes": 5741
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/049b2de9829a4665/worker.log",
+          "sha256": "b30e18e71e42c7c7e97fae736d33cdb009550527d98a75e7e843e78caada1c5f",
+          "bytes": 2422
+        }
+      },
+      {
+        "class": "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalFinancialV1Tests",
+        "methods": 7,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/b6b5934c389bd761/result.json",
+          "sha256": "345ddd79f646390f4a3bf3d244e7386db95955eb534bb983bcccb1e2b3d4e7cf",
+          "bytes": 4671
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/b6b5934c389bd761/worker.log",
+          "sha256": "295cccdfcd86e522836056a39605ccc0de3d040e6d7abcc72cc73402c393d7b5",
+          "bytes": 1568
+        }
+      },
+      {
+        "class": "tests/test_cumulative_terminal_originals_v1.py::CumulativeTerminalProcessV1Tests",
+        "methods": 11,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/13fb62b9b82d6075/result.json",
+          "sha256": "4b36c4225143547334f3ad4fb672e33dd767fba68f28835b0930031f0556884d",
+          "bytes": 5931
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/13fb62b9b82d6075/worker.log",
+          "sha256": "23950dd7f52562b8a28f29da15d6ea0510c6968a233be82fb2223dec09303c00",
+          "bytes": 2321
+        }
+      },
+      {
+        "class": "tests/test_financial_rehearsal_originals_v1.py::FinancialRehearsalOriginalsV1Tests",
+        "methods": 20,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/89eebfe83c157e30/result.json",
+          "sha256": "7b5405e6e39abcb32e6185ffd6b3b06f8c17153b1f182147e407e406e51552df",
+          "bytes": 8998
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/89eebfe83c157e30/worker.log",
+          "sha256": "84fe2b0270ae5fc36d265e5db023f5ff8ea999f918f695fa8735ac61086eb392",
+          "bytes": 4331
+        }
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "methods": 4,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/c25a48764acbd650/result.json",
+          "sha256": "085c9ee1cbf41775d689ca54e284b260d7c3c1d0be01759885bdeab9677a89cf",
+          "bytes": 3604
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/c25a48764acbd650/worker.log",
+          "sha256": "53968184bbfa8c303de30a81dec68ad6289bd42425e14c5b22b59a43fedd4703",
+          "bytes": 843
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests",
+        "methods": 25,
+        "status": "passed",
+        "result": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/8c0531b0c954244f/result.json",
+          "sha256": "14a09e37c6b73076a608aa50ae9fa6ad39edbcbaeec7fd6e49a8143c033115d0",
+          "bytes": 10968
+        },
+        "log": {
+          "path": "runs/cumulative-storage-terminal-acceptance-offline-2/20261004T100510-246f6fff/classes/8c0531b0c954244f/worker.log",
+          "sha256": "1b094e05f499c3f9b457e2fbe5dd8dca3a367aa0052ff60e673150a14c2b5aeb",
+          "bytes": 5633
+        }
+      }
+    ]
+  },
+  "preceding_storage_regression": {
+    "path": "runs/cumulative-storage-integration-offline-2/20261004T095929-1bae74ba/summary.json",
+    "sha256": "8ac69fcbf1e7f838c5d07ffbdc6a7494a6191c85b9d0c5147aaf23dde64df20e",
+    "bytes": 104093
+  },
+  "new_methods": {
+    "storage": 48,
+    "terminal_reader": 36,
+    "final_acceptance": 22,
+    "total": 106
+  },
+  "source_reviews": [
+    {
+      "path": "runs/cumulative-storage-integration-retention-1/source-review.json",
+      "sha256": "4b1807af1cb5b4bb8c90a674521220379a827c85ae0c0d0e45ee29c44a2255a8",
+      "bytes": 8201
+    },
+    {
+      "path": "runs/cumulative-terminal-acceptance-retention-1/terminal-source-review.json",
+      "sha256": "b1f0e48d49832a216bbd60216321ebece0494d4dc0aca6459f526c7442da42fd",
+      "bytes": 17946
+    },
+    {
+      "path": "runs/cumulative-terminal-acceptance-retention-1/final-acceptance-source-review.json",
+      "sha256": "40c44f7cd618856bdcc54b477e1d5d53dbd53d75fda123913375a47a3f73a3dc",
+      "bytes": 2140
+    }
+  ],
+  "root_reviewed_delta": {
+    "path": "runs/cumulative-storage-integration-retention-1/root-delta-reconciliation.json",
+    "sha256": "affd7589b9a53f26acb0808c3e8a5daf47cd53f747b6f0093205411c668e2ae5",
+    "bytes": 425
+  },
+  "retained_failed_attempts": [
+    {
+      "summary": {
+        "path": "runs/cumulative-storage-integration-offline-1/20261004T095741-c932d4d7/summary.json",
+        "sha256": "c60269457c7d2c7565804c870089e225a69d06e9d74e27064e4f156192c2d899",
+        "bytes": 44209
+      },
+      "outcomes": {
+        "not_run": 176
+      },
+      "workers_started": 0,
+      "reason": "Typed imported function rejected generator argument unpacking; corrected to explicit unchanged phase order."
+    },
+    {
+      "summary": {
+        "path": "runs/cumulative-storage-terminal-acceptance-offline-1/20261004T100355-e1134673/summary.json",
+        "sha256": "a8ba6c2d3ad15722990caca94ec43bd58664059c64580016fe5509f55480d443",
+        "bytes": 74209
+      },
+      "outcomes": {
+        "not_run": 307
+      },
+      "workers_started": 0,
+      "reason": "Selection included36three-slot producer tests while only1slot was allocated. Runner refused all dispatch; those36remain deferred, not waived."
+    }
+  ],
+  "deferred_required_regressions": [
+    {
+      "class": "tests/test_peer_financial_authority_v4.py::PeerFinancialAuthorityV4Tests",
+      "methods": 28,
+      "weight": 3
+    },
+    {
+      "class": "tests/test_peer_financial_terminal_v1.py::PeerFinancialTerminalV1Tests",
+      "methods": 8,
+      "weight": 3
+    }
+  ],
+  "deferred_reason": "Bounded global resource allocation: existing physical qualification uses3slots; this offline batch uses1. No source-level exact receipt reuse claimed for deferred checks.",
+  "behavior": [
+    "Fresh source/layout/review/admission-bound storage observation with authenticated raw captures and explicit unknown phases.",
+    "All six original terminal outcomes preserved, including failed/unattempted/unknown children; complete current wallet membership and historical rows checked.",
+    "Concrete CLI/HTTP/product physical-owner construction remains behind complete scope and original barrier checks; unverified cleanup stops later dispatch."
+  ],
+  "storage_declaration": {
+    "b01_histories": 8,
+    "b02_histories": 241,
+    "previous_public_histories": 341,
+    "new_total_public_histories": 590,
+    "registry_capacity_at_this_checkpoint": 512,
+    "five_forced_schedule_histories_qualified": false,
+    "complete_scope_or_semantic_review": false
+  },
+  "separate_physical_evidence": {
+    "source_checkout": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol",
+    "commit": "0c815ef3bc9a0ef163a6b9dfdc3939966b8ad010",
+    "run": "runs/product-process-physical-v1-qualification-2/20261004T092236-3acddb2d",
+    "exec_session": 78689,
+    "completed_case": "P05",
+    "actions": 18,
+    "required_facets_passed": 97,
+    "unspecified_auxiliary_facets": 8,
+    "containers_removed": 17,
+    "volumes_removed": 1,
+    "audit": {
+      "path": "runs/cumulative-terminal-acceptance-retention-1/separate-physical-p05-audit.json",
+      "sha256": "e7eb37d39be4fc084d2db5131c86ac0333b4c8b53f18a574cff028d51dccb467",
+      "bytes": 22942
+    },
+    "limits": "Closed P05 only; remaining11controls ongoing. Not physical qualification of this new storage/terminal/acceptance tree."
+  },
+  "pending_required": [
+    "36three-slot producer regressions and coherent integration with physical branch.",
+    "Versioned aggregate history capacity and storage recipe/scope factory integration.",
+    "Complete actual source/layout and semantic review, original prerequisites and promotion authority.",
+    "Qualified storage, worker, browser and remaining product observations; complete required scope retained.",
+    "Separately versioned repair-tolerant financial/runtime policy with known failures still retained and accounted.",
+    "Matching full four-milestone/six-trajectory physical rehearsal and larger live comparison.",
+    "Independent held-out-family confirmation and separate placement-by-transport comparison."
+  ],
+  "limitations": [
+    "Offline component fixtures use real local SQL/Git/journals but synthetic reviews and mocked process/Git facts where stated.",
+    "No positive complete physical cohort, full project acceptance or new scientific observation.",
+    "Frozen V4 failed-call closure policy unchanged.",
+    "Current final adapter storage fourth dispatch branch remains pending; storage module presence is not full acceptance integration."
+  ],
+  "new_comparative_quality_samples": 0,
+  "provider_calls": 0,
+  "goal_complete": false
+}
