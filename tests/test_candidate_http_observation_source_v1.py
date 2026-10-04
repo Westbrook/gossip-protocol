@@ -84,7 +84,7 @@ class HttpProductSemanticSourceV1Tests(unittest.TestCase):
             source.HttpObservationSource({}, {}, receipt_path=Path("/private/tmp/not-issued.json"))
         selected = profile()
         with self.assertRaises(ValueError):
-            source.HttpObservationSource(history(selected), execution.ControllerCheckpoint(()),
+            source.HttpObservationSource(history(selected), execution.ControllerCheckpoint("a" * 64, 0, "a" * 64, 0, 0, 1),
                 receipt_path=Path("/private/tmp/not-issued.json"))
 
     def test_independent_cli_exit_failure_survives_unavailable_state_lineage(self):

@@ -14,7 +14,6 @@ from __future__ import annotations
 import base64
 import binascii
 from dataclasses import asdict, dataclass
-import fcntl
 import hashlib
 import json
 import os
@@ -24,7 +23,7 @@ import re
 import subprocess
 import tempfile
 import threading
-from typing import Any, Callable
+from typing import Any
 import uuid
 
 from . import candidate_cli_acceptance_profile_v1 as cases
@@ -32,13 +31,18 @@ from . import candidate_observation_admission_v1 as admission
 from . import project_acceptance_registry_v1 as registry
 from . import candidate_client_observer_v5 as observer
 from . import candidate_client_process_v4 as process_transport
+from . import candidate_checkpoint_chain_v1 as checkpoint_chain
+from . import candidate_checkpoint_head_v1 as checkpoint_head
+from . import candidate_execution_journal_v1 as execution_journal
+from . import candidate_emergency_cleanup_v1 as emergency_cleanup
+from . import candidate_retention_process_v1 as retention_process
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
 FROZEN_V4_SOURCE_SHA256 = "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1"
 
-PROTOCOL = "candidate-client-execution-v5"
+PROTOCOL = "candidate-client-execution-v5-compact-v1"
 SNAPSHOT_PROTOCOL = "docker-owned-finite-cli-tmpfs-keeper-v1"
 VOLUME_OPTIONS = {"type": "tmpfs", "device": "tmpfs", "o": "size=32m,mode=1777,nosuid,nodev,noexec"}
 MAX_FIXTURE_FILES = 1024
@@ -48,6 +52,8 @@ MAX_ARGV_BYTES = 65536
 MAX_RECORD_BYTES = 32 * 1024 * 1024
 MAX_JOURNAL_BYTES = 256 * 1024 * 1024
 MAX_JOURNAL_FILES = 8192
+JOURNAL_LIMITS = checkpoint_chain.Limits(max_files=MAX_JOURNAL_FILES,
+    max_raw_bytes=MAX_JOURNAL_BYTES, max_raw_file_bytes=MAX_RECORD_BYTES)
 CONTROL_LIMIT = 1024 * 1024
 SUPPORTED_REQUIREMENTS_SHA256 = frozenset((cases.NORMATIVE_SHA256["library-cumulative-product-v2.json"],))
 COMPATIBILITY_PLAN = "analysis/candidate-b03-runtime-compatibility-plan-v1.json"
@@ -93,7 +99,10 @@ def evaluator_sources() -> dict[str, str]:
              "candidate_client_observer_v5.py", "candidate_cli_acceptance_profile_v1.py", "candidate_cli_cases_v1.py",
              "candidate_observation_admission_v1.py", "project_acceptance_registry_v1.py",
              "candidate_client_observation_source_v1.py", "candidate_scope_consumer_v1.py",
-             "candidate_release_execution_v2.py", "candidate_release_observer_v2.py", "sandbox.py", "gitstore.py")
+             "candidate_release_execution_v2.py", "candidate_release_observer_v2.py", "sandbox.py", "gitstore.py",
+             "candidate_checkpoint_chain_v1.py", "candidate_checkpoint_head_v1.py",
+             "candidate_execution_journal_v1.py", "candidate_emergency_cleanup_v1.py", "candidate_http_journal_v3.py",
+             "candidate_retention_process_v1.py")
     result = {name: sha256(Path(__file__).with_name(name).read_bytes()) for name in names}
     for plan in (COMPATIBILITY_PLAN, MOUNT_INVENTORY_PLAN, EMPTY_COMMAND_PLAN):
         result[plan] = sha256((Path(__file__).resolve().parents[1] / plan).read_bytes())
@@ -260,9 +269,7 @@ class ClientRegistration:
                 "Subject absent from registered cohort")
 
 
-@dataclass(frozen=True)
-class ControllerCheckpoint:
-    files: tuple[tuple[str, str], ...]
+ControllerCheckpoint = checkpoint_chain.PrefixCommitment
 
 
 @dataclass(frozen=True)
@@ -290,6 +297,9 @@ def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, run
         "candidate_profile": "fresh-finite-main-process-no-init-no-network-readonly-unprivileged",
         "snapshot_protocol": SNAPSHOT_PROTOCOL, "volume_options": VOLUME_OPTIONS}
     limits = {"policy": asdict(policy), "transport_policy": asdict(policy.process_policy()),
+        "checkpoint_protocol": checkpoint_chain.PROTOCOL, "journal_protocol": execution_journal.PROTOCOL,
+        "checkpoint_limits": asdict(JOURNAL_LIMITS), "cleanup_protocol": emergency_cleanup.PROTOCOL,
+        "cleanup_limits": asdict(emergency_cleanup.CleanupLimits()), "retention_process_protocol": retention_process.PROTOCOL,
         "fixture_files": MAX_FIXTURE_FILES, "fixture_bytes": MAX_FIXTURE_BYTES, "steps": MAX_STEPS,
         "argv_bytes": MAX_ARGV_BYTES, "record_bytes": MAX_RECORD_BYTES, "journal_bytes": MAX_JOURNAL_BYTES,
         "journal_files": MAX_JOURNAL_FILES, "startup_compatibility_policy": startup_policy_binding(),
@@ -344,27 +354,6 @@ def keeper_command(recipe: dict[str, Any], policy: ClientPolicy) -> tuple[str, .
     return ("python", "-I", "-c", "import time;time.sleep(" + str(keeper_lifetime_seconds(recipe, policy)) + ")")
 
 
-def _sync(path: Path) -> None:
-    descriptor = os.open(path, os.O_RDONLY)
-    try:
-        os.fsync(descriptor)
-    finally:
-        os.close(descriptor)
-
-
-def _read(path: Path) -> bytes:
-    require(path.is_file() and not path.is_symlink() and path.stat().st_size <= MAX_RECORD_BYTES,
-            "Missing, unsafe or oversized retained artifact")
-    return path.read_bytes()
-
-
-def _json(path: Path) -> Any:
-    raw = _read(path)
-    value = json.loads(raw)
-    require(encoded(value) == raw, "Retained JSON is not canonical")
-    return value
-
-
 def _verify_tree(root: Path, files: dict[str, bytes], directories: list[str] | None = None) -> None:
     actual: dict[str, bytes] = {}
     actual_dirs: set[str] = set()
@@ -388,31 +377,41 @@ class CandidateClientExecution:
     """One trusted local controller capability for one prospectively admitted CLI history."""
 
     def __init__(self, root: Path, store: GitStore, registration: ClientRegistration, policy: ClientPolicy, *,
+                 checkpoint_authority: checkpoint_chain.HeadAuthority, delta_root: Path, cleanup_root: Path,
                  endpoint: Any = None, mode: str = "physical", expected_checkpoint: ControllerCheckpoint | None = None,
-                 checkpoint_sink: Callable[[ControllerCheckpoint], None] | None = None,
                  admission_authority: admission.ObservationAdmission):
         require(type(registration) is ClientRegistration and type(policy) is ClientPolicy
                 and mode in ("physical", "fixture"), "Typed immutable registration required")
         self.root = Path(root).absolute()
+        self.delta_root, self.cleanup_root = Path(delta_root).absolute(), Path(cleanup_root).absolute()
         require(self.root.resolve() == self.root and not self.root.is_symlink(), "Canonical journal root required")
         existed = self.root.exists()
         require(not existed or expected_checkpoint is not None, "Existing journal requires external checkpoint")
         require(existed or expected_checkpoint is None, "Checkpoint root missing")
-        self.root.mkdir(parents=True, exist_ok=True)
-        require(not (self.root / "owner.lock").is_symlink(), "Unsafe owner lock")
-        self.owner = (self.root / "owner.lock").open("a+b")
-        try:
-            fcntl.flock(self.owner.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except OSError:
-            self.owner.close()
-            raise ExecutionError("Journal already owned") from None
+        require(all(path.resolve() == path for path in (self.delta_root, self.cleanup_root)),
+                "Canonical delta and cleanup roots required")
+        require(all(not left.is_relative_to(right) and not right.is_relative_to(left)
+                    for left, right in ((self.root, self.cleanup_root), (self.delta_root, self.cleanup_root))),
+                "Cleanup must be outside both journal roots")
+        require(mode != "physical" or type(checkpoint_authority) is checkpoint_head.ExternalHead,
+                "Physical execution requires the qualified external host head")
+        if type(checkpoint_authority) is checkpoint_head.ExternalHead:
+            require(checkpoint_authority.journal_roots == (self.root, self.delta_root),
+                    "External head belongs to different journal roots")
+            require(not self.cleanup_root.is_relative_to(checkpoint_authority.root)
+                    and not checkpoint_authority.root.is_relative_to(self.cleanup_root),
+                    "Cleanup and external head must be disjoint")
+        self.checkpoint_authority = checkpoint_authority
         self.closed = False
         self._owner_thread = threading.get_ident()
-        self._authenticated: dict[str, str] = {}
-        self._retained_bytes = 0
+        self._owner_pid = os.getpid()
+        self.journal: execution_journal.OwnerJournal | None = None
+        self._cleanup: emergency_cleanup.CleanupChannel | None = None
+        self._cleanup_phase = False
+        self._cleanup_claims: dict[str, str] = {}
+        self.cleanup_result: Any = None
         self._keeper_inspection: dict[str, Any] | None = None
         self.store, self.registration, self.policy, self.mode = store, registration, policy, mode
-        self.checkpoint_sink = checkpoint_sink
         self.admission = admission_authority
         try:
             require(type(admission_authority) is admission.ObservationAdmission, "Actual prospective admission owner required")
@@ -431,7 +430,12 @@ class CandidateClientExecution:
             require(self.binding == registration.binding, "Registered evaluator/suite/runtime/environment/limits differ")
             self.observation_registration = observation_registration(registration)
             require(self.admission.registration == self.observation_registration, "Admission belongs to another observation")
-            self.config = {"protocol": PROTOCOL, "mode": mode, "root": str(self.root),
+            self.config: dict[str, Any] = {"protocol": PROTOCOL, "mode": mode, "root": str(self.root),
+                "delta_root": str(self.delta_root), "cleanup_root": str(self.cleanup_root),
+                "journal_protocol": execution_journal.PROTOCOL, "checkpoint_protocol": checkpoint_chain.PROTOCOL,
+                "checkpoint_limits": asdict(JOURNAL_LIMITS), "cleanup_protocol": emergency_cleanup.PROTOCOL,
+                "cleanup_limits": asdict(emergency_cleanup.CleanupLimits()),
+                "retention_process_protocol": retention_process.PROTOCOL,
                 "repository": str(store.path.resolve()), "registration": asdict(registration), "policy": asdict(policy),
                 "endpoint": None if self.endpoint is None else asdict(self.endpoint), "runtime": self.runtime,
                 "source_manifest": source_manifest(self.files), "definition_sources": self.definition_sources,
@@ -442,53 +446,93 @@ class CandidateClientExecution:
                 "recipe": self.recipe,
                 "fixture_sha256": fixture_sha256(self.recipe, self.fixture_files),
                 "observation_registration": asdict(self.observation_registration)}
+            # The context is independently recomputed. Reopen authenticates the
+            # whole chain before any retained config or intent can be decoded.
+            context = {"execution_protocol": PROTOCOL, "config_sha256": digest(self.config),
+                "registration_sha256": digest(asdict(registration)),
+                "observation_registration_sha256": digest(asdict(self.observation_registration)),
+                "source_sha256": self.binding.source_sha256, "commit_oid": registration.commit_oid,
+                "tree_oid": registration.tree_oid, "evaluator_sha256": self.binding.evaluator_sha256,
+                "purpose": self.binding.purpose, "milestone": self.binding.milestone}
+            self.journal = execution_journal.OwnerJournal(self.root, self.delta_root,
+                context=context, authority=checkpoint_authority, expected=expected_checkpoint, limits=JOURNAL_LIMITS)
             if existed:
-                require(_json(self.root / "config.json") == json.loads(encoded(self.config)), "Journal config changed")
-                require(type(expected_checkpoint) is ControllerCheckpoint and bool(expected_checkpoint.files),
-                        "Exact external checkpoint required")
-                assert expected_checkpoint is not None
-                require(len(dict(expected_checkpoint.files)) == len(expected_checkpoint.files)
-                        and self._inventory() == dict(expected_checkpoint.files), "Journal rollback/change/foreign suffix")
-                self._authenticated = dict(expected_checkpoint.files)
-                self._retained_bytes = sum(path.stat().st_size for path in self.root.iterdir() if path.name != "owner.lock")
+                require(self.json_authenticated("config.json") == json.loads(encoded(self.config)), "Journal config changed")
             else:
-                require({path.name for path in self.root.iterdir()} == {"owner.lock"}, "Foreign journal root")
                 self._retain("config.json", encoded(self.config))
-                _sync(self.root.parent)
-        except BaseException:
+            self.checkpoint()
+        except BaseException as error:
             self.close()
+            if isinstance(error, checkpoint_chain.ChainUnknown):
+                raise ExecutionUnknown("Original checkpoint authority unavailable") from error
+            if isinstance(error, checkpoint_chain.ChainError):
+                raise ExecutionError(str(error)) from error
             raise
-
-    def _inventory(self) -> dict[str, str]:
-        items = list(self.root.iterdir())
-        require(len(items) <= MAX_JOURNAL_FILES + 1, "Journal file count exceeded")
-        return {path.name: sha256(_read(path)) for path in sorted(items) if path.name != "owner.lock"}
 
     def _retain(self, name: str, raw: bytes) -> None:
         require(re.fullmatch(r"[a-z][a-z0-9.-]{0,180}", name) is not None
                 and type(raw) is bytes and len(raw) <= MAX_RECORD_BYTES, "Invalid retained artifact")
-        require(len(self._authenticated) < MAX_JOURNAL_FILES
-                and self._retained_bytes + len(raw) <= MAX_JOURNAL_BYTES, "Journal resource bound exceeded")
-        with (self.root / name).open("xb") as stream:
-            stream.write(raw)
-            stream.flush()
-            os.fsync(stream.fileno())
-        _sync(self.root)
-        self._authenticated[name] = sha256(raw)
-        self._retained_bytes += len(raw)
-        if self.checkpoint_sink is not None:
-            self.checkpoint_sink(self.checkpoint())
+        require(self.journal is not None, "Controller journal unavailable")
+        assert self.journal is not None
+        try:
+            self.journal.retain(name, raw, cleanup=self._cleanup_phase)
+        except checkpoint_chain.ChainUnknown as error:
+            raise ExecutionUnknown("Journal append is uncertain; preserve the original prefix") from error
+        except checkpoint_chain.ChainError as error:
+            raise ExecutionError(str(error)) from error
+        # Frozen process transport consumes its live response only after this
+        # callback returns. Authenticate the exact retained bytes first.
+        require(self.read_authenticated(name) == raw, "Retained process bytes changed")
+        if name.endswith(("-request.bin", "-response.bin")):
+            self.checkpoint()
+
+    def read_authenticated(self, name: str) -> bytes:
+        require(self.journal is not None, "Controller journal unavailable")
+        assert self.journal is not None
+        try:
+            return self.journal.read(name)
+        except checkpoint_chain.ChainUnknown as error:
+            raise ExecutionUnknown("Authenticated raw observation unavailable") from error
+        except checkpoint_chain.ChainError as error:
+            raise ExecutionError(str(error)) from error
+
+    def json_authenticated(self, name: str) -> Any:
+        require(self.journal is not None, "Controller journal unavailable")
+        assert self.journal is not None
+        try:
+            return self.journal.json(name)
+        except checkpoint_chain.ChainUnknown as error:
+            raise ExecutionUnknown("Authenticated JSON observation unavailable") from error
+        except checkpoint_chain.ChainError as error:
+            raise ExecutionError(str(error)) from error
+
+    def has_retained(self, name: str) -> bool:
+        require(self.journal is not None, "Controller journal unavailable")
+        assert self.journal is not None
+        try:
+            return self.journal.has(name)
+        except checkpoint_chain.ChainUnknown as error:
+            raise ExecutionUnknown("Current journal membership unavailable") from error
+        except checkpoint_chain.ChainError as error:
+            raise ExecutionError(str(error)) from error
 
     def checkpoint(self) -> ControllerCheckpoint:
-        require(not self.closed and threading.get_ident() == self._owner_thread, "Closed or foreign-thread controller")
-        require(self._inventory() == self._authenticated, "Journal differs from original controller writes")
-        return ControllerCheckpoint(tuple(sorted(self._authenticated.items())))
+        require(not self.closed and threading.get_ident() == self._owner_thread
+                and os.getpid() == self._owner_pid, "Closed or foreign controller")
+        require(self.journal is not None, "Controller journal unavailable")
+        assert self.journal is not None
+        try:
+            return self.journal.checkpoint()
+        except checkpoint_chain.ChainUnknown as error:
+            raise ExecutionUnknown("Complete journal boundary unavailable") from error
+        except checkpoint_chain.ChainError as error:
+            raise ExecutionError(str(error)) from error
 
     def _unchanged(self) -> None:
         self.checkpoint()
         require(evaluator_sources() == self.sources == _LOADED_SOURCES and cases.definition_sources() == self.definition_sources,
                 "Evaluator or normative sources changed")
-        require(_json(self.root / "config.json") == json.loads(encoded(self.config)), "Controller config changed")
+        require(self.json_authenticated("config.json") == json.loads(encoded(self.config)), "Controller config changed")
         tree, files = capture_git_source(self.store, self.registration.commit_oid)
         require(tree == self.tree and files == self.files, "Registered immutable Git source changed")
         runtime = runtime_identity(self.endpoint, self.policy.image_id, timeout_seconds=self.policy.transport_timeout_seconds) if self.mode == "physical" else {"kind": "fixture-no-Docker"}
@@ -502,13 +546,13 @@ class CandidateClientExecution:
         self.admission.check_current(actual, freeze)
 
     def retained_freeze(self) -> registry.CohortFreeze | None:
-        intent = _json(self.root / "intent.json")
+        intent = self.json_authenticated("intent.json")
         return admission.freeze_from_record(intent["cohort_freeze"])
 
     def execute_once(self) -> ClientHistoryResult:
         self._unchanged()
-        if (self.root / "intent.json").exists():
-            if not (self.root / "terminal.json").exists():
+        if self.has_retained("intent.json"):
+            if not self.has_retained("terminal.json"):
                 raise ExecutionUnknown("Existing intent has no authenticated terminal; never redispatch")
             return self.verified_execution()
         freeze = self.admission.before_intent(observation_registration(self.registration))
@@ -525,7 +569,21 @@ class CandidateClientExecution:
         self._retain("intent.json", encoded(intent))
         require(self.mode == "physical", "Fixture journal cannot dispatch physical evidence")
         self._current_admission(freeze)
-        self._dispatch(intent)
+        self.checkpoint()
+        try:
+            self._dispatch(intent)
+        except BaseException as error:
+            if self.journal is not None and self.journal.uncertain:
+                # Cleanup has separate bounded diagnostics and prior-only
+                # ownership. It never repairs or appends to the poisoned chain.
+                if self._cleanup is not None:
+                    try:
+                        self.cleanup_result = self._cleanup.run(reason="checkpoint-uncertain:" + type(error).__name__)
+                    except BaseException:
+                        pass  # Preserve the original unknown execution, not cleanup's error.
+                if isinstance(error, Exception):
+                    raise ExecutionUnknown("Checkpoint authority lost; no redispatch or acceptance") from error
+            raise
         self._unchanged()
         self._current_admission(freeze)
         return self.verified_execution()
@@ -540,6 +598,9 @@ class CandidateClientExecution:
         environment = {key: value for key, value in DockerValidator._environment().items()
                        if key not in ("DOCKER_HOST", "DOCKER_CONTEXT")}
         timeout = self.policy.transport_timeout_seconds if timeout is None else timeout
+        self._retain(label + "-control-intent.json", encoded({"protocol": PROTOCOL, "argv": argv,
+            "timeout_seconds": timeout, "execution_binding_sha256": digest(asdict(self.binding))}))
+        self.checkpoint()
         child = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                  stdin=subprocess.DEVNULL, env=environment)
         buffers = {"stdout": bytearray(), "stderr": bytearray()}
@@ -583,13 +644,14 @@ class CandidateClientExecution:
             record[kind] = {"path": name, "sha256": sha256(raw), "bytes": len(raw),
                             "observed_bytes": observed[kind], "truncated": observed[kind] != len(raw)}
         self._retain(label + ".json", encoded(record))
-        return record
+        self.checkpoint()
+        return self.json_authenticated(label + ".json")
 
     def _raw(self, record: dict[str, Any], kind: str = "stdout") -> bytes:
         item = record[kind]
         require(type(item) is dict and type(item.get("path")) is str
                 and re.fullmatch(r"[a-z][a-z0-9.-]{0,180}", item["path"]) is not None, "Invalid raw artifact reference")
-        raw = _read(self.root / item["path"])
+        raw = self.read_authenticated(item["path"])
         require(sha256(raw) == item["sha256"] and len(raw) == item["bytes"], "Raw artifact differs")
         return raw
 
@@ -733,6 +795,15 @@ class CandidateClientExecution:
 
     def _remove_container(self, label: str, name: str, intent: dict[str, Any], step: dict[str, Any],
                           container_id: str | None) -> bool:
+        previous = self._cleanup_phase
+        self._cleanup_phase = True
+        try:
+            return self._remove_container_owned(label, name, intent, step, container_id)
+        finally:
+            self._cleanup_phase = previous
+
+    def _remove_container_owned(self, label: str, name: str, intent: dict[str, Any], step: dict[str, Any],
+                                container_id: str | None) -> bool:
         """Remove only a resource independently matched to this durable invocation."""
         inspected = self._command(label + "-cleanup-inspect", ["docker", "inspect", "--format", "{{json .}}", name])
         if not self._clean(inspected):
@@ -749,11 +820,20 @@ class CandidateClientExecution:
                 and value.get("Image") == self.policy.image_id
                 and value.get("Config", {}).get("Labels") == labels,
                 "Container cleanup ownership differs; refusing removal")
+        require(self._cleanup is not None and name in self._cleanup_claims, "Original cleanup claim absent")
+        assert self._cleanup is not None
+        claim = self._cleanup_claims[name]
+        self._cleanup.note_normal_removal(claim)
         removed = self._command(label + "-remove", ["docker", "rm", "--force", value["Id"]])
         absent = self._command(label + "-absent", ["docker", "container", "ls", "--all", "--quiet", "--filter", "name=^/" + name + "$"])
-        return self._clean(removed) and self._clean(absent) and not self._raw(absent).strip()
+        clean = self._clean(removed) and self._clean(absent) and not self._raw(absent).strip()
+        if clean:
+            self._cleanup.confirm_normal_removal(claim,
+                remove_record=label + "-remove.json", absence_record=label + "-absent.json")
+        return clean
 
     def _dispatch(self, intent: dict[str, Any]) -> None:
+        self.checkpoint()
         if self.endpoint is None:
             raise ExecutionError("Physical dispatch requires a local Engine endpoint")
         infrastructure: list[str] = []
@@ -768,6 +848,13 @@ class CandidateClientExecution:
         with tempfile.TemporaryDirectory(prefix="gossip-client-stage-") as temp:
             staging = Path(temp).resolve()
             workspace, inputs = staging / "workspace", staging / "inputs"
+            require(type(self.checkpoint_authority) is checkpoint_head.ExternalHead,
+                    "Physical host checkpoint capability unavailable")
+            assert isinstance(self.checkpoint_authority, checkpoint_head.ExternalHead)
+            authority_roots = (self.root, self.delta_root, self.checkpoint_authority.root, self.cleanup_root)
+            require(all(not mounted.is_relative_to(trusted) and not trusted.is_relative_to(mounted)
+                        for mounted in (workspace, inputs) for trusted in authority_roots),
+                    "Candidate staging overlaps trusted authority")
             for root, files, directories in ((workspace, self.files, []), (inputs, self.fixture_files, self.recipe["directories"])):
                 root.mkdir(mode=0o755)
                 for directory in directories:
@@ -781,6 +868,13 @@ class CandidateClientExecution:
             self._retain("staging.json", encoded({"workspace": str(workspace), "inputs": str(inputs),
                 "source_manifest": source_manifest(self.files), "fixture_manifest": source_manifest(self.fixture_files),
                 "directories": self.recipe["directories"]}))
+            assert self.journal is not None
+            self._cleanup = emergency_cleanup.CleanupChannel.create(self.cleanup_root,
+                journal=self.journal, endpoint=self.endpoint, runtime=self.runtime,
+                source_sha256=self.binding.source_sha256, fixture_sha256=self.config["fixture_sha256"],
+                execution_id=intent["execution_id"], image_id=self.policy.image_id,
+                candidate_mount_roots=(workspace, inputs),
+                journal_roots=(self.root, self.delta_root, self.checkpoint_authority.root))
             try:
                 before = self._checked("volume-before", ["docker", "volume", "ls", "--quiet", "--filter", "name=^" + intent["volume"] + "$"])
                 require(not self._raw(before).strip(), "Owned volume name already exists")
@@ -789,20 +883,31 @@ class CandidateClientExecution:
                 for key, value in VOLUME_OPTIONS.items():
                     create.extend(("--opt", key + "=" + value))
                 create.append(intent["volume"])
+                self._retain("volume-create-intent.json", encoded({"argv": create,
+                    "execution_id": intent["execution_id"], "source_sha256": self.binding.source_sha256,
+                    "fixture_sha256": self.config["fixture_sha256"]}))
+                self._cleanup_claims[intent["volume"]] = self._cleanup.claim_volume(name=intent["volume"],
+                    labels={"gossip.execution": intent["execution_id"], "gossip.snapshot": SNAPSHOT_PROTOCOL},
+                    options=VOLUME_OPTIONS, preabsence_record="volume-before.json")
                 volume_created = True  # Durable overall intent and pre-absence also bind uncertain creation.
                 created = self._checked("volume-create", create)
                 require(self._raw(created).strip() == intent["volume"].encode(), "Volume create identity differs")
                 inspected = self._checked("volume-created", ["docker", "volume", "inspect", "--format", "{{json .}}", intent["volume"]])
                 require(self._volume_valid(process_transport.strict_json_loads(self._raw(inspected)), intent), "Volume ownership/bounds differ")
+                self._cleanup.confirm_volume(self._cleanup_claims[intent["volume"]], inspection_record="volume-created.json")
                 keeper_before = self._checked("keeper-before", ["docker", "container", "ls", "--all", "--quiet", "--filter", "name=^/" + intent["keeper"] + "$"])
                 require(not self._raw(keeper_before).strip(), "Keeper name already exists")
                 keeper_argv = self._keeper_create_argv(intent["keeper"], workspace, inputs, intent)
                 self._retain("keeper-intent.json", encoded({"container_name": intent["keeper"], "create_argv": keeper_argv,
                     "argv": intent["keeper_argv"], "lifetime_seconds": intent["keeper_lifetime_seconds"], "volume": intent["volume"]}))
+                self._cleanup_claims[intent["keeper"]] = self._cleanup.claim_container(name=intent["keeper"],
+                    labels={"gossip.execution": intent["execution_id"], "gossip.role": "volume-keeper"},
+                    argv=tuple(intent["keeper_argv"]), preabsence_record="keeper-before.json")
                 keeper_claimed = True
                 keeper_created = self._checked("keeper-create", keeper_argv)
                 keeper_id = self._raw(keeper_created).strip().decode("ascii")
                 require(re.fullmatch(r"[0-9a-f]{64}", keeper_id) is not None, "Invalid keeper identity")
+                self._cleanup.confirm_container(self._cleanup_claims[intent["keeper"]], create_record="keeper-create.json")
                 keeper_initial = self._keeper_state("keeper-created", intent, keeper_id, running=False)
                 keeper_initial_full = self._keeper_inspection
                 require(type(keeper_initial_full) is dict, "Missing full created keeper inspection")
@@ -820,6 +925,7 @@ class CandidateClientExecution:
                 require(startup_comparison["matches"] is True, "Keeper initial configuration changed outside startup policy")
                 self._retain("keeper-identity.json", encoded(keeper_identity))
                 for index, step in enumerate(self.recipe["steps"]):
+                    self.checkpoint()
                     label, name = "step-" + str(index).zfill(3), intent["containers"][index]
                     _verify_tree(workspace, self.files)
                     _verify_tree(inputs, self.fixture_files, self.recipe["directories"])
@@ -833,16 +939,22 @@ class CandidateClientExecution:
                         self._retain(label + "-controller-intent.json", encoded({"step_id": step["step_id"], "step_index": index,
                             "argv": step["argv"], "container_name": name, "volume": intent["volume"],
                             "binding": asdict(self.binding)}))
+                        self._cleanup_claims[name] = self._cleanup.claim_container(name=name,
+                            labels={"gossip.execution": intent["execution_id"], "gossip.source": self.binding.source_sha256,
+                                "gossip.fixture": self.config["fixture_sha256"], "gossip.step": step["step_id"]},
+                            argv=tuple(step["argv"]), preabsence_record=label + "-before.json")
                         invocation_claimed = True
                         cleanup[name] = False  # Failed cleanup must not disappear from the keeper barrier.
                         created = self._checked(label + "-create", self._create_argv(name, workspace, inputs, intent["volume"], step, intent["execution_id"]))
                         container_id = self._raw(created).strip().decode("ascii")
                         require(re.fullmatch(r"[0-9a-f]{64}", container_id) is not None, "Invalid created container identity")
+                        self._cleanup.confirm_container(self._cleanup_claims[name], create_record=label + "-create.json")
                         inspected = self._checked(label + "-created", ["docker", "inspect", "--format", "{{json .}}", container_id])
                         expected = process_transport.strict_json_loads(self._raw(inspected))
                         self._validate_created(expected, container_id=container_id, name=name, workspace=workspace,
                             inputs=inputs, intent=intent, step=step)
-                        result = process_transport.run_process(self.endpoint, container_id=container_id, expected=expected,
+                        self.checkpoint()
+                        result = retention_process.run_process(self.endpoint, container_id=container_id, expected=expected,
                             policy=self.policy.process_policy(), retain=self._retain, label=label,
                             expected_runtime=self.runtime, expected_argv=step["argv"])
                         result["history_state_verified"] = False
@@ -852,42 +964,53 @@ class CandidateClientExecution:
                         except (ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
                             infrastructure.append("keeper-after:" + type(error).__name__ + ":" + str(error)[:512])
                         self._retain(label + "-result.json", encoded(result))
+                        self.checkpoint()
                         results.append({"step_id": step["step_id"], "step_index": index, "label": label, "result": result})
                     finally:
-                        if invocation_claimed:
+                        if invocation_claimed and not self.journal.uncertain:
                             cleanup[name] = self._remove_container(label, name, intent, step, container_id)
                     _verify_tree(workspace, self.files)
                     _verify_tree(inputs, self.fixture_files, self.recipe["directories"])
                     require(cleanup[name], "Container cleanup unproven")
                     require(result["history_state_verified"], "Keeper lifetime does not prove retained state")
                     require(result["status"] == "completed", "Step observation incomplete: " + step["step_id"])
+                    self.checkpoint()
             except (ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
                 infrastructure.append(type(error).__name__ + ":" + str(error)[:512])
             finally:
-                if keeper_claimed:
+                self._cleanup_phase = True
+                if keeper_claimed and not self.journal.uncertain:
                     try:
                         require(all(cleanup.values()), "Finite container cleanup incomplete; keeper retained")
                         keeper_clean = self._remove_container("keeper", intent["keeper"], intent,
                             {"step_id": "volume-keeper"}, keeper_id)
                     except (ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
                         infrastructure.append("keeper-cleanup:" + type(error).__name__ + ":" + str(error)[:512])
-                if volume_created:
+                if volume_created and not self.journal.uncertain:
                     try:
                         owned = self._checked("volume-cleanup-inspect", ["docker", "volume", "inspect", "--format", "{{json .}}", intent["volume"]])
                         require(self._volume_valid(process_transport.strict_json_loads(self._raw(owned)), intent), "Volume cleanup ownership differs")
                         require(all(cleanup.values()) and (not keeper_claimed or keeper_clean), "Container cleanup incomplete; volume retained")
+                        volume_claim = self._cleanup_claims[intent["volume"]]
+                        self._cleanup.note_normal_removal(volume_claim)
                         removed = self._command("volume-remove", ["docker", "volume", "rm", intent["volume"]])
                         absent = self._command("volume-after", ["docker", "volume", "ls", "--quiet", "--filter", "name=^" + intent["volume"] + "$"])
                         volume_clean = self._clean(removed) and self._clean(absent) and not self._raw(absent).strip()
+                        if volume_clean:
+                            self._cleanup.confirm_normal_removal(volume_claim,
+                                remove_record="volume-remove.json", absence_record="volume-after.json")
                     except (ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
                         infrastructure.append("cleanup:" + type(error).__name__ + ":" + str(error)[:512])
+        self.checkpoint()
         self._retain("terminal.json", encoded({"protocol": PROTOCOL, "mode": self.mode,
-            "intent_sha256": sha256(_read(self.root / "intent.json")),
+            "intent_sha256": sha256(self.read_authenticated("intent.json")),
             "observation_registration": asdict(self.observation_registration),
             "cohort_freeze": intent["cohort_freeze"], "results": results,
             "cleanup": cleanup, "keeper_cleanup": keeper_clean, "keeper_identity": keeper_identity,
             "volume_cleanup": volume_clean, "infrastructure": infrastructure,
             "evaluator_sources_after": evaluator_sources(), "definition_sources_after": cases.definition_sources()}))
+        self.checkpoint()
+        self._cleanup_phase = False
 
     def _step_binding(self, intent: dict[str, Any], index: int) -> dict[str, Any]:
         step = self.recipe["steps"][index]
@@ -905,7 +1028,7 @@ class CandidateClientExecution:
     def verified_execution(self) -> ClientHistoryResult:
         self._unchanged()
         require(self.mode == "physical", "Fixture journal cannot authenticate physical evidence")
-        intent, terminal = _json(self.root / "intent.json"), _json(self.root / "terminal.json")
+        intent, terminal = self.json_authenticated("intent.json"), self.json_authenticated("terminal.json")
         freeze = admission.freeze_from_record(intent["cohort_freeze"])
         self._current_admission(freeze)
         require(intent["protocol"] == PROTOCOL and intent["config_sha256"] == digest(self.config)
@@ -913,7 +1036,7 @@ class CandidateClientExecution:
                 and intent["observation_registration"] == json.loads(encoded(asdict(self.observation_registration))),
                 "Intent identity differs")
         require(terminal["protocol"] == PROTOCOL and terminal["mode"] == "physical"
-                and terminal["intent_sha256"] == sha256(_read(self.root / "intent.json"))
+                and terminal["intent_sha256"] == sha256(self.read_authenticated("intent.json"))
                 and terminal["evaluator_sources_after"] == self.sources
                 and terminal["definition_sources_after"] == self.definition_sources
                 and terminal["observation_registration"] == intent["observation_registration"]
@@ -925,7 +1048,7 @@ class CandidateClientExecution:
             step, label = self.recipe["steps"][index], "step-" + str(index).zfill(3)
             require(set(item) == {"step_id", "step_index", "label", "result"} and item["step_id"] == step["step_id"]
                     and item["step_index"] == index and item["label"] == label
-                    and item["result"] == _json(self.root / (label + "-result.json")), "Step order/identity/raw result differs")
+                    and item["result"] == self.json_authenticated(label + "-result.json"), "Step order/identity/raw result differs")
             result = item["result"]
             observations.append(observer.process_observation(self._step_binding(intent, index), result,
                 self._raw(result, "stdout"), self._raw(result, "stderr")))
@@ -939,12 +1062,19 @@ class CandidateClientExecution:
         self._current_admission(freeze)
         return ClientHistoryResult(intent["execution_id"], self.binding.case_id,
             "completed" if completed else "observation_unavailable", tuple(observations), missing, cleanup,
-            tuple(terminal["infrastructure"]), sha256(_read(self.root / "terminal.json")), self.checkpoint())
+            tuple(terminal["infrastructure"]), sha256(self.read_authenticated("terminal.json")), self.checkpoint())
 
     def close(self) -> None:
         if not self.closed:
+            require(threading.get_ident() == self._owner_thread and os.getpid() == self._owner_pid,
+                    "Foreign controller cannot release journal ownership")
             self.closed = True
-            self.owner.close()
+            try:
+                if self.journal is not None:
+                    self.journal.close()
+            finally:
+                if self._cleanup is not None:
+                    self._cleanup.close()
 
     def __enter__(self) -> CandidateClientExecution:
         return self

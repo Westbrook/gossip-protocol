@@ -17,11 +17,10 @@ from . import candidate_observation_admission_v1 as admission
 from . import candidate_client_execution_v5 as execution
 from . import candidate_client_observer_v5 as observer
 from . import project_acceptance_registry_v1 as registry
-from . import candidate_observation_admission_v1 as admission
 from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
 
-PROTOCOL = "candidate-client-observation-source-v1"
+PROTOCOL = "candidate-client-observation-source-v1-compact-v1"
 VERIFIER_FILE = "product-verifier.json"
 
 
@@ -83,7 +82,11 @@ def _record(owner: execution.CandidateClientExecution) -> tuple[dict[str, Any], 
         "registration": asdict(owner.observation_registration),
         "original_binding": asdict(owner.binding),
         "original_terminal_sha256": original.terminal_sha256,
-        "original_checkpoint": {"files": [list(item) for item in before.files if item[0] != VERIFIER_FILE]},
+        # Stable original identities remain identical after this verifier is
+        # appended. The caller separately authenticates the complete post-head;
+        # no claimed predecessor inside this record establishes authority.
+        "original_journal_context_sha256": before.context_sha256,
+        "original_config_sha256": execution.digest(owner.config),
         "cohort_freeze": None if freeze is None else asdict(freeze),
         "profile_sha256": profile.profile_sha256(),
         "authoring_disclosure": profile.AUTHORING_DISCLOSURE,
@@ -105,11 +108,12 @@ def publish_verifier(owner: execution.CandidateClientExecution) -> execution.Con
     """
     record, _ = _record(owner)
     raw = execution.encoded(record)
-    if (owner.root / VERIFIER_FILE).exists():
-        require(execution._read(owner.root / VERIFIER_FILE) == raw, "Original verifier differs")
+    if owner.has_retained(VERIFIER_FILE):
+        require(owner.read_authenticated(VERIFIER_FILE) == raw, "Original verifier differs")
     else:
         owner._retain(VERIFIER_FILE, raw)
     owner._current_admission(owner.retained_freeze())
+    admission.verify_loaded_sources(owner.sources)
     return owner.checkpoint()
 
 
@@ -121,7 +125,8 @@ class ClientObservationSource:
         require(type(owner) is execution.CandidateClientExecution and owner.mode == "physical"
                 and type(expected_checkpoint) is execution.ControllerCheckpoint,
                 "Original physical v5 owner and external checkpoint required")
-        require(VERIFIER_FILE in dict(expected_checkpoint.files), "Retained host verifier is required")
+        require(owner.checkpoint() == expected_checkpoint and owner.has_retained(VERIFIER_FILE),
+                "Retained host verifier and current external checkpoint are required")
         self.owner, self.expected_checkpoint = owner, expected_checkpoint
 
     def observation(self, gate: registry.Gate, freeze: registry.CohortFreeze | None) -> registry.Observation:
@@ -129,7 +134,8 @@ class ClientObservationSource:
         # not abort assessment and discard an earlier authenticated failure.
         try:
             return self._observation(gate, freeze)
-        except (admission.AdmissionUnavailable, execution.ExecutionUnknown, OSError, GitError, subprocess.SubprocessError) as error:
+        except (admission.AdmissionUnavailable, execution.ExecutionUnknown,
+                execution.checkpoint_chain.ChainUnknown, OSError, GitError, subprocess.SubprocessError) as error:
             raise AuthorityUnavailable(str(error)) from error
         except AuthorityError:
             raise
@@ -142,11 +148,13 @@ class ClientObservationSource:
         require(self.owner.retained_freeze() == freeze, "Original purpose/freeze differs")
         record, original = _record(self.owner)
         raw = execution.encoded(record)
-        require(execution._read(self.owner.root / VERIFIER_FILE) == raw, "Host verifier differs from original evidence")
+        require(self.owner.read_authenticated(VERIFIER_FILE) == raw, "Host verifier differs from original evidence")
         outcomes = tuple(registry.CaseResult(cell["case_id"], cell["status"]) for cell in record["cells"])
         physical = registry.PhysicalExecution(gate.binding, original.execution_id,
             original.terminal_sha256, execution.sha256(raw),
             "completed" if original.status == "completed" else "infrastructure_error", outcomes,
             None if freeze is None else freeze.receipt_sha256)
+        self.owner._current_admission(freeze)
+        admission.verify_loaded_sources(self.owner.sources)
         require(self.owner.checkpoint() == self.expected_checkpoint, "Uncheckpointed journal suffix")
         return registry.Observation(gate.gate_id, gate.binding, physical)

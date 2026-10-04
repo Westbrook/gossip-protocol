@@ -1,0 +1,234 @@
+{
+  "base_commit": "09d1ed65238b2b70938e3038a53c427fa903a406",
+  "changed_source_and_configuration_sha256": {
+    "gossip_harness/candidate_checkpoint_chain_v1.py": "d277e176456222cae356cd43455cd7fac973411fcd628060c858b735671c3324",
+    "gossip_harness/candidate_client_execution_v5.py": "595c53a9a474816550204b3bc3a8cd603c1255d766702aebe85e4025606e5a0e",
+    "gossip_harness/candidate_client_observation_source_v1.py": "386a2a34acd4fa83c7e7ab35c1312b8e0a72d5b076b5d5a81fa1520a49050d0f",
+    "gossip_harness/candidate_client_observer_v5.py": "8f7f9ce1e0e371d5ac30ea45b3e42b6b454fbb377ba648c6fb8ae9db2e25355a",
+    "gossip_harness/candidate_emergency_cleanup_v1.py": "0f940d9434fb73631b197a65c3cef8c09d56f623fb6a9e28714622e9ab11a212",
+    "gossip_harness/candidate_execution_journal_v1.py": "9d21681c95602e1b87ffdff5aa2580b94227e4cf06ba6c8ef15df01aa29062ed",
+    "gossip_harness/candidate_http_execution_v4.py": "ec524e760319c0053e27a6d2fbccdfe222f3a0d77ef391d05626cb91bdb4bcab",
+    "gossip_harness/candidate_http_observation_source_v1.py": "3494880750043a3e1b086b4f66ee65cbd2ce37f73580f74bc4e2b0c8a3e26aa3",
+    "gossip_harness/candidate_http_observation_v2.py": "7aca00724e960e0b52acf5370b8c8704c584e3a8dcdd8aeb6bf6ef07d259a86e",
+    "gossip_harness/candidate_retention_process_v1.py": "cce64ea597799a1e75878e3a13e7df1fe3b9ec75808292f91d192c448cae615b",
+    "pyproject.toml": "4ca1d47fb2eac1f72f70822732928c53cb5040bbbd98689e7a4d16aca0e5ffe7",
+    "tests/test_candidate_checkpoint_chain_v1.py": "b17e149a467b311166ee581bdcf7e5c9e830e6d3c6fadf8fab7c8393e51896fc",
+    "tests/test_candidate_client_acceptance_v5.py": "f38ac6a115c1949fcb2ce11ee0dbc3db668a5ced937dcbd232fac50955d55c78",
+    "tests/test_candidate_client_execution_v5.py": "270da84cdd9667d85056c0730178176cdcd073a8febb7a766710492fbe93fb5d",
+    "tests/test_candidate_emergency_cleanup_v1.py": "34869f2da398731aaec76e247a09bc54a445b059beda7d83055c58b5d64ff0d3",
+    "tests/test_candidate_execution_journal_v1.py": "fb23001f9b654363939f3336cc2366a5c082dab11a5d7459fae78442696ecd4f",
+    "tests/test_candidate_http_execution_v4.py": "fe1437131ee5510ceaf2aabf61784abcec6050ed406690ddd1a8bbd6bd572aa9",
+    "tests/test_candidate_http_observation_source_v1.py": "7d5a82478203c4dc1d34130fa1b27325b63a0e9927c61aed0c41fce9e4acc587",
+    "tests/test_candidate_http_observation_v2.py": "f25a1bac5da45b4a9c18af7a1f804563df7a261f1f4591f8b1c99174e51bd1bf",
+    "tests/test_candidate_http_product_v4.py": "34063dbfad82f47952947bb5a595f36c78a11801a2bdb9770873fc820b937c92",
+    "tests/test_candidate_retention_process_v1.py": "334f40685e3b77194a7b4f2a74598d7529f48637bb29ac92dd622b855470171b",
+    "verification-manifest.json": "6615a3d6e9031accae192e08dd83efd32ed5ba7d76d412b4ed159de3af80fca1"
+  },
+  "contributor_retention": {
+    "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-retention-1/receipt.json",
+    "sha256": "bbae81398ae04c61cec629b8faac266d27f4f5bbd39bad3eddaf14a4dd995945"
+  },
+  "execution_contracts": [
+    "candidate-client-execution-v5-compact-v1",
+    "candidate-http-execution-v4-compact-v1"
+  ],
+  "full_objective_preserved": "Four cumulative milestones across six 8/20-role trajectories, matched live quality/persistence comparison, independent held-out families and later placement-by-transport comparison remain outstanding.",
+  "implemented": [
+    "Mandatory external durable head and independently held PrefixCommitment; full reopen authentication before config parsing.",
+    "Point-authenticated raw reads and explicit full execution/observation boundaries; acknowledged membership does not prove whole disk inventory.",
+    "Same-chain host verifiers with stable context/config/terminal identity and fresh admission checks; no serialized predecessor claim used as authority.",
+    "Separately bounded emergency cleanup using prior authenticated ownership and fresh exact identities, with keeper/volume lifetime protection and confirmed normal retirement.",
+    "Pinned finite-process retention wrapper tears down host reader/socket after retention failure, blocks further request dispatch and always reraises original failure.",
+    "Full long-history configuration retained under unchanged compact-context bound; original evaluator catalogs and frozen transport sources preserved."
+  ],
+  "known_limits": [
+    "No physical execution of this changed compact owner contract; original twenty-method run belongs to frozen HTTPv3.",
+    "Current product bindings remain M1-only; final-M4 profiles exist separately and are not relabeled observations.",
+    "Emergency channel is owned by the current process; no crash/restart cleanup recovery claim.",
+    "Unresolved normal removal is never retried or promoted by cleanup; earlier main observation failure remains.",
+    "Boundary scans still grow with history. No whole-executor speedup is inferred from the previous storage-only replay.",
+    "Retention-triggered socket teardown assumes ordinary socket behavior; repeated asynchronous interruption and OS close failure are not qualified.",
+    "Incremental type coverage retains117 known legacy diagnostics and is not whole-repository type safety."
+  ],
+  "new_comparative_quality_samples": 0,
+  "new_docker_executions": 0,
+  "new_provider_calls": 0,
+  "next_required_work": [
+    "Bind final-M4 applicability profiles and versioned health comparator to fresh execution and independently reviewed complete semantic scope.",
+    "Implement the durable normal financial child/cohort seal with admission, queued-call, RPC and recovery enforcement.",
+    "Complete remaining browser/export, state/concurrency/I/O/recovery/migration/release observers and real merged-source admission/controller producers.",
+    "Qualify the coherent changed execution contract with complete physical controls and one matching complete zero-provider rehearsal.",
+    "Reconcile concrete live allocation/payload authorization, execute the full cohort with independent fresh acceptance, then held-out confirmation."
+  ],
+  "original_http_qualification": {
+    "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/analysis/candidate-http-v3-physical-audit-checkpoint.json",
+    "sha256": "6719034cabfe84fa7fbe34ee7bc65ca87061257182737ddbbf857e6d799dcef2"
+  },
+  "protocol": "compact-executor-integration-checkpoint-v1",
+  "schema_version": 1,
+  "statistical_superiority_established": false,
+  "status": "offline_qualified_with_remaining_physical_and_full_study_requirements",
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_candidate_checkpoint_chain_v1.py::CandidateCheckpointChainV1Tests",
+        "duration_seconds": 0.24799375049769878,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/f01880792b5ac11e/result.json",
+        "evidence_sha256": "e4afee6132c5e3bce590e8954382005d5e162341ea564cd43a80e6e6cd1d0be2",
+        "log_sha256": "ca26840ae1cc7d93d46533dd46a7521261a08d569dd2fc9c827c348b71fdbad7",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_emergency_cleanup_v1.py::EmergencyCleanupTests",
+        "duration_seconds": 0.7959641246125102,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/d416148d2d74a554/result.json",
+        "evidence_sha256": "234c220eefc0d2ff57729371d7b5accb03716cd12314514c0e319af641e22efd",
+        "log_sha256": "0fd8c1f4e2e6901f63cbe8ca469a7a0d5ada8a70aeb16dd94c38d4f20e58ff6b",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_execution_journal_v1.py::CandidateExecutionJournalV1Tests",
+        "duration_seconds": 0.27403012569993734,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/df81be994ec9f346/result.json",
+        "evidence_sha256": "4599255e37d7d4a3ef0c12e262a07ee924e3f9b559c9228c62405942325fd6e3",
+        "log_sha256": "5567853aebfd7d5627dcdf386b016274fe6637dc17bb30aea6b94a65c06f65dc",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_source_v1.py::HttpProductSemanticSourceV1Tests",
+        "duration_seconds": 0.12649683374911547,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/6d4b456527f36c64/result.json",
+        "evidence_sha256": "44b62197f8355ac95b618393a40ddf4c7cc49230bfb9cf30d8fa2a6ca366d34a",
+        "log_sha256": "abc202a896d50563321054325b27e931255bda50f84713ee7db6d458b55db6a0",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2BoundaryTests",
+        "duration_seconds": 0.11747720930725336,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/676d766180c34c79/result.json",
+        "evidence_sha256": "351e6fcfcf9b835a35fc12db1c9e41a495bbd6db5e88ed54fef5a8973a3fa387",
+        "log_sha256": "79c51b428ec2a67d4cb6b342315cea74377dcd01924059144cada2876a98a687",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2FactTests",
+        "duration_seconds": 0.09273133333772421,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/0bc2c5437588a40d/result.json",
+        "evidence_sha256": "164ec5dbbfcd38f7709f2c294c4ed4b2d30ab22734e38104e872376fde56ef70",
+        "log_sha256": "6a8bd2c1b9a00314965f625662cbcc0eb0db76c7ca8cf164726db74cc3d7416b",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_product_v4.py::HttpProductV4PhysicalDefinitionTests",
+        "duration_seconds": 0.06981204077601433,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/640a36f33292f62d/result.json",
+        "evidence_sha256": "e3ef0344a195bfdbd4036fc4398321b4ad123975b8d8a7bc75f1d91fce49dc81",
+        "log_sha256": "a5c313cfca1682793d3ce6c8830ac44c50389f413ecf1ea86c46c6bae1941bac",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+        "duration_seconds": 0.17183116637170315,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/cdb18e35e74521c2/result.json",
+        "evidence_sha256": "4ad5e73a569aa16b3e433338c6b2ffb17e1275bf850cff57e87e951ab301142f",
+        "log_sha256": "9f2696bbefdb42d5cd195a7a7d3487317d914b6332342f4bcbaba0d01f707095",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateObservationAdmissionTests",
+        "duration_seconds": 0.011016166768968105,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/ec139b89df3a86a3/result.json",
+        "evidence_sha256": "41a9fd09c27c6e28427909d49cb5be4fd9a15a1f7779b087ca38dfe855049cdb",
+        "log_sha256": "93a00ca3180f81e0fe784240dbbf47f854b29b2ecb2fe6fc38661406fa72e3d0",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_retention_process_v1.py::RetentionProcessTests",
+        "duration_seconds": 0.04425804130733013,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/e5134adba4fd1973/result.json",
+        "evidence_sha256": "705e78d18ed3194f40bc1aa393ebbcdf08be2dc25ff28b913b5f8a2cf7d1e0e8",
+        "log_sha256": "a461487df68af75b5dd736b4f28e32ab8bbe665920627e985ce311b31d247e33",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "duration_seconds": 23.40732983313501,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/995b4834cfdec311/result.json",
+        "evidence_sha256": "6d3a48fcd357eea4279ee63657d3efc5d75f93603da7c2132bb675feb901d0bb",
+        "log_sha256": "fb9b106f307eb2eb1ad84021a43607efd030fd3bfc322762ed0ed34127aee113",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_project_acceptance_registry_v1.py::AcceptanceRegistryTests",
+        "duration_seconds": 0.023137833923101425,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/29ec3c5d6cd30385/result.json",
+        "evidence_sha256": "74fafb25a39126312d9c39d0e49af48c1d8d0047e1fc77ada4643cfb71d943bf",
+        "log_sha256": "7b2fb7f68863c2f941bc7962f3b260b505fd69b096d74114b1c5d38a05ba82f0",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_client_execution_v5.py::CandidateClientExecutionV5Tests",
+        "duration_seconds": 71.48535533249378,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/6324022ae8ae83bf/result.json",
+        "evidence_sha256": "95a01a06a52ccd93d8fba055ad6555196b12283286e3c0eda11a1ef62f2ab475",
+        "log_sha256": "42214dd0f30f923dd0508b4d7bfa791fcd6442a935a8e03511b4b5a4fe3e28cd",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_client_observation_source_v1.py::CandidateClientObservationSourceV1Tests",
+        "duration_seconds": 3.9198186257854104,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/5769976854a8c07b/result.json",
+        "evidence_sha256": "2fddf66d8a474d8ef6f0a6f1d652aa73de1d0ae69013edfcd341b1d94bdf4c60",
+        "log_sha256": "5a44047973fe27dc3135ba9e407fea97bc4ba931294b622f278468732ce1fe65",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_execution_v4.py::HttpProductAdmissionV4Tests",
+        "duration_seconds": 56.225562166422606,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/0e7e924ca9196f3c/result.json",
+        "evidence_sha256": "c8aacafc2711efec9a90dd2a53a00ab4003fa7d565992afc84ab5a02fa730f28",
+        "log_sha256": "893ae01e351519d14742d91dbba755789ae03c988ee0569c78f12b2b97eb9365",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "duration_seconds": 33.68306570779532,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/classes/c25a48764acbd650/result.json",
+        "evidence_sha256": "45bc57916a526701cf5a4dd0415842d80da722ce11c3d809fd79c8d654dbfdf5",
+        "log_sha256": "390d6e1dd93df51a737b3b6340c64580fe0383e3450992793664cc16e96cbb80",
+        "status": "passed"
+      }
+    ],
+    "duration_seconds": 100.7005107095465,
+    "fingerprint": "1812da5c578f1b71835af8e1b2094c2b58cc2f2115eea4233d6321ec1228b53c",
+    "fresh_classes": 16,
+    "independent_source_and_receipt_review": {
+      "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-retention-1/gossip-compact-executor-integration-source-review-1.json",
+      "sha256": "605c09ed47e78c677b1e1a9c01e9af79983c360f85ed82e54012e63c347b4526"
+    },
+    "input_count": 551,
+    "inputs": {
+      "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/inputs.json",
+      "sha256": "0eafe22de22c406d510e8f527c92994ed9a4cb81701194f764e8e63cd326dae4"
+    },
+    "legacy_type_diagnostics": 117,
+    "passed": 262,
+    "reused_classes": 0,
+    "runtime_drift": false,
+    "runtime_reconciliation": {
+      "final_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "initial_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "matches": true
+    },
+    "skipped": 0,
+    "source_drift": false,
+    "static": {
+      "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/static.json",
+      "sha256": "f662bfed25fee8fb36dbe9be1fe876f54ff141dff7f4a14293188011407eb868"
+    },
+    "summary": {
+      "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/compact-executor-offline-qualification-1/20261004T062933-29e6d6c1/summary.json",
+      "sha256": "13bb426f0acd54b6a12750297cfdc78172aa0e9c8f22df2c0f461e2b2c35802c"
+    }
+  }
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from pathlib import Path
+import threading
 import unittest
 from unittest.mock import patch
 
@@ -37,6 +38,8 @@ class CandidateClientExecutionV5Tests(unittest.TestCase):
         self.root = self.artifacts.root.resolve() / self.id().rsplit(".", 1)[-1]
         self.owners = []
         self.addCleanup(lambda: [owner.close() for owner in self.owners])
+        self.heads = {}
+        self.addCleanup(lambda: [head.close() for head in self.heads.values()])
         self.make_registration()
 
     def make_registration(self, purpose="public_release", case_id="cli-empty"):
@@ -54,8 +57,15 @@ class CandidateClientExecutionV5Tests(unittest.TestCase):
             verify_cohort=lambda: self.current["freeze"])
 
     def owner(self, *, root=None, checkpoint=None, registration=None, authority=None):
-        owner = execution.CandidateClientExecution(root or self.root, self.store,
+        root = root or self.root
+        delta_root = root.with_name(root.name + "-deltas")
+        if root not in self.heads:
+            self.heads[root] = execution.checkpoint_head.ExternalHead.create(
+                root.with_name(root.name + "-head"), journal_roots=(root, delta_root))
+        owner = execution.CandidateClientExecution(root, self.store,
             registration or self.registration, self.policy, mode="fixture",
+            checkpoint_authority=self.heads[root], delta_root=delta_root,
+            cleanup_root=root.with_name(root.name + "-cleanup"),
             expected_checkpoint=checkpoint, admission_authority=authority or self.admission)
         self.owners.append(owner)
         return owner
@@ -168,3 +178,133 @@ class CandidateClientExecutionV5Tests(unittest.TestCase):
                 old_execution.ClientPolicy(self.policy.image_id), mode="fixture") as owner:
             with self.assertRaises(bridge.ObservationError):
                 bridge.ClientObservationSource(owner, owner.checkpoint())
+
+    def test_append_uses_incremental_prefix_without_full_inventory_sink(self):
+        owner = self.owner()
+        before = owner.checkpoint()
+        self.assertFalse(hasattr(before, "files"))
+        with patch.object(owner.journal, "checkpoint", side_effect=AssertionError("per-file scan")):
+            owner._retain("offline-observation.raw", b"original bytes")
+            self.assertEqual(owner.read_authenticated("offline-observation.raw"), b"original bytes")
+        after = owner.checkpoint()
+        self.assertEqual(after.sequence, before.sequence + 1)
+        self.assertEqual(after.context_sha256, before.context_sha256)
+
+    def test_reopen_authenticates_chain_before_config_parser(self):
+        owner = self.owner()
+        checkpoint = owner.checkpoint()
+        owner.close()
+        path = self.root / "config.json"
+        path.write_bytes(path.read_bytes() + b" ")
+        with patch.object(execution.CandidateClientExecution, "json_authenticated",
+                          side_effect=AssertionError("decoded before authentication")):
+            with self.assertRaises(execution.ExecutionUnknown):
+                self.owner(checkpoint=checkpoint)
+
+    def test_lost_anchor_ack_keeps_prior_facts_and_forbids_redispatch(self):
+        owner = self.owner()
+        with self.assertRaises(execution.ExecutionError):
+            owner.execute_once()
+        prior = owner.checkpoint()
+        head = self.heads[self.root]
+        actual_cas = head.compare_and_set
+        def lose_ack(expected, proposed):
+            self.assertTrue(actual_cas(expected, proposed))
+            raise OSError("anchor acknowledgement lost")
+        with patch.object(head, "compare_and_set", side_effect=lose_ack):
+            with self.assertRaises(execution.ExecutionUnknown):
+                owner._retain("uncertain-suffix.raw", b"attempted observation")
+        self.assertTrue(owner.journal.uncertain)
+        fact = owner.journal.read_prior("intent.json")
+        self.assertTrue(fact.prior_only)
+        self.assertFalse(fact.acceptance_authority)
+        self.assertEqual(fact.commitment, prior)
+        with self.assertRaises(execution.checkpoint_chain.ChainError):
+            owner.journal.read_prior("uncertain-suffix.raw")
+        with patch.object(owner, "_dispatch", side_effect=AssertionError("redispatched")):
+            with self.assertRaises(execution.ExecutionUnknown): owner.execute_once()
+        self.assertTrue((self.root / "uncertain-suffix.raw").is_file())
+
+    def test_foreign_suffix_is_not_adopted_and_boundary_revokes_membership(self):
+        owner = self.owner()
+        (self.root / "foreign.raw").write_bytes(b"not committed")
+        self.assertFalse(owner.has_retained("foreign.raw"))
+        with self.assertRaises(execution.ExecutionUnknown): owner.checkpoint()
+        with self.assertRaises(execution.ExecutionUnknown): owner.has_retained("config.json")
+
+    def test_control_effect_is_blocked_by_full_boundary_before_popen(self):
+        # A mocked endpoint makes this an offline effect-admission control.
+        owner = self.owner()
+        owner.mode = "physical"
+        owner.endpoint = execution.process_transport.EngineEndpoint("/never-opened-offline.sock", 1, 2)
+        config = self.root / "config.json"
+        config.write_bytes(config.read_bytes() + b" ")
+        with patch.object(execution.process_transport.EngineEndpoint, "validate"), \
+                patch.object(execution.subprocess, "Popen", side_effect=AssertionError("effect entered")):
+            with self.assertRaises(execution.ExecutionUnknown):
+                owner._command("offline-effect", ["docker", "volume", "create", "never-created"])
+
+    def test_verifier_advances_prefix_once_and_revocation_after_read_blocks_observation(self):
+        # Only the semantic execution boundary is mocked. The journal, verifier
+        # publication, prefix checks and prospective revocation remain real.
+        # This test produces no physical execution or product acceptance credit.
+        owner = self.owner()
+        owner._retain("intent.json", execution.encoded({"cohort_freeze": None}))
+        terminal = execution.encoded({"synthetic_execution_boundary": True})
+        owner._retain("terminal.json", terminal)
+        owner.mode = "physical"
+        def original():
+            return execution.ClientHistoryResult("synthetic-control", "cli-empty", "observation_unavailable",
+                (), tuple(step["step_id"] for step in owner.recipe["steps"]), False,
+                ("offline mocked semantic boundary",), execution.sha256(terminal), owner.checkpoint())
+        with patch.object(owner, "verified_execution", side_effect=original):
+            before = owner.checkpoint()
+            after = bridge.publish_verifier(owner)
+            self.assertEqual(after.sequence, before.sequence + 1)
+            self.assertEqual(bridge.publish_verifier(owner), after)
+            source = bridge.ClientObservationSource(owner, after)
+            read = owner.read_authenticated
+            def revoke_after_read(name):
+                raw = read(name)
+                if name == bridge.VERIFIER_FILE:
+                    self.current["registration"] = None
+                return raw
+            with patch.object(owner, "read_authenticated", side_effect=revoke_after_read):
+                with self.assertRaises(bridge.AuthorityUnavailable):
+                    source.observation(self.gate, None)
+
+    def test_foreign_thread_close_does_not_strand_live_owner(self):
+        owner = self.owner()
+        errors = []
+        def foreign_close():
+            try: owner.close()
+            except execution.ExecutionError: errors.append(True)
+        worker = threading.Thread(target=foreign_close)
+        worker.start(); worker.join(5)
+        self.assertEqual(errors, [True])
+        self.assertFalse(owner.closed)
+        self.assertEqual(owner.checkpoint(), self.heads[self.root].read())
+
+    def test_uncertain_dispatch_calls_fallback_once_without_terminal_or_retry(self):
+        from unittest.mock import Mock
+        owner = self.owner()
+        owner.mode = "physical"  # Dispatch is explicitly mocked; no Engine calls.
+        fallback = Mock()
+        head = self.heads[self.root]
+        cas = head.compare_and_set
+        def lose_ack(expected, proposed):
+            self.assertTrue(cas(expected, proposed))
+            raise OSError("lost reply")
+        def uncertain_dispatch(intent):
+            owner._cleanup = fallback
+            with patch.object(head, "compare_and_set", side_effect=lose_ack):
+                owner._retain("uncertain-effect-response.raw", b"response")
+        with patch.object(owner, "_unchanged", side_effect=owner.checkpoint), \
+                patch.object(owner, "_dispatch", side_effect=uncertain_dispatch):
+            with self.assertRaises(execution.ExecutionUnknown): owner.execute_once()
+        fallback.run.assert_called_once()
+        self.assertFalse((self.root / "terminal.json").exists())
+        self.assertTrue(owner.journal.uncertain)
+        with patch.object(owner, "_dispatch", side_effect=AssertionError("retry")):
+            with self.assertRaises(execution.ExecutionUnknown): owner.execute_once()
+        fallback.run.assert_called_once()

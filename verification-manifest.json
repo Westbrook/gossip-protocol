@@ -4893,6 +4893,42 @@
       "boundary": "Pure normalized CaseResult projection with no observation or approval capability; no product execution.",
       "overlap": "Census/profile identity tests cover source definitions, while this class checks normalized complete result projection.",
       "overlap_reason": "Registry aggregation alone cannot identify which legacy diagnostics are normatively unspecified."
+    },
+    "tests/test_candidate_execution_journal_v1.py::CandidateExecutionJournalV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker with separate temporary journals and fixture Engine sockets; no Docker or provider calls.",
+      "disposition": "Combined static and affected offline qualification before the new compact execution contract can enter physical qualification.",
+      "boundary": "Host-side storage, ownership and failure-injection controls only; no live product-quality acceptance.",
+      "overlap_reason": "The compact contract adds authenticated consumption and poisoned-journal teardown that original snapshot/transport qualification does not establish.",
+      "invariant": "An independently supplied durable authority authenticates the full reopened journal before configuration parsing; current reads and explicit boundaries cannot admit an unanchored suffix.",
+      "distinct_defect": "A config-first parser, permissive context normalization or locally invented checkpoint could bypass independent provenance.",
+      "overlap": "Composes the qualified compact chain and durable head without repeating cryptographic primitives."
+    },
+    "tests/test_candidate_emergency_cleanup_v1.py::EmergencyCleanupTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker with separate temporary journals and fixture Engine sockets; no Docker or provider calls.",
+      "disposition": "Combined static and affected offline qualification before the new compact execution contract can enter physical qualification.",
+      "boundary": "Host-side storage, ownership and failure-injection controls only; no live product-quality acceptance.",
+      "overlap_reason": "The compact contract adds authenticated consumption and poisoned-journal teardown that original snapshot/transport qualification does not establish.",
+      "invariant": "A separate bounded cleanup channel acts only on acknowledged ownership plus fresh exact resource identity; poisoned main journals never regain dispatch or acceptance.",
+      "distinct_defect": "Lost acknowledgement, lookalike resource, unknown create or quota failure could leak owned resources or remove a foreign resource.",
+      "overlap": "Exercises fallback ownership and fixed Engine actions separately from normal healthy cleanup."
+    },
+    "tests/test_candidate_retention_process_v1.py::RetentionProcessTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker with separate temporary journals and fixture Engine sockets; no Docker or provider calls.",
+      "disposition": "Combined static and affected offline qualification before the new compact execution contract can enter physical qualification.",
+      "boundary": "Host-side storage, ownership and failure-injection controls only; no live product-quality acceptance.",
+      "overlap_reason": "The compact contract adds authenticated consumption and poisoned-journal teardown that original snapshot/transport qualification does not establish.",
+      "invariant": "The pinned finite-process control flow closes attachments/readers after any retention failure and rethrows the original error without later candidate dispatch or a returned observation.",
+      "distinct_defect": "A finally-block retention exception could bypass socket teardown; suppressing a request retention could instead dispatch an unacknowledged effect.",
+      "overlap": "Runs the real frozen process flow with isolated fake Engine sockets, including first failure at final attachment retention."
     }
   },
   "audit": {

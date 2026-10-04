@@ -13,6 +13,12 @@ Browse the published [Progress Report](https://westbrook.github.io/gossip-protoc
 The site is a dated, read-only snapshot refreshed at publication checkpoints;
 the local report remains the live workspace for ongoing work and review feedback.
 
+Current engineering work integrates compact, authenticated journals and bounded
+failure cleanup into the CLI/HTTP executors; see the [integration record](docs/compact-executor-integration-v1.md).
+The [original twenty-test HTTP mechanics audit](docs/candidate-http-v3-physical-audit.md)
+is complete. Both are infrastructure evidence; the larger live quality comparison
+remains outstanding.
+
 The working design follows Linux-style delegated integration:
 
 ```text

@@ -16,6 +16,7 @@ from gossip_harness import candidate_http_semantics_v1 as sem
 from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import project_acceptance_registry_v1 as registry
 from gossip_harness import candidate_cli_cases_v1 as cli_cases
+from gossip_harness import candidate_checkpoint_head_v1 as head
 from gossip_harness.gitstore import GitStore
 from gossip_harness.library_project_fixture_v1 import RUNTIME_IMAGE
 
@@ -150,20 +151,24 @@ class HttpProductV4DockerTests(unittest.TestCase):
             return freeze
         authority = admission.ObservationAdmission(prospective, verify_registration=verify_registration,
                                                     verify_cohort=verify_freeze)
-        checkpoints = []
-        def sink(value):
-            write_new(root / ("checkpoint-" + str(len(checkpoints)).zfill(5) + ".json"), asdict(value))
-            checkpoints.append(value)
-        with execution.CandidateHttpExecution(root / "journal", store, registration, recipe, policy,
-                profile=profile, observation_admission=authority, endpoint=self.endpoint, checkpoint_sink=sink) as owner:
+        with head.ExternalHead.create(root / "checkpoint-head", journal_roots=(root / "journal", root / "deltas")) as anchor, \
+             execution.CandidateHttpExecution(root / "journal", store, registration, recipe, policy,
+                profile=profile, observation_admission=authority, endpoint=self.endpoint,
+                checkpoint_authority=anchor, delta_root=root / "deltas", cleanup_root=root / "emergency-cleanup") as owner:
             original = owner.execute_once()
             self.assertEqual(original.status, "completed")
             self.assertTrue(original.cleanup_verified)
             self.assertEqual(original.infrastructure, ())
             self.assertEqual(original.missing_step_ids, ())
-            self.assertEqual(checkpoints[-1], owner.checkpoint())
-            bridge = source.HttpObservationSource(owner, checkpoints[-1], receipt_path=root / "semantic-verifier.json")
+            terminal = owner.json_authenticated("terminal.json")
+            self.assertEqual(len(terminal["start_response_records"]),
+                1 + sum(step.kind in ("start", "probe") for step in recipe.steps))
+            self.assertEqual(anchor.read(), owner.checkpoint())
+            write_new(root / "original-checkpoint.json", asdict(owner.checkpoint()))
+            bridge = source.HttpObservationSource(owner, owner.checkpoint(), receipt_path=owner.root / "semantic-verifier.json")
             observed = bridge.observation(prospective.gate, freeze)
+            self.assertEqual(anchor.read(), bridge.checkpoint)
+            write_new(root / "verified-checkpoint.json", asdict(bridge.checkpoint))
             self.assertEqual(observed.execution.binding.purpose, row[1])
             self.assertEqual(observed.execution.receipt_sha256, original.terminal_sha256)
             statuses = tuple(item.status for item in observed.execution.outcomes)

@@ -539,3 +539,34 @@ class CandidateCheckpointChainV1Tests(unittest.TestCase):
         self.assertFalse(boundary.acceptance_authority)
         self.assertFalse(fact.acceptance_authority)
         self.assertTrue(fact.prior_only)
+
+    def test_has_is_healthy_prefix_membership_without_full_inventory(self):
+        item = self.create()
+        item.retain("one.bin", b"one")
+        with patch.object(item, "_verify_all", side_effect=AssertionError("membership is not full scan")):
+            self.assertTrue(item.has("one.bin"))
+            self.assertFalse(item.has("absent.bin"))
+            (self.raw / "foreign.bin").write_bytes(b"foreign")
+            self.assertFalse(item.has("foreign.bin"))
+        with self.assertRaises(chain.ChainUnknown): item.validate_boundary()
+        with self.assertRaises(chain.ChainUnknown): item.has("one.bin")
+
+    def test_has_rejects_invalid_foreign_process_and_head_without_authority(self):
+        item = self.create()
+        item.retain("one.bin", b"one")
+        for invalid in ("../x", "owner.lock", "UPPER", ""):
+            with self.assertRaises(chain.ChainError): item.has(invalid)
+        self.assertFalse(item.uncertain)
+        with patch.object(chain.os, "getpid", return_value=os.getpid() + 1):
+            with self.assertRaises(chain.ChainError): item.has("one.bin")
+        self.assertFalse(item.uncertain)
+        self.authority.head = replace(item.commitment, head_sha256="f" * 64)
+        with self.assertRaises(chain.ChainUnknown): item.has("one.bin")
+        self.assertTrue(item.uncertain)
+
+    def test_has_is_unavailable_after_consumed_read_failure(self):
+        item = self.create()
+        item.retain("one.bin", b"one")
+        (self.raw / "one.bin").write_bytes(b"bad")
+        with self.assertRaises(chain.ChainUnknown): item.read("one.bin")
+        with self.assertRaises(chain.ChainUnknown): item.has("one.bin")

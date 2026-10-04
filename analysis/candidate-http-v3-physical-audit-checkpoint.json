@@ -1,0 +1,140 @@
+{
+  "classes": [
+    {
+      "class": "tests/test_candidate_http_continuity_v3.py::CandidateHttpContinuityV3DockerTests",
+      "duration_seconds": 129.3545983750373,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/029d55f7dc376ca5/result.json",
+      "evidence_sha256": "ab96dc4b4017b2169339d5053a6c48e0d9704a6fc82f8d00aab0ee20d5c9e892",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/029d55f7dc376ca5/worker.log",
+      "log_sha256": "1076c9b7d69e6b6e0d6f766bd2e842dd5d9284a5dc9c41b3d31ed7c52d8ede21",
+      "physical": true,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_http_docker_v3.py::CandidateHttpMechanicsV3DockerTests",
+      "duration_seconds": 236.78751166630536,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/24ca9ee661d44bbc/result.json",
+      "evidence_sha256": "a413181db9638a19c9d41e5abd70ef4455764daad9bacb594f5823383364b339",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/24ca9ee661d44bbc/worker.log",
+      "log_sha256": "9160f1d9827ab7a95133b32fb7c6fccbfd20a866655717df941b87a8fbbdfb2b",
+      "physical": true,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_http_extensions_v3.py::CandidateHttpExtensionsV3DockerTests",
+      "duration_seconds": 3102.3817656654865,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/bb87c72c6dad983b/result.json",
+      "evidence_sha256": "7a4f2e6aaefec72d032326790af77494891631c6f7b5a3620113f8db76e492ea",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/bb87c72c6dad983b/worker.log",
+      "log_sha256": "713e9b21766636ffa06326654e94b09ebf19093733d44b654d5dcbc4cc33fb9e",
+      "physical": true,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_http_mixed_v3.py::CandidateHttpMixedV3DockerTests",
+      "duration_seconds": 4678.036206959747,
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/6e7eb27cbad436f5/result.json",
+      "evidence_sha256": "f8f4ec7b31d1dc51a3960f090d646620564cb288b5ad6d068bcbdbf23983bb5e",
+      "log": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/6e7eb27cbad436f5/worker.log",
+      "log_sha256": "d36d450fff7e53b26745ff79746f6d1a9be002c85c22350500898ebd5498fb67",
+      "physical": true,
+      "status": "passed"
+    }
+  ],
+  "freeze": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/freeze.json",
+    "sha256": "7c90d9f8ce1782ac5eeb5a93af19a94a8ed81a3ba6329fb7203e1f428e811a1d"
+  },
+  "fresh_class_executions": 4,
+  "independent_reviews": [
+    {
+      "group": "continuity",
+      "methods": 5,
+      "retention": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-continuity-audit-retention-1/receipt.json",
+        "sha256": "fa5c0584544d6bd6b01638100ac479945472eea0fb1977ac493b0214bd554c9f"
+      },
+      "review": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-continuity-audit-retention-1/independent-audit/final-audit.json",
+        "sha256": "95b1a97895a40d5e6457a1030784a6dbcb5b6d53dc5cab0e35bc32231581b5da"
+      },
+      "status": "clear"
+    },
+    {
+      "group": "base",
+      "methods": 9,
+      "retention": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-base-audit-retention-1/receipt.json",
+        "sha256": "cf7d896c37d6d80b0843f05134d979adc00fbe11f93357a22809e469a6b5227a"
+      },
+      "review": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-base-audit-retention-1/independent-audit/final-review.json",
+        "sha256": "76f566f01c99c21b6cb676d130775395b4012a75777575fef3e133b33f8c718e"
+      },
+      "status": "clear_with_explicit_scope_limits"
+    },
+    {
+      "group": "extension",
+      "methods": 5,
+      "retention": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-extension-audit-retention-1/receipt.json",
+        "sha256": "022abb9fcdb84e8c2b2e25a8eebde629987d62d46c11e56c508624226da04eb9"
+      },
+      "review": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-extension-audit-retention-1/independent-audit/final-review.json",
+        "sha256": "5ea661860942fc567de92edeebd4096e794a5240b174246f091929d79b040cac"
+      },
+      "status": "clear_with_explicit_scope_limits"
+    },
+    {
+      "group": "mixed",
+      "methods": 1,
+      "retention": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-mixed-audit-retention-1/receipt.json",
+        "sha256": "d65d8906444d0af2c3a99abef6db0f8f58590dd3c3ab6c94396db3875cb68e6a"
+      },
+      "review": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-mixed-audit-retention-1/independent-audit/final-review.json",
+        "sha256": "cd629031645b3c8cb284d77b18469b3b1ef22005b3cd7f59a7c6c54e25963e50"
+      },
+      "status": "clear_with_explicit_scope_limits"
+    }
+  ],
+  "independently_audited_methods": 20,
+  "limits": [
+    "These twenty tests qualify the original frozen HTTP/CLI mechanics contract, not the full 276-history product HTTP catalog.",
+    "C04 cleanup failure remains a failure observation even though resources were eventually absent; keeper-loss and ENOSPC seams are not database-loss recovery or physical disk-full experiments.",
+    "E02 symlink layout does not establish product confinement. E05 sent the entire buffered request; incomplete-send coverage remains open.",
+    "Force-remove flags and long-lived stop requests are not measured kill counts.",
+    "The compact checkpoint successor is a different execution contract and receives no physical qualification from this run.",
+    "No product acceptance, provider call, new comparative model-quality sample, general speed advantage or statistical superiority is established."
+  ],
+  "methods_passed": 20,
+  "mixed_history": {
+    "cli_actions": 29,
+    "containers_created_started_removed": 86,
+    "http_probes": 54,
+    "natural_finite_completions": 83,
+    "raw_files_and_checkpoints_each": 5137,
+    "server_epochs": 2,
+    "state_continuity_across_both_interfaces": true,
+    "steps": 87,
+    "volumes_created_removed": 1
+  },
+  "new_candidate_executions": 0,
+  "new_comparative_samples": 0,
+  "new_provider_calls": 0,
+  "original_elapsed_seconds": 8151.4616095414385,
+  "protocol": "candidate-http-v3-physical-audit-checkpoint-v1",
+  "reused_classes": 0,
+  "root_reconciliation": "Verified retained audit identities, clear statuses, full 5+9+5+1 method partition and all four original class result/log hashes. Original raw audits were independently performed once; this consolidation does not re-execute them.",
+  "schema_version": 1,
+  "source_commit": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "status": "original_twenty_method_mechanics_qualified_with_explicit_limits",
+  "summary": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/summary.json",
+    "sha256": "251c9ce318ae46cd80b268dc06579569676e33070844dc90c5c5d1703f8a6e60"
+  }
+}

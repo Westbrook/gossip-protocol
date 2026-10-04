@@ -21,7 +21,7 @@ from typing import Any, Mapping
 FROZEN_V4_SOURCE_SHA256 = "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d64a31208235"
 
 PROTOCOL = "candidate-client-observer-v5"
-BINDING_PROTOCOL = "candidate-client-execution-v5"
+BINDING_PROTOCOL = "candidate-client-execution-v5-compact-v1"
 # An observer allocation bound, not a product output-size requirement.
 MAX_OBSERVATION_BYTES = 32 * 1024 * 1024
 MAX_JSON_DEPTH = 256

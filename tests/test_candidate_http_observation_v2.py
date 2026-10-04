@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+from dataclasses import replace
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -12,6 +13,8 @@ from gossip_harness import candidate_http_execution_v3 as historical
 from gossip_harness import candidate_http_execution_v4 as execution
 from gossip_harness import candidate_http_observation_v2 as reader
 from gossip_harness import candidate_client_process_v4 as engine
+from gossip_harness import candidate_checkpoint_chain_v1 as chain
+from gossip_harness import candidate_http_journal_v3 as journal
 from gossip_harness import candidate_http_semantics_v1 as semantics
 from gossip_harness import candidate_http_transport_v1 as wire
 from tests.test_candidate_http_observation_v1 import transcript, request, HEALTH_RESPONSE
@@ -19,6 +22,34 @@ from tests.test_candidate_http_observation_v1 import transcript, request, HEALTH
 
 CID = "a" * 64
 IMAGE = "sha256:" + "b" * 64
+
+
+def fixture_checkpoint(files=(), raw_bytes=0):
+    """Parser identity only; no external authority or physical execution."""
+    return chain.PrefixCommitment("c" * 64, len(files), execution.digest(dict(files)), len(files), raw_bytes, 0)
+
+
+class FixtureAuthenticatedOwner:
+    """Explicit private reader capability, rejected by public observation admission."""
+    def __init__(self, root, files):
+        self.root, self.files = root, dict(files)
+        self.expected = fixture_checkpoint(files, sum((root / name).stat().st_size for name in self.files))
+        self.current = self.expected
+        self.reads = []
+
+    def checkpoint(self):
+        return self.current
+
+    def read_authenticated(self, name):
+        if self.current != self.expected:
+            raise chain.ChainUnknown("Fixture external head changed")
+        if name not in self.files:
+            raise chain.ChainError("Uncommitted fixture artifact")
+        raw = journal.read(self.root / name)
+        if execution.sha256(raw) != self.files[name]:
+            raise chain.ChainError("Fixture original changed")
+        self.reads.append(name)
+        return raw
 
 
 class HttpObservationV2BoundaryTests(unittest.TestCase):
@@ -38,12 +69,13 @@ class HttpObservationV2BoundaryTests(unittest.TestCase):
     def fixture_reader(self):
         # Deliberately private parser fixture. The public admission API rejects
         # this namespace and cannot turn it into a Registry observation.
-        owner = SimpleNamespace(root=self.root)
-        return reader._Reader(owner, execution.ControllerCheckpoint(tuple(sorted(self.files.items()))))
+        owner = FixtureAuthenticatedOwner(self.root, self.files.items())
+        return reader._Reader(owner, owner.expected)
 
     def test_old_owner_dict_namespace_and_fixture_have_no_physical_authority(self):
-        checkpoint = execution.ControllerCheckpoint(())
-        for owner in ({}, SimpleNamespace(mode="physical"), object.__new__(historical.CandidateHttpExecution)):
+        checkpoint = fixture_checkpoint()
+        for owner in ({}, SimpleNamespace(mode="physical"), FixtureAuthenticatedOwner(self.root, ()),
+                      object.__new__(historical.CandidateHttpExecution)):
             with self.subTest(owner=type(owner).__name__), self.assertRaises(reader.ObservationError):
                 reader.observe_execution(owner, checkpoint)
         fixture = object.__new__(execution.CandidateHttpExecution)
@@ -51,7 +83,46 @@ class HttpObservationV2BoundaryTests(unittest.TestCase):
         with patch.object(execution.CandidateHttpExecution, "verified_execution") as verify:
             with self.assertRaisesRegex(reader.ObservationError, "Fixture"):
                 reader.observe_execution(fixture, checkpoint)
+            fixture.mode = "physical"
+            with self.assertRaisesRegex(reader.ObservationError, "externally retained checkpoint"):
+                reader.observe_execution(fixture, historical.ControllerCheckpoint(()))
             verify.assert_not_called()
+
+    def test_reader_requires_exact_current_prefix_before_any_raw_read(self):
+        self.save("original.bin", b"original")
+        owner = FixtureAuthenticatedOwner(self.root, self.files.items())
+        with self.assertRaisesRegex(reader.ObservationError, "Checkpoint"):
+            reader._Reader(owner, replace(owner.expected, head_sha256="e" * 64))
+        self.assertEqual(owner.reads, [])
+        with patch.object(owner, "checkpoint", side_effect=chain.ChainError("invalid boundary")):
+            with self.assertRaises(reader.ObservationError):
+                reader._Reader(owner, owner.expected)
+
+    def test_raw_uses_owner_capability_and_never_falls_back_to_path_reader(self):
+        self.save("original.bin", b"original")
+        value = self.fixture_reader()
+        with patch.object(execution, "_read", side_effect=AssertionError("raw path bypass"), create=True):
+            self.assertEqual(value.raw("original.bin"), b"original")
+        self.assertEqual(value.owner.reads, ["original.bin"])
+        value.owner.current = replace(value.checkpoint, head_sha256="e" * 64)
+        with self.assertRaises(chain.ChainUnknown):
+            value.raw("original.bin")
+        with self.assertRaises(reader.ObservationError):
+            value.validate_checkpoint()
+
+    def test_unknown_head_is_not_reclassified_as_invalid_original(self):
+        value = self.fixture_reader()
+        for error_type in (chain.ChainUnknown, execution.ExecutionUnknown):
+            with self.subTest(error_type=error_type.__name__):
+                unknown = error_type("anchor unavailable")
+                with patch.object(value.owner, "read_authenticated", side_effect=unknown):
+                    with self.assertRaises(error_type) as caught:
+                        value.raw("original.bin")
+                self.assertIs(caught.exception, unknown)
+                with patch.object(value.owner, "checkpoint", side_effect=unknown):
+                    with self.assertRaises(error_type) as caught:
+                        value.validate_checkpoint()
+                self.assertIs(caught.exception, unknown)
 
     def test_raw_requires_checkpointed_exact_bytes_and_safe_original(self):
         self.save("original.bin", b"original")
@@ -142,21 +213,61 @@ class HttpObservationV2BoundaryTests(unittest.TestCase):
         self.save("intent.json", execution.encoded({"keeper": "gossip-fixture-keeper", "volume": "gossip-fixture-volume",
             "execution_id": "http-fixture"}))
         self.save("terminal.json", execution.encoded({"steps": [], "entered_step_indices": []}))
-        checkpoint = execution.ControllerCheckpoint(tuple(sorted(self.files.items())))
+        capability = FixtureAuthenticatedOwner(self.root, self.files.items())
+        checkpoint = capability.expected
         missing = tuple(step.step_id for step in owner.recipe.steps)
         result = execution.HttpHistoryResult("http-fixture", "observation_unavailable", (), missing, False,
             ("no source was executed",), self.files["terminal.json"], checkpoint)
         owner.actual_registration = SimpleNamespace(gate=None)
         owner.binding = None
-        with patch.object(execution.CandidateHttpExecution, "checkpoint", return_value=checkpoint), \
+        with patch.object(execution.CandidateHttpExecution, "checkpoint", return_value=checkpoint) as boundary, \
+             patch.object(execution.CandidateHttpExecution, "read_authenticated", side_effect=capability.read_authenticated), \
              patch.object(execution.CandidateHttpExecution, "verified_execution", return_value=result), \
              patch.object(execution.CandidateHttpExecution, "_labels", return_value=()), \
              patch.object(reader.admission, "binding_sha256", return_value="d" * 64):
             observed = reader.observe_execution(owner, checkpoint)
+            boundary.side_effect = [checkpoint, checkpoint, replace(checkpoint, head_sha256="e" * 64)]
+            with self.assertRaisesRegex(reader.ObservationError, "Checkpoint"):
+                reader.observe_execution(owner, checkpoint)
         self.assertEqual(tuple(step.step_id for step in observed.steps), missing)
         self.assertEqual(tuple(step.state for step in observed.steps), ("unentered",) * 3)
         self.assertTrue(all(step.facts is None and step.exit_code is None for step in observed.steps))
         self.assertFalse(observed.cleanup_verified)
+
+    def test_partial_cli_preserves_finite_exit_but_does_not_swallow_unknown_authority(self):
+        owner = object.__new__(execution.CandidateHttpExecution)
+        owner.mode, owner.root = "physical", self.root
+        owner.recipe = execution.HttpRecipe("partial-cli", ("python", "/workspace/app.py", "--db", "/tmp/library.sqlite",
+            "--root", "/inputs", "--port", "8765"), (), (),
+            (execution.HttpStep("start-1", "start"), execution.HttpStep("request-1", "probe", execution.encoded(request())),
+             execution.HttpStep("stop-1", "stop"),
+             execution.HttpStep("cli-1", "cli", argv=("python", "/workspace/app.py", "/tmp/library.sqlite", "/inputs"))))
+        owner.policy = execution.HttpPolicy(IMAGE)
+        owner.actual_registration = SimpleNamespace(gate=None)
+        owner.binding = SimpleNamespace(source_sha256="a" * 64)
+        self.save("intent.json", execution.encoded({}))
+        self.save("terminal.json", execution.encoded({"steps": [], "entered_step_indices": [0, 1, 2, 3]}))
+        capability = FixtureAuthenticatedOwner(self.root, self.files.items())
+        checkpoint = capability.expected
+        row = {"step_index": 3, "authenticated": False, "process": {}}
+        result = execution.HttpHistoryResult("http-fixture", "observation_unavailable", (),
+            tuple(step.step_id for step in owner.recipe.steps), False, ("synthetic partial CLI",),
+            self.files["terminal.json"], checkpoint, (row,))
+        with patch.object(execution.CandidateHttpExecution, "checkpoint", return_value=checkpoint), \
+             patch.object(execution.CandidateHttpExecution, "read_authenticated", side_effect=capability.read_authenticated), \
+             patch.object(execution.CandidateHttpExecution, "verified_execution", return_value=result), \
+             patch.object(reader, "_spec", return_value=None), \
+             patch.object(reader, "_completion", return_value=(CID, "cli", None, 7)) as completion, \
+             patch.object(reader.admission, "binding_sha256", return_value="d" * 64):
+            observed = reader.observe_execution(owner, checkpoint)
+            self.assertEqual(observed.steps[-1].exit_code, 7)
+            self.assertEqual(observed.steps[-1].state, "unavailable")
+            self.assertIsNone(observed.steps[-1].stdout)
+            unknown = chain.ChainUnknown("head unavailable during finite exit reconstruction")
+            completion.side_effect = unknown
+            with self.assertRaises(chain.ChainUnknown) as caught:
+                reader.observe_execution(owner, checkpoint)
+            self.assertIs(caught.exception, unknown)
 
 
 class HttpObservationV2FactTests(unittest.TestCase):

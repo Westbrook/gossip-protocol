@@ -75,20 +75,21 @@ class CandidateClientAcceptanceV5DockerTests(unittest.TestCase):
             return frozen
         authority = admission.ObservationAdmission(prospective,
             verify_registration=authenticate_registration, verify_cohort=authenticate_freeze)
-        checkpoints = []
-        def retain_checkpoint(checkpoint):
-            path = root / ("checkpoint-" + str(len(checkpoints)).zfill(4) + ".json")
-            _write_new(path, asdict(checkpoint))
-            checkpoints.append(checkpoint)
         journal = root / "journal"
+        delta_root, cleanup_root, head_root = root / "deltas", root / "cleanup", root / "head"
+        head = execution.checkpoint_head.ExternalHead.create(head_root, journal_roots=(journal, delta_root))
+        self.addCleanup(head.close)
         with execution.CandidateClientExecution(journal, store, registered, policy, endpoint=endpoint,
-                admission_authority=authority, checkpoint_sink=retain_checkpoint) as owner:
+                admission_authority=authority, checkpoint_authority=head,
+                delta_root=delta_root, cleanup_root=cleanup_root) as owner:
             original = owner.execute_once()
             before_publication = owner.checkpoint()
             with self.assertRaises(bridge.ObservationError):
                 bridge.ClientObservationSource(owner, before_publication)
             checkpoint = bridge.publish_verifier(owner)
-            self.assertEqual(checkpoint, checkpoints[-1])
+            self.assertEqual(checkpoint, head.read())
+            self.assertGreater(checkpoint.sequence, before_publication.sequence)
+            _write_new(root / "external-final-prefix.json", asdict(checkpoint))
             source = bridge.ClientObservationSource(owner, checkpoint)
             observed = source.observation(gate, frozen)
             self.assertEqual(bridge.publish_verifier(owner), checkpoint, "Verifier publication must be idempotent")
@@ -99,10 +100,15 @@ class CandidateClientAcceptanceV5DockerTests(unittest.TestCase):
                 with self.assertRaises(bridge.ObservationError):
                     source.observation(gate, replace(frozen, receipt_sha256="f" * 64))
             self.assertEqual(owner.checkpoint(), checkpoint)
+        head.close()
+        reopened_head = execution.checkpoint_head.ExternalHead.reopen(head_root,
+            journal_roots=(journal, delta_root), expected=checkpoint)
+        self.addCleanup(reopened_head.close)
         # A fresh owner must use the exact separately retained checkpoint and
         # original purpose/freeze. Reading does not dispatch candidate code again.
         with execution.CandidateClientExecution(journal, store, registered, policy, endpoint=endpoint,
-                admission_authority=authority, expected_checkpoint=checkpoint) as reopened:
+                admission_authority=authority, expected_checkpoint=checkpoint,
+                checkpoint_authority=reopened_head, delta_root=delta_root, cleanup_root=cleanup_root) as reopened:
             self.assertEqual(bridge.ClientObservationSource(reopened, checkpoint).observation(gate, frozen), observed)
             self.assertEqual(reopened.checkpoint(), checkpoint)
         _write_new(root / "qualification-observation.json", {

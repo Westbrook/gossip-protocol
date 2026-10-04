@@ -403,6 +403,20 @@ class CheckpointChain:
         self._assert_roots()
         return raw
 
+    def has(self, name: str) -> bool:
+        """Current acknowledged-prefix membership; never a disk absence proof.
+
+        No full inventory scan occurs. Authority decisions about an absent file
+        still require validate_boundary(), which rejects foreign suffixes.
+        Invalid filename admission has no effect, as with retain(); ownership
+        and external-head failures retain the ordinary require_current contract.
+        """
+        self.require_current()
+        _name(name)
+        present = name in self._files
+        self.require_current()
+        return present
+
     def read(self, name: str) -> bytes:
         """Authenticate one consumed file and current external head on both sides."""
         self.require_current()

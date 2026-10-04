@@ -8,7 +8,6 @@ It never claims whole-project scope, qualified control, or held-out task novelty
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-import os
 import subprocess
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -22,7 +21,7 @@ if TYPE_CHECKING:
     from . import candidate_http_execution_v4 as execution
     from . import candidate_http_observation_v2 as reader
 
-PROTOCOL = "candidate-http-observation-source-v1"
+PROTOCOL = "candidate-http-observation-source-v1-compact-v1"
 
 
 @dataclass(frozen=True)
@@ -189,8 +188,8 @@ class HttpObservationSource:
         self.owner, self.checkpoint = owner, checkpoint
         self.receipt_path = Path(receipt_path).absolute()
         execution.require(self.receipt_path.resolve() == self.receipt_path and not self.receipt_path.is_symlink()
-                          and self.receipt_path.parent != owner.root,
-                          "Verifier receipt must use a separate canonical host-owned path")
+                          and self.receipt_path == owner.root / "semantic-verifier.json",
+                          "Verifier receipt must be the fixed original-chain artifact")
 
     def observation(self, gate: registry.Gate, freeze: registry.CohortFreeze | None) -> registry.Observation:
         from . import candidate_http_execution_v4 as execution
@@ -199,7 +198,8 @@ class HttpObservationSource:
         from .gitstore import GitError
         try:
             return self._observation(gate, freeze)
-        except (admission.AdmissionUnavailable, execution.ExecutionUnknown, OSError, GitError, subprocess.SubprocessError) as error:
+        except (admission.AdmissionUnavailable, execution.ExecutionUnknown, execution.compact.ChainUnknown,
+                OSError, GitError, subprocess.SubprocessError) as error:
             raise AuthorityUnavailable(str(error)) from error
         except (ValueError, TypeError, LookupError) as error:
             raise AuthorityError(str(error)) from error
@@ -234,7 +234,8 @@ class HttpObservationSource:
         record = {"protocol": PROTOCOL, "original_registration": asdict(owner.actual_registration),
             "original_execution_id": history.execution_id, "original_terminal_sha256": history.terminal_sha256,
             "original_binding_sha256": history.original_binding_sha256,
-            "original_checkpoint_sha256": history.checkpoint_sha256,
+            "original_journal_context_sha256": self.checkpoint.context_sha256,
+            "original_config_sha256": execution.sha256(owner.read_authenticated("config.json")),
             "original_journal": str(owner.root), "product_profile": owner.profile.record(),
             "cohort_freeze": None if freeze is None else asdict(freeze),
             "diagnostics": [asdict(item) for item in diagnostics],
@@ -245,16 +246,13 @@ class HttpObservationSource:
             "physical_execution_reused": False, "whole_project_acceptance": False,
             "held_out_claim": False}
         raw = execution.encoded(record)
-        self.receipt_path.parent.mkdir(parents=True, exist_ok=True)
-        if self.receipt_path.exists():
-            execution.require(execution._read(self.receipt_path) == raw, "Existing verifier receipt changed or aliases another origin")
+        if owner.has_authenticated(self.receipt_path.name):
+            execution.require(owner.read_authenticated(self.receipt_path.name) == raw,
+                              "Existing anchored verifier differs or aliases another origin")
         else:
-            with self.receipt_path.open("xb") as stream:
-                stream.write(raw)
-                stream.flush()
-                os.fsync(stream.fileno())
-            execution._sync(self.receipt_path.parent)
-        execution.require(execution._read(self.receipt_path) == raw and owner.checkpoint() == self.checkpoint
+            self.checkpoint = owner.retain_verifier(self.receipt_path.name, raw)
+        owner.verified_execution()
+        execution.require(owner.read_authenticated(self.receipt_path.name) == raw and owner.checkpoint() == self.checkpoint
                           and owner._freeze() == freeze
                           and execution.evaluator_sources() == owner.sources == execution._LOADED_SOURCES,
                           "Verifier receipt, evaluator or original evidence changed")

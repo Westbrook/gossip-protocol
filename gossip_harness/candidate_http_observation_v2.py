@@ -19,8 +19,9 @@ from . import candidate_http_transport_v1 as wire
 from . import candidate_http_semantics_v1 as semantics
 from . import candidate_http_head_v1 as head
 from . import candidate_observation_admission_v1 as admission
+from . import candidate_checkpoint_chain_v1 as chain
 
-PROTOCOL = "candidate-http-observation-v2"
+PROTOCOL = "candidate-http-observation-v2-compact-v1"
 
 
 class ObservationError(ValueError):
@@ -78,13 +79,28 @@ class _Reader:
     def __init__(self, owner: execution.CandidateHttpExecution,
                  checkpoint: execution.ControllerCheckpoint):
         self.owner = owner
-        self.hashes = dict(checkpoint.files)
+        self.checkpoint = checkpoint
+        self.validate_checkpoint()
+
+    def validate_checkpoint(self) -> None:
+        try:
+            actual = self.owner.checkpoint()
+        except (chain.ChainUnknown, execution.ExecutionUnknown):
+            raise
+        except ValueError as error:
+            raise ObservationError("Original checkpoint is invalid") from error
+        require(actual == self.checkpoint, "Checkpoint rollback, append or substitution")
 
     def raw(self, name: str) -> bytes:
-        require(type(name) is str and re.fullmatch(r"[a-z][a-z0-9.-]*", name) is not None
-                and name in self.hashes, "Missing checkpointed original artifact")
-        value = execution._read(self.owner.root / name)
-        require(execution.sha256(value) == self.hashes[name], "Original artifact differs from external checkpoint")
+        require(type(name) is str and re.fullmatch(r"[a-z][a-z0-9.-]*", name) is not None,
+                "Invalid original artifact name")
+        try:
+            value = self.owner.read_authenticated(name)
+        except (chain.ChainUnknown, execution.ExecutionUnknown):
+            raise
+        except ValueError as error:
+            raise ObservationError("Original artifact authentication failed") from error
+        require(type(value) is bytes, "Authenticated original bytes required")
         return value
 
     def json(self, name: str) -> dict[str, Any]:
@@ -319,10 +335,9 @@ def observe_execution(owner: execution.CandidateHttpExecution,
             and type(expected_checkpoint) is execution.ControllerCheckpoint,
             "Exact v4 owner and externally retained checkpoint required")
     require(owner.mode == "physical", "Fixture journal has no physical observation authority")
-    require(owner.checkpoint() == expected_checkpoint, "Checkpoint rollback, append or substitution")
-    result = owner.verified_execution()
-    require(owner.checkpoint() == expected_checkpoint, "Verification changed original checkpoint")
     reader = _Reader(owner, expected_checkpoint)
+    result = owner.verified_execution()
+    reader.validate_checkpoint()
     intent, terminal = reader.json("intent.json"), reader.json("terminal.json")
     rows = {reader.json(item["path"])["step_index"]: reader.json(item["path"]) for item in terminal["steps"]}
     probes = {row["step_index"]: row for row in result.observations}
@@ -349,6 +364,8 @@ def observe_execution(owner: execution.CandidateHttpExecution,
             if step.kind == "cli" and row is not None and type(row.get("process")) is dict:
                 try:
                     _, _, _, exit_code = _completion(reader, row, _spec(reader, intent, index, "cli"))
+                except (chain.ChainUnknown, execution.ExecutionUnknown):
+                    raise
                 except (ValueError, OSError, KeyError, TypeError) as error:
                     limits += ("independent finite exit unavailable: " + type(error).__name__,)
                 else:
@@ -415,9 +432,10 @@ def observe_execution(owner: execution.CandidateHttpExecution,
             provenance += (("row_sha256", execution.digest({k: v for k, v in row.items() if k != "wire"})),)
         output.append(StepObservation(step.step_id, index, step.kind, state, facts, stdout, stderr, exit_code,
                                       observed, limits, provenance))
-    require(owner.checkpoint() == expected_checkpoint, "Original journal changed during raw reconstruction")
+    reader.validate_checkpoint()
     verified_after = owner.verified_execution()
-    require(verified_after == result and owner.checkpoint() == expected_checkpoint, "Original verification changed during observation")
+    reader.validate_checkpoint()
+    require(verified_after == result, "Original verification changed during observation")
     return HistoryObservation(result.execution_id, admission.binding_sha256(owner.binding, gate=owner.actual_registration.gate), result.terminal_sha256,
         execution.digest(asdict(expected_checkpoint)), tuple(output), result.missing_step_ids,
         result.cleanup_verified, result.infrastructure)
