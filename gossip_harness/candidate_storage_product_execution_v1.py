@@ -33,11 +33,13 @@ from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_emergency_cleanup_v1 as cleanup
 from . import candidate_client_process_v4 as process
 from .candidate_release_execution_v2 import capture_git_source
+from . import candidate_source_capture_policy_v1 as source_capture
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1"
+BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
 TARGET_CONTRACT = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 LIMITS = chain.Limits()
 CHUNK_BYTES = 16 * 1024 * 1024
@@ -73,8 +75,20 @@ def evaluator_sources() -> dict[str, str]:
         'project_acceptance_registry_v1.py'}
     root = Path(__file__).resolve().parent
     result = {'gossip_harness/' + name: sha((root / name).read_bytes()) for name in sorted(names)}
+    result.update(source_capture.evaluator_sources())
     admission.verify_loaded_sources(result)
     return result
+
+
+def capture_policy_for(protocol: str) -> source_capture.BatchCapturePolicy | None:
+    require(protocol in (PROTOCOL, BATCH_PROTOCOL), 'Unknown storage source-capture protocol')
+    return None if protocol == PROTOCOL else source_capture.BatchCapturePolicy()
+
+
+def capture_source(store: GitStore, commit_oid: str, *,
+                   policy: source_capture.BatchCapturePolicy | None = None) -> tuple[str, dict[str, bytes]]:
+    """Registration and owner boundaries use the same closed fresh capture route."""
+    return source_capture.capture_registered_source(store, commit_oid, policy=policy)
 
 
 @dataclass(frozen=True, slots=True)
@@ -110,7 +124,7 @@ class StorageBinding:
     protocol: str = PROTOCOL
 
     def __post_init__(self) -> None:
-        require(self.protocol == PROTOCOL and self.milestone == 'M4'
+        require(self.protocol in (PROTOCOL, BATCH_PROTOCOL) and self.milestone == 'M4'
             and self.requirements_sha256 == TARGET_CONTRACT, 'Explicit current final-M4 contract required')
         require(self.family in ('b01', 'b02') and self.purpose in registry.PURPOSES, 'Product family/purpose required')
         for name, value in asdict(self).items():
@@ -120,7 +134,8 @@ class StorageBinding:
 
 
 def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runtime: dict[str, Any],
-                plan: review.LayoutPlan, *, review_authority: review.StorageReviewAuthority) -> StorageBinding:
+                plan: review.LayoutPlan, *, review_authority: review.StorageReviewAuthority,
+                capture_policy: source_capture.BatchCapturePolicy | None = None) -> StorageBinding:
     require(type(review_authority) is review.StorageReviewAuthority, 'Exact original layout authority required')
     provenance = review_authority.provenance(plan)
     review_sha256 = review_authority.enrollment.report_sha256
@@ -132,6 +147,14 @@ def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runt
         and plan.family == value.family and plan.case_id == value.case_id and plan.profile_sha256 == value.sha256
         and plan.purpose == value.purpose,
         'Source, original driver identity, profile and reviewed layout differ')
+    require(capture_policy is None or type(capture_policy) is source_capture.BatchCapturePolicy,
+            'Exact closed source-capture policy required')
+    capture_record = None if capture_policy is None else capture_policy.record()
+    limits = {'policy': asdict(policy), 'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES,
+        'capture_bytes': b02.MAX_CAPTURE_BYTES, 'original_stream_bytes': b01.MAX_STREAM_BYTES if value.family == 'b01' else b02.MAX_STREAM_BYTES,
+        'cleanup': asdict(cleanup.CleanupLimits())}
+    if capture_record is not None:
+        limits['source_capture'] = capture_record
     forced = value.family == 'b02' and value.case_id in b02.FORCED_CASE_IDS
     require(plan.schedule == ('forced_schedule_unavailable' if forced else 'ordinary_public_operations'),
             'No source-specific forced schedule qualification is supplied')
@@ -140,9 +163,8 @@ def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runt
         digest(evaluator_sources()), digest(runtime), digest({'environment': DockerValidator._environment(),
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
-        digest({'policy': asdict(policy), 'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES,
-            'capture_bytes': b02.MAX_CAPTURE_BYTES, 'original_stream_bytes': b01.MAX_STREAM_BYTES if value.family == 'b01' else b02.MAX_STREAM_BYTES,
-            'cleanup': asdict(cleanup.CleanupLimits())}), digest({'seed': policy.seed}))
+        digest(limits), digest({'seed': policy.seed}),
+        protocol=PROTOCOL if capture_policy is None else BATCH_PROTOCOL)
 
 
 def mechanics_case_id(value: Any) -> str:
@@ -158,7 +180,7 @@ def gate_for(subject: registry.Subject, binding: StorageBinding, *, gate_id: str
     return registry.Gate(gate_id, value.requirement_ids, roster,
         registry.Binding(subject, digest({'profile': value.record(), 'ordered_cases': roster}),
             binding.evaluator_sha256, binding.runtime_sha256, binding.environment_sha256,
-            binding.limits_sha256, binding.seed_sha256, PROTOCOL, binding.purpose))
+            binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose))
 
 
 @dataclass(frozen=True, slots=True)
@@ -390,6 +412,7 @@ class CandidateStorageExecution:
             require(not self.cleanup_root.is_relative_to(checkpoint_authority.root)
                 and not checkpoint_authority.root.is_relative_to(self.cleanup_root), 'Head/cleanup overlap')
         self.mode, self.policy, self.store = mode, policy, store
+        self.capture_policy = capture_policy_for(registration.binding.protocol)
         self.registration, self.profile, self.plan = registration, value, plan
         self.review_authority, self.admission, self.checkpoint_authority = review_authority, admission_authority, checkpoint_authority
         self._pid, self._thread, self.closed = os.getpid(), threading.get_ident(), False
@@ -407,22 +430,25 @@ class CandidateStorageExecution:
             else:
                 self.runtime = {'kind': 'fixture-no-Docker'}
             self.sources = evaluator_sources()
-            self.tree, self.files = capture_git_source(store, registration.commit_oid)
+            self.tree, self.files = capture_source(store, registration.commit_oid, policy=self.capture_policy)
             require(self.tree == registration.tree_oid and plan.commit_oid == registration.commit_oid
                 and plan.tree_oid == self.tree, 'Complete final Git source differs')
             self.review_sha256 = review_authority.authenticate(plan)
-            self.binding = binding_for(self.files, value, policy, self.runtime, plan, review_authority=review_authority)
+            self.binding = binding_for(self.files, value, policy, self.runtime, plan, review_authority=review_authority,
+                capture_policy=self.capture_policy)
             require(self.binding == registration.binding, 'Complete registered storage binding differs')
             self.observation_registration = observation_registration(registration)
             require(self.admission.registration == self.observation_registration, 'Admission belongs to another storage execution')
-            self.config = {'protocol': PROTOCOL, 'mode': mode, 'root': str(self.root), 'delta_root': str(self.delta_root),
+            self.config = {'protocol': self.binding.protocol, 'mode': mode, 'root': str(self.root), 'delta_root': str(self.delta_root),
                 'cleanup_root': str(self.cleanup_root), 'repository': str(store.path.resolve()), 'registration': asdict(registration),
                 'profile': value.record(), 'plan': asdict(plan), 'review_sha256': self.review_sha256,
                 'review_provenance': review_authority.provenance(plan),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'journal_limits': asdict(LIMITS),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
-            context = {'protocol': PROTOCOL, 'config_sha256': digest(self.config),
+            if self.capture_policy is not None:
+                self.config['source_capture'] = self.capture_policy.record()
+            context = {'protocol': self.binding.protocol, 'config_sha256': digest(self.config),
                 'source_sha256': self.binding.source_sha256, 'purpose': self.binding.purpose,
                 'original_binding_sha256': digest(asdict(self.binding))}
             existed = self.root.exists()
@@ -499,7 +525,8 @@ class CandidateStorageExecution:
     def current(self, freeze: registry.CohortFreeze | None) -> None:
         self._owner()
         require(evaluator_sources() == self.sources, 'Storage evaluator changed')
-        tree, files = capture_git_source(self.store, self.registration.commit_oid)
+        require(self.capture_policy == capture_policy_for(self.binding.protocol), 'Source-capture policy changed')
+        tree, files = capture_source(self.store, self.registration.commit_oid, policy=self.capture_policy)
         require(tree == self.tree and files == self.files, 'Final Git source changed')
         require(self.review_authority.authenticate(self.plan) == self.review_sha256
             and digest(self.review_authority.provenance(self.plan)) == self.binding.review_origin_sha256, 'Layout authority changed')
@@ -524,7 +551,7 @@ class CandidateStorageExecution:
         self._freeze = self.admission.before_intent(self.observation_registration)
         self.current(self._freeze)
         execution_id = 'storage-product-' + uuid.uuid4().hex
-        intent = {'protocol': PROTOCOL, 'execution_id': execution_id,
+        intent = {'protocol': self.binding.protocol, 'execution_id': execution_id,
             'source_sha256': self.binding.source_sha256, 'original_binding': asdict(self.binding),
             'registration': asdict(self.observation_registration),
             'cohort_freeze': None if self._freeze is None else asdict(self._freeze),
@@ -549,7 +576,7 @@ class CandidateStorageExecution:
         original = b01 if self.binding.family == 'b01' else b02
         case = self.binding.case_id
         recipe = None if self.binding.family == 'b01' else b02.validate_recipe(b02.cases.execution_recipe(case))
-        application = {'protocol': PROTOCOL, 'decision': 'unavailable' if self.plan.schedule == 'forced_schedule_unavailable' else 'not-requested',
+        application = {'protocol': self.binding.protocol, 'decision': 'unavailable' if self.plan.schedule == 'forced_schedule_unavailable' else 'not-requested',
             'review_sha256': self.review_sha256, 'production_forced_schedule_qualified': False}
         self._retain('applicability.json', encoded(application))
         if recipe is not None:
@@ -563,7 +590,10 @@ class CandidateStorageExecution:
         attempted = {'container': False, 'volume': False}
         labels = {'gossip.execution': intent['execution_id'], 'gossip.source': self.binding.source_sha256,
                   'gossip.fixture': digest({'recipe': recipe, 'adapter': sha(original.CHILD_ADAPTER.encode())})}
-        sandbox = DockerValidator(self.policy.image_id, {}, command=('python', '-I', '-c', 'import time;time.sleep(1800)'))
+        expected_checks = adapter_files(self.binding.family, case, application)
+        sandbox = DockerValidator(self.policy.image_id,
+            {name: raw.decode('utf-8') for name, raw in expected_checks.items()},
+            command=('python', '-I', '-c', 'import time;time.sleep(1800)'))
 
         def checked(label: str, argv: list[str], limit: int = b01.MAX_STREAM_BYTES) -> dict[str, Any]:
             record = commands.run(label, argv, limit)
@@ -616,7 +646,6 @@ class CandidateStorageExecution:
                 dest.write_bytes(raw)
                 dest.chmod(0o444)
             adapter = 'storage_adapter.py' if recipe is None else 'intake_store_adapter.py'
-            expected_checks = adapter_files(self.binding.family, case, application)
             for helper_name, helper_raw in expected_checks.items():
                 (checks / helper_name).write_bytes(helper_raw)
             if recipe is not None:
@@ -731,7 +760,7 @@ class CandidateStorageExecution:
         assert self.journal is not None
         if self.journal.uncertain:
             raise ExecutionUnknown('Original storage journal became uncertain; redispatch forbidden') from primary
-        terminal = {'protocol': PROTOCOL, 'intent_sha256': sha(self.read_authenticated('intent.json')),
+        terminal = {'protocol': self.binding.protocol, 'intent_sha256': sha(self.read_authenticated('intent.json')),
             'execution_id': intent['execution_id'], 'case_id': case, 'family': self.binding.family,
             'source_sha256': self.binding.source_sha256, 'native_source_sha256': self.binding.native_source_sha256,
             'commands': list(commands.records), 'infrastructure': errors,

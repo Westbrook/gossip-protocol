@@ -10,20 +10,23 @@ from __future__ import annotations
 
 from dataclasses import asdict
 import json
+import base64
+from pathlib import Path
+import sqlite3
+import tempfile
 import subprocess
 from typing import Any
 
-from . import candidate_storage_product_execution_v1 as execution
-from . import candidate_storage_product_profile_v1 as profile
-from . import candidate_storage_observer_v1 as b01_observer
-from . import candidate_intake_store_observer_v1 as b02_observer
+from . import candidate_m2_product_execution_v1 as execution
+from . import candidate_m2_product_profile_v1 as profile
 from . import candidate_observation_admission_v1 as admission
+from . import candidate_source_capture_policy_v1 as capture_policy
 from . import project_acceptance_registry_v1 as registry
 from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
 
-PROTOCOL = 'candidate-storage-product-observation-v1-ascii-json-v1'
-VERIFIER_FILE = 'storage-product-verifier.json'
+PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1'
+VERIFIER_FILE = 'm2-product-verifier.json'
 
 
 def require(ok: bool, message: str) -> None:
@@ -32,10 +35,10 @@ def require(ok: bool, message: str) -> None:
 
 
 def _json(raw: bytes) -> Any:
-    return execution.process.strict_json_loads(raw)
+    return profile.decode(raw)
 
 
-def _command(owner: execution.CandidateStorageExecution, label: str,
+def _command(owner: execution.CandidateM2Execution, label: str,
              arguments: list[str]) -> tuple[dict[str, Any], bytes] | None:
     if not owner.has_retained(label + '.json'):
         return None
@@ -55,41 +58,110 @@ def _command(owner: execution.CandidateStorageExecution, label: str,
     return record, owner.read_blob(record['stdout']['path'])
 
 
-def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
+def _sqlite_original(raw: bytes, job_id: str | None = None) -> tuple[str, Any]:
+    """Read immutable captured SQLite with fixed queries and finite limits.
+
+    No candidate SQL/schema statement is executed; private row meaning still
+    requires the exact enrolled schema/layout plan.
+    """
+    if type(raw) is not bytes or not 100 <= len(raw) <= 32 * 1024 * 1024 or not raw.startswith(b'SQLite format 3\0'):
+        raise AuthorityUnavailable('Bounded SQLite main file unavailable')
+    with tempfile.TemporaryDirectory(prefix='m2-sqlite-original-') as directory:
+        path = Path(directory) / 'captured.sqlite'
+        path.write_bytes(raw)
+        connection = sqlite3.connect(path.as_uri() + '?mode=ro&immutable=1', uri=True)
+        connection.row_factory = sqlite3.Row
+        try:
+            connection.enable_load_extension(False)
+            connection.execute('PRAGMA trusted_schema=OFF')
+            connection.execute('PRAGMA query_only=ON')
+            connection.setlimit(sqlite3.SQLITE_LIMIT_LENGTH, 2 * 1024 * 1024)
+            connection.setlimit(sqlite3.SQLITE_LIMIT_SQL_LENGTH, 4096)
+            connection.setlimit(sqlite3.SQLITE_LIMIT_COLUMN, 128)
+            ticks = 0
+            def progress() -> int:
+                nonlocal ticks
+                ticks += 1000
+                return int(ticks > 200000)
+            connection.set_progress_handler(progress, 1000)
+            allowed = {sqlite3.SQLITE_SELECT, sqlite3.SQLITE_READ}
+            connection.set_authorizer(lambda action, *_: sqlite3.SQLITE_OK if action in allowed else sqlite3.SQLITE_DENY)
+            schema = [dict(row) for row in connection.execute(
+                'SELECT type,name,tbl_name,sql FROM sqlite_schema ORDER BY type,name').fetchmany(129)]
+            if len(schema) > 128 or any(row['type'] == 'view' or
+                (row['type'] == 'table' and ('VIRTUAL TABLE' in str(row['sql']).upper())) for row in schema):
+                raise AuthorityUnavailable('Unqualified SQLite schema object')
+            value = None
+            if job_id is not None:
+                rows = connection.execute('SELECT manifest,content_hashes,receipt FROM jobs NOT INDEXED WHERE job_id=?',
+                    (job_id,)).fetchmany(2)
+                def original_row(row: Any) -> dict[str, Any]:
+                    return {key: item if item is None or type(item) is str else
+                        {'sqlite_type': type(item).__name__, 'original':
+                         base64.b64encode(item).decode('ascii') if type(item) is bytes else repr(item)}
+                        for key, item in dict(row).items()}
+                # A successful bounded query with absent/duplicate/wrong-typed
+                # rows is an authenticated candidate discrepancy, not missing
+                # instrumentation. Keep its original shape for exact failure.
+                value = original_row(rows[0]) if len(rows) == 1 else {'captured_job_rows': [original_row(row) for row in rows]}
+            return profile.digest(schema), value
+        except sqlite3.Error as error:
+            raise AuthorityUnavailable('Captured SQLite query incomplete') from error
+        finally:
+            connection.close()
+
+
+def sqlite_schema_sha256(raw: bytes) -> str:
+    """Inspection helper only: the computed hash does not authorize its use."""
+    return _sqlite_original(raw)[0]
+
+
+def sqlite_job_value(files: dict[str, bytes], plan: Any, job_id: str) -> Any:
+    if set(files) != set(plan.storage_paths) or 'm2/library.sqlite' not in files:
+        raise AuthorityUnavailable('Complete reviewed capture path census differs')
+    if any(raw for name, raw in files.items() if name != 'm2/library.sqlite' and
+           name.endswith(('-wal', '-journal'))):
+        raise AuthorityUnavailable('Nonempty SQLite transaction sidecar is unqualified')
+    schema, value = _sqlite_original(files['m2/library.sqlite'], job_id)
+    if schema != plan.schema_sha256:
+        raise AuthorityUnavailable('Independently reviewed final schema differs')
+    return value
+
+
+def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
     """Mechanism is also testable with an exact fixture owner; never a receipt."""
-    require(type(owner) is execution.CandidateStorageExecution, 'Exact original storage owner required')
+    require(type(owner) is execution.CandidateM2Execution, 'Exact original storage owner required')
     before = owner.checkpoint()
     intent_raw = owner.read_authenticated('intent.json')
     intent = _json(intent_raw)
     freeze = owner.retained_freeze()
     owner.current(freeze)
-    require(intent['protocol'] == owner.binding.protocol and intent['registration'] == json.loads(execution.encoded(asdict(owner.observation_registration)))
+    require(intent['protocol'] == execution.PROTOCOL and intent['registration'] == json.loads(execution.encoded(asdict(owner.observation_registration)))
         and intent['original_binding'] == json.loads(execution.encoded(asdict(owner.binding)))
         and intent['source_sha256'] == owner.binding.source_sha256
-        and intent['ordered_phases'] == list(execution.b01.PHASES), 'Original intent identity differs')
+        and intent['ordered_phases'] == list(owner.profile.phases), 'Original intent identity differs')
     terminal = None if not owner.has_retained('terminal.json') else _json(owner.read_authenticated('terminal.json'))
     if terminal is not None:
-        require(terminal['protocol'] == owner.binding.protocol and terminal['intent_sha256'] == execution.sha(intent_raw)
+        require(terminal['protocol'] == execution.PROTOCOL and terminal['intent_sha256'] == execution.sha(intent_raw)
             and terminal['source_sha256'] == owner.binding.source_sha256
             and terminal['native_source_sha256'] == owner.binding.native_source_sha256
             and terminal['execution_id'] == intent['execution_id'] and terminal['case_id'] == owner.binding.case_id
             and terminal['family'] == owner.binding.family, 'Original terminal identity differs')
-    mapper = b01_observer if owner.binding.family == 'b01' else b02_observer
-    native = execution.b01 if owner.binding.family == 'b01' else execution.b02
-    mapping = owner.review_authority.observer_registration(owner.plan)
-    observations: dict[str, Any] = {}
-    responses: dict[str, Any] = {}
+    sqlite_values: dict[int, Any] = {}
+    responses: dict[int, Any] = {}
     unavailable: list[str] = []
     phase_facts: list[dict[str, Any]] = []
     name, volume = intent['container'], intent['volume']
-    recipe = None if owner.binding.family == 'b01' else execution.b02.validate_recipe(execution.b02.cases.execution_recipe(owner.binding.case_id))
-    application = {'protocol': owner.binding.protocol, 'decision': 'unavailable' if owner.plan.schedule == 'forced_schedule_unavailable' else 'not-requested',
-        'review_sha256': owner.review_sha256, 'production_forced_schedule_qualified': False}
-    helpers = execution.adapter_files(owner.binding.family, owner.binding.case_id, application)
+    recipe = profile.recipe_for(owner.binding.case_id)
+    helpers = profile.adapter_files(owner.binding.case_id)
+    require(execution.digest({'adapter_files': admission.source_manifest(helpers),
+        'input_fixtures': profile.input_fixtures(owner.binding.case_id), 'recipe': recipe}) == owner.binding.fixture_sha256,
+        'Actual original helper/fixture bytes differ from registered commitment')
     expected_stage = {'source_manifest': admission.source_manifest(owner.files),
-        'helper_manifest': admission.source_manifest(helpers), 'fixtures_sha256': execution.digest([] if recipe is None else recipe['fixtures'])}
+        'helper_manifest': admission.source_manifest(helpers),
+        'fixtures_sha256': execution.digest(profile.input_fixtures(owner.binding.case_id))}
     expected_labels = {'gossip.execution': intent['execution_id'], 'gossip.source': owner.binding.source_sha256,
-        'gossip.fixture': execution.digest({'recipe': recipe, 'adapter': execution.sha(native.CHILD_ADAPTER.encode())})}
+        'gossip.fixture': owner.binding.fixture_sha256}
     container_id: str | None = None
     if owner.has_retained('container-create.json'):
         creation = _json(owner.read_authenticated('container-create.json'))
@@ -98,7 +170,7 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
         if execution.b01._clean(creation):
             container_id = raw.strip().decode('ascii')
             registry.sha256(container_id)
-    # Correlate exactly three host-driven requests with captured original stdout;
+    # Correlate the complete declared host-driven action roster with captured original stdout;
     # an incomplete later session keeps earlier independently bounded lines.
     session = None if not owner.has_retained('session.json') else _json(owner.read_authenticated('session.json'))
     lines: list[bytes] = []
@@ -108,7 +180,7 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
         require(descriptor['sha256'] == execution.sha(raw) and descriptor['bytes'] == len(raw), 'Session stdout differs')
         lines = raw.splitlines(keepends=True)
     previous_identity = None
-    for index, phase in enumerate(execution.b01.PHASES):
+    for index, phase in enumerate(owner.profile.phases):
         fact: dict[str, Any] = {'phase': phase, 'capture_authenticated': False, 'response_authenticated': False,
                                 'mapping': 'unavailable', 'reason': None}
         try:
@@ -127,16 +199,22 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
                 raise AuthorityUnavailable('Original phase response/request unavailable')
             require(_json(owner.read_authenticated(phase + '-request.json')) == {'phase': phase, 'request': phase + '\n'}, 'Original phase request differs')
             raw = owner.read_authenticated(response_name)
-            response = _json(raw)
-            require(type(response) is dict and set(response) == {'phase', 'value'} and response['phase'] == phase,
-                    'Original response phase differs')
             if session is not None:
                 require(len(lines) > index and lines[index] == raw, 'Phase response differs from session stdout')
+            try:
+                response = _json(raw)
+            except (ValueError, UnicodeError, RecursionError) as error:
+                raise AuthorityUnavailable('Candidate action response is not complete typed JSON') from error
+            if not (type(response) is dict and set(response) == {'phase', 'value'} and response['phase'] == phase):
+                raise AuthorityUnavailable('Candidate response phase is not attributable')
             # A phase-response raw record is appended by the fixed trusted reader
             # immediately after its bounded one-line read. Final session framing
             # is a separate mechanics requirement, not authority for earlier data.
+            if not (type(response['value']) is dict and set(response['value']) == {'action_index', 'result'}
+                and type(response['value']['action_index']) is int and response['value']['action_index'] == index):
+                raise AuthorityUnavailable('Candidate response action index is not attributable')
             fact['response_authenticated'] = True
-            responses[phase] = response['value']
+            responses[index] = response['value']['result']
             pause = _command(owner, phase + '-pause', ['docker', 'pause', container_id])
             state = _command(owner, phase + '-state', ['docker', 'inspect', '--format', '{{json .}}', container_id])
             capture = _command(owner, phase + '-capture', ['docker', 'cp', container_id + ':/tmp', '-'])
@@ -149,35 +227,35 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
             inspection = _json(state[1])
             if not (execution.b01._paused(inspection, volume, owner.policy.image_id)
                 and inspection.get('Id') == container_id and inspection.get('Name') == '/' + name):
-                responses.pop(phase, None)
+                responses.pop(index, None)
                 fact['response_authenticated'] = False
                 raise AuthorityUnavailable('Captured container is not exact paused owner')
             config, host = inspection.get('Config'), inspection.get('HostConfig')
             if not (type(config) is dict and type(host) is dict
                 and config.get('Labels') == expected_labels
                 and host.get('NetworkMode') == 'none' and host.get('ReadonlyRootfs') is True):
-                responses.pop(phase, None)
+                responses.pop(index, None)
                 fact['response_authenticated'] = False
                 raise AuthorityUnavailable('Captured sandbox or execution lineage differs')
             identity = {'Config': config, 'HostConfig': host, 'Mounts': sorted(inspection['Mounts'], key=lambda x: x['Destination']),
                 'Pid': inspection['State']['Pid'], 'StartedAt': inspection['State'].get('StartedAt')}
             if previous_identity is not None and identity != previous_identity:
-                responses.pop(phase, None)
+                responses.pop(index, None)
                 fact['response_authenticated'] = False
                 raise AuthorityUnavailable('Persistent storage process/container lineage changed')
             previous_identity = identity
-            captured = native.parse_capture(capture[1])
+            captured = execution.b02.parse_capture(capture[1])
             fact['capture_authenticated'] = True
-            observations[phase] = mapper.observe_capture(captured, mapping, source_sha256=owner.binding.native_source_sha256)
+            if recipe['actions'][index]['op'] == 'job_serialization':
+                sqlite_values[index] = sqlite_job_value(captured, owner.plan, recipe['actions'][index]['job_id'])
             fact['mapping'] = 'available'
-        except (AuthorityUnavailable, b01_observer.ObservationUnavailable, b02_observer.ObservationUnavailable,
-                execution.b01.CaptureLayoutError) as error:
+        except (AuthorityUnavailable, execution.b02.CaptureLayoutError) as error:
             fact['reason'] = str(error)
             unavailable.append(phase + ':' + str(error))
         phase_facts.append(fact)
-    projection = profile.project(owner.profile, observations, responses)
+    projection = profile.project(owner.profile, responses, sqlite_values)
     completed_session = (session is not None and session.get('exit_code') == 0 and session.get('capture_complete') is True
-        and not session.get('errors') and session.get('extra_lines') == 0 and len(lines) == 3
+        and not session.get('errors') and session.get('extra_lines') == 0 and len(lines) == len(owner.profile.phases)
         and all(session[kind].get('truncated') is False and session[kind].get('observed_bytes') == session[kind].get('bytes')
                 for kind in ('stdout', 'stderr')))
     cleaned = False
@@ -192,8 +270,7 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
     final_staging = owner.has_retained('staging-final.json') and _json(owner.read_authenticated('staging-final.json')) == expected_stage
     mechanics = bool(completed_session and cleaned and final_staging and not unavailable and terminal is not None
         and not terminal['infrastructure'] and all(row['capture_authenticated'] for row in phase_facts))
-    result = {'protocol': PROTOCOL if owner.capture_policy is None else PROTOCOL + '-git-source-batch-v1',
-        'execution_protocol': owner.binding.protocol,
+    result = {'protocol': PROTOCOL, 'execution_protocol': execution.PROTOCOL,
         'execution_id': intent['execution_id'], 'registration': asdict(owner.observation_registration),
         'original_binding': asdict(owner.binding), 'original_intent_sha256': execution.sha(intent_raw),
         'original_terminal_sha256': None if terminal is None else execution.sha(owner.read_authenticated('terminal.json')),
@@ -211,41 +288,26 @@ def reconstruct(owner: execution.CandidateStorageExecution) -> dict[str, Any]:
     return result
 
 
-def selector_catalog(family: str, case_id: str, *, purpose: str,
-                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None) -> dict[str, Any]:
-    """Closed prospective selectors, with authored partial source-unit facets.
-
-    This supplies concrete compiler review input; installing the new storage
-    factory into the complete ScopePlan authority remains an explicit versioned
-    integration step. It does not self-enroll as a semantic reviewer.
-    """
-    value = profile.profile_for(family, case_id, purpose)
-    rows = []
-    for row in value.record()['diagnostics']:
-        rows.append({**row, 'case_id': row['check_id'],
-            'observation_pointer': '/projection' + row['selector'],
-            'value_domain': [True, False, None], 'physical_capture_qualified': False,
-            'whole_source_unit_qualified': False})
-    rows.append({'case_id': execution.mechanics_case_id(value), 'applicability': 'normative',
-        'observation_pointer': '/mechanics/status', 'value_domain': ['passed', 'infrastructure_error'],
-        'source_unit_facets': [], 'scope': 'Owned capture/session/cleanup mechanics only; no semantic clause inferred'})
-    result = {'protocol': PROTOCOL, 'family': family, 'history_id': case_id,
+def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
+    value = profile.profile_for(case_id, purpose)
+    rows = [{**row, 'value_domain': ['pass', 'fail', 'unavailable'],
+        'physical_capture_qualified': False, 'whole_source_unit_qualified': False} for row in value.selectors()]
+    rows.append({'case_id': execution.mechanics_case_id(value), 'pointer': '/mechanics/status',
+        'value_domain': ['passed', 'infrastructure_error'], 'source_unit_ids': [],
+        'scope': 'All authored actions, exact owner/capture/session/cleanup only'})
+    return {'protocol': PROTOCOL, 'family': value.family, 'history_id': case_id,
         'original_definition_purpose': profile.ORIGINAL_DEFINITION_PURPOSE,
         'execution_purpose': purpose, 'target_contract_sha256': execution.TARGET_CONTRACT,
         'target_milestone': 'M4', 'profile_sha256': value.sha256,
         'definition_sha256': execution.digest(value.record()), 'evaluator_sources': execution.evaluator_sources(),
         'ordered_case_ids': list(value.ordered_case_ids + (execution.mechanics_case_id(value),)),
-        'selectors': rows, 'required_unfinished_coverage': list(profile.REMAINING_COVERAGE),
+        'selectors': rows, 'required_unfinished_coverage': list(profile.LIMITATIONS),
+        'capabilities': ['public-contract', 'direct-api', 'reviewed-sqlite-capture'],
         'scope_factory_registered': False, 'semantic_authority': False}
-    if capture_policy is not None:
-        require(type(capture_policy) is execution.source_capture.BatchCapturePolicy, 'Exact capture policy required')
-        result.update(protocol=PROTOCOL + '-git-source-batch-v1',
-            source_capture=capture_policy.record(), execution_protocol=execution.BATCH_PROTOCOL)
-    return result
 
 
-def publish_verifier(owner: execution.CandidateStorageExecution) -> execution.chain.PrefixCommitment:
-    require(type(owner) is execution.CandidateStorageExecution and owner.mode == 'physical', 'Physical original owner required')
+def publish_verifier(owner: execution.CandidateM2Execution) -> execution.chain.PrefixCommitment:
+    require(type(owner) is execution.CandidateM2Execution and owner.mode == 'physical', 'Physical original owner required')
     record = reconstruct(owner)
     raw = execution.encoded(record)
     if owner.has_retained(VERIFIER_FILE):
@@ -256,9 +318,9 @@ def publish_verifier(owner: execution.CandidateStorageExecution) -> execution.ch
     return owner.checkpoint()
 
 
-class StorageObservationSource:
-    def __init__(self, owner: execution.CandidateStorageExecution, expected_checkpoint: execution.chain.PrefixCommitment):
-        require(type(owner) is execution.CandidateStorageExecution and owner.mode == 'physical'
+class M2ObservationSource:
+    def __init__(self, owner: execution.CandidateM2Execution, expected_checkpoint: execution.chain.PrefixCommitment):
+        require(type(owner) is execution.CandidateM2Execution and owner.mode == 'physical'
             and type(expected_checkpoint) is execution.chain.PrefixCommitment, 'Exact physical source owner and independent prefix required')
         require(owner.checkpoint() == expected_checkpoint and owner.has_retained(VERIFIER_FILE), 'Original verifier/current prefix unavailable')
         self.owner, self.expected_checkpoint = owner, expected_checkpoint
@@ -267,7 +329,8 @@ class StorageObservationSource:
         try:
             return self._observation(gate, freeze)
         except (execution.ExecutionUnknown, execution.chain.ChainUnknown, admission.AdmissionUnavailable,
-                OSError, subprocess.SubprocessError, GitError, execution.source_capture.SourceCaptureUnavailable) as error:
+                capture_policy.SourceCaptureUnavailable,
+                OSError, subprocess.SubprocessError, GitError) as error:
             raise AuthorityUnavailable(str(error)) from error
         except AuthorityError:
             raise
@@ -282,9 +345,8 @@ class StorageObservationSource:
         record = reconstruct(owner)
         raw = execution.encoded(record)
         require(owner.read_authenticated(VERIFIER_FILE) == raw, 'Original host verifier differs')
-        checks = record['projection']['checks']
-        outcomes = tuple(registry.CaseResult(case_id, 'passed' if checks[case_id] is True else
-            'failed' if checks[case_id] is False else 'infrastructure_error') for case_id in owner.profile.ordered_case_ids)
+        outcomes = tuple(registry.CaseResult(row['case_id'], {'pass': 'passed', 'fail': 'failed',
+            'unavailable': 'infrastructure_error'}[row['disposition']]) for row in record['projection']['observations'])
         outcomes += (registry.CaseResult(execution.mechanics_case_id(owner.profile), record['mechanics']['status']),)
         require(tuple(item.case_id for item in outcomes) == gate.ordered_case_ids, 'Exact decisive roster differs')
         original_receipt = record['original_terminal_sha256'] or record['original_intent_sha256']

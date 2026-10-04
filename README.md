@@ -1286,6 +1286,11 @@ attempts and their corrections remain recorded. Required multiworker regression
 classes, worker Docker controls, complete semantic scope and the full matching
 rehearsal remain outstanding; no new comparative model-quality sample is claimed.
 
+The [storage and direct-API integration](docs/storage-m2-batch-integration-v1.md)
+fixes the sandbox staging prerequisite and passed [227 affected checks](analysis/storage-m2-batch-integration-v1.json).
+Actual owner execution, complete scope/final-factory composition and the matching
+full rehearsal remain required; these checks add no model-quality samples.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

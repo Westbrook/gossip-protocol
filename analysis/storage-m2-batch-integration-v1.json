@@ -1,0 +1,530 @@
+{
+  "protocol": "storage-m2-batch-integration-v1",
+  "status": "227_targeted_controls_passed_physical_and_full_scope_qualification_incomplete",
+  "base_commit": "08fe8c5d78f6b0a6f3c6f5d970ef0f8031970d72",
+  "verification_owner": "root",
+  "files": [
+    {
+      "path": "gossip_harness/candidate_git_source_batch_v1.py",
+      "sha256": "9a0755cbd2a08f86685298ec63afed3542cf018e628bf3b0704bb9976efa8cdd",
+      "bytes": 12814
+    },
+    {
+      "path": "tests/test_candidate_git_source_batch_v1.py",
+      "sha256": "c31c5855389ca97632c54d15728e9a5034ced8f722f7c821cd074a818b7e402d",
+      "bytes": 24402
+    },
+    {
+      "path": "docs/candidate-git-source-batch-v1.md",
+      "sha256": "7013b1a3fb86195cfcf1dab9f51e91828fffa45417b020445b574a7871ace77b",
+      "bytes": 6052
+    },
+    {
+      "path": "gossip_harness/candidate_source_capture_policy_v1.py",
+      "sha256": "11d508df039f40b059145fa2dbeea126eb4c3a94e1ab6f4dadf431e47e1d4988",
+      "bytes": 3747
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "26513d5890af57846b47e49a950a5686c628d56932d9c8adf364ab74b3e382a5",
+      "bytes": 44285
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "sha256": "d5ab237ebdd8621dc70f0895f3be97ba7401e291189232752d6dcd80f17d4344",
+      "bytes": 20512
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v2.py",
+      "sha256": "daf1d940c5d11e96cd9f7feb972159789314da64994f82ded8497d62224d4303",
+      "bytes": 14876
+    },
+    {
+      "path": "tests/test_candidate_storage_batch_capture_v1.py",
+      "sha256": "51867a021b16619062b1b0cb98f805d5432a2668bad36dffa226547250a0ab8e",
+      "bytes": 14085
+    },
+    {
+      "path": "docs/candidate-storage-batch-source-capture-v1.md",
+      "sha256": "bd6f97e2b4eee32e53d907f6892e1f2f791e6a1a9aecce0162b783984061fae3",
+      "bytes": 6690
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_profile_v1.py",
+      "sha256": "7eb1f7a56b0a32dce45f3fe4523f6c36a8d8f97bc61716750da6a045ea17c837",
+      "bytes": 19364
+    },
+    {
+      "path": "gossip_harness/candidate_m2_review_authority_v1.py",
+      "sha256": "b7dc064b3998cbbd0cebafe7f3a9a51e5dea818b19019c8d6c2be45ea2a569ef",
+      "bytes": 8678
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_execution_v1.py",
+      "sha256": "ddfcf5416783401d8d79f62e9d0f2f65e88cd655f0fb184d64db611863458d2d",
+      "bytes": 34377
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_observation_v1.py",
+      "sha256": "9a340d2089609dbcc46a51c99b3b22ca81ece8e86767a634479c709faf272d98",
+      "bytes": 23678
+    },
+    {
+      "path": "tests/test_candidate_m2_product_profile_v1.py",
+      "sha256": "6a0fd40f95ee5ebf499461d0889a38eb0536f9dfdfc90f7ff88562d6a30be666",
+      "bytes": 11562
+    },
+    {
+      "path": "tests/test_candidate_m2_product_execution_v1.py",
+      "sha256": "858eef9d13f8439226510798b7b877ce5365e5364a7a0be654e139a74524a012",
+      "bytes": 22010
+    },
+    {
+      "path": "tests/test_candidate_m2_product_observation_v1.py",
+      "sha256": "7cfb617c78d40838a36e5e61ab188c66e5ad7901360870f2b3adea3469610800",
+      "bytes": 8829
+    },
+    {
+      "path": "docs/candidate-m2-product-observation-v1.md",
+      "sha256": "82a2e300e3f28940e0ff6721fb5d381b57b7d9c91f80cdfc7dde841a40d3ace0",
+      "bytes": 5405
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "ff24aa00c1ffa716ebd22a24ab4d2cdde4ad97119782d123beed9f95c5d33f3f",
+      "bytes": 548867
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "872c7d89a6b2d2bee47611b88e5bbeca803b20417e279ef64bd2fd23d4084627",
+      "bytes": 12877
+    }
+  ],
+  "qualification": {
+    "summary": {
+      "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/summary.json",
+      "sha256": "11f1b3b8fb4ec76102d4ddfe819527a0d91ca6f1fcc65842a11f37c2ee81d8e9",
+      "bytes": 155745
+    },
+    "inputs": {
+      "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/inputs.json",
+      "sha256": "c6b2ea06e6db9d2263a63126582e7a0c7861f755271708c705872b6ccc7b0510",
+      "bytes": 76879
+    },
+    "fingerprint": "a9159c92e34b557d90f3715faac9b543e3133549937d797c5ecc13139db9bf10",
+    "static": {
+      "duration_seconds": 2.010075959376991,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "source_inputs": 648,
+    "source_mismatches": [],
+    "runtime_matches_now": true,
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    },
+    "methods": 227,
+    "new_methods": 81,
+    "inherited_methods": 146,
+    "classes": 21,
+    "outcomes": {
+      "passed": 227
+    },
+    "selected_counts": {
+      "fast": 156,
+      "git": 71
+    },
+    "reused_classes": 0,
+    "skips": 0,
+    "duration_seconds": 558.2987371254712,
+    "jobs": [
+      {
+        "class": "tests/test_candidate_git_source_batch_v1.py::CandidateGitSourceBatchV1Tests",
+        "lane": "fast",
+        "methods": 20,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/ce5ce8bce1e9ce95/result.json",
+          "sha256": "efe76fdc3366bc22619e3f4ed0298c98b40eebddecea891c2d3cf41233647f19",
+          "bytes": 8944
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/ce5ce8bce1e9ce95/worker.log",
+          "sha256": "4ec95f0f451cb08bdb360acc9d4a1df80dcfaec0e224d93a2ca4a4e2f7328738",
+          "bytes": 4045
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_execution_v1.py::CandidateM2ActionStreamV1Tests",
+        "lane": "fast",
+        "methods": 10,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6152d2e58c00b6f4/result.json",
+          "sha256": "042fed4a41b124d8fb91e54f379bdeabcd3441e2220114b467b9b46269099a51",
+          "bytes": 5623
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6152d2e58c00b6f4/worker.log",
+          "sha256": "ee08ddca68895839c8f3bb6e2a086d33d8d77b64a0c0f78b4281b7c59a18c83d",
+          "bytes": 2081
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_profile_v1.py::CandidateM2ProductProfileV1Tests",
+        "lane": "fast",
+        "methods": 9,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/cf69d73322125d8c/result.json",
+          "sha256": "caefb86b46d47d18ea9ed0ffbc63e54cbdf62f3ce613bad97a5b52e675cb9030",
+          "bytes": 5377
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/cf69d73322125d8c/worker.log",
+          "sha256": "40bda1f24806825440af6c5856468c2655c9773b2ec82cd31df4cf6ad4be1405",
+          "bytes": 2055
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_profile_v1.py::CandidateM2ReviewAuthorityV1Tests",
+        "lane": "fast",
+        "methods": 4,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/e916394192ba4747/result.json",
+          "sha256": "ac7495f45402ad5db990ad8e536ef3bfe4f940f70b0a502c9ac6d30c5f80f6cf",
+          "bytes": 3639
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/e916394192ba4747/worker.log",
+          "sha256": "15477e8ebc05ba9601012f37a60ecd1d91258f58047a2d8db8f75bc5c98a297b",
+          "bytes": 914
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_profile_v1.py::CandidateM2SQLiteObservationV1Tests",
+        "lane": "fast",
+        "methods": 4,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/425642e4eb5322f2/result.json",
+          "sha256": "27473bd1c2a50a64ae0b4a30e3ac031e4e2636ec12ecaed6e3e3408a6f0bd295",
+          "bytes": 3677
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/425642e4eb5322f2/worker.log",
+          "sha256": "185481b8e34856b725d8d5b814288ddc2a61aec7cb62d0e55890c71ecaa3574d",
+          "bytes": 952
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_driver_v1.py::CandidateStorageDriverTests",
+        "lane": "fast",
+        "methods": 12,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/0ceacbd45908e058/result.json",
+          "sha256": "d9c112e545cc02726717fe5de22f9b7a66d3d8403495f4097b8a949d2374a1f2",
+          "bytes": 6315
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/0ceacbd45908e058/worker.log",
+          "sha256": "9376d8269a1a234288cbde79ecce42a776ed1f646ef42b5d6449a916f8fb5c71",
+          "bytes": 2555
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_observer_v1.py::CandidateStorageObserverV1Tests",
+        "lane": "fast",
+        "methods": 18,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6a465dbb3710ccac/result.json",
+          "sha256": "b83255f8911a3099e0211113cd130076aa09f4a28342dbad58c3f1b6b54a4db4",
+          "bytes": 8229
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6a465dbb3710ccac/worker.log",
+          "sha256": "ec99d0b184557e1412bae879ebe810318dac8fbc7019e64e79f40acdab81afb8",
+          "bytes": 3645
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_execution_v1.py::StorageReviewAuthorityV1Tests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6ce746ce94b5083a/result.json",
+          "sha256": "b4c4701fd66b233a6b179abab856510439130dfd776706587801b816073505f3",
+          "bytes": 4606
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/6ce746ce94b5083a/worker.log",
+          "sha256": "e86dfb71fa03d22f4be9eb8726422cd253f15febce69dbb2b8986af33747b395",
+          "bytes": 1455
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_profile_v1.py::CandidateStorageProductProfileTests",
+        "lane": "fast",
+        "methods": 16,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/7c2bb074d97becc0/result.json",
+          "sha256": "e040844785a5912332b52118b34cc1ebd7de467aa9e8db003dfd2a6ab8b7c225",
+          "bytes": 7739
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/7c2bb074d97becc0/worker.log",
+          "sha256": "a6ead5af9091f900a569f19fdda755a97972a582566fdb1f2ba518ff7c0c9a74",
+          "bytes": 3463
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+        "lane": "fast",
+        "methods": 24,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/3bc02430e1fbe35b/result.json",
+          "sha256": "0f91c3cd7ff3f24ff1a0155b51147bae27911e125eaac00f3b4342a523f28ec7",
+          "bytes": 10210
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/3bc02430e1fbe35b/worker.log",
+          "sha256": "dd9a22c4b7e3be0e34c95a686d5134c4f583e5819d72d428bc8b845995042823",
+          "bytes": 5106
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests",
+        "lane": "fast",
+        "methods": 13,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/251e4d47bc2080a0/result.json",
+          "sha256": "ab70fe9a4e1156c584e8228bf72ce9c8846280d7bdb85ccd9edba8319eca066a",
+          "bytes": 6559
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/251e4d47bc2080a0/worker.log",
+          "sha256": "0420e88cecb0dcd0cb581bc67521a749f542455687f66449d0b9307b613bc815",
+          "bytes": 2774
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/537eee25c415f7e1/result.json",
+          "sha256": "6398ba654139e6241f1f585b9c5a916489f195bd771651316eaf5a9c9c89ebbd",
+          "bytes": 4628
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/537eee25c415f7e1/worker.log",
+          "sha256": "1ad099d4b4c571c923fea3bb65b663e9a04920eb040c94a6e5008063525823b8",
+          "bytes": 1580
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests",
+        "lane": "fast",
+        "methods": 11,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/2954d5f7110f3787/result.json",
+          "sha256": "2a28c3fb53c86b3e943e574639db6066647a955fcba367282e6963526f34b2d8",
+          "bytes": 5872
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/2954d5f7110f3787/worker.log",
+          "sha256": "dac9f2eae405eeece7a80fc3b688fe0e01a1ab70a4f0d417ac59909bad8b9a0f",
+          "bytes": 2305
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests",
+        "lane": "fast",
+        "methods": 1,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/a1face03876c9db4/result.json",
+          "sha256": "ada35ad86b4b103bef3176374accf5ec1cdfbd1a7bb067a91361b1be3e19ce6f",
+          "bytes": 2632
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/a1face03876c9db4/worker.log",
+          "sha256": "597d142ba2e20d93bda171273acdd888afa43a4598add0c0e025df551401e7b7",
+          "bytes": 313
+        }
+      },
+      {
+        "class": "tests/test_candidate_git_source_batch_v1.py::CandidateGitSourceBatchV1GitTests",
+        "lane": "git",
+        "methods": 6,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/accae53f0cf0a510/result.json",
+          "sha256": "08b0354f785762021870ae053fe90a8d63b60ac98823fa10b6f6c6f510fb2369",
+          "bytes": 4332
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/accae53f0cf0a510/worker.log",
+          "sha256": "3ce30c98ee83c2ffa604632ffa1753c92f2a1c53ddb7ec549471ceca6d021e09",
+          "bytes": 1331
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests",
+        "lane": "git",
+        "methods": 11,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/46e902755803a072/result.json",
+          "sha256": "514919b8e19be3f3716f0a261f8a3ffba809b84d78e48c90946d474c8b8d1fc2",
+          "bytes": 6031
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/46e902755803a072/worker.log",
+          "sha256": "e82f72a41754a4c6de52295262ebf6d660a10698f06d92befc456eff2bb1826b",
+          "bytes": 2461
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_observation_v1.py::CandidateM2ProductObservationV1Tests",
+        "lane": "git",
+        "methods": 8,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/0d2bdabc9786c4ff/result.json",
+          "sha256": "2e831ee07e838abac3d2b7453b633f7c1266a5d995902d75cd5d3753465bbfb4",
+          "bytes": 5072
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/0d2bdabc9786c4ff/worker.log",
+          "sha256": "ef2fc8ceb6ca331abaa4b0c0e4e7dde6160a6c0836f6add311eec83ba9b12449",
+          "bytes": 1869
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_batch_capture_v1.py::CandidateStorageBatchCaptureV1Tests",
+        "lane": "git",
+        "methods": 9,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/affd773747bbaaa3/result.json",
+          "sha256": "b38e137c049297b3037e4d9a1ee3d53ef81799293f44f5afd7c53bb1c4ec9464",
+          "bytes": 5427
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/affd773747bbaaa3/worker.log",
+          "sha256": "6f04cd0d57bf1111decccc0f17110fb2c773b54cc17d316d0b029a1546aa58b5",
+          "bytes": 2136
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests",
+        "lane": "git",
+        "methods": 25,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/8c0531b0c954244f/result.json",
+          "sha256": "139b7435e9cd78d5b566e4e728b901c38b0a473db3331ef2d01740bd48ba0c01",
+          "bytes": 10984
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/8c0531b0c954244f/worker.log",
+          "sha256": "963fcba7593c35498cd6950ad552553cfe6bcfb74cc76d33a72584cc7c815b37",
+          "bytes": 5634
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_serialization_v1.py::CandidateStorageSerializationV1Tests",
+        "lane": "git",
+        "methods": 2,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/c02d0388f4ed80c7/result.json",
+          "sha256": "e40e5e0ba60e1db561929548db39eef10911a7197b367737c34eba372b67dcc6",
+          "bytes": 3067
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/c02d0388f4ed80c7/worker.log",
+          "sha256": "66bfddce0142c0c299dc5c62f9d1b27c756818e847896f17e747ead3115c746c",
+          "bytes": 561
+        }
+      },
+      {
+        "class": "tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests",
+        "lane": "git",
+        "methods": 10,
+        "result": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/e287915a970cd062/result.json",
+          "sha256": "cf5a08233b333f1883cd7cdaa64c0b2182dc09845a1fa3d91489fb922ecefa3e",
+          "bytes": 5839
+        },
+        "log": {
+          "path": "runs/storage-m2-batch-offline-1/20261004T111729-44fed23f/classes/e287915a970cd062/worker.log",
+          "sha256": "5589dfb13e3790c960c2e01ac4c158c2e7886ac6827e48cef6c217df1168dba7",
+          "bytes": 2308
+        }
+      }
+    ]
+  },
+  "retention": {
+    "path": "runs/storage-m2-batch-retention-1/retention-manifest.json",
+    "sha256": "99333f4fa92bbaa175afb7352ceaa0160d7c514dc33bd2a23d55d419c33bb2d1",
+    "bytes": 22785
+  },
+  "retained_files": 104,
+  "independent_combined_review": {
+    "path": "runs/storage-m2-batch-retention-1/reviews/storage-m2-batch-combined-source-review-1.json",
+    "sha256": "4b5546a846e7886af0f9bc2d125bcf17aa5fb3f02137dd0cd062f925b0c7da8a",
+    "bytes": 11574
+  },
+  "m2_dependency_deltas": [
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "contributor_sha256": "1dd8b5707f4a13e1fd46186792ff560531549c256be8045bb05d7aa6c9d7eb54",
+      "combined_sha256": "26513d5890af57846b47e49a950a5686c628d56932d9c8adf364ab74b3e382a5",
+      "reason": "Reviewed storage capture/dispatch adopter is deliberately composed with new M2 family; fresh combined tests required."
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "contributor_sha256": "063cb3b2177d14e15688f7de946e1269b235afe79879ea108f1615cc46ef8d65",
+      "combined_sha256": "d5ab237ebdd8621dc70f0895f3be97ba7401e291189232752d6dcd80f17d4344",
+      "reason": "Reviewed storage capture/dispatch adopter is deliberately composed with new M2 family; fresh combined tests required."
+    }
+  ],
+  "resolved_dispatch_defect": {
+    "before": "Empty trusted check map rejected by real DockerValidator constructor before effects.",
+    "after": "Actual B01/B02 adapter, recipe and application files are supplied to the unchanged sandbox constructor; inert staging control reaches the cleanup-channel boundary in both families.",
+    "physical_qualification": false
+  },
+  "source_capture_contract": {
+    "protocol": "candidate-git-source-batch-v1",
+    "whole_capture_deadline_seconds": 60,
+    "separate_cleanup_reap_seconds": 5,
+    "fresh_commands_per_capture": 4,
+    "source_cache": false,
+    "default_storage_policy": "legacy",
+    "m2_policy": "explicit mandatory batch",
+    "old_receipts_reused": false,
+    "performance_claim": "Structural Git command reduction only; no measured end-to-end speedup."
+  },
+  "m2_definition_census": {
+    "histories": 12,
+    "authored_actions": 224,
+    "observed_outputs": 140,
+    "mapped_outputs": 136,
+    "partial_source_units": 23,
+    "physical_execution": false,
+    "semantic_scope_approved": false
+  },
+  "remaining_required": [
+    "Current actual complete storage recipe V1 admits only legacy capture; new V3 scope and final adapter plus recipe V2 must close the registered batch/M2 path.",
+    "Actual independent candidate layout and complete semantic scope review, all312 source units and123 product requirements plus3 prerequisites remain.",
+    "Storage/M2 owners currently lack a separately retained created-before-start sandbox inspection. A narrow isolated owner/reader successor is assigned; launch arguments or later phase inspection do not substitute.",
+    "Original SCOPE/ADMISSION/CONTROL and source-promotion evidence with mandatory actual final candidate integration review.",
+    "Affected deferred financial/runtime tests, actual source-bound storage/M2/browser/worker physical qualification, and matching four-milestone/six-trajectory rehearsal.",
+    "Larger live comparison, independent held-out-family confirmation and separate placement-by-transport comparison."
+  ],
+  "physical_run_separation": "The continuing product-process run uses a different frozen source tree. Its fixture passes cannot qualify the new integrated sources.",
+  "provider_calls": 0,
+  "new_comparative_quality_samples": 0,
+  "full_rehearsal_qualified": false,
+  "goal_complete": false,
+  "verification_resource_note": "This central run used one worker. Separately reported contributor Git tests were not fully serialized with the shared physical/offline allocation; exact overlap is being reconciled. No duration, speedup or throughput inference is made, and contributor tests are not reused as this run.",
+  "publication_preflight": {
+    "whitespace_check": "one known trailing blank line at EOF",
+    "path": "gossip_harness/candidate_m2_review_authority_v1.py:155",
+    "decision": "Preserve exact independently reviewed and executed source bytes; all other staged whitespace checks clear.",
+    "source_changed_after_qualification": false
+  }
+}

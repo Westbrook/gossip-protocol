@@ -83,7 +83,9 @@ def storage_slice(registration: Any) -> ExecutableSlice:
     actual = execution.observation_registration(registration)
     binding = registration.binding
     value = profiles.profile_for(binding.family, binding.case_id, binding.purpose)
-    record = observer.selector_catalog(binding.family, binding.case_id, purpose=binding.purpose)
+    capture_policy = execution.capture_policy_for(binding.protocol)
+    record = observer.selector_catalog(binding.family, binding.case_id, purpose=binding.purpose,
+        capture_policy=capture_policy)
     sources = execution.evaluator_sources()
     admission.verify_loaded_sources(sources)
     require(binding.definition_sha256 == execution.digest(value.record()) == record['definition_sha256']
@@ -136,13 +138,16 @@ def storage_slice(registration: Any) -> ExecutableSlice:
                 'it does not prove every case label or the whole source unit. Independent relevance, '
                 'M4 inheritance, layout completeness and lane adequacy remain review duties under the complete history conjunction. '
                 'Store reopen is not process death; ordinary phase captures are not forced interleavings.'))
+    factory_input = {'registration': asdict(registration)}
+    if capture_policy is not None:
+        factory_input['source_capture'] = capture_policy.record()
     return ExecutableSlice('storage-' + binding.family, binding.case_id, actual.gate,
         actual.definition_sha256, actual.original_definition_purpose, profiles.ORIGINAL_CONTRACT_SHA256,
         value.sha256, tuple(sorted(sources.items())), tuple(selectors), tuple(assertions),
         tuple(record['required_unfinished_coverage']) + (
             'B01 has no per-check source-unit mapping; its histories remain declared without semantic edges.',
             'Direct API storage supplies no HTTP, browser, source-inspection, workflow or process-restart authority.',),
-        encoded({'registration': asdict(registration)}).decode())
+        encoded(factory_input).decode())
 
 
 def verify_slice(value: previous.ExecutableSlice) -> None:
@@ -153,7 +158,8 @@ def verify_slice(value: previous.ExecutableSlice) -> None:
     require(value.family in ('storage-b01', 'storage-b02'), 'Unknown version2 executable factory')
     from . import candidate_storage_product_execution_v1 as execution
     record = json.loads(value.factory_input_json)
-    require(type(record) is dict and set(record) == {'registration'}, 'Unexpected storage factory input')
+    require(type(record) is dict and set(record) in ({'registration'}, {'registration', 'source_capture'}),
+            'Unexpected storage factory input')
     row = record['registration']
     registration = execution.StorageRegistration(execution.StorageBinding(**row['binding']),
         row['commit_oid'], row['tree_oid'], row['repetition_id'], previous._gate(row['gate']),
