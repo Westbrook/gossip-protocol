@@ -1,0 +1,212 @@
+{
+  "protocol": "cumulative-process-evidence-integration-v1",
+  "status": "affected_offline_qualification_passed",
+  "created_at": "2026-10-04T08:34:21.649933+00:00",
+  "base_commit": "3a5f8d2f8e01fa831d9cb6cae05bf9b871e2fc53",
+  "sources": {
+    "gossip_harness/cumulative_process_evidence_v1.py": "c21cecc4181e9693a99eeb07cb48a0365a5a82269f12d63fee773e943f91c8d0",
+    "gossip_harness/candidate_checkpoint_chain_v1.py": "d59a55226dbb25cc78e3219cd3ad0e6fc8e195e8ac3bb91b8223448308a779d6",
+    "tests/test_cumulative_process_evidence_v1.py": "9b748fc0f9fb9f7821ceade5f698364b43436cb55406131dac774a75a0809a3d",
+    "tests/test_candidate_checkpoint_position_v1.py": "8833504ae23b83dc78fc1adaca7feb523b9138a0778729ccf717b7a1b6cecce0",
+    "pyproject.toml": "e66e03477b6e037cee4eebdce3e987ea23d4ebe48cef7a723bd28045ff181c25",
+    "verification-manifest.json": "038221d51b4da62a6b0c1cd6eb831e6af29273c8fe9cdaf855fd8c268a0b0c8a"
+  },
+  "verification": {
+    "session": "runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58",
+    "summary_sha256": "03114cf2f8fb94dbf0001aa8797dac9ccbfd03854b1952eb9f96fab2c5739cb4",
+    "inputs_sha256": "f610c2da90f3f47e5e7994b16b7b3ef4d5b0d9f0735948eb3cc9ec78bc26cb8c",
+    "input_count": 565,
+    "source_reconciliation": "All retained input hashes matched current source after execution.",
+    "fingerprint": "c051f6858993cd8067ff4e202d0193d0f163be8e79210b7d4547bd6778469439",
+    "selected_total": 269,
+    "selected_counts": {
+      "fast": 229,
+      "fixtures": 11,
+      "git": 29
+    },
+    "outcomes": {
+      "passed": 269
+    },
+    "duration_seconds": 164.63863741699606,
+    "fresh_classes": 13,
+    "reused_classes": 0,
+    "skips": 0,
+    "static": {
+      "duration_seconds": 1.5641490835696459,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "source_drift": false,
+    "runtime_drift": false,
+    "runtime_reconciliation": {
+      "final_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "initial_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "matches": true
+    },
+    "type_scope": "One new configured module;117 unchanged recorded legacy diagnostics.",
+    "classes": [
+      {
+        "class": "tests/test_candidate_checkpoint_chain_v1.py::CandidateCheckpointChainV1Tests",
+        "status": "passed",
+        "methods": 37,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/f01880792b5ac11e/worker.log",
+        "log_sha256": "5e8610fe91c5923decf894a05f5ca77a3b5aca269ade7397102e1f92e9ae3a5d",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/f01880792b5ac11e/result.json",
+        "evidence_sha256": "a1393269583151e5a2c29b30c94f33740867aff0eb050188cc5f3da87054565f"
+      },
+      {
+        "class": "tests/test_candidate_checkpoint_head_v1.py::CandidateCheckpointHeadV1Tests",
+        "status": "passed",
+        "methods": 23,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/928798ad84d5ee4e/worker.log",
+        "log_sha256": "87adebf088fb53cb6e7817697a8f24bbf286a9fcaa3f945fa5aa1a44de6188d5",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/928798ad84d5ee4e/result.json",
+        "evidence_sha256": "1e0e771bc542a188f3ec4128cf365e8bee2600190f5f8eb42cb84187bbe413d1"
+      },
+      {
+        "class": "tests/test_candidate_checkpoint_position_v1.py::CandidateCheckpointPositionV1Tests",
+        "status": "passed",
+        "methods": 13,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/cdc58dfdcf1c1daf/worker.log",
+        "log_sha256": "4d51513a6d7fb0f2bc01bd8920a79ee97d8f863c5f49670dbcd549ee210c772c",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/cdc58dfdcf1c1daf/result.json",
+        "evidence_sha256": "3d36a7805349b7d1973265511503b6603d0d1d384dec20b38fa14edadd812e4e"
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v2.py::PeerFinancialAuthorityV2Tests",
+        "status": "passed",
+        "methods": 43,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/642208777c14d86e/worker.log",
+        "log_sha256": "9302d05489ff7ccd4779de6e39c8267910dec17ac7a7c58c38ae10dde3bd0716",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/642208777c14d86e/result.json",
+        "evidence_sha256": "6acd625c7fdb44a82b4504de06dbda83b91595921fc8981a06e12fb7ec680901"
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v3.py::PeerFinancialAuthorityV3Tests",
+        "status": "passed",
+        "methods": 45,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/fb67b278692b50a6/worker.log",
+        "log_sha256": "9afe9dcfae206ed1b9742376fb47d56c707b5fda696b7d402cefc63e14920139",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/fb67b278692b50a6/result.json",
+        "evidence_sha256": "dcb93497e3df3a1cebef952d79c4a8da887bc870ecd79831d56ea6f178c30103"
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v4.py::PeerFinancialAuthorityV4Tests",
+        "status": "passed",
+        "methods": 28,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/7b6fe0bd4eaf11fa/worker.log",
+        "log_sha256": "f78ec7145b15f92467672269509e7f4e8d5b9d1959ee6c2bb23b98c4c4c85032",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/7b6fe0bd4eaf11fa/result.json",
+        "evidence_sha256": "0ee2bca6e0e295aae51537b193616cb4da95d1db74bb665989a3cd1b47a72a22"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v2.py::PeerFinancialRPCV2Tests",
+        "status": "passed",
+        "methods": 14,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/f2d16845a8f6a92c/worker.log",
+        "log_sha256": "aec37d8abc47f279aa1b387db6af87441876eb921ba0775fc54ceef35df8d6ab",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/f2d16845a8f6a92c/result.json",
+        "evidence_sha256": "8a364bbbe05db863db54ba15877af611ddfaebe655ec37420b38625dced4fb56"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v3.py::PeerFinancialRPCV3Tests",
+        "status": "passed",
+        "methods": 11,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/1e6689a554daabad/worker.log",
+        "log_sha256": "7f1115b2b0ad9fd8ddb3535acc83d18b024e9eda8acadf9014e89dcf74c60910",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/1e6689a554daabad/result.json",
+        "evidence_sha256": "2f5aafaa627138eef786d7d1c0042f8c050b22cb915a57042e3dd925fbfbba6a"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v4.py::PeerFinancialRPCV4Tests",
+        "status": "passed",
+        "methods": 7,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/706c07cc0c24ad09/worker.log",
+        "log_sha256": "0f71b3ddf6a300abf27e7a0902de9bae144d20dfec4cd23f60a145d512cc886c",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/706c07cc0c24ad09/result.json",
+        "evidence_sha256": "57ee443be6a30365e7813f033e6f7866d8e2706c622ef9d1c37b4f2a44bff9df"
+      },
+      {
+        "class": "tests/test_peer_financial_terminal_v1.py::PeerFinancialTerminalV1Tests",
+        "status": "passed",
+        "methods": 8,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/03bd424b6364fc69/worker.log",
+        "log_sha256": "61af2d0b91797ff233d8a498f392f64dc126d66de54f4796b72701a62267a7de",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/03bd424b6364fc69/result.json",
+        "evidence_sha256": "e05067c31873c8022a3149971ebd5e11ec4efeb0ae70819d43bbe4ea6ac3c284"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v2.py::PeerFinancialRPCTCPV2Tests",
+        "status": "passed",
+        "methods": 7,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/799343e7892f2c46/worker.log",
+        "log_sha256": "5f760ecfd31605d8d947100e72c9b764af35fa75df9d06cce471cd7ad7dd85ad",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/799343e7892f2c46/result.json",
+        "evidence_sha256": "3706dc5ba405df4ca15e5a6ed883eb166fb9337a8380a65655370876f6fc90c0"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v3.py::PeerFinancialRPCTCPV3Tests",
+        "status": "passed",
+        "methods": 4,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/2ba1f5132f9f28b3/worker.log",
+        "log_sha256": "aea9c9da52585b895856b277e636052a4c9d0b55747384f1f2158c621b3447ed",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/2ba1f5132f9f28b3/result.json",
+        "evidence_sha256": "cda77d720b86a887cb040d98b4e0dc34877f368be995337b03aa6afcdaa283ac"
+      },
+      {
+        "class": "tests/test_cumulative_process_evidence_v1.py::CumulativeProcessEvidenceV1Tests",
+        "status": "passed",
+        "methods": 29,
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/bd933e29468b05b6/worker.log",
+        "log_sha256": "34472f2c9c0adf013484cf5fbc4711ef30798b9ae2396a6223ab91b11e34c6a7",
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/process-evidence-v1-offline-qualification-1/20261004T082959-b4a23a58/classes/bd933e29468b05b6/result.json",
+        "evidence_sha256": "3af2af4e72782b510a8294b65359e7a110f8c725133bb750ff987ccd8bf6bbb3"
+      }
+    ]
+  },
+  "independent_review": {
+    "path": "runs/process-evidence-v1-retention-1/cumulative-process-evidence-v1-source-review-1.json",
+    "sha256": "66b906ed3ecaf64c228202c4ef43fd8cca550ae2a44cc0efd59de4b0abfacb0c",
+    "scope": "Read-only source/test review; does not claim reviewer execution.",
+    "resolved_findings": [
+      "stale ready observation could survive event_errors",
+      "boolean generation admitted through Python equality",
+      "repository selected only at finalization",
+      "final Git check preceded closure publication",
+      "stop/failure originals could not use cleanup reserve",
+      "prepared closure lacked explicit successful confirmation"
+    ]
+  },
+  "retention": {
+    "path": "runs/process-evidence-v1-retention-1",
+    "manifest_sha256": "e14df61390e7efdb3025e8aa39e559530b69751c1720321157859c22d6b84f3c",
+    "file_count": 10
+  },
+  "completed_integration": [
+    "Actual owned Popen waits/group observation and child original records",
+    "Prospective protected Git repository and final complete blob identity",
+    "Confirmed closure and owner-only current-source request handoff",
+    "One-based acknowledged checkpoint position API without append/wire changes"
+  ],
+  "new_comparative_samples": 0,
+  "live_qualified": false,
+  "real_six_child_rehearsal": false,
+  "remaining_required": [
+    "Integrate all four milestones/six trajectories with real gossip and central-placement control",
+    "Require producer confirmation and original process/source/financial records in complete rehearsal validator",
+    "Complete independently reviewed semantic scope and remaining product observers",
+    "Qualify coherent combined physical contract and one matching complete zero-provider rehearsal",
+    "Execute larger live comparison and independent held-out confirmation",
+    "Separate placement-versus-transport comparison"
+  ],
+  "limits": [
+    "Host trust boundary, not remote attestation",
+    "Owned group absence does not track escaped sessions",
+    "Append chronology is not child event-time or live readiness",
+    "Action-ID declarations are not independent project completion",
+    "Git/checkpoint/SQL are separate observations and transactions",
+    "Generic financial parser alone does not enforce process-producer confirmation",
+    "Cleanup reserve is shared and finite",
+    "No controller-crash process adoption or live/provider/candidate acceptance in this component"
+  ]
+}

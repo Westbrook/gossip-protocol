@@ -5037,6 +5037,30 @@
       "boundary": "No real provider, Docker, production ledger or credentials. At most two service executor threads; gate overlap controls are synchronized. Retained role-stop assertions do not prove actual role-process shutdown.",
       "disposition": "Root runs combined static and affected offline checks before full controller integration and a new matching complete six-child rehearsal; V4 live qualification remains unavailable.",
       "overlap_reason": "New normal financial closure and sequential handoff differ from inherited V2/V3 admission and wire guarantees; nearest inherited classes remain separate regression evidence."
+    },
+    "tests/test_candidate_checkpoint_position_v1.py::CandidateCheckpointPositionV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "A point position authenticates acknowledged raw bytes and the exact committed delta against the current owner and external head.",
+      "isolation": "class process; independent temporary journal per method",
+      "overlap": "Point chronology read API added to the existing chain; existing chain/head regressions cover inherited full-boundary and ownership behavior.",
+      "distinct_defect": "Unknown suffixes, tampered delta/raw bytes, lost acknowledgement or foreign ownership could otherwise be assigned authoritative event order.",
+      "boundary": "Real local checkpoint files with memory authority and injected acknowledgement/head failures; no remote attestation.",
+      "disposition": "Run with affected checkpoint and process-producer checks; no Docker or provider.",
+      "overlap_reason": "This checks the new point lookup, not full ancestry or wall-clock chronology."
+    },
+    "tests/test_cumulative_process_evidence_v1.py::CumulativeProcessEvidenceV1Tests": {
+      "lane": "git",
+      "weight": 4,
+      "timeout_seconds": 240,
+      "invariant": "Only actual owned role waits, matching immutable events, a prospectively bound protected Git repository and confirmed closure can supply the producer handoff.",
+      "isolation": "class process; each method has private disposable Git, SQLite, checkpoint and owned subprocesses; cleanup kills only owned process groups",
+      "overlap": "Real process/Git/financial composition, distinct from injected financial stop assertions and isolated checkpoint lookup.",
+      "distinct_defect": "Child final messages, surviving descendants, changed readiness, ambiguous launch outcomes, swapped Git stores or incomplete closure publication could be misreported as successful completion.",
+      "boundary": "Trusted host Python role fixtures and actual Popen wait/group observation, disposable real Git and V4 SQL; no candidate container or provider.",
+      "disposition": "After static gate; retain class output and source/runtime binding. Combined controller/rehearsal still required.",
+      "overlap_reason": "Financial tests accept generic host assertions; these methods exercise the actual role-event and process/Git producer used to make them."
     }
   },
   "audit": {

@@ -1220,6 +1220,16 @@ The prospective M4 profile preserves the complete inherited diagnostics and
 explicitly changes only three health expectations. Executor integration, durable
 cohort sealing and the complete larger live comparison remain outstanding.
 
+## Actual process completion evidence
+
+The [process and protected-Git producer](docs/cumulative-process-evidence-v1.md)
+now has 269 passing affected offline checks, including actual owned worker exits,
+restart records, prospective repository identity and confirmed financial handoff.
+An acknowledged point-position API orders retained originals without changing
+checkpoint append behavior. These checks add no comparative model-quality
+samples. The full six-trajectory controller, independent acceptance, matching
+rehearsal and larger live comparison remain required.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.

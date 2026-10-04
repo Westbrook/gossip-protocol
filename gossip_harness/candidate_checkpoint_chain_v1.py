@@ -417,6 +417,29 @@ class CheckpointChain:
         self.require_current()
         return present
 
+    def position(self, name: str) -> int:
+        """Authenticate a record and return its acknowledged 1-based order.
+
+        The ordered map advances only after external acknowledgement and is
+        reconstructed in verified delta order on reopen. Read the requested
+        raw file and its exact committed delta before exposing that position.
+        This point observation is not a full inventory or boundary validation.
+        """
+        self.require_current()
+        _name(name)
+        try:
+            self._read_committed(name)
+            sequence = next(index for index, current in enumerate(self._files, 1)
+                            if current == name)
+            delta_name = _delta_name(sequence)
+            raw_delta = stable.read(self.delta_root / delta_name, max_bytes=_DELTA_LIMIT)
+            _require(_sha(raw_delta) == self._deltas[delta_name], "Committed delta bytes changed")
+            self.require_current()
+            return sequence
+        except BaseException as error:
+            self._fail(error)
+        raise AssertionError("unreachable")
+
     def read(self, name: str) -> bytes:
         """Authenticate one consumed file and current external head on both sides."""
         self.require_current()
