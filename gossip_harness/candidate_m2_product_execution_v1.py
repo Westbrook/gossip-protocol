@@ -37,7 +37,7 @@ from .sandbox import DockerValidator
 from . import candidate_storage_prestart_v1 as prestart
 from . import project_acceptance_registry_v1 as registry
 
-PROTOCOL = 'candidate-m2-product-execution-v1-ascii-json-v1-prestart-v1'
+PROTOCOL = 'candidate-m2-product-execution-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1'
 TARGET_CONTRACT = transport.TARGET_CONTRACT
 FAMILY = 'm2-direct-api'
 SOURCE_CAPTURE_POLICY = source_capture.BatchCapturePolicy()
@@ -512,7 +512,9 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
                     ['docker', 'inspect', '--format', '{{json .}}', container_id], process.CONTROL_LIMIT)
                 binds = {'/workspace': str(workspace), '/checks': str(checks), '/inputs': str(inputs)}
                 proof = prestart.proof_for(commands.raw(record), container_id=container_id, name=name,
-                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds)
+                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds,
+                    runtime=self.runtime, runtime_originals={name: self.read_authenticated(name)
+                        for name in prestart.RUNTIME_ORIGINAL_NAMES if self.has_retained(name)})
                 self._retain(prestart.PROOF_FILE, encoded(proof))
                 self.checkpoint()
                 checked('container-start', ['docker', 'start', container_id])

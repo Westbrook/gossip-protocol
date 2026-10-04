@@ -521,7 +521,9 @@ class _PhysicalStorageM2Control:
                   'gossip.fixture': fixture_digest}
         identifier = owner.read_blob('container-create-stdout.bin').strip().decode('ascii')
         proof = prestart.proof_for(owner.read_blob('container-prestart-stdout.bin'), container_id=identifier,
-            name=intent['container'], image_id=owner.policy.image_id, volume=intent['volume'], labels=labels, mounts=binds)
+            name=intent['container'], image_id=owner.policy.image_id, volume=intent['volume'], labels=labels, mounts=binds,
+            runtime=owner.runtime, runtime_originals={name: owner.read_authenticated(name)
+                for name in prestart.RUNTIME_ORIGINAL_NAMES if owner.has_retained(name)})
         self.assertEqual(se.encoded(proof), owner.read_authenticated(prestart.PROOF_FILE))
         prestart.validate_order({name: owner.authenticated_position(name) for name in prestart.ORDER})
         phases = owner.profile.phases if self.is_m2 else se.b01.PHASES

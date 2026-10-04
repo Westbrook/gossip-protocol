@@ -1,0 +1,11 @@
+# Docker Desktop fixture bind identity
+
+The first storage/M2 physical qualification admitted D01 and stopped on D02 before candidate start. D02 used the exact staged `/inputs` host path in its create command, but Docker's retained created-state inspection reported `/host_mnt` followed by that complete host path in both the actual mount and its HostConfig declaration. Source/helper mounts remained literal. Read-only and rprivate restrictions matched. The originals identify this representation difference; they do not identify which Docker component rewrote it.
+
+The prospective `prestart-v2-desktop-inputs-v1` protocol admits this one observed representation only for `/inputs`, only for a canonical expected path beneath `/private/`, and only when actual and declared Source agree exactly. The complete host path is retained; no suffix matching, arbitrary prefix stripping, path resolution or traversal is accepted. Other destinations retain literal comparison. All existing source/destination, read-only, propagation, inventory, volume, resource, user and command checks remain required.
+
+Translation additionally requires the bound runtime plus authenticated original `/version` and `/info` HTTP exchanges to match the explicit Docker Desktop 4.64.0 (221278), Engine 29.2.1/6bc6209, arm64/LinuxKit 6.12.72, cgroupfs2 profile. Existing frozen HTTP framing parses those bounded bytes in memory without opening a socket. The proof binds the runtime digest and all four original digests. The literal route needs no translation qualification. An unsupported runtime or path remains unavailable.
+
+Created and running representations remain raw-exact under the existing continuity rule; a later switch between literal and translated paths is rejected. Owner/reader protocol and evaluator closures change, so older passing receipts do not qualify this successor. Frozen drivers and original failure evidence remain unchanged.
+
+The small retained D02 mount projection is provenance-linked observed input for pure regression controls. Synthetic full inspections and HTTP framing constructed around that projection are labeled synthetic, and cannot constitute physical acceptance. Root owns scoped/combined verification and any new physical launch. No retry or performance claim is part of this correction.

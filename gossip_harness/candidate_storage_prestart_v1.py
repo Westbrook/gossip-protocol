@@ -13,7 +13,10 @@ from typing import Any
 
 from . import candidate_client_process_v4 as process
 
-PROTOCOL = 'candidate-storage-created-prestart-v1'
+PROTOCOL = 'candidate-storage-created-prestart-v2-desktop-inputs-v1'
+MOUNT_POLICY = 'candidate-storage-desktop-inputs-source-v1'
+RUNTIME_ORIGINAL_NAMES = ('runtime-version-request.bin', 'runtime-version-response.bin',
+                          'runtime-info-request.bin', 'runtime-info-response.bin')
 COMMAND = ('python', '-I', '-c', 'import time;time.sleep(1800)')
 PROOF_FILE = 'container-prestart-proof.json'
 ORDER = ('volume-created-dispatch.json', 'volume-created-stdout.bin', 'volume-created.json',
@@ -45,6 +48,7 @@ def definition() -> dict[str, Any]:
     return {'protocol': PROTOCOL, 'keeper_user': '0:0', 'candidate_exec_user': '65534:65534',
             'keeper_init': True, 'keeper_command': list(COMMAND),
             'inspection': 'complete raw docker inspect after create before start',
+            'bind_source_policy': bind_source_policy(),
             'running_identity': 'all immutable fields exact; complete actual Mounts rows keyed by destination',
             'running_lineage': 'zero typed restart count; stable positive PID and nonzero StartedAt after first observed running state',
             'startup_exception': 'OomKillDisable false to null only for qualified retained runtime',
@@ -60,7 +64,85 @@ def _canonical_path(value: Any) -> bool:
             and '\x00' not in value and all(part not in ('', '.', '..') for part in value.split('/')[1:]))
 
 
-def _mounts(value: dict[str, Any], expected: dict[str, str], volume: str) -> None:
+def bind_source_policy() -> dict[str, Any]:
+    return {'protocol': MOUNT_POLICY, 'destination': '/inputs', 'host_prefix': '/private/',
+        'engine_prefix': '/host_mnt', 'rule': 'literal or exact engine_prefix + complete canonical host source',
+        'declaration': 'actual and HostConfig Source must agree exactly',
+        'other_destinations': 'literal only', 'running': 'complete observed representation remains exact',
+        'runtime': {'protocol': process.PROTOCOL, 'api_version': process.API_VERSION,
+            'os': 'linux', 'engine_version': '29.2.1', 'engine_git_commit': '6bc6209',
+            'architecture': 'arm64', 'kernel_version': '6.12.72-linuxkit',
+            'cgroup_driver': 'cgroupfs', 'cgroup_version': '2', 'oom_kill_disable_supported': False},
+        'version': {'Platform': {'Name': 'Docker Desktop 4.64.0 (221278)'}, 'Version': '29.2.1',
+            'GitCommit': '6bc6209', 'Os': 'linux', 'Arch': 'arm64', 'KernelVersion': '6.12.72-linuxkit',
+            'ApiVersion': '1.53', 'MinAPIVersion': '1.44'},
+        'info': {'OperatingSystem': 'Docker Desktop', 'Name': 'docker-desktop', 'OSType': 'linux',
+            'Architecture': 'aarch64', 'KernelVersion': '6.12.72-linuxkit', 'ServerVersion': '29.2.1',
+            'CgroupVersion': '2', 'CgroupDriver': 'cgroupfs', 'OomKillDisable': False},
+        'originals': list(RUNTIME_ORIGINAL_NAMES),
+        'original_parser': 'bounded retained HTTP using frozen process._Wire framing; no network',
+        'unqualified': 'alias unavailable; never normalize arbitrary Linux paths'}
+
+
+class _RetainedRuntimeWire(process._Wire):
+    """Use the existing bounded HTTP parser over authenticated retained bytes."""
+    def __init__(self, raw: bytes):
+        require(type(raw) is bytes and len(raw) <= process.HEADER_LIMIT + process.CONTROL_LIMIT
+                + process.FRAME_COUNT_LIMIT * 20, 'Bounded runtime HTTP original required')
+        self.buffer = bytearray(raw)
+        self.eof = False
+
+    def receive(self) -> None:
+        self.eof = True
+
+
+def _desktop_runtime(runtime: dict[str, Any] | None, originals: dict[str, bytes] | None,
+                     image_id: str) -> dict[str, str]:
+    policy = bind_source_policy()
+    require(type(runtime) is dict and process._startup_runtime_valid(runtime, image_id)
+            and all(key in runtime and exact(runtime[key], value) for key, value in policy['runtime'].items()),
+            'Unqualified Docker Desktop bind-source runtime')
+    require(type(originals) is dict and set(originals) == set(RUNTIME_ORIGINAL_NAMES),
+            'Complete original Docker Desktop runtime responses required')
+    assert runtime is not None and originals is not None
+    for kind in ('version', 'info'):
+        request = originals['runtime-' + kind + '-request.bin']
+        require(type(request) is bytes and request == process._request('GET', '/' + kind),
+                'Original runtime request differs')
+        wire = _RetainedRuntimeWire(originals['runtime-' + kind + '-response.bin'])
+        status, headers = wire.headers()
+        require(status == 200, 'Original runtime response failed')
+        data = process.strict_json_loads(wire.body(status, headers))
+        require(type(data) is dict and all(key in data and exact(data[key], value)
+                for key, value in policy[kind].items()), 'Unqualified original Docker Desktop ' + kind)
+        if kind == 'info':
+            require(data.get('ID') == runtime['daemon_id'], 'Original runtime daemon differs')
+    return {name: hashlib.sha256(originals[name]).hexdigest() for name in RUNTIME_ORIGINAL_NAMES}
+
+
+def _mount_sources(by_target: dict[str, Any], expected: dict[str, str], image_id: str,
+                   runtime: dict[str, Any] | None, originals: dict[str, bytes] | None
+                   ) -> tuple[dict[str, str], dict[str, Any]]:
+    observed: dict[str, str] = {}
+    translated = False
+    for target, source in expected.items():
+        actual = by_target[target].get('Source')
+        if actual != source:
+            require(target == '/inputs' and source.startswith('/private/')
+                    and actual == '/host_mnt' + source and _canonical_path(actual),
+                    'Read-only source/helper/fixture mount differs')
+            translated = True
+        observed[target] = actual
+    originals_sha = _desktop_runtime(runtime, originals, image_id) if translated else {}
+    binding = {'protocol': MOUNT_POLICY, 'representation': 'docker-desktop-inputs-prefix' if translated else 'literal',
+        'host_sources': expected, 'observed_sources': observed,
+        'runtime_sha256': hashlib.sha256(encoded(runtime)).hexdigest() if translated else None,
+        'runtime_original_sha256': originals_sha}
+    return observed, binding
+
+
+def _mounts(value: dict[str, Any], expected: dict[str, str], volume: str, image_id: str,
+            runtime: dict[str, Any] | None, originals: dict[str, bytes] | None) -> dict[str, Any]:
     mounts, host = value['Mounts'], value['HostConfig']
     require(type(mounts) is list and len(mounts) == len(expected) + 1
             and all(type(row) is dict and type(row.get('Destination')) is str for row in mounts),
@@ -68,7 +150,8 @@ def _mounts(value: dict[str, Any], expected: dict[str, str], volume: str) -> Non
     by_target = {row.get('Destination'): row for row in mounts}
     require(set(by_target) == set(expected) | {'/tmp'} and len(by_target) == len(mounts),
             'Actual mount inventory differs')
-    for target, source in expected.items():
+    admitted, binding = _mount_sources(by_target, expected, image_id, runtime, originals)
+    for target, source in admitted.items():
         row = by_target[target]
         require(row.get('Type') == 'bind' and row.get('Source') == source
                 and row.get('RW') is False and row.get('Propagation') == 'rprivate'
@@ -84,7 +167,7 @@ def _mounts(value: dict[str, Any], expected: dict[str, str], volume: str) -> Non
             'Complete mount declarations required')
     declared = {item.get('Target'): item for item in declarations}
     require(set(declared) == set(by_target) and len(declared) == len(declarations), 'Mount declarations differ')
-    for target, source in expected.items():
+    for target, source in admitted.items():
         item = declared[target]
         require(item.get('Type') == 'bind' and item.get('Source') == source
                 and item.get('ReadOnly') is True and item.get('Consistency', '') in ('', 'default'),
@@ -103,10 +186,13 @@ def _mounts(value: dict[str, Any], expected: dict[str, str], volume: str) -> Non
             and all(key in ('NoCopy', 'Labels', 'DriverConfig', 'Subpath') for key in options)
             and not options.get('Labels') and not options.get('DriverConfig') and not options.get('Subpath'),
             'Owned volume options differ')
+    return binding
 
 
 def validate_created(value: dict[str, Any], *, container_id: str, name: str, image_id: str,
-                     volume: str, labels: dict[str, str], mounts: dict[str, str]) -> None:
+                     volume: str, labels: dict[str, str], mounts: dict[str, str],
+                     runtime: dict[str, Any] | None = None,
+                     runtime_originals: dict[str, bytes] | None = None) -> dict[str, Any]:
     """Validate observed created state against independent owner expectations."""
     require(type(container_id) is str and re.fullmatch('[0-9a-f]{64}', container_id) is not None
             and type(name) is str and bool(name) and type(volume) is str and bool(volume)
@@ -144,7 +230,7 @@ def validate_created(value: dict[str, Any], *, container_id: str, name: str, ima
                 'CapAdd', 'Devices', 'DeviceRequests', 'VolumesFrom', 'Links', 'PortBindings',
                 'PublishAllPorts', 'PidMode', 'UTSMode', 'UsernsMode', 'Binds'))
             and not host.get('Tmpfs'), 'Created keeper sandbox restrictions differ')
-    _mounts(value, mounts, volume)
+    mount_binding = _mounts(value, mounts, volume, image_id, runtime, runtime_originals)
     environment = config.get('Env')
     require(type(environment) is list and all(type(item) is str and '=' in item for item in environment),
             'Malformed actual environment')
@@ -161,17 +247,20 @@ def validate_created(value: dict[str, Any], *, container_id: str, name: str, ima
             for key, expected in expected_state.items())
             and state.get('StartedAt') == '0001-01-01T00:00:00Z'
             and state.get('FinishedAt') == '0001-01-01T00:00:00Z', 'Container has already started or is not cleanly created')
+    return mount_binding
 
 
 def proof_for(raw: bytes, *, container_id: str, name: str, image_id: str,
-              volume: str, labels: dict[str, str], mounts: dict[str, str]) -> dict[str, Any]:
+              volume: str, labels: dict[str, str], mounts: dict[str, str],
+              runtime: dict[str, Any] | None = None,
+              runtime_originals: dict[str, bytes] | None = None) -> dict[str, Any]:
     require(type(raw) is bytes and len(raw) <= process.CONTROL_LIMIT, 'Bounded original inspection required')
     value = process.strict_json_loads(raw)
-    validate_created(value, container_id=container_id, name=name, image_id=image_id,
-                     volume=volume, labels=labels, mounts=mounts)
+    mount_binding = validate_created(value, container_id=container_id, name=name, image_id=image_id,
+                     volume=volume, labels=labels, mounts=mounts, runtime=runtime, runtime_originals=runtime_originals)
     return {'protocol': PROTOCOL, 'inspection_sha256': hashlib.sha256(raw).hexdigest(),
             'container_id': container_id, 'name': name, 'image_id': image_id, 'volume': volume,
-            'labels': labels, 'mounts': mounts, 'definition': definition()}
+            'labels': labels, 'mounts': mounts, 'mount_source_binding': mount_binding, 'definition': definition()}
 
 
 def validate_order(positions: dict[str, int]) -> None:

@@ -1,0 +1,225 @@
+{
+  "HostConfig.Mounts": [
+    {
+      "BindOptions": {
+        "Propagation": "rprivate"
+      },
+      "ReadOnly": true,
+      "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/source",
+      "Target": "/workspace",
+      "Type": "bind"
+    },
+    {
+      "BindOptions": {
+        "Propagation": "rprivate"
+      },
+      "ReadOnly": true,
+      "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/checks",
+      "Target": "/checks",
+      "Type": "bind"
+    },
+    {
+      "Source": "gossip-volume-storage-product-bcbb2502bcca48b3ace6d6913776bb4b",
+      "Target": "/tmp",
+      "Type": "volume",
+      "VolumeOptions": {
+        "NoCopy": true
+      }
+    },
+    {
+      "BindOptions": {
+        "Propagation": "rprivate"
+      },
+      "ReadOnly": true,
+      "Source": "/host_mnt/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/inputs",
+      "Target": "/inputs",
+      "Type": "bind"
+    }
+  ],
+  "Mounts": [
+    {
+      "Destination": "/workspace",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/source",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/checks",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/checks",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/tmp",
+      "Driver": "local",
+      "Mode": "z",
+      "Name": "gossip-volume-storage-product-bcbb2502bcca48b3ace6d6913776bb4b",
+      "Propagation": "",
+      "RW": true,
+      "Source": "/var/lib/docker/volumes/gossip-volume-storage-product-bcbb2502bcca48b3ace6d6913776bb4b/_data",
+      "Type": "volume"
+    },
+    {
+      "Destination": "/inputs",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/host_mnt/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/inputs",
+      "Type": "bind"
+    }
+  ],
+  "disclosure": {
+    "origin_outcome": "failed-before-start",
+    "passed_successor_evidence": false,
+    "purpose": "Offline helper fixture: exact retained mount rows and runtime fields; constructed surrounding inspection and reframed HTTP are synthetic.",
+    "response_projection": "Complete version JSON body; only listed info JSON fields. Original HTTP bytes remain at the pinned source paths."
+  },
+  "expected_mounts": {
+    "/checks": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/checks",
+    "/inputs": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/inputs",
+    "/workspace": "/private/var/folders/7p/smv_b8qx5f3c_x31g78958nw0000gn/T/gossip-storage-product-xfhp6vox/source"
+  },
+  "info_body": {
+    "Architecture": "aarch64",
+    "CgroupDriver": "cgroupfs",
+    "CgroupVersion": "2",
+    "ID": "747f7865-a584-478c-9d4f-e49d37aa7dad",
+    "KernelVersion": "6.12.72-linuxkit",
+    "Name": "docker-desktop",
+    "OSType": "linux",
+    "OomKillDisable": false,
+    "OperatingSystem": "Docker Desktop",
+    "ServerVersion": "29.2.1"
+  },
+  "info_selected_keys": [
+    "ID",
+    "OomKillDisable",
+    "CgroupDriver",
+    "CgroupVersion",
+    "KernelVersion",
+    "OperatingSystem",
+    "OSType",
+    "Architecture",
+    "ServerVersion",
+    "Name"
+  ],
+  "origin_root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "originals": {
+    "container-prestart-stdout.bin": {
+      "bytes": 6352,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/container-prestart-stdout.bin",
+      "sha256": "d73768797aa18fa0b1022f1d4a5bca3c8f708bd2413390b784e849169e6e3fea"
+    },
+    "runtime-info-request.bin": {
+      "bytes": 80,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/runtime-info-request.bin",
+      "sha256": "1ee22750a96ee940f36c4eb6c9c7a0bb66f84836a67c12ea8b77702a30f2ee00"
+    },
+    "runtime-info-response.bin": {
+      "bytes": 9297,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/runtime-info-response.bin",
+      "sha256": "f72c5c4776da3836efa93d3b81e2705c2fdee111bb9ed801a5a77c7452b34d5d"
+    },
+    "runtime-version-request.bin": {
+      "bytes": 83,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/runtime-version-request.bin",
+      "sha256": "44fdfda6acc923b6e81c89804eb3d59440dcf9dfc138761151660ed5ac5ca094"
+    },
+    "runtime-version-response.bin": {
+      "bytes": 1066,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/runtime-version-response.bin",
+      "sha256": "6641cede2e01c55c13ac1ed2e0c7e63f29bf438a8f6d220b734d5a61e9a63b5f"
+    },
+    "runtime.json": {
+      "bytes": 606,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/runtime.json",
+      "sha256": "b721b93ebf7c53e37006b21b2c744859ce2774f4a6774f14e5f8b3bbdf17177d"
+    },
+    "staging.json": {
+      "bytes": 16383,
+      "path": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-hso8g0tp/execution/raw/staging.json",
+      "sha256": "5709f2986f632804daac10a9e2e9e9a76307c3db3b64731a814cebd128808aba"
+    }
+  },
+  "requests": {
+    "runtime-info-request.bin": "GET /v1.47/info HTTP/1.1\r\nHost: docker\r\nConnection: close\r\nContent-Length: 0\r\n\r\n",
+    "runtime-version-request.bin": "GET /v1.47/version HTTP/1.1\r\nHost: docker\r\nConnection: close\r\nContent-Length: 0\r\n\r\n"
+  },
+  "runtime": {
+    "api_version": "1.47",
+    "architecture": "arm64",
+    "cgroup_driver": "cgroupfs",
+    "cgroup_version": "2",
+    "daemon_id": "747f7865-a584-478c-9d4f-e49d37aa7dad",
+    "endpoint": {
+      "device": 16777232,
+      "inode": 290124857,
+      "socket_path": "/Users/westbrook/.docker/run/docker.sock"
+    },
+    "engine_git_commit": "6bc6209",
+    "engine_version": "29.2.1",
+    "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "image_inspect_sha256": "8a01fff934caffc39b9a2b8f3c85452e1e87e994cfaa747a5b912fc4685c1e74",
+    "kernel_version": "6.12.72-linuxkit",
+    "oom_kill_disable_supported": false,
+    "os": "linux",
+    "protocol": "candidate-client-process-v4"
+  },
+  "schema": "storage-desktop-inputs-projection-v1",
+  "version_body": {
+    "ApiVersion": "1.53",
+    "Arch": "arm64",
+    "BuildTime": "2026-02-02T17:16:47.000000000+00:00",
+    "Components": [
+      {
+        "Details": {
+          "ApiVersion": "1.53",
+          "Arch": "arm64",
+          "BuildTime": "2026-02-02T17:16:47.000000000+00:00",
+          "Experimental": "false",
+          "GitCommit": "6bc6209",
+          "GoVersion": "go1.25.6",
+          "KernelVersion": "6.12.72-linuxkit",
+          "MinAPIVersion": "1.44",
+          "Os": "linux"
+        },
+        "Name": "Engine",
+        "Version": "29.2.1"
+      },
+      {
+        "Details": {
+          "GitCommit": "dea7da592f5d1d2b7755e3a161be07f43fad8f75"
+        },
+        "Name": "containerd",
+        "Version": "v2.2.1"
+      },
+      {
+        "Details": {
+          "GitCommit": "v1.3.4-0-gd6d73eb8"
+        },
+        "Name": "runc",
+        "Version": "1.3.4"
+      },
+      {
+        "Details": {
+          "GitCommit": "de40ad0"
+        },
+        "Name": "docker-init",
+        "Version": "0.19.0"
+      }
+    ],
+    "GitCommit": "6bc6209",
+    "GoVersion": "go1.25.6",
+    "KernelVersion": "6.12.72-linuxkit",
+    "MinAPIVersion": "1.44",
+    "Os": "linux",
+    "Platform": {
+      "Name": "Docker Desktop 4.64.0 (221278)"
+    },
+    "Version": "29.2.1"
+  }
+}

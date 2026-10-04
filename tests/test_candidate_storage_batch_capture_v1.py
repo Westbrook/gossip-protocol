@@ -76,7 +76,7 @@ class CandidateStorageBatchCaptureV1Tests(unittest.TestCase):
         self.assertEqual(len(repeated_calls), 2 + 2 * len(self.files))
         self.assertIsNone(owner.capture_policy)
         self.assertEqual(owner.binding.protocol, execution.PROTOCOL)
-        self.assertTrue(owner.binding.protocol.endswith('-prestart-v1'))
+        self.assertTrue(owner.binding.protocol.endswith('-prestart-v2-desktop-inputs-v1'))
         self.assertEqual(owner.config['prestart_policy'], execution.prestart.definition())
         self.assertNotIn('source_capture', owner.config)
         limits = {'policy': asdict(self.policy), 'journal': asdict(execution.LIMITS),

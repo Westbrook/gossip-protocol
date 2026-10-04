@@ -1,0 +1,162 @@
+{
+  "protocol": "scientific-evidence-status-v1",
+  "as_of": "2026-10-04T13:43:41.107718+00:00",
+  "last_live_study_finished_utc": "2026-10-02T20:51:58.734056+00:00",
+  "new_model_quality_samples": 0,
+  "read_only_audit_sha256": "f067a992d90cad1ba2d2276292ab898e0da0ee5ac865e56bf4471e208cb9bfa5",
+  "source_location_note": "Paths identify immutable retained originals in the main local project workspace. Generated results are not all versioned or present in integration worktrees. This snapshot rechecks their hashes and aggregates outcomes; it does not rerun original audits or candidates.",
+  "studies": [
+    {
+      "protocol": "sustained-quality-v1",
+      "source": {
+        "local_retained_path": "results/sustained-live-1/results.json",
+        "sha256": "aefd4c45576f8c530db3695d59ba67151ca83f15629fd01b1943509ca937c151"
+      },
+      "finished_utc": "2026-09-30T19:54:55.091294+00:00",
+      "domains": [
+        "workflow",
+        "inventory"
+      ],
+      "milestones": 3,
+      "models": {
+        "cheap": {
+          "model": "gpt-5.4-mini-2026-03-17",
+          "reasoning_effort": "low"
+        },
+        "strong": {
+          "model": "gpt-5.4-2026-03-05",
+          "reasoning_effort": "low"
+        }
+      },
+      "arms": {
+        "cheap-sequential": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 4,
+          "whole_project_accepted": 3
+        },
+        "reviewed-portfolio": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 4,
+          "whole_project_accepted": 4
+        },
+        "strong-single": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 4,
+          "whole_project_accepted": 3
+        }
+      }
+    },
+    {
+      "protocol": "verification-quality-v1",
+      "source": {
+        "local_retained_path": "results/verification-live-1/results.json",
+        "sha256": "8d9521bbf1a30a35770e30d330c0c5ccff68e249f6a193f7be716b467aa9bf47"
+      },
+      "finished_utc": "2026-10-01T05:19:47.758995+00:00",
+      "domains": [
+        "buildgraph",
+        "calendar"
+      ],
+      "milestones": 4,
+      "models": {
+        "cheap": {
+          "model": "gpt-5.4-mini-2026-03-17",
+          "reasoning_effort": "low"
+        },
+        "strong": {
+          "model": "gpt-5.4-2026-03-05",
+          "reasoning_effort": "low"
+        }
+      },
+      "arms": {
+        "cheap-reviewed": {
+          "planned_trajectories": 6,
+          "completed_all_milestones": 6,
+          "whole_project_accepted": 0
+        },
+        "portfolio-reviewed": {
+          "planned_trajectories": 6,
+          "completed_all_milestones": 3,
+          "whole_project_accepted": 0
+        },
+        "strong-reviewed": {
+          "planned_trajectories": 6,
+          "completed_all_milestones": 6,
+          "whole_project_accepted": 3
+        }
+      }
+    },
+    {
+      "protocol": "continuation-followup-v1",
+      "source": {
+        "local_retained_path": "results/followup-live-1/results.json",
+        "sha256": "485f548fed6350733622d3607938eb2a99c66babe72f71014443780b9303e278"
+      },
+      "finished_utc": "2026-10-02T20:51:58.734056+00:00",
+      "domains": [
+        "warehouse",
+        "job-queue"
+      ],
+      "milestones": 2,
+      "models": {
+        "cheap": {
+          "model": "gpt-5.4-mini-2026-03-17",
+          "reasoning_effort": "low"
+        },
+        "strong": {
+          "model": "gpt-5.4-2026-03-05",
+          "reasoning_effort": "low"
+        }
+      },
+      "arms": {
+        "current-independent": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 4,
+          "whole_project_accepted": 3
+        },
+        "improved-independent": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 3,
+          "whole_project_accepted": 3
+        },
+        "improved-sequential": {
+          "planned_trajectories": 4,
+          "completed_all_milestones": 4,
+          "whole_project_accepted": 4
+        }
+      }
+    }
+  ],
+  "pool_diagnostic": {
+    "local_retained_path": "analysis/verification-pool-interpretation.json",
+    "sha256": "cf0d79b16293098ae488379b82f3712fce062f610804ec852fb91e0e0df0e0db",
+    "versioned_interpretation": "analysis/verification-pool-interpretation.json",
+    "final_versions": 12,
+    "surviving_pools": 3,
+    "private_perfect_versions": 0,
+    "limitation": "Survivor-conditioned final versions with shared selected ancestry and unequal repairs; not twelve independent projects."
+  },
+  "latest_original_certificate": {
+    "local_retained_path": "results/followup-live-1/independent-audit.json",
+    "sha256": "75cd7853a343a11b447ee6086e0378d5a6115102e1ae99c2a334939702740cfe",
+    "versioned_checkpoint": "analysis/followup-live-checkpoint-v1.json",
+    "passed": true,
+    "physical_provider_calls": 145,
+    "scripted_calls": 0
+  },
+  "assessment": [
+    "A concrete negative result for the tested four-cheap-candidate/strong-reviewer portfolio on the harder two synthetic applications: zero of six accepted and three of six stopped early, against three of six accepted with a strong builder and common reviewer protocol.",
+    "The earlier easier portfolio success establishes feasibility on those fixtures; its one-run lead per comparator does not establish superiority.",
+    "The latest candidate-formation pilot does not show independent breadth beating sequential formation; sequential accepts four of four, both independent arms three of four.",
+    "Every comparison is a small synthetic development sample with repeated domains. Report descriptive outcomes, not population p-values, calibrated Elo, or a general swarm advantage/disadvantage.",
+    "None of these experiments isolates live gossip transport versus orchestrator placement. A 20-role live project-quality comparison and independent held-out-family confirmation remain untested.",
+    "Infrastructure checks, semantic reviews, scripted fixtures and mutant detection are not additional model-quality samples."
+  ],
+  "research_process_assessment": "Recent harness work has outpaced new comparative samples. Passing infrastructure checks does not answer the scientific question.",
+  "next_evidence_needed": [
+    "A predeclared matched live gossip-versus-orchestrator comparison on accepted whole-project completion and recovery.",
+    "The required larger 20-role live quality comparison.",
+    "Independent held-out task-family confirmation."
+  ],
+  "scope_note": "This status aggregation neither changes experimental contracts nor authorizes a new cohort; all unfinished study obligations remain."
+}

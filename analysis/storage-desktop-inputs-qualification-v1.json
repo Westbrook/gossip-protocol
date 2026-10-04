@@ -1,0 +1,315 @@
+{
+  "protocol": "storage-desktop-inputs-qualification-v1",
+  "status": "combined_offline_and_six_physical_controls_passed",
+  "base_commit": "15b26ec129ff4447911d6d6842751961df0dc90f",
+  "verification_owner": "root",
+  "installed_sources": [
+    {
+      "path": "docs/candidate-storage-desktop-inputs-v1.md",
+      "sha256": "fc1d8f54da0ccf432651c5bc45684d4862c1912c3322aca7848afa1b22df8c1b"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_execution_v1.py",
+      "sha256": "9da5e95cf98525e69a004975a085f25d35f7ef8218f937aa91a35ae57192be41"
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_observation_v1.py",
+      "sha256": "326b0573bea1f348b6498510cd5f56df10592ab97bc8c5e576a14230a430a810"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_prestart_v1.py",
+      "sha256": "b201f30401aeacc75f93b7031115d5fb4ca0de22a8c23fb27ff642a04c0765a1"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "82313b2922bdbf4ad1c3967d3d5a18b047b4e671e07580deaf2bfaa2b2221f78"
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "sha256": "aa0b3d7cf751c8f4234b1ddf310f330ce753329769534f3235b9dd013143693f"
+    },
+    {
+      "path": "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json",
+      "sha256": "1b97db10f8348b591c7c3a99b88210bd2d177791ef198ef8fc60314071b7f287"
+    },
+    {
+      "path": "tests/test_candidate_storage_batch_capture_v1.py",
+      "sha256": "e9696b6fc0a2e93a35a391cfb734544612c7b81dd888d3e78ab0d1cd3de13cda"
+    },
+    {
+      "path": "tests/test_candidate_storage_desktop_inputs_v1.py",
+      "sha256": "7c820c25f2685485b02cae26a7eaa58f0e36f274e184a509faa17860937bee8b"
+    },
+    {
+      "path": "tests/test_candidate_storage_m2_physical_v1.py",
+      "sha256": "2f85bf8b2e028a081b83916e9fe944667e6ec3f17b29ab135d4c91eb812dd0a3"
+    }
+  ],
+  "manifest": {
+    "path": "verification-manifest.json",
+    "sha256": "b3b4b73efc537d3a7dbb4b61770edd4d46cf9540344cc928406473d6265b4280",
+    "bytes": 602074
+  },
+  "offline": {
+    "summary": {
+      "path": "runs/storage-desktop-inputs-offline-1/20261004T134130-6d72206b/summary.json",
+      "sha256": "ae3cd9f150f6f8e9d21958013432a665adcf85af85612e3749f5e61efa910b0e",
+      "bytes": 149253
+    },
+    "inputs": {
+      "path": "runs/storage-desktop-inputs-offline-1/20261004T134130-6d72206b/inputs.json",
+      "sha256": "f044e844adfd08ca0af5c7410ed437dda03c5695e6f5ded5b2f518b5725d60b6",
+      "bytes": 80510
+    },
+    "fingerprint": "62f542cbc7adf7733eb3d7a9399c497352c9662e771e058e6e837cd71d50e6ee",
+    "methods": 196,
+    "classes": 22,
+    "source_inputs": 677,
+    "executed": true,
+    "reused_classes": 0,
+    "skips": 0,
+    "duration_seconds": 424.433952415362,
+    "static": {
+      "duration_seconds": 1.503859625197947,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    },
+    "logs_and_results_reconciled": true
+  },
+  "physical": {
+    "summary": {
+      "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/summary.json",
+      "sha256": "d293b483448f2359f7b87bbc2721ec1fdec40a487299cc201a7903be92f95b58",
+      "bytes": 26183
+    },
+    "inputs": {
+      "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/inputs.json",
+      "sha256": "e183524e35a290036a24bbea1b604897a65b72631277c9fd68437ed66748adf6",
+      "bytes": 80510
+    },
+    "fingerprint": "8cb83ec2e2404d18248d3641837446abd52de3b6f94d2569dd20a95e0e9c699b",
+    "methods": 6,
+    "classes": 6,
+    "source_inputs": 677,
+    "executed": true,
+    "reused_classes": 0,
+    "skips": 0,
+    "duration_seconds": 466.223696959205,
+    "static": {
+      "duration_seconds": 1.3597525004297495,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "runtime_reconciliation": {
+      "final_sha256": "bcf414ed969330f8215f7c9ecf366dcb07e387bc0beef1b391eadcf2634a0e98",
+      "initial_sha256": "bcf414ed969330f8215f7c9ecf366dcb07e387bc0beef1b391eadcf2634a0e98",
+      "matches": true
+    },
+    "logs_and_results_reconciled": true
+  },
+  "controls": [
+    {
+      "id": "D01",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 1,
+      "authenticated_phases": 3,
+      "expected_failed": [
+        "after.persisted-state",
+        "reopened.persisted-state"
+      ],
+      "layout_review_sha256": "0c53ce945c35d15aced2c7c5a02d7469208e1919e71a519396060bf741d738f7",
+      "original_receipt_sha256": "1e6444d86c7c28f404217a385335bc5c3a48eebfbbd79aa3c46188a59eb3a602",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/9f7ed6f2734f1dea/artifacts/gossip-storage-m2-physical-v1-d01-r8ji5rrw/completion-census.json",
+        "sha256": "a726842039c476a04c1056ba5246c1a864ab2169d396c418a40816d24349002b",
+        "bytes": 12062
+      },
+      "cleanup_verified": true,
+      "negative_controls": {}
+    },
+    {
+      "id": "D02",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 1,
+      "authenticated_phases": 3,
+      "expected_failed": [
+        "after.result.2"
+      ],
+      "layout_review_sha256": "4d7af27199d19c8c7b190c7e721b3d1dbcd7e8850b026f56d4dc22ae466725ff",
+      "original_receipt_sha256": "d33939eda15bc8649bb4f8cdadcf3179c4a8c2e90982b60a57fef3b8d4a99ae3",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/d7f389d2bc20a0e5/artifacts/gossip-storage-m2-physical-v1-d02-6o0451tz/completion-census.json",
+        "sha256": "4dc98cd25e340e74f697164544967d59c5d5bf941cd29c99380395cdf83bb11e",
+        "bytes": 12032
+      },
+      "cleanup_verified": true,
+      "negative_controls": {}
+    },
+    {
+      "id": "D03",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 1,
+      "authenticated_phases": 4,
+      "expected_failed": [
+        "m2-competing-connections:observation-003"
+      ],
+      "layout_review_sha256": "23359397d6e679c7e604f4fccbfce56f2b1e019ac6a2e9c677b3586c51c975bb",
+      "original_receipt_sha256": "93b123f50365aed847dd3b3e116a0078841feabe10c87e8e58bbe19151eeb0a0",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/25820577f95874c8/artifacts/gossip-storage-m2-physical-v1-d03-tgg1zyc_/completion-census.json",
+        "sha256": "655c63fd451ba2a04f3dc00239b254a33ca809d5fa5f134fb715158d5e7f741f",
+        "bytes": 12884
+      },
+      "cleanup_verified": true,
+      "negative_controls": {}
+    },
+    {
+      "id": "P01",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 2,
+      "authenticated_phases": 3,
+      "expected_failed": [],
+      "layout_review_sha256": "a041c8f950b6151d3f1bd5edf68a272f47761d2b954a9de3a17c432d72a01b91",
+      "original_receipt_sha256": "e9a62d8b64d8eb34e9592a1dfa476b2c615139be7126f4a5de7ebb29dfd8f0fe",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/5f8047a9004d75e1/artifacts/gossip-storage-m2-physical-v1-p01-4din_qgr/completion-census.json",
+        "sha256": "fa2da544008aa7bc542babf2561c1e628d76cb7f6fddace823bd9114b7c6f1af",
+        "bytes": 15247
+      },
+      "cleanup_verified": true,
+      "negative_controls": {
+        "N01": {
+          "status": "passed",
+          "candidate_histories": 0,
+          "reason": null
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 1,
+      "authenticated_phases": 3,
+      "expected_failed": [],
+      "layout_review_sha256": "1f4a1dfb58ad7367c5fb08ee1435bda5b6e1c4de27a0826fa15a6961e7d0b75a",
+      "original_receipt_sha256": "b64d407f313c21e5fe9595345488af7461c0480931564eb489695ce34018d26b",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/f91c61d782cb9c04/artifacts/gossip-storage-m2-physical-v1-p02-cb8m_edt/completion-census.json",
+        "sha256": "a1783a4cee7f0a55d60ebb00325e8d71a2a6da7b2453834fa8b502362fb79833",
+        "bytes": 12016
+      },
+      "cleanup_verified": true,
+      "negative_controls": {}
+    },
+    {
+      "id": "P03",
+      "status": "qualified",
+      "qualified": true,
+      "candidate_histories": 1,
+      "primary_candidate_histories": 1,
+      "attempted_histories": 1,
+      "authenticated_phases": 4,
+      "expected_failed": [],
+      "layout_review_sha256": "3feb03c5f37a931fcae0261c9195fca0b33bd8d4a0017ddcb81f6c6d21cec28d",
+      "original_receipt_sha256": "8c7f34c8dd1a639ddc1e14d47171f9088136db220c23be556f36f08decd8cbf5",
+      "census": {
+        "path": "runs/storage-desktop-inputs-physical-1/20261004T134934-2cb3567b/classes/211996a9fb412467/artifacts/gossip-storage-m2-physical-v1-p03-0sa6pcr1/completion-census.json",
+        "sha256": "af92f5348ca8f578309d8f6324e23493dcc6c20e78fd72ec8d95aff22afd2de8",
+        "bytes": 12842
+      },
+      "cleanup_verified": true,
+      "negative_controls": {}
+    }
+  ],
+  "totals": {
+    "primary_candidate_histories": 6,
+    "attempted_histories": 7,
+    "authenticated_primary_phases": 20,
+    "model_quality_samples": 0
+  },
+  "source_review": {
+    "path": "runs/storage-desktop-inputs-retention-1/reviews-and-author/storage-desktop-inputs-source-review-1.json",
+    "sha256": "70a9e5b98e4fd3d09e0826af58bd4582291ae396e620e41512bad18b8af8648c",
+    "bytes": 11204
+  },
+  "layout_review": {
+    "path": "runs/product-storage-boundary-retention-1/storage/layout-reviews/index.json",
+    "sha256": "a69b8742b9720de4bdb2ece7b01a0aebaa99a2e7aad048724e25e93a33a96a1f",
+    "bytes": 2250,
+    "reuse_scope": "Only unchanged source/layout/schema/profile/invocation; all evaluator and physical execution evidence is new."
+  },
+  "original_failure": {
+    "session": "runs/storage-m2-physical-qualification-1/20261004T130818-c9f69783",
+    "outcomes": {
+      "passed": 1,
+      "failed": 1,
+      "not_run": 4
+    },
+    "audit": {
+      "path": "runs/storage-desktop-inputs-retention-1/reviews-and-author/storage-m2-physical-original-audit-1.json",
+      "sha256": "ba60819547938c4e9e33043f76bf2f8a75896368d19e11d852135d767703bbed",
+      "bytes": 284641
+    },
+    "retained": true,
+    "interpretation": "D02 failed before candidate start on exact mount representation; not an agent-quality observation."
+  },
+  "runtime_binding": "All677 current source records match both runs. Runtime/tool/package identities match in the original execution context; physical environment additionally binds the unchanged layout-review path/digest. Both runs reconcile initial/final runtime. A read-only handoff check in the default sandbox had a different environment hash; the matching original execution context was then verified. No test was rerun for that inspection.",
+  "limits": [
+    "Specific qualified Docker Desktop representation, not generic path normalization.",
+    "Twelve product-process batch physical controls remain separately required.",
+    "Browser and issued-qualification successor drafts remain outside this change set.",
+    "All107 mapped-unit semantic reviews are reconciled, but mappings need corrections and205 units remain unmapped.",
+    "Complete project acceptance authorities, matching full rehearsal, larger live project comparison and held-out confirmation remain unfinished.",
+    "Authored positive/negative fixture passes are harness evidence; zero new comparative model-quality samples."
+  ],
+  "independent_physical_audit": {
+    "path": "runs/storage-desktop-inputs-retention-1/physical-audit/00-storage-desktop-inputs-physical-audit-1.json",
+    "sha256": "dd1d1a3d4a32b437bda869c3c421a48424816e0a5ec1c3347ceb5b1f3aa9ac0e",
+    "discrepancies": [],
+    "reviewer_execution": false,
+    "retained_package": "runs/storage-desktop-inputs-retention-1/physical-audit/retention-manifest.json",
+    "counts": {
+      "attempts_including_negative_admission": 7,
+      "authenticated_phases": 20,
+      "authored_mutant_histories": 3,
+      "candidate_histories": 6,
+      "complete_exec_sessions_exit_zero": 6,
+      "emergency_cleanup_executions": 0,
+      "model_quality_samples": 0,
+      "negative_admission_candidate_histories": 0,
+      "negative_admission_original_raw_records": 1,
+      "ordinary_owner_command_records": 152,
+      "owned_containers_created_started_removed": 6,
+      "owned_volumes_created_removed": 6,
+      "primary_candidate_histories": 6,
+      "primary_delta_and_genesis_bytes": 450732,
+      "primary_original_raw_bytes": 5185313,
+      "primary_original_raw_records": 1176,
+      "qualification_classes_passed": 6,
+      "reference_histories": 3,
+      "retained_authored_selector_outcomes_failed": 4,
+      "retained_selector_outcomes_passed": 90,
+      "retained_selector_outcomes_unavailable": 0
+    }
+  }
+}

@@ -26,7 +26,7 @@ from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
 from . import candidate_storage_prestart_v1 as prestart
 
-PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1-prestart-v1'
+PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1'
 VERIFIER_FILE = 'm2-product-verifier.json'
 
 
@@ -203,7 +203,9 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
         require(creation_original[1].strip() == container_id.encode()
             and started[1].strip() == container_id.encode(), 'Original create/start identity differs')
         expected_proof = prestart.proof_for(inspected[1], container_id=container_id, name=name,
-            image_id=owner.policy.image_id, volume=volume, labels=expected_labels, mounts=binds)
+            image_id=owner.policy.image_id, volume=volume, labels=expected_labels, mounts=binds,
+            runtime=owner.runtime, runtime_originals={name: owner.read_authenticated(name)
+                for name in prestart.RUNTIME_ORIGINAL_NAMES if owner.has_retained(name)})
         require(prestart.exact(_json(owner.read_authenticated(prestart.PROOF_FILE)), expected_proof),
                 'Retained prestart proof differs from original observed inspection')
         prestart.validate_order({record: owner.authenticated_position(record) for record in prestart.ORDER})

@@ -13,14 +13,25 @@ Browse the published [Progress Report](https://westbrook.github.io/gossip-protoc
 The site is a dated, read-only snapshot refreshed at publication checkpoints;
 the local report remains the live workspace for ongoing work and review feedback.
 
-Current engineering work adds [durable completion for sequential study cohorts](docs/financial-terminal-integration-v1.md):
-227 affected offline checks passed, while the complete live rehearsal validator
-and controller integration remain unfinished. This builds on the
-[final-M4 CLI and HTTP observations](docs/cumulative-m4-observation-integration-v1.md)
-and [compact authenticated journals and bounded cleanup](docs/compact-executor-integration-v1.md).
-The [original twenty-test HTTP mechanics audit](docs/candidate-http-v3-physical-audit.md)
-is complete. These are infrastructure results; complete final acceptance and the
-larger live quality comparison remain outstanding.
+Current scientific evidence is **adverse to the tested cheap-agent portfolio,
+but inconclusive about gossip coordination**. In the harder four-milestone study,
+the strong reviewed builder achieved 3/6 accepted projects; the cheap reviewed
+builder and four-cheap portfolio each achieved 0/6. The portfolio completed only
+3/6 projects. An earlier easier study favored the portfolio 4/4 versus 3/4, while
+the latest formation pilot favored sequential development 4/4 versus 3/4 for each
+independent-candidate policy. Each cohort covers only two synthetic domains.
+
+The [evidence status and original result hashes](analysis/scientific-evidence-status-20261004.json)
+distinguish completion from final acceptance and record the limits. The latest
+live comparative cohort finished October 2, 2026. No direct live gossip versus
+orchestrator or larger 20-role quality comparison has completed; subsequent
+infrastructure checks add no model-quality samples.
+
+Current engineering work has qualified the
+[Docker Desktop input-mount correction](docs/storage-desktop-inputs-qualification-v1.md)
+with 196 affected offline checks and six fresh sandbox controls. The original
+failed run is retained. Complete project acceptance, the remaining controller
+and browser work, and a matching full rehearsal are still unfinished.
 
 The working design follows Linux-style delegated integration:
 

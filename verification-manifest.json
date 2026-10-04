@@ -27,7 +27,8 @@
     "analysis/sustained-posthoc-workflow-1/cases.json",
     "analysis/sustained-posthoc-inventory-1/cases.json",
     ".github/workflows/*.yml",
-    "MANIFEST.in"
+    "MANIFEST.in",
+    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json"
   ],
   "retained_fixtures": [
     "results/practical-live-1/accepted/single",
@@ -39,7 +40,8 @@
     "analysis/candidate-c03-http-qualification-origin-v1.json",
     "analysis/cumulative-shared-ownership-v1.json",
     "analysis/cumulative-shared-ownership-review-v1.json",
-    "docs/candidate-product-worker-hooks-v1.json"
+    "docs/candidate-product-worker-hooks-v1.json",
+    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json"
   ],
   "lanes": [
     "fast",
@@ -6159,6 +6161,18 @@
       "boundary": "Five source/compiler controls. The fixture subject and cohort are structural; no independent semantic approval or physical product evidence.",
       "disposition": "Run in root's combined offline qualification after composing the separately owned source_v1 branches.",
       "overlap_reason": "The actual full602 authoring packet exposed the positive bound with zero logical gate mappings; the previous coverage did not test that case."
+    },
+    "tests/test_candidate_storage_desktop_inputs_v1.py::CandidateStorageDesktopInputsV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "invariant": "Only the exact Docker Desktop inputs source alias with matching actual and declared mount rows and pinned original runtime identity can be admitted before start; subsequent identity remains exact.",
+      "isolation": "Pure synthetic dictionaries and framed HTTP bytes over a small pinned projection of failed D02 originals; no candidate, Docker, provider, process, or network execution.",
+      "distinct_defect": "Path normalization, expanded alias destinations, missing or mismatched runtime originals, or altered mount controls could grant false sandbox authority.",
+      "overlap": "Existing prestart controls retain general keeper sandbox enforcement; these controls target the narrowly versioned Docker Desktop inputs alias.",
+      "overlap_reason": "Prior literal-only prestart policy rejected the observed inputs mount before start, so its controls cannot establish the successor alias boundary.",
+      "boundary": "Fixture projection has a failed-before-start origin and is not passed successor evidence; physical owner and reader qualification remain separate.",
+      "disposition": "Required offline gate before a newly authorized physical successor attempt."
     }
   },
   "audit": {

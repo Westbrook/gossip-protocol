@@ -39,7 +39,7 @@ from .sandbox import DockerValidator
 from . import candidate_storage_prestart_v1 as prestart
 from . import project_acceptance_registry_v1 as registry
 
-PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1-prestart-v1"
+PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1-prestart-v2-desktop-inputs-v1"
 BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
 TARGET_CONTRACT = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 LIMITS = chain.Limits()
@@ -723,7 +723,9 @@ class CandidateStorageExecution:
                 if recipe is not None:
                     binds['/inputs'] = str(inputs)
                 proof = prestart.proof_for(commands.raw(record), container_id=container_id, name=name,
-                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds)
+                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds,
+                    runtime=self.runtime, runtime_originals={name: self.read_authenticated(name)
+                        for name in prestart.RUNTIME_ORIGINAL_NAMES if self.has_retained(name)})
                 self._retain(prestart.PROOF_FILE, encoded(proof))
                 self.checkpoint()
                 checked('container-start', ['docker', 'start', container_id])
