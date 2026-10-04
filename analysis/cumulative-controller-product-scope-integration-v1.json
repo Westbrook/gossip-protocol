@@ -1,0 +1,736 @@
+{
+  "protocol": "cumulative-controller-product-scope-integration-v1",
+  "status": "offline_qualified_acceptance_unavailable",
+  "base_commit": "5328a431426b731a91e07f5140f69f55d3ea8e53",
+  "verification_owner": "root",
+  "qualification": {
+    "summary": {
+      "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/summary.json",
+      "sha256": "c18afcba41d4cc1a73e4606b38a16f764364e24ca78337e93264cb9960bbabcd",
+      "bytes": 289868
+    },
+    "inputs": {
+      "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/inputs.json",
+      "sha256": "0c8e6dfcf473c174b4c9a77b17b87d39e1ffa64eef2f901405a0574d790026c4",
+      "bytes": 68680
+    },
+    "static": {
+      "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/static.json",
+      "sha256": "50002fe876eae8bfd7dbe30138289546c30e3989d0dfc0bb48a9c0fa0c40ed5b",
+      "bytes": 86714
+    },
+    "runtime_final": {
+      "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/runtime-final.json",
+      "sha256": "89b5d19074025cd891eb55372df27650a2bbf21bcf77f6301c78defd26a11f78",
+      "bytes": 1435
+    },
+    "fingerprint": "3ee906a8ba1246a41c6f010f01bccf64541945e8935f53f34d4f104150e5057d",
+    "coverage": "targeted",
+    "source_input_count": 582,
+    "static_passed": true,
+    "unchanged_legacy_type_diagnostics": 117,
+    "new_methods": 115,
+    "total_methods": 521,
+    "classes": 31,
+    "outcomes": {
+      "passed": 521
+    },
+    "lanes": {
+      "fast": 435,
+      "fixtures": 5,
+      "git": 81
+    },
+    "duration_seconds": 226.90035037510097,
+    "physically_executed_offline_classes": 31,
+    "reused_classes": 0,
+    "source_runtime_drift": false,
+    "ordered_classes": [
+      {
+        "class": "tests/test_candidate_checkpoint_chain_v1.py::CandidateCheckpointChainV1Tests",
+        "lane": "fast",
+        "methods": 37,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f01880792b5ac11e/result.json",
+          "sha256": "19c54304de0986970c9e6451b3f241c75bb058b439aeda643c94240834fa65e2",
+          "bytes": 14505
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f01880792b5ac11e/request.json",
+          "sha256": "3900defece9051ae1fe5d1855c682d0111e6c6258ef03faf15dec027d57a341b",
+          "bytes": 21932
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f01880792b5ac11e/worker.log",
+          "sha256": "1db08fad0f492d50eaa61e10bd48ff2297dc6d5f30cd3cceb6003909bf02fb40",
+          "bytes": 7453
+        }
+      },
+      {
+        "class": "tests/test_candidate_checkpoint_head_v1.py::CandidateCheckpointHeadV1Tests",
+        "lane": "fast",
+        "methods": 23,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/928798ad84d5ee4e/result.json",
+          "sha256": "b7900286c9ef53305561d6e32e65cb9e027ffaba60a337bdbc4e53ee5865e347",
+          "bytes": 9821
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/928798ad84d5ee4e/request.json",
+          "sha256": "7e9b84eee6905ef60716bc0be032ba6d45bdd9367fffd60735520bd3e74603fa",
+          "bytes": 13664
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/928798ad84d5ee4e/worker.log",
+          "sha256": "f05d22e49cc620e084f0afb76a44d59370c69c0d010a2fab24d5696f37722857",
+          "bytes": 4463
+        }
+      },
+      {
+        "class": "tests/test_candidate_checkpoint_position_v1.py::CandidateCheckpointPositionV1Tests",
+        "lane": "fast",
+        "methods": 13,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdc58dfdcf1c1daf/result.json",
+          "sha256": "e5aed71f2c605c602c1f1ba3b30093e83e4795f835478104d17fc2a973d4db76",
+          "bytes": 6633
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdc58dfdcf1c1daf/request.json",
+          "sha256": "d549ddc55b468e72b17ae0be4233a0bd89ca473e2fbb8d5cbea48f36e23c1f9d",
+          "bytes": 8354
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdc58dfdcf1c1daf/worker.log",
+          "sha256": "6c09c939ca0e93d1cf34b76b3bca7f1efc441a9988f8de96dd3bf23f3c427d67",
+          "bytes": 2647
+        }
+      },
+      {
+        "class": "tests/test_candidate_execution_journal_v1.py::CandidateExecutionJournalV1Tests",
+        "lane": "fast",
+        "methods": 16,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/df81be994ec9f346/result.json",
+          "sha256": "5001a2ff350442dbc8d7352a691b0657474f0147f42e0d6c0ca8417ff86bd60d",
+          "bytes": 7551
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/df81be994ec9f346/request.json",
+          "sha256": "7eb64899241c66fbcabf91bf6335b2a14aa91d38b2ef73e47554911f305f053b",
+          "bytes": 9967
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/df81be994ec9f346/worker.log",
+          "sha256": "161488f37e0c99f1942440aaec1341d2c92beca1fe41c945215ee686dc46c50e",
+          "bytes": 3225
+        }
+      },
+      {
+        "class": "tests/test_candidate_http_m4_integration_v1.py::HttpM4DiagnosticProjectionTests",
+        "lane": "fast",
+        "methods": 9,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/4cffc1ca74abe6b7/result.json",
+          "sha256": "bfc4437b75b8006e6141982b3cc11d24288218861874972a472ff32b048a3d84",
+          "bytes": 5309
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/4cffc1ca74abe6b7/request.json",
+          "sha256": "22fd39d796cdfa3c8162636a92216faf571ecdac99ac872d0b1d327b5cf13393",
+          "bytes": 6060
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/4cffc1ca74abe6b7/worker.log",
+          "sha256": "1daca0be63dd7c35aef775f3a7c398bf4f1185581de7ab1e9e889f512197eeb5",
+          "bytes": 1933
+        }
+      },
+      {
+        "class": "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticBindingTests",
+        "lane": "fast",
+        "methods": 10,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/59782102a645bd30/result.json",
+          "sha256": "7b1d75e379e32a7dcb35dc5b2a5bb5c501f7f39c79fb58efdc65eadf8ccf5ecd",
+          "bytes": 5553
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/59782102a645bd30/request.json",
+          "sha256": "946c2ccbf621e03e921f5dabcadd84d994e23ebf132e4f85be51b713789bc774",
+          "bytes": 6375
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/59782102a645bd30/worker.log",
+          "sha256": "41c9f623d2bf587f03901addf4ce62aecef5ad5b807c8dce7814c200c13299c6",
+          "bytes": 2021
+        }
+      },
+      {
+        "class": "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticComparatorTests",
+        "lane": "fast",
+        "methods": 11,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/44f027d8d0c9d5c8/result.json",
+          "sha256": "67d7233ba48dfedd38784def1b3f7a7c3e3c61be867392844c3fb7eee62183d2",
+          "bytes": 5941
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/44f027d8d0c9d5c8/request.json",
+          "sha256": "b8953e1518b1e0483784bac96babf87b418b3db98f3cd20c428997fb26053f05",
+          "bytes": 7098
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/44f027d8d0c9d5c8/worker.log",
+          "sha256": "b597c6b46c207bc9b9634374e83ca8bb5f054f72480a3ebec3fba88864325886",
+          "bytes": 2298
+        }
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+        "lane": "fast",
+        "methods": 12,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdb18e35e74521c2/result.json",
+          "sha256": "32b9a3af864016e2ece63c0a32eb0f76c52f1c2f16aab8003c4800af61e6eac7",
+          "bytes": 6404
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdb18e35e74521c2/request.json",
+          "sha256": "9794eb8f5cd1dde696a37e155725b62cf592f72cbe014f25aab5c79407627b51",
+          "bytes": 7984
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/cdb18e35e74521c2/worker.log",
+          "sha256": "75c61fc48f77d218517eaa458e1c135ad90469786d8649efa378da3ccffd7553",
+          "bytes": 2567
+        }
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateObservationAdmissionTests",
+        "lane": "fast",
+        "methods": 27,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/ec139b89df3a86a3/result.json",
+          "sha256": "91ac4a37ee2864c0ac4ee81478c60f739f43f18c0c5ef0e7d6038e2a86d14db6",
+          "bytes": 11467
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/ec139b89df3a86a3/request.json",
+          "sha256": "109a99a999888dfd960b1142552e65eb9fe6e85b6860a9598d092c0c5076961f",
+          "bytes": 16830
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/ec139b89df3a86a3/worker.log",
+          "sha256": "93a00ca3180f81e0fe784240dbbf47f854b29b2ecb2fe6fc38661406fa72e3d0",
+          "bytes": 5617
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_cases_v1.py::CandidateProductProcessDefinitionTests",
+        "lane": "fast",
+        "methods": 8,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/94c925d30bc2a447/result.json",
+          "sha256": "9e630be361024157d019efd93a0a576acecd2b2e801b9412000ccd56e2195dcf",
+          "bytes": 5049
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/94c925d30bc2a447/request.json",
+          "sha256": "a19f1640ebe1686d83efd418aafa2d9a1ba779c1c025862b7baf7af72bb82104",
+          "bytes": 5689
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/94c925d30bc2a447/worker.log",
+          "sha256": "1a0f15b24c83df39ec35d020aeef5a39e905b5b83100f421ba6e070c73536d19",
+          "bytes": 1738
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessComparisonTests",
+        "lane": "fast",
+        "methods": 10,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a17dc5a7780cd979/result.json",
+          "sha256": "7b7623d5b7640497e1582724e937154c2bb539c33f74ce4b77b5b0b138101200",
+          "bytes": 5826
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a17dc5a7780cd979/request.json",
+          "sha256": "a6e8bb691f9f83ad675c2395be3454a8e41521c8b57088c4baf3c00eba7fc682",
+          "bytes": 7117
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a17dc5a7780cd979/worker.log",
+          "sha256": "2c654bcacdd204c31f7c981730c8255d2577b9e68c98d0c7a6b359369851fb57",
+          "bytes": 2259
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessDeclarationTests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/1009d48621bdca6b/result.json",
+          "sha256": "8b26a50a042705642f8c9a2266a6669346268013d514e4c94519c66904f85d67",
+          "bytes": 4776
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/1009d48621bdca6b/request.json",
+          "sha256": "3673d385f6837f9db31d80146ee43cb7d17b832385c73288a8a212c65813488a",
+          "bytes": 5330
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/1009d48621bdca6b/worker.log",
+          "sha256": "2fc375cdbe8d73579a4b9644702ba2532eb4b222eb32c1ee4800ef8dd1eb5c3b",
+          "bytes": 1665
+        }
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "lane": "fast",
+        "methods": 32,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/995b4834cfdec311/result.json",
+          "sha256": "fd9c0d9b124ce60dfbf015fd8c318e46894c209ad5d6452e36d62cac153118eb",
+          "bytes": 12566
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/995b4834cfdec311/request.json",
+          "sha256": "168f3a5d6a31f2c378437e01aa2a69b4fae999a53b72f13d136467f449b4c84e",
+          "bytes": 18599
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/995b4834cfdec311/worker.log",
+          "sha256": "0eef37057f0fa205e8f783cc1a5463d0c6c9874d8828a37ef7dcbb238deffc92",
+          "bytes": 6380
+        }
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeCliProjectionTests",
+        "lane": "fast",
+        "methods": 5,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a34b03f9542ff98e/result.json",
+          "sha256": "8b137e366fec96b19158af3c90dfb637bb4d949f1b85549f69e306ee65e3999c",
+          "bytes": 3994
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a34b03f9542ff98e/request.json",
+          "sha256": "6946b025bf01fd771be10f20412fd6a5d6d2027a21af5521762cb3487ddf41ad",
+          "bytes": 3766
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/a34b03f9542ff98e/worker.log",
+          "sha256": "a0bc6b1011ecda05d7f7b4dfb64c53967373559874d9ea96488ee18ff7a2ed7a",
+          "bytes": 1145
+        }
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeObservationProfileTests",
+        "lane": "fast",
+        "methods": 11,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/373419ad3383437a/result.json",
+          "sha256": "18e9f90caf545918baf420d804495f8254851e15af055cd3f393301046a8f479",
+          "bytes": 6026
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/373419ad3383437a/request.json",
+          "sha256": "eca6f537878b81b08e12ea9a8b1a528d558b797d2e425e231e09a8307aabd50a",
+          "bytes": 7376
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/373419ad3383437a/worker.log",
+          "sha256": "8e17df711e7efa271f69821dc78487e294e2d191fe01c00ffff4a1fd00898ee8",
+          "bytes": 2399
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests",
+        "lane": "fast",
+        "methods": 16,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/245f7962c9dd274e/result.json",
+          "sha256": "7aabf73ef1df90af5091bdbdc9cac15e90f380dfa68b917f83a0a0db3e575b25",
+          "bytes": 7535
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/245f7962c9dd274e/request.json",
+          "sha256": "e15c776d0001bcfccb6ebd4c28aed447010daa205cec106a80b752915e22dddf",
+          "bytes": 10023
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/245f7962c9dd274e/worker.log",
+          "sha256": "ba210127d970fb96af313b7db44a4d9318b6818c9a9c3e1937d9d1337b6dae99",
+          "bytes": 3345
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests",
+        "lane": "fast",
+        "methods": 20,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c94f9c9de82bc2a5/result.json",
+          "sha256": "9e7628446ed0f0add2b8478c559e41a81fb3e9acbad4c6148b713b03155502c1",
+          "bytes": 8778
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c94f9c9de82bc2a5/request.json",
+          "sha256": "e4eb104604596727a07cd50d6a5eb21dc05d782aff033b3e9328801658a54237",
+          "bytes": 11971
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c94f9c9de82bc2a5/worker.log",
+          "sha256": "2b44efbb409799af6304a4037e115a151257298c462e584b86530221ab879c68",
+          "bytes": 4056
+        }
+      },
+      {
+        "class": "tests/test_cumulative_study_role_v1.py::CumulativeStudyRoleV1Tests",
+        "lane": "fast",
+        "methods": 16,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/853936c99f7500f9/result.json",
+          "sha256": "7538ae81927cffc2010e04747c9a9f7c0fed038b9554b499d553cf72b84909ae",
+          "bytes": 7384
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/853936c99f7500f9/request.json",
+          "sha256": "3724bb5e0e4a94f0d250716cff4bf6a4f13b661c4d1107a487eca7a98403ed35",
+          "bytes": 9369
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/853936c99f7500f9/worker.log",
+          "sha256": "e89762d1381a398bced858a18d2412172d872ebb3a7db39b41a7a66c47b290e0",
+          "bytes": 3055
+        }
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v4.py::PeerFinancialAuthorityV4Tests",
+        "lane": "fast",
+        "methods": 28,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/7b6fe0bd4eaf11fa/result.json",
+          "sha256": "1a5c70a8f78dd87e1619ed07cf066294a3e76b89e1a89238c8158cd134c49836",
+          "bytes": 11256
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/7b6fe0bd4eaf11fa/request.json",
+          "sha256": "70ad6d6c032b94e28270e8c96900597d4c1eb6327f870d8126a4849e5e1d75a9",
+          "bytes": 16305
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/7b6fe0bd4eaf11fa/worker.log",
+          "sha256": "7eb75d16764523b779c71abe86c31f6305162cfe10d70625a7577d2bfbbc7775",
+          "bytes": 5427
+        }
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v4.py::PeerFinancialRPCV4Tests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/706c07cc0c24ad09/result.json",
+          "sha256": "97644eb80a0075a81353446a9250b03c12888874bbd4627e6ec35c6254ab0a3c",
+          "bytes": 4474
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/706c07cc0c24ad09/request.json",
+          "sha256": "d6320f8f47fb313cdbaf3235e56ae3b54c4942644f80b85249423f9cbe8eb696",
+          "bytes": 4462
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/706c07cc0c24ad09/worker.log",
+          "sha256": "7d9a59c4486d73ccff6750936107c65cfc68f94ec581f8c8d3066ced9317acf6",
+          "bytes": 1392
+        }
+      },
+      {
+        "class": "tests/test_peer_financial_terminal_v1.py::PeerFinancialTerminalV1Tests",
+        "lane": "fast",
+        "methods": 8,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/03bd424b6364fc69/result.json",
+          "sha256": "394da52e0c4b7a6b04bd1ca61a0bdf7e9925b269d517ca4e4e3fae292acb80bb",
+          "bytes": 4847
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/03bd424b6364fc69/request.json",
+          "sha256": "b9f5c8582e200bd7af1abb968dea37efc345db93ea2e1ee22c70994d12056bc7",
+          "bytes": 5183
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/03bd424b6364fc69/worker.log",
+          "sha256": "0f2b8a7b94f16067737dbdef904b87872c701d352af728cc4efc92ae141028c0",
+          "bytes": 1590
+        }
+      },
+      {
+        "class": "tests/test_peer_mesh_v2.py::MeshStoreV2Tests",
+        "lane": "fast",
+        "methods": 24,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3ae89c71cbcf0329/result.json",
+          "sha256": "bb9e012dcb6386142f05cd61b0dd9fc189b42c409a150cf527c7f750c1e6da80",
+          "bytes": 9519
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3ae89c71cbcf0329/request.json",
+          "sha256": "9ed4f898871ff26efdbb5c52ee1cca43271716cfe12deb353e574d92b2c00294",
+          "bytes": 12303
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3ae89c71cbcf0329/worker.log",
+          "sha256": "c4a870be405663a26e0c65fb2701550901cd891854cac4081a63ac4fc7b41309",
+          "bytes": 4305
+        }
+      },
+      {
+        "class": "tests/test_peer_role_loop_v2.py::PeerRoleLoopV2Tests",
+        "lane": "fast",
+        "methods": 27,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/395047d78d715ff6/result.json",
+          "sha256": "61c84d42b90e2ef3224fbfcc925802572eb3397de5086440164f2280c2c1c1ad",
+          "bytes": 10390
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/395047d78d715ff6/request.json",
+          "sha256": "260c8c404b25052ad1a20a82eb6c9d7f1d02c83ee989a1697480bff76277387c",
+          "bytes": 13992
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/395047d78d715ff6/worker.log",
+          "sha256": "4414cdc93fbec543069e83457adca4d0f4958e69c4adba9d1af556898f094e2d",
+          "bytes": 4605
+        }
+      },
+      {
+        "class": "tests/test_project_acceptance_compiler_v1.py::AcceptanceCompilerTests",
+        "lane": "fast",
+        "methods": 37,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/043464ad824e081e/result.json",
+          "sha256": "d98a468a9482e3812051c41068da8a300affd4a3db1c77d28ff610aac42d5bb3",
+          "bytes": 14075
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/043464ad824e081e/request.json",
+          "sha256": "d543593567b26e20803e0ec6b0ef3bc8485c0fdc2339dd7189e800e4c6169eb1",
+          "bytes": 20906
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/043464ad824e081e/worker.log",
+          "sha256": "f719a6d9eabf706322642eaa814e5d2c534e702f7973fa28dadc7a4d0692e259",
+          "bytes": 6968
+        }
+      },
+      {
+        "class": "tests/test_project_acceptance_registry_v1.py::AcceptanceRegistryTests",
+        "lane": "fast",
+        "methods": 21,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/29ec3c5d6cd30385/result.json",
+          "sha256": "0cf1c5518a6164bb9e6304a77d5e78f510ba22d65263219c26a3db56263bf88e",
+          "bytes": 9127
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/29ec3c5d6cd30385/request.json",
+          "sha256": "4995dca8c4c6ac304140d705403c363cc384f3f6603d58063cdbcab3c6b47841",
+          "bytes": 12422
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/29ec3c5d6cd30385/worker.log",
+          "sha256": "9c7792839c2e935edd6e5918e0dad16d21abdd9cb9c1fffe1337abfa82d4a330",
+          "bytes": 4182
+        }
+      },
+      {
+        "class": "tests/test_peer_mesh_v2.py::MeshTCPV2Tests",
+        "lane": "fixtures",
+        "methods": 5,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/98ffe2bb16c9e2bb/result.json",
+          "sha256": "791e2aeb75bbc3db714abdf5048f3f4d15d6ed6e5f254df5ce8586a9f8acee80",
+          "bytes": 3835
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/98ffe2bb16c9e2bb/request.json",
+          "sha256": "e683e6483f66a352be55d8857eaf9cc61476593825c5f2821287ba6fc0de3e9e",
+          "bytes": 3196
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/98ffe2bb16c9e2bb/worker.log",
+          "sha256": "6486de7c4470aac81fb09267f25a3ac8b76adaa900adc2ef8893f46ee4033873",
+          "bytes": 1006
+        }
+      },
+      {
+        "class": "tests/test_candidate_http_m4_integration_v1.py::HttpM4ProfileBindingTests",
+        "lane": "git",
+        "methods": 10,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f3251ce6e5341ca3/result.json",
+          "sha256": "3e32672cff91418a84a4ae29671d92b3e6e0e9a020d0b72b5a404f5fd26edf91",
+          "bytes": 5608
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f3251ce6e5341ca3/request.json",
+          "sha256": "ddf37e8b95361804259759a5d89c1a043b2e6fdee88e097ec60820f5e1af8b60",
+          "bytes": 6491
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/f3251ce6e5341ca3/worker.log",
+          "sha256": "866b5c7969303cdd18ffaea40257ab6a486f8ec5cc0d00decd3073e3e6f746a2",
+          "bytes": 3115
+        }
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "lane": "git",
+        "methods": 4,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c25a48764acbd650/result.json",
+          "sha256": "95775c9db39921956b84dc9cf8ad2d37075398fa9fea7f1814772740f84fcafe",
+          "bytes": 3630
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c25a48764acbd650/request.json",
+          "sha256": "6d3756cd6216b3ca276c4b2acf0ded577d78c10eb0cdc070af422ee0897d149e",
+          "bytes": 3047
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/c25a48764acbd650/worker.log",
+          "sha256": "7aa589d679b4ed91d3e92dfc2f737f7687a0997ab6ff313d73f398cd92c7cc8d",
+          "bytes": 843
+        }
+      },
+      {
+        "class": "tests/test_cumulative_process_evidence_v1.py::CumulativeProcessEvidenceV1Tests",
+        "lane": "git",
+        "methods": 29,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/bd933e29468b05b6/result.json",
+          "sha256": "1f4b09bc4bce21d65df89843fd631dce6e7ebef1e4f677b9f449634a57397724",
+          "bytes": 11576
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/bd933e29468b05b6/request.json",
+          "sha256": "db650512378c482b19a262ee535bc5ef56ec02031666bbaf2abb472a9ad6d6ff",
+          "bytes": 17070
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/bd933e29468b05b6/worker.log",
+          "sha256": "89b8b48db7477cad417a25f013946391c3b3ea01240951cd0f0e46c1e5b66aa9",
+          "bytes": 5478
+        }
+      },
+      {
+        "class": "tests/test_cumulative_study_controller_v1.py::CumulativeStudyControllerV1Tests",
+        "lane": "git",
+        "methods": 20,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/d1acb32cc2b25ae2/result.json",
+          "sha256": "2d6eab91cd9fc5a381d931e9ec59c1d43fd28b87bb3b059b6da7334f78eaef70",
+          "bytes": 8722
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/d1acb32cc2b25ae2/request.json",
+          "sha256": "0dba657bf93028964519368859c86a7c48960648dc846c53ec8a636934bbc692",
+          "bytes": 12012
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/d1acb32cc2b25ae2/worker.log",
+          "sha256": "16b0391ef7393c9faaaf864f064bc11d6abcb22af5b041b5d7537e93ff08be35",
+          "bytes": 3802
+        }
+      },
+      {
+        "class": "tests/test_cumulative_study_runtime_v1.py::CumulativeStudyRuntimeV1Tests",
+        "lane": "git",
+        "methods": 18,
+        "result": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3504cabcb2442da5/result.json",
+          "sha256": "b2b79595b2140fbdee217749ffc3642393ded892c7201199cab1b2a4ac16f8c5",
+          "bytes": 7987
+        },
+        "request": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3504cabcb2442da5/request.json",
+          "sha256": "f5c6d5f0aea8432f405f04ade3459785e08dfd164a5fcde18f897eeed975ba23",
+          "bytes": 10636
+        },
+        "log": {
+          "path": "runs/cumulative-controller-product-scope-offline-1/20261004T090659-5425cbc2/classes/3504cabcb2442da5/worker.log",
+          "sha256": "ae65ac8619be1f323e42d7206168a56d6ebf245b25d335afe6b3159a6b20ca67",
+          "bytes": 3421
+        }
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "path": "runs/cumulative-controller-product-scope-retention-1/reviews-and-handoffs/cumulative-study-controller-boundary-review-1.json",
+      "sha256": "ac2b750811f30ac0784ce9b19ad255a2a70fe31fb4223fdfd8da5a88d5b514ed",
+      "bytes": 8783
+    },
+    {
+      "path": "runs/cumulative-controller-product-scope-retention-1/reviews-and-handoffs/cumulative-product-process-source-review-2.json",
+      "sha256": "00a759ec00187b87948e66a7521e7677101240e6a1d13e86f27f571332bf6c83",
+      "bytes": 8741
+    },
+    {
+      "path": "runs/cumulative-controller-product-scope-retention-1/reviews-and-handoffs/cumulative-scope-source-authority-review-1.json",
+      "sha256": "1f672d34084de05b141e0ba2c477d2d35e646c456caed3af3a4866c1ce79f19a",
+      "bytes": 11598
+    }
+  ],
+  "retention": {
+    "manifest": {
+      "path": "runs/cumulative-controller-product-scope-retention-1/manifest.json",
+      "sha256": "92ab09553161767bbd0ad4c8baf8253801230c4723c57e67c61f0154994d60a1",
+      "bytes": 21111
+    },
+    "files": 70,
+    "limits": "Includes intermediate failures and exact installed source snapshots; historical contributor passes are not relabeled as final combined qualification."
+  },
+  "implementation": {
+    "controller": "Six ordered trajectories, four milestones, actual role/runtime wiring; S4-G has4 builders and4 reviewers, S16-G/O16-G each16 builders and4 reviewers.96 distinct actors across sequential children;4 shared executor slots.",
+    "placement": "Peer-local vs central admission over identical gossip transport and fixed package pools. Not emergent decomposition, work stealing or transport comparison.",
+    "faults": "B01 partition begins before first work/assignment publication; healing requires frontier commit plus minimum interval. Durations may differ across arms. Known-result-before-publication builder restart is distinct from generated-application crash recovery.",
+    "public_progress": "Never product acceptance; full acceptance currently returns unavailable.",
+    "scope": "312 units,123 product requirements,3 prerequisites,22 authorities and188 gap notes retained; all312 units require semantic approval.",
+    "product": "8 declared histories/150 actions;934 selectors including33 unspecified facets. No new actual candidate-container execution."
+  },
+  "source_definition_census": {
+    "receipt": {
+      "path": "runs/cumulative-controller-product-scope-retention-1/scope/full-catalog-census-2.json",
+      "sha256": "05d7d25e1b4cff7f35521fbeb10f1517b2dea37554a3696328273a344f232971",
+      "bytes": 1574406
+    },
+    "meaning": "Inert prospective fixture bindings and source definitions only; no production semantic approval or product observations.",
+    "declared_histories_one_public_purpose": 341,
+    "ordered_cases": 9504,
+    "selectors": 10313,
+    "assertions": 5211,
+    "units_with_some_assertions": 37,
+    "units_without_assertions": 275,
+    "requirement_groups_with_some_assertions": 23,
+    "declared_cells": 91,
+    "unresolved_cells": 12884,
+    "eligible_cells": 12975,
+    "all_authorities_unqualified": 22,
+    "fully_covered_units_claimed": 0
+  },
+  "remaining_required": [
+    "Original-evidence complete rehearsal reader and failed/unattempted/unknown terminal-outcome reader.",
+    "Actual post-barrier independent acceptance adapter with prospective successor controller policy.",
+    "Actual final-source storage/intake, worker crash/concurrency, remaining product and browser observations.",
+    "Complete scope plan, applicability/adequacy review, prerequisite authorities and measured registry capacity qualification.",
+    "Install and execute positive/defective physical controls after applicable cheaper gates.",
+    "One complete matching six-trajectory rehearsal, then larger live comparison with full failure denominator.",
+    "Independent held-out-family confirmation and separate decision-placement by transport study."
+  ],
+  "new_comparative_quality_samples": 0,
+  "docker_or_provider_calls": 0,
+  "goal_complete": false
+}

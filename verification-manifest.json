@@ -5061,6 +5061,102 @@
       "boundary": "Trusted host Python role fixtures and actual Popen wait/group observation, disposable real Git and V4 SQL; no candidate container or provider.",
       "disposition": "After static gate; retain class output and source/runtime binding. Combined controller/rehearsal still required.",
       "overlap_reason": "Financial tests accept generic host assertions; these methods exercise the actual role-event and process/Git producer used to make them."
+    },
+    "tests/test_candidate_product_process_cases_v1.py::CandidateProductProcessDefinitionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Public product process definitions, exact source/profile admission and host comparisons preserve declared normative semantics without claiming complete scope or physical qualification.",
+      "isolation": "class process; immutable literal histories and independently supplied synthetic observation records",
+      "overlap": "New public product histories and composite process/wire comparator; inherited transport/ownership mechanics are separately qualified.",
+      "distinct_defect": "Mismatched source namespace, mutated loaded code, altered declared recipes, imprecise JSON or unspecified CLI details could turn infrastructure ambiguity into false candidate outcomes.",
+      "boundary": "Pure host source/profile/comparison logic; actual loaded-source checker; no candidate Docker or provider.",
+      "disposition": "Run during combined offline integration before any new physical execution contract qualification.",
+      "overlap_reason": "New case definitions and product semantics are not covered by inherited M1/M4 observations; no existing physical receipt is reused as proof."
+    },
+    "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessDeclarationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Public product process definitions, exact source/profile admission and host comparisons preserve declared normative semantics without claiming complete scope or physical qualification.",
+      "isolation": "class process; immutable literal histories and independently supplied synthetic observation records",
+      "overlap": "New public product histories and composite process/wire comparator; inherited transport/ownership mechanics are separately qualified.",
+      "distinct_defect": "Mismatched source namespace, mutated loaded code, altered declared recipes, imprecise JSON or unspecified CLI details could turn infrastructure ambiguity into false candidate outcomes.",
+      "boundary": "Pure host source/profile/comparison logic; actual loaded-source checker; no candidate Docker or provider.",
+      "disposition": "Run during combined offline integration before any new physical execution contract qualification.",
+      "overlap_reason": "New case definitions and product semantics are not covered by inherited M1/M4 observations; no existing physical receipt is reused as proof."
+    },
+    "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessComparisonTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Public product process definitions, exact source/profile admission and host comparisons preserve declared normative semantics without claiming complete scope or physical qualification.",
+      "isolation": "class process; immutable literal histories and independently supplied synthetic observation records",
+      "overlap": "New public product histories and composite process/wire comparator; inherited transport/ownership mechanics are separately qualified.",
+      "distinct_defect": "Mismatched source namespace, mutated loaded code, altered declared recipes, imprecise JSON or unspecified CLI details could turn infrastructure ambiguity into false candidate outcomes.",
+      "boundary": "Pure host source/profile/comparison logic; actual loaded-source checker; no candidate Docker or provider.",
+      "disposition": "Run during combined offline integration before any new physical execution contract qualification.",
+      "overlap_reason": "New case definitions and product semantics are not covered by inherited M1/M4 observations; no existing physical receipt is reused as proof."
+    },
+    "tests/test_cumulative_study_controller_v1.py::CumulativeStudyControllerV1Tests": {
+      "lane": "git",
+      "weight": 2,
+      "timeout_seconds": 360,
+      "invariant": "Prospective study identities, recorded actions/financial/Git histories, declared source clauses and independently enrolled scope provenance stay exact across the full intended study.",
+      "isolation": "class process; disposable journals, SQLite and Git stores; injected runtime or role collaborators, no candidate containers/provider",
+      "overlap": "New cumulative controller, role/runtime composition and semantic source/registration boundaries; inherited checkpoint/financial and observation primitives are separately covered.",
+      "distinct_defect": "Scope labels could inflate evidence, foreign ledgers or repositories could be adopted, interrupted roles could leak, partition ordering could miss actual work, or late public checks could receive completion credit.",
+      "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
+      "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
+      "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
+    },
+    "tests/test_cumulative_study_role_v1.py::CumulativeStudyRoleV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Prospective study identities, recorded actions/financial/Git histories, declared source clauses and independently enrolled scope provenance stay exact across the full intended study.",
+      "isolation": "class process; disposable journals, SQLite and Git stores; injected runtime or role collaborators, no candidate containers/provider",
+      "overlap": "New cumulative controller, role/runtime composition and semantic source/registration boundaries; inherited checkpoint/financial and observation primitives are separately covered.",
+      "distinct_defect": "Scope labels could inflate evidence, foreign ledgers or repositories could be adopted, interrupted roles could leak, partition ordering could miss actual work, or late public checks could receive completion credit.",
+      "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
+      "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
+      "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
+    },
+    "tests/test_cumulative_study_runtime_v1.py::CumulativeStudyRuntimeV1Tests": {
+      "lane": "git",
+      "weight": 2,
+      "timeout_seconds": 360,
+      "invariant": "Prospective study identities, recorded actions/financial/Git histories, declared source clauses and independently enrolled scope provenance stay exact across the full intended study.",
+      "isolation": "class process; disposable journals, SQLite and Git stores; injected runtime or role collaborators, no candidate containers/provider",
+      "overlap": "New cumulative controller, role/runtime composition and semantic source/registration boundaries; inherited checkpoint/financial and observation primitives are separately covered.",
+      "distinct_defect": "Scope labels could inflate evidence, foreign ledgers or repositories could be adopted, interrupted roles could leak, partition ordering could miss actual work, or late public checks could receive completion credit.",
+      "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
+      "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
+      "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
+    },
+    "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Prospective study identities, recorded actions/financial/Git histories, declared source clauses and independently enrolled scope provenance stay exact across the full intended study.",
+      "isolation": "class process; disposable journals, SQLite and Git stores; injected runtime or role collaborators, no candidate containers/provider",
+      "overlap": "New cumulative controller, role/runtime composition and semantic source/registration boundaries; inherited checkpoint/financial and observation primitives are separately covered.",
+      "distinct_defect": "Scope labels could inflate evidence, foreign ledgers or repositories could be adopted, interrupted roles could leak, partition ordering could miss actual work, or late public checks could receive completion credit.",
+      "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
+      "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
+      "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
+    },
+    "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Prospective study identities, recorded actions/financial/Git histories, declared source clauses and independently enrolled scope provenance stay exact across the full intended study.",
+      "isolation": "class process; disposable journals, SQLite and Git stores; injected runtime or role collaborators, no candidate containers/provider",
+      "overlap": "New cumulative controller, role/runtime composition and semantic source/registration boundaries; inherited checkpoint/financial and observation primitives are separately covered.",
+      "distinct_defect": "Scope labels could inflate evidence, foreign ledgers or repositories could be adopted, interrupted roles could leak, partition ordering could miss actual work, or late public checks could receive completion credit.",
+      "boundary": "Source-derived full-denominator declarations, actual host journals/Git/SQL and injected execution collaborators. These component tests do not execute the full96role study.",
+      "disposition": "Run in combined offline qualification before physical qualification or complete matching rehearsal.",
+      "overlap_reason": "Previous M1 pilot and financial fixtures cannot prove full four-milestone/six-trajectory composition, explicit source mapping or exact review chronology."
     }
   },
   "audit": {

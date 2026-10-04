@@ -1230,6 +1230,34 @@ checkpoint append behavior. These checks add no comparative model-quality
 samples. The full six-trajectory controller, independent acceptance, matching
 rehearsal and larger live comparison remain required.
 
+## Cumulative controller and product observations
+
+The [four-milestone comparison controller](docs/cumulative-study-controller-v1.md),
+[product process observer](docs/candidate-product-process-observation-v1.md), and
+[source-derived scope registration](docs/cumulative-scope-source-registration-v1.md)
+now pass [521 combined offline checks across 31 classes](analysis/cumulative-controller-product-scope-integration-v1.json).
+All selected checks ran fresh, with no skips or source/runtime drift. This adds
+engineering evidence and zero comparative model-quality samples.
+
+The controller composes six sequential trajectories: 4 or 16 builders plus four
+reviewers, peer-local versus central admission over the same gossip transport,
+and healthy versus compound-recovery blocks. All arms retain four shared executor
+slots. Fixed package pools are not emergent task decomposition. The partition
+starts before initial publication and lasts until both the publication frontier
+and minimum interval are satisfied; actual outage durations can differ by arm.
+
+The observer declares eight product histories covering restart persistence,
+export bytes, backup/restore and seeded migration. Independent scope accounting
+retains every one of 312 source units. Current assertions touch only parts of 37
+units; all 312 still need semantic approval. The 341 declared CLI/HTTP/product
+histories are source definitions, not 341 physical passes.
+
+Final acceptance remains explicitly unavailable. The complete original-evidence
+reader, actual independent acceptance adapter, missing product observations,
+reviewed full scope, matching complete rehearsal and larger live comparison
+remain required. Held-out confirmation and the separate placement-by-transport
+study remain part of the investigation.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
