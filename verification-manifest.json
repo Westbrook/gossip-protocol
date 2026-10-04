@@ -4929,6 +4929,78 @@
       "invariant": "The pinned finite-process control flow closes attachments/readers after any retention failure and rethrows the original error without later candidate dispatch or a returned observation.",
       "distinct_defect": "A finally-block retention exception could bypass socket teardown; suppressing a request retention could instead dispatch an unacknowledged effect.",
       "overlap": "Runs the real frozen process flow with isolated fake Engine sockets, including first failure at final attachment retention."
+    },
+    "tests/test_candidate_client_cumulative_v1.py::CandidateClientCumulativeProfileV1Tests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "fast",
+      "invariant": "Complete source-derived CLI profiles bind the final-M4 contract, purpose and complete legacy histories without silently relabeling M1 evidence.",
+      "distinct_defect": "Missing profiles, substituted purposes or targets, omitted original diagnostics, or unspecified presentation counted as acceptance could invalidate final evaluation.",
+      "boundary": "Pure profile, binding and result projection; no independent semantic scope authority or product verdict."
+    },
+    "tests/test_candidate_client_cumulative_v1.py::CandidateClientCumulativeAdmissionV1Tests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "git",
+      "invariant": "Fresh CLI M4 ownership, prospective admission and same-chain verifier identities remain exact through observation and reopen.",
+      "distinct_defect": "An old or changed source, profile, gate or raw record could acquire M4 acceptance authority, or a required failure could disappear during projection.",
+      "boundary": "Disposable Git/journal and synthetic authority fixtures; no physical product qualification."
+    },
+    "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticComparatorTests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "fast",
+      "invariant": "Only the three declared health body successors change; every other frozen semantic facet and ambiguity policy is preserved.",
+      "distinct_defect": "A schema0 result could pass final M4, or schema4 handling could erase independent status, syntax or listener failures.",
+      "boundary": "Pure captured-value comparison without capture provenance or execution authority."
+    },
+    "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticBindingTests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "fast",
+      "invariant": "The exact complete current HTTP profile, original case, successor roster and loaded comparator sources bind M4 comparison.",
+      "distinct_defect": "A caller could substitute an old, partial, modified or wrong-purpose profile or apply a successor to an undeclared step.",
+      "boundary": "Source-derived declaration identity and immutable-input validation; independent semantic review remains external."
+    },
+    "tests/test_candidate_http_m4_integration_v1.py::HttpM4ProfileBindingTests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "git",
+      "invariant": "M4 HTTP owner and gate require the explicit target profile, purpose, complete original recipe and separately declared mechanics guard.",
+      "distinct_defect": "Milestone-only relabeling, target or purpose substitution, incomplete history, or an omitted mechanical obligation could authorize false acceptance.",
+      "boundary": "Offline registration and complete source/recipe binding; no real candidate runtime or complete ScopePlan."
+    },
+    "tests/test_candidate_http_m4_integration_v1.py::HttpM4DiagnosticProjectionTests": {
+      "weight": 1,
+      "timeout_seconds": 300,
+      "isolation": "One class worker; isolated source, journal, registration and fixture state; no Docker or provider work.",
+      "disposition": "Run with the affected CLI/HTTP owner and observation regressions after the combined static gate, before physical qualification.",
+      "overlap": "Existing M1 controls remain separate; these controls exercise explicit final-M4 binding and diagnostic projection.",
+      "overlap_reason": "M1-only receipts and pure profile records do not qualify fresh M4 execution or the schema4 successor.",
+      "lane": "fast",
+      "invariant": "All original HTTP diagnostic steps remain visible, while normative outcomes and an explicit all-history mechanics guard preserve known failures before unknowns.",
+      "distinct_defect": "Filtering raw-only semantic steps could hide listener, provenance, capture, continuity or cleanup failure; irrelevant semantics could become false pass credit.",
+      "boundary": "Pure typed original-history fixtures and registry result projection; no physical provenance or product closure."
     }
   },
   "audit": {

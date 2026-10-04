@@ -22,6 +22,7 @@ FROZEN_V4_SOURCE_SHA256 = "214342a2f000f2da3c5d656a7edb1e22ebbbbe1cd2a5645ca406d
 
 PROTOCOL = "candidate-client-observer-v5"
 BINDING_PROTOCOL = "candidate-client-execution-v5-compact-v1"
+M4_BINDING_PROTOCOL = "candidate-client-execution-v5-compact-m4-v1"
 # An observer allocation bound, not a product output-size requirement.
 MAX_OBSERVATION_BYTES = 32 * 1024 * 1024
 MAX_JSON_DEPTH = 256
@@ -87,10 +88,14 @@ def _canonical_mapping(value: Mapping[str, Any]) -> bytes:
 
 
 def _validate_binding(binding: dict[str, Any]) -> None:
-    if set(binding) != _BINDING_FIELDS or binding["protocol"] != BINDING_PROTOCOL:
+    m4 = binding.get("protocol") == M4_BINDING_PROTOCOL
+    extra = frozenset({"profile_sha256", "target_definition_sha256"}) if m4 else frozenset()
+    if set(binding) != _BINDING_FIELDS | extra or binding["protocol"] not in (BINDING_PROTOCOL, M4_BINDING_PROTOCOL):
         raise ObservationUnavailable("execution binding field/protocol mismatch")
-    if any(not _digest(binding[key]) for key in _DIGEST_FIELDS):
+    if any(not _digest(binding[key]) for key in _DIGEST_FIELDS | extra):
         raise ObservationUnavailable("missing exact digest binding")
+    if binding["milestone"] != ("M4" if m4 else "M1"):
+        raise ObservationUnavailable("explicit execution milestone/protocol mismatch")
     if any(not _digest(binding[key], 40) for key in ("commit_oid", "tree_oid")):
         raise ObservationUnavailable("missing Git identity")
     if any(not _identifier(binding[key]) for key in ("execution_id", "milestone", "case_id", "step_id")):

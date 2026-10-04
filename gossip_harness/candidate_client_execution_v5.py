@@ -36,6 +36,7 @@ from . import candidate_checkpoint_head_v1 as checkpoint_head
 from . import candidate_execution_journal_v1 as execution_journal
 from . import candidate_emergency_cleanup_v1 as emergency_cleanup
 from . import candidate_retention_process_v1 as retention_process
+from . import cumulative_observation_profile_v1 as cumulative
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
 from .gitstore import GitStore
 from .sandbox import DockerValidator
@@ -43,6 +44,7 @@ from .sandbox import DockerValidator
 FROZEN_V4_SOURCE_SHA256 = "6c3f0b552cc5ab641e30853b7176ba566aa2971ac638263cfe44c0ba2ba787e1"
 
 PROTOCOL = "candidate-client-execution-v5-compact-v1"
+M4_PROTOCOL = "candidate-client-execution-v5-compact-m4-v1"
 SNAPSHOT_PROTOCOL = "docker-owned-finite-cli-tmpfs-keeper-v1"
 VOLUME_OPTIONS = {"type": "tmpfs", "device": "tmpfs", "o": "size=32m,mode=1777,nosuid,nodev,noexec"}
 MAX_FIXTURE_FILES = 1024
@@ -102,7 +104,7 @@ def evaluator_sources() -> dict[str, str]:
              "candidate_release_execution_v2.py", "candidate_release_observer_v2.py", "sandbox.py", "gitstore.py",
              "candidate_checkpoint_chain_v1.py", "candidate_checkpoint_head_v1.py",
              "candidate_execution_journal_v1.py", "candidate_emergency_cleanup_v1.py", "candidate_http_journal_v3.py",
-             "candidate_retention_process_v1.py")
+             "candidate_retention_process_v1.py", "cumulative_observation_profile_v1.py")
     result = {name: sha256(Path(__file__).with_name(name).read_bytes()) for name in names}
     for plan in (COMPATIBILITY_PLAN, MOUNT_INVENTORY_PLAN, EMPTY_COMMAND_PLAN):
         result[plan] = sha256((Path(__file__).resolve().parents[1] / plan).read_bytes())
@@ -234,16 +236,23 @@ class ClientBinding:
     limits_sha256: str
     seed_sha256: str
     protocol: str = PROTOCOL
+    profile_sha256: str | None = None
+    target_definition_sha256: str | None = None
 
     def __post_init__(self) -> None:
         for key, value in asdict(self).items():
-            if key.endswith("_sha256"):
+            if key.endswith("_sha256") and not (key in ("profile_sha256", "target_definition_sha256") and value is None):
                 require(type(value) is str and _SHA.fullmatch(value) is not None, "Invalid binding digest")
         require(self.requirements_sha256 in SUPPORTED_REQUIREMENTS_SHA256, "Unrecognized frozen product requirements identity")
-        require(self.protocol == PROTOCOL and self.purpose in registry.PURPOSES,
+        require(self.protocol in (PROTOCOL, M4_PROTOCOL) and self.purpose in registry.PURPOSES,
                 "A prospectively registered product purpose is required")
-        require(self.milestone == "M1" and type(self.case_id) is str and _ID.fullmatch(self.case_id) is not None,
-                "Only declared M1 finite CLI cases are supported")
+        require(type(self.case_id) is str and _ID.fullmatch(self.case_id) is not None,
+                "A declared finite CLI case is required")
+        require((self.protocol == PROTOCOL and self.milestone == "M1"
+                 and self.profile_sha256 is None and self.target_definition_sha256 is None)
+                or (self.protocol == M4_PROTOCOL and self.milestone == cumulative.TARGET_MILESTONE
+                    and self.profile_sha256 is not None and self.target_definition_sha256 is not None),
+                "Explicit matching milestone, protocol and profile identities required")
 
 
 @dataclass(frozen=True)
@@ -289,9 +298,58 @@ def runtime_identity(endpoint: Any, image_id: str, *, timeout_seconds: int = 15)
     return process_transport.runtime_identity(endpoint, image_id, timeout_seconds=timeout_seconds)
 
 
+def checked_cumulative_profile(value: cumulative.CumulativeProfile, *, case_id: str,
+                               purpose: str) -> cumulative.CumulativeProfile:
+    """Validate declaration identity; independently authenticated review remains external."""
+    require(type(value) is cumulative.CumulativeProfile and value.family == "cli"
+            and value.case_id == case_id and value.purpose == purpose,
+            "Exact prospective CLI profile, history and purpose required")
+    cumulative.assert_profile_current(value)
+    target = value.target_definition()
+    require(value.record()["target_contract_sha256"] == cumulative.TARGET_CONTRACT_SHA256
+            and target["target_milestone"] == "M4" and target["profile_sha256"] == value.sha256
+            and target["requires_versioned_comparator"] is False,
+            "Unrecognized CLI target definition")
+    return value
+
+
+def profile_for_binding(binding: ClientBinding) -> cumulative.CumulativeProfile | None:
+    if binding.protocol == PROTOCOL:
+        require(binding.milestone == "M1" and binding.profile_sha256 is None
+                and binding.target_definition_sha256 is None, "M1 binding has cumulative identities")
+        return None
+    value = checked_cumulative_profile(cumulative.cli_profile(binding.case_id, purpose=binding.purpose),
+                                       case_id=binding.case_id, purpose=binding.purpose)
+    require(binding.protocol == M4_PROTOCOL and binding.milestone == "M4"
+            and binding.requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256
+            and binding.profile_sha256 == value.sha256
+            and binding.target_definition_sha256 == digest(value.target_definition()),
+            "Registered cumulative profile or target changed")
+    return value
+
+
+def bound_profile_sha256(binding: ClientBinding) -> str:
+    value = profile_for_binding(binding)
+    return cases.profile_sha256() if value is None else value.sha256
+
+
+def bound_definition_sources(value: cumulative.CumulativeProfile | None) -> dict[str, str]:
+    return cases.definition_sources() if value is None else cumulative.definition_sources()
+
+
 def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, runtime: dict[str, Any], *,
-                requirements_sha256: str, milestone: str = "M1", purpose: str = "public_release") -> ClientBinding:
+                requirements_sha256: str, milestone: str = "M1", purpose: str = "public_release",
+                cumulative_profile: cumulative.CumulativeProfile | None = None) -> ClientBinding:
+    if cumulative_profile is None:
+        require(milestone == "M1", "M4 requires an explicit prospective cumulative profile")
+    else:
+        checked_cumulative_profile(cumulative_profile, case_id=case_id, purpose=purpose)
+        require(milestone == "M4" and requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256,
+                "Cumulative profile requires its exact M4 target contract")
     recipe, fixture_files = recipe_for(case_id)
+    target = None if cumulative_profile is None else cumulative_profile.target_definition()
+    if target is not None:
+        require(target["definition"]["recipe"] == recipe, "Complete M4 CLI recipe differs")
     environment = {"docker_cli_environment_sha256": digest(DockerValidator._environment()), "runtime": runtime,
         "host_python": [platform.python_implementation(), platform.python_version()],
         "candidate_profile": "fresh-finite-main-process-no-init-no-network-readonly-unprivileged",
@@ -308,12 +366,21 @@ def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, run
         "start_response_policy": start_response_policy_binding(),
         "keeper_lifetime_seconds": keeper_lifetime_seconds(recipe, policy),
         "keeper_command": keeper_command(recipe, policy), "keeper_volume_readonly": True}
-    return ClientBinding(source_sha256(files), requirements_sha256, milestone, purpose, case_id,
-        digest({"definitions": cases.definition_sha256(), "definition_sources": cases.definition_sources(),
+    definition: dict[str, Any] = {"definitions": cases.definition_sha256(), "definition_sources": cases.definition_sources(),
                 "case": cases.case_definition(case_id), "recipe": recipe,
-                "fixture_sha256": fixture_sha256(recipe, fixture_files)}),
-        ordered_suite_sha256(), digest(evaluator_sources()), digest(runtime), digest(environment), digest(limits),
-        digest({"seed": policy.seed, "semantics": "fixed-input-recipe; no candidate random seed implied"}))
+                "fixture_sha256": fixture_sha256(recipe, fixture_files)}
+    suite = ordered_suite_sha256()
+    if cumulative_profile is not None:
+        definition.update(cumulative_profile=cumulative_profile.record(), target_definition=target)
+        suite = digest({"protocol": M4_PROTOCOL, "complete_original_suite_sha256": suite,
+            "profile_protocol": cumulative.PROTOCOL, "purpose": purpose,
+            "definition_sources": cumulative.definition_sources()})
+    return ClientBinding(source_sha256(files), requirements_sha256, milestone, purpose, case_id,
+        digest(definition), suite, digest(evaluator_sources()), digest(runtime), digest(environment), digest(limits),
+        digest({"seed": policy.seed, "semantics": "fixed-input-recipe; no candidate random seed implied"}),
+        protocol=PROTOCOL if cumulative_profile is None else M4_PROTOCOL,
+        profile_sha256=None if cumulative_profile is None else cumulative_profile.sha256,
+        target_definition_sha256=None if target is None else digest(target))
 
 
 def gate_for(subject: registry.Subject, binding: ClientBinding, *, gate_id: str) -> registry.Gate:
@@ -322,13 +389,14 @@ def gate_for(subject: registry.Subject, binding: ClientBinding, *, gate_id: str)
             and subject.source_sha256 == binding.source_sha256
             and subject.requirements_sha256 == binding.requirements_sha256
             and subject.milestone == binding.milestone, "Product subject differs from CLI execution")
-    ordered_ids = cases.ordered_assertion_ids(binding.case_id)
+    value = profile_for_binding(binding)
+    ordered_ids = cases.ordered_assertion_ids(binding.case_id) if value is None else value.decisive_case_ids
     gate_binding = registry.Binding(subject,
-        digest({"protocol": PROTOCOL, "case_id": binding.case_id,
-                "profile_sha256": cases.profile_sha256(), "definition_sha256": binding.definition_sha256,
+        digest({"protocol": binding.protocol, "case_id": binding.case_id,
+                "profile_sha256": bound_profile_sha256(binding), "definition_sha256": binding.definition_sha256,
                 "client_ordered_suite_sha256": binding.ordered_suite_sha256, "ordered_case_ids": ordered_ids}),
         binding.evaluator_sha256, binding.runtime_sha256, binding.environment_sha256,
-        binding.limits_sha256, binding.seed_sha256, PROTOCOL, binding.purpose)
+        binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose)
     return registry.Gate(gate_id, cases.REQUIREMENT_IDS, ordered_ids, gate_binding)
 
 
@@ -340,7 +408,7 @@ def observation_registration(registration: ClientRegistration) -> admission.Obse
     require(gate == registration.gate, "Registered gate changed")
     return admission.ObservationRegistration(gate, registration.commit_oid, registration.tree_oid,
         registration.repetition_id, registration.cohort_trajectory_ids,
-        registration.binding.definition_sha256, cases.profile_sha256(),
+        registration.binding.definition_sha256, bound_profile_sha256(registration.binding),
         cases.ORIGINAL_DEFINITION_PURPOSE,
         admission.binding_sha256(registration.binding, gate=gate))
 
@@ -379,9 +447,21 @@ class CandidateClientExecution:
     def __init__(self, root: Path, store: GitStore, registration: ClientRegistration, policy: ClientPolicy, *,
                  checkpoint_authority: checkpoint_chain.HeadAuthority, delta_root: Path, cleanup_root: Path,
                  endpoint: Any = None, mode: str = "physical", expected_checkpoint: ControllerCheckpoint | None = None,
-                 admission_authority: admission.ObservationAdmission):
+                 admission_authority: admission.ObservationAdmission,
+                 cumulative_profile: cumulative.CumulativeProfile | None = None):
         require(type(registration) is ClientRegistration and type(policy) is ClientPolicy
                 and mode in ("physical", "fixture"), "Typed immutable registration required")
+        if registration.binding.protocol == M4_PROTOCOL:
+            require(type(cumulative_profile) is cumulative.CumulativeProfile,
+                    "Explicit cumulative CLI profile required at owner admission")
+            assert cumulative_profile is not None
+            require(checked_cumulative_profile(cumulative_profile, case_id=registration.binding.case_id,
+                        purpose=registration.binding.purpose) == profile_for_binding(registration.binding),
+                    "Owner profile differs from registered M4 target")
+        else:
+            require(cumulative_profile is None, "M1 execution cannot adopt a cumulative profile")
+        self.cumulative_profile = cumulative_profile
+        self.protocol = registration.binding.protocol
         self.root = Path(root).absolute()
         self.delta_root, self.cleanup_root = Path(delta_root).absolute(), Path(cleanup_root).absolute()
         require(self.root.resolve() == self.root and not self.root.is_symlink(), "Canonical journal root required")
@@ -419,18 +499,19 @@ class CandidateClientExecution:
             self.runtime = runtime_identity(self.endpoint, policy.image_id, timeout_seconds=policy.transport_timeout_seconds) if mode == "physical" else {"kind": "fixture-no-Docker"}
             self.sources = evaluator_sources()
             require(self.sources == _LOADED_SOURCES, "Loaded evaluator sources changed before registration")
-            self.definition_sources = cases.definition_sources()
+            self.definition_sources = bound_definition_sources(self.cumulative_profile)
             self.tree, self.files = capture_git_source(store, registration.commit_oid)
             require(self.tree == registration.tree_oid and source_sha256(self.files) == registration.binding.source_sha256,
                     "Registered Git source differs")
             self.recipe, self.fixture_files = recipe_for(registration.binding.case_id)
             self.binding = binding_for(self.files, registration.binding.case_id, policy, self.runtime,
                 requirements_sha256=registration.binding.requirements_sha256,
-                milestone=registration.binding.milestone, purpose=registration.binding.purpose)
+                milestone=registration.binding.milestone, purpose=registration.binding.purpose,
+                cumulative_profile=self.cumulative_profile)
             require(self.binding == registration.binding, "Registered evaluator/suite/runtime/environment/limits differ")
             self.observation_registration = observation_registration(registration)
             require(self.admission.registration == self.observation_registration, "Admission belongs to another observation")
-            self.config: dict[str, Any] = {"protocol": PROTOCOL, "mode": mode, "root": str(self.root),
+            self.config: dict[str, Any] = {"protocol": self.protocol, "mode": mode, "root": str(self.root),
                 "delta_root": str(self.delta_root), "cleanup_root": str(self.cleanup_root),
                 "journal_protocol": execution_journal.PROTOCOL, "checkpoint_protocol": checkpoint_chain.PROTOCOL,
                 "checkpoint_limits": asdict(JOURNAL_LIMITS), "cleanup_protocol": emergency_cleanup.PROTOCOL,
@@ -444,11 +525,13 @@ class CandidateClientExecution:
                 "command_validation_policy": command_policy_binding(),
                 "start_response_policy": start_response_policy_binding(),
                 "recipe": self.recipe,
+                "cumulative_profile": None if self.cumulative_profile is None else self.cumulative_profile.record(),
+                "target_definition": None if self.cumulative_profile is None else self.cumulative_profile.target_definition(),
                 "fixture_sha256": fixture_sha256(self.recipe, self.fixture_files),
                 "observation_registration": asdict(self.observation_registration)}
             # The context is independently recomputed. Reopen authenticates the
             # whole chain before any retained config or intent can be decoded.
-            context = {"execution_protocol": PROTOCOL, "config_sha256": digest(self.config),
+            context = {"execution_protocol": self.protocol, "config_sha256": digest(self.config),
                 "registration_sha256": digest(asdict(registration)),
                 "observation_registration_sha256": digest(asdict(self.observation_registration)),
                 "source_sha256": self.binding.source_sha256, "commit_oid": registration.commit_oid,
@@ -530,7 +613,8 @@ class CandidateClientExecution:
 
     def _unchanged(self) -> None:
         self.checkpoint()
-        require(evaluator_sources() == self.sources == _LOADED_SOURCES and cases.definition_sources() == self.definition_sources,
+        require(evaluator_sources() == self.sources == _LOADED_SOURCES
+                and bound_definition_sources(self.cumulative_profile) == self.definition_sources,
                 "Evaluator or normative sources changed")
         require(self.json_authenticated("config.json") == json.loads(encoded(self.config)), "Controller config changed")
         tree, files = capture_git_source(self.store, self.registration.commit_oid)
@@ -538,9 +622,11 @@ class CandidateClientExecution:
         runtime = runtime_identity(self.endpoint, self.policy.image_id, timeout_seconds=self.policy.transport_timeout_seconds) if self.mode == "physical" else {"kind": "fixture-no-Docker"}
         require(runtime == self.runtime and binding_for(self.files, self.binding.case_id, self.policy, runtime,
             requirements_sha256=self.binding.requirements_sha256, milestone=self.binding.milestone,
-            purpose=self.binding.purpose) == self.binding, "Runtime/environment/recipe binding changed")
+            purpose=self.binding.purpose, cumulative_profile=self.cumulative_profile) == self.binding,
+            "Runtime/environment/recipe binding changed")
 
     def _current_admission(self, freeze: registry.CohortFreeze | None) -> None:
+        require(self.cumulative_profile == profile_for_binding(self.binding), "Original target profile changed")
         actual = observation_registration(self.registration)
         require(actual == self.observation_registration, "Original observation registration changed")
         self.admission.check_current(actual, freeze)
@@ -557,7 +643,7 @@ class CandidateClientExecution:
             return self.verified_execution()
         freeze = self.admission.before_intent(observation_registration(self.registration))
         execution_id = "client-" + uuid.uuid4().hex
-        intent = {"protocol": PROTOCOL, "execution_id": execution_id,
+        intent = {"protocol": self.protocol, "execution_id": execution_id,
             "config_sha256": digest(self.config), "registration_sha256": digest(asdict(self.registration)),
             "observation_registration": asdict(self.observation_registration),
             "cohort_freeze": None if freeze is None else asdict(freeze),
@@ -598,7 +684,7 @@ class CandidateClientExecution:
         environment = {key: value for key, value in DockerValidator._environment().items()
                        if key not in ("DOCKER_HOST", "DOCKER_CONTEXT")}
         timeout = self.policy.transport_timeout_seconds if timeout is None else timeout
-        self._retain(label + "-control-intent.json", encoded({"protocol": PROTOCOL, "argv": argv,
+        self._retain(label + "-control-intent.json", encoded({"protocol": self.protocol, "argv": argv,
             "timeout_seconds": timeout, "execution_binding_sha256": digest(asdict(self.binding))}))
         self.checkpoint()
         child = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -1002,19 +1088,20 @@ class CandidateClientExecution:
                     except (ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
                         infrastructure.append("cleanup:" + type(error).__name__ + ":" + str(error)[:512])
         self.checkpoint()
-        self._retain("terminal.json", encoded({"protocol": PROTOCOL, "mode": self.mode,
+        self._retain("terminal.json", encoded({"protocol": self.protocol, "mode": self.mode,
             "intent_sha256": sha256(self.read_authenticated("intent.json")),
             "observation_registration": asdict(self.observation_registration),
             "cohort_freeze": intent["cohort_freeze"], "results": results,
             "cleanup": cleanup, "keeper_cleanup": keeper_clean, "keeper_identity": keeper_identity,
             "volume_cleanup": volume_clean, "infrastructure": infrastructure,
-            "evaluator_sources_after": evaluator_sources(), "definition_sources_after": cases.definition_sources()}))
+            "evaluator_sources_after": evaluator_sources(),
+            "definition_sources_after": bound_definition_sources(self.cumulative_profile)}))
         self.checkpoint()
         self._cleanup_phase = False
 
     def _step_binding(self, intent: dict[str, Any], index: int) -> dict[str, Any]:
         step = self.recipe["steps"][index]
-        return {"protocol": PROTOCOL, "execution_id": intent["execution_id"], "source_sha256": self.binding.source_sha256,
+        value = {"protocol": self.protocol, "execution_id": intent["execution_id"], "source_sha256": self.binding.source_sha256,
             "commit_oid": self.registration.commit_oid, "tree_oid": self.registration.tree_oid,
             "requirements_sha256": self.binding.requirements_sha256, "milestone": self.binding.milestone,
             "purpose": self.binding.purpose, "definition_sha256": self.binding.definition_sha256,
@@ -1024,6 +1111,10 @@ class CandidateClientExecution:
             "fixture_sha256": self.config["fixture_sha256"], "runtime_sha256": self.binding.runtime_sha256,
             "environment_sha256": self.binding.environment_sha256, "limits_sha256": self.binding.limits_sha256,
             "evaluator_sha256": self.binding.evaluator_sha256}
+        if self.cumulative_profile is not None:
+            value.update(profile_sha256=self.binding.profile_sha256,
+                         target_definition_sha256=self.binding.target_definition_sha256)
+        return value
 
     def verified_execution(self) -> ClientHistoryResult:
         self._unchanged()
@@ -1031,11 +1122,11 @@ class CandidateClientExecution:
         intent, terminal = self.json_authenticated("intent.json"), self.json_authenticated("terminal.json")
         freeze = admission.freeze_from_record(intent["cohort_freeze"])
         self._current_admission(freeze)
-        require(intent["protocol"] == PROTOCOL and intent["config_sha256"] == digest(self.config)
+        require(intent["protocol"] == self.protocol and intent["config_sha256"] == digest(self.config)
                 and intent["registration_sha256"] == digest(asdict(self.registration))
                 and intent["observation_registration"] == json.loads(encoded(asdict(self.observation_registration))),
                 "Intent identity differs")
-        require(terminal["protocol"] == PROTOCOL and terminal["mode"] == "physical"
+        require(terminal["protocol"] == self.protocol and terminal["mode"] == "physical"
                 and terminal["intent_sha256"] == sha256(self.read_authenticated("intent.json"))
                 and terminal["evaluator_sources_after"] == self.sources
                 and terminal["definition_sources_after"] == self.definition_sources

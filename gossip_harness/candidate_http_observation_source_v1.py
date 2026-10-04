@@ -15,6 +15,8 @@ from typing import TYPE_CHECKING, Any
 from . import candidate_http_cases_core_v1 as core
 from . import candidate_http_semantics_v1 as semantics
 from . import candidate_http_relations_v1 as relations
+from . import candidate_http_m4_semantics_v1 as m4_semantics
+from . import candidate_http_transport_v1 as wire
 from . import project_acceptance_registry_v1 as registry
 
 if TYPE_CHECKING:
@@ -22,6 +24,7 @@ if TYPE_CHECKING:
     from . import candidate_http_observation_v2 as reader
 
 PROTOCOL = "candidate-http-observation-source-v1-compact-v1"
+M4_PROTOCOL = "candidate-http-observation-source-v1-compact-m4-v1"
 
 
 @dataclass(frozen=True)
@@ -35,6 +38,21 @@ class StepDiagnostic:
     required_facets: tuple[str, ...]
     status: str
     limitations: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class MechanicsDiagnostic:
+    case_id: str
+    facets: tuple[semantics.Facet, ...]
+    required_facets: tuple[str, ...]
+    status: str
+
+
+@dataclass(frozen=True)
+class HttpOutcomeProjection:
+    diagnostics: tuple[StepDiagnostic, ...]
+    decisive_outcomes: tuple[registry.CaseResult, ...]
+    mechanics_guard: MechanicsDiagnostic | None
 
 
 def _missing() -> semantics.ResponseFacts:
@@ -82,6 +100,24 @@ def _status(facets: tuple[semantics.Facet, ...], required: tuple[str, ...], stat
     return "passed" if required else "skipped"
 
 
+def _mechanics(actual: reader.StepObservation) -> tuple[semantics.Facet, ...]:
+    """Value diagnostics only; the concrete reader supplies temporal authority."""
+    known = actual.state == "authenticated"
+    captured = known
+    if actual.kind == "probe":
+        observed = actual.wire_observation
+        captured = known and type(observed) is wire.WireObservation and observed.sent_complete \
+            and observed.exchange_complete and observed.response.headers_complete \
+            and observed.response.framing_complete and observed.response.body_complete
+    elif actual.kind == "cli":
+        captured = known and type(actual.stdout) is bytes and type(actual.stderr) is bytes \
+            and type(actual.exit_code) is int
+    return (_facet("mechanics_provenance_continuity", "pass" if known else "unavailable",
+                   "original owner and reader must authenticate the complete step and its continuity"),
+            _facet("mechanics_capture", "pass" if captured and not actual.limitations else "unavailable",
+                   "complete original lifecycle, finite streams, or complete intended request exchange"))
+
+
 def diagnose(profile: execution.HttpProductProfile, history: reader.HistoryObservation) -> tuple[StepDiagnostic, ...]:
     """Pure supplied-value comparison only; callers cannot use this as authority."""
     from . import candidate_http_execution_v4 as execution
@@ -94,6 +130,7 @@ def diagnose(profile: execution.HttpProductProfile, history: reader.HistoryObser
     execution.require(len(observed) == len(expected), "Repeated original step")
     results: list[StepDiagnostic] = []
     prior: dict[str, dict[str, semantics.Facet]] = {}
+    comparator = None if profile.cumulative_profile is None else m4_semantics.HttpM4Comparator(profile.cumulative_profile)
     for index, (step, actual) in enumerate(zip(expected, history.steps, strict=True)):
         execution.require((actual.step_id, actual.step_index, "request" if actual.kind == "probe" else actual.kind) == (step.step_id, index, step.kind)
                           and actual.state in ("authenticated", "unavailable", "unentered"),
@@ -130,8 +167,13 @@ def diagnose(profile: execution.HttpProductProfile, history: reader.HistoryObser
             facts = actual.facts if actual.state == "authenticated" and actual.facts is not None else _missing()
             if expectation.raw_facts_only:
                 rows.append(_facet("raw_facts", "unspecified", "no product expectation is declared for this request"))
+                if comparator is not None:
+                    rows.extend((semantics.listener("listener_before", facts.listener_before),
+                                 semantics.listener("listener_after", facts.listener_after)))
+                    required.extend(("listener_before", "listener_after"))
             elif expectation.semantic is not None:
-                rows.extend(semantics.compare(facts, expectation.semantic).facets)
+                rows.extend((semantics.compare(facts, expectation.semantic) if comparator is None
+                             else comparator.compare(index, facts)).facets)
                 required.extend(_semantic_required(expectation.semantic))
             else:
                 relation = _relation(expectation.relation_json)
@@ -168,12 +210,54 @@ def diagnose(profile: execution.HttpProductProfile, history: reader.HistoryObser
                                         item.citations)
                     if item.name == "body_shape_value" and item.disposition != "unspecified" else item
                     for item in rows]
+        if comparator is not None:
+            mechanical = _mechanics(actual)
+            rows.extend(mechanical)
+            required.extend(item.name for item in mechanical)
         facets = tuple(rows)
         prior[step.step_id] = {item.name: item for item in facets}
         names = tuple(required)
-        results.append(StepDiagnostic(profile.ordered_case_ids[index], step.step_id, index, step.kind,
+        results.append(StepDiagnostic(profile.diagnostic_case_ids[index], step.step_id, index, step.kind,
             actual.state, facets, names, _status(facets, names, actual.state), actual.limitations))
+    if comparator is not None:
+        comparator.check_current()
     return tuple(results)
+
+
+def project_outcomes(profile: execution.HttpProductProfile, history: reader.HistoryObservation) -> HttpOutcomeProjection:
+    """Retain every diagnostic; M4 adds a declared whole-history mechanics case.
+
+    Raw-only status/body bytes remain diagnostic. Their listener, provenance and
+    capture evidence participates in the mechanics guard without semantic credit.
+    This pure projection does not admit supplied values as physical evidence.
+    """
+    from . import candidate_http_execution_v4 as execution
+    diagnostics = diagnose(profile, history)
+    if profile.cumulative_profile is None:
+        return HttpOutcomeProjection(diagnostics,
+            tuple(registry.CaseResult(item.case_id, item.status) for item in diagnostics), None)
+    profile.check_current()
+    facets = []
+    for item in diagnostics:
+        for facet in item.facets:
+            if facet.name.startswith("mechanics_") or facet.name in ("listener_before", "listener_after"):
+                facets.append(semantics.Facet(item.case_id + ":" + facet.name,
+                    facet.disposition, facet.reason, facet.citations))
+    for name, known, reason in (
+        ("complete_step_census", not history.missing_step_ids, "all original steps must complete"),
+        ("complete_cleanup", history.cleanup_verified, "all original owned resources must have authenticated retirement"),
+        ("complete_infrastructure", not history.infrastructure, "no unresolved original infrastructure observation")):
+        facets.append(_facet(name, "pass" if known else "unavailable", reason))
+    complete = tuple(facets)
+    required = tuple(item.name for item in complete)
+    guard = MechanicsDiagnostic(profile.mechanics_case_id, complete, required,
+        _status(complete, required, "authenticated"))
+    normative = set(profile.cumulative_profile.decisive_case_ids)
+    outcomes = tuple(registry.CaseResult(item.case_id, item.status) for item in diagnostics if item.case_id in normative) \
+        + (registry.CaseResult(guard.case_id, guard.status),)
+    execution.require(tuple(item.case_id for item in outcomes) == profile.ordered_case_ids,
+                      "Exact M4 normative and mechanics roster required")
+    return HttpOutcomeProjection(diagnostics, outcomes, guard)
 
 
 class HttpObservationSource:
@@ -223,15 +307,19 @@ class HttpObservationSource:
         execution.require(execution.evaluator_sources() == owner.sources == execution._LOADED_SOURCES,
                           "Loaded semantic evaluator changed before comparison")
         admission.verify_loaded_sources(owner.sources)
-        diagnostics = diagnose(owner.profile, history)
+        owner.profile.check_current(purpose=gate.binding.purpose,
+                                    requirements_sha256=gate.binding.subject.requirements_sha256)
+        projection = project_outcomes(owner.profile, history)
+        diagnostics = projection.diagnostics
         admission.verify_loaded_sources(owner.sources)
-        outcomes = tuple(registry.CaseResult(item.case_id, item.status) for item in diagnostics)
+        outcomes = projection.decisive_outcomes
         execution.require(tuple(item.case_id for item in outcomes) == gate.ordered_case_ids,
                           "Normalized outcome roster differs")
         execution.require(owner.checkpoint() == self.checkpoint and owner._freeze() == freeze
                           and execution.evaluator_sources() == owner.sources == execution._LOADED_SOURCES,
                           "Original evidence, loaded evaluator or admission changed during semantic verification")
-        record = {"protocol": PROTOCOL, "original_registration": asdict(owner.actual_registration),
+        record = {"protocol": PROTOCOL if owner.profile.cumulative_profile is None else M4_PROTOCOL,
+            "original_registration": asdict(owner.actual_registration),
             "original_execution_id": history.execution_id, "original_terminal_sha256": history.terminal_sha256,
             "original_binding_sha256": history.original_binding_sha256,
             "original_journal_context_sha256": self.checkpoint.context_sha256,
@@ -239,6 +327,8 @@ class HttpObservationSource:
             "original_journal": str(owner.root), "product_profile": owner.profile.record(),
             "cohort_freeze": None if freeze is None else asdict(freeze),
             "diagnostics": [asdict(item) for item in diagnostics],
+            "decisive_outcomes": [asdict(item) for item in outcomes],
+            "mechanics_guard": None if projection.mechanics_guard is None else asdict(projection.mechanics_guard),
             "raw_provenance": [{"step_id": item.step_id, "provenance": item.provenance} for item in history.steps],
             "cleanup_verified": history.cleanup_verified, "infrastructure": history.infrastructure,
             "missing_step_ids": history.missing_step_ids,

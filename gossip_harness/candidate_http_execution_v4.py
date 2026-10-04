@@ -34,11 +34,14 @@ from . import candidate_checkpoint_head_v1 as head
 from . import candidate_execution_journal_v1 as owner_journal
 from . import candidate_emergency_cleanup_v1 as emergency
 from . import candidate_retention_process_v1 as retained_process
+from . import cumulative_observation_profile_v1 as cumulative
+from . import candidate_http_m4_semantics_v1 as m4_semantics
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
 PROTOCOL = "candidate-http-execution-v4-compact-v1"
+M4_PROTOCOL = "candidate-http-execution-v4-compact-m4-v1"
 ROLE_POLICY = "candidate-http-distinct-server-keeper-probe-cli-v4"
 SNAPSHOT_PROTOCOL = "docker-owned-http-epochs-tmpfs-keeper-v4"
 VOLUME_OPTIONS = dict(finite.VOLUME_OPTIONS)
@@ -87,6 +90,7 @@ def evaluator_sources() -> dict[str, str]:
                "candidate_checkpoint_chain_v1.py", "candidate_checkpoint_head_v1.py",
                "candidate_execution_journal_v1.py", "candidate_emergency_cleanup_v1.py",
                "candidate_retention_process_v1.py",
+               "cumulative_observation_profile_v1.py", "candidate_http_m4_semantics_v1.py",
                "candidate_http_cases_core_v1.py", "candidate_http_cases_v1.py",
                "candidate_http_cases_actions_v1.py", "candidate_http_cases_documents_v1.py",
                "candidate_http_cases_intake_v1.py", "candidate_http_cases_paths_v1.py",
@@ -359,6 +363,8 @@ def recipe_from_case(case: core.LiteralCase) -> HttpRecipe:
 
 
 PROFILE_PROTOCOL = "candidate-http-product-profile-v1"
+M4_PROFILE_PROTOCOL = "candidate-http-product-profile-m4-v1"
+MECHANICS_GUARD_PROTOCOL = "candidate-http-complete-history-mechanics-v1"
 
 
 @dataclass(frozen=True)
@@ -370,6 +376,7 @@ class HttpProductProfile:
     """
     case: core.LiteralCase
     original_definition_purpose: str
+    cumulative_profile: cumulative.CumulativeProfile | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is core.LiteralCase, "Complete typed literal case required")
@@ -377,19 +384,67 @@ class HttpProductProfile:
                 "Original definition purpose must be disclosed")
         require(len(self.case.steps) <= MAX_STEPS, "Case exceeds this executor's declared allocation")
         recipe_from_case(self.case)
+        self.check_current()
+
+    def check_current(self, *, purpose: str | None = None, requirements_sha256: str | None = None) -> None:
+        if self.cumulative_profile is None:
+            return
+        target = self.cumulative_profile
+        require(type(target) is cumulative.CumulativeProfile and target.family == "http",
+                "Exact cumulative HTTP applicability profile required")
+        cumulative.assert_profile_current(target)
+        record = target.record()
+        require(self.original_definition_purpose == cumulative.ORIGINAL_DEFINITION_PURPOSE
+                and target.case_id == self.case.row_id and record["original_definition"] == self.case.record()
+                and record["target_milestone"] == cumulative.TARGET_MILESTONE
+                and record["target_contract_sha256"] == cumulative.TARGET_CONTRACT_SHA256,
+                "Cumulative profile must bind the unchanged complete original history and exact M4 target")
+        require(purpose is None or purpose == target.purpose, "Cumulative HTTP purpose differs")
+        require(requirements_sha256 is None or requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256,
+                "Cumulative HTTP target requirements differ")
 
     @property
-    def ordered_case_ids(self) -> tuple[str, ...]:
+    def milestone(self) -> str:
+        return "M1" if self.cumulative_profile is None else cumulative.TARGET_MILESTONE
+
+    @property
+    def execution_protocol(self) -> str:
+        return PROTOCOL if self.cumulative_profile is None else M4_PROTOCOL
+
+    @property
+    def diagnostic_case_ids(self) -> tuple[str, ...]:
         prefix = "http-" + sha256(self.case.row_id.encode())[:16]
         return tuple(prefix + "-" + str(index).zfill(3) for index in range(len(self.case.steps)))
 
+    @property
+    def mechanics_case_id(self) -> str:
+        return "http-" + sha256(self.case.row_id.encode())[:16] + "-mechanics"
+
+    @property
+    def ordered_case_ids(self) -> tuple[str, ...]:
+        if self.cumulative_profile is None:
+            return self.diagnostic_case_ids
+        return (*self.cumulative_profile.decisive_case_ids, self.mechanics_case_id)
+
     def record(self) -> dict[str, Any]:
-        return {"protocol": PROFILE_PROTOCOL, "definition": self.case.record(),
+        value: dict[str, Any] = {"protocol": PROFILE_PROTOCOL, "definition": self.case.record(),
             "original_definition_purpose": self.original_definition_purpose,
             "held_out_claim": False, "ordered_case_ids": list(self.ordered_case_ids),
             "aggregation": "all-required-facets-pass;known-failure-dominates-unavailable;unentered-is-infrastructure",
             "diagnostic_limits": ["explicitly-unspecified-facets-do-not-prove-product-obligations",
                 "CLI-public-state-has-no-wrapper-adapter", "mechanics-corpus-is-not-independent-heldout"]}
+        if self.cumulative_profile is not None:
+            value.update(protocol=M4_PROFILE_PROTOCOL, cumulative_profile=self.cumulative_profile.record(),
+                cumulative_profile_sha256=self.cumulative_profile.sha256,
+                target_definition_sha256=cumulative.digest(self.cumulative_profile.target_definition()),
+                target_milestone=self.milestone, semantic_comparator_protocol=m4_semantics.PROTOCOL,
+                diagnostic_case_ids=list(self.diagnostic_case_ids),
+                mechanics_guard={"protocol": MECHANICS_GUARD_PROTOCOL, "case_id": self.mechanics_case_id,
+                    "scope": "Every original step: provenance, capture, continuity, listeners and complete cleanup",
+                    "aggregation": "known-mechanical-failure-dominates-unavailable;all-required-mechanics-proven",
+                    "semantic_credit": False, "raw_only_body_status_credit": False},
+                remaining_coverage=list(cumulative.REMAINING_COVERAGE), whole_project_acceptance=False)
+        return value
 
     @property
     def sha256(self) -> str:
@@ -414,14 +469,23 @@ class HttpBinding:
     purpose: str = "public_release"
     milestone: str = "M1"
     protocol: str = PROTOCOL
+    cumulative_profile_sha256: str | None = None
+    target_definition_sha256: str | None = None
 
     def __post_init__(self) -> None:
         for key, value in asdict(self).items():
             if key.endswith("_sha256"):
+                if key in ("cumulative_profile_sha256", "target_definition_sha256") and value is None:
+                    continue
                 require(type(value) is str and _SHA.fullmatch(value) is not None, "Invalid HTTP binding digest")
-        require(self.requirements_sha256 in finite.SUPPORTED_REQUIREMENTS_SHA256
-                and self.purpose in registry.PURPOSES and self.milestone == "M1"
-                and self.protocol == PROTOCOL, "Only prospectively admitted M1 product observations are authorized")
+        require(self.requirements_sha256 in finite.SUPPORTED_REQUIREMENTS_SHA256 and self.purpose in registry.PURPOSES,
+                "Only prospectively admitted product observations are authorized")
+        require((self.milestone == "M1" and self.protocol == PROTOCOL
+                 and self.cumulative_profile_sha256 is None and self.target_definition_sha256 is None)
+                or (self.milestone == cumulative.TARGET_MILESTONE and self.protocol == M4_PROTOCOL
+                    and self.requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256
+                    and self.cumulative_profile_sha256 is not None and self.target_definition_sha256 is not None),
+                "Exact versioned M1 or prospective cumulative M4 binding required")
 
 
 @dataclass(frozen=True)
@@ -445,6 +509,7 @@ def binding_for(files: dict[str, bytes], recipe: HttpRecipe, policy: HttpPolicy,
     require(type(profile) is HttpProductProfile and recipe == recipe_from_case(profile.case),
             "The exact whole literal case must bind the acceptance profile")
     require(type(recipe) is HttpRecipe and type(policy) is HttpPolicy, "Typed recipe and policy required")
+    profile.check_current(purpose=purpose, requirements_sha256=requirements_sha256)
     assert recipe.input_entries is not None
     for step in recipe.steps:
         if step.kind == "probe":
@@ -455,7 +520,10 @@ def binding_for(files: dict[str, bytes], recipe: HttpRecipe, policy: HttpPolicy,
         digest({"environment": DockerValidator._environment(), "roles": ROLE_POLICY,
                 "volume_options": VOLUME_OPTIONS, "probe_argv": PROBE_ARGV}), digest({"policy": asdict(policy), "quota": quota_policy()}),
         digest({"seed": policy.seed, "meaning": "fixed fixture; no candidate random seed implied"}),
-        digest(role_policy_definition()), sha256(Path(__file__).read_bytes()), profile.sha256, purpose)
+        digest(role_policy_definition()), sha256(Path(__file__).read_bytes()), profile.sha256, purpose,
+        milestone=profile.milestone, protocol=profile.execution_protocol,
+        cumulative_profile_sha256=None if profile.cumulative_profile is None else profile.cumulative_profile.sha256,
+        target_definition_sha256=None if profile.cumulative_profile is None else cumulative.digest(profile.cumulative_profile.target_definition()))
 
 
 def observation_registration_for(binding: HttpBinding, profile: HttpProductProfile,
@@ -465,13 +533,21 @@ def observation_registration_for(binding: HttpBinding, profile: HttpProductProfi
     require(type(binding) is HttpBinding and type(profile) is HttpProductProfile
             and type(subject) is registry.Subject and binding.profile_sha256 == profile.sha256,
             "Exact product execution and profile required")
+    profile.check_current(purpose=binding.purpose, requirements_sha256=binding.requirements_sha256)
+    require(binding.milestone == profile.milestone and binding.protocol == profile.execution_protocol
+            and binding.cumulative_profile_sha256 == (None if profile.cumulative_profile is None else profile.cumulative_profile.sha256)
+            and binding.target_definition_sha256 == (None if profile.cumulative_profile is None else cumulative.digest(profile.cumulative_profile.target_definition())),
+            "HTTP binding must consume the exact declared target profile")
+    if profile.cumulative_profile is not None:
+        require(subject.milestone == binding.milestone and subject.requirements_sha256 == binding.requirements_sha256
+                and subject.source_sha256 == binding.source_sha256, "Exact prospective M4 subject required")
     actual_subject = replace(subject, source_sha256=binding.source_sha256,
         requirements_sha256=binding.requirements_sha256, milestone=binding.milestone)
     gate_binding = registry.Binding(actual_subject,
         digest({"profile": profile.record(), "recipe_sha256": binding.recipe_sha256}),
         binding.evaluator_sha256, policy.image_id.removeprefix("sha256:"),
         digest({"environment_sha256": binding.environment_sha256, "runtime_sha256": binding.runtime_sha256}),
-        binding.limits_sha256, binding.seed_sha256, PROTOCOL, binding.purpose)
+        binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose)
     gate = registry.Gate(gate_id, (*profile.case.requirement_ids, *profile.case.interaction_ids),
         profile.ordered_case_ids, gate_binding)
     return admission.ObservationRegistration(gate, commit_oid, tree_oid, repetition_id,
@@ -758,7 +834,8 @@ class HttpHistoryResult:
 
 def run_probe(endpoint: engine.EngineEndpoint, *, expected: dict[str, Any], spec: RoleSpec,
               policy: HttpPolicy, runtime: dict[str, Any], retain: Callable[[str, bytes], None],
-              label: str, donor: ProbeDonorEvidence, history_deadline: float | None = None) -> dict[str, Any]:
+              label: str, donor: ProbeDonorEvidence, history_deadline: float | None = None,
+              execution_protocol: str = PROTOCOL) -> dict[str, Any]:
     """A distinct finite trusted role, authenticated by raw Engine attach/wait/inspect."""
     def bounded(seconds: float) -> float:
         deadline = time.monotonic() + seconds
@@ -767,6 +844,7 @@ def run_probe(endpoint: engine.EngineEndpoint, *, expected: dict[str, Any], spec
         require(deadline > time.monotonic(), "History observation deadline exhausted")
         return deadline
     require(spec.role == "probe", "Only the fixed probe has finite completion authority")
+    require(execution_protocol in (PROTOCOL, M4_PROTOCOL), "Closed HTTP execution protocol required")
     validate_role(expected, spec, policy.image_id, runtime)
     validate_state(expected, "created")
     require(type(donor) is ProbeDonorEvidence, "Typed precreation donor required")
@@ -824,7 +902,7 @@ def run_probe(endpoint: engine.EngineEndpoint, *, expected: dict[str, Any], spec
     status = "completion_unproven"
     error_text: str | None = None
     try:
-        save("intent.json", encoded({"protocol": PROTOCOL, "role": asdict(spec), "expected": digest(expected),
+        save("intent.json", encoded({"protocol": execution_protocol, "role": asdict(spec), "expected": digest(expected),
             "runtime": runtime, "policy": asdict(policy), "role_policy": role_policy_identity(),
             "donor": donor.record(), "helper_stdout_envelope": limit,
             "helper_sha256": wire.helper_sha256()}))
@@ -895,7 +973,7 @@ def run_probe(endpoint: engine.EngineEndpoint, *, expected: dict[str, Any], spec
                 save("attach-response.bin", bytes(raw_wire.raw))
             finally:
                 raw_wire.close()
-    result: dict[str, Any] = {"protocol": PROTOCOL, "role": "probe", "status": status, "error": error_text,
+    result: dict[str, Any] = {"protocol": execution_protocol, "role": "probe", "status": status, "error": error_text,
         "container_id": expected["Id"], "start_response": start_response,
         "role_policy": role_policy_identity(), "donor": donor.record(),
         "completion": engine.completion_evidence(waited, final, started=started, killed=False,
@@ -977,7 +1055,7 @@ class CandidateHttpExecution:
             require(self.actual_registration == registration.observation == self.admission.registration,
                     "Actual product gate differs from prospective admission")
             self.retained_freeze = self.admission.before_intent(self.actual_registration)
-            self.config = {"protocol": PROTOCOL, "mode": mode, "root": str(self.root),
+            self.config = {"protocol": self.binding.protocol, "mode": mode, "root": str(self.root),
                 "checkpoint_protocol": compact.PROTOCOL, "owner_journal_protocol": owner_journal.PROTOCOL,
                 "retention_process_protocol": retained_process.PROTOCOL,
                 "delta_root": str(self.delta_root), "cleanup_root": str(self.cleanup_root),
@@ -992,7 +1070,7 @@ class CandidateHttpExecution:
             # Context contains prospective declarations, never an unauthenticated
             # config read or a self-referential config digest/current head.
             self.journal = owner_journal.OwnerJournal(self.root, self.delta_root,
-                context={"protocol": PROTOCOL, "mode": mode,
+                context={"protocol": self.binding.protocol, "mode": mode,
                     "config_sha256": digest(self.config),
                     "registration_sha256": digest(asdict(registration)),
                     "cohort_freeze_sha256": digest(self.config["cohort_freeze"]),
@@ -1054,7 +1132,7 @@ class CandidateHttpExecution:
             return self.verified_execution()
         self.admission.check_current(self._registration(), self.retained_freeze)
         execution_id = "http-" + uuid.uuid4().hex
-        intent = {"protocol": PROTOCOL, "execution_id": execution_id, "role_policy": role_policy_identity(),
+        intent = {"protocol": self.binding.protocol, "execution_id": execution_id, "role_policy": role_policy_identity(),
             "config_sha256": digest(self.config), "registration_sha256": digest(asdict(self.registration)),
             "observation_registration": asdict(self.actual_registration),
             "cohort_freeze": None if self.retained_freeze is None else asdict(self.retained_freeze),
@@ -1626,7 +1704,8 @@ class CandidateHttpExecution:
                         probe_attempts.append({"step_index": index, "label": label, "container_id": probe_created["Id"],
                             "artifact_prefix": label + "-probe-", "meaning": "probe transport invoked; start/send not inferred"})
                         process_result = run_probe(self.endpoint, expected=probe_created, spec=probe_spec, policy=self.policy,
-                            runtime=self.runtime, retain=self._retain, label=label + "-probe", donor=donor, history_deadline=self._work_deadline)
+                            runtime=self.runtime, retain=self._retain, label=label + "-probe", donor=donor,
+                            history_deadline=self._work_deadline, execution_protocol=self.binding.protocol)
                         self.checkpoint()
                         row["process"] = process_result
                         # Retain the request observation even if server continuity or helper completion subsequently fails.
@@ -1715,7 +1794,7 @@ class CandidateHttpExecution:
         if original_error is not None and not isinstance(original_error, (OSError, ValueError, subprocess.SubprocessError)):
             raise original_error
         self.checkpoint()
-        self._retain("terminal.json", encoded({"protocol": PROTOCOL, "mode": self.mode,
+        self._retain("terminal.json", encoded({"protocol": self.binding.protocol, "mode": self.mode,
             "observation_registration": asdict(self.actual_registration),
             "cohort_freeze": None if self.retained_freeze is None else asdict(self.retained_freeze),
             "role_policy": role_policy_identity(),
@@ -1755,10 +1834,10 @@ class CandidateHttpExecution:
             require(record.get("observation_registration") == json.loads(encoded(asdict(self.actual_registration)))
                     and record.get("cohort_freeze") == (None if self.retained_freeze is None else json.loads(encoded(asdict(self.retained_freeze)))),
                     "Retained admission or cohort barrier changed")
-        require(intent["protocol"] == PROTOCOL and intent["config_sha256"] == digest(self.config)
+        require(intent["protocol"] == self.binding.protocol and intent["config_sha256"] == digest(self.config)
                 and intent["registration_sha256"] == digest(asdict(self.registration))
                 and intent["role_policy"] == role_policy_identity(), "HTTP intent identity differs")
-        require(terminal["protocol"] == PROTOCOL and terminal["mode"] == "physical"
+        require(terminal["protocol"] == self.binding.protocol and terminal["mode"] == "physical"
                 and terminal["intent_sha256"] == sha256(self.read_authenticated("intent.json"))
                 and terminal["evaluator_sources_after"] == self.sources
                 and terminal["role_policy"] == role_policy_identity()

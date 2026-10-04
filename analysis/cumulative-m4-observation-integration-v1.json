@@ -1,0 +1,283 @@
+{
+  "base_commit": "0398edece9c609fc96f2efc1811da34772ba9eb3",
+  "changed_source_and_configuration_sha256": {
+    "gossip_harness/candidate_client_execution_v5.py": "affcb8de4f9ac9e10f0f6ff5edd831ed4253ed0cbb54b663600de16b8ed7a116",
+    "gossip_harness/candidate_client_observation_source_v1.py": "86030a61caac02a70309d4ca11484e1b114114d5d0b5d171451e71c7b4fcf59e",
+    "gossip_harness/candidate_client_observer_v5.py": "4a093ee9c6b3a87cc92966d059bba6678a340f0d1234101cddaa25e1a23c05db",
+    "gossip_harness/candidate_http_execution_v4.py": "0e99667b6684c8f45898ad40cabd74dd67a88ed398bd96c6b6cce66f89b24dce",
+    "gossip_harness/candidate_http_m4_semantics_v1.py": "f707fca27a8825b4bbbbc53ef6f1bd1f3bfd47e7a2834f40038d8672370b5f5c",
+    "gossip_harness/candidate_http_observation_source_v1.py": "b5fee1fd339c406daf4558977a620b7afc7ed825dd55ca0eb7154a922353e56e",
+    "gossip_harness/candidate_http_observation_v2.py": "ad46852392254b2f0546688ef7ff21cf360c289d8b66ce3aa68dad4aef3c6172",
+    "pyproject.toml": "ac240deba0ccbd1886e5d172d789ec0b39a3643e74d338d3b2790f55ee03a081",
+    "tests/test_candidate_client_cumulative_v1.py": "b74bee1d23843b542cc31dd1334566112e59945232c58df4d0fd9bdf22f77226",
+    "tests/test_candidate_http_m4_integration_v1.py": "5a84a7fe1271fb11c8626d87b98f3753a98c371f1e437776927f3f6e1083e59e",
+    "tests/test_candidate_http_m4_semantics_v1.py": "19f6211b762313381a722a5234542d14bd2a1a1f89577b2f3fc1be174a78484f",
+    "verification-manifest.json": "66292caadbbdbd4855cfbee3ad3d23052d73d6a3511621effe2b0ebd47bf9d9f"
+  },
+  "compatibility_profile": {
+    "path": "gossip_harness/cumulative_observation_profile_v1.py",
+    "protocol": "cumulative-observation-profile-v1",
+    "sha256": "9bfec116990d6d30fd5803a561cca6953a0f8d2b756367c1ac08f84537b50a70",
+    "target_contract_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
+  },
+  "contributor_retention": {
+    "includes_initial_http_test_fixture_failures": true,
+    "includes_scoped_type_wrapper_diagnostic": true,
+    "path": "runs/cumulative-m4-integration-retention-1/receipt.json",
+    "retained_files": 22,
+    "sha256": "75de3fdeb09bde98cdefb06dad18ebfa7701ce4b90aa16d9ec3f3121a768dc85"
+  },
+  "declared_census": {
+    "census_means_candidate_histories_executed": false,
+    "cli_decisive_cells": 868,
+    "cli_diagnostic_cells": 900,
+    "cli_histories": 57,
+    "cli_steps": 305,
+    "cli_unspecified_cells": 32,
+    "health_successors": 3,
+    "http_histories": 276,
+    "http_requests": 7602,
+    "http_steps": 8203
+  },
+  "execution_contracts": [
+    "candidate-client-execution-v5-compact-m4-v1",
+    "candidate-http-execution-v4-compact-m4-v1"
+  ],
+  "full_objective_preserved": "Four cumulative milestones across six 8/20-role trajectories, matched live quality/persistence comparison, independent held-out families and later placement-by-transport comparison remain outstanding.",
+  "implemented": [
+    "Explicit current M4 profile/target/purpose in fresh owner, registration, gate, raw observation and verifier identities; milestone-only or old-M1 relabeling is rejected.",
+    "Complete CLI recipes and900 diagnostics retained;868 source-declared normative cells are decisive and32 unspecified cells remain skipped diagnostics.",
+    "Versioned HTTP semantic composition changes only3 declared health successors, preserving frozen JSON and other facet policies.",
+    "Every HTTP step remains diagnostic; a declared all-history mechanics case preserves listener/provenance/capture/continuity/cleanup requirements when raw-only response semantics are excluded.",
+    "Configuration/reopen of full70-request E01 M4 declaration fits the unchanged32768-byte journal-context limit without dispatching candidate requests."
+  ],
+  "independent_review": {
+    "blocking_findings": [],
+    "path": "runs/cumulative-m4-integration-retention-1/gossip-cumulative-m4-integration-source-review-1.json",
+    "sha256": "857e7c4d606f923ebd554fd7ec7216db91fa4b0f8c62fb386050c09450b3f87f",
+    "status": "clear_for_scoped_offline_integration_with_explicit_remaining_qualification"
+  },
+  "known_limits": [
+    "No physical M4 candidate execution or qualification of the changed owner contract.",
+    "Profile identity and prospective admission do not supply independent semantic scope review or a production ScopePlan.",
+    "Inherited legacy compatibility does not establish full M4-added coverage; mixed CLI public-state and raw-only response semantics remain unqualified.",
+    "No normal durable financial seal, full four-milestone controller or complete six-trajectory final-evaluation barrier is supplied by this batch.",
+    "Independent confirmation and placement-by-transport comparison remain outstanding.",
+    "Configured type coverage retains117 unchanged legacy diagnostics; it is not whole-repository type safety."
+  ],
+  "new_comparative_quality_samples": 0,
+  "new_docker_executions": 0,
+  "new_provider_calls": 0,
+  "next_required_work": [
+    "Review and integrate the isolated financial terminal-seal draft while preserving original cumulative ledger and six sequential child cohorts.",
+    "Supply independently reviewed complete semantic scope, remaining product observers and real admission/controller producers.",
+    "Qualify the coherent combined execution contract physically and complete its matching zero-provider rehearsal.",
+    "Reconcile concrete live allocation/payload authorization, run all six trajectories with fresh independent acceptance, then pursue held-out confirmation."
+  ],
+  "protocol": "cumulative-m4-observation-integration-checkpoint-v1",
+  "recorded_utc": "2026-10-04T07:18:56.637686+00:00",
+  "schema_version": 1,
+  "statistical_superiority_established": false,
+  "status": "offline_qualified_with_remaining_semantic_authority_physical_and_full_study_requirements",
+  "verification": {
+    "bound_inputs": 555,
+    "classes": [
+      {
+        "class": "tests/test_candidate_client_cumulative_v1.py::CandidateClientCumulativeProfileV1Tests",
+        "duration_seconds": 0.5454038325697184,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/2c493074f15704c1/result.json",
+        "evidence_sha256": "df6533a212f292e217b137a0a6c01ec83193d104f295c2d509aeba8ea60237b8",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/2c493074f15704c1/worker.log",
+        "log_sha256": "a68cd55b79b7f0d7efea73676693e9f892cb56770f7ca5b0f99a4d9eb26aa469",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_m4_integration_v1.py::HttpM4DiagnosticProjectionTests",
+        "duration_seconds": 0.6540049584582448,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/4cffc1ca74abe6b7/result.json",
+        "evidence_sha256": "da2c0f307b4310f18f16b9b8fc411391f878d8e529aa51e1c5ac6d918fa075ec",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/4cffc1ca74abe6b7/worker.log",
+        "log_sha256": "06711a92f36aecdeccd3e593dc0c05d52bfbe8d948b251dd4e0b6311e3a0f2fb",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticBindingTests",
+        "duration_seconds": 0.45489412546157837,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/59782102a645bd30/result.json",
+        "evidence_sha256": "ad8007ba1ba159c725ca3129eba43df15579d28c37ca56eaee14f009dacd1920",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/59782102a645bd30/worker.log",
+        "log_sha256": "68a28b0f77eb631395408bea5a6735e4fd261d01214f6bf8b8613339c146f546",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_m4_semantics_v1.py::HttpM4SemanticComparatorTests",
+        "duration_seconds": 0.3958374159410596,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/44f027d8d0c9d5c8/result.json",
+        "evidence_sha256": "5f44de643d7e3608c8a73cbe7af69453248ad4895cd62fa08e97123d57877c42",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/44f027d8d0c9d5c8/worker.log",
+        "log_sha256": "971534327f9be682ae3139f6a7a2b3745aba4d8de24cabfd7f8434493af73c91",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_source_v1.py::HttpProductSemanticSourceV1Tests",
+        "duration_seconds": 0.08464916702359915,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/6d4b456527f36c64/result.json",
+        "evidence_sha256": "af2141021ee9d4af89543c97221f95f6009a2579932fcb53254809838d2c7c76",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/6d4b456527f36c64/worker.log",
+        "log_sha256": "084616bbdf223b52e28eee2cfab09889bd3f7718f9e57b9f20fdd86cd672d4fd",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2BoundaryTests",
+        "duration_seconds": 0.0905229588970542,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/676d766180c34c79/result.json",
+        "evidence_sha256": "cd1bc5cffcdc47aafde0c6d1f59f7b2b5a62f010570c8a6f084fe07f9ca6b74b",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/676d766180c34c79/worker.log",
+        "log_sha256": "6d5cfbadc68a6fe42253066eaff1025426298f15a39fa012f5427782a21da25f",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2FactTests",
+        "duration_seconds": 0.06747987493872643,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/0bc2c5437588a40d/result.json",
+        "evidence_sha256": "565598a41c874cf2ce99f095517d225524ed0ab9908f4d33d8f03467517b4358",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/0bc2c5437588a40d/worker.log",
+        "log_sha256": "0fdca4be97a204639a03512a8adc3c3fa19e6f70a03cb3f053167487a77113da",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_product_v4.py::HttpProductV4PhysicalDefinitionTests",
+        "duration_seconds": 0.053850332275033,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/640a36f33292f62d/result.json",
+        "evidence_sha256": "fc14e28f92e34e73ed91ca7c78e3fc904a694555d3229595b2cc78abd924fa02",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/640a36f33292f62d/worker.log",
+        "log_sha256": "47b6c6ae43ada9152490acb71bc9cd4d0cbdae45c53f061e93e08c47cd9228ce",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "duration_seconds": 22.95916808396578,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/995b4834cfdec311/result.json",
+        "evidence_sha256": "18996077838084421e3adc010e4d497b1ce28210b1554af8c97120529722c646",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/995b4834cfdec311/worker.log",
+        "log_sha256": "35bbbb4bfc40676fb5ba2b9cdbd8654f68f096bc1410abf2686d2442b01826d1",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeCliProjectionTests",
+        "duration_seconds": 0.2280366662889719,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/a34b03f9542ff98e/result.json",
+        "evidence_sha256": "925280763e94dc25171efd4807534e12c0de2e50279739a17a6b67e7d1737d65",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/a34b03f9542ff98e/worker.log",
+        "log_sha256": "c6af0fea56dd1054860ef4766bf32851cc9e53c48c51de3e5795b228e11b6911",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeObservationProfileTests",
+        "duration_seconds": 1.737457500770688,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/373419ad3383437a/result.json",
+        "evidence_sha256": "865f90448ab1804f32e1957d440d7cac48cc0dea28a822cd452366e29a2353ae",
+        "lane": "fast",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/373419ad3383437a/worker.log",
+        "log_sha256": "34785e05011724ab49f1cf57f0848276bc664cb12bb9ffebdfbb15bd8289e9e2",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_client_cumulative_v1.py::CandidateClientCumulativeAdmissionV1Tests",
+        "duration_seconds": 40.76317258365452,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/ceb1e55293eb6ca8/result.json",
+        "evidence_sha256": "5c75cb3d2dad01f5420de3a0269ea7bf6dda9ba58686a65b7f2691591abdf890",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/ceb1e55293eb6ca8/worker.log",
+        "log_sha256": "4f1cd9b441727f0bf5a2468a600d7d571af1d57e7947aad4fbb9473db76e38da",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_client_execution_v5.py::CandidateClientExecutionV5Tests",
+        "duration_seconds": 76.29163895733654,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/6324022ae8ae83bf/result.json",
+        "evidence_sha256": "353fc9070754ca6156a907fc20a742f36294811d6c0f824e40bb2b4963df3c32",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/6324022ae8ae83bf/worker.log",
+        "log_sha256": "3b370abc6b52904351ed37f18311908f9a97b9e48ecdd2a544129bf94eee9203",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_client_observation_source_v1.py::CandidateClientObservationSourceV1Tests",
+        "duration_seconds": 4.157692582346499,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/5769976854a8c07b/result.json",
+        "evidence_sha256": "bf8bfd3d1c33488de8729fef869af5e4a9657598179755198359e09cfc49d395",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/5769976854a8c07b/worker.log",
+        "log_sha256": "0f215eaf7424c5938ca1616d82a65749b0a51db838394691b6283fd84ca91ebc",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_execution_v4.py::HttpProductAdmissionV4Tests",
+        "duration_seconds": 61.25114608369768,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/0e7e924ca9196f3c/result.json",
+        "evidence_sha256": "fb58a19cb8486de89e7ba50f4512c518e211a143bd6e1cd864c16870fbc23384",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/0e7e924ca9196f3c/worker.log",
+        "log_sha256": "1bbbcddd40bf1c1eacea6c5c1dd57d3423376267634d066f9aef3059be6e985a",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_http_m4_integration_v1.py::HttpM4ProfileBindingTests",
+        "duration_seconds": 45.60872008278966,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/f3251ce6e5341ca3/result.json",
+        "evidence_sha256": "553d5302f326b267cfff1b9173db78f9d5fd769207a58539aea6904a88a17395",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/f3251ce6e5341ca3/worker.log",
+        "log_sha256": "6b2b080320221052e4796ad1e94d81d95073d179bb57899655f359a6906e58bf",
+        "status": "passed"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "duration_seconds": 31.823488207533956,
+        "evidence_path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/c25a48764acbd650/result.json",
+        "evidence_sha256": "c23fc4480dd1f2be553846e7b91f06b5631e7e539e57f5853ef502c9d8e250d0",
+        "lane": "git",
+        "log": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/classes/c25a48764acbd650/worker.log",
+        "log_sha256": "cc042cfff3d176d449e5c81dcef7f9ee1336acdb1ef54bb7fae628cde434da50",
+        "status": "passed"
+      }
+    ],
+    "duration_seconds": 104.58057391643524,
+    "fingerprint": "11422cd9109ab3fc8570a9860d0353bf4fa47372f0f38285140ebf259a5a43dc",
+    "fresh_classes": 17,
+    "inputs_sha256": "e6d0eb4585cedb0944d3512097b01d34d7084d9daca666a00d66152cc7ceb958",
+    "passed": 179,
+    "reused_classes": 0,
+    "runtime_drift": false,
+    "runtime_reconciliation": {
+      "final_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "initial_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "matches": true
+    },
+    "selected_counts": {
+      "fast": 112,
+      "git": 67
+    },
+    "skips": 0,
+    "source_drift": false,
+    "static": {
+      "duration_seconds": 1.3793476251885295,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "summary": "runs/cumulative-m4-offline-qualification-1/20261004T071042-3b7bf522/summary.json",
+    "summary_sha256": "95aec3afb690baa8b222309e7365cd8e917997b40cbfa554bbce5cad65d8e2e8",
+    "unchanged_recorded_type_diagnostics": 117
+  }
+}

@@ -259,7 +259,7 @@ def _completion(reader: _Reader, row: dict[str, Any], spec: execution.RoleSpec,
         reader.compare(label + "-prestart-comparison", created, before, spec, "created-to-prestart")
         assert donor is not None
         same(process["donor"], donor.record(), "Original probe donor differs")
-        same(reader.json(label + "-intent.json"), {"protocol": execution.PROTOCOL, "role": asdict(spec),
+        same(reader.json(label + "-intent.json"), {"protocol": reader.owner.binding.protocol, "role": asdict(spec),
             "expected": execution.digest(created), "runtime": owner.runtime, "policy": asdict(policy),
             "role_policy": execution.role_policy_identity(), "donor": donor.record(),
             "helper_stdout_envelope": envelope, "helper_sha256": wire.helper_sha256()}, "Original probe intent differs")
@@ -295,7 +295,7 @@ def _completion(reader: _Reader, row: dict[str, Any], spec: execution.RoleSpec,
         same(comparison, process["startup_comparison"], "CLI final comparison differs")
     completion = engine.completion_evidence(waited, final, started=True, killed=False, identity_ok=True)
     same(process["completion"], completion, "Raw wait/inspection differs from completion record")
-    require(process["protocol"] == (execution.PROTOCOL if probe else engine.PROTOCOL)
+    require(process["protocol"] == (reader.owner.binding.protocol if probe else engine.PROTOCOL)
             and completion["natural"] is True, "Original natural finite completion unavailable")
     return cid, label, process_policy, int(completion["inspect_exit_code"])
 
