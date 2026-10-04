@@ -1,0 +1,145 @@
+{
+  "protocol": "counter-supervised-owner-deadline-investigation-v1",
+  "status": "partial_mechanism_feasible_current_authority_cleanup_and_recovery_joins_block_full_execution",
+  "author": "/root/candidate_scope_consumer",
+  "source_root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "plan": {
+    "path": "/private/tmp/gossip-v2-counter-family-plan-4/plan.md",
+    "sha256": "69231afe7a73dadab9e04c3b42cc729114d7ec0ba2b29564f9eec45eb29fa7b2",
+    "review": "/private/tmp/gossip-v2-counter-family-source-review-4/review.json",
+    "review_sha256": "005f1b48fe2d41edaf5f0dbc19873e005fbce9acd5da1abd4242de99d46c113d"
+  },
+  "answer": {
+    "local_affinity": "Yes: a fresh exec'd trusted worker can create and use its own ExternalHead and OwnerJournal entirely on its own main thread. No live journal/head/authority object or lock descriptor may be inherited for use. This satisfies the existing PID/thread checks; it does not itself supply final admission or a deadline contract.",
+    "deadline_isolation": "An independent supervisor can stop accepting results at the existing absolute case/CLI/suite deadline and request termination without waiting for the blocked worker's Python/C/fsync call to return. Once actual process death and descendant closure are established, that worker cannot issue more calls. This is materially stronger than a same-thread elapsed check, but not proof that no already-dispatched Engine request or running candidate container continues after the deadline.",
+    "complete_current_path": "No. Current final admission/export require live same-process controller, owner and bridge objects; killed-write recovery and cleanup are deliberately not exposed through the existing APIs. A process wrapper alone neither preserves these capabilities nor provides an independently authenticated final prefix or remote resource cleanup.",
+    "recommendation": "Use a supervised owner-from-inception topology as the bounded design direction, with the entire final authority dependency set on that worker thread to avoid fabricated callback transfer. Keep implementation blocked on explicit original-input bootstrap, supervisor-side deadline/kill and cleanup evidence, unknown-prefix handling and prospective final/capsule bindings. Do not fork an already-open controller or introduce a generic callback/RPC success adapter."
+  },
+  "source_findings": [
+    {
+      "id": "AFFINITY",
+      "citations": ["candidate_execution_journal_v1.py:95-126,180-194", "candidate_checkpoint_chain_v1.py:220-289,315-317,573-582", "candidate_checkpoint_head_v1.py:94-105,149-178,193-207,339-345"],
+      "fact": "OwnerJournal delegates create/reopen and does not own the supplied authority. CheckpointChain and ExternalHead record current PID/thread and reject foreign access/close. Each takes lifetime advisory locks; head documentation explicitly warns inherited fork descriptors can keep the parent's lock alive.",
+      "implication": "Construct in the exec'd worker, use close_fds and no unneeded inherited descriptors; do not pickle owners or use thread-pool timeout around them. Existing code can remain unchanged for healthy worker-owned journal mechanics. Parent must not open a second writable owner while the worker or any lock-holding descendant remains alive."
+    },
+    {
+      "id": "ACK_BOUNDARY",
+      "citations": ["candidate_checkpoint_chain_v1.py:353-415", "candidate_checkpoint_head_v1.py:283-337"],
+      "fact": "Raw and delta writes/fsync precede external CAS/readback; only then does the local map/prefix advance. Head publication writes/fsyncs pending.json, replaces head.json, then fsyncs the directory. A kill can occur before or after any step, including committed CAS with lost acknowledgement.",
+      "implication": "Worker death cannot convert head.json or a serialized prefix into independently acknowledged authority. A terminal record, raw file or head found on disk after kill is not automatically eligible. Preserve all attempted files and mark the attempted suffix uncertain. No repair, deletion, retry or inferred head adoption."
+    },
+    {
+      "id": "REOPEN_AND_PRIOR",
+      "citations": ["candidate_checkpoint_head_v1.py:126-134,209-235,254-281", "candidate_checkpoint_chain_v1.py:468-483,500-555"],
+      "fact": "Reopen requires an independently supplied exact prefix, compares it to the current durable head and validates exact raw/delta inventories. Unknown suffixes are rejected. read_prior uses the original live owner's acknowledged in-memory map; it is not a post-crash prior-prefix loader.",
+      "implication": "A supervisor's earlier independently retained prefix may be insufficient to reopen after an interrupted append; the current head may already be ahead or pending.json/suffix files may remain. Existing cold readers cannot consume arbitrary healthy historical prefixes through an interrupted suffix. This is an exact recovery limitation, not a reason to weaken inventory checks."
+    },
+    {
+      "id": "ADMISSION_IS_LIVE_AUTHORITY",
+      "citations": ["candidate_observation_admission_v1.py:155-224", "cumulative_final_acceptance_v1.py:333-354,424-469,503-545,565-576"],
+      "fact": "ObservationAdmission repeatedly invokes trusted registration/cohort capabilities. FinalAcceptance's actual callbacks reread final/study/scope originals, full source/semantic design and retained admission records. These chains are process-affine. Dispatch requires exact ExternalHead, owner type, owner.admission object identity, fresh config-only prefix and exact chronological bound/dispatch writes.",
+      "implication": "A freeze dataclass plus registration JSON is not a transferable capability. Passing the existing callback across a process fails ownership; replacing it with a constant response weakens authority. A private IPC response would itself need a newly pinned original authority protocol, revocation/replay protections and bounded real producer; none currently exists."
+    },
+    {
+      "id": "FINAL_AND_CAPSULE",
+      "citations": ["cumulative_final_acceptance_v1.py:300-327,584-638,697-712", "cumulative_rehearsal_export_v1.py:51-63,66-75,104-149", "cumulative_final_originals_v1.py:50-80,341-408,485-507", "cumulative_rehearsal_codec_v1.py:1-5,23-61"],
+      "fact": "FinalAcceptance keeps live exact owner/bridge objects. Export requires an original assessment, complete enrollment census, live owner checkpoints and actual original authorities. Cold reconstruction reopens exact protected heads, reconstructs named input types, authenticates admission through assessment chronology, and requires verified cleanup/completeness. Codec transports declared inputs, not capabilities. Fresh final construction rejects resumed attempted final journals.",
+      "implication": "A worker result dictionary or successful subprocess exit cannot substitute. Cold reads can authenticate a fully completed exported packet after all original owners release, but they are not a bootstrap for an incomplete final dispatch or a crash-resume mechanism. The new supervisor identity, absolute deadlines, outcome/kill records and counter producer must enter prospective source/runtime/recipe/capsule bindings and actual cold tests."
+    },
+    {
+      "id": "CLEANUP_NOT_TRANSFERABLE",
+      "citations": ["candidate_emergency_cleanup_v1.py:142-148,177-229,266-272,308-387,513-575"],
+      "fact": "CleanupChannel is explicitly thread/process-affine, non-reopenable and one-shot. Claims, confirmations, attempted removals and retirements include in-memory state; fallback authenticates via journal.read_prior. run uses its own separate bounded cleanup contract.",
+      "implication": "After killing the owner, the parent cannot call its CleanupChannel, reconstruct it from arbitrary dictionaries, or reopen the failed main journal to invent prior claims. An independently alive supervisor cleanup capability must exist before the first resource effect, with actual absence/claim/create/identity originals and ambiguity handling. This specific authority handoff is missing. Existing120/5 defaults do not authorize a new counter aggregate cleanup budget."
+    },
+    {
+      "id": "LOCAL_KILL_NOT_ENGINE_STOP",
+      "citations": ["candidate_client_process_v4.py:828-846,946-986,1002-1032", "candidate_retention_process_v1.py:1-10,28-63", "cumulative_process_evidence_v1.py:228-258,299-324"],
+      "fact": "Finite Engine processes have separate start/wait/inspect/kill lifecycles; killing the local client can leave the container running or an already-sent request unresolved. The existing local process producer separately records actual Popen.wait and process-group emptiness, but its contract is for study-role processes, not an evaluator supervisor.",
+      "implication": "Reuse the explicit closure pattern only through a declared new producer. Parent observes actual child handle exit and group closure; signal-send success is insufficient. Remote containers require separate original Engine cleanup proof. Pending start/create/write outcomes remain unknown; later effects or completed responses are never graded as in-budget merely because they finish after kill."
+    },
+    {
+      "id": "SOURCE_AND_CLOCKS",
+      "citations": ["candidate_source_capture_policy_v1.py:29-46,64-77", "candidate_git_source_batch_v1.py:106-134,164-186,190-209", "blackbox_validator.py:84-143,328-370", "tests/test_library_v2_docker_reference_v1.py:181-183", "candidate_workflow_execution_v1.py:71-79,832-847,1186-1203"],
+      "fact": "The existing source policy is exactly60 seconds plus its existing release budget; the Git helper spawns same-process-group commands and has its own relative deadline. Current guard/journal operations remain synchronous. Native counter reference uses one30-second complete-case wait and600-second suite wait; real CLI12 is separately specified by the unchanged native case adapter.",
+      "implication": "A supervisor may impose an earlier external ceiling without calling the killed operation a successful capture, but that changed composition must be prospectively declared. It does not prove all required fresh captures can complete within30 or eliminate cleanup uncertainty. No source boundary can be cached, moved outside the case clock or dropped to make the result fit."
+    },
+    {
+      "id": "AUDIT_ELAPSED_LIMIT_IS_NOT_WATCHDOG",
+      "citations": ["cumulative_rehearsal_capsule_v2.py:27-34,44-50", "cumulative_rehearsal_capsule_v3.py:25-31,62-69"],
+      "fact": "Existing capsule audits check elapsed time after readers; V3 explicitly states this is not a hard timeout.",
+      "implication": "Do not cite capsule1200 or its process-local lock as a synchronous cancellation mechanism, reuse it as the counter deadline or claim existing rehearsal qualification covers owner relocation."
+    }
+  ],
+  "minimal_topology": {
+    "chosen_direction": "Trusted supervisor outside the potentially blocked owner process; one exec'd owner main thread holds the whole final-observation authority dependency set before constructing its first final/counter journal. Keep existing in-process admission callbacks real. This is narrower in authority semantics than per-case workers plus a new capability RPC framework, but it changes the final-stage producer and remains unimplemented.",
+    "supervisor": [
+      "Own the actual Popen handle, exact pinned launcher/worker inputs, private bounded pipes, monotonic absolute case/CLI/suite deadlines and an independent outcome record. It never imports a child-owned journal object or writes the child's raw/delta/head roots.",
+      "Issue a one-use case-start identity before any execution-specific work and start the unchanged wall deadline at that boundary. The worker may not decide when its own clock starts. CLI subphase is likewise bound before its first setup/effect; all parent/worker waits consume the same remainder.",
+      "Keep the deadline loop independent of blocking child source/parse/fsync/callback work and of potentially blocking supervisor audit persistence. Nonblocking pipe observation and absolute waits are necessary; merely moving the same blocking fsync onto the supervisor recreates B2.",
+      "At expiry permanently close that attempt's acceptance/dispatch eligibility, request termination of owned local processes, record actual wait/group results, and invoke only separately authorized owned cleanup. Late messages cannot rearm the attempt. No second writer while death/descendant/lock release is uncertain."
+    ],
+    "owner": [
+      "Start via exec with no borrowed live journal/head descriptors. Create fresh final/case anchors on its main thread; reopen frozen study/scope/review originals only after prior owners have released them, using independently supplied exact expected prefixes and actual enrollment records.",
+      "Construct actual FinalAcceptance and all named recipe/admission/owner/reader objects within that same process. Run unchanged source/semantic/qualification/freeze checks and exact final chronology. This avoids trying to transport live callback authority.",
+      "Healthy completion retains all originals and complete export before closing its own authorities. Supervisor success remains conditional on authenticated exact packet, temporal records and closure; subprocess output alone is never Registry evidence.",
+      "If killed, fail the final attempt closed. Do not instantiate FinalAcceptance over the attempted journal, redispatch a slot, adopt a partial packet or weaken the complete enrollment census to continue other gates."
+    ],
+    "why_not_per_case_wrapper_now": "The currently running parent FinalAcceptance holds the proof locks and callback closures and expects the exact live returned owner. Moving only execute_once or serializing ObservationSpec cannot satisfy these conditions. Starting the whole final authority worker before those objects exist avoids that specific collision, but needs a real closed bootstrap and supervised producer binding. This is not asserted to be a drop-in change.",
+    "uncertain_prefix_policy": "Supervisor should retain only exact prefix acknowledgements received from the actual worker after CAS/readback, bound to case/context/nonce and independently retained as original producer evidence. Missing acknowledgement does not authorize reading disk to infer it. Any interrupted suffix or head ambiguity blocks normal reopen. Earlier independently published complete observations remain known historical findings, but current cold readers cannot newly certify partial evidence through a killed suffix; a narrowly reviewed prior-fact recovery reader or prepublished original proof packet would be required before promising that capability.",
+    "hard_limit_of_claim": "External supervision bounds eligibility and can request termination independently of stalled code. It cannot universally guarantee kernel uninterruptible process death, instantaneous Docker termination, rollback of already-dispatched effects or atomic disappearance of all locks at the numerical deadline. Unproven closure stays unknown and blocks acceptance; do not state no further effects solely from signal delivery."
+  },
+  "lifecycle_cleanup_ledger": [
+    {"phase":"bootstrap","owned_resources":"private launcher/worker pipes and process handle; no inherited proof locks","deadline":"Case clock begins before execution-specific bootstrap; enclosing suite600 applies where registered","required_original":"pinned sources, exact typed inputs, actual launch identity/nonce and clock origin","failure":"No assumed child identity after ambiguous launch; no candidate dispatch without admitted original owner."},
+    {"phase":"proof ownership","owned_resources":"worker-thread final/study/scope/review/case chains and exact ExternalHeads","deadline":"Same case30 for execution-specific work; no host discount","required_original":"independent prefixes, closed contexts/enrollments, released prior owners, actual create/reopen success","failure":"No second writer or lock unlink; foreign owner/extra suffix remains unavailable."},
+    {"phase":"source/guards/journal","owned_resources":"Git subprocesses, source buffers, synchronous reads/hash/fsync and pending journal writes","deadline":"Same case30; helper60 is only an inner maximum and never increases outer eligibility","required_original":"complete fresh source mapping and acknowledged prefix before dependent effects","failure":"Supervisor may kill stalled owner; pending/raw/delta/head state remains uncertain. Parent cannot treat missing return as rollback."},
+    {"phase":"persistent driver","owned_resources":"local CLI/attach readers plus remote driver/container and shared state volume","deadline":"Same case30 across every pause/capture and action","required_original":"preabsence/claim/created sandbox, exact start/PID/runtime and all requested observations","failure":"Local kill is not remote kill. Parent cleanup needs independently held original claims; current non-reopenable CleanupChannel is insufficient after owner death."},
+    {"phase":"finite CLI","owned_resources":"separate fresh finite CLI container on same /tmp volume, exact source mounts and actual attached streams","deadline":"min(case30 remainder, CLI12 remainder, enclosing suite600 remainder)","required_original":"retained attach/start response, natural wait/final inspection, EOF and exact identity","failure":"No late exit/EOF accepted, no container-result substitution, unresolved finite resource preserves shared volume."},
+    {"phase":"capture/projection","owned_resources":"paused container, captured DB/WAL/archive originals and evaluator scratch helper","deadline":"Same case30 with no pause credit","required_original":"complete exact selected raw capture and independent reconstructed actual observation","failure":"Missing/late capture unavailable; earlier complete discrepancy remains failed only with its original authenticated evidence."},
+    {"phase":"healthy finish/export","owned_resources":"live worker final owners/bridges and export originals","deadline":"All required in-case evidence must have completed within case clock; export/cold audit cannot move missing evidence back inside it","required_original":"complete final chronology, actual cleanup, original assessment and exact full packet plus source bindings","failure":"No fabricated packet from worker dictionary; current export refuses incomplete slots."},
+    {"phase":"expired owner/local teardown","owned_resources":"actual worker, descendant processes, pipes/readers and inherited descriptors","deadline":"Existing bounded local reap/join primitives in their own documented scopes; no new aggregate limit invented","required_original":"actual wait result, group/descriptor closure evidence and immutable expired-attempt record","failure":"Still-live or uninterruptible owner keeps authority excluded and forbids reopening; no implied cleanup success."},
+    {"phase":"remote cleanup","owned_resources":"finite CLI first, driver/keeper next, volume last","deadline":"Must be prospectively composed from existing cleanup contract and enclosing remainder; complete numerical composition remains unresolved","required_original":"independently held prior ownership, exact runtime/identity, ambiguous-create/removal status and fresh absence originals","failure":"No blanket rm, no borrowed resource disposal, no retry of uncertain removal, no main-journal healing."}
+  ],
+  "remaining_concrete_dependencies": [
+    "A closed source-bound final-stage bootstrap that creates/reopens actual authority objects inside the supervised worker from independently retained originals, preserving all existing admissions and scope/purpose/qualification checks.",
+    "A supervisor timing/launch/kill/closure producer and exact final/cold/capsule representation. Existing type/owner identity checks must stay exact; no generic process result accepted as observation.",
+    "A cleanup authority alive outside the killed owner, armed with authenticated resource originals before effects. Current CleanupChannel has no reopen or transfer interface. Ambiguous create/removal and independently retained ownership must be specified, not assumed from deterministic names.",
+    "A deliberate policy for independently retained prefix acknowledgements and prior evidence after interrupted writes. Existing full reopen rejects ambiguous suffixes; read_prior cannot be invoked on a dead object. No acceptance or clean continuation until this is resolved.",
+    "Bounded launch and supervisor-loop behavior plus actual local/remote teardown ledger. Supervisor-side synchronous persistence cannot delay deadline observation; kernel/Engine release uncertainty remains explicit.",
+    "A prospectively bound fresh-source composition under the external clock, preserving every source boundary. Whole-case supervision may cap its runtime without changing its inner60/5 contract, but no complete result or cleanup can be assumed after forced termination.",
+    "Feasibility evidence for all twelve original histories within unchanged case30/CLI12/suite600 including authority reads and capture work. No measurement exists here; no larger deadline or omitted work is approved."
+  ],
+  "future_nearest_controls_not_run": [
+    "Fresh exec'd owner creates journal/head on its own thread; borrowed parent object or inherited live locks are refused and cannot be released by child.",
+    "Block exact synchronous guard/hash/fsync/source step; independent supervisor expires the attempt, later worker return cannot trigger dispatch, and actual process closure is distinguished from signal-send.",
+    "Kill at raw fsync, delta fsync, head pending write, rename, directory fsync and after CAS before ACK. Preserve artifacts and prove no guessed-head reopen, suffix deletion, retry or new writer.",
+    "Keep an Engine container running after local client/worker death; only original supervisor cleanup claims may stop it, and unresolved finite resources preserve the volume.",
+    "Genuine positive original final registration/admission -> worker-owned recipe/execution -> export -> closed capsule/cold/prerequisite route; missing authority, old purpose, dropped producer/deadline identity and fake worker success all refuse.",
+    "Late response after D_case or D_cli stays unavailable; previous fully authenticated false remains failed. Actual fixed-input expectation-side $ref semantics and original12/93 census remain unchanged."
+  ],
+  "preserved_scope": {"histories":12,"actions":93,"source_units":312,"authorities":22,"gap_duties":188,"milestones":4,"trajectories":6,"execution_purpose":"independent_acceptance","repeatability_route_not_invented":true},
+  "source_pins": {
+    "gossip_harness/candidate_execution_journal_v1.py":"eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15",
+    "gossip_harness/candidate_checkpoint_chain_v1.py":"2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481",
+    "gossip_harness/candidate_checkpoint_head_v1.py":"7d18127f8565244960eac3112071465aba6e2541d562e3c5ac7b6d0f60038c67",
+    "gossip_harness/candidate_observation_admission_v1.py":"c8456643140a241c7006756a16c3b5dc54d5f21620cf3562dd1a0fcea99efc6a",
+    "gossip_harness/candidate_emergency_cleanup_v1.py":"0f940d9434fb73631b197a65c3cef8c09d56f623fb6a9e28714622e9ab11a212",
+    "gossip_harness/candidate_git_source_batch_v1.py":"9a0755cbd2a08f86685298ec63afed3542cf018e628bf3b0704bb9976efa8cdd",
+    "gossip_harness/candidate_source_capture_policy_v1.py":"11d508df039f40b059145fa2dbeea126eb4c3a94e1ab6f4dadf431e47e1d4988",
+    "gossip_harness/candidate_client_process_v4.py":"5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b",
+    "gossip_harness/candidate_retention_process_v1.py":"cce64ea597799a1e75878e3a13e7df1fe3b9ec75808292f91d192c448cae615b",
+    "gossip_harness/cumulative_final_acceptance_v1.py":"8e6a767c8076d5b71c68cdc5c099dea1e17b6eda4e9fd54d8c1cd2400b1f02ce",
+    "gossip_harness/cumulative_final_acceptance_v3.py":"c74e3c5b1741a4502a42ef15d517984cab883a6d9bb3fcfc08b07fd63c53b295",
+    "gossip_harness/cumulative_final_originals_v1.py":"3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a",
+    "gossip_harness/cumulative_rehearsal_export_v1.py":"906af8ddc83f3b29c72d2a75dcd0f815ad73e589326224af3b110714945b584b",
+    "gossip_harness/cumulative_rehearsal_capsule_v2.py":"a47ce5ef03dea8d247d814ea5355466f20de32eb0ca01917a248aed296e759a1",
+    "gossip_harness/cumulative_rehearsal_capsule_v3.py":"8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+    "gossip_harness/cumulative_rehearsal_codec_v1.py":"570343ef5201b161ed6d511d96a0b9513e55336e4739d62c2c87b800576f26f2",
+    "gossip_harness/blackbox_validator.py":"878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+    "tests/test_library_v2_docker_reference_v1.py":"da81b19d533f33be8156e8c840272128e90894a8029b9f1c676da8bc68f4c705",
+    "gossip_harness/candidate_workflow_execution_v1.py":"20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134",
+    "gossip_harness/cumulative_process_evidence_v1.py":"c21cecc4181e9693a99eeb07cb48a0365a5a82269f12d63fee773e943f91c8d0"
+  },
+  "citation_convention": "Citation filenames resolve under source_root/gossip_harness unless prefixed tests/. Line intervals identify read source; claims distinguish existing API facts from proposed mechanisms.",
+  "work_performed": "Read-only source investigation and this new private JSON artifact. No implementation, project imports, runtime/tests/checkers, candidate processes, Engine/provider, Git, report or repository edits. No new numerical deadline, scope exemption, scientific approval or execution authorization."
+}

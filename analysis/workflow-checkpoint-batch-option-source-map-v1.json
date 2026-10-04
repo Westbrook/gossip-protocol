@@ -1,0 +1,230 @@
+{
+  "current_workflow_binding": {
+    "config_context": "Each config binds registration, source manifest/evaluator map, runtime, source-capture policy, deadline_policy, journal limits and prestart policy. Journal context binds config_sha256, source, purpose, original_definition_purpose and original binding. Reopen requires caller-supplied expected prefix and byte-exact authenticated config equality.",
+    "fresh_boundaries": "Workflow checkpoint delegates to OwnerJournal.checkpoint->CheckpointChain.validate_boundary->_verify_all. Existing effect, eligibility and explicit terminal/reconstruction checks call this boundary. current independently performs fresh source capture, evaluator/review/admission checks. These are separate from the journal read strategy.",
+    "not_all_reads": "OwnerJournal.retain is an incremental exclusive append; it is not a full prior-file verification. Consumed read/read_prior/position paths and independent head reads still have their own validation. BatchReadPolicy is selected inside _verify_all only; it does not replace every journal operation or Git source capture.",
+    "ordinary_owner": "CandidateWorkflowExecution.__init__ creates OwnerJournal(root,delta_root,context=context,authority=checkpoint_authority,expected=expected_checkpoint,limits=LIMITS), with read_policy omitted. Separate CandidateWorkflowQualificationExecution repeats that constructor. Both therefore use the exact existing None/default path.",
+    "product_registration": "binding_for binds exact native/common source, case/profile/fixture, independent source-plan review/provenance, evaluator/runtime/environment/limits/seed. limits_sha256 already includes WorkflowPolicy, deadline_policy, fresh Git capture policy, journal limits, wire/capture/prestart/cleanup. Observation registration/gate and final recipe derive from that complete binding.",
+    "qualification_registration": "qualification_binding_for uses separate qualification protocol/family/original harness_qualification purpose and fixed producer bytes. Changing its journal selection would need the same explicit prospective declaration; it cannot be granted product authority."
+  },
+  "decision_after_timing": {
+    "contingency": "A material checkpoint share would justify investigating this seam, but does not distinguish descriptor/path-walk cost from hashing, external-head access, scheduling or other work. Source/runtime/candidate time is not thereby established as small, and no speedup or ability to meet30s is predicted.",
+    "guards_to_preserve": "No fewer checkpoints, no cached originals, no weakened source/review/admission checks, no altered call clocks, no discarded captures, no change to eligibility-before-continuation chronology or cleanup. Any future option needs its own reviewed source/bindings and applicable qualification after cheaper gates.",
+    "input": {
+      "path": "/private/tmp/gossip-workflow-timing-interpretation-1.json",
+      "sha256": "d4db100bdc4b9b78fe88e1d0a9b1c13d69beed15d542a34d9a53dac47a9bdc19"
+    },
+    "interpretation": "Use observed interval union and complete-tree exclusive attribution; never sum nested source/current/effect/checkpoint durations. Report checkpoint counts and covered durations alongside retained byte/file growth when independently available. Truncated spans leave residual work unclassified."
+  },
+  "existing_full_byte_option": {
+    "binding": "OwnerJournal adds journal_read=policy.record() to normalized context when opted in; CheckpointChain also includes that exact record in genesis, stores _read_policy_record and compares it again at every _verify_all. Omitted policy preserves the old declaration shape. A later option cannot reopen an old prefix under a silently different declaration.",
+    "bytes_and_leaf_guards": "Read every genesis, delta and raw byte afresh; no cross-checkpoint cache. Before and after each file, revalidate the anchored root/ancestor entries and descriptors. Leaf open is no-follow/nonblocking, requires bounded regular file and entry/descriptor identity equality; read exact declared size with growth sentinel, recheck descriptor/path identity and ancestors afterward.",
+    "limitation": "Descriptor lifetime and syscall/race observation trace change. This is not an atomic filesystem snapshot, a hash cache, reduced boundary frequency, a skipped ancestry check, or a change to caller deadlines/allocation bounds.",
+    "per_checkpoint_lifetime": "One CheckpointReader is entered/exited by _verify_all ExitStack. It owns fresh root/ancestor directory descriptors for that boundary, closes every leaf after use and all directory descriptors on exit/failure, and does not borrow owner locks or external-head descriptors.",
+    "policy": "Exact candidate_journal_batch_read_v1.BatchReadPolicy only; protocol candidate-journal-batch-read-v1. No caller callbacks, custom reader or timeout override.",
+    "unchanged_outer_checks": "The same _verify_all validates exact context/prefix limits, anchored root identities, independent external head before/after, complete raw/delta filename census before/after, canonical delta schema/order/hash links, reconstructed commitment, and every raw size/hash. It then requires acknowledged maps and boundary inventory hash to agree."
+  },
+  "fingerprints_if_later_adopted": [
+    "Chosen workflow read strategy must be declared prospectively through an explicit execution-policy/protocol discriminator and exact fixed policy record in limits/config; old workflow labels cannot silently acquire it. The helper label candidate-journal-batch-read-v1 is already fixed; this map does not choose a new workflow label.",
+    "Workflow evaluator source map/digest and loaded-source closure must bind the selected helper and its stable reader dependency, with conflicting earlier source pins rejected. Modified source files also change the root verification input map. Existing deadlines and required source/receipt checks stay unchanged.",
+    "limits_sha256, config_sha256, normalized journal context/genesis/context hash, prefix/head commitments and dependent complete registration/gate/recipe/export/verifier hashes change. A profile/definition hash changes only if its declared shape includes the new option; regardless, the complete binding must distinguish it.",
+    "Fresh physical construction and cold reconstruction must choose the same authenticated policy. Inspect exact _derive_workflow/construct_workflow_owner, final-original _observation workflow branch and codec whitelist/typed field reconstruction. Any changed typed shape needs matching serialization checks; neither default inference nor a fixture flag may select authority.",
+    "Existing candidate source/native hash, immutable cases/inputs/expected values, purposes, seed, image/runtime and numeric30/300 budgets should remain unchanged by the option itself. Evaluation/receipt reuse still requires the new exact full bindings; old failed or successful records cannot be relabeled."
+  ],
+  "limits": [
+    "Source map only; no new timing evidence analyzed.",
+    "No implementation, future policy selection, qualification or root run outcome claimed."
+  ],
+  "protocol": "workflow-checkpoint-batch-option-source-map-v1",
+  "reference_existing_opt_in": "BrowserProfile.journal_policy shows an already explicit integration: exact type gate, journal_read in profile/config/limits, execution protocol suffix -journal-batch-read-v1, evaluator/loaded-source closure inclusion with overlap conflict rejection, OwnerJournal(read_policy=profile.journal_policy), and original-reader/config validation. This is a source example only, not authority to adopt browser purpose/profile/receipt semantics for workflow.",
+  "scope": "Read-only prospective source map. Existing BatchReadPolicy is an available seam, not a selected workflow policy or an established cause/remedy. No current run was polled; no project imports/checkers/tests/Engine/provider/repo edits or new contract/limit changes.",
+  "source_locations": {
+    "candidate_checkpoint_chain_v1.py:CheckpointChain._open": {
+      "end_line": 295,
+      "line": 219
+    },
+    "candidate_checkpoint_chain_v1.py:CheckpointChain._verify_all": {
+      "end_line": 556,
+      "line": 492
+    },
+    "candidate_checkpoint_chain_v1.py:CheckpointChain.read": {
+      "end_line": 466,
+      "line": 457
+    },
+    "candidate_checkpoint_chain_v1.py:CheckpointChain.validate_boundary": {
+      "end_line": 571,
+      "line": 558
+    },
+    "candidate_execution_journal_v1.py:OwnerJournal.__init__": {
+      "end_line": 123,
+      "line": 105
+    },
+    "candidate_execution_journal_v1.py:OwnerJournal.checkpoint": {
+      "end_line": 168,
+      "line": 166
+    },
+    "candidate_execution_journal_v1.py:OwnerJournal.read": {
+      "end_line": 147,
+      "line": 145
+    },
+    "candidate_execution_journal_v1.py:OwnerJournal.retain": {
+      "end_line": 127,
+      "line": 125
+    },
+    "candidate_journal_batch_read_v1.py:BatchReadPolicy.record": {
+      "end_line": 45,
+      "line": 38
+    },
+    "candidate_journal_batch_read_v1.py:CheckpointReader.__init__": {
+      "end_line": 101,
+      "line": 53
+    },
+    "candidate_journal_batch_read_v1.py:CheckpointReader.close": {
+      "end_line": 189,
+      "line": 175
+    },
+    "candidate_journal_batch_read_v1.py:CheckpointReader.read": {
+      "end_line": 173,
+      "line": 129
+    },
+    "candidate_journal_batch_read_v1.py:CheckpointReader.validate": {
+      "end_line": 127,
+      "line": 112
+    },
+    "candidate_product_browser_execution_v1.py:BrowserExecution.__init__": {
+      "end_line": 437,
+      "line": 384
+    },
+    "candidate_product_browser_execution_v1.py:BrowserProfile.execution_protocol": {
+      "end_line": 201,
+      "line": 199
+    },
+    "candidate_product_browser_execution_v1.py:BrowserProfile.record": {
+      "end_line": 219,
+      "line": 207
+    },
+    "candidate_product_browser_execution_v1.py:binding_for": {
+      "end_line": 292,
+      "line": 275
+    },
+    "candidate_product_browser_execution_v1.py:evaluator_sources": {
+      "end_line": 84,
+      "line": 70
+    },
+    "candidate_product_browser_execution_v1.py:journal_fields": {
+      "end_line": 101,
+      "line": 100
+    },
+    "candidate_product_browser_execution_v1.py:loaded_sources": {
+      "end_line": 97,
+      "line": 87
+    },
+    "candidate_product_browser_execution_v1.py:validate_journal_fields": {
+      "end_line": 246,
+      "line": 240
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution.__init__": {
+      "end_line": 830,
+      "line": 749
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution._call_window": {
+      "end_line": 1143,
+      "line": 1132
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution._current": {
+      "end_line": 846,
+      "line": 836
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution._effect_boundary": {
+      "end_line": 1195,
+      "line": 1186
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution._eligible": {
+      "end_line": 1184,
+      "line": 1168
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowExecution.checkpoint": {
+      "end_line": 1129,
+      "line": 1127
+    },
+    "candidate_workflow_execution_v1.py:CandidateWorkflowQualificationExecution.__init__": {
+      "end_line": 1550,
+      "line": 1468
+    },
+    "candidate_workflow_execution_v1.py:binding_for": {
+      "end_line": 264,
+      "line": 239
+    },
+    "candidate_workflow_execution_v1.py:evaluator_sources": {
+      "end_line": 171,
+      "line": 160
+    },
+    "candidate_workflow_execution_v1.py:qualification_binding_for": {
+      "end_line": 1436,
+      "line": 1421
+    },
+    "cumulative_final_originals_v1.py:_observation": {
+      "end_line": 510,
+      "line": 341
+    },
+    "cumulative_workflow_observation_recipe_v1.py:_derive_workflow": {
+      "end_line": 112,
+      "line": 79
+    },
+    "cumulative_workflow_observation_recipe_v1.py:_sources": {
+      "end_line": 53,
+      "line": 37
+    },
+    "cumulative_workflow_observation_recipe_v1.py:construct_workflow_owner": {
+      "end_line": 335,
+      "line": 301
+    }
+  },
+  "source_pins": {
+    "gossip_harness/candidate_checkpoint_chain_v1.py": {
+      "bytes": 28491,
+      "sha256": "2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481"
+    },
+    "gossip_harness/candidate_execution_journal_v1.py": {
+      "bytes": 8650,
+      "sha256": "eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15"
+    },
+    "gossip_harness/candidate_http_journal_v3.py": {
+      "bytes": 10901,
+      "sha256": "7bcb8b7e8c3bee570a28c21dfd7ad278d0a435581ef184d2c645b61f569f988b"
+    },
+    "gossip_harness/candidate_journal_batch_read_v1.py": {
+      "bytes": 10460,
+      "sha256": "5ec880aad17cb215ffa8fce8c4f9a121306bcc222ea169d55b0aac85b709ba73"
+    },
+    "gossip_harness/candidate_product_browser_execution_v1.py": {
+      "bytes": 69703,
+      "sha256": "4f38b5c0671e197d3d13cd70e9b4dfc0d35937227a210d7896ac04b5bac6b8cb"
+    },
+    "gossip_harness/candidate_workflow_execution_v1.py": {
+      "bytes": 88890,
+      "sha256": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134"
+    },
+    "gossip_harness/candidate_workflow_observation_v1.py": {
+      "bytes": 58528,
+      "sha256": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657"
+    },
+    "gossip_harness/cumulative_final_originals_v1.py": {
+      "bytes": 41034,
+      "sha256": "3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a"
+    },
+    "gossip_harness/cumulative_rehearsal_codec_v1.py": {
+      "bytes": 8330,
+      "sha256": "570343ef5201b161ed6d511d96a0b9513e55336e4739d62c2c87b800576f26f2"
+    },
+    "gossip_harness/cumulative_workflow_exposure_v1.py": {
+      "bytes": 10937,
+      "sha256": "6802ddc9629eddc0b01acb60e873f5dae76754bb662e826e1b669185cb4531ae"
+    },
+    "gossip_harness/cumulative_workflow_observation_recipe_v1.py": {
+      "bytes": 27045,
+      "sha256": "e787426b66c7c42e4888450130ebf35054ce7cc0b517d33fe56a45b465b9f044"
+    }
+  },
+  "source_root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol"
+}

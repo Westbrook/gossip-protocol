@@ -1,0 +1,418 @@
+{
+  "protocol": "current-study-launch-gap-audit-v1",
+  "created_at_utc": "2026-10-04T23:50:34.864646+00:00",
+  "authoritative_workspace": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "method": "Read-only source and retained checkpoint inspection. No project imports, compiler/checker/test/Engine/provider/Git/network execution; no active run inspection; no repository/report write. Only this fresh temporary JSON is written.",
+  "verdict": "NOT_READY_FOR_FULL_PLANNED_LIVE_COMPARISON",
+  "readiness_percentage": null,
+  "why_no_percentage": "Infrastructure task weights, test-method counts, defined histories and source-review closure are different denominators from complete experiment readiness. No defensible experiment-readiness percentage is derived.",
+  "canonical_handoff": {
+    "path": "/Users/westbrook/.codex/visualizations/2026/09/30/01a0f016-e17e-7c03-a6a9-b13e8ca236fb/gossip-progress-report/data/project.json",
+    "sha256_at_read": "c6722144f32889400d5fba55ac3f73975f325048f862cab08b906c51eb6d158b",
+    "revision": 583,
+    "lastMeaningfulUpdate": "2026-10-04T23:42:42+00:00",
+    "currentWork": "Requalifying the harness after repaired injected fixture. Nearest16 passed; full647 running. Scientific samples unchanged since2026-10-02.",
+    "nextAction": "Resume session35055. Await full647 terminal result; audit exact source/outcomes/reuse. Only after offline pass, execute38 workflow and6 shared-transport Docker controls. Preserve failed outputs; no provider/public disclosure while approval holds remain.",
+    "blockers": [
+      "Live launch only: explicit payload-to-OpenAI approval is pending after two automatic approval review rejections. Offline work continues; the overall goal remains active.",
+      "Public Git push only: automatic approval review previously rejected public disclosure. Updated explicit question now covers all 68 tracked files through e0cc6ac; no response yet. Local commits are complete."
+    ],
+    "unansweredFeedback": []
+  },
+  "scope_preserved": {
+    "product_requirements": 123,
+    "prerequisite_ids": 3,
+    "source_units": 312,
+    "qualification_authorities": 22,
+    "inherited_gap_duties": 188,
+    "milestones": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "arms": [
+      "S4-G",
+      "S16-G",
+      "O16-G"
+    ],
+    "blocks": [
+      "healthy",
+      "compound_recovery"
+    ],
+    "planned_trajectories": 6,
+    "application_families": 1,
+    "no_role_or_obligation_reduction": true,
+    "sources": [
+      "plan",
+      "denominator",
+      "confirmation"
+    ]
+  },
+  "critical_path": [
+    "Root obtains and audits a terminal current-source647 affected offline result; running is not passed. Then root qualifies the already declared38workflow and6shared-transport physical controls on the corrected source.",
+    "In parallel, close the existing product_contract/integration_recovery implementation gaps: executable complete acceptance cells and owner/reader routes, plus typed admitted distinguishing tests with actual candidate/merged-source execution.",
+    "Assemble the complete prospective declaration and all-purpose observation plan; independently review/enroll the full312/22/188 semantics, compatibility, source layouts, prerequisite/control and promotion authorities. Empty or unavailable cells are not waived.",
+    "Freeze the complete matching four-milestone/six-trajectory execution contract and run its fresh zero-provider rehearsal. Independently authenticate public mechanics, faults, complete final acceptance and original evidence through the installed cold capsule.",
+    "Reconcile exact whole-cohort funding/reservation headroom against the original current cumulative ledger and resolve the explicit provider payload disclosure hold. Issue the existing source-bound qualification/permit capability before any live child admission."
+  ],
+  "remaining_requirements": [
+    {
+      "id": "current_qualification",
+      "category": "implemented_but_unqualified",
+      "existing_plan_gates": [
+        "product_contract",
+        "integration_recovery"
+      ],
+      "requirement": "Finish current647 affected offline qualification and independent source/result/reuse audit, then the required38workflow plus6shared-transport Docker controls. Preserve prior failures; do not retry unchanged until green or widen the frozen limits.",
+      "evidence": "Canonical handoff supersedes the dated development checkpoint: injected fixture repair is installed and nearest16 passed; full647 is running. The earlier physical attempt is failed1/not_run37. Neither outcome establishes current-source physical qualification.",
+      "completion_evidence": "Root-owned terminal receipts and independent exact-source/runtime/outcome reconciliation for the applicable corrected-source controls. Other still-valid exact-contract receipts may be reused under repository rules.",
+      "sources": [
+        "current_gate_checkpoint",
+        "physical_failure",
+        "canonical_handoff"
+      ]
+    },
+    {
+      "id": "remaining_product_observations",
+      "category": "missing_implementation_or_integration",
+      "existing_plan_gates": [
+        "product_contract",
+        "integration_recovery"
+      ],
+      "requirement": "Complete source-bound executable assertions and final-owner/cold-reader integration for mandatory cells absent from the finite current mappings. Preserve every312source unit,22authority and188duty until independently disposed under the existing contract.",
+      "concrete_gaps": [
+        "FinalV3 closed owner kinds are cli/http/product/storage/m2/workflow/workflow_inspection; browser and installed-release observers are not separate admitted kinds. Existing standalone observers or legacy receipts do not establish their final-cohort routing.",
+        "Current mappings explicitly leave browser download, backup filesystem publication/atomic activation, abrupt commit-boundary/migration and physical preservation evidence missing; storage declares unresolved V2 auxiliary/concurrency/recovery facets.",
+        "The current20workflow histories cover23solve calls/212operations; they explicitly supply no parser, HTTP, CLI, browser, forced-concurrency or process-durability credit. WF17 does not qualify the full required normalized-byte ceiling."
+      ],
+      "limit": "These are source-demonstrated gaps, not an exhaustive current missing-cell count. No declaration compiler was executed, and an older coverage-map count is not relabeled as current.",
+      "completion_evidence": "Actual producers/selectors and exact execution/readback paths for each mandatory cell, qualified without turning mechanism observations into semantic acceptance.",
+      "sources": [
+        "owner_kinds",
+        "scope_factory",
+        "denominator",
+        "storage_limits",
+        "workflow_limits"
+      ]
+    },
+    {
+      "id": "generated_distinguishing_tests",
+      "category": "missing_implementation",
+      "existing_plan_gates": [
+        "integration_recovery"
+      ],
+      "requirement": "Implement/qualify the already planned typed, expectation-admitted distinguishing-test selection and execution against eligible candidates and the actual merged tree, with bounded accounted work and original results.",
+      "evidence": "The original plan requires selected tests to execute and trusted validation of admissible expectations. Current controller asks for tests in decision.json; runtime checks only that tests is a list and retains the decision before merging. DockerPublicChecks executes caller-authored release.checks. No consuming execution/admission path for reviewer-generated tests appears in this runtime.",
+      "limit": "Selection, public suite execution and feedback-driven repair already exist; this finding does not call those components absent and does not authorize new scouts or test budget.",
+      "sources": [
+        "plan",
+        "test_design",
+        "review_directive",
+        "public_runtime",
+        "probe_admission_pattern",
+        "existing_probe_execution_pattern"
+      ],
+      "original_requirement": {
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/large-swarm-project-plan-v1.json",
+        "json_pointer": "/readiness_gates/4/requirement",
+        "verbatim": "Qualify explicit whole-candidate selection, evidence-guided cross-implementation tests, exact merged-source approval, stale-head recovery and durable container cleanup."
+      },
+      "smallest_existing_contract_path_recommendation": [
+        "Add a versioned cumulative adapter around the existing bounded data-only probe admission pattern; retain raw reviewer tests with exact financial result, view, stage, source and requirement bindings. Keep candidate choice separate from whether a proposed test is admissible.",
+        "Reuse source-audited parsing, domain checking, oracle-admissible expectation validation, deduplication and receipt patterns from verification_probes.py. That existing module handles exact JSON expectations; the already planned contract-defined relationships need a typed, source-bound extension. Do not relabel the old cohort oracle/purpose or its receipts as qualified for the cumulative V2 product.",
+        "Before honoring the retained reviewer choice, execute admitted bounded checks on every eligible exact candidate as the original plan requires; run applicable checks on the actual merged tree before completion/promotion. Extend the current sandbox/public-evidence path and cold reader rather than introducing an extra agent or parallel study controller.",
+        "Bind originals to the ordered generated suite and exact source/result; feed failures into the existing bounded public-feedback repair path. Preserve unknown outcomes, stop behavior and costs. Unsupported claims remain notes. Use the already declared role, horizon, evidence and spending allowances; this recommendation adds no gate, scout, sample, cap or timeout."
+      ]
+    },
+    {
+      "id": "full_semantic_registration",
+      "category": "implemented_authority_missing_qualified_inputs",
+      "existing_plan_gates": [
+        "product_contract"
+      ],
+      "requirement": "Produce the actual complete six-source declaration/scope submissions and independently delivered/enrolled semantic review, including all prerequisite/authority/gap targets, layout/compatibility/purpose conversion and complete observation workload/capacity.",
+      "evidence": "Scope factories deliberately leave missing observations as empty plans. V3 registration rejects absent registry, blockers or missing executable edges before authenticating review. Current workflow/CLI addenda require explicit full-family semantic review; matching digests and test fixtures are not approval.",
+      "completion_evidence": "Source-bound complete declarations and enrolled review originals with no unresolved mandatory cells; SCOPE/ADMISSION/CONTROL and exact final-source promotion authority must be authenticated at their prescribed phases.",
+      "sources": [
+        "scope_factory",
+        "scope_authority",
+        "original_authorities",
+        "successor"
+      ]
+    },
+    {
+      "id": "complete_matching_rehearsal",
+      "category": "implemented_but_unqualified_end_to_end",
+      "existing_plan_gates": [
+        "multi_action_roles",
+        "real_capacity",
+        "bounded_corpus",
+        "integration_recovery",
+        "full_zero_provider_rehearsal"
+      ],
+      "requirement": "Freeze and qualify the complete ordered six-child, four-milestone successor with exact source/model/resource/fault/stop and all-purpose acceptance bindings; then execute and independently audit one matching complete zero-provider rehearsal.",
+      "evidence": "FinalV3, prerequisite/control/promotion owners, repaired-success finance, terminal reader, final-originals reader, V3 capsule and issued-qualification entry now exist. The cold capsule requires both actual public cohort originals and complete final packet; final-originals requires all six completed, accepted-against-registry slots without unavailable observations. Component fixture passes do not supply this evidence.",
+      "completion_evidence": "Exact fixture/live mapping and envelopes; real role/process/Git/accounting/fault originals; complete-cohort freeze; fresh mandatory independent and repeatability observations; original controls/reviews/promotion; complete audited capsule before issuance.",
+      "sources": [
+        "original_authorities",
+        "successor",
+        "cold_capsule",
+        "final_originals",
+        "qualified_entry",
+        "issued_qualification",
+        "plan"
+      ]
+    },
+    {
+      "id": "funded_registration",
+      "category": "prospective_registration_and_accounting",
+      "existing_plan_gates": [
+        "funded_live_registration"
+      ],
+      "requirement": "Freeze exact profiles, randomized order, capacity/horizon/fault/stop contracts, full cohort cost and concurrent reservation headroom; bind the original current ledger and all six child allocations before issuance.",
+      "authorization_boundary": "The larger-study scope and cumulative80USD ceiling are already authorized. The plan has no specific allocation and says not to request automatic second spending permission if the fully qualified cohort fits existing authorization. A higher cap requires approval. Historical37.849415USD remaining is retained accounting, not a current balance; this audit did not read the ledger.",
+      "completion_evidence": "Root-owned current ledger reconciliation plus whole-cohort funded registration and actual qualified worker/permit inputs, retaining all six trajectories.",
+      "sources": [
+        "plan",
+        "cold_capsule",
+        "issued_qualification",
+        "qualified_entry",
+        "canonical_handoff"
+      ]
+    },
+    {
+      "id": "payload_disclosure",
+      "category": "external_authorization",
+      "existing_plan_gates": [
+        "funded_live_registration"
+      ],
+      "requirement": "Resolve the existing explicit payload-to-OpenAI disclosure approval hold before live provider dispatch.",
+      "evidence": "Canonical handoff records two automatic approval review rejections and pending explicit payload approval. Existing scope/spending authorization does not erase this stated hold.",
+      "not_a_launch_dependency": "Public Git disclosure/push is a separate pending authorization. It is not treated here as a provider-study execution prerequisite.",
+      "sources": [
+        "canonical_handoff"
+      ]
+    }
+  ],
+  "already_implemented_not_to_rebuild_by_stale_docs": [
+    "Four-milestone six-child peer-local/durable-central public runtime and bounded repair wiring",
+    "V5 repaired-success financial closure and six-slot terminal reader",
+    "FinalV3 concrete original prerequisite/CONTROL/promotion binding",
+    "Final original-evidence reconstruction, V3 matching cold capsule and issued live qualification entry",
+    "CLI/HTTP/storage/M2/product/workflow finite observation routes and full-denominator scope factory"
+  ],
+  "prospective_scientific_confirmation": {
+    "category": "future_evidence_obligation_not_current_launch_gate",
+    "requirements": [
+      "Execute/audit the preserved six one-family trajectories before claiming any new comparative outcomes. Report whole-project quality, stopped/unattempted/unknown outcomes and accounting without denominator loss.",
+      "Later held-out-family confirmation requires prospective registry, fault mixture, endpoints, sample, method and multiplicity choices; the illustrative800families is not an approved sample or a current gate.",
+      "The separate placement-by-transport four-cell comparison remains required to isolate transport. All three current arms use gossip."
+    ],
+    "claim_boundary": "Six related trajectories, agent roles, tests and histories are not independent family replications. Current engineering qualification contributes zero new model-quality samples. No superiority, calibrated Elo or general recovery claim follows.",
+    "sources": [
+      "confirmation",
+      "science",
+      "plan"
+    ]
+  },
+  "sources": {
+    "plan": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/large-swarm-project-plan-v1.json",
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e",
+      "anchors": [
+        "/readiness_gates",
+        "/funding",
+        "/cohort",
+        "/resource_proposal",
+        "/acceptance_and_barrier"
+      ]
+    },
+    "test_design": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/docs/large-swarm-project-plan-v1.md",
+      "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
+      "anchors": [
+        "lines 156-170"
+      ]
+    },
+    "current_gate_checkpoint": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/workflow-deadline-development-checkpoint-v1.json",
+      "sha256": "3f0af732273a2064c197fdc46a76a21b4e2d25457df571bbfe70304ef19f3f83",
+      "anchors": [
+        "/required_remaining",
+        "/current_full_gate",
+        "/next_fixture_correction",
+        "/scientific_evidence"
+      ]
+    },
+    "workflow_scope": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/workflow-family-development-checkpoint-v1.json",
+      "sha256": "e6d570e920953f0e2189b24fa340f1cce13fa6d61e60d123d78eba43443eb9c8",
+      "anchors": [
+        "/scope"
+      ]
+    },
+    "physical_failure": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/workflow-family-physical-failure-v1.json",
+      "sha256": "9b640eb13213f6b157066472ecc1f97bbb6f00b01394616ac938c253bd99ec64",
+      "anchors": [
+        "/status",
+        "/outcomes",
+        "/next_action"
+      ]
+    },
+    "denominator": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_scope_source_v1.py",
+      "sha256": "5e7efaefe7fb0da67bdeaefb7374474603fc21bfa47efca62938bc5dea990874",
+      "anchors": [
+        "lines 102-109",
+        "lines 519-552"
+      ]
+    },
+    "scope_factory": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_scope_source_v3.py",
+      "sha256": "05f25a0fff387f56b80554f3c9f312dc4fb0567b3b46a9c6e901aa2ee6bd73fb",
+      "anchors": [
+        "lines 242-269",
+        "lines 282-331"
+      ]
+    },
+    "scope_authority": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_scope_authority_v3.py",
+      "sha256": "4a0202db105ce4dcf345a1dfbbce3d70a8768b11a06cec1b6ba23ee4f22f113f",
+      "anchors": [
+        "lines 71-113",
+        "lines 142-165"
+      ]
+    },
+    "storage_limits": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_storage_product_profile_v1.py",
+      "sha256": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da",
+      "anchors": [
+        "lines 38-46"
+      ]
+    },
+    "workflow_limits": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+      "sha256": "e937e3f0e35763464904689250c267b8710af6979a1a9946788ec9b8f71c3a94",
+      "anchors": [
+        "lines 64-73"
+      ]
+    },
+    "owner_kinds": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py",
+      "sha256": "8e6a767c8076d5b71c68cdc5c099dea1e17b6eda4e9fd54d8c1cd2400b1f02ce",
+      "anchors": [
+        "lines 262-266",
+        "lines 476-480"
+      ]
+    },
+    "original_authorities": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v3.py",
+      "sha256": "c74e3c5b1741a4502a42ef15d517984cab883a6d9bb3fcfc08b07fd63c53b295",
+      "anchors": [
+        "lines 114-152"
+      ]
+    },
+    "successor": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_study_successor_v3.py",
+      "sha256": "32124ecb0fd943b4fcf3749eb72c2ffe85afa423667720ee45c017ae741a60ee",
+      "anchors": [
+        "lines 20-75"
+      ]
+    },
+    "public_runtime": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_study_runtime_v2.py",
+      "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+      "anchors": [
+        "lines 95-112",
+        "lines 620-655"
+      ]
+    },
+    "review_directive": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_study_controller_v2.py",
+      "sha256": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+      "anchors": [
+        "lines 373-382"
+      ]
+    },
+    "cold_capsule": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_rehearsal_capsule_v3.py",
+      "sha256": "8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+      "anchors": [
+        "lines 35-57",
+        "lines 65-112"
+      ]
+    },
+    "final_originals": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_originals_v1.py",
+      "sha256": "3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a",
+      "anchors": [
+        "lines 530-552"
+      ]
+    },
+    "qualified_entry": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_qualified_study_v1.py",
+      "sha256": "75c27f42b79cf347f53630d8b3a41a094dfada2be6638b72b0555870e6059991",
+      "anchors": [
+        "lines 106-141"
+      ]
+    },
+    "issued_qualification": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_issued_qualification_v1.py",
+      "sha256": "938712c4b5c2ca8be8a0f83dfb88ebe99f715ba2abde9581f559c480aec3f295",
+      "anchors": [
+        "lines 146-181",
+        "lines 251-272"
+      ]
+    },
+    "confirmation": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/docs/cumulative-confirmatory-design-check-v1.md",
+      "sha256": "0d630da9ec38463df261b77be2e60f350f745e3e2d7963b10659baafc4bb357a",
+      "anchors": [
+        "lines 3-17",
+        "lines 21-37"
+      ]
+    },
+    "science": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/scientific-evidence-status-20261004.json",
+      "sha256": "bd41d755580346ed03161bbc41da5cc109261cf0467c4996e15c45d1d076d4f3",
+      "anchors": [
+        "/last_live_study_finished_utc",
+        "/new_model_quality_samples",
+        "/assessment",
+        "/scope_note"
+      ]
+    },
+    "probe_admission_pattern": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/verification_probes.py",
+      "sha256": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd",
+      "anchors": [
+        "lines 1-7",
+        "lines 122-149",
+        "lines 170-278"
+      ]
+    },
+    "existing_probe_execution_pattern": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/verification_stage.py",
+      "sha256": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+      "anchors": [
+        "lines 1-7",
+        "lines 439-479"
+      ]
+    }
+  },
+  "nonclaims": [
+    "No current-run terminal outcome or live-ready certificate",
+    "No newly invented prerequisite, reduced family or replacement experiment",
+    "No semantic approval or candidate acceptance inferred from source review",
+    "No new ledger/account balance or provider invoice assertion",
+    "No tests, physical controls, rehearsal, provider calls or statistical calculations performed"
+  ],
+  "independent_scope_review": {
+    "reviewer": "/root/live_m1_outcome_audit_prep/audit_design_review",
+    "method": "Read-only current source/document review",
+    "findings": "Preserve six trajectories/four milestones/three arms and312/22/188; installed FinalV3 generic producers do not establish independent originals; later confirmation does not add a present launch prerequisite.",
+    "source": "confirmation"
+  }
+}

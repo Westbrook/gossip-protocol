@@ -1,0 +1,149 @@
+{
+  "schema": "external-coordination-evidence-v1",
+  "research_date": "2026-10-04",
+  "purpose": "Primary-source evidence relevant to decentralized versus centralized coding-agent coordination; design advice only, not a new experiment authorization.",
+  "method": {
+    "access": "Public web search and primary paper/repository pages only. No project material sent in search queries; no provider calls, project imports, tests, shell network, or repository edits.",
+    "scope": "Focused selection, not a systematic literature review. No independent third-party replication of these specific comparisons was located in this search.",
+    "source_status": "Author-reported results, not reproduced locally. HTML papers inspected; underlying execution traces and repository implementations not audited. Version dates are manuscript dates, not experiment dates."
+  },
+  "conclusion": {
+    "finding": "The inspected literature supports testing coordination as a real design variable, but supplies no clean replicated demonstration that gossip transport improves sustained software-project acceptance over a matched orchestrator.",
+    "strength": "Suggestive evidence and concrete failure mechanisms; insufficient for a general superiority or inferiority verdict.",
+    "do_not_pool": "External outcomes cannot be pooled with our local runs: tasks, evaluators, models, control authority, budgets and stopping rules differ."
+  },
+  "sources": [
+    {
+      "id": "scaling_v3",
+      "title": "Towards a Science of Scaling Agent Systems",
+      "url": "https://arxiv.org/html/2512.08296v3",
+      "metadata_url": "https://arxiv.org/abs/2512.08296",
+      "first_version_date": "2025-12-09",
+      "inspected_version_date": "2026-04-08",
+      "status": "Research preprint; primary manuscript.",
+      "locations": [
+        "Sections 3 and 4.1",
+        "Section 4.2",
+        "Appendices D, E.2 and F; Table 16"
+      ],
+      "supported": "Real-repository repair on 20 SWE-bench Verified issues. Reported mean success: single 52.2%, centralized 50.6%, decentralized 49.4%, hybrid 51.1%, independent 44.4%. Decentralized means all-to-all debate, not epidemic gossip.",
+      "control": "Authors report common tools and matched total iterations/reasoning tokens.",
+      "limitations": "Setup says eight models, but Table 16 lists nine; the headline means match nine rows. Appendix E.2 lists unequal nominal iteration ceilings, leaving budget enforcement unclear without code/traces. Per-model confidence intervals are broad. This is issue repair, not long-lived project delivery; no independent replication inspected.",
+      "design_implication": "Retain strong single-agent and enforced orchestrator controls; record realized budgets and authority, and audit denominator consistency before interpreting rankings. Do not import the paper's proposed 45% saturation threshold as a universal rule."
+    },
+    {
+      "id": "mseval_v1",
+      "title": "An Empirical Study of Coordination Mode as the First-Class Citizen in From-Scratch Multi-Agent Coding",
+      "url": "https://arxiv.org/html/2607.27877v1",
+      "metadata_url": "https://arxiv.org/abs/2607.27877",
+      "repository_url": "https://github.com/robinren03/MSEval",
+      "inspected_version_date": "2026-07-30",
+      "status": "Research preprint and official repository.",
+      "locations": [
+        "Methodology",
+        "Table 3",
+        "Limitations",
+        "Appendix: Ten Collaboration Modes"
+      ],
+      "supported": "Ten capstone-derived web projects, ten collaboration modes, three feedback rounds. Swarming uses four identical workers dynamically claiming tasks. Table 3 round-three scores for swarming/pipeline: DeepSeek Flash 62.9/71.3, Pro 83.0/83.7, GLM 86.4/87.6.",
+      "control": "Same project, model, round allowance, deployment and rubric within comparisons; token expenditure varies. All modes share central periodic snapshots and a shared workspace, so this is not a gossip-transport contrast.",
+      "limitations": "Partial-credit adaptive grading with feedback; best-round time/cost reporting. Only instant-messaging time/token evaluation has three trials; other projects rerun when experts flag abnormal cases. No held-out lifecycle/maintenance claim. No independent replication inspected.",
+      "design_implication": "Score final integrated behavior and retained regression-free milestones, not best observed round. Preserve failed/abnormal attempts and independent final acceptance. Compare ownership policies separately from communication transport."
+    },
+    {
+      "id": "coordination_measurement_v1",
+      "title": "When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding",
+      "url": "https://arxiv.org/html/2608.16801v1",
+      "metadata_url": "https://arxiv.org/abs/2608.16801",
+      "inspected_version_date": "2026-08-17",
+      "status": "Research preprint; primary manuscript.",
+      "locations": [
+        "Sections 3, 7, 8, 9 and 10; especially section 9 paragraphs describing the seal and exclusions"
+      ],
+      "supported": "1,902 runs on two synthetic Python tasks with pinned Sonnet 4.6; 244 follow-up runs using the authors' limited seal. Teams reach sixteen in a scaling arm. An earlier flat-team advantage is absent in the follow-up. An eight-step chain fails 10/10 at eight agents at an unowned rounding interface.",
+      "control": "Varies team size, file policy and nominal coordinator. Coordinator changes only a prompt clause, without enforced routing or authority; this does not test a substantive central orchestrator.",
+      "limitations": "Initial grading material was reachable. Follow-up relocates originals and installs decoys/tripwires: the filesystem remains permissive and shell reads are unlogged, so it is not an enforced sandbox or proof of complete isolation. Four timeouts were discarded and rerun. Replication uses the same authors and selected cells, not independent replication. Two small tasks and one model; main cells often have ten runs and low power. Token totals exclude cached context.",
+      "design_implication": "Enforce evaluator isolation across every access channel; retain timeout attempts. Verify actual topology and interface ownership, and repeat across independent project families. Communication volume alone cannot establish useful coordination."
+    },
+    {
+      "id": "gossip_substrate_v1",
+      "title": "A Gossip-Enhanced Communication Substrate for Agentic AI: Toward Decentralized Coordination in Large-Scale Multi-Agent Systems",
+      "url": "https://arxiv.org/html/2512.03285v1",
+      "inspected_version_date": "2025-12-02",
+      "status": "Research agenda; primary manuscript.",
+      "locations": [
+        "Abstract",
+        "Sections 10 and 11"
+      ],
+      "supported": "Proposes gossip beneath structured calls, with numerical-state factory and disaster-response experiments as future evaluation designs. Explicitly avoids claiming definitive empirical superiority.",
+      "limitations": "No completed coding-quality comparison is supplied. Architectural motivation and proposed experiments do not establish end-to-end software correctness.",
+      "design_implication": "Keep dissemination resilience and decision authority as separate factors. Test whether repaired information flow changes accepted software outcomes, not just convergence or message delivery."
+    },
+    {
+      "id": "agentnet_v2",
+      "title": "AgentNet: Decentralized Evolutionary Coordination for LLM-based Multi-Agent Systems",
+      "url": "https://arxiv.org/html/2504.00587v2",
+      "metadata_url": "https://arxiv.org/abs/2504.00587",
+      "first_version_date": "2025-04-01",
+      "status": "Primary manuscript; inspected v2.",
+      "locations": [
+        "Sections 3 and 4.1"
+      ],
+      "supported": "Local routers, evolving DAG connections and retrieval memories implement decentralized task allocation. Benchmarks are MATH, BBH and API-Bank.",
+      "limitations": "No software-project benchmark here. Memory specialization, routing and topology change together, so reported gains cannot isolate gossip or coding coordination.",
+      "design_implication": "Treat as an implementation reference, not evidence for software acceptance or cheap-model swarm superiority."
+    }
+  ],
+  "researcher_recommendations": [
+    {
+      "priority": 1,
+      "action": "Keep the existing transport-by-orchestration comparison. Match task, model roster, tools, evidence admission, authority and stopping rule; vary only the designated factor. Include actual message delivery and application traces so a failed manipulation is detectable.",
+      "basis": [
+        "scaling_v3",
+        "mseval_v1",
+        "coordination_measurement_v1",
+        "gossip_substrate_v1"
+      ],
+      "classification": "Researcher inference; design-freeze advice, no execution authorization."
+    },
+    {
+      "priority": 2,
+      "action": "Make final independently accepted integrated software the primary outcome, with sustained milestone retention and time to acceptance as secondary outcomes. Preserve stopped runs, regressions and evaluator/infrastructure failures explicitly. Best-round quality is descriptive only.",
+      "basis": [
+        "mseval_v1",
+        "coordination_measurement_v1"
+      ],
+      "classification": "Researcher inference, aligned with the user's quality and persistence objective."
+    },
+    {
+      "priority": 3,
+      "action": "Treat independent project families as the generalization units; repeated seeds within one family estimate variability, not additional project diversity. Pair arm assignment by task/seed and predeclare uncertainty, meaningful effect size, multiplicity and stopping before confirmation.",
+      "basis": [
+        "scaling_v3",
+        "coordination_measurement_v1"
+      ],
+      "classification": "Researcher inference; no statistical claim can be transferred from external sample counts."
+    },
+    {
+      "priority": 4,
+      "action": "For weak-model portfolios, distinguish candidate quality diversity from selector quality: retain independent final evaluations for every candidate and calculate an oracle upper bound only after the run. If no candidate passes, more selection cannot fix the observed batch. Hold private evaluator results out of candidate selection.",
+      "basis": [],
+      "classification": "Researcher inference from the local question, not a finding of the cited papers."
+    },
+    {
+      "priority": 5,
+      "action": "Record which agent owns each cross-module invariant, which source revision an observation concerns, and when it is read and applied. More messages, nodes or passed local tests are mechanisms to inspect, not substitutes for final project acceptance.",
+      "basis": [
+        "mseval_v1",
+        "coordination_measurement_v1"
+      ],
+      "classification": "Researcher inference; instrumentation proposal to assess against existing coverage, not a request to widen current implementation scope."
+    }
+  ],
+  "revision": 2,
+  "supersedes": {
+    "path": "/private/tmp/external-coordination-evidence-20261004-1.json",
+    "sha256": "fc0505677e9692889eba6f7f2c258c30f64065c9b8943b4b48e42ad4907372c8",
+    "reason": "Clarify the limited containment and timeout exclusions in When Agents Coordinate section 9; original draft retained."
+  }
+}

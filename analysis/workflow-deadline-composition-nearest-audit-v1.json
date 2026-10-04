@@ -1,0 +1,194 @@
+{
+  "audited_at": "2026-10-04T23:40:41.368134+00:00",
+  "duration_seconds_recorded": 523.881273415871,
+  "fingerprint": "77f5d1ea5f082d1165c6f20be34d8231a6e58f7329a6c95e9532e6efcc351660",
+  "full_inventory_reference": {
+    "nearest_subset": 16,
+    "planned_classes": 63,
+    "planned_methods": 647,
+    "receipt": {
+      "bytes": 370835,
+      "path": "/private/tmp/workflow-deadline-full-inventory-1.json",
+      "sha256": "c68ebc3a010f94ae328597485a31efbd5d8cedf160e0acbe7cb3718165d98287"
+    },
+    "remaining_methods_not_covered_here": 631,
+    "runtime_status": "Not inspected/polled; only the fixed selection inventory was read."
+  },
+  "nonclaims": [
+    "This is nearest16 verification only, not full647, workflow38/legacy6 physical qualification, acceptance, scientific evidence or deadline-feasibility proof.",
+    "Actual owner/export/cold-reader paths in these tests remain explicitly synthetic control scaffolding.",
+    "Root owns full verification and any exact-fingerprint receipt reuse decisions."
+  ],
+  "ordered_selection": {
+    "AST_request_result_summary_and_full_inventory_match": true,
+    "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+    "cleanup": "completed",
+    "fixture_errors": [],
+    "ids": [
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_cold_host_reader_reconstructs_both_live_proof_owners_and_no_dispatch",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_gate_specific_purpose_conversions_remain_independently_required",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_host_export_and_cold_consume_exported_protected_original_descriptors",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_product_export_cold_raw_observer_retains_failure_and_refuses_closed_source",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_two_phase_original_review_observer_and_readonly_reopen",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_workflow_catalog_lanes_preserve_dual_purposes_and_refuse_metadata_substitution",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_both_actual_prerequisite_factories_and_complete_original_readers",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_both_actual_prerequisite_factories_keep_partial_acknowledged_targets_without_replay",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_both_actual_recipes_capsule_bound_codec_normalization_and_identity_refusal",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_closed_product_types_refuse_all_qualification_dataclasses_on_pack_and_unpack",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_exact_nested_capture_points_roundtrip_without_plain_dict_or_unknown_role",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_original_product_delivery_drift_between_phases_cannot_complete",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_prerequisite_original_target_cannot_drop_any_of_three_identities",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_product_original_missing_verifier_is_rejected_without_republication",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_product_rejection_survives_unknown_sibling_without_fabricated_acceptance",
+      "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_synchronous_route_and_changed_freeze_refuse_before_completion_or_retry"
+    ],
+    "lane": "git",
+    "sha256": "46d797d9bb621105337b38138e099e2fa6325df6ac3489f82dafa25571465c86",
+    "timeout_seconds": 1800,
+    "weight": 1,
+    "worker_executed_fresh": true,
+    "worker_physical_flag": "Fresh offline Git/mock worker; not Docker or real candidate scientific evidence",
+    "workers": 4,
+    "workers_started": 1
+  },
+  "originals": [
+    {
+      "bytes": 13372,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/summary.json",
+      "sha256": "b5aa9c64c6feef53f59ebcd81755029f088367ddbf56ec533cc7b19137b48210"
+    },
+    {
+      "bytes": 86970,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/inputs.json",
+      "sha256": "24f2180e792860b2f93bdaeb2dbed746f947d989c7dc9cc7cc9a44ffdb180c68"
+    },
+    {
+      "bytes": 1435,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/runtime-final.json",
+      "sha256": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+    },
+    {
+      "bytes": 103606,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/static.json",
+      "sha256": "9ca1fadab53add16ae1521c6f0c0432d50b03a5254140ef4af8292ef57feb607"
+    },
+    {
+      "bytes": 242,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/static.log",
+      "sha256": "0abc6f7b696b533c348cbe344d46dd5b18749f4d4a1d7d2ce7bd7924a7042c87"
+    },
+    {
+      "bytes": 11239,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/request.json",
+      "sha256": "617b1d129b9989bd3bfd29e2a3937ffa6148d2a622c0f080de2b6bd3cea13da3"
+    },
+    {
+      "bytes": 8048,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/result.json",
+      "sha256": "d9462169733b972e87328e09fd999093f9fcfa310dd4f83df0ae5c70c38339bd"
+    },
+    {
+      "bytes": 4035,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/worker.log",
+      "sha256": "2e3b08a793eea84f0249f0d3df67c1bcd7dd1f21f5748ec71234dd6174681aaa"
+    }
+  ],
+  "outcome": "consistent completed nearest16 pass; no mismatch found",
+  "outcomes": {
+    "passed": 16
+  },
+  "previous_failure_preserved": {
+    "limit": "The prior634pass/1error/12not_run remains a failed full647 attempt, never relabeled by this nearest pass.",
+    "outcomes": {
+      "error": 1,
+      "not_run": 12,
+      "passed": 634
+    },
+    "reused_classes": 1,
+    "status": "failed",
+    "summary": {
+      "bytes": 450896,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-4/20261004T225916-ebdb6690/summary.json",
+      "sha256": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e"
+    }
+  },
+  "protocol": "workflow-deadline-composition-nearest-audit-v1",
+  "reused_classes": 0,
+  "runtime": {
+    "current_binary_hashes_match": {
+      "git": {
+        "path": "/opt/homebrew/Cellar/git/2.54.0/bin/git",
+        "sha256": "9b19807c702934b8c51fd2da8c2d38053bd7328536546e5a47eb3914dcc7bcde"
+      },
+      "node": {
+        "path": "/Users/westbrook/Library/Application Support/revedev-52ae4245/bin/node",
+        "sha256": "cdfe111c8680af987911be33d5ce7bb66a7979fbe382880b23a815945d763261"
+      },
+      "python": {
+        "path": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+        "sha256": "b8014caecb1f334bbc67e99b74d9f5fa6e3519c6567c98a890940b31ffeffa32"
+      },
+      "python3": {
+        "path": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+        "sha256": "b8014caecb1f334bbc67e99b74d9f5fa6e3519c6567c98a890940b31ffeffa32"
+      }
+    },
+    "current_package_metadata_count": 6,
+    "current_package_metadata_digest": "91bc654d91aa6648b0a939df3ebc854b61d74788cc2f82c769a2e714daf3208a",
+    "digest": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+    "initial_final_equal": true,
+    "limit": "Current binaries and installed METADATA/RECORD hashes were read. Original parent environment values were not retained; only its initial/final environment digest equality is verifiable without rerunning runtime capture. No version commands or package imports run.",
+    "recorded_environment_digest": "a99e7e269df8ca81b0a5439c0e636c71d9dde83b08376962bc3060052710084f"
+  },
+  "scope": "Read-only terminal source/JSON/AST/hash audit. No imports of project code, tests, checkers, Engine, provider, candidate execution, Git or root edits.",
+  "selected_total": 16,
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419",
+  "skips": 0,
+  "source": {
+    "count": 729,
+    "every_current_file_matches_recorded_hash": true,
+    "fixture": {
+      "bytes": 74623,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/tests/test_cumulative_workflow_composition_v1.py",
+      "sha256": "c0cfab274475c9fd4b4b39e1854a36ee9a63f6eb3e496d112561fee8731c9c6b"
+    },
+    "frozen_v4_retention": {
+      "gossip_harness/candidate_client_process_v4.py": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b",
+      "gossip_harness/candidate_retention_process_v1.py": "cce64ea597799a1e75878e3a13e7df1fe3b9ec75808292f91d192c448cae615b"
+    },
+    "held_fixture": {
+      "bytes": 74623,
+      "path": "/private/tmp/workflow-deadline-composition-fixture-1/hold-1/tree/tests/test_cumulative_workflow_composition_v1.py",
+      "sha256": "c0cfab274475c9fd4b4b39e1854a36ee9a63f6eb3e496d112561fee8731c9c6b"
+    },
+    "manifest_input_inventory_exact": true,
+    "map_digest": "37cea4057629dee195043628be376b4938552b4f143beea38fac591ce5aa3a5b",
+    "only_input_delta_from_prior_failed_full647": {
+      "tests/test_cumulative_workflow_composition_v1.py": {
+        "after": "c0cfab274475c9fd4b4b39e1854a36ee9a63f6eb3e496d112561fee8731c9c6b",
+        "before": "2e10be0e674e7c52dc31251295ff14ba5b26a56572ad74c44179f3596f08baad"
+      }
+    },
+    "runner_hash_matches": true
+  },
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": {
+    "blocking_diagnostics": "",
+    "check_statuses": {
+      "configuration": "passed",
+      "javascript_syntax": "passed",
+      "lint": "passed",
+      "syntax": "passed",
+      "tools": "passed",
+      "types": "passed"
+    },
+    "exact_existing_baseline_diagnostics": 117,
+    "limit": "Baseline-aware type success, not universal type cleanliness.",
+    "source_count": 653,
+    "status": "passed",
+    "type_baseline_sha256": "3ace625c18000d0f5a82107228172800d81692df48f64cad3cdc11fc0c92759f",
+    "type_roots": 241,
+    "types_returncode": 1
+  }
+}

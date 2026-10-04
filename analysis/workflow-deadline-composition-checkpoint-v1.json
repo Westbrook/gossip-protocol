@@ -1,0 +1,85 @@
+{
+  "protocol": "workflow-deadline-composition-checkpoint-v1",
+  "created_at_utc": "2026-10-04T23:58:01.123884+00:00",
+  "base_commit": "b34e1bceebb3f5ca3fc634ddcd7defd4430b4392",
+  "status": "offline_qualified_physical_pending",
+  "change": {
+    "path": "tests/test_cumulative_workflow_composition_v1.py",
+    "sha256": "c0cfab274475c9fd4b4b39e1854a36ee9a63f6eb3e496d112561fee8731c9c6b",
+    "meaning": "Injected composition fixture delegates required eligibility originals and records completion before next acknowledgement; all26 existing test body ASTs unchanged. Production deadline contract unchanged from base."
+  },
+  "verification": {
+    "nearest": "runs/workflow-deadline-offline-5/20261004T232615-34d8c419",
+    "nearest_fresh_passes": 16,
+    "full": "runs/workflow-deadline-offline-5/20261004T233836-5a01031b",
+    "full_outcomes": {
+      "passed": 647
+    },
+    "full_fresh_passes": 631,
+    "full_reused_passes": 16,
+    "full_classes": 63,
+    "full_duration_seconds": 1000.9936955422163,
+    "fingerprint": "77f5d1ea5f082d1165c6f20be34d8231a6e58f7329a6c95e9532e6efcc351660",
+    "source_files": 729,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static": "passed; configured baseline-aware checks,117 existing type diagnostics remain",
+    "independent_audit": "analysis/workflow-deadline-full-terminal-audit-v2.json",
+    "integrity_assertions": 660,
+    "audit_assertions_are_not_tests": true
+  },
+  "prior_failure_preserved": {
+    "outcomes": {
+      "error": 1,
+      "not_run": 12,
+      "passed": 634
+    },
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-4/20261004T225916-ebdb6690/summary.json",
+    "sha256": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e",
+    "status": "failed"
+  },
+  "required_remaining": [
+    "38 workflow Docker controls and6 shared-transport Docker controls on the current source",
+    "All existing launch gaps in the separately retained current-study audit; full scope unchanged"
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "last_live_study_finished_utc": "2026-10-02T20:51:58.734056+00:00",
+    "claims": "Offline qualification and source research do not establish a gossip or20-role quality advantage."
+  },
+  "retained_artifacts": [
+    {
+      "path": "analysis/workflow-deadline-composition-nearest-audit-v1.json",
+      "sha256": "421679e12b3adae64027b389a33c258232a49a0a46c555b80144d129cf97b059"
+    },
+    {
+      "path": "analysis/workflow-deadline-full-terminal-audit-v2.json",
+      "sha256": "48faf7417849202bf3d8b9af8f7c7a08951e4633ef012d4769fa3077ce883eb7"
+    },
+    {
+      "path": "analysis/external-coordination-evidence-20261004-v2.json",
+      "sha256": "7d0f25094a729966260d49116736763a19fdffcb3ee99c7ab8e3c0844448cbf8"
+    },
+    {
+      "path": "analysis/agent-scaling-budget-source-check-v1.json",
+      "sha256": "083096b74dfb390d0e2c41f51c1ce2c38e49bf151b71692f12ea06e1bd34125f"
+    },
+    {
+      "path": "analysis/current-study-launch-gap-audit-20261004-v1.json",
+      "sha256": "1b38dce6f0adf7d59cf75c4dc1dabd09c647a49ff100fc1eba754fb1e163a502"
+    },
+    {
+      "path": "analysis/counter-supervised-owner-deadline-investigation-v1.json",
+      "sha256": "7120e419e172de8a3f1068838e8ff11eb56c6937e7fbaaede3a96858ec9f5e24"
+    },
+    {
+      "path": "analysis/workflow-checkpoint-batch-option-source-map-v1.json",
+      "sha256": "1dddbe1976b2f6a69cce1762282c2e765983fc153b41a37b29f88948dde1e4de"
+    }
+  ],
+  "external_actions": {
+    "provider_calls": 0,
+    "pushed": false,
+    "reason": "Existing provider/public-disclosure approval holds remain. Local development commit only."
+  }
+}

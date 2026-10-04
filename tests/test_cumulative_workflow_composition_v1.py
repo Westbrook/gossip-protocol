@@ -925,6 +925,29 @@ class _InjectedWorkflowOriginals:
         from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
         return CandidateWorkflowOriginalReaderTests.engine(self, label, first=first, pid=pid)
 
+    # Borrow the complete original-reader helper contract. These explicit phase
+    # records exercise provenance and ordering only; they do not claim that a
+    # candidate/Engine ran or met the physical call/history deadlines.
+    def eligibility_record(self, label, phase, members):
+        from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
+        return CandidateWorkflowOriginalReaderTests.eligibility_record(self, label, phase, members)
+
+    def eligibility(self, label, phase, members):
+        from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
+        return CandidateWorkflowOriginalReaderTests.eligibility(self, label, phase, members)
+
+    def capture_eligibility(self, label):
+        from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
+        return CandidateWorkflowOriginalReaderTests.capture_eligibility(self, label)
+
+    def response_eligibility(self, phase):
+        from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
+        return CandidateWorkflowOriginalReaderTests.response_eligibility(self, phase)
+
+    def completion_eligibility(self, phase):
+        from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
+        return CandidateWorkflowOriginalReaderTests.completion_eligibility(self, phase)
+
     def capture(self, label):
         from tests.test_candidate_workflow_observation_v1 import CandidateWorkflowOriginalReaderTests
         return CandidateWorkflowOriginalReaderTests.capture(self, label)
@@ -999,6 +1022,7 @@ class _InjectedWorkflowOriginals:
             raw=execution.encoded({'kind':'result','phase':phase,'value':{'wrong':True}})+b'\n'
             frames.append(raw);owner._retain(phase+'-frame-001.bin',raw);owner._retain(phase+'-response.bin',raw)
             self.engine(phase+'-result');self.capture(phase+'-result')
+            self.completion_eligibility(phase)
             self.retain(phase+'-next.json',{'request':'next:'+phase+'\n'});self.guard(phase,'after')
         done=exec_value();done.update(ContainerID=self.cid,Running=False)
         owner._retain('session-final-exec-request.bin',execution.process._request('GET','/exec/'+'e'*64+'/json'))

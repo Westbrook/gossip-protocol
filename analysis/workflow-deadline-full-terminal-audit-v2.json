@@ -1,0 +1,3219 @@
+{
+  "artifacts": {
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-4/20261004T225916-ebdb6690/summary.json": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/inputs.json": "24f2180e792860b2f93bdaeb2dbed746f947d989c7dc9cc7cc9a44ffdb180c68",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/static.json": "3601c50d7ea7b9991e5ae47306fdac9a74237ee6e6b516f2d84c7fc63d92c6ea",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/static.log": "d825eac952f915783c5c1cbe4cd263980f41168c70709141b77f0a315370fafd",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/summary.json": "71339ca723230ee50a9df7db904b6f189c1c5893e70e4d4416c105ed3531d6a9",
+    "/private/tmp/gossip-workflow-deadline-verification-scope-4.json": "df922fc48bcedb1a0e87002b21c6c884fa4b97b6e0db734b25df3427d84e5e98",
+    "/private/tmp/workflow-deadline-composition-nearest-audit-1.json": "421679e12b3adae64027b389a33c258232a49a0a46c555b80144d129cf97b059",
+    "/private/tmp/workflow-deadline-full-inventory-1.json": "c68ebc3a010f94ae328597485a31efbd5d8cedf160e0acbe7cb3718165d98287",
+    "/private/tmp/workflow-deadline-full-selection-1.json": "d51f74ec09c7d9ce21602781914aa73139dc9b8bc71b5334aed6334712281e33"
+  },
+  "audit_status": "integrity_passed",
+  "checks": {
+    "all_647_passed_without_skips": {
+      "passed": true
+    },
+    "all_current_input_bytes": {
+      "detail": {
+        "map_digest": "37cea4057629dee195043628be376b4938552b4f143beea38fac591ce5aa3a5b",
+        "mismatches": []
+      },
+      "passed": true
+    },
+    "current_binary:git": {
+      "passed": true
+    },
+    "current_binary:node": {
+      "passed": true
+    },
+    "current_binary:python": {
+      "passed": true
+    },
+    "current_binary:python3": {
+      "passed": true
+    },
+    "current_interpreter": {
+      "passed": true
+    },
+    "current_package_metadata": {
+      "detail": {
+        "count": 6,
+        "digest": "91bc654d91aa6648b0a939df3ebc854b61d74788cc2f82c769a2e714daf3208a"
+      },
+      "passed": true
+    },
+    "discovery_total": {
+      "passed": true
+    },
+    "exact_729_input_paths": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "exact_request:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "exact_request:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "exact_result_rows:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "exact_session": {
+      "passed": true
+    },
+    "expected_631_fresh_passes": {
+      "passed": true
+    },
+    "fingerprint": {
+      "passed": true
+    },
+    "fixture_pin": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "fresh_artifact_origin:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "honest_pass:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "honest_pass:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "input_paths_confined": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "log_hash:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "log_hash:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "nearest_all_input_identity": {
+      "passed": true
+    },
+    "nearest_runtime_binding": {
+      "passed": true
+    },
+    "no_duplicate_test_ids": {
+      "passed": true
+    },
+    "ordered_63_jobs": {
+      "passed": true
+    },
+    "ordered_647_selection": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "ordered_summary_ids:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "outcomes_reconciled": {
+      "passed": true
+    },
+    "recorded_environment_binding": {
+      "passed": true
+    },
+    "recorded_stale_flags_false": {
+      "passed": true
+    },
+    "reference_pin:gossip-workflow-deadline-verification-scope-4.json": {
+      "passed": true
+    },
+    "reference_pin:summary.json": {
+      "passed": true
+    },
+    "reference_pin:workflow-deadline-composition-nearest-audit-1.json": {
+      "passed": true
+    },
+    "reference_pin:workflow-deadline-full-inventory-1.json": {
+      "passed": true
+    },
+    "reference_pin:workflow-deadline-full-selection-1.json": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "request_root_and_result:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "result_hash:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "result_hash:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "reuse_artifact_origin:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "reuse_identity:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "reuse_physical_original:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "runner_pin": {
+      "passed": true
+    },
+    "runtime_initial_final_identity": {
+      "passed": true
+    },
+    "runtime_reconciliation": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests@git": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests@fast": {
+      "passed": true
+    },
+    "scheduler_status_mapping:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests@fast": {
+      "passed": true
+    },
+    "selected_lanes": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_workflow_execution_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_workflow_observation_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_workflow_physical_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_workflow_profile_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_candidate_workflow_review_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_workflow_composition_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_cumulative_workflow_recipe_v1.py": {
+      "passed": true
+    },
+    "selector:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests": {
+      "passed": true
+    },
+    "selector:tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests": {
+      "passed": true
+    },
+    "selector:tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests": {
+      "passed": true
+    },
+    "summary_unchanged_during_audit": {
+      "passed": true
+    },
+    "truthful_terminal_status": {
+      "passed": true
+    },
+    "worker_and_reuse_totals": {
+      "passed": true
+    }
+  },
+  "claims_boundary": "Terminal test rows supersede interim class-completion commentary. Reuse is separate from fresh execution. Prior failed634/1/12 run remains failed; this new result does not relabel it.",
+  "current_binary_hashes": {
+    "git": {
+      "path": "/opt/homebrew/Cellar/git/2.54.0/bin/git",
+      "sha256": "9b19807c702934b8c51fd2da8c2d38053bd7328536546e5a47eb3914dcc7bcde"
+    },
+    "node": {
+      "path": "/Users/westbrook/Library/Application Support/revedev-52ae4245/bin/node",
+      "sha256": "cdfe111c8680af987911be33d5ce7bb66a7979fbe382880b23a815945d763261"
+    },
+    "python": {
+      "path": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+      "sha256": "b8014caecb1f334bbc67e99b74d9f5fa6e3519c6567c98a890940b31ffeffa32"
+    },
+    "python3": {
+      "path": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+      "sha256": "b8014caecb1f334bbc67e99b74d9f5fa6e3519c6567c98a890940b31ffeffa32"
+    }
+  },
+  "current_input_count": 729,
+  "current_input_map_sha256": "37cea4057629dee195043628be376b4938552b4f143beea38fac591ce5aa3a5b",
+  "current_package_metadata_count": 6,
+  "discrepancies": [],
+  "duration_seconds": 1000.9936955422163,
+  "expected_reuse_matched": true,
+  "fingerprint": "77f5d1ea5f082d1165c6f20be34d8231a6e58f7329a6c95e9532e6efcc351660",
+  "fresh_offline_declared_tests": 631,
+  "fresh_offline_outcomes": {
+    "passed": 631
+  },
+  "inspection_notes": [],
+  "jobs": [
+    {
+      "class": "tests/test_candidate_client_process_v4.py::CandidateClientProcessV4CompatibilityTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4be620b2d256240a/result.json",
+      "evidence_sha256": "eb229c534da3192c16366ee82ea3044f9ba23b28e95a04f54864d56e00df6b0d",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4be620b2d256240a/worker.log",
+      "log_sha256": "54a1e747ec0e8dd7de37667245d7d88e0a23b407d04eda6f219f4691e3de617c",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 9
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4be620b2d256240a/request.json",
+      "request_sha256": "f1fd57df62d2f9ba21954c134590ba222bffa045ce23639e5dfd055e5dae96f4",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_client_process_v4.py::CandidateClientProcessV4LifecycleTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/fda43ee261299983/result.json",
+      "evidence_sha256": "3615a837322d65eb254059d26020bff671b9f3055c0e094e80627af4927c3f68",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/fda43ee261299983/worker.log",
+      "log_sha256": "c2de1a405b80e9f9616c6882e0157011b1fe6130685058f3799338d076c23d6d",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 23
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/fda43ee261299983/request.json",
+      "request_sha256": "3209fdfce3ac477d993cb9f9f3ce10d0078a7abfb10f0abd1dc91f1609835756",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4fa23d7a9d922b1a/result.json",
+      "evidence_sha256": "1adfb25d2a7d711d85101a6c24df9a98a801868e7e8598d6681e937c1fcb28d0",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4fa23d7a9d922b1a/worker.log",
+      "log_sha256": "4448edfa12a4b88b5430cc509dbc14e93de2b7ac83af6cbfe171b784daec7b22",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 10
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/4fa23d7a9d922b1a/request.json",
+      "request_sha256": "08d1e2e5e22dc1918ec9f5d5f266f6ac4ef01b5bd25b839f841f4392890e6244",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b05a50bb517116c/result.json",
+      "evidence_sha256": "4dc0ec06997c22df519fe3572bfeaea65eb296cd0cf6e33be763adbeebe65266",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b05a50bb517116c/worker.log",
+      "log_sha256": "f5e252d45c4329d548b8ab69a8e5f2f853f8614e8317b51c379c66f47af26c33",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 5
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b05a50bb517116c/request.json",
+      "request_sha256": "6aa55a6022006a496e93c942e4db7c5aec2724c5876a2603eb2d806f1f782dd6",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cdb18e35e74521c2/result.json",
+      "evidence_sha256": "cf5f03f8d8d76833cb6abf7d889fd27a2cca6a956b53808e33b52d056f7a6246",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cdb18e35e74521c2/worker.log",
+      "log_sha256": "70291dc418a5037a896738042eba692f0d846077aff70d7ee87f2a504a5502f4",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 12
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cdb18e35e74521c2/request.json",
+      "request_sha256": "1584e640762b9a8b63da65914b6790633b8b0fe04cfa3fe76d6d50785dbcab71",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/1402d2e93fbf0f7f/result.json",
+      "evidence_sha256": "27112dc2ae09325008a849a7e0ecf12d317a0791777ba698f8f8ddbef596918e",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/1402d2e93fbf0f7f/worker.log",
+      "log_sha256": "2432241d3e2ce05c82f02ce571341ca7cdcb71d559af72094d2f8c5ffd95020f",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 8
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/1402d2e93fbf0f7f/request.json",
+      "request_sha256": "e669188a898cc8f22e177c36e08141795921428cf6f8417a44c7c978fe674521",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35b75e435d31e528/result.json",
+      "evidence_sha256": "1cab3dc86324deddf03424e57eb4a0cd3ba2c473f3593fa571533c6650c9908b",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35b75e435d31e528/worker.log",
+      "log_sha256": "64e5773c0f85877fe55c564aa76568d8e0410081fd966c43fb47b08600061688",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 27
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35b75e435d31e528/request.json",
+      "request_sha256": "8387ceceec78ced38472504de586692bef6b987cffe6766d346090856c61672a",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/448ac036db494738/result.json",
+      "evidence_sha256": "b4b523b5feeab5d6564f3eafa2c56f4d73b651c246b478253eb59d6a2b0dd09b",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/448ac036db494738/worker.log",
+      "log_sha256": "638611f2233854b40474a14b0f737a47517b5ae9a3327ee1aa2f0b64cbd80293",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/448ac036db494738/request.json",
+      "request_sha256": "a92a0f58b4b696c4ba83bd31ae1228640cdff2278c7092b9d3ea192e5cd081ba",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/678fd049690c93c8/result.json",
+      "evidence_sha256": "8e1127c21ecd8bbb6da00306172b2c0b9483b8e4662f7b2736329f06a253fd09",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/678fd049690c93c8/worker.log",
+      "log_sha256": "5e10a84f8edc90a1a1e7e2c4f11dbb91bdc9a33bc5a9712d588f1174b9f1126c",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 10
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/678fd049690c93c8/request.json",
+      "request_sha256": "880591dbcdcb722c1a965ffb28fb05301f91045cdc35730ee08525a527bc7d61",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ca5b2c1a9de6be32/result.json",
+      "evidence_sha256": "a0c2da662aeb44d2070bafd46dc3b394748de855e9aa6e42d6b2e3d68ed5a277",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ca5b2c1a9de6be32/worker.log",
+      "log_sha256": "6e663ac74e97a052f4bf095a66611ebf310edfab0841b8512f416146ecaedc9a",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 18
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ca5b2c1a9de6be32/request.json",
+      "request_sha256": "1da61951cd8cbe98197edf50b60b6343752d88cca44078588be47cfc625dfaab",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35e355519c4e2ab4/result.json",
+      "evidence_sha256": "786e9af2075d16c7ea291f490c0eef81c3ecd47e5d0412028f1e774ca754a2e1",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35e355519c4e2ab4/worker.log",
+      "log_sha256": "16b51ce7e59f142cd314393681b8c54e6b10e149291742169a411e7380b5b6af",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 3
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/35e355519c4e2ab4/request.json",
+      "request_sha256": "b6c27193403a0daea3dd5dc11cc1f762c3650760a5bbca2ef14d95bfd9b203fa",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ac8ab47caced9406/result.json",
+      "evidence_sha256": "7da2e67be163587009f6357ffc40171e3a55575de70dad97a8ec233303c1c0e4",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ac8ab47caced9406/worker.log",
+      "log_sha256": "0628f937ad404455481f88d02bcd29ed4417e0b10aff47ee47b86e8c007d736f",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 18
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ac8ab47caced9406/request.json",
+      "request_sha256": "2aaa0781a0e86e7a490424bb2e139d5cc9fc18f5794986e2a3bb74d787e7f55e",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/613eacf17634b74b/result.json",
+      "evidence_sha256": "56327859f744599a8f28757fcf3588d5e356d76018948d1f0f725e596a1b7a22",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/613eacf17634b74b/worker.log",
+      "log_sha256": "960b74f52bc71d50c8ffae09ddd9d0973409ad568aed8eac1ff0ac02a532e558",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 15
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/613eacf17634b74b/request.json",
+      "request_sha256": "bb3561391b48caa787a9d2b376f56067107f00f56d9e750c0ed3525ac5dcb487",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8aab5be3262f2b66/result.json",
+      "evidence_sha256": "384b8d9fd1f5a3425e87f0453ef00eaa643aaf01dc99c5882de205b57fe60a46",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8aab5be3262f2b66/worker.log",
+      "log_sha256": "3ccd8010d5ba9f3ca87b4668aa07f685890d84e8abe0bb6348eb28fa04b5aae0",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8aab5be3262f2b66/request.json",
+      "request_sha256": "ac5dfda62f99dbbc2ea4027234aafa76fff6df180bd9b4756fd2358b5f4cb97c",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5b8347df6623aa9c/result.json",
+      "evidence_sha256": "8784701f85452abf4bc57d00a79c17c3ffb5d89d246f5715312422ca20c8d53d",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5b8347df6623aa9c/worker.log",
+      "log_sha256": "c025a53edffe8dce9568d9f10cfd17ad7b0b1ca2862807222da61eeb06b3fb87",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5b8347df6623aa9c/request.json",
+      "request_sha256": "50205bfb0a9a421183e7ed697ab7f92a89326af5dbf14f7580e129e864db35b7",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ec4ee99e1b684962/result.json",
+      "evidence_sha256": "b9cdfa809deaa3c5d19c1f0bf269161d89dfb17fb800b5cbb48525a61a98fc2c",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ec4ee99e1b684962/worker.log",
+      "log_sha256": "d45c278df4a5de1d3a44b15b334279169d020e6ed6a7fe36aaf9efb068eb1dc9",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 7
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ec4ee99e1b684962/request.json",
+      "request_sha256": "3534db3dd1740345e0914c375f30df234778b4b82a6ebebb9a605e22452fab26",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a2e7266c76d5bf90/result.json",
+      "evidence_sha256": "c878cfa233d9b9f3ee752373ebd55666be0eac232c35b425b1667b878178c701",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a2e7266c76d5bf90/worker.log",
+      "log_sha256": "88bb3941206249129af6bd147ef2250869413e38071a3ec32e910a5cbe9246d2",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a2e7266c76d5bf90/request.json",
+      "request_sha256": "d9fa7df4ab187c14d854262f7a153761ac5cb5f1ac870c565f07e6b088e9ef9c",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/3bc02430e1fbe35b/result.json",
+      "evidence_sha256": "c1e82b0d8d818e20ff1d43e5e742cb34875141c9ed5c075f21abb1cd7d9735cb",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/3bc02430e1fbe35b/worker.log",
+      "log_sha256": "fc2fd2785606d55e333ec724476f129e838d53271a6ee31b39c5db3829a61063",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 24
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/3bc02430e1fbe35b/request.json",
+      "request_sha256": "ac510555dbb9161eb6dcfba646f006bda93ebe1fadeb9b814614ef2fdcd855aa",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/251e4d47bc2080a0/result.json",
+      "evidence_sha256": "a2393356c40f01c062606a9622f405148a756de8baca33112bc7c1e1f83c1c48",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/251e4d47bc2080a0/worker.log",
+      "log_sha256": "a1085e446de09a41697212040e0ad3358e12c8c10dc8beab39fb5e6f91a69ade",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 13
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/251e4d47bc2080a0/request.json",
+      "request_sha256": "ca5998e5d21776c35cf282158b44fb76d28bc6d753896371c17de0a9f782e394",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7f47cad0b71f6406/result.json",
+      "evidence_sha256": "dd4bf7f73703666dc8937b1dd47a3eea09c054b3d6ed7fce908e8b22be92d4bc",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7f47cad0b71f6406/worker.log",
+      "log_sha256": "c64777aa109ed25dde677ead006755932d4beaa93c225ac4b2a0d55a39b5ca75",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 13
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7f47cad0b71f6406/request.json",
+      "request_sha256": "8482c408fef40e42376e8a38c3a14703545c10d2c0f277e9c21ae48250ad12c6",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46c49ace16992790/result.json",
+      "evidence_sha256": "dc2f113ece704cf26e8993e0674401627196bd793399b997485835075b0080bf",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46c49ace16992790/worker.log",
+      "log_sha256": "be62683e9f01ce966cedb586e509b09a2f30447186eadbdc05bfa9819aa31bcf",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 11
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46c49ace16992790/request.json",
+      "request_sha256": "a6c281f09a93a19d218402fb8ab7068dc66320caf99154cc1e9b757786c7c963",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a3f751593223cd71/result.json",
+      "evidence_sha256": "8af2353ba489eff2eda2d061df22dc0010f55c4dea9b5f1cda0b05c7ffdc39d7",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a3f751593223cd71/worker.log",
+      "log_sha256": "8cf1dff8ccb1328b97d4c008450855f2e7c1b1050f580b840a746733d8e3a5e0",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a3f751593223cd71/request.json",
+      "request_sha256": "a38b9aa3c7283453b9bec84268555e382db74f96864ccc381632d8ef0f45c892",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/61069cad5b1f9a77/result.json",
+      "evidence_sha256": "8277cd2305e2a52a5fa613d6d9043d7c3e19b8335e2d4dcd504f988e62fc762a",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/61069cad5b1f9a77/worker.log",
+      "log_sha256": "7f86c4084dd1502054506d5af104ade55f6708624b1d00b3816f299732acbda6",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 5
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/61069cad5b1f9a77/request.json",
+      "request_sha256": "230618abeb6f4ca9c32378995e1ead450f4fb122e63916e945e748bab3bcefeb",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/90a5e55e0873d184/result.json",
+      "evidence_sha256": "f864b884912bb49cbcb08569e07e756b09d69fb42b6f417c7661d9983c39c53a",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/90a5e55e0873d184/worker.log",
+      "log_sha256": "e6045e6b81701e39d8702d3389b2d02584e50f841c6aed6e66da5941fcf8426a",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 22
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/90a5e55e0873d184/request.json",
+      "request_sha256": "7225a8aea58e8eea126159df0b1a7a5541b71b6a248fa42e678a2cbe48e7ddc2",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/12d979011402205e/result.json",
+      "evidence_sha256": "3105cb50887b3f3674d41bfebd3f2a849269c6330d705eed30445e9d729b31a5",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/12d979011402205e/worker.log",
+      "log_sha256": "c611637dfd61f228e19ac301f30c69f040382f0b4021385f4b2645b32690047e",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/12d979011402205e/request.json",
+      "request_sha256": "947919d2a7301a61c6578e9d82e0072c761e0c42fcd83d323dfb131368457f8e",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5bfaf90b6a07cdd8/result.json",
+      "evidence_sha256": "e623a70a5b0da80bc0713a2cfaad572d90bdfd1d0f92142ba74449f572e5cdb6",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5bfaf90b6a07cdd8/worker.log",
+      "log_sha256": "431c706f73f99ffb2b7857eeaca66cb47ac2b097fcc0022c27bb92d77c1fe1ec",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 13
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/5bfaf90b6a07cdd8/request.json",
+      "request_sha256": "3186e965c9a2e65cc4579930deed7b3fc2e60649342a28dab450470e554c2bce",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a4c6e93133434832/result.json",
+      "evidence_sha256": "1ec29cd6695110604c196f95726cb909896253c84306d8c0afeaa48b25e7a8ad",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a4c6e93133434832/worker.log",
+      "log_sha256": "a52b9eb80199bd1527c5ddb3b0b933cc8a12bd28baedea0e331548e61cfa8c9b",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 18
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a4c6e93133434832/request.json",
+      "request_sha256": "b8ed57056b3eced88323efef405852da489077bdf7f738f83069b794ffd5bc3f",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ad25c8a675f56246/result.json",
+      "evidence_sha256": "76a01caa2f23eac651b300f299980b31126a8f7c9fa422029bad91bf45c00887",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ad25c8a675f56246/worker.log",
+      "log_sha256": "53cc266b58449acbe2987553d5a97ec74f69f22ebf91b7aaaadbc5db8b7293fe",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 19
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/ad25c8a675f56246/request.json",
+      "request_sha256": "b53917f4494fdebac51fc328b68268d0b0ac0e0c6f998f0f215c5da564bbae2d",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/215479b434f72644/result.json",
+      "evidence_sha256": "f7ce4373c09cc68480697af3253c1a04494ee50333d1cef432111afb0502f7dc",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/215479b434f72644/worker.log",
+      "log_sha256": "8e6f88abddb4a5d1472ab54d97bb7d90fb219b2d7aa993c7183233ccd8dc5126",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 14
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/215479b434f72644/request.json",
+      "request_sha256": "217d67159ba6be9add887357a4c80413da7d60f1c41a7cf86f789d532b4b2155",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/245f7962c9dd274e/result.json",
+      "evidence_sha256": "c7c0d6c08b886a9c57c78dfc3f943eaae87e9042f5feb6811b53a52d96b2bee0",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/245f7962c9dd274e/worker.log",
+      "log_sha256": "4ede6040cb6ac38b856cea3dc9cfbaf5e579191c55adea986bc357cea82e139a",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 16
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/245f7962c9dd274e/request.json",
+      "request_sha256": "c894bf5beded325e30ee99592a7b754fd1ded712e805c15b36b998ad5a8f78a5",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/537eee25c415f7e1/result.json",
+      "evidence_sha256": "52192419edadc994f242a4d6a5a42bbc1af0b1d5febaa435ba6517d37564a739",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/537eee25c415f7e1/worker.log",
+      "log_sha256": "ad7fc3bb4ab4ad8f329cddbc511b260702861b1434c7375ea17b5dd9dcf6059b",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 7
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/537eee25c415f7e1/request.json",
+      "request_sha256": "032ddd1c1ee22dd17ae4def73871c3d79928ed57f83cb84e748cb9ed6573d95f",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c45003c12fd3ac5b/result.json",
+      "evidence_sha256": "20fb7bae65c0392b006a9a6e83dc4c4f3dd55dc824e2b1f3de7f06777ae050a5",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c45003c12fd3ac5b/worker.log",
+      "log_sha256": "0ff94e3e11eadd6d6193b05bb2ceb72a26438d87425d457d87499b7729e1db9e",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 7
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c45003c12fd3ac5b/request.json",
+      "request_sha256": "f1639e1675ae657a4161e868c12936d21f6e1974f0fe557f37230c0565c5cbf3",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/6bfb7381a57990dd/result.json",
+      "evidence_sha256": "adafad564177a75f2e6e1717e412037e78e5d1f248b147a9ff98144e9121c6b7",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/6bfb7381a57990dd/worker.log",
+      "log_sha256": "24018f3f7f13aff4ad6b60af48d31e0f931c730beaacc16c16e61f869194f27b",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 32
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/6bfb7381a57990dd/request.json",
+      "request_sha256": "6717f3c047a8d113192f4a18ff1c71b15e848b51441dac46de237176b05a8469",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2954d5f7110f3787/result.json",
+      "evidence_sha256": "6fe48664a7ca40e67b93b2825acafa7e6a0cd51c50f9ac034b2e255a5720ecc3",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2954d5f7110f3787/worker.log",
+      "log_sha256": "3f60e76ae8c318888a828f309ff135523c4996b22bcb94ad77c985491755046f",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 11
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2954d5f7110f3787/request.json",
+      "request_sha256": "c4378e3ccb686afa381c2665cbb2e9ee8c3d8067b373b80155fdbb0e21c9cc42",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a1face03876c9db4/result.json",
+      "evidence_sha256": "8d2649bd007f98be626e130c6460f7bd151b7688bb5d5357579bc8229a574058",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a1face03876c9db4/worker.log",
+      "log_sha256": "816f054b08cb2a3442ee5fd42c438f9ceae564417a23be39105ea96e58bda1b0",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 1
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/a1face03876c9db4/request.json",
+      "request_sha256": "92f99d48ab422e5ec56ae954ce3f8c9b2927ea1de672a7011aef9811014c9664",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/951a09e78c5a62c8/result.json",
+      "evidence_sha256": "22b194fca68a56971123646aa0f7bbe4f333baf04e9875a131a904b7692401c9",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/951a09e78c5a62c8/worker.log",
+      "log_sha256": "15490f474f7a50869ed1249eb3e7a6d2b38971661eb3f52df5c6cdd5519bca87",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/951a09e78c5a62c8/request.json",
+      "request_sha256": "05bbe023d9c7fb3cf0cc0fe78102593bdbfb707203ae8bacb165f78d9af3050e",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/87d71fa03efc8e05/result.json",
+      "evidence_sha256": "5ebdb2db0e9e388f174b361e8575a63542354644b3d8c54b4b1bed26a66810bf",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/87d71fa03efc8e05/worker.log",
+      "log_sha256": "0788fc7d0901324b3fc899415e659c031559852a6a8febe0a6ecf8e4f44d3457",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 8
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/87d71fa03efc8e05/request.json",
+      "request_sha256": "609ab7c05c39f8baa415778072c37985f74b6c69a1cce95ecb7df04277b8f80d",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/88fb311c1c8ceef8/result.json",
+      "evidence_sha256": "2439ab0da433c0cd5a1079ab05d4fdb1a7d90afda7342fa2de5636d77c652417",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/88fb311c1c8ceef8/worker.log",
+      "log_sha256": "737b8e25e7952ca3b41064469d84576d88b6a668b72024ccb3da94716dc7a4ed",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/88fb311c1c8ceef8/request.json",
+      "request_sha256": "c7a7d4283cc71fdbcc99c5216f1c3bff64f3530a163d7fd598087f778d11351d",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cc4d42c6a5fd8267/result.json",
+      "evidence_sha256": "93ff926f1c5183ed4208dfa00f1ca820ebc3f57ff29227fe0052e1c1b7282027",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cc4d42c6a5fd8267/worker.log",
+      "log_sha256": "213af68b8824e34e7ae50717734826b23653e631b5cea9203cf9c112070911f1",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 3
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cc4d42c6a5fd8267/request.json",
+      "request_sha256": "3f1df669fae1cea049e69cedf24b25794272374dcea30dbd522802b0af5b40dc",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/974e42c0178ac61e/result.json",
+      "evidence_sha256": "76496a212ea263a5a1987af87308f71e55648bda2ab5ddb4bf3fc0deed90076f",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/974e42c0178ac61e/worker.log",
+      "log_sha256": "a6492893e0a54e5bdc85c1a84ab9a49116f755e6d6d21ea2bfbfd2f0232b5985",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 14
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/974e42c0178ac61e/request.json",
+      "request_sha256": "8bac1d263c3289ac417de01a42cf1bcdd78600f64ecba9ba75f5cb65a5325a60",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/928ac98022e5d7a2/result.json",
+      "evidence_sha256": "ca432664a04d97fd1b58b8fb780e0349ce527711a2e6c6ddac0f0f22828e200f",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/928ac98022e5d7a2/worker.log",
+      "log_sha256": "10fd74e126b53337faf0308aade4498ff329a40934ed034173874592b865fb51",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 5
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/928ac98022e5d7a2/request.json",
+      "request_sha256": "1e65b953c35b0c0d6ec5b009e41d7336fcee8ac4ba9c16ad85d81e44f3759fe2",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cfc4a85363757e61/result.json",
+      "evidence_sha256": "4fd58acb0957c32e16a4922b180cd808569fdeec8eda237d6a8cf547aa24eaa3",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cfc4a85363757e61/worker.log",
+      "log_sha256": "c3e5cef74f90edb770095f4c5a904f1861f11bf202ed437aac86c306289bc28d",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 5
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/cfc4a85363757e61/request.json",
+      "request_sha256": "d07a4a36d8e08ebbd75751a149df1af21a7fb9bab44bd5305c8d9a5faa48afe5",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d496a96c916d6946/result.json",
+      "evidence_sha256": "4012143947d01e2157667511711f9390732f2a0084566aadf8906c60a0a129b5",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d496a96c916d6946/worker.log",
+      "log_sha256": "affb120e52d4f6e5d579fbcd5c786edd3adc49a40b7566aa85535889620d464d",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 3
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d496a96c916d6946/request.json",
+      "request_sha256": "9c5afa29a291801ce8cd0eb1ccd8b8088ee61d580bf446d732c0a9d9f3685b97",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/de2f486a072dc568/result.json",
+      "evidence_sha256": "0c800908536a6007da2c02a82c9c5a1c1a101035ddc3066f8473ac790936e2c3",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/de2f486a072dc568/worker.log",
+      "log_sha256": "5e13fb4d429e0fd13fcfdf4080b0b66c9a235e5d86360f4cc2c9d4051e965dcb",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 2
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/de2f486a072dc568/request.json",
+      "request_sha256": "769e4eb3f92c1a08390ce614078d66a0313bcf25e248d7e04d90a9f847e45a08",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2345c5c15e23d7f2/result.json",
+      "evidence_sha256": "087c0c696fc10bc9268bd576e3f243adfa87f6504c9da6dbeb0cab6f886c23cf",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2345c5c15e23d7f2/worker.log",
+      "log_sha256": "aef2ec36c5f2a53b6a6ec33f216479005aa7e948e41267da817804bad248553e",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 3
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/2345c5c15e23d7f2/request.json",
+      "request_sha256": "e7805d5832895c8bb6f7f843c67237ff6abc2636d168010566d202742fe93b78",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/739bcbec14d5ac45/result.json",
+      "evidence_sha256": "1c586207578a1fa42b75f22161c08cbcdbab4651c1771fdbadd51e156ee9c35b",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/739bcbec14d5ac45/worker.log",
+      "log_sha256": "650e8976b09140afb2dfbd51990bd6c00e1c39624ef81ef75f77bf45e52bcac1",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 5
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/739bcbec14d5ac45/request.json",
+      "request_sha256": "2087de2ee56b383c0c65a23d73f775567f34558c6c64e71d038276ed514cb8ae",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/22dba390b17ce640/result.json",
+      "evidence_sha256": "893d306320a18269cd131e0a568a1571f0e735edeea248bbbc4352c6bdfcf52e",
+      "lane": "fast",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/22dba390b17ce640/worker.log",
+      "log_sha256": "42037f2fee23ac9998f112f2031e0f1436a8e93bfa6b006aaf9efbf6004d9b26",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 14
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/22dba390b17ce640/request.json",
+      "request_sha256": "027a65618989b9e26a64574f97f63c24065c834f436081e9fb86e6889aca041e",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b9a0ef00d9243ee6/result.json",
+      "evidence_sha256": "0a9cf856c79e2da67e7a59fecb483702c44bd53ba8a576068d6ac72152d452ed",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b9a0ef00d9243ee6/worker.log",
+      "log_sha256": "cf850e909f98a41b87ea439155777041c972fd46a4ee0047058f7e60d83e3003",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b9a0ef00d9243ee6/request.json",
+      "request_sha256": "e474737008513fad7169f87f104f233cc4900d2bf5d598876b206db52f8a221e",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46e902755803a072/result.json",
+      "evidence_sha256": "2abb0473ad8574b4d489dd3668680b67219e52f042dc6a37298d3db39ec50331",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46e902755803a072/worker.log",
+      "log_sha256": "15ca0f4080140e8886fcf74f3edf84f656632914e44fefb2a8282f937688d161",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 11
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/46e902755803a072/request.json",
+      "request_sha256": "f44e2d252c46f456a73516899578719ad935a44f1332d3e25d7c2bc81d92cc39",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/47d4cc5e84dc69bd/result.json",
+      "evidence_sha256": "7f953f0df81910bc9ecad8e644c20d9e9a9dae9f93a59f8519ec1ece051ae37e",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/47d4cc5e84dc69bd/worker.log",
+      "log_sha256": "d5e17e4e4f344a133d60e82342ce217e30929c9d0d021952d8ef115d91bc5f4f",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 14
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/47d4cc5e84dc69bd/request.json",
+      "request_sha256": "16f63c096fd2539d87f52decbf6453c47155814fc5453b67ef656d01271d9337",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d813a4e081e5de30/result.json",
+      "evidence_sha256": "bca15d6215a780a1a26cb3cfa800fe28732b8e89c1f09b7917b1656050cabf31",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d813a4e081e5de30/worker.log",
+      "log_sha256": "1ea577a940ce885997a5514d8ac1fe26587e34cb62751153e04a7813e6ecfc6c",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 6
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/d813a4e081e5de30/request.json",
+      "request_sha256": "d54a6c7fd5620e5e97123c150e8efb66795168ad4878ac0daea37b495b881148",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b55ce7ebd9639303/result.json",
+      "evidence_sha256": "98553b2803d9ae55c5ef1311560538b1b3ebcf9b9801c2e71126269417af7014",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b55ce7ebd9639303/worker.log",
+      "log_sha256": "b79b366f8ccbe8485f2ea775227b0a48f8c6b44d672e7ef7312f5f17799dc7f5",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 29
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/b55ce7ebd9639303/request.json",
+      "request_sha256": "70165ac21314e0d635716f9888d8bda34e1f3f7cb3fc996986a4ec559da9c112",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/86316bb0039b186f/result.json",
+      "evidence_sha256": "2c3049f24bb09abd2199c63c91b6746ac28fe0999b607717997a121075ee6417",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/86316bb0039b186f/worker.log",
+      "log_sha256": "5861b98aeb71a240cd168bc8e41538d60ce2e3b6b76074855b06ac6e0c22601d",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/86316bb0039b186f/request.json",
+      "request_sha256": "05f385bb1f2c0dcb5381bd7d9bc130fae40ab062b2c970653586a8e0eba97b05",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c2dcdb81ab3c2694/result.json",
+      "evidence_sha256": "635b2352f87c10d33cab258bba28945ca223026b0c3090241af8699090cc6d21",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c2dcdb81ab3c2694/worker.log",
+      "log_sha256": "8432467fe210c6f393d1ee27a68f7fc923df31fb75d8248aacbdd1e22b2a9204",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 12
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/c2dcdb81ab3c2694/request.json",
+      "request_sha256": "ccd089a85cc8b458a0489c20573cb233074821e4847fb6d1a7d74917a0227c31",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7968a749527c04ea/result.json",
+      "evidence_sha256": "1c76a6dfbe6f934d084a0d0f438419722bd05c4850b78a0db66be54756be0228",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7968a749527c04ea/worker.log",
+      "log_sha256": "0ac4c26d64a69b2cfb860949fd2d23cddf8cb87a40755c6fdecca64a2d8dddc2",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7968a749527c04ea/request.json",
+      "request_sha256": "9ac799491b9c4397593d3e75bc7e07eb1a0257d581816ca9f343c0db9bd8683d",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e89f317217848dde/result.json",
+      "evidence_sha256": "6c7504950412383523a252fe12d3281fc3f3265720b311c2fffbe78ff1380307",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e89f317217848dde/worker.log",
+      "log_sha256": "e3fae306fd98f5627cff1c3bc1bf7cd46429987edfad70984ebf3cc81a12258a",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e89f317217848dde/request.json",
+      "request_sha256": "2c3ea0f19d36bd243ab9050c6330e35d582cc32d44d57b66e9f37610bf822586",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/9be716b54a357739/result.json",
+      "evidence_sha256": "dbc32df5950abd42cbb56bb039205854608b3ff47bc43fdf43da4c9ece4cf2d2",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/9be716b54a357739/worker.log",
+      "log_sha256": "20214ac82a4010f0038e020d5c72ceb82e3046a916abb2432bddb9601e4c9c94",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 4
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/9be716b54a357739/request.json",
+      "request_sha256": "77f45d0adffaaaeea6db51c6c678835b2392d248fd7013f4d0d1838a2dc8b4fe",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7eec5d0f709c9daa/result.json",
+      "evidence_sha256": "7b4f7c0a4824e001dfafc9a1ae673e524990e27b3816db3019ef54acfb119822",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7eec5d0f709c9daa/worker.log",
+      "log_sha256": "ebe72945763d0c712880b4bfbbe86b7e5d721cf2feb9d96759b7c302ebc963bb",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 9
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/7eec5d0f709c9daa/request.json",
+      "request_sha256": "2824bce68c7576f60d3a00f5221d05c7a9d2548b38aaced2a51d75697009d05c",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e287915a970cd062/result.json",
+      "evidence_sha256": "a007129e356f8f96e917fa6d9d0a42c485bdfd49922c3091ec89575733c64d65",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e287915a970cd062/worker.log",
+      "log_sha256": "28c27bf3876f1b612b5df671fa82ebd9e6fc65ce8b4d90af516f5f65e423dffc",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 10
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/e287915a970cd062/request.json",
+      "request_sha256": "c6319e06163501c17902f091e6db9211ebde2bcfb77231e197d20a4ee183092b",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/f45fa2e919e25162/result.json",
+      "evidence_sha256": "4722b964dd2e8fc517323150ded6ee26dc66d7633c8b34b183ae8c13d36ee3b3",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/f45fa2e919e25162/worker.log",
+      "log_sha256": "5302c737accbdacffe0321e231ad425d4d565bd9b05f7165dc68f4d571482326",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 13
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/f45fa2e919e25162/request.json",
+      "request_sha256": "65d45731ef7ed9073750cd332be1dff5cf666b9224a87dcc6757222112a45ec9",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b50463d9d34359c/result.json",
+      "evidence_sha256": "81606aac17043ccfa73869a73fd5680f78609568b327b397fe54246dd2458916",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b50463d9d34359c/worker.log",
+      "log_sha256": "dcaba766bf6bd4d7549a78200b58646e1e7e3e94180f7e7ed54e5c8ccb0982e1",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 2
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/8b50463d9d34359c/request.json",
+      "request_sha256": "4f8c1d9bf957e64c21f4f815c6b204c8dc7c72ebae2059eb2860a6cd0e442c54",
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/result.json",
+      "evidence_sha256": "d9462169733b972e87328e09fd999093f9fcfa310dd4f83df0ae5c70c38339bd",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/worker.log",
+      "log_sha256": "2e3b08a793eea84f0249f0d3df67c1bcd7dd1f21f5748ec71234dd6174681aaa",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 16
+      },
+      "physical": false,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/classes/46d797d9bb621105/request.json",
+      "request_sha256": "617b1d129b9989bd3bfd29e2a3937ffa6148d2a622c0f080de2b6bd3cea13da3",
+      "returncode": 0,
+      "reused_from": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/summary.json",
+      "status": "passed"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests",
+      "cleanup_status": "completed",
+      "evidence_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/0ae547d8cac19a8d/result.json",
+      "evidence_sha256": "58b6d7db0d75783079c505b02f2c258d4bb9769a19f0b286fa5487c36f706104",
+      "lane": "git",
+      "log_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/0ae547d8cac19a8d/worker.log",
+      "log_sha256": "172c0af553a4b4f9d43ae7d03a49609dddf659500689ca5f8cd734c979b5462a",
+      "original_status": "passed",
+      "outcomes": {
+        "passed": 10
+      },
+      "physical": true,
+      "request_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/classes/0ae547d8cac19a8d/request.json",
+      "request_sha256": "fb0c836ea495357b975e7efe8286fa136693262af7e36a272db30e40d5da3f9d",
+      "returncode": 0,
+      "status": "passed"
+    }
+  ],
+  "negative_outcomes": [],
+  "ordered_scheduler_ids_sha256": "1efab032f1c76efa231f96856f28321758d00a011342278817fabc36c18fdbbb",
+  "ordered_selection_sha256": "67f5b52ed2fc1bc94d97eb839929a093bb76a42cb39f97bd2e6cd70ac7c35418",
+  "prior_failure_preserved": {
+    "outcomes": {
+      "error": 1,
+      "not_run": 12,
+      "passed": 634
+    },
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-4/20261004T225916-ebdb6690/summary.json",
+    "sha256": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e",
+    "status": "failed"
+  },
+  "protocol": "workflow-deadline-full-terminal-audit-v2",
+  "qualification_status": "passed",
+  "reuse_provenance": [
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+      "log_sha256": "2e3b08a793eea84f0249f0d3df67c1bcd7dd1f21f5748ec71234dd6174681aaa",
+      "ordered_ids_sha256": "46d797d9bb621105337b38138e099e2fa6325df6ac3489f82dafa25571465c86",
+      "ordered_results_sha256": "48eea0451adaf54e6a2e675b237a558ae1c797726b01856ec4b8b061b19f0e2d",
+      "origin_inputs_sha256": "24f2180e792860b2f93bdaeb2dbed746f947d989c7dc9cc7cc9a44ffdb180c68",
+      "origin_summary": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T232615-34d8c419/summary.json",
+      "origin_summary_sha256": "b5aa9c64c6feef53f59ebcd81755029f088367ddbf56ec533cc7b19137b48210",
+      "request_sha256": "617b1d129b9989bd3bfd29e2a3937ffa6148d2a622c0f080de2b6bd3cea13da3",
+      "result_sha256": "d9462169733b972e87328e09fd999093f9fcfa310dd4f83df0ae5c70c38339bd",
+      "tests": 16
+    }
+  ],
+  "reused_classes": 1,
+  "reused_tests": 16,
+  "root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "runtime_limit": "Binaries and METADATA/RECORD were read only. Original environment values were not retained; only exact initial/final/reuse environment digest equality is verified. No version commands, package/project imports or runtime/checkers invoked.",
+  "scope": "Exact targeted offline647; no Docker/live/sample/acceptance claim.",
+  "selected_jobs": 63,
+  "selected_tests": 647,
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static_limit": "Baseline-aware configured checks; no universal legacy type-cleanliness claim.",
+  "static_status": "passed",
+  "terminal_outcomes": {
+    "passed": 647
+  },
+  "unexecuted_ids": [],
+  "workers_started": 62
+}

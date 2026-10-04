@@ -1,0 +1,98 @@
+{
+  "schema": "agent-scaling-budget-source-check-v1",
+  "research_date": "2026-10-04",
+  "scope": {
+    "question": "Whether the official agent-scaling release resolves the arXiv v3 SWE-bench model denominator and matched-budget ambiguities.",
+    "method": "Bounded inspection of public GitHub pages and raw source through web tools; no project imports, experiment execution, provider calls or shell network.",
+    "repository_modified": false
+  },
+  "version": {
+    "repository": "https://github.com/ybkim95/agent-scaling",
+    "tag": "v2.1.3",
+    "commit": "358d67e24c616073127ce1a8b78d4b632162848c",
+    "tag_date": "2026-05-26",
+    "tag_listing": "https://github.com/ybkim95/agent-scaling/tags",
+    "commit_url": "https://github.com/ybkim95/agent-scaling/commit/358d67e24c616073127ce1a8b78d4b632162848c",
+    "paper_v3": "https://arxiv.org/html/2512.08296v3",
+    "paper_v3_date": "2026-04-08",
+    "limitation": "This release postdates arXiv v3 and is recommended by documentation for a later manuscript revision. It is not established here as the exact implementation/configuration used for every original paper run. Main HEAD was not pinned. Older v1.0.0 was listed as April 7 with short commit cbf8c10, but its contents were not successfully inspected."
+  },
+  "conclusions": {
+    "denominator": "Partially resolved: the tagged analysis explicitly expects 270 total configurations and 90 new configurations from two benchmarks, five architectures and nine models. It includes Gemini 3 Flash. This supports a nine-model interpretation of Table 16, but does not reconcile arXiv v3's eight-model / 260-configuration setup prose.",
+    "budgets": "Unresolved: inspected code specifies step, per-worker iteration, round and time ceilings, with an optional per-call token parameter. These paths did not demonstrate enforcement of one shared total reasoning-token budget across architectures. This is not evidence that the original runs consumed unequal budgets.",
+    "availability": "Implementation, per-instance outcome CSV and selected sanitized example traces are public. A complete paired SWE-bench token ledger and original resolved configurations for every architecture/model cell were not established in this bounded inspection."
+  },
+  "evidence": [
+    {
+      "id": "analysis-denominator",
+      "inspected_url": "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/scripts/extended_mixed_effects_6benchmarks.py",
+      "citations": [
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/scripts/extended_mixed_effects_6benchmarks.py#L276-L289",
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/scripts/extended_mixed_effects_6benchmarks.py#L341-L368",
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/scripts/extended_mixed_effects_6benchmarks.py#L975-L1012"
+      ],
+      "supported": "Model mapping includes gemini-3-flash-preview. New data are grouped by dataset, agent type, provider and model, without an observed Gemini 3 exclusion. Main analysis describes five architectures times nine models per new benchmark and asserts 270 combined configurations.",
+      "limitation": "Source was read, not executed; means and counts were not independently recomputed. The analysis does not explain the earlier prose discrepancy."
+    },
+    {
+      "id": "outcome-data",
+      "inspected_url": "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/scripts/per_instance_results_swe_tb.csv",
+      "citation": "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/scripts/per_instance_results_swe_tb.csv",
+      "supported": "The displayed file has 1,801 lines including its header, with Gemini 3 Flash rows in all five SWE-bench architecture blocks. Columns are dataset, agent_type, provider, model, instance_idx, resolved, num_steps, success and has_output.",
+      "limitation": "This outcome table has no token, cost or configured-budget columns. Its num_steps column alone cannot establish equal total inference allocation or expenditure."
+    },
+    {
+      "id": "single-agent-ceiling",
+      "inspected_url": "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/agent_scaling/agents/single_agent.py",
+      "citation": "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/agent_scaling/agents/single_agent.py#L26-L67",
+      "supported": "SingleAgent defaults to max_steps=100; a supplied time limit can increase this ceiling. The run loop iterates over that max_steps value.",
+      "limitation": "These defaults do not establish the resolved settings or consumed tokens of the historical paper runs."
+    },
+    {
+      "id": "multi-agent-ceilings",
+      "inspected_urls": [
+        "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/agent_scaling/agents/multiagent_components/mas_lead_agent.py",
+        "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/agent_scaling/agents/multiagent_components/mas_subagent.py",
+        "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/run_conf/agent/multi-agent-decentralized.yaml"
+      ],
+      "citations": [
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/agent_scaling/agents/multiagent_components/mas_lead_agent.py#L156-L229",
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/agent_scaling/agents/multiagent_components/mas_subagent.py#L76-L109",
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/run_conf/agent/multi-agent-decentralized.yaml"
+      ],
+      "supported": "The leader loops over rounds, checks elapsed time and invokes planning, coordination, stopping and synthesis. Workers reset their iteration counter and run up to max_iterations_per_agent for each round. The inspected decentralized YAML sets three base agents, 25 worker iterations and 10 rounds.",
+      "inference": "Architecture-level nominal ceilings cannot be treated as a matched aggregate inference budget without the resolved run settings and all-agent usage accounting.",
+      "limitation": "No claim about original actual token consumption follows from these source defaults."
+    },
+    {
+      "id": "token-parameter-and-accounting",
+      "inspected_urls": [
+        "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/agent_scaling/config/llm.py",
+        "https://raw.githubusercontent.com/ybkim95/agent-scaling/v2.1.3/agent_scaling/llm/litellm_lc.py"
+      ],
+      "citations": [
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/agent_scaling/config/llm.py#L10-L45",
+        "https://github.com/ybkim95/agent-scaling/blob/358d67e24c616073127ce1a8b78d4b632162848c/agent_scaling/llm/litellm_lc.py#L148-L222"
+      ],
+      "supported": "LLM configuration has optional max_tokens defaulting to None. The wrapper merges invocation parameters, supplies request timeouts and can log usage/cost through Langfuse.",
+      "limitation": "These inspected paths did not show a shared total reasoning-token budget controller. Logging capability is not a published complete usage ledger, and this was not an exhaustive proof of absence elsewhere in the repository."
+    },
+    {
+      "id": "example-trace-scope",
+      "inspected_urls": [
+        "https://github.com/ybkim95/agent-scaling/tree/main/example_traces",
+        "https://github.com/ybkim95/agent-scaling/tree/main/example_traces/swebench-verified/single-agent",
+        "https://github.com/ybkim95/agent-scaling/tree/main/example_traces/swebench-verified/single-agent/instance_runs/0000"
+      ],
+      "supported": "README describes sanitized sample traces. The inspected main tree lists BrowseComp examples, a centralized PlanCraft example, and a SWE-bench single-agent example. That SWE path lists run_config.yaml, dataset_eval_metrics.json and instance_runs/0000/instance_save.yaml.",
+      "access_limitations": "Fetching sample run_config and metric contents failed through the web tool. Their filenames were observed, not their contents. Main-tree trace listing was not pinned to v2.1.3. Full paired SWE architecture traces were not found in the bounded inspected paths; this is not a claim that none exist anywhere."
+    }
+  ],
+  "needed_to_resolve_remaining_ambiguity": [
+    "Exact paper-run source commits and resolved per-cell configurations, with model inclusion/exclusion history.",
+    "A precise matched-budget definition and its enforcement or post-hoc matching procedure.",
+    "Per-call realized token accounting for workers and coordinators, including reasoning/output tokens, retries and other overhead, linked to all original task outcomes.",
+    "Task identities and disposition of failed, timed-out or rerun attempts."
+  ],
+  "evaluation_implication": "Use this as descriptive external evidence that architecture gains depend on tasks and models, with nine-model table aggregation now supported by public analysis. Do not use it as verified causal evidence from an equal-total-budget gossip-versus-orchestrator software-project trial. Our own comparison still requires explicit aggregate-budget accounting and complete outcome/termination receipts; no new experiment was run or authorized by this source check."
+}
