@@ -20,6 +20,8 @@ LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 def validate_successor(plan: StudyPlan, repository: Path) -> dict[str, Any]:
     consumer.require(type(plan) is StudyPlan, 'Exact V2/V5 prospective study plan required')
     plan.__post_init__()
+    from . import cumulative_cli_projection_v1 as projection
+    projection.validate_plan(plan, repository)
     consumer.require(plan.runtime.get('final_acceptance_protocol') == final.PROTOCOL
         and plan.runtime.get('study_successor_protocol') == PROTOCOL
         and plan.runtime.get('prerequisite_qualification_protocol') == qualification.PROTOCOL
@@ -41,7 +43,7 @@ def validate_successor(plan: StudyPlan, repository: Path) -> dict[str, Any]:
         'Complete original authority/successor source was not prospectively pinned')
     plan.verify_sources(repository)
     mechanics.admission.verify_loaded_sources(sources)
-    return {'protocol':PROTOCOL,'public_phase_protocol':PUBLIC_PROTOCOL,'final_phase_protocol':final.PROTOCOL,
+    return {**projection.contract_fields(plan),'protocol':PROTOCOL,'public_phase_protocol':PUBLIC_PROTOCOL,'final_phase_protocol':final.PROTOCOL,
         'original_execution_contract_sha256':plan.sha256,'original_terminal_roster_sha256':plan.roster.sha256,
         'sources':sources,'interpretation':'public results remain diagnostic; actual original prerequisites and final evidence are mandatory'}
 

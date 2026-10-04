@@ -13,6 +13,7 @@ from typing import Any
 from . import cumulative_scope_authority_v2 as previous
 from . import cumulative_scope_source_v3 as source
 from . import candidate_scope_consumer_v1 as consumer
+from . import cumulative_cli_projection_v1 as projection
 from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
 from .candidate_checkpoint_chain_v1 import PrefixCommitment
@@ -29,6 +30,7 @@ REVIEW_PURPOSE = previous.REVIEW_PURPOSE
 def implementation_sources() -> dict[str, str]:
     from . import candidate_observation_admission_v1 as admission
     result = previous.implementation_sources()
+    result.update(projection.definition_sources())
     root = Path(__file__).resolve().parent
     for name in ('cumulative_scope_source_v3.py', 'cumulative_scope_authority_v3.py'):
         result['gossip_harness/' + name] = source.sha((root / name).read_bytes())
@@ -38,7 +40,9 @@ def implementation_sources() -> dict[str, str]:
 
 @dataclass(frozen=True, slots=True)
 class ScopeSubmission(previous.ScopeSubmission):
-    """Same source/plan contract with a closed version3 executable factory roster."""
+    """Same complete inventory, with an explicit optional public CLI clarification."""
+    cli_projection_contract: dict[str, Any] | None = None
+
     def request(self) -> dict[str, Any]:
         consumer.require(type(self) is ScopeSubmission and type(self.slices) is tuple,
                          'Exact version3 prospective submission required')
@@ -61,7 +65,24 @@ class ScopeSubmission(previous.ScopeSubmission):
         base['targets'].append({'id': 'capacity-contract', 'value': capacity,
             'sha256': source.sha(source.encoded(capacity)),
             'duty': 'Review the explicitly selected full-history aggregation bound and separate resource qualification; no scope truncation or hidden subdivision.'})
-        base['protocol'] = PROTOCOL
+        clarified = self.cli_projection_contract is not None
+        cli_slices = [item for item in self.slices if item.family == 'cli']
+        consumer.require(all((item.gate.binding.execution_protocol == projection.EXECUTION_PROTOCOL) == clarified
+            for item in cli_slices), 'CLI slices and mandatory clarification review must agree')
+        if clarified:
+            consumer.require(self.cli_projection_contract == projection.manifest(), 'Exact paired addendum review identity required')
+            value = {'effective_requirements':projection.manifest(),'public_addendum_text':projection.text(),
+                'execution_contract_sha256':self.subject.execution_contract_sha256,
+                'successful_command_projections':dict(projection.COMMANDS),
+                'unchanged_unspecified_commands':['import','jobs'],
+                'affected_cli_slices':[asdict(item) for item in cli_slices],
+                'unchanged_inventory_sha256':self.catalog.inventory.sha256,
+                'full_original_obligation_count':len(self.catalog.units)}
+            base['targets'].append({'id':projection.REVIEW_TARGET,'value':value,
+                'sha256':source.sha(source.encoded(value)),
+                'duty':'Independently review the full prospective text and all six JOB/TOKEN/RECEIPT projections, exact fields, applicable receipt/epoch semantics, every affected CLI selector and source clause. Confirm literal import/jobs remain unspecified and all original312 units,22 authority rules and188 gap duties remain required. A matching digest or attachment presence is not semantic approval.'})
+            base['effective_requirements'] = projection.manifest()
+        base['protocol'] = projection.SCOPE_PROTOCOL if clarified else PROTOCOL
         base['implementation_sources'] = implementation_sources()
         base['factory_protocol'] = source.PROTOCOL
         base['capacity_contract'] = capacity
@@ -105,7 +126,7 @@ class ScopeRegistrationController(previous.ScopeRegistrationController):
             compiler.declaration_fingerprint(submission.declaration), registry.design_fingerprint(product),
             submission.subject.execution_contract_sha256, submission.qualification_specs)
         consumer.qualification_requests(registered, staged.design, submission.declaration)
-        material = {'protocol': PROTOCOL, 'request_name': staged.request_name, 'request_sha256': staged.request_sha256,
+        material = {'protocol': submission.request()['protocol'], 'request_name': staged.request_name, 'request_sha256': staged.request_sha256,
             'report_name': report_name, 'report_sha256': source.sha(self.chain.read(report_name)),
             'subject': asdict(submission.subject), 'registered': asdict(registered)}
         raw = source.encoded(material)

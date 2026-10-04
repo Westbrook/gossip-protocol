@@ -29,7 +29,7 @@ MODULES = (
     'cumulative_study_controller_v2', 'cumulative_observation_profile_v1',
     'cumulative_prerequisite_review_v1', 'candidate_observation_admission_v1',
     'candidate_client_execution_v5', 'candidate_client_process_v4',
-    'candidate_source_capture_policy_v1', 'candidate_http_semantics_v1',
+    'candidate_source_capture_policy_v1', 'candidate_http_semantics_v1', 'cumulative_cli_projection_v1',
     'candidate_http_execution_v4', 'candidate_http_transport_v1', 'candidate_http_cases_core_v1',
     'candidate_product_process_execution_v1', 'candidate_product_process_core_v1',
     'candidate_storage_product_execution_v1', 'candidate_storage_product_profile_v1',

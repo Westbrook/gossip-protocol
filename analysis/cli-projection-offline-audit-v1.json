@@ -1,0 +1,50 @@
+{
+  "counts": {
+    "classes": 27,
+    "fresh_classes": 26,
+    "fresh_methods": 274,
+    "lane_methods": {
+      "fast": 230,
+      "git": 48
+    },
+    "methods": 278,
+    "not_run": 0,
+    "reused_classes": 1,
+    "reused_methods": 4,
+    "skipped": 0
+  },
+  "current_input_count": 715,
+  "detail": {
+    "bytes": 216613,
+    "path": "/private/tmp/gossip-cli-projection-offline-terminal-details-20261004-v2.json",
+    "sha256": "26bfce74745684cb7d34a34af2c382b03b581ca91cd0f06b0710c2baaf4a9e47"
+  },
+  "duration_seconds": 230.1379217915237,
+  "full_fingerprint": "38e084929b4ac9e51ab5fbc979b9e54ea013cb7e4391f61e54574ec4503d9942",
+  "limits": [
+    "Read-only filesystem/JSON/AST/hash reconciliation; no reviewer imports, tests, runtime, static commands, Git, Docker, Engine, browser or provider calls.",
+    "Only fresh /private/tmp audit artifacts written.",
+    "274methods freshly executed here;4methods reused the exact new four-method nearest original, with authenticated logs/cleanup/full fingerprint and ordered per-class suite. Older nearest29 and failed278 results are not reusable against this changed source.",
+    "Runner physical flag refers to fresh worker execution, not actual candidate physical qualification.",
+    "Targeted278of5276discovered tests; no whole-repository/full study, clarified physical qualification, semantic approval or complete matching rehearsal claim.",
+    "All prior failed runs and source reviews retain their original scope."
+  ],
+  "original_reuse_summary": {
+    "bytes": 8785,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cli-projection-offline-2/20261004T190915-146d7315/summary.json",
+    "sha256": "3d7a8f3d5545345796fed3c4bbdf8aded96365bf6daf935aa38d66d9975538cd"
+  },
+  "protocol": "independent-cli-projection-offline-terminal-audit-v1",
+  "reviewer": "/root/b03_physical_tests",
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cli-projection-offline-2/20261004T191116-d67faebe",
+  "runtime_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": "Passed under117unchanged baseline type diagnostics; no blocking diagnostics.",
+  "summary": {
+    "bytes": 193472,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cli-projection-offline-2/20261004T191116-d67faebe/summary.json",
+    "sha256": "f0ac39ef4a90e480ae1c263adc59936f1239fac87c09add0ec6b20b8d641dc1e"
+  },
+  "verdict": "Retained targeted278-method offline success reconciles with715current inputs,17installed files,2preserved prior test corrections and the newly reviewed cold-fixture correction. Reuse counts below come from actual terminal receipts."
+}

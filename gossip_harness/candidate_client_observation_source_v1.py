@@ -18,6 +18,7 @@ from . import candidate_client_execution_v5 as execution
 from . import candidate_client_observer_v5 as observer
 from . import project_acceptance_registry_v1 as registry
 from . import cumulative_observation_profile_v1 as cumulative
+from . import cumulative_cli_projection_v1 as projection
 from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
 
@@ -51,7 +52,7 @@ def _mapped_cells(case_id: str, observations: tuple[Any, ...], *,
         if observed is not None:
             require(type(observed) is observer.ProcessObservation, "Wrong observation version")
             binding = json.loads(observed.binding_json)
-            require(binding["protocol"] == (execution.PROTOCOL if cumulative_profile is None else execution.M4_PROTOCOL)
+            require(binding["protocol"] == (execution.PROTOCOL if cumulative_profile is None else projection.execution_protocol(cumulative_profile))
                     and binding["milestone"] == ("M1" if cumulative_profile is None else "M4"),
                     "Original execution protocol/milestone differs; relabelling is forbidden")
             if cumulative_profile is not None:
@@ -87,7 +88,7 @@ def _mapped_cells(case_id: str, observations: tuple[Any, ...], *,
 def _projected_outcomes(cells: tuple[dict[str, Any], ...],
                         value: cumulative.CumulativeProfile | None) -> tuple[registry.CaseResult, ...]:
     diagnostics = tuple(registry.CaseResult(cell["case_id"], cell["status"]) for cell in cells)
-    return diagnostics if value is None else cumulative.project_cli_outcomes(value, diagnostics).decisive
+    return diagnostics if value is None else projection.project_outcomes(value, diagnostics).decisive
 
 
 def _record(owner: execution.CandidateClientExecution) -> tuple[dict[str, Any], execution.ClientHistoryResult]:
@@ -105,7 +106,8 @@ def _record(owner: execution.CandidateClientExecution) -> tuple[dict[str, Any], 
     outcomes = _projected_outcomes(cells, value)
     require(tuple(item.case_id for item in outcomes) == owner.registration.gate.ordered_case_ids,
             "Projected acceptance roster differs from original gate")
-    record = {"protocol": PROTOCOL if value is None else M4_PROTOCOL, "execution_protocol": owner.protocol,
+    record = {"protocol": (PROTOCOL if value is None else projection.OBSERVATION_PROTOCOL
+        if type(value) is projection.CliProjectionProfile else M4_PROTOCOL), "execution_protocol": owner.protocol,
         "execution_id": original.execution_id, "root": str(owner.root),
         "registration": asdict(owner.observation_registration),
         "original_binding": asdict(owner.binding),

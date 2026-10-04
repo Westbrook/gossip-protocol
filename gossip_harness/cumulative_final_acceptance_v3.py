@@ -251,6 +251,7 @@ class FinalAcceptanceV3(previous.FinalAcceptanceV2):
 
     @shared.normalize_authority
     def dispatch(self, spec: shared.ObservationSpec) -> registry.Observation:
+        shared.projection.validate_spec(self.plan, spec)
         registration = spec.observation_registration()
         self._registered_gate(registration)
         submission = self.submissions[registration.gate.binding.subject.trajectory_id]

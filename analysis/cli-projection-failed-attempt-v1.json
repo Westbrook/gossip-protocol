@@ -1,0 +1,46 @@
+{
+  "counts": {
+    "class_error": 1,
+    "class_passed": 26,
+    "error": 1,
+    "fresh_workers": 27,
+    "not_run": 2,
+    "passed": 275,
+    "reused_classes": 0,
+    "selected_classes": 27,
+    "selected_methods": 278,
+    "skipped": 0
+  },
+  "details": {
+    "bytes": 211896,
+    "path": "/private/tmp/gossip-cli-projection-failed-gate-details-20261004-v1.json",
+    "sha256": "bb8ab42d92bda7ebb8fd267a9a3ef1fc8acda4da58fb59c19a828e61c840178b"
+  },
+  "duration_seconds": 273.6150000002235,
+  "failed_method": "tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests.test_b02_capsule_bound_input_cold_named_types_and_missing_scope_refusal",
+  "full_fingerprint": "53107d3c4f4d698c92bd94366a12ab221c90b79d39714d9beaa48100c168b551",
+  "limits": [
+    "No project imports, tests, static tools, runtime commands, Git, Engine, browser or provider execution by reviewer.",
+    "Only fresh /private/tmp audit files written. Prepared success scripts preserved without execution; no success audit issued.",
+    "Passing275methods do not complete the278-method gate; two selected M2 transport methods remain not_run.",
+    "All27class result/log hashes and ordered278method census verified. Each class records completed cleanup; this is offline worker cleanup, not candidate physical qualification.",
+    "Initial/final runtime equality and current three runtime/tool binary hashes verified; no live environment values disclosed."
+  ],
+  "nearest29": "Preserved passed separately; not reused because environment digest differs. No causal claim about that difference.",
+  "observed_error": "Cold synthetic owner lacks .plan at shared.projection.validate_spec(owner.plan, spec), raising AttributeError before that call can run. This trace does not establish either a production guard defect or a passing guard.",
+  "protocol": "cli-projection-failed-gate-independent-audit-v1",
+  "reviewer": "/root/b03_physical_tests",
+  "runtime_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+  "source_current": {
+    "all_hashes_match": true,
+    "inputs": 715,
+    "stale_inputs": false,
+    "stale_runtime": false
+  },
+  "summary": {
+    "bytes": 194733,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cli-projection-offline-1/20261004T185431-48a9dd81/summary.json",
+    "sha256": "cde7610f6c997e04b412ae5c4c880a3c5ea43039c5be8d8c23006ebf847e73c0"
+  },
+  "verdict": "FAILED retained as failed; no combined qualification. Original receipts and current715source/runtime identities reconcile."
+}

@@ -237,9 +237,10 @@ def cli_slice(registration: Any) -> ExecutableSlice:
     require(type(registration) is execution.ClientRegistration, 'Exact CLI registration required')
     actual = execution.observation_registration(registration)
     value = execution.profile_for_binding(registration.binding)
-    require(type(value) is profiles.CumulativeProfile, 'Final-M4 prospective profile required')
+    from . import cumulative_cli_projection_v1 as projection
+    require(projection.accepted_profile(value), 'Final-M4 prospective profile required')
     assert value is not None
-    profiles.assert_profile_current(value)
+    projection.assert_profile_current(value)
     sources = execution.evaluator_sources()
     admission.verify_loaded_sources(sources)
     require(registration.binding.evaluator_sha256 == execution.digest(sources), 'CLI evaluator differs')

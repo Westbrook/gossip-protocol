@@ -32,6 +32,7 @@ from . import candidate_storage_product_observation_v1 as storage_source
 from . import cumulative_observation_recipe_factory_v1 as recipe_factory
 from . import candidate_observation_admission_v1 as admission
 from . import candidate_scope_consumer_v1 as consumer
+from . import cumulative_cli_projection_v1 as projection
 from . import cumulative_scope_authority_v1 as scope_authority
 from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
@@ -173,6 +174,8 @@ class ObservationSpec:
         if self.kind == 'cli':
             require(type(self.registration) is cli.ClientRegistration and type(self.policy) is cli.ClientPolicy
                     and self.recipe is None and self.profile is None, 'Exact CLI inputs required')
+            require(self.cumulative_profile == cli.profile_for_binding(self.registration.binding),
+                    'Exact original CLI profile must accompany its binding')
             return cli.observation_registration(self.registration)
         module = http if self.kind == 'http' else product if self.kind == 'product' else None
         require(module is not None, 'Unknown physical observation owner')
@@ -252,6 +255,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         require(type(plan) is contract.plan_type and type(scope) is contract.scope.ScopeRegistrationController,
                 'Actual prospective plan and semantic scope controller required')
         plan.__post_init__()
+        projection.validate_plan(plan, Path(repository))
+        projection.validate_submission(plan, submissions)
         require(all(type(chain) is checkpoint.CheckpointChain and type(chain.authority) is ExternalHead
                     for chain in (study_chain, journal)), 'Durable independently owned proof chains required')
         require(study_chain is not journal and scope.chain is not journal,
@@ -286,7 +291,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         self.closed = False
         self.dispatch_halt: dict[str, Any] | None = None
         self._current()
-        self._put('final.contract', {'protocol': self.protocol, 'study_sha256': plan.sha256,
+        self._put('final.contract', {**projection.contract_fields(plan), 'protocol': self.protocol, 'study_sha256': plan.sha256,
             'study_checkpoint': asdict(study_expected), 'scope_checkpoint': self.scope_snapshot.checkpoint,
             'ledger_identity': self.ledger_identity, 'sources': self.sources,
             'scope_subjects': [asdict(row.subject) for row in submissions]})
@@ -300,6 +305,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         require(type(self.plan) is contract.plan_type and type(self.scope_owner) is contract.scope.ScopeRegistrationController,
                 'Prospective contract version changed')
         self.plan.__post_init__()
+        projection.validate_plan(self.plan, self.repository)
+        projection.validate_submission(self.plan, tuple(self.submissions.values()))
         require(self.plan.runtime.get('final_acceptance_protocol') == contract.protocol, 'Final protocol changed')
         require(not self.closed, 'Closed acceptance owner')
         self.chain.validate_boundary(expected=self.expected)
@@ -460,6 +467,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         """Run one fresh actual owner; unknown intent cannot be resumed/retried."""
         require(type(spec) is ObservationSpec, 'Exact construction specification required')
         require(spec.kind in _known_contract(self).families, 'Observation family is not in this contract version')
+        projection.validate_spec(self.plan, spec)
         if self.dispatch_halt is not None:
             raise consumer.AuthorityUnavailable('Prior physical execution halted further dispatch')
         require(self.records.read('final.assessment') is None, 'Assessment already sealed the observation census')

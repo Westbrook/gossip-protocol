@@ -28,7 +28,8 @@
     "analysis/sustained-posthoc-inventory-1/cases.json",
     ".github/workflows/*.yml",
     "MANIFEST.in",
-    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json"
+    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json",
+    "docs/cumulative-cli-result-projection-v1.txt"
   ],
   "retained_fixtures": [
     "results/practical-live-1/accepted/single",
@@ -41,7 +42,8 @@
     "analysis/cumulative-shared-ownership-v1.json",
     "analysis/cumulative-shared-ownership-review-v1.json",
     "docs/candidate-product-worker-hooks-v1.json",
-    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json"
+    "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json",
+    "docs/cumulative-cli-result-projection-v1.txt"
   ],
   "lanes": [
     "fast",
@@ -6584,6 +6586,66 @@
       "boundary": "Mechanism controls with explicit synthetic review/freeze scaffolding; no physical execution, full semantic review or whole rehearsal approval.",
       "disposition": "new prospective mapping control; runtime unrun",
       "overlap_reason": "Named successor transport and per-facet attribution did not exist in predecessor controls."
+    },
+    "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Exact approved public CLI addendum remains paired with the unchanged base through actual exposure, original profile, scope review and final-source admission.",
+      "isolation": "class process; disposable local fixture state; no Engine or provider",
+      "overlap": "Existing legacy CLI, scope and final-reader regressions preserve defaults; these controls exercise the explicit clarified variant.",
+      "distinct_defect": "A dropped marker, changed text/file, old-profile substitution, omitted review target or lost failed diagnostic can falsely downgrade the clarified contract.",
+      "boundary": "Actual declaration/comparator/materialization and protected local Git/journals as named; synthetic process/reviewer fixtures carry no physical or semantic approval.",
+      "disposition": "Run in the root-owned affected batch after static checks; no contributor runtime execution yet.",
+      "overlap_reason": "The added profile/source/review identity is absent from the historical legacy coverage."
+    },
+    "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Exact approved public CLI addendum remains paired with the unchanged base through actual exposure, original profile, scope review and final-source admission.",
+      "isolation": "class process; disposable local fixture state; no Engine or provider",
+      "overlap": "Existing legacy CLI, scope and final-reader regressions preserve defaults; these controls exercise the explicit clarified variant.",
+      "distinct_defect": "A dropped marker, changed text/file, old-profile substitution, omitted review target or lost failed diagnostic can falsely downgrade the clarified contract.",
+      "boundary": "Actual declaration/comparator/materialization and protected local Git/journals as named; synthetic process/reviewer fixtures carry no physical or semantic approval.",
+      "disposition": "Run in the root-owned affected batch after static checks; no contributor runtime execution yet.",
+      "overlap_reason": "The added profile/source/review identity is absent from the historical legacy coverage."
+    },
+    "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Exact approved public CLI addendum remains paired with the unchanged base through actual exposure, original profile, scope review and final-source admission.",
+      "isolation": "class process; disposable local fixture state; no Engine or provider",
+      "overlap": "Existing legacy CLI, scope and final-reader regressions preserve defaults; these controls exercise the explicit clarified variant.",
+      "distinct_defect": "A dropped marker, changed text/file, old-profile substitution, omitted review target or lost failed diagnostic can falsely downgrade the clarified contract.",
+      "boundary": "Actual declaration/comparator/materialization and protected local Git/journals as named; synthetic process/reviewer fixtures carry no physical or semantic approval.",
+      "disposition": "Run in the root-owned affected batch after static checks; no contributor runtime execution yet.",
+      "overlap_reason": "The added profile/source/review identity is absent from the historical legacy coverage."
+    },
+    "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Exact approved public CLI addendum remains paired with the unchanged base through actual exposure, original profile, scope review and final-source admission.",
+      "isolation": "class process; disposable local fixture state; no Engine or provider",
+      "overlap": "Existing legacy CLI, scope and final-reader regressions preserve defaults; these controls exercise the explicit clarified variant.",
+      "distinct_defect": "A dropped marker, changed text/file, old-profile substitution, omitted review target or lost failed diagnostic can falsely downgrade the clarified contract.",
+      "boundary": "Actual declaration/comparator/materialization and protected local Git/journals as named; synthetic process/reviewer fixtures carry no physical or semantic approval.",
+      "disposition": "Run in the root-owned affected batch after static checks; no contributor runtime execution yet.",
+      "overlap_reason": "The added profile/source/review identity is absent from the historical legacy coverage."
+    },
+    "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests": {
+      "boundary": "Real FinalV3/V2 terminal reader, exact successor and child admission, method-isolated tick effects, real six original scope requests and protected typed export/reopen; genuinely incomplete scope remains unavailable. Actual minimal legacy source inventory/loaded hash and original controller constructor, next child and reopen; refusal before effects.",
+      "disposition": "Run with the root-owned affected batch after static; authored only, no contributor runtime execution.",
+      "distinct_defect": "Pure helper success could conceal omitted constructor receipts, successor bypass, late child/tick validation or cold-input normalization failures. Bare legacy paths cannot omit a newly active guard dependency or accept a changed repository artifact.",
+      "invariant": "The exact clarified identity survives actual FinalV3 construction, successor admission, child/tick revocation and cold typed original-request reconstruction without granting absent authority.",
+      "isolation": "class process, fresh protected local journals/heads and disposable unenrolled SQLite; no Engine/provider",
+      "lane": "fast",
+      "overlap": "Six focused composition methods, including the four held2 routes and two minimum legacy source-closure controls; all prior27 method ASTs unchanged.",
+      "overlap_reason": "Legacy version tests do not prove the explicit clarified profile and paired requirement identity through these joins.",
+      "timeout_seconds": 900,
+      "weight": 1
     }
   },
   "audit": {

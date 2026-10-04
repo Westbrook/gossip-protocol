@@ -1,0 +1,13 @@
+Cumulative CLI result projection clarification v1
+
+This prospective public addendum is binding from M1 through M4 for subjects generated under the explicitly registered study release that includes it. It supplements library-cumulative-product-v2 and its inherited M1 contract; it does not change prior subjects or results.
+
+On success, job-submit, job-show, job-cancel, and job-retry print the bare JOB JSON object. JOB has exactly job_id, epoch, state, total, completed, and error, with the values and transition semantics required by the inherited contract. No additional enclosing result/status/job container is used for these commands.
+
+On success, job-prepare prints the bare TOKEN JSON object with exactly job_id and epoch. Repeated prepare and token fencing retain the inherited semantics.
+
+On success, job-commit prints the bare RECEIPT JSON object with exactly job and documents. The job is the prescribed completed JOB; documents are the prescribed batch documents in source order, including inherited original-receipt replay and explicitly applicable later compatibility rules. No additional enclosing receipt/result container is used.
+
+Each successful data command still emits one JSON value and exits0. Existing domain/I/O errors, stderr/error-object requirements, applicable error codes, usage behavior, argv/root/database grammar, persistence, ordering and semantic fields remain unchanged. JSON key order and whitespace are not made canonical bytes by this addendum.
+
+This addendum does not prescribe the outer wrappers of the literal import or jobs commands and does not remove their existing operation semantics. It does not alter HTTP, direct Store/JobManager APIs or workflow-adapter result contracts.

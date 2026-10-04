@@ -44,8 +44,9 @@ SOURCE_CLOSURE = tuple(sorted(set(FINANCIAL_SOURCES) | {"gossip_harness/" + name
     "cumulative_process_evidence_v1.py", "peer_mesh_v2.py", "peer_mesh_store_v2.py", "peer_mesh_finance_v2.py",
     "peer_role_loop_v2.py", "gitstore.py", "sandbox.py", "project_acceptance_compiler_v1.py",
     "candidate_observation_admission_v1.py", "candidate_release_execution_v2.py",
+    "cumulative_cli_projection_v1.py", "cumulative_observation_profile_v1.py", "project_acceptance_registry_v1.py",
     "library_cumulative_public_fixture_v1.py", "library_cumulative_public_fixture_v2.py")}
-    | {"library-cumulative-product-v2.json"}))
+    | {"library-cumulative-product-v2.json", "docs/cumulative-cli-result-projection-v1.txt"}))
 
 
 def fault_schedule(block: str, partition_seconds: float) -> dict[str, Any]:
@@ -232,6 +233,8 @@ class StudyPlan:
 
     def verify_sources(self, repository: Path) -> None:
         self.__post_init__()  # Recheck nested prospective policy/runtime before each dispatch boundary.
+        from . import cumulative_cli_projection_v1 as projection
+        projection.validate_plan(self, repository)
         require(all((repository / name).is_file()
                     and hashlib.sha256((repository / name).read_bytes()).hexdigest() == pin
                     for name, pin in self.source_pins.items()), "Controller source inventory changed")
@@ -388,6 +391,7 @@ class StudyController:
         self.records.put(key, {"originals": originals, "count": len(originals)})
 
     def _child(self, index: int) -> dict[str, Any]:
+        self.plan.verify_sources(self.repository)
         t = self.plan.cohort.trajectories[index]
         key = "child." + t.id
         terminal = self.records.read(key + ".terminal")

@@ -37,6 +37,7 @@ from . import candidate_execution_journal_v1 as execution_journal
 from . import candidate_emergency_cleanup_v1 as emergency_cleanup
 from . import candidate_retention_process_v1 as retention_process
 from . import cumulative_observation_profile_v1 as cumulative
+from . import cumulative_cli_projection_v1 as projection
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
 from .gitstore import GitStore
 from .sandbox import DockerValidator
@@ -104,8 +105,10 @@ def evaluator_sources() -> dict[str, str]:
              "candidate_release_execution_v2.py", "candidate_release_observer_v2.py", "sandbox.py", "gitstore.py",
              "candidate_checkpoint_chain_v1.py", "candidate_checkpoint_head_v1.py",
              "candidate_execution_journal_v1.py", "candidate_emergency_cleanup_v1.py", "candidate_http_journal_v3.py",
-             "candidate_retention_process_v1.py", "cumulative_observation_profile_v1.py")
+             "candidate_retention_process_v1.py", "cumulative_observation_profile_v1.py", "cumulative_cli_projection_v1.py")
     result = {name: sha256(Path(__file__).with_name(name).read_bytes()) for name in names}
+    result[projection.TEXT_PATH] = projection.TEXT_SHA256
+    projection.text()
     for plan in (COMPATIBILITY_PLAN, MOUNT_INVENTORY_PLAN, EMPTY_COMMAND_PLAN):
         result[plan] = sha256((Path(__file__).resolve().parents[1] / plan).read_bytes())
     return result
@@ -244,13 +247,13 @@ class ClientBinding:
             if key.endswith("_sha256") and not (key in ("profile_sha256", "target_definition_sha256") and value is None):
                 require(type(value) is str and _SHA.fullmatch(value) is not None, "Invalid binding digest")
         require(self.requirements_sha256 in SUPPORTED_REQUIREMENTS_SHA256, "Unrecognized frozen product requirements identity")
-        require(self.protocol in (PROTOCOL, M4_PROTOCOL) and self.purpose in registry.PURPOSES,
+        require(self.protocol in (PROTOCOL, M4_PROTOCOL, projection.EXECUTION_PROTOCOL) and self.purpose in registry.PURPOSES,
                 "A prospectively registered product purpose is required")
         require(type(self.case_id) is str and _ID.fullmatch(self.case_id) is not None,
                 "A declared finite CLI case is required")
         require((self.protocol == PROTOCOL and self.milestone == "M1"
                  and self.profile_sha256 is None and self.target_definition_sha256 is None)
-                or (self.protocol == M4_PROTOCOL and self.milestone == cumulative.TARGET_MILESTONE
+                or (self.protocol in (M4_PROTOCOL, projection.EXECUTION_PROTOCOL) and self.milestone == cumulative.TARGET_MILESTONE
                     and self.profile_sha256 is not None and self.target_definition_sha256 is not None),
                 "Explicit matching milestone, protocol and profile identities required")
 
@@ -301,10 +304,10 @@ def runtime_identity(endpoint: Any, image_id: str, *, timeout_seconds: int = 15)
 def checked_cumulative_profile(value: cumulative.CumulativeProfile, *, case_id: str,
                                purpose: str) -> cumulative.CumulativeProfile:
     """Validate declaration identity; independently authenticated review remains external."""
-    require(type(value) is cumulative.CumulativeProfile and value.family == "cli"
+    require(projection.accepted_profile(value) and value.family == "cli"
             and value.case_id == case_id and value.purpose == purpose,
             "Exact prospective CLI profile, history and purpose required")
-    cumulative.assert_profile_current(value)
+    projection.assert_profile_current(value)
     target = value.target_definition()
     require(value.record()["target_contract_sha256"] == cumulative.TARGET_CONTRACT_SHA256
             and target["target_milestone"] == "M4" and target["profile_sha256"] == value.sha256
@@ -318,9 +321,10 @@ def profile_for_binding(binding: ClientBinding) -> cumulative.CumulativeProfile 
         require(binding.milestone == "M1" and binding.profile_sha256 is None
                 and binding.target_definition_sha256 is None, "M1 binding has cumulative identities")
         return None
-    value = checked_cumulative_profile(cumulative.cli_profile(binding.case_id, purpose=binding.purpose),
+    factory = projection.profile_for if binding.protocol == projection.EXECUTION_PROTOCOL else cumulative.cli_profile
+    value = checked_cumulative_profile(factory(binding.case_id, purpose=binding.purpose),
                                        case_id=binding.case_id, purpose=binding.purpose)
-    require(binding.protocol == M4_PROTOCOL and binding.milestone == "M4"
+    require(binding.protocol == projection.execution_protocol(value) and binding.milestone == "M4"
             and binding.requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256
             and binding.profile_sha256 == value.sha256
             and binding.target_definition_sha256 == digest(value.target_definition()),
@@ -334,7 +338,7 @@ def bound_profile_sha256(binding: ClientBinding) -> str:
 
 
 def bound_definition_sources(value: cumulative.CumulativeProfile | None) -> dict[str, str]:
-    return cases.definition_sources() if value is None else cumulative.definition_sources()
+    return cases.definition_sources() if value is None else projection.profile_sources(value)
 
 
 def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, runtime: dict[str, Any], *,
@@ -346,6 +350,7 @@ def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, run
         checked_cumulative_profile(cumulative_profile, case_id=case_id, purpose=purpose)
         require(milestone == "M4" and requirements_sha256 == cumulative.TARGET_CONTRACT_SHA256,
                 "Cumulative profile requires its exact M4 target contract")
+    projection.validate_source(files, cumulative_profile)
     recipe, fixture_files = recipe_for(case_id)
     target = None if cumulative_profile is None else cumulative_profile.target_definition()
     if target is not None:
@@ -372,13 +377,13 @@ def binding_for(files: dict[str, bytes], case_id: str, policy: ClientPolicy, run
     suite = ordered_suite_sha256()
     if cumulative_profile is not None:
         definition.update(cumulative_profile=cumulative_profile.record(), target_definition=target)
-        suite = digest({"protocol": M4_PROTOCOL, "complete_original_suite_sha256": suite,
-            "profile_protocol": cumulative.PROTOCOL, "purpose": purpose,
-            "definition_sources": cumulative.definition_sources()})
+        suite = digest({"protocol": projection.execution_protocol(cumulative_profile), "complete_original_suite_sha256": suite,
+            "profile_protocol": cumulative_profile.record()["protocol"], "purpose": purpose,
+            "definition_sources": projection.profile_sources(cumulative_profile)})
     return ClientBinding(source_sha256(files), requirements_sha256, milestone, purpose, case_id,
         digest(definition), suite, digest(evaluator_sources()), digest(runtime), digest(environment), digest(limits),
         digest({"seed": policy.seed, "semantics": "fixed-input-recipe; no candidate random seed implied"}),
-        protocol=PROTOCOL if cumulative_profile is None else M4_PROTOCOL,
+        protocol=PROTOCOL if cumulative_profile is None else projection.execution_protocol(cumulative_profile),
         profile_sha256=None if cumulative_profile is None else cumulative_profile.sha256,
         target_definition_sha256=None if target is None else digest(target))
 
@@ -451,8 +456,8 @@ class CandidateClientExecution:
                  cumulative_profile: cumulative.CumulativeProfile | None = None):
         require(type(registration) is ClientRegistration and type(policy) is ClientPolicy
                 and mode in ("physical", "fixture"), "Typed immutable registration required")
-        if registration.binding.protocol == M4_PROTOCOL:
-            require(type(cumulative_profile) is cumulative.CumulativeProfile,
+        if registration.binding.protocol in (M4_PROTOCOL, projection.EXECUTION_PROTOCOL):
+            require(projection.accepted_profile(cumulative_profile),
                     "Explicit cumulative CLI profile required at owner admission")
             assert cumulative_profile is not None
             require(checked_cumulative_profile(cumulative_profile, case_id=registration.binding.case_id,

@@ -117,7 +117,7 @@ def _restore_scope(pool: ProofPool, value: dict, repository: Path) -> tuple[Any,
         registered = consumer.RegisteredAcceptance(submission.catalog.inventory.sha256, submission.scope.sha256,
             compiler.declaration_fingerprint(submission.declaration), registry.design_fingerprint(design.registry),
             submission.subject.execution_contract_sha256, submission.qualification_specs)
-        expected = {'protocol': scope.PROTOCOL, 'request_name': request_name, 'request_sha256': source.sha(raw),
+        expected = {'protocol': request['protocol'], 'request_name': request_name, 'request_sha256': source.sha(raw),
             'report_name': material['report_name'], 'report_sha256': source.sha(journal.read(material['report_name'])),
             'subject': asdict(submission.subject), 'registered': asdict(registered)}
         require(source.encoded(expected) == original, 'Original registration is not the complete derived design')
@@ -176,8 +176,10 @@ def _prerequisite_prefix(owner: final.FinalAcceptanceV3, gate: registry.Gate, ad
 
 
 def _restore_owner(packet: dict, pool: ProofPool, plan: StudyPlan) -> final.FinalAcceptanceV3:
+    shared.projection.validate_plan(plan, path(packet['repository']))
     _prospective_sources(plan)
     scope_owner, submissions = _restore_scope(pool, packet['scope'], path(packet['repository']))
+    shared.projection.validate_submission(plan, submissions)
     require(tuple(row.subject.trajectory_id for row in submissions) ==
             tuple(row.trajectory for row in plan.roster.children), 'Ordered six scope subjects differ')
     owner = object.__new__(final.FinalAcceptanceV3)
@@ -203,7 +205,7 @@ def _restore_owner(packet: dict, pool: ProofPool, plan: StudyPlan) -> final.Fina
     require(owner.freeze is not None and owner.freeze.subjects == owner.subjects,
             'Original final freeze substituted the complete subject census')
     contract = owner.records.read('final.contract')
-    require(contract == plain({'protocol': final.PROTOCOL, 'study_sha256': plan.sha256,
+    require(contract == plain({**shared.projection.contract_fields(plan), 'protocol': final.PROTOCOL, 'study_sha256': plan.sha256,
         'study_checkpoint': asdict(owner.study_expected), 'scope_checkpoint': owner.scope_snapshot.checkpoint,
         'ledger_identity': owner.ledger_identity, 'sources': owner.sources,
         'scope_subjects': [asdict(row.subject) for row in submissions]}), 'Original final contract differs')
@@ -368,6 +370,7 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
             require(value['layout_review'] is None, 'Foreign layout authority')
         spec = shared.ObservationSpec(**{**inputs, 'store': GitStore(inputs['store']),
             'checkpoint_authority': head, 'layout_authority': layout})
+        shared.projection.validate_spec(owner.plan, spec)
         registration = spec.observation_registration()
         assert owner.freeze is not None
         require(registration.gate == gate and admitted['registration'] == plain(asdict(registration))

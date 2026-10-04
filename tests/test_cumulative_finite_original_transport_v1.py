@@ -36,6 +36,7 @@ from gossip_harness.cumulative_study_controller_v1 import Records, plain
 from gossip_harness.peer_financial_terminal_v1 import FinancialError
 from tests.test_candidate_storage_finite_mapping_v1 import CandidateStorageFiniteMappingCompositionTests as StorageFixture
 from tests.test_candidate_m2_finite_mapping_v2 import CandidateM2FiniteMappingOwnerV2Tests as M2Fixture
+from tests.test_cumulative_terminal_originals_v2 import synthetic_plan
 
 
 class CumulativeFiniteOriginalTransportV1Tests(unittest.TestCase):
@@ -114,7 +115,7 @@ class CumulativeFiniteOriginalTransportV1Tests(unittest.TestCase):
             'cleanup_root': str(spec.cleanup_root), 'protocol': cold.final.PROTOCOL,
             'study_checkpoint': asdict(study_expected)}))
         records.put(key+'.verified', {'post_checkpoint': asdict(expected)})
-        owner = SimpleNamespace(records=records, chain=chain, freeze=freeze,
+        owner = SimpleNamespace(plan=synthetic_plan(), records=records, chain=chain, freeze=freeze,
             study_expected=study_expected, _registered_gate=lambda value: provenance,
             originals=SimpleNamespace(slots=(SimpleNamespace(trajectory=subject.trajectory_id,
                 final_source={'repository': str(spec.store.path.resolve())}),)),

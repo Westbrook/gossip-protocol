@@ -1,0 +1,192 @@
+{
+  "protocol": "cli-projection-offline-qualification-v1",
+  "recorded_at": "2026-10-04T19:17:17.920437+00:00",
+  "source_base": "240e3428223c1408cab1426633bb53818ab098bc",
+  "status": "Targeted offline qualification passed; physical qualification, complete semantic scope and matching full rehearsal remain open.",
+  "changes": [
+    "Prospective exact public CLI result clarification is paired with unchanged base V2 requirements and exposed in all four releases, including immutable builder/reviewer/repair context.",
+    "Closed profile/executor/observer/source and scope-review target identities continue through final acceptance, saved input, cold reader and prerequisite boundaries. Historical profiles and results are not relabelled.",
+    "Minimum loaded/current guard source closure now also applies before the legacy return and at actual StudyPlan and child-effect entry points.",
+    "A reviewed test-only correction supplies the real typed plan on a synthetic cold-transport owner; all four test method ASTs and 21 assertions remain unchanged."
+  ],
+  "normative_text": {
+    "path": "docs/cumulative-cli-result-projection-v1.txt",
+    "sha256": "d568aabfddfbf87b0a1bb8cddd11d22cfdf5e0d5b5b6830124ecbf1df86f7295",
+    "base_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "prospective_only": true
+  },
+  "preserved_census": {
+    "cli_histories": 57,
+    "cli_commands": 305,
+    "cli_diagnostics": 900,
+    "decisive_diagnostics": 868,
+    "unspecified_diagnostics": 32,
+    "source_units": 312,
+    "runtime_history_templates": 602,
+    "semantic_authorities": 22,
+    "gap_duties": 188,
+    "study_trajectories": 6,
+    "planned_role_instances": 96,
+    "milestones": 4
+  },
+  "source_and_config_files": [
+    {
+      "path": "docs/cumulative-cli-result-projection-v1.txt",
+      "before_sha256": null,
+      "after_sha256": "d568aabfddfbf87b0a1bb8cddd11d22cfdf5e0d5b5b6830124ecbf1df86f7295"
+    },
+    {
+      "path": "gossip_harness/candidate_client_execution_v5.py",
+      "before_sha256": "affcb8de4f9ac9e10f0f6ff5edd831ed4253ed0cbb54b663600de16b8ed7a116",
+      "after_sha256": "7ca06133b71b64fb346ab9ba7d193fa7f79fadedabdec37f76a2120d3261ddd5"
+    },
+    {
+      "path": "gossip_harness/candidate_client_observation_source_v1.py",
+      "before_sha256": "86030a61caac02a70309d4ca11484e1b114114d5d0b5d171451e71c7b4fcf59e",
+      "after_sha256": "3e16d0c00c33f8149cb99ac2ff90403feda12b5c334c4d7537d28fb835fd0c9b"
+    },
+    {
+      "path": "gossip_harness/candidate_client_observer_v5.py",
+      "before_sha256": "4a093ee9c6b3a87cc92966d059bba6678a340f0d1234101cddaa25e1a23c05db",
+      "after_sha256": "10e90b7f8230faa1d754a9181ddcf36b7138b78fc75109aef5d10ec25dff4c3b"
+    },
+    {
+      "path": "gossip_harness/cumulative_cli_projection_v1.py",
+      "before_sha256": null,
+      "after_sha256": "1d669662db5741b4952990aa2eb9f054493e4c1b405bc9fa01923912d952d432"
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v1.py",
+      "before_sha256": "4fbff400d11906ea4a2b535cff36d9801e6c4930ddc8052da76c2db16ab63034",
+      "after_sha256": "af15a40ebe8894421938519598048fac523e9c9fd7a340b58ee1beaed4b67a94"
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v3.py",
+      "before_sha256": "ddd4d7b94677895156972f2fc7c072530a67024b7939de8e022b534dce88b903",
+      "after_sha256": "c0d9d65007702741f1439282b26c9776fe6325321a5d13baf7bf49f54edefa21"
+    },
+    {
+      "path": "gossip_harness/cumulative_final_originals_v1.py",
+      "before_sha256": "96658257818080e5c84f9ee4df1c7b0c421074d2790310c80cdb054945bb3c55",
+      "after_sha256": "21c5c6c3c85346fc0b97ca87ce85bf6fe166d028748fe5052f96ffbe9968cb2e"
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_codec_v1.py",
+      "before_sha256": "514d07e19f4461a2b7f07a4351659cfba3f29d2a1c13f6b82bfb6cc8ffd924bd",
+      "after_sha256": "6b61aafe9a17f027d7871cb3baf4906d735067710096d922825439f15f252231"
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_authority_v3.py",
+      "before_sha256": "eb34f384b072fe7f3ca0aba0fa7b4c58e6fad8bf581e8ba56ac7270b60e5bd7c",
+      "after_sha256": "cdaae783876970a9bb6f821c7f97d044c58915e93fed7ae907872c59455bec3b"
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v1.py",
+      "before_sha256": "f58a8ccefb38ae1e3a218ec451e26f386fe802007a137eca14e39589bb78703c",
+      "after_sha256": "5e7efaefe7fb0da67bdeaefb7374474603fc21bfa47efca62938bc5dea990874"
+    },
+    {
+      "path": "gossip_harness/cumulative_study_controller_v2.py",
+      "before_sha256": "348475835ff4f1a1b1c24a39ed87f5e36a2e885518b20d3a2bfa14874047b637",
+      "after_sha256": "22328640f393ad37a42f36890727a5956840de38327d4c34871e3edb529d0fe1"
+    },
+    {
+      "path": "gossip_harness/cumulative_study_runtime_v2.py",
+      "before_sha256": "5684a745b95930373b50490e62c714b7b0bf21365dd9bfadad181e67616a32cf",
+      "after_sha256": "57b321bf001678d19f71058d868bb297ae4af936cc20bcce1d873f4159bb396b"
+    },
+    {
+      "path": "gossip_harness/cumulative_study_successor_v3.py",
+      "before_sha256": "9fc6c3987430fe3421759fee8596bf51e57f22d2359df25cff212d84b1c27022",
+      "after_sha256": "335ac092db200f0cee46f4f171c93d6314f833df0ec531bfc6a2d06883277e54"
+    },
+    {
+      "path": "tests/test_cumulative_cli_projection_v1.py",
+      "before_sha256": null,
+      "after_sha256": "43f31bb7f7876ae4ed5286c1da768e2e497173577da2118484d8d1b3648d4d21"
+    },
+    {
+      "path": "verification-manifest.json",
+      "before_sha256": "d8115761d0e45d404926cff1ee826548bd904edd5754768151506f62f2d3cd3c",
+      "after_sha256": "4c20fa5b1f25c16e42263397c7c94ac3c2fe4e1adafd47bdc9d0c7bc0f50fd52"
+    },
+    {
+      "path": "pyproject.toml",
+      "before_sha256": "5dc8c5c96ff351b2347a07bdadbf06c7ab533c1bf827db329b375098c8851992",
+      "after_sha256": "aa8484f4c99ac6e6e49261e71f376ffdecd8b95ce422c4c2add2f7ba01a84185"
+    },
+    {
+      "path": "tests/test_cumulative_finite_original_transport_v1.py",
+      "before_sha256": "4956cc317fbae6321a375d61cd3488247be71b240f80b242166b7e8dde62e61c",
+      "after_sha256": "820d9752da52be023183dc31692539587af0131cea761459e408e4ae12dbcb7c"
+    }
+  ],
+  "verification": {
+    "run": "runs/cli-projection-offline-2/20261004T191116-d67faebe",
+    "summary_sha256": "f0ac39ef4a90e480ae1c263adc59936f1239fac87c09add0ec6b20b8d641dc1e",
+    "coverage": "targeted",
+    "discovered_methods": 5276,
+    "selected_methods": 278,
+    "classes": 27,
+    "fresh_methods": 274,
+    "fresh_workers": 26,
+    "reused_methods": 4,
+    "reused_classes": 1,
+    "outcomes": {
+      "passed": 278
+    },
+    "skipped": 0,
+    "not_run": 0,
+    "lanes": {
+      "fast": 230,
+      "git": 48
+    },
+    "duration_seconds": 230.1379217915237,
+    "input_count": 715,
+    "fingerprint": "38e084929b4ac9e51ab5fbc979b9e54ea013cb7e4391f61e54574ec4503d9942",
+    "runtime_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+    "static": "Passed with 117 existing baseline type diagnostics and no new blocking diagnostics; not a claim that every legacy dynamic function is type-safe.",
+    "reuse_original": {
+      "run": "runs/cli-projection-offline-2/20261004T190915-146d7315",
+      "summary_sha256": "3d7a8f3d5545345796fed3c4bbdf8aded96365bf6daf935aa38d66d9975538cd",
+      "methods": 4,
+      "purpose": "Exact local regression evidence, not independent acceptance or repeatability.",
+      "binding": "Full current input map, ordered class suite, evaluator/runtime/environment, limits and original logs/results/cleanup reconciled."
+    }
+  },
+  "independent_audit": {
+    "path": "analysis/cli-projection-offline-audit-v1.json",
+    "sha256": "34d9e5d32b1ccf2f0f41f0c02dad3e81ec88dec4c206bdb0fb9d394744838301",
+    "detail_retained_path": "runs/cli-projection-integration-1/terminal-audit-1/gossip-cli-projection-offline-terminal-details-20261004-v2.json",
+    "detail_sha256": "26bfce74745684cb7d34a34af2c382b03b581ca91cd0f06b0710c2baaf4a9e47"
+  },
+  "previous_attempt": {
+    "run": "runs/cli-projection-offline-1/20261004T185431-48a9dd81",
+    "status": "failed",
+    "outcomes": {
+      "passed": 275,
+      "error": 1,
+      "not_run": 2
+    },
+    "audit": "analysis/cli-projection-failed-attempt-v1.json",
+    "audit_sha256": "0f873c09f5178b30679182bb4bcc1de526b238c5be1aa8956347bfba9d23f1db",
+    "meaning": "Audit current-source claims describe its original pre-correction observation. Failed results were not relabelled or reused against the corrected source.",
+    "cause": "Synthetic final-owner fixture lacked the newly required typed .plan; AttributeError occurred before the guard could execute. No production-guard result inferred."
+  },
+  "source_reviews": {
+    "held3": "dc5cd443904c5537d8c6db0715db7eb346bf095b47c91bfd0dc73d6b782a4522",
+    "current_root_applicability": "3c8e9ee87389bf6b7650e110454dcf9b4ea5c3ffd94726115d6863ab36976819",
+    "fixture_correction": "b3849ce2a767e886062be2ba2bc6b8922fd18215b9a9c21e773f27fbbd7747be",
+    "affected_plan": "a56962263502fcf568eba6968ba361ea8b6775a5faccfdff35bd4920f3673244"
+  },
+  "new_model_quality_samples": 0,
+  "provider_calls": 0,
+  "docker_runs": 0,
+  "remaining": [
+    "Fresh actual CLI qualification bound to this changed contract/profile.",
+    "Complete workflow and other remaining semantic acceptance families; whole source-scope review and actual independent final acceptance.",
+    "Changed-profile physical checks and one complete matching six-trajectory rehearsal.",
+    "The live 20-role development study, separate decision-placement versus transport comparison, and independent held-out family confirmation."
+  ],
+  "publication": "Prepared for a local commit. Public push remains subject to the pending external-disclosure approval; prior question through e0cc6ac does not cover this newer batch."
+}
