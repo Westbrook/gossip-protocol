@@ -4494,6 +4494,79 @@
       "boundary": "Offline engineering qualification only. Host filesystem checks and mocked lifecycle records do not establish actual container isolation, physical continuity, fresh candidate acceptance or model quality.",
       "disposition": "Root runs the coherent combined static and affected offline classes after independent source review, before any separately registered costly controls.",
       "overlap_reason": "These new surfaces change execution contracts; their offline checks cannot replace the full v3 physical mechanics qualification, fresh observation bridge or cumulative project study."
+    },
+    "tests/test_candidate_http_docker_v3.py::CandidateHttpMechanicsV3DefinitionTests": {
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker; owned temporary host files or supplied transcripts only. No fixture execution, Engine, provider or candidate dispatch in offline classes.",
+      "overlap": "Tests of independently authored physical assertions and fixture declarations; they do not rerun the production controller lifecycle suite.",
+      "boundary": "HTTP-only preparation. Offline assertions are not physical observations, product acceptance, a complete mixed HTTP/CLI gate or comparative agent evidence.",
+      "disposition": "Root verifies the coherent source batch after independent review; retain failures and exact source identities.",
+      "overlap_reason": "New physical assertion code and independently authored fixtures require their own nearest regressions before actual container-level qualification.",
+      "lane": "fast",
+      "invariant": "Preserve frozen base server bytes, nine controls, fourteen request rows and original limits; independently reject changed compact references and checkpoint chronology.",
+      "distinct_defect": "Preserve frozen base server bytes, nine controls, fourteen request rows and original limits; independently reject changed compact references and checkpoint chronology."
+    },
+    "tests/test_candidate_http_v3_fixtures.py::HttpV3ExtensionDeclarationTests": {
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker; owned temporary host files or supplied transcripts only. No fixture execution, Engine, provider or candidate dispatch in offline classes.",
+      "overlap": "Tests of independently authored physical assertions and fixture declarations; they do not rerun the production controller lifecycle suite.",
+      "boundary": "HTTP-only preparation. Offline assertions are not physical observations, product acceptance, a complete mixed HTTP/CLI gate or comparative agent evidence.",
+      "disposition": "Root verifies the coherent source batch after independent review; retain failures and exact source identities.",
+      "overlap_reason": "New physical assertion code and independently authored fixtures require their own nearest regressions before actual container-level qualification.",
+      "lane": "fast",
+      "invariant": "Pin the complete 70-request history and independent root/link/body fixtures, including exact body limits and honest early-close expectations.",
+      "distinct_defect": "Pin the complete 70-request history and independent root/link/body fixtures, including exact body limits and honest early-close expectations."
+    },
+    "tests/test_candidate_http_v3_fixtures.py::HttpV3InertSourceTests": {
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker; owned temporary host files or supplied transcripts only. No fixture execution, Engine, provider or candidate dispatch in offline classes.",
+      "overlap": "Tests of independently authored physical assertions and fixture declarations; they do not rerun the production controller lifecycle suite.",
+      "boundary": "HTTP-only preparation. Offline assertions are not physical observations, product acceptance, a complete mixed HTTP/CLI gate or comparative agent evidence.",
+      "disposition": "Root verifies the coherent source batch after independent review; retain failures and exact source identities.",
+      "overlap_reason": "New physical assertion code and independently authored fixtures require their own nearest regressions before actual container-level qualification.",
+      "lane": "fast",
+      "invariant": "Inspect inert server source without executing it; bind declared observations, input boundaries and state namespaces without product-reference imports.",
+      "distinct_defect": "Inspect inert server source without executing it; bind declared observations, input boundaries and state namespaces without product-reference imports."
+    },
+    "tests/test_candidate_http_extensions_v3.py::CandidateHttpExtensionTranscriptV3Tests": {
+      "weight": 1,
+      "timeout_seconds": 180,
+      "isolation": "One isolated class worker; owned temporary host files or supplied transcripts only. No fixture execution, Engine, provider or candidate dispatch in offline classes.",
+      "overlap": "Tests of independently authored physical assertions and fixture declarations; they do not rerun the production controller lifecycle suite.",
+      "boundary": "HTTP-only preparation. Offline assertions are not physical observations, product acceptance, a complete mixed HTTP/CLI gate or comparative agent evidence.",
+      "disposition": "Root verifies the coherent source batch after independent review; retain failures and exact source identities.",
+      "overlap_reason": "New physical assertion code and independently authored fixtures require their own nearest regressions before actual container-level qualification.",
+      "lane": "fast",
+      "invariant": "Supplied negative transcripts preserve incomplete-send and incomplete-response uncertainty without claiming physical partial-send coverage.",
+      "distinct_defect": "Supplied negative transcripts preserve incomplete-send and incomplete-response uncertainty without claiming physical partial-send coverage."
+    },
+    "tests/test_candidate_http_docker_v3.py::CandidateHttpMechanicsV3DockerTests": {
+      "lane": "docker",
+      "weight": 3,
+      "timeout_seconds": 1800,
+      "invariant": "Fresh v3 execution of unchanged nine base controls and fourteen declared requests, with independently authenticated compact references, checkpoint chronology, raw Engine identity and cleanup.",
+      "isolation": "One serial class worker; per-history owned Git source, state volume, keeper, servers and disposable probes. Only current history containers coexist; count all nested containers and readiness attempts.",
+      "overlap": "Fast tests establish request/parser/role/journal rules; these controls observe their real Docker, TCP, kernel and storage composition.",
+      "distinct_defect": "A complete response is not synonymous with EOF or helper exit. Truncation, cap, timeout, server death, wildcard listeners, wrong namespaces and ambiguous framing remain distinguishable.",
+      "boundary": "HTTP-only synthetic mechanics. The complete v3 gate additionally requires the full 87-step/29-CLI history and new continuity faults after the pending finite-CLI prerequisites. No provider work or model-quality claim.",
+      "disposition": "Do not dispatch until the complete prospective v3 roster and prerequisites are ready. Run once after static/offline/source qualification; preserve all failed, unavailable and unexecuted outcomes.",
+      "overlap_reason": "Frozen v2 observations cannot qualify a changed v3 controller. Preserve the original server and limits, including the 900-second base history lifetime."
+    },
+    "tests/test_candidate_http_extensions_v3.py::CandidateHttpExtensionsV3DockerTests": {
+      "lane": "docker",
+      "weight": 3,
+      "timeout_seconds": 10800,
+      "invariant": "Five independently declared HTTP mechanics histories cover the exact 70-request row, actual roots and links across epochs, both literal body boundaries and one-shot early-close classification.",
+      "isolation": "One serial class worker; fresh owned Git source, state volume, keeper and per-epoch servers/probes per history. Weight three reserves the nested container budget.",
+      "overlap": "Fast tests establish request/parser/role/journal rules; these controls observe their real Docker, TCP, kernel and storage composition.",
+      "distinct_defect": "Synthetic state facts distinguish complete transmission from server consumption, preserve ordered long histories and expose actual root/database continuity without evaluating product semantics.",
+      "boundary": "HTTP-only synthetic mechanics. The complete v3 gate additionally requires the full 87-step/29-CLI history and new continuity faults after the pending finite-CLI prerequisites. No provider work or model-quality claim.",
+      "disposition": "Do not dispatch until the complete prospective v3 roster and prerequisites are ready. Run once after static/offline/source qualification; preserve all failed, unavailable and unexecuted outcomes.",
+      "overlap_reason": "These extensions exercise new v3 composition boundaries absent from the unchanged base controls. Supplied transcript negatives cannot replace physical observations; a complete buffered early-close send leaves physical incomplete-send coverage open.",
+      "timeout_rationale": "A prospective three-hour class resource cap, separate from each 7200-second controller history policy. It is not a measured completion estimate or permission to dispatch. Synchronous checkpoint/authentication work is not a deadline primitive; timeout means infrastructure uncertainty, not candidate failure. Runtime feasibility remains unqualified and the complete physical roster must bind these limits before launch."
     }
   },
   "audit": {

@@ -1,0 +1,236 @@
+{
+  "schema": "candidate-c03-http-v3-physical-preparation-checkpoint-v1",
+  "recorded_utc": "2026-10-04T01:14:57.219426+00:00",
+  "base_commit": "9b2fe22938f9a68358e1ecd12070fdfbe48ce041",
+  "status": "HTTP-only physical fixture preparation passed source review and offline verification; physical qualification remains incomplete.",
+  "sources": [
+    {
+      "path": "tests/test_candidate_http_docker_v3.py",
+      "bytes": 100175,
+      "sha256": "81a27181db59c6e34fc396f308bde0643620271211a145b091846f1f24b590df"
+    },
+    {
+      "path": "tests/candidate_http_v3_fixtures.py",
+      "bytes": 12131,
+      "sha256": "73636ca935f6f9e985c865f03d3f1c366d85410ce56778f6621eb2d94dd1e9fa"
+    },
+    {
+      "path": "tests/test_candidate_http_v3_fixtures.py",
+      "bytes": 14549,
+      "sha256": "1b3337ca05e597a67c3a7ccf1d17824af4ca73f66b9982a733ef7bc07cce0e4f"
+    },
+    {
+      "path": "tests/test_candidate_http_extensions_v3.py",
+      "bytes": 23858,
+      "sha256": "03e55b8324ed55c657dc82891ff2e27e396ded6a850a4c01ccd8eee80d0a25a5"
+    },
+    {
+      "path": "docs/candidate-http-mechanics-v3.md",
+      "bytes": 8311,
+      "sha256": "2037900add14bd069a49341155c688429232a36d6a0def801664aa5b6c41544f"
+    },
+    {
+      "path": "verification-manifest.json",
+      "bytes": 425897,
+      "sha256": "13c4d5bccb405d89afea5db104ea905939ca8c4b705e7e92a137796776b1dc92"
+    }
+  ],
+  "source_review": {
+    "path": "analysis/candidate-c03-http-v3-preparation-review.json",
+    "bytes": 3720,
+    "sha256": "d14cd9d8468e0f73bebf3d2fd0cbfd6c90e3ffbd4806fc7f4368dd4af9f59fb4"
+  },
+  "verification": {
+    "summary": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/summary.json",
+      "bytes": 27386,
+      "sha256": "c722b9265cbe9357c6742ddefdaac569fee92f9a378d70cb4e749faa2fd7356a"
+    },
+    "static": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/static.json",
+      "bytes": 79467,
+      "sha256": "a2dbf3e00949bf9d7d11043abe9c8f3474805730c0cc41d1f17a28c46b4a9c9c"
+    },
+    "inputs": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/inputs.json",
+      "bytes": 60659,
+      "sha256": "e013c59a27a193fe42266a6b4a7709ba2cdf126143040f444895a23f17e63b5e"
+    },
+    "fresh_passes": 29,
+    "failures": 0,
+    "skips": 0,
+    "reused_classes": 0,
+    "fresh_classes": 4,
+    "static_sources": 447,
+    "type_baseline_diagnostics": 117,
+    "matched_inputs": 516,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "duration_seconds": 9.047027375549078,
+    "worker_budget": 4,
+    "peak_resource_tokens": 4,
+    "classes": [
+      {
+        "name": "tests/test_candidate_http_docker_v3.py::CandidateHttpMechanicsV3DefinitionTests",
+        "passes": 8,
+        "evidence": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/24b0188f4920400e/result.json",
+          "bytes": 4936,
+          "sha256": "936f1bf40c6a8b13b52a7884a8aea84474435ea5d2ce8108eb3f71cd00da832a"
+        },
+        "log": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/24b0188f4920400e/worker.log",
+          "bytes": 1646,
+          "sha256": "4b93a165dce58e074958da47a797d4e6dcfdec5aaf31a33a888a539cbc239479"
+        }
+      },
+      {
+        "name": "tests/test_candidate_http_extensions_v3.py::CandidateHttpExtensionTranscriptV3Tests",
+        "passes": 3,
+        "evidence": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/0b120d219fe0ffbb/result.json",
+          "bytes": 3324,
+          "sha256": "b47293173866a2826de8eb1f67f920f29771137eb491a8ebc1f3e7e382586dcf"
+        },
+        "log": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/0b120d219fe0ffbb/worker.log",
+          "bytes": 727,
+          "sha256": "5b45c17f3f13ed86f202f5603d4f857f86922e3c38b62c2f79d7344b1e3468de"
+        }
+      },
+      {
+        "name": "tests/test_candidate_http_v3_fixtures.py::HttpV3ExtensionDeclarationTests",
+        "passes": 12,
+        "evidence": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/b6b95579d51d6039/result.json",
+          "bytes": 6212,
+          "sha256": "82d0c896916a3fcfa75a7ea94c1ec7e0e7e68eb1b68fb7c44e216414fe818718"
+        },
+        "log": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/b6b95579d51d6039/worker.log",
+          "bytes": 2391,
+          "sha256": "43d8aa2b499b9413031d707f217368d1d58aa99f7c0f4c0becd88f9faa09fed6"
+        }
+      },
+      {
+        "name": "tests/test_candidate_http_v3_fixtures.py::HttpV3InertSourceTests",
+        "passes": 6,
+        "evidence": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/25cd71edd1f19f8a/result.json",
+          "bytes": 4163,
+          "sha256": "3da04d5b74b53e67d8d466725286b90fabbfca5d8ad25ebfe379eadbc5b424cb"
+        },
+        "log": {
+          "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/classes/25cd71edd1f19f8a/worker.log",
+          "bytes": 1146,
+          "sha256": "81f8d2c02d972e0fb9a3799716c9d9df2c28493a12d42e313b5d3a5c2cc3748c"
+        }
+      }
+    ],
+    "meaning": "Actual offline host checks, with supplied socket transcripts and inert fixture-source inspection. No candidate/server fixture is executed; no container or provider call is made.",
+    "historical_controller_checks": "The previous 141 checks remain historical evidence at their original source/configuration identity. They were not rerun or counted as fresh/reused passes in this batch.",
+    "unchanged_prior_sources": [
+      {
+        "path": "gossip_harness/candidate_http_execution_v3.py",
+        "bytes": 106310,
+        "sha256": "2378a346eed2245732f5169fec96e85352a9ea3182ad797f4d9efd10d5f56d10"
+      },
+      {
+        "path": "tests/test_candidate_http_execution_v3.py",
+        "bytes": 90527,
+        "sha256": "fc32939c3de8ac88ae06f6d00d194a9b0fb3a2e376562dadf5d0684fa5aa7316"
+      },
+      {
+        "path": "gossip_harness/candidate_http_inputs_v1.py",
+        "bytes": 10662,
+        "sha256": "5e1ba65028e09ea1bfd99b63e8181c243d211e2571999b662432ff72318cfe9b"
+      },
+      {
+        "path": "tests/test_candidate_http_inputs_v1.py",
+        "bytes": 24902,
+        "sha256": "7a3deea8db188e006c77951b5cd9099356b7df11e92a7dbf4aab93b224cbfc85"
+      },
+      {
+        "path": "gossip_harness/candidate_http_journal_v3.py",
+        "bytes": 10901,
+        "sha256": "7bcb8b7e8c3bee570a28c21dfd7ad278d0a435581ef184d2c645b61f569f988b"
+      },
+      {
+        "path": "tests/test_candidate_http_journal_v3.py",
+        "bytes": 11509,
+        "sha256": "f69c74f1de7bb08ae7932af3561140bb3ffbbfcda7ff99cfd41e3f07627549c9"
+      },
+      {
+        "path": "docs/candidate-c03-http-execution-v3.md",
+        "bytes": 11207,
+        "sha256": "614724e5a08428c2f5ab115071542d6cc92b1086a004d79dbe3a3317b171f2a6"
+      },
+      {
+        "path": "docs/candidate-c03-http-inputs-v1.md",
+        "bytes": 5401,
+        "sha256": "4d02254948b61e0e7b74803d64bb785e6b2b13e3bae66ac9bea24e0c45fbf882"
+      },
+      {
+        "path": "docs/candidate-c03-http-journal-v3.md",
+        "bytes": 4977,
+        "sha256": "2ba4e9ec536a3bac900386199edb21aaf9f3a5f6e8a5f1e4a0375eb382ff8d0a"
+      },
+      {
+        "path": "pyproject.toml",
+        "bytes": 9136,
+        "sha256": "afd31d1e2188b4097d40f1e882f9fd0dbdd46807db346ef8d2c6896f53a05a41"
+      }
+    ],
+    "browser": "No HTML, browser behavior or report server source changed; no new browser qualification claimed."
+  },
+  "prepared_physical_controls": {
+    "base": 9,
+    "extensions": 5,
+    "executed": 0,
+    "complete_v3_gate": false,
+    "mixed_history_included": false
+  },
+  "contributor_evidence": {
+    "retained_logs": [
+      {
+        "path": "runs/candidate-c03-http-v3-preparation-publication-1/gossip-http-v3-fixtures-focused-1.log",
+        "bytes": 6122,
+        "sha256": "72fa47aee064143b590f7746e57f12ddd3603ba5fadb33df01d8ab6dbdd8bd59"
+      },
+      {
+        "path": "runs/candidate-c03-http-v3-preparation-publication-1/gossip-http-v3-fixtures-focused-2.log",
+        "bytes": 3547,
+        "sha256": "f0d52e9db79fb35623b611a0cc02e23b42dc25dc38f33922e2c923f20c5a4cc4"
+      }
+    ],
+    "first_fixture_run": "Three test-only errors in semantic-field access, expected payload length and AST literal type were corrected before the held-source gate. Original failed and successful logs are preserved; no runtime predicate was tuned from physical output."
+  },
+  "resource_limits": {
+    "base_history_seconds": 900,
+    "base_class_seconds": 1800,
+    "extension_history_seconds": 7200,
+    "extension_class_seconds": 10800,
+    "meaning": "Prospective resource caps, not measured completion predictions. Class timeout may leave later methods unexecuted; synchronous journal work is not an interruptible history deadline."
+  },
+  "new_engine_calls": 0,
+  "new_provider_calls": 0,
+  "new_candidate_dispatches": 0,
+  "new_comparative_samples": 0,
+  "new_ledger_audit": false,
+  "remaining_scope": [
+    "Approval to install the three reviewed CLI files, followed by stage-one persistence and all eleven prerequisite controls; the remaining 56 finite histories are separate outstanding coverage.",
+    "Prepare and qualify the complete 87-step/29-CLI mixed history and required continuity/retention faults, then freeze and execute the full v3 physical roster.",
+    "Independent acceptance purpose admission, fresh observation adapters and the full-cohort final-evaluation barrier.",
+    "Remaining cumulative project obligations and one complete matching rehearsal.",
+    "The planned small/large/fair-orchestrator live comparison, subsequent decision-placement by transport study, and independent project-family confirmation under the required approval and allocation."
+  ],
+  "limitations": [
+    "No physical qualification or new swarm-quality evidence.",
+    "An early-close complete send cannot close physical incomplete-send coverage.",
+    "External checkpoint persistence feasibility remains unmeasured.",
+    "The static gate covers declared type roots, not every legacy dynamic function.",
+    "Existing CLI-file and provider payload approval boundaries remain pending.",
+    "Code publication does not refresh GitHub Pages."
+  ],
+  "interpretation": "The latest live comparative results and audited budget remain unchanged. More passing harness tests do not establish a swarm advantage."
+}

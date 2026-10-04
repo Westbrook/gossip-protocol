@@ -1,0 +1,84 @@
+{
+  "schema": "candidate-c03-http-v3-preparation-review-v1",
+  "recorded_utc": "2026-10-04T01:14:57.216539+00:00",
+  "provenance": "Root-authored durable projection of read-only independent agent source/configuration review and gate reconciliation; not a new physical execution or external attestation.",
+  "review_owner": "http_v3_physical_review",
+  "status": "clear_with_explicit_scope_limits",
+  "unresolved_material_source_findings": [],
+  "reviewed_sources": [
+    {
+      "path": "tests/test_candidate_http_docker_v3.py",
+      "bytes": 100175,
+      "sha256": "81a27181db59c6e34fc396f308bde0643620271211a145b091846f1f24b590df"
+    },
+    {
+      "path": "tests/candidate_http_v3_fixtures.py",
+      "bytes": 12131,
+      "sha256": "73636ca935f6f9e985c865f03d3f1c366d85410ce56778f6621eb2d94dd1e9fa"
+    },
+    {
+      "path": "tests/test_candidate_http_v3_fixtures.py",
+      "bytes": 14549,
+      "sha256": "1b3337ca05e597a67c3a7ccf1d17824af4ca73f66b9982a733ef7bc07cce0e4f"
+    },
+    {
+      "path": "tests/test_candidate_http_extensions_v3.py",
+      "bytes": 23858,
+      "sha256": "03e55b8324ed55c657dc82891ff2e27e396ded6a850a4c01ccd8eee80d0a25a5"
+    },
+    {
+      "path": "docs/candidate-http-mechanics-v3.md",
+      "bytes": 8311,
+      "sha256": "2037900add14bd069a49341155c688429232a36d6a0def801664aa5b6c41544f"
+    },
+    {
+      "path": "verification-manifest.json",
+      "bytes": 425897,
+      "sha256": "13c4d5bccb405d89afea5db104ea905939ca8c4b705e7e92a137796776b1dc92"
+    }
+  ],
+  "resolved_findings": [
+    "Shared assertions bind recipe.database_path and the declared port instead of base-fixture constants.",
+    "Per-probe assertions reuse a freshly authenticated checkpoint chronology index without changing production persistence.",
+    "The base history explicitly preserves the frozen 900-second lifetime; its definition regression binds the field."
+  ],
+  "source_conclusions": [
+    "Exact original 5039-byte server, nine base controls and fourteen requests preserved.",
+    "Independent raw identity, framing, descriptor order, chronology and owned cleanup assertions retained.",
+    "Fixed 70-request catalog row, root/link observations and exact 65536/65537-byte bodies are declared without product-correctness claims.",
+    "Early close is observed once; a fully transmitted buffered request leaves physical incomplete-send coverage open.",
+    "The shared assertion mixin contains no tests; all six concrete classes have explicit manifest records."
+  ],
+  "gate": {
+    "summary": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/summary.json",
+      "bytes": 27386,
+      "sha256": "c722b9265cbe9357c6742ddefdaac569fee92f9a378d70cb4e749faa2fd7356a"
+    },
+    "static": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/static.json",
+      "bytes": 79467,
+      "sha256": "a2dbf3e00949bf9d7d11043abe9c8f3474805730c0cc41d1f17a28c46b4a9c9c"
+    },
+    "inputs": {
+      "path": "runs/candidate-c03-http-v3-physical-preparation-1/20261004T011103-1ccfd278/inputs.json",
+      "bytes": 60659,
+      "sha256": "e013c59a27a193fe42266a6b4a7709ba2cdf126143040f444895a23f17e63b5e"
+    },
+    "matched_current_inputs": 516,
+    "fresh_offline_passes": 29,
+    "class_receipts_and_logs": 4
+  },
+  "reviewer_execution": {
+    "tests": 0,
+    "engine_calls": 0,
+    "provider_calls": 0,
+    "candidate_dispatches": 0
+  },
+  "scope_limits": [
+    "Source and offline assertion qualification only.",
+    "Fourteen container methods remain unexecuted.",
+    "Full mixed CLI, continuity faults and predecessor CLI gates remain required.",
+    "External persistence runtime feasibility is not established."
+  ]
+}
