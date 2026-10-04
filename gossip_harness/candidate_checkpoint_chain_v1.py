@@ -13,6 +13,7 @@ source/CAS/intent/cleanup rules. This primitive neither dispatches nor retries.
 """
 from __future__ import annotations
 
+from contextlib import ExitStack
 from dataclasses import asdict, dataclass, field
 import fcntl
 import hashlib
@@ -22,9 +23,11 @@ from pathlib import Path
 import re
 import stat
 import threading
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
 
 from . import candidate_http_journal_v3 as stable
+if TYPE_CHECKING:
+    from . import candidate_journal_batch_read_v1 as batch_read
 
 PROTOCOL = "candidate-checkpoint-chain-v1"
 _GENESIS_DOMAIN = (PROTOCOL + "/genesis\0").encode()
@@ -181,6 +184,8 @@ class CheckpointChain:
     delta_root: Path
     limits: Limits
     authority: HeadAuthority
+    read_policy: batch_read.BatchReadPolicy | None
+    _read_policy_record: dict[str, Any] | None
     _genesis: bytes
     _context_sha256: str
     _prefix: PrefixCommitment
@@ -199,21 +204,26 @@ class CheckpointChain:
 
     @classmethod
     def create(cls, raw_root: Path, delta_root: Path, *, context: dict[str, Any],
-               authority: HeadAuthority, limits: Limits = Limits()) -> CheckpointChain:
-        return cls._open(raw_root, delta_root, context, authority, limits, None)
+               authority: HeadAuthority, limits: Limits = Limits(),
+               read_policy: batch_read.BatchReadPolicy | None = None) -> CheckpointChain:
+        return cls._open(raw_root, delta_root, context, authority, limits, None, read_policy)
 
     @classmethod
     def reopen(cls, raw_root: Path, delta_root: Path, *, context: dict[str, Any],
                authority: HeadAuthority, expected: PrefixCommitment,
-               limits: Limits = Limits()) -> CheckpointChain:
+               limits: Limits = Limits(), read_policy: batch_read.BatchReadPolicy | None = None) -> CheckpointChain:
         _require(type(expected) is PrefixCommitment, "Independent expected commitment required")
-        return cls._open(raw_root, delta_root, context, authority, limits, expected)
+        return cls._open(raw_root, delta_root, context, authority, limits, expected, read_policy)
 
     @classmethod
     def _open(cls, raw_root: Path, delta_root: Path, context: dict[str, Any],
               authority: HeadAuthority, limits: Limits,
-              expected: PrefixCommitment | None) -> CheckpointChain:
+              expected: PrefixCommitment | None, read_policy: batch_read.BatchReadPolicy | None) -> CheckpointChain:
         _require(type(limits) is Limits and type(context) is dict, "Typed limits and context required")
+        if read_policy is not None:
+            from . import candidate_journal_batch_read_v1 as batch_read
+            _require(type(read_policy) is batch_read.BatchReadPolicy, "Exact read policy required")
+        policy_record = None if read_policy is None else read_policy.record()
         limits = Limits(**asdict(limits))  # Revalidate and detach the caller-owned frozen value.
         context_raw = _encoded(context)
         _require(len(context_raw) <= limits.max_context_bytes, "Context bound exceeded")
@@ -222,13 +232,17 @@ class CheckpointChain:
         _require(all(p.parent.is_dir() for p in roots), "Existing durable parent directories required")
         _require(not roots[0].is_relative_to(roots[1]) and not roots[1].is_relative_to(roots[0]),
                  "Raw and external roots must be disjoint")
-        genesis = _encoded({"protocol": PROTOCOL, "kind": "genesis", "context": json.loads(context_raw),
-                            "raw_root": str(roots[0]), "delta_root": str(roots[1]), "limits": asdict(limits)})
+        declaration = {"protocol": PROTOCOL, "kind": "genesis", "context": json.loads(context_raw),
+                       "raw_root": str(roots[0]), "delta_root": str(roots[1]), "limits": asdict(limits)}
+        if policy_record is not None:
+            declaration["journal_read"] = policy_record
+        genesis = _encoded(declaration)
         _require(len(genesis) <= _GENESIS_LIMIT and len(genesis) <= limits.max_external_bytes - limits.cleanup_external_bytes,
                  "Genesis exceeds ordinary external budget")
         self = object.__new__(cls)
         self.raw_root, self.delta_root = roots
-        self.limits, self.authority = limits, authority
+        self.limits, self.authority, self.read_policy = limits, authority, read_policy
+        self._read_policy_record = policy_record
         self._genesis = genesis
         self._context_sha256 = _sha(_GENESIS_DOMAIN + genesis)
         self._prefix = PrefixCommitment(self._context_sha256, 0, self._context_sha256, 0, 0, len(genesis))
@@ -476,6 +490,11 @@ class CheckpointChain:
         return names
 
     def _verify_all(self, expected: PrefixCommitment) -> tuple[dict[str, tuple[int, str]], dict[str, str]]:
+        if self.read_policy is not None:
+            from . import candidate_journal_batch_read_v1 as batch_read
+            _require(type(self.read_policy) is batch_read.BatchReadPolicy, "Exact checkpoint read policy required")
+        actual_policy = None if self.read_policy is None else self.read_policy.record()
+        _require(actual_policy == self._read_policy_record, "Checkpoint read policy changed")
         _require(expected.context_sha256 == self._context_sha256
                  and expected.sequence <= self.limits.max_files
                  and expected.raw_bytes <= self.limits.max_raw_bytes
@@ -483,52 +502,58 @@ class CheckpointChain:
                  "Expected prefix context/bounds differ")
         self._assert_roots()
         _require(self.authority.read() == expected, "Independent expected head differs")
-        raw_names = self._names(0, self.limits.max_files + 1)
-        delta_names = self._names(1, self.limits.max_files + 2)
-        expected_deltas = {_LOCK, "genesis.json", *(_delta_name(i) for i in range(1, expected.sequence + 1))}
-        _require(delta_names == expected_deltas, "External rollback, gap or unknown suffix")
-        _require(stable.read(self.delta_root / "genesis.json", max_bytes=_GENESIS_LIMIT) == self._genesis,
-                 "Genesis context changed")
-        files: dict[str, tuple[int, str]] = {}
-        deltas: dict[str, str] = {}
-        previous = self._context_sha256
-        raw_bytes = 0
-        external_bytes = len(self._genesis)
-        for sequence in range(1, expected.sequence + 1):
-            name = _delta_name(sequence)
-            raw = stable.read(self.delta_root / name, max_bytes=_DELTA_LIMIT)
-            value = stable.decode(raw, max_bytes=_DELTA_LIMIT)
-            _require(type(value) is dict and set(value) == {"protocol", "kind", "context_sha256", "sequence",
-                     "previous_head_sha256", "name", "bytes", "sha256"} and _encoded(value) == raw,
-                     "Closed canonical delta required")
-            _require(value["protocol"] == PROTOCOL and value["kind"] == "raw-file"
-                     and value["context_sha256"] == self._context_sha256
-                     and type(value["sequence"]) is int and value["sequence"] == sequence
-                     and value["previous_head_sha256"] == previous, "Delta context/order/previous differs")
-            _name(value["name"])
-            _require(value["name"] not in files and type(value["bytes"]) is int
-                     and 0 <= value["bytes"] <= self.limits.max_raw_file_bytes
-                     and type(value["sha256"]) is str and _SHA.fullmatch(value["sha256"]) is not None,
-                     "Delta duplicate/name/size/hash differs")
-            files[value["name"]] = (value["bytes"], value["sha256"])
-            raw_bytes += value["bytes"]
-            external_bytes += len(raw)
-            _require(raw_bytes <= self.limits.max_raw_bytes and external_bytes <= self.limits.max_external_bytes,
-                     "Prefix aggregate bounds exceeded")
-            deltas[name] = _sha(raw)
-            previous = _sha(_DELTA_DOMAIN + raw)
-        reconstructed = PrefixCommitment(self._context_sha256, expected.sequence, previous,
-                                          len(files), raw_bytes, external_bytes)
-        _require(reconstructed == expected and raw_names == {_LOCK, *files}, "Raw suffix/inventory/head differs")
-        for name, (size, digest) in files.items():
-            raw = stable.read(self.raw_root / name, max_bytes=self.limits.max_raw_file_bytes)
-            _require(len(raw) == size and _sha(raw) == digest, "Boundary raw bytes changed")
-        _require(self._names(0, self.limits.max_files + 1) == raw_names
-                 and self._names(1, self.limits.max_files + 2) == delta_names,
-                 "Inventory changed during boundary")
-        self._assert_roots()
-        _require(self.authority.read() == expected, "External head changed during boundary")
-        return files, deltas
+        with ExitStack() as stack:
+            read = stable.read
+            if self.read_policy is not None:
+                reader = stack.enter_context(batch_read.CheckpointReader(
+                    (self.raw_root, self.delta_root), tuple(self._root_identities), policy=self.read_policy))
+                read = reader.read
+            raw_names = self._names(0, self.limits.max_files + 1)
+            delta_names = self._names(1, self.limits.max_files + 2)
+            expected_deltas = {_LOCK, "genesis.json", *(_delta_name(i) for i in range(1, expected.sequence + 1))}
+            _require(delta_names == expected_deltas, "External rollback, gap or unknown suffix")
+            _require(read(self.delta_root / "genesis.json", max_bytes=_GENESIS_LIMIT) == self._genesis,
+                     "Genesis context changed")
+            files: dict[str, tuple[int, str]] = {}
+            deltas: dict[str, str] = {}
+            previous = self._context_sha256
+            raw_bytes = 0
+            external_bytes = len(self._genesis)
+            for sequence in range(1, expected.sequence + 1):
+                name = _delta_name(sequence)
+                raw = read(self.delta_root / name, max_bytes=_DELTA_LIMIT)
+                value = stable.decode(raw, max_bytes=_DELTA_LIMIT)
+                _require(type(value) is dict and set(value) == {"protocol", "kind", "context_sha256", "sequence",
+                         "previous_head_sha256", "name", "bytes", "sha256"} and _encoded(value) == raw,
+                         "Closed canonical delta required")
+                _require(value["protocol"] == PROTOCOL and value["kind"] == "raw-file"
+                         and value["context_sha256"] == self._context_sha256
+                         and type(value["sequence"]) is int and value["sequence"] == sequence
+                         and value["previous_head_sha256"] == previous, "Delta context/order/previous differs")
+                _name(value["name"])
+                _require(value["name"] not in files and type(value["bytes"]) is int
+                         and 0 <= value["bytes"] <= self.limits.max_raw_file_bytes
+                         and type(value["sha256"]) is str and _SHA.fullmatch(value["sha256"]) is not None,
+                         "Delta duplicate/name/size/hash differs")
+                files[value["name"]] = (value["bytes"], value["sha256"])
+                raw_bytes += value["bytes"]
+                external_bytes += len(raw)
+                _require(raw_bytes <= self.limits.max_raw_bytes and external_bytes <= self.limits.max_external_bytes,
+                         "Prefix aggregate bounds exceeded")
+                deltas[name] = _sha(raw)
+                previous = _sha(_DELTA_DOMAIN + raw)
+            reconstructed = PrefixCommitment(self._context_sha256, expected.sequence, previous,
+                                              len(files), raw_bytes, external_bytes)
+            _require(reconstructed == expected and raw_names == {_LOCK, *files}, "Raw suffix/inventory/head differs")
+            for name, (size, digest) in files.items():
+                raw = read(self.raw_root / name, max_bytes=self.limits.max_raw_file_bytes)
+                _require(len(raw) == size and _sha(raw) == digest, "Boundary raw bytes changed")
+            _require(self._names(0, self.limits.max_files + 1) == raw_names
+                     and self._names(1, self.limits.max_files + 2) == delta_names,
+                     "Inventory changed during boundary")
+            self._assert_roots()
+            _require(self.authority.read() == expected, "External head changed during boundary")
+            return files, deltas
 
     def validate_boundary(self, *, expected: PrefixCommitment | None = None) -> BoundaryValidation:
         """Reconstruct every delta and hash every raw file; keep freshness external."""

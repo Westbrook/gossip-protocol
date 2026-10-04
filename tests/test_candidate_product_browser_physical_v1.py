@@ -15,6 +15,7 @@ import unittest
 from devtools.test_artifacts import ArtifactDirectory
 from gossip_harness import candidate_product_browser_cases_v1 as cases
 from gossip_harness import candidate_product_browser_execution_v1 as execution
+from gossip_harness import candidate_journal_batch_read_v1 as journal_read
 from gossip_harness import candidate_product_browser_observation_v1 as observer
 from gossip_harness import candidate_checkpoint_head_v1 as head
 from gossip_harness import candidate_observation_admission_v1 as admission
@@ -24,7 +25,7 @@ from gossip_harness.library_v2_json_reference_v2 import corrected_v2_files, corr
 from tests.test_candidate_clients_docker_v4 import make_store
 from tests.test_library_m2_browser_reference_v1 import _runtime
 
-PROTOCOL = 'candidate-product-browser-physical-controls-v1-git-source-batch-v1'
+PROTOCOL = 'candidate-product-browser-physical-controls-v1-git-source-batch-v1-journal-batch-read-v1'
 COHORT = ('fixture-original', *('fixture-reserved-'+str(index) for index in range(1,6)))
 VARIANTS = {
     'stale-commit': ('library/clients/index.html', "action === 'commit' ? {epoch: job.epoch} : {}",
@@ -145,7 +146,8 @@ class _PhysicalBrowserControl:
         write_new(root/'candidate-definition.json',candidate)
         store=make_store(root/'candidate.git',files)
         commit=store.head()
-        profile=execution.BrowserProfile(cases.case(self.definition[1]),capture_policy=execution.source_capture.BatchCapturePolicy())
+        profile=execution.BrowserProfile(cases.case(self.definition[1]),capture_policy=execution.source_capture.BatchCapturePolicy(),
+            journal_policy=journal_read.BatchReadPolicy())
         tree,captured=execution.capture_source(store,commit,policy=profile.capture_policy)
         self.assertEqual(captured,files)
         binding=execution.binding_for(files,profile,policy,runtime,browser_runtime)
@@ -153,8 +155,8 @@ class _PhysicalBrowserControl:
             execution.digest({'protocol':PROTOCOL,'control':self.definition,'policy':asdict(policy)}),
             cases.CONTRACT_SHA256,binding.source_sha256)
         prospective=execution.observation_registration_for(binding,profile,policy,subject=subject,
-            gate_id='browser-'+self.CONTROL_ID.lower(),commit_oid=commit,tree_oid=tree,repetition_id='physical-batch-v1-1',cohort_trajectory_ids=COHORT)
-        registration=execution.BrowserRegistration(binding,commit,tree,'physical-batch-v1-1',prospective)
+            gate_id='browser-'+self.CONTROL_ID.lower(),commit_oid=commit,tree_oid=tree,repetition_id='physical-journal-batch-v1-1',cohort_trajectory_ids=COHORT)
+        registration=execution.BrowserRegistration(binding,commit,tree,'physical-journal-batch-v1-1',prospective)
         original=write_new(root/'prospective-registration.json',{'registration':asdict(prospective),
             'source_registration':asdict(registration),'profile':profile.record(),'policy':asdict(policy),
             'runtime':runtime,'browser_runtime':browser_runtime,'authority_is_synthetic_fixture':True})

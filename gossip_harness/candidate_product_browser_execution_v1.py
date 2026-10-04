@@ -17,13 +17,15 @@ import subprocess
 import tempfile
 import threading
 import time
-from typing import Any
+from typing import TYPE_CHECKING, Any
 import uuid
 
 from . import candidate_product_process_execution_v1 as base
 from . import candidate_product_browser_cases_v1 as cases
 from . import candidate_product_browser_transport_v1 as transport
 from . import candidate_source_capture_policy_v1 as source_capture
+if TYPE_CHECKING:
+    from . import candidate_journal_batch_read_v1 as journal_read
 from . import candidate_http_transport_v1 as wire
 from . import candidate_client_execution_v4 as finite
 from . import candidate_client_process_v4 as engine
@@ -39,6 +41,8 @@ from .sandbox import DockerValidator
 
 PROTOCOL = "candidate-product-browser-execution-v1"
 BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
+JOURNAL_PROTOCOL = PROTOCOL + "-journal-batch-read-v1"
+COMBINED_BATCH_PROTOCOL = BATCH_PROTOCOL + "-journal-batch-read-v1"
 IPC_PROTOCOL = "candidate-product-browser-ipc-v1"
 SNAPSHOT_PROTOCOL = "docker-owned-browser-held-tmpfs-v1"
 CONTROL_LIMIT = 8 * 1024 * 1024
@@ -63,7 +67,7 @@ def digest(value: Any) -> str:
     return sha256(encoded(value))
 
 
-def evaluator_sources() -> dict[str, str]:
+def evaluator_sources(read_policy: journal_read.BatchReadPolicy | None = None) -> dict[str, str]:
     result = dict(base.evaluator_sources())
     for name in ("cases", "execution", "observation", "fixture", "transport"):
         path = Path(__file__).with_name("candidate_product_browser_" + name + "_v1.py")
@@ -72,7 +76,29 @@ def evaluator_sources() -> dict[str, str]:
         result["devtools/browser/" + path.name] = sha256(path.read_bytes())
     for name in ("lifecycle.cjs", "package.json", "package-lock.json"):
         result["devtools/browser/" + name] = sha256((BASE_PROJECT / "devtools/browser" / name).read_bytes())
+    if read_policy is not None:
+        from . import candidate_journal_batch_read_v1 as journal_read
+        require(type(read_policy) is journal_read.BatchReadPolicy, "Exact journal read policy required")
+        read_policy.record()
+        result.update(journal_read.evaluator_sources())
     return result
+
+
+def loaded_sources(read_policy: journal_read.BatchReadPolicy | None) -> dict[str, str]:
+    if read_policy is None:
+        return _LOADED_SOURCES
+    from . import candidate_journal_batch_read_v1 as journal_read
+    require(type(read_policy) is journal_read.BatchReadPolicy, "Exact journal read policy required")
+    read_policy.record()
+    # Do not replace an earlier loaded source pin with a later helper import pin.
+    extra = journal_read.evaluator_sources()
+    require(all(name not in _LOADED_SOURCES or _LOADED_SOURCES[name] == value
+                for name, value in extra.items()), "Loaded journal dependency changed")
+    return {**_LOADED_SOURCES, **extra}
+
+
+def journal_fields(profile: BrowserProfile) -> dict[str, Any]:
+    return {} if profile.journal_policy is None else {"journal_read": profile.journal_policy.record()}
 
 
 def pipe_diagnostics_policy() -> dict[str, Any]:
@@ -154,6 +180,7 @@ def runtime_identity(policy: BrowserPolicy) -> dict[str, Any]:
 class BrowserProfile:
     case: cases.BrowserCase
     capture_policy: source_capture.BatchCapturePolicy | None = None
+    journal_policy: journal_read.BatchReadPolicy | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is cases.BrowserCase, "Exact closed browser case required")
@@ -162,10 +189,16 @@ class BrowserProfile:
                 "Exact closed browser source capture policy required")
         if self.capture_policy is not None:
             self.capture_policy.record()
+        if self.journal_policy is not None:
+            from . import candidate_journal_batch_read_v1 as journal_read
+            require(type(self.journal_policy) is journal_read.BatchReadPolicy,
+                    "Exact closed checkpoint read policy required")
+            self.journal_policy.record()
 
     @property
     def execution_protocol(self) -> str:
-        return PROTOCOL if self.capture_policy is None else BATCH_PROTOCOL
+        protocol = PROTOCOL if self.capture_policy is None else BATCH_PROTOCOL
+        return protocol if self.journal_policy is None else protocol + "-journal-batch-read-v1"
 
     @property
     def ordered_case_ids(self) -> tuple[str, ...]:
@@ -180,6 +213,9 @@ class BrowserProfile:
         if self.capture_policy is not None:
             result.update(protocol="candidate-product-browser-profile-v1-git-source-batch-v1",
                           execution_protocol=BATCH_PROTOCOL, source_capture=self.capture_policy.record())
+        if self.journal_policy is not None:
+            result.update(protocol=result["protocol"] + "-journal-batch-read-v1",
+                          execution_protocol=self.execution_protocol, **journal_fields(self))
         return result
 
     @property
@@ -198,6 +234,16 @@ def validate_capture_config(profile: BrowserProfile, config: dict[str, Any]) -> 
     else:
         require(config.get("source_capture") == profile.capture_policy.record(),
                 "Missing or different original source capture policy")
+    validate_journal_fields(profile, config)
+
+
+def validate_journal_fields(profile: BrowserProfile, value: dict[str, Any]) -> None:
+    profile.__post_init__()
+    if profile.journal_policy is None:
+        require("journal_read" not in value, "Unexpected original journal read policy")
+    else:
+        require(value.get("journal_read") == profile.journal_policy.record(),
+                "Missing or different original journal read policy")
 
 
 @dataclass(frozen=True)
@@ -222,7 +268,7 @@ class BrowserBinding:
     def __post_init__(self) -> None:
         require(all(type(value) is str and _SHA.fullmatch(value) for key, value in asdict(self).items()
                     if key.endswith("_sha256")), "Exact immutable binding hashes required")
-        require(self.requirements_sha256 == cases.CONTRACT_SHA256 and self.protocol in (PROTOCOL, BATCH_PROTOCOL)
+        require(self.requirements_sha256 == cases.CONTRACT_SHA256 and self.protocol in (PROTOCOL, BATCH_PROTOCOL, JOURNAL_PROTOCOL, COMBINED_BATCH_PROTOCOL)
                 and self.purpose == "public_release" and self.milestone == "M4", "New public-only browser admission required")
 
 
@@ -234,8 +280,9 @@ def binding_for(files: dict[str, bytes], profile: BrowserProfile, policy: Browse
               "pipe_diagnostics": pipe_diagnostics_policy()}
     if profile.capture_policy is not None:
         limits["source_capture"] = profile.capture_policy.record()
+    limits.update(journal_fields(profile))
     return BrowserBinding(source_sha256(files), cases.CONTRACT_SHA256, profile.case.sha256,
-        digest(source_manifest(profile.case.inputs())), digest(evaluator_sources()),
+        digest(source_manifest(profile.case.inputs())), digest(evaluator_sources(profile.journal_policy)),
         digest({"engine": runtime, "browser": browser_runtime}), digest(runtime),
         digest({"environment": DockerValidator._environment(), "origin": cases.ORIGIN,
                 "browser": "sandbox-closed-proxy-dns-fresh-home-context-blocked-serviceworkers-websockets",
@@ -358,13 +405,13 @@ class BrowserExecution:
         self._cleanup_claims: dict[str, str] = {}
         self.tree, self.files = capture_source(store, registration.commit_oid, policy=profile.capture_policy)
         self.inputs = profile.case.inputs()
-        self.sources = evaluator_sources()
+        self.sources = evaluator_sources(profile.journal_policy)
         admission.verify_loaded_sources(self.sources)
         self.runtime = engine.runtime_identity(endpoint, policy.image_id, timeout_seconds=policy.transport_timeout_seconds)
         self.browser_runtime = runtime_identity(policy)
         self.binding = binding_for(self.files, profile, policy, self.runtime, self.browser_runtime)
         require(self.tree == registration.tree_oid and self.binding == registration.binding
-                and self.sources == _LOADED_SOURCES, "Source/runtime/evaluator binding differs")
+                and self.sources == loaded_sources(profile.journal_policy), "Source/runtime/evaluator binding differs")
         declared = registration.observation
         self.actual_registration = observation_registration_for(self.binding, profile, policy,
             subject=declared.gate.binding.subject, gate_id=declared.gate.gate_id, commit_oid=registration.commit_oid,
@@ -378,9 +425,11 @@ class BrowserExecution:
         self.config["pipe_diagnostics"] = pipe_diagnostics_policy()
         if profile.capture_policy is not None:
             self.config["source_capture"] = profile.capture_policy.record()
+        self.config.update(journal_fields(profile))
         self.journal = owner_journal.OwnerJournal(self.root, self.delta_root,
             context={"protocol": profile.execution_protocol, "config_sha256": digest(self.config),
-                     "registration_sha256": digest(asdict(registration)), "purpose": self.binding.purpose}, authority=checkpoint_authority)
+                     "registration_sha256": digest(asdict(registration)), "purpose": self.binding.purpose}, authority=checkpoint_authority,
+            read_policy=profile.journal_policy)
         try:
             self._retain("config.json", encoded(self.config))
         except BaseException:
@@ -415,7 +464,8 @@ class BrowserExecution:
     def _unchanged(self) -> None:
         self.checkpoint()
         self.admission.check_current(self.actual_registration, self.retained_freeze)
-        require(self.sources == evaluator_sources() == _LOADED_SOURCES, "Loaded evaluator changed")
+        require(self.sources == evaluator_sources(self.profile.journal_policy) == loaded_sources(self.profile.journal_policy),
+                "Loaded evaluator changed")
         tree, files = capture_source(self.store, self.registration.commit_oid, policy=self.profile.capture_policy)
         require(tree == self.tree and files == self.files, "Registered Git source changed")
         for key, fingerprint in (("node_executable", "node_sha256"), ("browser_executable", "browser_sha256")):
@@ -971,7 +1021,8 @@ class BrowserExecution:
         self.driver_messages: list[int] = []
         self._retain("intent.json", encoded({"protocol": self.profile.execution_protocol, "execution_id": self.execution_id, "volume": self.volume,
             "binding_sha256": digest(asdict(self.binding)), "profile_sha256": self.profile.sha256,
-            "ordered_actions": self.profile.case.record["actions"], "no_automatic_retry": True, "physical": True}))
+            "ordered_actions": self.profile.case.record["actions"], "no_automatic_retry": True, "physical": True,
+            **journal_fields(self.profile)}))
         infrastructure: list[str] = []
         browser: dict[str, Any] | None = None
         cleanup_verified = False
@@ -1029,7 +1080,7 @@ class BrowserExecution:
                 "unconfirmed_create_names": [name for name, (_, cid) in self.owned.items() if cid is None],
                 "browser": browser, "cleanup_verified": cleanup_verified,
                 "infrastructure": infrastructure, "purpose": self.binding.purpose, "product_acceptance": False,
-                "global_independent_acceptance": False}))
+                "global_independent_acceptance": False, **journal_fields(self.profile)}))
         self._staging_active = False
         return self.checkpoint()
 

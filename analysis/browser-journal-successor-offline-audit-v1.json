@@ -1,0 +1,92 @@
+{
+  "class_count": 21,
+  "current_input_count": 707,
+  "current_input_hashes_all_match": true,
+  "current_input_inventory_exact": true,
+  "details": {
+    "bytes": 73340,
+    "path": "/tmp/gossip-browser-journal-successor-offline-reconciliation-20261004-v1.json",
+    "sha256": "b2cae7a849300a8c6977fe462c134d4f8e07ca37cd7a7d973416c93f8a2c7b92"
+  },
+  "disposition": "retained287-test targeted offline success reconciles with selected inventory and current sources",
+  "duration_seconds": 88.11108408402652,
+  "executed_by_reviewer": false,
+  "inputs": {
+    "bytes": 84271,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813/inputs.json",
+    "sha256": "03a7473ab140cbdb411728459e111076a252a4b4ddb33133e1d4795333516ca9"
+  },
+  "installed_held2_source_pins_all_match": true,
+  "limits": [
+    "Targeted offline verification only;237 fast and50 git tests. No Docker/browser/provider qualification.",
+    "Runner physical=true per class means fresh worker execution rather than reused receipt, not Docker/Chromium evidence.",
+    "No reviewer reruns/imports/tests/Engine/provider calls or source edits; only source AST, retained JSON/log/hash and binary reads.",
+    "No journal-batch performance adequacy or scientific sample claim; two earlier physical failures remain failed."
+  ],
+  "ordered_suite_count": 287,
+  "ordered_suite_sha256": "c4e64807d7bea5f2cfa0976156da0f869cf7f41781f9999852209c091317a85c",
+  "outcomes": {
+    "passed": 287
+  },
+  "project_imports_by_reviewer": false,
+  "protocol": "read-only-offline-verification-reconciliation-v1",
+  "reader_script": {
+    "bytes": 7683,
+    "path": "/tmp/reconcile-browser-journal-offline-20261004.py",
+    "sha256": "c3be70f855770faea8f83877fb3a4167d9fbea13a92852719a6c55e4d4846e5f"
+  },
+  "reused_classes": 0,
+  "reviewer": "/root/b03_physical_tests",
+  "run_fingerprint": "53938ebb79545af5c34aa0033ab99d724ae80fb0b38aa49d9e274fd253e913e7",
+  "runtime_final": {
+    "bytes": 1435,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813/runtime-final.json",
+    "sha256": "c4fd9b711ffdd16741d1c5032f719b344f85a501b2fd4d8a4ecda7a45c09c828"
+  },
+  "runtime_reconciliation": {
+    "current_binary_hashes_rechecked": 3,
+    "initial_final_equal": true,
+    "limits": "Recorded initial/final identity equality verified. No live environment values disclosed, installed package inventory execution or version commands repeated by reviewer.",
+    "sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc"
+  },
+  "selected_counts": {
+    "fast": 237,
+    "git": 50
+  },
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813",
+  "skips": 0,
+  "source_review": {
+    "bytes": 14616,
+    "path": "/tmp/gossip-browser-journal-batch-source-review-20261004-held2-v1.json",
+    "sha256": "8e18a312e1dc693c09403c8f9a3e5f5851ce0841a7c983a7da7835d10b39969f"
+  },
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": {
+    "bytes": 101473,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813/static.json",
+    "sha256": "89b7222e59575522def45ae6ce1e8ad498836d3e76e41ae06bf668aa2e862683"
+  },
+  "static_log": {
+    "bytes": 242,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813/static.log",
+    "sha256": "3050023988d479c680705c23e41c867ff5380dda799a3fe985ad379039d2c8e9"
+  },
+  "static_type_scope": {
+    "baseline": {
+      "bytes": 47323,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/devtools/type-baseline.json",
+      "sha256": "3ace625c18000d0f5a82107228172800d81692df48f64cad3cdc11fc0c92759f"
+    },
+    "blocking_diagnostics": "",
+    "checker_returncode": 1,
+    "existing_unchanged_diagnostics": 117,
+    "meaning": "No claim that every legacy dynamic function is type-safe or that type checker reported zero diagnostics.",
+    "status": "passed under exact existing baseline"
+  },
+  "summary": {
+    "bytes": 176244,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-journal-successor-offline-1/20261004T172357-5ed92813/summary.json",
+    "sha256": "b095864bb97b9cc3aeb8fc2cf3ec11b85d392e4283d07ad0d0a512c3ee1dcb8a"
+  }
+}

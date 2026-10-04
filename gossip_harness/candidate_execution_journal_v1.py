@@ -11,10 +11,12 @@ from __future__ import annotations
 from dataclasses import asdict, fields, is_dataclass
 import json
 from pathlib import Path
-from typing import Any, Iterable
+from typing import TYPE_CHECKING, Any, Iterable
 
 from . import candidate_checkpoint_chain_v1 as chain
 from . import candidate_http_journal_v3 as strict
+if TYPE_CHECKING:
+    from . import candidate_journal_batch_read_v1 as batch_read
 
 PROTOCOL = "candidate-execution-journal-v1"
 ControllerCheckpoint = chain.PrefixCommitment
@@ -102,17 +104,23 @@ class OwnerJournal:
     """
     def __init__(self, raw_root: Path, delta_root: Path, *, context: Any,
                  authority: HeadAuthority, expected: ControllerCheckpoint | None = None,
-                 limits: Limits = Limits()):
+                 limits: Limits = Limits(), read_policy: batch_read.BatchReadPolicy | None = None):
         if type(limits) is not Limits or authority is None:
             raise ChainError("Typed limits and caller-owned authority required")
         limits = Limits(**asdict(limits))
+        if read_policy is not None:
+            from . import candidate_journal_batch_read_v1 as batch_read
+            if type(read_policy) is not batch_read.BatchReadPolicy:
+                raise ChainError("Exact checkpoint read policy required")
         normalized = _context(context, limits)
+        if read_policy is not None:
+            normalized["journal_read"] = read_policy.record()
         if expected is None:
             self._chain = chain.CheckpointChain.create(raw_root, delta_root, context=normalized,
-                                                       authority=authority, limits=limits)
+                                                       authority=authority, limits=limits, read_policy=read_policy)
         else:
             self._chain = chain.CheckpointChain.reopen(raw_root, delta_root, context=normalized,
-                                                       authority=authority, expected=expected, limits=limits)
+                                                       authority=authority, expected=expected, limits=limits, read_policy=read_policy)
 
     def retain(self, name: str, raw: bytes, *, cleanup: bool = False) -> ControllerCheckpoint:
         """Incremental exclusive append, not a full old-byte validation."""

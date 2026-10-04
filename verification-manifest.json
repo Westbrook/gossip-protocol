@@ -6460,6 +6460,58 @@
       "boundary": "Synthetic prospective public_release fixture registration; actual owners/readers; no enrolled production scope, independent acceptance, repeatability or comparative sample.",
       "disposition": "Run definitions after combined static; run physical classes only after coherent nearest offline checks and source freeze. Preserve failures/unrun rows, with no automatic retries or deadline widening.",
       "overlap_reason": "Existing execution/observer mechanics are reused; new profiles and evaluator closure invalidate old physical receipts for this prospective qualification."
+    },
+    "tests/test_candidate_journal_batch_read_v1.py::CandidateJournalBatchReadV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "exclusive": false,
+      "invariant": "Fresh checkpoint descriptors retain before/after every-file ancestry and stable leaf identity/size/name checks.",
+      "isolation": "Real temporary paths/links/descriptors and scoped injected syscall failures; no browser or Engine.",
+      "overlap": "Legacy journal/head/browser controls remain required for shared default-path compatibility.",
+      "distinct_defect": "Descriptor redirection, omitted per-file path observation, stale bytes, leaked partial setup or false success after close failure.",
+      "boundary": "Prospective journal-reader and browser original-evidence successor; no performance adequacy or product acceptance claim.",
+      "disposition": "Root-owned offline execution after coherent independent source review; no automatic retry.",
+      "overlap_reason": "New opt-in per-file ancestry/descriptor lifetime and incomplete-prefix observer path are absent from prior physical receipts."
+    },
+    "tests/test_candidate_journal_batch_read_v1.py::CandidateJournalBatchOwnerV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "exclusive": false,
+      "invariant": "Closed optional policy binds exact genesis/context/reopen and freshly reconstructs every delta and raw byte at each full checkpoint.",
+      "isolation": "Real OwnerJournal and durable ExternalHead with isolated filesystem state; no candidate/Engine/provider.",
+      "overlap": "Legacy journal/head/browser controls remain required for shared default-path compatibility.",
+      "distinct_defect": "Head-only cache, changed old raw/delta bytes, undeclared policy substitution or cleanup that closes borrowed external authority.",
+      "boundary": "Prospective journal-reader and browser original-evidence successor; no performance adequacy or product acceptance claim.",
+      "disposition": "Root-owned offline execution after coherent independent source review; no automatic retry.",
+      "overlap_reason": "New opt-in per-file ancestry/descriptor lifetime and incomplete-prefix observer path are absent from prior physical receipts."
+    },
+    "tests/test_candidate_browser_journal_successor_v1.py::CandidateBrowserJournalBindingV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "exclusive": false,
+      "invariant": "Browser profile, source closure, limits, protocol, original policy fields and admission bind exact opt-in journal policy.",
+      "isolation": "Inert prospective bindings and source identities; no browser/Engine/physical acceptance.",
+      "overlap": "Legacy journal/head/browser controls remain required for shared default-path compatibility.",
+      "distinct_defect": "Missing/wrong policy or source closure admitted under old profile without changing the original action roster.",
+      "boundary": "Prospective journal-reader and browser original-evidence successor; no performance adequacy or product acceptance claim.",
+      "disposition": "Root-owned offline execution after coherent independent source review; no automatic retry.",
+      "overlap_reason": "New opt-in per-file ancestry/descriptor lifetime and incomplete-prefix observer path are absent from prior physical receipts."
+    },
+    "tests/test_candidate_browser_journal_successor_v1.py::CandidateBrowserMissingPrefixV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "exclusive": false,
+      "invariant": "Healthy absent prefix members remain unavailable, present bytes still authenticate, real uncertainty remains fatal, prior known discrepancy survives later missing evidence.",
+      "isolation": "Real durable journal/head consumed through private browser reader plus pure facet composition; exact public physical-owner gate remains closed.",
+      "overlap": "Legacy journal/head/browser controls remain required for shared default-path compatibility.",
+      "distinct_defect": "Reader poisons a valid incomplete prefix by reading an unacknowledged member, masks real tamper, or discards known facts.",
+      "boundary": "Prospective journal-reader and browser original-evidence successor; no performance adequacy or product acceptance claim.",
+      "disposition": "Root-owned offline execution after coherent independent source review; no automatic retry.",
+      "overlap_reason": "New opt-in per-file ancestry/descriptor lifetime and incomplete-prefix observer path are absent from prior physical receipts."
     }
   },
   "audit": {

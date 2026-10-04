@@ -1,0 +1,84 @@
+{
+  "protocol": "browser-journal-successor-offline-qualification-v1",
+  "recorded_at": "2026-10-04T17:31:15.973754+00:00",
+  "source_base": "e0cc6ac99a9527df22a1c1ace471e38bcb4d7538",
+  "status": "Targeted offline success; physical browser qualification and performance remain unproven.",
+  "source_hold_sha256": "b11dd2dc5770d60301765c98dcbcd0adbcf6226a228992cf3748d7ecb6cc39ae",
+  "installation": "runs/browser-journal-successor-integration-1/installation.json",
+  "installation_sha256": "8b01c86543a8c8064274d87f14479635e6e4e5fe23bbd5b777cd3b1960a79ba4",
+  "changes": [
+    "Opt-in checkpoint-scoped directory descriptors preserve fresh file reads, per-file ancestry and leaf guards, full reconstruction, exact head/inventory checks and all existing checkpoints.",
+    "Lazy imports keep the new helper outside default execution paths. Explicit opt-in binds policy/source/profile/protocol/limits/config/context/genesis/intent/terminal.",
+    "Browser reader treats never-acknowledged missing data as unavailable without poisoning a healthy journal; acknowledged tamper and authority uncertainty remain fatal.",
+    "37 new regressions in four manifest classes; new helper included in strict type coverage."
+  ],
+  "verification": {
+    "run": "runs/browser-journal-successor-offline-1/20261004T172357-5ed92813",
+    "selected_tests": 287,
+    "selected_classes": 21,
+    "discovered_tests": 5209,
+    "coverage": "targeted",
+    "outcomes": {
+      "passed": 287
+    },
+    "skips": 0,
+    "reused_classes": 0,
+    "duration_seconds": 88.11108408402652,
+    "input_paths": 707,
+    "current_input_mismatches": 0,
+    "runtime_matches": true,
+    "fingerprint": "53938ebb79545af5c34aa0033ab99d724ae80fb0b38aa49d9e274fd253e913e7",
+    "summary_sha256": "b095864bb97b9cc3aeb8fc2cf3ec11b85d392e4283d07ad0d0a512c3ee1dcb8a",
+    "static": "passed;117 exact unchanged existing type diagnostics; no new blocking diagnostics",
+    "reviewer_reran_tests": false
+  },
+  "independent_audit": {
+    "path": "analysis/browser-journal-successor-offline-audit-v1.json",
+    "sha256": "cf632b3337302f84e6def29ae502e64e76b45eaad7d6b212f7200e43bf67cfeb"
+  },
+  "independent_source_review": {
+    "bytes": 14616,
+    "path": "/tmp/gossip-browser-journal-batch-source-review-20261004-held2-v1.json",
+    "sha256": "8e18a312e1dc693c09403c8f9a3e5f5851ce0841a7c983a7da7835d10b39969f"
+  },
+  "retained_review_files": [
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/gossip-browser-journal-successor-offline-audit-20261004-v1.json",
+      "sha256": "cf632b3337302f84e6def29ae502e64e76b45eaad7d6b212f7200e43bf67cfeb"
+    },
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/gossip-browser-journal-successor-offline-reconciliation-20261004-v1.json",
+      "sha256": "b2cae7a849300a8c6977fe462c134d4f8e07ca37cd7a7d973416c93f8a2c7b92"
+    },
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/reconcile-browser-journal-offline-20261004.py",
+      "sha256": "c3be70f855770faea8f83877fb3a4167d9fbea13a92852719a6c55e4d4846e5f"
+    },
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/gossip-browser-journal-batch-source-review-20261004-held2-v1.json",
+      "sha256": "8e18a312e1dc693c09403c8f9a3e5f5851ce0841a7c983a7da7835d10b39969f"
+    },
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/gossip-browser-journal-batch-source-review-20261004-held2-component-v1.json",
+      "sha256": "c843cb2fa0b10aba0b06a5395f9105d1c78e05f245991d1e98c5ff1c192ea8b4"
+    },
+    {
+      "path": "runs/browser-journal-successor-integration-1/reviews/physical2-http-status-clarification-20261004-v1.json",
+      "sha256": "f94a4803b3110a7fc81179dc2ae2fd177de2ce05912c47c6b42058066560362e"
+    }
+  ],
+  "provider_calls": 0,
+  "new_model_quality_samples": 0,
+  "physical_browser_runs": 0,
+  "preserved_failures": [
+    "runs/browser-root-physical-1/20261004T143914-73e681cf",
+    "runs/browser-root-physical-2/20261004T162634-a86d699a"
+  ],
+  "remaining": [
+    "Merge reviewed finite-mapping changes and complete applicable combined regression checks, including storage/M2 and cumulative integration.",
+    "Run a fresh browser physical qualification after coherent source and offline gates. No deadline widening or automatic retry.",
+    "Complete full semantic coverage, exact source/layout/purpose authorities and a matching complete rehearsal before live comparison.",
+    "No completed20-role quality result, no live matched gossip-versus-orchestrator result and no new scientific sample."
+  ],
+  "publication": "Local checkpoint; public disclosure approval pending separately."
+}

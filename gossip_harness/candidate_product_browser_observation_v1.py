@@ -20,7 +20,7 @@ from . import candidate_http_transport_v1 as wire
 from . import candidate_client_process_v4 as engine
 from . import candidate_checkpoint_chain_v1 as chain
 
-PROTOCOL = "candidate-product-browser-observation-v1"
+PROTOCOL = "candidate-product-browser-observation-v1-prefix-membership-v1"
 
 
 @dataclass(frozen=True)
@@ -45,6 +45,10 @@ class BrowserObservation:
     acceptance_authority: bool = False
     whole_product_acceptance: bool = False
     independent_purpose_credit: bool = False
+
+
+class MissingOriginalEvidence(ValueError):
+    """An artifact is outside the healthy acknowledged prefix; no absence proof."""
 
 
 class ProductDiscrepancy(ValueError):
@@ -319,6 +323,14 @@ class _Reader(reader_base._Reader):
         self.owner, self.checkpoint = owner, checkpoint
         self.validate_checkpoint()
 
+    def raw(self, name: str) -> bytes:
+        require(type(name) is str and re.fullmatch(r"[a-z][a-z0-9.-]*", name) is not None,
+                "Invalid original artifact name")
+        if not self.owner.journal.has(name):
+            raise MissingOriginalEvidence("Original evidence outside acknowledged prefix: " + name)
+        # Presence never substitutes for the inherited head/byte authentication.
+        return super().raw(name)
+
     def compare(self, label: str, before: dict[str, Any], after: dict[str, Any], spec: base.RoleSpec,
                 phase: str, donor: Any = None) -> dict[str, Any]:
         value = transport.role_identity_comparison(before, after, spec, self.owner.runtime, phase, donor=donor)
@@ -410,6 +422,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
     require(cases.encoded(reader.json("config.json")) == cases.encoded(owner.config), "Original config/source/admission differs")
     execution.validate_capture_config(owner.profile, reader.json("config.json"))
     intent, terminal = reader.json("intent.json"), reader.json("terminal.json")
+    execution.validate_journal_fields(owner.profile, intent)
+    execution.validate_journal_fields(owner.profile, terminal)
     require(intent["protocol"] == owner.profile.execution_protocol == owner.binding.protocol and intent["execution_id"] == owner.execution_id
             and intent["binding_sha256"] == execution.digest(asdict(owner.binding))
             and intent["profile_sha256"] == owner.profile.sha256
@@ -447,6 +461,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
             "setup_sha256": execution.digest(declaration), "ready": True}) + b"\n", "Original seed acknowledgment differs")
         server = reader_base._long_role(reader, "server", server_spec)
         require(server == owner.server, "Original server differs")
+    except (chain.ChainUnknown, base.ExecutionUnknown):
+        raise
     except (OSError, ValueError, KeyError, AttributeError) as error:
         mechanics_missing.append("source/server/setup:" + type(error).__name__ + ":" + str(error))
     messages: list[dict[str, Any]] = []
@@ -455,6 +471,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
             message = reader.json("browser-message-" + str(sequence).zfill(5) + ".bin")
             require(message["protocol"] == execution.IPC_PROTOCOL and message["seq"] == sequence, "Original driver sequence differs")
             messages.append(message)
+        except (chain.ChainUnknown, base.ExecutionUnknown):
+            raise
         except (OSError, ValueError, KeyError) as error:
             mechanics_missing.append("driver-message:" + str(error))
     require(terminal["driver_messages"] == list(range(1, len(terminal["driver_messages"]) + 1)),
@@ -505,6 +523,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
         for artifact in artifact_completion["artifacts"]:
             raw = b"".join(reader.descriptor(part) for part in artifact["parts"])
             require(len(raw) == artifact["bytes"] and execution.sha256(raw) == artifact["sha256"], "Original browser artifact differs")
+    except (chain.ChainUnknown, base.ExecutionUnknown):
+        raise
     except (OSError, ValueError, KeyError) as error:
         mechanics_missing.append("driver:" + type(error).__name__ + ":" + str(error))
     responses: dict[int, tuple[int, bytes] | str] = {}
@@ -525,6 +545,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
             require(type(observed.response.status_code) is int, "Complete status unavailable")
             assert observed.response.status_code is not None
             responses[identifier] = (observed.response.status_code, observed.response.body)
+        except (chain.ChainUnknown, base.ExecutionUnknown):
+            raise
         except (OSError, ValueError, KeyError, AttributeError) as error:
             responses[identifier] = type(error).__name__ + ":" + str(error)
     for action in owner.profile.case.record["actions"]:
@@ -543,6 +565,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
                                ("mutation", lambda: mutation_findings(action, messages))):
             try:
                 wrong, missing = evaluate()
+            except (chain.ChainUnknown, base.ExecutionUnknown):
+                raise
             except (OSError, ValueError, KeyError, TypeError) as error:
                 wrong, missing = [], ["Trusted observation malformed/unavailable:" + type(error).__name__ + ":" + str(error)]
             facets.append(_facet(selector + kind, wrong, missing))
@@ -556,6 +580,8 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
             and set(row["name"] for row in cleanup["dispositions"]) == {*owner.owned, owner.volume}
             and all(row["status"] in ("removed", "already-absent") for row in cleanup["dispositions"]))
         require(cleanup_verified == (terminal["cleanup_verified"] is True), "Original cleanup census differs")
+    except (chain.ChainUnknown, base.ExecutionUnknown):
+        raise
     except (OSError, ValueError, KeyError) as error:
         mechanics_missing.append("cleanup:" + str(error))
     if not cleanup_verified:
