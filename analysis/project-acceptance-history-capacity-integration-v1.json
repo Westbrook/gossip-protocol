@@ -1,0 +1,267 @@
+{
+  "protocol": "project-acceptance-history-capacity-integration-v1",
+  "status": "166_targeted_controls_passed_full_rehearsal_incomplete",
+  "base_commit": "92772943c74b03bab0816f0cae7cf272e08adbb4",
+  "branch": "codex/cumulative-rehearsal-readers",
+  "verification_owner": "root",
+  "files": [
+    {
+      "path": "gossip_harness/project_acceptance_registry_v1.py",
+      "sha256": "089c01589cf60cb994132b03a98ffa7a3ff3dc87eb0f42d9dc5d21599587083e",
+      "bytes": 18717
+    },
+    {
+      "path": "gossip_harness/project_acceptance_compiler_v1.py",
+      "sha256": "59e958cf5ce96c2f2abb98a7159955774d31e264e2d1ce98f0badc41095a5237",
+      "bytes": 51450
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v1.py",
+      "sha256": "f954d73352692e1ae08da68a2b814857d4a0bc5806c9245d8b7c5caf3a135536",
+      "bytes": 45244
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_authority_v1.py",
+      "sha256": "11bac410f12202e7120d4f78a262d7787be46e6a2c3a88544aefa56dfbe28a3b",
+      "bytes": 26008
+    },
+    {
+      "path": "tests/test_project_acceptance_history_capacity_v1.py",
+      "sha256": "9efd12bc802c5c18f11bcd2fb4bb03adaf625ebca9e42637f7fba6b3cec23a19",
+      "bytes": 21384
+    },
+    {
+      "path": "docs/project-acceptance-history-capacity-v1.md",
+      "sha256": "edc7487dfea4626f5d3027083f73295858b327eeeb22f663aa5d0b4d45ae4d7d",
+      "bytes": 6244
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "563d280940d315b4767701142b6be566541b6f25193e4a79e13da9eede44b55e",
+      "bytes": 515742
+    }
+  ],
+  "qualification": {
+    "summary": {
+      "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/summary.json",
+      "sha256": "609787e2259e6e280e94188b63771515e9708867b30be2c720435b52e8890f3c",
+      "bytes": 88919
+    },
+    "inputs": {
+      "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/inputs.json",
+      "sha256": "9b04eb35409766cb7394f5a617b23e206eb10bbe9a415667383ebd235b80b8aa",
+      "bytes": 71941
+    },
+    "static": {
+      "duration_seconds": 2.224233374930918,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "fingerprint": "56d900a0982862bd9db70fbe8a4ada75fe64a804f5558c4994c081d90e43289e",
+    "source_inputs": 608,
+    "source_mismatches": [],
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    },
+    "current_runtime_matches": true,
+    "methods": 166,
+    "classes": 8,
+    "new_methods": 14,
+    "selected_counts": {
+      "fast": 162,
+      "git": 4
+    },
+    "reused_classes": 0,
+    "skips": 0,
+    "duration_seconds": 120.13396987505257,
+    "jobs": [
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "methods": 32,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/995b4834cfdec311/result.json",
+          "sha256": "5581dfc35f510cf33cc78a90d76cf29ecc69ebcd382ad2925440c0116ff5b73d",
+          "bytes": 12566
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/995b4834cfdec311/worker.log",
+          "sha256": "a54f024584c6bb9d9180be65598d6f88887633885ae22f5ad2e52bcbe7c19dab",
+          "bytes": 6380
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+        "methods": 22,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/4f5ebf8f047f33ee/result.json",
+          "sha256": "4e976b01c69d4508b61fc5e0254d93582d3111f4633c8a8d82436e8d268e53ee",
+          "bytes": 9558
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/4f5ebf8f047f33ee/worker.log",
+          "sha256": "7361eada2f671c074720b6b1d3b2e6786e8f078fb731a98f208a6050083bb9de",
+          "bytes": 4654
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests",
+        "methods": 16,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/245f7962c9dd274e/result.json",
+          "sha256": "68a27d6252251635c8e72c74a276fdb5d23fc81b17a9ef6b46b496878f5c0a74",
+          "bytes": 7548
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/245f7962c9dd274e/worker.log",
+          "sha256": "0c5a9f0fb2984ec2df2cc8887b09145a2830856f879e38d2cff0af1e68e1a84e",
+          "bytes": 3345
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests",
+        "methods": 20,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/c94f9c9de82bc2a5/result.json",
+          "sha256": "b298e48806c238347626c9e6d2f34d7a3c7402707fd2655cc105ff72d8c87ec5",
+          "bytes": 8792
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/c94f9c9de82bc2a5/worker.log",
+          "sha256": "f58c5a95be93cccb11657deec997d5cea6d6fd14aa1623d4db6958bf544b8ee1",
+          "bytes": 4056
+        }
+      },
+      {
+        "class": "tests/test_project_acceptance_compiler_v1.py::AcceptanceCompilerTests",
+        "methods": 37,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/043464ad824e081e/result.json",
+          "sha256": "bf48343484d3cf2197b9192e51d41a1e0d5fc720a18a6470b62f492c40d582ae",
+          "bytes": 14048
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/043464ad824e081e/worker.log",
+          "sha256": "19b0c2b5c98e01d6ceae9c8870fe1ab51443c15edcceb5e8e6e54143917c3f60",
+          "bytes": 6968
+        }
+      },
+      {
+        "class": "tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests",
+        "methods": 14,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/22dba390b17ce640/result.json",
+          "sha256": "bf49bc4dca620d37c25bd5acf81b06dee673c1c971d91be144f6dedd62c7791e",
+          "bytes": 7087
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/22dba390b17ce640/worker.log",
+          "sha256": "05cb1dbabc994b149cc3b4315c81ef0084513b6e1ff729ab5e5ab48de5d2e886",
+          "bytes": 3098
+        }
+      },
+      {
+        "class": "tests/test_project_acceptance_registry_v1.py::AcceptanceRegistryTests",
+        "methods": 21,
+        "status": "passed",
+        "lane": "fast",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/29ec3c5d6cd30385/result.json",
+          "sha256": "3d58727d1116aea9518f4f3083fc542be7f97e9a2fd4f897a170705949ea1fed",
+          "bytes": 9137
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/29ec3c5d6cd30385/worker.log",
+          "sha256": "90bff0b421cf976e08069c78b786135df4dac8216caf6fc34ffc3f253914bc49",
+          "bytes": 4182
+        }
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "methods": 4,
+        "status": "passed",
+        "lane": "git",
+        "result": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/c25a48764acbd650/result.json",
+          "sha256": "5ed491e1cd433f66934c81a682e22e4c9784d8372455baab59b4791f946e33da",
+          "bytes": 3611
+        },
+        "log": {
+          "path": "runs/acceptance-history-capacity-offline-1/20261004T101827-55669096/classes/c25a48764acbd650/worker.log",
+          "sha256": "090052645ebc7283185beacd8cc95a4097bdf91ec629339cfcae6ecaefc0621b",
+          "bytes": 843
+        }
+      }
+    ]
+  },
+  "retention": {
+    "path": "runs/acceptance-history-capacity-retention-1/retention-manifest.json",
+    "sha256": "092605714090892020c91017b3ad2e148099da67cc265a02ee98edb0c3f3de01",
+    "bytes": 5785
+  },
+  "source_reviews": [
+    {
+      "path": "runs/acceptance-history-capacity-retention-1/root-source-review.json",
+      "sha256": "2b09d309cd3e36416e9ce6be22bafa2a3a865f5ce2187a951d3b7e5865b13fe9",
+      "bytes": 1122
+    },
+    {
+      "path": "runs/acceptance-history-capacity-retention-1/capacity-bounded-review-1.json",
+      "sha256": "d22d52658bc9f38027ee6bfbf6c23b3d71e57f6c1384d93e8cc21acfd21dd7d2",
+      "bytes": 3632
+    }
+  ],
+  "prechange_vectors": {
+    "path": "runs/acceptance-history-capacity-retention-1/legacy-capacity-before.json",
+    "sha256": "d6ef98b7744d0eab001c671d65fe4c594cf27c987ed33fa91e79e5cfb22edeaa",
+    "bytes": 1533
+  },
+  "vector_origin": {
+    "path": "runs/acceptance-history-capacity-retention-1/capacity-legacy-vector-origin-1.json",
+    "sha256": "c2c3cb0063990c9ffce18a24c8ca78ad7ed8484d6d839236877f5bac25a97dca",
+    "bytes": 1847
+  },
+  "behavior": [
+    "Closed opt-in4096 aggregate execution/observation capacity; legacy512 and unrelated bounds preserved.",
+    "All312source units,123product requirements and3prerequisites stay in the denominator.",
+    "Canonical legacy serializers preserve logical fingerprints; raw dataclasses.asdict compatibility is not claimed.",
+    "Compiler counts prerequisite gates as well as product gates. Missing evidence, failures, duplicates, source/freeze/purpose mismatch and reused physical origins remain rejected."
+  ],
+  "synthetic_test_scope": {
+    "public_slots": 590,
+    "independent_slots": 1,
+    "repeatability_slots": 1,
+    "prerequisite_slots": 1,
+    "total_suites_and_gates": 593,
+    "product_observations": 592,
+    "qualification_targets": 591,
+    "actual_history_execution_count": 0
+  },
+  "remaining_required": [
+    "Full source-derived semantic scope and independent review authority",
+    "Coherent storage/runtime/final-adapter integration and applicable inherited regressions",
+    "Physical qualification and matching complete six-trajectory rehearsal",
+    "Larger live comparison, independent held-out family confirmation and placement-by-transport study"
+  ],
+  "limits": [
+    "Targeted offline structural controls, not product correctness or full study qualification.",
+    "Historical logical identity preservation does not permit source-bound receipt reuse.",
+    "Current source changes do not alter frozen active physical checkout."
+  ],
+  "provider_calls": 0,
+  "new_comparative_quality_samples": 0,
+  "goal_complete": false
+}

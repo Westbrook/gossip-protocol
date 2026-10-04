@@ -120,13 +120,16 @@ class ScopeSubmission:
                 'suite_compatibility': [asdict(row) for row in scope.suite_compatibility]},
                 'Verify exact predecessor/successor authorities and all inherited M4 meanings; no blanket milestone relabel.')
         target('cohort', asdict(declaration.cohort), 'Verify all four milestones and six S4-G/S16-G/O16-G healthy/compound-recovery trajectories, exact roles, matched faults, barrier and later held-out duties.')
+        if declaration.capacity_profile != registry.LEGACY_CAPACITY_PROFILE:
+            target('capacity-contract', registry.capacity_manifest(declaration.capacity_profile),
+                'Review explicit aggregate history capacity; retain full source inventory, per-history bounds, distinct executions, purpose/freeze barriers and new source-bound rehearsal.')
         consumer.require(len({row['id'] for row in targets}) == len(targets), 'Duplicate review target')
         return {'protocol': PROTOCOL, 'kind': 'complete-semantic-review-request',
             'inventory_sha256': catalog.inventory.sha256, 'catalog_sha256': catalog.sha256,
             'declaration_sha256': compiler.declaration_fingerprint(declaration), 'scope_sha256': scope.sha256,
             'execution_contract_sha256': self.subject.execution_contract_sha256,
             'registry_design_subject': {key: value for key, value in asdict(self.subject).items() if key != 'source_sha256'},
-            'declaration': asdict(declaration), 'scope': asdict(scope),
+            'declaration': compiler.declaration_record(declaration), 'scope': asdict(scope),
             'implementation_sources': implementation_sources(),
             'source_pins': dict(catalog.source_pins), 'qualification_specs': [asdict(row) for row in self.qualification_specs],
             'targets': targets, 'ownership_review_scope': '57 owners only; no applicability or selector approval',

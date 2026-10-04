@@ -21,6 +21,9 @@ CASE_STATUSES = ("passed", "failed", "skipped", "infrastructure_error")
 _ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}\Z")
 _SHA = re.compile(r"[0-9a-f]{64}\Z")
 MAX_ITEMS = 512
+LEGACY_CAPACITY_PROFILE = "project-acceptance-capacity-legacy-v1"
+HISTORY_CAPACITY_PROFILE = "project-acceptance-history-capacity-v1"
+MAX_HISTORY_EXECUTION_GATES = 4096
 
 
 class AcceptanceError(ValueError):
@@ -40,10 +43,38 @@ def sha256(value: Any) -> None:
     require(type(value) is str and _SHA.fullmatch(value) is not None, "Invalid SHA256")
 
 
+def capacity_manifest(profile: str) -> dict[str, Any]:
+    """Closed opt-in aggregation contract; unrelated collection limits stay v1."""
+    require(type(profile) is str and profile in (LEGACY_CAPACITY_PROFILE, HISTORY_CAPACITY_PROFILE),
+            "Unknown registry capacity profile")
+    return {"profile": profile,
+            "execution_gates": MAX_ITEMS if profile == LEGACY_CAPACITY_PROFILE else MAX_HISTORY_EXECUTION_GATES,
+            "observations": MAX_ITEMS if profile == LEGACY_CAPACITY_PROFILE else MAX_HISTORY_EXECUTION_GATES,
+            "other_collections": MAX_ITEMS}
+
+
 def members(value: Any, cls: type, *, nonempty: bool = True) -> None:
     require(type(value) is tuple and (1 if nonempty else 0) <= len(value) <= MAX_ITEMS,
             "Expected bounded immutable collection")
     require(all(type(item) is cls for item in value), "Wrong collection member type")
+
+
+def execution_members(value: Any, cls: type, profile: str, *, nonempty: bool = True) -> None:
+    """Apply the closed capacity solely to complete execution gate/evidence rosters."""
+    limit = capacity_manifest(profile)["execution_gates"]
+    require(type(value) is tuple and (1 if nonempty else 0) <= len(value) <= limit,
+            "Expected bounded immutable execution collection")
+    require(all(type(item) is cls for item in value), "Wrong execution collection member type")
+
+
+def registry_record(record: Registry) -> dict[str, Any]:
+    """Canonical record serializer preserving historical default-profile bodies."""
+    require(type(record) is Registry, "Expected exact registry")
+    capacity_manifest(record.capacity_profile)
+    body = asdict(record)
+    if record.capacity_profile == LEGACY_CAPACITY_PROFILE:
+        del body["capacity_profile"]
+    return body
 
 
 def identifiers(value: tuple[str, ...]) -> None:
@@ -55,8 +86,11 @@ def identifiers(value: tuple[str, ...]) -> None:
 
 def fingerprint(record: Any) -> str:
     """Domain-separated identity of one validated immutable registry record."""
-    payload = json.dumps({"protocol": PROTOCOL, "kind": type(record).__name__,
-                          "body": asdict(record)}, sort_keys=True,
+    body = registry_record(record) if type(record) is Registry else asdict(record)
+    envelope = {"protocol": PROTOCOL, "kind": type(record).__name__, "body": body}
+    if type(record) is Registry and record.capacity_profile != LEGACY_CAPACITY_PROFILE:
+        envelope["capacity_contract"] = capacity_manifest(record.capacity_profile)
+    payload = json.dumps(envelope, sort_keys=True,
                          separators=(",", ":"), ensure_ascii=False, allow_nan=False)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -119,6 +153,7 @@ class Registry:
     requirement_ids: tuple[str, ...]
     cohort_trajectory_ids: tuple[str, ...]
     gates: tuple[Gate, ...]
+    capacity_profile: str = LEGACY_CAPACITY_PROFILE
 
     def __post_init__(self) -> None:
         require(type(self.subject) is Subject, "Expected registry subject")
@@ -126,7 +161,7 @@ class Registry:
         identifiers(self.requirement_ids)
         identifiers(self.cohort_trajectory_ids)
         require(self.subject.trajectory_id in self.cohort_trajectory_ids, "Subject outside cohort")
-        members(self.gates, Gate)
+        execution_members(self.gates, Gate, self.capacity_profile)
         require(len({gate.gate_id for gate in self.gates}) == len(self.gates), "Duplicate gate")
         require(all(gate.binding.subject == self.subject for gate in self.gates), "Gate subject differs")
         covered = {item for gate in self.gates for item in gate.requirement_ids}
@@ -263,14 +298,17 @@ def design_fingerprint(registry: Registry) -> str:
     Cohort, trajectory, milestone, requirements and every gate remain fixed.
     """
     require(type(registry) is Registry, "Expected exact registry")
-    body = asdict(registry)
+    body = registry_record(registry)
     subject = dict(body["subject"])
     del subject["source_sha256"]
     del subject["execution_contract_sha256"]
     body["subject"] = subject
     for gate in body["gates"]:
         gate["binding"]["subject"] = subject
-    raw = json.dumps({"protocol": PROTOCOL, "kind": "registry-design", "body": body},
+    envelope = {"protocol": PROTOCOL, "kind": "registry-design", "body": body}
+    if registry.capacity_profile != LEGACY_CAPACITY_PROFILE:
+        envelope["capacity_contract"] = capacity_manifest(registry.capacity_profile)
+    raw = json.dumps(envelope,
                      sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
@@ -294,7 +332,7 @@ def assess(registry: Registry, observations: tuple[Observation, ...], promotion:
     require(registry.subject.execution_contract_sha256 == expected_execution_contract_sha256,
             "Registry execution contract differs")
     require(promotion.subject == registry.subject, "Promotion belongs to another exact subject")
-    members(observations, Observation, nonempty=False)
+    execution_members(observations, Observation, registry.capacity_profile, nonempty=False)
     require(len({item.gate_id for item in observations}) == len(observations), "Duplicate observed gate")
     require(len({item.execution.execution_id for item in observations}) == len(observations)
             and len({item.execution.receipt_sha256 for item in observations}) == len(observations),

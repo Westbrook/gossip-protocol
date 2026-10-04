@@ -36,7 +36,9 @@
     "analysis/candidate-b03-mount-inventory-plan-v1.json",
     "fixtures/candidate-http-probe-hostname-v1",
     "analysis/candidate-c03-http-probe-hostname-plan-v2.json",
-    "analysis/candidate-c03-http-qualification-origin-v1.json"
+    "analysis/candidate-c03-http-qualification-origin-v1.json",
+    "analysis/cumulative-shared-ownership-v1.json",
+    "analysis/cumulative-shared-ownership-review-v1.json"
   ],
   "lanes": [
     "fast",
@@ -5325,6 +5327,18 @@
       "boundary": "Real isolated V4 SQL and checkpoint originals with explicitly synthetic process/Git and reviewed-scope fixtures.",
       "disposition": "Required before full six-trajectory rehearsal; these controls do not grant live qualification.",
       "overlap_reason": "Producer unit tests do not reconcile closed cross-child originals or final acceptance construction."
+    },
+    "tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "An explicit bound profile admits complete 590-plus history aggregation without changing the source denominator or historical default identities.",
+      "isolation": "class process; immutable source inventory and detached normalized evidence fixtures",
+      "boundary": "Full compiler to independently registered synthetic consumer to Registry assessment with complete gate rosters, plus canonical review serialization.",
+      "distinct_defect": "A blanket MAX_ITEMS increase widens unrelated collections; a Registry-only change still strands compiler or consumer above 512.",
+      "overlap": "Capacity contract and complete aggregate path only; normalized synthetic statuses are not physical product evidence.",
+      "overlap_reason": "Legacy tests use small gate rosters and do not exercise 590-plus suites, admission targets and observations.",
+      "disposition": "Offline qualification precedes independent review, integration and a new full changed-contract rehearsal."
     }
   },
   "audit": {

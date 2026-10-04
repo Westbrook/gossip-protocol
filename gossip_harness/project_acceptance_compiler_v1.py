@@ -452,6 +452,7 @@ class Declaration:
     purposes: tuple[PurposeAssignment, ...]
     compatibility: tuple[CompatibilityOverride, ...]
     cohort: CohortDesign
+    capacity_profile: str = registry.LEGACY_CAPACITY_PROFILE
 
 
 @dataclass(frozen=True, slots=True)
@@ -514,8 +515,25 @@ class ScopePlan:
         return _digest(asdict(self))
 
 
+def declaration_record(declaration: Declaration) -> dict[str, Any]:
+    """Canonical declaration body; raw dataclasses.asdict adds the new default field."""
+    _require(type(declaration) is Declaration, "Wrong declaration")
+    try:
+        registry.capacity_manifest(declaration.capacity_profile)
+    except registry.AcceptanceError as error:
+        raise CompilerError(str(error)) from error
+    body = asdict(declaration)
+    if declaration.capacity_profile == registry.LEGACY_CAPACITY_PROFILE:
+        del body["capacity_profile"]
+    return body
+
+
 def declaration_fingerprint(declaration: Declaration) -> str:
-    return _digest(asdict(declaration))
+    body = declaration_record(declaration)
+    if declaration.capacity_profile == registry.LEGACY_CAPACITY_PROFILE:
+        return _digest(body)
+    return _digest({"declaration": body,
+                    "capacity_contract": registry.capacity_manifest(declaration.capacity_profile)})
 
 
 @dataclass(frozen=True, slots=True)
@@ -559,6 +577,7 @@ def compile_design(inventory: Inventory, declaration: Declaration,
     is not authentication of review, execution, promotion or the stop barrier.
     """
     _require(type(inventory) is Inventory and type(declaration) is Declaration, "Wrong compiler input")
+    declaration_record(declaration)  # Validate explicit capacity before compilation.
     authoritative = _inventory(*inventory.source_payloads, inventory.product_sha256)
     _require(authoritative == inventory, "Invented/shrunken derived inventory")
     _require(declaration.inventory_sha256 == inventory.sha256, "Declaration inventory pin differs")
@@ -602,7 +621,7 @@ def compile_design(inventory: Inventory, declaration: Declaration,
     for gate in gates.values():
         _id(gate.physical_slot)
     _require(len({g.physical_slot for g in gates.values()}) == len(gates), "Physical slot split across gates")
-    if len(gates) > registry.MAX_ITEMS:
+    if len(gates) > registry.capacity_manifest(declaration.capacity_profile)["execution_gates"]:
         block("registry_size_limit", "execution-gates", "Do not split physical executions to evade limits")
     declaration_sha = declaration_fingerprint(declaration)
     applicability: dict[str, Any] = {}
@@ -951,7 +970,8 @@ def compile_design(inventory: Inventory, declaration: Declaration,
                     gate.execution_protocol, suite.execution_purpose)
                 owners = tuple(key for key in inventory.product_ids if key in gate_owners[gate.id])
                 compiled.append(registry.Gate(gate.id, owners, suite.ordered_case_ids, binding))
-            output = registry.Registry(subject, compiled_sha, inventory.product_ids, tuple(roster), tuple(compiled))
+            output = registry.Registry(subject, compiled_sha, inventory.product_ids, tuple(roster), tuple(compiled),
+                                       capacity_profile=declaration.capacity_profile)
         except registry.AcceptanceError as error:
             block("registry_contract", "registry", str(error))
     return CompilationResult(output, tuple(sorted(set(blocks), key=lambda b: (b.code, b.target, b.detail))),

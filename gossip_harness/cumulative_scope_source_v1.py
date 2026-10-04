@@ -538,7 +538,8 @@ def assemble_declaration(catalog: SourceCatalog, cohort: compiler.CohortDesign,
                          additional_plans: tuple[compiler.ObligationPlan, ...] = (),
                          additional_suites: tuple[compiler.SuiteDefinition, ...] = (),
                          additional_gates: tuple[compiler.ExecutionGate, ...] = (),
-                         additional_edges: tuple[compiler.CoverageEdge, ...] = ()) -> compiler.Declaration:
+                         additional_edges: tuple[compiler.CoverageEdge, ...] = (),
+                         capacity_profile: str = registry.LEGACY_CAPACITY_PROFILE) -> compiler.Declaration:
     """Combine concrete reviewed component declarations without shrinking full scope.
 
     review_sha256 references an earlier independent component review, NOT this
@@ -548,6 +549,7 @@ def assemble_declaration(catalog: SourceCatalog, cohort: compiler.CohortDesign,
     later full semantic review; missing observations remain empty assertion plans.
     """
     registry.sha256(review_sha256)
+    registry.capacity_manifest(capacity_profile)
     require(type(catalog) is SourceCatalog and type(cohort) is compiler.CohortDesign
             and type(slices) is tuple and all(type(row) is ExecutableSlice for row in slices),
             'Typed source catalog/cohort/physical slices required')
@@ -580,7 +582,7 @@ def assemble_declaration(catalog: SourceCatalog, cohort: compiler.CohortDesign,
             tuple(groups[unit.obligation.id]), extra.review_sha256 if extra is not None else review_sha256,
             unit.ownership_reason))
     return compiler.Declaration(catalog.inventory.sha256, tuple(plans), tuple(suites), tuple(gates),
-                                tuple(edges), purposes, compatibility, cohort)
+                                tuple(edges), purposes, compatibility, cohort, capacity_profile=capacity_profile)
 
 
 def _gate(value: dict[str, Any]) -> registry.Gate:

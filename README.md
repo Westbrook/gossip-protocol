@@ -1268,9 +1268,16 @@ The [terminal outcome reader and final-admission adapter](docs/cumulative-termin
 now preserve all six planned slots and require original scope, source, barrier
 and cleanup evidence before independent acceptance. New [storage observations](docs/candidate-storage-product-observation-v1.md)
 retain raw captures and independently enrolled layout reviews. Complete scope,
-storage dispatch integration, aggregate capacity, physical qualification and a
-matching full rehearsal remain required; these components add no comparative
-model-quality samples.
+storage dispatch integration, physical qualification and a matching full rehearsal
+remain required; these components add no comparative model-quality samples.
+
+The [explicit history capacity](docs/project-acceptance-history-capacity-v1.md)
+now supports the complete history roster without splitting its acceptance scope.
+[166 targeted controls passed](analysis/project-acceptance-history-capacity-integration-v1.json),
+including legacy identity preservation, expanded registration and rejection of
+missing or reused evidence. The 4096 aggregate limit is opt-in; per-history limits
+remain unchanged. This is offline structural qualification, and the expanded
+contract still requires a complete matching rehearsal.
 
 ## Research and review
 
