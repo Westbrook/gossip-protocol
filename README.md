@@ -13,9 +13,11 @@ Browse the published [Progress Report](https://westbrook.github.io/gossip-protoc
 The site is a dated, read-only snapshot refreshed at publication checkpoints;
 the local report remains the live workspace for ongoing work and review feedback.
 
-Current engineering work connects the inherited CLI and HTTP checks to the final
-M4 milestone; see the [M4 observation integration](docs/cumulative-m4-observation-integration-v1.md).
-It builds on [compact authenticated journals and bounded cleanup](docs/compact-executor-integration-v1.md).
+Current engineering work adds [durable completion for sequential study cohorts](docs/financial-terminal-integration-v1.md):
+227 affected offline checks passed, while the complete live rehearsal validator
+and controller integration remain unfinished. This builds on the
+[final-M4 CLI and HTTP observations](docs/cumulative-m4-observation-integration-v1.md)
+and [compact authenticated journals and bounded cleanup](docs/compact-executor-integration-v1.md).
 The [original twenty-test HTTP mechanics audit](docs/candidate-http-v3-physical-audit.md)
 is complete. These are infrastructure results; complete final acceptance and the
 larger live quality comparison remain outstanding.

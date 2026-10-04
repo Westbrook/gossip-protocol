@@ -5001,6 +5001,42 @@
       "invariant": "All original HTTP diagnostic steps remain visible, while normative outcomes and an explicit all-history mechanics guard preserve known failures before unknowns.",
       "distinct_defect": "Filtering raw-only semantic steps could hide listener, provenance, capture, continuity or cleanup failure; irrelevant semantics could become false pass credit.",
       "boundary": "Pure typed original-history fixtures and registry result projection; no physical provenance or product closure."
+    },
+    "tests/test_peer_financial_terminal_v1.py::PeerFinancialTerminalV1Tests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Exactly six ordered child cohorts bind 96 distinct role-stop records to original SQL seals, cumulative ledger identity and independent checkpoint publications.",
+      "distinct_defect": "Duplicate/missing roles, fabricated seal-shaped records, changed origin or an unsealed predecessor must not authorize study completion.",
+      "isolation": "Dedicated class worker; disposable existing-format SQLite ledgers, private checkpoint roots, injected deterministic worker transport and bounded fixture threads.",
+      "boundary": "No real provider, Docker, production ledger or credentials. At most two service executor threads; gate overlap controls are synchronized. Retained role-stop assertions do not prove actual role-process shutdown.",
+      "disposition": "Root runs combined static and affected offline checks before full controller integration and a new matching complete six-child rehearsal; V4 live qualification remains unavailable.",
+      "overlap_reason": "New normal financial closure and sequential handoff differ from inherited V2/V3 admission and wire guarantees; nearest inherited classes remain separate regression evidence."
+    },
+    "tests/test_peer_financial_authority_v4.py::PeerFinancialAuthorityV4Tests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "Admission, active execution and normal SQL closure share short fences; interrupted publication stays sealed, exact recovery authenticates original accounting and no ambiguous action is retried.",
+      "distinct_defect": "Queued or running calls, uncertain publication, SQL drift, prior-child snapshot substitution or in-memory integrity failures must not yield successful closure or changed cumulative accounting.",
+      "isolation": "Dedicated class worker; disposable existing-format SQLite ledgers, private checkpoint roots, injected deterministic worker transport and bounded fixture threads.",
+      "boundary": "No real provider, Docker, production ledger or credentials. At most two service executor threads; gate overlap controls are synchronized. Retained role-stop assertions do not prove actual role-process shutdown.",
+      "disposition": "Root runs combined static and affected offline checks before full controller integration and a new matching complete six-child rehearsal; V4 live qualification remains unavailable.",
+      "overlap_reason": "New normal financial closure and sequential handoff differ from inherited V2/V3 admission and wire guarantees; nearest inherited classes remain separate regression evidence."
+    },
+    "tests/test_peer_financial_rpc_v4.py::PeerFinancialRPCV4Tests": {
+      "lane": "fast",
+      "weight": 3,
+      "exclusive": false,
+      "timeout_seconds": 180,
+      "invariant": "The versioned RPC adapter gates first enrollment and joined request insertion on SQL closure while retaining exact read-only replay and the existing 64-principal wire cap.",
+      "distinct_defect": "New/waiting RPC work crossing the seal boundary or later schema enrollment must not mutate a sealed child or invalidate an unrelated earlier census.",
+      "isolation": "Dedicated class worker; disposable existing-format SQLite ledgers, private checkpoint roots, injected deterministic worker transport and bounded fixture threads.",
+      "boundary": "No real provider, Docker, production ledger or credentials. At most two service executor threads; gate overlap controls are synchronized. Retained role-stop assertions do not prove actual role-process shutdown.",
+      "disposition": "Root runs combined static and affected offline checks before full controller integration and a new matching complete six-child rehearsal; V4 live qualification remains unavailable.",
+      "overlap_reason": "New normal financial closure and sequential handoff differ from inherited V2/V3 admission and wire guarantees; nearest inherited classes remain separate regression evidence."
     }
   },
   "audit": {

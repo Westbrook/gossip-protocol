@@ -1,0 +1,112 @@
+{
+  "protocol": "financial-terminal-integration-checkpoint-v1",
+  "status": "offline_qualified_live_qualification_unfinished",
+  "development_base_commit": "901423f416c129a19f3fde3478cf583be016c06b",
+  "branch": "codex/cumulative-acceptance-foundation",
+  "scope": "Durable SQL financial closure, authenticated exact publication/recovery, same-contract sequential child handoff and one-snapshot six-child financial barrier.",
+  "protocols": [
+    "peer-financial-authority-v4",
+    "peer-financial-rpc-v4",
+    "peer-financial-terminal-v1"
+  ],
+  "topology": {
+    "sequential_children": 6,
+    "roles_per_child": [
+      8,
+      20
+    ],
+    "distinct_roles_total": 96,
+    "unchanged_rpc_principal_cap": 64,
+    "actual_96_process_stop_rehearsal": false
+  },
+  "source_pins": {
+    "gossip_harness/peer_financial_authority_v4.py": "e0343d25445ee2c01d2b683ab7865c3bd29944080cd8c3a52c8624e0a91d6011",
+    "gossip_harness/peer_financial_rpc_v4.py": "f4e5c08224f4188ea6c5a6989b78f747b81522cd4207beedabf8f0bf8d5db174",
+    "gossip_harness/peer_financial_terminal_v1.py": "153719c27b4b9b6d202877d08c30586cbfa1e9792f0dcfc03d70f1e8d63a0549",
+    "pyproject.toml": "bb440ddfb2eca723ec8c7b4d89179f0a25f6e5bc507cc453a158747985f72851",
+    "tests/financial_v4_fixture.py": "c9d74a3778d8c6d174495ad2162149cacae0325387bd4155258876f41aae94e0",
+    "tests/test_peer_financial_authority_v4.py": "ab05bdb510e3f4253ae390f78edb8cf326d442c882f6cc4f650ab7f2c9ba43bd",
+    "tests/test_peer_financial_rpc_v4.py": "f4ab3b4662371eae2035b2e3fd07d6966a01f483af2d348686b6797060fd8aeb",
+    "tests/test_peer_financial_terminal_v1.py": "f87f1eb0d7504101df6671510359d10ab0034d75e436c25c2b484bf71aa062d5",
+    "verification-manifest.json": "587da1a39b968e2a1a74a3adff4e8d3688f30af9c01e6b4979c70a4c1c3651cc"
+  },
+  "verification": {
+    "session": "runs/financial-terminal-v4-offline-qualification-2/20261004T074409-0bd4555f",
+    "summary_sha256": "65eeba1713b8a9b1a96d82c7f9aaf87c61efe162ec0daaa2dc7cb77e30637f62",
+    "inputs_sha256": "f59e3147ecab63e1b7e9933fc9758513799d1e446ddd29c12dbd6b175f9324a0",
+    "fingerprint": "5e1cfeb840ee7fd61af154f67ab3c9cfcacf9afb8cae3f5c3b77ebdd4d4902a4",
+    "inputs": 562,
+    "outcomes": {
+      "passed": 227
+    },
+    "fresh_classes": 11,
+    "reused_classes": 0,
+    "selected_counts": {
+      "fast": 216,
+      "fixtures": 11
+    },
+    "duration_seconds": 22.28336549922824,
+    "static": {
+      "duration_seconds": 1.1312573747709394,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "runtime_reconciliation": {
+      "final_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "initial_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "matches": true
+    },
+    "source_drift": false,
+    "runtime_drift": false,
+    "skips": 0,
+    "execution": "Fresh offline fixture methods, including owned loopback TCP. No candidate Docker or real provider execution.",
+    "type_coverage": "Configured incremental roots include the three new modules;117 unchanged legacy diagnostics remain, not whole-repository type safety."
+  },
+  "initial_combined_verification": {
+    "session": "runs/financial-terminal-v4-offline-qualification-1/20261004T073443-24d74bc7",
+    "summary_sha256": "92f6ba223f2a0886dd0bd09c28eada4df2a2b81d9c488a07dd2888ddb7c6c803",
+    "passed": 223,
+    "meaning": "Historical passing checks on original source. Separate review found two gaps; not qualification of corrected source."
+  },
+  "review_findings": [
+    {
+      "finding": "Missing equality between prospective roster and actual child execution contract",
+      "resolution": "Require exact contract at constructor, preflight, final config, predecessor origin and final barrier. Two coherent substitution controls fail on original bytes and pass corrected bytes."
+    },
+    {
+      "finding": "Barrier reopened the ledger pathname separately for six children after one identity check",
+      "resolution": "One explicit read-only SQLite transaction and actual connection close, with original ledger identity checks around the read and a final chain-current check. Snapshot-time semantics; no future-currentness or transient ABA claim."
+    }
+  ],
+  "contributor_handoff": {
+    "path": "runs/financial-terminal-v4-retention-1/contributor/handoff-v2.json",
+    "sha256": "987a95aaf480bc31ef84c11cb1614553e7ab13191f0dbb4fedabd898b0e4c963"
+  },
+  "root_review": {
+    "path": "runs/financial-terminal-v4-retention-1/gossip-financial-terminal-v4-independent-review-1.json",
+    "sha256": "d5a3fb8cbfdc4049969664cebcc6b1e95704f8a48dde39bb4cfc40f25631a204",
+    "result": "Both root findings resolved; all562 bound inputs,11 class rosters and logs,227 passes and runtime/config/source identity independently reconciled. No remaining concrete blocker in bounded offline review."
+  },
+  "retention": {
+    "path": "runs/financial-terminal-v4-retention-1",
+    "receipt_sha256": "7492e2217c58ed2fec1c3328f42dfaae3743b4ddc9048761c48660415b7ea838",
+    "file_count": 32
+  },
+  "authority_limits": [
+    "Financial seal and barrier grant no private correctness acceptance.",
+    "Retained host stop assertions are not proof that actual role processes exited.",
+    "The seal parser is not standalone checkpoint-ancestry authority; full operation binds trusted SQL producer, original preseal boundary and independent publication.",
+    "Unknown actions keep reservations and halt, and prevent the next child from opening.",
+    "V4 live qualification always rejects until the complete matching rehearsal validator is implemented."
+  ],
+  "new_comparative_samples": 0,
+  "real_provider_calls": 0,
+  "candidate_docker_executions": 0,
+  "remaining_required": [
+    "Implement the full V4 live rehearsal evidence validator; do not relabel V3 evidence.",
+    "Integrate actual process-stop and final-source evidence with the complete four-milestone/six-trajectory controller and final-evaluation barrier.",
+    "Complete independent semantic scope authority and remaining product observations.",
+    "Qualify the coherent combined physical contract and one complete matching zero-provider rehearsal after cheaper gates.",
+    "Run the larger live comparison, independent held-out confirmation and separate placement-versus-transport comparison."
+  ]
+}
