@@ -7,18 +7,21 @@ delegation, hook placement, persistence or process identity.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager, nullcontext
 from dataclasses import asdict, dataclass
 import hashlib
 import os
 from pathlib import Path
 import platform
 import queue
+import re
+import select
 import json
 import time
 import subprocess
 import tempfile
 import threading
-from typing import Any
+from typing import Any, Iterator
 import uuid
 
 from . import candidate_storage_product_execution_v1 as transport
@@ -51,6 +54,107 @@ encoded, digest = profile.encoded, profile.digest
 ExecutionError, ExecutionUnknown = transport.ExecutionError, transport.ExecutionUnknown
 require, sha = transport.require, transport.sha
 _verify_regular_tree = transport._verify_regular_tree
+
+
+DEADLINE_POLICY_ID = 'workflow-absolute-deadline-enforcement-v2'
+TIMING_PROTOCOL = 'workflow-host-segments-diagnostic-v1'
+TIMING_MAX_RECORDS = 4096
+TIMING_MAX_BYTES = 2097152
+TIMING_STAGES = ('effect', 'checkpoint', 'source', 'current', 'runtime', 'control',
+    'queue', 'write', 'capture', 'teardown')
+
+
+class WorkflowDeadlineExceeded(transport.ExecutionError):
+    """Expired owner observation window, distinct from source/admission failure."""
+
+
+def deadline_policy() -> dict[str, Any]:
+    return {'id': DEADLINE_POLICY_ID, 'call_seconds': 30, 'history_seconds': 300,
+        'clock': 'one absolute monotonic window; no reset or host-work discount',
+        'eligibility': 'required durable source-bound decision; optional timings never authority',
+        'cleanup': 'separate existing bounded owned teardown; no application writes',
+        'diagnostics': {'protocol': TIMING_PROTOCOL, 'max_records': TIMING_MAX_RECORDS,
+            'max_bytes': TIMING_MAX_BYTES, 'durations': 'inclusive nested spans; do not sum',
+            'retention': 'one exclusive sibling sidecar after owned teardown; never scored'}}
+
+
+class _Timings:
+    """Fixed-size diagnostic memory only: no journal writes, inputs or verdicts."""
+    def __init__(self) -> None:
+        self.rows: list[dict[str, Any]] = []
+        self.stack: list[int] = []
+        self.omitted = False
+
+    @contextmanager
+    def span(self, stage: str) -> Iterator[None]:
+        if stage not in TIMING_STAGES or len(self.rows) >= TIMING_MAX_RECORDS or len(self.stack) >= 16:
+            self.omitted = True
+            yield
+            return
+        try:
+            started = time.monotonic_ns()
+        except BaseException:
+            self.omitted = True
+            yield
+            return
+        seq = len(self.rows)
+        row: dict[str, Any] = {'seq': seq, 'parent': self.stack[-1] if self.stack else None,
+            'stage': stage, 'start_ns': started, 'end_ns': None, 'status': 'open'}
+        self.rows.append(row)
+        self.stack.append(seq)
+        try:
+            yield
+        except BaseException:
+            row['status'] = 'error'
+            raise
+        else:
+            row['status'] = 'complete'
+        finally:
+            try:
+                row['end_ns'] = time.monotonic_ns()
+            except BaseException:
+                self.omitted = True
+            self.stack.pop()
+
+
+def _runtime_identity(endpoint: Any, image_id: str, *, deadline: float,
+                      retain: Any, label: str) -> dict[str, Any]:
+    """Exact frozen-v4 identity projection over its original absolute-deadline IO.
+
+    Only the caller-owned deadline differs. Frozen v4 and its retention pins are
+    untouched; no new parsing, runtime allowance or synthetic identity is added.
+    """
+    process.ProcessPolicy(image_id, transport_timeout_seconds=15)
+    process._require(bool(process._LABEL.fullmatch(label)), 'Unsafe runtime label')
+    version = process._json_control(endpoint, '/version', deadline=deadline, retain=retain, label=label + '-version')
+    info = process._json_control(endpoint, '/info', deadline=deadline, retain=retain, label=label + '-info')
+    image = process._json_control(endpoint, '/images/' + image_id + '/json', deadline=deadline,
+        retain=retain, label=label + '-image')
+    def api_tuple(value: Any) -> tuple[int, int]:
+        process._require(type(value) is str and bool(re.fullmatch(r'[0-9]+\.[0-9]+', value)),
+            'Invalid Engine API version')
+        first, second = value.split('.')
+        return int(first), int(second)
+    process._require(api_tuple(version.get('MinAPIVersion')) <= api_tuple(process.API_VERSION)
+        <= api_tuple(version.get('ApiVersion')), 'Pinned API unsupported')
+    process._require(version.get('Os') == 'linux' and info.get('OSType') == 'linux'
+        and type(info.get('ID')) is str and bool(info['ID'])
+        and image.get('Id') == image_id and image.get('Os') == 'linux', 'Runtime or image identity differs')
+    process._require(type(version.get('GitCommit')) is str
+        and bool(re.fullmatch(r'[0-9a-f]{7,40}', version['GitCommit']))
+        and type(info.get('OomKillDisable')) is bool
+        and type(info.get('CgroupVersion')) is str and info['CgroupVersion'] in ('1', '2')
+        and type(info.get('CgroupDriver')) is str and bool(info['CgroupDriver']),
+        'Runtime compatibility capabilities unavailable')
+    result = {'protocol': process.PROTOCOL, 'endpoint': asdict(endpoint), 'api_version': process.API_VERSION,
+        'os': version['Os'], 'engine_git_commit': version['GitCommit'],
+        'cgroup_version': info['CgroupVersion'], 'cgroup_driver': info['CgroupDriver'],
+        'oom_kill_disable_supported': info['OomKillDisable'], 'daemon_id': info['ID'],
+        'engine_version': version.get('Version'), 'architecture': version.get('Arch'),
+        'kernel_version': version.get('KernelVersion'), 'image_id': image_id,
+        'image_inspect_sha256': process._sha(process._encoded(image))}
+    retain(label + '.json', process._encoded(result))
+    return result
 
 
 def evaluator_sources() -> dict[str, str]:
@@ -154,7 +258,7 @@ def binding_for(files: dict[str, bytes], value: profile.WorkflowProfile, policy:
         digest({'environment': DockerValidator._environment(),
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
-        digest({'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+        digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
             'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES, 'prestart_policy': prestart.definition(),
             'capture_bytes': b02.MAX_CAPTURE_BYTES, 'wire': wire_definition(),
             'call_count': len(value.phases), 'cleanup': asdict(cleanup.CleanupLimits())}), digest({'seed': policy.seed}))
@@ -211,6 +315,7 @@ def wire_definition() -> dict[str, Any]:
         'stdout_bytes': STDOUT_BYTES, 'stderr_bytes': STDERR_BYTES, 'normalized_expected_support': NORMALIZED_BYTES,
         'call_timeout_seconds': 30, 'history_timeout_seconds': HISTORY_TIMEOUT_SECONDS, 'max_calls': 3,
         'max_boundary_events_per_call': MAX_EVENTS, 'delimiter': 'single LF outside payload bound',
+        'deadline_policy': deadline_policy(),
         'capture': 'fresh source-qualified paused complete /tmp archive; trace values alone are not authority'}
 
 
@@ -368,17 +473,36 @@ def exec_identity(value: Any, *, container_id: str, exec_id: str, pid: int | Non
 
 class _Commands(transport._Commands):
     owner: CandidateWorkflowExecution
+    _control_deadline: float | None = None
+
+    def _before_spawn(self) -> None:
+        self.owner._check_deadline()
+        require(self._control_deadline is not None and time.monotonic() < self._control_deadline,
+            'Declared workflow control deadline reached')
+
+    def _wait_timeout(self) -> float:
+        require(self._control_deadline is not None, 'Missing control deadline')
+        assert self._control_deadline is not None
+        remaining = min(self._control_deadline, self.owner._operation_deadline(self.owner.policy.timeout_seconds)) - time.monotonic()
+        if remaining <= 0:
+            # Enter the inherited timeout/kill/retention path, not an early escape
+            # that drops already-started child streams or their cleanup record.
+            raise subprocess.TimeoutExpired('workflow owned control', 0)
+        return remaining
 
     def run(self, label: str, arguments: list[str], limit: int = b01.MAX_STREAM_BYTES) -> dict[str, Any]:
         require(self.owner.mode == 'physical', 'Fixture owners never dispatch Docker commands')
-        deadline = self.owner._deadline
-        if deadline is not None and not self.owner._cleanup_phase:
-            remaining = deadline - time.monotonic()
-            require(remaining > 0, 'Declared workflow history deadline reached')
-            self.timeout = min(self.owner.policy.timeout_seconds, remaining)
-        else:
-            self.timeout = self.owner.policy.timeout_seconds
-        return super().run(label, arguments, limit)
+        require(self._control_deadline is None, 'Control processes cannot nest')
+        self._control_deadline = self.owner._operation_deadline(self.owner.policy.timeout_seconds)
+        try:
+            with self.owner._timings.span('control'):
+                record = super().run(label, arguments, limit)
+                self.owner._check_deadline()
+                assert self._control_deadline is not None
+                require(time.monotonic() < self._control_deadline, 'Declared workflow control deadline reached')
+                return record
+        finally:
+            self._control_deadline = None
 
 
 class _Session:
@@ -397,9 +521,12 @@ class _Session:
         owner._retain('session-dispatch.json', encoded({'argv': self.arguments}))
         owner.checkpoint()
         owner._effect_boundary()
+        owner._check_deadline()
         self.process = subprocess.Popen(self.arguments, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, env=DockerValidator._environment())
         try:
+            assert self.process.stdin is not None
+            os.set_blocking(self.process.stdin.fileno(), False)
             for kind in self.streams:
                 thread = threading.Thread(target=self._drain, args=(kind,), daemon=True)
                 self.threads.append(thread)
@@ -453,75 +580,100 @@ class _Session:
             pipe.close()
 
     def _remaining(self, deadline: float) -> float:
-        final = deadline if self.owner._deadline is None else min(deadline, self.owner._deadline)
-        require(final > time.monotonic(), 'Declared workflow observation deadline reached')
-        return final - time.monotonic()
+        final = min(deadline, self.owner._operation_deadline(self.owner.policy.timeout_seconds))
+        remaining = final - time.monotonic()
+        if remaining <= 0:
+            raise WorkflowDeadlineExceeded('Declared workflow observation deadline reached')
+        return remaining
 
     def _line(self, deadline: float) -> bytes:
-        try:
-            raw = self.lines.get(timeout=self._remaining(deadline))
-        except queue.Empty as error:
-            raise ExecutionUnknown('Workflow response timeout') from error
-        require(raw is not None and raw.endswith(b'\n') and len(raw) - 1 <= FRAME_BYTES,
-            'Complete bounded workflow frame unavailable')
-        assert raw is not None
-        return raw
+        with self.owner._timings.span('queue'):
+            try:
+                raw = self.lines.get(timeout=self._remaining(deadline))
+            except queue.Empty as error:
+                raise ExecutionUnknown('Workflow response timeout') from error
+            # Drain threads retain even late bytes; dequeue is not qualification.
+            self._remaining(deadline)
+            require(raw is not None and raw.endswith(b'\n') and len(raw) - 1 <= FRAME_BYTES,
+                'Complete bounded workflow frame unavailable')
+            assert raw is not None
+            return raw
 
     def _write(self, value: str, label: str) -> None:
-        self.owner._effect_boundary()
-        self.owner._retain(label, encoded({'request': value + '\n'}))
-        self.owner.checkpoint()
-        self.owner._effect_boundary()
-        assert self.process.stdin is not None
-        self.process.stdin.write((value + '\n').encode('ascii'))
-        self.process.stdin.flush()
+        require(not self.owner._cleanup_phase, 'Cleanup cannot send workflow application requests')
+        with self.owner._timings.span('write'):
+            self.owner._effect_boundary()
+            self.owner._retain(label, encoded({'request': value + '\n'}))
+            self.owner.checkpoint()
+            self.owner._effect_boundary()
+            assert self.process.stdin is not None
+            raw = (value + '\n').encode('ascii')
+            fd = self.process.stdin.fileno()
+            deadline = self.owner._operation_deadline(self.owner.policy.timeout_seconds)
+            offset = 0
+            while offset < len(raw):
+                remaining = self._remaining(deadline)
+                _, writable, _ = select.select([], [fd], [], remaining)
+                self._remaining(deadline)
+                require(bool(writable), 'Workflow request pipe deadline reached')
+                self.owner._check_deadline()
+                try:
+                    count = os.write(fd, raw[offset:])
+                except BlockingIOError:
+                    continue
+                require(count > 0, 'Workflow request pipe closed')
+                offset += count
+            self._remaining(deadline)
 
     def ready(self, capture: Any) -> None:
-        raw = self._line(time.monotonic() + self.owner.policy.timeout_seconds)
-        self.owner._retain('session-ready.bin', raw)
-        self.owner.checkpoint()
-        require(profile.decode(raw) == {'kind': 'ready', 'protocol': ADAPTER_PROTOCOL}, 'Closed workflow ready differs')
-        capture({'kind': 'ready'})
-        self._write('ready', 'session-ready-ack.json')
+        with self.owner._call_window('session-ready') as deadline:
+            raw = self._line(deadline)
+            self.owner._retain('session-ready.bin', raw)
+            self.owner.checkpoint()
+            require(profile.decode(raw) == {'kind': 'ready', 'protocol': ADAPTER_PROTOCOL}, 'Closed workflow ready differs')
+            capture({'kind': 'ready'})
+            self._write('ready', 'session-ready-ack.json')
 
     def phase(self, phase: str, capture: Any) -> None:
         require(len(self.requests) < len(self.owner.profile.phases)
             and phase == self.owner.profile.phases[len(self.requests)], 'Workflow call replay/reordering refused')
-        deadline = time.monotonic() + self.owner.policy.timeout_seconds
-        self._write(phase, phase + '-request.json')
-        self.requests.append(phase)
-        seen: dict[str, int] = {}
-        for index in range(MAX_EVENTS + 1):
-            raw = self._line(deadline)
-            self.owner._retain(phase + '-frame-%03d.bin' % index, raw)
-            self.owner.checkpoint()
-            self.owner._effect_boundary()
-            value = profile.decode(raw)
-            require(type(value) is dict and value.get('phase') == phase, 'Unattributable workflow frame')
-            if value.get('kind') == 'result':
-                require(set(value) == {'kind', 'phase', 'value'}, 'Closed result frame differs')
-                self.owner._retain(phase + '-response.bin', raw)
+        with self.owner._call_window(phase) as deadline:
+            self._write(phase, phase + '-request.json')
+            self.requests.append(phase)
+            seen: dict[str, int] = {}
+            for index in range(MAX_EVENTS + 1):
+                raw = self._line(deadline)
+                self.owner._retain(phase + '-frame-%03d.bin' % index, raw)
                 self.owner.checkpoint()
-                capture(phase + '-result', value)
-                self._write('next:' + phase, phase + '-next.json')
-                return
-            require(value.get('kind') == 'boundary' and set(value) == {'kind', 'phase', 'ordinal', 'boundary', 'occurrence', 'paths', 'path_origins'}
-                and type(value['ordinal']) is int and value['ordinal'] == index, 'Closed boundary frame differs')
-            boundaries = [item for item in self.owner.plan.boundaries if item.id == value['boundary']]
-            require(len(boundaries) == 1, 'Undeclared workflow boundary')
-            boundary = boundaries[0]
-            occurrence = seen.get(boundary.id, 0)
-            require(type(value['occurrence']) is int and value['occurrence'] == occurrence
-                and occurrence < boundary.occurrences, 'Boundary occurrence differs')
-            require(type(value['paths']) is dict and set(value['paths']) == {'root', 'database'}, 'Boundary path inventory differs')
-            for path in value['paths'].values():
-                require(path is None or (type(path) is str and path.startswith('/tmp/') and '\\' not in path
-                    and '\x00' not in path and all(part not in ('', '.', '..') for part in path.split('/')[1:])),
-                    'Unconfined boundary path')
-            seen[boundary.id] = occurrence + 1
-            capture(phase + '-boundary-%03d' % index, value)
-            self._write('resume:' + phase + ':' + str(index), phase + '-resume-%03d.json' % index)
-        raise ExecutionUnknown('Boundary event limit')
+                self.owner._effect_boundary()
+                value = profile.decode(raw)
+                require(type(value) is dict and value.get('phase') == phase, 'Unattributable workflow frame')
+                if value.get('kind') == 'result':
+                    require(set(value) == {'kind', 'phase', 'value'}, 'Closed result frame differs')
+                    self.owner._retain(phase + '-response.bin', raw)
+                    self.owner.checkpoint()
+                    capture(phase + '-result', value)
+                    self.owner._eligible(phase + '-completion', (phase + '-result-response-eligible.json',
+                        phase + '-result-capture-eligible.json', phase + '-response.bin'))
+                    self._write('next:' + phase, phase + '-next.json')
+                    return
+                require(value.get('kind') == 'boundary' and set(value) == {'kind', 'phase', 'ordinal', 'boundary', 'occurrence', 'paths', 'path_origins'}
+                    and type(value['ordinal']) is int and value['ordinal'] == index, 'Closed boundary frame differs')
+                boundaries = [item for item in self.owner.plan.boundaries if item.id == value['boundary']]
+                require(len(boundaries) == 1, 'Undeclared workflow boundary')
+                boundary = boundaries[0]
+                occurrence = seen.get(boundary.id, 0)
+                require(type(value['occurrence']) is int and value['occurrence'] == occurrence
+                    and occurrence < boundary.occurrences, 'Boundary occurrence differs')
+                require(type(value['paths']) is dict and set(value['paths']) == {'root', 'database'}, 'Boundary path inventory differs')
+                for path in value['paths'].values():
+                    require(path is None or (type(path) is str and path.startswith('/tmp/') and '\\' not in path
+                        and '\x00' not in path and all(part not in ('', '.', '..') for part in path.split('/')[1:])),
+                        'Unconfined boundary path')
+                seen[boundary.id] = occurrence + 1
+                capture(phase + '-boundary-%03d' % index, value)
+                self._write('resume:' + phase + ':' + str(index), phase + '-resume-%03d.json' % index)
+            raise ExecutionUnknown('Boundary event limit')
 
     def finish(self, success: bool, *, send_finish: bool = True) -> bool:
         require(not self.finished, 'Session finish is one-shot')
@@ -531,19 +683,25 @@ class _Session:
         primary: BaseException | None = None
         try:
             if success:
-                if send_finish:
-                    self._write('finish', 'session-finish-request.json')
-                assert self.process.stdin is not None
-                self.process.stdin.close()
-                try:
-                    self.process.wait(timeout=self._remaining(time.monotonic() + self.owner.policy.timeout_seconds))
-                    natural = True
-                except subprocess.TimeoutExpired:
-                    timed_out = True
+                window = (self.owner._call_window('session-finish') if self.owner._active_call_deadline is None
+                    else nullcontext(self.owner._active_call_deadline))
+                with window as deadline:
+                    if send_finish:
+                        self._write('finish', 'session-finish-request.json')
+                    assert self.process.stdin is not None
+                    self.process.stdin.close()
+                    try:
+                        self.process.wait(timeout=self._remaining(deadline))
+                        natural = True
+                        self._remaining(deadline)
+                    except subprocess.TimeoutExpired:
+                        timed_out = True
             else:
                 timed_out = True
         except BaseException as error:
             primary = error
+            if isinstance(error, WorkflowDeadlineExceeded):
+                timed_out = True
         finally:
             try:
                 self.stop_local()
@@ -567,7 +725,8 @@ class _Session:
         return bool(natural and self.process.returncode == 0 and record['capture_complete'])
 
     def stop_local(self) -> None:
-        transport._stop_local_process(self.process, self.threads)
+        with self.owner._timings.span('teardown'):
+            transport._stop_local_process(self.process, self.threads)
 
 
 class CandidateWorkflowExecution(transport.CandidateStorageExecution):
@@ -617,6 +776,11 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
         self._exec_id: str | None = None
         self._exec_pid: int | None = None
         self._deadline: float | None = None
+        self._active_call_deadline: float | None = None
+        self._active_call: str | None = None
+        self._timings = _Timings()
+        self.diagnostic_path: str | None = None
+        self.diagnostic_error: str | None = None
         self.close_errors: list[str] = []
         self._freeze: registry.CohortFreeze | None = None
         self.endpoint: Any = (endpoint or process.EngineEndpoint.from_environment()) if mode == 'physical' else None
@@ -642,6 +806,7 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                 'review_provenance': review_authority.provenance(plan),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+                'deadline_policy': deadline_policy(),
                 'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
             context = {'protocol': self.binding.protocol, 'config_sha256': digest(self.config),
@@ -665,11 +830,16 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
             raise
 
     def current(self, freeze: registry.CohortFreeze | None = None) -> None:
+        with self._timings.span('current'):
+            self._current(freeze)
+
+    def _current(self, freeze: registry.CohortFreeze | None = None) -> None:
         self._owner()
         require(self.profile == profile_for_binding(self.binding)
             and type(self.plan) is review.WorkflowSourcePlan, 'Original workflow mapping profile differs')
         require(evaluator_sources() == self.sources, 'workflow evaluator changed')
-        tree, files = capture_git_source(self.store, self.registration.commit_oid)
+        with self._timings.span('source'):
+            tree, files = capture_git_source(self.store, self.registration.commit_oid)
         require(tree == self.tree and files == self.files, 'Final Git source changed')
         require(self.review_authority.authenticate(self.plan) == self.review_sha256
             and digest(self.review_authority.provenance(self.plan)) == self.binding.review_origin_sha256, 'Layout authority changed')
@@ -695,10 +865,13 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
         self.checkpoint()
         self.current(self._freeze)
         self._deadline = time.monotonic() + HISTORY_TIMEOUT_SECONDS
-        self._dispatch(intent)
-        self.current(self._freeze)
-        self.checkpoint()
-        return profile.decode(self.read_authenticated('terminal.json'))
+        try:
+            self._dispatch(intent)
+            self.current(self._freeze)
+            self.checkpoint()
+            return profile.decode(self.read_authenticated('terminal.json'))
+        finally:
+            self._flush_timings(intent)
 
     def _dispatch(self, intent: dict[str, Any]) -> None:
         require(self.mode == 'physical', 'Fixture owners never dispatch candidate code')
@@ -799,7 +972,7 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                 journal_roots=(self.root, self.delta_root, self.checkpoint_authority.root))
             try:
                 self._effect_boundary()
-                observed_runtime = process.runtime_identity(self.endpoint, self.policy.image_id, retain=self._retain)
+                observed_runtime = self._runtime('runtime')
                 require(observed_runtime == self.runtime, 'Runtime changed before dispatch')
                 for kind, args in (('volume', ['docker', 'volume', 'ls', '--quiet', '--filter', 'name=^' + volume + '$']),
                     ('container', ['docker', 'container', 'ls', '--all', '--quiet', '--filter', 'name=^/' + name + '$'])):
@@ -854,8 +1027,8 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                             probe = checked(label + '-paths', ['docker', 'exec', '--user', '65534:65534', container_id,
                                 'python', '-I', '-B', '/checks/workflow_paths.py', encoded(event['paths']).decode('ascii')])
                             self._retain(label + '-path-facts.json', commands.raw(probe))
-                        checked(label + '-pause', ['docker', 'pause', container_id])
                         try:
+                            checked(label + '-pause', ['docker', 'pause', container_id])
                             record = checked(label + '-state', ['docker', 'inspect', '--format', '{{json .}}', container_id])
                             state = parsed(record)
                             require(b01._paused(state, volume, self.policy.image_id) and state.get('Id') == container_id
@@ -866,7 +1039,16 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                     finally:
                         self._phase_runtime(label + '-runtime-after')
                         self._retain(label + '-staging-after.json', encoded(verify_staging()))
-                self._session_calls(session, commands, container_id, capture, verify_staging)
+                        if event.get('kind') == 'result':
+                            self._eligible(label + '-response', (label + '-exec-verified.json',
+                                label + '-runtime-after-verified.json', label + '-staging-after.json',
+                                event['phase'] + '-response.bin'))
+                    self._eligible(label + '-capture', (label + '-capture.json', label + '-unpause.json',
+                        label + '-runtime-after-verified.json', label + '-staging-after.json'))
+                def measured_capture(label: str, event: dict[str, Any]) -> None:
+                    with self._timings.span('capture'):
+                        capture(label, event)
+                self._session_calls(session, commands, container_id, measured_capture, verify_staging)
                 session = None
                 self._session = None
             except BaseException as error:
@@ -874,7 +1056,8 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                 errors.append(type(error).__name__ + ':' + str(error)[:500])
             finally:
                 try:
-                    ordinary_cleanup()
+                    with self._timings.span('teardown'):
+                        ordinary_cleanup()
                 except BaseException as error:
                     errors.append('cleanup:' + type(error).__name__ + ':' + str(error)[:300])
                     # Prior-only owner claims, independent diagnostics; never heals
@@ -920,9 +1103,7 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
 
     def _exec_identity(self, commands: _Commands, container_id: str, label: str, *, completed: bool = False) -> None:
         self._effect_boundary()
-        deadline = time.monotonic() + self.policy.timeout_seconds
-        if self._deadline is not None:
-            deadline = min(deadline, self._deadline)
+        deadline = self._operation_deadline(self.policy.timeout_seconds)
         if self._exec_id is None:
             value = process._json_control(self.endpoint, '/containers/' + container_id + '/json',
                 deadline=deadline, retain=self._retain, label=label + '-exec-container')
@@ -943,20 +1124,113 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
             'pid': self._exec_pid, 'completed': completed, 'value_sha256': digest(value)}))
         self.checkpoint()
 
-    def _effect_boundary(self) -> None:
-        # Work deadlines govern effects, never the later read-only provenance
-        # checks needed to retain an earlier discrepancy after a missing tail.
-        self._owner()
-        self.checkpoint()
-        if self.mode == 'physical':
-            self.endpoint.validate()
+    def checkpoint(self) -> chain.PrefixCommitment:
+        with self._timings.span('checkpoint'):
+            return super().checkpoint()
+
+    @contextmanager
+    def _call_window(self, phase: str) -> Iterator[float]:
+        require(self._active_call_deadline is None and self._active_call is None,
+            'Workflow call windows cannot nest or reset')
+        require(phase in ('session-ready', 'session-finish') or phase in self.profile.phases, 'Undeclared call window')
+        self._check_deadline()
+        self._active_call = phase
+        self._active_call_deadline = time.monotonic() + self.policy.timeout_seconds
+        try:
+            yield self._active_call_deadline
+        finally:
+            self._active_call_deadline = None
+            self._active_call = None
+
+    def _operation_deadline(self, seconds: float) -> float:
+        deadline = time.monotonic() + seconds
         if not self._cleanup_phase:
-            self.current(self._freeze)
+            for boundary in (self._deadline, self._active_call_deadline):
+                if boundary is not None:
+                    deadline = min(deadline, boundary)
+        return deadline
+
+    def _runtime(self, label: str) -> dict[str, Any]:
+        with self._timings.span('runtime'):
             self._check_deadline()
+            value = _runtime_identity(self.endpoint, self.policy.image_id,
+                deadline=self._operation_deadline(15), retain=self._retain, label=label)
+            self._check_deadline()
+            return value
+
+    def _phase_runtime(self, label: str) -> None:
+        self._effect_boundary()
+        value = self._runtime(label)
+        require(value == self.runtime, 'Original runtime changed at phase boundary')
+        self._retain(label + '-verified.json', encoded({'runtime': value, 'runtime_sha256': digest(value)}))
+        self._check_deadline()
+
+    def _eligible(self, label: str, members: tuple[str, ...]) -> None:
+        # Correctness provenance, separate from optional segment diagnostics.
+        # First authenticate all required originals; check after their durability.
+        self.checkpoint()
+        require(all(self.has_retained(name) for name in members), 'Deadline eligibility originals unavailable')
+        originals = {name: sha(self.read_authenticated(name)) for name in members}
+        self._check_deadline()
+        require(self._active_call is not None and self._active_call_deadline is not None,
+            'Eligibility requires the original active call window')
+        record = {'policy_id': DEADLINE_POLICY_ID, 'policy_sha256': digest(deadline_policy()),
+            'binding_sha256': digest(asdict(self.binding)), 'phase': self._active_call,
+            'label': label, 'originals': originals, 'decision': 'eligible'}
+        # Passive recording can finish after the decision; every subsequent
+        # effect checks its own budget. No timestamp summary grants authority.
+        self._retain(label + '-eligible.json', encoded(record))
+        self.checkpoint()
+        self._check_deadline()
+
+    def _effect_boundary(self) -> None:
+        with self._timings.span('effect'):
+            self._owner()
+            self._check_deadline()
+            self.checkpoint()
+            if self.mode == 'physical':
+                self.endpoint.validate()
+            if not self._cleanup_phase:
+                self.current(self._freeze)
+                self._check_deadline()
 
     def _check_deadline(self) -> None:
-        if self.mode == 'physical' and not self._cleanup_phase and self._deadline is not None:
-            require(time.monotonic() < self._deadline, 'Declared workflow history deadline reached')
+        if self.mode == 'physical' and not self._cleanup_phase:
+            now = time.monotonic()
+            if self._deadline is not None and now >= self._deadline:
+                raise WorkflowDeadlineExceeded('Declared workflow history deadline reached')
+            if self._active_call_deadline is not None and now >= self._active_call_deadline:
+                raise WorkflowDeadlineExceeded('Declared workflow observation deadline reached')
+
+    def _flush_timings(self, intent: dict[str, Any]) -> None:
+        # Diagnostic sidecar is deliberately outside the observation journal.
+        # Never attempt to append to an uncertain chain or turn timing into proof.
+        fd: int | None = None
+        try:
+            record = {'protocol': TIMING_PROTOCOL, 'policy': deadline_policy(),
+                'execution_id': intent['execution_id'], 'binding_sha256': digest(asdict(self.binding)),
+                'source_sha256': self.binding.source_sha256, 'evaluator_sha256': self.binding.evaluator_sha256,
+                'semantics': 'inclusive nested host spans; diagnostic only; never sum nested totals',
+                'truncated': self._timings.omitted, 'spans': self._timings.rows}
+            raw = encoded(record)
+            require(len(raw) <= TIMING_MAX_BYTES, 'Diagnostic byte cap exceeded')
+            path = self.root.with_name(self.root.name + '-' + intent['execution_id'] + '-timings.json')
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+            offset = 0
+            while offset < len(raw):
+                count = os.write(fd, raw[offset:])
+                require(count > 0, 'Incomplete diagnostic write')
+                offset += count
+            os.fsync(fd)
+            self.diagnostic_path = str(path)
+        except BaseException as error:
+            self.diagnostic_error = type(error).__name__
+        finally:
+            if fd is not None:
+                try:
+                    os.close(fd)
+                except BaseException:
+                    self.diagnostic_error = 'DiagnosticCloseError'
 
     def close(self) -> None:
         if getattr(self, 'closed', True):
@@ -1157,7 +1431,7 @@ def qualification_binding_for(files: dict[str, bytes], value: WorkflowQualificat
         QUALIFICATION_FAMILY, value.control_id, review.source_sha256(files), digest(value.record()), value.sha256,
         fixture, marker, marker, digest(evaluator_sources()), digest(runtime),
         digest({'environment': DockerValidator._environment(), 'host_python': [platform.python_implementation(), platform.python_version()]}),
-        digest({'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(), 'wire': wire_definition(),
+        digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(), 'wire': wire_definition(),
             'prestart_policy': prestart.definition(), 'journal': asdict(LIMITS), 'cleanup': asdict(cleanup.CleanupLimits())}),
         digest({'seed': policy.seed}))
 
@@ -1223,6 +1497,11 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
         self._exec_id: str | None = None
         self._exec_pid: int | None = None
         self._deadline: float | None = None
+        self._active_call_deadline: float | None = None
+        self._active_call: str | None = None
+        self._timings = _Timings()
+        self.diagnostic_path: str | None = None
+        self.diagnostic_error: str | None = None
         self.close_errors: list[str] = []
         self._freeze: registry.CohortFreeze | None = None
         self.endpoint: Any = (endpoint or process.EngineEndpoint.from_environment()) if mode == 'physical' else None
@@ -1247,6 +1526,7 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
                 'product_acceptance_authority': False,
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+                'deadline_policy': deadline_policy(),
                 'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
             context = {'protocol': self.binding.protocol, 'config_sha256': digest(self.config),
@@ -1270,11 +1550,16 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
             raise
 
     def current(self, freeze: registry.CohortFreeze | None = None) -> None:
+        with self._timings.span('current'):
+            self._current(freeze)
+
+    def _current(self, freeze: registry.CohortFreeze | None = None) -> None:
         self._owner()
         require(type(self) is CandidateWorkflowQualificationExecution and type(self.profile) is WorkflowQualificationProfile,
             'Exact qualifier owner/profile required')
         require(evaluator_sources() == self.sources, 'Qualifier evaluator changed')
-        tree, files = capture_git_source(self.store, self.registration.commit_oid)
+        with self._timings.span('source'):
+            tree, files = capture_git_source(self.store, self.registration.commit_oid)
         require(tree == self.tree and files == self.files and files == qualification_source_files(self.profile.control_id),
             'Fixed qualifier source changed')
         require(qualification_binding_for(files, self.profile, self.policy, self.runtime) == self.binding,
@@ -1301,11 +1586,14 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
         session.ready(lambda event: capture('session-ready', event))
         self._phase_runtime('call-000-runtime-before')
         self._retain('call-000-staging-before.json', encoded(verify_staging()))
-        session._write('call-000', 'call-000-request.json')
-        session.requests.append('call-000')
-        # Overflow is an expected mechanism observation for three closed controls;
-        # capture completeness and natural process exit are retained separately.
-        session.finish(True, send_finish=False)
-        self._exec_identity(commands, container_id, 'session-final', completed=True)
-        self._phase_runtime('call-000-runtime-after')
-        self._retain('call-000-staging-after.json', encoded(verify_staging()))
+        with self._call_window('call-000'):
+            session._write('call-000', 'call-000-request.json')
+            session.requests.append('call-000')
+            # Overflow is an expected mechanism observation for three closed controls;
+            # capture completeness and natural process exit are retained separately.
+            session.finish(True, send_finish=False)
+            self._exec_identity(commands, container_id, 'session-final', completed=True)
+            self._phase_runtime('call-000-runtime-after')
+            self._retain('call-000-staging-after.json', encoded(verify_staging()))
+            self._eligible('call-000-qualification', ('session.json', 'session-final-exec-verified.json',
+                'call-000-runtime-after-verified.json', 'call-000-staging-after.json'))

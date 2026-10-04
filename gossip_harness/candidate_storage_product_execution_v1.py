@@ -284,6 +284,13 @@ class _Commands(b01._Commands):
                 pass
         self.owner._retain_blob(name, raw)
 
+    def _before_spawn(self) -> None:
+        """Optional derived-owner deadline check; default behavior is unchanged."""
+
+    def _wait_timeout(self) -> float:
+        """Compute immediately before wait, after admission/retention/setup."""
+        return self.timeout
+
     def run(self, label: str, arguments: list[str], limit: int = b01.MAX_STREAM_BYTES) -> dict[str, Any]:
         self.owner._effect_boundary()
         require(arguments[0] == 'docker', 'Closed Docker controller operations only')
@@ -295,6 +302,7 @@ class _Commands(b01._Commands):
         streams = {'stdout': bytearray(), 'stderr': bytearray()}
         counts = {'stdout': 0, 'stderr': 0}
         errors: list[str] = []
+        self._before_spawn()
         child = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             stdin=subprocess.DEVNULL, env=DockerValidator._environment())
         threads: list[threading.Thread] = []
@@ -315,7 +323,7 @@ class _Commands(b01._Commands):
             for thread in threads:
                 thread.start()
             try:
-                child.wait(timeout=self.timeout)
+                child.wait(timeout=self._wait_timeout())
             except subprocess.TimeoutExpired:
                 timed_out = True
                 child.kill()

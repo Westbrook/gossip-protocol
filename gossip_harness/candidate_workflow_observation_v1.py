@@ -43,6 +43,20 @@ def _required(owner: Any, names: tuple[str, ...]) -> None:
         raise AuthorityUnavailable('Original evidence absent: ' + ','.join(names))
 
 
+def _eligibility(owner: Any, label: str, phase: str, members: tuple[str, ...]) -> None:
+    """Required host control-flow original; optional timings never enter grading."""
+    name = label + '-eligible.json'
+    _required(owner, members + (name,))
+    expected = {'policy_id': execution.DEADLINE_POLICY_ID,
+        'policy_sha256': execution.digest(execution.deadline_policy()),
+        'binding_sha256': execution.digest(asdict(owner.binding)), 'phase': phase,
+        'label': label, 'originals': {member: execution.sha(owner.read_authenticated(member)) for member in members},
+        'decision': 'eligible'}
+    require(_json(owner.read_authenticated(name)) == expected, 'Original deadline eligibility differs')
+    require(all(owner.authenticated_position(member) < owner.authenticated_position(name) for member in members),
+        'Deadline eligibility precedes its required originals')
+
+
 def _command(owner: execution.CandidateWorkflowExecution, label: str,
              arguments: list[str]) -> tuple[dict[str, Any], bytes] | None:
     if not owner.has_retained(label + '.json'):
@@ -142,6 +156,9 @@ def _capture(owner: Any, label: str, container_id: str, name: str, volume: str,
     order = [owner.authenticated_position(label + suffix) for suffix in
         ('-staging-before.json', '-pause.json', '-state.json', '-capture.json', '-unpause.json', '-runtime-after-verified.json')]
     require(all(a < b for a, b in zip(order, order[1:])), 'Original capture chronology differs')
+    phase = 'session-ready' if label == 'session-ready' else label.split('-boundary-')[0].split('-result')[0]
+    _eligibility(owner, label + '-capture', phase, (label + '-capture.json', label + '-unpause.json',
+        label + '-runtime-after-verified.json', label + '-staging-after.json'))
     return files, actual
 
 
@@ -198,6 +215,7 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
     intent = _json(intent_raw)
     freeze = owner.retained_freeze()
     owner.current(freeze)
+    require(owner.config.get('deadline_policy') == execution.deadline_policy(), 'Original deadline policy differs')
     require(intent['protocol'] == owner.binding.protocol
         and execution.encoded(intent['registration']) == execution.encoded(asdict(owner.observation_registration))
         and execution.encoded(intent['original_binding']) == execution.encoded(asdict(owner.binding))
@@ -302,6 +320,8 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
         retained_frames.append(ready)
         exec_baseline = _exec(owner, 'session-ready', container_id, None)
         _, previous = _capture(owner, 'session-ready', container_id, name, volume, prestart_value, None)
+        require(owner.authenticated_position('session-ready-capture-eligible.json')
+            < owner.authenticated_position('session-ready-ack.json'), 'Ready acknowledgement precedes capture eligibility')
     except (AuthorityUnavailable, execution.process.ProcessError, prestart.PrestartError) as error:
         unavailable.append('ready:' + str(error))
     for index, phase in enumerate(owner.profile.phases):
@@ -368,13 +388,20 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
                         < owner.authenticated_position(phase + '-result-runtime-after-verified.json')
                         and response_position < owner.authenticated_position(phase + '-result-staging-after.json'),
                         'Original call/source/exec chronology differs')
+                    _eligibility(owner, phase + '-result-response', phase, (phase + '-result-exec-verified.json',
+                        phase + '-result-runtime-after-verified.json', phase + '-result-staging-after.json',
+                        phase + '-response.bin'))
                     responses[index] = event['value']
                     fact['response_authenticated'] = True
                     result_seen = True
                     _, previous = _capture(owner, phase + '-result', container_id, name, volume, prestart_value, previous)
+                    _eligibility(owner, phase + '-completion', phase, (phase + '-result-response-eligible.json',
+                        phase + '-result-capture-eligible.json', phase + '-response.bin'))
                     _required(owner, (phase + '-next.json',))
                     require(_json(owner.read_authenticated(phase + '-next.json')) == {'request': 'next:' + phase + '\n'},
                         'Call completion handshake differs')
+                    require(owner.authenticated_position(phase + '-completion-eligible.json')
+                        < owner.authenticated_position(phase + '-next.json'), 'Next precedes completion eligibility')
                     break
                 require(event.get('kind') == 'boundary' and set(event) == {
                     'kind', 'phase', 'ordinal', 'boundary', 'occurrence', 'paths', 'path_origins'}
@@ -424,6 +451,9 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
                 _required(owner, (phase + '-resume-%03d.json' % ordinal,))
                 require(_json(owner.read_authenticated(phase + '-resume-%03d.json' % ordinal)) == {
                     'request': 'resume:' + phase + ':' + str(ordinal) + '\n'}, 'Boundary resume differs')
+                require(owner.authenticated_position(label + '-capture-eligible.json')
+                    < owner.authenticated_position(phase + '-resume-%03d.json' % ordinal),
+                    'Boundary resume precedes capture eligibility')
             if not result_seen:
                 raise AuthorityUnavailable('No complete result frame')
             # Missing declared boundaries never invent positive lifecycle proof.
@@ -734,6 +764,7 @@ def reconstruct_qualification(owner: execution.CandidateWorkflowQualificationExe
     checks: dict[str, bool | None] = {key: None for key in
         ('created_source_identity', 'solve_identity', 'natural_exit', 'stdout_bytes', 'stderr_bytes',
          'framing_disposition', 'source_runtime_boundaries', 'cleanup')}
+    require(owner.config.get('deadline_policy') == execution.deadline_policy(), 'Original qualifier deadline policy differs')
     checks['created_source_identity'] = prestart_value is not None
     semantics = _qualification_semantics(control_id, b'')
     if semantics['applicable']:
@@ -750,6 +781,8 @@ def reconstruct_qualification(owner: execution.CandidateWorkflowQualificationExe
             and _json(owner.read_authenticated('session-ready-ack.json')) == {'request': 'ready\n'}
             and _json(owner.read_authenticated('call-000-request.json')) == {'request': 'call-000\n'},
             'Original qualifier handshake differs')
+        require(owner.authenticated_position('session-ready-capture-eligible.json')
+            < owner.authenticated_position('session-ready-ack.json'), 'Qualifier ready acknowledgement precedes capture eligibility')
         session = _json(owner.read_authenticated('session.json'))
         require(session['argv'] == owner.docker + ['exec', '--interactive', '--user', '65534:65534', container_id,
             'python', '-I', '-B', '/checks/workflow_adapter.py'], 'Original qualifier session argv differs')
@@ -787,6 +820,8 @@ def reconstruct_qualification(owner: execution.CandidateWorkflowQualificationExe
                 'runtime': owner.runtime, 'runtime_sha256': execution.digest(owner.runtime)}
                 and _json(owner.read_authenticated('call-000-staging-' + phase + '.json')) == expected_stage,
                 'Original qualifier source/runtime boundary differs')
+        _eligibility(owner, 'call-000-qualification', 'call-000', ('session.json', 'session-final-exec-verified.json',
+            'call-000-runtime-after-verified.json', 'call-000-staging-after.json'))
         checks['source_runtime_boundaries'] = True
         removed = _command(owner, 'container-remove', ['docker', 'rm', '--force', container_id])
         absent = _command(owner, 'container-after', ['docker', 'container', 'ls', '--all', '--quiet', '--filter', 'name=^/' + name + '$'])

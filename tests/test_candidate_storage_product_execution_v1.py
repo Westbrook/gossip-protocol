@@ -200,6 +200,55 @@ class StorageReviewAuthorityV1Tests(unittest.TestCase):
 
 
 class CandidateStorageProductExecutionV1Tests(unittest.TestCase):
+    def test_default_command_hooks_preserve_legacy_wait_and_original_records(self):
+        records, events = {}, []
+
+        class InlineReader:
+            def __init__(self, target, args, daemon):
+                self.target, self.args, self.ident = target, args, None
+
+            def start(self):
+                self.ident = 1
+                self.target(*self.args)
+
+            def is_alive(self):
+                return False
+
+            def join(self, timeout):
+                events.append(('join', timeout))
+
+        child = SimpleNamespace(stdout=io.BytesIO(b'legacy output'), stderr=io.BytesIO(),
+            stdin=None, returncode=0, poll=lambda: 0, wait=Mock(return_value=0))
+
+        def retain(name, raw):
+            self.assertNotIn(name, records)
+            records[name] = raw
+            events.append(('retain', name))
+
+        # No workflow deadline, telemetry or eligibility fields exist here.
+        owner = SimpleNamespace(root=self.root, policy=SimpleNamespace(timeout_seconds=7),
+            docker=['docker', '--host', 'unix:///inert-legacy.sock'], _retain=retain, _retain_blob=retain,
+            checkpoint=lambda: events.append(('checkpoint',)),
+            _effect_boundary=lambda: events.append(('effect',)))
+        commands = execution._Commands(owner)
+        with patch.object(execution.subprocess, 'Popen', return_value=child) as popen, \
+                patch.object(execution.threading, 'Thread', InlineReader):
+            result = commands.run('legacy', ['docker', 'inspect', 'inert'])
+        self.assertIsNone(commands._before_spawn())
+        self.assertEqual(commands._wait_timeout(), 7)
+        child.wait.assert_called_once_with(timeout=7)
+        self.assertEqual(popen.call_args.args[0], owner.docker + ['inspect', 'inert'])
+        self.assertEqual(events[:4], [('effect',), ('retain', 'legacy-dispatch.json'),
+            ('checkpoint',), ('effect',)])
+        self.assertEqual(events[-1], ('checkpoint',))
+        self.assertEqual(result['argv'], result['arguments'])
+        self.assertEqual(result['exit_code'], 0)
+        self.assertFalse(result['timed_out'])
+        self.assertTrue(result['capture_complete'])
+        self.assertEqual(records['legacy-stdout.bin'], b'legacy output')
+        self.assertEqual(records['legacy-stderr.bin'], b'')
+        self.assertEqual(records['legacy.json'], execution.encoded(result))
+
     @classmethod
     def setUpClass(cls):
         cls.temp = tempfile.TemporaryDirectory()

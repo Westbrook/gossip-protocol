@@ -170,7 +170,8 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
     def setUp(self):
         self.prepare_owner()
 
-    def prepare_owner(self, case_id='WF18-same-process-call-isolation', schema_sha256='d' * 64):
+    def prepare_owner(self, case_id='WF18-same-process-call-isolation', schema_sha256='d' * 64,
+            *, ready_eligibility=True):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         root = Path(self.temp.name).resolve()
@@ -178,6 +179,9 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         owner._pid, owner._thread, owner.closed = os.getpid(), threading.get_ident(), False
         owner.mode, owner.root, owner.delta_root = 'fixture', root / 'raw', root / 'delta'
         owner._cleanup_phase, owner._cleanup, owner._session = False, None, None
+        owner._deadline, owner._active_call_deadline, owner._active_call = None, None, None
+        owner._timings = execution._Timings()
+        owner.diagnostic_path, owner.diagnostic_error = None, None
         head = ExternalHead.create(root / 'head', journal_roots=(owner.root, owner.delta_root))
         self.addCleanup(head.close)
         owner.journal = journals.OwnerJournal(owner.root, owner.delta_root,
@@ -204,13 +208,13 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         owner.runtime = {'kind': 'fixture-no-Docker'}
         owner.docker = ['docker']
         owner.review_sha256 = 'd' * 64
-        owner.config = {'fixture': True}
+        owner.config = {'fixture': True, 'deadline_policy': execution.deadline_policy()}
         owner.observation_registration = SimpleNamespace()
         # Runtime admission/source authentication is separately tested by actual
         # constructor controls; this fixture isolates the retained-reader path.
         owner.current = lambda freeze=None: None
         owner.observation_registration = SyntheticRegistration()
-        owner._retain('config.json', b'{"fixture":true}')
+        owner._retain('config.json', execution.encoded(owner.config))
         self.owner = owner
         self.created, expected = created_fixture(inputs=True)
         self.cid = expected['container_id']
@@ -252,7 +256,7 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
             StartedAt='2026-10-04T00:00:01.000000001Z')
         owner._retain('session-ready.bin', execution._READY)
         self.engine('session-ready', first=True)
-        self.capture('session-ready')
+        self.capture('session-ready', eligible=ready_eligibility)
         owner._retain('session-ready-ack.json', execution.encoded({'request': 'ready\n'}))
 
     def command(self, label, argv, raw):
@@ -284,7 +288,35 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
             'runtime': owner.runtime, 'runtime_sha256': execution.digest(owner.runtime)}))
         owner._retain(label + '-staging-' + side + '.json', execution.encoded(self.stage))
 
-    def capture(self, label, files=None):
+    def eligibility_record(self, label, phase, members):
+        # Synthetic reviewer fixtures can exercise the reader's provenance
+        # checks. These bytes never claim a real timed or physical execution.
+        return {'policy_id': execution.DEADLINE_POLICY_ID,
+            'policy_sha256': execution.digest(execution.deadline_policy()),
+            'binding_sha256': execution.digest(asdict(self.owner.binding)),
+            'phase': phase, 'label': label,
+            'originals': {name: execution.sha(self.owner.read_authenticated(name)) for name in members},
+            'decision': 'eligible'}
+
+    def eligibility(self, label, phase, members):
+        self.owner._retain(label + '-eligible.json', execution.encoded(
+            self.eligibility_record(label, phase, members)))
+
+    def capture_eligibility(self, label):
+        phase = 'session-ready' if label == 'session-ready' else label.split('-boundary-')[0].split('-result')[0]
+        self.eligibility(label + '-capture', phase, (label + '-capture.json', label + '-unpause.json',
+            label + '-runtime-after-verified.json', label + '-staging-after.json'))
+
+    def response_eligibility(self, phase):
+        self.eligibility(phase + '-result-response', phase, (phase + '-result-exec-verified.json',
+            phase + '-result-runtime-after-verified.json', phase + '-result-staging-after.json',
+            phase + '-response.bin'))
+
+    def completion_eligibility(self, phase):
+        self.eligibility(phase + '-completion', phase, (phase + '-result-response-eligible.json',
+            phase + '-result-capture-eligible.json', phase + '-response.bin'))
+
+    def capture(self, label, files=None, *, eligible=True, response_eligible=True):
         self.command(label + '-pause', ['docker', 'pause', self.cid], self.cid.encode())
         self.command(label + '-state', ['docker', 'inspect', '--format', '{{json .}}', self.cid], execution.encoded(self.running))
         output = io.BytesIO()
@@ -309,8 +341,15 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         self.command(label + '-capture', ['docker', 'cp', self.cid + ':/tmp', '-'], output.getvalue())
         self.command(label + '-unpause', ['docker', 'unpause', self.cid], self.cid.encode())
         self.guard(label, 'after')
+        # Mirror the producer's finally order: result-source guards can support
+        # a response even when its later physical capture is unavailable.
+        if label.endswith('-result') and response_eligible:
+            self.response_eligibility(label.removesuffix('-result'))
+        if eligible:
+            self.capture_eligibility(label)
 
-    def call(self, index, value, *, pid=17, capture=True, after=True):
+    def call(self, index, value, *, pid=17, capture=True, after=True,
+            response_eligible=True, capture_eligible=True, completion_eligible=True, next_ack=True):
         owner = self.owner
         phase = owner.profile.phases[index]
         owner._retain(phase + '-runtime-before-verified.json', execution.encoded({'runtime': owner.runtime, 'runtime_sha256': execution.digest(owner.runtime)}))
@@ -321,14 +360,161 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         owner._retain(phase + '-response.bin', raw)
         self.engine(phase + '-result', pid=pid)
         if capture:
-            self.capture(phase + '-result')
-            owner._retain(phase + '-next.json', execution.encoded({'request': 'next:' + phase + '\n'}))
+            self.capture(phase + '-result', eligible=capture_eligible, response_eligible=response_eligible)
+            if response_eligible and capture_eligible and completion_eligible:
+                self.completion_eligibility(phase)
+            if next_ack:
+                owner._retain(phase + '-next.json', execution.encoded({'request': 'next:' + phase + '\n'}))
         else:
             self.guard(phase + '-result', 'after')
+            if response_eligible:
+                self.response_eligibility(phase)
         if after:
             owner._retain(phase + '-runtime-after-verified.json', execution.encoded({'runtime': owner.runtime, 'runtime_sha256': execution.digest(owner.runtime)}))
             owner._retain(phase + '-staging-after.json', execution.encoded(self.stage))
         return raw
+
+    def test_raw_complete_answer_without_response_eligibility_is_unavailable(self):
+        raw = self.call(0, profile.expected_for(self.owner.profile.case_id, 0),
+            response_eligible=False, next_ack=False)
+        owner = self.owner
+        record = {'natural_exit': False, 'exit_code': None, 'capture_complete': True,
+            'timed_out': True, 'errors': ['synthetic deadline-tail fixture'], 'requests': ['call-000']}
+        for kind, data in (('stdout', execution._READY + raw), ('stderr', b'')):
+            name = 'session-' + kind + '.bin'
+            owner._retain_blob(name, data)
+            record[kind] = {'path': name, 'sha256': execution.sha(data), 'bytes': len(data),
+                'observed_bytes': len(data), 'truncated': False}
+        owner._retain('session.json', execution.encoded(record))
+        # A complete drained answer after a deadline is useful diagnostics. Its
+        # content and a capture marker cannot replace response eligibility.
+        result = observer.reconstruct(owner)
+        self.assertFalse(result['phase_facts'][0]['response_authenticated'])
+        self.assertIn('call-000-result-response-eligible.json', result['phase_facts'][0]['reason'])
+        first = [row for row in result['projection']['observations'] if row['call_index'] == 0]
+        self.assertEqual({row['disposition'] for row in first}, {'unavailable'})
+        self.assertEqual(result['mechanics']['status'], 'infrastructure_error')
+
+    def test_prior_eligible_failure_survives_later_ineligible_answer(self):
+        self.call(0, {'wrong': True})
+        self.call(1, profile.expected_for(self.owner.profile.case_id, 1),
+            response_eligible=False, next_ack=False)
+        result = observer.reconstruct(self.owner)
+        self.assertEqual(result['projection']['observations'][0]['disposition'], 'fail')
+        self.assertEqual([row['response_authenticated'] for row in result['phase_facts']], [True, False, False])
+        self.assertIn('call-001-result-response-eligible.json', result['phase_facts'][1]['reason'])
+        later = [row for row in result['projection']['observations'] if row['call_index'] > 0]
+        self.assertEqual({row['disposition'] for row in later}, {'unavailable'})
+
+    def test_eligible_response_survives_missing_capture_or_completion_eligibility(self):
+        for missing in ('capture', 'completion'):
+            with self.subTest(missing=missing):
+                self.prepare_owner()
+                self.call(0, {'wrong': True}, capture_eligible=missing != 'capture',
+                    completion_eligible=missing != 'completion', next_ack=False)
+                result = observer.reconstruct(self.owner)
+                self.assertTrue(result['phase_facts'][0]['response_authenticated'])
+                self.assertFalse(result['phase_facts'][0]['capture_authenticated'])
+                name = 'call-000-' + ('result-capture' if missing == 'capture' else 'completion') + '-eligible.json'
+                self.assertIn(name, result['phase_facts'][0]['reason'])
+                self.assertEqual(result['projection']['observations'][0]['disposition'], 'fail')
+                self.assertEqual(result['mechanics']['status'], 'infrastructure_error')
+
+    def test_eligibility_exact_policy_binding_phase_and_originals_are_required(self):
+        owner, member = self.owner, 'eligibility-fixture-original.bin'
+        owner._retain(member, b'one acknowledged original')
+        changes = (
+            ('policy_id', 'other-policy'), ('policy_sha256', '1' * 64),
+            ('binding_sha256', '2' * 64), ('phase', 'call-001'), ('label', 'other-label'),
+            ('originals', {member: '3' * 64}), ('originals', {}),
+            ('decision', 'timed-out'), ('diagnostic_elapsed_seconds', 0),
+        )
+        for index, (field, value) in enumerate(changes):
+            with self.subTest(field=field, value=value):
+                label = 'mutation-%03d' % index
+                record = self.eligibility_record(label, 'call-000', (member,))
+                record[field] = value
+                owner._retain(label + '-eligible.json', execution.encoded(record))
+                with self.assertRaisesRegex(observer.AuthorityError, 'deadline eligibility differs'):
+                    observer._eligibility(owner, label, 'call-000', (member,))
+
+    def test_eligibility_cannot_precede_original_or_replace_missing_original(self):
+        owner, label, member = self.owner, 'early', 'later-original.bin'
+        raw = b'known bytes still must precede the decision'
+        record = self.eligibility_record(label, 'call-000', ())
+        record['originals'] = {member: execution.sha(raw)}
+        owner._retain(label + '-eligible.json', execution.encoded(record))
+        with self.assertRaises(observer.AuthorityUnavailable):
+            observer._eligibility(owner, label, 'call-000', (member,))
+        owner._retain(member, raw)
+        with self.assertRaisesRegex(observer.AuthorityError, 'eligibility precedes its required originals'):
+            observer._eligibility(owner, label, 'call-000', (member,))
+        with self.assertRaises(observer.AuthorityUnavailable):
+            observer._eligibility(owner, 'absent-marker', 'call-000', (member,))
+
+    def test_corrupted_acknowledged_eligibility_is_fatal_not_missing_tail(self):
+        self.call(0, {'wrong': True})
+        self.owner.checkpoint()
+        (self.owner.root / 'call-000-result-response-eligible.json').write_bytes(b'{"decision":"eligible"}')
+        with self.assertRaises((chain.ChainError, chain.ChainUnknown)):
+            observer.reconstruct(self.owner)
+
+    def test_timing_sidecar_absence_content_and_write_failure_do_not_change_projection(self):
+        self.call(0, {'wrong': True})
+        owner = self.owner
+        before = observer.reconstruct(owner)
+        checkpoint = owner.checkpoint()
+        owner._flush_timings({'execution_id': 'fixture-execution'})
+        self.assertIsNone(owner.diagnostic_error)
+        self.assertIsNotNone(owner.diagnostic_path)
+        path = Path(owner.diagnostic_path)
+        self.assertEqual(path.parent, owner.root.parent)
+        self.assertFalse(owner.has_retained(path.name))
+        self.assertEqual(observer.reconstruct(owner), before)
+        # Even contradictory or malformed diagnostic bytes are not grader input.
+        path.write_bytes(b'{"decision":"timed-out","whole_project_acceptance":true}')
+        self.assertEqual(observer.reconstruct(owner), before)
+        path.write_bytes(b'not JSON')
+        self.assertEqual(observer.reconstruct(owner), before)
+        owner._flush_timings({'execution_id': 'fixture-execution'})
+        self.assertEqual(owner.diagnostic_error, 'FileExistsError')
+        self.assertEqual(path.read_bytes(), b'not JSON')
+        self.assertEqual(observer.reconstruct(owner), before)
+        path.unlink()
+        self.assertEqual(observer.reconstruct(owner), before)
+        self.assertEqual(owner.checkpoint(), checkpoint)
+
+    def test_completion_eligibility_after_next_is_fatal(self):
+        self.call(0, {'wrong': True}, completion_eligible=False)
+        self.completion_eligibility('call-000')
+        with self.assertRaisesRegex(observer.AuthorityError, 'Next precedes completion eligibility'):
+            observer.reconstruct(self.owner)
+
+    def test_ready_capture_eligibility_after_ready_ack_is_fatal(self):
+        self.prepare_owner(ready_eligibility=False)
+        self.capture_eligibility('session-ready')
+        with self.assertRaisesRegex(observer.AuthorityError, 'Ready acknowledgement precedes capture eligibility'):
+            observer.reconstruct(self.owner)
+
+    def test_boundary_capture_eligibility_after_resume_is_fatal(self):
+        owner, phase = self.owner, 'call-000'
+        self.guard(phase, 'before')
+        owner._retain(phase + '-request.json', execution.encoded({'request': phase + '\n'}))
+        event = {'kind': 'boundary', 'phase': phase, 'ordinal': 0, 'boundary': 'initial', 'occurrence': 0,
+            'paths': {'root': None, 'database': None}, 'path_origins': {'root': None, 'database': None}}
+        owner._retain(phase + '-frame-000.bin', execution.encoded(event) + b'\n')
+        label = phase + '-boundary-000'
+        self.engine(label)
+        owner._retain(label + '-event.json', execution.encoded(event))
+        path_facts = execution.encoded({'root': None, 'database': None})
+        self.command(label + '-paths', ['docker', 'exec', '--user', '65534:65534', self.cid,
+            'python', '-I', '-B', '/checks/workflow_paths.py', execution.encoded(event['paths']).decode('ascii')], path_facts)
+        owner._retain(label + '-path-facts.json', path_facts)
+        self.capture(label, eligible=False)
+        owner._retain(phase + '-resume-000.json', execution.encoded({'request': 'resume:' + phase + ':0\n'}))
+        self.capture_eligibility(label)
+        with self.assertRaisesRegex(observer.AuthorityError, 'Boundary resume precedes capture eligibility'):
+            observer.reconstruct(owner)
 
     def test_actual_reader_keeps_known_false_and_complete_missing_denominator(self):
         self.call(0, {'wrong': True})
@@ -415,13 +601,21 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         self.command(label + '-paths', ['docker', 'exec', '--user', '65534:65534', self.cid,
             'python', '-I', '-B', '/checks/workflow_paths.py', execution.encoded(event['paths']).decode('ascii')], path_facts)
         owner._retain(label + '-path-facts.json', path_facts)
-        self.capture(label, {'one/' + name: raw for name, raw in files.items()})
+        self.capture(label, {'one/' + name: raw for name, raw in files.items()}, eligible=False)
+        # Raw physical bytes without their required deadline decision cannot
+        # establish either clean storage or this deliberately injected orphan.
+        missing = observer.reconstruct(owner)
+        prefix = 'WF19-provisional-fault-boundary:call-000:capture:'
+        rows = {row['case_id']: row['disposition'] for row in missing['projection']['observations']}
+        self.assertEqual(rows[prefix + 'post_fault:blobs'], 'unavailable')
+        self.assertEqual(missing['phase_facts'][0]['boundary_facts'], [])
+        self.assertIn(label + '-capture-eligible.json', missing['phase_facts'][0]['reason'])
+        self.capture_eligibility(label)
         # No resume, later boundary, response, whole-call-after, or terminal.
         # Every supplied fact is synthetic and fixture-only, but the reader,
         # journals, exact point selection, SQLite decoder and scorer are real.
         result = observer.reconstruct(owner)
         rows = {row['case_id']: row['disposition'] for row in result['projection']['observations']}
-        prefix = 'WF19-provisional-fault-boundary:call-000:capture:'
         self.assertEqual(rows[prefix + 'post_fault:blobs'], 'fail')
         self.assertEqual(rows[prefix + 'post_fault:documents'], 'pass')
         self.assertEqual(rows[prefix + 'reopened:blobs'], 'unavailable')
@@ -458,6 +652,7 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
                     owner._retain(phase + '-response.bin', raw)
                     self.engine(phase + '-result')
                     self.capture(phase + '-result')
+                    self.completion_eligibility(phase)
                     owner._retain(phase + '-next.json', execution.encoded({'request': 'next:' + phase + '\n'}))
                     self.guard(phase, 'after')
                 else:

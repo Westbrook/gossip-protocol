@@ -1,0 +1,206 @@
+{
+  "protocol": "workflow-deadline-development-checkpoint-v1",
+  "created_utc": "2026-10-04T23:20:09.108962+00:00",
+  "base_commit": "2ad8e36c73986b1b2e55de3582d5e869ee1f61e7",
+  "status": "implemented; full affected offline gate failed at integration fixture; not physical-qualified or live-ready",
+  "sources": {
+    "gossip_harness/candidate_storage_product_execution_v1.py": "7763de068a0e679d2c27d6632dc42dfb44fa98f74ec4f16d53df34f4285d1367",
+    "gossip_harness/candidate_workflow_execution_v1.py": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134",
+    "gossip_harness/candidate_workflow_observation_v1.py": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657",
+    "tests/test_candidate_storage_product_execution_v1.py": "3eafbce89092d8b69ca45b3e1b2c895c0134ec0ae2a1f47f65de5312870d8ee2",
+    "tests/test_candidate_workflow_execution_v1.py": "f1213f9ebce8ea27ce79911c1fc5da0b75eb4a293d8aba92daee4c98885a1b73",
+    "tests/test_candidate_workflow_observation_v1.py": "9e59f8b2bda42d83f6d73c7c124a0f528e28ff6238701b8804855b47a0bbecc8"
+  },
+  "change": {
+    "deadline_policy": "workflow-absolute-deadline-enforcement-v2",
+    "call_seconds": 30,
+    "history_seconds": 300,
+    "changes": [
+      "One absolute call/history window governs dispatch, capture, control waits and frame eligibility.",
+      "Authenticated required-original eligibility records preserve earlier proven mismatches but reject late or unqualified evidence.",
+      "Finite inclusive timing spans are diagnostic-only in a bounded separate sidecar.",
+      "Shared command transport receives default-compatible deadline extension hooks; frozen process V4 and retention bytes remain unchanged."
+    ],
+    "guards": "No source/admission/CAS/capture guard removal, timeout widening, batched journal-reader opt-in, or cache added.",
+    "new_regression_methods": 21
+  },
+  "source_reviews": [
+    {
+      "path": "/private/tmp/gossip-workflow-deadline-source-review-2.json",
+      "sha256": "6fcc9367169ba4b63d41bc23972ccbea9baeccbe1a1a7eabab722902e79df778",
+      "scope": "Production hold3 source clearance; no runtime claim."
+    },
+    {
+      "path": "/private/tmp/gossip-workflow-deadline-correction-1/holds/execution-tests-2/handoff.json",
+      "sha256": "478eb896898388208d4272d283c0024edd3532c1f48dc213f99cb83e93017987",
+      "scope": "Faithful membership fixture correction; assertions unchanged."
+    },
+    {
+      "path": "/private/tmp/gossip-workflow-deadline-correction-1/holds/execution-tests-3/handoff.json",
+      "sha256": "d7fa08bbb826ec52d145d5dcfd4ba10d345727ef2ef9d7c7a194f6c4c7b4733f",
+      "scope": "Faithful record writer fixture correction; assertions unchanged."
+    }
+  ],
+  "completed_attempts": [
+    {
+      "path": "runs/workflow-deadline-offline-1/20261004T224446-03ea5f71",
+      "status": "failed",
+      "selected_total": 131,
+      "outcomes": {
+        "not_run": 131
+      },
+      "workers_started": 0,
+      "reused_classes": 0,
+      "duration_seconds": 5.0678500002250075,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static_status": "failed",
+      "artifacts": {
+        "summary.json": "13e68fd66024935d56e4e45aa866e1f9eddbfbba00dbeb91617c51c125390b80",
+        "static.json": "1b26f91fad8c5fcd87eb8c5dd961760c21677edb49c7c026bbe69c9ff5f5dc65",
+        "inputs.json": "b400598ee3ee1b3a7d2174a3000f9e3ad9aaf994dd6f996071d09d2e4896657a",
+        "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+      }
+    },
+    {
+      "path": "runs/workflow-deadline-offline-2/20261004T225006-0d6f066c",
+      "status": "failed",
+      "selected_total": 131,
+      "outcomes": {
+        "error": 1,
+        "not_run": 61,
+        "passed": 69
+      },
+      "workers_started": 6,
+      "reused_classes": 0,
+      "duration_seconds": 24.199384208768606,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static_status": "passed",
+      "artifacts": {
+        "summary.json": "cefd089139d98361d5d16bff8afeaa4c77d9a77668eb0ed360d37bfc4461a780",
+        "static.json": "9137821ed4c3c1813770ce81ecf807c1e54a291074056c286b2b427349007daa",
+        "inputs.json": "ddcc46855b02188b95cd4475aff14c382060306bac6009cbf10e7f3b167e4278",
+        "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+      }
+    },
+    {
+      "path": "runs/workflow-deadline-offline-3/20261004T225329-2d99b3c8",
+      "status": "failed",
+      "selected_total": 131,
+      "outcomes": {
+        "error": 1,
+        "not_run": 24,
+        "passed": 106
+      },
+      "workers_started": 8,
+      "reused_classes": 0,
+      "duration_seconds": 48.81382495816797,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static_status": "passed",
+      "artifacts": {
+        "summary.json": "c3d6509690215137f7e37055290ff63257a53f3e60e01787a942a18474d6ed3d",
+        "static.json": "9b2c96fa524feb41468e54ef1f02f171fe6f98b215d3de3c4814643f121742c9",
+        "inputs.json": "2b629146dfaec3d4f5202fa1835bac59f958dab79ecacdca34ebf8410fc3426a",
+        "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+      }
+    },
+    {
+      "path": "runs/workflow-deadline-offline-4/20261004T225749-7269328f",
+      "status": "passed",
+      "selected_total": 29,
+      "outcomes": {
+        "passed": 29
+      },
+      "workers_started": 1,
+      "reused_classes": 0,
+      "duration_seconds": 49.43397470749915,
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static_status": "passed",
+      "artifacts": {
+        "summary.json": "6ba7143516e3338f6bc1a1000d154ca0ee46238264e68b6ef89bad6ad232fddd",
+        "static.json": "f61ec4c6a1c122e700e64dc01220176feca11da5e2e54bf06183c8254415a7d1",
+        "inputs.json": "f99cfe41764db43b140661347fec6b2ce1165e9d1843b2322d92f6367e06e964",
+        "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+      }
+    }
+  ],
+  "current_full_gate": {
+    "path": "runs/workflow-deadline-offline-4/20261004T225916-ebdb6690",
+    "selected_methods": 647,
+    "classes": 63,
+    "lanes": {
+      "fast": 495,
+      "git": 152
+    },
+    "status": "failed",
+    "reuse": "One29-method successful storage class reused from exact matching nearest receipt; other executed workers were fresh. Infrastructure failure is not reusable correctness evidence.",
+    "selection_path": "/private/tmp/workflow-deadline-full-selection-1.json",
+    "selection_sha256": "d51f74ec09c7d9ce21602781914aa73139dc9b8bc71b5334aed6334712281e33",
+    "inventory_path": "/private/tmp/workflow-deadline-full-inventory-1.json",
+    "inventory_sha256": "c68ebc3a010f94ae328597485a31efbd5d8cedf160e0acbe7cb3718165d98287",
+    "outcomes": {
+      "error": 1,
+      "not_run": 12,
+      "passed": 634
+    },
+    "workers_started": 62,
+    "reused_classes": 1,
+    "physically_passed_methods": 605,
+    "reused_passed_methods": 29,
+    "duration_seconds": 1078.5316152088344,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static_status": "passed",
+    "artifacts": {
+      "summary.json": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e",
+      "static.json": "e79b0cb1870fa62fd184de492d3b9f80228b5d02b25dfbce397c42f768e22f3e",
+      "inputs.json": "f99cfe41764db43b140661347fec6b2ce1165e9d1843b2322d92f6367e06e964",
+      "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+    },
+    "failure": {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+      "test": "test_actual_product_export_cold_raw_observer_retains_failure_and_refuses_closed_source",
+      "error": "AttributeError: _InjectedWorkflowOriginals has no capture_eligibility",
+      "scope": "Existing injected original fixture borrows updated capture helper; exact helper and marker contract repair required. Production enforcement not relaxed.",
+      "remaining_methods_in_failed_class": 12
+    }
+  },
+  "required_remaining": [
+    "Correct integration fixture eligibility helper/marker contract, then terminal full647 affected offline pass and current-source receipt audit.",
+    "38 workflow Docker controls and six precise inherited storage/M2 Docker controls.",
+    "Full accepted-family coverage, complete matching rehearsal and independent future study acceptance remain separate."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "last_live_finished_utc": "2026-10-02T20:51:58.734056+00:00",
+    "status_artifact": "analysis/scientific-evidence-status-20261004.json",
+    "claim": "No new evidence of live gossip or20-role quality superiority. Offline mechanism checks are not scientific samples."
+  },
+  "publication": "Local checkpoint only. No public Git/provider transfer attempted; prior explicit disclosure decisions still pending.",
+  "nearest_audit": {
+    "path": "analysis/workflow-deadline-nearest-audit-v1.json",
+    "sha256": "8bc9471f70d68a74c6b080f34401e3b2c1cbb741fdcdf57019c322a19be611e0",
+    "scope": "Current729source identity and nearest29 pass only; not full647."
+  },
+  "full_failure_audit": {
+    "path": "analysis/workflow-deadline-full-failure-audit-v1.json",
+    "status": "Independent integrity audit passed; qualification remains failed/incomplete.",
+    "sha256": "0ac1011b8560f91cee8929ea326967ed25a1e98e97f5df74ca07b5cf4df66efe",
+    "integrity_checks": 455,
+    "meaning": "Read-only evidence integrity checks, not additional runtime tests."
+  },
+  "next_action": "Audit and commit this honestly incomplete development cycle; then correct the injected fixture, run its required nearest gate and full647 affected gate before physical controls.",
+  "interim_count_correction": "Terminal counts supersede progress snapshots. Counting completed class records is not counting passed methods: a stopped class can include not_run entries.",
+  "next_fixture_correction": {
+    "handoff": "/private/tmp/workflow-deadline-composition-fixture-1/hold-1/handoff.json",
+    "handoff_sha256": "ef17b002937d0b513c07b48099578466f2649fae66e4d39630770e7b52d57a3a",
+    "path": "tests/test_cumulative_workflow_composition_v1.py",
+    "before_sha256": "2e10be0e674e7c52dc31251295ff14ba5b26a56572ad74c44179f3596f08baad",
+    "after_sha256": "c0cfab274475c9fd4b4b39e1854a36ee9a63f6eb3e496d112561fee8731c9c6b",
+    "state": "Source-reviewed immutable draft, not installed or qualified by this checkpoint.",
+    "scope": "Five transitive helper delegates and completion eligibility before next; all26 test bodies unchanged."
+  }
+}
