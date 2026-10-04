@@ -414,7 +414,8 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
                 require(type(path_facts) is dict and set(path_facts) == {'root', 'database'}, 'Path facts inventory differs')
                 captured, previous = _capture(owner, label, container_id, name, volume, prestart_value, previous)
                 row: dict[str, Any] = {'event': event, 'path_facts': path_facts, 'meaning': point.meaning,
-                    'capture_manifest': admission.source_manifest(captured), 'storage': None, 'storage_unavailable': None}
+                    'capture_manifest': admission.source_manifest(captured) if captured else [],
+                    'storage': None, 'storage_unavailable': None}
                 try:
                     row['storage'] = captured_state(captured, event['paths'], owner.plan)
                 except AuthorityUnavailable as error:

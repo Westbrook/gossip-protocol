@@ -1,0 +1,635 @@
+{
+  "protocol": "workflow-family-offline-qualification-v1",
+  "created_at_utc": "2026-10-04T21:56:55.598435+00:00",
+  "status": "affected_offline_checks_passed",
+  "base_commit": "7f372c3865d2bfaef83fd1fa0dd4e238d251e8b7",
+  "source_overlays": [
+    {
+      "path": "gossip_harness/candidate_workflow_observation_v1.py",
+      "sha256": "52c6ae8041f908e0802c68638d1505f6caca4ede0703f60cad80cfba9e411f4d"
+    },
+    {
+      "path": "tests/test_candidate_workflow_observation_v1.py",
+      "sha256": "b07583fbb1e00194a36d9c65d5ec72fc2a5299e10d915e84443f1d49447caf13"
+    }
+  ],
+  "summary": "runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+  "pins": {
+    "summary.json": "2af199f7571603189cc6451e06bc20eaf700bc7c2e4fca19d801cb915cedf940",
+    "static.json": "8a1070efc57a10aa6758428c4acb87e936c1bf6d667653b3e512488b4ea8ce07",
+    "inputs.json": "85ab3771b8b03950710e80befde9d805647a3103bf6d267eb911f5a89c5fba36",
+    "runtime-final.json": "96a63e255b17cf5880b5ccd68d6104cb9e0e251f905abfcf74a300b907073034"
+  },
+  "selected_methods": 555,
+  "selected_classes": 59,
+  "fresh_methods": 555,
+  "reused_methods": 0,
+  "reused_classes": 0,
+  "duration_seconds": 1388.9986591665074,
+  "fingerprint": "acfa3dd2c439e0dc8d976254020588fc809e5865dd03547d65cbd3d936168055",
+  "cache_disposition": "Reuse was requested but correctly declined: controller launcher environment hash differs from nearest run; all555methods executed fresh. No runtime binding was weakened.",
+  "original_nearest_summary": "runs/workflow-family-offline-8/20261004T212303-99a60759/summary.json",
+  "original_nearest_summary_sha256": "1af502bf684e83228f1aa0bd6b91e75c5b391e453f5e3826929fe09b5aafc9fe",
+  "rows": [
+    {
+      "class": "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingV2Tests",
+      "lane": "fast",
+      "methods": 10,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/4fa23d7a9d922b1a/result.json",
+      "evidence_sha256": "f1c340efe4773011d873667ff88d0316e14735b668cdab4a6c5a151ab9eaf8d9",
+      "log_sha256": "fc9c81b16674f888653b34f3e6ede90e680f567fd7ce49c036cba8f47fc63cdc"
+    },
+    {
+      "class": "tests/test_candidate_map_a_physical_v1.py::MapAPhysicalDefinitionV1Tests",
+      "lane": "fast",
+      "methods": 5,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/8b05a50bb517116c/result.json",
+      "evidence_sha256": "6e6b32a9b05da329b9b3807582fe7a185d301c9d1108fc7f555e6a21fc38dd87",
+      "log_sha256": "945ca2e59837f2b707187577efd76dc1645c52081442ab1c7a56dd2af35ffd14"
+    },
+    {
+      "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+      "lane": "fast",
+      "methods": 12,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/cdb18e35e74521c2/result.json",
+      "evidence_sha256": "5578ecf17602f9f91ea3a533360155aae76f3da6240e380589c14e903e8af6ea",
+      "log_sha256": "c0ead057d2d507fb9f6f06b77dd1f880af23e32768d49c003554d493e0c12991"
+    },
+    {
+      "class": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingTests",
+      "lane": "fast",
+      "methods": 8,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/1402d2e93fbf0f7f/result.json",
+      "evidence_sha256": "86a486ecc9caa6fb67a224030e71e5b3f3a741fbe0bfceaf4535dcaa3c0e0957",
+      "log_sha256": "82929f0a3a3a98e9ccf7c98cc7f24b7d839e658df3d1bfe9c81270db50b6fde0"
+    },
+    {
+      "class": "tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests",
+      "lane": "fast",
+      "methods": 17,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/4f9d355d689db91d/result.json",
+      "evidence_sha256": "76584e723708af9b65073955858b77b783d66092382d600bd7783ebe8c14232f",
+      "log_sha256": "eb2eee5426a9e289b592c35a7f8b223ffbf41c09823f6e587c813ee1da00ac19"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests",
+      "lane": "fast",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/448ac036db494738/result.json",
+      "evidence_sha256": "3f24bbb71c0deafa87c1576190b25f09b21dea4116146f10682c64f848a8a3be",
+      "log_sha256": "d4c83b3cf36edce0f2f386e0d6c5b8775e5da866ccf37ac23968d485159f884f"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests",
+      "lane": "fast",
+      "methods": 10,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/678fd049690c93c8/result.json",
+      "evidence_sha256": "a7703f50a119bedd2d6821de900d53728243c8f88289e8180b97576919d8380f",
+      "log_sha256": "b89efee732536df62a42886e28ff945e3c46770438e66e6f1f2e9ca6b70fd04e"
+    },
+    {
+      "class": "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests",
+      "lane": "fast",
+      "methods": 8,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/3b8451d293c32f2b/result.json",
+      "evidence_sha256": "c5db993f0365816b933ce1caf39215a04fbb97dcaf855d4365e8d93352a3435c",
+      "log_sha256": "b29265a1adbba434e6f31f711584c5e968da168c3033693e0cdcaca77b81345c"
+    },
+    {
+      "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefinitionTests",
+      "lane": "fast",
+      "methods": 3,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/35e355519c4e2ab4/result.json",
+      "evidence_sha256": "7bf76d93a97207f6e742da78cc95f4478465e1d9d2a3e263167e333f0c61d10c",
+      "log_sha256": "4ece86160a3022ea724a945dd7fc024af02ede0d1ebe91f703c0f47663304f7e"
+    },
+    {
+      "class": "tests/test_candidate_workflow_profile_v1.py::CandidateWorkflowDefinitionTests",
+      "lane": "fast",
+      "methods": 18,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/ac8ab47caced9406/result.json",
+      "evidence_sha256": "c62e9a39a380fcbbabce418093e8904b536e25e96646d536d4b929d796857a90",
+      "log_sha256": "fc74cccd453ac7af4b3c6c3ec6e2bec4e88bf97497c369b190d8372e67ea8676"
+    },
+    {
+      "class": "tests/test_candidate_workflow_review_v1.py::CandidateWorkflowReviewTests",
+      "lane": "fast",
+      "methods": 15,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/613eacf17634b74b/result.json",
+      "evidence_sha256": "79d6eb1162d4460bf3bf6ea4d02f0e8d5763840e8fe0db2a0fd8dc213da11e09",
+      "log_sha256": "6dc0aeaef1cc31ccaf5361ff87097171a1e81c2d32311ef8914060c2cd180d82"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests",
+      "lane": "fast",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/8aab5be3262f2b66/result.json",
+      "evidence_sha256": "64d6a4bf0665712bf06c1154d6faa9651238b1d08dab3a97db7cbc45ce5b277e",
+      "log_sha256": "eab4a4832ffb4662b813be4a788f251a02f583c3b1923125d0cf9ea90646c12c"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests",
+      "lane": "fast",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/5b8347df6623aa9c/result.json",
+      "evidence_sha256": "bf8970249ce31bdec0b9a829137d5dea32fdc5b6eb893414ed6541e24bce5a06",
+      "log_sha256": "02275497ce5889f7a20f220d6b88801f268c04c60e99dbbf19c7aa578897bbde"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests",
+      "lane": "fast",
+      "methods": 7,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/ec4ee99e1b684962/result.json",
+      "evidence_sha256": "696b0c6c618efe8e311e559a81178bc7264ae6c589b0d86fb404afe26c1f140f",
+      "log_sha256": "219f08d81aad9e457df52f081405aded99de5e4bae86fa7b51b0899f81025083"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests",
+      "lane": "fast",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/a2e7266c76d5bf90/result.json",
+      "evidence_sha256": "86a53b9a7dc02de34253deb7df905e7f794d34a2ec025763971142de5e36459d",
+      "log_sha256": "c010dd309c86317db02c8b075aa59fa46fe3e09c92926337d07cbbc23476e89c"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+      "lane": "fast",
+      "methods": 24,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/3bc02430e1fbe35b/result.json",
+      "evidence_sha256": "a2aed9bf51e96255d2fbb3db6dd0266b740bdb6b49da1903bd2cc6c315eac91a",
+      "log_sha256": "ba2da8d9263e34556bd502afb4aa312d00e15ea046e51761e01f7308e20f913c"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests",
+      "lane": "fast",
+      "methods": 13,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/251e4d47bc2080a0/result.json",
+      "evidence_sha256": "aec8408be84150ff8edc3d567105c1aa0de8e3cf8d095619b09e5634c616a2f1",
+      "log_sha256": "46b31d7becb5614a2c43dd569dfb8e7790347b0d73d655c4f587fff16ae3bb58"
+    },
+    {
+      "class": "tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests",
+      "lane": "fast",
+      "methods": 13,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/7f47cad0b71f6406/result.json",
+      "evidence_sha256": "0aca1f0788979cc0dbc8e60bd1b1057aebdfde2096e7c392ce115aa5315a44d1",
+      "log_sha256": "9804bb816b9831166526159ba5cdaf873d167e31f1c04bf15a3e96dbdc1bbe6e"
+    },
+    {
+      "class": "tests/test_cumulative_final_originals_v1.py::CumulativeFinalOriginalsV1Tests",
+      "lane": "fast",
+      "methods": 11,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/46c49ace16992790/result.json",
+      "evidence_sha256": "44a072903f977f49b8d754ecc7641470ac1cb417f641aa796c702f6318a8b4b9",
+      "log_sha256": "be62683e9f01ce966cedb586e509b09a2f30447186eadbdc05bfa9819aa31bcf"
+    },
+    {
+      "class": "tests/test_cumulative_finite_http_mapping_v1.py::CumulativeFiniteHttpMappingV1Tests",
+      "lane": "fast",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/a3f751593223cd71/result.json",
+      "evidence_sha256": "643aec6bed0be7c002923f359b9da599ff62ad26324095c44a250bb7cd9eda4d",
+      "log_sha256": "9a16a12b66e3313984b495ef1440c76f336761f09ae798fa713a12fb80cbfa18"
+    },
+    {
+      "class": "tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests",
+      "lane": "fast",
+      "methods": 5,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/61069cad5b1f9a77/result.json",
+      "evidence_sha256": "69c4f9349f47d1e37aa365c2c06f6979ea38e22eee58f4a494c8693b33fd98fa",
+      "log_sha256": "d460c68a49d03583f63cc027816ef3a058630953580c0224da2cba25c2223629"
+    },
+    {
+      "class": "tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests",
+      "lane": "fast",
+      "methods": 22,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/90a5e55e0873d184/result.json",
+      "evidence_sha256": "c7ee3ea8dba22a8b9cf19995d093cdf4b6439407429a53f5a3785ff7c62672c3",
+      "log_sha256": "05d367f56798de1acc8b4a5e7c8f7d122cb1eb56a76a235fa28f2770adae888b"
+    },
+    {
+      "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests",
+      "lane": "fast",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/12d979011402205e/result.json",
+      "evidence_sha256": "b8079e6d00516af744da268f03ed902726ac7ac4caef70df2cdfe0ff463619a9",
+      "log_sha256": "8c16f50c1c990d7af524389e50a1c87ada01415a68c57253279144553fc27a71"
+    },
+    {
+      "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests",
+      "lane": "fast",
+      "methods": 13,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/5bfaf90b6a07cdd8/result.json",
+      "evidence_sha256": "e7049654e86d93853673d70fb3fdc25f7fbc391c18123a188a2892270a1c9a7f",
+      "log_sha256": "ad9c0c867d209e087c31f053414c4a6f00fc1f24bdecbfc1743157cdd87212da"
+    },
+    {
+      "class": "tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests",
+      "lane": "fast",
+      "methods": 18,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/a4c6e93133434832/result.json",
+      "evidence_sha256": "a03054dee47b2b1b1a48335da9b91e9da51bfbd97c4a8588a5be58358678c9d6",
+      "log_sha256": "385d9b6171993d6412aa04b1c0a528ce4b32cec3eaf61f9cdec272a7af3f678a"
+    },
+    {
+      "class": "tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests",
+      "lane": "fast",
+      "methods": 19,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/ad25c8a675f56246/result.json",
+      "evidence_sha256": "04f8d0afe0fb6859daa8cbec5d126c232527ab2fbc8263dbc2d4034d36d6a969",
+      "log_sha256": "9e284742bca67cc711efbfb2b11af8b2b7a8a4fa5c16a25f72a9b7448cfa356e"
+    },
+    {
+      "class": "tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests",
+      "lane": "fast",
+      "methods": 14,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/215479b434f72644/result.json",
+      "evidence_sha256": "29f4c62899c8400a7ee6dbb9d476631965700c79fc0db1059f979645283f4fc5",
+      "log_sha256": "9b606ccacd55984d6f5871a6143288826df2c601b825843ef58f3a3897cf8824"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests",
+      "lane": "fast",
+      "methods": 16,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/245f7962c9dd274e/result.json",
+      "evidence_sha256": "8c9ec4fe404dd6ec82907832737472ff33680e14829a038cce5453c7b73bd0f1",
+      "log_sha256": "266ee8df50129edec6c04d4ab8cdbfb0347a7df4326215767382a2e913876581"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests",
+      "lane": "fast",
+      "methods": 7,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/537eee25c415f7e1/result.json",
+      "evidence_sha256": "10b9411e138cf6c72c0ae95b4e3c4c348e5a5763e6224fd4f72b186815ad323e",
+      "log_sha256": "beae2d0b26c37c138b0819d12dc4e9a8edb29c978dec00cd089aa619595499ad"
+    },
+    {
+      "class": "tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests",
+      "lane": "fast",
+      "methods": 7,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/c45003c12fd3ac5b/result.json",
+      "evidence_sha256": "155780c224a3774f89afb61e5469ad30edc8e063078398377191ea30ef62a04d",
+      "log_sha256": "46b69861d9f2627f8a76f7d1d1f4ce89f044d544e2d186da093706f38cfa183b"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests",
+      "lane": "fast",
+      "methods": 32,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/6bfb7381a57990dd/result.json",
+      "evidence_sha256": "5413335661e5ca75b84baf1e96d0c2052509666e530c42ae0f5cb175676eaa4a",
+      "log_sha256": "69fe72ba3a7671889e296ede468653130c75fd12abe568a9f263a32f36999818"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests",
+      "lane": "fast",
+      "methods": 11,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/2954d5f7110f3787/result.json",
+      "evidence_sha256": "cc37dacc656d5000ac5e49df1ec30c9ad05d3e0ffe3d81bb5be90855a124ccd1",
+      "log_sha256": "dcaaced0c8df0b038c2a4bea295069f78e02f10b853988356ef9e786d8670d0d"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests",
+      "lane": "fast",
+      "methods": 1,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/a1face03876c9db4/result.json",
+      "evidence_sha256": "f6cb29b4beb9e0a3903e9f884a00829a6fc29d599eee48d7c1a924b78b8c5b53",
+      "log_sha256": "fe331e0537360093d4291da8bab1e7242d27b160d140414478102292752dde45"
+    },
+    {
+      "class": "tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests",
+      "lane": "fast",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/951a09e78c5a62c8/result.json",
+      "evidence_sha256": "6b46dba1cbe9fbd1352372fe69abcc1a0e6ef47ed55ab8307d02af9c12d4a912",
+      "log_sha256": "6305c67186c28c5ef7dbdfc383af368c198d818ebaa9b6448e2268fc318691ce"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionAuthorityV1Tests",
+      "lane": "fast",
+      "methods": 8,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/87d71fa03efc8e05/result.json",
+      "evidence_sha256": "84edff0d4d4f1ff5e6d5507cda54649bfd39fffcbff87ddbbe06f589a26a2e2b",
+      "log_sha256": "070f93d78e64a152fc7dbae34e548f027f741a7140cde5d3af9dd935af34c95e"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests",
+      "lane": "fast",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/88fb311c1c8ceef8/result.json",
+      "evidence_sha256": "14a15062fad3681c177a11dc34b06fe1ee7b9a878f491d014a86a035af3858a4",
+      "log_sha256": "45f410b658460f5fff17806c2c0a94d5fe013f8e86dae7324a7e75b51981f21d"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests",
+      "lane": "fast",
+      "methods": 3,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/cc4d42c6a5fd8267/result.json",
+      "evidence_sha256": "3c145815d4cd389a4630ed01756742a936e623d2a47a1059d60c127ab35d7394",
+      "log_sha256": "da68a56168d74502d936e99b956fd023ed7a96ee6d2ae8cfc7fb145478a81472"
+    },
+    {
+      "class": "tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests",
+      "lane": "fast",
+      "methods": 14,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/974e42c0178ac61e/result.json",
+      "evidence_sha256": "ac043a0b0a4680d97f2ee3d89d5d2275baf8671199b84c9d661d9efcde78b570",
+      "log_sha256": "1614b9d233bf59b97acaf3d3ecbdbef59670f075efac0689c2e22a7252111333"
+    },
+    {
+      "class": "tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests",
+      "lane": "fast",
+      "methods": 5,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/928ac98022e5d7a2/result.json",
+      "evidence_sha256": "1beba2720babffab2eccd1f6bd93d69a301413943cb11d9298805d43c194d51e",
+      "log_sha256": "08e7334f3f446005d74e1dd24b12fdf4f683857074857685a60f5804c982b8b5"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests",
+      "lane": "fast",
+      "methods": 5,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/cfc4a85363757e61/result.json",
+      "evidence_sha256": "2142a893b363f71a9f3fd87afce8b7404b3475628d0fa9e15be212fda7f2c352",
+      "log_sha256": "176eb1b423a466c6c845403362e24128fcab52f2fce28ceb6dcbeb5377de9ae9"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests",
+      "lane": "fast",
+      "methods": 3,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/d496a96c916d6946/result.json",
+      "evidence_sha256": "52a9bf58f321ab6120e9ac37972cc5c07fb98e608fedd4483defbeb8cba197a8",
+      "log_sha256": "1fb1b6ca7e98aa3db2f2ab1a365da7d89e42daf38ac2944a03176ceecdad3fcc"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests",
+      "lane": "fast",
+      "methods": 2,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/de2f486a072dc568/result.json",
+      "evidence_sha256": "8b6a0cf636c5524d34ab8fbfd28df91a2536c65f0fd82142cbb3000fa6dc8f64",
+      "log_sha256": "2d442a194c7c63347c4f392c3a75a5aed7b891e4beccd3f0f6a03ec59616c595"
+    },
+    {
+      "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests",
+      "lane": "fast",
+      "methods": 3,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/2345c5c15e23d7f2/result.json",
+      "evidence_sha256": "32a9147078c12bb5eb6b43a29b17d1d162360f05ad20aec272705c8af5286a52",
+      "log_sha256": "aef2ec36c5f2a53b6a6ec33f216479005aa7e948e41267da817804bad248553e"
+    },
+    {
+      "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests",
+      "lane": "fast",
+      "methods": 5,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/739bcbec14d5ac45/result.json",
+      "evidence_sha256": "a41621616f05f250bd981ba70421c04f283bce27793b69b45efa829a2d8f7246",
+      "log_sha256": "80e2f1d4ff1a21e6661678750e38091670c20c44e7d55efb40ec353003a4a14d"
+    },
+    {
+      "class": "tests/test_project_acceptance_history_capacity_v1.py::AcceptanceHistoryCapacityV1Tests",
+      "lane": "fast",
+      "methods": 14,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/22dba390b17ce640/result.json",
+      "evidence_sha256": "757c085b9fd101f672f36ba0fc42900628ca0ee1854d54ba6ce6428b7701572b",
+      "log_sha256": "27cf945edb6079346dda05fd86c45013994f6421706edcea98d8d6f432473859"
+    },
+    {
+      "class": "tests/test_candidate_m2_finite_mapping_v2.py::CandidateM2FiniteMappingOwnerV2Tests",
+      "lane": "git",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/b9a0ef00d9243ee6/result.json",
+      "evidence_sha256": "3dd9ced3f3c112ff5b61494e16331d4ad85984bb0816c954c770388989fc2e6b",
+      "log_sha256": "6dfea20f22db71f4768825802f39c04f8a9aae084508f89befa8c9fd84bf2cbb"
+    },
+    {
+      "class": "tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests",
+      "lane": "git",
+      "methods": 14,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/47d4cc5e84dc69bd/result.json",
+      "evidence_sha256": "08d685b95d153c98aa0be2af56259746341e8efa2eef96dad6e42976a8fce50a",
+      "log_sha256": "d99cecf1649220f11ea1730434ed1aa70d177893760cc174e46090961b36e27f"
+    },
+    {
+      "class": "tests/test_candidate_storage_finite_mapping_v1.py::CandidateStorageFiniteMappingCompositionTests",
+      "lane": "git",
+      "methods": 6,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/d813a4e081e5de30/result.json",
+      "evidence_sha256": "a21407e1d9f1400aaee4bc2f8c8efd0e4de7301a06e9b57c0527584799332648",
+      "log_sha256": "69ec4306196a4e6be5128348d2eb3eea52c9e1880172848f8c783b618b4bfc55"
+    },
+    {
+      "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowSourceDefectQualificationTests",
+      "lane": "git",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/86316bb0039b186f/result.json",
+      "evidence_sha256": "b3b31a093deedc79c36404a7811549613ea3b0d5e6e8529e9363a8adf70909e5",
+      "log_sha256": "73f7ec8c8e2e01016d219fb7f56cfbd302b7caf349cc9f274306fd0f5c1b03be"
+    },
+    {
+      "class": "tests/test_candidate_workflow_review_v1.py::CandidateWorkflowInspectionTests",
+      "lane": "git",
+      "methods": 12,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/c2dcdb81ab3c2694/result.json",
+      "evidence_sha256": "844fbffe0dce7af79a8089e9c9dc68f8d23b4df06edf6399e592436c3b5853b4",
+      "log_sha256": "2377ed268f46900eb6af80c53101846b8fcb68893b1e209db4120611b6823d30"
+    },
+    {
+      "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests",
+      "lane": "git",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/7968a749527c04ea/result.json",
+      "evidence_sha256": "faeacf17351cf0522dc291112a6241099ecc80c924ebec36a719d35a65bc01f4",
+      "log_sha256": "9a6dead82336114f5c888661eb4f6ee39ab0e82e6c5523e2edfe42ea0a9b07fb"
+    },
+    {
+      "class": "tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests",
+      "lane": "git",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/e89f317217848dde/result.json",
+      "evidence_sha256": "50f3f65ec927ce6b56d2dbd55b40cd7960de9d0a99b1a88e8fec92baf3963731",
+      "log_sha256": "ee5547ff87a59b34363c64f1f341b135013bf6f3bfea9d0d29bf2ebb095414c2"
+    },
+    {
+      "class": "tests/test_cumulative_finite_original_transport_v1.py::CumulativeFiniteOriginalTransportV1Tests",
+      "lane": "git",
+      "methods": 4,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/9be716b54a357739/result.json",
+      "evidence_sha256": "28abbf352bd106f27d27dc452137fb89409a0a095fe4d517760005ff5fe5b750",
+      "log_sha256": "482d4708f2aa935e9a8c627c6a10d959745805032658ec5ab877f5512266455f"
+    },
+    {
+      "class": "tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests",
+      "lane": "git",
+      "methods": 9,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/7eec5d0f709c9daa/result.json",
+      "evidence_sha256": "51a2d3fb61c3cebe9cd93dd920839085f79fcb3b3854bcf03871ed4da5718632",
+      "log_sha256": "95525dbf2b075923eb53f018db5bda9179aa11e75ede817a69145e4a1d0e262f"
+    },
+    {
+      "class": "tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests",
+      "lane": "git",
+      "methods": 10,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/e287915a970cd062/result.json",
+      "evidence_sha256": "643597659886a3d12029affb5fdce2410d2f8b380f8d55fbd0e99896aa3cacca",
+      "log_sha256": "5c89ba006813d08e313e6d0876bb195559b2ad27ea4a01aa9a43ae1857caa3a2"
+    },
+    {
+      "class": "tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests",
+      "lane": "git",
+      "methods": 13,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/f45fa2e919e25162/result.json",
+      "evidence_sha256": "9a4a851ac2f4ea1e01710498f49e3ff321f7f518c07cf717e866db162770f028",
+      "log_sha256": "872e946bd0d2993e3d5ff86dbeb1273bf28d200b736ca60b313ea34dedec8332"
+    },
+    {
+      "class": "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests",
+      "lane": "git",
+      "methods": 2,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/8b50463d9d34359c/result.json",
+      "evidence_sha256": "13be3fbe6842bd8d4b548b20c0ca892af3cdb4926cc9fde42f65b46d303cb042",
+      "log_sha256": "776c6e6f444612e342c89d881da2925ae36e54ce2efc6dfd692912554df5682a"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+      "lane": "git",
+      "methods": 16,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/46d797d9bb621105/result.json",
+      "evidence_sha256": "bc323ac6ba67ed120ad47f355c6330b3409d7b6eed3ee4b4c896dfe97a85f3c8",
+      "log_sha256": "dca66987b5132ccbfa1f51594b864d59153927c64c4bb0b52dd02d72fc78b7bf"
+    },
+    {
+      "class": "tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests",
+      "lane": "git",
+      "methods": 10,
+      "execution": "fresh",
+      "original_execution": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/summary.json",
+      "evidence": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643/classes/0ae547d8cac19a8d/result.json",
+      "evidence_sha256": "39c48ab3c15d8f071d290bad70f43bc4233e0e945202d375bcd0ef94015b320a",
+      "log_sha256": "d613f0c9548274a49d7ce8c9df82ac59eb36da01c8bb4fb5f25294b780039cc2"
+    }
+  ],
+  "fixed_failure": "Authentic zero-file filesystem snapshots are allowed only after full capture authentication; missing evidence remains unavailable and global nonempty source-inventory guard is unchanged.",
+  "retained_failures": "analysis/workflow-family-development-checkpoint-v1.json retains seven prior attempts; no overwrite or automatic unchanged retry.",
+  "static_meaning": "Configured gate passed with retained legacy type baseline; no full legacy type-safety claim.",
+  "limitations": [
+    "Targeted affected offline coverage, not all5441discoveredmethods.",
+    "Required38physical Docker controls not yet executed on this source.",
+    "No full312unit/22authority/188gap semantic closure, matching full rehearsal, independent acceptance or repeatability claim.",
+    "No provider calls or new model-quality samples;20-role, live placement-by-transport and held-out-family comparisons remain required."
+  ],
+  "publication": "Local checkpoint only; no public push attempted."
+}

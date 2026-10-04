@@ -429,6 +429,53 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         self.assertFalse(result['phase_facts'][0]['response_authenticated'])
         self.assertEqual(result['mechanics']['status'], 'infrastructure_error')
 
+    def test_authenticated_empty_capture_is_distinct_from_missing_capture(self):
+        with self.assertRaisesRegex(ValueError, 'Nonempty complete source inventory'):
+            admission.source_manifest({})
+        for complete in (True, False):
+            with self.subTest(complete_capture=complete):
+                self.prepare_owner()
+                owner, phase = self.owner, 'call-000'
+                self.guard(phase, 'before')
+                owner._retain(phase + '-request.json', execution.encoded({'request': phase + '\n'}))
+                event = {'kind': 'boundary', 'phase': phase, 'ordinal': 0, 'boundary': 'initial', 'occurrence': 0,
+                    'paths': {'root': None, 'database': None}, 'path_origins': {'root': None, 'database': None}}
+                owner._retain(phase + '-frame-000.bin', execution.encoded(event) + b'\n')
+                label = phase + '-boundary-000'
+                self.engine(label)
+                owner._retain(label + '-event.json', execution.encoded(event))
+                path_facts = execution.encoded({'root': None, 'database': None})
+                self.command(label + '-paths', ['docker', 'exec', '--user', '65534:65534', self.cid,
+                    'python', '-I', '-B', '/checks/workflow_paths.py', execution.encoded(event['paths']).decode('ascii')], path_facts)
+                owner._retain(label + '-path-facts.json', path_facts)
+                if complete:
+                    # The authenticated tar contains its ordinary tmp directory
+                    # and no files. This is observed emptiness, not fabricated data.
+                    self.capture(label)
+                    owner._retain(phase + '-resume-000.json', execution.encoded({'request': 'resume:' + phase + ':0\n'}))
+                    raw = execution.encoded({'kind': 'result', 'phase': phase, 'value': {'wrong': True}}) + b'\n'
+                    owner._retain(phase + '-frame-001.bin', raw)
+                    owner._retain(phase + '-response.bin', raw)
+                    self.engine(phase + '-result')
+                    self.capture(phase + '-result')
+                    owner._retain(phase + '-next.json', execution.encoded({'request': 'next:' + phase + '\n'}))
+                    self.guard(phase, 'after')
+                else:
+                    self.guard(label, 'after')
+                result = observer.reconstruct(owner)
+                first = result['phase_facts'][0]
+                if complete:
+                    self.assertEqual(first['boundary_facts'][0]['capture_manifest'], [])
+                    self.assertIsNone(first['boundary_facts'][0]['storage'])
+                    self.assertIn('confined root/database unavailable', first['boundary_facts'][0]['storage_unavailable'])
+                    self.assertTrue(first['response_authenticated'])
+                    self.assertEqual(result['projection']['observations'][0]['disposition'], 'fail')
+                else:
+                    self.assertEqual(first['boundary_facts'], [])
+                    self.assertFalse(first['response_authenticated'])
+                    self.assertIn('pause/inspection/copy/resume unavailable', first['reason'])
+                    self.assertEqual(result['projection']['observations'][0]['disposition'], 'unavailable')
+
     def test_fixture_originals_never_publish_physical_qualification(self):
         self.call(0, profile.expected_for(self.owner.profile.case_id, 0))
         with self.assertRaises(observer.AuthorityError):

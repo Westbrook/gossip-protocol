@@ -1,0 +1,143 @@
+{
+  "auditor": "/root/c03_mechanics_tests",
+  "coverage": {
+    "classes_and_direct_methods_checked_by_source_AST": true,
+    "discovered_total_as_retained": 5441,
+    "lanes": {
+      "fast": 443,
+      "git": 112
+    },
+    "legacy_classes": 45,
+    "legacy_methods": 428,
+    "manifest_path": "verification-manifest.json",
+    "manifest_sha256": "dabf586ccdf07be3e8d06bee14e83498b5d2adea17b502c06e884dd5ea4e712f",
+    "new_classes": 14,
+    "new_methods": 127,
+    "physical_control_counts": {
+      "defect": 11,
+      "mechanism": 7,
+      "positive": 20
+    },
+    "physical_controls_remaining": 38,
+    "selection_matches_manifest_and_results_exactly": true,
+    "selection_path": "/private/tmp/workflow-complete-offline-selection-3.json",
+    "selection_sha256": "e44d2f6caec9936bf5b958a691b65a8b41527ddf6a66bc54e63f55d8c9f87409"
+  },
+  "created_at_utc": "2026-10-04T22:00:33.995938+00:00",
+  "findings": [],
+  "limitations": [
+    "Targeted affected offline coverage, not all5441discoveredmethods.",
+    "Required38physical Docker controls not yet executed on this source.",
+    "No full312unit/22authority/188gap semantic closure, matching full rehearsal, independent acceptance or repeatability claim.",
+    "No provider calls or new model-quality samples;20-role, live placement-by-transport and held-out-family comparisons remain required.",
+    "This is a trusted-host retained-evidence audit, not external attestation or a rerun.",
+    "Class physical=true means fresh local execution in selected fast/git lanes; it does not mean Docker qualification.",
+    "The current full family semantic/physical/rehearsal/independent-acceptance/repeatability scope remains unqualified by this offline receipt."
+  ],
+  "protocol": "workflow-offline-qualification-independent-audit-v1",
+  "publication_claim_review": "Record states local checkpoint only; this audit performs no publishing and does not certify remote state.",
+  "qualification": {
+    "base_commit_as_recorded": "7f372c3865d2bfaef83fd1fa0dd4e238d251e8b7",
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/workflow-family-offline-qualification-v1.json",
+    "sha256": "463812d9410d6e74bd25c762350512b59212cd8d274b542fb8ef27a369fbdda7",
+    "status": "affected_offline_checks_passed"
+  },
+  "run": {
+    "all555summary_original_and_AST_ordered_IDs_match": true,
+    "all59original_results_and_logs_rehashed": true,
+    "class_evidence_log_and_order_inventory_sha256": "f2ee0b9b6ef60368ced02db62ff612b6624a46cbe42696697124dbcc68b7259d",
+    "cleanup": "All59class originals/summary rows completed with returncode0 and no fixture errors.",
+    "concurrent_resource_budget": 4,
+    "duration_seconds": 1388.9986591665074,
+    "fresh_methods": 555,
+    "ordered_suite_sha256": "3013eef6f3b6843f9d723496fdc7987637706e562f9585ab5751547c1c8be06f",
+    "original_artifacts_inside_this_session": true,
+    "outcomes": {
+      "passed": 555
+    },
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T213332-8f9c4643",
+    "pins": {
+      "inputs.json": "85ab3771b8b03950710e80befde9d805647a3103bf6d267eb911f5a89c5fba36",
+      "runtime-final.json": "96a63e255b17cf5880b5ccd68d6104cb9e0e251f905abfcf74a300b907073034",
+      "static.json": "8a1070efc57a10aa6758428c4acb87e936c1bf6d667653b3e512488b4ea8ce07",
+      "summary.json": "2af199f7571603189cc6451e06bc20eaf700bc7c2e4fca19d801cb915cedf940"
+    },
+    "reused_classes": 0,
+    "reused_methods": 0,
+    "selected_classes": 59,
+    "selected_methods": 555,
+    "skipped_failed_error_not_run": 0,
+    "status": "passed",
+    "workers_started": 59
+  },
+  "scope": "Read-only retained proof integrity, current source fingerprints and declared affected coverage; no tests, project imports, Engine/provider calls or root writes. Only this /private/tmp audit is created.",
+  "source_and_runtime": {
+    "all_current_hashes_match": true,
+    "cache_reuse_ineligible_and_zero_reuse_observed": true,
+    "current_source_inputs": 729,
+    "full_inputs_fingerprint": "acfa3dd2c439e0dc8d976254020588fc809e5865dd03547d65cbd3d936168055",
+    "nearest_fingerprint": "e1e866435a6e3b09e4dcec19f1941aadee18457f866765ed2abab79d3840eccc",
+    "nearest_outcomes": {
+      "passed": 38
+    },
+    "nearest_summary": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-8/20261004T212303-99a60759/summary.json",
+    "nearest_summary_sha256": "1af502bf684e83228f1aa0bd6b91e75c5b391e453f5e3826929fe09b5aafc9fe",
+    "no_runtime_fingerprint_command_reexecuted": true,
+    "only_nearest_input_difference": "runtime.environment_sha256",
+    "retained_initial_final_runtime_equal": true,
+    "retained_tool_and_python_binary_hashes_match_current_files": true,
+    "runner_sha256": "acdc47d80c6f78d0381830c495027bbfdd328b03edfd62f8509e88fb085ffdb9",
+    "runtime_identity_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+    "source_inventory_sha256": "fbb5b6b2fc23a9cf9e695ec2a68914ef1a24774ac80f750e7768d09d2367e0f0",
+    "source_overlays": [
+      {
+        "path": "gossip_harness/candidate_workflow_observation_v1.py",
+        "sha256": "52c6ae8041f908e0802c68638d1505f6caca4ede0703f60cad80cfba9e411f4d"
+      },
+      {
+        "path": "tests/test_candidate_workflow_observation_v1.py",
+        "sha256": "b07583fbb1e00194a36d9c65d5ec72fc2a5299e10d915e84443f1d49447caf13"
+      }
+    ]
+  },
+  "static": {
+    "blocking_type_diagnostics": 0,
+    "checks": [
+      {
+        "name": "configuration",
+        "returncode": null,
+        "status": "passed"
+      },
+      {
+        "name": "syntax",
+        "returncode": 0,
+        "status": "passed"
+      },
+      {
+        "name": "javascript_syntax",
+        "returncode": 0,
+        "status": "passed"
+      },
+      {
+        "name": "tools",
+        "returncode": null,
+        "status": "passed"
+      },
+      {
+        "name": "lint",
+        "returncode": 0,
+        "status": "passed"
+      },
+      {
+        "name": "types",
+        "returncode": 1,
+        "status": "passed"
+      }
+    ],
+    "meaning": "Configured gate passed;117legacy type diagnostics retained, no full legacy type-safety claim.",
+    "status": "passed",
+    "type_baseline_count": 117,
+    "type_baseline_sha256": "3ace625c18000d0f5a82107228172800d81692df48f64cad3cdc11fc0c92759f"
+  },
+  "status": "clear_for_stated_targeted_offline_claim"
+}
