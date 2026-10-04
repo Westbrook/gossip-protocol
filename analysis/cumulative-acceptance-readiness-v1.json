@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-04T04:57:15.398888+00:00",
+  "status": "integration gaps and measured scaling risk; successor not implemented",
+  "base_commit": "add6c41d38c0acb69fc40a5649ec8e9ccba9d9f7",
+  "goal_turn_classification": "progress: independent audit of five additional original physical methods; measured runtime/storage evidence changes the next implementation contract",
+  "new_provider_calls": 0,
+  "new_comparative_trajectories": 0,
+  "new_physical_dispatches": 0,
+  "original_http_v3": {
+    "source_commit": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+    "run": "runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e",
+    "source_workspace": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol",
+    "session": 19422,
+    "status_at_checkpoint": "running; X01 pending",
+    "completed_and_scoped_audited_methods": 19,
+    "planned_methods": 20,
+    "extension": {
+      "class_result": {
+        "bytes": 3939,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/bb87c72c6dad983b/result.json",
+        "sha256": "7a4f2e6aaefec72d032326790af77494891631c6f7b5a3620113f8db76e492ea"
+      },
+      "audit_status": "clear_with_explicit_scope_limits",
+      "audit_sha256": "5ea661860942fc567de92edeebd4096e794a5240b174246f091929d79b040cac",
+      "retention": "runs/candidate-c03-http-v3-extension-audit-retention-1/receipt.json",
+      "retention_sha256": "022abb9fcdb84e8c2b2e25a8eebde629987d62d46c11e56c508624226da04eb9",
+      "actual_counts": {
+        "actual_long_lived_signal_or_kill_count": null,
+        "authenticated_sent_complete_requests": 77,
+        "candidate_cli_processes": 0,
+        "complete_fixture_exchanges": 77,
+        "confirmed_starts": 88,
+        "container_removals": 88,
+        "created_containers": {
+          "keeper": 5,
+          "probe": 77,
+          "server": 6,
+          "total": 88
+        },
+        "declared_http_requests": 77,
+        "e05_actual_send": "sent_complete",
+        "e05_physical_incomplete_send_coverage": "unobserved-open",
+        "e05_response_bytes": 425,
+        "e05_sent_request_bytes": 65680,
+        "e05_server_consumed_body_bytes": 0,
+        "explicit_stop_requests": 11,
+        "forced_remove_requests": 82,
+        "histories": 5,
+        "missing_step_results": 0,
+        "natural_trusted_helper_completions": 77,
+        "planned_entered_completed_recipe_steps": 89,
+        "probe_attempts": 77,
+        "unentered_steps": 0,
+        "unknown_request_outcomes": 0,
+        "volumes_created_and_removed": 5
+      },
+      "journal_files": 5039,
+      "external_checkpoints": 5039,
+      "audit_errors": [
+        {
+          "cause": "E02-specific inventory files is a list; body-specific inventory files is a path-keyed map. Attempt1 assumed list for both.",
+          "correction": "Consolidator2 normalizes both retained inventory formats to path/bytes/sha256 entries before comparing.",
+          "error": "TypeError:string indices must be integers, not str",
+          "impact": "No original bytes, source, physical outcomes, or held component reviews changed; no raw component validation or experiment rerun.",
+          "retained_script": "consolidate-1.py",
+          "stage": "final inventory consolidation attempt1"
+        }
+      ],
+      "scope": "Completed extension class E01-E05 only from original20-method HTTPv3 batch. No other classes or full product catalog qualified by this review."
+    }
+  },
+  "measured_scaling": {
+    "review": "runs/cumulative-acceptance-readiness-1/gossip-http-v3-runtime-feasibility-1.json",
+    "review_sha256": "d269429b767f1350399f7e3d79123e1cce6a5159dcfec228e72af183f8370516",
+    "E01": {
+      "checkpoint_prefix_evidence": "Names contiguous; first size1 and final sizeN; completed original class separately asserted exact one-file extension for every checkpoint. This review did not reparse all886MB of E01 checkpoint snapshots.",
+      "control": "E01",
+      "declared_steps": 72,
+      "external_checkpoint_bytes": 886042635,
+      "external_checkpoint_files": 4109,
+      "external_to_journal_byte_ratio": 50.59232915589847,
+      "journal_files": 4109,
+      "journal_payload_bytes": 17513379,
+      "last_external_checkpoint_bytes": 431414,
+      "method": "tests/test_candidate_http_extensions_v3.py::CandidateHttpExtensionsV3DockerTests.test_e01_exact_fixed_seventy_request_history",
+      "method_run_seconds": 2979.761945749633,
+      "requests_observed": 70,
+      "retained_sizes_scope": "Regular files observed after class completion; inventory sizes, not an independent physical acceptance audit.",
+      "source_implied_minimum_inventory_file_visits_from_per_write_checkpoints": 8443995
+    },
+    "class_duration_seconds": 3102.3817656654865,
+    "class_observer_cpu": {
+      "scope": "observer process during interval",
+      "status": "measured",
+      "system_seconds": 2166.1304400000004,
+      "unit": "seconds",
+      "user_seconds": 571.213019,
+      "value": 2737.3434590000006
+    },
+    "scaling_assessment": {
+      "ETA": "Not established. One completed synthetic long-history sample is insufficient for a whole-catalog runtime or optimization-speedup prediction.",
+      "catalog_definition_counts": {
+        "cases_exceeding_v2_64_steps": [
+          "HTTP-ACTION-STATE/old-token-after-successor-completed",
+          "HTTP-ACTION-STATE/old-token-after-successor-failed",
+          "HTTP-PERSIST-LISTENER/http-normal-restart-cancel-retry",
+          "HTTP-PERSIST-LISTENER/http-cli-http-same-db"
+        ],
+        "families": 10,
+        "max_fixture_file_bytes": 5937,
+        "max_per_case": {
+          "finite_cli_processes": 29,
+          "fixture_bytes": 5943,
+          "fixture_directories": 17,
+          "fixture_files": 66,
+          "fixture_symlinks": 1,
+          "http_requests": 70,
+          "planned_keeper_processes": 1,
+          "planned_probe_processes": 70,
+          "planned_total_processes": 86,
+          "request_body_bytes": 65605,
+          "request_wire_bytes": 68539,
+          "server_epochs": 2,
+          "server_stops": 2,
+          "steps": 87
+        },
+        "max_request_body_bytes": 65537,
+        "max_request_wire_bytes": 65661,
+        "rows": 276,
+        "targets": 8,
+        "totals": {
+          "finite_cli_processes": 29,
+          "fixture_bytes": 79993,
+          "fixture_directories": 653,
+          "fixture_files": 1517,
+          "fixture_symlinks": 6,
+          "http_requests": 7602,
+          "planned_keeper_processes": 276,
+          "planned_probe_processes": 7602,
+          "planned_total_processes": 8193,
+          "request_body_bytes": 164851,
+          "request_wire_bytes": 801462,
+          "server_epochs": 286,
+          "server_stops": 286,
+          "steps": 8203
+        }
+      },
+      "catalog_histories": 276,
+      "catalog_http_requests": 7602,
+      "conclusion": "Do not extrapolate directly from42.568 seconds per E01 request. The cost depends on each history record count, payload sizes, boundary count, and evidence authentication; full inventory and full checkpoint metadata scale with the sum of squared history sizes. The current measured70-request fixture makes a full repeated catalog a material runtime/storage risk even before real candidate response volume.",
+      "conditional_one_complete_catalog_per_trajectory": {
+        "histories": 1656,
+        "http_requests": 45612
+      },
+      "deadline_caveat": "Current history deadlines check admission/operations and reserve cleanup; synchronous retention and authentication are not proven interruptible whole-history deadlines. Source changes must not silently extend limits or convert unavailable evidence into a pass.",
+      "trajectories_requested": 6
+    },
+    "proposed_contract": {
+      "decision": "Use a separately reviewed new evidence contract for delta checkpoints and explicit authority-boundary validation. Do not describe reducing per-write scans as behavior-preserving. Preserve frozen v3 source, original results, failure evidence and exact launch freeze.",
+      "explicit_guarantee_change": [
+        "V3 can detect prior-file tamper at every subsequent retained-file checkpoint. The proposed v4 detects it at the next mandatory authority boundary or authenticated read. Detection latency is therefore longer.",
+        "A tamper-and-restore interval entirely between boundaries, with no authenticated read of the changed bytes, may escape v4 while an intervening v3 per-write inventory might have detected it. External chain commitments protect authorized expected bytes and prefix identity, not continuous filesystem immutability.",
+        "Full rehashes at dispatch/observation boundaries preserve strong decision-time integrity but do not make total I/O linear: with growing histories, repeated full boundary scans still have sum-of-prefix-size cost. Deltas remove quadratic checkpoint snapshot serialization/retention and per-file scans, not all possible quadratic work.",
+        "Changing evaluator/checkpoint/source identities invalidates cross-version receipt equivalence. Require an explicit version migration and fresh qualification under the complete applicable changed contract; do not normalize or relabel old v3 observations."
+      ],
+      "mandatory_full_validation_boundaries": [
+        "Before any candidate side-effect dispatch or successor authorization, fully read/hash the exact current journal inventory and compare it to the independently committed prefix. Reject changed/deleted/added files, links, duplicate paths and rollback. Preserve all existing source/config/runtime/role/Git/CAS checks and operation admission.",
+        "After a candidate observation and before using it as authenticated evidence or allowing the next dependent action, revalidate full bytes/inventory and the external chain/head. Any retained bytes consumed between boundaries must immediately pass their expected raw digest and stable no-follow read before parsing/use.",
+        "On reopen, authenticate the externally supplied expected head/sequence, reconstruct every delta and the closed file inventory, fully rehash all bytes, reconcile exact source/config bindings and enforce owner/thread exclusion. A dangling raw file/delta, unknown prefix, missing terminal or interrupted intent is observation-unavailable/no-redispatch, never guessed complete.",
+        "At final terminal/acceptance handoff, independently replay the external delta chain and full raw-file inventory, authenticate terminal references and first-seen chronology, and preserve all independent acceptance/repeatability separation. Cleanup failure remains failure/unknown and cannot be concealed by a valid chain."
+      ],
+      "measurement_plan_after_separate_authorization": "Add bounded aggregate counters/timers for inventory calls/files/bytes, stable-read traversal, full hash time, checkpoint encoding/fsync, independent authentication, and actual operation phase durations. Measurements must disclose evaluator identity and overhead, use original receipts where valid, and must not rerun paid model work to benchmark development workflow.",
+      "optional_lower_risk_optimization": "A separate per-inventory anchored-directory reader could reuse already-open ancestor descriptors while revalidating the complete ancestry before and after every file and retaining all per-file content/identity/hash checks. This reduces repeated descriptor construction without caching byte authenticity, but requires adversarial path/race regression review and has no measured speedup. It does not solve quadratic full snapshot output.",
+      "proposed_record_and_anchor": [
+        "At first record, create a canonical versioned genesis identity containing execution ID, source commit/tree and all existing binding fields. Compute a domain-separated chain head from this exact identity.",
+        "For each newly retained raw file, append an exclusive canonical external delta containing protocol, execution ID, strictly increasing sequence, previous-head hash, one unique literal filename, exact byte count, raw SHA256, and context/genesis digest. Compute the next head over the previous head and full canonical delta; domain separate it from file/content hashes.",
+        "Persist raw bytes and directory state, then persist the external delta and its trusted external head commitment synchronously before allowing the next dependent action. The head/sequence must be supplied from an independent trusted owner, outside candidate mounts and outside the journal being authenticated. A self-consistent local hash chain by itself cannot prove freshness or defeat rollback.",
+        "Keep only the current verified name-to-digest/size map and chain head in controller memory, plus an independent linear external delta history; do not retain every expanded prefix. First-seen sequence reconstructs exact chronology. Put explicit separate byte/file/memory ceilings on external evidence and reserve failure/cleanup records.",
+        "On checkpoint request, commit the exact prefix head/sequence and binding. Distinguish a durable prefix commitment from a boundary-validated on-disk snapshot with an explicit validation scope; do not reuse v3 checkpoint terminology to imply every prior byte was just reread."
+      ],
+      "required_failure_tests": [
+        "Old raw-file content tamper with unchanged size and restored mtime; same inode and replaced inode variants; deletion; extra foreign suffix; raw descriptor forged digest/byte count. Reject at next boundary and immediately upon trusted read.",
+        "Leaf/ancestor symlink replacement, nonregular files, hardlink/file-identity changes, ancestor rename/replacement, and mutation during bounded read. Retain fail-closed no-follow/identity behavior.",
+        "Missing, duplicated, reordered, edited or cross-execution delta; forged genesis; wrong requirements/source/tree/evaluator/runtime/environment/limits/seed/purpose; unknown independently anchored head; rolled-back otherwise-valid prefix.",
+        "Crash/failure at raw write, file fsync, directory fsync, delta creation, external-head persistence, intent commitment, candidate dispatch, observation retention, terminal creation and cleanup. Preserve exact first outcomes and no automatic redispatch.",
+        "Reopen an exact complete prefix; reopen missing/foreign/unanchored suffix; an interrupted dispatch intent; persisted terminal; a terminal with altered referenced evidence. Only exact authorized states can resume observation; uncertain execution never reruns.",
+        "External sink exception or capacity exhaustion after a real completed CLI/HTTP action: retain prior authenticated facts, fail dependent dispatch, preserve cleanup reserve and unknown suffix. Include continuity/final-barrier/source-CAS regressions.",
+        "Explicit tamper-restore tests distinguishing the accepted v4 between-boundary limitation from mandatory rejection when tamper is present at a boundary or consumed. Do not imply those two contracts are identical.",
+        "Deterministic offline operation accounting establishes linear delta bytes/counts and removal of per-retain full scans; required full boundary scans must remain countable. Fresh applicable physical rehearsal retains original raw bytes, restarts and tamper controls after coherent offline/source review."
+      ],
+      "unchanged_contract_requirements": [
+        "Keep every original Engine/HTTP/candidate byte artifact, its literal filename, exclusive creation, per-file and directory durability, trusted authorship boundary, and full no-follow stable-file/hash checks when bytes are consumed. No in-place rewrite, metadata-only authenticity, cache-derived physical observation, or reused acceptance/repeatability sample.",
+        "Keep complete prospective source/tree/requirements/recipe/evaluator/runtime/environment/limits/seed/purpose bindings, source Git scope/CAS, finite CLI prerequisites, immutable subject identity, final-evaluation barriers, observation uncertainty and protected cleanup.",
+        "Keep durable authenticated dispatch intent before the associated side effect and retained terminal evidence after it. An interrupted or ambiguous intent is never automatically redispatched. Full original observations and every unknown/unavailable suffix remain visible."
+      ],
+      "working_name": "Prospective compact-prefix checkpoint successor; exact new protocol identity is not yet frozen. Retained review used the working label journal/checkpoint v4, distinct from the existing HTTP executor v4."
+    },
+    "optimization_implemented": false
+  },
+  "next_production_authority": {
+    "review": "runs/cumulative-acceptance-readiness-1/gossip-c06-next-production-authority-plan-1.json",
+    "review_sha256": "54e9341eaeff568b11d4b75e61d84ae4532784b9d56060a7f4030f1ad9fce669",
+    "decision": {
+      "next_cohesive_batch": "Implement durable, restart-verifiable study admission and terminal cohort authority, plus a concrete ScopeConsumer authority adapter. This closes the trusted-callback ownership gap. It does not supply missing product evaluators or independently review the full ScopePlan by construction.",
+      "minimum_useful_exit": "Real owner-locked controller writes and externally retained checkpoints can authenticate prospective observation registration, exact immutable slot admission and an irreversible all-six barrier across restarts; known originals route through concrete observation/promotion readers; unavailable prerequisites remain blockers. No product-accepted claim until full independently qualified mapping and all required originals exist.",
+      "do_not": "Do not use successful callbacks, self-declared hashes, in-memory frozen flags, local-quiescence counts, historical qualification relabeling or aggregate six-row JSON as production authority. Do not launch the old central healthy-M1 pilot as this study.",
+      "immediate_successor_scope": "Versioned compact prefix checkpoints; exact final-M4 subject/applicability/source identity; measured gate capacity; normal irreversible admission seal. Integrate these before costly physical qualification of the successor, so M1-only or quadratic contracts are not immediately invalidated."
+    },
+    "milestone_source_and_applicability_compatibility": {
+      "hard_mismatch": [
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_compiler_v1.py",
+          "lines": "555-567",
+          "detail": "Complete compilation is final M4 only."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_client_execution_v5.py",
+          "lines": "233-237,285-335",
+          "detail": "C06 CLI original binding and gate are M1-only despite cumulative-v2 requirements hash."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_http_execution_v4.py",
+          "lines": "400-406,443-462",
+          "detail": "C06 HTTP original binding M1-only, normalized subject rebuilt with original milestone."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py",
+          "lines": "95-100",
+          "detail": "Original milestone/source/requirements/purpose/protocol must equal gate subject; no M1-to-M4 relabeling."
+        }
+      ],
+      "smallest_versioned_change": "In a separate checkout, add an explicit versioned execution-subject/applicability profile for inherited definitions against final M4, with source contract, target contract/milestone, retained definition identity, approved compatibility authority IDs and purpose mapping. Bump the affected execution/profile protocol and recomputed binding/evaluator/limits identity; retain existing capture/transport/journal mechanics where invariant. This can be a small deliberate contract diff/shared profile helper, not an automatic new 1000-line executor fork. Original add6c41 sources and receipts remain hash-addressed immutable. Execute fresh M4-bound histories; no adapter may mutate M1 result labels into M4.",
+      "semantic_requirement": "Freeze independent source review of all inherited and amended obligations before enabling the profile; notably schema0 health expectations have explicit M4 schema4 successor authority (compiler:904-908). The legacy definition is not blindly valid on M4. ScopePlan.SuiteCompatibility and CompatibilityOverride authenticate exact definition/source/target clauses, not arbitrary compatibility hashes.",
+      "source_identity": "Use admission.source_sha256 complete blob inventory as common prospective candidate identity. Existing releasev2 source_sha256 includes its own PROTOCOL domain (release_execution_v2:77-83); its gate already requires M4. Smallest future fresh-execution change is explicit new release binding contract adopting common identity while keeping delivery mechanics. If retaining a legacy original, a separately versioned normalized provenance record must retain both complete original and canonical identities plus actual same Git commit/tree/blob mapping; existing Registry/ReleaseObservationSource cannot accept simple hash substitution. For independent/repeatability a historical original still cannot be reused.",
+      "unspecified_cells": "CLI profile ordered_assertion_ids includes900 cells including 32 unspecified; source maps unspecified to skipped; Registry treats skipped as incomplete. Before full acceptance, version the applicability profile so all 900 cells remain in raw/verifier diagnostics and independently reviewed genuinely normative cells define decisive outcomes. Underspecified exact error-code details do not become permanent product blockers or invented passes. Every real mandatory clause still needs an executable decisive selector; missing normative coverage remains missing.",
+      "applicability_evidence": [
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_cli_acceptance_profile_v1.py",
+          "lines": "58-69",
+          "detail": "All cells currently enter the gate."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_client_observation_source_v1.py",
+          "lines": "53-66",
+          "detail": "Explicit unspecified\u2192skipped."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_registry_v1.py",
+          "lines": "329-340",
+          "detail": "Skipped mandatory case prevents acceptance."
+        },
+        {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_compiler_v1.py",
+          "lines": "700-763,781-845,891-908",
+          "detail": "Exact suite compatibility, applicability and inherited/successor mappings."
+        }
+      ]
+    },
+    "capacity_dependencies": [
+      {
+        "issue": "Registry gate/case bounds",
+        "status": "Actual prospective full-purpose gate census missing",
+        "evidence": {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_registry_v1.py",
+          "lines": "19-23",
+          "detail": "MAX_ITEMS512; compiler602-606 separately forbids repeated physical slots and blocks oversized execution-gate census."
+        },
+        "consequence": "57 CLI + 276 HTTP gives333 single-history physical slots. Duplicating all 333 for public and independent would yield 666 before other suites; this is a conditional arithmetic warning, not a claim every history must be duplicated. Retain entire catalog and full mandated purposes.",
+        "next": "Compute exact reviewed full-purpose gate/case/edge counts. Prefer measured prospectively versioned bound increase with memory/serialization/time/admission controls if justified; fixed 512 is implementation capacity, not scientific scope. Do not invent multi-history aggregation or delete coverage merely to fit."
+      },
+      {
+        "issue": "Financial ownership and principal topology",
+        "status": "Existing single-owner foundation; whole-study orchestration absent",
+        "evidence": [
+          {
+            "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_authority_v2.py",
+            "lines": "181-183",
+            "detail": "One lifetime exclusive ledger owner."
+          },
+          {
+            "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_rpc_v2.py",
+            "lines": "37,137-145",
+            "detail": "64 principal maximum and exact owner actor roster."
+          }
+        ],
+        "consequence": "Six separately namespaced role rosters total 96 principals. Six competing owners of one wallet or shared principals is invalid.",
+        "next": "Smallest original-contract topology: prospectively randomized sequential trajectories with child financial cohort identities all registered under one study authority, preserving one cumulative ledger and all-six final barrier. Use uniquely bound trajectory/task identities and identical per-trajectory envelopes. Parallel trajectory execution would need separately qualified multiplexed financial ownership and changed principal/capacity contract; it is not required by original study."
+      },
+      {
+        "issue": "HTTP journal/checkpoint asymptotic cost",
+        "status": "Concrete measured blocker reported by root during this investigation; measurement receipt not independently re-audited here",
+        "parent_report": "E01: 2979.76 seconds; 4109 journal files + 4109 checkpoint files; 886 MB checkpoints versus 17.5 MB journal ; 8.44 million file-read visits from full inventory checks at appends.",
+        "source": {
+          "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_http_execution_v4.py",
+          "lines": "1066-1106",
+          "detail": "Inventory/retain/checkpoint path; exact current mechanics preserved for its physical qualification."
+        },
+        "next": "Before full-catalog rehearsal freeze, use the retained measurement/audit to qualify a versioned bounded append/delta receipt strategy with full original integrity checks at authority boundaries, crash/rollback detection and external checkpoints. Preserve all original journals; do not delete, sample away integrity, or reset output to improve timing. Rebind evaluator/protocol/limits; run one new matching complete rehearsal after cheaper gates."
+      }
+    ],
+    "execution_order": [
+      "Finish and independently audit the original already-running HTTP v3 experiment against its frozen source; retain its measured journal/checkpoint costs. Preserve add6c41 and its 149-check offline receipt. The six authored C06 physical controls are not a necessary detour when the immediately required final-M4/admission contract will change; root should qualify the coherent successor physical contract instead and continue to label the C06 six controls unexecuted.",
+      "First freeze the complete intended observation profile: inherited definitions against final M4, independently reviewed applicability and original purposes, common source identity, and the complete gate/case/edge census. Inventory the unresolved obligations rather than synthesize a complete ScopePlan. Measure a prospectively versioned Registry bound if the census exceeds512.",
+      "In a separate checkout, implement a versioned compact append/prefix-checkpoint layer plus narrow final-M4/profile/binding changes, preserving original mechanics where correct. Define the checkpoint API before adding a new study journal: exact ordered record prefix, immutable artifacts, externally retained monotonic checkpoint, original binding and schema/protocol identity, reopen/rollback detection, and full integrity verification at authority boundaries. Do not replace original files or weaken unknown-intent/no-redispatch semantics.",
+      "Add the durable normal irreversible financial admission seal using the same transaction and invocation-entry fence as admission; version the exact typed RPC owner adapter. Build prospective registration and six-trajectory authority on that durable foundation, supplying actual bound owner methods to ObservationAdmission. A gate registered for M4 cannot execute through the old M1-only binding.",
+      "Run root-owned combined static/offline checks for this coherent successor batch, then exact physical positive/defect/restart/limit controls and independent raw-to-verdict audit. Measure checkpoint I/O and bounded resource behavior. Do not claim old C06 physical evidence qualifies changed source, binding, runtime or checkpoint contract.",
+      "In parallel, complete actual semantic ScopePlan/Declaration and prerequisite qualification producers, remaining full product evaluators, and the four-milestone peer-local/central controllers. The durable authority may correctly report these missing; completing its mechanism alone is not full product acceptance.",
+      "After all required implementation and source/runtime/model/resource/fault contracts are complete, run one fresh complete matching zero-provider six-trajectory rehearsal including all four milestones and the global private barrier. Independently audit originals. A narrow authority fixture or historical M1 pilot cannot replace it.",
+      "Only then reconcile current cumulative funding and overlap reservations, resolve retained payload authorization, and run every preregistered live trajectory. Freeze all six before independent final acceptance and preserve failure, stopped and unfinished outcomes."
+    ],
+    "source_pins": {
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_scope_consumer_v1.py": "4375c42d82dbdf7407b01828019174de439f7e9611e5a3dc883ec1328f41e5b0",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_compiler_v1.py": "a58919361669857831f724c817117d83d531ddf4721e982967558c7a6166c694",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_registry_v1.py": "20587fb1bc74666afb21e8a46770cf9e71382b27e2111a622b4ecfa8fc2908f7",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py": "c8456643140a241c7006756a16c3b5dc54d5f21620cf3562dd1a0fcea99efc6a",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_client_execution_v5.py": "b565d2d3cedef767815011bc87756266bbac29f3715d47e1bfb2665acf3d68ae",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_client_observation_source_v1.py": "201f31f124137458707f5acc1db59e9a857f91525c3524644d2ce34d65155f1f",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_cli_acceptance_profile_v1.py": "0a2b72049f05b257aac213ce3df14325b79f0a524c1abc6829026ce82ec17dc0",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_http_execution_v4.py": "840b7ff7c45923d6f8efbdc41757cb0b2a75de78c2aef3f4c95573bdfc59e76b",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_http_observation_source_v1.py": "693b5605bab362e354963f2cebee5a08cceca64ee86a4664f3d1d77c23ff1d01",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/candidate_release_execution_v2.py": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_library_project_v4.py": "634d1c46645c8b2dc18553b8e16ea04127289c2443d435ca7cc6bf776c847183",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_library_live_v4.py": "e5019cf680d76fb08b95ea062311c68d8d0b27afd12e95b9e8cf2fda0c9d16d0",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_authority_v2.py": "50d8b731be72342c67f3fbc76c36d47e7a6fff3e1a959ab57ed7f1a3fbd21b42",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_authority_v3.py": "e9f754de907996fa2124fb6311c73fa0076f2186281ff7405346ce71d99cc202",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_rpc_v2.py": "730132ba427554112c7bda43043754c6f109fbde8fc23cc609f57b0d8500ba75",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_financial_rpc_v3.py": "2b605442bdba5aa7d04ee86d2ccb9f67253a063c3eccdd94b1c082215d703b83",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/peer_project_promotion_v3.py": "40554927f0087c46009b9d571e6a9f15833bf784cf1f12a0a148b5f084813569",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/docs/large-swarm-project-plan-v1.md": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/docs/candidate-scope-consumer-v1.md": "76917b52668051a0f184433b5fc9ace2ed6808e170bee011ba10bd62d3b57c12",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/docs/candidate-observation-admission-v1.md": "26bec4b20bf842adc07a391e4b10ec239731e73425d4fd8f0a48890fd1d9cb5a",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/analysis/candidate-observation-admission-v1-checkpoint.json": "27a23e313f904458ff6af5c3fac9358dfbd8ac9185f1160909b6c0cdfdcbfd97",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/library-m1-acceptance-inventory-v1.json": "f5d808866d6f18f3fd095de5d447bb5b0e2a43e20771761fe91a38cf4f59ad4a",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/library-cumulative-product-v2.json": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
+    }
+  },
+  "c06_preparation": {
+    "original_commit": "add6c41d38c0acb69fc40a5649ec8e9ccba9d9f7",
+    "offline_tests_passed": 149,
+    "physical_methods_authored": 6,
+    "physical_methods_executed": 0,
+    "disposition": "Preserve original preparation; qualify coherent successor including equivalent required behaviors after explicit final-M4/applicability/checkpoint contract changes. No historical physical qualification is claimed.",
+    "retention": "runs/cumulative-acceptance-readiness-1/receipt.json",
+    "retention_sha256": "274631031a2e3f86e2df7770b80c4e81a1ed4e95746fb5844aa3450bdbb62e54"
+  },
+  "preserved_scope": {
+    "original": "Four cumulative milestones M1/M2/M3/M4; all S4-G, S16-G, O16-G crossed with healthy and compound_recovery, six whole-project trajectories in one family. S4 has4 builders + 4 reviewers; other arms16 + 4. Shared gossip and matched aggregate resources; peer-local versus durable central decision placement. Retain failed/stopped/unfinished trajectories without replacement.",
+    "denominator": "123 product requirements plus 3 distinct prerequisites ; 312 source obligations, 22 qualification authorities, 188 inherited gap notes. B06 eight IDs and C06 implementation slices are not replacement denominators.",
+    "private_barrier": "Stop new dispatch and resolve or irreversibly fence in-flight work under prospectively fixed policy; snapshot each final integrated source, candidates/history, task/evidence journals and unresolved work; freeze all six before any private evaluation. No private feedback to active models.",
+    "evidence": [
+      {
+        "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/docs/large-swarm-project-plan-v1.md",
+        "lines": "85-107,183-217,239-257,292-301",
+        "detail": "Original arms, resources, all-six barrier and complete matching rehearsal."
+      },
+      {
+        "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/docs/candidate-scope-consumer-v1.md",
+        "lines": "43-55",
+        "detail": "Full inventory and independent registration boundary."
+      },
+      {
+        "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/gossip_harness/project_acceptance_compiler_v1.py",
+        "lines": "674-698",
+        "detail": "Exact six combinations, role identities, M1-M4, placement, shared seeds and actual restart/partition schedule checks."
+      }
+    ]
+  },
+  "remaining_work": [
+    {
+      "surface": "C06 admission and CLI/HTTP concrete observation bridges",
+      "status": "implemented_offline_qualified_physical_pending",
+      "evidence": {
+        "path": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol/analysis/candidate-observation-admission-v1-checkpoint.json",
+        "lines": "/offline and /new_physical_controls",
+        "detail": "149 checks / 12 fresh classes; exact summary SHA 910ca9a813f9f0e13936d4c180b2ff7e63659f2c09a6ec1da2e9d95d315fd815. Six new physical methods unexecuted at commit checkpoint. Later progress must use new root receipts, not this static status."
+      }
+    },
+    {
+      "surface": "Historical CLI qualification",
+      "status": "implemented_scoped_qualified",
+      "detail": "Prior inventoryv1 final-audit-pending is superseded by root retained final CLI audit:57 histories, 305 commands + 11 controls; 868 true and 32 unspecified. These are qualification originals, not fresh final-M4 product observations."
+    },
+    {
+      "surface": "Original HTTPv3 mechanics",
+      "status": "implemented_19_of_20_scoped_audited_one_original_method_running",
+      "detail": "Historical C06 add6c41 checkpoint retained14/20 scoped audited methods with6remaining. At this new checkpoint the E01-E05 raw audit is also clear, so19/20methods are scoped-audited and the original X01 remains running. Even all20mechanics controls would not execute/grade the full276histories,8203steps and7602requests."
+    },
+    {
+      "surface": "Full production reviewed acceptance registration",
+      "status": "missing_implementation_and_semantic_qualification",
+      "detail": "Real complete ScopePlan/Declaration, independently reviewed selectors/applicability/ownership/purposes/compatibility plus actual source-bound SCOPE/ADMISSION/CONTROL qualification producers. A durable registration store alone does not generate these."
+    },
+    {
+      "surface": "M4-compatible inherited CLI/HTTP and unified release source identity",
+      "status": "missing_versioned_contract_integration",
+      "detail": "Specific contract mismatches described above; code reuse possible, but fresh exact bindings/controls required."
+    },
+    {
+      "surface": "Remaining complete candidate evaluators",
+      "status": "partly_implemented_scoped_qualified_with_missing_slices",
+      "detail": "Full HTTP semantic workload; browser/export; remaining B01/B02 actual concurrency/I/O-error/state facets; B04 M2/M3 recovery and M4 inherited migration/compatibility; B05 release/docs/dataset/install. Preserve prior scoped results and exact remaining obligations from v1; full accepted ScopePlan cannot invent these observations."
+    },
+    {
+      "surface": "Durable normal seal, global six-trajectory freeze and concrete acceptance authority",
+      "status": "missing_implementation",
+      "detail": "Current financial/promotion originals are foundations; current pilot local freeze cannot prove global restart-verifiable terminal authority."
+    },
+    {
+      "surface": "Cumulative project scheduler/policies and release process",
+      "status": "missing_full_contract_integration",
+      "detail": "Four requirement releases, monotonic public obligations, actual local repair/work/source selection in S4/S16, matched durable O16 scheduler, proper review roles, real restart/partition schedule, durable unresolved work/role status and source-bound high-signal generated tests; current M1 phase pilot explicitly excludes these."
+    },
+    {
+      "surface": "Exact complete rehearsal and live allocation",
+      "status": "required_not_yet_qualified",
+      "detail": "After complete executable contract and evaluators, freeze models/tools/context/resources/faults/limits; qualify one full four-milestone six-trajectory zero-provider rehearsal and independent raw audit. Historic one-M1 or partial cohort is insufficient."
+    }
+  ],
+  "later_work": "Placement\u00d7transport O-B/O-G/P-B/P-G and independent held-out-family fixed sample confirmation remain separately preserved later studies. Their bridge/causal/independentsample requirements are not replaced by the original all-gossip one-family cohort, and not added as blockers to this next authority engineering batch.",
+  "limitations": [
+    "No statistically independent sample or quality advantage established.",
+    "Read-only feasibility counters are not function-level profiling; full-workload time and optimization speedup remain unknown.",
+    "The original HTTP20-method batch remains nonterminal at this checkpoint.",
+    "Changed checkpoint detection guarantees require explicit source review and fresh matching qualification.",
+    "Budget estimates and payload authorization have not been freshly reconciled in this offline cycle."
+  ],
+  "publication_review": {
+    "reviewer": "/root/candidate_scope_consumer",
+    "scope": "Read-only claims versus retained original audit, feasibility receipt and implementation plan; no tests or edits.",
+    "corrections": [
+      "E02 authored links escape selected root inside /inputs; no product confinement verdict.",
+      "Prospective checkpoint working name separated from existing HTTPv4.",
+      "Historical14/20 and current19/20 status explicitly separated."
+    ]
+  }
+}
