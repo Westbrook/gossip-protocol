@@ -1,0 +1,79 @@
+{
+  "protocol": "candidate-product-browser-physical2-failure-v1",
+  "recorded_at": "2026-10-04T16:57:31.427038+00:00",
+  "source_commit": "7baca1380ec86fbf29ce7a8cb4efa16d43e6cef7",
+  "documentation_commit_at_execution_end": "623847e27dad838cac4c4356293073c919531c5b",
+  "status": "infrastructure failure; physical qualification not established",
+  "new_model_quality_samples": 0,
+  "provider_calls": 0,
+  "run": "runs/browser-root-physical-2/20261004T162634-a86d699a",
+  "summary_sha256": "c6637fd0075b00978eeeaee69fa11e487787ed0c6cfeb1073d711fae34c1663a",
+  "outcomes": {
+    "error": 1,
+    "not_run": 6
+  },
+  "duration_seconds": 933.9736682074144,
+  "static_passed": true,
+  "input_runtime_stale": {
+    "inputs": false,
+    "runtime": false
+  },
+  "independent_audit": {
+    "path": "analysis/candidate-product-browser-physical2-audit-v1.json",
+    "sha256": "2ff55c3641458103a6622154092f4245ae4d90e799bb8fda03dc3063dcd8f93c",
+    "retention_manifest": "runs/browser-root-physical-2-retention/retention.json",
+    "retention_manifest_sha256": "c7ffc58ab59ea848caf574b23631e487f3b55107f85b5d4837389112f3e5bc35"
+  },
+  "physical_facts": {
+    "planned_controls": 7,
+    "executed_controls": 1,
+    "unrun_controls": 6,
+    "intents": 22,
+    "complete_exchanges": 21,
+    "response_statuses": {
+      "200": 20,
+      "409": 1
+    },
+    "unknown_request_outcomes": 1,
+    "started_actions": 4,
+    "planned_actions": 6,
+    "stale_commit_action_reached": false,
+    "official_semantic_observation_returned": false,
+    "journal_raw_files": 1601,
+    "source_pins_matched": 52,
+    "docker_resources_verified_absent": 25,
+    "browser_clean_close_acknowledged": false,
+    "driver_returncode": -9
+  },
+  "failures": [
+    {
+      "kind": "runtime history deadline",
+      "fact": "900-second work allowance reached during request22 after Docker create and before complete probe inspection/start evidence; unchanged1200-second total reserves300seconds for cleanup."
+    },
+    {
+      "kind": "partial observation reader",
+      "fact": "Source reconstruction shows missing never-acknowledged created-inspection read latches ChainUnknown; broadValueError handler catches it before final prefix validation rejects. The hidden intermediate exception itself was not retained."
+    }
+  ],
+  "diagnosis": {
+    "completed_request_record": "runs/browser-root-physical-2-retention/completed-request-diagnostic/diagnostic.json",
+    "sha256": "f485fe1e63bf54f4b3a4fd986be00b201a0d3810f1957b51d80596d07e85cdd3",
+    "source_count_full_checks_per_normal_request": 50,
+    "meaning": "Repeated full-prefix traversal is a source-grounded overhead suspect. Recorded helper spans and owner spans are not a measured causal allocation or a performance benchmark."
+  },
+  "next_work": {
+    "batch_reader": "Isolated draft authorized: fresh checkpoint-scoped directory descriptors, per-file path/identity checks, every data read/hash and all50checkpoints retained. No deadline change or performance sufficiency claim.",
+    "missing_prefix": "Separate isolated browser-local acknowledged-membership preflight authorized; present data still authenticates, ChainUnknown remains fatal, full initial/final prefix validation remains.",
+    "runtime": "No retry launched. Source review and coherent applicable offline checks precede any new physical execution."
+  },
+  "previous_results_preserved": [
+    "runs/browser-root-physical-1/20261004T143914-73e681cf",
+    "runs/combined-evaluator-offline-5/20261004T161254-dafd881c"
+  ],
+  "scope_limits": [
+    "This failed fixture control says nothing new about model coding quality or gossip superiority.",
+    "Independent retained-byte replay does not heal the old live owner or make this a reusable correctness judgment.",
+    "All required larger-role, live coordination and independent confirmation work remains outstanding."
+  ],
+  "publication": "Local only; public disclosure approval remains pending after automatic review rejection."
+}

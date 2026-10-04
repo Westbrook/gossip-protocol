@@ -1,0 +1,453 @@
+{
+  "artifact_root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c",
+  "audit_materials": [
+    {
+      "bytes": 10330,
+      "path": "/tmp/audit-browser-physical2-originals-20261004.py",
+      "sha256": "eaa4fec92ae3e0fe305610e1e49ada73f56f1838c9d38c9d8b1d579ba7f30073"
+    },
+    {
+      "bytes": 6097,
+      "path": "/tmp/gossip-product-browser-source-review-1/held6-final-batch-tail-source-review.json",
+      "sha256": "2c2c28780c68c822952da34ddf9ab8c2e220092778cded433b094bddff362517"
+    },
+    {
+      "bytes": 20873,
+      "path": "/tmp/gossip-product-browser-source-review-1/physical-d01-original-audit-20261004-v1.json",
+      "sha256": "5cbbee2dd391d2292047d9260c118a01ddfb9e1f18f2602bdede5a8665ae317b"
+    }
+  ],
+  "browser_and_DOM": {
+    "browser_close_acknowledged": false,
+    "browser_launched_version": "151.0.7922.34",
+    "completion": {
+      "bytes": 1046,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c/journal/browser-process-completion.json",
+      "sha256": "ec7b952eb6c30b8a2ccd5c42bb51a1219efa6dbd05333bf2c38f8a397fbec66d"
+    },
+    "diagnostic_tail_stderr_bytes": 0,
+    "diagnostic_tail_stdout_bytes": 0,
+    "driver_pid": 27942,
+    "limitations": [
+      "No normal terminal/close acknowledgment or universal Chromium descendant closure proof.",
+      "The IPC route bridge does not establish native browser network/framing/cookie/redirect behavior.",
+      "Root separately reports a later process-group absence diagnostic; it is not part of the original protocol and does not repair this qualification."
+    ],
+    "partial_observations": "a000/a001/a002 raw DOM messages are retained, all readiness=false and observation_error=null. a000 lacks visible job row, a001 displays prior queued9007199254740993, a002 displays prior cancelled9007199254740994. These are partial raw snapshots under the declared readiness limitation; no returned semantic verdict or causal product-latency conclusion is asserted. Complete control API responses separately show queued993/cancelled994/queued995.",
+    "pipe_complete": false,
+    "returncode": -9,
+    "tail_elapsed_seconds": 10.015100166201591,
+    "tail_eof_both": true,
+    "tail_errors": [],
+    "tail_request_dispatches": 0,
+    "terminal": null
+  },
+  "cleanup": {
+    "chromium_clean_close_verified": false,
+    "component_review": {
+      "bytes": 83231,
+      "path": "/tmp/gossip-product-browser-d01-cleanup-audit-20261004-physical2-v1.json",
+      "sha256": "6bfe9bd3042335e9786dfafb6c3a97bf166fe2da979d505778cea162fa0e10bb"
+    },
+    "journal_healed": false,
+    "original_cleanup_verified": true,
+    "recorded_resources_absent": 25,
+    "scope": "24 claimed containers and one volume;21 probes retired normally with exact absence records,4 remaining resources removed by owned emergency200-inspect→204-delete→404-inspect at16:42:01UTC."
+  },
+  "date": "2026-10-04",
+  "disposition": "failed harness qualification; intended D01 stale-token witness not reached; six other physical classes not run",
+  "failure_analysis": [
+    {
+      "classification": "original infrastructure failure",
+      "evidence": [
+        {
+          "bytes": 553862,
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c/journal/terminal.json",
+          "sha256": "3d537af392d97ce932a176b8155c1370c54d833916068709e1174625b0f0a501"
+        },
+        {
+          "bytes": 208,
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c/journal/r0022-observation.json",
+          "sha256": "055aa2da98908c54e6465a3e879fa7e9970dfbccd6b044ed3c5ec6dae7656702"
+        },
+        {
+          "bytes": 2130,
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c/journal/r0022-probe-create.json",
+          "sha256": "0482275681752b9c2f888b16788a05575bc95c1851a9f9dbc0b329007e354a28"
+        },
+        {
+          "bytes": 4391,
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/artifacts/gossip-candidate-product-browser-d01-as68ne9c/journal/browser-command-intent.json",
+          "sha256": "d991ad0c0aed1551a1718341f5732587b3b9678f9f11c0cc56379f17aa7863de"
+        }
+      ],
+      "id": "F01",
+      "proven": "Terminal and process completion retain ExecutionError:Declared browser history deadline reached during request22 after successful Docker create and before created inspection/start. The owner reserves300 of1200 seconds for cleanup; this is the900-second work boundary, not a widened action or request timeout.",
+      "r0022_create_deadline_monotonic": 4485182.268738167,
+      "work_deadline_monotonic": 4485182.268738375
+    },
+    {
+      "absent_member": "r0022-probe-created-request.bin",
+      "classification": "source-grounded incomplete-original reader defect",
+      "id": "F02",
+      "no_tamper_claim": "No retained chain/hash/inventory mismatch found; do not describe the final error as proof of journal tampering.",
+      "proven_source_path": [
+        "Browser read_original authenticates each route row and calls probe regardless of available flag.",
+        "probe calls base._created before requiring row.probe_id/process.",
+        "_created validates create then calls inspect(label+created), which calls raw on r0022-probe-created-request.bin.",
+        "That member was never acknowledged and does not exist in the complete replayed prefix. Chain.read invokes _read_committed, rejects absent membership, and _fail latches uncertainty.",
+        "The outer response loop catches ChainUnknown through ValueError, continues, then final reader.validate_checkpoint observes the latched error."
+      ],
+      "retained_runtime_limit": "Only the final latched ChainUnknown traceback is retained; its earlier swallowed exception is not separately recorded. The path above is independently reconstructed from exact source and terminal inventory, also independently confirmed by author. No runtime replay was performed.",
+      "sources": [
+        {
+          "bytes": 36943,
+          "logical": "gossip_harness/candidate_product_browser_observation_v1.py",
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_product_browser_observation_v1.py",
+          "sha256": "1c6f736fc6f4b6afaf8c53cffe70c7be9b7edad889dd8d42c113dbbf11402919"
+        },
+        {
+          "bytes": 29934,
+          "logical": "gossip_harness/candidate_product_process_reader_v1.py",
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_product_process_reader_v1.py",
+          "sha256": "af1e8f861cc6c2964df18eeb732f30e2a387476e6849aefff9524df2208d6815"
+        },
+        {
+          "bytes": 26671,
+          "logical": "gossip_harness/candidate_checkpoint_chain_v1.py",
+          "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+          "sha256": "d59a55226dbb25cc78e3219cd3ad0e6fc8e195e8ac3bb91b8223448308a779d6"
+        }
+      ]
+    }
+  ],
+  "minimal_next_action": [
+    "Preserve both failed physical runs and six not-run class slots; do not retry this unchanged execution.",
+    "Prospectively fix the browser reader to classify unacknowledged absent evidence via authenticated prefix membership before attempting read, retaining earlier facts; never mask missing/tampered acknowledged bytes or clear ChainUnknown. Add focused offline real-journal incomplete-prefix regression plus acknowledged-member tamper control.",
+    "Plan a separately reviewed bounded journal validation performance change or diagnostic before any new costly physical run, keeping source/lifecycle/isolation boundaries and all existing deadlines unless explicitly versioned. Root owns authorization, combined offline gate, and any later complete physical qualification."
+  ],
+  "mode": "read-only post-terminal artifact and source review",
+  "physical_census": {
+    "actions_with_observation": [
+      "a000",
+      "a001",
+      "a002"
+    ],
+    "attempted_classes": 1,
+    "browser_intents": 16,
+    "candidate_server_created_started": 1,
+    "complete_browser_requests": 15,
+    "complete_control_requests": 6,
+    "complete_sent_request_responses": 21,
+    "confirmed_container_creates": 24,
+    "control_intents": 6,
+    "declared_physical_classes": 7,
+    "driver_messages": 31,
+    "entered_actions": [
+      "a000",
+      "a001",
+      "a002",
+      "a003"
+    ],
+    "entered_request_intents": 22,
+    "meaning": "All19 declared facet identities remain in the denominator. The original observer returned none because its final validation raised; this audit does not manufacture official pass/fail/unavailable cells.",
+    "planned_actions": 6,
+    "planned_facet_census": [
+      "m1-browser-high-epoch:a000:dom",
+      "m1-browser-high-epoch:a000:api",
+      "m1-browser-high-epoch:a000:mutation",
+      "m1-browser-high-epoch:a001:dom",
+      "m1-browser-high-epoch:a001:api",
+      "m1-browser-high-epoch:a001:mutation",
+      "m1-browser-high-epoch:a002:dom",
+      "m1-browser-high-epoch:a002:api",
+      "m1-browser-high-epoch:a002:mutation",
+      "m1-browser-high-epoch:a003:dom",
+      "m1-browser-high-epoch:a003:api",
+      "m1-browser-high-epoch:a003:mutation",
+      "m1-browser-high-epoch:a004:dom",
+      "m1-browser-high-epoch:a004:api",
+      "m1-browser-high-epoch:a004:mutation",
+      "m1-browser-high-epoch:a005:dom",
+      "m1-browser-high-epoch:a005:api",
+      "m1-browser-high-epoch:a005:mutation",
+      "m1-browser-high-epoch:mechanics"
+    ],
+    "retained_request22_created_id": "6074dadcf1df84e6d679c7d4c04bc6e1132ad6a46cce034a60426ceaf766e29b",
+    "returned_facet_verdicts": 0,
+    "trusted_keeper_created_started": 1,
+    "trusted_probe_created_but_not_started": 1,
+    "trusted_probe_creates": 22,
+    "trusted_probe_starts_and_natural_exit0": 21,
+    "unattempted_classes": 6,
+    "unconfirmed_creates": [],
+    "unentered_actions": [
+      "a004",
+      "a005"
+    ],
+    "unknown_request_outcomes_retained": 1
+  },
+  "protocol": "bounded-browser-physical-original-audit-v1",
+  "proven_original_wire_facts": {
+    "completed_mutations": [
+      {
+        "action_id": "a001",
+        "request_id": 10,
+        "response_json": {
+          "completed": 0,
+          "epoch": 9007199254740994,
+          "error": null,
+          "job_id": "browser_counter",
+          "state": "cancelled",
+          "total": 0
+        },
+        "status": 200,
+        "target": "/api/jobs/browser_counter/cancel"
+      },
+      {
+        "action_id": "a002",
+        "request_id": 15,
+        "response_json": {
+          "completed": 0,
+          "epoch": 9007199254740995,
+          "error": null,
+          "job_id": "browser_counter",
+          "state": "queued",
+          "total": 0
+        },
+        "status": 200,
+        "target": "/api/jobs/browser_counter/retry"
+      }
+    ],
+    "control_state_facts": [
+      {
+        "action_id": "a000",
+        "request_id": 8,
+        "response_json": {
+          "jobs": [
+            {
+              "completed": 0,
+              "epoch": 9007199254740993,
+              "error": null,
+              "job_id": "browser_counter",
+              "state": "queued",
+              "total": 0
+            }
+          ]
+        },
+        "target": "/api/jobs"
+      },
+      {
+        "action_id": "a000",
+        "request_id": 9,
+        "response_json": {
+          "documents": [],
+          "total": 0
+        },
+        "target": "/api/documents"
+      },
+      {
+        "action_id": "a001",
+        "request_id": 11,
+        "response_json": {
+          "jobs": [
+            {
+              "completed": 0,
+              "epoch": 9007199254740994,
+              "error": null,
+              "job_id": "browser_counter",
+              "state": "cancelled",
+              "total": 0
+            }
+          ]
+        },
+        "target": "/api/jobs"
+      },
+      {
+        "action_id": "a001",
+        "request_id": 13,
+        "response_json": {
+          "documents": [],
+          "total": 0
+        },
+        "target": "/api/documents"
+      },
+      {
+        "action_id": "a002",
+        "request_id": 18,
+        "response_json": {
+          "jobs": [
+            {
+              "completed": 0,
+              "epoch": 9007199254740995,
+              "error": null,
+              "job_id": "browser_counter",
+              "state": "queued",
+              "total": 0
+            }
+          ]
+        },
+        "target": "/api/jobs"
+      },
+      {
+        "action_id": "a002",
+        "request_id": 20,
+        "response_json": {
+          "documents": [],
+          "total": 0
+        },
+        "target": "/api/documents"
+      }
+    ],
+    "detailed_facts": {
+      "bytes": 70217,
+      "path": "/tmp/gossip-product-browser-source-review-1/physical2-original-facts-20261004-v1.json",
+      "sha256": "086372a249e11fc24f9dde1af83f3e206351499add8030caebe30d947b758451"
+    },
+    "intended_D01_witness": "No a004 action_start, commit route, or stale-token response exists. Serving the mutant page is not detection of the mutant.",
+    "method": "All21 Engine attach responses independently decoded as complete ordered Docker multiplex frames, exact stdout/stderr compared to retained stream files and process descriptors, start204/wait StatusCode0/final exited0 verified, helper sent bytes rebuilt from exact input recipe and joined to driver method/target/body, every candidate response HTTP header/Content-Length framing checked, each bridge reply status/header list/body matched raw response. Helper descriptors and all original raw files are bound by replayed chain.",
+    "request22": "Actual browser prepare intent and exact Docker create are retained. No created-inspection/start/attach/wait/final process originals exist. Emergency inspection independently shows State.Status=created, then removal. Its ordinary row remains unavailable/unknown; no candidate request dispatch or response is credited.",
+    "served_page": {
+      "body_bytes": 43947,
+      "body_sha256": "f1fcc3b8fd6219df03117879bf19b8717823fbf4f6f7824b513c1d208fe9ff63",
+      "request_id": 1,
+      "served_exact_stale_commit_mutant_occurrences": 1
+    },
+    "status_counts": {
+      "200": 20,
+      "409": 1
+    }
+  },
+  "retained_integrity": {
+    "authority_limit": "Post-terminal internal consistency to the retained independently owned head. This does not reconstruct the vanished live owner, remove its uncertainty latch, create new acceptance authority, or turn this failure into a reusable correctness receipt.",
+    "exact_commitment": {
+      "context_sha256": "4d02cc93368b75ffc929701765b1510af6264687bafc2d87af5e032558d466fe",
+      "external_bytes": 607647,
+      "head_sha256": "5f731ae38d83cc7d3a6f992a176def65a65e4710dada1190912955a7f565db76",
+      "raw_bytes": 4516289,
+      "raw_file_count": 1601,
+      "sequence": 1601
+    },
+    "method": "Independent strict JSON reader; canonical genesis/delta bytes; ordered previous/context/sequence/name/size/digest joins; exact raw and external inventories; every raw file hashed; resulting counters/head equal original-checkpoint and retained head/HEAD. All52 evaluator source pins checked against current files, resolving finite logical names to their explicit module/plan paths. Config bytes and registration digest join genesis context. No project imports or owner reopening.",
+    "raw_inventory_and_deltas": {
+      "bytes": 422249,
+      "path": "/tmp/gossip-product-browser-source-review-1/physical2-chain-inventory-20261004-v1.json",
+      "sha256": "5761d27fd363cf93da471443a8d0d565511ecb5478197224792b3041b9b1a9ec"
+    },
+    "result": "all checks matched",
+    "source_manifest_file_count": 61,
+    "source_pin_count": 52
+  },
+  "reviewer": "/root/b03_physical_tests",
+  "runner": {
+    "D01": "error",
+    "class_result": {
+      "bytes": 5692,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/classes/d295adf16ddd188b/result.json",
+      "sha256": "dcc14a177c55388f40b940be7f1b058d73b93550d6b232b7ab91593cc928da4e"
+    },
+    "duration_seconds": 933.9736682074144,
+    "error": "ChainUnknown: Uncertain chain permits only prior facts and close",
+    "error_location": "read_original final reader.validate_checkpoint, before original-observation.json can be written",
+    "original_observation_exists": false,
+    "other_six": "not_run",
+    "runtime_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+    "source_and_runtime_stale": false,
+    "status": "failed",
+    "subprocess_starts": {
+      "docker": 160,
+      "git": 203,
+      "other": 3
+    },
+    "summary": {
+      "bytes": 13297,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a/summary.json",
+      "sha256": "c6637fd0075b00978eeeaee69fa11e487787ed0c6cfeb1073d711fae34c1663a"
+    },
+    "test_outcomes": {
+      "error": 1,
+      "not_run": 6
+    },
+    "worker_telemetry": {
+      "peak_cpu_cores": {
+        "reason": "No CPU sampling; an interval average is not a peak",
+        "scope": "observer process",
+        "status": "unavailable",
+        "unit": "cores",
+        "value": null
+      },
+      "process_tree_peak_rss_bytes": {
+        "reason": "No simultaneous process-tree sampling; individual RSS peaks are not additive",
+        "scope": "observer process tree",
+        "status": "unavailable",
+        "unit": "bytes",
+        "value": null
+      },
+      "schema": "verification-process-telemetry-v1",
+      "scope": "isolated verification worker; child CPU includes only OS-accounted waited children",
+      "self_average_cpu_cores": {
+        "scope": "observer process CPU divided by interval wall time; excludes child CPU",
+        "status": "measured",
+        "unit": "cores",
+        "value": 0.7315259492874983
+      },
+      "self_cpu_seconds": {
+        "scope": "observer process during interval",
+        "status": "measured",
+        "system_seconds": 502.433468,
+        "unit": "seconds",
+        "user_seconds": 177.346035,
+        "value": 679.779503
+      },
+      "self_lifetime_peak_rss_bytes": {
+        "scope": "observer process lifetime; not an interval delta",
+        "status": "measured",
+        "unit": "bytes",
+        "value": 187744256
+      },
+      "waited_children_cpu_seconds": {
+        "scope": "OS-accounted waited children during interval; excludes live children and remote Docker work",
+        "status": "measured",
+        "system_seconds": 26.900257,
+        "unit": "seconds",
+        "user_seconds": 51.547771,
+        "value": 78.448028
+      },
+      "wall_seconds": {
+        "scope": "observer interval",
+        "status": "measured",
+        "unit": "seconds",
+        "value": 929.2623230414465
+      }
+    }
+  },
+  "scope_limits": {
+    "Engine_calls": false,
+    "automatic_retry": false,
+    "browser_calls": false,
+    "candidate_execution": false,
+    "independent_acceptance": false,
+    "live_process_absence_check_by_reviewer": false,
+    "main_chain_healed": false,
+    "physical1_preserved_failed": true,
+    "product_acceptance": false,
+    "project_imports": false,
+    "provider_calls": false,
+    "reviewer_runtime_execution": false,
+    "scientific_samples": 0,
+    "source_edits": false
+  },
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/browser-root-physical-2/20261004T162634-a86d699a",
+  "timing_limits": {
+    "measured_causal_allocation": false,
+    "natural_helper_lifetime_seconds": {
+      "count": 21,
+      "maximum": 0.339891,
+      "method": "Differences of retained Engine State StartedAt/FinishedAt; datetime parsing retains microseconds.",
+      "minimum": 0.186199,
+      "sum": 5.322124
+    },
+    "run_duration_seconds": 933.9736682074144,
+    "statement": "Short helper lifetimes and reported source checkpoint counts do not measure time attributable to journal validation, Git capture, browser waiting, or other work. The existing source has repeated full checkpoint scans; a causal performance conclusion needs separately planned instrumentation or an approved policy comparison. No benchmark gain is claimed from comparing two failed runs."
+  }
+}
