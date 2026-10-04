@@ -4845,6 +4845,54 @@
       "boundary": "Offline stale-code detection only; globals, import-time defaults, decorator state and arbitrary interpreter integrity still require frozen source and fresh trusted workers.",
       "disposition": "Complete combined static/affected offline gate before one prospective physical positive/defect qualification. Preserve original frozen v4/v3 qualification protocols and historical failures.",
       "overlap_reason": "New loaded-evaluator check covers the concrete observation sources beyond existing registration and cohort checks."
+    },
+    "tests/test_candidate_checkpoint_chain_v1.py::CandidateCheckpointChainV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "isolation": "One class process; each test owns disposable raw, delta and external anchor directories. No candidate, Docker or provider work.",
+      "disposition": "Run the combined static gate and these nearest offline regressions before integrating the changed checkpoint/profile contract with physical candidate execution.",
+      "invariant": "Each raw append has one durable context-bound predecessor delta and independently acknowledged head; uncertain suffixes cannot grant current authority or erase authenticated prior facts.",
+      "distinct_defect": "Raw/delta/fsync/CAS interruption, tamper, rollback, foreign suffix, quota exhaustion, path changes or inherited ownership could fabricate completeness or authorize implicit retry.",
+      "boundary": "Actual bounded files and injected storage/head failures; independent authority is a test capability. Full reads at declared boundaries; no continuous filesystem attestation.",
+      "overlap": "Primitive tests isolate ordering, quotas and reconstruction; the separate head class supplies durable host-anchor integration.",
+      "overlap_reason": "The former journal parser authenticates neither history nor external freshness. These tests verify the new changed prefix contract."
+    },
+    "tests/test_candidate_checkpoint_head_v1.py::CandidateCheckpointHeadV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "isolation": "One class process; each test owns disposable raw, delta and external anchor directories. No candidate, Docker or provider work.",
+      "disposition": "Run the combined static gate and these nearest offline regressions before integrating the changed checkpoint/profile contract with physical candidate execution.",
+      "invariant": "Only one host owner advances a separate durable checkpoint head; independent expected state, exact CAS, fsync and uncertainty prevent stale or unacknowledged authority.",
+      "distinct_defect": "Lost write acknowledgement, head rollback, aliasing, process/thread ownership escape or automatic retry could make a locally consistent journal appear current.",
+      "boundary": "Real private filesystem anchor, process reopen/exclusion, inherited-fork rejection, injected write/fsync failures and integrated compact-chain observations; no physical power-loss claim.",
+      "overlap": "Adds actual durable HeadAuthority and chain composition to the primitive synthetic authority tests.",
+      "overlap_reason": "Independent store persistence, lock exclusion and known-prefix preservation across anchor uncertainty are distinct from raw delta reconstruction."
+    },
+    "tests/test_cumulative_observation_profile_v1.py::CumulativeObservationProfileTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "isolation": "One class process; each test owns disposable raw, delta and external anchor directories. No candidate, Docker or provider work.",
+      "disposition": "Run the combined static gate and these nearest offline regressions before integrating the changed checkpoint/profile contract with physical candidate execution.",
+      "invariant": "Exact original CLI/HTTP declarations, source clauses and prospective M4 purpose bind the profile; only the explicit health successor changes inherited expected values.",
+      "distinct_defect": "Milestone relabeling, source drift, silently omitted cases, unreviewed compatibility or caller pass flags could erase obligations or repurpose old observations.",
+      "boundary": "Complete 57 CLI / 276 HTTP declaration census and pure profile identities; semantic review, fresh execution and full-product acceptance remain external.",
+      "overlap": "Profile tests check source-derived compatibility and coverage; projection tests separately check decisive result handling.",
+      "overlap_reason": "Existing M1 execution profile tests do not cover a prospective final-M4 successor or preserve its uncovered obligations."
+    },
+    "tests/test_cumulative_observation_profile_v1.py::CumulativeCliProjectionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "isolation": "One class process; each test owns disposable raw, delta and external anchor directories. No candidate, Docker or provider work.",
+      "disposition": "Run the combined static gate and these nearest offline regressions before integrating the changed checkpoint/profile contract with physical candidate execution.",
+      "invariant": "All900 original CLI diagnostics remain ordered and visible; only source-declared normative assertions are decisive, while required failures and unknowns remain blocking.",
+      "distinct_defect": "Unspecified presentation could become false pass credit or permanent rejection, or filtering could erase genuine failures or missing evidence.",
+      "boundary": "Pure normalized CaseResult projection with no observation or approval capability; no product execution.",
+      "overlap": "Census/profile identity tests cover source definitions, while this class checks normalized complete result projection.",
+      "overlap_reason": "Registry aggregation alone cannot identify which legacy diagnostics are normatively unspecified."
     }
   },
   "audit": {

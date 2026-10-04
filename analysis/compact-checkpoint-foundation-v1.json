@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "protocol": "compact-checkpoint-foundation-checkpoint-v1",
+  "recorded_utc": "2026-10-04T05:53:00.201592+00:00",
+  "status": "targeted_offline_qualified_and_storage_measured",
+  "base_commit": "71fce44827f726f6e8af5dde248632ad49682608",
+  "branch": "codex/cumulative-acceptance-foundation",
+  "interpretation": "Implemented prerequisites for the complete cumulative study. No new agent-quality sample, full acceptance or comparative gossip advantage.",
+  "sources": [
+    {
+      "path": "gossip_harness/candidate_checkpoint_chain_v1.py",
+      "bytes": 24997,
+      "sha256": "7ba066ed42b7ccff1470cd60c32b60a51534a25e3444448c8888065fa72c624f"
+    },
+    {
+      "path": "gossip_harness/candidate_checkpoint_head_v1.py",
+      "bytes": 15407,
+      "sha256": "7d18127f8565244960eac3112071465aba6e2541d562e3c5ac7b6d0f60038c67"
+    },
+    {
+      "path": "gossip_harness/cumulative_observation_profile_v1.py",
+      "bytes": 17526,
+      "sha256": "9bfec116990d6d30fd5803a561cca6953a0f8d2b756367c1ac08f84537b50a70"
+    },
+    {
+      "path": "tests/test_candidate_checkpoint_chain_v1.py",
+      "bytes": 26812,
+      "sha256": "c1b359be82dcafe590367562669be08ed9ab8b0cf539b0be70ed15f1a2427ad1"
+    },
+    {
+      "path": "tests/test_candidate_checkpoint_head_v1.py",
+      "bytes": 17851,
+      "sha256": "1394e9b43e8a1553aebcff5396193b6a0eee3ae8724db36e57938573d8bf9ad2"
+    },
+    {
+      "path": "tests/test_cumulative_observation_profile_v1.py",
+      "bytes": 16249,
+      "sha256": "63cd36fc84db38664f2d65970bbec38aa4c0c598f1fb9f41b7230ba98614c794"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 9724,
+      "sha256": "923c348b4ee24bbe90d676a59a7610cd3c9db4c875c856539b552e4d54193084"
+    },
+    {
+      "path": "verification-manifest.json",
+      "bytes": 467455,
+      "sha256": "822b070ed3cb00e0dea7f0a32cdf534e0d74d1926fa622813d6d39aa4c2d57e3"
+    }
+  ],
+  "qualification": {
+    "summary": {
+      "path": "runs/compact-foundation-offline-qualification-1/20261004T053202-80cda1fc/summary.json",
+      "bytes": 43155,
+      "sha256": "ff10b5be935fe7a2753a76e6fe17c21649e74b0e7a257d9d63969e3827509a41"
+    },
+    "inputs": {
+      "path": "runs/compact-foundation-offline-qualification-1/20261004T053202-80cda1fc/inputs.json",
+      "bytes": 64195,
+      "sha256": "f1f47eadca22175287e40e1ccf54d530d55d2a2a6ddacd06195ebb58eb150aae"
+    },
+    "static": {
+      "path": "runs/compact-foundation-offline-qualification-1/20261004T053202-80cda1fc/static.json",
+      "bytes": 82484,
+      "sha256": "ae0773373b72d1b259b9cddbd24ee1263176280f22c5e0693a2dd82c81ba17e4"
+    },
+    "fingerprint": "e41ff7311f1c8c04cd9c35b315afc6b9ae49b1e77e4cbd90767a44ac6f7feae5",
+    "fresh_tests": 73,
+    "ordered_classes": [
+      {
+        "class": "tests/test_candidate_checkpoint_chain_v1.py::CandidateCheckpointChainV1Tests",
+        "tests": 34,
+        "result_sha256": "7e8bd10b1213afa359d2b0abbea35f9b74686fd11525a9639a5da149efc000f5",
+        "log_sha256": "a40e2d1db58f4cf3046b0457571d925ed8fdda93bed0505918119e2ec90648ed"
+      },
+      {
+        "class": "tests/test_candidate_checkpoint_head_v1.py::CandidateCheckpointHeadV1Tests",
+        "tests": 23,
+        "result_sha256": "afa7cdd0cf2af0f5e9bae9a21bfc239f2d7d831aee64f0eaf9bacd44f41fce73",
+        "log_sha256": "4615f271c0dbf35aa0ff6aa3b77ff2d53b68ad54741513eb6d87973e8ff3f0a0"
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeCliProjectionTests",
+        "tests": 5,
+        "result_sha256": "6a0fc12bfd19d9fdb54b9eb6ae42ab01e75a2b7c8cf7920e52d48522b078990b",
+        "log_sha256": "6122f4334968de53c786aed6ffff02c05b39f28070ed224a1243e156c5e551af"
+      },
+      {
+        "class": "tests/test_cumulative_observation_profile_v1.py::CumulativeObservationProfileTests",
+        "tests": 11,
+        "result_sha256": "6bc613773f1b73dd9c580b8bca08f40351bd04a39ebcfd94b82f726c1bb5dee8",
+        "log_sha256": "6a5e99620149a398e603a5df67f666ead466dc8f3a22e9884a4754cd5e833554"
+      }
+    ],
+    "source_inputs": 545,
+    "reused_classes": 0,
+    "skipped_tests": 0,
+    "source_drift": false,
+    "runtime_drift": false,
+    "runtime_reconciliation": {
+      "final_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "initial_sha256": "c933e85269b8282766538ac5c1c32ede11d74086dcbd5c6d9333e0edba5c2eec",
+      "matches": true
+    },
+    "duration_seconds": 20.275251083076,
+    "type_scope": "Explicit incremental roots plus imports;117 unchanged legacy baseline diagnostics, no new baseline debt.",
+    "coverage": "Targeted new primitive, durable head, profile and composed host filesystem behavior. No candidate executor integration or physical power-loss claim."
+  },
+  "profiles": {
+    "cli_histories": 57,
+    "cli_steps": 305,
+    "cli_diagnostics": 900,
+    "cli_decisive": 868,
+    "cli_unspecified": 32,
+    "http_histories": 276,
+    "http_steps": 8203,
+    "http_requests": 7602,
+    "health_successor_expectations": 3,
+    "health_successor_histories": 2,
+    "authority": "Prospective source-derived review data only. No ScopePlan approval, semantic authority, dispatch or observation reuse.",
+    "remaining_coverage": "Every new M4 obligation, raw-only semantic gap and complete product requirement remains required."
+  },
+  "storage_measurement": {
+    "result": {
+      "path": "runs/compact-storage-replay-2/result.json",
+      "bytes": 4038,
+      "sha256": "074dd55ad565fa16f1ab78bafce86c290c0f2e2aff19ca6481ecd2002c130471"
+    },
+    "context": {
+      "path": "runs/compact-storage-replay-2/context.json",
+      "bytes": 1108,
+      "sha256": "f55ebf5507d84700ceb2d61a7d80ef10be8aeac7070cf3efc58522432e220f25"
+    },
+    "input_inventory": {
+      "path": "runs/compact-storage-replay-2/input-inventory.json",
+      "bytes": 645979,
+      "sha256": "dbc8e4d7c3402f298d20d071ac908f6c79589f3db3c7eadf61ac24e49b911b70"
+    },
+    "script": {
+      "path": "runs/compact-foundation-retention-1/gossip-compact-storage-replay-2.py",
+      "bytes": 10329,
+      "sha256": "e36a747cd096d696111bd6815025b2933a4d76f647bfe36e22c7ad31cc388f3e"
+    },
+    "log": {
+      "path": "runs/compact-foundation-retention-1/gossip-compact-storage-replay-2.log",
+      "bytes": 671,
+      "sha256": "ec83d5848611bfadd92a0057fd5237b76ece1fceba84f2d6c045d1be99976287"
+    },
+    "raw_files": 4109,
+    "raw_bytes": 17513379,
+    "original_external_snapshot_bytes": 886042635,
+    "genesis_and_delta_bytes": 1575089,
+    "latest_anchor_bytes": 544,
+    "external_metadata_bytes": 1575633,
+    "separate_expected_prefix_bytes": 275,
+    "external_plus_expected_prefix_bytes": 1575908,
+    "external_metadata_reduction_fraction": 0.9982217187551026,
+    "timings": {
+      "all_authenticated_point_reads_seconds": 4.47949995752424,
+      "close_and_reopen_full_validation_seconds": 1.8437711670994759,
+      "full_boundary_seconds": 2.162798042409122,
+      "source_read_and_append_seconds": 12.996548250317574,
+      "total_after_output_creation_seconds": 21.64342891704291
+    },
+    "limitations": [
+      "Storage-only sorted replay; original candidate operations and observation boundaries are not repeated.",
+      "Elapsed time is not comparable to the original70-request whole-test duration; no whole-run speedup.",
+      "All original raw bytes retained. Original purpose/source/provenance are opaque data, never new acceptance authority.",
+      "Full scans occur after append and on reopen; actual executor dispatch/observation boundary frequency remains unmeasured.",
+      "Logical payload bytes exclude filesystem allocation, inode overhead, observer receipts and transient replaced anchor files.",
+      "Historical full-prefix snapshots and new latest-head/deltas have different intermediate tamper-detection guarantees.",
+      "One corpus and one execution, with concurrent original HTTP qualification on the same host; no timing generalization.",
+      "Measured interval excludes imports/preflight and final result-file fsync.",
+      "The275-byte expected prefix is independently retained relative to raw/delta/head directories on the same trusted host/process; it is not external execution attestation or semantic authority."
+    ],
+    "failed_preflight": {
+      "script": {
+        "path": "runs/compact-foundation-retention-1/gossip-compact-storage-replay-1.py",
+        "bytes": 10309,
+        "sha256": "8fdd74d6d474e105c407ee15db88748850c21e0d95a562ffcbf7fc93fc4b7eb2"
+      },
+      "log": {
+        "path": "runs/compact-foundation-retention-1/gossip-compact-storage-replay-1.log",
+        "bytes": 808,
+        "sha256": "b2efc40865cd2d8a7272e70d9a71fd9c9709e1404b1085a47f1708feb46d7b86"
+      },
+      "cause": "No-follow reader rejected /tmp symlink before output creation. New driver resolves canonical input paths and uses a distinct output; no candidate rerun."
+    }
+  },
+  "independent_reviews": [
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-compact-foundation-independent-reconciliation-1.json",
+      "bytes": 98552,
+      "sha256": "428e933cd075816720a06021300705e15f80965f7d8e4ac567aac5031292c909"
+    },
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-checkpoint-head-source-review-2.json",
+      "bytes": 3828,
+      "sha256": "f1fc68484b9032c1caaa5e97275104d460ce9bfe9e17f0e57eb3699cca61bb32"
+    },
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-cumulative-observation-profile-final-source-review-1.json",
+      "bytes": 4965,
+      "sha256": "3f22dea3cf2de0ba433fa6bf5705be6d15fb779f4d275cb0559e2d2a47ff8857"
+    },
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-compact-storage-replay-independent-audit-1.json",
+      "bytes": 14371,
+      "sha256": "32ba353c5802a8b7dd4415130240230674cc077ff73947e07fb569332d3e0d8c"
+    }
+  ],
+  "retention": [
+    {
+      "path": "runs/compact-foundation-retention-1/receipt.json",
+      "bytes": 15344,
+      "sha256": "5d45a5629991a279d60462783792b5b9229ceb7c451692d38da8376a20fa5af7"
+    },
+    {
+      "path": "runs/compact-foundation-retention-1/storage-audit-retention.json",
+      "bytes": 363,
+      "sha256": "350c3ae709c8edd82cb684335a1bffdb7d154961c1bcdbc24c4f26224e0697d3"
+    }
+  ],
+  "integration_designs": [
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-c06-checkpoint-owner-integration-1.json",
+      "bytes": 20928,
+      "sha256": "5ccc36f1aa2bd9ae8cb1d8cac271393b4961fcf496ebf1a1ec531e01387a7f21"
+    },
+    {
+      "path": "runs/compact-foundation-retention-1/gossip-financial-terminal-seal-design-2.json",
+      "bytes": 26071,
+      "sha256": "02ee9d4f94578345b54226d4eab9f2403e4e114624ef855690e834a4a6726c6b"
+    }
+  ],
+  "resolved_findings": [
+    "Creator PID guards inherited journal ownership.",
+    "Create requires already existing canonical parents, avoiding unflushed ancestor creation.",
+    "Limits are reconstructed before admission; prior/boundary records cannot constructor-claim acceptance authority.",
+    "Head reopen re-establishes file/directory durability and checks identities and expected commitment.",
+    "Fork-time constructor cleanup cannot unlock parent; public reentrancy is rejected.",
+    "Private head lock/inventory and lost acknowledgement preserve uncertainty and prior facts."
+  ],
+  "remaining_limits": [
+    "Tamper restored between boundaries may escape; no continuous filesystem snapshot.",
+    "Full boundary scans still grow with prefix size; actual executor boundary workload is unmeasured.",
+    "Independent expected-head freshness and absence from actual candidate mounts remain trusted owner obligations.",
+    "Long-lived non-exec fork children can retain advisory descriptors; worker lifetime policy must exclude or close those descriptors.",
+    "No production fallback cleanup channel, M4 executor/comparator or complete cohort authority is implemented by this change."
+  ],
+  "parallel_original_http_run": {
+    "source_commit": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+    "summary": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/summary.json",
+      "bytes": 24539,
+      "sha256": "251c9ce318ae46cd80b268dc06579569676e33070844dc90c5c5d1703f8a6e60"
+    },
+    "reported_passes": 20,
+    "independently_audited_methods_at_checkpoint": 19,
+    "final_x01_independent_audit": "in_progress",
+    "x01_result": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol/runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e/classes/6e7eb27cbad436f5/result.json",
+      "bytes": 2684,
+      "sha256": "f8f4ec7b31d1dc51a3960f090d646620564cb288b5ad6d068bcbdbf23983bb5e"
+    },
+    "duration_seconds": 8151.4616095414385,
+    "source_and_runtime_drift": false,
+    "scope": "Separate frozen physical contract. Neither these old observations nor the storage replay qualify a compact successor executor."
+  },
+  "next_work": [
+    "Integrate chain/head by composition into all CLI/HTTP owner raw reads, reopen ordering, decision boundaries and explicit fallback cleanup.",
+    "Bind fresh final-M4 execution to reviewed profile, canonical whole-source identity and versioned health comparison; preserve all diagnostics.",
+    "Implement irreversible normal financial seal across admission, queued invocation, RPC and recovery using the original six sequential child cohorts.",
+    "Complete actual product scope authorities, remaining observers, four-milestone controllers and complete matching zero-provider rehearsal.",
+    "Reconcile full live funding/payload contract, execute the full cohort, then independent held-out confirmation and decision-placement/transport comparison."
+  ],
+  "scope_preserved": {
+    "trajectories": 6,
+    "milestones": 4,
+    "product_requirements": 123,
+    "prerequisites": 3,
+    "source_obligations": 312,
+    "qualification_authorities": 22,
+    "inherited_gap_notes": 188
+  },
+  "new_provider_calls": 0,
+  "new_live_comparative_samples": 0,
+  "publication": {
+    "document": {
+      "path": "docs/compact-checkpoint-foundation-v1.md",
+      "bytes": 8837,
+      "sha256": "41a8a888d068ff77cac35b9f6222d64a84dd2631731d0a55a95ae7541e92a3d4"
+    },
+    "readme": {
+      "path": "README.md",
+      "bytes": 73821,
+      "sha256": "079994e6a2ff94f4c55a20f861a5c54778a22b5cd35c5b85eee20aa0d2a70a3d"
+    },
+    "post_review_document_clarifications": "Included the separate275-byte reopen expectation and explicitly excluded preflight/imports/final result fsync from timing; no source/test changes."
+  }
+}

@@ -1203,6 +1203,14 @@ including actual valid and corrupted package controls. A complete production
 coverage plan and v2 product implementation remain outstanding. These components
 do not establish a completed comparative study or an advantage for larger swarms.
 
+The [compact checkpoint and M4 profile foundation](docs/compact-checkpoint-foundation-v1.md)
+now passes 73 targeted offline checks. A storage-only replay preserved all 4,109
+original journal files while reducing retained external metadata from 886 MB to
+1.58 MB. This measures storage, not whole-executor speed or agent quality.
+The prospective M4 profile preserves the complete inherited diagnostics and
+explicitly changes only three health expectations. Executor integration, durable
+cohort sealing and the complete larger live comparison remain outstanding.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
