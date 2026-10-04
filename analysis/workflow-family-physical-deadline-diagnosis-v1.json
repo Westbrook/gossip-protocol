@@ -1,0 +1,554 @@
+{
+  "protocol": "workflow-physical-failure-diagnosis-v1",
+  "status": "failed qualification preserved; source-grounded diagnosis only",
+  "root_reported_commit": "e9d7480",
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748",
+  "artifact": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction",
+  "summary": {
+    "status": "failed",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 37
+    },
+    "duration_seconds": 99.6788600422442,
+    "selected_total": 38,
+    "workers_started": 1,
+    "reused_classes": 0,
+    "static": {
+      "duration_seconds": 1.4968470428138971,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "runtime_reconciliation": {
+      "final_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "initial_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+      "matches": true
+    }
+  },
+  "originals": {
+    "terminal-copy.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/terminal-copy.json",
+      "bytes": 1353,
+      "sha256": "bfddbdaf3e4a92a075b271d2d390de9b081323d449740412db3813a3b5782261"
+    },
+    "physical-observation.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/physical-observation.json",
+      "bytes": 4559,
+      "sha256": "a8f8f42671a26e27c17af2f5afffbe38dc8cb5296638536d88ed40d7cf15846c"
+    },
+    "source-plan.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/source-plan.json",
+      "bytes": 1151,
+      "sha256": "b586a89675c167e4ac76945586a214d3ef1aab75b87d1c76b72b8ff85d5ad0dd"
+    },
+    "original-prefix.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/original-prefix.json",
+      "bytes": 244,
+      "sha256": "b713c765250c8a31d001afc6f9c84a86e3f1951bb57ded3693c7b889531a4e32"
+    },
+    "source-provenance.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/source-provenance.json",
+      "bytes": 48043,
+      "sha256": "3bb74acc6b2ee119f215901458a900c3583fd87f9f25155dadc15fbf987dd3e4"
+    },
+    "head/head.json": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction/head/head.json",
+      "bytes": 937,
+      "sha256": "988f21904a046dd9e2f092d8cb39c5fb326ffa4475fcb8040bace404bf1a7d1c"
+    }
+  },
+  "summary_receipt": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/summary.json",
+    "bytes": 16154,
+    "sha256": "55fcb5f5de427285d8868e95a03e992a51a3ba163fc0f4f799219a59e519b59b"
+  },
+  "class_receipt": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/result.json",
+    "bytes": 5237,
+    "sha256": "976e8d1003e3435bf68d01cbb1c3f19c38756d6824eacc98c5818b01dd61ce92"
+  },
+  "worker_log": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/worker.log",
+    "bytes": 2040,
+    "sha256": "d6217c59f284d0f5220dd8e7ce41dd8d42f9cdde33f567c797c09ee0cb6deabc"
+  },
+  "source_pins": {
+    "gossip_harness/candidate_workflow_execution_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_execution_v1.py",
+      "bytes": 73689,
+      "sha256": "48d250458d08e4606a9ad590442410171c871ebdc824d51dd2a9345bf6aa3609"
+    },
+    "gossip_harness/candidate_workflow_observation_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_observation_v1.py",
+      "bytes": 55533,
+      "sha256": "52c6ae8041f908e0802c68638d1505f6caca4ede0703f60cad80cfba9e411f4d"
+    },
+    "gossip_harness/candidate_storage_product_execution_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_storage_product_execution_v1.py",
+      "bytes": 47930,
+      "sha256": "d0f5becc1d5f6283dc3b65f093965d6e87fde24e71ed025aee4844f3baefba51"
+    },
+    "gossip_harness/candidate_checkpoint_chain_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+      "bytes": 28491,
+      "sha256": "2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481"
+    },
+    "gossip_harness/candidate_execution_journal_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_execution_journal_v1.py",
+      "bytes": 8650,
+      "sha256": "eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15"
+    },
+    "gossip_harness/candidate_source_capture_policy_v1.py": {
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_source_capture_policy_v1.py",
+      "bytes": 3747,
+      "sha256": "11d508df039f40b059145fa2dbeea126eb4c3a94e1ab6f4dadf431e47e1d4988"
+    }
+  },
+  "prefix_checksum_reconciliation": {
+    "matches": true,
+    "context_sha256": "6e39701975bc277fc34e4285acccd0124957547e79f4dcf7ba145dd2dc3ad4d2",
+    "external_bytes": 87595,
+    "head_sha256": "02ab7dc3cb4d756df20bf58c8d12c0a05bb3f7560076af5b5c416a7cce3aff2d",
+    "raw_bytes": 705353,
+    "raw_file_count": 225,
+    "sequence": 225,
+    "limit": "Read-only checksum/order reconciliation of all225 original raw members and delta chain to retained head/original-prefix; does not reopen live owner authority or rerun reader."
+  },
+  "proven_original_facts": {
+    "same_solve_exec_identity": {
+      "completed": false,
+      "exec_id": "ec6d9656918e319c8d479b1edde61192598b663e105e900953fb897125b0bc25",
+      "pid": 55719,
+      "value_sha256": "a86a60b52ae93427ed4fb6abafcdf50c8b239776a3e15405af446df428d44ab4"
+    },
+    "keeper_pid_distinct_from_solve_pid": 55637,
+    "boundary_count": 2,
+    "captures_complete": true,
+    "capture_sizes": [
+      139776,
+      139776
+    ],
+    "capture_bytes_identical": true,
+    "source_qualified_state_rows_retained": 2,
+    "raw_session_stdout_bytes": 985,
+    "raw_frame_lengths": [
+      57,
+      246,
+      241,
+      441
+    ],
+    "raw_frame_kinds": [
+      "ready",
+      "boundary",
+      "boundary",
+      "result"
+    ],
+    "raw_result_operation_count": 16,
+    "raw_result_diagnostic_only": true,
+    "raw_result_value": {
+      "results": [
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "documents": [],
+          "total": 0
+        }
+      ],
+      "documents": [],
+      "jobs": []
+    },
+    "raw_stderr_bytes": 0,
+    "accepted_result_frame_or_response": false,
+    "absent_post_result_members": [
+      "call-000-frame-002.bin",
+      "call-000-response.bin",
+      "call-000-result-exec-request.bin",
+      "call-000-result-staging-after.json",
+      "call-000-next.json",
+      "session-final-exec-request.bin",
+      "session-final-exec-response.bin"
+    ],
+    "natural_session_exit": false,
+    "session_exit_code": 137,
+    "session_timed_out": true,
+    "session_capture_complete": true,
+    "session_capture_errors": [],
+    "retained_control_command_count": 26,
+    "all_retained_controls_complete_exit0": true,
+    "cleanup_verified": true,
+    "container_and_volume_absence_raw_empty": true,
+    "observation_outcome_counts": {
+      "infrastructure_error": 20
+    },
+    "verifier_mechanics": {
+      "cleanup_verified": true,
+      "prestart_verified": true,
+      "session_complete": false,
+      "status": "infrastructure_error",
+      "unavailable": [
+        "call-000:Original evidence absent: call-000-frame-002.bin",
+        "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+      ]
+    }
+  },
+  "chronology": [
+    {
+      "name": "session-dispatch.json",
+      "sequence": 47,
+      "bytes": 240,
+      "sha256": "2b5e5b848592922171ceefcb7fd0c25ac839e06ffb2627d5db90228a153e293e",
+      "mtime_ns": 1791151320695644138,
+      "mtime_utc": "2026-10-04T22:02:00.695644+00:00",
+      "seconds_from_request_mtime": -15.655336131
+    },
+    {
+      "name": "session-ready.bin",
+      "sequence": 48,
+      "bytes": 57,
+      "sha256": "0f6e850c6c6b6d8aab0b20013f59fdb1f31057fcd9e0ba54a26d92d947c3a358",
+      "mtime_ns": 1791151321771504665,
+      "mtime_utc": "2026-10-04T22:02:01.771505+00:00",
+      "seconds_from_request_mtime": -14.579475604
+    },
+    {
+      "name": "session-ready-ack.json",
+      "sequence": 88,
+      "bytes": 21,
+      "sha256": "9218be91df717fa72589db04d98e4b919273a088e5004a42d4ce40db3c27332b",
+      "mtime_ns": 1791151333607991749,
+      "mtime_utc": "2026-10-04T22:02:13.607992+00:00",
+      "seconds_from_request_mtime": -2.74298852
+    },
+    {
+      "name": "call-000-staging-before.json",
+      "sequence": 97,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151335455067664,
+      "mtime_utc": "2026-10-04T22:02:15.455068+00:00",
+      "seconds_from_request_mtime": -0.895912605
+    },
+    {
+      "name": "call-000-request.json",
+      "sequence": 98,
+      "bytes": 24,
+      "sha256": "98eb069a57ee3d24197820dad93dbf74b7a1b14767d43b7b76c53a8583cb4b32",
+      "mtime_ns": 1791151336350980269,
+      "mtime_utc": "2026-10-04T22:02:16.350980+00:00",
+      "seconds_from_request_mtime": 0.0
+    },
+    {
+      "name": "call-000-frame-000.bin",
+      "sequence": 99,
+      "bytes": 246,
+      "sha256": "a90a4001e098b371a4ec0c485ad932194915676210404bff22cd3c8a65a9c36f",
+      "mtime_ns": 1791151337259822375,
+      "mtime_utc": "2026-10-04T22:02:17.259822+00:00",
+      "seconds_from_request_mtime": 0.908842106
+    },
+    {
+      "name": "call-000-boundary-000-staging-before.json",
+      "sequence": 108,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151339138728335,
+      "mtime_utc": "2026-10-04T22:02:19.138728+00:00",
+      "seconds_from_request_mtime": 2.787748066
+    },
+    {
+      "name": "call-000-boundary-000-pause.json",
+      "sequence": 121,
+      "bytes": 732,
+      "sha256": "824f33a3c349065a4bb72936f0484e0b7e72e603268dc4e1276bac9ef5a15cc5",
+      "mtime_ns": 1791151345163554704,
+      "mtime_utc": "2026-10-04T22:02:25.163555+00:00",
+      "seconds_from_request_mtime": 8.812574435
+    },
+    {
+      "name": "call-000-boundary-000-capture.json",
+      "sequence": 129,
+      "bytes": 756,
+      "sha256": "24f024ab62cf0c6085b8e899001e410ed30844c2648abb587f62300e103b1cdd",
+      "mtime_ns": 1791151349408291354,
+      "mtime_utc": "2026-10-04T22:02:29.408291+00:00",
+      "seconds_from_request_mtime": 13.057311085
+    },
+    {
+      "name": "call-000-boundary-000-unpause.json",
+      "sequence": 133,
+      "bytes": 740,
+      "sha256": "83e0631f2ce03d49aadfa3dfb37d71e63d7d7382f23311a6684bd3eb343da526",
+      "mtime_ns": 1791151351372932285,
+      "mtime_utc": "2026-10-04T22:02:31.372932+00:00",
+      "seconds_from_request_mtime": 15.021952016
+    },
+    {
+      "name": "call-000-boundary-000-staging-after.json",
+      "sequence": 142,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151352388688582,
+      "mtime_utc": "2026-10-04T22:02:32.388689+00:00",
+      "seconds_from_request_mtime": 16.037708313
+    },
+    {
+      "name": "call-000-resume-000.json",
+      "sequence": 143,
+      "bytes": 33,
+      "sha256": "eed20be0bf4a5c359a16001d5c0acb8bfa628f3a313402d3f560d1ebdaae8004",
+      "mtime_ns": 1791151353257651189,
+      "mtime_utc": "2026-10-04T22:02:33.257651+00:00",
+      "seconds_from_request_mtime": 16.90667092
+    },
+    {
+      "name": "call-000-frame-001.bin",
+      "sequence": 144,
+      "bytes": 241,
+      "sha256": "e96108256aaed11cf5ef82ae2df2fd5c94970e2aeeacabed2f4e46ce5a8e4ab3",
+      "mtime_ns": 1791151354273221407,
+      "mtime_utc": "2026-10-04T22:02:34.273221+00:00",
+      "seconds_from_request_mtime": 17.922241138
+    },
+    {
+      "name": "call-000-boundary-001-staging-before.json",
+      "sequence": 153,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151356309544394,
+      "mtime_utc": "2026-10-04T22:02:36.309545+00:00",
+      "seconds_from_request_mtime": 19.958564125
+    },
+    {
+      "name": "call-000-boundary-001-pause.json",
+      "sequence": 166,
+      "bytes": 732,
+      "sha256": "1be3ce2c9aa2b5e251da507e6fb26209480c2578bb9cbde1d7d29e3dc924c398",
+      "mtime_ns": 1791151362790775602,
+      "mtime_utc": "2026-10-04T22:02:42.790776+00:00",
+      "seconds_from_request_mtime": 26.439795333
+    },
+    {
+      "name": "call-000-boundary-001-capture.json",
+      "sequence": 174,
+      "bytes": 756,
+      "sha256": "4e4d0d80030b1cf8eed9c07bb1a6c4eea8e5d5ff67c43d9bb556caa53e5c5f57",
+      "mtime_ns": 1791151368872274298,
+      "mtime_utc": "2026-10-04T22:02:48.872274+00:00",
+      "seconds_from_request_mtime": 32.521294029
+    },
+    {
+      "name": "call-000-boundary-001-unpause.json",
+      "sequence": 178,
+      "bytes": 740,
+      "sha256": "8f1d8ab8896d555847999f1e1ddbd4b2390d193b1fcf938d884a4ca4404671fa",
+      "mtime_ns": 1791151371173640821,
+      "mtime_utc": "2026-10-04T22:02:51.173641+00:00",
+      "seconds_from_request_mtime": 34.822660552
+    },
+    {
+      "name": "call-000-boundary-001-staging-after.json",
+      "sequence": 187,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151372277037025,
+      "mtime_utc": "2026-10-04T22:02:52.277037+00:00",
+      "seconds_from_request_mtime": 35.926056756
+    },
+    {
+      "name": "call-000-resume-001.json",
+      "sequence": 188,
+      "bytes": 33,
+      "sha256": "6fb6b1799de789f22b441906cddabb408b60e2df7d40dfd2a97ef3e5d86a236f",
+      "mtime_ns": 1791151373275339348,
+      "mtime_utc": "2026-10-04T22:02:53.275339+00:00",
+      "seconds_from_request_mtime": 36.924359079
+    },
+    {
+      "name": "call-000-staging-after.json",
+      "sequence": 197,
+      "bytes": 8500,
+      "sha256": "18559788bf6a7b579c797e2f83fb0b9098113f6132bd5fc31ad3dc7909b20702",
+      "mtime_ns": 1791151375741522907,
+      "mtime_utc": "2026-10-04T22:02:55.741523+00:00",
+      "seconds_from_request_mtime": 39.390542638
+    },
+    {
+      "name": "container-remove.json",
+      "sequence": 201,
+      "bytes": 724,
+      "sha256": "d663504c97e666fdccc2edcac9eed89aab9544efc21338b896e3c46ea258ec35",
+      "mtime_ns": 1791151376211404687,
+      "mtime_utc": "2026-10-04T22:02:56.211405+00:00",
+      "seconds_from_request_mtime": 39.860424418
+    },
+    {
+      "name": "container-after.json",
+      "sequence": 205,
+      "bytes": 766,
+      "sha256": "81fbb69327e3efbf7837f6b536db08127843b08f7377ed90c32e7fcdd7ecad87",
+      "mtime_ns": 1791151376758743472,
+      "mtime_utc": "2026-10-04T22:02:56.758744+00:00",
+      "seconds_from_request_mtime": 40.407763203
+    },
+    {
+      "name": "volume-remove.json",
+      "sequence": 214,
+      "bytes": 698,
+      "sha256": "259e77b5cea150d3c404add81d03d16f485f293c8b540043f3fdabcb49053d8b",
+      "mtime_ns": 1791151377881402033,
+      "mtime_utc": "2026-10-04T22:02:57.881402+00:00",
+      "seconds_from_request_mtime": 41.530421764
+    },
+    {
+      "name": "volume-after.json",
+      "sequence": 218,
+      "bytes": 750,
+      "sha256": "56dffcfe5ae502a778481d7d7affac82916fe4d878a63077e112215ae633c201",
+      "mtime_ns": 1791151378391230788,
+      "mtime_utc": "2026-10-04T22:02:58.391231+00:00",
+      "seconds_from_request_mtime": 42.040250519
+    },
+    {
+      "name": "session-stdout.bin",
+      "sequence": 220,
+      "bytes": 985,
+      "sha256": "0ab3410836cd842679e330c479568873515a95f233423e179f3b207a9c5e4386",
+      "mtime_ns": 1791151378536953127,
+      "mtime_utc": "2026-10-04T22:02:58.536953+00:00",
+      "seconds_from_request_mtime": 42.185972858
+    },
+    {
+      "name": "session.json",
+      "sequence": 222,
+      "bytes": 682,
+      "sha256": "7865ed850736ef6706e3690bb41d2236d0692b2a50746585e02eecf24f246e0b",
+      "mtime_ns": 1791151378542279590,
+      "mtime_utc": "2026-10-04T22:02:58.542280+00:00",
+      "seconds_from_request_mtime": 42.191299321
+    },
+    {
+      "name": "terminal.json",
+      "sequence": 224,
+      "bytes": 1353,
+      "sha256": "bfddbdaf3e4a92a075b271d2d390de9b081323d449740412db3813a3b5782261",
+      "mtime_ns": 1791151378678458437,
+      "mtime_utc": "2026-10-04T22:02:58.678458+00:00",
+      "seconds_from_request_mtime": 42.327478168
+    },
+    {
+      "name": "workflow-verifier.json",
+      "sequence": 225,
+      "bytes": 53449,
+      "sha256": "a22ecf713abf70310a727216912f0ca863e089daf399921474b0ddbf48f0fb1b",
+      "mtime_ns": 1791151382409643433,
+      "mtime_utc": "2026-10-04T22:03:02.409643+00:00",
+      "seconds_from_request_mtime": 46.058663164
+    }
+  ],
+  "diagnostic_timestamp_intervals": [
+    {
+      "from": "call-000-frame-000.bin",
+      "to": "call-000-resume-000.json",
+      "seconds": 15.997828814,
+      "sequence_from": 99,
+      "sequence_to": 143
+    },
+    {
+      "from": "call-000-frame-001.bin",
+      "to": "call-000-resume-001.json",
+      "seconds": 19.002117941,
+      "sequence_from": 144,
+      "sequence_to": 188
+    }
+  ],
+  "original_http_date_headers": {
+    "call-000-runtime-before-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:15 GMT"
+    ],
+    "call-000-boundary-000-runtime-before-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:19 GMT"
+    ],
+    "call-000-boundary-000-runtime-after-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:32 GMT"
+    ],
+    "call-000-boundary-001-runtime-before-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:36 GMT"
+    ],
+    "call-000-boundary-001-runtime-after-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:52 GMT"
+    ],
+    "call-000-runtime-after-version-response.bin": [
+      "Date: Sun, 04 Oct 2026 22:02:55 GMT"
+    ]
+  },
+  "cause": {
+    "source_proven": "phase() fixes one absolute30s monotonic deadline before _write(call); every _line checks remaining before dequeuing. Between reads the host synchronously performs fresh source/review/admission/runtime checks, journal durability, exact exec identity, path probe, pause/inspect/copy/unpause and resume guards. Neither capture nor acknowledgement time is subtracted. After the second resume, the next _line raises the recorded observation deadline before retaining frame002 or result-local evidence. The300s history limit remains separate; the recorded error is the observation deadline.",
+    "source_locations": {
+      "phase_deadline_and_read": "candidate_workflow_execution_v1.py:487-505",
+      "capture_and_resume": "candidate_workflow_execution_v1.py:522-523",
+      "deadline_before_queue_get": "candidate_workflow_execution_v1.py:455-462",
+      "capture_source_runtime_and_docker": "candidate_workflow_execution_v1.py:847-868",
+      "fresh_current_and_effect_boundary": "candidate_workflow_execution_v1.py:667-676,946-959",
+      "cleanup_then_forced_session_finish": "candidate_workflow_execution_v1.py:872-895",
+      "reader_requires_independent_result_origins": "candidate_workflow_observation_v1.py:340-374"
+    },
+    "cleanup_exit_explanation": "Container remove occurs before session.finish(False), which records natural_exit=false/timed_out=true.137 is the post-failure session cleanup outcome, not an independently observed candidate failure or OOM classification.",
+    "what_timing_proves": "Original durable sequence establishes two complete host-interlocked captures before result acceptance; filesystem timestamps show about16.0s and19.0s frame-to-resume-intent spans, corroborated by retained Engine wall-date headers. These include host work while adapter awaits resume.",
+    "what_timing_does_not_prove": "No retained phase-start monotonic stamp, exact stdin-write completion timestamp, queued-result arrival timestamp, per-source-capture timings or checkpoint CPU/I/O attribution. Do not assign candidate-only duration, exact cost share, or conclude a particular optimization will meet30s. Metadata mtimes/HTTP Date are diagnostic wall clocks, not the execution deadline clock."
+  },
+  "next_action": {
+    "minimal_safe_investigation": "Keep failed receipt and all38-method denominator. Measure or source-review an exact opt-in of existing bounded checkpoint batch reader while retaining every fresh byte, per-file ancestry/leaf guard, checkpoint, source capture and deadline. Workflow currently constructs OwnerJournal without read_policy; existing BatchReadPolicy is not opted in. This is a prospective source/binding/evaluator change requiring explicit review and affected offline then new physical qualification; no success prediction.",
+    "contract_change_boundary": "Excluding host capture time, resetting deadline per frame, widening30s/300s, or accepting a queued/raw result after the elapsed deadline changes the current execution contract. Any such remedy must be declared/versioned prospectively and cannot repair this failed result.",
+    "not_done": [
+      "no edits to source or root",
+      "no tests, project imports, Engine/provider calls, Git or retries",
+      "no promotion of raw result to candidate correctness/defect verdict",
+      "no scientific swarm sample or full workflow qualification"
+    ]
+  }
+}

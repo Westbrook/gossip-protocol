@@ -1,0 +1,24 @@
+{
+  "protocol": "workflow-physical-deadline-write-clarification-v1",
+  "audit": {
+    "path": "/private/tmp/gossip-workflow-physical1-deadline-diagnosis-1/audit.json",
+    "sha256": "45ba18d05354c44438a9cd43adbd106bbce341e46fe1573588fdee8c35d7bf77"
+  },
+  "preserved_result": "failed qualification, no buffered-result promotion",
+  "source_conclusion": {
+    "per_call_check": "_Session.phase sets its deadline before _write(call); only _line/_remaining consult that specific deadline inside phase.",
+    "resume_write_boundary": "_Session._write checks owner._effect_boundary twice, which authenticates source/admission and enforces only300s history. It does not receive or check phase30s deadline. Capture commands likewise retain their own control and history limits rather than phase deadline.",
+    "separate_enforcement_gap": "The present code can dispatch resume after the30s call deadline, then reject the next dequeue. This is distinct from which source/journal/command work consumed time. If the declared30s call bound is intended to forbid further solve continuation after expiry, a prospective pre-resume/write guard is necessary; current source does not implement that property. It must not be represented as already enforced."
+  },
+  "original_evidence": {
+    "request_sequence": 98,
+    "resume_001_sequence": 188,
+    "request_to_second_resume_intent_mtime_seconds": 36.924359079,
+    "nominal_call_seconds": 30,
+    "diagnostic_excess_seconds": 6.9243590789999985,
+    "raw_result_after_second_resume": "Trusted adapter waits for exact resume:call-000:1 before it can finish solve and emit the retained result; this result establishes that the acknowledgement reached the adapter. No original records actual write or result-arrival monotonic times.",
+    "time_status": "Diagnostic metadata corroborates late resume intent, since phase timer starts before request retention and recorded second resume is36.924s later. It is not an authenticated monotonic deadline measurement; wall-clock continuity is assumed for that numerical comparison."
+  },
+  "recommended_next_step": "Retain source-grounded failure and add bounded prospective measurement of source checks, full checkpoint validation, control child execution and host-interlocked intervals before selecting an optimization. Keep30s/300s and allguards; any clock-accounting change or pre-write enforcement change needs explicit new execution-contract/source binding and renewed qualification. Do not consume buffered late result as valid.",
+  "operations": "Read-only original/source analysis plus fresh /tmp clarification; no source changes, imports, tests, Engine/provider or retries."
+}

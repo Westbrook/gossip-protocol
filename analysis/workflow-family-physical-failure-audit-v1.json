@@ -1,0 +1,121 @@
+{
+  "cleanup_originals": {
+    "chain_hash_rule": "context initial head; SHA256(candidate-checkpoint-chain-v1/delta NUL + exact delta bytes)",
+    "chain_metadata_continuity_to_head": true,
+    "create_remove_container_identity_matches": true,
+    "exact_name_absence_commands_complete_exit0_empty": true,
+    "head_file_sha256": "988f21904a046dd9e2f092d8cb39c5fb326ffa4475fcb8040bace404bf1a7d1c",
+    "limits": "Only selected original terminal/create/cleanup bytes were rehashed;225delta metadata chain checked, not all unrelated raw payloads or physical source semantics. No fresh Engine census was run.",
+    "owned_container_id": "ce3ddebd5084d7ddeb6236f55759e1561cc83fe3007402982298fc20423a7fab",
+    "owned_volume_name": "gossip-volume-workflow-436f3593509747e98aa99798508952d4",
+    "prefix": {
+      "context_sha256": "6e39701975bc277fc34e4285acccd0124957547e79f4dcf7ba145dd2dc3ad4d2",
+      "external_bytes": 87595,
+      "head_sha256": "02ab7dc3cb4d756df20bf58c8d12c0a05bb3f7560076af5b5c416a7cce3aff2d",
+      "raw_bytes": 705353,
+      "raw_file_count": 225,
+      "sequence": 225
+    },
+    "prefix_file_sha256": "b713c765250c8a31d001afc6f9c84a86e3f1951bb57ded3693c7b889531a4e32",
+    "remove_commands_complete_exit0": true,
+    "selected_raw_original_pins": {
+      "container-after-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "container-after-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "container-after.json": "81fbb69327e3efbf7837f6b536db08127843b08f7377ed90c32e7fcdd7ecad87",
+      "container-create-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "container-create-stdout.bin": "dde31a75a067d6d34ec5cda4ef3322c7220594473d029bd19d463dfb42c3166c",
+      "container-create.json": "6f6df371b5768577f9ed01bd89c98340388d318ba2af1840c83d5a9f3c671fdd",
+      "container-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "container-remove-stdout.bin": "dde31a75a067d6d34ec5cda4ef3322c7220594473d029bd19d463dfb42c3166c",
+      "container-remove.json": "d663504c97e666fdccc2edcac9eed89aab9544efc21338b896e3c46ea258ec35",
+      "terminal.json": "bfddbdaf3e4a92a075b271d2d390de9b081323d449740412db3813a3b5782261",
+      "volume-after-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "volume-after-stdout.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "volume-after.json": "56dffcfe5ae502a778481d7d7affac82916fe4d878a63077e112215ae633c201",
+      "volume-cleanup-inspect-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "volume-cleanup-inspect-stdout.bin": "27c36c2e5bdbe2014cfac6f8f8bc08eaa2c0634bb5ad6e08b3082ee6d028c848",
+      "volume-cleanup-inspect.json": "7e2563e06cacc63d83532d243e7b8b6e82ed4d877214aaf1490204c323587a89",
+      "volume-remove-stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "volume-remove-stdout.bin": "f0a5263344cbff11f6910c201e47ec0a7226dbbd0da2143b200564aba54c2941",
+      "volume-remove.json": "259e77b5cea150d3c404add81d03d16f485f293c8b540043f3fdabcb49053d8b"
+    },
+    "terminal_all_cleanup_flags": true,
+    "volume_execution_label_matches": true
+  },
+  "control": {
+    "all20_observation_outcomes_infrastructure_error": true,
+    "infrastructure": [
+      "ExecutionError:Declared workflow observation deadline reached"
+    ],
+    "missing_step_ids": [
+      "call-000"
+    ],
+    "outcome_sha256": "b946e933c7bb2cc154a6794f4115ddc04909c56f2711cebf7d153053213a8259",
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction",
+    "physical_observation_sha256": "a8f8f42671a26e27c17af2f5afffbe38dc8cb5296638536d88ed40d7cf15846c",
+    "qualification_verified": false,
+    "status": "infrastructure_error",
+    "terminal_copy_and_record_match_original": true,
+    "terminal_sha256": "bfddbdaf3e4a92a075b271d2d390de9b081323d449740412db3813a3b5782261"
+  },
+  "created_at_utc": "2026-10-04T22:12:16.917019+00:00",
+  "failure_record": {
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/analysis/workflow-family-physical-failure-v1.json",
+    "sha256": "9b640eb13213f6b157066472ecc1f97bbb6f00b01394616ac938c253bd99ec64",
+    "status": "physical_qualification_failed"
+  },
+  "findings": [],
+  "interpretation": [
+    "The unittest failure is the harness observation deadline preventing a completed observation, not qualified detection of the deliberate lookup-before-token candidate defect.",
+    "The original control explicitly sets qualification_verified=false and retains infrastructure_error; no pass or candidate-quality conclusion is inferred.",
+    "The remaining37physical controls did not run; no workflow physical qualification is established.",
+    "Previously audited555offline passes retain their original scoped meaning and are not re-audited or upgraded here.",
+    "No timing root cause or deadline remedy is established by this audit.",
+    "No provider calls, new model-quality sample, whole-project acceptance or semantic-scope closure is claimed."
+  ],
+  "protocol": "workflow-family-physical-failure-independent-audit-v1",
+  "run": {
+    "duration_seconds": 99.6788600422442,
+    "failed_test_id": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+    "fresh_started_classes": 1,
+    "original_summary_test_rows_equal": true,
+    "outcomes": {
+      "failed": 1,
+      "not_run": 37
+    },
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748",
+    "pins": {
+      "inputs.json": "e13e601919a97cece07faf18bb8a9df7010cd6e7723be0d3f34776138cbb942e",
+      "runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68",
+      "static.json": "81048982c5802d35049409a07b95644db32e986a3bd9e38530b9d7469e53aa53",
+      "summary.json": "55fcb5f5de427285d8868e95a03e992a51a3ba163fc0f4f799219a59e519b59b"
+    },
+    "remaining37_not_run": true,
+    "result_sha256": "976e8d1003e3435bf68d01cbb1c3f19c38756d6824eacc98c5818b01dd61ce92",
+    "reused_classes": 0,
+    "selected_methods": 38,
+    "status": "failed",
+    "worker_class_status": "error",
+    "worker_cleanup_status": "completed",
+    "worker_log_sha256": "d6217c59f284d0f5220dd8e7ce41dd8d42f9cdde33f567c797c09ee0cb6deabc",
+    "worker_returncode": 1,
+    "workers_started": 1
+  },
+  "scope": "Bounded read-only source/static/result/log and original terminal/cleanup pin audit. No project imports, tests, Engine/provider calls, root writes, timing diagnosis, or repeat of prior555class logs.",
+  "source_static_runtime": {
+    "all_current_match": true,
+    "blocking_type_diagnostics": 0,
+    "current_source_pins": 729,
+    "inputs_fingerprint": "e1e866435a6e3b09e4dcec19f1941aadee18457f866765ed2abab79d3840eccc",
+    "no_runtime_reprobe": true,
+    "retained_initial_final_runtime_equal": true,
+    "retained_type_baseline": 117,
+    "runner_sha256": "acdc47d80c6f78d0381830c495027bbfdd328b03edfd62f8509e88fb085ffdb9",
+    "runtime_identity_sha256": "a6a7daf3af8505b10dc8932884e1826bdde9fe6c345f6a87452c30e80daf8428",
+    "source_inventory_sha256": "fbb5b6b2fc23a9cf9e695ec2a68914ef1a24774ac80f750e7768d09d2367e0f0",
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static_status": "passed"
+  },
+  "status": "clear_honest_retained_infrastructure_failure"
+}

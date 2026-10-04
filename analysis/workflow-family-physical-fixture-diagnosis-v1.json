@@ -1,0 +1,927 @@
+{
+  "activity": {
+    "Engine_calls": 0,
+    "Git_commands": 0,
+    "candidate_execution": 0,
+    "project_imports": 0,
+    "provider_calls": 0,
+    "repository_edits": 0,
+    "retries": 0,
+    "stdlib_source_json_hash_ast_reads": true,
+    "tests": 0
+  },
+  "author": "/root/fault_experiment",
+  "bounded_timing_evidence": {
+    "boundary_handling_intervals_from_mtime": [
+      {
+        "from": "call-000-frame-000.bin",
+        "meaning": "Host handles this retained boundary while the traced solve waits for resume; includes host command, verification, journal and scheduling latency.",
+        "seconds": 15.997828814,
+        "to": "call-000-resume-000.json"
+      },
+      {
+        "from": "call-000-frame-001.bin",
+        "meaning": "Host handles this retained boundary while the traced solve waits for resume; includes host command, verification, journal and scheduling latency.",
+        "seconds": 19.002117941,
+        "to": "call-000-resume-001.json"
+      }
+    ],
+    "commands": [
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-000-paths.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-000-pause.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-000-state.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-000-capture.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-000-unpause.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-001-paths.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-001-pause.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-001-state.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-001-capture.json",
+        "timed_out": false
+      },
+      {
+        "capture_complete": true,
+        "exit_code": 0,
+        "path": "raw/call-000-boundary-001-unpause.json",
+        "timed_out": false
+      }
+    ],
+    "entry_exit_archives_identical": true,
+    "filesystem_metadata": [
+      {
+        "mtime_ns": 1791151336350980269,
+        "path": "raw/call-000-request.json",
+        "utc": "2026-10-04T22:02:16.350980+00:00"
+      },
+      {
+        "mtime_ns": 1791151337259822375,
+        "path": "raw/call-000-frame-000.bin",
+        "utc": "2026-10-04T22:02:17.259822+00:00"
+      },
+      {
+        "mtime_ns": 1791151353257651189,
+        "path": "raw/call-000-resume-000.json",
+        "utc": "2026-10-04T22:02:33.257651+00:00"
+      },
+      {
+        "mtime_ns": 1791151354273221407,
+        "path": "raw/call-000-frame-001.bin",
+        "utc": "2026-10-04T22:02:34.273221+00:00"
+      },
+      {
+        "mtime_ns": 1791151373275339348,
+        "path": "raw/call-000-resume-001.json",
+        "utc": "2026-10-04T22:02:53.275339+00:00"
+      },
+      {
+        "mtime_ns": 1791151375741522907,
+        "path": "raw/call-000-staging-after.json",
+        "utc": "2026-10-04T22:02:55.741523+00:00"
+      }
+    ],
+    "first_resume_to_final_close_frame_seconds_from_mtime": 1.015570218,
+    "http_date_limit": "Original retained Engine HTTP Date headers have only one-second resolution and are wall-clock observations, not host monotonic subphase timers. They corroborate substantial host boundary elapsed time.",
+    "metadata_limit": "mtime values are diagnostic filesystem metadata, not signed semantic timestamps or independent candidate CPU measurements; do not use them to rewrite deadlines.",
+    "original_http_dates": [
+      {
+        "date": "Sun, 04 Oct 2026 22:02:15 GMT",
+        "path": "raw/call-000-runtime-before-version-response.bin",
+        "utc": "2026-10-04T22:02:15+00:00"
+      },
+      {
+        "date": "Sun, 04 Oct 2026 22:02:19 GMT",
+        "path": "raw/call-000-boundary-000-runtime-before-version-response.bin",
+        "utc": "2026-10-04T22:02:19+00:00"
+      },
+      {
+        "date": "Sun, 04 Oct 2026 22:02:32 GMT",
+        "path": "raw/call-000-boundary-000-runtime-after-version-response.bin",
+        "utc": "2026-10-04T22:02:32+00:00"
+      },
+      {
+        "date": "Sun, 04 Oct 2026 22:02:36 GMT",
+        "path": "raw/call-000-boundary-001-runtime-before-version-response.bin",
+        "utc": "2026-10-04T22:02:36+00:00"
+      },
+      {
+        "date": "Sun, 04 Oct 2026 22:02:52 GMT",
+        "path": "raw/call-000-boundary-001-runtime-after-version-response.bin",
+        "utc": "2026-10-04T22:02:52+00:00"
+      },
+      {
+        "date": "Sun, 04 Oct 2026 22:02:55 GMT",
+        "path": "raw/call-000-runtime-after-version-response.bin",
+        "utc": "2026-10-04T22:02:55+00:00"
+      }
+    ],
+    "request_to_second_resume_seconds_from_mtime": 36.924359079,
+    "sum_boundary_handling_seconds_from_mtime": 34.999946755
+  },
+  "case_id": "WF16-absent-token-and-hook-distinction",
+  "conclusion": {
+    "actual_outcome": "Infrastructure error remains correct under the frozen30s call/300s history contract. Raw final bytes are diagnostic only; do not manufacture missing frame002/response/final-exec originals or upgrade the failed control.",
+    "basis": "The retained complete stdout contains a full16-operation result after the real final close boundary, with no candidate stderr; operations finished. The host rejected continuation before accepting the result frame after synchronous boundary handling consumed the call wall budget.",
+    "candidate_stall_explains_failure": false,
+    "fixture_mutation": "Actual immutable JobManager.commit performs get_job before counter validation, so an absent job yields not_found for each of the15 commit operations. This precise finite defect agrees with the unaccepted raw response. No sleeps, wait loops or retry were introduced.",
+    "unresolved_cost_allocation": "The originals do not provide monotonic subphase timers for Git/source checks, receipt hashing/fsync, CLI dispatch, Engine scheduling or candidate CPU. Their individual costs cannot be assigned from these records."
+  },
+  "evidence_files": [
+    {
+      "bytes": 65048,
+      "path": "raw/config.json",
+      "retained_raw_file_delta_sequence": 1,
+      "sha256": "15e9fc5083404704ad922fa30a0b7688e1b04ae74b6865bd3d7fbde8a2a21612"
+    },
+    {
+      "bytes": 1151,
+      "path": "source-plan.json",
+      "sha256": "b586a89675c167e4ac76945586a214d3ef1aab75b87d1c76b72b8ff85d5ad0dd"
+    },
+    {
+      "bytes": 48043,
+      "path": "source-provenance.json",
+      "sha256": "3bb74acc6b2ee119f215901458a900c3583fd87f9f25155dadc15fbf987dd3e4"
+    },
+    {
+      "bytes": 996,
+      "path": "raw/recipe.json",
+      "retained_raw_file_delta_sequence": 3,
+      "sha256": "652f49b2493bcfcfcd0e213cc0c860d81682e7e1995152140f0627eb8fe7c0cd"
+    },
+    {
+      "bytes": 16940,
+      "path": "raw/staging.json",
+      "retained_raw_file_delta_sequence": 5,
+      "sha256": "fc782edb17ce2fb4d28f0dd0e24e564cd07dac36a0e23b041384a73fd5144855"
+    },
+    {
+      "bytes": 682,
+      "path": "raw/session.json",
+      "retained_raw_file_delta_sequence": 222,
+      "sha256": "7865ed850736ef6706e3690bb41d2236d0692b2a50746585e02eecf24f246e0b"
+    },
+    {
+      "bytes": 985,
+      "path": "raw/session-stdout.bin",
+      "retained_raw_file_delta_sequence": 220,
+      "sha256": "0ab3410836cd842679e330c479568873515a95f233423e179f3b207a9c5e4386"
+    },
+    {
+      "bytes": 0,
+      "path": "raw/session-stderr.bin",
+      "retained_raw_file_delta_sequence": 221,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1353,
+      "path": "raw/terminal.json",
+      "retained_raw_file_delta_sequence": 224,
+      "sha256": "bfddbdaf3e4a92a075b271d2d390de9b081323d449740412db3813a3b5782261"
+    },
+    {
+      "bytes": 53449,
+      "path": "raw/workflow-verifier.json",
+      "retained_raw_file_delta_sequence": 225,
+      "sha256": "a22ecf713abf70310a727216912f0ca863e089daf399921474b0ddbf48f0fb1b"
+    },
+    {
+      "bytes": 24,
+      "path": "raw/call-000-request.json",
+      "retained_raw_file_delta_sequence": 98,
+      "sha256": "98eb069a57ee3d24197820dad93dbf74b7a1b14767d43b7b76c53a8583cb4b32"
+    },
+    {
+      "bytes": 246,
+      "path": "raw/call-000-frame-000.bin",
+      "retained_raw_file_delta_sequence": 99,
+      "sha256": "a90a4001e098b371a4ec0c485ad932194915676210404bff22cd3c8a65a9c36f"
+    },
+    {
+      "bytes": 241,
+      "path": "raw/call-000-frame-001.bin",
+      "retained_raw_file_delta_sequence": 144,
+      "sha256": "e96108256aaed11cf5ef82ae2df2fd5c94970e2aeeacabed2f4e46ce5a8e4ab3"
+    },
+    {
+      "bytes": 33,
+      "path": "raw/call-000-resume-000.json",
+      "retained_raw_file_delta_sequence": 143,
+      "sha256": "eed20be0bf4a5c359a16001d5c0acb8bfa628f3a313402d3f560d1ebdaae8004"
+    },
+    {
+      "bytes": 33,
+      "path": "raw/call-000-resume-001.json",
+      "retained_raw_file_delta_sequence": 188,
+      "sha256": "6fb6b1799de789f22b441906cddabb408b60e2df7d40dfd2a97ef3e5d86a236f"
+    },
+    {
+      "bytes": 245,
+      "path": "raw/call-000-boundary-000-event.json",
+      "retained_raw_file_delta_sequence": 112,
+      "sha256": "2a7e10012f11ab495e6aeb3daaf7ac7613816f465f8672eb63e1ed3d7d61305e"
+    },
+    {
+      "bytes": 309,
+      "path": "raw/call-000-boundary-000-path-facts.json",
+      "retained_raw_file_delta_sequence": 117,
+      "sha256": "15d9eaa0962345ee92a49683ea5a72727cd9e6849b31f63b2322a7b73f7165cb"
+    },
+    {
+      "bytes": 756,
+      "path": "raw/call-000-boundary-000-capture.json",
+      "retained_raw_file_delta_sequence": 129,
+      "sha256": "24f024ab62cf0c6085b8e899001e410ed30844c2648abb587f62300e103b1cdd"
+    },
+    {
+      "bytes": 139776,
+      "path": "raw/call-000-boundary-000-capture-stdout.bin",
+      "retained_raw_file_delta_sequence": 127,
+      "sha256": "04ce2a2ca5f3911a9ea4e41678a3ae8a0f02f87efc158d782592448b69b777d9"
+    },
+    {
+      "bytes": 190,
+      "path": "raw/call-000-boundary-000-exec-verified.json",
+      "retained_raw_file_delta_sequence": 111,
+      "sha256": "a4c5fad6e598096cc440c93925611806478f87825c55032e783e38e111b7828b"
+    },
+    {
+      "bytes": 240,
+      "path": "raw/call-000-boundary-001-event.json",
+      "retained_raw_file_delta_sequence": 157,
+      "sha256": "3a1cf84bec905859937fcd6a296d4695f75ebbd944aa039997851cc872c18350"
+    },
+    {
+      "bytes": 309,
+      "path": "raw/call-000-boundary-001-path-facts.json",
+      "retained_raw_file_delta_sequence": 162,
+      "sha256": "15d9eaa0962345ee92a49683ea5a72727cd9e6849b31f63b2322a7b73f7165cb"
+    },
+    {
+      "bytes": 756,
+      "path": "raw/call-000-boundary-001-capture.json",
+      "retained_raw_file_delta_sequence": 174,
+      "sha256": "4e4d0d80030b1cf8eed9c07bb1a6c4eea8e5d5ff67c43d9bb556caa53e5c5f57"
+    },
+    {
+      "bytes": 139776,
+      "path": "raw/call-000-boundary-001-capture-stdout.bin",
+      "retained_raw_file_delta_sequence": 172,
+      "sha256": "04ce2a2ca5f3911a9ea4e41678a3ae8a0f02f87efc158d782592448b69b777d9"
+    },
+    {
+      "bytes": 190,
+      "path": "raw/call-000-boundary-001-exec-verified.json",
+      "retained_raw_file_delta_sequence": 156,
+      "sha256": "a4c5fad6e598096cc440c93925611806478f87825c55032e783e38e111b7828b"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-runtime-before-version-response.bin",
+      "retained_raw_file_delta_sequence": 90,
+      "sha256": "601d88065b024b61ffbb7e392e667b0cd93e2a0d23a809b76db4ca5866f64d09"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-boundary-000-runtime-before-version-response.bin",
+      "retained_raw_file_delta_sequence": 101,
+      "sha256": "4dc216913d1abc1a65bcac7ea2e5acb5b4ff4c25c6e4690d63534bbe2b4090d3"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-boundary-000-runtime-after-version-response.bin",
+      "retained_raw_file_delta_sequence": 135,
+      "sha256": "9abee52bd4137aa7fabd87ab7b648e4c8bfff084c9a5887c87fc34c84ec476d9"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-boundary-001-runtime-before-version-response.bin",
+      "retained_raw_file_delta_sequence": 146,
+      "sha256": "4288859ad0647ba035be323013361b4e9800a5638986256a12160d57156328f0"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-boundary-001-runtime-after-version-response.bin",
+      "retained_raw_file_delta_sequence": 180,
+      "sha256": "a9fcb91915b6265f4049f1b0cd632d22b6211e1478c34462635d972822a2e12d"
+    },
+    {
+      "bytes": 1066,
+      "path": "raw/call-000-runtime-after-version-response.bin",
+      "retained_raw_file_delta_sequence": 190,
+      "sha256": "206125f7e04a3e6a335efec22459cf00dacd6b65de379d72d299dd52e593d89f"
+    }
+  ],
+  "execution_id": "workflow-436f3593509747e98aa99798508952d4",
+  "fixed_trace_semantics": {
+    "acknowledgement": "The adapter emits each boundary then synchronously waits for resume; after emitting complete result it waits for next:call-000. No such next acknowledgement was retained.",
+    "adapter_matches_retained_staging": true,
+    "adapter_sha256": "69e614be82295cb05b11d142c19181a4085be4a7afcc2cdd46623b47284ad3d0",
+    "call_deadline": "_Session.phase creates one monotonic30s deadline before _write(call). Boundary capture, per-capture checks and resume writes run synchronously under that same deadline. _line evaluates _remaining before queue.get, including when the drainer has queued a complete result.",
+    "closed-store": "Actual inherited close return line39 reached by workflow finally line66; this recipe has no reopen, so the single close is final. The complete result frame independently confirms16 operation results.",
+    "constructed-store": "Actual workflow line18 before operations, after real Store construction; waits for host resume0.",
+    "driver_matches_retained_config_sources": true,
+    "driver_sha256": "48d250458d08e4606a9ad590442410171c871ebdc824d51dd2a9345bf6aa3609"
+  },
+  "fixture_source": [
+    {
+      "blob_oid": "d5e48c4d5527720c74f3c4dec0e3c2000ad2e116",
+      "bytes": 3534,
+      "matches_bound_source_manifest": true,
+      "path": "library/clients/workflow.py",
+      "sha256": "afd529ca9dcbd18560d225e71c812bab3c1e1c96b0b4396151f4cc8d8c9d532c",
+      "source_excerpts": [
+        {
+          "line": 10,
+          "text": "def solve(payload):"
+        },
+        {
+          "line": 11,
+          "text": "    with tempfile.TemporaryDirectory(prefix='research-library-') as directory:"
+        },
+        {
+          "line": 12,
+          "text": "        # This directory is created by the adapter, not a supplied intake path."
+        },
+        {
+          "line": 13,
+          "text": "        base = Path(directory).resolve()"
+        },
+        {
+          "line": 14,
+          "text": "        root = base / 'input'"
+        },
+        {
+          "line": 15,
+          "text": "        root.mkdir()"
+        },
+        {
+          "line": 16,
+          "text": "        path = base / 'library.sqlite3'"
+        },
+        {
+          "line": 17,
+          "text": "        store = Store(path)"
+        },
+        {
+          "line": 18,
+          "text": "        results = []"
+        },
+        {
+          "line": 19,
+          "text": "        try:"
+        },
+        {
+          "line": 20,
+          "text": "            for index, operation in enumerate(payload['operations']):"
+        },
+        {
+          "line": 21,
+          "text": "                service = Service(store, root)"
+        },
+        {
+          "line": 22,
+          "text": "                jobs = JobManager(store)"
+        },
+        {
+          "line": 23,
+          "text": "                try:"
+        },
+        {
+          "line": 24,
+          "text": "                    op = operation['op']"
+        },
+        {
+          "line": 52,
+          "text": "                    elif payload.get('milestone') == 'm1' and op == 'commit':"
+        },
+        {
+          "line": 53,
+          "text": "                        fail = operation.get('fail_before_commit', False)"
+        },
+        {
+          "line": 54,
+          "text": "                        result = jobs.commit({'job_id': operation['job_id'], 'epoch': operation['epoch']},"
+        },
+        {
+          "line": 55,
+          "text": "                                             fail_before_commit=fail)"
+        },
+        {
+          "line": 56,
+          "text": "                    else:"
+        },
+        {
+          "line": 57,
+          "text": "                        raise LibraryError('unsupported_operation')"
+        },
+        {
+          "line": 58,
+          "text": "                except LibraryError as error:"
+        },
+        {
+          "line": 59,
+          "text": "                    result = {'error': error.code}"
+        },
+        {
+          "line": 60,
+          "text": "                results.append(result)"
+        },
+        {
+          "line": 61,
+          "text": "            value = {'results': results, 'documents': store.documents()}"
+        },
+        {
+          "line": 62,
+          "text": "            if payload.get('milestone') == 'm1':"
+        },
+        {
+          "line": 63,
+          "text": "                value['jobs'] = store.list_jobs()"
+        },
+        {
+          "line": 64,
+          "text": "            return value"
+        },
+        {
+          "line": 65,
+          "text": "        finally:"
+        },
+        {
+          "line": 66,
+          "text": "            store.close()"
+        }
+      ]
+    },
+    {
+      "blob_oid": "da19a7f7e8fb07f0057e1317ae604740e8ee1693",
+      "bytes": 12409,
+      "matches_bound_source_manifest": true,
+      "path": "library/ingestion/jobs.py",
+      "sha256": "80b88657bf1d52dec1bad0e48442776194ee77d741155d2973d2d089c8c287f5",
+      "source_excerpts": [
+        {
+          "line": 183,
+          "text": "    def commit(self, token, *, fail_before_commit=False):"
+        },
+        {
+          "line": 184,
+          "text": "        if type(token) is not dict or set(token) != {'job_id', 'epoch'}:"
+        },
+        {
+          "line": 185,
+          "text": "            raise LibraryError('invalid_request')"
+        },
+        {
+          "line": 186,
+          "text": "        check_job_id(token['job_id'])"
+        },
+        {
+          "line": 187,
+          "text": "        self.store.get_job(token['job_id'])"
+        },
+        {
+          "line": 188,
+          "text": "        counter(token['epoch'],1)"
+        },
+        {
+          "line": 189,
+          "text": "        if type(fail_before_commit) is not bool:"
+        },
+        {
+          "line": 190,
+          "text": "            self.get(token['job_id'])"
+        },
+        {
+          "line": 191,
+          "text": "            raise LibraryError('invalid_request')"
+        },
+        {
+          "line": 192,
+          "text": "        return self.store.commit_job(token['job_id'], token['epoch'],"
+        },
+        {
+          "line": 193,
+          "text": "                                     fail_before_commit=fail_before_commit)"
+        }
+      ]
+    },
+    {
+      "blob_oid": "b7ba474bfb958203dfa4ff862ab0f42d7b7ca1f9",
+      "bytes": 8739,
+      "matches_bound_source_manifest": true,
+      "path": "library/catalog/legacy_m1.py",
+      "sha256": "ae7511167063569b3688e726e1b526b96504d9d1e3cb157441969340acdfd6e5",
+      "source_excerpts": [
+        {
+          "line": 38,
+          "text": "    def close(self):"
+        },
+        {
+          "line": 39,
+          "text": "        self.db.close()"
+        },
+        {
+          "line": 102,
+          "text": "            except UnicodeError:"
+        },
+        {
+          "line": 103,
+          "text": "                hashes.append(None)  # Invalid UTF-8 is a deferred semantic error."
+        },
+        {
+          "line": 104,
+          "text": "        with self._write():"
+        },
+        {
+          "line": 105,
+          "text": "            previous = self.db.execute('SELECT * FROM jobs WHERE job_id=?', (job_id,)).fetchone()"
+        },
+        {
+          "line": 106,
+          "text": "            if previous is not None:"
+        },
+        {
+          "line": 107,
+          "text": "                if previous['manifest'] != manifest:"
+        },
+        {
+          "line": 108,
+          "text": "                    raise LibraryError('job_conflict')"
+        },
+        {
+          "line": 109,
+          "text": "                return self._job(previous)"
+        },
+        {
+          "line": 110,
+          "text": "            self.db.execute('INSERT INTO jobs VALUES (?,1,\\'queued\\',?,0,NULL,?,?,NULL)',"
+        },
+        {
+          "line": 111,
+          "text": "                            (job_id, len(entries), manifest, json.dumps(hashes)))"
+        },
+        {
+          "line": 112,
+          "text": "            return self.get_job(job_id)"
+        },
+        {
+          "line": 113,
+          "text": ""
+        },
+        {
+          "line": 114,
+          "text": "    def get_job(self, job_id):"
+        },
+        {
+          "line": 115,
+          "text": "        return self._job(self._job_row(job_id))"
+        }
+      ]
+    }
+  ],
+  "host_outcome": {
+    "absent_result_originals": [
+      "call-000-frame-002.bin",
+      "call-000-response.bin",
+      "call-000-next.json",
+      "session-final-exec-request.bin",
+      "session-final-exec-response.bin"
+    ],
+    "cleanup_verified": true,
+    "infrastructure": [
+      "ExecutionError:Declared workflow observation deadline reached"
+    ],
+    "mechanics": {
+      "cleanup_verified": true,
+      "prestart_verified": true,
+      "session_complete": false,
+      "status": "infrastructure_error",
+      "unavailable": [
+        "call-000:Original evidence absent: call-000-frame-002.bin",
+        "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+      ]
+    },
+    "missing_step_ids": [
+      "call-000"
+    ],
+    "registered_known_failed": [],
+    "registered_unavailable_count": 19,
+    "session": {
+      "argv": [
+        "docker",
+        "--host",
+        "unix:///Users/westbrook/.docker/run/docker.sock",
+        "exec",
+        "--interactive",
+        "--user",
+        "65534:65534",
+        "ce3ddebd5084d7ddeb6236f55759e1561cc83fe3007402982298fc20423a7fab",
+        "python",
+        "-I",
+        "-B",
+        "/checks/workflow_adapter.py"
+      ],
+      "capture_complete": true,
+      "errors": [],
+      "exit_code": 137,
+      "natural_exit": false,
+      "requests": [
+        "call-000"
+      ],
+      "stderr": {
+        "bytes": 0,
+        "observed_bytes": 0,
+        "path": "session-stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "truncated": false
+      },
+      "stdout": {
+        "bytes": 985,
+        "observed_bytes": 985,
+        "path": "session-stdout.bin",
+        "sha256": "0ab3410836cd842679e330c479568873515a95f233423e179f3b207a9c5e4386",
+        "truncated": false
+      },
+      "timed_out": true
+    },
+    "terminal_status": "infrastructure_error"
+  },
+  "integrity_scope": "Selected raw byte hashes/lengths freshly match their retained raw-file delta records; full external-head authority is not reissued or replaced by this diagnostic. Existing original verifier retained unchanged.",
+  "preserved_limits": {
+    "call_seconds": 30,
+    "expected_values_changed": false,
+    "history_seconds": 300
+  },
+  "protocol": "workflow-physical1-fixture-failure-diagnosis-v1",
+  "root_commit_reported_by_parent": "e9d7480",
+  "run_root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-physical-1/20261004T220128-7b690748/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-kmf7oxaj/lookup-before-token-WF16-absent-token-and-hook-distinction",
+  "source_binding": {
+    "commit_oid": "13dbce3e8bdaed8c6b6beefce417b61e5149dbb6",
+    "native_source_sha256": "c4de5797fa282818b3cc00f3a25caeb54fc080a64798a7b1b5eee16ff9633c2c",
+    "profile_sha256": "8c6723f3ea222b3c6d99d1a5e8ffb6bffddcd990e7ed8b69d67f0597750dd8e2",
+    "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1",
+    "tree_oid": "db17648057d0d26b90ed334f827659325bc742c7"
+  },
+  "source_capture_method": "Read loose immutable Git object bytes using stdlib zlib, validate each Git object SHA1 and commit/tree chain; match source SHA256/length to retained config manifest; separately replay exact string mutations over retained original source and compare. No Git command, imports or evaluation of source.",
+  "status": "READ_ONLY_ORIGINAL_DIAGNOSIS_NOT_A_QUALIFICATION_OR_RETRY",
+  "variant": "lookup-before-token",
+  "wire_evidence": {
+    "bytes": 985,
+    "diagnostic_expected_mismatches": [
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 9223372036854775808,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 2
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 0,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 3
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": -1,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 4
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": true,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 5
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 1.0,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 6
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": "1",
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 7
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": null,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 8
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 0,
+          "fail_before_commit": 1,
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 10
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 0,
+          "fail_before_commit": "true",
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 12
+      },
+      {
+        "expected": {
+          "error": "invalid_request"
+        },
+        "input": {
+          "epoch": 0,
+          "fail_before_commit": {},
+          "job_id": "absent",
+          "op": "commit"
+        },
+        "observed_in_unaccepted_wire": {
+          "error": "not_found"
+        },
+        "operation_index": 14
+      }
+    ],
+    "frame_kinds": [
+      "ready",
+      "boundary",
+      "boundary",
+      "result"
+    ],
+    "mismatches_are_registered_product_failures": false,
+    "no_extra_execution": true,
+    "operation_count": 16,
+    "result_count": 16,
+    "result_frame_bytes": 441,
+    "result_frame_sha256": "87f4a4b04a8745923df6c5414e6a00369c870d9bdac3db78a3426579f5aa1ddb",
+    "retained_complete_answer": {
+      "documents": [],
+      "jobs": [],
+      "results": [
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "error": "not_found"
+        },
+        {
+          "documents": [],
+          "total": 0
+        }
+      ]
+    },
+    "sha256": "0ab3410836cd842679e330c479568873515a95f233423e179f3b207a9c5e4386",
+    "stderr_bytes": 0
+  }
+}
