@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-04T04:34:25.103182+00:00",
+  "status": "offline observation bridge qualified; six new Docker controls not executed",
+  "purpose": "harness engineering qualification; no comparative agent-quality sample",
+  "base_commit": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+  "branch": "codex/candidate-observation-bridge",
+  "changed_source_sha256": {
+    "gossip_harness/candidate_cli_acceptance_profile_v1.py": "0a2b72049f05b257aac213ce3df14325b79f0a524c1abc6829026ce82ec17dc0",
+    "gossip_harness/candidate_client_execution_v5.py": "b565d2d3cedef767815011bc87756266bbac29f3715d47e1bfb2665acf3d68ae",
+    "gossip_harness/candidate_client_observation_source_v1.py": "201f31f124137458707f5acc1db59e9a857f91525c3524644d2ce34d65155f1f",
+    "gossip_harness/candidate_client_observer_v5.py": "4e0ddd74d5a5eaecdb177ac185238e471f3ed53e2f4dff5aea8b84f9406d5ba2",
+    "gossip_harness/candidate_http_execution_v4.py": "840b7ff7c45923d6f8efbdc41757cb0b2a75de78c2aef3f4c95573bdfc59e76b",
+    "gossip_harness/candidate_http_observation_source_v1.py": "693b5605bab362e354963f2cebee5a08cceca64ee86a4664f3d1d77c23ff1d01",
+    "gossip_harness/candidate_http_observation_v2.py": "9fd6387ccc017a286f0db84cebbf2224c84ffd143d1d3253c8d2ca963c1492a8",
+    "gossip_harness/candidate_observation_admission_v1.py": "c8456643140a241c7006756a16c3b5dc54d5f21620cf3562dd1a0fcea99efc6a",
+    "pyproject.toml": "3c26835706cebccc7b6ac0495fdc2c545b0ba71d8f98a05302d794fc0a6c923e",
+    "tests/test_candidate_client_acceptance_v5.py": "c524cbbb8feaa5118536b5453fa9da325e375d1d6ddd8a51251db7c50e49b9cf",
+    "tests/test_candidate_client_execution_v5.py": "791730266a8e8b9d1d11214b6bf06ef6086573c787647fbc3f6b6be8cbe89f4e",
+    "tests/test_candidate_client_observation_source_v1.py": "162e1f3ef20a89fa29d333618a91671157f847f67b87060604e4d89ff5f72636",
+    "tests/test_candidate_http_execution_v4.py": "b0f58d5a1821165ec423017dd0b57e30e82ee688f7db5b40c2a67f1d15ad2dc1",
+    "tests/test_candidate_http_observation_source_v1.py": "a0c5352b8b09b236ca49175732cc1363cd1c312a1826320f58b3c76a6efe8655",
+    "tests/test_candidate_http_observation_v2.py": "ca775b604b0d732669ac031b5faf41810f34bc59def64f0ebcd61df3a7210ae5",
+    "tests/test_candidate_http_product_v4.py": "ddf59edf0afc52ee48345c39d15f36e74bccfa2ea791aec515c43a1cabfce7a8",
+    "tests/test_candidate_observation_admission_v1.py": "ff0f9d664e2b451a6fc803768c9adbbeb4dda91d1c435a4b2729f21c9326f5f7",
+    "verification-manifest.json": "6faebf958e765f2c28f79875d460b399191f86737ce7f9e68ccf306d21790bad"
+  },
+  "offline": {
+    "run": "runs/c06-observation-offline-qualification-2/20261004T043117-b32218c8",
+    "summary_sha256": "910ca9a813f9f0e13936d4c180b2ff7e63659f2c09a6ec1da2e9d95d315fd815",
+    "inputs_sha256": "9bb4ed48c78775e9c722f6aadbc65b647bf9860f7fdb7158fb83f73d3a67895f",
+    "static_sha256": "9c408cb5311b7252b24a9ab92dab9fa090f0548dde7159d367bb1017bd221f2e",
+    "fingerprint": "a997e35bef16bd894bd426f2ed7970b4e2da8b98a044d1ef0687632db151487d",
+    "status": "passed",
+    "coverage": "targeted",
+    "selected_total": 149,
+    "outcomes": {
+      "passed": 149
+    },
+    "fresh_classes": 12,
+    "reused_classes": 0,
+    "duration_seconds": 78.65580466762185,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "runtime_reconciliation": {
+      "final_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "initial_sha256": "776251cdab27033faba53c823bdc29be7d06c0295c72a17cf005cbe93915ed7b",
+      "matches": true
+    },
+    "static_status": "passed",
+    "static_duration_seconds": 1.6955236652866006,
+    "classes": [
+      {
+        "class": "tests/test_candidate_http_observation_source_v1.py::HttpProductSemanticSourceV1Tests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 11,
+        "receipt_sha256": "1d5e9cbd64cff0f32392e8aa9441d23f24efd363b4783e14af71533682ed6273"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2BoundaryTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 7,
+        "receipt_sha256": "d0e22826515c9c01d7570eafd98929cda2093a93c875d213fbb03dd200f7a149"
+      },
+      {
+        "class": "tests/test_candidate_http_observation_v2.py::HttpObservationV2FactTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 4,
+        "receipt_sha256": "52325f81119bbe5b2226aea1325d7cd5ac6decbb60095e0c48933e8aafcd85c9"
+      },
+      {
+        "class": "tests/test_candidate_http_product_v4.py::HttpProductV4PhysicalDefinitionTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 1,
+        "receipt_sha256": "820bbbb7dbb6633f11bd30de149071cdd4ee9ff02c1405068a25997453ea6578"
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateLoadedEvaluatorSourceTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 12,
+        "receipt_sha256": "f7c65c75c30a25128a070ab63efa8e50d9d328fcd380e6bb92164dd37d5a8e1d"
+      },
+      {
+        "class": "tests/test_candidate_observation_admission_v1.py::CandidateObservationAdmissionTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 27,
+        "receipt_sha256": "732aaa9b0a1987506868208c13518c487affa0a34a0dd411a52a76a6d041909c"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeConsumerTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 32,
+        "receipt_sha256": "dc1fa73815780ae3a278bd45cc8d6c5dae5250d844b11b1b154689fb589d2bc9"
+      },
+      {
+        "class": "tests/test_project_acceptance_registry_v1.py::AcceptanceRegistryTests",
+        "lane": "fast",
+        "status": "passed",
+        "methods": 21,
+        "receipt_sha256": "490d0b677f4179a02d0746ea6d02e16c22726f2b26ce6a306bf71531b7dbc3e2"
+      },
+      {
+        "class": "tests/test_candidate_client_execution_v5.py::CandidateClientExecutionV5Tests",
+        "lane": "git",
+        "status": "passed",
+        "methods": 11,
+        "receipt_sha256": "c39694d7e6f2706dc419c0ad1ecbee36f368d3ceaaca778a59f7eae2c15547b5"
+      },
+      {
+        "class": "tests/test_candidate_client_observation_source_v1.py::CandidateClientObservationSourceV1Tests",
+        "lane": "git",
+        "status": "passed",
+        "methods": 8,
+        "receipt_sha256": "ea5575caa0618b2eef2fb8d280513af9e07145921c621d72cee3a370f571c624"
+      },
+      {
+        "class": "tests/test_candidate_http_execution_v4.py::HttpProductAdmissionV4Tests",
+        "lane": "git",
+        "status": "passed",
+        "methods": 11,
+        "receipt_sha256": "9998c838347db6a384c2e7ca12fe5178595fe07ced4195c6eaab51edd933111d"
+      },
+      {
+        "class": "tests/test_candidate_scope_consumer_v1.py::CandidateScopeReleaseBridgeTests",
+        "lane": "git",
+        "status": "passed",
+        "methods": 4,
+        "receipt_sha256": "d69d77de04b2a9f8aba8a7a2019a268e57df64b503c0c40ae5baa923cdd947d5"
+      }
+    ]
+  },
+  "prior_attempts": [
+    {
+      "run": "runs/c06-http-reader-offline-1",
+      "status": "three authored fixture errors; retained, corrected before qualification"
+    },
+    {
+      "run": "runs/c06-http-reader-offline-2",
+      "status": "ten focused tests passed; later source additions required a new combined gate"
+    },
+    {
+      "run": "runs/c06-observation-offline-qualification-1/20261004T041511-b3422cc4",
+      "summary_sha256": "1548cc6f57961c917a929e0e472bd637044aac860b07e017271e0a4a0b733ffa",
+      "status": "137 passed; superseded by added loaded-source checks and exception classification fixes; not reused"
+    }
+  ],
+  "new_physical_controls": {
+    "executed": 0,
+    "authored": 6,
+    "classes": [
+      "tests/test_candidate_client_acceptance_v5.py::CandidateClientAcceptanceV5DockerTests",
+      "tests/test_candidate_http_product_v4.py::HttpProductV4DockerTests"
+    ],
+    "limits": "Authored full-cohort callbacks qualify boundary mechanics only; even successful physical controls will not establish full product acceptance or swarm quality."
+  },
+  "separate_http_v3_experiment": {
+    "source_commit": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+    "workspace": "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol",
+    "run": "runs/candidate-c03-http-v3-physical-qualification-1/execution/20261004T032902-b74e8d0e",
+    "freeze_sha256": "7c90d9f8ce1782ac5eeb5a93af19a94a8ed81a3ba6329fb7203e1f428e811a1d",
+    "status_at_checkpoint": "running; 14 of 20 methods completed and independently audited",
+    "completed_classes": [
+      {
+        "methods": 5,
+        "audit_sha256": "95b1a97895a40d5e6457a1030784a6dbcb5b6d53dc5cab0e35bc32231581b5da",
+        "retention": "runs/candidate-c03-http-v3-continuity-audit-retention-1/receipt.json",
+        "retention_sha256": "fa5c0584544d6bd6b01638100ac479945472eea0fb1977ac493b0214bd554c9f"
+      },
+      {
+        "methods": 9,
+        "audit_sha256": "76f566f01c99c21b6cb676d130775395b4012a75777575fef3e133b33f8c718e",
+        "retention": "runs/candidate-c03-http-v3-base-audit-retention-1/receipt.json",
+        "retention_sha256": "cf7d896c37d6d80b0843f05134d979adc00fbe11f93357a22809e469a6b5227a"
+      }
+    ],
+    "remaining_methods": 6,
+    "source_modified_by_this_change": false
+  },
+  "scientific_limits": [
+    "Zero new provider calls or live comparative trajectories in this cycle.",
+    "Authored qualification definitions are disclosed; fresh execution does not make them held out or source blind.",
+    "No demonstrated live 20-node quality advantage or causal gossip-versus-orchestrator advantage.",
+    "Loaded-code checks do not attest arbitrary globals, import-time defaults, decorator state or host integrity; fresh workers under exact source freeze remain required.",
+    "Missing evidence remains unavailable; independently proven product failure is preserved."
+  ],
+  "remaining_work": [
+    "Execute and independently audit the six new physical controls after resource availability and an exact prospective freeze.",
+    "Complete all required product acceptance slices, source identity mapping and production admission/promotion/cohort authorities.",
+    "Complete and qualify the four-milestone, six-trajectory controller with restart, partition and Git conflict behavior.",
+    "Run one matching complete zero-provider rehearsal after cheaper gates.",
+    "Resolve live allocation and payload authorization, then run the full comparative cohort with independent final acceptance.",
+    "Run independent held-out project-family confirmation under the fixed statistical contract."
+  ]
+}
