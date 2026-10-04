@@ -1,0 +1,135 @@
+{
+  "protocol": "cumulative-evaluator-offline-qualification-v1",
+  "recorded_at": "2026-10-04T16:33:19.205463+00:00",
+  "qualified_source_commit": "7baca1380ec86fbf29ce7a8cb4efa16d43e6cef7",
+  "status": "targeted offline scope qualified",
+  "new_model_quality_samples": 0,
+  "provider_calls": 0,
+  "scope": {
+    "coverage": "targeted",
+    "discovered_tests": 5172,
+    "selected_tests": 488,
+    "classes": 45,
+    "passed": 488,
+    "failed": 0,
+    "selected_lanes": {
+      "fast": 413,
+      "git": 75
+    },
+    "workers_started": 45,
+    "resource_budget": 4,
+    "peak_tokens": 4,
+    "reused_classes": 0,
+    "duration_seconds": 617.9142802096903
+  },
+  "summary": {
+    "path": "runs/combined-evaluator-offline-5/20261004T161254-dafd881c/summary.json",
+    "sha256": "a5f0a5421cd07154ed62f5e90ba06aa42c4015878c1a3afd2203309b15486ea2",
+    "fingerprint": "4a3d5e83b73d8fa605cdfc9c82f9c86ef6d78b3143462c9c21b1a3af840d3515"
+  },
+  "independent_audit": {
+    "path": "analysis/cumulative-evaluator-offline-audit-v1.json",
+    "sha256": "9071c358ffb0f7619ff80ba2df2acd88446ce05be3b38b157234a850be45a21b",
+    "findings": [],
+    "review_method": [
+      "Only inert source/JSON reads, stdlib hash/AST/TOML processing and current runtime binary file hashes. No project imports, test execution, process polling, provider, Engine or root edits.",
+      "Recomputed identity fingerprint, all selected ordered request/result rosters against current source AST and manifest, every result/log hash and summary projection, full input path census/current hashes, runtime equality and current executable hashes."
+    ]
+  },
+  "input_reconciliation": {
+    "pinned_count": 704,
+    "current_count": 704,
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "manifest_input_and_retained_fixture_census_matches": true
+  },
+  "runtime_reconciliation": {
+    "recorded_initial_equals_final": true,
+    "initial_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+    "final_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+    "current_binary_bytes": {
+      "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11": true,
+      "/opt/homebrew/Cellar/git/2.54.0/bin/git": true,
+      "/Users/westbrook/Library/Application Support/revedev-52ae4245/bin/node": true
+    },
+    "packages_and_environment": "Initial/final recorded digests equal; no new environment read, package import or version command run by reviewer."
+  },
+  "static_scope": {
+    "status": "passed",
+    "source_count": 630,
+    "explicit_type_roots": 232,
+    "checks": [
+      {
+        "name": "configuration",
+        "status": "passed",
+        "returncode": null,
+        "baseline_count": 0
+      },
+      {
+        "name": "syntax",
+        "status": "passed",
+        "returncode": 0,
+        "baseline_count": 0
+      },
+      {
+        "name": "javascript_syntax",
+        "status": "passed",
+        "returncode": 0,
+        "baseline_count": 0
+      },
+      {
+        "name": "tools",
+        "status": "passed",
+        "returncode": null,
+        "baseline_count": 0
+      },
+      {
+        "name": "lint",
+        "status": "passed",
+        "returncode": 0,
+        "baseline_count": 0
+      },
+      {
+        "name": "types",
+        "status": "passed",
+        "returncode": 1,
+        "baseline_count": 117
+      }
+    ],
+    "retained_type_baseline_debt": 117,
+    "meaning": "Configured gate passed with exactly retained unchanged legacy diagnostics; no claim every legacy function is type-safe."
+  },
+  "previous_checkpoint": {
+    "path": "analysis/cumulative-evaluator-integration-v1.json",
+    "sha256": "7602882533975b26191d02d3becef09bf1f6cd322db826312ce391f3ffa8737d",
+    "preserved": true
+  },
+  "prior_failures": "Earlier static, timeout, expectation and integrity-order failures remain retained in the previous checkpoint. This is a new execution after source-reviewed corrections, not a relabeling of those results.",
+  "browser_physical_at_recording": {
+    "status": "running; no outcome claimed",
+    "session": 66987,
+    "run": "runs/browser-root-physical-2/20261004T162634-a86d699a",
+    "planned_controls": 7,
+    "prior_failed_run": "runs/browser-root-physical-1/20261004T143914-73e681cf",
+    "changed_deadlines": false
+  },
+  "remaining": [
+    "Finish and audit browser physical qualification.",
+    "Run applicable opt-in MAP-A and affected default HTTP/product physical controls after cheaper gates.",
+    "Complete required semantic coverage and an exact matching full rehearsal.",
+    "Resolve pending live-payload approval before provider execution.",
+    "Run and audit the required larger-role and live gossip-versus-orchestrator comparisons.",
+    "Obtain independent held-out task-family confirmatory evidence."
+  ],
+  "claim_limits": [
+    "Targeted488checks out of5172discovered tests; not a whole-repository pass.",
+    "Physical=true in offline receipts means real worker execution, not Engine/browser qualification.",
+    "Existing117 legacy type diagnostics remain under unchanged configured baseline;232 explicit type roots. No claim all legacy functions are type-safe.",
+    "No candidate acceptance, model-quality observation, live-study qualification or statistical superiority follows from this checkpoint."
+  ],
+  "publication": {
+    "status": "local only",
+    "reason": "Public push awaits explicit disclosure approval after automatic approval review rejection; no new push attempted."
+  }
+}
