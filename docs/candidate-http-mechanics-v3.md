@@ -21,11 +21,12 @@ The complete v3 gate retains every group in the reviewed mechanics design:
 
 Current new files prepare the HTTP-only groups. They do not substitute for the
 mixed history or its predecessor finite-CLI qualification. The three reviewed
-v4 CLI test/helper/document files remain absent while the existing installation
-approval is pending. They must not be recreated under HTTP names. After that
-approval, their stage-one persistence and all 11 controls are required before
-mixed CLI qualification; the remaining 56 finite histories remain separate
-outstanding coverage.
+v4 CLI test/helper/document files are now installed through an approved root-owned
+action. The installed batch passed 190 offline checks and its first physical
+stage: one persistence history plus all 11 controls. Its independent retained-evidence audit
+is clear for that first stage, and the other 56 finite histories are running
+as separate required coverage. These results do not substitute for the full
+mixed HTTP/CLI history or the new composition continuity controls.
 
 Freeze the complete physical roster, fixture bytes, ordered recipes, source
 identities, image/runtime, limits, expected classifications, process counts and

@@ -1,0 +1,390 @@
+{
+  "schema": "candidate-b03-v4-installed-stage-one-checkpoint-v1",
+  "recorded_at": "2026-10-04T01:52:24.830705+00:00",
+  "base_commit": "1084c4864e03e316afe64b901f9463aaba9f65ad",
+  "status": "Installed CLI v4 source and independently audited first physical stage passed; bulk qualification remains open.",
+  "installation": {
+    "path": "runs/candidate-b03-v4-installation-1.json",
+    "bytes": 1560,
+    "sha256": "ef0e7d2c2e86d53f0eede332b45e2b7334ba8ac2cab7e4d22940d8227b90140d"
+  },
+  "installation_interpretation": "Root-specific normal approval review resolved the earlier contributor read-only rejection. No new human answer is asserted; the separate provider payload restriction is unchanged.",
+  "sources": [
+    {
+      "path": "tests/test_candidate_clients_docker_v4.py",
+      "bytes": 85372,
+      "sha256": "1dfb41f45743bae3565f49131dd95bff70430bf0475265ce89fc27d97c5fb40b"
+    },
+    {
+      "path": "tests/test_candidate_client_rejection_v4.py",
+      "bytes": 68989,
+      "sha256": "61a4f8a12641d4f7d19e1fbbba2f599a8137f7d0a8adaf755af234811f1327c1"
+    },
+    {
+      "path": "docs/candidate-client-qualification-plan-v4.md",
+      "bytes": 14619,
+      "sha256": "c72718a4f80934998ee92fe6bffe71cda3e0837f1bb1eb86c2fc953d3725c386"
+    },
+    {
+      "path": "verification-manifest.json",
+      "bytes": 435911,
+      "sha256": "2c8d363768ba3d86a9c3b3d69f7944185d56641f715742eebb2a859a6c44a9d3"
+    },
+    {
+      "path": "docs/candidate-http-mechanics-v3.md",
+      "bytes": 8452,
+      "sha256": "30a6692520dcb13c36e3b5a14308511d23c15ba6c412427b24a0095666686de7"
+    }
+  ],
+  "freeze": {
+    "path": "runs/candidate-b03-v4-definition-freeze-1/freeze.json",
+    "bytes": 230401,
+    "sha256": "2d414097f4b9938b5fa2a2796c13ca086b417d97db72f1d3cbc6897d6d90c271"
+  },
+  "qualification": {
+    "rejection_offline": {
+      "summary": {
+        "path": "runs/candidate-b03-v4-installed-offline-1/20261004T012654-507ea17a/summary.json",
+        "bytes": 18673,
+        "sha256": "163575960a8d102f36e169712c650d8f5ab23c0344bcefd8f66aa92bafa54acc"
+      },
+      "static": {
+        "path": "runs/candidate-b03-v4-installed-offline-1/20261004T012654-507ea17a/static.json",
+        "bytes": 79585,
+        "sha256": "444c16173e1848766fd5d8737d926b38511beabf6cb97e567c049ad6f7a52a82"
+      },
+      "inputs": {
+        "path": "runs/candidate-b03-v4-installed-offline-1/20261004T012654-507ea17a/inputs.json",
+        "bytes": 60895,
+        "sha256": "48966a91a9019625ec98956da034dce8bdf1a2d07ebc8cf1bed68890a0a06105"
+      },
+      "fresh_passes": 31,
+      "failed": 0,
+      "skipped": 0,
+      "reused_classes": 0,
+      "fresh_classes": 1,
+      "duration_seconds": 5.6910989582538605,
+      "matched_inputs": 518,
+      "source_runtime_drift": false
+    },
+    "core_offline": {
+      "summary": {
+        "path": "runs/candidate-b03-v4-installed-core-offline-1/20261004T012832-43d9bf21/summary.json",
+        "bytes": 97778,
+        "sha256": "df4ddfa0f4be1ba926cbe0dcd319210c7c23531583321253f1b0284e2ca1f050"
+      },
+      "static": {
+        "path": "runs/candidate-b03-v4-installed-core-offline-1/20261004T012832-43d9bf21/static.json",
+        "bytes": 79577,
+        "sha256": "ab6d4e1749eee8df0991f63e382d51194d2c38852f1ea040694a5fc849d94caf"
+      },
+      "inputs": {
+        "path": "runs/candidate-b03-v4-installed-core-offline-1/20261004T012832-43d9bf21/inputs.json",
+        "bytes": 60895,
+        "sha256": "48966a91a9019625ec98956da034dce8bdf1a2d07ebc8cf1bed68890a0a06105"
+      },
+      "fresh_passes": 159,
+      "failed": 0,
+      "skipped": 0,
+      "reused_classes": 0,
+      "fresh_classes": 11,
+      "duration_seconds": 47.79801054019481,
+      "matched_inputs": 518,
+      "source_runtime_drift": false
+    },
+    "physical_stage_one": {
+      "summary": {
+        "path": "runs/candidate-b03-v4-controls-qualification-1/20261004T013421-34f59347/summary.json",
+        "bytes": 13501,
+        "sha256": "7fc8e57dd4d41a44b5fbd26086e05b5e63d136cfd6e587cb94ca5b21ea2dc4ab"
+      },
+      "static": {
+        "path": "runs/candidate-b03-v4-controls-qualification-1/20261004T013421-34f59347/static.json",
+        "bytes": 79584,
+        "sha256": "a58e648ef67831dd9d473f492044991a19a3ca03999ef691a365cc1203387e60"
+      },
+      "inputs": {
+        "path": "runs/candidate-b03-v4-controls-qualification-1/20261004T013421-34f59347/inputs.json",
+        "bytes": 60895,
+        "sha256": "89fabffe377eeeccaafe009d8668ade711b22f9dac2b115f371a0e6e8161623a"
+      },
+      "fresh_passes": 8,
+      "failed": 0,
+      "skipped": 0,
+      "reused_classes": 0,
+      "fresh_classes": 2,
+      "duration_seconds": 162.50564283318818,
+      "matched_inputs": 518,
+      "source_runtime_drift": false
+    }
+  },
+  "stage_one": {
+    "physical_methods_passed": 8,
+    "reference_histories": 1,
+    "reference_commands": 9,
+    "controls": 11,
+    "candidate_attempts": 20,
+    "actual_candidate_starts": 19,
+    "natural_candidate_completions": 18,
+    "holders": 11,
+    "distinct_containers": 31,
+    "volumes": 12,
+    "proven_forced_terminations": 1,
+    "defensive_kill_requests_after_rejected_start": 1,
+    "meaning": "Harness qualification with fixed reference/synthetic sources. Deliberate wrong results and unavailable observations are required control outcomes, not product acceptance or live-model scores."
+  },
+  "independent_audit": {
+    "status": "clear_with_explicit_scope_limits",
+    "original": {
+      "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/consolidated-1.json",
+      "bytes": 14713,
+      "sha256": "ef62094485eff61a1c84a2f205cf70b3046914354c0c20dce0f62b084957bfed"
+    },
+    "scope": "Stage one only: one nine-command reference persistence history plus all eleven synthetic/raw controls. No bulk-history qualification claim.",
+    "qualified_controls": 11,
+    "retained_evidence": [
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/audit-1.log",
+        "bytes": 1360,
+        "sha256": "dc48885f7ddff635f9a7833211507cce34476f449bdd0cc50d6c869bc8c84875"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/audit-2.log",
+        "bytes": 1020,
+        "sha256": "f871510ba6d5e896e5694070844fa19a07ae7c0e8b471b83fbe4121ec1849f51"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/audit-v1.py",
+        "bytes": 41883,
+        "sha256": "a5224ebc023f0321d785bb0ee8c4b8e94111068097dedaea28dcc65aa9b72d3b"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/audit-v2.py",
+        "bytes": 41941,
+        "sha256": "d054b90edd54684d345bb8be3566ea6efb45e84584fb7d5e19587453ce37ab9b"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/audit.py",
+        "bytes": 41883,
+        "sha256": "a5224ebc023f0321d785bb0ee8c4b8e94111068097dedaea28dcc65aa9b72d3b"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/consolidate.py",
+        "bytes": 7049,
+        "sha256": "c0ac783d485ad998f6ee3ea14d1b66cbe6f44eaaa29c31a1768267c1bc0e480a"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/cross-census-1.json",
+        "bytes": 34817,
+        "sha256": "aef0e2abaee1b726cf3e9a0a945557eb4ee481d0cfdbcb9e74f3b8470b0dc2d8"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/cross-census.py",
+        "bytes": 4219,
+        "sha256": "03ad3f9edf5fc10a39657028350a0f11c3d306ba0359f7fb10a2aced0585a392"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/prepare.py",
+        "bytes": 11248,
+        "sha256": "08ddea1d252a468c5f85a35d2b9cce2e7d6b9aa7fb323c981db684481a34c49c"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/refine.py",
+        "bytes": 7921,
+        "sha256": "70d64553845c65583e159b9c63e3a3cc67f9e6bb1f4991cec6aa89a90549e2ac"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/refine2.py",
+        "bytes": 2052,
+        "sha256": "391dbf7cd699e7cf029e588ac7bf20ed7d186451b76ca9525d747fe47a77b2ec"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/report-1.json",
+        "bytes": 1554400,
+        "sha256": "f51b6bd5acb2c254c2fa02c9ac3c1a42aca86412b58014aa924ef7fbca2011d0"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-controls-1/report-2.json",
+        "bytes": 1554057,
+        "sha256": "30388eac80e6fe6f258e05deb27f97501ade4d382a29aaf6a079fc70a797283e"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-initial.py",
+        "bytes": 43509,
+        "sha256": "46d8325e33c5f8755abd134b6cc8ae5ccb6abc65e20e9e1fc53c3f327a3be92b"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-result-2.py",
+        "bytes": 43535,
+        "sha256": "2f1cc35e2da7e04cc6ac248c768bb3f78919321d470c99f176b6d2470e35e2ea"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-result-3.py",
+        "bytes": 43568,
+        "sha256": "e88b1b27fc916e0b50e82a3f2d4f329aa8c15e83179e8d4a008a220b6c2dbe35"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-result-4.py",
+        "bytes": 43684,
+        "sha256": "7ee5022a6b6f2d3b04ee84a692798c263817750d40cc4129a3b6643987346ca1"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-result-5.py",
+        "bytes": 43790,
+        "sha256": "3ec123df2ce022c2262b26087f77ef230c66ac714947766cc2e2cb134ca1b3b9"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit-result-6.py",
+        "bytes": 45693,
+        "sha256": "104ce70471ac30147b17982731fbc3395144078ee3fa755c899391120828b0d1"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/audit.py",
+        "bytes": 45854,
+        "sha256": "6781ee65bd155ef4dc9e0c5302efc4ce0b1750f8c5af3eee2b64d211baae067c"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/independent-source-review.json",
+        "bytes": 847,
+        "sha256": "43a699ec20ebbb38799afe99065b06e928798777df181cb3cb40f686f250abed"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-1-launch-failure.json",
+        "bytes": 371,
+        "sha256": "e6b89f74d00cba5b057465261b62a1421f2ff2375873312411fcfc92d0feb650"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-2.json",
+        "bytes": 1243,
+        "sha256": "0ab8321cb4d3bf1be40ce325d271cccb880191eaa6fd7cb368d95e4e1fec6a4a"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-3.json",
+        "bytes": 1137,
+        "sha256": "55edac5ecd1c4e0e6ee4359a8a6bc6db7a264c6ddf34fb153ec44b04deba95e6"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-4.json",
+        "bytes": 1573,
+        "sha256": "de38d26da9f8f7ccb94a4c87a246c7a77e616c35f44cb2eb2262f4f385da6773"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-5.json",
+        "bytes": 30744,
+        "sha256": "64a5d764d3fc557a224dc248411e60634f5e7a04a185a90c892a423e20151432"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-6.json",
+        "bytes": 30913,
+        "sha256": "203d4386d68f42c6cb06c3fe7e038265c496550fea64ddb5db56cc549e922d86"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/result-7.json",
+        "bytes": 30913,
+        "sha256": "5acaa55081f59dc420e399b0630f46d71d2f8fb405444ab8d66f39ee31e8731e"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-rejection-1/retention-index.json",
+        "bytes": 4341,
+        "sha256": "798f6cafae3a7b68fdd35d8a9b79553545396057c87718e8765d68ea82b57255"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-persistence-auditor.py",
+        "bytes": 37611,
+        "sha256": "016c978a84b6091baca6c2a537e448796f316e24631ab935fd56c8ca4ee115f2"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-persistence-result-1.json",
+        "bytes": 687567,
+        "sha256": "bab4695f41b94dccb98d8b7f37db7a5b384b0aaa617267161daafe4f1d49bb94"
+      },
+      {
+        "path": "runs/candidate-b03-v4-installed-publication-1/independent-audit/gossip-cli-v4-audit-persistence-result-1.log",
+        "bytes": 920,
+        "sha256": "dbd54c299aed5f6bbb95485ed7a528b5a2e96c21a29bec4acf398c03cacefca8"
+      }
+    ],
+    "limitations": [
+      "Only one reference persistence history and eleven pipeline controls are qualified here. The remaining 56 reference histories and 296 commands are outside this checkpoint.",
+      "The control verdict is distinct from registered provider-case observations. Intentional wrong output remains product-failed; hang, capped output and mixed stderr remain unavailable where appropriate.",
+      "Eighteen naturally completed candidate processes include the output-limited control, whose known exit does not establish complete semantic output.",
+      "The two controller kill flags represent one genuinely killed hung candidate plus one defensive request after startup rejection. A never-started container is not a candidate process or exit.",
+      "Socket EOF and timing are controller observations authenticated through retained receipts, frozen producer sources and checkpoint chronology, not independent external attestation.",
+      "Read-only audit parsed retained raw bytes and Git objects. It did not invoke candidate/evaluator code, Docker, Engine or providers; it did not perform a fresh Engine census.",
+      "No product acceptance, production admission, comparative swarm-quality sample, statistical proof, repeatability trial or paid API call is supplied by this qualification."
+    ],
+    "retained_persistence_assertions": {
+      "supported_true": 25,
+      "unspecified_null": 2
+    },
+    "authored_control_observation_census": {
+      "assertion_cells": 26,
+      "false": 4,
+      "null": 8,
+      "observations": 9,
+      "statuses": {
+        "observation-unavailable": 3,
+        "observed-match": 2,
+        "partial-observation": 1,
+        "product-failed": 3
+      },
+      "supported": 18,
+      "true": 14,
+      "unavailable": 7,
+      "unspecified": 1
+    },
+    "registered_case_observation_census": {
+      "assertion_cells": 20,
+      "false": 4,
+      "null": 11,
+      "observations": 10,
+      "statuses": {
+        "observation-unavailable": 1,
+        "partial-observation": 5,
+        "product-failed": 4
+      },
+      "supported": 9,
+      "true": 5,
+      "unavailable": 1,
+      "unspecified": 10
+    },
+    "audit_development_history": "One ordinary-control audit predicate correction and four startup-rejection audit development failures are retained with original/final scripts and logs. No physical runtime rerun or evidence mutation occurred."
+  },
+  "bulk": {
+    "path": "runs/candidate-b03-v4-bulk-qualification-1/20261004T013840-7ab73625",
+    "status_at_checkpoint": "active; not a final result",
+    "planned_remaining_histories": 56,
+    "planned_remaining_commands": 296,
+    "admission": "After whole stage-one terminal pass and root reconciliation of all518inputs, runtime fingerprints and worker cleanup.",
+    "repeat_of_stage_one": false
+  },
+  "full_roster": {
+    "assertions": 900,
+    "candidate_container_attempts": 316,
+    "controls": 11,
+    "keepers": 67,
+    "reference_histories": 57,
+    "reference_invocations": 305,
+    "unspecified_assertions": 32,
+    "volumes": 68
+  },
+  "scope_limits": [
+    "190 offline passes and eight physical methods are distinct evidence units.",
+    "The first physical stage is not full57-history qualification or independent project acceptance.",
+    "Thirty-two full-roster assertion cells remain explicitly unspecified by the frozen contract.",
+    "The independent raw audit qualifies stage one only; the running bulk histories have no final audit or result.",
+    "Actual Engine/container operations occurred; no provider calls or new comparative agent samples occurred.",
+    "Current static checks cover declared type roots with117 unchanged historical diagnostics, not whole-repository type safety.",
+    "Frozen earlier failures remain retained; no unchanged retry-to-green.",
+    "GitHub Pages is not refreshed by this code publication."
+  ],
+  "new_provider_calls": 0,
+  "new_comparative_samples": 0,
+  "new_ledger_audit": false,
+  "remaining_scope": [
+    "Complete and independently audit the running56-history CLI batch.",
+    "Complete full87-step/29-CLI HTTP composition and five continuity/retention controls, followed by the complete registered HTTP gate.",
+    "Complete independent acceptance integration and the matching cumulative project rehearsal.",
+    "Run the planned small/large/fair-orchestrator comparison under required provider authorization and funding, then decision-placement by transport and independent project-family confirmation."
+  ]
+}

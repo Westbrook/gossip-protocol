@@ -4567,6 +4567,78 @@
       "disposition": "Do not dispatch until the complete prospective v3 roster and prerequisites are ready. Run once after static/offline/source qualification; preserve all failed, unavailable and unexecuted outcomes.",
       "overlap_reason": "These extensions exercise new v3 composition boundaries absent from the unchanged base controls. Supplied transcript negatives cannot replace physical observations; a complete buffered early-close send leaves physical incomplete-send coverage open.",
       "timeout_rationale": "A prospective three-hour class resource cap, separate from each 7200-second controller history policy. It is not a measured completion estimate or permission to dispatch. Synchronous checkpoint/authentication work is not a deadline primitive; timeout means infrastructure uncertainty, not candidate failure. Runtime feasibility remains unqualified and the complete physical roster must bind these limits before launch."
+    },
+    "tests/test_candidate_clients_docker_v4.py::CandidateCliPersistenceV4DockerTests": {
+      "lane": "docker",
+      "weight": 2,
+      "timeout_seconds": 7200,
+      "invariant": "Separate real CLI main processes retain only their owned history database and respect root/database switching.",
+      "isolation": "One class worker; isolated Git stores, journal roots and outputs; each physical candidate invocation uses a fresh container.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Unordered inspection inventory must not cause false identity failure; duplicate keys/destinations, actual mount field/type changes and all other array changes remain rejected. A named tmpfs volume that loses data between commands cannot masquerade as valid persisted state.",
+      "boundary": "Version4 binds independently registered argv and exact runtime; explicit Cmd:null is admitted only under the named singleton-entrypoint policy. Full raw identity remains exact except prior approved mount inventory/OOM phases. Complete retained start-response metadata never establishes candidate natural completion.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_clients_docker_v4.py::CandidateCliLegacyV4DockerTests": {
+      "lane": "docker",
+      "weight": 2,
+      "timeout_seconds": 7200,
+      "invariant": "Every prospectively selected legacy CLI history uses real process and supported semantic observations.",
+      "isolation": "One class worker; isolated Git stores, journal roots and outputs; each physical candidate invocation uses a fresh container.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Unordered inspection inventory must not cause false identity failure; duplicate keys/destinations, actual mount field/type changes and all other array changes remain rejected. Wrapper-only mocks could hide actual CLI source intake, reimport and selection failures.",
+      "boundary": "Version4 binds independently registered argv and exact runtime; explicit Cmd:null is admitted only under the named singleton-entrypoint policy. Full raw identity remains exact except prior approved mount inventory/OOM phases. Complete retained start-response metadata never establishes candidate natural completion.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_clients_docker_v4.py::CandidateCliJobsV4DockerTests": {
+      "lane": "docker",
+      "weight": 2,
+      "timeout_seconds": 7200,
+      "invariant": "The complete selected lifecycle roster preserves actual CLI transitions across independent invocations.",
+      "isolation": "One class worker; isolated Git stores, journal roots and outputs; each physical candidate invocation uses a fresh container.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Unordered inspection inventory must not cause false identity failure; duplicate keys/destinations, actual mount field/type changes and all other array changes remain rejected. Status/action, retry, conflict and epoch histories cannot be replaced by a favorable isolated response.",
+      "boundary": "Version4 binds independently registered argv and exact runtime; explicit Cmd:null is admitted only under the named singleton-entrypoint policy. Full raw identity remains exact except prior approved mount inventory/OOM phases. Complete retained start-response metadata never establishes candidate natural completion.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_clients_docker_v4.py::CandidateCliRejectionV4DockerTests": {
+      "lane": "docker",
+      "weight": 2,
+      "timeout_seconds": 7200,
+      "invariant": "Selected invalid input and usage histories exercise actual candidate CLI exit and supported error observations.",
+      "isolation": "One class worker; isolated Git stores, journal roots and outputs; each physical candidate invocation uses a fresh container.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Unordered inspection inventory must not cause false identity failure; duplicate keys/destinations, actual mount field/type changes and all other array changes remain rejected. Unsupported code assumptions, presentation shortcuts or lost no-admission observations cannot silently qualify rejection behavior.",
+      "boundary": "Version4 binds independently registered argv and exact runtime; explicit Cmd:null is admitted only under the named singleton-entrypoint policy. Full raw identity remains exact except prior approved mount inventory/OOM phases. Complete retained start-response metadata never establishes candidate natural completion.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_clients_docker_v4.py::CandidateClientProcessControlV4DockerTests": {
+      "lane": "docker",
+      "weight": 2,
+      "timeout_seconds": 7200,
+      "invariant": "Positive, negative and unavailable controls distinguish raw transport and completion from semantic truth.",
+      "isolation": "One class worker; isolated Git stores, journal roots and outputs; each physical candidate invocation uses a fresh container.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Lost or malformed start responses must not qualify missing-executable rejection. A separate diagnostic proof authenticates complete HTTP400 invalid-command rejection, bound cleanup identity/no-start state and exact owned removal; daemon exit127 is not a candidate exit.",
+      "boundary": "Version4 binds independently registered argv and exact runtime; explicit Cmd:null is admitted only under the named singleton-entrypoint policy. Full raw identity remains exact except prior approved mount inventory/OOM phases. Complete retained start-response metadata never establishes candidate natural completion.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_client_rejection_v4.py::CandidateClientRejectionProofV4Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Independent strict response and cleanup proof distinguish a genuine missing-executable rejection from transport uncertainty.",
+      "isolation": "One isolated class worker with disposable host journals and fake low-level I/O; no physical container or candidate invocation.",
+      "overlap": "Offline tests establish declared interfaces; real Docker classes establish physically observed process boundaries.",
+      "distinct_defect": "Incomplete, malformed, forged, misordered, wrong-identity or unretained evidence cannot grant rejection authority; raw decoder boundaries reject before use.",
+      "boundary": "Installed trusted fake-I/O qualification only; no Engine, generated candidate module execution or provider calls. Does not establish physical rejection or independent acceptance.",
+      "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
+      "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
     }
   },
   "audit": {
