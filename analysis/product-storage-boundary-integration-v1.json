@@ -1,0 +1,705 @@
+{
+  "protocol": "product-storage-boundary-integration-v1",
+  "status": "targeted_offline_qualified_physical_and_full_study_pending",
+  "base_commit": "8d53f15bde9829c4ebbc40ac198b75c3407a2ffe",
+  "verification_owner": "root",
+  "files": [
+    {
+      "path": "gossip_harness/candidate_product_process_execution_v1.py",
+      "sha256": "bda5bfce7c6ea9779df1adc8e0665b91b52347ea7f5e78b429078c6e19030c1c",
+      "bytes": 135102
+    },
+    {
+      "path": "gossip_harness/candidate_product_process_observation_v1.py",
+      "sha256": "0d24f63993999211d7d0d025fc21484c6ee583adc7544c4e8f601094fc5bd312",
+      "bytes": 26674
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v1.py",
+      "sha256": "1ee2826a79573ffb7d694e9d81032c5a5aaac106e066992a4ea5f4ea0f7215af",
+      "bytes": 47269
+    },
+    {
+      "path": "tests/test_candidate_product_process_batch_capture_v1.py",
+      "sha256": "3a995db74e77a025a09ab3ad8bd80dab196c1ac9377542bb10f471c1787879b9",
+      "bytes": 13739
+    },
+    {
+      "path": "tests/test_candidate_product_process_batch_docker_v1.py",
+      "sha256": "56632b12d7fdc58d1245bf46ae24288be819995aaf8e54e2424813611ef6ad28",
+      "bytes": 37295
+    },
+    {
+      "path": "gossip_harness/candidate_storage_prestart_v1.py",
+      "sha256": "a4ba5aadeb764e2ba7f792635dbbef033d890cfd3584dc920157d8b7306b8b47",
+      "bytes": 14578
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "c283cf67da4fb52f09273df70f37826e6713ff4b145379f048749abc7f498302",
+      "bytes": 45441
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_execution_v1.py",
+      "sha256": "ddc79752916eea760dea8853c78ce942db10c086f8a6b272de362cc73f76f31c",
+      "bytes": 35091
+    },
+    {
+      "path": "gossip_harness/candidate_storage_product_observation_v1.py",
+      "sha256": "174b48672095db7bec025d3471b4f66bf13f8287a83a30b3257f82e56f42cdc1",
+      "bytes": 25294
+    },
+    {
+      "path": "gossip_harness/candidate_m2_product_observation_v1.py",
+      "sha256": "0f3bb6bdee625712ab06947d4b6a1e2be274aa5d2a43441150c1a6c805f7419b",
+      "bytes": 28067
+    },
+    {
+      "path": "tests/test_candidate_storage_prestart_v1.py",
+      "sha256": "31c02990de165e4ac29ff5971d30f106e802b263c25561f50e837f7497ed4055",
+      "bytes": 13629
+    },
+    {
+      "path": "tests/test_candidate_storage_product_execution_v1.py",
+      "sha256": "de92c4d9f6bc8ab47b103b28c13f04eb0e356c086cfb616e2d251f8777cc881a",
+      "bytes": 39906
+    },
+    {
+      "path": "tests/test_candidate_m2_product_execution_v1.py",
+      "sha256": "90d2c4bcd6f5da3294b7ed105f9aaf14a82a645c8e35d5f55f03c48d29e7ab3b",
+      "bytes": 22518
+    },
+    {
+      "path": "tests/test_candidate_m2_product_observation_v1.py",
+      "sha256": "282fce0ff0220af28e127d0849a6571a3bf9dcb2baa9ddfe14104e9e7bf91488",
+      "bytes": 10256
+    },
+    {
+      "path": "tests/test_candidate_storage_batch_capture_v1.py",
+      "sha256": "ba175a2b3ccec02e26d5af562617ca921e4720e1e50f9ef41b57b1bd72a1c5f2",
+      "bytes": 14313
+    },
+    {
+      "path": "tests/candidate_storage_m2_physical_v1.py",
+      "sha256": "271aec049c39549778d0fe2ab90d83340e29199c411d45d79473f6c9c9be463c",
+      "bytes": 12239
+    },
+    {
+      "path": "tests/test_candidate_storage_m2_physical_v1.py",
+      "sha256": "503bd2378dccf58e3f5e6dedee17b78cde7ce974eb91b71cb7f61b43589bff82",
+      "bytes": 45833
+    },
+    {
+      "path": "docs/candidate-storage-m2-physical-qualification-v1.md",
+      "sha256": "03ca27f783f74ef9517830d911b04d77651680db4cb7a4b2e3f3f50d0aceb941",
+      "bytes": 11682
+    },
+    {
+      "path": "docs/http-body-boundary-scope-v1.md",
+      "sha256": "17a94807ce4c2d2b53e415887e51b4741d90d667d2b907281af0c310d636f5fa",
+      "bytes": 2514
+    },
+    {
+      "path": "tests/test_cumulative_http_boundary_mapping_v1.py",
+      "sha256": "8bf787fd35296da7d68c9447f4f286fa609813bc930f62030efc26b1f7610120",
+      "bytes": 6335
+    },
+    {
+      "path": "tests/test_candidate_storage_serialization_v1.py",
+      "sha256": "28e42ea20bf6f1386af7c5997ab01e83432ddb23bf0833377b1ebe3be16ce019",
+      "bytes": 8083
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "872a545dc46697d416db724a9811c6d00b8191d15a37845543181fd2e9fa8f75",
+      "bytes": 600555
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "faba9049189287b7f147095709809f68430f5e1d81e8fe7f3bae40d05e7ae53e",
+      "bytes": 13968
+    }
+  ],
+  "changes": [
+    "Explicit product-process batch source capture uses four fresh Git children per capture, exact closed policy/source/profile binding and no cache or fallback. Candidate, finite-command and cleanup deadlines unchanged.",
+    "Storage/M2 owners retain actual created-state inspection before dispatch; independent readers check original sandbox/volume/start lineage and later observations. Six physical histories include direct persisted/raw mutant witnesses and truthful terminal failure/N01 counts.",
+    "One finite source-defined HTTP exact65536-byte positive boundary now maps to its normative assertion. All original diagnostics, empty-gate rejection and unresolved full scope remain."
+  ],
+  "combined_scope_merge": {
+    "path": "gossip_harness/cumulative_scope_source_v1.py",
+    "base": "f954d73352692e1ae08da68a2b814857d4a0bc5806c9245d8b7c5caf3a135536",
+    "product": "275bf2e608f8927c9d377fc1220003f8d28b409b5f65778cae64afe6d6aab369",
+    "http": "ee4ed5fb88267bcdb0c9780fb6a375edb365db40297d59bfb81efc1b2584a761",
+    "combined": "1ee2826a79573ffb7d694e9d81032c5a5aaac106e066992a4ea5f4ea0f7215af",
+    "method": "clean three-way text merge plus exact AST match of the three independently reviewed functions; all other original nodes preserved"
+  },
+  "qualification": {
+    "summary": {
+      "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/summary.json",
+      "sha256": "1086209ef9bebd157eadf07fa20382e162f3c55311d74927aa1e80ac5afdf30f",
+      "bytes": 216803
+    },
+    "inputs": {
+      "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/inputs.json",
+      "sha256": "01ccefad468ece57ff56cad12b6aff40503d81c8a2140e92902797068034bad9",
+      "bytes": 80243
+    },
+    "fingerprint": "a44514394417c64c8b833919c0dbd0517052f9835c3b10a56206929b6d31e103",
+    "static": {
+      "duration_seconds": 1.7204386666417122,
+      "returncode": 0,
+      "status": "passed"
+    },
+    "source_inputs": 675,
+    "runtime_matches_now": true,
+    "runtime_reconciliation": {
+      "final_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "initial_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "matches": true
+    },
+    "methods": 308,
+    "new_methods": 40,
+    "inherited_methods": 268,
+    "classes": 30,
+    "outcomes": {
+      "passed": 308
+    },
+    "selected_counts": {
+      "fast": 193,
+      "fixtures": 4,
+      "git": 111
+    },
+    "receipt_reuse": false,
+    "skips": 0,
+    "duration_seconds": 522.4096150416881,
+    "jobs": [
+      {
+        "class": "tests/test_candidate_m2_product_execution_v1.py::CandidateM2ActionStreamV1Tests",
+        "lane": "fast",
+        "methods": 10,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/6152d2e58c00b6f4/result.json",
+          "sha256": "4074b1b02d29a3e3dcf2b748d643e51df83ca991754e3c2ed9257fc98538e16f",
+          "bytes": 5658
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/6152d2e58c00b6f4/worker.log",
+          "sha256": "ee08ddca68895839c8f3bb6e2a086d33d8d77b64a0c0f78b4281b7c59a18c83d",
+          "bytes": 2081
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_profile_v1.py::CandidateM2ProductProfileV1Tests",
+        "lane": "fast",
+        "methods": 9,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/cf69d73322125d8c/result.json",
+          "sha256": "87b84281c74b284ec923032b241aeaa412ca110394c6da7b4839b5304fc801e3",
+          "bytes": 5363
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/cf69d73322125d8c/worker.log",
+          "sha256": "c37b2540fc697db1ef73d90d1e1be254538b368c252779683d7cf6cab382b286",
+          "bytes": 2055
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessComparisonTests",
+        "lane": "fast",
+        "methods": 10,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a17dc5a7780cd979/result.json",
+          "sha256": "c98bb28ac067d3d2ab095a03b641bbf7f22988ca7d8682a594a473f0a9498894",
+          "bytes": 5837
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a17dc5a7780cd979/worker.log",
+          "sha256": "2c654bcacdd204c31f7c981730c8255d2577b9e68c98d0c7a6b359369851fb57",
+          "bytes": 2259
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_observation_v1.py::CandidateProductProcessDeclarationTests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/1009d48621bdca6b/result.json",
+          "sha256": "5a272728f0c6da231a65ddc4f42c037def8228ad75251080acf0b5dbc3e541c7",
+          "bytes": 4786
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/1009d48621bdca6b/worker.log",
+          "sha256": "d4333f1822ff63f1e6932090e16bee10018fbeb2f3e6721f2d5e0616d3e5504e",
+          "bytes": 1665
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2QualificationCensusV1Tests",
+        "lane": "fast",
+        "methods": 6,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/8919bbb6dc9764a8/result.json",
+          "sha256": "764e5472444cc2350bdc65448d9cda2eca2832e47edeecfffd2f2d8e81de1d0c",
+          "bytes": 4446
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/8919bbb6dc9764a8/worker.log",
+          "sha256": "6a6bb5eb80bc4bfa7d5b3919232caaffa7f890ac6cc4e47678c6964d57face7c",
+          "bytes": 1464
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_prestart_v1.py::CandidateStoragePrestartV1Tests",
+        "lane": "fast",
+        "methods": 11,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/48917bb8086a4850/result.json",
+          "sha256": "1688f300225c1188374dc75f31b72091607ef825913bbe88dd461a6297f333bf",
+          "bytes": 6007
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/48917bb8086a4850/worker.log",
+          "sha256": "17616a05ec8e0daed6b56b335c1473550e03fea27a695eab9a9d29c057e0865d",
+          "bytes": 2355
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v1.py::CumulativeFinalAcceptanceV1Tests",
+        "lane": "fast",
+        "methods": 24,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/3bc02430e1fbe35b/result.json",
+          "sha256": "2de7efe0bf0ac0722807b92deedc27f38a6329438110f727a2e64d1a239f0c6a",
+          "bytes": 10215
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/3bc02430e1fbe35b/worker.log",
+          "sha256": "1f5198b45844729c326eb154681d37a4a5041eb3b70b00c230df4644f423bb19",
+          "bytes": 5106
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v2.py::CumulativeFinalAcceptanceV2Tests",
+        "lane": "fast",
+        "methods": 13,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/251e4d47bc2080a0/result.json",
+          "sha256": "bb5d012c3ff36ce4aa71f574f3781426167d9942edeb97bb27908563cef83863",
+          "bytes": 6567
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/251e4d47bc2080a0/worker.log",
+          "sha256": "c851b280977dcd4d3ac2b734187ae6b6d1e43508be7e56d92b2a776bf4b6fc63",
+          "bytes": 2774
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests",
+        "lane": "fast",
+        "methods": 13,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/7f47cad0b71f6406/result.json",
+          "sha256": "9f6d1b041803b7db5f1dd9e3ff1db0e758ebcb7be222de8c355cf4239e213763",
+          "bytes": 6682
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/7f47cad0b71f6406/worker.log",
+          "sha256": "089a90ffa5f405f9ed4f8de3fa2dedc6526ff33079ff6104afc22b4e9e1d7609",
+          "bytes": 2821
+        }
+      },
+      {
+        "class": "tests/test_cumulative_http_boundary_mapping_v1.py::CumulativeHttpBoundaryMappingTests",
+        "lane": "fast",
+        "methods": 5,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/61069cad5b1f9a77/result.json",
+          "sha256": "e1e5d074d6870f0231462710358f147d7911b9c54c7f94528ceb359b7aed7b99",
+          "bytes": 4025
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/61069cad5b1f9a77/worker.log",
+          "sha256": "f59611d7dac464aee23f339428c70b470ae7305a64cca42cf706422a180e3e8f",
+          "bytes": 1197
+        }
+      },
+      {
+        "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisitePartialOriginalV1Tests",
+        "lane": "fast",
+        "methods": 4,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/12d979011402205e/result.json",
+          "sha256": "c4eabab9b148d74833d7a8acc1d43e172ba34958769e3af8c145a267f9c2e867",
+          "bytes": 3798
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/12d979011402205e/worker.log",
+          "sha256": "bfb04e2f1fc7a14c83a6adc1eb1646e2b1d8acd3d30405e6fb399c94fecf3f33",
+          "bytes": 1040
+        }
+      },
+      {
+        "class": "tests/test_cumulative_prerequisite_qualification_v1.py::CumulativePrerequisiteQualificationV1Tests",
+        "lane": "fast",
+        "methods": 13,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/5bfaf90b6a07cdd8/result.json",
+          "sha256": "9781d0de79392c03acd97b167a495b65b989d42091c833843134558efedb3983",
+          "bytes": 6893
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/5bfaf90b6a07cdd8/worker.log",
+          "sha256": "55ffe17a48d8d77fb7b618e2e8b697eefb2b4439d241efd8e0606672be3d32d6",
+          "bytes": 2881
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v1.py::CumulativeScopeAuthorityV1Tests",
+        "lane": "fast",
+        "methods": 16,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/245f7962c9dd274e/result.json",
+          "sha256": "a7d89addba774bdb1ba3b49060a06b4b4973578cbb592622af8ae378028f2f08",
+          "bytes": 7533
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/245f7962c9dd274e/worker.log",
+          "sha256": "88381c5330ce5e971b801735a128c35653cc8a59ef35c05d1149cbe7b508d80e",
+          "bytes": 3345
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v2.py::CumulativeScopeAuthorityV2Tests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/537eee25c415f7e1/result.json",
+          "sha256": "03de06e5ca30250cd8d63a8dc9e9e3ba7f703213235fdef2bc47f69d3a85349e",
+          "bytes": 4630
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/537eee25c415f7e1/worker.log",
+          "sha256": "e4b793925d90776a38d8d66197fbf3233a7fb0d5a6826385649b38e4cbf789f0",
+          "bytes": 1580
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_authority_v3.py::CumulativeScopeAuthorityV3Tests",
+        "lane": "fast",
+        "methods": 7,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c45003c12fd3ac5b/result.json",
+          "sha256": "853ebefbfbaa00575710840a3b66b5a1bbe809fc71c4724cf97ae92a0d9aa705",
+          "bytes": 4607
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c45003c12fd3ac5b/worker.log",
+          "sha256": "886389a578095c6e534151c356ceb0c4a434e542088137d677f99cfdecd098b6",
+          "bytes": 1571
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v1.py::CumulativeScopeSourceV1Tests",
+        "lane": "fast",
+        "methods": 20,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c94f9c9de82bc2a5/result.json",
+          "sha256": "dfb473270d197aefa89d0194977cc044f9867169fe3f65b3bcbadfcf683627a4",
+          "bytes": 8779
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c94f9c9de82bc2a5/worker.log",
+          "sha256": "c62067b1149f15d6dcc6ed8be23dbd964a60e7dd6d013c1a6d6dc8012228060b",
+          "bytes": 4056
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v2.py::CumulativeScopeSourceV2Tests",
+        "lane": "fast",
+        "methods": 11,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/2954d5f7110f3787/result.json",
+          "sha256": "934f99323dbe138b828d6203563555a71439cd9cf7cd5ef0a3a562cb7a5cdbe2",
+          "bytes": 5886
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/2954d5f7110f3787/worker.log",
+          "sha256": "571f442c847fd892e8da258b40b4d3d806205ee5714ff8474c7109799fd13c14",
+          "bytes": 2306
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v2.py::CumulativeStorageCatalogV2Tests",
+        "lane": "fast",
+        "methods": 1,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a1face03876c9db4/result.json",
+          "sha256": "5f1e66232546e5e68d783266f7880ab28f81652e5b234ebd65af93c5a89ebbb5",
+          "bytes": 2660
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a1face03876c9db4/worker.log",
+          "sha256": "a43a8393041afbd2575b64c65f01b5099f1d0433121431cd52df05ffa123a729",
+          "bytes": 313
+        }
+      },
+      {
+        "class": "tests/test_cumulative_scope_source_v3.py::CumulativeScopeSourceV3Tests",
+        "lane": "fast",
+        "methods": 6,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/951a09e78c5a62c8/result.json",
+          "sha256": "3da2c5249398a1c8eed6cc20fec51723ce738497a493c1f51f1df4e4e246223b",
+          "bytes": 4281
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/951a09e78c5a62c8/worker.log",
+          "sha256": "17c3fad1878dcf2c5b2e4bc8117f7725e1a080c2a3acace33c081fb0c180c586",
+          "bytes": 1347
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2QualificationPreparationV1Tests",
+        "lane": "fixtures",
+        "methods": 4,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a5211dba51fbd534/result.json",
+          "sha256": "c49f604027464a42c3fbbead57b240a8c629f161019efe46cdc64d78b8937276",
+          "bytes": 3768
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/a5211dba51fbd534/worker.log",
+          "sha256": "8b4c5cb9e73342832e70b0a6d15bbc8d16d75168585a5604d0f2d4559510aca6",
+          "bytes": 1062
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_execution_v1.py::CandidateM2ProductExecutionV1Tests",
+        "lane": "git",
+        "methods": 11,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/46e902755803a072/result.json",
+          "sha256": "0baadbdf25d5c19987708f78bb6e05b6bf36d2a84818e8093f66cbaf46937982",
+          "bytes": 6022
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/46e902755803a072/worker.log",
+          "sha256": "caa1004e1cf1097ec9947f425865456aec35a4306cbdfe532631ada9793798ed",
+          "bytes": 2461
+        }
+      },
+      {
+        "class": "tests/test_candidate_m2_product_observation_v1.py::CandidateM2ProductObservationV1Tests",
+        "lane": "git",
+        "methods": 11,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/cc62ed8b4e17bc75/result.json",
+          "sha256": "f71111cba55f7f77f53fef0f3c99221efefe1c34c97b3592448ded49fe22f218",
+          "bytes": 6088
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/cc62ed8b4e17bc75/worker.log",
+          "sha256": "ac09f96fbdbf028d3f5837a3b76b0d637589cfd360dd19228c95dd98a4433c7b",
+          "bytes": 2521
+        }
+      },
+      {
+        "class": "tests/test_candidate_product_process_batch_capture_v1.py::CandidateProductProcessBatchCaptureV1Tests",
+        "lane": "git",
+        "methods": 14,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/47d4cc5e84dc69bd/result.json",
+          "sha256": "5bb49fe1e783ff0015ce103e5e5d7a429eed0673d95cbf11471b35774fecaf12",
+          "bytes": 7277
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/47d4cc5e84dc69bd/worker.log",
+          "sha256": "ab37ec265f55e9efc3417ee4987fb4dff7a97979f56c2e22540d501053258503",
+          "bytes": 4325
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_batch_capture_v1.py::CandidateStorageBatchCaptureV1Tests",
+        "lane": "git",
+        "methods": 9,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/6a72f0fbf7ed84eb/result.json",
+          "sha256": "d52e6317bb895f78a06c1592a850504991a5e45b09de8ed7d97e0ee637eed644",
+          "bytes": 5451
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/6a72f0fbf7ed84eb/worker.log",
+          "sha256": "8a9f7cbcdc895e2e77d05d15d379ba6a53a60af313fbf8de915b5558cc6cda95",
+          "bytes": 2161
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_product_execution_v1.py::CandidateStorageProductExecutionV1Tests",
+        "lane": "git",
+        "methods": 28,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/88f0c12c96337330/result.json",
+          "sha256": "d6f7528719f3352571aae4cbcc79d60a89cf582dbb390c3bba973b30299f82fa",
+          "bytes": 12017
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/88f0c12c96337330/worker.log",
+          "sha256": "92f4e5c43fca17f9b597bd5e38916de2fde10915a6f8dec36853871aa2560225",
+          "bytes": 6345
+        }
+      },
+      {
+        "class": "tests/test_candidate_storage_serialization_v1.py::CandidateStorageSerializationV1Tests",
+        "lane": "git",
+        "methods": 2,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c02d0388f4ed80c7/result.json",
+          "sha256": "85e837a1305027d6b987094753331c924491b562c1b36314f023cb0fe2afee79",
+          "bytes": 3044
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/c02d0388f4ed80c7/worker.log",
+          "sha256": "f524cf486805871cd5442c53df1cd98b81c3d21d9d24b1308ba9ff3a1f7014e7",
+          "bytes": 561
+        }
+      },
+      {
+        "class": "tests/test_cumulative_final_m2_routing_v3.py::CumulativeFinalM2RoutingV3Tests",
+        "lane": "git",
+        "methods": 4,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/e89f317217848dde/result.json",
+          "sha256": "bd742de11e3804f579e31f06a12502a0133d38acdf0ba31a53599c7df786e99d",
+          "bytes": 3652
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/e89f317217848dde/worker.log",
+          "sha256": "410465b4087104c60faff889f605a9a2823822081d1a95c1cbdaabeeb863ba1c",
+          "bytes": 876
+        }
+      },
+      {
+        "class": "tests/test_cumulative_m2_observation_recipe_v1.py::CumulativeM2ObservationRecipeV1Tests",
+        "lane": "git",
+        "methods": 9,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/7eec5d0f709c9daa/result.json",
+          "sha256": "02931933c4d7898a50ad8b1ec7f152d8114118aa9ad4bcc4f2007837e83d1cbe",
+          "bytes": 5454
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/7eec5d0f709c9daa/worker.log",
+          "sha256": "2546f5776064c3a22390493b551ff7b3a69fc7271e58a3ea262860f971c7cf72",
+          "bytes": 2137
+        }
+      },
+      {
+        "class": "tests/test_cumulative_observation_recipe_factory_v1.py::CumulativeObservationRecipeFactoryV1Tests",
+        "lane": "git",
+        "methods": 10,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/e287915a970cd062/result.json",
+          "sha256": "b1c8c905fc66c923a1a083bfed5d36e9d78639b3f6bc842b2ecee5175da74df0",
+          "bytes": 5860
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/e287915a970cd062/worker.log",
+          "sha256": "8bfd26d243a26941e503041fe095480bc6b32ad109c742ad3670e63f46577d27",
+          "bytes": 2309
+        }
+      },
+      {
+        "class": "tests/test_cumulative_observation_recipe_factory_v2.py::CumulativeObservationRecipeFactoryV2Tests",
+        "lane": "git",
+        "methods": 13,
+        "result": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/f45fa2e919e25162/result.json",
+          "sha256": "edb6d74542032e082a39469e0ee60aa9fa8946af1976a4abfb1ac8256f777360",
+          "bytes": 6928
+        },
+        "log": {
+          "path": "runs/product-storage-boundary-offline-3/20261004T125520-a5b45c0f/classes/f45fa2e919e25162/worker.log",
+          "sha256": "f5fcb9d9c45f285f0a12ef6d04225b584a0f9ee8280d4ae5d9e7eca07d694648",
+          "bytes": 3064
+        }
+      }
+    ]
+  },
+  "coverage_plan": {
+    "path": "runs/product-storage-boundary-retention-1/reviews/gossip-product-storage-http-combined-verification-plan-1.json",
+    "sha256": "f954edb36ffdeb54fe5cff1eda0fe48056ae3cd458c8a45af8eda1f18c8a1098",
+    "bytes": 42450
+  },
+  "independent_combined_source_review": {
+    "path": "runs/product-storage-boundary-retention-1/reviews/gossip-product-storage-http-combined-source-join-review-3.json",
+    "sha256": "0809a80f2d5dbaa4de469d9e9796754b6e8b48764375c4aa50842feebbdd3b3c",
+    "bytes": 10089
+  },
+  "independent_corrected_storage_review": {
+    "path": "runs/product-storage-boundary-retention-1/reviews/storage-m2-physical-wiring-review-2.json",
+    "sha256": "d8080129e5e093c30340275a228f10134a232a97aed7541075b1e693b4423960",
+    "bytes": 14494
+  },
+  "fixture_correction": {
+    "record": {
+      "path": "runs/product-storage-boundary-retention-1/serialization-fixture-fix-1.json",
+      "sha256": "65f740308899cc07f45c88e5bf5e4cc246c14ad1cc36fc2a794883567d860c63",
+      "bytes": 1169
+    },
+    "failed_run_summary": {
+      "path": "runs/product-storage-boundary-offline-2/20261004T124525-871f4241/summary.json",
+      "sha256": "3b279582669cd89979bdfe102d9f1802f87a73bfa67d52bc614260faee91d336",
+      "bytes": 203762
+    },
+    "nearest_pass": {
+      "path": "runs/product-storage-serialization-fix-1/20261004T125420-1140620a/summary.json",
+      "sha256": "d172d00b7d4580ccda70679c4f5918f7446ccd2aa5bc79cb649ec315daaaf0ef",
+      "bytes": 8014
+    },
+    "review": {
+      "path": "runs/product-storage-boundary-retention-1/reviews/gossip-storage-serialization-fixture-independent-review-1.json",
+      "sha256": "8e14140b2a6b64599f1c1cca01f3585f1e9c6d0a7fb7ba1f0292478bdf4be95b",
+      "bytes": 3891
+    }
+  },
+  "first_attempt": {
+    "summary": {
+      "path": "runs/product-storage-boundary-offline-1/20261004T124320-2be2837b/summary.json",
+      "sha256": "9ad84b6508ced1baaa3cea51f9bc1eb179a3335b7e63de21b2874eb6a46e684e",
+      "bytes": 79363
+    },
+    "static": {
+      "path": "runs/product-storage-boundary-offline-1/20261004T124320-2be2837b/static.json",
+      "sha256": "f4c5a2d0e13733e5786ff6c01dd6ca80fca8c5cb5bc59d8407e4bdc5500b938d",
+      "bytes": 2685831
+    },
+    "test_methods_run": 0,
+    "cause_and_fix": {
+      "path": "runs/product-storage-boundary-retention-1/local-type-config-fix-1.json",
+      "sha256": "89e6123c71d6bcde8ff7c3844269aa464e2fb901c94b026831e0b86ada11bdcc",
+      "bytes": 629
+    }
+  },
+  "retention": {
+    "path": "runs/product-storage-boundary-retention-1/retention-manifest.json",
+    "sha256": "8c571feb77832f64d0ee495ad96e2352edcedce73c897c4a1f25b7efeda506c6",
+    "bytes": 45679
+  },
+  "historical_full_decomposition_retention": {
+    "path": "runs/cumulative-full-decomposition-retention-1/retention-manifest.json",
+    "sha256": "7ddf7f15f0c731a6490d4dfb0bda893b958e910b38975424a96d669ec6dffb81",
+    "bytes": 230060
+  },
+  "fresh_physical_execution": false,
+  "provider_calls": 0,
+  "new_comparative_quality_samples": 0,
+  "full_rehearsal_qualified": false,
+  "goal_complete": false,
+  "remaining_required": [
+    "Fresh18-class physical qualification of changed product-process batch and storage/M2 recipes; prior physical contract successes cannot qualify these changes.",
+    "Complete312-unit semantic coverage and original review, source-specific candidate/layout enrollment, browser, worker, interference/recovery, migration and installed-release obligations.",
+    "Prospectively versioned pre-lease issued-qualification lifecycle with independent review and same-path concurrency checks; rejected per-call audit design can halt concurrent live workers.",
+    "Full matching four-milestone/six-trajectory rehearsal including20roles, larger live comparison, independent held-out-family confirmation and separate placement-by-transport comparison."
+  ],
+  "interpretation": "Engineering qualification only. No new evidence for gossip/swarm quality superiority or measured capture speedup; original failed physical history and unapproved602-template source materialization remain failures/incomplete evidence, not acceptance."
+}

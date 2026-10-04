@@ -20,6 +20,7 @@ class CandidateM2ProductObservationV1Tests(unittest.TestCase):
     make = fixtures.CandidateM2ProductExecutionV1Tests.make
     owner = fixtures.CandidateM2ProductExecutionV1Tests.owner
     intent = fixtures.CandidateM2ProductExecutionV1Tests.intent
+    synthetic_prestart_prefix = fixtures.CandidateM2ProductExecutionV1Tests.synthetic_prestart_prefix
 
     def command(self, owner, label, argv, raw):
         argv = owner.docker + argv[1:]
@@ -32,17 +33,11 @@ class CandidateM2ProductObservationV1Tests(unittest.TestCase):
                 'bytes':len(value),'observed_bytes':len(value),'truncated':False}
         owner._retain(label+'.json',profile.encoded(record))
 
-    def prefix(self):
-        owner=self.owner();self.intent(owner)
-        container='c'*64
-        self.command(owner,'container-create',['docker','create'],container.encode()+b'\n')
-        inspection={'Id':container,'Name':'/fixture-container','Image':self.policy.image_id,
-            'State':{'Running':True,'Paused':True,'Pid':123,'StartedAt':'fixture-start'},
-            'Config':{'Labels':{'gossip.execution':'fixture-execution','gossip.source':self.binding.source_sha256,
-                'gossip.fixture':self.binding.fixture_sha256}},
-            'HostConfig':{'NetworkMode':'none','ReadonlyRootfs':True},
-            'Mounts':[{'Destination':'/tmp','Type':'volume','Name':'fixture-volume','Driver':'local','RW':True}]}
-        return owner,container,inspection
+    def prefix(self, *, omit_proof=False, proof_after_start=False, wrong_volume_options=False):
+        owner = self.owner(); self.intent(owner)
+        container, inspection = self.synthetic_prestart_prefix(owner, omit_proof=omit_proof,
+                                                               proof_after_start=proof_after_start, wrong_volume_options=wrong_volume_options)
+        return owner, container, inspection
 
     def action(self, owner, container, inspection, index, result, *, capture=True, raw_response=None):
         phase=self.value.phases[index]
@@ -87,7 +82,7 @@ class CandidateM2ProductObservationV1Tests(unittest.TestCase):
         result=observer.reconstruct(owner)
         self.assertEqual(result['projection']['observations'][0]['disposition'],'fail')
         self.assertEqual(result['projection']['observations'][1]['disposition'],'unavailable')
-        self.assertIn('lineage',result['phase_facts'][1]['reason'])
+        self.assertIn('Created-to-running sandbox identity differs',result['phase_facts'][1]['reason'])
 
     def test_later_pid_drift_preserves_original_failure_and_blocks_current_phase(self):
         owner,container,inspection=self.prefix()
@@ -106,6 +101,31 @@ class CandidateM2ProductObservationV1Tests(unittest.TestCase):
         self.assertEqual(result['projection']['observations'][0]['disposition'],'fail')
         self.assertFalse(result['phase_facts'][0]['capture_authenticated'])
         self.assertEqual(result['mechanics']['status'],'infrastructure_error')
+
+    def test_paused_fixture_without_created_proof_cannot_authenticate_action(self):
+        owner, container, inspection = self.prefix(omit_proof=True)
+        self.action(owner, container, inspection, 0, {'wrong': 'unattributed'})
+        result = observer.reconstruct(owner)
+        self.assertEqual(result['projection']['observations'][0]['disposition'], 'unavailable')
+        self.assertFalse(result['phase_facts'][0]['response_authenticated'])
+        self.assertFalse(result['mechanics']['prestart_verified'])
+        self.assertIn('created-before-start', result['phase_facts'][0]['reason'])
+
+    def test_created_proof_after_start_cannot_authenticate_action(self):
+        owner, container, inspection = self.prefix(proof_after_start=True)
+        self.action(owner, container, inspection, 0, {'wrong': 'unattributed'})
+        result = observer.reconstruct(owner)
+        self.assertEqual(result['projection']['observations'][0]['disposition'], 'unavailable')
+        self.assertFalse(result['phase_facts'][0]['response_authenticated'])
+        self.assertFalse(result['mechanics']['prestart_verified'])
+        self.assertIn('must precede start', result['phase_facts'][0]['reason'])
+
+    def test_matching_volume_name_with_unbounded_driver_options_is_rejected(self):
+        owner, container, inspection = self.prefix(wrong_volume_options=True)
+        self.action(owner, container, inspection, 0, {'wrong': 'unattributed'})
+        with self.assertRaisesRegex(observer.AuthorityError, 'tmpfs volume options differ'):
+            observer.reconstruct(owner)
+        self.assertFalse(owner.has_retained(observer.VERIFIER_FILE))
 
     def test_fixture_and_uploaded_dict_cannot_publish_physical_original(self):
         owner=self.owner();self.intent(owner)

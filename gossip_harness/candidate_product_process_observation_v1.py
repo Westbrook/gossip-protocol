@@ -308,11 +308,12 @@ def project_outcomes(profile: execution.HttpProductProfile, history: reader.Hist
     return HttpOutcomeProjection(diagnostics, outcomes, guard)
 
 
-def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
+def selector_catalog(case_id: str, *, purpose: str,
+                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None) -> dict[str, Any]:
     """Exact source-derived selectors; independent review/qualification remain mandatory."""
     from . import candidate_product_process_execution_v1 as execution
     case = core.case_definition(case_id)
-    profile = execution.HttpProductProfile(case, core.ORIGINAL_DEFINITION_PURPOSE)
+    profile = execution.HttpProductProfile(case, core.ORIGINAL_DEFINITION_PURPOSE, capture_policy=capture_policy)
     profile.check_current(purpose=purpose, requirements_sha256=core.CONTRACT_SHA256)
     selectors = []
     for index, step in enumerate(case.steps):
@@ -329,7 +330,7 @@ def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
         "observation_pointer": "/mechanics_guard/status", "definition_pointer": "/definition/steps",
         "disposition": "normative", "evidence_kind": "physical_mechanics",
         "semantic_adequacy_reviewed": False, "physically_qualified": False})
-    return {"protocol": PROTOCOL, "case_id": case_id, "milestone": case.milestone,
+    result = {"protocol": PROTOCOL, "case_id": case_id, "milestone": case.milestone,
         "source_contract_sha256": core.CONTRACT_SHA256, "target_contract_sha256": core.CONTRACT_SHA256,
         "original_definition_purpose": core.ORIGINAL_DEFINITION_PURPOSE, "execution_purpose": purpose,
         "definition": case.record(), "definition_sha256": core.digest(case.record()),
@@ -346,6 +347,10 @@ def selector_catalog(case_id: str, *, purpose: str) -> dict[str, Any]:
             "Proof of no forbidden file I/O before backup-root refusal",
             "Unspecified CLI auxiliary streams and import wrappers",
             "Browser downloads and release handoff", "Full independent scope review and physical qualification"]}
+    if capture_policy is not None:
+        result.update(protocol=PROTOCOL + "-git-source-batch-v1", execution_protocol=execution.BATCH_PROTOCOL,
+                      source_capture=capture_policy.record())
+    return result
 
 
 class HttpObservationSource:
@@ -423,6 +428,10 @@ class HttpObservationSource:
             "evaluator_sources": execution.evaluator_sources(),
             "physical_execution_reused": False, "whole_project_acceptance": False,
             "held_out_claim": False}
+        if owner.profile.capture_policy is not None:
+            record.update(protocol=PROTOCOL + "-git-source-batch-v1",
+                          execution_protocol=execution.BATCH_PROTOCOL,
+                          source_capture=owner.profile.capture_policy.record())
         raw = execution.encoded(record)
         if owner.has_authenticated(self.receipt_path.name):
             execution.require(owner.read_authenticated(self.receipt_path.name) == raw,

@@ -1326,3 +1326,5 @@ Primary workflow references:
 - [Linux development process and next trees](https://docs.kernel.org/process/2.Process.html)
 - [Kernel rebasing and merging guidance](https://docs.kernel.org/maintainer/rebasing-and-merging.html)
 - [Git workflow manual](https://git-scm.com/docs/gitworkflows)
+
+- [Product, storage, and HTTP boundary integration](docs/product-storage-boundary-integration-v1.md): 308 fresh offline checks; new physical qualification and full study remain pending.

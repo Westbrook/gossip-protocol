@@ -75,7 +75,11 @@ class CandidateStorageSerializationV1Tests(unittest.TestCase):
                 'source_sha256': binding.source_sha256, 'original_binding': asdict(binding), 'registration': asdict(actual),
                 'cohort_freeze': None, 'container': 'fixture-container', 'volume': 'fixture-volume',
                 'ordered_phases': list(execution.b01.PHASES)}))
-            fixtures.CandidateStorageProductExecutionV1Tests.command(self, owner, 'container-create', ['docker', 'create'], b'c' * 64 + b'\n')
+            # Keep this surrogate regression on authenticated fixture data after
+            # the reader's new created-before-start requirement. No Engine runs.
+            def command(fixture_owner, label, argv, raw):
+                fixtures.CandidateStorageProductExecutionV1Tests.command(self, fixture_owner, label, argv, raw)
+            fixtures.synthetic_created_origin(owner, command, module=execution, family='b02')
             recipe = execution.b02.validate_recipe(execution.b02.cases.execution_recipe(value.case_id))
             application = {'protocol': execution.PROTOCOL, 'decision': 'not-requested', 'review_sha256': owner.review_sha256,
                 'production_forced_schedule_qualified': False}
@@ -89,6 +93,7 @@ class CandidateStorageSerializationV1Tests(unittest.TestCase):
             owner._retain('after-request.json', execution.encoded({'phase': 'after', 'request': 'after\n'}))
             owner._retain('after-response.json', execution.encoded({'phase': 'after', 'value': [{'error': 'wrong-\ud800'}]}) + b'\n')
             result = observer.reconstruct(owner)
+            self.assertTrue(result['mechanics']['prestart_verified'])
             self.assertIs(result['projection']['checks']['after.result.0'], False)
             self.assertEqual(result['profile'], original)
             self.assertEqual(result['mechanics']['status'], 'infrastructure_error')

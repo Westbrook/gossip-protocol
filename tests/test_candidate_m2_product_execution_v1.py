@@ -22,6 +22,7 @@ from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import candidate_storage_observer_v1 as storage_observer
 from gossip_harness import project_acceptance_registry_v1 as registry
 from gossip_harness.gitstore import GitStore
+from tests.test_candidate_storage_product_execution_v1 import synthetic_created_origin
 
 COHORT = tuple('trajectory-' + str(i) for i in range(6))
 
@@ -107,6 +108,11 @@ class CandidateM2ProductExecutionV1Tests(unittest.TestCase):
             'original_binding': asdict(self.binding), 'registration': asdict(owner.observation_registration),
             'cohort_freeze': None, 'container': 'fixture-container', 'volume': 'fixture-volume',
             'snapshot_protocol': execution.b01.SNAPSHOT_PROTOCOL, 'ordered_phases': list(self.value.phases)}))
+
+    def synthetic_prestart_prefix(self, owner, *, omit_proof=False, proof_after_start=False, wrong_volume_options=False):
+        """Synthetic originals only; actual observation tests supply command retention."""
+        return synthetic_created_origin(owner, self.command, module=execution, family='m2',
+            omit_proof=omit_proof, proof_after_start=proof_after_start, wrong_volume_options=wrong_volume_options)
 
     def test_m2_identity_and_native_purpose_preserved_in_exact_original_registration(self):
         owner = self.owner()

@@ -34,9 +34,10 @@ from . import candidate_client_process_v4 as process
 from . import candidate_source_capture_policy_v1 as source_capture
 from .gitstore import GitStore
 from .sandbox import DockerValidator
+from . import candidate_storage_prestart_v1 as prestart
 from . import project_acceptance_registry_v1 as registry
 
-PROTOCOL = 'candidate-m2-product-execution-v1-ascii-json-v1'
+PROTOCOL = 'candidate-m2-product-execution-v1-ascii-json-v1-prestart-v1'
 TARGET_CONTRACT = transport.TARGET_CONTRACT
 FAMILY = 'm2-direct-api'
 SOURCE_CAPTURE_POLICY = source_capture.BatchCapturePolicy()
@@ -140,7 +141,7 @@ def binding_for(files: dict[str, bytes], value: profile.M2Profile, policy: M2Pol
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
         digest({'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
-            'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES,
+            'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES, 'prestart_policy': prestart.definition(),
             'capture_bytes': b02.MAX_CAPTURE_BYTES, 'original_stream_bytes': b02.MAX_STREAM_BYTES,
             'action_count': len(value.phases), 'cleanup': asdict(cleanup.CleanupLimits())}),
         digest({'seed': policy.seed}))
@@ -328,7 +329,7 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
                 'review_provenance': review_authority.provenance(plan),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
-                'journal_limits': asdict(LIMITS),
+                'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
             context = {'protocol': PROTOCOL, 'config_sha256': digest(self.config),
                 'source_sha256': self.binding.source_sha256, 'purpose': self.binding.purpose,
@@ -507,6 +508,13 @@ class CandidateM2Execution(transport.CandidateStorageExecution):
                 container_id = commands.raw(checked('container-create', argv)).strip().decode('ascii')
                 registry.sha256(container_id)
                 self._cleanup.confirm_container(claims['container'], create_record='container-create.json')
+                record = checked('container-prestart',
+                    ['docker', 'inspect', '--format', '{{json .}}', container_id], process.CONTROL_LIMIT)
+                binds = {'/workspace': str(workspace), '/checks': str(checks), '/inputs': str(inputs)}
+                proof = prestart.proof_for(commands.raw(record), container_id=container_id, name=name,
+                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds)
+                self._retain(prestart.PROOF_FILE, encoded(proof))
+                self.checkpoint()
                 checked('container-start', ['docker', 'start', container_id])
                 session_argv = ['docker', 'exec', '--interactive', '--user', '65534:65534', container_id,
                     'python', '-I', '-B', '/checks/' + adapter]

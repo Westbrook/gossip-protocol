@@ -16,6 +16,7 @@ from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = 'cumulative-scope-source-v1'
+HTTP_BODY_BOUNDARY_MAPPING = 'cumulative-http-body-boundary-mapping-v1'
 OWNERSHIP = 'analysis/cumulative-shared-ownership-v1.json'
 OWNERSHIP_SHA256 = 'c4f1f4e3a9636d13c99a314b7d29269b2dc3bfde43e56c41425e63ca24b933ad'
 REVIEW = 'analysis/cumulative-shared-ownership-review-v1.json'
@@ -262,6 +263,7 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
     from . import candidate_http_execution_v4 as execution
     from . import cumulative_observation_profile_v1 as profiles
     from . import candidate_observation_admission_v1 as admission
+    from . import candidate_http_fixtures_v1 as fixtures
     require(type(registration) is execution.HttpRegistration and type(profile) is execution.HttpProductProfile
             and type(policy) is execution.HttpPolicy, 'Exact HTTP registration/profile/policy required')
     value = profile.cumulative_profile
@@ -295,6 +297,22 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
         # not whole-table or interaction closure. Review retains missing joins.
         targets = []
         is_error = semantic.shape == 'error'
+        exact_body_boundary = (profile.case.row_id == 'HTTP-BODY-WIRE/raw-bytes-65536'
+            and step.step_id == f's{index:04d}-subject-request')
+        if exact_body_boundary:
+            request = step.request
+            require(request is not None and request.method == 'POST' and request.target == '/api/jobs'
+                and request.body == fixtures.request_body_boundary(65536)
+                and dict(request.headers).get('Content-Type') == 'application/json'
+                and dict(request.headers).get('Content-Length') == '65536'
+                and semantic.shape == 'unspecified' and semantic.status == 200
+                and not step.expectation.raw_facts_only
+                and 'V0-HTTP-03' in profile.case.requirement_ids,
+                'Exact authored upper-body-bound request/expectation differs')
+            targets.append(('V0-HTTP-03',
+                'This authored valid multibyte application/json POST is exactly 65536 bytes and receives the prescribed successful response. '
+                'Only finite exact-bound non-rejection/status is claimed: no exact response wrapper, hidden manifest identity, arbitrary framing, one-over behavior or whole-requirement closure. '
+                'The unchanged ordered history separately requires queued/running/completed and public document/export readbacks.'))
         if 'V0-HTTP-02' in profile.case.requirement_ids and is_error:
             targets.append(('V0-HTTP-02', 'Declared status/content/JSON/error facets of this actual wire request.'))
         route = '' if step.request is None else step.request.target.split('?', 1)[0]
@@ -322,9 +340,13 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
         if semantic.shape == 'health':
             targets.append(('V0-HTTP-04', 'Exact authorized M4 health successor; compiler compatibility must retain m1:V0-HTTP-04 and M4-API-SCHEMA:clause:2.'))
         for target, rationale in targets:
-            identifier = 'http-' + sha(encoded([value.case_id, cell.case_id, target]))[:24]
+            identity = [value.case_id, cell.case_id, target]
+            if exact_body_boundary:
+                identity.append(HTTP_BODY_BOUNDARY_MAPPING)
+            identifier = 'http-' + sha(encoded(identity))[:24]
             assertions.append(AssertionDeclaration('m1:' + target,
-                compiler.Assertion(identifier, 'negative' if is_error else 'positive', ('M1-GATE-HTTP',)),
+                compiler.Assertion(identifier, 'boundary' if exact_body_boundary else
+                    ('negative' if is_error else 'positive'), ('M1-GATE-HTTP',)),
                 cell.case_id, path, rationale))
     selectors.append(Selector(profile.mechanics_case_id, '/mechanics_guard/status', 'normative',
                               '/mechanics_guard', 'mechanics'))
@@ -349,7 +371,10 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
         commit_oid=registration.commit_oid, tree_oid=registration.tree_oid,
         repetition_id=registration.repetition_id, cohort_trajectory_ids=observed.cohort_trajectory_ids)
     require(actual == observed, 'Product-process original registration differs')
-    catalog = observation.selector_catalog(profile.case.row_id, purpose=registration.binding.purpose)
+    selected_capture = execution.capture_policy_for(registration.binding.protocol)
+    require(profile.capture_policy == selected_capture, 'Product-process source-capture profile differs')
+    catalog = observation.selector_catalog(profile.case.row_id, purpose=registration.binding.purpose,
+                                          capture_policy=selected_capture)
     admission.verify_loaded_sources(catalog['evaluator_sources'])
     require(registration.binding.evaluator_sha256 == execution.digest(catalog['evaluator_sources']),
             'Product-process evaluator differs')
@@ -627,7 +652,8 @@ def verify_slice(value: ExecutableSlice) -> None:
         product_registration = product.HttpRegistration(product.HttpBinding(**registration['binding']), registration['commit_oid'],
             registration['tree_oid'], registration['repetition_id'], observation)
         product_policy = product.HttpPolicy(**{**record['policy'], 'wire_limits': product.wire.WireLimits(**record['policy']['wire_limits'])})
-        product_profile = product.HttpProductProfile(core.case_definition(value.history_id), core.ORIGINAL_DEFINITION_PURPOSE)
+        product_profile = product.HttpProductProfile(core.case_definition(value.history_id), core.ORIGINAL_DEFINITION_PURPOSE,
+            capture_policy=product.capture_policy_for(product_registration.binding.protocol))
         actual = product_process_slice(product_registration, product_profile, product_policy)
     else:
         raise ScopeSourceError('Unknown executable factory; version the integration before registration')

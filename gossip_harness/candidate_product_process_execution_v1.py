@@ -33,11 +33,13 @@ from . import candidate_checkpoint_head_v1 as head
 from . import candidate_execution_journal_v1 as owner_journal
 from . import candidate_emergency_cleanup_v1 as emergency
 from . import candidate_retention_process_v1 as retained_process
+from . import candidate_source_capture_policy_v1 as source_capture
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
 PROTOCOL = "candidate-product-process-execution-v1"
+BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
 TARGET_CONTRACT_SHA256 = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 ROLE_POLICY = "candidate-product-distinct-server-seeded-keeper-probe-cli-v1"
 SNAPSHOT_PROTOCOL = "docker-owned-product-epochs-seeded-tmpfs-keeper-v1"
@@ -161,11 +163,28 @@ def evaluator_sources() -> dict[str, str]:
         "candidate_http_fixtures_v1.py", "candidate_http_semantics_v1.py", "candidate_http_relations_v1.py")
     result = {"gossip_harness/" + name: sha256(Path(__file__).with_name(name).read_bytes()) for name in names}
     result.update({"finite/" + name: value for name, value in finite.evaluator_sources().items()})
+    result.update(source_capture.evaluator_sources())
     contract = Path(__file__).resolve().parents[1] / "library-cumulative-product-v2.json"
     result["library-cumulative-product-v2.json"] = sha256(contract.read_bytes())
     require(result["library-cumulative-product-v2.json"] == TARGET_CONTRACT_SHA256,
             "Exact cumulative v2 contract required")
     return result
+
+
+def capture_policy_for(protocol: str) -> source_capture.BatchCapturePolicy | None:
+    require(protocol in (PROTOCOL, BATCH_PROTOCOL), "Unknown product source-capture protocol")
+    return None if protocol == PROTOCOL else source_capture.BatchCapturePolicy()
+
+
+def capture_source(store: GitStore, commit_oid: str, *,
+                   policy: source_capture.BatchCapturePolicy | None = None) -> tuple[str, dict[str, bytes]]:
+    """Fresh source capture at every original boundary; no fallback or cache."""
+    try:
+        return source_capture.capture_registered_source(store, commit_oid, policy=policy)
+    except source_capture.SourceCaptureUnavailable as failure:
+        # Existing physical paths retain ValueError-family unknown observations
+        # and perform their ordinary protected cleanup. Preserve interruptions.
+        raise ExecutionUnknown("Complete product source capture unavailable") from failure
 
 
 def role_policy_definition() -> dict[str, Any]:
@@ -450,6 +469,7 @@ class HttpProductProfile:
     case: core.LiteralCase
     original_definition_purpose: str = "public_product_definition"
     cumulative_profile: None = None
+    capture_policy: source_capture.BatchCapturePolicy | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is core.LiteralCase, "Complete typed product case required")
@@ -464,6 +484,10 @@ class HttpProductProfile:
         require(self.case.milestone in ("M2", "M3", "M4"), "Cumulative-product milestone required")
         require(self.original_definition_purpose == "public_product_definition"
                 and self.cumulative_profile is None, "Public product identity changed")
+        require(self.capture_policy is None or type(self.capture_policy) is source_capture.BatchCapturePolicy,
+                "Exact closed product source-capture policy required")
+        if self.capture_policy is not None:
+            self.capture_policy.record()
         require(purpose is None or purpose in registry.PURPOSES, "Registered product purpose required")
         require(requirements_sha256 is None or requirements_sha256 == TARGET_CONTRACT_SHA256,
                 "Exact cumulative v2 requirements required")
@@ -474,7 +498,7 @@ class HttpProductProfile:
 
     @property
     def execution_protocol(self) -> str:
-        return PROTOCOL
+        return PROTOCOL if self.capture_policy is None else BATCH_PROTOCOL
 
     @property
     def diagnostic_case_ids(self) -> tuple[str, ...]:
@@ -490,7 +514,8 @@ class HttpProductProfile:
         return (*self.diagnostic_case_ids, self.mechanics_case_id)
 
     def record(self) -> dict[str, Any]:
-        return {"protocol": PROFILE_PROTOCOL, "definition": self.case.record(),
+        self.check_current()
+        result: dict[str, Any] = {"protocol": PROFILE_PROTOCOL, "definition": self.case.record(),
             "original_definition_purpose": self.original_definition_purpose,
             "target_milestone": self.milestone, "target_contract_sha256": TARGET_CONTRACT_SHA256,
             "held_out_claim": False, "ordered_case_ids": list(self.ordered_case_ids),
@@ -502,6 +527,10 @@ class HttpProductProfile:
             "whole_project_acceptance": False,
             "diagnostic_limits": ["explicitly-unspecified-facets-do-not-prove-product-obligations",
                 "public-product-definitions-are-not-independent-heldout"]}
+        if self.capture_policy is not None:
+            result.update(protocol=PROFILE_PROTOCOL + "-git-source-batch-v1",
+                          execution_protocol=BATCH_PROTOCOL, source_capture=self.capture_policy.record())
+        return result
 
     @property
     def sha256(self) -> str:
@@ -537,7 +566,7 @@ class HttpBinding:
                 require(type(value) is str and _SHA.fullmatch(value) is not None, "Invalid HTTP binding digest")
         require(self.requirements_sha256 == TARGET_CONTRACT_SHA256 and self.purpose in registry.PURPOSES,
                 "Only prospectively admitted cumulative-product observations are authorized")
-        require(self.milestone in ("M2", "M3", "M4") and self.protocol == PROTOCOL
+        require(self.milestone in ("M2", "M3", "M4") and self.protocol in (PROTOCOL, BATCH_PROTOCOL)
                 and self.cumulative_profile_sha256 is None and self.target_definition_sha256 is None,
                 "Exact versioned cumulative-product binding required")
 
@@ -568,11 +597,14 @@ def binding_for(files: dict[str, bytes], recipe: HttpRecipe, policy: HttpPolicy,
     for step in recipe.steps:
         if step.kind == "probe":
             wire.build_probe_input(engine.strict_json_loads(step.request_json), recipe.port, policy.wire_limits)
+    limits = {"policy": asdict(policy), "quota": quota_policy()}
+    if profile.capture_policy is not None:
+        limits["source_capture"] = profile.capture_policy.record()
     return HttpBinding(source_sha256(files), requirements_sha256, digest(recipe.record()),
         digest(input_staging.manifest(recipe.input_entries)),
         digest(evaluator_sources()), wire.helper_sha256(), digest(runtime),
         digest({"environment": DockerValidator._environment(), "roles": ROLE_POLICY,
-                "volume_options": VOLUME_OPTIONS, "probe_argv": PROBE_ARGV}), digest({"policy": asdict(policy), "quota": quota_policy()}),
+                "volume_options": VOLUME_OPTIONS, "probe_argv": PROBE_ARGV}), digest(limits),
         digest({"seed": policy.seed, "meaning": "fixed fixture; no candidate random seed implied"}),
         digest(role_policy_definition()), sha256(Path(__file__).read_bytes()), profile.sha256, purpose,
         milestone=profile.milestone, protocol=profile.execution_protocol)
@@ -893,7 +925,7 @@ def run_probe(endpoint: engine.EngineEndpoint, *, expected: dict[str, Any], spec
         require(deadline > time.monotonic(), "History observation deadline exhausted")
         return deadline
     require(spec.role == "probe", "Only the fixed probe has finite completion authority")
-    require(execution_protocol == PROTOCOL, "Closed HTTP execution protocol required")
+    require(execution_protocol in (PROTOCOL, BATCH_PROTOCOL), "Closed HTTP execution protocol required")
     validate_role(expected, spec, policy.image_id, runtime)
     validate_state(expected, "created")
     require(type(donor) is ProbeDonorEvidence, "Typed precreation donor required")
@@ -1051,6 +1083,10 @@ class CandidateHttpExecution:
                 and mode in ("physical", "fixture") and type(profile) is HttpProductProfile
                 and type(observation_admission) is admission.ObservationAdmission,
                 "Typed immutable HTTP registration and admission required")
+        profile.check_current(purpose=registration.binding.purpose,
+                              requirements_sha256=registration.binding.requirements_sha256)
+        require(profile.execution_protocol == registration.binding.protocol,
+                "Registered product source-capture protocol differs from profile")
         self.root = Path(root).absolute()
         self.delta_root, self.cleanup_root = Path(delta_root).absolute(), Path(cleanup_root).absolute()
         require(self.root.resolve() == self.root and not self.root.is_symlink(), "Canonical journal root required")
@@ -1091,7 +1127,7 @@ class CandidateHttpExecution:
             require(self.sources == _LOADED_SOURCES, "Loaded HTTP evaluator changed")
             require(wire.max_probe_output_bytes(policy.wire_limits) <= policy.stream_limit_bytes,
                     "Trusted probe stdout capture is undersized")
-            self.tree, self.files = capture_git_source(store, registration.commit_oid)
+            self.tree, self.files = capture_source(store, registration.commit_oid, policy=profile.capture_policy)
             self.fixture_files = dict(recipe.fixtures)
             assert recipe.input_entries is not None
             self.input_entries = recipe.input_entries
@@ -1116,6 +1152,8 @@ class CandidateHttpExecution:
                 "source_manifest": source_manifest(self.files), "evaluator_sources": self.sources,
                 "role_policy": role_policy_identity(), "recipe": recipe.record(), "snapshot_protocol": SNAPSHOT_PROTOCOL,
                 "quota_policy": quota_policy(), "helper_sha256": wire.helper_sha256(), "helper_stdout_envelope": wire.max_probe_output_bytes(policy.wire_limits)}
+            if profile.capture_policy is not None:
+                self.config["source_capture"] = profile.capture_policy.record()
             # Context contains prospective declarations, never an unauthenticated
             # config read or a self-referential config digest/current head.
             self.journal = owner_journal.OwnerJournal(self.root, self.delta_root,
@@ -1165,7 +1203,7 @@ class CandidateHttpExecution:
         self.admission.check_current(self._registration(), self.retained_freeze)
         require(self.sources == evaluator_sources() == _LOADED_SOURCES, "Loaded HTTP evaluator changed")
         require(self.json_authenticated("config.json") == json.loads(encoded(self.config)), "Controller config changed")
-        tree, files = capture_git_source(self.store, self.registration.commit_oid)
+        tree, files = capture_source(self.store, self.registration.commit_oid, policy=self.profile.capture_policy)
         require(tree == self.tree and files == self.files, "Registered immutable Git source changed")
         observed_runtime = self._runtime()
         require(encoded(observed_runtime) == encoded(self.runtime)

@@ -24,8 +24,9 @@ from . import candidate_source_capture_policy_v1 as capture_policy
 from . import project_acceptance_registry_v1 as registry
 from .candidate_scope_consumer_v1 import AuthorityError, AuthorityUnavailable
 from .gitstore import GitError
+from . import candidate_storage_prestart_v1 as prestart
 
-PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1'
+PROTOCOL = 'candidate-m2-product-observation-v1-ascii-json-v1-prestart-v1'
 VERIFIER_FILE = 'm2-product-verifier.json'
 
 
@@ -170,6 +171,50 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
         if execution.b01._clean(creation):
             container_id = raw.strip().decode('ascii')
             registry.sha256(container_id)
+    prestart_value: dict[str, Any] | None = None
+    prestart_error: str | None = None
+    try:
+        if container_id is None or not all(owner.has_retained(record) for record in prestart.ORDER):
+            raise AuthorityUnavailable('Original created-before-start proof or chronology unavailable')
+        staging = _json(owner.read_authenticated('staging.json'))
+        require(staging.get('proof') == expected_stage and staging.get('source_manifest') == expected_stage['source_manifest'],
+                'Original staging plan differs')
+        binds = {'/workspace': staging['workspace'], '/checks': staging['checks']}
+        binds['/inputs'] = staging['inputs']
+        sandbox = execution.DockerValidator(owner.policy.image_id,
+            {'m2_adapter.py': profile.ADAPTER}, command=prestart.COMMAND)
+        create_argv = execution.b02._start_arguments(sandbox, name, Path(staging['workspace']), Path(staging['checks']), Path(staging['inputs']), volume)
+        create_argv[1] = 'create'
+        create_argv.remove('--detach')
+        label_index = create_argv.index('--entrypoint')
+        for key, val in expected_labels.items():
+            create_argv[label_index:label_index] = ['--label', key + '=' + val]
+            label_index += 2
+        volume_original = _command(owner, 'volume-created', ['docker', 'volume', 'inspect', '--format', '{{json .}}', volume])
+        if volume_original is None:
+            raise AuthorityUnavailable('Original created volume inspection incomplete')
+        require(execution.b01._volume_valid(_json(volume_original[1]), volume, intent['execution_id']),
+                'Original owned tmpfs volume options differ')
+        creation_original = _command(owner, 'container-create', create_argv)
+        inspected = _command(owner, 'container-prestart', ['docker', 'inspect', '--format', '{{json .}}', container_id])
+        started = _command(owner, 'container-start', ['docker', 'start', container_id])
+        if creation_original is None or inspected is None or started is None:
+            raise AuthorityUnavailable('Original create/inspect/start command incomplete')
+        require(creation_original[1].strip() == container_id.encode()
+            and started[1].strip() == container_id.encode(), 'Original create/start identity differs')
+        expected_proof = prestart.proof_for(inspected[1], container_id=container_id, name=name,
+            image_id=owner.policy.image_id, volume=volume, labels=expected_labels, mounts=binds)
+        require(prestart.exact(_json(owner.read_authenticated(prestart.PROOF_FILE)), expected_proof),
+                'Retained prestart proof differs from original observed inspection')
+        prestart.validate_order({record: owner.authenticated_position(record) for record in prestart.ORDER})
+        session_argv = owner.docker + ['exec', '--interactive', '--user', '65534:65534', container_id,
+            'python', '-I', '-B', '/checks/m2_adapter.py']
+        require(_json(owner.read_authenticated('session-dispatch.json')) == {'argv': session_argv},
+                'Candidate adapter must enter through exact unprivileged exec')
+        prestart_value = _json(inspected[1])
+    except (AuthorityUnavailable, prestart.PrestartError, execution.process.ProcessError) as error:
+        prestart_error = str(error)
+        unavailable.append('prestart:' + prestart_error)
     # Correlate the complete declared host-driven action roster with captured original stdout;
     # an incomplete later session keeps earlier independently bounded lines.
     session = None if not owner.has_retained('session.json') else _json(owner.read_authenticated('session.json'))
@@ -180,12 +225,15 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
         require(descriptor['sha256'] == execution.sha(raw) and descriptor['bytes'] == len(raw), 'Session stdout differs')
         lines = raw.splitlines(keepends=True)
     previous_identity = None
+    previous_running: dict[str, Any] | None = None
     for index, phase in enumerate(owner.profile.phases):
         fact: dict[str, Any] = {'phase': phase, 'capture_authenticated': False, 'response_authenticated': False,
                                 'mapping': 'unavailable', 'reason': None}
         try:
             if container_id is None:
                 raise AuthorityUnavailable('Original container creation incomplete')
+            if prestart_value is None:
+                raise AuthorityUnavailable(prestart_error or 'Original prestart proof unavailable')
             for boundary in ('before', 'after'):
                 runtime_name = phase + '-runtime-' + boundary + '-verified.json'
                 if not owner.has_retained(runtime_name) or _json(owner.read_authenticated(runtime_name)) != {
@@ -197,6 +245,8 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
             response_name = phase + '-response.json'
             if not owner.has_retained(response_name) or not owner.has_retained(phase + '-request.json'):
                 raise AuthorityUnavailable('Original phase response/request unavailable')
+            require(owner.authenticated_position('session-dispatch.json') < owner.authenticated_position(phase + '-request.json'),
+                    'Candidate request predates authenticated unprivileged session dispatch')
             require(_json(owner.read_authenticated(phase + '-request.json')) == {'phase': phase, 'request': phase + '\n'}, 'Original phase request differs')
             raw = owner.read_authenticated(response_name)
             if session is not None:
@@ -230,6 +280,12 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
                 responses.pop(index, None)
                 fact['response_authenticated'] = False
                 raise AuthorityUnavailable('Captured container is not exact paused owner')
+            try:
+                prestart.validate_continuity(prestart_value, inspection, owner.runtime, previous_running=previous_running)
+            except (prestart.PrestartError, execution.process.ProcessError) as error:
+                responses.pop(index, None)
+                fact['response_authenticated'] = False
+                raise AuthorityUnavailable('Created-to-running sandbox identity differs') from error
             config, host = inspection.get('Config'), inspection.get('HostConfig')
             if not (type(config) is dict and type(host) is dict
                 and config.get('Labels') == expected_labels
@@ -244,6 +300,7 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
                 fact['response_authenticated'] = False
                 raise AuthorityUnavailable('Persistent storage process/container lineage changed')
             previous_identity = identity
+            previous_running = inspection
             captured = execution.b02.parse_capture(capture[1])
             fact['capture_authenticated'] = True
             if recipe['actions'][index]['op'] == 'job_serialization':
@@ -279,7 +336,8 @@ def reconstruct(owner: execution.CandidateM2Execution) -> dict[str, Any]:
         'layout_review_sha256': owner.review_sha256, 'profile': owner.profile.record(),
         'phase_facts': phase_facts, 'projection': projection,
         'mechanics': {'status': 'passed' if mechanics else 'infrastructure_error', 'cleanup_verified': cleaned,
-                      'session_complete': completed_session, 'unavailable': unavailable},
+                      'session_complete': completed_session, 'prestart_verified': prestart_value is not None,
+                      'unavailable': unavailable},
         'cohort_freeze': None if freeze is None else asdict(freeze),
         'production_scope_authority': False, 'independent_semantic_scope_review_supplied': False,
         'whole_project_acceptance': False}

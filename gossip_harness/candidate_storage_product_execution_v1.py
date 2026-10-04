@@ -36,9 +36,10 @@ from .candidate_release_execution_v2 import capture_git_source
 from . import candidate_source_capture_policy_v1 as source_capture
 from .gitstore import GitStore
 from .sandbox import DockerValidator
+from . import candidate_storage_prestart_v1 as prestart
 from . import project_acceptance_registry_v1 as registry
 
-PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1"
+PROTOCOL = "candidate-storage-product-execution-v1-ascii-json-v1-prestart-v1"
 BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
 TARGET_CONTRACT = "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc"
 LIMITS = chain.Limits()
@@ -68,6 +69,7 @@ def evaluator_sources() -> dict[str, str]:
     names = set(b01.driver_sources()) | set(b02.driver_sources()) | {
         'candidate_storage_product_execution_v1.py', 'candidate_storage_product_profile_v1.py',
         'candidate_storage_product_observation_v1.py', 'candidate_storage_review_authority_v1.py',
+        'candidate_storage_prestart_v1.py',
         'candidate_observation_admission_v1.py', 'candidate_execution_journal_v1.py',
         'candidate_checkpoint_chain_v1.py', 'candidate_checkpoint_head_v1.py',
         'candidate_http_journal_v3.py', 'candidate_emergency_cleanup_v1.py',
@@ -152,7 +154,7 @@ def binding_for(files: dict[str, bytes], value: Any, policy: StoragePolicy, runt
     capture_record = None if capture_policy is None else capture_policy.record()
     limits = {'policy': asdict(policy), 'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES,
         'capture_bytes': b02.MAX_CAPTURE_BYTES, 'original_stream_bytes': b01.MAX_STREAM_BYTES if value.family == 'b01' else b02.MAX_STREAM_BYTES,
-        'cleanup': asdict(cleanup.CleanupLimits())}
+        'cleanup': asdict(cleanup.CleanupLimits()), 'prestart_policy': prestart.definition()}
     if capture_record is not None:
         limits['source_capture'] = capture_record
     forced = value.family == 'b02' and value.case_id in b02.FORCED_CASE_IDS
@@ -445,6 +447,7 @@ class CandidateStorageExecution:
                 'review_provenance': review_authority.provenance(plan),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'journal_limits': asdict(LIMITS),
+                'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
             if self.capture_policy is not None:
                 self.config['source_capture'] = self.capture_policy.record()
@@ -491,6 +494,13 @@ class CandidateStorageExecution:
         self._owner()
         assert self.journal is not None
         return self.journal.read(name)
+
+    def authenticated_position(self, name: str) -> int:
+        """Authenticate original raw bytes and their acknowledged chain order."""
+        self._owner()
+        require(self.journal is not None, 'Journal unavailable')
+        assert self.journal is not None
+        return self.journal._chain.position(name)
 
     def has_retained(self, name: str) -> bool:
         self._owner()
@@ -707,6 +717,15 @@ class CandidateStorageExecution:
                 container_id = commands.raw(checked('container-create', argv)).strip().decode('ascii')
                 registry.sha256(container_id)
                 self._cleanup.confirm_container(claims['container'], create_record='container-create.json')
+                record = checked('container-prestart',
+                    ['docker', 'inspect', '--format', '{{json .}}', container_id], process.CONTROL_LIMIT)
+                binds = {'/workspace': str(workspace), '/checks': str(checks)}
+                if recipe is not None:
+                    binds['/inputs'] = str(inputs)
+                proof = prestart.proof_for(commands.raw(record), container_id=container_id, name=name,
+                    image_id=self.policy.image_id, volume=volume, labels=labels, mounts=binds)
+                self._retain(prestart.PROOF_FILE, encoded(proof))
+                self.checkpoint()
                 checked('container-start', ['docker', 'start', container_id])
                 session_argv = ['docker', 'exec', '--interactive', '--user', '65534:65534', container_id,
                     'python', '-I', '-B', '/checks/' + adapter] + ([case] if recipe is None else [])

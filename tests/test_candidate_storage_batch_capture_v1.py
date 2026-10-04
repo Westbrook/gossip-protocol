@@ -66,7 +66,7 @@ class CandidateStorageBatchCaptureV1Tests(unittest.TestCase):
             'cohort_freeze': None, 'container': 'fixture-container', 'volume': 'fixture-volume',
             'ordered_phases': list(execution.b01.PHASES)}))
 
-    def test_legacy_default_keeps_old_protocol_record_and_real_capture_route(self):
+    def test_legacy_capture_route_is_preserved_with_explicit_prestart_successor_identity(self):
         result, registration_calls = self.counted(lambda: execution.capture_source(self.store, self.commit))
         self.assertEqual(result, (self.tree, self.files))
         self.assertEqual(len(registration_calls), 2 + 2 * len(self.files))
@@ -76,11 +76,13 @@ class CandidateStorageBatchCaptureV1Tests(unittest.TestCase):
         self.assertEqual(len(repeated_calls), 2 + 2 * len(self.files))
         self.assertIsNone(owner.capture_policy)
         self.assertEqual(owner.binding.protocol, execution.PROTOCOL)
+        self.assertTrue(owner.binding.protocol.endswith('-prestart-v1'))
+        self.assertEqual(owner.config['prestart_policy'], execution.prestart.definition())
         self.assertNotIn('source_capture', owner.config)
         limits = {'policy': asdict(self.policy), 'journal': asdict(execution.LIMITS),
             'chunk_bytes': execution.CHUNK_BYTES, 'capture_bytes': execution.b02.MAX_CAPTURE_BYTES,
             'original_stream_bytes': execution.b01.MAX_STREAM_BYTES,
-            'cleanup': asdict(execution.cleanup.CleanupLimits())}
+            'cleanup': asdict(execution.cleanup.CleanupLimits()), 'prestart_policy': execution.prestart.definition()}
         self.assertEqual(self.binding.limits_sha256, execution.digest(limits))
         declaration = scope.storage_slice(self.registration)
         self.assertEqual(set(json.loads(declaration.factory_input_json)), {'registration'})

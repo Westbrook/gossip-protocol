@@ -3,6 +3,7 @@
 The enrolled reviewer fixture tests linkage, never source adequacy. Fixture owners
 are categorically rejected by the physical Registry bridge.
 """
+from copy import deepcopy
 from dataclasses import asdict, replace
 from pathlib import Path
 import tempfile
@@ -25,6 +26,8 @@ from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import project_acceptance_registry_v1 as registry
 from gossip_harness.gitstore import GitStore
 from tests.test_candidate_storage_observer_v1 import physical_files, SQLITE_LAYOUT
+from tests.test_candidate_storage_prestart_v1 import created_fixture
+from gossip_harness import candidate_storage_prestart_v1 as prestart
 
 COHORT = tuple('trajectory-' + str(i) for i in range(6))
 
@@ -50,6 +53,94 @@ def enroll(root, plan, *, changes=None, delivery_first=False):
     enrollment = review.ReviewEnrollment('fixture-reviewer', 'request.json', execution.sha(request),
         'report.json', execution.sha(report_raw), 'delivery.json', execution.sha(delivery))
     return review.StorageReviewAuthority(journal, journal.commitment, enrollment), journal, head
+
+
+def synthetic_created_origin(owner, command, *, module, family, omit_proof=False, proof_after_start=False, wrong_volume_options=False):
+    """Complete synthetic Engine/control originals for reader-mechanism tests.
+
+    No Engine exists and no command executes. The actual fixture owner remains
+    unable to publish a physical observation. Negative controls can deliberately
+    omit the created-state proof or record it after start; neither is repaired.
+    """
+    if owner.mode != 'fixture':
+        raise ValueError('Synthetic created origins require a fixture-only owner')
+    created, expected = created_fixture(inputs=family != 'b01')
+    container_id = 'c' * 64
+    if family == 'b01':
+        application = {'protocol': module.PROTOCOL, 'decision': 'not-requested',
+            'review_sha256': owner.review_sha256, 'production_forced_schedule_qualified': False}
+        helpers = module.adapter_files('b01', owner.binding.case_id, application)
+        fixtures = []
+        fixture_sha = module.digest({'recipe': None, 'adapter': module.sha(module.b01.CHILD_ADAPTER.encode())})
+        adapter = 'storage_adapter.py'
+    elif family == 'b02':
+        application = {'protocol': module.PROTOCOL, 'decision': 'not-requested',
+            'review_sha256': owner.review_sha256, 'production_forced_schedule_qualified': False}
+        recipe = module.b02.validate_recipe(module.b02.cases.execution_recipe(owner.binding.case_id))
+        helpers = module.adapter_files('b02', owner.binding.case_id, application)
+        fixtures = recipe['fixtures']
+        fixture_sha = module.digest({'recipe': recipe, 'adapter': module.sha(module.b02.CHILD_ADAPTER.encode())})
+        adapter = 'intake_store_adapter.py'
+    elif family == 'm2':
+        helpers = module.profile.adapter_files(owner.binding.case_id)
+        fixtures = module.profile.input_fixtures(owner.binding.case_id)
+        fixture_sha = owner.binding.fixture_sha256
+        adapter = 'm2_adapter.py'
+    else:
+        raise ValueError('Closed synthetic fixture families only')
+    labels = {'gossip.execution': 'fixture-execution', 'gossip.source': owner.binding.source_sha256,
+              'gossip.fixture': fixture_sha}
+    expected.update(container_id=container_id, image_id=owner.policy.image_id, labels=labels)
+    created.update(Id=container_id, Image=owner.policy.image_id)
+    created['Config'].update(Image=owner.policy.image_id, Labels=labels)
+    proof = {'source_manifest': admission.source_manifest(owner.files),
+        'helper_manifest': admission.source_manifest(helpers), 'fixtures_sha256': module.digest(fixtures)}
+    staging = {'workspace': expected['mounts']['/workspace'], 'checks': expected['mounts']['/checks'],
+        'inputs': expected['mounts'].get('/inputs', '/fixture/inputs'),
+        'source_manifest': proof['source_manifest'], 'proof': proof}
+    owner._retain('synthetic-origin-fixture.json', module.encoded({
+        'fixture_only': True, 'engine_executed': False, 'physical_evidence': False,
+        'purpose': 'Constructed chronology and reader sensitivity only'}))
+    owner._retain('staging.json', module.encoded(staging))
+    sandbox = module.DockerValidator(owner.policy.image_id,
+        {name: raw.decode('utf-8') for name, raw in helpers.items() if name.endswith('.py')}, command=prestart.COMMAND)
+    if family == 'b01':
+        argv = module.b01._start_arguments(sandbox, expected['name'], Path(staging['workspace']),
+            Path(staging['checks']), expected['volume'])
+    else:
+        argv = module.b02._start_arguments(sandbox, expected['name'], Path(staging['workspace']),
+            Path(staging['checks']), Path(staging['inputs']), expected['volume'])
+    argv[1] = 'create'
+    argv.remove('--detach')
+    index = argv.index('--entrypoint')
+    for key, value in labels.items():
+        argv[index:index] = ['--label', key + '=' + value]
+        index += 2
+    # Independently specified synthetic tmpfs inspection precedes the keeper;
+    # a matching name in a later Mounts row does not prove volume bounds.
+    volume_inspection = {'Name': expected['volume'], 'Driver': 'local', 'Scope': 'local',
+        'Options': ({'type': 'none', 'device': '/host', 'o': 'bind'} if wrong_volume_options else module.b01.VOLUME_OPTIONS),
+        'Labels': {'gossip.execution': 'fixture-execution', 'gossip.snapshot': module.b01.SNAPSHOT_PROTOCOL}}
+    command(owner, 'volume-created', ['docker', 'volume', 'inspect', '--format', '{{json .}}', expected['volume']],
+            module.encoded(volume_inspection))
+    command(owner, 'container-create', argv, container_id.encode() + b'\n')
+    raw_inspection = module.encoded(created)
+    command(owner, 'container-prestart', ['docker', 'inspect', '--format', '{{json .}}', container_id], raw_inspection)
+    created_proof = prestart.proof_for(raw_inspection, **expected)
+    if not omit_proof and not proof_after_start:
+        owner._retain(prestart.PROOF_FILE, module.encoded(created_proof))
+    command(owner, 'container-start', ['docker', 'start', container_id], container_id.encode() + b'\n')
+    if not omit_proof and proof_after_start:
+        owner._retain(prestart.PROOF_FILE, module.encoded(created_proof))
+    session_argv = owner.docker + ['exec', '--interactive', '--user', '65534:65534', container_id,
+        'python', '-I', '-B', '/checks/' + adapter]
+    if family == 'b01':
+        session_argv.append(owner.binding.case_id)
+    owner._retain('session-dispatch.json', module.encoded({'argv': session_argv}))
+    paused = deepcopy(created)
+    paused['State'].update(Status='running', Running=True, Paused=True, Pid=123,
+                           StartedAt='2026-10-04T00:00:01.000000001Z')
+    return container_id, paused
 
 
 class StorageReviewAuthorityV1Tests(unittest.TestCase):
@@ -392,18 +483,11 @@ class CandidateStorageProductExecutionV1Tests(unittest.TestCase):
 
     def test_authenticated_earlier_failure_survives_missing_reopen_resume_terminal(self):
         owner = self.owner(); self.intent(owner)
-        container_id = 'c' * 64
-        self.command(owner, 'container-create', ['docker', 'create'], container_id.encode() + b'\n')
+        container_id, inspection = synthetic_created_origin(owner, self.command, module=execution, family='b01')
         self.stage_proof(owner, 'after')
         owner._retain('after-request.json', execution.encoded({'phase': 'after', 'request': 'after\n'}))
         owner._retain('after-response.json', b'{"phase":"after","value":{"error":"wrong"}}\n')
         self.command(owner, 'after-pause', ['docker', 'pause', container_id], container_id.encode())
-        inspection = {'Id': container_id, 'Name': '/fixture-container', 'Image': self.policy.image_id,
-            'State': {'Running': True, 'Paused': True, 'Pid': 123, 'StartedAt': 'fixture-start'},
-            'Config': {'Labels': {'gossip.execution': 'fixture-execution', 'gossip.source': self.binding.source_sha256,
-                'gossip.fixture': execution.digest({'recipe': None, 'adapter': execution.sha(execution.b01.CHILD_ADAPTER.encode())})}},
-            'HostConfig': {'NetworkMode': 'none', 'ReadonlyRootfs': True},
-            'Mounts': [{'Destination': '/tmp', 'Type': 'volume', 'Name': 'fixture-volume', 'Driver': 'local', 'RW': True}]}
         self.command(owner, 'after-state', ['docker', 'inspect', '--format', '{{json .}}', container_id], execution.encoded(inspection))
         files = physical_files(SQLITE_LAYOUT, self.case['after'], edit=lambda blobs, docs, jobs: blobs.append(
             {'blob_id': 'blob-' + execution.sha(b'leak'), 'content': b'leak'}))
@@ -424,14 +508,7 @@ class CandidateStorageProductExecutionV1Tests(unittest.TestCase):
 
     def test_same_phase_wrong_identity_censors_its_result_but_keeps_earlier_failure(self):
         owner = self.owner(); self.intent(owner)
-        container_id = 'c' * 64
-        self.command(owner, 'container-create', ['docker', 'create'], container_id.encode() + b'\n')
-        inspection = {'Id': container_id, 'Name': '/fixture-container', 'Image': self.policy.image_id,
-            'State': {'Running': True, 'Paused': True, 'Pid': 123, 'StartedAt': 'fixture-start'},
-            'Config': {'Labels': {'gossip.execution': 'fixture-execution', 'gossip.source': self.binding.source_sha256,
-                'gossip.fixture': execution.digest({'recipe': None, 'adapter': execution.sha(execution.b01.CHILD_ADAPTER.encode())})}},
-            'HostConfig': {'NetworkMode': 'none', 'ReadonlyRootfs': True},
-            'Mounts': [{'Destination': '/tmp', 'Type': 'volume', 'Name': 'fixture-volume', 'Driver': 'local', 'RW': True}]}
+        container_id, inspection = synthetic_created_origin(owner, self.command, module=execution, family='b01')
         for phase in ('before', 'after'):
             self.stage_proof(owner, phase)
             owner._retain(phase + '-request.json', execution.encoded({'phase': phase, 'request': phase + '\n'}))
@@ -471,7 +548,7 @@ class CandidateStorageProductExecutionV1Tests(unittest.TestCase):
         self.assertIs(result['projection']['checks']['after.persisted-state'], False)
         self.assertIsNone(result['projection']['checks']['reopened.persisted-state'])
         self.assertEqual(result['mechanics']['status'], 'infrastructure_error')
-        expected = 'lineage changed' if kind == 'pid' else 'sandbox or execution lineage differs'
+        expected = 'Created-to-running sandbox identity differs'
         self.assertIn(expected, result['phase_facts'][2]['reason'])
 
     def test_later_pid_change_withholds_phase_but_preserves_prior_known_failure(self):
@@ -479,6 +556,35 @@ class CandidateStorageProductExecutionV1Tests(unittest.TestCase):
 
     def test_later_fixture_label_change_is_unavailable_not_product_failure(self):
         self._later_attribution_mismatch('fixture')
+
+    def _unqualified_created_origin(self, *, omit_proof=False, proof_after_start=False, wrong_volume_options=False):
+        owner = self.owner(); self.intent(owner)
+        container_id, inspection = synthetic_created_origin(owner, self.command, module=execution, family='b01',
+            omit_proof=omit_proof, proof_after_start=proof_after_start, wrong_volume_options=wrong_volume_options)
+        self.stage_proof(owner, 'after')
+        owner._retain('after-request.json', execution.encoded({'phase': 'after', 'request': 'after\n'}))
+        owner._retain('after-response.json', b'{"phase":"after","value":{"error":"wrong"}}\n')
+        self.command(owner, 'after-pause', ['docker', 'pause', container_id], container_id.encode())
+        self.command(owner, 'after-state', ['docker', 'inspect', '--format', '{{json .}}', container_id], execution.encoded(inspection))
+        result = observer.reconstruct(owner)
+        self.assertIsNone(result['projection']['checks']['result'])
+        self.assertIsNone(result['projection']['checks']['after.persisted-state'])
+        self.assertFalse(result['phase_facts'][1]['response_authenticated'])
+        self.assertFalse(result['mechanics']['prestart_verified'])
+        self.assertEqual(result['mechanics']['status'], 'infrastructure_error')
+        return result
+
+    def test_paused_fixture_without_created_proof_cannot_authenticate_known_result(self):
+        result = self._unqualified_created_origin(omit_proof=True)
+        self.assertIn('created-before-start', result['phase_facts'][1]['reason'])
+
+    def test_created_proof_recorded_after_start_cannot_authenticate_known_result(self):
+        result = self._unqualified_created_origin(proof_after_start=True)
+        self.assertIn('must precede start', result['phase_facts'][1]['reason'])
+
+    def test_matching_volume_name_with_unbounded_driver_options_is_rejected(self):
+        with self.assertRaisesRegex(observer.AuthorityError, 'tmpfs volume options differ'):
+            self._unqualified_created_origin(wrong_volume_options=True)
 
     def test_existing_incomplete_intent_forbids_redispatch(self):
         owner = self.owner(); self.intent(owner)
