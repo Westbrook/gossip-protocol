@@ -1,0 +1,599 @@
+{
+  "schema": "candidate-c03-http-v3-source-review-public-projection-v1",
+  "meaning": "Root-authored path-normalized projection of the retained independent source review, not a new independent audit.",
+  "original": {
+    "path": "runs/candidate-c03-http-v3-boundary-review-1.json",
+    "bytes": 33402,
+    "sha256": "45c31b5ae542191423f8f30bb5b155a27f3c10b7a7c2ca68e74a2d11d5c7e5c8"
+  },
+  "review": {
+    "authority": {
+      "acceptance_authority": false,
+      "candidate_executions": 0,
+      "dispatch_authority": false,
+      "engine_calls": 0,
+      "product_verdict": "not_evaluated",
+      "provider_calls": 0,
+      "repository_imports_by_reviewer": 0,
+      "tests_run_by_reviewer": 0
+    },
+    "baseline_commit": "ced71f272db68efde148cfab7cada3d25e1fbee6",
+    "capacity_reconciliation": [
+      {
+        "capacity_file": {
+          "bytes": 4484,
+          "path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/df8018212f947b44/artifacts/gossip-http-history-v3-inert-4w3d6wdx/test_full_70_request_literal_history_retains_one_complete_journal-capacity.json",
+          "sha256": "687da46092c8d7c017b4a40a8ed7e813afeca1385504241886e8be2b820c4173"
+        },
+        "cli": 0,
+        "definition_sha256": "dc486b5dcfad72782813ddefda8a4a9201e03f2247e3686cc9b97b2acb1e3d97",
+        "descriptor_checks": 2523,
+        "discrepancies": [],
+        "elapsed_seconds": 216.7208330417052,
+        "epochs": 1,
+        "inventory_sha256": "2e6279ea0445c56aa12a1e4dbfcf6b0dfd83ed80593b08d8a6d72c6685b4df5c",
+        "journal_bytes": 11593309,
+        "journal_files": 3461,
+        "journal_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/df8018212f947b44/artifacts/gossip-http-history-v3-inert-4w3d6wdx/test_full_70_request_literal_history_retains_one_complete_journal",
+        "keepers": 1,
+        "probes": 70,
+        "row_id": "HTTP-ACTION-STATE/old-token-after-successor-failed",
+        "scope": "inert IO with real host journal; no external-checkpoint sink performance or physical product evidence",
+        "steps": 72,
+        "terminal_bytes": 52218,
+        "terminal_sha256": "4d0cea6d22f7835c4348377968ed4282da46bdbd078f1cc4a99c1d35c7d51a48",
+        "volume_baseline_comparisons": 1
+      },
+      {
+        "capacity_file": {
+          "bytes": 4478,
+          "path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/df8018212f947b44/artifacts/gossip-http-history-v3-inert-4w3d6wdx/test_full_87_step_29_cli_literal_history_retains_one_complete_journal-capacity.json",
+          "sha256": "fa340da4cb3ad8e0b26375df5fa05cf042a1385f252ffa2e6442d9064f6aa5e8"
+        },
+        "cli": 29,
+        "definition_sha256": "4e571dabbe0f51ed959ed27a59634d3b99d4cdb723e5054b1511a4b795897e4a",
+        "descriptor_checks": 2298,
+        "discrepancies": [],
+        "elapsed_seconds": 278.20159704238176,
+        "epochs": 2,
+        "inventory_sha256": "18caf37e7df3c88f06f841579cdd6628827824245a2b2022f0e81d8da092effc",
+        "journal_bytes": 11743822,
+        "journal_files": 4187,
+        "journal_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/df8018212f947b44/artifacts/gossip-http-history-v3-inert-4w3d6wdx/test_full_87_step_29_cli_literal_history_retains_one_complete_journal",
+        "keepers": 1,
+        "probes": 54,
+        "row_id": "HTTP-PERSIST-LISTENER/http-cli-http-same-db",
+        "scope": "inert IO with real host journal; no external-checkpoint sink performance or physical product evidence",
+        "steps": 87,
+        "terminal_bytes": 57699,
+        "terminal_sha256": "9c5bc4ac258154768c9b7b18606e73e2a3b71438aaf9260eacf7218543196aeb",
+        "volume_baseline_comparisons": 59
+      }
+    ],
+    "combined_gate": {
+      "classes": 11,
+      "current_input_drift": [],
+      "discrepancies": [],
+      "duration_seconds": 647.5753588331863,
+      "fingerprint": "7d7b8652456c772157bca748d4c66c7f81a5ff47a580cd26b27158538c4f10f9",
+      "inputs": {
+        "count": 512,
+        "path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/inputs.json",
+        "sha256": "a911ed70701080d1b67ed56b598a2951949b934fb8c947f7c504bd81a03a7116"
+      },
+      "jobs": [
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpControllerJournalV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/3557ca1a29d1bae4/result.json",
+          "evidence_sha256": "46cedf6acfb6a7a2a0f2811a665487c4c95b4684aa1ef8c5558feac665de997f",
+          "log_sha256": "86f2404ca994d0bdd1a03e735b4dcee11250e37ef067dabd487a09b9f93c3374",
+          "status": "passed",
+          "tests": 22
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpHistoryOrchestrationV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/df8018212f947b44/result.json",
+          "evidence_sha256": "56d804fa936e15e076b9cbf318c9728dbbbe6bf829687fcc9c2d1668b2f1c591",
+          "log_sha256": "49efbced25fbe7df1a87a75a5ffd8f569a5637129c2db2a810f74c4e26ba9fe6",
+          "status": "passed",
+          "tests": 25
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpLiteralMechanicsV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/6a1a674bd4370793/result.json",
+          "evidence_sha256": "6a159031dcd9d5b7e8c35d5e0795199f57d5546ef5e5288f3724655e1bdf3685",
+          "log_sha256": "e48c4a20b2fa2e7c0477186793f3c797436891ec11cdf881b10c13a0a101a454",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpProbeDonorV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/16fbe4154c39cd53/result.json",
+          "evidence_sha256": "ad8f1fcc086bf73be1c12c52a961deef79eb33b7aeacd10ec317d7dd1cf99a87",
+          "log_sha256": "2de933df92bcdad7eea7f9e461cba30d09fe0b78b81c244021cbc989443f56c8",
+          "status": "passed",
+          "tests": 12
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpProbeLifecycleV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/d3dc0a2d7192bb35/result.json",
+          "evidence_sha256": "17185ad00ccf25c50e198235a7728a49ef86ddac81baaa14539f90f7c7c83a26",
+          "log_sha256": "706422e3d5d824a293e42fc12aa8667acceff53587b286f6be33cfbe2a6b30d8",
+          "status": "passed",
+          "tests": 5
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpRoleProfileV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/176aed48036cb489/result.json",
+          "evidence_sha256": "bb27a1a6419b421986b52fc296b43bf14319c4af9c2a4921f96151b3781f7e32",
+          "log_sha256": "426439ffbed5e2a907b61ccab70dfdd4e877930d498e558e659633501b7ce298",
+          "status": "passed",
+          "tests": 11
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputDeclarationsV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/46aa2a96558518a4/result.json",
+          "evidence_sha256": "edd4774e51902d7d77220ede98f3ffa10586dce1392fcf94b6e7c73dd4a46fd9",
+          "log_sha256": "e3d2269dbf0ffb6639a42cedeb9be1ba30b4fbbf0b84a01f1ab833d62239f9c2",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputStagingV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/392af5e412a600a9/result.json",
+          "evidence_sha256": "59d43980fca671d8d18e13498b7d37f4452193b8244179c831bf441c1f51afbf",
+          "log_sha256": "c4c3d823785eeeeebfe57a03e095f7e66a2c7c0f09393639ff9e3a8d18044d99",
+          "status": "passed",
+          "tests": 11
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputVerificationV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/c37e84225919aa3f/result.json",
+          "evidence_sha256": "9a2ff0fefaaab62fe20535b5be8d623ba16cc99a9ebbed0eb4a76810b1f5bb36",
+          "log_sha256": "ea250ffd3483ece119e4138e63418dc4d5a856eaa3c170947ea5e7338a0aec89",
+          "status": "passed",
+          "tests": 15
+        },
+        {
+          "class": "tests/test_candidate_http_journal_v3.py::CandidateHttpJournalV3DecodeTests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/2d2a7e3556c30f18/result.json",
+          "evidence_sha256": "2b35036f193292bf2cd5ba11be60c3de3c010fae240f009658d1ec49d31a6c81",
+          "log_sha256": "30afb3baeb6310dd5d825d6c1ebc1f5904ad3b615b3d8699115c9d328487f864",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_journal_v3.py::CandidateHttpJournalV3FileTests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/classes/136aa58ba7638095/result.json",
+          "evidence_sha256": "5b54abdc546e241ccada629539bff6b5c440d9a3875ce303f79fb4ea5203d107",
+          "log_sha256": "c2d268d43ffbfb42539e2253bda4070ad4abbe847b32d489df5ea6fb2c1c76ba",
+          "status": "passed",
+          "tests": 10
+        }
+      ],
+      "outcomes": {
+        "passed": 141
+      },
+      "reused_classes": 0,
+      "runner_sha256": "acdc47d80c6f78d0381830c495027bbfdd328b03edfd62f8509e88fb085ffdb9",
+      "runtime_reconciliation": {
+        "final_sha256": "77aae34706d86d6b26f23aed90fb2c4875bee56f418ce203c80073e71e2f5199",
+        "initial_sha256": "77aae34706d86d6b26f23aed90fb2c4875bee56f418ce203c80073e71e2f5199",
+        "matches": true
+      },
+      "selected_total": 141,
+      "session": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0",
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static": {
+        "log_sha256": "5a3fe5a09c6153b8d355cd87f32b3ea78d5f3ff12db737ac4599449c2515753b",
+        "sha256": "f38aa3ee45f5d5706b9bc3f5c256ec5861e57fb0a97955ece8501a3e9fa16f4a",
+        "source_count": 443,
+        "status": "passed",
+        "summary": {
+          "duration_seconds": 1.1602404583245516,
+          "returncode": 0,
+          "status": "passed"
+        }
+      },
+      "status": "passed",
+      "summary": {
+        "bytes": 89607,
+        "path": "runs/candidate-c03-http-v3-offline-2/20261004T001856-0afb0fd0/summary.json",
+        "sha256": "6fcb9a497b0562c8477784164f4822020d42b7c56060172c862fef51bcbd255a"
+      }
+    },
+    "contributor_evidence": {
+      "copied_files": [
+        {
+          "bytes": 3755,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-c03-http-journal-v3-focused-3.log",
+          "sha256": "56d295f8cbeaffad8a05590219dcac26f3420bebd4f5f01efc94678de3a417bc"
+        },
+        {
+          "bytes": 1284,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-controller-static-1.json",
+          "sha256": "8e26353762f8bc12d62e12b387b45e7d8094cd471226666c583b33a300a6f932"
+        },
+        {
+          "bytes": 3336,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-executor-final-hold-1.json",
+          "sha256": "8eab96cec7dba458365aef8624f137eb1e8bd42b19e9fa1fe26165aa19c71044"
+        },
+        {
+          "bytes": 1448,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-2-receipt.json",
+          "sha256": "de13954b9d29077565c2a1775e01a874f2bc7c5f4706b5eaef9b9a19aef1acbf"
+        },
+        {
+          "bytes": 18582,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-2.log",
+          "sha256": "9b7dc2e7f143b64b214a14a255762a9ceb5a9d78160daa7e04ef5bfdc6c3d84d"
+        },
+        {
+          "bytes": 1843,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-3-receipt.json",
+          "sha256": "ff3e937364468b03f7ef2ed65a93387dceb940b948ddc58c16640a4c278bdda4"
+        },
+        {
+          "bytes": 3315,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-3.log",
+          "sha256": "60dbb0a3adee43bcbf883f40cb1524c69610c9e3081ef2c13d1b9cce19cc4824"
+        },
+        {
+          "bytes": 1732,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-4-receipt.json",
+          "sha256": "e6f47639f394eed36c919823c2f485529a818af080d6bfbf75b74afb92bdc095"
+        },
+        {
+          "bytes": 2135,
+          "path": "runs/candidate-c03-http-v3-contributor-evidence-1/gossip-http-v3-tests-4.log",
+          "sha256": "13ba552a19826b7b4c918396bdb4b468e62d79286da6b5725a30700080cdb908"
+        }
+      ],
+      "directory": "runs/candidate-c03-http-v3-contributor-evidence-1",
+      "meaning": "Byte-identical copies of explicitly identified contributor final-hold/static/focused artifacts; originals preserved. Initial78-test contributor failure remains76pass/2failed, not rewritten. Subsequent focused receipts are partial and are superseded for final qualification by the fresh root gate.",
+      "unavailable_durable_receipts": "Input helper scoped36-test/Ruff results and journal scoped static results exist only in contributor tool transcripts; no standalone log or source-bound runner receipt was fabricated. Final root combined records cover these sources."
+    },
+    "delegated_review": {
+      "excluded": "Executor quota/reserves/reference reconstruction were reviewed by parent, not delegated helper clearance.",
+      "executions": 0,
+      "outcome": "clear",
+      "reviewer": "/root/b03_boundary_review/v2_freeze_reconcile",
+      "scope": "Strict journal helper source/tests/docs only: 32MiB byte limit,64 container depth,1,000,000 nodes including keys; duplicate/nonfinite/noncanonical UTF8 rejection; no-follow descriptor traversal and stable-file identity;20 test definitions.",
+      "source_edits": 0,
+      "sources": [
+        {
+          "bytes": 10901,
+          "path": "gossip_harness/candidate_http_journal_v3.py",
+          "sha256": "7bcb8b7e8c3bee570a28c21dfd7ad278d0a435581ef184d2c645b61f569f988b"
+        },
+        {
+          "bytes": 11509,
+          "path": "tests/test_candidate_http_journal_v3.py",
+          "sha256": "f69c74f1de7bb08ae7932af3561140bb3ffbbfcda7ff99cfd41e3f07627549c9"
+        },
+        {
+          "bytes": 4977,
+          "path": "docs/candidate-c03-http-journal-v3.md",
+          "sha256": "2ba4e9ec536a3bac900386199edb21aaf9f3a5f6e8a5f1e4a0375eb382ff8d0a"
+        }
+      ]
+    },
+    "design": {
+      "path": "runs/candidate-c03-http-v3-mechanics-design-1/design.json",
+      "sha256": "7abf0541bbfba1894bcc350112cca4b51bb98dc777b75ac743d2279d29d0430b"
+    },
+    "findings_and_resolutions": [
+      {
+        "finding": "Python equality could accept boolean/integer substitutions in complete declaration projections.",
+        "resolution": "Fixtures, steps and requests compare canonical typed JSON; epoch comparison requires an exact integer."
+      },
+      {
+        "finding": "A retirement exception could otherwise allow final cleanup to retry the same removal.",
+        "resolution": "Each attempted retirement is marked false before invocation; final cleanup skips every already attempted resource."
+      },
+      {
+        "finding": "Appending an observation before its durable retention could leave terminal references to missing artifacts after cap failure.",
+        "resolution": "Observation and epoch rows append only after successful retention/checkpoint. Fault controls require bounded cleanup/terminal, no dangling reference and no redispatch."
+      },
+      {
+        "finding": "Dropping an unretained observation could report zero unknown attempts despite invocation of a transport.",
+        "resolution": "Separate entered-step prefix, unentered suffix, transport-attempt records/artifact prefixes, retained rows and unavailable-attempt counters. Attempts do not imply starts or sends."
+      },
+      {
+        "finding": "Selected volume ownership fields did not establish full created-volume identity across CLI transitions.",
+        "resolution": "A full volume baseline is retained and compared canonically before/after CLI and during cleanup."
+      },
+      {
+        "finding": "Fixed reap/drain waits could exceed the declared phase deadline; a small cleanup window was not a worst-case success guarantee.",
+        "resolution": "Command wait/reap/drain share an absolute deadline; finite transport has whole-call admission.300 seconds is explicitly a bounded cleanup opportunity, not guaranteed success at policy maxima."
+      },
+      {
+        "finding": "Repeated allowed64KiB argv values in embedded epoch records could exceed the1MiB terminal cap.",
+        "resolution": "Full epochs are retained separately before append; terminal uses descriptors and authenticates the ordered start prefix. A63-epoch/128-step test retains maximum-size argv records and reconstructs compact descriptors."
+      },
+      {
+        "finding": "Recipe projection alone did not demonstrate complete long-history journal behavior.",
+        "resolution": "Root executed the complete87-step/29-CLI and70-request shapes through real host journals with inert Engine/socket boundaries; independent retained capacity reconciliation is included."
+      }
+    ],
+    "limitations": [
+      "Reviewer activity comprised source/AST/filesystem reads and retained-evidence reconstruction only. No tests, evaluator imports, Engine calls, candidate execution or provider calls were performed by this reviewer or its delegate.",
+      "The only reviewer writes are this new receipt and nine requested byte-identical contributor evidence copies. No implementation/configuration/test files or historical receipts were edited.",
+      "The141 passing checks are offline engineering checks across11 freshly executed classes. They are not physical container qualification, product acceptance, comparative model observations or statistical evidence.",
+      "Capacity fixtures exercise actual host Git/journal retention with inert low-level Engine/socket seams and small synthetic response records. They do not measure maximum physical captures or external-checkpoint sink performance.",
+      "Journal authenticity still depends on trusted original external checkpoints; strict JSON/no-follow checks alone do not grant execution or acceptance authority.",
+      "Input verification is a bounded snapshot of trusted owned staging, not atomic protection against arbitrary malicious host mutation.",
+      "A complete volume/keeper lineage establishes the state namespace, not database inode continuity, SQLite correctness, transaction atomicity, crash recovery, browser behavior or hidden internal obligations.",
+      "Only harness_qualification is currently admitted. A future observation/acceptance bridge needs its own versioned purpose/source/runtime registration and fresh qualification; frozen prior failures remain failures."
+    ],
+    "preservation": {
+      "meaning": "All other baseline-tracked files remain byte-identical, including frozen HTTP/finite transports, historical versions, catalog definitions and prior evidence. New files are separately pinned above.",
+      "pending_approval_boundaries": "The three pending CLI installation targets and live payload approval boundaries are neither installed nor bypassed.",
+      "pending_cli_targets_absent": {
+        "docs/candidate-client-qualification-plan-v4.md": true,
+        "tests/test_candidate_client_rejection_v4.py": true,
+        "tests/test_candidate_clients_docker_v4.py": true
+      },
+      "tracked_changes_relative_to_baseline": [
+        "pyproject.toml",
+        "verification-manifest.json"
+      ]
+    },
+    "prior_combined_gate": {
+      "classes": 11,
+      "current_input_drift": [
+        "verification-manifest.json"
+      ],
+      "discrepancies": [],
+      "documented_runner_summary_annotations": {
+        "fields": {
+          "cleanup_status": {
+            "raw": "unknown after interruption",
+            "summary": "unknown after bounded termination"
+          },
+          "reason": {
+            "raw": "worker failed before test execution",
+            "summary": "class deadline exceeded"
+          }
+        },
+        "meaning": "The pinned parent runner annotates a timed-out class after preserving and hashing its original worker result; individual test outcomes and ordered roster match.",
+        "source": "devtools/verify.py:458"
+      },
+      "duration_seconds": 183.73804658371955,
+      "fingerprint": "274375ec203b6b03d30cf3a5475d15d8ba1d2dabaf525cbde80f1c1024cbef0c",
+      "inputs": {
+        "count": 512,
+        "path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/inputs.json",
+        "sha256": "9f441ee36fa74ab685284229d54929bdf9b003c6257ef3eb65f2abc5d82e3287"
+      },
+      "interpretation": "Preserved failed engineering run: class scheduling deadline, not a candidate or product assertion failure. No first-run passes reused for the corrected gate.",
+      "jobs": [
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpControllerJournalV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/3557ca1a29d1bae4/result.json",
+          "evidence_sha256": "fefb042908cd1124448827caa89ac6cb3511c2f7309ec2243801b962291f4426",
+          "log_sha256": "44dd4b932a3ce59b78455b999c883ed2b1ef0126bb062a7c440c1e4db3b90543",
+          "status": "passed",
+          "tests": 22
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpHistoryOrchestrationV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/df8018212f947b44/result.json",
+          "evidence_sha256": "0ec3b401cf7277d43a491df8ab8032df4f18e5a5eb239ea74d77b545f765cf0a",
+          "log_sha256": "1b7fe46208ac356655ce0de8b30791f64fd57ad07a2b80e570e382b4054d20b2",
+          "status": "error",
+          "tests": 25
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpLiteralMechanicsV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/6a1a674bd4370793/result.json",
+          "evidence_sha256": "2b827a0c08b3093d7371f051df3d7389865c4b910b64842083e5573cdee907fd",
+          "log_sha256": "d89da17ff72edc663ecaed652a93c8c66d5de346a4ac82c97b1f6127808c4537",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpProbeDonorV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/16fbe4154c39cd53/result.json",
+          "evidence_sha256": "91d68dfc460d61fca4245607b62336c742b68d32ae3fff91cb9bfe939209d787",
+          "log_sha256": "bf9e25fa521dd3c3ee259662be76444d7e19e3d1697880a4067b4ae6c0066878",
+          "status": "passed",
+          "tests": 12
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpProbeLifecycleV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/d3dc0a2d7192bb35/result.json",
+          "evidence_sha256": "00c195642d8b7d081b4aa4fad3c26a5215771deed166f548f430357239ea39f8",
+          "log_sha256": "820d90e85650399261528277054bd3c11413a46348be81c88353093f55e57409",
+          "status": "passed",
+          "tests": 5
+        },
+        {
+          "class": "tests/test_candidate_http_execution_v3.py::HttpRoleProfileV3Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/176aed48036cb489/result.json",
+          "evidence_sha256": "61175cd76bad3f010171984f32a96f2759b1713814ec75244442d4477d87bec4",
+          "log_sha256": "6c8ad60529199a5ab24ca26185e3fcd168eab92a9a5d6b5d8e49171af794530a",
+          "status": "passed",
+          "tests": 11
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputDeclarationsV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/46aa2a96558518a4/result.json",
+          "evidence_sha256": "46fd5af94be6d9cf80cd57ef3d46eb4d502c63db4230f4db379e0bfe36f55b14",
+          "log_sha256": "bd2c9c9523d49de7d6c5d749e387d5ca401f2396abd340c7c558784319ec32c3",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputStagingV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/392af5e412a600a9/result.json",
+          "evidence_sha256": "7d3d71e8e7bcef6754c05e0eed427d5a176892b26d6b1a27e37a36af5cba48ab",
+          "log_sha256": "3cd4a349ac6d9feac7868fdcf8450ca5e981529126a35300036a41ff70b98ec6",
+          "status": "passed",
+          "tests": 11
+        },
+        {
+          "class": "tests/test_candidate_http_inputs_v1.py::HttpInputVerificationV1Tests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/c37e84225919aa3f/result.json",
+          "evidence_sha256": "0b4cedb0468d8f3f3ee730a69754634d7a4f8c22c061f26cd840424f8d70834d",
+          "log_sha256": "2cfa26018ea327e09090933435a3f398368caec74f7560a8c257928b293095ea",
+          "status": "passed",
+          "tests": 15
+        },
+        {
+          "class": "tests/test_candidate_http_journal_v3.py::CandidateHttpJournalV3DecodeTests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/2d2a7e3556c30f18/result.json",
+          "evidence_sha256": "557406cd13349e69494ff3b3c9470795df5d6bf054b26308cf2b52c62b6b430a",
+          "log_sha256": "79e6ad23892a9107856c36cd206a172e9091603b60fcefb092f1f52b13bf3819",
+          "status": "passed",
+          "tests": 10
+        },
+        {
+          "class": "tests/test_candidate_http_journal_v3.py::CandidateHttpJournalV3FileTests",
+          "evidence_path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/classes/136aa58ba7638095/result.json",
+          "evidence_sha256": "bef31f2d652e8f09da09294838ec14493233c6f942733fe4d774c006b6e782af",
+          "log_sha256": "f142a9b6e89097c76accb4cdb4711bee3ec852a8b99724344ec67b1873bff794",
+          "status": "passed",
+          "tests": 10
+        }
+      ],
+      "outcomes": {
+        "interrupted": 1,
+        "not_run": 11,
+        "passed": 129
+      },
+      "reused_classes": 0,
+      "runner_sha256": "acdc47d80c6f78d0381830c495027bbfdd328b03edfd62f8509e88fb085ffdb9",
+      "runtime_reconciliation": {
+        "final_sha256": "77aae34706d86d6b26f23aed90fb2c4875bee56f418ce203c80073e71e2f5199",
+        "initial_sha256": "77aae34706d86d6b26f23aed90fb2c4875bee56f418ce203c80073e71e2f5199",
+        "matches": true
+      },
+      "scheduling_correction": {
+        "class": "tests/test_candidate_http_execution_v3.py::HttpHistoryOrchestrationV3Tests",
+        "current_manifest_sha256": "e7dd5153276592a0ee0c9f206fc68f1eaec333b0733dc7212a850e3070c70b1f",
+        "new_timeout_seconds": 1800,
+        "old_timeout_seconds": 180,
+        "prior_manifest_sha256": "762b06796355d94d491ad852b1fadc308dc0be0cd1338a58698303986fd7a7ae",
+        "verification": "Reversing only timeout1800 to180 and removing the explicit timeout rationale reconstructed the prior manifest hash exactly. Production/test source and production deadlines unchanged."
+      },
+      "selected_total": 141,
+      "session": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a",
+      "stale_inputs": false,
+      "stale_runtime": false,
+      "static": {
+        "log_sha256": "16f4a179abab159577ca1e5df121eeaaf5efa4408cbbccae4e137e8a066d3c09",
+        "sha256": "0414254fce13e7dd2ae74c33c78876f71f1669ec435d5a2492d1a59fd9c31c94",
+        "source_count": 443,
+        "status": "passed",
+        "summary": {
+          "duration_seconds": 1.3066078750416636,
+          "returncode": 0,
+          "status": "passed"
+        }
+      },
+      "status": "failed",
+      "summary": {
+        "bytes": 92189,
+        "path": "runs/candidate-c03-http-v3-offline-1/20261004T001405-71a8b02a/summary.json",
+        "sha256": "263ecab40deab4dc02c0a4676baf0acd51719def54d70168eeea5cecc43e8a3c"
+      }
+    },
+    "quota_review": {
+      "cleanup_derivation": {
+        "additional_metadata_records": 10,
+        "docker_calls": 12,
+        "engine_controls": 3,
+        "max_unretired_containers": 3,
+        "retained_byte_bound": 56471552,
+        "retained_file_bound": 53
+      },
+      "cleanup_opportunity_seconds": 300,
+      "journal_bytes": 536870912,
+      "journal_files": 16384,
+      "lifetime_seconds": 7200,
+      "limits": "Bounded observation allocations; failed filesystem/checkpoint/daemon operations can still prevent retention or cleanup. No guarantee for70 simultaneous maximum-size transport captures.",
+      "normal_operation_bytes": 134217728,
+      "normal_operation_files": 256,
+      "protected_cleanup_bytes": 100663296,
+      "protected_cleanup_files": 512,
+      "record_bytes": 33554432,
+      "terminal_bytes": 1048576
+    },
+    "recorded_at": "2026-10-04T00:34:53.488315+00:00",
+    "reviewed_configuration": [
+      {
+        "bytes": 9136,
+        "path": "pyproject.toml",
+        "sha256": "afd31d1e2188b4097d40f1e882f9fd0dbdd46807db346ef8d2c6896f53a05a41"
+      },
+      {
+        "bytes": 416785,
+        "path": "verification-manifest.json",
+        "sha256": "e7dd5153276592a0ee0c9f206fc68f1eaec333b0733dc7212a850e3070c70b1f"
+      }
+    ],
+    "reviewed_scope": [
+      "Versioned executor delta: closed complete recipes and canonical typed declaration projections; registered source/runtime/purpose/fixture/limits identities; one owned volume and continuous keeper; per-epoch root/argv; exact finite CLI lineage without a second history controller.",
+      "Source, data and probe isolation; real descriptor-relative no-follow input staging with exact inventory/readlink/bytes/modes/identity checks; no candidate-host execution or expectation mounts.",
+      "No-redispatch intent barrier; removal attempts recorded before execution and not retried in final cleanup; independent finite natural-exit/capture facts; retained results precede later continuity checks.",
+      "Protected journal admission and cleanup/terminal reserves; phase-aware deadlines; full volume baseline comparisons; compact exact-once epoch/step/observation references and entered/attempted/retained/unavailable/unentered census.",
+      "All input helper tests and documentation; executor changed regression sources, complete inert capacity histories and final epoch-reference regressions; configuration only adds new typed roots and explicit isolated class registrations.",
+      "Retained root gate reconciliation, ordered worker rosters and raw outcome/hash bindings; two complete inert capacity journals independently reconstructed without importing evaluator code."
+    ],
+    "reviewed_sources": [
+      {
+        "bytes": 106310,
+        "path": "gossip_harness/candidate_http_execution_v3.py",
+        "sha256": "2378a346eed2245732f5169fec96e85352a9ea3182ad797f4d9efd10d5f56d10"
+      },
+      {
+        "bytes": 90527,
+        "path": "tests/test_candidate_http_execution_v3.py",
+        "sha256": "fc32939c3de8ac88ae06f6d00d194a9b0fb3a2e376562dadf5d0684fa5aa7316"
+      },
+      {
+        "bytes": 11207,
+        "path": "docs/candidate-c03-http-execution-v3.md",
+        "sha256": "614724e5a08428c2f5ab115071542d6cc92b1086a004d79dbe3a3317b171f2a6"
+      },
+      {
+        "bytes": 10662,
+        "path": "gossip_harness/candidate_http_inputs_v1.py",
+        "sha256": "5e1ba65028e09ea1bfd99b63e8181c243d211e2571999b662432ff72318cfe9b"
+      },
+      {
+        "bytes": 24902,
+        "path": "tests/test_candidate_http_inputs_v1.py",
+        "sha256": "7a3deea8db188e006c77951b5cd9099356b7df11e92a7dbf4aab93b224cbfc85"
+      },
+      {
+        "bytes": 5401,
+        "path": "docs/candidate-c03-http-inputs-v1.md",
+        "sha256": "4d02254948b61e0e7b74803d64bb785e6b2b13e3bae66ac9bea24e0c45fbf882"
+      },
+      {
+        "bytes": 10901,
+        "path": "gossip_harness/candidate_http_journal_v3.py",
+        "sha256": "7bcb8b7e8c3bee570a28c21dfd7ad278d0a435581ef184d2c645b61f569f988b"
+      },
+      {
+        "bytes": 11509,
+        "path": "tests/test_candidate_http_journal_v3.py",
+        "sha256": "f69c74f1de7bb08ae7932af3561140bb3ffbbfcda7ff99cfd41e3f07627549c9"
+      },
+      {
+        "bytes": 4977,
+        "path": "docs/candidate-c03-http-journal-v3.md",
+        "sha256": "2ba4e9ec536a3bac900386199edb21aaf9f3a5f6e8a5f1e4a0375eb382ff8d0a"
+      }
+    ],
+    "reviewer": "/root/b03_boundary_review",
+    "schema": "candidate-c03-http-v3-boundary-review-v1",
+    "status": "clear_with_explicit_scope_limits",
+    "unresolved_material_source_findings": [],
+    "verification_owner": "root"
+  }
+}
