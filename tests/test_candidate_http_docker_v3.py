@@ -8,8 +8,6 @@ from __future__ import annotations
 import base64
 from dataclasses import asdict
 import hashlib
-import http.client
-import io
 import json
 import os
 from pathlib import Path
@@ -27,6 +25,7 @@ from gossip_harness import candidate_http_transport_v1 as wire
 from gossip_harness.gitstore import GitStore
 from gossip_harness.library_project_fixture_v1 import RUNTIME_IMAGE
 from gossip_harness.sandbox import DockerValidator
+from tests import candidate_engine_control_framing_v1 as control_framing
 
 
 PURPOSE = "harness_qualification"
@@ -260,26 +259,18 @@ def strict_control_json(raw):
 
 
 def retained_engine_json(test, root, label):
-    """Read retained Engine response bytes only; never opens a socket."""
+    """Validate complete retained control framing, without claiming socket EOF.
+
+    Explicit Content-Length/chunk/no-body framing is independent evidence about
+    the retained message. Close-delimited content without a separate producer
+    EOF receipt stays unavailable. Operation-level EOF checks remain with their
+    existing process/start receipts and never come from the end of this file.
+    """
     raw = journal_reader.read(root / (label + "-response.bin"))
-
-    class RetainedBytes(io.BytesIO):
-        def close(self):
-            pass
-
-    stream = RetainedBytes(raw)
-
-    class RetainedSocket:
-        def makefile(self, *args, **kwargs):
-            return stream
-
-    response = http.client.HTTPResponse(RetainedSocket())
-    response.begin()
-    test.assertEqual(response.status, 200)
-    body = response.read(1024 * 1024 + 1)
-    test.assertLessEqual(len(body), 1024 * 1024)
-    test.assertEqual(stream.tell(), len(raw))
-    value = engine.strict_json_loads(body)
+    response = control_framing.decode_control_frame(raw)
+    test.assertEqual(response["status"], 200)
+    test.assertIs(response["framing_complete"], True, "Control frame completeness unavailable")
+    value = engine.strict_json_loads(response["body"])
     test.assertIs(type(value), dict)
     return value
 
@@ -946,6 +937,7 @@ class CandidateHttpMechanicsV3DockerTests(HttpV3PhysicalAssertions, unittest.Tes
             "source_sha256": execution.source_sha256(cls.files), "runtime": cls.runtime,
             "helper_sha256": wire.helper_sha256(), "evaluator_sources": execution.evaluator_sources(),
             "definition_sources": {str(Path(__file__).name): sha256(Path(__file__).read_bytes()),
+                Path(control_framing.__file__).name: sha256(Path(control_framing.__file__).read_bytes()),
                 "docs/candidate-http-mechanics-v3.md": sha256((Path(__file__).resolve().parents[1]
                     / "docs/candidate-http-mechanics-v3.md").read_bytes())},
             "policies": {key: asdict(policy_for(key)) for key in cls.controls},

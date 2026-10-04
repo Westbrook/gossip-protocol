@@ -132,7 +132,7 @@ class CandidateHttpExtensionsV3DockerTests(raw_checks.HttpV3PhysicalAssertions, 
             "source_sha256": execution.source_sha256(cls.files), "runtime": cls.runtime,
             "helper_sha256": wire.helper_sha256(), "evaluator_sources": execution.evaluator_sources(),
             "definition_sources": {Path(module.__file__).name: raw_checks.sha256(Path(module.__file__).read_bytes())
-                for module in (fixtures, raw_checks)},
+                for module in (fixtures, raw_checks, raw_checks.control_framing)},
             "control_source_sha256": raw_checks.sha256(Path(__file__).read_bytes()),
             "purpose": PURPOSE, "history_count": 5, "declared_request_count": 77,
             "mixed_http_cli_history_included": False, "complete_v3_gate": False,

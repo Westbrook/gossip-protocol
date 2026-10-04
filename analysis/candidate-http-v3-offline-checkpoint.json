@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "offline-qualified; physical HTTP qualification pending",
+  "base_commit": "b47045166fe745a45ff25be0a30b247f5ae3dd90",
+  "branch": "codex/http-v3-qualification",
+  "source_input_count": 523,
+  "verification_fingerprint": "0b8a6c8e183d5f0e3391a76044e4fc5c8b4b68a3caf6e23bcde906a6c79c5812",
+  "fresh_offline": {
+    "passed": 60,
+    "classes": 8,
+    "reused_classes": 0,
+    "summary": "/private/tmp/gossip-http-v3-integrated-offline-1/verification/20261004T023730-f43e6b3a/summary.json",
+    "sha256": "263f30ad7e03cf179a25a30a90f1719a2f6a3cec26a62167f71d9e496b9c42dc"
+  },
+  "installed_reconciliation": {
+    "fresh_static": "passed",
+    "fresh_test_classes": 0,
+    "reused_classes": 8,
+    "test_outcomes": {
+      "passed": 60
+    },
+    "summary": "/private/tmp/gossip-http-v3-integrated-offline-1/verification/20261004T025410-06ccf791/summary.json",
+    "sha256": "ea83a7c9f5325e9dec96a4dcb63d3603e610c3bc5032f93752b4207b9d74b68a",
+    "source_runtime_unchanged": true,
+    "purpose": "Offline assertion qualification only; not acceptance or repeatability."
+  },
+  "preserved_failure": {
+    "session": "20261004T023426-8b174623",
+    "passed": 11,
+    "errors": 1,
+    "not_run": 48,
+    "cause": "Offline RoleSpec fixture used noncanonical /tmp bind paths on macOS. Production correctly rejected them.",
+    "repair": "Resolve only the two fixture source paths; production and physical recipes unchanged.",
+    "original_source_retained": true
+  },
+  "independent_offline_audit": {
+    "path": "runs/http-v3-qualification-publication-1/isolated-evidence/gossip-http-v3-isolated-offline-review-1.json",
+    "original_path": "/tmp/gossip-http-v3-isolated-offline-review-1.json",
+    "sha256": "0ea411e608b41f8f02036113e463bba1d6d081907ed3a1af3c291291fa0f93f1"
+  },
+  "prospective_physical": {
+    "methods": 20,
+    "classes": 4,
+    "executed_for_this_batch": 0,
+    "census_path": "runs/http-v3-qualification-publication-1/prospective-physical-census.json",
+    "census_sha256": "17a87463e1c4d7c85ca4e9fc48300e26a177fbfd3b75c516c277795ea35bd07f",
+    "declared_http_requests": 155,
+    "declared_cli_operations": 34,
+    "actual_counts": null,
+    "counts_are_conditional_declarations": true
+  },
+  "limits": [
+    "No provider calls or new comparative model-quality evidence.",
+    "CLI bulk source remains frozen separately at b470451.",
+    "No HTTP physical pass, independent product acceptance, repeatability,20-node quality result, or statistical-superiority claim.",
+    "Static typing remains incremental with117 historical baseline diagnostics.",
+    "Raw receipts remain locally retained; paths preserve original execution provenance and are not portable download URLs."
+  ]
+}

@@ -4639,6 +4639,80 @@
       "boundary": "Installed trusted fake-I/O qualification only; no Engine, generated candidate module execution or provider calls. Does not establish physical rejection or independent acceptance.",
       "disposition": "Root freezes all v4 source, policy, runtime and control identities; combined static/affected fast gate precedes fresh persistence history plus11controls. Remaining56histories run only after terminal phase-one success. Preserve failed v1/v2/v3 and never retry unchanged until green.",
       "overlap_reason": "No reuse of physical observations as independent acceptance. Different classes cover separate frozen portions of the same finite qualification contract."
+    },
+    "tests/test_candidate_http_mixed_v3.py::CandidateHttpMixedV3DockerTests": {
+      "lane": "docker",
+      "weight": 3,
+      "timeout_seconds": 10800,
+      "invariant": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "isolation": "One serial class worker; fresh isolated Git source, journal, owned database volume, keeper, candidate processes and network-scoped probes; account for nested container use.",
+      "overlap": "New tests qualify the mixed-interface assertions and failure-boundary evidence; preserve the existing HTTP base, extension and finite CLI rosters.",
+      "distinct_defect": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "These cross-interface and actual continuity faults are not established by HTTP-only or finite-CLI checks in isolation.",
+      "timeout_rationale": "Prospective class resource limit only. The full mixed history keeps its 7200-second policy; no measured runtime guarantee or changed execution deadline."
+    },
+    "tests/test_candidate_http_mixed_v3.py::CandidateHttpMixedV3DeclarationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "isolation": "One isolated class worker using declarations, inert source AST and supplied transcripts only; no fixture, Engine, provider or candidate execution.",
+      "overlap": "New tests qualify the mixed-interface assertions and failure-boundary evidence; preserve the existing HTTP base, extension and finite CLI rosters.",
+      "distinct_defect": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "These cross-interface and actual continuity faults are not established by HTTP-only or finite-CLI checks in isolation."
+    },
+    "tests/test_candidate_http_mixed_v3.py::CandidateHttpMixedV3TranscriptTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "isolation": "One isolated class worker using declarations, inert source AST and supplied transcripts only; no fixture, Engine, provider or candidate execution.",
+      "overlap": "New tests qualify the mixed-interface assertions and failure-boundary evidence; preserve the existing HTTP base, extension and finite CLI rosters.",
+      "distinct_defect": "Preserve the complete 87-step, 54-HTTP, 29-CLI, two-server-epoch history and independently authenticate SQLite state continuity across both interface transitions.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "These cross-interface and actual continuity faults are not established by HTTP-only or finite-CLI checks in isolation."
+    },
+    "tests/test_candidate_http_continuity_v3.py::CandidateHttpContinuityV3DockerTests": {
+      "lane": "docker",
+      "weight": 3,
+      "timeout_seconds": 7200,
+      "invariant": "Exercise actual wrong CLI volume/profile, stopped or replaced keeper, and observation-retention failure after real CLI completion; preserve prior facts and prevent dependent dispatch.",
+      "isolation": "One serial class worker; fresh isolated Git source, journal, owned database volume, keeper, candidate processes and network-scoped probes; account for nested container use.",
+      "overlap": "New tests qualify the mixed-interface assertions and failure-boundary evidence; preserve the existing HTTP base, extension and finite CLI rosters.",
+      "distinct_defect": "Exercise actual wrong CLI volume/profile, stopped or replaced keeper, and observation-retention failure after real CLI completion; preserve prior facts and prevent dependent dispatch.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "These cross-interface and actual continuity faults are not established by HTTP-only or finite-CLI checks in isolation.",
+      "timeout_rationale": "Prospective class resource limit for all five controls, each retaining its 900-second history policy and protected cleanup; no measured runtime guarantee or changed execution deadline."
+    },
+    "tests/test_candidate_http_continuity_v3.py::CandidateHttpContinuityV3DefinitionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exercise actual wrong CLI volume/profile, stopped or replaced keeper, and observation-retention failure after real CLI completion; preserve prior facts and prevent dependent dispatch.",
+      "isolation": "One isolated class worker using declarations, inert source AST and supplied transcripts only; no fixture, Engine, provider or candidate execution.",
+      "overlap": "New tests qualify the mixed-interface assertions and failure-boundary evidence; preserve the existing HTTP base, extension and finite CLI rosters.",
+      "distinct_defect": "Exercise actual wrong CLI volume/profile, stopped or replaced keeper, and observation-retention failure after real CLI completion; preserve prior facts and prevent dependent dispatch.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "These cross-interface and actual continuity faults are not established by HTTP-only or finite-CLI checks in isolation."
+    },
+    "tests/test_candidate_engine_control_framing_v1.py::CandidateEngineControlFramingTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Strict independent Engine control framing rejects incomplete Content-Length, duplicate or ambiguous headers, malformed chunks and trailing bytes while keeping message completeness separate from observed socket EOF.",
+      "isolation": "One isolated class worker using declarations, inert source AST and supplied transcripts only; no fixture, Engine, provider or candidate execution.",
+      "overlap": "New supplied-byte regressions include the actual shared retained-Engine reader used by base, extension, mixed and continuity qualification groups.",
+      "distinct_defect": "A complete retained JSON value or file end cannot establish complete declared HTTP framing or socket EOF; close-delimited messages require independently observed EOF.",
+      "boundary": "Harness mechanics only; no product correctness, independent final acceptance, repeatability or comparative agent-quality credit. Supplied negative transcripts are not physical observations.",
+      "disposition": "Root installs after the active frozen finite-CLI batch is terminal; pass combined static/offline checks and coherent independent review, then freeze the entire 20-method HTTP physical roster and prerequisites before dispatch. Preserve first outcomes, unavailable evidence and unexecuted suffixes.",
+      "overlap_reason": "The inherited HTTPResponse.read(size) reader could admit shorter-than-declared bodies and ambiguous framing; actual shared-reader negatives are required before physical qualification."
     }
   },
   "audit": {

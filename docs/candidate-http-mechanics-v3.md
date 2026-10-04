@@ -19,14 +19,23 @@ The complete v3 gate retains every group in the reviewed mechanics design:
 | Full mixed history | The intact 87-step `HTTP-PERSIST-LISTENER/http-cli-http-same-db` history, including all 29 finite CLI operations and both server epochs, with independent state readback across interfaces. |
 | New continuity faults | The required real CLI-role/volume and keeper-continuity controls, plus retention failure around a real transport result, preserving prior facts and preventing dependent dispatch. |
 
-Current new files prepare the HTTP-only groups. They do not substitute for the
-mixed history or its predecessor finite-CLI qualification. The three reviewed
-v4 CLI test/helper/document files are now installed through an approved root-owned
-action. The installed batch passed 190 offline checks and its first physical
-stage: one persistence history plus all 11 controls. Its independent retained-evidence audit
-is clear for that first stage, and the other 56 finite histories are running
-as separate required coverage. These results do not substitute for the full
-mixed HTTP/CLI history or the new composition continuity controls.
+The complete physical roster now has prepared sources for every group above:
+20 methods across base, extension, mixed and continuity classes. The combined
+preparation has 60 offline methods across eight classes. A shared strict Engine
+control-frame decoder rejects incomplete declared bodies, duplicate or ambiguous
+framing, malformed chunks and trailing bytes; framed-message completeness does
+not establish socket EOF. The C05 retention-fault control independently requires
+successful keeper/volume continuity and finite-process retirement before the sole
+injected row-retention failure. Earlier draft versions and review findings remain
+retained. These sources require coherent static/offline qualification and a fresh
+complete physical freeze before dispatch.
+
+The finite v4 prerequisite has passed its installed 190-check offline batch and
+first physical stage (persistence plus all 11 controls), with a clear independent
+audit. The separate 56-history bulk run remains required; its six-history legacy
+class has also passed independent raw and semantic audit. Jobs, rejections and
+combined reconciliation are still in progress. This preparation does not claim
+complete CLI, HTTP, product or comparative-agent qualification.
 
 Freeze the complete physical roster, fixture bytes, ordered recipes, source
 identities, image/runtime, limits, expected classifications, process counts and
