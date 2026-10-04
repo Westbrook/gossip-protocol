@@ -1,0 +1,104 @@
+{
+  "protocol": "product-process-physical-preliminary-checkpoint-v1",
+  "status": "corrected_attempt_running_at_publication",
+  "base_commit": "46cf850d53df6e5dd4b0decfd9711c719b388805",
+  "test_source": {
+    "path": "tests/test_candidate_product_process_docker_v1.py",
+    "sha256": "69190508d65c225d3eafd9b390a77dbe61934cb097f8cc68b7edd4eee9d40a9e",
+    "bytes": 36319
+  },
+  "manifest": {
+    "path": "verification-manifest.json",
+    "sha256": "8fef4eb72cad0999909d002c6e1eaeddd2b285630ae0336d111e21ca668b3302",
+    "bytes": 516147
+  },
+  "planned": {
+    "reference_histories": 8,
+    "defect_histories": 4,
+    "total_actions": 219,
+    "lifetime_seconds": 1800,
+    "cleanup_reserve_seconds_inside_lifetime": 300,
+    "class_timeout_seconds": 2400,
+    "resource_budget": 3,
+    "sequential_classes": 12
+  },
+  "prospective_census": {
+    "path": "runs/product-process-physical-v1-retention-1/prospective-census.json",
+    "sha256": "26ce5645128b5abbeabee0b60d751c366477c0250a5e4cef6a16102cc142c0ee",
+    "bytes": 6351
+  },
+  "candidate_variants": {
+    "path": "runs/product-process-physical-v1-retention-1/prospective-candidates.json",
+    "sha256": "f428700ce956a25789e0e026d6b3dfea3d9e8d31a53b329ec17cf05ebb1d9f96",
+    "bytes": 133199
+  },
+  "preflight": {
+    "path": "runs/product-process-physical-v1-retention-1/preflight.json",
+    "sha256": "20c91ed57d8f4b82ac52942eedd0be862d854e3608b3de7fc62d57d90924e198",
+    "bytes": 889
+  },
+  "initial_static": {
+    "path": "runs/product-process-physical-v1-retention-1/static-preflight.json",
+    "sha256": "622d4bc1b8535fcbc1a5b5f0c85f7fc90167972487b2061aee43bbf3f1e7380d",
+    "bytes": 86741
+  },
+  "first_attempt": {
+    "summary": {
+      "path": "runs/product-process-physical-v1-qualification-1/20261004T091945-7fef6daf/summary.json",
+      "sha256": "2edfb79dc62ea270aef16ef441013a86a701ea22504c4183fdf96154f1969f91",
+      "bytes": 14177
+    },
+    "independent_audit": {
+      "path": "runs/product-process-physical-v1-retention-1/attempt-1-independent-audit.json",
+      "sha256": "64432dbc3d9914f7d89a22a301232e70c94e013fca44130e9026b31ce283f39e",
+      "bytes": 18405
+    },
+    "outcomes": {
+      "error": 1,
+      "not_run": 11
+    },
+    "candidate_actions": 0,
+    "candidate_resources_created": 0,
+    "candidate_cleanup_verdict": null,
+    "cause": "Test incorrectly used ExternalHead directly as a context manager. Failure preceded CandidateHttpExecution construction.",
+    "original_test_source": {
+      "path": "runs/product-process-physical-v1-retention-1/authored-test-source.py",
+      "sha256": "0b8d8f97e894943fd71117ac7ab39b14f1af1a188219c4a7f2fc9ab0f6f569f7",
+      "bytes": 36279
+    }
+  },
+  "correction": {
+    "scope": "Only contextlib.closing import and wrapper around ExternalHead.create. No changed candidate, action, expected facet, deadline or evaluator.",
+    "actual_owner_lifetime_control": {
+      "path": "runs/product-process-physical-v1-retention-1/context-fix-proof.json",
+      "sha256": "c0eb5fcd9994fda48b5aef6d5c45968751316a39dd2b1e059e4f6e57ee4a123e",
+      "bytes": 383
+    }
+  },
+  "active_attempt": {
+    "session": "runs/product-process-physical-v1-qualification-2/20261004T092236-3acddb2d",
+    "exec_session": 78689,
+    "state_at_checkpoint": "running_first_history_no_terminal_class_verdict",
+    "terminal_outcome_not_yet_claimed": true,
+    "inputs": {
+      "path": "runs/product-process-physical-v1-qualification-2/20261004T092236-3acddb2d/inputs.json",
+      "sha256": "8b9bb561ab65697f8b3d4bed6b7d0999b8b25c977099dad9373362fea94cbd10",
+      "bytes": 68805
+    },
+    "static": {
+      "path": "runs/product-process-physical-v1-qualification-2/20261004T092236-3acddb2d/static.json",
+      "sha256": "805d90570ac525a7bc4ea0eaabca9369f2641f1b895ebf0dcd08f7024be7d6e6",
+      "bytes": 86729
+    }
+  },
+  "scope": "Authored reference and deliberately defective candidate fixtures with synthetic public-purpose registration. These controls qualify evaluator behavior, not full product acceptance or comparative agent quality.",
+  "new_comparative_quality_samples": 0,
+  "provider_calls": 0,
+  "remaining": [
+    "Finish or preserve bounded terminal outcome of corrected physical attempt.",
+    "Independently audit original actions, exact expected defects, source/runtime and owned cleanup.",
+    "Integrate separately verified original-evidence readers after active source freeze ends.",
+    "Finish complete acceptance, product scope and matching rehearsal before larger live comparison."
+  ],
+  "goal_complete": false
+}

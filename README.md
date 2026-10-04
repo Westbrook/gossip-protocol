@@ -1258,6 +1258,13 @@ reviewed full scope, matching complete rehearsal and larger live comparison
 remain required. Held-out confirmation and the separate placement-by-transport
 study remain part of the investigation.
 
+The [twelve physical product controls](docs/product-process-physical-controls-v1.md)
+are now installed and running against authored reference/defect fixtures. The
+[first attempt and correction](analysis/product-process-physical-preliminary-checkpoint-v1.json)
+are retained: a test lifetime API mismatch stopped before candidate execution.
+The corrected attempt is still pending; no physical pass or new agent-quality
+sample is claimed by this preliminary checkpoint.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
