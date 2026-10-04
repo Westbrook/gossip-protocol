@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "status": "original finite CLI harness qualification complete",
+  "purpose": "harness_qualification",
+  "tested_source_commit": "b47045166fe745a45ff25be0a30b247f5ae3dd90",
+  "next_http_source_commit": "e8220a3a53a84681ed2b4fa2e71b4e7816dbc9bc",
+  "original_freeze": {
+    "path": "runs/candidate-b03-v4-definition-freeze-1/freeze.json",
+    "sha256": "2d414097f4b9938b5fa2a2796c13ca086b417d97db72f1d3cbc6897d6d90c271"
+  },
+  "bulk": {
+    "run": "runs/candidate-b03-v4-bulk-qualification-1/20261004T013840-7ab73625",
+    "summary_sha256": "e291c012dd326e23c18b93082eb095d277bc74c2f3fe60277d1b6bf4f40c3c85",
+    "fresh_classes": 3,
+    "reused_classes": 0,
+    "histories": 56,
+    "commands": 296,
+    "elapsed_seconds": 5169.043240833096,
+    "assertions": {
+      "cells": 873,
+      "false": 0,
+      "observed_match_histories": 32,
+      "partial_observation_histories": 24,
+      "supported_true": 843,
+      "unavailable": 0,
+      "unspecified_null": 30
+    }
+  },
+  "complete_reference_census": {
+    "assertion_cells": 900,
+    "commands": 305,
+    "false": 0,
+    "histories": 57,
+    "observed_match_histories": 32,
+    "partial_observation_histories": 25,
+    "supported_true": 868,
+    "unavailable": 0,
+    "unspecified_null": 32
+  },
+  "controls_qualified": 11,
+  "physical_counts": {
+    "actually_killed_started_candidates": 1,
+    "bulk_commands": 296,
+    "bulk_histories": 56,
+    "candidate_attempts": 316,
+    "candidate_starts": 315,
+    "containers_created": 383,
+    "control_histories": 11,
+    "control_kill_flags": 2,
+    "holders": 67,
+    "natural_candidate_completions": 314,
+    "reference_commands": 305,
+    "reference_false": 0,
+    "reference_histories": 57,
+    "reference_supported_true": 868,
+    "reference_unavailable": 0,
+    "reference_unspecified_null": 32,
+    "rejected_start_candidate_exit": null,
+    "volumes_created": 68
+  },
+  "independent_audit": {
+    "path": "runs/candidate-b03-v4-bulk-final-audit-retention-1/independent-audit/final-audit.json",
+    "sha256": "2af3146d8886e6b2572dca262933b05aa8d169cad6e43583dae352be426aa4a5",
+    "status": "clear",
+    "discrepancies": [],
+    "component_reports": {
+      "full_run_reconciliation": {
+        "sha256": "f7bb646a6acaaa5a0f783b47bb063548e4c0e1a6077787a03c85abb5e243eff7",
+        "bytes": 879198
+      },
+      "jobs_runtime": {
+        "sha256": "13be381d9d30ed8b7857cca5305ff5e496ba6f8b6c4348e8eaa0a62a4b2fc4fc",
+        "bytes": 65932
+      },
+      "jobs_semantics": {
+        "sha256": "9248ce113376ddc7fdd7bef51ceaf180dadd0ed226a6e8650e7b64919eac5254",
+        "bytes": 4825
+      },
+      "rejection_runtime": {
+        "sha256": "3dd32f6a0fba87aaf24d5adca979e6e61e3170ac8b7ef583e712c20848c0c2a8",
+        "bytes": 72323
+      },
+      "rejection_semantics": {
+        "sha256": "9710a7d349c154f2bdf34179e5eb5752e5dcd630d82db871d3999f3ff59655fe",
+        "bytes": 3780
+      },
+      "reused_legacy": {
+        "sha256": "d706073be01cbdea9c3086be615aaf6995aec4fdb26ec4762ce91f36ff880bd0",
+        "bytes": 13298
+      },
+      "reused_stage_one": {
+        "sha256": "ef62094485eff61a1c84a2f205cf70b3046914354c0c20dce0f62b084957bfed",
+        "bytes": 14713
+      }
+    },
+    "reuse": "Exact prior stage-one and legacy audits reused; jobs/rejection raw and semantic audits are new. No physical reruns."
+  },
+  "retention": {
+    "path": "runs/candidate-b03-v4-bulk-final-audit-retention-1/receipt.json",
+    "sha256": "d153f2af93929c0548d8b7d0ab6c7ca1fbae0832c0382ca7ea1c9ca7e5cfd5e8",
+    "inventory_entries": 145,
+    "audit_and_related_files": 146,
+    "terminal_record_receipt": "runs/candidate-b03-v4-bulk-terminal-retention-1/receipt.json",
+    "terminal_record_sha256": "ec8ea18c814884b9d9e392be66b20b42d5a51f761c813e20a7543d6cba92e290",
+    "terminal_files": 73
+  },
+  "preserved_auditor_corrections": [
+    {
+      "component": "full_run_reconciliation",
+      "correction": "Auditor initially expected an empty list for stale_inputs; the pinned runner schema uses boolean false. Corrected to require exact false for stale_inputs and stale_runtime. All file pins, runtime identities and other checks already matched. Only read-only reconciliation repeated."
+    },
+    {
+      "component": "rejection_runtime",
+      "correction": "A reconciliation loop variable shadowed its digest helper. Corrected in a versioned reconciliation script; no per-history raw audit or physical execution repeated."
+    },
+    {
+      "component": "rejection_semantics",
+      "correction": "Counter addition dropped zero-valued keys from a summary. Recounted retained independently decoded step cells, retained explicit zeros and rechecked all consumed input hashes; no raw process decode or physical execution repeated."
+    },
+    {
+      "component": "jobs_runtime_and_semantics",
+      "correction": null
+    },
+    {
+      "component": "reused_stage_one_and_legacy",
+      "correction": "Exact prior receipts and their complete retained inventories authenticated. Their earlier auditor-only failures/corrections remain linked in those receipts; no raw audit or physical repetition."
+    }
+  ],
+  "source_reconciliation": {
+    "historical_runner_inputs": 518,
+    "contract_sources": 19,
+    "reference_sources": 41,
+    "current_http_inputs": 523,
+    "current_http_input_map_equals_offline_qualified_snapshot": true,
+    "historical_source_verified_before_fast_forward": true
+  },
+  "next_action": "Freeze and execute the complete20-method HTTP mechanics roster using current qualified source and exact prerequisite evidence. Preserve first outcomes and all unavailable/unexecuted suffixes.",
+  "limits": [
+    "This closes only the original frozen finite CLI harness qualification, with the same source, runtime, purpose, ordered histories, limits and controls.",
+    "Thirty-two full-reference assertion cells remain unspecified. Their null values are not passes or failures, and partial histories are explicitly separated.",
+    "11controls exercise the evidence pipeline; their authored control verdicts remain separate from registered provider-case product observations. Intentional failures and unavailable observations are preserved.",
+    "315candidate starts and314natural completions include controls; one hung candidate was actually killed. The other kill flag records a defensive request after a never-started container; daemon exit bookkeeping127 is not a candidate exit.",
+    "Retained socket EOF and timing are source-bound controller observations, not independent external attestation. Cleanup is authenticated through exact identity/removal/absence artifacts, without a new Engine census.",
+    "No candidate, test, Docker/Engine/provider execution or physical retry occurred during this audit. Prior exact stage-one and legacy audit evidence was reused; new jobs/rejection raw and semantic evidence was independently audited.",
+    "No fullproduct acceptance, production admission, B03closure, independent repeatability trial, comparative statistical sample or swarm-quality conclusion is established.",
+    "Recorded durations describe these qualification sessions and concurrent classes; they are not an approach performance comparison.",
+    "Elapsed time measures local qualification work; it is not an agent coding-speed comparison.",
+    "Raw retained records remain local. This publication is a checkpoint and provenance map, not a raw-evidence download bundle."
+  ],
+  "new_provider_calls": 0,
+  "new_comparative_samples": 0,
+  "product_acceptance_claimed": false
+}
