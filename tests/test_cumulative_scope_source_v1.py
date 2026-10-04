@@ -1,10 +1,11 @@
 """Source declarations only; no semantic approval or candidate execution."""
-from dataclasses import replace
+from dataclasses import asdict, replace
 import json
 from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from typing import Any, cast
 
 from gossip_harness import candidate_client_execution_v5 as cli
 from gossip_harness import candidate_cli_cases_v1 as cli_cases
@@ -32,10 +33,10 @@ def cli_registration(case_id='cli-empty', *, purpose='public_release'):
         cli.gate_for(subject, binding, gate_id='cli-' + case_id), COHORT)
 
 
-def http_registration(case_id='HTTP-EMPTY-HEALTH/health', *, purpose='public_release'):
+def http_registration(case_id='HTTP-EMPTY-HEALTH/health', *, purpose='public_release', mapping_profile=None):
     case = next(row for row in http_cases.definitions() if row.row_id == case_id)
     profile = http.HttpProductProfile(case, profiles.ORIGINAL_DEFINITION_PURPOSE,
-                                     profiles.http_profile(case_id, purpose=purpose))
+                                     profiles.http_profile(case_id, purpose=purpose), mapping_profile=mapping_profile)
     policy = http.HttpPolicy('sha256:' + 'a' * 64)
     binding = http.binding_for(FILES, http.recipe_from_case(case), policy,
         {'kind': 'host-only-registration-fixture'}, requirements_sha256=compiler.PRODUCT_V2_SHA256,
@@ -48,10 +49,10 @@ def http_registration(case_id='HTTP-EMPTY-HEALTH/health', *, purpose='public_rel
     return http.HttpRegistration(binding, 'a' * 40, 'b' * 40, 'fresh-fixture-1', observed), profile, policy
 
 
-def product_registration(case_id='process-worker-explicit-enrollment-order', *, purpose='public_release'):
+def product_registration(case_id='process-worker-explicit-enrollment-order', *, purpose='public_release', mapping_profile=None):
     from gossip_harness import candidate_product_process_core_v1 as core
     from gossip_harness import candidate_product_process_execution_v1 as execution
-    profile = execution.HttpProductProfile(core.case_definition(case_id), core.ORIGINAL_DEFINITION_PURPOSE)
+    profile = execution.HttpProductProfile(core.case_definition(case_id), core.ORIGINAL_DEFINITION_PURPOSE, mapping_profile=mapping_profile)
     policy = execution.HttpPolicy('sha256:' + 'a' * 64)
     binding = execution.binding_for(FILES, execution.recipe_from_case(profile.case), policy,
         {'kind': 'host-only-registration-fixture'}, requirements_sha256=compiler.PRODUCT_V2_SHA256,
@@ -61,6 +62,12 @@ def product_registration(case_id='process-worker-explicit-enrollment-order', *, 
     observed = execution.observation_registration_for(binding, profile, policy, subject=subject,
         gate_id=case_id, commit_oid='a' * 40, tree_oid='b' * 40, repetition_id='fresh-fixture-1', cohort_trajectory_ids=COHORT)
     return execution.HttpRegistration(binding, 'a' * 40, 'b' * 40, 'fresh-fixture-1', observed), profile, policy
+
+
+def map_a_registration(registration):
+    factory = http_registration if type(registration[1]) is http.HttpProductProfile else product_registration
+    return factory(registration[1].case.row_id, purpose=registration[0].binding.purpose,
+                   mapping_profile=source.MAP_A_MAPPING)
 
 
 class CumulativeScopeSourceV1Tests(unittest.TestCase):
@@ -331,3 +338,205 @@ class CumulativeScopeSourceV1Tests(unittest.TestCase):
                     continue
                 step = profile.case.steps[int(claim.observation_pointer.split('/')[2])]
                 self.assertTrue(step.request.target == '/api/jobs/subject/prepare' or step.expectation.semantic.shape == 'error')
+
+
+    def test_map_a_removes_only_eleven_discovery_shape_claims(self):
+        removed = 0
+        for name in sorted(source._MAP_A_DISCOVERY_FAILURES):
+            registration = http_registration(name)
+            old = source.http_slice(*registration)
+            new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+            self.assertEqual(old.gate.ordered_case_ids, new.gate.ordered_case_ids)
+            self.assertNotEqual(old.gate.binding, new.gate.binding)
+            self.assertEqual(old.selectors, new.selectors)
+            old_shape = {row.observation_pointer for row in old.assertions if row.obligation_id == 'm1:M1-I30'}
+            new_shape = {row.observation_pointer for row in new.assertions if row.obligation_id == 'm1:M1-I30'}
+            self.assertEqual(len(old_shape - new_shape), 1)
+            removed += len(old_shape - new_shape)
+            for pointer in old_shape - new_shape:
+                step = registration[1].case.steps[int(pointer.split('/')[2])]
+                self.assertEqual(step.request.method, 'POST')
+                self.assertEqual(step.request.target, '/api/jobs')
+                self.assertEqual(step.expectation.semantic.shape, 'error')
+                self.assertTrue(any(row.observation_pointer == pointer and row.obligation_id == 'm1:M1-HTTP-02' for row in new.assertions))
+        self.assertEqual(removed, 11)
+
+    def test_map_a_jobs_errors_gain_route_credit_without_wrapper_credit(self):
+        registration = http_registration('HTTP-POST-SHAPES/commit-missing-epoch')
+        old = source.http_slice(*registration)
+        new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        old_negative = [row for row in old.assertions if row.obligation_id == 'm1:M1-HTTP-01' and row.assertion.kind == 'negative']
+        new_negative = [row for row in new.assertions if row.obligation_id == 'm1:M1-HTTP-01' and row.assertion.kind == 'negative']
+        self.assertFalse(old_negative)
+        self.assertTrue(new_negative)
+        self.assertTrue(all('unspecified successful wrappers' in row.rationale for row in new_negative))
+        self.assertEqual(old.gate.ordered_case_ids, new.gate.ordered_case_ids)
+        self.assertNotEqual(old.gate.binding, new.gate.binding)
+        self.assertEqual(old.selectors, new.selectors)
+
+    def test_map_a_health_successor_is_explicit_but_not_compatibility_approval(self):
+        registration = http_registration()
+        old = source.http_slice(*registration)
+        new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        source.verify_slice(new)
+        claims = [row for row in new.assertions if row.obligation_id == 'M4-API-SCHEMA:clause:2']
+        self.assertEqual(len(claims), 1)
+        self.assertFalse(any(row.obligation_id.startswith('M4-') for row in old.assertions))
+        self.assertIn('M1-GATE-HTTP', {lane for row in new.assertions for lane in row.assertion.logical_gate_ids})
+        self.assertTrue(all('schema4 successor' in row.rationale for row in claims))
+        self.assertIn('M4-API-SCHEMA', new.gate.requirement_ids)
+        self.assertNotIn('M4-API-SCHEMA', old.gate.requirement_ids)
+        declaration = source.assemble_declaration(self.catalog, synthetic_declaration(self.catalog.inventory).cohort,
+            (new,), review_sha256='d' * 64)
+        self.assertEqual(len(declaration.obligations), 312)
+        self.assertFalse(declaration.compatibility)
+        self.assertIsNone(compiler.compile_design(self.catalog.inventory, declaration, new.gate.binding.subject).registry)
+
+    def test_map_a_exact_path_boundaries_keep_all_other_diagnostics(self):
+        for name in sorted(source._MAP_A_PATH_BOUNDARIES):
+            registration = http_registration(name)
+            old = source.http_slice(*registration)
+            new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+            claims = [row for row in new.assertions if row.obligation_id == 'm1:M1-I31']
+            self.assertTrue(claims)
+            self.assertTrue(all(row.assertion.kind == 'boundary' for row in claims))
+            self.assertEqual(old.gate.ordered_case_ids, new.gate.ordered_case_ids)
+            self.assertNotEqual(old.gate.binding, new.gate.binding)
+            self.assertEqual(old.selectors, new.selectors)
+        ordinary = source.http_slice(*http_registration('HTTP-ROOT-PATH/directory-traversal', mapping_profile=source.MAP_A_MAPPING))
+        self.assertTrue(all(row.assertion.kind == 'negative' for row in ordinary.assertions if row.obligation_id == 'm1:M1-I31'))
+
+    def test_map_a_preserves_exact_65536_edge_and_full_history(self):
+        registration = http_registration('HTTP-BODY-WIRE/raw-bytes-65536')
+        old = source.http_slice(*registration)
+        new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        before = [(r.case_id, r.observation_pointer, r.rationale) for r in old.assertions if r.obligation_id == 'm1:V0-HTTP-03']
+        after = [(r.case_id, r.observation_pointer, r.rationale) for r in new.assertions if r.obligation_id == 'm1:V0-HTTP-03']
+        self.assertEqual(before, after)
+        self.assertTrue(after)
+        self.assertEqual(old.gate.ordered_case_ids, new.gate.ordered_case_ids)
+        self.assertNotEqual(old.gate.binding, new.gate.binding)
+        self.assertEqual(old.selectors, new.selectors)
+        self.assertEqual(old.definition_sha256, new.definition_sha256)
+
+    def test_map_a_restore_selectors_keep_five_distinct_meanings(self):
+        registration = product_registration('process-backup-restore-fences-edits-and-removed-id')
+        old = source.product_process_slice(*registration)
+        new = source.product_process_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        source.verify_slice(new)
+        claims = {int(r.observation_pointer.split('/')[2]): r for r in new.assertions if r.obligation_id == 'M3-BACKUP-RESTORE:clause:4'}
+        self.assertEqual(set(claims), {10, 11, 12, 16, 18})
+        for index, meaning in ((10, 'list alone'), (11, 'not_found'), (12, 'stale_version'), (16, 'edit_version3'), (18, 'edit_version2')):
+            self.assertIn(meaning, claims[index].rationale)
+        token_claims = {int(r.observation_pointer.split('/')[2]) for r in new.assertions if r.obligation_id == 'M2-IDENTITY-REVISIONS:clause:2'}
+        self.assertEqual(token_claims, {12, 16, 18})
+        self.assertFalse(any(r.observation_pointer.startswith('/diagnostics/17/') for r in new.assertions))
+        self.assertEqual(old.gate.ordered_case_ids, new.gate.ordered_case_ids)
+        self.assertNotEqual(old.gate.binding, new.gate.binding)
+        self.assertEqual(old.selectors, new.selectors)
+        self.assertEqual(old.definition_sha256, new.definition_sha256)
+
+    def test_map_a_diagnostics_outer_keys_are_separate_from_values(self):
+        from gossip_harness import candidate_product_process_observation_v1 as observation
+        registration = product_registration()
+        new = source.product_process_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        catalog = observation.selector_catalog(new.history_id, purpose='public_release')
+        facets = {row['observation_pointer']: row['facet'] for row in catalog['selectors']}
+        keys = [r for r in new.assertions if facets[r.observation_pointer] == 'json_outer_keys']
+        self.assertEqual({r.obligation_id for r in keys}, {'M3-DIAGNOSTICS:clause:0'})
+        self.assertEqual({int(r.observation_pointer.split('/')[2]) for r in keys}, {8, 22})
+        self.assertTrue(all('separately selected' in r.rationale for r in keys))
+        self.assertFalse(any(facets[r.observation_pointer] in ('status', 'exit_status', 'json_syntax') for r in new.assertions))
+
+    def test_map_a_omitted_associations_are_prospectively_registered(self):
+        registration = product_registration('process-backup-restore-fences-edits-and-removed-id')
+        new = source.product_process_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        diagnostics = [r for r in new.assertions if r.obligation_id.startswith('M3-DIAGNOSTICS:')]
+        self.assertTrue(diagnostics)
+        self.assertEqual({int(r.observation_pointer.split('/')[2]) for r in diagnostics}, {14})
+        interfaces = [r for r in new.assertions if r.obligation_id == 'M3-INTERFACES:clause:0']
+        self.assertTrue(interfaces)
+        self.assertIn('M3-DIAGNOSTICS', new.gate.requirement_ids)
+        self.assertIn('M3-INTERFACES', new.gate.requirement_ids)
+        self.assertTrue(new.remaining_coverage)
+
+    def test_map_a_closed_profile_roundtrip_and_tamper_rejection(self):
+        registration = http_registration()
+        old = source.http_slice(*registration)
+        new = source.http_slice(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+        self.assertNotIn('mapping_profile', json.loads(old.factory_input_json))
+        self.assertEqual(json.loads(new.factory_input_json)['mapping_profile'], source.MAP_A_MAPPING)
+        self.assertNotEqual(old.sha256, new.sha256)
+        source.verify_slice(old)
+        source.verify_slice(new)
+        for profile in ('caller-claims-approval', True, ''):
+            with self.assertRaises(source.ScopeSourceError):
+                source.http_slice(*registration, mapping_profile=cast(Any, profile))
+        record = json.loads(new.factory_input_json)
+        del record['mapping_profile']
+        with self.assertRaises(ValueError):
+            source.verify_slice(replace(new, factory_input_json=source.encoded(record).decode()))
+
+
+    def test_map_a_v3_factory_forwards_and_reconstructs_exact_profile(self):
+        from gossip_harness import cumulative_scope_source_v3 as latest
+        for factory, registration in ((latest.http_slice, http_registration()),
+                (latest.product_process_slice, product_registration('process-backup-restore-fences-edits-and-removed-id'))):
+            component = factory(*map_a_registration(registration), mapping_profile=source.MAP_A_MAPPING)
+            self.assertIs(type(component), latest.ExecutableSlice)
+            self.assertEqual(json.loads(component.factory_input_json)['mapping_profile'], source.MAP_A_MAPPING)
+            latest.verify_slice(component)
+            baseline = factory(*registration)
+            self.assertNotIn('mapping_profile', json.loads(baseline.factory_input_json))
+            self.assertEqual(component.gate.ordered_case_ids, baseline.gate.ordered_case_ids)
+            self.assertNotEqual(component.gate.binding, baseline.gate.binding)
+            self.assertEqual(component.selectors, baseline.selectors)
+
+
+    def test_map_a_registered_owners_equal_actual_compiler_edge_roster(self):
+        from gossip_harness import candidate_product_process_core_v1 as product_cases
+        registrations = [http_registration(name, mapping_profile=source.MAP_A_MAPPING)
+            for name in ('HTTP-EMPTY-HEALTH/health', 'HTTP-PERSIST-LISTENER/listener-all-epochs',
+                         'HTTP-INTAKE-ROUTES/zip-syntax', 'HTTP-BODY-WIRE/raw-bytes-65536')]
+        registrations += [product_registration(case.row_id, mapping_profile=source.MAP_A_MAPPING)
+                          for case in product_cases.definitions()]
+        logical = {gate.id: gate for gate in self.catalog.inventory.logical_gates}
+        for registration in registrations:
+            factory = source.http_slice if type(registration[1]) is http.HttpProductProfile else source.product_process_slice
+            component = factory(*registration)
+            owners = set()
+            for row in component.assertions:
+                unit = self.catalog.unit(row.obligation_id)
+                for lane in row.assertion.logical_gate_ids:
+                    owners.update(set(unit.requirement_ids) & set(logical[lane].requirement_ids))
+            expected = tuple(key for key in self.catalog.inventory.product_ids if key in owners)
+            self.assertEqual(component.gate.requirement_ids, expected)
+            self.assertEqual(registration[1].mapping_record()['requirement_ids'], list(expected))
+            self.assertEqual(registration[1].mapping_record()['assertions_sha256'],
+                             source.sha(source.encoded([asdict(row) for row in component.assertions])))
+            source.verify_slice(component)
+
+    def test_map_a_final_spec_normalizes_positive_recipe_and_refuses_profile_switch(self):
+        from gossip_harness import cumulative_final_acceptance_v1 as final
+        from gossip_harness import candidate_product_process_execution_v1 as product
+        # Prospective recipe normalization only: no source/anchor authority supplied.
+        # Actual dispatch separately requires real store/head/barrier capabilities.
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for factory, module, kind in ((http_registration, http, 'http'),
+                                          (product_registration, product, 'product')):
+                original, profile, policy = factory(mapping_profile=source.MAP_A_MAPPING)
+                spec = final.ObservationSpec(kind, root/'raw', root/'delta', root/'cleanup',
+                    cast(Any, None), cast(Any, None), original, policy,
+                    recipe=module.recipe_from_case(profile.case), profile=profile)
+                self.assertEqual(spec.observation_registration(), original.observation)
+                legacy, legacy_profile, _ = factory()
+                with self.assertRaises(ValueError):
+                    replace(spec, registration=legacy).observation_registration()
+                with self.assertRaises(ValueError):
+                    replace(spec, profile=legacy_profile).observation_registration()
+                with self.assertRaises(ValueError):
+                    module.observation_registration_for(legacy.binding, profile, policy,
+                        subject=legacy.observation.gate.binding.subject, gate_id=legacy.observation.gate.gate_id,
+                        commit_oid=legacy.commit_oid, tree_oid=legacy.tree_oid,
+                        repetition_id=legacy.repetition_id, cohort_trajectory_ids=COHORT)

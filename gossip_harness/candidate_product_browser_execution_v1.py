@@ -23,6 +23,7 @@ import uuid
 from . import candidate_product_process_execution_v1 as base
 from . import candidate_product_browser_cases_v1 as cases
 from . import candidate_product_browser_transport_v1 as transport
+from . import candidate_source_capture_policy_v1 as source_capture
 from . import candidate_http_transport_v1 as wire
 from . import candidate_client_execution_v4 as finite
 from . import candidate_client_process_v4 as engine
@@ -32,12 +33,12 @@ from . import candidate_execution_journal_v1 as owner_journal
 from . import candidate_emergency_cleanup_v1 as emergency
 from . import candidate_observation_admission_v1 as admission
 from . import project_acceptance_registry_v1 as registry
-from .candidate_release_execution_v2 import capture_git_source
 from .candidate_observation_admission_v1 import source_manifest, source_sha256
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
 PROTOCOL = "candidate-product-browser-execution-v1"
+BATCH_PROTOCOL = PROTOCOL + "-git-source-batch-v1"
 IPC_PROTOCOL = "candidate-product-browser-ipc-v1"
 SNAPSHOT_PROTOCOL = "docker-owned-browser-held-tmpfs-v1"
 CONTROL_LIMIT = 8 * 1024 * 1024
@@ -49,6 +50,7 @@ create_argv, validate_role, validate_state = base.create_argv, base.validate_rol
 role_identity_comparison = transport.role_identity_comparison
 require, ExecutionError, ExecutionUnknown = base.require, base.ExecutionError, base.ExecutionUnknown
 encoded, sha256 = cases.encoded, cases.sha
+capture_source = base.capture_source
 _SHA = re.compile(r"[0-9a-f]{64}\Z")
 _NAME = re.compile(r"[a-z][a-z0-9.-]{0,100}\Z")
 DRIVER_ROOT = Path(__file__).resolve().parents[1] / "devtools/browser"
@@ -71,6 +73,38 @@ def evaluator_sources() -> dict[str, str]:
     for name in ("lifecycle.cjs", "package.json", "package-lock.json"):
         result["devtools/browser/" + name] = sha256((BASE_PROJECT / "devtools/browser" / name).read_bytes())
     return result
+
+
+def pipe_diagnostics_policy() -> dict[str, Any]:
+    return {"protocol": "candidate-product-browser-failure-tail-v1", "dispatch": False,
+            "ordinary_message_admission": False, "per_pipe_bytes": 8 * 1024 * 1024,
+            "initial_drain_seconds": 5, "term_boundary_seconds": 10,
+            "total_teardown_seconds": 15, "deadline": "minimum-of-history-deadline-and-teardown-bound"}
+
+
+def drain_browser_diagnostics(selector: selectors.BaseSelector, tails: dict[str, bytearray],
+                              eof: set[str], *, deadline: float, limit: int) -> list[str]:
+    """Read bounded late bytes only. No decoding, callbacks or request dispatch."""
+    errors: list[str] = []
+    try:
+        while selector.get_map() and time.monotonic() < deadline:
+            ready = selector.select(min(0.05, max(0.0, deadline - time.monotonic())))
+            for key, _ in ready:
+                kind = key.data
+                require(kind in ("stdout", "stderr"), "Unknown browser diagnostic pipe")
+                chunk = os.read(key.fd, min(65536, limit - len(tails[kind]) + 1))
+                if not chunk:
+                    eof.add(kind)
+                    selector.unregister(key.fileobj)
+                else:
+                    remaining = limit - len(tails[kind])
+                    tails[kind].extend(chunk[:remaining])
+                    if len(chunk) > remaining:
+                        errors.append(kind + ":diagnostic-byte-bound")
+                        selector.unregister(key.fileobj)
+    except BaseException as error:
+        errors.append("diagnostic-drain:" + type(error).__name__)
+    return errors
 
 
 @dataclass(frozen=True)
@@ -119,24 +153,51 @@ def runtime_identity(policy: BrowserPolicy) -> dict[str, Any]:
 @dataclass(frozen=True)
 class BrowserProfile:
     case: cases.BrowserCase
+    capture_policy: source_capture.BatchCapturePolicy | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is cases.BrowserCase, "Exact closed browser case required")
         self.case.__post_init__()
+        require(self.capture_policy is None or type(self.capture_policy) is source_capture.BatchCapturePolicy,
+                "Exact closed browser source capture policy required")
+        if self.capture_policy is not None:
+            self.capture_policy.record()
+
+    @property
+    def execution_protocol(self) -> str:
+        return PROTOCOL if self.capture_policy is None else BATCH_PROTOCOL
 
     @property
     def ordered_case_ids(self) -> tuple[str, ...]:
         return (*self.case.facet_ids, self.case.identifier + ":mechanics")
 
     def record(self) -> dict[str, Any]:
-        return {"protocol": "candidate-product-browser-profile-v1", "definition": self.case.record,
+        self.__post_init__()
+        result: dict[str, Any] = {"protocol": "candidate-product-browser-profile-v1", "definition": self.case.record,
                 "ordered_case_ids": self.ordered_case_ids, "original_definition_purpose": cases.ORIGINAL_PURPOSE,
                 "whole_product_acceptance": False, "native_browser_network_credit": False,
                 "global_independent_acceptance": False, "aggregation": "known-failure-preserved-with-unknown"}
+        if self.capture_policy is not None:
+            result.update(protocol="candidate-product-browser-profile-v1-git-source-batch-v1",
+                          execution_protocol=BATCH_PROTOCOL, source_capture=self.capture_policy.record())
+        return result
 
     @property
     def sha256(self) -> str:
         return digest(self.record())
+
+
+def validate_capture_config(profile: BrowserProfile, config: dict[str, Any]) -> None:
+    """Reconstruct the declared source policy from the exact live profile."""
+    profile.__post_init__()
+    require(config.get("protocol") == profile.execution_protocol
+            and config.get("pipe_diagnostics") == pipe_diagnostics_policy(),
+            "Original capture/diagnostic protocol differs")
+    if profile.capture_policy is None:
+        require("source_capture" not in config, "Unexpected original source capture policy")
+    else:
+        require(config.get("source_capture") == profile.capture_policy.record(),
+                "Missing or different original source capture policy")
 
 
 @dataclass(frozen=True)
@@ -161,23 +222,27 @@ class BrowserBinding:
     def __post_init__(self) -> None:
         require(all(type(value) is str and _SHA.fullmatch(value) for key, value in asdict(self).items()
                     if key.endswith("_sha256")), "Exact immutable binding hashes required")
-        require(self.requirements_sha256 == cases.CONTRACT_SHA256 and self.protocol == PROTOCOL
+        require(self.requirements_sha256 == cases.CONTRACT_SHA256 and self.protocol in (PROTOCOL, BATCH_PROTOCOL)
                 and self.purpose == "public_release" and self.milestone == "M4", "New public-only browser admission required")
 
 
 def binding_for(files: dict[str, bytes], profile: BrowserProfile, policy: BrowserPolicy,
                 runtime: dict[str, Any], browser_runtime: dict[str, Any]) -> BrowserBinding:
     profile.__post_init__()
+    limits = {"policy": asdict(policy), "probe": asdict(policy.probe), "journal": asdict(chain.Limits()),
+              "trace_bytes": 67108864, "screenshot_bytes": 16777216, "dom_bytes": 262144,
+              "pipe_diagnostics": pipe_diagnostics_policy()}
+    if profile.capture_policy is not None:
+        limits["source_capture"] = profile.capture_policy.record()
     return BrowserBinding(source_sha256(files), cases.CONTRACT_SHA256, profile.case.sha256,
         digest(source_manifest(profile.case.inputs())), digest(evaluator_sources()),
         digest({"engine": runtime, "browser": browser_runtime}), digest(runtime),
         digest({"environment": DockerValidator._environment(), "origin": cases.ORIGIN,
                 "browser": "sandbox-closed-proxy-dns-fresh-home-context-blocked-serviceworkers-websockets",
                 "volume_options": VOLUME_OPTIONS, "bridge": IPC_PROTOCOL}),
-        digest({"policy": asdict(policy), "probe": asdict(policy.probe), "journal": asdict(chain.Limits()),
-                "trace_bytes": 67108864, "screenshot_bytes": 16777216, "dom_bytes": 262144}),
+        digest(limits),
         digest({"seed": 0, "meaning": "fixed public input"}), profile.sha256, wire.helper_sha256(),
-        digest(transport.role_policy_identity()))
+        digest(transport.role_policy_identity()), protocol=profile.execution_protocol)
 
 
 def observation_registration_for(binding: BrowserBinding, profile: BrowserProfile, policy: BrowserPolicy, *,
@@ -185,11 +250,12 @@ def observation_registration_for(binding: BrowserBinding, profile: BrowserProfil
         cohort_trajectory_ids: tuple[str, ...]) -> admission.ObservationRegistration:
     require(type(binding) is BrowserBinding and type(profile) is BrowserProfile and type(subject) is registry.Subject
             and subject.source_sha256 == binding.source_sha256 and subject.requirements_sha256 == cases.CONTRACT_SHA256
-            and subject.milestone == "M4" and binding.profile_sha256 == profile.sha256, "Exact subject/profile required")
+            and subject.milestone == "M4" and binding.profile_sha256 == profile.sha256
+            and binding.protocol == profile.execution_protocol, "Exact subject/profile required")
     gate_binding = registry.Binding(subject, digest({"profile": profile.record(), "case": profile.case.sha256}),
         binding.evaluator_sha256, policy.image_id.removeprefix("sha256:"),
         digest({"environment": binding.environment_sha256, "runtime": binding.runtime_sha256}),
-        binding.limits_sha256, binding.seed_sha256, PROTOCOL, binding.purpose)
+        binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose)
     gate = registry.Gate(gate_id, tuple(profile.case.record["requirements"]), profile.ordered_case_ids, gate_binding)
     return admission.ObservationRegistration(gate, commit_oid, tree_oid, repetition_id, cohort_trajectory_ids,
         profile.case.sha256, profile.sha256, cases.ORIGINAL_PURPOSE, admission.binding_sha256(binding, gate=gate))
@@ -290,7 +356,7 @@ class BrowserExecution:
         self._work_deadline = self._history_deadline - CLEANUP_SECONDS
         self.emergency_cleanup: emergency.CleanupChannel | None = None
         self._cleanup_claims: dict[str, str] = {}
-        self.tree, self.files = capture_git_source(store, registration.commit_oid)
+        self.tree, self.files = capture_source(store, registration.commit_oid, policy=profile.capture_policy)
         self.inputs = profile.case.inputs()
         self.sources = evaluator_sources()
         admission.verify_loaded_sources(self.sources)
@@ -305,12 +371,15 @@ class BrowserExecution:
             tree_oid=self.tree, repetition_id=registration.repetition_id, cohort_trajectory_ids=declared.cohort_trajectory_ids)
         require(self.actual_registration == declared, "Prospective browser admission differs")
         self.retained_freeze = self.admission.before_intent(self.actual_registration)
-        self.config = {"protocol": PROTOCOL, "registration": asdict(registration), "profile": profile.record(),
+        self.config = {"protocol": profile.execution_protocol, "registration": asdict(registration), "profile": profile.record(),
             "policy": asdict(policy), "sources": self.sources, "runtime": self.runtime, "browser_runtime": self.browser_runtime,
             "endpoint": asdict(endpoint), "source_manifest": source_manifest(self.files), "input_manifest": source_manifest(self.inputs),
             "owner_roots": [str(x) for x in roots], "mode": "physical", "global_independent_acceptance": False}
+        self.config["pipe_diagnostics"] = pipe_diagnostics_policy()
+        if profile.capture_policy is not None:
+            self.config["source_capture"] = profile.capture_policy.record()
         self.journal = owner_journal.OwnerJournal(self.root, self.delta_root,
-            context={"protocol": PROTOCOL, "config_sha256": digest(self.config),
+            context={"protocol": profile.execution_protocol, "config_sha256": digest(self.config),
                      "registration_sha256": digest(asdict(registration)), "purpose": self.binding.purpose}, authority=checkpoint_authority)
         try:
             self._retain("config.json", encoded(self.config))
@@ -347,7 +416,7 @@ class BrowserExecution:
         self.checkpoint()
         self.admission.check_current(self.actual_registration, self.retained_freeze)
         require(self.sources == evaluator_sources() == _LOADED_SOURCES, "Loaded evaluator changed")
-        tree, files = capture_git_source(self.store, self.registration.commit_oid)
+        tree, files = capture_source(self.store, self.registration.commit_oid, policy=self.profile.capture_policy)
         require(tree == self.tree and files == self.files, "Registered Git source changed")
         for key, fingerprint in (("node_executable", "node_sha256"), ("browser_executable", "browser_sha256")):
             require(sha256(Path(self.browser_runtime[key]).read_bytes()) == self.browser_runtime[fingerprint], "Pinned runtime binary changed")
@@ -710,6 +779,8 @@ class BrowserExecution:
         errors: list[str] = []
         sequence, request_id, next_action = 0, 0, 0
         terminal: dict[str, Any] | None = None
+        diagnostic_tail: dict[str, Any] | None = None
+        tail_raws: dict[str, bytes] = {}
         try:
             child = subprocess.Popen(argv, env=environment, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE, start_new_session=True)
@@ -786,27 +857,67 @@ class BrowserExecution:
         except BaseException as error:
             errors.append(type(error).__name__ + ":" + str(error)[:512])
         finally:
-            try:
-                selector.close()
-            except BaseException as error:
-                errors.append("selector-close:" + type(error).__name__)
+            # Ordinary admission has ended. Failure-tail bytes stay in separate
+            # diagnostic artifacts even when they contain valid IPC messages.
+            # Drain before waiting so a child writing its terminal cannot be
+            # stranded on a full pipe. All phases share the existing 10+5s
+            # termination allowance and the enclosing history deadline.
             if child is not None:
+                teardown_start = time.monotonic()
+                teardown_deadline = min(self._history_deadline, teardown_start + 15)
+                tails = {"stdout": bytearray(), "stderr": bytearray()}
+                tail_eof: set[str] = set()
+                drain_errors: list[str] = []
+                tail_enabled = bool(errors)
+                if tail_enabled:
+                    drain_errors.extend(drain_browser_diagnostics(selector, tails, tail_eof,
+                        deadline=min(teardown_deadline, teardown_start + 5), limit=self.policy.message_limit))
                 if child.poll() is None:
                     try:
                         os.killpg(child.pid, signal.SIGTERM)
-                        child.wait(timeout=min(10, max(0.1, self._history_deadline - time.monotonic())))
+                        if tail_enabled:
+                            drain_errors.extend(drain_browser_diagnostics(selector, tails, tail_eof,
+                                deadline=min(teardown_deadline, teardown_start + 10), limit=self.policy.message_limit))
+                        child.wait(timeout=max(0, min(teardown_deadline, teardown_start + 10) - time.monotonic()))
                     except (OSError, subprocess.TimeoutExpired):
                         try:
                             os.killpg(child.pid, signal.SIGKILL)
-                            child.wait(timeout=min(5, max(0.1, self._history_deadline - time.monotonic())))
+                            if tail_enabled:
+                                drain_errors.extend(drain_browser_diagnostics(selector, tails, tail_eof,
+                                    deadline=teardown_deadline, limit=self.policy.message_limit))
+                            child.wait(timeout=max(0, teardown_deadline - time.monotonic()))
                         except (OSError, subprocess.TimeoutExpired) as error:
                             errors.append("driver-reap-unproven:" + type(error).__name__)
+                if tail_enabled:
+                    # Also collect the final EOF after an already-exited child.
+                    drain_errors.extend(drain_browser_diagnostics(selector, tails, tail_eof,
+                        deadline=teardown_deadline, limit=self.policy.message_limit))
+                    diagnostics = {}
+                    for kind, raw_tail in tails.items():
+                        name = "browser-tail-" + kind + ".bin"
+                        raw = bytes(raw_tail)
+                        tail_raws[name] = raw
+                        diagnostics[kind] = {"path": name, "bytes": len(raw), "sha256": sha256(raw),
+                                             "eof_observed": kind in tail_eof}
+                    diagnostic_tail = {"policy": pipe_diagnostics_policy(), "pipes": diagnostics,
+                        "started_monotonic": teardown_start, "deadline_monotonic": teardown_deadline,
+                        "finished_monotonic": time.monotonic(), "errors": drain_errors,
+                        "ordinary_admission_ended": True, "request_dispatches": 0}
+                    errors.extend(drain_errors)
                 for pipe in (child.stdin, child.stdout, child.stderr):
                     if pipe is not None:
                         try:
                             pipe.close()
                         except BaseException as error:
                             errors.append("driver-pipe-close:" + type(error).__name__)
+            try:
+                selector.close()
+            except BaseException as error:
+                errors.append("selector-close:" + type(error).__name__)
+            for name, raw in tail_raws.items():
+                self._retain(name, raw)
+            if diagnostic_tail is not None:
+                self._retain("browser-tail-completion.json", encoded(diagnostic_tail))
             self._retain("browser-stderr.bin", bytes(buffers["stderr"]))
             if buffers["stdout"]:
                 self._retain("browser-incomplete-stdout.bin", bytes(buffers["stdout"]))
@@ -822,7 +933,8 @@ class BrowserExecution:
                 errors.append("driver-source:" + type(error).__name__)
         core_result = {"staged_source_unchanged": staged_source_unchanged, "pid": None if child is None else child.pid, "returncode": None if child is None else child.returncode,
             "messages": sequence, "requests": request_id, "started_actions": next_action, "terminal": terminal,
-            "errors": list(errors), "pipe_complete": not errors and not buffers["stdout"],
+            "errors": list(errors), "diagnostic_tail": diagnostic_tail,
+            "pipe_complete": not errors and not buffers["stdout"],
             "browser_close_acknowledged": terminal is not None and terminal.get("cleanup", {}).get("browser") == "complete"
                 and not terminal.get("force_exit_needed")}
         # Original process facts precede optional artifact allocation/retention.
@@ -857,7 +969,7 @@ class BrowserExecution:
         self.request_rows: list[dict[str, Any]] = []
         self.request_intents: list[dict[str, Any]] = []
         self.driver_messages: list[int] = []
-        self._retain("intent.json", encoded({"protocol": PROTOCOL, "execution_id": self.execution_id, "volume": self.volume,
+        self._retain("intent.json", encoded({"protocol": self.profile.execution_protocol, "execution_id": self.execution_id, "volume": self.volume,
             "binding_sha256": digest(asdict(self.binding)), "profile_sha256": self.profile.sha256,
             "ordered_actions": self.profile.case.record["actions"], "no_automatic_retry": True, "physical": True}))
         infrastructure: list[str] = []
@@ -905,7 +1017,7 @@ class BrowserExecution:
                     except BaseException as error:
                         infrastructure.append("emergency-cleanup:" + type(error).__name__ + ":" + str(error)[:512])
             require(not self.journal.uncertain, "Uncertain browser original journal; separate cleanup remains")
-            self._retain("terminal.json", encoded({"protocol": PROTOCOL, "execution_id": self.execution_id,
+            self._retain("terminal.json", encoded({"protocol": self.profile.execution_protocol, "execution_id": self.execution_id,
                 "planned_actions": len(self.profile.case.record["actions"]), "driver_messages": self.driver_messages,
                 "request_rows": self.request_rows, "request_intents": self.request_intents,
                 "planned_control_requests": 2 * len(self.profile.case.record["actions"]),

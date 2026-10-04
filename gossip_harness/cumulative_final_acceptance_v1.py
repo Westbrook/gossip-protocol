@@ -170,6 +170,16 @@ class ObservationSpec:
         require(type(self.registration) is module.HttpRegistration and type(self.policy) is module.HttpPolicy
                 and type(self.recipe) is module.HttpRecipe and type(self.profile) is module.HttpProductProfile
                 and self.cumulative_profile is None, 'Exact HTTP/product inputs required')
+        require(self.registration.binding.profile_sha256 == self.profile.sha256,
+                'Original observer profile differs from registered binding')
+        if self.profile.mapping_profile is not None:
+            require(self.recipe == module.recipe_from_case(self.profile.case), 'MAP-A original whole recipe differs')
+            original = self.registration.observation
+            actual = module.observation_registration_for(self.registration.binding, self.profile, self.policy,
+                subject=original.gate.binding.subject, gate_id=original.gate.gate_id,
+                commit_oid=self.registration.commit_oid, tree_oid=self.registration.tree_oid,
+                repetition_id=self.registration.repetition_id, cohort_trajectory_ids=original.cohort_trajectory_ids)
+            require(actual == original, 'MAP-A profile/registration differs before final admission')
         return self.registration.observation
 
 

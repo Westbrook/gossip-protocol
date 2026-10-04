@@ -408,13 +408,14 @@ def read_original(owner: Any, checkpoint: chain.PrefixCommitment) -> BrowserObse
     owner._unchanged()
     reader = _Reader(owner, checkpoint)
     require(cases.encoded(reader.json("config.json")) == cases.encoded(owner.config), "Original config/source/admission differs")
+    execution.validate_capture_config(owner.profile, reader.json("config.json"))
     intent, terminal = reader.json("intent.json"), reader.json("terminal.json")
-    require(intent["protocol"] == execution.PROTOCOL and intent["execution_id"] == owner.execution_id
+    require(intent["protocol"] == owner.profile.execution_protocol == owner.binding.protocol and intent["execution_id"] == owner.execution_id
             and intent["binding_sha256"] == execution.digest(asdict(owner.binding))
             and intent["profile_sha256"] == owner.profile.sha256
             and intent["ordered_actions"] == owner.profile.case.record["actions"] and intent["physical"] is True,
             "Original history/purpose differs")
-    require(terminal["protocol"] == execution.PROTOCOL and terminal["execution_id"] == owner.execution_id
+    require(terminal["protocol"] == owner.profile.execution_protocol and terminal["execution_id"] == owner.execution_id
             and terminal["purpose"] == owner.binding.purpose and terminal["product_acceptance"] is False
             and terminal["global_independent_acceptance"] is False, "Original terminal identity/purpose differs")
     facets: list[Facet] = []

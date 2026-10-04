@@ -318,7 +318,8 @@ class HttpObservationSource:
         execution.require(owner.checkpoint() == self.checkpoint and owner._freeze() == freeze
                           and execution.evaluator_sources() == owner.sources == execution._LOADED_SOURCES,
                           "Original evidence, loaded evaluator or admission changed during semantic verification")
-        record = {"protocol": PROTOCOL if owner.profile.cumulative_profile is None else M4_PROTOCOL,
+        protocol = PROTOCOL if owner.profile.cumulative_profile is None else M4_PROTOCOL
+        record = {"protocol": protocol,
             "original_registration": asdict(owner.actual_registration),
             "original_execution_id": history.execution_id, "original_terminal_sha256": history.terminal_sha256,
             "original_binding_sha256": history.original_binding_sha256,
@@ -335,6 +336,8 @@ class HttpObservationSource:
             "evaluator_sources": execution.evaluator_sources(),
             "physical_execution_reused": False, "whole_project_acceptance": False,
             "held_out_claim": False}
+        if owner.profile.mapping_profile is not None:
+            record.update(protocol=protocol + "-map-a-v1", mapping_profile=owner.profile.mapping_record())
         raw = execution.encoded(record)
         if owner.has_authenticated(self.receipt_path.name):
             execution.require(owner.read_authenticated(self.receipt_path.name) == raw,

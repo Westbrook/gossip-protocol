@@ -1,0 +1,208 @@
+{
+  "protocol": "cumulative-evaluator-integration-checkpoint-v1",
+  "status": "reviewed integration; focused checks pass; complete combined and physical qualification pending",
+  "parent_commit": "a4b20e2a31c374a055c60bb240041ba1200fd2b5",
+  "new_model_quality_samples": 0,
+  "provider_calls": 0,
+  "changes": [
+    "Closed-codec current nested type support and issued pre-lease qualification lifecycle",
+    "MAP-A finite semantic associations joined to actual profile, registration, receipt and final recipe",
+    "Browser fresh batch source capture and diagnostic-only IPC tail retention",
+    "Four actual MAP-A opt-in physical controls authored; physical execution pending",
+    "Runtime-discovered fixes preserve guard semantics, exact scalar distinctions and current source checks"
+  ],
+  "verification": [
+    {
+      "run": "runs/issued-codec-nearest-1/20261004T151515-a7cbd927",
+      "summary_sha256": "11d82b9ac24fad7d78e7c4a58d079ae8a33c7c8b71b663b3036bc7a12d9e7ef2",
+      "status": "passed",
+      "outcomes": {
+        "passed": 19
+      },
+      "duration_seconds": 6.318221750669181,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-evaluator-offline-1/20261004T152931-5fc22015",
+      "summary_sha256": "d5eee976c3d9b6789b9fb62b55baad1cdab412b9a9aa2cb891747703bf867127",
+      "status": "failed",
+      "outcomes": {
+        "not_run": 483
+      },
+      "duration_seconds": 5.026085750199854,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-evaluator-offline-2/20261004T153200-10384d53",
+      "summary_sha256": "21d059baf71d424c0c7ab4701c393de569925ef3977d30b4f26e880220899321",
+      "status": "failed",
+      "outcomes": {
+        "interrupted": 1,
+        "not_run": 137,
+        "passed": 345
+      },
+      "duration_seconds": 240.5309119997546,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/catalog-digest-nearest-1/20261004T153755-d58ce57f",
+      "summary_sha256": "e2e5760cc7ae00a42759510f7ae9480fd43bdcd1ba935e76e16ff5f1a5bcc7f6",
+      "status": "passed",
+      "outcomes": {
+        "passed": 32
+      },
+      "duration_seconds": 98.72005266696215,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-evaluator-offline-3/20261004T154045-2b7721f5",
+      "summary_sha256": "1c2fcd50e862da716582bddff25f2eb8bd96c382efde12bb3f9e9a84b2e7e610",
+      "status": "failed",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 119,
+        "passed": 363
+      },
+      "duration_seconds": 146.52785095851868,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-new-controls-nearest-1/20261004T154753-8e63ecdf",
+      "summary_sha256": "235c6b7dc5291e83ce2fb82e5dce18a97b27d54bd62f3b5a5fc537b320228273",
+      "status": "failed",
+      "outcomes": {
+        "not_run": 19
+      },
+      "duration_seconds": 4.897238957695663,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-new-controls-nearest-2/20261004T155102-11e7c487",
+      "summary_sha256": "c5687243856489e841b16d1cf1edd52f3784abd6d9d1ab480a19099c0d2db7b7",
+      "status": "passed",
+      "outcomes": {
+        "passed": 19
+      },
+      "duration_seconds": 7.5622985837981105,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-evaluator-offline-4/20261004T155213-ebeead06",
+      "summary_sha256": "2c5d1228a6970d8fabc3c2680aa53977b4ccde4e759a88b74daaa39d8de4b198",
+      "status": "failed",
+      "outcomes": {
+        "error": 1,
+        "not_run": 86,
+        "passed": 401
+      },
+      "duration_seconds": 195.08950937446207,
+      "reused_classes": 0
+    },
+    {
+      "run": "runs/combined-late-controls-1/20261004T155839-8a123bc8",
+      "summary_sha256": "ca1f4f0ccbe08d974499831aefb494549930c5cc77ebea3e564c232de3f4df11",
+      "status": "passed",
+      "outcomes": {
+        "passed": 97
+      },
+      "duration_seconds": 556.7033285833895,
+      "reused_classes": 0
+    }
+  ],
+  "latest_exact_input_reconciliation": {
+    "inputs": 704,
+    "fingerprint": "eeca4122cb3ba05d635e6caf98f4e1967d6b1482aaed0fd582b3c8624abdb627",
+    "all_files_match": false,
+    "runtime": {
+      "final_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "initial_sha256": "a5f41353bfd525f134ea9a9cc7a69f61b28a31a51aad37a6482df47c9b45d1fd",
+      "matches": true
+    },
+    "reuse": false,
+    "matched_at_run_completion": true,
+    "subsequent_delta": "Whitespace-only EOF cleanup in validator_v2; whole-module AST identical; current-source combined488 still pending."
+  },
+  "changed_source_pins": {
+    "docs/candidate-product-browser-v1.md": "f87574e88aa5896237bf3357f776c250bc98183893f2c8452273a2bf0282a71c",
+    "gossip_harness/candidate_http_execution_v4.py": "08d60bd522d552e81cb18496bdc2c6c4bda938ff9d8264842511255a382ede01",
+    "gossip_harness/candidate_http_observation_source_v1.py": "5678d4fc0e7e389becfecd6860e32a74aa255f4298e512e78bf66adbc7ec6dd8",
+    "gossip_harness/candidate_product_browser_execution_v1.py": "bb95d3c1bfff55cec61a923b5b406db94ea5ccebb983606ec4ec8cb12e9d8a3d",
+    "gossip_harness/candidate_product_browser_observation_v1.py": "1c6f736fc6f4b6afaf8c53cffe70c7be9b7edad889dd8d42c113dbbf11402919",
+    "gossip_harness/candidate_product_process_execution_v1.py": "fdfc0a3ea8a262f6b6724357f687ba066142c8ae20ba04bcd1099930c808830b",
+    "gossip_harness/candidate_product_process_observation_v1.py": "0692bd065c4efa7eb3faa363f93e143bdcdd0b56f8e95b66baaa0db6e3124e00",
+    "gossip_harness/cumulative_final_acceptance_v1.py": "6a33d659c155e32492157308de31d4ac68f44de881c462fc3d56af44fffac542",
+    "gossip_harness/cumulative_final_originals_v1.py": "96658257818080e5c84f9ee4df1c7b0c421074d2790310c80cdb054945bb3c55",
+    "gossip_harness/cumulative_issued_qualification_v1.py": "938712c4b5c2ca8be8a0f83dfb88ebe99f715ba2abde9581f559c480aec3f295",
+    "gossip_harness/cumulative_prerequisite_qualification_v1.py": "b18fdbd758dc0394b7944ce16d69a36d88199b24bc3e66563e047c0eb61c25d5",
+    "gossip_harness/cumulative_qualified_study_v1.py": "75c27f42b79cf347f53630d8b3a41a094dfada2be6638b72b0555870e6059991",
+    "gossip_harness/cumulative_rehearsal_capsule_v2.py": "2f79db6d6c161f3f27e623fd78ee86877949004d734e3009ecb94fb9965d50ed",
+    "gossip_harness/cumulative_rehearsal_capsule_v3.py": "09697c731c6041b03f006d6fd18153a8cc5d5300c6a4371acd83f5f0788f5de2",
+    "gossip_harness/cumulative_rehearsal_codec_v1.py": "514d07e19f4461a2b7f07a4351659cfba3f29d2a1c13f6b82bfb6cc8ffd924bd",
+    "gossip_harness/cumulative_rehearsal_export_v1.py": "eee4eae6a006e850d0ce12746f44dfce7c5914347792c147f69b0e1c8e15d9b6",
+    "gossip_harness/cumulative_rehearsal_matching_v1.py": "c3e15cba43319d61053352074c7178482dfadcd93a0661de3efc949c29f6925f",
+    "gossip_harness/cumulative_rehearsal_validator_v2.py": "4842b139fedd3fa5d132ab36cd47087d5af10e3ffa8e20da95ede112c65ca060",
+    "gossip_harness/cumulative_scope_source_v1.py": "82c7aa6a711d8fb6ad55951ce478617dd544d324bc6e20bf459ec1d6ed03d819",
+    "gossip_harness/cumulative_scope_source_v2.py": "4b0b4d59ae8e24ac2f48338a7c4a261a9d495bfc35d15b0469f98ccadacdb996",
+    "gossip_harness/cumulative_scope_source_v3.py": "1d35ef16aceb769ec2971bed308b398a4e7ed38e39a42f779b7c5c9f9cbe78bf",
+    "gossip_harness/cumulative_study_runtime_v2.py": "5684a745b95930373b50490e62c714b7b0bf21365dd9bfadad181e67616a32cf",
+    "gossip_harness/peer_financial_authority_v5.py": "56d7bd4ac106131141c522359f74b56878ba7a640c364f192cf6dbb5a309fe1a",
+    "gossip_harness/peer_financial_qualification_v5_final_v3.py": "cdc7c837ce246cea1f3850f7490ea9f3ab7ec926164b8fdc051d7ffa25ca2a52",
+    "gossip_harness/peer_financial_rpc_v5.py": "ad450db728458ddfb4b0a39ffc3ce9f8e94cc58e7babbe6c6bc5ca480881efa3",
+    "pyproject.toml": "6157bb6d5fc4c9f3cc850396522b2b55f0fecad1409aa8c28ee4d46cc593d1ea",
+    "tests/financial_rpc_diagnostics.py": "37d5e4cb24386c54263d4d6c91608fa7f4089c8b38af7bd509806bc8a30efbf9",
+    "tests/test_candidate_map_a_physical_v1.py": "3273e5743a404b54010b3f49e5566426b2aef52c9fc35919d608e46529451e94",
+    "tests/test_candidate_product_browser_physical_v1.py": "8029cb1b5c41e2328b3b693e36ea1830b592cfa875fff9e90f9fd0b44a8a8f10",
+    "tests/test_candidate_product_browser_v1.py": "2fa9c5f2b5ea1214a955a1aa32c79c1e28e43ac9392213fad587816c163c0cdc",
+    "tests/test_cumulative_final_originals_v1.py": "234b1f10c2677e9f1d097f627a7b1e16a7ac880f45f57446222c3a8a545c2c92",
+    "tests/test_cumulative_issued_qualification_v1.py": "c102b35b175fc29240e1e3f2f53c19d68cb96d45d6eecb4ee459261eb4be1db1",
+    "tests/test_cumulative_qualified_study_v1.py": "ed0ca8030c7d7684a69ce934649bf3865fa2f46ee3b67e86388006aa201848ec",
+    "tests/test_cumulative_rehearsal_inputs_v1.py": "f525d6c4e94e5e8e10100c3feca4618e9d4ef7872703e1430d4b93f43e4c8af6",
+    "tests/test_cumulative_rehearsal_validator_v2.py": "ec9542c1b756f44ce674e07d3548e08bde1eedfd51125bbe6052eb6da0c75e5d",
+    "tests/test_cumulative_scope_source_v1.py": "e0a971282a3d307c2e5bdf802525946c7853328fad5bcea54e462547e8e684e1",
+    "tests/test_peer_financial_authority_v5.py": "69840645897c1f098d185c83eafcf44e3d6d94eb3533bfe9343445023175c8d8",
+    "tests/test_peer_financial_qualification_v5_final_v3.py": "87f1fa4fcb62af77f7069c196e2cae47de319c3e52de95fbb0b37ba44acb000f",
+    "verification-manifest.json": "f05a659edd4194518011a4fbea0460338e9d09d5545ab927d56b3a3b957ad1e4"
+  },
+  "source_reviews": {
+    "closed_codec": "9db5579cc34911c1d3526db65f08a15640739ebee3a86cd1b77bab5bd42e8209",
+    "MAP_A_join": "164fc2040a2c2074c0074a00114f2b7f84ef495a042cbbfef8f8271750fff3aa",
+    "browser_successor": "2c2c28780c68c822952da34ddf9ab8c2e220092778cded433b094bddff362517",
+    "protocol_typing": "3ed2ac6d88784a39146fe963482db23996c8f5c6fc3833cf3c0856d6c5fabe07",
+    "fresh_catalog_digest": "900902fc7fde87315d52d57a82f635c4108ade7322e29322a681749ce099a7ff",
+    "capability_reference_integrity": "29310a0a1c413e1e6c70dd02689aa4288dadd4a207df947461327151a46336bd",
+    "MAP_A_physical_controls": "e59fca2dd6c361af79d7c41aecd8d4fb99009b9b4dcc0f1c9f99da4a0a914664"
+  },
+  "type_scope": {
+    "roots": 232,
+    "prior_type_coverage_removed": false,
+    "baseline_changed": false,
+    "new_physical_test_module_type_qualified": false,
+    "new_test_checks": [
+      "syntax",
+      "lint",
+      "manifest discovery",
+      "five offline runtime controls"
+    ],
+    "reason": "The optional draft-only test-module mypy root traversed untyped legacy unittest mixins. It was not adopted; existing strict settings and production roots remain."
+  },
+  "full_scope_approved": false,
+  "preserved_scope": {
+    "source_units": 312,
+    "public_histories": 602
+  },
+  "remaining": [
+    "Complete current-tree 488-method static/offline/Git batch with no missing classes",
+    "Fresh browser physical qualification; original failed D01 retained",
+    "Four new MAP-A physical controls and affected default-profile raw mechanics qualification",
+    "Full semantic coverage/review, final-source authority and complete matching rehearsal",
+    "Live project comparisons, including larger roles and isolated gossip transport effect, after technical gates and pending payload approval"
+  ],
+  "publication": "Local checkpoint; public push awaits explicit disclosure approval.",
+  "precommit_formatting": {
+    "path": "gossip_harness/cumulative_rehearsal_validator_v2.py",
+    "beforeSha256": "93367a0a727738ff4ebfee09d427eca98f743bba400c84d4c4c9f3a02666d686",
+    "afterSha256": "4842b139fedd3fa5d132ab36cd47087d5af10e3ffa8e20da95ede112c65ca060",
+    "change": "Remove extra blank line at EOF; whole-module AST identical.",
+    "runtimeSemanticsChanged": false
+  }
+}

@@ -20,7 +20,7 @@ import subprocess
 import sys
 import threading
 import time
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from .candidate_observation_admission_v1 import source_sha256
 from .cumulative_study_controller_v2 import (PACKAGES, PUBLIC_PURPOSE, REVIEWERS,
@@ -42,8 +42,26 @@ from .peer_project_contract_v2 import (Context, DispatchBinding, EvidenceRef, Wo
 from .peer_role_loop_v2 import WorkDirective, directive_id, materialize
 from .worker import OpenAIWorker
 
+if TYPE_CHECKING:
+    from .cumulative_issued_qualification_v1 import IssuedQualification
+
 PROTOCOL = "cumulative-study-runtime-v2"
 ROLE_PROTOCOL = "cumulative-study-role-v1"
+
+
+def _checked_qualification_session(plan: StudyPlan, mode: str,
+                                   session: IssuedQualification | None, *,
+                                   repository: Path, expected_ledger_identity: dict[str, Any]) -> None:
+    if mode == "live":
+        from .cumulative_issued_qualification_v1 import IssuedQualification, PROTOCOL as QUALIFICATION_PROTOCOL
+        require(type(session) is IssuedQualification
+                and plan.runtime.get("live_qualification_protocol") == QUALIFICATION_PROTOCOL
+                and plan.runtime.get("qualified_study_protocol") == "cumulative-qualified-study-v1",
+                "Live qualification must be issued before study deadlines and financial claims")
+        assert session is not None
+        IssuedQualification.check_study(session, plan, repository=repository, ledger_identity=expected_ledger_identity)
+    else:
+        require(session is None, "Fixture execution cannot consume a live qualification session")
 
 
 def _source(store: GitStore) -> dict[str, Any]:
@@ -119,10 +137,13 @@ class GossipChildRuntime:
                  expected_ledger_identity: dict[str, Any], workers: dict[str, OpenAIWorker], mode: str,
                  permit_provider: Callable[[dict[str, Any]], dict[str, Any]],
                  evaluator: Callable[[GitStore, Release], PublicResult],
+                 qualification_session: IssuedQualification | None = None,
                  clock: Callable[[], float] = time.time):
         from .cumulative_process_evidence_v1 import ProcessEvidence
         require(type(plan) is StudyPlan, "Exact V2 prospective plan required")
         plan.__post_init__()
+        _checked_qualification_session(plan, mode, qualification_session,
+            repository=repository, expected_ledger_identity=expected_ledger_identity)
         require(mode in ("fixture", "live") and set(workers) == {"mini", "strong"}, "Explicit worker/mode roster required")
         require(all(type(x) is OpenAIWorker for x in workers.values()), "Actual financial worker adapter required")
         plan.verify_sources(repository)
@@ -202,7 +223,8 @@ class GossipChildRuntime:
                 permit=original_permit, expected_permit_sha256=digest(original_permit),
                 max_workers=plan.executor_slots, mode=mode,
                 recovery=records.read(self.key + ".financial-config") is not None,
-                terminal_roster=plan.roster, checkpoint=records.chain, expected_checkpoint=records.chain.commitment)
+                terminal_roster=plan.roster, checkpoint=records.chain, expected_checkpoint=records.chain.commitment,
+                qualification_session=qualification_session)
             checked_financial_config(self.finance.config)
             records.put(self.key + ".financial-config", self.finance.config)
             rpc = FinancialRPCV5(self.finance, state["capabilities"],
@@ -836,7 +858,8 @@ def run_study(plan: StudyPlan, *, output: Path, repository: Path,
               checkpoint: Any, expected_checkpoint: Any, existing_ledger_path: Path,
               expected_ledger_identity: dict[str, Any], workers: dict[str, OpenAIWorker],
               mode: str, permit_provider: Callable[[dict[str, Any]], dict[str, Any]],
-              evaluator: Callable[[GitStore, Release], PublicResult]) -> dict[str, Any]:
+              evaluator: Callable[[GitStore, Release], PublicResult],
+              qualification_session: IssuedQualification | None = None) -> dict[str, Any]:
     """Explicit whole-study entry; reuses caller-owned ledger/head and workers.
 
     Output is never removed/reset. The caller provides a full four-release plan,
@@ -847,14 +870,28 @@ def run_study(plan: StudyPlan, *, output: Path, repository: Path,
     from .cumulative_study_controller_v2 import StudyController
     require(type(plan) is StudyPlan, "Exact V2 prospective plan required")
     plan.__post_init__()
+    require(mode in ("fixture", "live"), "Explicit live or fixture mode required")
+    _checked_qualification_session(plan, mode, qualification_session,
+        repository=repository, expected_ledger_identity=expected_ledger_identity)
     require(output.is_absolute() and output.resolve() == output, "Canonical isolated study output required")
     def factory(current: StudyPlan, index: int, records: Records, deadline: float) -> GossipChildRuntime:
         return GossipChildRuntime(current, index, records, deadline,
             root=output / current.cohort.trajectories[index].id, repository=repository,
             existing_ledger_path=existing_ledger_path, expected_ledger_identity=expected_ledger_identity,
             workers=workers, mode=mode,
-            permit_provider=permit_provider, evaluator=evaluator)
-    controller = StudyController(plan, checkpoint=checkpoint, expected_checkpoint=expected_checkpoint,
+            permit_provider=permit_provider, evaluator=evaluator,
+            qualification_session=qualification_session)
+    controller_class: type[StudyController] = StudyController
+    if mode == "live":
+        class _QualifiedController(StudyController):
+            def _child(self, index: int) -> dict[str, Any]:
+                # The frozen controller retains child.begin/deadline before
+                # calling its factory. Authenticate here, before that prefix.
+                _checked_qualification_session(self.plan, "live", qualification_session,
+                    repository=self.repository, expected_ledger_identity=self.ledger_identity)
+                return super()._child(index)
+        controller_class = _QualifiedController
+    controller = controller_class(plan, checkpoint=checkpoint, expected_checkpoint=expected_checkpoint,
         repository=repository, existing_ledger_path=existing_ledger_path,
         expected_ledger_identity=expected_ledger_identity, runtime_factory=factory)
     return controller.run()

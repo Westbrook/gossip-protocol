@@ -341,3 +341,159 @@ assert.equal(JSON.stringify(response.headers),'{"__proto__":"literal","construct
 '''
         result=subprocess.run([str(node),'-e',script,str(execution.PROTOCOL_SOURCE)],capture_output=True,timeout=15)
         self.assertEqual(result.returncode,0,result.stderr.decode())
+
+
+class CandidateBrowserExecutionSuccessorTests(unittest.TestCase):
+    """Inert admission/owned-pipe controls; no browser, Engine or product credit."""
+
+    def test_legacy_profile_record_is_unchanged_and_batch_is_explicit(self):
+        case = cases.all_cases()[0]
+        legacy = execution.BrowserProfile(case)
+        expected = {'protocol':'candidate-product-browser-profile-v1','definition':case.record,
+            'ordered_case_ids':legacy.ordered_case_ids,'original_definition_purpose':cases.ORIGINAL_PURPOSE,
+            'whole_product_acceptance':False,'native_browser_network_credit':False,
+            'global_independent_acceptance':False,'aggregation':'known-failure-preserved-with-unknown'}
+        self.assertEqual(legacy.record(), expected)
+        batch = execution.BrowserProfile(case, execution.source_capture.BatchCapturePolicy())
+        self.assertEqual(batch.execution_protocol, execution.BATCH_PROTOCOL)
+        self.assertEqual(batch.record()['source_capture'], batch.capture_policy.record())
+        self.assertNotEqual(batch.sha256, legacy.sha256)
+        with self.assertRaises(ValueError):
+            execution.BrowserProfile(case, {'timeout_seconds':60})
+
+    def test_missing_wrong_or_undeclared_capture_config_is_rejected(self):
+        case = cases.all_cases()[0]
+        profile = execution.BrowserProfile(case, execution.source_capture.BatchCapturePolicy())
+        valid = {'protocol':profile.execution_protocol,'pipe_diagnostics':execution.pipe_diagnostics_policy(),
+                 'source_capture':profile.capture_policy.record()}
+        execution.validate_capture_config(profile, valid)
+        for altered in ({key:value for key,value in valid.items() if key != 'source_capture'},
+                        {**valid,'source_capture':{**valid['source_capture'],'timeout_seconds':61}},
+                        {**valid,'protocol':execution.PROTOCOL},
+                        {**valid,'pipe_diagnostics':{**valid['pipe_diagnostics'],'dispatch':True}}):
+            with self.subTest(altered=altered), self.assertRaises(ValueError):
+                execution.validate_capture_config(profile, altered)
+        with self.assertRaises(ValueError):
+            execution.validate_capture_config(execution.BrowserProfile(case), {**valid,'protocol':execution.PROTOCOL})
+
+    def test_gate_rejects_profile_protocol_mismatch(self):
+        from gossip_harness.library_project_fixture_v1 import RUNTIME_IMAGE
+        profile = execution.BrowserProfile(cases.all_cases()[0], execution.source_capture.BatchCapturePolicy())
+        policy = execution.BrowserPolicy(RUNTIME_IMAGE, '/fixture/node', '/fixture/modules')
+        binding = execution.binding_for({'source.txt':b'source'}, profile, policy, {}, {})
+        subject = execution.registry.Subject('cohort','trajectory','M4','f'*64,cases.CONTRACT_SHA256,binding.source_sha256)
+        arguments = dict(subject=subject,gate_id='browser-unit',commit_oid='a'*40,tree_oid='b'*40,
+                         repetition_id='unit',cohort_trajectory_ids=('trajectory','peer-1','peer-2','peer-3','peer-4','peer-5'))
+        registered = execution.observation_registration_for(binding, profile, policy, **arguments)
+        self.assertEqual(registered.gate.binding.execution_protocol, execution.BATCH_PROTOCOL)
+        with self.assertRaises(ValueError):
+            execution.observation_registration_for(replace(binding,protocol=execution.PROTOCOL),profile,policy,**arguments)
+        with self.assertRaises(ValueError):
+            execution.observation_registration_for(binding,execution.BrowserProfile(profile.case),policy,**arguments)
+
+    def test_each_guard_captures_fresh_and_rejects_changed_tree_or_bytes(self):
+        from types import SimpleNamespace
+        from unittest.mock import Mock, patch
+        with tempfile.TemporaryDirectory() as temporary:
+            binary = Path(temporary)/'runtime'; binary.write_bytes(b'pinned runtime')
+            fingerprint = cases.sha(binary.read_bytes())
+            for changed in (('new-tree',{'source.txt':b'original'}),('tree',{'source.txt':b'changed'})):
+                owner = execution.BrowserExecution.__new__(execution.BrowserExecution)
+                owner.checkpoint = Mock(); owner.admission = Mock()
+                owner.actual_registration = object(); owner.retained_freeze = object()
+                owner.sources = {'unit':'source'}; owner.store = object()
+                owner.registration = SimpleNamespace(commit_oid='a'*40)
+                owner.profile = execution.BrowserProfile(cases.all_cases()[0],execution.source_capture.BatchCapturePolicy())
+                owner.tree, owner.files = 'tree', {'source.txt':b'original'}
+                owner.browser_runtime = {'node_executable':str(binary),'browser_executable':str(binary),
+                                         'node_sha256':fingerprint,'browser_sha256':fingerprint}
+                owner._staging_active = False
+                with patch.object(execution,'evaluator_sources',return_value=owner.sources), \
+                     patch.object(execution,'_LOADED_SOURCES',owner.sources), \
+                     patch.object(execution,'capture_source',side_effect=[(owner.tree,owner.files),changed]) as captured:
+                    owner._unchanged()
+                    with self.assertRaisesRegex(ValueError,'Registered Git source changed'):
+                        owner._unchanged()
+                self.assertEqual(captured.call_count,2)
+                for call in captured.call_args_list:
+                    self.assertEqual(call.args,(owner.store,owner.registration.commit_oid))
+                    self.assertIs(call.kwargs['policy'],owner.profile.capture_policy)
+                self.assertEqual(owner.admission.check_current.call_count,2)
+
+    def test_broken_stdin_retains_actual_late_bytes_without_dispatch_or_success(self):
+        import sys
+        import time
+        from unittest.mock import Mock, patch
+        from gossip_harness.library_project_fixture_v1 import RUNTIME_IMAGE
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary).resolve(); marker=root/'probe-observed'
+            owner=execution.BrowserExecution.__new__(execution.BrowserExecution)
+            owner.staging=root; owner.profile=execution.BrowserProfile(cases.all_cases()[0])
+            owner.policy=execution.BrowserPolicy(RUNTIME_IMAGE,str(Path(sys.executable).resolve()),str(root))
+            owner.browser_runtime={'browser_version':'authored inert fixture'}
+            owner._work_deadline=time.monotonic()+10;owner._history_deadline=time.monotonic()+25;owner._cleanup_mode=False
+            owner.driver_messages=[];owner.request_intents=[]
+            retained={}
+            def retain(name,raw):
+                self.assertNotIn(name,retained);retained[name]=raw
+            owner._retain=retain
+            def probe(message):
+                marker.write_bytes(b'1')
+                return {'protocol':execution.IPC_PROTOCOL,'kind':'response','request_id':message['request_id'],'available':False}
+            owner._probe=Mock(side_effect=probe)
+            rows=[{'kind':'runtime','runtime':owner.browser_runtime,'driver_sha256':cases.sha(execution.DRIVER.read_bytes())},
+                  {'kind':'launched','browser_version':owner.browser_runtime['browser_version'],'browser_launches':1},
+                  {'kind':'action_start','action_id':'a000'},
+                  {'kind':'request','action_id':'a000','request_id':1,'source':'browser','request':{}}]
+            rows=[{'protocol':execution.IPC_PROTOCOL,'seq':index+1,**row} for index,row in enumerate(rows)]
+            tail=[{'protocol':execution.IPC_PROTOCOL,'seq':5,'kind':'terminal','cleanup':{'browser':'complete'}},
+                  {'protocol':execution.IPC_PROTOCOL,'seq':6,'kind':'request','request_id':2,'source':'browser','action_id':'a000'}]
+            # This is an actual owned Python pipe child, deliberately NOT a
+            # Chromium stand-in or an authenticated product execution.
+            script="""import os,sys,time,pathlib,json
+os.close(0)
+for row in json.loads(sys.argv[1]): print(json.dumps(row),flush=True)
+end=time.monotonic()+5
+while not pathlib.Path(sys.argv[3]).exists():
+ if time.monotonic()>end: raise RuntimeError('unit synchronization expired')
+ time.sleep(.001)
+for row in json.loads(sys.argv[2]): print(json.dumps(row),flush=True)
+sys.stderr.write('original late diagnostic\\n');sys.stderr.flush()
+"""
+            real_popen=subprocess.Popen; children=[]
+            def launch(argv,**kwargs):
+                child=real_popen([sys.executable,'-I','-c',script,json.dumps(rows),json.dumps(tail),str(marker)],**kwargs)
+                children.append(child);return child
+            with patch.object(execution.subprocess,'Popen',side_effect=launch):
+                result=owner._browser()
+            tail_bytes=retained.get('browser-incomplete-stdout.bin',b'')+retained['browser-tail-stdout.bin']
+            self.assertEqual([json.loads(line) for line in tail_bytes.splitlines()],tail)
+            self.assertIn(b'original late diagnostic',retained['browser-tail-stderr.bin']+retained['browser-stderr.bin'])
+            self.assertEqual(owner._probe.call_count,1)
+            self.assertEqual(result['messages'],4);self.assertEqual(result['requests'],1)
+            self.assertEqual(result['started_actions'],1);self.assertIsNone(result['terminal'])
+            self.assertFalse(result['pipe_complete']);self.assertFalse(result['browser_close_acknowledged'])
+            self.assertTrue(any(error.startswith('BrokenPipeError:') for error in result['errors']))
+            self.assertEqual(result['diagnostic_tail']['request_dispatches'],0)
+            self.assertTrue(result['diagnostic_tail']['ordinary_admission_ended'])
+            self.assertEqual(json.loads(retained['browser-process-completion.json']),{key:value for key,value in result.items() if key!='artifacts'})
+            self.assertIsNotNone(children[0].poll())
+            self.assertTrue(all(pipe.closed for pipe in (children[0].stdin,children[0].stdout,children[0].stderr)))
+
+    def test_diagnostic_drain_bounds_bytes_and_expired_time(self):
+        import os
+        import selectors
+        import time
+        for limit,deadline,expected in ((3,time.monotonic()+5,b'abc'),(8,time.monotonic()-1,b'')):
+            read_fd,write_fd=os.pipe();selector=selectors.DefaultSelector()
+            try:
+                os.set_blocking(read_fd,False);selector.register(read_fd,selectors.EVENT_READ,'stdout')
+                os.write(write_fd,b'abcdef');os.close(write_fd);write_fd=None
+                tails={'stdout':bytearray(),'stderr':bytearray()};eof=set()
+                errors=execution.drain_browser_diagnostics(selector,tails,eof,deadline=deadline,limit=limit)
+                self.assertEqual(bytes(tails['stdout']),expected)
+                self.assertEqual(errors,['stdout:diagnostic-byte-bound'] if limit==3 else [])
+                self.assertNotIn('stdout',eof)
+            finally:
+                selector.close();os.close(read_fd)
+                if write_fd is not None:os.close(write_fd)

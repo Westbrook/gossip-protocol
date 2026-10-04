@@ -17,6 +17,18 @@ from . import project_acceptance_registry_v1 as registry
 
 PROTOCOL = 'cumulative-scope-source-v1'
 HTTP_BODY_BOUNDARY_MAPPING = 'cumulative-http-body-boundary-mapping-v1'
+MAP_A_MAPPING = 'cumulative-finite-semantic-map-a-v1'
+# Closed source-defined exceptions: these exact shape-valid submit bodies fail
+# discovery/value validation, not the four-form HTTP body grammar (IFACE-D06).
+_MAP_A_DISCOVERY_FAILURES = frozenset('HTTP-INTAKE-ROUTES/' + name for name in (
+    'zip-syntax', 'json-syntax', 'json-schema', 'zip-bad-utf8', 'directory-bad-utf8',
+    'zip-duplicate-key', 'zip-symlink-member', 'zip-nonregular-member',
+    'directory-file-count-65', 'zip-file-count-65', 'json-file-count-65'))
+_MAP_A_PATH_BOUNDARIES = frozenset('HTTP-ROOT-PATH/' + form + '-' + name
+    for forms, names in ((("directory", "zip"), ("combined-bytes-256", "combined-bytes-257",
+        "combined-segments-16", "combined-segments-17")),
+        (("entries", "json"), ("source-bytes256", "source-bytes257", "source-segments16", "source-segments17")))
+    for form in forms for name in names)
 OWNERSHIP = 'analysis/cumulative-shared-ownership-v1.json'
 OWNERSHIP_SHA256 = 'c4f1f4e3a9636d13c99a314b7d29269b2dc3bfde43e56c41425e63ca24b933ad'
 REVIEW = 'analysis/cumulative-shared-ownership-review-v1.json'
@@ -109,6 +121,7 @@ def load_catalog(root: Path) -> SourceCatalog:
             'Shared ownership census differs')
     products = set(inventory.product_ids)
     by_hash = {pins[name]: documents[name] for name in (compiler.M1_FILE, compiler.V1_FILE, compiler.V2_FILE)}
+    inventory_sha256 = inventory.sha256
     units = []
     for obligation in inventory.obligations:
         value = pointer(by_hash[obligation.source_sha256], obligation.source_pointer)
@@ -123,7 +136,7 @@ def load_catalog(root: Path) -> SourceCatalog:
             require(len(selected) == 1, 'Missing selected-version ownership source')
             item = selected[0]
             require((item['inventory_sha256'], item['source_sha256'], item['json_pointer'], item['value_sha256'])
-                    == (inventory.sha256, obligation.source_sha256, obligation.source_pointer, obligation.value_sha256),
+                    == (inventory_sha256, obligation.source_sha256, obligation.source_pointer, obligation.value_sha256),
                     'Ownership source instance differs')
             requirement_ids = tuple(record['owner_requirement_ids'])
             interactions = tuple(record['interaction_requirement_ids'])
@@ -258,14 +271,16 @@ def cli_slice(registration: Any) -> ExecutableSlice:
         encoded({'registration': asdict(registration)}).decode())
 
 
-def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
+def http_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile: str | None = None) -> ExecutableSlice:
     """Exact existing HTTP semantic selectors; raw-only/CLI/mechanics get no invented credit."""
     from . import candidate_http_execution_v4 as execution
     from . import cumulative_observation_profile_v1 as profiles
     from . import candidate_observation_admission_v1 as admission
-    from . import candidate_http_fixtures_v1 as fixtures
     require(type(registration) is execution.HttpRegistration and type(profile) is execution.HttpProductProfile
             and type(policy) is execution.HttpPolicy, 'Exact HTTP registration/profile/policy required')
+    require(mapping_profile in (None, MAP_A_MAPPING), 'Unknown prospective mapping profile')
+    mapping_profile = profile.mapping_profile if mapping_profile is None else mapping_profile
+    require(mapping_profile == profile.mapping_profile, 'Mapping must be bound in the original observer profile')
     value = profile.cumulative_profile
     require(type(value) is profiles.CumulativeProfile, 'Final-M4 prospective HTTP profile required')
     assert value is not None
@@ -278,6 +293,21 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
     sources = execution.evaluator_sources()
     admission.verify_loaded_sources(sources)
     require(registration.binding.evaluator_sha256 == execution.digest(sources), 'HTTP evaluator differs')
+    selectors, assertions = _http_declarations(profile, mapping_profile=mapping_profile)
+    require(tuple(row.case_id for row in selectors if row.case_id in actual.gate.ordered_case_ids)
+            == actual.gate.ordered_case_ids, 'HTTP ordered selector census differs')
+    return ExecutableSlice('http', value.case_id, actual.gate, actual.definition_sha256,
+        actual.original_definition_purpose, compiler.M1_SHA256, profile.sha256,
+        tuple(sorted(sources.items())), tuple(selectors), tuple(assertions), tuple(value.record()['remaining_coverage']),
+        encoded({'registration': asdict(registration), 'policy': asdict(policy),
+            **({} if mapping_profile is None else {'mapping_profile': mapping_profile})}).decode())
+
+
+
+def _http_declarations(profile: Any, *, mapping_profile: str | None) -> tuple[list[Selector], list[AssertionDeclaration]]:
+    """Pure original-definition mapping shared by the registered profile and scope."""
+    from . import candidate_http_fixtures_v1 as fixtures
+    value = profile.cumulative_profile
     selectors, assertions = [], []
     for index, cell in enumerate(value.diagnostic_cells):
         step = profile.case.steps[index]
@@ -319,11 +349,15 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
         if not is_error and route.startswith(('/api/documents', '/api/export', '/api/import')) and 'V0-HTTP-01' in profile.case.requirement_ids:
             targets.append(('V0-HTTP-01', 'Exact successful declared legacy request and finite JSON result; all other route/shape/order cases remain separate.'))
         if route.startswith('/api/jobs'):
-            if not is_error and 'M1-HTTP-01' in profile.case.requirement_ids:
-                targets.append(('M1-HTTP-01', 'Exact declared jobs route and finite result; no complete table/state-machine proof.'))
+            if (not is_error or mapping_profile == MAP_A_MAPPING) and 'M1-HTTP-01' in profile.case.requirement_ids:
+                targets.append(('M1-HTTP-01', ('Exact declared jobs route: prescribed error/status, or typed jobs census where declared; unspecified successful wrappers and media type receive no value/shape credit.'
+                    if mapping_profile == MAP_A_MAPPING else 'Exact declared jobs route and finite result; no complete table/state-machine proof.')))
             if 'M1-HTTP-02' in profile.case.requirement_ids:
-                targets.append(('M1-HTTP-02', 'Declared job success/error status and value only; no unsupported error inference.'))
-            if route == '/api/jobs' and step.request is not None and step.request.method == 'POST' and 'M1-I30' in profile.case.requirement_ids:
+                targets.append(('M1-HTTP-02', ('Prescribed error/status or typed jobs census only; an unspecified successful wrapper contributes status/complete JSON, not TOKEN/RECEIPT/JOB shape.'
+                    if mapping_profile == MAP_A_MAPPING else 'Declared job success/error status and value only; no unsupported error inference.')))
+            if route == '/api/jobs' and step.request is not None and step.request.method == 'POST' and 'M1-I30' in profile.case.requirement_ids and not (
+                    mapping_profile == MAP_A_MAPPING and is_error and profile.case.row_id in _MAP_A_DISCOVERY_FAILURES
+                    and step.step_id.endswith(('-discovery-rejects-before-admission', '-sixty-five-files-no-admission'))):
                 targets.append(('M1-I30', 'This exact submitted body shape acceptance/refusal; source value validation and other shapes remain separate.'))
             body_value = None
             if step.request is not None and step.request.method == 'POST' and route == '/api/jobs':
@@ -343,28 +377,43 @@ def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
             identity = [value.case_id, cell.case_id, target]
             if exact_body_boundary:
                 identity.append(HTTP_BODY_BOUNDARY_MAPPING)
+            if mapping_profile == MAP_A_MAPPING:
+                identity.append(MAP_A_MAPPING)
             identifier = 'http-' + sha(encoded(identity))[:24]
             assertions.append(AssertionDeclaration('m1:' + target,
-                compiler.Assertion(identifier, 'boundary' if exact_body_boundary else
+                compiler.Assertion(identifier, 'boundary' if exact_body_boundary or (mapping_profile == MAP_A_MAPPING
+                    and target == 'M1-I31' and profile.case.row_id in _MAP_A_PATH_BOUNDARIES) else
                     ('negative' if is_error else 'positive'), ('M1-GATE-HTTP',)),
                 cell.case_id, path, rationale))
+        if mapping_profile == MAP_A_MAPPING and semantic.shape == 'health':
+            # The already versioned comparator checks schema4 at exactly the
+            # profile's declared successor positions. This edge does not itself
+            # grant the compiler's mandatory reviewed compatibility override.
+            catalog = load_catalog(Path(__file__).resolve().parents[1])
+            unit = catalog.unit('M4-API-SCHEMA:clause:2')
+            inventory = catalog.inventory
+            logical = tuple(gate.id for gate in inventory.logical_gates
+                if gate.role == 'product' and gate.lane == 'http'
+                and set(unit.requirement_ids) & set(gate.requirement_ids))
+            identifier = 'http-' + sha(encoded([MAP_A_MAPPING, value.case_id, cell.case_id, unit.obligation.id]))[:24]
+            assertions.append(AssertionDeclaration(unit.obligation.id,
+                compiler.Assertion(identifier, 'positive', logical), cell.case_id, path,
+                'Only the source-declared exact M4 health schema4 successor; physical schema, migration, other routes and semantic compatibility approval remain separate.'))
     selectors.append(Selector(profile.mechanics_case_id, '/mechanics_guard/status', 'normative',
                               '/mechanics_guard', 'mechanics'))
-    require(tuple(row.case_id for row in selectors if row.case_id in actual.gate.ordered_case_ids)
-            == actual.gate.ordered_case_ids, 'HTTP ordered selector census differs')
-    return ExecutableSlice('http', value.case_id, actual.gate, actual.definition_sha256,
-        actual.original_definition_purpose, compiler.M1_SHA256, profile.sha256,
-        tuple(sorted(sources.items())), tuple(selectors), tuple(assertions), tuple(value.record()['remaining_coverage']),
-        encoded({'registration': asdict(registration), 'policy': asdict(policy)}).decode())
+    return selectors, assertions
 
 
-def product_process_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
+def product_process_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile: str | None = None) -> ExecutableSlice:
     """Concrete finite M3/M4 values, never crash, SQL layout or browser evidence."""
     from . import candidate_product_process_execution_v1 as execution
     from . import candidate_product_process_observation_v1 as observation
     from . import candidate_observation_admission_v1 as admission
     require(type(registration) is execution.HttpRegistration and type(profile) is execution.HttpProductProfile
             and type(policy) is execution.HttpPolicy, 'Exact product-process registration/profile/policy required')
+    require(mapping_profile in (None, MAP_A_MAPPING), 'Unknown prospective mapping profile')
+    mapping_profile = profile.mapping_profile if mapping_profile is None else mapping_profile
+    require(mapping_profile == profile.mapping_profile, 'Mapping must be bound in the original observer profile')
     observed = registration.observation
     actual = execution.observation_registration_for(registration.binding, profile, policy,
         subject=observed.gate.binding.subject, gate_id=observed.gate.gate_id,
@@ -374,13 +423,25 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
     selected_capture = execution.capture_policy_for(registration.binding.protocol)
     require(profile.capture_policy == selected_capture, 'Product-process source-capture profile differs')
     catalog = observation.selector_catalog(profile.case.row_id, purpose=registration.binding.purpose,
-                                          capture_policy=selected_capture)
+                                          capture_policy=selected_capture, mapping_profile=mapping_profile)
     admission.verify_loaded_sources(catalog['evaluator_sources'])
     require(registration.binding.evaluator_sha256 == execution.digest(catalog['evaluator_sources']),
             'Product-process evaluator differs')
     selectors = tuple(Selector(row['case_id'], row['observation_pointer'], row['disposition'],
         row['definition_pointer'], 'mechanics' if row['evidence_kind'] == 'physical_mechanics' else 'semantic')
         for row in catalog['selectors'])
+    assertions = _product_process_declarations(profile, catalog['selectors'], mapping_profile=mapping_profile)
+    require(tuple(catalog['ordered_case_ids']) == actual.gate.ordered_case_ids, 'Product-process case roster differs')
+    return ExecutableSlice('product-process', profile.case.row_id, actual.gate, actual.definition_sha256,
+        actual.original_definition_purpose, compiler.PRODUCT_V2_SHA256, profile.sha256,
+        tuple(sorted(catalog['evaluator_sources'].items())), selectors, tuple(assertions),
+        tuple(catalog['required_unfinished_coverage']), encoded({'registration': asdict(registration), 'policy': asdict(policy),
+            **({} if mapping_profile is None else {'mapping_profile': mapping_profile})}).decode())
+
+
+
+def _product_process_declarations(profile: Any, selector_rows: list[dict[str, Any]], *, mapping_profile: str | None) -> list[AssertionDeclaration]:
+    """Pure finite declarations, also used to derive the exact Registry owner roster."""
     inventory = load_catalog(Path(__file__).resolve().parents[1])
     original = json.loads(profile.case.original_json)
     assertions = []
@@ -400,7 +461,8 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
         def claim(identifier: str, why: str, assertion_kind: str = kind) -> None:
             claims.append((identifier, assertion_kind, why))
         if '/api/diagnostics' in path or '/api/maintenance/diagnostics' in path or command == 'diagnostics':
-            claim('M3-DIAGNOSTICS:clause:0', 'Only explicitly expected diagnostic keys/counts and closed outer keys; unasserted fields remain unspecified.')
+            claim('M3-DIAGNOSTICS:clause:0', ('Only this selected explicit diagnostic field/count or the separately selected closed outer-key set; no unselected nested value, secrecy or snapshot-atomicity claim.'
+                if mapping_profile == MAP_A_MAPPING else 'Only explicitly expected diagnostic keys/counts and closed outer keys; unasserted fields remain unspecified.'))
             if isinstance(record, dict) and ('worker_state' in record or 'index_state' in record):
                 claim('M3-DIAGNOSTICS:clause:1', 'Declared stopped worker or current index value after finite history; no live-owner liveness inference.')
             if isinstance(record, dict) and any(key in record for key in ('documents', 'blobs', 'revisions')):
@@ -443,7 +505,20 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
                 if command == 'restore-backup' or (path == '/api/maintenance/restore' and action.get('method') == 'POST'):
                     claim('M3-BACKUP-RESTORE:clause:3', 'Successful restore result/current generation or stale-generation refusal; lock/atomic activation remains missing.', 'history')
                     claim('M3-BACKUP-RESTORE:clause:5', 'Declared restore result and stale repeat refusal; no abrupt pre/post-commit evidence.', 'history')
-                if '/api/v1/documents' in path or command in ('import', 'refresh', 'document-v1'):
+                if mapping_profile == MAP_A_MAPPING:
+                    # Closed original positions retain distinct logical meanings;
+                    # step17's unspecified import wrapper never supplies state.
+                    restore_meanings = {
+                        10: 'Exact restored v1 listing and absence of the post-snapshot record; this list alone does not prove stale-token refusal or absent-ID high-water.',
+                        11: 'Exact not_found for the post-snapshot document removed by restore; no retained high-water value is observed here.',
+                        12: 'Exact stale_version refusal for the pre-restore document edit token; no concurrent or transaction-internal fence is inferred.',
+                        16: 'Exact restored saved document at edit_version3 with saved content/revision; only this finite post-restore token advance.',
+                        18: 'Exact reimported removed document at edit_version2; finite evidence of retained absent-ID high-water across restore, not every ID.'}
+                    if index in restore_meanings:
+                        claim('M3-BACKUP-RESTORE:clause:4', restore_meanings[index], 'history')
+                    if index in (12, 16, 18):
+                        claim('M2-IDENTITY-REVISIONS:clause:2', restore_meanings[index] + ' Transaction and overlap properties remain missing.', 'history')
+                elif '/api/v1/documents' in path or command in ('import', 'refresh', 'document-v1'):
                     claim('M3-BACKUP-RESTORE:clause:4', 'Known restored/removed document and edit-token state in this finite sequence; job receipt/control preservation remains missing.', 'history')
                     claim('M2-IDENTITY-REVISIONS:clause:2', 'Observed edit token/refusal subfacet after known effective changes; concurrency and transaction atomicity remain missing.', 'history')
         if row_id.startswith('process-public-'):
@@ -457,10 +532,14 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
         if path.startswith('/api/v1/documents') or command in ('documents-v1', 'document-v1'):
             if 'M4-API-SCHEMA' in profile.case.requirement_ids:
                 claim('M4-API-SCHEMA:clause:1', 'Expected current/history revision-ID projections; storage normalization remains separate.')
-        if 'M3-INTERFACES' in profile.case.requirement_ids and (
-                path.startswith('/api/maintenance/') or command in ('worker', 'export-bundle', 'backups', 'backup-root-adopt')):
+        interface_form = (path.startswith('/api/maintenance/') or command in
+            ('worker', 'export-bundle', 'backups', 'backup-root-adopt'))
+        if mapping_profile == MAP_A_MAPPING:
+            interface_form = (interface_form or path in ('/api/export-bundle', '/api/diagnostics')
+                or command in ('reindex', 'backup', 'restore-backup', 'diagnostics'))
+        if ('M3-INTERFACES' in profile.case.requirement_ids or mapping_profile == MAP_A_MAPPING) and interface_form:
             claim('M3-INTERFACES:clause:0', 'This exact declared CLI/HTTP form and selected value; no browser, shared delegation or arbitrary path-security inference.')
-        step_selectors = [row for row in catalog['selectors'] if row['case_id'] == profile.diagnostic_case_ids[index]
+        step_selectors = [row for row in selector_rows if row['case_id'] == profile.diagnostic_case_ids[index]
                           and row['disposition'] == 'normative' and row['evidence_kind'] != 'physical_mechanics']
         for identifier, assertion_kind, rationale in claims:
             unit = inventory.unit(identifier)
@@ -473,13 +552,16 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
                 lanes.add('migration')
             logical = tuple(gate.id for gate in inventory.inventory.logical_gates
                 if gate.role == 'product' and gate.lane in lanes
-                and set(unit.requirement_ids) & set(gate.requirement_ids) & set(profile.case.requirement_ids))
+                and set(unit.requirement_ids) & set(gate.requirement_ids)
+                & (set(profile.case.requirement_ids) | ({'M3-DIAGNOSTICS', 'M3-INTERFACES'}
+                    if mapping_profile == MAP_A_MAPPING else set())))
             if not logical:
                 continue
             for selector in step_selectors:
                 # Status/exit alone never proves claimed JSON state or bytes.
                 facet = selector['facet']
-                if not (facet == 'json_exact' or facet.startswith('json_field:') or facet.startswith('integer_range:') or facet == 'canonical_wire_bytes'):
+                if not (facet == 'json_exact' or facet.startswith('json_field:') or facet.startswith('integer_range:') or facet == 'canonical_wire_bytes'
+                        or (mapping_profile == MAP_A_MAPPING and identifier == 'M3-DIAGNOSTICS:clause:0' and facet == 'json_outer_keys')):
                     continue
                 if identifier == 'M3-DIAGNOSTICS:clause:1' and facet.startswith('json_field:') and facet not in ('json_field:worker_state', 'json_field:index_state'):
                     continue
@@ -498,16 +580,62 @@ def product_process_slice(registration: Any, profile: Any, policy: Any) -> Execu
                     if facet not in meanings:
                         continue
                     selected_rationale = meanings[facet]
-                identifier_hash = sha(encoded([row_id, selector['observation_pointer'], identifier, assertion_kind]))[:24]
+                identity = [row_id, selector['observation_pointer'], identifier, assertion_kind]
+                if mapping_profile == MAP_A_MAPPING:
+                    identity.append(MAP_A_MAPPING)
+                identifier_hash = sha(encoded(identity))[:24]
                 assertions.append(AssertionDeclaration(identifier, compiler.Assertion('process-' + identifier_hash,
                     assertion_kind, logical), selector['case_id'], selector['observation_pointer'],
                     selected_rationale + ' Selected facet: ' + facet + '; no other clause subfacet is inferred.'))
-    require(tuple(catalog['ordered_case_ids']) == actual.gate.ordered_case_ids, 'Product-process case roster differs')
-    return ExecutableSlice('product-process', profile.case.row_id, actual.gate, actual.definition_sha256,
-        actual.original_definition_purpose, compiler.PRODUCT_V2_SHA256, profile.sha256,
-        tuple(sorted(catalog['evaluator_sources'].items())), selectors, tuple(assertions),
-        tuple(catalog['required_unfinished_coverage']), encoded({'registration': asdict(registration), 'policy': asdict(policy)}).decode())
+    return assertions
 
+
+
+def map_a_sources() -> dict[str, str]:
+    """Exact source/semantic-input closure consumed by the opt-in profile."""
+    root = Path(__file__).resolve().parents[1]
+    result = {'gossip_harness/' + name: sha((root / 'gossip_harness' / name).read_bytes())
+        for name in ('cumulative_scope_source_v1.py', 'project_acceptance_compiler_v1.py')}
+    result.update(dict(load_catalog(root).source_pins))
+    return result
+
+
+def map_a_profile_record(family: str, profile: Any) -> dict[str, Any]:
+    """Closed exact owners from the same finite declarations the compiler consumes.
+
+    This is prospective source material, never a caller-supplied requirement list
+    or semantic approval. No profile.record/sha property is called recursively.
+    """
+    require(profile.mapping_profile == MAP_A_MAPPING, 'Exact MAP-A opt-in required')
+    if family == 'http':
+        from . import candidate_http_execution_v4 as execution
+        require(type(profile) is execution.HttpProductProfile and profile.cumulative_profile is not None,
+                'Exact final-M4 HTTP profile required')
+        _, assertions = _http_declarations(profile, mapping_profile=MAP_A_MAPPING)
+    elif family == 'product-process':
+        from . import candidate_product_process_execution_v1 as product
+        from . import candidate_product_process_observation_v1 as observation
+        require(type(profile) is product.HttpProductProfile and profile.milestone == 'M4',
+                'Exact final-M4 product profile required')
+        assertions = _product_process_declarations(profile, observation.source_selectors(profile),
+            mapping_profile=MAP_A_MAPPING)
+    else:
+        raise ScopeSourceError('Unknown MAP-A family')
+    catalog = load_catalog(Path(__file__).resolve().parents[1])
+    logical = {gate.id: gate for gate in catalog.inventory.logical_gates}
+    owners = set()
+    for item in assertions:
+        unit = catalog.unit(item.obligation_id)
+        for lane in item.assertion.logical_gate_ids:
+            owners.update(set(unit.requirement_ids) & set(logical[lane].requirement_ids))
+    return {'protocol': MAP_A_MAPPING, 'family': family, 'history_id': profile.case.row_id,
+        'inventory_sha256': catalog.inventory.sha256,
+        'mapping_source_sha256': LOADED_SOURCE_SHA256,
+        'assertions_sha256': sha(encoded([asdict(row) for row in assertions])),
+        'requirement_ids': [key for key in catalog.inventory.product_ids if key in owners],
+        'original_requirement_ids': list(profile.case.requirement_ids),
+        'semantic_approval': False, 'whole_project_acceptance': False,
+        'meaning': 'Exact prospective finite-edge owner roster; original actions/expectations/purpose unchanged; complete independent scope and compatibility review remain mandatory.'}
 
 def scope_review_input(catalog: SourceCatalog, declaration: compiler.Declaration) -> compiler.ScopePlan:
     """Populate actual declared cells; leave every other eligible cell unresolved.
@@ -640,8 +768,9 @@ def verify_slice(value: ExecutableSlice) -> None:
         policy = http.HttpPolicy(**{**record['policy'], 'wire_limits': http.wire.WireLimits(**record['policy']['wire_limits'])})
         case = next(row for row in cases.definitions() if row.row_id == value.history_id)
         cumulative = profiles.http_profile(value.history_id, purpose=value.gate.binding.purpose)
-        profile = http.HttpProductProfile(case, profiles.ORIGINAL_DEFINITION_PURPOSE, cumulative)
-        actual = http_slice(registration, profile, policy)
+        profile = http.HttpProductProfile(case, profiles.ORIGINAL_DEFINITION_PURPOSE, cumulative,
+            mapping_profile=record.get('mapping_profile'))
+        actual = http_slice(registration, profile, policy, mapping_profile=record.get('mapping_profile'))
     elif value.family == 'product-process':
         from . import candidate_product_process_execution_v1 as product
         from . import candidate_product_process_core_v1 as core
@@ -653,8 +782,10 @@ def verify_slice(value: ExecutableSlice) -> None:
             registration['tree_oid'], registration['repetition_id'], observation)
         product_policy = product.HttpPolicy(**{**record['policy'], 'wire_limits': product.wire.WireLimits(**record['policy']['wire_limits'])})
         product_profile = product.HttpProductProfile(core.case_definition(value.history_id), core.ORIGINAL_DEFINITION_PURPOSE,
-            capture_policy=product.capture_policy_for(product_registration.binding.protocol))
-        actual = product_process_slice(product_registration, product_profile, product_policy)
+            capture_policy=product.capture_policy_for(product_registration.binding.protocol),
+            mapping_profile=record.get('mapping_profile'))
+        actual = product_process_slice(product_registration, product_profile, product_policy,
+                                       mapping_profile=record.get('mapping_profile'))
     else:
         raise ScopeSourceError('Unknown executable factory; version the integration before registration')
     require(actual == value, 'Source-derived selectors/assertions/purpose were substituted')

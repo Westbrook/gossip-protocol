@@ -37,6 +37,7 @@ from . import candidate_retention_process_v1 as retained_process
 from . import cumulative_observation_profile_v1 as cumulative
 from . import candidate_http_m4_semantics_v1 as m4_semantics
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
+from . import cumulative_scope_source_v1 as map_a
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
@@ -98,6 +99,7 @@ def evaluator_sources() -> dict[str, str]:
                "candidate_http_fixtures_v1.py",
                "candidate_http_semantics_v1.py", "candidate_http_relations_v1.py")}
     result.update({"finite/" + name: value for name, value in finite.evaluator_sources().items()})
+    result.update(map_a.map_a_sources())
     return result
 
 
@@ -377,6 +379,7 @@ class HttpProductProfile:
     case: core.LiteralCase
     original_definition_purpose: str
     cumulative_profile: cumulative.CumulativeProfile | None = None
+    mapping_profile: str | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is core.LiteralCase, "Complete typed literal case required")
@@ -387,6 +390,8 @@ class HttpProductProfile:
         self.check_current()
 
     def check_current(self, *, purpose: str | None = None, requirements_sha256: str | None = None) -> None:
+        require(self.mapping_profile in (None, map_a.MAP_A_MAPPING), "Unknown mapping profile")
+        require(self.mapping_profile is None or self.cumulative_profile is not None, "MAP-A requires an explicit M4 profile")
         if self.cumulative_profile is None:
             return
         target = self.cumulative_profile
@@ -444,7 +449,16 @@ class HttpProductProfile:
                     "aggregation": "known-mechanical-failure-dominates-unavailable;all-required-mechanics-proven",
                     "semantic_credit": False, "raw_only_body_status_credit": False},
                 remaining_coverage=list(cumulative.REMAINING_COVERAGE), whole_project_acceptance=False)
+        if self.mapping_profile is not None:
+            value.update(protocol=value["protocol"] + "-map-a-v1", mapping_profile=self.mapping_record())
         return value
+
+    def mapping_record(self) -> dict[str, Any]:
+        return map_a.map_a_profile_record('http', self)
+
+    @property
+    def requirement_ids(self) -> tuple[str, ...]:
+        return (*self.case.requirement_ids, *self.case.interaction_ids) if self.mapping_profile is None else tuple(self.mapping_record()['requirement_ids'])
 
     @property
     def sha256(self) -> str:
@@ -548,7 +562,7 @@ def observation_registration_for(binding: HttpBinding, profile: HttpProductProfi
         binding.evaluator_sha256, policy.image_id.removeprefix("sha256:"),
         digest({"environment_sha256": binding.environment_sha256, "runtime_sha256": binding.runtime_sha256}),
         binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose)
-    gate = registry.Gate(gate_id, (*profile.case.requirement_ids, *profile.case.interaction_ids),
+    gate = registry.Gate(gate_id, profile.requirement_ids,
         profile.ordered_case_ids, gate_binding)
     return admission.ObservationRegistration(gate, commit_oid, tree_oid, repetition_id,
         cohort_trajectory_ids, recipe_from_case(profile.case).definition_sha256,

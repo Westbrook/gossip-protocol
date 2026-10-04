@@ -308,13 +308,10 @@ def project_outcomes(profile: execution.HttpProductProfile, history: reader.Hist
     return HttpOutcomeProjection(diagnostics, outcomes, guard)
 
 
-def selector_catalog(case_id: str, *, purpose: str,
-                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None) -> dict[str, Any]:
-    """Exact source-derived selectors; independent review/qualification remain mandatory."""
-    from . import candidate_product_process_execution_v1 as execution
-    case = core.case_definition(case_id)
-    profile = execution.HttpProductProfile(case, core.ORIGINAL_DEFINITION_PURPOSE, capture_policy=capture_policy)
-    profile.check_current(purpose=purpose, requirements_sha256=core.CONTRACT_SHA256)
+
+def source_selectors(profile: execution.HttpProductProfile) -> list[dict[str, Any]]:
+    """Original ordered facets only; no profile record/hash or registration recursion."""
+    case = profile.case
     selectors = []
     for index, step in enumerate(case.steps):
         assert step.expectation is not None
@@ -330,13 +327,27 @@ def selector_catalog(case_id: str, *, purpose: str,
         "observation_pointer": "/mechanics_guard/status", "definition_pointer": "/definition/steps",
         "disposition": "normative", "evidence_kind": "physical_mechanics",
         "semantic_adequacy_reviewed": False, "physically_qualified": False})
-    result = {"protocol": PROTOCOL, "case_id": case_id, "milestone": case.milestone,
+    return selectors
+
+
+def selector_catalog(case_id: str, *, purpose: str,
+                     capture_policy: execution.source_capture.BatchCapturePolicy | None = None,
+                     mapping_profile: str | None = None) -> dict[str, Any]:
+    """Exact source-derived selectors; independent review/qualification remain mandatory."""
+    from . import candidate_product_process_execution_v1 as execution
+    case = core.case_definition(case_id)
+    profile = execution.HttpProductProfile(case, core.ORIGINAL_DEFINITION_PURPOSE, capture_policy=capture_policy,
+        mapping_profile=mapping_profile)
+    profile.check_current(purpose=purpose, requirements_sha256=core.CONTRACT_SHA256)
+    selectors = source_selectors(profile)
+    protocol = PROTOCOL
+    result = {"protocol": protocol, "case_id": case_id, "milestone": case.milestone,
         "source_contract_sha256": core.CONTRACT_SHA256, "target_contract_sha256": core.CONTRACT_SHA256,
         "original_definition_purpose": core.ORIGINAL_DEFINITION_PURPOSE, "execution_purpose": purpose,
         "definition": case.record(), "definition_sha256": core.digest(case.record()),
         "definition_sources": core.definition_sources(), "profile_sha256": profile.sha256,
         "evaluator_sources": execution.evaluator_sources(), "ordered_case_ids": list(profile.ordered_case_ids),
-        "requirement_ids": list(case.requirement_ids), "selectors": selectors,
+        "requirement_ids": list(profile.requirement_ids), "selectors": selectors,
         "scope_review_supplied": False, "dispatch_authority": False, "acceptance_authority": False,
         "semantic_limits": dict(SEMANTIC_LIMITS),
         "required_unfinished_coverage": ["Abrupt live-worker death and owner contention", "Power-loss/commit-boundary recovery",
@@ -348,8 +359,11 @@ def selector_catalog(case_id: str, *, purpose: str,
             "Unspecified CLI auxiliary streams and import wrappers",
             "Browser downloads and release handoff", "Full independent scope review and physical qualification"]}
     if capture_policy is not None:
-        result.update(protocol=PROTOCOL + "-git-source-batch-v1", execution_protocol=execution.BATCH_PROTOCOL,
+        protocol = PROTOCOL + "-git-source-batch-v1"
+        result.update(protocol=protocol, execution_protocol=execution.BATCH_PROTOCOL,
                       source_capture=capture_policy.record())
+    if mapping_profile is not None:
+        result.update(protocol=protocol + "-map-a-v1", mapping_profile=profile.mapping_record())
     return result
 
 
@@ -411,7 +425,8 @@ class HttpObservationSource:
         execution.require(owner.checkpoint() == self.checkpoint and owner._freeze() == freeze
                           and execution.evaluator_sources() == owner.sources == execution._LOADED_SOURCES,
                           "Original evidence, loaded evaluator or admission changed during semantic verification")
-        record = {"protocol": PROTOCOL if owner.profile.cumulative_profile is None else M4_PROTOCOL,
+        protocol = PROTOCOL if owner.profile.cumulative_profile is None else M4_PROTOCOL
+        record = {"protocol": protocol,
             "original_registration": asdict(owner.actual_registration),
             "original_execution_id": history.execution_id, "original_terminal_sha256": history.terminal_sha256,
             "original_binding_sha256": history.original_binding_sha256,
@@ -429,9 +444,12 @@ class HttpObservationSource:
             "physical_execution_reused": False, "whole_project_acceptance": False,
             "held_out_claim": False}
         if owner.profile.capture_policy is not None:
-            record.update(protocol=PROTOCOL + "-git-source-batch-v1",
+            protocol = PROTOCOL + "-git-source-batch-v1"
+            record.update(protocol=protocol,
                           execution_protocol=execution.BATCH_PROTOCOL,
                           source_capture=owner.profile.capture_policy.record())
+        if owner.profile.mapping_profile is not None:
+            record.update(protocol=protocol + "-map-a-v1", mapping_profile=owner.profile.mapping_record())
         raw = execution.encoded(record)
         if owner.has_authenticated(self.receipt_path.name):
             execution.require(owner.read_authenticated(self.receipt_path.name) == raw,

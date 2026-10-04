@@ -35,6 +35,7 @@ from . import candidate_emergency_cleanup_v1 as emergency
 from . import candidate_retention_process_v1 as retained_process
 from . import candidate_source_capture_policy_v1 as source_capture
 from .candidate_release_execution_v2 import capture_git_source, source_manifest
+from . import cumulative_scope_source_v1 as map_a
 from .gitstore import GitStore
 from .sandbox import DockerValidator
 
@@ -168,6 +169,7 @@ def evaluator_sources() -> dict[str, str]:
     result["library-cumulative-product-v2.json"] = sha256(contract.read_bytes())
     require(result["library-cumulative-product-v2.json"] == TARGET_CONTRACT_SHA256,
             "Exact cumulative v2 contract required")
+    result.update(map_a.map_a_sources())
     return result
 
 
@@ -470,6 +472,7 @@ class HttpProductProfile:
     original_definition_purpose: str = "public_product_definition"
     cumulative_profile: None = None
     capture_policy: source_capture.BatchCapturePolicy | None = None
+    mapping_profile: str | None = None
 
     def __post_init__(self) -> None:
         require(type(self.case) is core.LiteralCase, "Complete typed product case required")
@@ -481,6 +484,8 @@ class HttpProductProfile:
 
     def check_current(self, *, purpose: str | None = None, requirements_sha256: str | None = None) -> None:
         self.case.check_current()
+        require(self.mapping_profile in (None, map_a.MAP_A_MAPPING), "Unknown mapping profile")
+        require(self.mapping_profile is None or self.milestone == "M4", "MAP-A requires final-M4 source")
         require(self.case.milestone in ("M2", "M3", "M4"), "Cumulative-product milestone required")
         require(self.original_definition_purpose == "public_product_definition"
                 and self.cumulative_profile is None, "Public product identity changed")
@@ -530,7 +535,16 @@ class HttpProductProfile:
         if self.capture_policy is not None:
             result.update(protocol=PROFILE_PROTOCOL + "-git-source-batch-v1",
                           execution_protocol=BATCH_PROTOCOL, source_capture=self.capture_policy.record())
+        if self.mapping_profile is not None:
+            result.update(protocol=result["protocol"] + "-map-a-v1", mapping_profile=self.mapping_record())
         return result
+
+    def mapping_record(self) -> dict[str, Any]:
+        return map_a.map_a_profile_record('product-process', self)
+
+    @property
+    def requirement_ids(self) -> tuple[str, ...]:
+        return self.case.requirement_ids if self.mapping_profile is None else tuple(self.mapping_record()['requirement_ids'])
 
     @property
     def sha256(self) -> str:
@@ -630,7 +644,7 @@ def observation_registration_for(binding: HttpBinding, profile: HttpProductProfi
         binding.evaluator_sha256, policy.image_id.removeprefix("sha256:"),
         digest({"environment_sha256": binding.environment_sha256, "runtime_sha256": binding.runtime_sha256}),
         binding.limits_sha256, binding.seed_sha256, binding.protocol, binding.purpose)
-    gate = registry.Gate(gate_id, profile.case.requirement_ids,
+    gate = registry.Gate(gate_id, profile.requirement_ids,
         profile.ordered_case_ids, gate_binding)
     return admission.ObservationRegistration(gate, commit_oid, tree_oid, repetition_id,
         cohort_trajectory_ids, recipe_from_case(profile.case).definition_sha256,

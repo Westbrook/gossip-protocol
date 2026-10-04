@@ -149,7 +149,7 @@ class PeerFinancialAuthorityV5Tests(Fixture, unittest.TestCase):
         policy["acceptance_authority"] = 0
         with self.assertRaises(FinancialError):
             checked_policy(policy)
-        with self.assertRaisesRegex(FinancialError, "live qualification unavailable"):
+        with self.assertRaisesRegex(FinancialError, "requires an actual pre-lease issued qualification"):
             validate_qualification({}, {}, {})
 
     def test_pending_git_intent_blocks_repaired_completed_closure(self):

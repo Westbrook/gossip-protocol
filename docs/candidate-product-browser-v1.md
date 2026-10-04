@@ -191,3 +191,57 @@ regressions, physical browser qualification, independent source review or explic
 future scope-family admission. M1 exact-source catalog keys require the `m1:`
 prefix; later amendment units retain their own exact catalog names. No selector
 mapping is silently installed into an existing frozen scope profile.
+
+## Prospective batch capture and failure-tail retention
+
+The first root physical execution of the held4 family failed during D01's first
+open action. It retained two complete sent GET exchanges, no control GETs and no
+mutation request. Node returned 2 and its input pipe closed before the second
+reply was written. The owner did not drain unread output on that error, so the
+originals do not establish the exact Node exception or a product discrepancy.
+That failed execution and its source review remain unchanged.
+
+The prospective successor admits the exact existing `BatchCapturePolicy` through
+`BrowserProfile(case, capture_policy=BatchCapturePolicy())`. Its execution
+protocol is `candidate-product-browser-execution-v1-git-source-batch-v1`; the
+profile, gate, binding limits, original config, journal context, intent, terminal
+and original reader all bind that choice. Omitting the policy preserves the
+legacy profile record and capture route. Source capture runs anew at initial
+construction and every existing guard, including original-reader entry. The
+reviewed helper reads the complete registered Git tree and blobs in four Git
+children per capture, with no cross-boundary cache, fallback, candidate hook or
+checkout filter. Its explicit policy remains 60 seconds for the whole capture
+and five seconds for cleanup reap, 511 files, 2 MiB per file and 16 MiB in total.
+The source-capture helper and policy hashes are part of the evaluator closure.
+Admission, source equality, staged bytes, runtime hashes and all ownership checks
+remain required. The seven physical controls select this policy prospectively;
+old execution receipts cannot be relabelled with the new binding.
+
+The 15-second browser/action observation, 10-second wire, 30-second helper,
+1200-second whole-history and 300-second Engine cleanup reserve are unchanged.
+No observer clock is paused and no deadline is widened. The original 61-file
+candidate caused the legacy capture route to create 124 Git children per guard;
+this successor removes that repeated process-launch cost while preserving fresh
+checks. Its adequacy for the real histories still requires a new physical run.
+
+On an IPC failure the owner preserves bounded late stdout and stderr in
+`browser-tail-stdout.bin` and `browser-tail-stderr.bin`, with hashes, byte counts,
+observed EOF flags and monotonic bounds in `browser-tail-completion.json`.
+Already-read but unprocessed stdout remains in `browser-incomplete-stdout.bin`.
+These files are diagnostic bytes only: they are never decoded into ordinary
+messages, actions or requests, never cause another helper dispatch, and never
+supply an ordinary terminal or successful mechanics result. Original errors and
+ordinary message/request/action counts remain intact. Tail collection first
+allows up to five seconds, sends SIGTERM when the child remains live, then uses
+the existing ten-second TERM/five-second KILL teardown allowance, capped by the
+original history deadline. Collection happens before blocking reap so a full
+output pipe cannot prevent terminal output from being collected. Each late pipe
+has its own 8 MiB cap; exhausted byte/time bounds retain the available prefix and
+keep mechanics unavailable. Process/pipe release precedes diagnostic retention,
+so a later journal failure cannot bypass release.
+
+New offline controls cover explicit versus legacy policy records, missing/wrong
+policy rejection, gate/profile mismatch, fresh guard calls that reject changed
+source, an actual owned pipe child closing stdin then emitting a late terminal
+and request, and bounded late-byte collection. The pipe child is a Python
+instrumentation fixture; it provides no Chromium, Engine or product credit.

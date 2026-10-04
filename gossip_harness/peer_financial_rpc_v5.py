@@ -6,7 +6,7 @@ from pathlib import Path
 import sqlite3
 from typing import Any
 
-from .peer_financial_authority_v2 import CumulativeAuthorityV2
+from .peer_financial_authority_v2 import CumulativeAuthorityV2, FinancialError
 from .peer_financial_authority_v5 import CumulativeAuthorityV5, PROTOCOL as FINANCIAL_PROTOCOL
 from .peer_financial_rpc_v2 import (
     FinancialRPC, FinancialRPCError, FinancialDenied, PROTOCOL as WIRE_PROTOCOL,
@@ -81,6 +81,28 @@ class FinancialRPCV5(FinancialRPC):
         except CohortSealed:
             raise FinancialDenied('cohort_sealed') from None
         super()._insert(db, actor, request_id, raw)
+
+    def _lease_operation(self, body: dict, parsed: dict, raw: bytes) -> dict:
+        finance=self.finance
+        assert isinstance(finance,CumulativeAuthorityV5)
+        with finance.terminal_gate, finance._active():
+            finance._guard_ledger_identity()
+            with finance.ledger.atomic() as db:
+                row=self._row(db,body['actor'],body['request_id'])
+                if row is not None:
+                    retained=self._retained(row,raw)
+                    if retained is None:
+                        raise FinancialRPCError('Lease receipt missing from atomic journal')
+                    return retained
+            # Inherited wire mechanics call Ledger directly; guard the actual
+            # new signed claim/renew path before its intent or SQL mutation.
+            try:
+                finance._guard_evidence()
+            except FinancialError:
+                raise FinancialDenied('qualification_unavailable') from None
+            result=super()._lease_operation(body,parsed,raw)
+            finance._guard_ledger_identity()
+            return result
 
     def _dispatch(self, body: dict, parsed: dict, raw: bytes) -> dict:
         finance = self.finance

@@ -24,7 +24,7 @@ from gossip_harness.library_v2_json_reference_v2 import corrected_v2_files, corr
 from tests.test_candidate_clients_docker_v4 import make_store
 from tests.test_library_m2_browser_reference_v1 import _runtime
 
-PROTOCOL = 'candidate-product-browser-physical-controls-v1'
+PROTOCOL = 'candidate-product-browser-physical-controls-v1-git-source-batch-v1'
 COHORT = ('fixture-original', *('fixture-reserved-'+str(index) for index in range(1,6)))
 VARIANTS = {
     'stale-commit': ('library/clients/index.html', "action === 'commit' ? {epoch: job.epoch} : {}",
@@ -144,16 +144,17 @@ class _PhysicalBrowserControl:
         files,candidate=candidate_files(self.definition[2])
         write_new(root/'candidate-definition.json',candidate)
         store=make_store(root/'candidate.git',files)
-        commit=store.head();tree,captured=execution.capture_git_source(store,commit)
+        commit=store.head()
+        profile=execution.BrowserProfile(cases.case(self.definition[1]),capture_policy=execution.source_capture.BatchCapturePolicy())
+        tree,captured=execution.capture_source(store,commit,policy=profile.capture_policy)
         self.assertEqual(captured,files)
-        profile=execution.BrowserProfile(cases.case(self.definition[1]))
         binding=execution.binding_for(files,profile,policy,runtime,browser_runtime)
         subject=registry.Subject('candidate-browser-qualification-v1',COHORT[0],'M4',
             execution.digest({'protocol':PROTOCOL,'control':self.definition,'policy':asdict(policy)}),
             cases.CONTRACT_SHA256,binding.source_sha256)
         prospective=execution.observation_registration_for(binding,profile,policy,subject=subject,
-            gate_id='browser-'+self.CONTROL_ID.lower(),commit_oid=commit,tree_oid=tree,repetition_id='physical-v1-1',cohort_trajectory_ids=COHORT)
-        registration=execution.BrowserRegistration(binding,commit,tree,'physical-v1-1',prospective)
+            gate_id='browser-'+self.CONTROL_ID.lower(),commit_oid=commit,tree_oid=tree,repetition_id='physical-batch-v1-1',cohort_trajectory_ids=COHORT)
+        registration=execution.BrowserRegistration(binding,commit,tree,'physical-batch-v1-1',prospective)
         original=write_new(root/'prospective-registration.json',{'registration':asdict(prospective),
             'source_registration':asdict(registration),'profile':profile.record(),'policy':asdict(policy),
             'runtime':runtime,'browser_runtime':browser_runtime,'authority_is_synthetic_fixture':True})

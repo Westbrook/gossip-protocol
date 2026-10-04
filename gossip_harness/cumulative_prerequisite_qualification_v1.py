@@ -340,8 +340,8 @@ class PrerequisiteQualification:
                 slice_ = source.cli_slice(spec.registration) if spec.kind == 'cli' else (
                     source.m2_slice(spec.registration) if spec.kind == 'm2' else (
                     source.storage_slice(spec.registration) if spec.kind == 'storage' else (
-                    source.http_slice(spec.registration, spec.profile, spec.policy) if spec.kind == 'http'
-                    else source.product_process_slice(spec.registration, spec.profile, spec.policy))))
+                    source.http_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile) if spec.kind == 'http'
+                    else source.product_process_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile))))
                 require(slice_ in submission.slices, 'Actual prospective factory differs from semantic registration')
                 provenance_now = self.owner._registered_gate(registration)
                 require(provenance_now == provenance, 'Original registration changed during controls')

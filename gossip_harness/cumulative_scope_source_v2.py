@@ -61,12 +61,12 @@ def cli_slice(registration: Any) -> ExecutableSlice:
     return ExecutableSlice(**_values(previous.cli_slice(registration)))
 
 
-def http_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
-    return ExecutableSlice(**_values(previous.http_slice(registration, profile, policy)))
+def http_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile: str | None = None) -> ExecutableSlice:
+    return ExecutableSlice(**_values(previous.http_slice(registration, profile, policy, mapping_profile=mapping_profile)))
 
 
-def product_process_slice(registration: Any, profile: Any, policy: Any) -> ExecutableSlice:
-    return ExecutableSlice(**_values(previous.product_process_slice(registration, profile, policy)))
+def product_process_slice(registration: Any, profile: Any, policy: Any, *, mapping_profile: str | None = None) -> ExecutableSlice:
+    return ExecutableSlice(**_values(previous.product_process_slice(registration, profile, policy, mapping_profile=mapping_profile)))
 
 
 def storage_slice(registration: Any) -> ExecutableSlice:
