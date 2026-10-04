@@ -99,13 +99,20 @@ class CumulativePrerequisitePartialOriginalV1Tests(unittest.TestCase):
         from gossip_harness import candidate_checkpoint_chain_v1 as checkpoint
         from gossip_harness.candidate_checkpoint_head_v1 import ExternalHead
         from gossip_harness.cumulative_study_controller_v1 import Records
+        from gossip_harness import candidate_client_execution_v5 as cli
+        from tests.test_cumulative_scope_source_v1 import cli_registration
         temporary=tempfile.TemporaryDirectory(prefix='gossip-admission-partial-');self.addCleanup(temporary.cleanup)
         root=Path(temporary.name).resolve()
         head=ExternalHead.create(root/'head',journal_roots=(root/'raw',root/'delta'));self.addCleanup(head.close)
         self.chain=checkpoint.CheckpointChain.create(root/'raw',root/'delta',context={'synthetic':'partial-control-reader'},authority=head)
         self.addCleanup(self.chain.close);self.records=Records(self.chain)
-        self.first=registration('independent_acceptance')
-        self.second=replace(self.first,gate=replace(self.first.gate,gate_id='second-declared-target'))
+        # Exact closed legacy CLI components keep the full source-factory schema.
+        # These host-only declarations remain synthetic semantic-authority inputs,
+        # not executions or independently approved scope.
+        first=cli_registration(purpose='independent_acceptance')
+        second=replace(first,gate=replace(first.gate,gate_id='second-declared-target'))
+        self.first,self.second=(cli.observation_registration(value) for value in (first,second))
+        self.slices=tuple(qualification.source.cli_slice(value) for value in (first,second))
         self.source=consumer.Revision('a'*40,'b'*40,'c'*64)
         self.definition=qualification.definition_for('admission',self.source,(self.first.gate,self.second.gate),
             gate_id='admission',suite_id='admission-suite',physical_slot='admission-slot')
@@ -113,8 +120,9 @@ class CumulativePrerequisitePartialOriginalV1Tests(unittest.TestCase):
         self.request=consumer.QualificationRequest(registered,self.definition.execution,self.definition.suite,
             self.definition.specification,self.definition.product_lineages_sha256)
         self.provenance=self.source  # Explicit structural stand-in; not a scope review.
-        self.freeze=frozen(self.first)
-        self.slices=tuple(SimpleNamespace(gate=row.gate,sha256=str(i)*64) for i,row in enumerate((self.first,self.second)))
+        self.freeze=replace(frozen(self.first),subjects=tuple(
+            replace(self.first.gate.binding.subject,trajectory_id=key)
+            for key in self.first.cohort_trajectory_ids))
         self.owner=object.__new__(qualification.PrerequisiteQualification)
         self.owner.source=self.source
         self.owner.owner=SimpleNamespace(records=self.records,chain=self.chain,freeze=self.freeze)
@@ -133,9 +141,7 @@ class CumulativePrerequisitePartialOriginalV1Tests(unittest.TestCase):
             'slice_sha256':self.slices[index].sha256,'guards':guards})
 
     def partial(self):
-        from unittest.mock import patch
-        with patch.object(qualification.source,'verify_slice',return_value=None):
-            return self.owner._partial_execution(self.request)
+        return self.owner._partial_execution(self.request)
 
     def test_known_failed_acknowledged_prefix_survives_unknown_later_target(self):
         self.retain_target(0,failed=True);before=self.chain.commitment

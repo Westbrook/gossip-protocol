@@ -37,6 +37,15 @@ MODULES = (
     'candidate_m2_product_profile_v1', 'candidate_m2_review_authority_v1',
 )
 
+# New workflow transport enrolls product inputs by exact name. In particular,
+# physical qualification profiles/bindings are not candidate acceptance inputs.
+WORKFLOW_TYPES = {
+    'candidate_workflow_profile_v1': ('WorkflowProfile',),
+    'candidate_workflow_execution_v1': ('WorkflowPolicy','WorkflowBinding','WorkflowRegistration'),
+    'candidate_workflow_review_v1': ('WorkflowBoundary','WorkflowCapturePoint','WorkflowSourcePlan',
+        'WorkflowInspectionProfile','WorkflowInspectionRegistration'),
+}
+
 
 def types() -> dict[str, type]:
     result = {}
@@ -45,6 +54,13 @@ def types() -> dict[str, type]:
         for value in vars(module).values():
             if isinstance(value, type) and is_dataclass(value) and value.__module__ == module.__name__:
                 result[module.__name__ + '.' + value.__qualname__] = value
+    for name, names in WORKFLOW_TYPES.items():
+        module = importlib.import_module('.' + name, __package__)
+        for item in names:
+            value = getattr(module,item)
+            require(isinstance(value,type) and is_dataclass(value) and value.__module__ == module.__name__
+                and value.__qualname__ == item, 'Closed named workflow input type changed')
+            result[module.__name__ + '.' + item] = value
     return result
 
 

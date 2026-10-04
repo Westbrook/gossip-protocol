@@ -53,7 +53,8 @@ def implementation_sources() -> dict[str, str]:
         'cumulative_scope_source_v1.py', 'cumulative_scope_source_v2.py', 'cumulative_scope_authority_v1.py',
         'cumulative_scope_authority_v2.py', 'cumulative_scope_source_v3.py', 'cumulative_scope_authority_v3.py', 'candidate_release_execution_v1.py',
         'candidate_release_execution_v2.py', 'candidate_git_source_batch_v1.py', 'gitstore.py')
-    pins = {**review.implementation_sources(), **{'gossip_harness/' + name:
+    from . import cumulative_workflow_exposure_v1 as workflow
+    pins = {**workflow.definition_sources(), **review.implementation_sources(), **{'gossip_harness/' + name:
         hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in names}}
     admission.verify_loaded_sources(pins)
     return pins
@@ -337,17 +338,27 @@ class PrerequisiteQualification:
         else:
             facts: list[dict[str, Any]] = []
             for spec in specs:
+                from . import cumulative_workflow_exposure_v1 as workflow
+                if spec.kind in workflow.KINDS:
+                    workflow.validate_spec(self.owner.plan, spec)
                 registration = spec.observation_registration()
-                slice_ = source.cli_slice(spec.registration) if spec.kind == 'cli' else (
-                    source.m2_slice(spec.registration) if spec.kind == 'm2' else (
-                    source.storage_slice(spec.registration) if spec.kind == 'storage' else (
-                    source.http_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile) if spec.kind == 'http'
-                    else source.product_process_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile))))
+                if spec.kind == 'workflow':
+                    slice_ = source.workflow_slice(spec.registration)
+                elif spec.kind == 'workflow_inspection':
+                    slice_ = source.workflow_inspection_slice(spec.registration)
+                else:
+                    slice_ = source.cli_slice(spec.registration) if spec.kind == 'cli' else (
+                        source.m2_slice(spec.registration) if spec.kind == 'm2' else (
+                        source.storage_slice(spec.registration) if spec.kind == 'storage' else (
+                        source.http_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile) if spec.kind == 'http'
+                        else source.product_process_slice(spec.registration, spec.profile, spec.policy, mapping_profile=spec.profile.mapping_profile))))
                 require(slice_ in submission.slices, 'Actual prospective factory differs from semantic registration')
                 provenance_now = self.owner._registered_gate(registration)
                 require(provenance_now == provenance, 'Original registration changed during controls')
                 guards = _control(registration, self.owner.freeze, self.owner._current)
-                facts.append({'registration': asdict(registration), 'slice_sha256': slice_.sha256, 'guards': guards})
+                facts.append({'registration': asdict(registration), 'slice_sha256': slice_.sha256, 'guards': guards,
+                    **({**workflow.cli.contract_fields(self.owner.plan),**workflow.contract_fields(self.owner.plan)}
+                       if spec.kind in workflow.KINDS else {})})
                 self.owner._put(key + '.target.' + str(len(facts) - 1), plain(facts[-1]))
             malformed = malformed_controls()
             target_refs = [{'name': self.owner.records.name(key + '.target.' + str(i)),
@@ -372,6 +383,17 @@ class PrerequisiteQualification:
         require(original['terminal_status'] == 'completed', 'Partial controls cannot solicit completed admission review')
         return self.reviews.stage(purpose='admission_fixture_review', role='admission', source=self.source,
             context=self._context(request, original))
+
+    def _target_contract(self, component: Any, fact: dict[str, Any]) -> None:
+        from . import cumulative_workflow_exposure_v1 as workflow
+        keys = ('effective_requirements','workflow_requirements','combined_effective_requirements')
+        expected = ({**workflow.cli.contract_fields(self.owner.plan), **workflow.contract_fields(self.owner.plan)}
+            if component.family in (workflow.FAMILY,workflow.INSPECTION_FAMILY) else {})
+        require({key:fact[key] for key in keys if key in fact} == expected,
+                'Original workflow admission target dropped or changed its requirement identities')
+        if expected:
+            require(expected['workflow_requirements'] == workflow.manifest(),
+                    'Workflow admission cannot downgrade to a legacy study')
 
     def _partial_execution(self, request: consumer.QualificationRequest) -> dict:
         """Read acknowledged partial controls; never resume or create a terminal."""
@@ -400,6 +422,7 @@ class PrerequisiteQualification:
             require(len(matching) == 1 and matching[0].sha256 == fact['slice_sha256'],
                     'Partial original source factory differs')
             source.verify_slice(matching[0])
+            self._target_contract(matching[0],fact)
             name = self.owner.records.name(slot)
             require(self.owner.chain.position(self.owner.records.name(key + '.intent')) < self.owner.chain.position(name),
                     'Partial controls preceded intent')
@@ -461,6 +484,7 @@ class PrerequisiteQualification:
                 require(len(matching) == 1 and matching[0].sha256 == fact['slice_sha256'],
                         'Original guard source factory changed')
                 source.verify_slice(matching[0])
+                self._target_contract(matching[0],fact)
                 facts.append(fact)
             expected_rows = admission_outcomes(tuple(facts), tuple(original['body']['malformed']))
         require(original['outcomes'] == [asdict(row) for row in expected_rows],

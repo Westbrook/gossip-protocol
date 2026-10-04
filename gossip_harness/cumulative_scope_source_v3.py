@@ -15,6 +15,7 @@ from . import cumulative_scope_source_v2 as previous
 from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
 from . import candidate_observation_admission_v1 as admission
+from . import cumulative_workflow_exposure_v1 as workflow
 
 PROTOCOL = 'cumulative-scope-source-v3'
 LOADED_SOURCE_SHA256 = previous.sha(Path(__file__).read_bytes())
@@ -26,6 +27,8 @@ AssertionDeclaration = previous.AssertionDeclaration
 require, encoded, sha = previous.require, previous.encoded, previous.sha
 load_catalog, scope_review_input = previous.load_catalog, previous.scope_review_input
 M2_LANES = ('public-contract',)
+WORKFLOW_LANES = ('public-contract', 'workflow')
+INSPECTION_LANES = ('source-inspection',)
 _values = previous._values
 
 
@@ -36,14 +39,16 @@ class ExecutableSlice(previous.ExecutableSlice):
         return sha(encoded({'protocol': PROTOCOL, 'slice': asdict(self)}))
 
     def compiler_records(self, *, suite_id: str, physical_slot: str) -> tuple[compiler.SuiteDefinition, compiler.ExecutionGate, tuple[compiler.CoverageEdge, ...]]:
-        if self.family != 'm2-direct-api':
+        if self.family not in ('m2-direct-api',workflow.FAMILY,workflow.INSPECTION_FAMILY):
             return previous.ExecutableSlice(**_values(self)).compiler_records(suite_id=suite_id, physical_slot=physical_slot)
         registry.identifier(suite_id); registry.identifier(physical_slot)
         logical = tuple(dict.fromkeys(key for row in self.assertions for key in row.assertion.logical_gate_ids))
         binding = self.gate.binding
         suite = compiler.SuiteDefinition(suite_id, self.gate.ordered_case_ids, binding.ordered_suite_sha256,
             self.definition_sha256, self.original_definition_purpose, binding.purpose,
-            self.source_contract_sha256, binding.evaluator_sha256, True, True, M2_LANES)
+            self.source_contract_sha256, binding.evaluator_sha256, True, True,
+            WORKFLOW_LANES if self.family == workflow.FAMILY else
+            INSPECTION_LANES if self.family == workflow.INSPECTION_FAMILY else M2_LANES)
         gate = compiler.ExecutionGate(self.gate.gate_id, physical_slot, suite_id, 'product', logical,
             binding.runtime_image_sha256, binding.environment_sha256, binding.limits_sha256,
             binding.seed_sha256, binding.execution_protocol)
@@ -139,10 +144,124 @@ def m2_slice(registration: Any) -> ExecutableSlice:
         encoded({'registration': asdict(registration)}).decode())
 
 
+def _workflow_slice(registration: Any, *, inspection: bool) -> ExecutableSlice:
+    """Reconstruct closed finite facets; complete semantic applicability remains external."""
+    from . import candidate_workflow_execution_v1 as execution
+    from . import candidate_workflow_observation_v1 as observer
+    from . import candidate_workflow_review_v1 as review
+    value: Any
+    lanes: tuple[str, ...]
+    if inspection:
+        require(type(registration) is review.WorkflowInspectionRegistration,'Exact host inspection registration required')
+        actual = review.inspection_observation_registration(registration)
+        value = registration.profile
+        record = observer.inspection_selector_catalog(purpose=value.purpose)
+        sources = review.inspection_evaluator_sources()
+        family,lanes = workflow.INSPECTION_FAMILY,INSPECTION_LANES
+    else:
+        require(type(registration) is execution.WorkflowRegistration,'Exact workflow registration required')
+        actual = execution.observation_registration(registration)
+        value = execution.profile_for_binding(registration.binding)
+        record = observer.selector_catalog(value.case_id,purpose=value.purpose)
+        sources = execution.evaluator_sources()
+        family,lanes = workflow.FAMILY,WORKFLOW_LANES
+    admission.verify_loaded_sources(sources)
+    require(actual.definition_sha256 == record['definition_sha256']
+        and actual.profile_sha256 == value.sha256 == record['profile_sha256']
+        and actual.gate.binding.evaluator_sha256 == execution.digest(sources)
+        and record['evaluator_sources'] == sources
+        and tuple(record['ordered_case_ids']) == actual.gate.ordered_case_ids,
+        'Workflow exact definition/profile/evaluator/ordered roster differs')
+    require(tuple(record['capabilities']) == lanes, 'Workflow catalog capabilities differ from its closed family lanes')
+    catalog = load_catalog(Path(__file__).resolve().parents[1])
+    selectors,assertions = [],[]
+    allowed_units = {'m1:V0-ADAPTER-01','m1:V0-ADAPTER-02','m1:M1-ADAPTER-03',
+        'CLARIFY-INPUT-DOMAIN','M4-COMPATIBILITY:clause:2'}
+    for row in record['selectors']:
+        semantic = row['evidence_kind'] != 'mechanics'
+        require(row['evidence_kind'] in ('semantic','complete_workflow_call','captured_sqlite','source_inspection','mechanics'),
+                'Unknown workflow evidence kind')
+        if row['evidence_kind'] == 'captured_sqlite':
+            require(not inspection and value.case_id == 'WF19-provisional-fault-boundary'
+                and row['assertion_kind'] == 'history',
+                'Captured workflow semantics are closed to the declared conservation history')
+            declared = next((item for item in execution.profile.capture_selectors(value.case_id)
+                if item['case_id'] == row['case_id']), None)
+            require(declared is not None and all(row.get(key) == expected for key,expected in declared.items()),
+                    'Exact source-defined capture roles, components and finite facets required')
+        selectors.append(Selector(row['case_id'],row['pointer'],'normative',row['definition_pointer'],
+            'semantic' if semantic else 'mechanics'))
+        if not semantic:
+            require(not row['source_unit_facets'],'Mechanics cannot grant workflow semantic credit')
+            continue
+        kind = row['assertion_kind']
+        require(kind in compiler.KINDS and (kind == 'inspection') == inspection,
+                'Explicit source-reviewed workflow assertion class required')
+        mapped_gates: list[str] = []
+        mapped_lanes: list[str] = []
+        for facet in row['source_unit_facets']:
+            require(facet['source_unit_id'] in allowed_units,'Workflow cannot widen its five declared source units')
+            unit = catalog.unit(facet['source_unit_id'])
+            logical = tuple(facet['logical_gate_ids'])
+            require(bool(logical) and len(set(logical)) == len(logical), 'Explicit finite logical gate identities required')
+            for gate_id in logical:
+                gate = next((gate for gate in catalog.inventory.logical_gates if gate.id == gate_id),None)
+                require(gate is not None and gate.role == 'product' and gate.lane in lanes
+                    and bool(set(unit.requirement_ids) & set(gate.requirement_ids) & set(value.requirement_ids)),
+                    'Workflow facet changed its actual source owner or supported lane')
+                assert gate is not None
+                mapped_gates.append(gate.id)
+                mapped_lanes.append(gate.lane)
+            identity = 'workflow-' + sha(encoded([family,value.case_id,row['case_id'],row['pointer'],facet,kind]))[:24]
+            assertions.append(AssertionDeclaration(unit.obligation.id,
+                compiler.Assertion(identity,kind,logical),row['case_id'],row['pointer'],
+                facet['rationale'] + ' Exact original finite selector only. Independent whole-unit relevance, '
+                'M4 inheritance, purpose conversion and complete lane adequacy remain mandatory. '
+                'Source inspection and actual execution corroboration are distinct; this supplies no missing B02 intake proof.'))
+        if not inspection:
+            require(tuple(row['logical_gate_ids']) == tuple(dict.fromkeys(mapped_gates))
+                and type(row['lanes']) is list and len(row['lanes']) == len(set(row['lanes']))
+                and set(row['lanes']) == set(mapped_lanes),
+                'Workflow selector gate/lane metadata differs from its exact source facets')
+    return ExecutableSlice(family,value.case_id,actual.gate,actual.definition_sha256,
+        actual.original_definition_purpose,compiler.PRODUCT_V2_SHA256,value.sha256,
+        tuple(sorted(sources.items())),tuple(selectors),tuple(assertions),
+        ('All312 units/22 authority duties/188 gaps remain required; no empty or unreviewed cell is waived.',
+         'Twenty runtime histories plus one independently enrolled host gate do not establish whole-product acceptance.'),
+        encoded({'registration':asdict(registration)}).decode())
+
+
+def workflow_slice(registration: Any) -> ExecutableSlice:
+    return _workflow_slice(registration,inspection=False)
+
+
+def workflow_inspection_slice(registration: Any) -> ExecutableSlice:
+    return _workflow_slice(registration,inspection=True)
+
+
 def verify_slice(value: previous.previous.ExecutableSlice) -> None:
     require(type(value) is ExecutableSlice, 'Exact version3 source-derived slice required')
     if value.family in ('cli', 'http', 'product-process', 'storage-b01', 'storage-b02'):
         previous.verify_slice(previous.ExecutableSlice(**_values(value)))
+        return
+    registration: Any
+    if value.family in (workflow.FAMILY,workflow.INSPECTION_FAMILY):
+        from . import candidate_workflow_execution_v1 as workflow_execution
+        from . import candidate_workflow_review_v1 as workflow_review
+        record = json.loads(value.factory_input_json)
+        require(type(record) is dict and set(record) == {'registration'}, 'Unexpected workflow factory input')
+        row = record['registration']
+        gate = previous.previous._gate(row['gate'])
+        if value.family == workflow.FAMILY:
+            registration = workflow_execution.WorkflowRegistration(workflow_execution.WorkflowBinding(**row['binding']),
+                row['commit_oid'],row['tree_oid'],row['repetition_id'],gate,tuple(row['cohort_trajectory_ids']))
+            expected = workflow_slice(registration)
+        else:
+            registration = workflow_review.WorkflowInspectionRegistration(gate,row['commit_oid'],row['tree_oid'],
+                row['repetition_id'],tuple(row['cohort_trajectory_ids']),workflow_review.WorkflowInspectionProfile(**row['profile']),
+                row['source_plan_sha256'],row['review_sha256'],row['review_origin_sha256'])
+            expected = workflow_inspection_slice(registration)
+        require(expected == value,'Original workflow definition/selectors/purpose were substituted')
         return
     require(value.family == 'm2-direct-api', 'Unknown version3 executable factory')
     from . import candidate_m2_product_execution_v1 as execution

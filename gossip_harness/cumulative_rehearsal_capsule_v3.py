@@ -10,6 +10,7 @@ import threading
 import time
 from . import candidate_observation_admission_v1 as admission
 from . import cumulative_rehearsal_codec_v1 as codec
+from . import cumulative_workflow_exposure_v1 as workflow
 from . import cumulative_rehearsal_capsule_v2 as previous
 from . import cumulative_final_originals_v1 as originals
 from . import cumulative_rehearsal_matching_v1 as matching
@@ -88,6 +89,14 @@ def audit_closed_capsule(reference: dict, *, live_plan: StudyPlan, repository: o
             study_expected=asdict(chain.commitment); pool.current()
         boundary()
         packet=bound(value['final_packet'])
+        fixture_exposure, live_exposure = workflow.contract_fields(fixture), workflow.contract_fields(live)
+        if fixture_exposure:
+            fixture_exposure = {**workflow.cli.contract_fields(fixture),**fixture_exposure}
+        if live_exposure:
+            live_exposure = {**workflow.cli.contract_fields(live),**live_exposure}
+        require(fixture_exposure == live_exposure
+            and all(packet.get(key) == item for key,item in fixture_exposure.items()),
+            'Rehearsal workflow/CLI combined identity differs before cold authority reconstruction')
         require(packet['repository'] == str(repo) and packet['ledger_identity'] == value['ledger_identity']
             and packet['proofs'][packet['study']] == value['study_proof'], 'Final proof references a different original study')
         final=originals.audit_final_originals(packet,plan=fixture)

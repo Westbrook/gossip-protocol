@@ -177,9 +177,11 @@ def _prerequisite_prefix(owner: final.FinalAcceptanceV3, gate: registry.Gate, ad
 
 def _restore_owner(packet: dict, pool: ProofPool, plan: StudyPlan) -> final.FinalAcceptanceV3:
     shared.projection.validate_plan(plan, path(packet['repository']))
+    shared.workflow.validate_plan(plan, path(packet['repository']))
     _prospective_sources(plan)
     scope_owner, submissions = _restore_scope(pool, packet['scope'], path(packet['repository']))
     shared.projection.validate_submission(plan, submissions)
+    shared.workflow.validate_submission(plan, submissions)
     require(tuple(row.subject.trajectory_id for row in submissions) ==
             tuple(row.trajectory for row in plan.roster.children), 'Ordered six scope subjects differ')
     owner = object.__new__(final.FinalAcceptanceV3)
@@ -205,7 +207,7 @@ def _restore_owner(packet: dict, pool: ProofPool, plan: StudyPlan) -> final.Fina
     require(owner.freeze is not None and owner.freeze.subjects == owner.subjects,
             'Original final freeze substituted the complete subject census')
     contract = owner.records.read('final.contract')
-    require(contract == plain({**shared.projection.contract_fields(plan), 'protocol': final.PROTOCOL, 'study_sha256': plan.sha256,
+    require(contract == plain({**shared.projection.contract_fields(plan), **shared.workflow.contract_fields(plan), 'protocol': final.PROTOCOL, 'study_sha256': plan.sha256,
         'study_checkpoint': asdict(owner.study_expected), 'scope_checkpoint': owner.scope_snapshot.checkpoint,
         'ledger_identity': owner.ledger_identity, 'sources': owner.sources,
         'scope_subjects': [asdict(row.subject) for row in submissions]}), 'Original final contract differs')
@@ -339,7 +341,8 @@ def config_prefix(owner: Any) -> checkpoint.PrefixCommitment:
 def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: ProofPool,
                  gate: registry.Gate, freeze: registry.CohortFreeze | None) -> registry.Observation:
     """Authenticate completed original bytes without executing or publishing."""
-    closed(value, 'inputs proof layout_review')
+    require(type(value) is dict and set(value) in ({'inputs','proof','layout_review'},
+        {'inputs','proof','layout_review','product_review'}), 'Exact original observation descriptor required')
     inputs = codec.read(value['inputs'])
     closed(inputs, 'kind root delta_root cleanup_root store registration policy recipe profile cumulative_profile endpoint layout_plan')
     admitted = owner.records.read(key + '.admission')
@@ -355,7 +358,7 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
         head = ExternalHead.reopen(roots[2], journal_roots=(roots[0], roots[1]), expected=expected)
         stack.callback(head.close)
         layout = None
-        if inputs['kind'] in ('storage','m2'):
+        if inputs['kind'] in ('storage','m2',*shared.workflow.KINDS):
             from . import candidate_storage_review_authority_v1 as storage_review
             from . import candidate_m2_review_authority_v1 as m2_review
             layout_spec = closed(value['layout_review'], 'chain enrollment')
@@ -363,14 +366,19 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
             # of their advisory descriptors for the whole audit lifetime.
             chain = (pool.opened[layout_spec['chain']] if layout_spec['chain'] in pool.opened
                 else ProofPool(pool.records,stack).open(layout_spec['chain']))
-            module: Any = storage_review if inputs['kind'] == 'storage' else m2_review
-            cls: Any = module.StorageReviewAuthority if inputs['kind'] == 'storage' else module.M2ReviewAuthority
+            if inputs['kind'] in shared.workflow.KINDS:
+                from . import candidate_workflow_review_v1 as workflow_review
+                cls: Any = workflow_review.WorkflowReviewAuthority
+            else:
+                module: Any = storage_review if inputs['kind'] == 'storage' else m2_review
+                cls = module.StorageReviewAuthority if inputs['kind'] == 'storage' else module.M2ReviewAuthority
             layout = cls(chain, chain.commitment, codec.read(layout_spec['enrollment']))
         else:
             require(value['layout_review'] is None, 'Foreign layout authority')
         spec = shared.ObservationSpec(**{**inputs, 'store': GitStore(inputs['store']),
             'checkpoint_authority': head, 'layout_authority': layout})
         shared.projection.validate_spec(owner.plan, spec)
+        shared.workflow.validate_spec(owner.plan, spec)
         registration = spec.observation_registration()
         assert owner.freeze is not None
         require(registration.gate == gate and admitted['registration'] == plain(asdict(registration))
@@ -401,7 +409,32 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
             endpoint=spec.endpoint, mode='physical', expected_checkpoint=expected)
         actual: Any
         bridge: Any
-        if spec.kind == 'cli':
+        product_delivery: Any = None
+        require(('product_review' in value) == (spec.kind == 'workflow_inspection'),
+                'Product source inspection originals must match the explicit host kind')
+        if spec.kind == 'workflow_inspection':
+            from . import candidate_workflow_review_v1 as workflow_review
+            product_record = closed(value['product_review'], 'chain expected enrollment')
+            product_chain = (pool.opened[product_record['chain']] if product_record['chain'] in pool.opened
+                else ProofPool(pool.records,stack).open(product_record['chain']))
+            product_expected = checkpoint.PrefixCommitment(**product_record['expected'])
+            require(product_chain.commitment == product_expected, 'Independent product inspection prefix differs')
+            product_delivery = workflow_review.ProductInspectionDelivery(product_chain, product_expected,
+                codec.read(product_record['enrollment']))
+            assert isinstance(product_chain.authority, ExternalHead)
+            review_roots = (product_chain.raw_root,product_chain.delta_root,product_chain.authority.root)
+            require(all(not a.is_relative_to(b) and not b.is_relative_to(a)
+                for a in review_roots for b in (*protected,*candidate_roots)),
+                'Original host inspection delivery overlaps candidate or proof roots')
+            actual = workflow_review.WorkflowInspectionExecution(spec.root,spec.store,spec.registration,
+                value=spec.profile,plan=spec.layout_plan,review_authority=spec.layout_authority,
+                admission_authority=issued,checkpoint_authority=head,delta_root=spec.delta_root,
+                mode='physical',expected_checkpoint=expected,product_delivery=product_delivery)
+        elif spec.kind == 'workflow':
+            from . import candidate_workflow_execution_v1 as workflow_execution
+            actual = workflow_execution.CandidateWorkflowExecution(spec.root,spec.store,spec.registration,spec.policy,
+                value=spec.profile,plan=spec.layout_plan,review_authority=spec.layout_authority,admission_authority=issued,**common)
+        elif spec.kind == 'cli':
             actual = shared.cli.CandidateClientExecution(spec.root,spec.store,spec.registration,spec.policy,
                 admission_authority=issued,cumulative_profile=spec.cumulative_profile,**common)
         elif spec.kind in ('http','product'):
@@ -419,7 +452,9 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
         # before calling them, so that branch is unreachable here.
         verifier_name = ('semantic-verifier.json' if spec.kind in ('http','product') else
             shared.cli_source.VERIFIER_FILE if spec.kind == 'cli' else
-            shared.storage_source.VERIFIER_FILE if spec.kind == 'storage' else 'm2-product-verifier.json')
+            shared.storage_source.VERIFIER_FILE if spec.kind == 'storage' else
+            'inspection-verifier.json' if spec.kind == 'workflow_inspection' else
+            'workflow-verifier.json' if spec.kind == 'workflow' else 'm2-product-verifier.json')
         require(actual.journal is not None and actual.journal.has(verifier_name), 'Original physical verifier missing')
         before = config_prefix(actual)
         bound = owner.records.read(key + '.bound')
@@ -428,7 +463,12 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
             'config_sha256': sha(actual.read_authenticated('config.json'))}
             and dispatch == {'protocol': final.PROTOCOL, 'registration_sha256': digest(asdict(registration)),
                 'owner_checkpoint': asdict(before)}, 'Original config-only binding or dispatch differs')
-        if spec.kind == 'cli':
+        if spec.kind in shared.workflow.KINDS:
+            from . import candidate_workflow_observation_v1 as workflow_source
+            bridge_type = (workflow_source.WorkflowInspectionObservationSource if spec.kind == 'workflow_inspection'
+                else workflow_source.WorkflowObservationSource)
+            bridge = bridge_type(actual,expected)
+        elif spec.kind == 'cli':
             bridge = shared.cli_source.ClientObservationSource(actual,expected)
         elif spec.kind in ('http','product'):
             reader: Any = shared.http_source if spec.kind == 'http' else shared.product_source
@@ -443,6 +483,19 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
             and sha(actual.read_authenticated('intent.json')) == verified['intent_sha256']
             and sha(actual.read_authenticated('terminal.json')) == verified['terminal_sha256']
             and actual.checkpoint() == expected, 'Original physical observation or terminal changed')
+        if spec.kind == 'workflow_inspection':
+            request_record = owner.records.read(key + '.review-request')
+            require(request_record is not None and request_record['request'] ==
+                codec.bounded_decode(actual.read_authenticated('review-request.json')),
+                'Original host inspection request acknowledgment differs')
+            assert request_record is not None
+            pending = checkpoint.PrefixCommitment(**request_record['owner_checkpoint'])
+            require(pending.context_sha256 == expected.context_sha256 and pending.sequence < expected.sequence
+                and actual.authenticated_position('review-request.json') <= pending.sequence,
+                'Independent inspection delivery predates original acknowledged request')
+            request_position = owner.chain.position(Records.name(key+'.review-request'))
+            require(owner.chain.position(Records.name(key+'.dispatch')) < request_position
+                < owner.chain.position(Records.name(key+'.history')), 'Original host inspection dispatch chronology differs')
         history = owner.records.read(key + '.history')
         require(history is not None and history == verified['history'] and history['cleanup_verified'] is True
             and not history['infrastructure'] and not history['missing_step_ids'], 'Original physical cleanup/completeness missing')
@@ -458,7 +511,12 @@ def _observation(owner: final.FinalAcceptanceV3, key: str, value: dict, pool: Pr
 
 
 def audit_final_originals(packet: dict, *, plan: StudyPlan) -> dict:
-    closed(packet, 'protocol repository ledger_identity proofs study final scope admission_reviews promotion_reviews controls harness_repository observations')
+    exposure = shared.workflow.contract_fields(plan)
+    if exposure:
+        exposure = {**shared.projection.contract_fields(plan),**exposure}
+    closed(packet, 'protocol repository ledger_identity proofs study final scope admission_reviews promotion_reviews controls harness_repository observations'
+        + (' effective_requirements workflow_requirements combined_effective_requirements' if exposure else ''))
+    require(all(packet.get(key) == value for key,value in exposure.items()), 'Cold workflow combined requirement identity differs')
     require(packet['protocol'] == PROTOCOL and type(plan) is StudyPlan
         and plan.runtime['final_acceptance_financial_mode'] == 'fixture', 'Exact fixture FinalV3 proof required')
     require(type(packet['observations']) is dict and 1 <= len(packet['observations']) <= MAX_OBSERVATIONS,

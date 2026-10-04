@@ -40,3 +40,5 @@ exclude .progress-report/project.json
 include .progress-report/project.example.json
 prune devtools/browser/node_modules
 global-exclude *.py[cod] .DS_Store .env .env.*
+include docs/cumulative-cli-result-projection-v1.txt
+include docs/cumulative-workflow-v2-addendum-v4.txt

@@ -68,6 +68,7 @@ def export_final_packet(owner: final.FinalAcceptanceV3, specifications: tuple[sh
     require(type(owner) is final.FinalAcceptanceV3 and type(specifications) is tuple
         and all(type(spec) is shared.ObservationSpec for spec in specifications), 'Exact original final owner/specifications required')
     owner._current_originals()
+    shared.workflow.validate_plan(owner.plan, owner.repository)
     require(owner.records.read('final.assessment') is not None and owner.freeze is not None
         and owner.prerequisite_owner is not None and owner.promotion_owner is not None,
         'Original assessment and original authority capabilities must exist before packaging')
@@ -79,6 +80,12 @@ def export_final_packet(owner: final.FinalAcceptanceV3, specifications: tuple[sh
         if spec.layout_authority is not None:
             chain = spec.layout_authority.journal
             protected.extend((chain.raw_root,chain.delta_root,chain.authority.root))
+    for enrollment in owner.enrollments.values():
+        if enrollment.spec is not None and enrollment.spec.kind == 'workflow_inspection':
+            from . import candidate_workflow_review_v1 as workflow_review
+            delivery = enrollment.owner.product_delivery
+            require(type(delivery) is workflow_review.ProductInspectionDelivery, 'Original host delivery required before export')
+            protected.extend((delivery.journal.raw_root,delivery.journal.delta_root,delivery.journal.authority.root))
     require(all(not destination.is_relative_to(path) and not path.is_relative_to(destination) for path in protected),
             'Export must be outside all candidate and original proof roots')
     writer = InputWriter(destination)
@@ -110,7 +117,7 @@ def export_final_packet(owner: final.FinalAcceptanceV3, specifications: tuple[sh
         inputs['store'] = spec.store.path.resolve()
         # Bind the actual endpoint selected by the original owner even if the
         # launcher used None as an environment-default construction shorthand.
-        inputs['endpoint'] = row.owner.endpoint
+        inputs['endpoint'] = None if spec.kind == 'workflow_inspection' else row.owner.endpoint
         layout = None
         if spec.layout_authority is not None:
             spec.layout_authority.authenticate(spec.layout_plan)
@@ -119,8 +126,19 @@ def export_final_packet(owner: final.FinalAcceptanceV3, specifications: tuple[sh
         observations[key] = {'inputs':writer.put(inputs,typed=True),'layout_review':layout,
             'proof':{'raw':str(spec.root),'delta':str(spec.delta_root),'head':str(spec.checkpoint_authority.root),
                 'expected':asdict(row.post_checkpoint)}}
+        if spec.kind == 'workflow_inspection':
+            from . import candidate_workflow_review_v1 as workflow_review
+            delivery = row.owner.product_delivery
+            require(type(delivery) is workflow_review.ProductInspectionDelivery,
+                    'Exact independently delivered product inspection originals required')
+            delivery.authenticate(codec.bounded_decode(row.owner.read_authenticated('review-request.json')))
+            observations[key]['product_review'] = {'chain':proof(delivery.journal),
+                'expected':asdict(delivery.expected),'enrollment':writer.put(delivery.enrollment,typed=True)}
     require(set(observations) == set(owner.enrollments), 'Original physical slot census is incomplete')
-    packet = {'protocol':originals.PROTOCOL,'repository':str(owner.repository),'ledger_identity':owner.ledger_identity,
+    exposure = shared.workflow.contract_fields(owner.plan)
+    if exposure:
+        exposure = {**shared.projection.contract_fields(owner.plan),**exposure}
+    packet = {**exposure,'protocol':originals.PROTOCOL,'repository':str(owner.repository),'ledger_identity':owner.ledger_identity,
         'proofs':proofs,'study':proof(owner.study_chain),'final':proof(owner.chain),
         'scope':{'chain':proof(owner.scope_owner.chain),'enrollments':writer.put(owner.scope_owner.enrollments,typed=True),
             'submissions':[writer.put(owner.submissions[subject.trajectory_id],typed=True) for subject in owner.subjects]},

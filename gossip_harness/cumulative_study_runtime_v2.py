@@ -54,6 +54,8 @@ def _checked_qualification_session(plan: StudyPlan, mode: str,
                                    repository: Path, expected_ledger_identity: dict[str, Any]) -> None:
     from . import cumulative_cli_projection_v1 as projection
     projection.validate_plan(plan, repository)
+    from . import cumulative_workflow_exposure_v1 as workflow
+    workflow.validate_plan(plan, repository)
     if mode == "live":
         from .cumulative_issued_qualification_v1 import IssuedQualification, PROTOCOL as QUALIFICATION_PROTOCOL
         require(type(session) is IssuedQualification
@@ -342,6 +344,8 @@ class GossipChildRuntime:
     def _tick(self, startup: bool = False) -> None:
         from . import cumulative_cli_projection_v1 as projection
         projection.validate_plan(self.plan, self.repository)
+        from . import cumulative_workflow_exposure_v1 as workflow
+        workflow.validate_plan(self.plan, self.repository)
         if self.clock() >= self.deadline:
             raise StudyStop("deadline_exhausted")
         if (self.partition_until is not None and self.clock() >= self.partition_until
@@ -875,6 +879,8 @@ def run_study(plan: StudyPlan, *, output: Path, repository: Path,
     require(type(plan) is StudyPlan, "Exact V2 prospective plan required")
     from . import cumulative_cli_projection_v1 as projection
     projection.validate_plan(plan, repository)
+    from . import cumulative_workflow_exposure_v1 as workflow
+    workflow.validate_plan(plan, repository)
     plan.__post_init__()
     require(mode in ("fixture", "live"), "Explicit live or fixture mode required")
     _checked_qualification_session(plan, mode, qualification_session,

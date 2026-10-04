@@ -33,6 +33,7 @@ from . import cumulative_observation_recipe_factory_v1 as recipe_factory
 from . import candidate_observation_admission_v1 as admission
 from . import candidate_scope_consumer_v1 as consumer
 from . import cumulative_cli_projection_v1 as projection
+from . import cumulative_workflow_exposure_v1 as workflow
 from . import cumulative_scope_authority_v1 as scope_authority
 from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
@@ -69,7 +70,7 @@ def implementation_sources() -> dict[str, str]:
          'gossip_harness/cumulative_observation_recipe_factory_v1.py': recipe_factory.LOADED_SOURCE_SHA256,
          'gossip_harness/cumulative_study_controller_v1.py':
              hashlib.sha256((root / 'gossip_harness/cumulative_study_controller_v1.py').read_bytes()).hexdigest()},
-        cli.evaluator_sources(), http.evaluator_sources(), product.evaluator_sources(),
+        workflow.guard_sources(), cli.evaluator_sources(), http.evaluator_sources(), product.evaluator_sources(),
         storage.evaluator_sources(), storage.profile.definition_sources(),
         cli.cases.definition_sources(), cli.cumulative.definition_sources(), product.core.definition_sources(),
         scope_authority.implementation_sources(), dict(original_catalog.source_pins)))
@@ -145,6 +146,32 @@ class ObservationSpec:
     layout_authority: Any = None
 
     def observation_registration(self) -> admission.ObservationRegistration:
+        if self.kind in workflow.KINDS:
+            from . import candidate_workflow_execution_v1 as execution
+            from . import candidate_workflow_review_v1 as review
+            require(type(self.layout_plan) is review.WorkflowSourcePlan
+                and type(self.layout_authority) is review.WorkflowReviewAuthority
+                and self.recipe is None and self.cumulative_profile is None, 'Exact workflow source mechanism required')
+            value: Any
+            if self.kind == 'workflow':
+                require(type(self.registration) is execution.WorkflowRegistration
+                    and type(self.policy) is execution.WorkflowPolicy
+                    and type(self.profile) is execution.profile.WorkflowProfile, 'Exact workflow runtime inputs required')
+                value = execution.profile_for_binding(self.registration.binding)
+                require(execution.profile.reconstruct(self.profile) == value, 'Workflow profile/binding differs')
+                actual = execution.observation_registration(self.registration)
+            else:
+                require(type(self.registration) is review.WorkflowInspectionRegistration
+                    and type(self.profile) is review.WorkflowInspectionProfile and self.policy is None
+                    and self.endpoint is None, 'Exact host inspection inputs required')
+                value = self.registration.profile
+                require(self.profile == value, 'Host inspection profile differs')
+                actual = review.inspection_observation_registration(self.registration)
+            require(self.layout_plan.profile_kind == self.kind and self.layout_plan.profile_sha256 == value.sha256
+                and self.layout_plan.source_sha256 == actual.gate.binding.subject.source_sha256
+                and self.layout_plan.commit_oid == actual.commit_oid and self.layout_plan.tree_oid == actual.tree_oid,
+                'Workflow original source plan/profile/revision differs')
+            return actual
         if self.kind == 'm2':
             from . import candidate_m2_product_execution_v1 as m2
             require(type(self.registration) is m2.M2Registration and type(self.policy) is m2.M2Policy
@@ -208,6 +235,7 @@ class _Enrollment:
     post_checkpoint: checkpoint.PrefixCommitment | None = None
     observation: registry.Observation | None = None
     history: dict[str, Any] | None = None
+    spec: ObservationSpec | None = None
 
 
 @dataclass(frozen=True)
@@ -235,7 +263,7 @@ def _known_contract(owner: FinalAcceptance) -> _KnownContract:
     if type(owner) is v3.FinalAcceptanceV3:
         return _KnownContract(v3.PROTOCOL, v3.StudyPlan, v3.scope_authority, v3.implementation_sources,
             'cumulative_terminal_originals_v2', v3.terminal_implementation_sources,
-            ('cli', 'http', 'product', 'storage', 'm2'))
+            ('cli', 'http', 'product', 'storage', 'm2') + workflow.KINDS)
     raise consumer.AuthorityError('Unknown final acceptance owner version')
 
 
@@ -257,6 +285,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         plan.__post_init__()
         projection.validate_plan(plan, Path(repository))
         projection.validate_submission(plan, submissions)
+        workflow.validate_plan(plan, Path(repository))
+        workflow.validate_submission(plan, submissions)
         require(all(type(chain) is checkpoint.CheckpointChain and type(chain.authority) is ExternalHead
                     for chain in (study_chain, journal)), 'Durable independently owned proof chains required')
         require(study_chain is not journal and scope.chain is not journal,
@@ -291,7 +321,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         self.closed = False
         self.dispatch_halt: dict[str, Any] | None = None
         self._current()
-        self._put('final.contract', {**projection.contract_fields(plan), 'protocol': self.protocol, 'study_sha256': plan.sha256,
+        self._put('final.contract', {**projection.contract_fields(plan), **workflow.contract_fields(plan), 'protocol': self.protocol, 'study_sha256': plan.sha256,
             'study_checkpoint': asdict(study_expected), 'scope_checkpoint': self.scope_snapshot.checkpoint,
             'ledger_identity': self.ledger_identity, 'sources': self.sources,
             'scope_subjects': [asdict(row.subject) for row in submissions]})
@@ -307,6 +337,8 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         self.plan.__post_init__()
         projection.validate_plan(self.plan, self.repository)
         projection.validate_submission(self.plan, tuple(self.submissions.values()))
+        workflow.validate_plan(self.plan, self.repository)
+        workflow.validate_submission(self.plan, tuple(self.submissions.values()))
         require(self.plan.runtime.get('final_acceptance_protocol') == contract.protocol, 'Final protocol changed')
         require(not self.closed, 'Closed acceptance owner')
         self.chain.validate_boundary(expected=self.expected)
@@ -441,6 +473,11 @@ class FinalAcceptance(consumer.EvidenceAuthority):
     def _construct(self, spec: ObservationSpec, issued: admission.ObservationAdmission) -> Any:
         common = {'checkpoint_authority': spec.checkpoint_authority, 'delta_root': spec.delta_root,
                   'cleanup_root': spec.cleanup_root, 'endpoint': spec.endpoint, 'mode': 'physical'}
+        if spec.kind in workflow.KINDS:
+            from . import cumulative_workflow_observation_recipe_v1 as factory
+            if spec.kind == 'workflow_inspection':
+                return factory.construct_workflow_inspection_owner(spec, issued, mode='physical')
+            return factory.construct_workflow_owner(spec, issued, mode='physical')
         if spec.kind == 'm2':
             from . import cumulative_m2_observation_recipe_v1 as m2_factory
             return m2_factory.construct_m2_owner(spec, issued, mode='physical')
@@ -464,10 +501,16 @@ class FinalAcceptance(consumer.EvidenceAuthority):
 
     @normalize_authority
     def dispatch(self, spec: ObservationSpec) -> registry.Observation:
-        """Run one fresh actual owner; unknown intent cannot be resumed/retried."""
+        """Run one fresh synchronous owner; host delivery has a separate phase."""
+        require(spec.kind != 'workflow_inspection', 'Host inspection requires explicit begin/complete delivery')
+        return self._dispatch_original(spec)
+
+    def _dispatch_original(self, spec: ObservationSpec) -> Any:
+        """Shared original admission, construction and dispatch; never a backend callback."""
         require(type(spec) is ObservationSpec, 'Exact construction specification required')
         require(spec.kind in _known_contract(self).families, 'Observation family is not in this contract version')
         projection.validate_spec(self.plan, spec)
+        workflow.validate_spec(self.plan, spec)
         if self.dispatch_halt is not None:
             raise consumer.AuthorityUnavailable('Prior physical execution halted further dispatch')
         require(self.records.read('final.assessment') is None, 'Assessment already sealed the observation census')
@@ -481,7 +524,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
         slot = next(row for row in self.originals.slots if row.trajectory == registration.gate.binding.subject.trajectory_id)
         require(str(spec.store.path.resolve()) == slot.final_source['repository'], 'Another final Git store supplied')
         protected = self._protected_roots()
-        if spec.kind in ('storage','m2'):
+        if spec.kind in ('storage','m2',*workflow.KINDS):
             review_chain = spec.layout_authority.journal
             require(type(review_chain.authority) is ExternalHead, 'Layout review head authority changed')
             protected.extend((review_chain.raw_root, review_chain.delta_root, review_chain.authority.root))
@@ -496,7 +539,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             'kind': spec.kind, 'root': str(spec.root), 'delta_root': str(spec.delta_root),
             'cleanup_root': str(spec.cleanup_root), 'head_root': str(spec.checkpoint_authority.root)}
         record = self._put(key + '.admission', record)
-        row = _Enrollment(registration, provenance, record)
+        row = _Enrollment(registration, provenance, record, spec=spec)
         self.enrollments[key] = row
         issued = admission.ObservationAdmission(registration, verify_registration=lambda:self._callback(key),
             verify_cohort=lambda:self._verified_freeze())
@@ -505,7 +548,12 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             owner = self._construct(spec, issued)
             row.owner = owner
             expected_type: type[Any]
-            if spec.kind == 'm2':
+            if spec.kind in workflow.KINDS:
+                from . import candidate_workflow_execution_v1 as workflow_execution
+                from . import candidate_workflow_review_v1 as workflow_review
+                expected_type = (workflow_review.WorkflowInspectionExecution if spec.kind == 'workflow_inspection'
+                    else workflow_execution.CandidateWorkflowExecution)
+            elif spec.kind == 'm2':
                 from . import candidate_m2_product_execution_v1 as m2
                 expected_type = m2.CandidateM2Execution
             else:
@@ -513,7 +561,7 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                     cli.CandidateClientExecution if spec.kind == 'cli' else (
                     http.CandidateHttpExecution if spec.kind == 'http' else product.CandidateHttpExecution))
             require(type(owner) is expected_type, 'Factory did not construct the exact physical owner')
-            actual = owner.observation_registration if spec.kind in ('cli', 'storage', 'm2') else owner.actual_registration
+            actual = owner.observation_registration if spec.kind in ('cli', 'storage', 'm2', *workflow.KINDS) else owner.actual_registration
             before = owner.checkpoint()
             require(owner.admission is issued and owner.mode == 'physical' and actual == registration
                     and before.sequence == before.raw_file_count == 1,
@@ -526,9 +574,25 @@ class FinalAcceptance(consumer.EvidenceAuthority):
             self._put(key + '.dispatch', {'protocol': self.protocol, 'registration_sha256': digest(asdict(registration)),
                                         'owner_checkpoint': asdict(before)})
             row.phase = 'dispatching'
+            if spec.kind == 'workflow_inspection':
+                request = owner.begin_review()
+                row.post_checkpoint = owner.checkpoint()
+                self._put(key + '.review-request', {'request': request,
+                    'owner_checkpoint': asdict(row.post_checkpoint)})
+                row.phase = 'bound'  # Grading is prohibited while independent delivery is pending.
+                return request
             history = owner.execute_once()
             bridge: Any
-            if spec.kind == 'm2':
+            if spec.kind == 'workflow':
+                from . import candidate_workflow_observation_v1 as workflow_source
+                from . import cumulative_workflow_observation_recipe_v1 as factory
+                row.phase = 'observing'
+                workflow_source.publish_verifier(owner)
+                verified = owner.checkpoint()
+                history = factory.workflow_history(owner, history)
+                self._history(key, row, history)
+                bridge = workflow_source.WorkflowObservationSource(owner, verified)
+            elif spec.kind == 'm2':
                 from . import candidate_m2_product_observation_v1 as m2_source
                 from . import cumulative_m2_observation_recipe_v1 as m2_factory
                 row.phase = 'observing'
@@ -572,6 +636,62 @@ class FinalAcceptance(consumer.EvidenceAuthority):
                 self.dispatch_halt = {'slot': key, 'reason': 'physical_execution_exception'}
             # The admission/dispatch prefix remains the original failed attempt.
             # Cleanup belongs to the concrete owner; no failed slot is rearmed.
+            raise
+
+    def _complete_workflow_inspection(self, gate: registry.Gate, delivery: Any) -> registry.Observation:
+        from . import candidate_workflow_review_v1 as review
+        from . import candidate_workflow_observation_v1 as source
+        from . import cumulative_workflow_observation_recipe_v1 as factory
+        require(type(gate) is registry.Gate and type(delivery) is review.ProductInspectionDelivery,
+                'Exact host gate and independently installed delivery required')
+        key = 'final.observation.' + registry.fingerprint(gate)
+        row = self.enrollments.get(key)
+        require(row is not None and row.phase == 'bound' and row.spec is not None
+            and row.spec.kind == 'workflow_inspection' and row.registration.gate == gate,
+            'No outstanding original host inspection; no retry or completion replay')
+        assert row is not None and row.spec is not None
+        require(self.dispatch_halt is None and self.records.read('final.assessment') is None,
+                'Final dispatch halted or assessment sealed')
+        spec, owner = row.spec, row.owner
+        workflow.validate_spec(self.plan, spec)
+        require(type(owner) is review.WorkflowInspectionExecution and owner.admission is row.admission_owner
+            and owner.mode == 'physical' and spec.observation_registration() == row.registration
+            and owner.checkpoint() == row.post_checkpoint and self._callback(key) == row.registration,
+            'Host inspection source/admission/prefix changed before delivery')
+        assert row.post_checkpoint is not None
+        pending = self.records.read(key + '.review-request')
+        require(pending is not None and pending['owner_checkpoint'] == asdict(row.post_checkpoint),
+                'Original host request acknowledgment missing')
+        # The independent delivery chain cannot overlap candidate or other proof
+        # roots. Its current external head and actual records are read by owner.
+        require(type(delivery.journal.authority) is ExternalHead, 'Independent delivery head required')
+        protected = self._protected_roots() + [spec.store.path.resolve(), spec.layout_authority.journal.raw_root,
+            spec.layout_authority.journal.delta_root, spec.layout_authority.journal.authority.root]
+        incoming = (delivery.journal.raw_root,delivery.journal.delta_root,delivery.journal.authority.root)
+        candidate = (spec.root,spec.delta_root,spec.cleanup_root,spec.checkpoint_authority.root)
+        require(all(not a.is_relative_to(b) and not b.is_relative_to(a) for a in incoming for b in (*protected,*candidate)),
+                'Independent product review overlaps original/candidate roots')
+        try:
+            row.phase = 'dispatching'
+            terminal = owner.complete_review(delivery)
+            row.phase = 'observing'
+            source.publish_inspection_verifier(owner)
+            expected = owner.checkpoint()
+            self._history(key,row,factory.inspection_history(owner,terminal))
+            bridge = source.WorkflowInspectionObservationSource(owner,expected)
+            observation = bridge.observation(gate,None if gate.binding.purpose == 'public_release' else self.freeze)
+            row.source,row.observation,row.post_checkpoint = bridge,observation,owner.checkpoint()
+            self._put(key + '.verified', {'protocol':self.protocol,'observation':asdict(observation),
+                'post_checkpoint':asdict(row.post_checkpoint),'history':row.history,
+                'intent_sha256':hashlib.sha256(owner.read_authenticated('intent.json')).hexdigest(),
+                'terminal_sha256':hashlib.sha256(owner.read_authenticated('terminal.json')).hexdigest()})
+            row.phase = 'complete'
+            self._current_originals()
+            require(owner.checkpoint() == row.post_checkpoint,'Original host inspection changed at publication')
+            return observation
+        except BaseException:
+            row.phase = 'unavailable'
+            self.dispatch_halt = self.dispatch_halt or {'slot':key,'reason':'host_inspection_exception'}
             raise
 
     def _history(self, key: str, row: _Enrollment, history: Any) -> None:

@@ -37,7 +37,7 @@ require = consumer.require
 def implementation_sources() -> dict[str, str]:
     return shared._canonical_sources((previous.implementation_sources(), qualification.implementation_sources(),
         control.implementation_sources(), promotion.implementation_sources(), scope_authority.implementation_sources(),
-        m2.evaluator_sources(),
+        m2.evaluator_sources(), shared.workflow.definition_sources(),
         {'gossip_harness/cumulative_final_acceptance_v3.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
          'gossip_harness/cumulative_m2_observation_recipe_v1.py': hashlib.sha256(Path(m2_factory.__file__).read_bytes()).hexdigest(),
          'gossip_harness/cumulative_observation_recipe_factory_v2.py': hashlib.sha256(Path(storage_factory.__file__).read_bytes()).hexdigest()}))
@@ -249,9 +249,9 @@ class FinalAcceptanceV3(previous.FinalAcceptanceV2):
                 'Cannot grade a changing physical observation')
         return _Snapshot(self)
 
-    @shared.normalize_authority
-    def dispatch(self, spec: shared.ObservationSpec) -> registry.Observation:
+    def _dispatch_prerequisites(self, spec: shared.ObservationSpec) -> None:
         shared.projection.validate_spec(self.plan, spec)
+        shared.workflow.validate_spec(self.plan, spec)
         registration = spec.observation_registration()
         self._registered_gate(registration)
         submission = self.submissions[registration.gate.binding.subject.trajectory_id]
@@ -265,7 +265,29 @@ class FinalAcceptanceV3(previous.FinalAcceptanceV2):
         self._put('final.prerequisites.' + registry.fingerprint(registration.gate), {'protocol': PROTOCOL,
             'gate': asdict(registration.gate), 'qualification_requests': [request.sha256 for request in
                 consumer.qualification_requests(registered, design, submission.declaration)]})
+
+    @shared.normalize_authority
+    def dispatch(self, spec: shared.ObservationSpec) -> registry.Observation:
+        require(spec.kind != 'workflow_inspection', 'Host inspection requires explicit begin/complete delivery')
+        self._dispatch_prerequisites(spec)
         return super().dispatch(spec)
+
+    @shared.normalize_authority
+    def begin_workflow_inspection(self, spec: shared.ObservationSpec) -> dict[str, Any]:
+        require(type(spec) is shared.ObservationSpec and spec.kind == 'workflow_inspection',
+                'Exact prospective workflow host inspection specification required')
+        self._dispatch_prerequisites(spec)
+        return self._dispatch_original(spec)
+
+    @shared.normalize_authority
+    def complete_workflow_inspection(self, gate: registry.Gate, delivery: Any) -> registry.Observation:
+        key = 'final.observation.' + registry.fingerprint(gate)
+        row = self.enrollments.get(key)
+        require(row is not None and row.spec is not None and row.registration.gate == gate,
+                'Original host inspection admission required')
+        assert row is not None and row.spec is not None
+        self._dispatch_prerequisites(row.spec)  # Reauthenticate original qualifiers after independent delivery.
+        return self._complete_workflow_inspection(gate, delivery)
 
     def authority_diagnostics(self) -> list[dict[str, Any]]:
         rows = []

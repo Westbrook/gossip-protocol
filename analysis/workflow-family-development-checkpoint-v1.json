@@ -1,0 +1,371 @@
+{
+  "protocol": "workflow-family-development-checkpoint-v1",
+  "created_at_utc": "2026-10-04T21:19:31.828575+00:00",
+  "status": "development_checkpoint_incomplete_qualification",
+  "base_commit": "f61690169948b3bd282fd6b0b279c80be713539a",
+  "source_files": [
+    {
+      "path": "MANIFEST.in",
+      "sha256": "7db3386ea717f4449da0610aadfbf490a8eae7863504b5e869005b932f75b664",
+      "bytes": 2210
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v1.py",
+      "sha256": "8e6a767c8076d5b71c68cdc5c099dea1e17b6eda4e9fd54d8c1cd2400b1f02ce",
+      "bytes": 52178
+    },
+    {
+      "path": "gossip_harness/cumulative_final_acceptance_v3.py",
+      "sha256": "c74e3c5b1741a4502a42ef15d517984cab883a6d9bb3fcfc08b07fd63c53b295",
+      "bytes": 23575
+    },
+    {
+      "path": "gossip_harness/cumulative_final_originals_v1.py",
+      "sha256": "3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a",
+      "bytes": 41034
+    },
+    {
+      "path": "gossip_harness/cumulative_prerequisite_qualification_v1.py",
+      "sha256": "9ce44b2f88bf07dcce74f87aa3b1e68f5004afc6a72e7d1efd875d6c983b981a",
+      "bytes": 36886
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_capsule_v2.py",
+      "sha256": "a47ce5ef03dea8d247d814ea5355466f20de32eb0ca01917a248aed296e759a1",
+      "bytes": 7378
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_capsule_v3.py",
+      "sha256": "8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+      "bytes": 7967
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_codec_v1.py",
+      "sha256": "570343ef5201b161ed6d511d96a0b9513e55336e4739d62c2c87b800576f26f2",
+      "bytes": 8330
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_export_v1.py",
+      "sha256": "906af8ddc83f3b29c72d2a75dcd0f815ad73e589326224af3b110714945b584b",
+      "bytes": 9619
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_authority_v3.py",
+      "sha256": "4a0202db105ce4dcf345a1dfbbce3d70a8768b11a06cec1b6ba23ee4f22f113f",
+      "bytes": 13562
+    },
+    {
+      "path": "gossip_harness/cumulative_scope_source_v3.py",
+      "sha256": "05f25a0fff387f56b80554f3c9f312dc4fb0567b3b46a9c6e901aa2ee6bd73fb",
+      "bytes": 21721
+    },
+    {
+      "path": "gossip_harness/cumulative_study_controller_v2.py",
+      "sha256": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+      "bytes": 32726
+    },
+    {
+      "path": "gossip_harness/cumulative_study_runtime_v2.py",
+      "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+      "bytes": 58596
+    },
+    {
+      "path": "gossip_harness/cumulative_study_successor_v3.py",
+      "sha256": "32124ecb0fd943b4fcf3749eb72c2ffe85afa423667720ee45c017ae741a60ee",
+      "bytes": 4762
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "688bddb77439fd9c354698df4354f5c6ef83d54d1362bd6def4dc99bec8b3127",
+      "bytes": 15280
+    },
+    {
+      "path": "tests/test_cumulative_prerequisite_qualification_v1.py",
+      "sha256": "c3bcf02e820a4fa7d6ab3d83df185ca4d83dfae3da0db345ce90b4185828a165",
+      "bytes": 11478
+    },
+    {
+      "path": "verification-manifest.json",
+      "sha256": "dabf586ccdf07be3e8d06bee14e83498b5d2adea17b502c06e884dd5ea4e712f",
+      "bytes": 665644
+    },
+    {
+      "path": "docs/cumulative-workflow-v2-addendum-v4.txt",
+      "sha256": "dfba7ee907eb3fb6b60795e6c8fe1b2ed78fe566e1009b7fc8c9774de268d6cf",
+      "bytes": 10061
+    },
+    {
+      "path": "gossip_harness/candidate_workflow_execution_v1.py",
+      "sha256": "48d250458d08e4606a9ad590442410171c871ebdc824d51dd2a9345bf6aa3609",
+      "bytes": 73689
+    },
+    {
+      "path": "gossip_harness/candidate_workflow_observation_v1.py",
+      "sha256": "22957f403b621e4f676a3dc5161462e941fda94eb5ccd2be9eba3df87754fabd",
+      "bytes": 55493
+    },
+    {
+      "path": "gossip_harness/candidate_workflow_profile_v1.py",
+      "sha256": "e937e3f0e35763464904689250c267b8710af6979a1a9946788ec9b8f71c3a94",
+      "bytes": 45526
+    },
+    {
+      "path": "gossip_harness/candidate_workflow_review_v1.py",
+      "sha256": "10b3004759e97ed550f8ace5360387c9429844c6cc54a44a69b9d804cb028a5a",
+      "bytes": 41001
+    },
+    {
+      "path": "gossip_harness/cumulative_workflow_exposure_v1.py",
+      "sha256": "6802ddc9629eddc0b01acb60e873f5dae76754bb662e826e1b669185cb4531ae",
+      "bytes": 10937
+    },
+    {
+      "path": "gossip_harness/cumulative_workflow_observation_recipe_v1.py",
+      "sha256": "e787426b66c7c42e4888450130ebf35054ce7cc0b517d33fe56a45b465b9f044",
+      "bytes": 27045
+    },
+    {
+      "path": "tests/test_candidate_workflow_execution_v1.py",
+      "sha256": "bf627564a8a2a8a9e1abcd1f6ba19363982f6dea1ed0c9fc9fef6480a3197e2a",
+      "bytes": 13255
+    },
+    {
+      "path": "tests/test_candidate_workflow_observation_v1.py",
+      "sha256": "6d0749683dae83bba6f25847d26182bc5aeb843bba8cc2872a26c0e68297b075",
+      "bytes": 33015
+    },
+    {
+      "path": "tests/test_candidate_workflow_physical_v1.py",
+      "sha256": "d76638ccaafb2ab1373caac90701d5d6d6228e0fabbd1ef8496e42cf49b7794d",
+      "bytes": 71544
+    },
+    {
+      "path": "tests/test_candidate_workflow_profile_v1.py",
+      "sha256": "ffd618ed5e4b8d757acfe1bb3024b76e1a8935a6bbff0e4a19258efdb1a6e8de",
+      "bytes": 27134
+    },
+    {
+      "path": "tests/test_candidate_workflow_review_v1.py",
+      "sha256": "402e848af1fd2f0aebd1c00e63cd471f4c5d60b3a51a56a5b50f2578c3fe54a1",
+      "bytes": 20400
+    },
+    {
+      "path": "tests/test_cumulative_workflow_composition_v1.py",
+      "sha256": "2e10be0e674e7c52dc31251295ff14ba5b26a56572ad74c44179f3596f08baad",
+      "bytes": 73143
+    },
+    {
+      "path": "tests/test_cumulative_workflow_recipe_v1.py",
+      "sha256": "36b7ab080b788bdd94710516ed3eea3c88060089599a2951ae4d1d35dfcda33d",
+      "bytes": 18387
+    }
+  ],
+  "verification_runs": [
+    {
+      "path": "runs/workflow-family-offline-1/20261004T202116-96996f6c/summary.json",
+      "sha256": "27f3acd6c5d4b1d92f18b41f03be8b05120e95153ef03a2b7aa4db5d3cd8cff3",
+      "static_sha256": "1bd17c8cb5f7aeaedf72ca677b6da6c9446c9c2fb66a61d72b0f2c6858cb8a86",
+      "inputs_sha256": "32c4e3f7080d7668670ebd0fee541e2eb67de5d4d691d2290ab3256c642aa120",
+      "status": "failed",
+      "static": "failed",
+      "selected": 107,
+      "outcomes": {
+        "not_run": 107
+      },
+      "workers_started": 0,
+      "reused_classes": 0,
+      "seconds": 4.437202958390117,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-2/20261004T203238-02977d12/summary.json",
+      "sha256": "da2b2c487e73e00db9b3b510f96fc20c5de9a1cc6fea0440ad821cc985b9a705",
+      "static_sha256": "cab6fc6abffc95853bf706e46a6285f6e6649d12afa4a12879ea51e5c247d723",
+      "inputs_sha256": "ac1dd8273495cb1efc49a89f927a71f16a250df8bc80020d6f4c65c95098905c",
+      "status": "failed",
+      "static": "passed",
+      "selected": 117,
+      "outcomes": {
+        "error": 1,
+        "not_run": 59,
+        "passed": 57
+      },
+      "workers_started": 7,
+      "reused_classes": 0,
+      "seconds": 13.987610457465053,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-3/20261004T204054-d0ea74c5/summary.json",
+      "sha256": "0d6bd7b1b3b375ea511a9ddbb7b50c6430bb13becf5b493eec6418e6044ae6c2",
+      "static_sha256": "cc4bb13143ef5e56c84cfaa97ec93374667158474d54fc511c6d8699a932cbc4",
+      "inputs_sha256": "0d2324c55913a9a7617baa66fc5a35717e69fb1541e732858b3adf9b6ddf8e60",
+      "status": "failed",
+      "static": "passed",
+      "selected": 551,
+      "outcomes": {
+        "error": 1,
+        "not_run": 346,
+        "passed": 204
+      },
+      "workers_started": 22,
+      "reused_classes": 0,
+      "seconds": 41.24821058381349,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-4/20261004T204625-866bdacd/summary.json",
+      "sha256": "4e43b7199d879419198a36d2b85b6f1cd9728f57f81342ac18f1ce7ec9011dc1",
+      "static_sha256": "55a914db2da27b816b25dcc5aa65c955081e1790295f05227e0d07bd21995596",
+      "inputs_sha256": "ca63193ae6f0ca58eeba2cbf03fecc3d6b28b6b4169cacf5d2d03461b8af775e",
+      "status": "failed",
+      "static": "passed",
+      "selected": 127,
+      "outcomes": {
+        "error": 2,
+        "not_run": 21,
+        "passed": 104
+      },
+      "workers_started": 15,
+      "reused_classes": 0,
+      "seconds": 252.91016949992627,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-5/20261004T205921-14c88b1f/summary.json",
+      "sha256": "6eba39b239a64531cef046be13a4398a99c8741598de16f0c6c0335e99d316ba",
+      "static_sha256": "2caeb12707c6b7d65977dd471270e752958393e88954b429baffe21502511928",
+      "inputs_sha256": "6f46dcd1b6daa9ef6deb76e0f61c63731ad7c152bf0190ad96a7b79d4abb0d53",
+      "status": "failed",
+      "static": "failed",
+      "selected": 130,
+      "outcomes": {
+        "not_run": 130
+      },
+      "workers_started": 0,
+      "reused_classes": 0,
+      "seconds": 4.878165375441313,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-6/20261004T210224-9637e845/summary.json",
+      "sha256": "5fd6b83e816f85c795c610fa209625d59757bb2f41ed932ba71b7fa97e0b53f7",
+      "static_sha256": "146b3df8fc357dc43caf3e6f4b8719291bee3370b9b759142db3be4350d7555c",
+      "inputs_sha256": "e78944675a0c9c122d7aa6b0919f66e994ac2b3bfad48f66c13657050d5c76fa",
+      "status": "failed",
+      "static": "passed",
+      "selected": 130,
+      "outcomes": {
+        "error": 1,
+        "not_run": 48,
+        "passed": 81
+      },
+      "workers_started": 9,
+      "reused_classes": 0,
+      "seconds": 14.730599124915898,
+      "source_fresh": true,
+      "runtime_fresh": true
+    },
+    {
+      "path": "runs/workflow-family-offline-7/20261004T210516-bab19bf8/summary.json",
+      "sha256": "ce4ef86702985a83a48eacc035e543c8e68188f24389f4b990c5a43d7436f6e1",
+      "static_sha256": "7e3a72ffef204ad64a6af6cef01169ddf9ecd1676f9f3f694bc9081ece40ac94",
+      "inputs_sha256": "0cec77f5b4f10016f4592291096de7a4bc85adbbc44136704d107c97ea55520a",
+      "status": "failed",
+      "static": "passed",
+      "selected": 130,
+      "outcomes": {
+        "error": 1,
+        "not_run": 12,
+        "passed": 117
+      },
+      "workers_started": 15,
+      "reused_classes": 0,
+      "seconds": 408.022023207508,
+      "source_fresh": true,
+      "runtime_fresh": true
+    }
+  ],
+  "latest_failure": [
+    {
+      "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+      "test": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests.test_actual_product_export_cold_raw_observer_retains_failure_and_refuses_closed_source",
+      "detail": "Traceback (most recent call last):\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py\", line 105, in guarded\n    return operation(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py\", line 506, in dispatch\n    return self._dispatch_original(spec)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py\", line 590, in _dispatch_original\n    workflow_source.publish_verifier(owner)\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_observation_v1.py\", line 517, in publish_verifier\n    raw = execution.encoded(reconstruct(owner))\n                            ^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_observation_v1.py\", line 417, in reconstruct\n    'capture_manifest': admission.source_manifest(captured), 'storage': None, 'storage_unavailable': None}\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py\", line 67, in source_manifest\n    require(type(files) is dict and bool(files), \"Nonempty complete source inventory required\")\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py\", line 49, in require\n    raise AdmissionError(message)\ngossip_harness.candidate_observation_admission_v1.AdmissionError: Nonempty complete source inventory required\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 57, in testPartExecutor\n    yield\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 623, in run\n    self._callTestMethod(testMethod)\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/devtools/verify.py\", line 509, in timed\n    return _original(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/unittest/case.py\", line 579, in _callTestMethod\n    if method() is not None:\n       ^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/tests/test_cumulative_workflow_composition_v1.py\", line 756, in test_actual_product_export_cold_raw_observer_retains_failure_and_refuses_closed_source\n    key,observed,runtime_patch=self.product_dispatch(fixture,owner,stack)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/tests/test_cumulative_workflow_composition_v1.py\", line 742, in product_dispatch\n    observed=owner.dispatch(fixture.spec)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py\", line 105, in guarded\n    return operation(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v3.py\", line 273, in dispatch\n    return super().dispatch(spec)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_final_acceptance_v1.py\", line 113, in guarded\n    raise consumer.AuthorityError(str(error)) from error\ngossip_harness.candidate_scope_consumer_v1.AuthorityError: Nonempty complete source inventory required\n",
+      "result": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-family-offline-7/20261004T210516-bab19bf8/classes/46d797d9bb621105/result.json",
+      "result_sha256": "d2b45d5891993b8610516425fcb602ed0ee3c04de7698a4a447105de42d273a3"
+    }
+  ],
+  "installation_receipts": [
+    {
+      "path": "runs/workflow-family-integration-1/installation-1/installation.json",
+      "sha256": "a8c902e9a2285fb0498323de4d9c4b352a1800961f2effe0df64a9c5cd6fb152"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-2/installation.json",
+      "sha256": "3d7cdfd9f6f506e1f145971ff2852c65c9acf45343d8272833d5722dcc86264a"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-3/installation.json",
+      "sha256": "4e520b523ecbec144747497228986ee0c21bf8cb3123798afd194d28c27fcfbb"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-4/installation.json",
+      "sha256": "d48b66996e1622b55500a02ff18234336c2038ee6aaac889f8219873ab24bab9"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-5/installation.json",
+      "sha256": "fb12b927eca8b69a16292dd7b2234191b8fc060170e5bd5ff9ad5bc3fe6fdcae"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-6/installation.json",
+      "sha256": "0313b089726226ffd62b588fdd73a971cc7257bd2c831352523f862e47908598"
+    },
+    {
+      "path": "runs/workflow-family-integration-1/installation-7/installation.json",
+      "sha256": "758a234248679f943dbd39f359e045532163e28a59d3ce94d7dbf73fa5bbde6d"
+    }
+  ],
+  "scope": {
+    "new_histories": 20,
+    "solve_calls": 23,
+    "operations": 212,
+    "runtime_semantic_output_selectors": 294,
+    "runtime_mechanics_selectors": 20,
+    "added_host_inspection_family": true,
+    "required_source_units_total": 312,
+    "authority_duties_total": 22,
+    "gap_duties_total": 188,
+    "whole_scope_complete": false
+  },
+  "verified_engineering": [
+    "Configured static gate passes on current source;117targeted offline methods passed on latest exact input/runtime fingerprint.",
+    "All earlier failures and before/after sources retained.",
+    "Actual catalog-lane mismatch corrected while preserving PUBLIC/ADAPTER purposes; both previously failing recipe/purpose methods passed.",
+    "Fixture setup uses private parent directories and real CLI source slices; independent host purpose guard remains unchanged."
+  ],
+  "unresolved": [
+    "Actual product export/cold-reader fixture dispatch rejects an empty captured dictionary at observer.reconstruct using the nonempty source-inventory helper. Distinguish valid empty filesystem state from invalid/missing evidence before correcting; never weaken the global source-inventory guard.",
+    "12nearest methods not run; full554affected offline inventory incomplete.",
+    "38physical workflow controls, complete semantic qualification and matching full rehearsal still required.",
+    "20-role development comparison, separate placement-by-transport comparison and independent held-out confirmation remain unexecuted."
+  ],
+  "scientific_status": {
+    "new_model_quality_samples": 0,
+    "new_provider_calls": 0,
+    "physical_candidate_engine_execution_this_cycle": false,
+    "last_live_result_utc": "2026-10-02T20:51:58.734056+00:00",
+    "claim": "Engineering development only; no gossip/large-swarm quality advantage established."
+  },
+  "publication": {
+    "local_checkpoint_only": true,
+    "public_push_attempted_this_cycle": false,
+    "provider_submission_attempted_this_cycle": false,
+    "pending": "Explicit project-data disclosure approval after prior automatic approval review rejections; existing funding is not the blocker."
+  },
+  "next_action": "Resolve the exact empty-capture failure, execute missing focused checks, complete554affected offline checks with exact same-source receipt reuse only, then required physical/full-semantic/rehearsal qualification. Keep goal active."
+}

@@ -14,6 +14,7 @@ from . import cumulative_scope_authority_v2 as previous
 from . import cumulative_scope_source_v3 as source
 from . import candidate_scope_consumer_v1 as consumer
 from . import cumulative_cli_projection_v1 as projection
+from . import cumulative_workflow_exposure_v1 as workflow
 from . import project_acceptance_compiler_v1 as compiler
 from . import project_acceptance_registry_v1 as registry
 from .candidate_checkpoint_chain_v1 import PrefixCommitment
@@ -31,6 +32,7 @@ def implementation_sources() -> dict[str, str]:
     from . import candidate_observation_admission_v1 as admission
     result = previous.implementation_sources()
     result.update(projection.definition_sources())
+    result.update(workflow.definition_sources())
     root = Path(__file__).resolve().parent
     for name in ('cumulative_scope_source_v3.py', 'cumulative_scope_authority_v3.py'):
         result['gossip_harness/' + name] = source.sha((root / name).read_bytes())
@@ -42,6 +44,8 @@ def implementation_sources() -> dict[str, str]:
 class ScopeSubmission(previous.ScopeSubmission):
     """Same complete inventory, with an explicit optional public CLI clarification."""
     cli_projection_contract: dict[str, Any] | None = None
+    workflow_projection_contract: dict[str, Any] | None = None
+    cumulative_public_contract: dict[str, Any] | None = None
 
     def request(self) -> dict[str, Any]:
         consumer.require(type(self) is ScopeSubmission and type(self.slices) is tuple,
@@ -82,7 +86,35 @@ class ScopeSubmission(previous.ScopeSubmission):
                 'sha256':source.sha(source.encoded(value)),
                 'duty':'Independently review the full prospective text and all six JOB/TOKEN/RECEIPT projections, exact fields, applicable receipt/epoch semantics, every affected CLI selector and source clause. Confirm literal import/jobs remain unspecified and all original312 units,22 authority rules and188 gap duties remain required. A matching digest or attachment presence is not semantic approval.'})
             base['effective_requirements'] = projection.manifest()
-        base['protocol'] = projection.SCOPE_PROTOCOL if clarified else PROTOCOL
+        workflow_slices = [item for item in self.slices if item.family in (workflow.FAMILY,workflow.INSPECTION_FAMILY)]
+        workflow_claimed = self.workflow_projection_contract is not None or self.cumulative_public_contract is not None
+        consumer.require(not workflow_slices or workflow_claimed, 'Workflow slices require mandatory combined semantic review')
+        if workflow_claimed:
+            from . import candidate_workflow_profile_v1 as profiles
+            from . import candidate_workflow_review_v1 as source_review
+            consumer.require(clarified and self.workflow_projection_contract == workflow.manifest()
+                and self.cumulative_public_contract == workflow.combined_manifest(),
+                'Exact base/CLI/workflow semantic review identities required')
+            complete = profiles.definitions()
+            consumer.require(len(complete) == 20, 'Complete20 workflow definitions required for semantic review')
+            shared_context = {'effective_requirements':projection.manifest(),
+                'workflow_requirements':workflow.manifest(),'combined_effective_requirements':workflow.combined_manifest(),
+                'execution_contract_sha256':self.subject.execution_contract_sha256,
+                'unchanged_inventory_sha256':self.catalog.inventory.sha256,'full_original_obligation_count':len(self.catalog.units)}
+            values = (
+                (workflow.REVIEW_TARGET,{**shared_context,'public_addendum_text':workflow.text()},
+                    'Independently review the exact full workflow text together with the immutable base and separate CLI addendum, every admission/V2 rule and all4 release exposures. Presence or matching hashes do not approve semantics.'),
+                (workflow.FAMILY_REVIEW_TARGET,{**shared_context,'complete_original_and_supplemental_definitions':complete,
+                    'affected_runtime_slices':[asdict(item) for item in workflow_slices if item.family == workflow.FAMILY]},
+                    'Review all20 complete histories/23solve calls/212operations, original8 and frozen admission, authored V2 expectations, original versus execution purposes and exact per-unit/kind/lane selectors. Explicit independently enrolled purpose conversion is mandatory; retain all312 source units/22 authority duties/188 gaps and unchanged import/jobs policy. No direct workflow output earns CLI/HTTP/browser/intake parser credit.'),
+                (workflow.INSPECTION_REVIEW_TARGET,{**shared_context,
+                    'inspection_profile':source_review.WorkflowInspectionProfile().record(),
+                    'affected_inspection_slices':[asdict(item) for item in workflow_slices if item.family == workflow.INSPECTION_FAMILY]},
+                    'Independently review all7 product source-inspection duties, exact invoked final source/control flow, actual physical corroboration and stillmissing cells. Source mechanism approval and product duty verdicts are separate. Hook placement requires actual reviewed control flow plus complete rollback originals, not markers alone or a newly mandated uncommitted-state debugger. B02 intake/provenance remains separate and mandatory.'))
+            for identifier,value,duty in values:
+                base['targets'].append({'id':identifier,'value':value,'sha256':source.sha(source.encoded(value)),'duty':duty})
+            base.update(workflow_requirements=workflow.manifest(),combined_effective_requirements=workflow.combined_manifest())
+        base['protocol'] = workflow.SCOPE_PROTOCOL if workflow_claimed else projection.SCOPE_PROTOCOL if clarified else PROTOCOL
         base['implementation_sources'] = implementation_sources()
         base['factory_protocol'] = source.PROTOCOL
         base['capacity_contract'] = capacity
