@@ -1,0 +1,144 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-adoption-1/audit.py",
+  "audit_driver_sha256": "e0cbb4bd7c666a52526518ad5d6e8481a1011f5cba8fbfdb634c30ab8376b612",
+  "authority_limits": [
+    "24 tests are scoped offline parser/state checks, not 24 model-quality samples.",
+    "No Docker CLI/container or candidate code ran; the endpoint refusal is an owned synthetic socket.",
+    "Runtime/source review packets are unchanged, but the new downstream reader is not yet qualified for scientific selection.",
+    "Public push and provider disclosure remain held by earlier automatic approval rejection; no retry was attempted."
+  ],
+  "candidate_executions": 0,
+  "implementation": [
+    "Exact typed state and independently supplied unchanged checkpoint, source/review/controller revalidation before and after reading; no active execution window or socket required for reads.",
+    "Reconstruction of exact source/helper staging, runtime HTTP originals, owned creation command, full prestart proof and keeper/exec lineage.",
+    "Ordered raw frame/continuation replay, expected original stdout/ack projections and bounded chunked storage capture; SQLite value derived from retained tar and reviewed schema.",
+    "Natural process completion, final runtime/staging and owned container/volume cleanup required before a positive observation.",
+    "Known earlier defects survive missing later evidence; contradictory identity or chain uncertainty is fatal, never downgraded to a usable value.",
+    "The reader returns public probe facts only and supplies its own source pins; selection, independent acceptance, cohort and production quota enrollment remain separate."
+  ],
+  "independent_source_approvals_created": 0,
+  "new_model_quality_samples": 0,
+  "physical_qualification_complete": false,
+  "product_acceptance": false,
+  "protocol": "cumulative-generated-probe-reader-offline-qualification-v1",
+  "provider_calls": 0,
+  "retained_predecessors": [
+    {
+      "outcomes": {
+        "not_run": 20
+      },
+      "reason": "Static type narrowing needed explicit assertions for checked dict/list/string values.",
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-1/20261005T075519-8c1cbb66",
+      "summary_sha256": "f0e2a4da87317fc6c0a71de20f7183012b83af1b407dff7775d6ea3538425905"
+    },
+    {
+      "outcomes": {
+        "passed": 23
+      },
+      "reason": "Superseded because an additional negative test demonstrated Boolean false admitted as integer zero.",
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-2/20261005T075657-344c693d",
+      "summary_sha256": "4d5db81fa8b56246e3d2a593d828b97fefc02257e332de082f636b8d4a307b38"
+    },
+    {
+      "log_sha256": "19898f99477cfdc96db3ffc459c3cbcdb13f468962825fc6733fbe2542da9f57",
+      "outcomes": {
+        "failed": 1
+      },
+      "reason": "OriginalError not raised for exit_code=false. Reader now requires exact integer exit and Boolean timeout/capture fields.",
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-exact-exit-negative-1/20261005T075811-36ab0fbe",
+      "summary_sha256": "97448581d92a9d0af90e3b8dcbe5c93e243de01052e68edc888abf9687b75d25",
+      "test": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_boolean_exit_code_cannot_impersonate_integer_zero"
+    }
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_reader_v1.py": "7d6b72ea02aa83e2aeda7db9b69b36fab49f3d89b410de7a4a6cd068917a2c96",
+    "pyproject.toml": "9fbdc8c30dee9e4887d8eea8daa7ae34d15deee492f8a49a3dcb77375ed09ea1",
+    "tests/test_cumulative_generated_probe_reader_v1.py": "40c5167d6eee24209cc8344f87e396f41deda55e00a5981ebd850bae99655abf",
+    "verification-manifest.json": "534a3920b219b01bfd59ab549b5d9686f7a231c4bae1796b1ccc4a99fe780519"
+  },
+  "status": "reader_implemented_scoped_offline_checks_passed_full_physical_reconstruction_unqualified",
+  "unchanged_prepared_review_packet": {
+    "all_original_owner_source_pins_still_match": true,
+    "independent_approvals_supplied": false,
+    "owner_sources_sha256": "a735a04fcac7f3998301f85b2f88d2467e526072e894bc673d2edbe6805d61f4",
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1"
+  },
+  "unverified": [
+    "Complete successful original reconstruction on the real sandbox owner; source/layout adequacy of all four templates.",
+    "End-to-end positive original-chain parser coverage across creation, per-frame runtime, keeper/exec lineage, paused SQLite capture and normal cleanup together; current mocked composition does not prove these physical facts.",
+    "Fresh-process reopening of complete physical histories, eight declared host-fault schedules and fallback cleanup behavior.",
+    "Independent source reviews for twelve probe requests and four pending changed storage requests.",
+    "Production controller unique slot/root and aggregate budget enrollment, reader-source binding into gate selection, all candidate/context/merged-source selection paths.",
+    "Matching full six-trajectory/four-milestone rehearsal, live gossip/orchestrator and larger-swarm comparisons, independent held-out-family confirmation."
+  ],
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "lane": "fast",
+        "log_sha256": "c8231257faddd8cd0889650d39d05fa5357029d158d0975c8047d4e37f4e894c",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_ack_cannot_precede_source_runtime_staging_boundary",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_ack_requires_matching_slot_exact_bytes_count_and_order",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_ambiguous_direct_and_chunked_blob_is_rejected",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_boolean_exit_code_cannot_impersonate_integer_zero",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_checkpoint_append_is_not_implicitly_adopted",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_command_reads_bound_raw_streams_and_exact_dispatch",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_engine_identity_comes_from_exact_http_request_and_response",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_extra_stdout_cannot_hide_behind_complete_frame_summary",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_missing_original_is_distinct_from_authenticated_tampering",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_nonzero_control_is_unavailable_not_success",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_partial_ack_cannot_continue_a_history",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_runner_value_summary_cannot_replace_recomputed_values",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_truncated_control_is_unavailable_even_with_zero_exit",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests.test_zero_exit_without_natural_completion_is_unavailable"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-3/20261005T075845-1193375d/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "d48db02761fa0b570534c61439ef547c5fc7ac170ec366e482d0d9b8c6e50457"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "lane": "fast",
+        "log_sha256": "65d2b14b23e5910ad41f702b2fd8e82abf9fc78ba9237f4112c769cb4f72b4c1",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests.test_complete_good_value_requires_the_whole_physical_finish",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests.test_contradictory_runtime_is_not_downgraded_to_unavailable",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests.test_good_partial_value_never_becomes_positive_observation",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests.test_known_bad_value_survives_missing_finished_frame"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-3/20261005T075845-1193375d/classes/27cee16273d7430c/result.json",
+        "result_sha256": "53c3f7505529b32556c53eed02d416a3c9e789753c26a580b782b6b2b6ae1d28"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "lane": "git",
+        "log_sha256": "e078114b346ce6ca260ea2d7b923ee87c6c33dcf86d5f1c108bfade001844886",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_after_deadline_read_is_allowed_but_dispatch_is_still_refused",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_changed_original_configuration_is_fatal",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_refused_runtime_is_reconstructed_without_trusting_terminal",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_revoked_controller_registration_cannot_supply_observations",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_stale_prefix_is_rejected_instead_of_silently_following_append",
+          "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests.test_unused_state_reconstructs_unavailable_without_appending"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-3/20261005T075845-1193375d/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "c64deb9d5f314d40e895769e9f3910989d704c56a29e6f88e55b134845328c5c"
+      }
+    ],
+    "duration_seconds": 38.152348457835615,
+    "fingerprint": "67b1c7a9197d135944fb92df75a3fa21b7826decdfd5f32a697847f594f4cc63",
+    "fresh_tests": 24,
+    "inputs_sha256": "3fe972835c0aa970bfbcdc0b38cfd5c23bd6e35eeee50fa23333189e7a3e43f1",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-reader-offline-3/20261005T075845-1193375d",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 754,
+    "static": "passed; new production reader included in explicit mypy scope, unchanged legacy baseline retained",
+    "summary_sha256": "6856b29f43546c2a0615326d01a484a5a2a20f0ecd2492ddde706dfc0eb298e2"
+  },
+  "verified_offline": [
+    "Fourteen raw parser controls cover exact command/HTTP/continuation identities, missing/tampered originals, stale prefixes, ambiguous blobs, forged value summaries, extra stdout and incomplete process termination.",
+    "Four explicitly mocked composition checks cover full-path finish requirement, known-defect preservation, incomplete-good unavailability and fatal contradictory runtime.",
+    "Six real state/Git/journal controls use synthetic review/controller and a refused local Unix endpoint: unused/refused execution, read after deadline without redispatch, stale checkpoint, revoked registration and original configuration tampering."
+  ]
+}

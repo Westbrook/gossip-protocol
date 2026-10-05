@@ -7030,6 +7030,36 @@
       "overlap": "Preparation/provenance only. Real sandbox execution, actual reviewer delivery, fault qualification and cold reconstruction remain separate.",
       "distinct_defect": "Wrong source seam, schema drift, helper/proposal leakage, partial source census or reused output root must not silently produce a purportedly reviewed qualification case.",
       "disposition": "Static then scoped fast/git checks, followed by fresh retained full twelve-control preparation and source/request census reconciliation."
+    },
+    "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Original checkpoint/source/review/runtime/command/frame/capture/continuation/cleanup evidence determines public probe observations. Missing later records preserve prior defects but cannot yield a pass; contradictory originals are fatal.",
+      "isolation": "Worker-local journals and inert Git; authored raw parser fixtures, explicit mocked composition and refused local Engine endpoint only. No candidate code or real Docker resource execution.",
+      "overlap": "New reader controls; physical happy path and source-adequacy reviews remain separate. Mocked composition is not physical qualification.",
+      "distinct_defect": "Forged summaries, command/ack substitution, stale prefixes, tampered originals, expired-dispatch confusion or revoked enrollment must not produce usable positive observations.",
+      "disposition": "Static then scoped fast/Git original-reader controls before physical qualification and full rehearsal."
+    },
+    "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Original checkpoint/source/review/runtime/command/frame/capture/continuation/cleanup evidence determines public probe observations. Missing later records preserve prior defects but cannot yield a pass; contradictory originals are fatal.",
+      "isolation": "Worker-local journals and inert Git; authored raw parser fixtures, explicit mocked composition and refused local Engine endpoint only. No candidate code or real Docker resource execution.",
+      "overlap": "New reader controls; physical happy path and source-adequacy reviews remain separate. Mocked composition is not physical qualification.",
+      "distinct_defect": "Forged summaries, command/ack substitution, stale prefixes, tampered originals, expired-dispatch confusion or revoked enrollment must not produce usable positive observations.",
+      "disposition": "Static then scoped fast/Git original-reader controls before physical qualification and full rehearsal."
+    },
+    "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Original checkpoint/source/review/runtime/command/frame/capture/continuation/cleanup evidence determines public probe observations. Missing later records preserve prior defects but cannot yield a pass; contradictory originals are fatal.",
+      "isolation": "Worker-local journals and inert Git; authored raw parser fixtures, explicit mocked composition and refused local Engine endpoint only. No candidate code or real Docker resource execution.",
+      "overlap": "New reader controls; physical happy path and source-adequacy reviews remain separate. Mocked composition is not physical qualification.",
+      "distinct_defect": "Forged summaries, command/ack substitution, stale prefixes, tampered originals, expired-dispatch confusion or revoked enrollment must not produce usable positive observations.",
+      "disposition": "Static then scoped fast/Git original-reader controls before physical qualification and full rehearsal."
     }
   },
   "audit": {
