@@ -283,9 +283,10 @@ def _build_inputs(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCo
 
 
 def reconstruct_builds(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                       milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+                       milestone: str, generation: int, limits: ReviewLimits,
+                       historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
     declared, _, _, stage, _, build_refs, base, proposals = _build_inputs(
-        owner, expected=expected, milestone=milestone, generation=generation, limits=limits)
+        owner, expected=expected, milestone=milestone, generation=generation, limits=limits, historical=historical)
     # Unknown placeholders are excluded from build_phase_record() and are never
     # evidence that a review happened. No future review receipt is required.
     compiled = contexts.Generation(owner.child.cohort, owner.trajectory.id, milestone, generation, owner.trajectory.arm,
@@ -417,11 +418,8 @@ def _original_prefix(owner: runtime.GossipChildRuntime, sequence: int,
     return prefix
 
 
-def reconstruct_frozen(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                       milestone: str, generation: int, limits: ReviewLimits, historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
-    """Require original pre-review enrollment, preserving independent chronology."""
-    compiled, proof = reconstruct(owner, expected=expected,
-        milestone=milestone, generation=generation, limits=limits, historical=historical)
+def _verify_build_freeze(owner: runtime.GossipChildRuntime, expected: chain.PrefixCommitment,
+                         compiled: contexts.Generation, proof: dict[str, Any]) -> dict[str, Any]:
     slot = proof['stage'] + '.before-review-freeze'
     record = owner.records.read(slot)
     require(type(record) is dict and set(record) == set(_build_freeze_value(owner, compiled)) | {'input_checkpoint'},
@@ -442,5 +440,22 @@ def reconstruct_frozen(owner: runtime.GossipChildRuntime, *, expected: chain.Pre
         directive = owner.records.name(owner.key + '.directive.' + value['directive_id'])
         require(position < owner.records.chain.position(directive), 'build_freeze_must_precede_review_directives')
     owner.records.chain.validate_boundary(expected=expected)
-    return compiled, {**proof, 'before_review_freeze': {'slot': slot, 'record_sha256': study.digest(record),
+    return {**proof, 'before_review_freeze': {'slot': slot, 'record_sha256': study.digest(record),
         'position': position}, 'before_review_frozen': True, 'resource_admission': False}
+
+
+def reconstruct_frozen_builds(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                             milestone: str, generation: int, limits: ReviewLimits,
+                             historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
+    """Authenticate the enrolled build census without requiring future reviews."""
+    compiled, proof = reconstruct_builds(owner, expected=expected, milestone=milestone,
+        generation=generation, limits=limits, historical=historical)
+    return compiled, _verify_build_freeze(owner, expected, compiled, proof)
+
+
+def reconstruct_frozen(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                       milestone: str, generation: int, limits: ReviewLimits, historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
+    """Require original pre-review enrollment, preserving independent chronology."""
+    compiled, proof = reconstruct(owner, expected=expected,
+        milestone=milestone, generation=generation, limits=limits, historical=historical)
+    return compiled, _verify_build_freeze(owner, expected, compiled, proof)

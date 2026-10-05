@@ -1,0 +1,161 @@
+{
+  "protocol": "generated-probe-original-accounting-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T11:23:39.512093+00:00",
+  "prior_commit": "917039432f8aa1b09abd3c7e52e2224169a28470",
+  "status": "ORIGINAL_MATRIX_ACCOUNTING_QUALIFIED_OFFLINE_CONTROLLER_EXECUTOR_ADOPTION_UNFINISHED",
+  "implemented": [
+    "Reconstruct enrolled before-review and post-review matrices from original Git, role, financial, mesh and corpus evidence before the single existing ledger write.",
+    "Require exact prospective implementation pins and the same original controller journal.",
+    "Reject self-consistent omitted candidates or probes, late allocations, changed original financial evidence and current accepted-source movement.",
+    "Post-review admission and cold inspection both independently revalidate the earlier allocation at its original pre-review boundary.",
+    "Historical build-only reconstruction authenticates the original freeze without requiring future reviewer output. Existing ranked reconstruction uses the same freeze verifier.",
+    "Preserve complete declined declarations, no smaller retry, and all existing no-dispatch/no-acceptance boundaries."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/summary.json",
+    "summary_sha256": "606a65d40341731700e19eccbddf448055c26dd01a9c04b2b09f018e640fa150",
+    "inputs_sha256": "6e6d8976791195cfe7983fb09d3f6f3eb8d05cf852bb863a30ff0757a81032af",
+    "static_sha256": "9e47eeb8865d352ed2f89b0fef4a184dab3797e13bd503e2c89b620992f9875c",
+    "source_input_count": 771,
+    "tests_passed_fresh": 87,
+    "tests_reused": 0,
+    "new_original_accounting_tests": 15,
+    "duration_seconds": 628.7427382916212,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/682d942eed25d87d/result.json",
+        "result_sha256": "91e48f6b2490d85c13a10f1288a6547939735139265b522466219031f73a8155",
+        "log_sha256": "ad9bd602125b03c2240dcee1bf4f5e04072ec0e4b10f336e28581eefc11de828",
+        "request_sha256": "655caf2e2652bba7bcce6930064ad7b18ba18a3ff4ed1608e82cbd89c6c5196b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/18e8426870583b7c/result.json",
+        "result_sha256": "35ada8c89b17afd1d3d05599cfeb26bbce4555dabbb710c3498a4a16e4dca601",
+        "log_sha256": "fc93642424384b6e2dddd1ceba85c77ffba098b16fb772df5af1891b2b4df994",
+        "request_sha256": "04525f6332cfd534986afa10703928f70e37d9251d8fae3c8f793e51c5008a69"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "87cf9c998e3228b25a900cfb2b2a40368de26bd96d96f34e66fe241d9f1b03da",
+        "log_sha256": "a38a12053a863d28e920e47402e21746ed2cf5c134def3e0ef3f233196a2cc8c",
+        "request_sha256": "d28085550b9c8a1ded708c7211aa72b2fa32169c2ca1bc374620093da6d9b97a"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "be705cc89baa108a8ebf7723e60e876c1dedb794f5b4153877ca255bed1849a4",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db",
+        "request_sha256": "42ea75016e6f55f3d828dcb0a8314b8671e71f3a12e8c7ba8d6ebe5c15c9ed13"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 15,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/fbf62e52b530b68d/result.json",
+        "result_sha256": "bd20d61299c3285b45d6ea00c78e2959f4b88097a176beb594ae908f2749889a",
+        "log_sha256": "e4c04325470b8350f6190c509cee1e481915f0343033d7fd069ac89032aed084",
+        "request_sha256": "d421e92a9d22232c6c945a40d4f9689567153ebb5d685cfcdc5346d2cc7f210b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "1616eb61dbae41bcd7d58c8be1d626fbbbc3b01fd97a7470083046ab4d4f3c19",
+        "log_sha256": "e6759be5602c6a5334818b17e821e130531e0b4833ccf1c9bd0a07082da9dac5",
+        "request_sha256": "2bc8b4a30dcf360e502d54306907565546d6bceb1d02d3d420086ecb79457df2"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "eaeed0b26eec8516ca0708e7f491925c26641081fe9996ea5c04f060f599fd72",
+        "log_sha256": "6e91fa77a97517a06a990e81825f5f354519c013bb3d735f65e9306f23a95e7d",
+        "request_sha256": "e4d86de625283a84b08f8be364297ffa3e4430c8bb74dc655a1f981abf19d49a"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/generated-probe-original-accounting-offline-3/20261005T110942-67892413/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "ac734deb35d5cab3c56d7aff28efb2a57c11e4daf7b3d8cb6d0ff91a302767f0",
+        "log_sha256": "efc505b8542e20450cc1b917d5f751289dfee451c393842707fde94e35b48d91",
+        "request_sha256": "170bfab23b894cb7b9921b27c7475b303a287ca2f408073bb58d9f366b50d1fe"
+      }
+    ],
+    "scope": "Actual offline verifier, inert Git and externally anchored journals with real original-result checks. Financial and mesh endpoint responses are synthetic. No candidate, Engine or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "all_current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/generated-probe-original-accounting-offline-1/20261005T110200-15224392/summary.json",
+      "sha256": "376b2a15b33faa2ebcc7aeb5bc6b90c645349e3b1b63736758c22a02fc059171",
+      "outcomes": {
+        "error": 1,
+        "not_run": 8,
+        "passed": 3
+      },
+      "interpretation": "Three passes followed by a test error: stale checkpoint validation correctly latched uncertainty, but the test then attempted an ordinary snapshot. Test now asserts refusal and absence of an allocation."
+    },
+    {
+      "summary": "runs/generated-probe-original-accounting-late-pre-negative-1/20261005T110332-15b62375/summary.json",
+      "sha256": "e25d98c3357e71e41a14607001388463a67a2db956d7ea1e30abc62aa3595eb3",
+      "outcomes": {
+        "error": 1
+      },
+      "interpretation": "The fixture inserted an allocation after the final review roster and was rejected by corpus enrollment before reaching the intended check."
+    },
+    {
+      "summary": "runs/generated-probe-original-accounting-late-pre-negative-2/20261005T110437-76513d5f/summary.json",
+      "sha256": "cf81c9b1a0044933e1b539ce3b04322afe783a2786485161ed2f5a3e5494f28e",
+      "outcomes": {
+        "failed": 1
+      },
+      "interpretation": "The builder-only mutation hook never injected a reviewer allocation. The failed expected-error assertion does not demonstrate a bypass."
+    },
+    {
+      "summary": "runs/generated-probe-original-accounting-offline-2/20261005T110606-50d82558/summary.json",
+      "sha256": "43296986707afacd1199e653feaded69e82d4e05fd60a66d775192ab734f33c5",
+      "outcomes": {
+        "error": 1,
+        "not_run": 36,
+        "passed": 50
+      },
+      "interpretation": "Fifty passes, one fixture error and thirty-six unrun: the same inactive reviewer hook left the generic prior allocation absent. The corrected fixture uses the second reviewer directive and asserts a real reserved allocation at a late position."
+    }
+  ],
+  "reporting_correction": "An interim statement incorrectly called the second negative run a demonstrated bypass before its detailed log was read. The actual failure was an absent injected allocation. The report and user-facing update corrected this. Final controls explicitly prove generic late allocation occurs and original-backed post-review admission/audit reject it; no pre-fix empirical bypass claim is made.",
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "3bd215b8f73655225cc6413047382f0c7ebce4e085dcad60014c859b33516acd",
+    "gossip_harness/cumulative_generated_probe_ranked_originals_v1.py": "eccacd14f8b1b585223ba80b922aa5afadbaa409ef8ebc13d9c200ea64c8c2e4",
+    "tests/test_cumulative_generated_probe_accounting_v1.py": "227217411dbec4d638bcd0f93ebed563effcd39fc14eff07def3ebbc86f07707",
+    "pyproject.toml": "db7c5562622a6d0215366877d59d6ba53ecdf68da22f05fda7738ac84837d2e4",
+    "verification-manifest.json": "235e83eee7186493db62d3770f3b7bec0f81c0d5068652f6fa178e7a1d91cd8f",
+    "docs/generated-probe-original-accounting-v1.md": "41637e87fc06b274f81fc4360145f4b575337c65367e3a47094d34d5745deca4"
+  },
+  "remaining": [
+    "Bind declared windows to the original whole-child deadline and all model/setup/capture/review/cleanup time; qualify real storage and per-cell envelopes.",
+    "Connect the accounting adapter to actual shared executor leases and materialized candidate/probe execution.",
+    "Explicitly activate the versioned successor controller and deliver original pre-review observations before its one reviewer action.",
+    "Derive choices from complete original observations and freshly check actual merged source.",
+    "Complete independent approvals, physical controls, host-fault schedules and the full matching six-trajectory/four-milestone rehearsal before live and held-out statistical comparisons."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Bind original whole-child deadlines and actual shared executor admission, then integrate the complete path into the versioned controller. Do not treat a declared schedule as physical capacity."
+}

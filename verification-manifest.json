@@ -7314,6 +7314,17 @@
       "boundary": "Authored reference and deliberately defective fixture only; synthetic purpose registration, no complete production scope, whole-project acceptance or comparative agent-quality sample.",
       "disposition": "Run after reviewed source freeze and fresh static gate. Existing1800-second owner lifetime includes300-second cleanup reserve; preserve any failure and cancel queued classes without automatic retry.",
       "overlap_reason": "New seeded and multi-process public product histories require actual physical qualification; prior HTTP/CLI mechanics are not relabeled as these observations."
+    },
+    "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 900,
+      "invariant": "Complete enrolled original matrices, exact source pins and immediate phase chronology bind each capacity declaration and its cold inspection.",
+      "isolation": "class process with isolated inert Git and externally anchored journals",
+      "overlap": "Uses original ranked/corpus readers and declared capacity arithmetic; financial and mesh endpoints are synthetic.",
+      "distinct_defect": "A caller can otherwise submit a self-consistent shrunken matrix or late allocation and treat accounting as original-backed admission.",
+      "boundary": "Real Git/journal and source/materialization checks; no candidate, Engine, provider, executor leases or whole-child deadline authority.",
+      "disposition": "Run with affected ranked/corpus and capacity checks after static gate."
     }
   },
   "audit": {

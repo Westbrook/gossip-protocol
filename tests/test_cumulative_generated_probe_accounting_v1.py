@@ -1,0 +1,243 @@
+"""Original-bound accounting with inert Git/journals and synthetic finance/mesh."""
+from dataclasses import replace
+import json
+import time
+import unittest
+
+from gossip_harness import cumulative_generated_probe_accounting_v1 as accounting
+from gossip_harness.candidate_checkpoint_chain_v1 import ChainUnknown
+from gossip_harness import cumulative_generated_probe_capacity_v1 as capacity
+from gossip_harness import cumulative_generated_probe_corpus_v1 as corpus
+from gossip_harness import cumulative_generated_probe_matrix_v1 as matrices
+from gossip_harness import cumulative_generated_probe_ranked_originals_v1 as ranked
+from gossip_harness import cumulative_generated_probe_values_v2 as values
+from gossip_harness import cumulative_study_controller_v2 as study
+from tests.ranked_originals_fixture_v1 import OriginalFixture
+from tests.test_cumulative_generated_probe_capacity_v1 import budget, assess
+from tests.test_cumulative_generated_probe_corpus_v1 import offered, probe_plan
+
+
+class GeneratedProbeOriginalAccountingGitTests(unittest.TestCase):
+    quotas = corpus.Quotas(2, 8)
+
+    def fixture(self, *, before=True, limits=None, pinned=True, builds_only=False, late_before=False):
+        holder = {}
+        def install(f):
+            holder['fixture'] = f
+            corpus.install_contract(f.owner, expected=f.chain.commitment, quotas=self.quotas, limits=f.limits)
+            f.book = capacity.ReservationLedger(f.owner.records, budget() if limits is None else limits,
+                clock_domain='original-accounting-fixture', expected=f.chain.commitment, create=True)
+            now = time.monotonic_ns()
+            f.window = capacity.Window('original-accounting-fixture', now, now + 600_000_000_000, 0, 0)
+
+        def freeze(f):
+            ranked.freeze_build_phase(f.owner, expected=f.chain.commitment,
+                milestone=f.milestone, generation=f.generation, limits=f.limits)
+            compiled, _ = ranked.reconstruct_frozen_builds(f.owner, expected=f.chain.commitment,
+                milestone=f.milestone, generation=f.generation, limits=f.limits)
+            number = study.MILESTONES.index(f.milestone)
+            f.before_matrix = matrices.compile_matrix(compiled, current=f.plan.releases[number],
+                inherited=f.plan.releases[number-1], active_probes=())
+            f.before_raw = self.raw(f, f.before_matrix, 'before-review')
+            if before:
+                f.before_receipt = self.reserve(f, f.before_raw, 'before-review')
+
+        def plan_change(plan):
+            plan = probe_plan(plan)
+            return replace(plan, source_pins={**plan.source_pins, **accounting.sources()}) if pinned else plan
+
+        review_count = 0
+        def during_directive(directive):
+            nonlocal review_count
+            f = holder['fixture']
+            if directive.kind == 'review':
+                review_count += 1
+            if late_before and directive.kind == 'review' and review_count == 2:
+                # The first review directive is durably recorded; insert before
+                # the second directive and the eventual complete review roster.
+                f.late_receipt = f.book.reserve(f.before_raw, expected=f.chain.commitment)
+            return directive
+
+        f = OriginalFixture(before_contract=install, at_build_boundary=freeze, plan_change=plan_change,
+            review_change=lambda d: d.update(probes=[offered()]), builds_only=builds_only,
+            directive_change=during_directive)
+        self.addCleanup(f.close)
+        if late_before:
+            self.assertEqual(f.late_receipt['status'], 'reserved_declaration')
+            freeze_position = f.chain.position(f.owner.records.name(f.stage + '.before-review-freeze'))
+            allocation_position = f.chain.position(f.owner.records.name(f.late_receipt['slot']))
+            self.assertGreater(allocation_position, freeze_position + 1)
+        return f
+
+    @staticmethod
+    def raw(f, matrix, phase):
+        cells = matrix.base_cells if phase == 'before-review' else (*matrix.contextual_cells, *matrix.merged_cells)
+        charges = tuple(capacity.Charge(c.sha256, 100, 20, 30, 10, 5) for c in cells)
+        return values.canonical(capacity.declaration(matrix, charges, f.window, phase=phase))
+
+    def reserve(self, f, raw, phase, **changes):
+        args = {'expected': f.chain.commitment, 'milestone': f.milestone, 'generation': f.generation,
+            'phase': phase, 'quotas': self.quotas, 'limits': f.limits}
+        args.update(changes)
+        return accounting.reserve(f.owner, f.book, raw, **args)
+
+    def inspect(self, f, slot, phase):
+        return accounting.inspect(f.owner, f.book, slot, expected=f.chain.commitment,
+            milestone=f.milestone, generation=f.generation, phase=phase, quotas=self.quotas, limits=f.limits)
+
+    def after(self, f):
+        corpus.enroll(f.owner, expected=f.chain.commitment, milestone=f.milestone,
+            generation=f.generation, quotas=self.quotas, limits=f.limits)
+        _, matrix, _ = corpus.read(f.owner, expected=f.chain.commitment,
+            milestone=f.milestone, generation=f.generation, quotas=self.quotas, limits=f.limits)
+        return self.raw(f, matrix, 'after-review')
+
+    @staticmethod
+    def shrink(raw, phase):
+        body = json.loads(raw)
+        cells = body['matrix']['cells'][phase]
+        removed = cells.pop()['cell_sha256']
+        body['charges'] = [c for c in body['charges'] if c['cell_sha256'] != removed]
+        body['matrix']['execution_cell_counts'][phase] -= 1
+        body['matrix']['execution_cell_counts']['total'] -= 1
+        body['matrix_sha256'] = study.digest(body['matrix'])
+        return values.canonical(body)
+
+    def test_both_phases_bind_full_original_census_and_cold_inspection(self):
+        f = self.fixture()
+        after = self.reserve(f, self.after(f), 'after-review')
+        self.assertEqual(f.book.snapshot()['used']['execution_cells'], 13)
+        for phase, receipt in [('before-review', f.before_receipt), ('after-review', after)]:
+            original = self.inspect(f, receipt['decision']['slot'], phase)
+            self.assertTrue(original['original_matrix_bound'])
+            self.assertEqual(original['original'], receipt['original'])
+            for key in ('executor_leases_issued', 'whole_child_deadline_bound', 'dispatch_authority', 'acceptance_authority'):
+                self.assertFalse(original[key])
+
+    def test_self_consistent_omitted_candidate_passes_generic_math_but_not_original_binding(self):
+        f = self.fixture(before=False, builds_only=True)
+        raw = self.shrink(f.before_raw, 'before_review')
+        self.assertEqual(assess(raw)['status'], 'reserved_declaration')
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'capacity_matrix_differs'):
+            self.reserve(f, raw, 'before-review')
+        self.assertEqual(f.chain.commitment, expected)
+        self.assertEqual(f.book.snapshot()['entries'], [])
+
+    def test_post_review_cannot_drop_an_applicable_generated_probe(self):
+        f = self.fixture()
+        raw = self.shrink(self.after(f), 'merged')
+        self.assertEqual(assess(raw)['status'], 'reserved_declaration')
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'capacity_matrix_differs'):
+            self.reserve(f, raw, 'after-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_cold_inspection_rejects_generic_unbound_allocation(self):
+        f = self.fixture(before=False, builds_only=True)
+        row = f.book.reserve(self.shrink(f.before_raw, 'before_review'), expected=f.chain.commitment)
+        self.assertEqual(row['status'], 'reserved_declaration')
+        with self.assertRaisesRegex(ValueError, 'capacity_matrix_differs'):
+            self.inspect(f, row['slot'], 'before-review')
+
+    def test_late_generic_allocation_cannot_claim_original_enrollment_boundary(self):
+        f = self.fixture(before=False, builds_only=True)
+        f.owner.records.put('unrelated-boundary', {'value': 1})
+        with self.assertRaisesRegex(ValueError, 'immediately_follow'):
+            self.reserve(f, f.before_raw, 'before-review')
+        row = f.book.reserve(f.before_raw, expected=f.chain.commitment)
+        with self.assertRaisesRegex(ValueError, 'not_at_enrollment_boundary'):
+            self.inspect(f, row['slot'], 'before-review')
+
+    def test_post_review_requires_complete_successful_before_review_accounting(self):
+        f = self.fixture(before=False)
+        raw = self.after(f)
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'prior_pre_review_reservation'):
+            self.reserve(f, raw, 'after-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_post_review_rejects_matching_but_late_generic_before_review_allocation(self):
+        f = self.fixture(before=False, late_before=True)
+        raw = self.after(f)
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'not_at_enrollment_boundary'):
+            self.reserve(f, raw, 'after-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_cold_post_review_inspection_also_rejects_late_pre_review_allocation(self):
+        f = self.fixture(before=False, late_before=True)
+        raw = self.after(f)
+        receipt = f.book.reserve(raw, expected=f.chain.commitment)
+        with self.assertRaisesRegex(ValueError, 'not_at_enrollment_boundary'):
+            self.inspect(f, receipt['slot'], 'after-review')
+
+    def test_post_review_reservation_cannot_follow_accepted_source_movement(self):
+        f = self.fixture()
+        raw = self.after(f)
+        old = f.owner.protected.head()
+        new = f.owner.protected.propose({'base.py': '# next accepted source\n'}, old)
+        f.owner.protected._git('update-ref', 'refs/heads/accepted', new, old)
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'accepted_source_moved'):
+            self.reserve(f, raw, 'after-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_decline_is_original_bound_and_cannot_be_retried_smaller(self):
+        f = self.fixture(limits=budget(execution_cells=1), builds_only=True)
+        receipt = f.before_receipt
+        self.assertEqual(receipt['decision']['status'], 'declined')
+        self.assertEqual(len(receipt['decision']['schedule']), 4)
+        self.assertEqual(self.inspect(f, receipt['decision']['slot'], 'before-review')['decision']['status'], 'declined')
+        expected = f.chain.commitment
+        with self.assertRaises(ValueError):
+            self.reserve(f, f.before_raw, 'before-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_prior_financial_original_is_rechecked_after_accounting(self):
+        f = self.fixture(builds_only=True)
+        value = next(iter(f.proofs.values()))
+        value['result_payload'] = {'kind': 'failure', 'payload': {}}
+        with self.assertRaisesRegex(ValueError, 'finance request/result'):
+            self.inspect(f, f.before_receipt['decision']['slot'], 'before-review')
+
+    def test_source_advance_keeps_historical_inspection_bound_to_old_base(self):
+        f = self.fixture(builds_only=True)
+        old = f.owner.protected.head()
+        new = f.owner.protected.propose({'base.py': '# accepted descendant\n'}, old)
+        f.owner.protected._git('update-ref', 'refs/heads/accepted', new, old)
+        result = self.inspect(f, f.before_receipt['decision']['slot'], 'before-review')
+        self.assertTrue(result['original_matrix_bound'])
+        self.assertEqual(f.owner.protected.head(), new)
+
+    def test_prospective_source_pin_is_required_before_any_charge(self):
+        f = self.fixture(before=False, pinned=False, builds_only=True)
+        expected = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'not_prospectively_pinned'):
+            self.reserve(f, f.before_raw, 'before-review')
+        self.assertEqual(f.chain.commitment, expected)
+
+    def test_foreign_journal_identity_and_stale_checkpoint_are_refused(self):
+        f = self.fixture(before=False, builds_only=True)
+        expected = f.chain.commitment
+        f.book.records = study.Records(f.chain)
+        with self.assertRaisesRegex(ValueError, 'same_original_controller'):
+            self.reserve(f, f.before_raw, 'before-review')
+        f.book.records = f.owner.records
+        f.owner.records.put('later', {'value': 1})
+        with self.assertRaises(ValueError):
+            self.reserve(f, f.before_raw, 'before-review', expected=expected)
+        # The actual journal intentionally latches uncertainty on a stale
+        # boundary; no later ordinary read or new accounting is permitted.
+        with self.assertRaises(ChainUnknown):
+            f.book.snapshot()
+        self.assertFalse((f.chain.raw_root / f.owner.records.name(f.book._slot(0))).exists())
+
+    def test_wrong_generation_phase_and_missing_slot_do_not_grant_original_binding(self):
+        f = self.fixture(builds_only=True)
+        with self.assertRaises(ValueError):
+            self.inspect(f, f.before_receipt['decision']['slot'], 'after-review')
+        with self.assertRaisesRegex(ValueError, 'original_capacity_slot_missing'):
+            self.inspect(f, 'generated-probe.capacity-request.19', 'before-review')
+        with self.assertRaises(ValueError):
+            self.reserve(f, f.before_raw, 'before-review', generation=1)
