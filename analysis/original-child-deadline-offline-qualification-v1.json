@@ -1,0 +1,200 @@
+{
+  "protocol": "original-child-deadline-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T12:09:53.817025+00:00",
+  "prior_commit": "af662874350b7221f6a1840c973f2474c63b3ab2",
+  "status": "ORIGINAL_CHILD_CLOCK_QUALIFIED_OFFLINE_EXECUTOR_AND_STUDY_ACTIVATION_PENDING",
+  "implemented": [
+    "Explicit prospectively pinned policy records monotonic start/end in the anchored child.begin before runtime setup; no later wall-clock rebasing.",
+    "Controller completion and runtime admission consult the original horizon. Wall time may stop work earlier but rollback cannot extend the monotonic window.",
+    "The financial RPC thread uses an immutable authenticated clock projection without crossing journal thread ownership.",
+    "Probe reservation and cold inspection require the exact original window/domain and chronology; self-consistent shifted or extended request windows cannot become authority.",
+    "Active reopen is limited to the original interpreter incarnation; cold evidence remains readable elsewhere. No process-crash restart extension is granted."
+  ],
+  "qualification": {
+    "summary": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/summary.json",
+    "summary_sha256": "303658159ce19f2606519e7ca6945fdbef0442b59060d02c0f7ce2338abb53fe",
+    "inputs_sha256": "11fb9f65dedcd71ed93bca76818c66fe4d1bd0fdb59d887bdcbd0ac73c32494b",
+    "static_sha256": "4dfc53ab70425a3ab6fa1aa5bd9d13dbbeeb60af47a86c319f583e5d56e224be",
+    "source_input_count": 775,
+    "fresh_tests": 118,
+    "reused_tests": 0,
+    "classes": 15,
+    "duration_seconds": 298.6770691247657,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "afceaf2c235c1272ad2177d1a2825efc4ca02e82d06fafcf844e24e6186dca36",
+        "log_sha256": "144e10e55ce85f86b1dad2b83d34949f68d457dd7a968b965cf43c495bde8ef8",
+        "request_sha256": "f2221d358f9653507688e15810ef0c8f548ffb0e85011729afaada16e79e3709"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/f8102915f46ef306/result.json",
+        "result_sha256": "ff9d3cc8b1cb15c4fcc48c4796ed9abc96a57fecafad1251c2e007f4b8da4a11",
+        "log_sha256": "d963f9ab0914ccac7c888d24481857367439f6035252012e46f6647e68dcf10b",
+        "request_sha256": "466d275a6e8f73e05d6943014e6b3d4911350f958b24dfae9e1b88966d33c308"
+      },
+      {
+        "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionCompositionV1Tests",
+        "tests": 6,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/8aab5be3262f2b66/result.json",
+        "result_sha256": "96a7c3f0d76a5de97d0b895cf3f0d9250efc227795d2850b92cb91032bb6c08d",
+        "log_sha256": "08a626e449d37a71a10426d37fdde8fc0cebd2cc582095124440c0866a076c7e",
+        "request_sha256": "97ce7acc9e03aa81715b8b02e95291bfb61907d7416d584b2e39a5fca95101ac"
+      },
+      {
+        "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionExposureV1Tests",
+        "tests": 6,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/5b8347df6623aa9c/result.json",
+        "result_sha256": "29b1125f6b941ab783a0ef1f5b9dac6a084662da34e98a03db31d40a12a3d26e",
+        "log_sha256": "e6317f58b0e6771da5e735db886e445a7909506d349e7316afd3d0b374d065e6",
+        "request_sha256": "752bab3b607da34bce51fc54d1e2bca04d0810f2c75ad1371618f00680050780"
+      },
+      {
+        "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionProfileV1Tests",
+        "tests": 7,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/ec4ee99e1b684962/result.json",
+        "result_sha256": "a01997049654a005c510ef4d13f8818d5fa1a7369938e8205100d9204cf483c1",
+        "log_sha256": "5d7d7d0ff1f786c531637a46278157972c2cd099d61981ad233e33b2199a9bfd",
+        "request_sha256": "a5c35d6ac7ea25e754f8ab3d6b3167a35d074d562fe55137c7ad4fb2c3d833fe"
+      },
+      {
+        "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionScopeV1Tests",
+        "tests": 6,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/a2e7266c76d5bf90/result.json",
+        "result_sha256": "1dca9236eb86daab8f0d1d9a94508c88118a2e83200cf497e8e6b34f3d508af6",
+        "log_sha256": "ec26a32ccf10ef75642432174e99d51e7d573d339e89ad4658895be65f48ee03",
+        "request_sha256": "3e6b8d4216d8b21a5451dff79f8db0c9843c273e77957d57ed9508b88477cafc"
+      },
+      {
+        "class": "tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests",
+        "tests": 18,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/a4c6e93133434832/result.json",
+        "result_sha256": "f1e66253146d866cfec064ad81be72ed250a4df6d5268e79323df2be00d938c2",
+        "log_sha256": "53e6d8a6bd7144a42566445c5125a8f34cab03452543ad977f009a7954b49f41",
+        "request_sha256": "4d60d11ee21a3aa5ed558a3d6143609f5c549067f873a2553ad33d8fa83ccf8f"
+      },
+      {
+        "class": "tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests",
+        "tests": 14,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/974e42c0178ac61e/result.json",
+        "result_sha256": "ee10b0c3919e535636de8bcdf51e67fc651fe88b5ffb03cd338346ac25b74bba",
+        "log_sha256": "2c1135f84839dab9809827661e3630b17f113a1df41c83eb52912f6e924056e5",
+        "request_sha256": "242c564bd1ee3be1d376a1ce028ba33d2f30b71e4db8b4c497807d3386609ac3"
+      },
+      {
+        "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowExposureV1Tests",
+        "tests": 5,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/cfc4a85363757e61/result.json",
+        "result_sha256": "dd1799038924ae45b426e3f5ed6dfe37a634b8731f882612e318e07911def8b8",
+        "log_sha256": "c8a817b6db6d9602147e2aa26710f1b40134a87678f129ac3986ab359bf1a41b",
+        "request_sha256": "315db8912ece422590e4b94c4c0398eb03af3183b72b9ca199f1466edc454336"
+      },
+      {
+        "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowScopeCompositionV1Tests",
+        "tests": 3,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/d496a96c916d6946/result.json",
+        "result_sha256": "8bad61ef0d4b2ba370ae7403aa7114d76921f28b9202fc8a94bc820732dc9338",
+        "log_sha256": "ad0e6697b7a001e387b59f3a30a40fa51874e09013687fa3d73fc7e833e3cc4c",
+        "request_sha256": "60cbf7693e9b85def7999054894ee0428416a6598d89e2b2c8743d39a9a64314"
+      },
+      {
+        "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowStudyCompositionV1Tests",
+        "tests": 2,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/de2f486a072dc568/result.json",
+        "result_sha256": "4432fbb028663d50fac3863c0753d6226a64905b66b9789b8c0786d8b7014c37",
+        "log_sha256": "e2c41d8ed290fc7fe08391fb4d87691e1111c62d76c559c756056572a9ac92e4",
+        "request_sha256": "fea57947505aa2182385411f97d1182df89172aac0a75b14fd2958e35e1b948d"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "8f5bb34cfa6ab2f8e648e96aae4e0bbbe64143f70cafaaa3ddee56ad60a97488",
+        "log_sha256": "cfc4a8d8e6ec25c6063574efe3fdc7968e94c926c6acbbaf240efe4337f6eaed",
+        "request_sha256": "950c2d1d39255d06b163c7ea2466b11ac79c729ce5a1f6d5f9be87fd237dedeb"
+      },
+      {
+        "class": "tests/test_cumulative_cli_projection_v1.py::CumulativeCliProjectionOwnerV1Tests",
+        "tests": 4,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/7968a749527c04ea/result.json",
+        "result_sha256": "34e49b9f555b2997fa7d2eb782456d246ba30422095fcf0901b8daffb57a83cd",
+        "log_sha256": "7df21942bbdbd891c30854451b7a49310159245be60965c0e390edfd59e52f5a",
+        "request_sha256": "d6e8c96c546a11c4d16c87e6ed5dafc22fa9385c7cd3c275b8d10966f7387e8e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 15,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/fbf62e52b530b68d/result.json",
+        "result_sha256": "f2cf55f5ba2de891f9dc7d14681f3275dac68ed5bd8a19cd34fa199207a2eef8",
+        "log_sha256": "3ec76e3ed91a017d1663ad6c4db2e8f7af9d9afb25953c44d51b45fe76687097",
+        "request_sha256": "5d4b0693a4619f54c71b4a7e806eaef11aadf01ac679ade88e1fae16e7b1b963"
+      },
+      {
+        "class": "tests/test_cumulative_workflow_composition_v1.py::CumulativeWorkflowHostCompositionV1Tests",
+        "tests": 16,
+        "result": "runs/original-child-deadline-offline-2/20261005T120430-d310a6ef/classes/46d797d9bb621105/result.json",
+        "result_sha256": "dd2b477d58a2478b48095af1013c62d63008eeb8a1eceb95317cac05952f7af2",
+        "log_sha256": "35dff359ff139d88bd17befb30a43433290e2e489b61f722e9e7761666af53d1",
+        "request_sha256": "c6735c163f4cd97a7781b788856590f3a9644555f5f500c9ebc48287e3a0714b"
+      }
+    ],
+    "scope": "Actual offline controller and original-accounting paths, anchored journals, inert Git and thread boundary checks. Runtime endpoints, role outcomes, mesh and financial seams are synthetic. No Engine, provider or candidate implementation execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/original-child-deadline-focused-1/20261005T115815-e31cc4de/summary.json",
+      "sha256": "6ec68b0b792dd0c152d4073a39b03d93d1a80af432c989b99df0a9ed8ada22ba",
+      "outcomes": {
+        "error": 1,
+        "not_run": 2,
+        "passed": 13
+      },
+      "interpretation": "13 passed; integration mapping incorrectly read nonexistent setup_ns from the capacity window. Corrected runtime/accounting to preserve the established review_ns and selection_ns fields."
+    },
+    {
+      "summary": "runs/original-child-deadline-offline-1/20261005T115909-fea7a39a/summary.json",
+      "sha256": "819be194fe4eda866d0c789202ef221c80205f5bf4946e1e4cb01214165b1df9",
+      "outcomes": {
+        "error": 1,
+        "not_run": 33,
+        "passed": 84
+      },
+      "interpretation": "84 passed; the new before-review fixture incorrectly included selection overhead. Corrected the fixture to zero selection_ns at this phase; the phase-scoping invariant remains intact."
+    }
+  ],
+  "source_pins": {
+    "docs/original-child-deadline-v1.md": "21149ffaa3e7b97afe8eb9035d69534b4b7227c78fbeb9d2906c9daafd8ada46",
+    "gossip_harness/cumulative_child_deadline_v1.py": "9dbf1f2a198ad0659f56e595e010a30576aec69ed5fc88f038f8bee5f9835215",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "dd51c562df932e24f50a15a6d361869badc6e99b31434dda57684904f3b556ca",
+    "gossip_harness/cumulative_study_controller_v2.py": "dc7ee7478fbfdae60aa4fcbd193f0e56a7ac07e7d71cb07d08ad4da063f01577",
+    "gossip_harness/cumulative_study_runtime_v2.py": "7580b6f69f7c6aea19403fecb6fca03b42e380143373940f7daa4f47e4d8f455",
+    "pyproject.toml": "c710616428ffc6f0745d0c89819337766bd69bb75413ec20a86d85ae6c57690d",
+    "tests/test_cumulative_child_deadline_v1.py": "bf686b0ba06a97096206beea9a3a9f5bb1e0935e57bea32ed2908dcc5fb1cca5",
+    "verification-manifest.json": "47e5835fdb91e6743bd04eb64f66cd5c5e655ff8a1c85d50405a3797a87173a8"
+  },
+  "limitations": [
+    "The explicit opt-in policy does not relabel existing frozen studies. The complete successor comparison policy still requires activation.",
+    "Declared capacity accounting still issues no physical executor leases; shared executor/model/evaluator capacity integration remains required.",
+    "An admission deadline does not hard-preempt in-flight API/OS operations; separate cleanup and drain duties remain.",
+    "Foreign interpreter restart is refused for active clock use; this is not a complete controller-crash recovery design.",
+    "Changed-source exact independent probe reviews, four amended storage reviews, missing final acceptance routes, physical host-fault controls and the matching complete six-trajectory/four-milestone rehearsal remain owed."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Connect shared executor and financial admission to the original time authority and activate the complete successor policy; finish acceptance, exact reviews and physical controls before the matching rehearsal and authorized pilot."
+}

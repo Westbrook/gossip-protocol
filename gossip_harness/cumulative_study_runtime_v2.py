@@ -169,6 +169,13 @@ class GossipChildRuntime:
         self.child = plan.roster.children[index]
         self.trajectory = plan.cohort.trajectories[index]
         self.key = "runtime." + self.child.trajectory
+        from . import cumulative_child_deadline_v1 as child_deadlines
+        self.original_child_clock = child_deadlines.read(records, plan, index, active=True) if child_deadlines.selected(plan) else None
+        self._original_child_clock_identity = digest(asdict(self.original_child_clock)) if self.original_child_clock is not None else None
+        if self.original_child_clock is not None:
+            require(deadline == self.original_child_clock.deadline_unix, "Runtime deadline differs from original child start")
+            if self.original_child_clock.expired(self.clock()):
+                raise StudyStop("deadline_exhausted_before_runtime_setup")
         self.root.mkdir(parents=True, exist_ok=True)
         self.closed = False
         self.nodes: list[MeshNode] = []
@@ -231,10 +238,13 @@ class GossipChildRuntime:
                 qualification_session=qualification_session)
             checked_financial_config(self.finance.config)
             records.put(self.key + ".financial-config", self.finance.config)
+            guard_identity = {"payload_guard": self.payloads.request_guard_sha256,
+                              "deadline": deadline, "protocol": PROTOCOL}
+            if self.original_child_clock is not None:
+                guard_identity["original_child_clock"] = asdict(self.original_child_clock)
             rpc = FinancialRPCV5(self.finance, state["capabilities"],
                 expected_financial_config_sha256=self.finance.config_sha256,
-                request_guard=self._request_guard, request_guard_sha256=digest({"payload_guard": self.payloads.request_guard_sha256,
-                    "deadline": deadline, "protocol": PROTOCOL}))
+                request_guard=self._request_guard, request_guard_sha256=digest(guard_identity))
             old_port = records.read(self.key + ".finance-port")
             self.server = FinancialServer(old_port["port"] if old_port else 0, rpc)
             finance_port = self.server.server_address[1]
@@ -299,12 +309,37 @@ class GossipChildRuntime:
                 "Original cumulative ledger identity changed")
 
     def _request_guard(self, action: Any) -> None:
-        if self.clock() >= self.deadline:
+        if self._deadline_expired():
             raise FinancialDenied("deadline_exhausted")
         if ledger_identity(self.ledger) != self.expected_ledger_identity:
             raise FinancialDenied("Original cumulative ledger identity changed")
         assert self.payloads is not None
         self.payloads.request_guard(action)
+
+    def _deadline_expired(self) -> bool:
+        """RPC threads use the original immutable projection, not the owner-only journal."""
+        from . import cumulative_child_deadline_v1 as child_deadlines
+        if child_deadlines.selected(self.plan):
+            original = self.original_child_clock
+            require(type(original) is child_deadlines.ChildClock, "Runtime original child clock missing")
+            assert original is not None
+            require(digest(asdict(original)) == self._original_child_clock_identity
+                    and self.deadline == original.deadline_unix,
+                    "Runtime original child clock changed")
+            return original.expired(self.clock())
+        return self.clock() >= self.deadline
+
+    def probe_capacity_window(self, *, review_ns: int, selection_ns: int) -> Any:
+        """Derive a declaration window from child.begin; never start a new clock."""
+        from . import cumulative_child_deadline_v1 as child_deadlines
+        from .cumulative_generated_probe_capacity_v1 import Window
+        original = child_deadlines.read(self.records, self.plan, self.index, active=True)
+        require(original == self.original_child_clock
+                and digest(asdict(original)) == self._original_child_clock_identity,
+                "Runtime original child clock changed")
+        if self._deadline_expired():
+            raise StudyStop("deadline_exhausted_before_probe_admission")
+        return Window(original.clock_domain, original.started_ns, original.deadline_ns, review_ns, selection_ns)
 
     def _financial_contract(self, ledger: Path, mode: str) -> dict[str, Any]:
         specs = []
@@ -346,7 +381,7 @@ class GossipChildRuntime:
         projection.validate_plan(self.plan, self.repository)
         from . import cumulative_workflow_exposure_v1 as workflow
         workflow.validate_plan(self.plan, self.repository)
-        if self.clock() >= self.deadline:
+        if self._deadline_expired():
             raise StudyStop("deadline_exhausted")
         if (self.partition_until is not None and self.clock() >= self.partition_until
                 and not self.partition_publication_pending):

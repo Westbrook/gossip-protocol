@@ -7345,6 +7345,36 @@
       "distinct_defect": "Independent 60-second source/head calls can overrun a shorter active probe/control window.",
       "boundary": "No candidate, Engine, provider, physical probe qualification or complete whole-child bound.",
       "disposition": "Run with changed probe plan/state/pipe/execution/reader and retained source transport regressions."
+    },
+    "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "invariant": "One anchored pre-setup child clock binds controller stops, runtime guards and every selected probe capacity declaration without renewal.",
+      "isolation": "class process; anchored journals and isolated inert Git where selected",
+      "distinct_defect": "Late wall-to-monotonic conversion or caller-supplied probe windows can extend the original horizon.",
+      "boundary": "Controller and original accounting are real; endpoint runtimes, finance and mesh are explicitly synthetic; no Engine/provider execution or model-quality sample.",
+      "disposition": "Run with affected original accounting, repaired controller/runtime and qualified entry regressions."
+    },
+    "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "One anchored pre-setup child clock binds controller stops, runtime guards and every selected probe capacity declaration without renewal.",
+      "isolation": "class process; anchored journals and isolated inert Git where selected",
+      "distinct_defect": "Late wall-to-monotonic conversion or caller-supplied probe windows can extend the original horizon.",
+      "boundary": "Controller and original accounting are real; endpoint runtimes, finance and mesh are explicitly synthetic; no Engine/provider execution or model-quality sample.",
+      "disposition": "Run with affected original accounting, repaired controller/runtime and qualified entry regressions."
+    },
+    "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 900,
+      "invariant": "One anchored pre-setup child clock binds controller stops, runtime guards and every selected probe capacity declaration without renewal.",
+      "isolation": "class process; anchored journals and isolated inert Git where selected",
+      "distinct_defect": "Late wall-to-monotonic conversion or caller-supplied probe windows can extend the original horizon.",
+      "boundary": "Controller and original accounting are real; endpoint runtimes, finance and mesh are explicitly synthetic; no Engine/provider execution or model-quality sample.",
+      "disposition": "Run with affected original accounting, repaired controller/runtime and qualified entry regressions."
     }
   },
   "audit": {

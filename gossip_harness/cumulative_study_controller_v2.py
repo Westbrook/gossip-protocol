@@ -14,6 +14,7 @@ import time
 from typing import Any, Callable, Protocol
 
 from .candidate_checkpoint_chain_v1 import CheckpointChain, PrefixCommitment
+from . import cumulative_child_deadline_v1 as child_deadlines
 from .peer_financial_authority_v5 import REQUIRED_SOURCES as FINANCIAL_SOURCES
 from .peer_financial_authority_v2 import ledger_identity
 from .peer_financial_terminal_v1 import (ChildRegistration, ChildTerminalSeal,
@@ -40,7 +41,7 @@ SHARED_POLICY = {"protocol": PROTOCOL, "eligibility": "complete-arrived-source-a
     "financial_closure_policy": CLOSURE_POLICY}
 
 SOURCE_CLOSURE = tuple(sorted(set(FINANCIAL_SOURCES) | {"gossip_harness/" + name for name in (
-    "cumulative_study_controller_v2.py", "cumulative_study_runtime_v2.py", "cumulative_study_role_v1.py",
+    "cumulative_study_controller_v2.py", "cumulative_study_runtime_v2.py", "cumulative_study_role_v1.py", "cumulative_child_deadline_v1.py",
     "cumulative_process_evidence_v1.py", "peer_mesh_v2.py", "peer_mesh_store_v2.py", "peer_mesh_finance_v2.py",
     "peer_role_loop_v2.py", "gitstore.py", "sandbox.py", "project_acceptance_compiler_v1.py",
     "candidate_observation_admission_v1.py", "candidate_release_execution_v2.py",
@@ -207,6 +208,7 @@ class StudyPlan:
         for path, value in self.source_pins.items():
             require(not Path(path).is_absolute() and ".." not in Path(path).parts, "Unsafe source pin")
             sha256(value)
+        child_deadlines.selected(self)  # Explicit versioned opt-in; absent means the frozen wall-clock policy.
         scopes = [path for paths in self.package_paths.values() for path in paths]
         require(len(scopes) == len(set(scopes)), "Shared writable path needs an explicit ownership policy")
         for index, path in enumerate(scopes):
@@ -407,10 +409,20 @@ class StudyController:
                 "Original cumulative ledger identity differs before child admission")
         start = self.records.read(key + ".begin")
         if start is None:
-            start = self.records.put(key + ".begin", {"trajectory": plain(asdict(t)),
+            value = child_deadlines.begin(self.plan, index, self.clock) if child_deadlines.selected(self.plan) else {"trajectory": plain(asdict(t)),
                 "started_at": self.clock(), "deadline": self.clock() + self.plan.horizon_seconds,
-                "contract_sha256": self.plan.sha256})
+                "contract_sha256": self.plan.sha256}
+            start = self.records.put(key + ".begin", value)
         deadline = start["deadline"]
+        original_clock = child_deadlines.read(self.records, self.plan, index, active=True) if child_deadlines.selected(self.plan) else None
+        def expired() -> bool:
+            if original_clock is not None:
+                require(child_deadlines.read(self.records, self.plan, index, active=True) == original_clock,
+                        "original_child_clock_changed")
+                return original_clock.expired(self.clock())
+            return self.clock() >= deadline
+        if original_clock is not None and expired():
+            raise StudyStop("deadline_exhausted_before_runtime_construction")
         runtime = self.runtime_factory(self.plan, index, self.records, deadline)
         try:
             milestones: list[str] = []
@@ -422,7 +434,7 @@ class StudyController:
                         milestones.append(mkey + ".terminal")
                         require(self.records.read(mkey + ".terminal")["status"] == "public_completed", "Prior milestone unsuccessful")  # type: ignore[index]
                         continue
-                    if self.clock() >= deadline:
+                    if expired():
                         raise StudyStop("deadline_exhausted")
                     self.plan.verify_sources(self.repository)
                     self.records.chain.validate_boundary()
@@ -437,7 +449,7 @@ class StudyController:
                                 reached = True
                                 break
                             continue
-                        if self.clock() >= deadline:
+                        if expired():
                             raise StudyStop("deadline_exhausted")
                         source = runtime.source()
                         source_ref = runtime.publish("project-source", {"files": source["files"], "base_sha": source["commit_oid"]}, gkey + ".source")
@@ -477,7 +489,7 @@ class StudyController:
                             "ordered_check_ids": tuple(evaluation["ordered_check_ids"]),
                             "outcomes": tuple(tuple(x) for x in evaluation["outcomes"])})
                         result.validate(release, current["commit_oid"], current["source_sha256"])
-                        if self.clock() >= deadline:
+                        if expired():
                             raise StudyStop("deadline_exhausted_after_public_evaluation")
                         public_passed = result.passed and integrated["status"] == "integrated"
                         record = self.records.put(gkey + ".terminal", {"milestone": release.milestone,
@@ -493,7 +505,7 @@ class StudyController:
                             break
                     if not reached:
                         raise StudyStop("public_source_generations_exhausted")
-                    if self.clock() >= deadline:
+                    if expired():
                         raise StudyStop("deadline_exhausted_before_milestone_completion")
                     self.records.put(mkey + ".terminal", {"milestone": release.milestone,
                         "status": "public_completed", "source": runtime.source(), "acceptance_authority": False})

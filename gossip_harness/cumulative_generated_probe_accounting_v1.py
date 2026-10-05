@@ -9,6 +9,7 @@ binding, actual test execution, or independent product acceptance.
 from __future__ import annotations
 
 import hashlib
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
@@ -21,8 +22,9 @@ from . import cumulative_generated_probe_ranked_originals_v1 as ranked
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_study_controller_v2 as study
 from . import cumulative_study_runtime_v2 as runtime
+from . import cumulative_child_deadline_v1 as child_deadlines
 
-PROTOCOL = 'cumulative-generated-probe-original-accounting-v1'
+PROTOCOL = 'cumulative-generated-probe-original-accounting-v1-child-deadline-v2'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 require = study.require
 
@@ -82,6 +84,25 @@ def _compare(raw: bytes, matrix: matrices.Matrix, phase: str) -> dict[str, Any]:
     return request
 
 
+def _child_window(owner: runtime.GossipChildRuntime, request: dict[str, Any], *, stage: str, active: bool) -> dict[str, Any] | None:
+    if not child_deadlines.selected(owner.plan):
+        return None
+    original = child_deadlines.read(owner.records, owner.plan, owner.index, active=active)
+    require(owner.records.chain.position(owner.records.name(original.origin_slot))
+            < owner.records.chain.position(owner.records.name(stage + '.before-review-freeze')),
+            'child_clock_must_precede_probe_build_freeze')
+    window = request['window']
+    require((window['clock_domain'], window['started_ns'], window['deadline_ns']) ==
+            (original.clock_domain, original.started_ns, original.deadline_ns),
+            'capacity_window_differs_from_original_child_start')
+    if active:
+        derived = owner.probe_capacity_window(review_ns=window['review_ns'], selection_ns=window['selection_ns'])
+        require(values.exact(window, asdict(derived)), 'active_child_capacity_window_differs')
+    return {'slot': original.origin_slot, 'sha256': original.origin_sha256,
+            'clock_domain': original.clock_domain, 'started_ns': original.started_ns,
+            'deadline_ns': original.deadline_ns}
+
+
 def _require_before(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
                     request: dict[str, Any], *, expected: chain.PrefixCommitment,
                     milestone: str, generation: int, quotas: corpus.Quotas,
@@ -109,6 +130,7 @@ def reserve(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
     matrix, original = _matrix(owner, book, expected=expected, milestone=milestone,
         generation=generation, phase=phase, quotas=quotas, limits=limits, historical=False)
     request = _compare(raw, matrix, phase)
+    original_clock = _child_window(owner, request, stage=original['stage'], active=True)
     if phase == 'after-review':
         _require_before(owner, book, request, expected=expected, milestone=milestone,
             generation=generation, quotas=quotas, limits=limits)
@@ -118,7 +140,8 @@ def reserve(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
     decision = book.reserve(raw, expected=expected)
     return {'protocol': PROTOCOL, 'original': original, 'decision': decision,
         'original_matrix_bound': True, 'executor_leases_issued': False,
-        'whole_child_deadline_bound': False, 'dispatch_authority': False, 'acceptance_authority': False}
+        'whole_child_deadline_bound': original_clock is not None, 'original_child_clock': original_clock,
+        'dispatch_authority': False, 'acceptance_authority': False}
 
 
 def inspect(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger, slot: str, *,
@@ -132,6 +155,7 @@ def inspect(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
     require(type(slot) is str and slot in rows, 'original_capacity_slot_missing')
     row = rows[slot]
     request = _compare(values.canonical(row['request']), matrix, phase)
+    original_clock = _child_window(owner, request, stage=original['stage'], active=False)
     if phase == 'after-review':
         _require_before(owner, book, request, expected=expected, milestone=milestone,
             generation=generation, quotas=quotas, limits=limits)
@@ -142,4 +166,5 @@ def inspect(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
     return {'protocol': PROTOCOL, 'original': original, 'slot': slot,
         'record_sha256': study.digest(row), 'decision': row['decision'],
         'original_matrix_bound': True, 'executor_leases_issued': False,
-        'whole_child_deadline_bound': False, 'dispatch_authority': False, 'acceptance_authority': False}
+        'whole_child_deadline_bound': original_clock is not None, 'original_child_clock': original_clock,
+        'dispatch_authority': False, 'acceptance_authority': False}
