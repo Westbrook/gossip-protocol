@@ -119,7 +119,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
         self.assertEqual(self.originals['probe-stdout.bin'], b''.join(self.rows))
         self.assertEqual(result['infrastructure'], [])
         for ack in result['acks']:
-            raw = self.originals['probe-continue-' + ack['slot'] + '-intent.bin']
+            raw = self.originals['probe-continue-' + pipes.artifact_slot(ack['slot']) + '-intent.bin']
             self.assertEqual(raw, wire.continuation_bytes(ack['slot']))
             self.assertEqual(ack['written_bytes'], len(raw))
         with self.assertRaises(ValueError): owner.exchange(admitted(self.row), released_requirements=RELEASED,
@@ -130,8 +130,8 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
             with self.subTest(template=template):
                 owner = self.make(template=template)
                 def capture():
-                    self.assertIn('probe-frame-capture_job.bin', self.originals)
-                    self.assertNotIn('probe-continue-capture_job-intent.bin', self.originals)
+                    self.assertIn('probe-frame-capture-job.bin', self.originals)
+                    self.assertNotIn('probe-continue-capture-job-intent.bin', self.originals)
                     return values_for(self.row)['captured_job']
                 result = self.exchange(owner, capture_job=capture)
                 self.assertTrue(result['mechanics_complete']); self.assertEqual(result['value']['disposition'], 'pass')
@@ -203,8 +203,8 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
     def test_missing_capture_never_acknowledges_capture_boundary(self):
         owner = self.make(template='manifest-content-hash-v1'); result = self.exchange(owner)
         self.assertFalse(result['mechanics_complete']); self.assertEqual(result['value']['disposition'], 'unavailable')
-        self.assertIn('probe-frame-capture_job.bin', self.originals)
-        self.assertNotIn('probe-continue-capture_job-intent.bin', self.originals)
+        self.assertIn('probe-frame-capture-job.bin', self.originals)
+        self.assertNotIn('probe-continue-capture-job-intent.bin', self.originals)
 
     def test_admission_failure_stops_child_without_sending_continuation(self):
         owner = self.make()
@@ -248,6 +248,19 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
 
 
 class GeneratedProbePipePolicyTests(unittest.TestCase):
+    def test_logical_slots_map_injectively_into_actual_journal_filename_contract(self):
+        from gossip_harness import candidate_checkpoint_chain_v1 as chain
+        slots=sorted({slot for rows in wire._SLOTS.values() for slot in rows})
+        labels=[pipes.artifact_slot(slot) for slot in slots]
+        self.assertEqual(len(labels),len(set(labels)))
+        for slot,label in zip(slots,labels,strict=True):
+            for name in ('probe-frame-'+label+'.bin','probe-continue-'+label+'-intent.bin',label+'-staging.json'):
+                chain._name(name)
+            self.assertEqual(wire.continuation_bytes(slot),('continue:'+slot+'\n').encode())
+        self.assertEqual(pipes.artifact_slot('original_receipt'),'original-receipt')
+        self.assertEqual(pipes.artifact_slot('capture_job'),'capture-job')
+        with self.assertRaises(ValueError):pipes.artifact_slot('original-receipt')
+
     def test_explicit_policy_rejects_outside_existing_envelopes(self):
         good = pipes.PipePolicy(wire.WireLimits(16384, 131072, 256, 16), 65536, 3)
         for changes in ({'stderr_bytes': 65537}, {'stderr_bytes': True}, {'control_seconds': 31},

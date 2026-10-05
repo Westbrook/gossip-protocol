@@ -35,7 +35,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-journal-labels-v1'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)

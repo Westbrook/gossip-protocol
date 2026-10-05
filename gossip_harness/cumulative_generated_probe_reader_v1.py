@@ -29,7 +29,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
 from .sandbox import DockerValidator
 
-PROTOCOL = 'cumulative-generated-probe-reader-v1'
+PROTOCOL = 'cumulative-generated-probe-reader-v1-journal-labels-v1'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
@@ -288,7 +288,7 @@ class _Reader:
         self.runtime_at('capture-runtime-after');self.identity('capture-after')
         same(self.obj('capture-staging.json'),self.staging,'original_capture_staging_differs')
         same(self.obj('captured-job.json'),value,'original_captured_job_projection_differs')
-        self.order('capture_job-staging.json','capture-runtime-before-version-request.bin','capture-runtime-before-verified.json',
+        self.order('capture-job-staging.json','capture-runtime-before-version-request.bin','capture-runtime-before-verified.json',
             'capture-before-container-request.bin','capture-before-identity-verified.json','capture-pause-dispatch.json',
             'capture-pause.json','capture-state-dispatch.json','capture-state.json','capture-tar-dispatch.json','capture-tar.json',
             'capture-unpause-dispatch.json','capture-unpause.json','capture-runtime-after-version-request.bin',
@@ -297,6 +297,7 @@ class _Reader:
         return value
 
     def frame(self, slot: str, prior: str) -> bytes:
+        slot=pipes.artifact_slot(slot)
         name='probe-frame-'+slot+'.bin';raw=self.blob(name)
         self.runtime_at(slot+'-runtime');self.identity(slot)
         same(self.obj(slot+'-staging.json'),self.staging,'original_frame_staging_differs')
@@ -305,13 +306,14 @@ class _Reader:
         return raw
 
     def acknowledge(self, slot: str) -> str:
-        label='probe-continue-'+slot;raw=self.raw(label+'-intent.bin')
+        artifact=pipes.artifact_slot(slot)
+        label='probe-continue-'+artifact;raw=self.raw(label+'-intent.bin')
         require(raw==wire.continuation_bytes(slot),'original_continuation_differs')
         row=self.obj(label+'-written.json')
         require(set(row)=={'slot','requested_bytes','written_bytes'} and row['slot']==slot
                 and type(row['requested_bytes']) is int and row['requested_bytes']==len(raw)
                 and type(row['written_bytes']) is int and 0<=row['written_bytes']<=len(raw),'original_continuation_count_differs')
-        self.order('captured-job.json' if slot=='capture_job' else slot+'-staging.json',label+'-intent.bin',label+'-written.json')
+        self.order('captured-job.json' if slot=='capture_job' else artifact+'-staging.json',label+'-intent.bin',label+'-written.json')
         if row['written_bytes']!=len(raw):raise Unavailable('partial_continuation:'+slot)
         return label+'-written.json'
 

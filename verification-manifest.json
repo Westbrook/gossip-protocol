@@ -7060,6 +7060,16 @@
       "overlap": "New reader controls; physical happy path and source-adequacy reviews remain separate. Mocked composition is not physical qualification.",
       "distinct_defect": "Forged summaries, command/ack substitution, stale prefixes, tampered originals, expired-dispatch confusion or revoked enrollment must not produce usable positive observations.",
       "disposition": "Static then scoped fast/Git original-reader controls before physical qualification and full rehearsal."
+    },
+    "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "The whole original reader reconstructs every source/runtime/frame/capture/continuation/cleanup boundary without mocked reader methods. Earlier defects survive interruption; missing or substituted originals cannot supply a positive observation.",
+      "isolation": "Worker-local inert Git, synthetic complete Engine/reviewer records, independently anchored journals and trusted authored SQLite only. No actual candidate, Docker or provider execution.",
+      "overlap": "Closes complete-path parser composition gap left by the earlier 24 scoped controls; physical execution, independent review and fresh-process qualification remain separate.",
+      "distinct_defect": "A reader seam that accepts forged runtime/exec/SQLite projections, reversed chronology, missing capture resume or cleanup must not grant completion even if the original terminal says success.",
+      "disposition": "Static then this complete-chain Git class; rerun affected prior reader checks only if a production reader correction is required."
     }
   },
   "audit": {

@@ -22,7 +22,7 @@ from typing import Any, Callable
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
 
-PROTOCOL = 'cumulative-generated-probe-pipe-v1'
+PROTOCOL = 'cumulative-generated-probe-pipe-v1-journal-labels-v1'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 READ_BYTES = 65536
 FRAME_QUEUE = 8
@@ -49,10 +49,17 @@ class PipePolicy:
                 and self.wire.json_nodes <= 65536 and self.wire.json_depth <= 64, 'registered_wire_envelope_exceeded')
 
 
+def artifact_slot(slot: str) -> str:
+    """Closed logical slots map injectively to the journal filename dialect."""
+    wire.continuation_bytes(slot)  # Reject unknown slots before formatting.
+    return slot.replace('_', '-')
+
+
 def definition(policy: PipePolicy) -> dict[str, Any]:
     require(type(policy) is PipePolicy, 'exact_pipe_policy_required')
     return {'protocol': PROTOCOL, 'policy': asdict(policy), 'read_bytes': READ_BYTES,
         'queued_frames': FRAME_QUEUE, 'cleanup_seconds': CLEANUP_SECONDS,
+        'journal_slot_labels': {slot: artifact_slot(slot) for slot in sorted({s for rows in wire._SLOTS.values() for s in rows})},
         'clock': 'absolute monotonic nanoseconds; each exchange step also has one control window',
         'io': 'POSIX nonblocking pipes; stdout and stderr drained together during reads and writes',
         'retention': 'raw frames, continuation intents/completions, bounded raw streams and local terminal',
@@ -250,7 +257,7 @@ class ProbePipe:
                 deadline = self._step_deadline()
                 boundary(deadline)
                 raw = self._line(deadline)
-                keep('probe-frame-' + slot + '.bin', raw)
+                keep('probe-frame-' + artifact_slot(slot) + '.bin', raw)
                 self._remaining(deadline)
                 event = transcript.append(raw)
                 boundary(deadline)
@@ -263,14 +270,14 @@ class ProbePipe:
                     transcript.supply_captured_value(captured)
                 require(not self.frames and not self.pending, 'probe_unacknowledged_future_output')
                 ack = wire.continuation_bytes(slot)
-                keep('probe-continue-' + slot + '-intent.bin', ack)
+                keep('probe-continue-' + artifact_slot(slot) + '-intent.bin', ack)
                 boundary(deadline)
                 self.acks.append({'slot': slot, 'requested_bytes': len(ack), 'written_bytes': 0})
                 try:
                     self._write(ack, deadline)
                 finally:
                     self.acks[-1]['written_bytes'] = self._written
-                keep('probe-continue-' + slot + '-written.json', values.canonical(self.acks[-1]))
+                keep('probe-continue-' + artifact_slot(slot) + '-written.json', values.canonical(self.acks[-1]))
                 boundary(deadline)
             natural = self._finish(self._step_deadline())
             boundary(self.deadline_ns)
