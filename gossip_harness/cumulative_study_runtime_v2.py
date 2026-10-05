@@ -237,6 +237,7 @@ class GossipChildRuntime:
                 terminal_roster=plan.roster, checkpoint=records.chain, expected_checkpoint=records.chain.commitment,
                 qualification_session=qualification_session)
             checked_financial_config(self.finance.config)
+            self._shared_evaluator_finance = self.finance
             records.put(self.key + ".financial-config", self.finance.config)
             guard_identity = {"payload_guard": self.payloads.request_guard_sha256,
                               "deadline": deadline, "protocol": PROTOCOL}
@@ -740,7 +741,31 @@ class GossipChildRuntime:
     def evaluate(self, release: Release) -> PublicResult:
         self._tick()
         self.records.chain.validate_boundary()
-        result = self.evaluator(self.protected, release)
+        from .peer_financial_authority_v5 import EVALUATOR_CAPACITY_KEY
+        if EVALUATOR_CAPACITY_KEY in self.plan.runtime:
+            from . import cumulative_child_deadline_v1 as child_deadlines
+            original = child_deadlines.read(self.records, self.plan, self.index, active=True)
+            require(original == self.original_child_clock and not self._deadline_expired(),
+                    'Original evaluator clock differs or expired')
+            require(type(self.finance) is CumulativeAuthorityV5
+                    and self.finance is self._shared_evaluator_finance,
+                    'Actual original shared financial executor required')
+            assert self.finance is not None
+            with self.finance.evaluation_slot(deadline_ns=original.deadline_ns) as slot:
+                # Waiting consumes the same horizon; recheck wall time and originals.
+                try:
+                    self._tick()
+                except BaseException:
+                    slot.confirm_cleanup()  # The evaluator has not been invoked.
+                    raise
+                result = self.evaluator(self.protected, release)
+                require(type(result) is PublicResult
+                        and type(result.raw_receipt.get('sandbox')) is dict
+                        and result.raw_receipt['sandbox'].get('cleanup_verified') is True,
+                        'Public evaluator cleanup is unresolved')
+                slot.confirm_cleanup()
+        else:
+            result = self.evaluator(self.protected, release)
         source = self.source()
         result.validate(release, source["commit_oid"], source["source_sha256"])
         self.records.chain.validate_boundary()
@@ -884,6 +909,8 @@ class GossipChildRuntime:
                 errors.append("Financial server thread did not stop")
         if self.finance is not None:
             attempt("financial executor close", self.finance.close)
+            if getattr(self.finance, 'unresolved_evaluations', 0):
+                errors.append('Public evaluator cleanup is unresolved; shared slot was not released')
         if self.payloads is not None:
             attempt("payload index close", self.payloads.close)
         for index, node in enumerate(reversed(self.nodes)):

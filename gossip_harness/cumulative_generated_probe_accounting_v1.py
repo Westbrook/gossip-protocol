@@ -2,9 +2,9 @@
 
 The generic capacity ledger deliberately accepts declarations. This adapter
 reconstructs every candidate and applicable probe before allowing its one ledger
-write. Cold inspection repeats the original joins and chronology checks. Neither
-path issues executor leases or proves physical costs, whole-child deadline
-binding, actual test execution, or independent product acceptance.
+write. Cold inspection repeats the original joins and chronology checks. The
+selected clock policy also binds the original child horizon. Neither path issues
+executor leases or proves physical costs, execution or independent acceptance.
 """
 from __future__ import annotations
 

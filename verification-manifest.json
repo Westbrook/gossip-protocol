@@ -7375,6 +7375,26 @@
       "distinct_defect": "Late wall-to-monotonic conversion or caller-supplied probe windows can extend the original horizon.",
       "boundary": "Controller and original accounting are real; endpoint runtimes, finance and mesh are explicitly synthetic; no Engine/provider execution or model-quality sample.",
       "disposition": "Run with affected original accounting, repaired controller/runtime and qualified entry regressions."
+    },
+    "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests": {
+      "lane": "fast",
+      "weight": 2,
+      "timeout_seconds": 180,
+      "invariant": "Model calls and selected public evaluation share the same bounded semaphore through confirmed cleanup; expiry and unknown cleanup never add capacity.",
+      "isolation": "class process; disposable joined ledger, anchored journals, real model executor with offline transport",
+      "distinct_defect": "Public evaluation bypasses model capacity, permits terminal sealing while active, or refunds uncertain cleanup.",
+      "boundary": "Actual financial executor and runtime evaluate method; synthetic public sandbox callback and runtime shell. No Engine or provider calls.",
+      "disposition": "Run with affected V5 financial/RPC/qualification and controller runtime/clock classes."
+    },
+    "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests": {
+      "lane": "fast",
+      "weight": 2,
+      "timeout_seconds": 180,
+      "invariant": "Model calls and selected public evaluation share the same bounded semaphore through confirmed cleanup; expiry and unknown cleanup never add capacity.",
+      "isolation": "class process; disposable joined ledger, anchored journals, real model executor with offline transport",
+      "distinct_defect": "Public evaluation bypasses model capacity, permits terminal sealing while active, or refunds uncertain cleanup.",
+      "boundary": "Actual financial executor and runtime evaluate method; synthetic public sandbox callback and runtime shell. No Engine or provider calls.",
+      "disposition": "Run with affected V5 financial/RPC/qualification and controller runtime/clock classes."
     }
   },
   "audit": {

@@ -1,0 +1,200 @@
+{
+  "protocol": "shared-public-evaluator-capacity-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T12:23:57.251867+00:00",
+  "prior_commit": "bcb607d9461dc1d02d5a0c57f06e003455ddee56",
+  "status": "PUBLIC_EVALUATOR_SHARES_ACTUAL_MODEL_CAPACITY_OFFLINE_QUALIFIED_PROBE_ADMISSION_PENDING",
+  "implemented": [
+    "Explicit prospective policy requires the original child clock and participates in the study resource contract and financial permit.",
+    "Actual runtime public evaluation uses one slot from the same semaphore as model submit; no additional executor or provider worker.",
+    "Waiting does not hold the terminal lock; expiry, halt, closure, changed pool or financial owner refuse admission before evaluation.",
+    "Confirmed sandbox cleanup releases capacity. Uncertain cleanup retains its slot, persists a halt, blocks terminal sealing and prevents successful runtime cleanup.",
+    "Financial close waits for active evaluator scope. Completed test failure can release capacity if cleanup is independently represented by the existing sandbox receipt."
+  ],
+  "qualification": {
+    "summary": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/summary.json",
+    "summary_sha256": "74d8624509e59daf0b2174be34e2bcbe778ff2db71b698571703c4c8a554f3c9",
+    "inputs_sha256": "8a9edfc737aba63f0c05103d1a95046cf4ebf1f14820d9ad6db9294d5857da89",
+    "static_sha256": "fcb8671c51dd5478583ed7e22a8cbbaacd3cdd09d9adbf8f89fb52a48b564684",
+    "source_input_count": 776,
+    "fresh_tests": 132,
+    "reused_tests": 0,
+    "classes": 14,
+    "duration_seconds": 119.30815291590989,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "883e1174542ddef2a3707b78b646d522ff3a102e727b6efc1b861d9f89cb8259",
+        "log_sha256": "83a0b28aa60c92325090fc4a3da929425844a01c94246610e50d88643b684b87",
+        "request_sha256": "8f306b3adfacd30dd35dcca37d204fe301e51bcf69b84f802ec6c99147fe292a"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/f8102915f46ef306/result.json",
+        "result_sha256": "a01689a27bf7010c14ff0fcbdb528115897dff30333211c5cf3f70bd1ae1ffa9",
+        "log_sha256": "1960a6603e1477b472b4ee5eee23b5d248f5f15ea2bf988466de70fcd6788c96",
+        "request_sha256": "d963ed247c9ee6d3d8285c306c48c08700fec9ad8a827c4c043f634475ff34bf"
+      },
+      {
+        "class": "tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests",
+        "tests": 22,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/90a5e55e0873d184/result.json",
+        "result_sha256": "f23fdb022629a83ce697a1fdf1d6284465e4d77b5cf403c4e3f0988c0bc164a1",
+        "log_sha256": "20fbfb812384a6a04d80100d041f38eb7a180da7732a442a6e5249e46d4d44bb",
+        "request_sha256": "329afd23caf99a4ac30a00d8f5003dbd66e5bd96cce6ace6a7bd9dbb51534d8f"
+      },
+      {
+        "class": "tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests",
+        "tests": 18,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/a4c6e93133434832/result.json",
+        "result_sha256": "473cfe64f770df5241806193b1baecf73f9d849f5fb901b08c03ec4e396d7ea5",
+        "log_sha256": "2d043a4edad6e02ad1eaf6fe8de4595a20f166cb70ec0e6a26c411ad907b1ca1",
+        "request_sha256": "0a870c1a7e1407d95019de5a0be8825a04f57387c42f91f917ab34f88ef2a721"
+      },
+      {
+        "class": "tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests",
+        "tests": 14,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/974e42c0178ac61e/result.json",
+        "result_sha256": "cb73197e8f749878de3407a55a64a9369b8c4d55c70a1373e360b882cce3f037",
+        "log_sha256": "2d7a9d1b52af63ea5ccee5a4c0cc538eb267c975d8f69da707b41b5d3f4dc205",
+        "request_sha256": "b7cbf60de76aed3f9892b6031f30e8809aae0ee7caafd91f29e7207912c3f708"
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v5.py::PeerFinancialAuthorityV5Tests",
+        "tests": 14,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/43fbb6b436891a06/result.json",
+        "result_sha256": "182de4f00a0782650b06db89082b16a17d2ae253fd89bd4677d9d0e70aaa51d6",
+        "log_sha256": "94349a54f9d68d8eecbeced54f0f43a7a32e2420e039eaad784ee9f9840832a5",
+        "request_sha256": "94358034cb7905a7574489b6d24177850f5ff856739baeb14d2f0c6dda6bab71"
+      },
+      {
+        "class": "tests/test_peer_financial_authority_v5.py::PeerFinancialBarrierV5Tests",
+        "tests": 3,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/626ce2c3d8e143b4/result.json",
+        "result_sha256": "a5af320ee3e9fef247454659c80b0b288a929aa6e9972c8a3e89e034189690a8",
+        "log_sha256": "2f3102889c3f2d300d5ba58b529a484206794574f2947d9d22fae4b70302c831",
+        "request_sha256": "1682ae9472a182a8611cc5d2c58ff8f2f3743fa6ee3d7cd170a155edec320d8f"
+      },
+      {
+        "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualificationV5FinalV3Tests",
+        "tests": 3,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/2345c5c15e23d7f2/result.json",
+        "result_sha256": "1f2b797b248a3e2fa5fe7d701bc6b7da9d0bc62c269a961ce2cc8ae55ce2f84b",
+        "log_sha256": "aef2ec36c5f2a53b6a6ec33f216479005aa7e948e41267da817804bad248553e",
+        "request_sha256": "64accb5772175e22fa54f4f38185dc0fbb08db930f7e0514595fa9f23036a61a"
+      },
+      {
+        "class": "tests/test_peer_financial_qualification_v5_final_v3.py::PeerFinancialQualifiedEntryV5Tests",
+        "tests": 5,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/739bcbec14d5ac45/result.json",
+        "result_sha256": "12effd4ae36055905579d93d4162366cae5b5952336241b31d7ef8ab223a654b",
+        "log_sha256": "e7b2f842c370c36252f14a6606bef7c8f20f3ebcafff8fe419d8e66e23ad61b6",
+        "request_sha256": "df6cbeb5b5ef4d6564dfad4d31911f516262a78ba95d16a84eb20bee5a560558"
+      },
+      {
+        "class": "tests/test_peer_financial_rpc_v5.py::PeerFinancialRPCV5Tests",
+        "tests": 9,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/50d257b2cbac9a75/result.json",
+        "result_sha256": "c49df96e613cde1472c2d61c076d9a6e2c818cfe8998afd7160c91dea2ba252d",
+        "log_sha256": "cb728817c8267d043aaaf7e7271b788583932ebd0adcafb0c02858591570aacb",
+        "request_sha256": "bd97cd4019837d5a5c5facd2bba6ba17418b8a5e5d9c9ccbb14e248098f82031"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "9f2c27228acfaa37079d40cf9a35d05342c178c75de1fca16d8654a570793556",
+        "log_sha256": "68603765abcaad04db7b28f2da074e1811ea1e5e997ff70667eec5e407500c64",
+        "request_sha256": "135a9236422b974732e5d5aeb2b250cce4bf42e856121cc5274b0670c3f7d131"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/102d0d423f447c48/result.json",
+        "result_sha256": "5933b30a57fba1325ee464969c79cfeebf81c83b0186389259ee2d44f5d95755",
+        "log_sha256": "6d6afae4685d23d154f62b390febfa1b4d3e3e982b1016c129d4e0cc3adeeef3",
+        "request_sha256": "131045bb9e89d902bc44eb24c0e9554dd3adb204178929fae040aabf22be7c60"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "293ef579eea6cc23510485eb42b35ed9c6f8318ff7faf9eaaf994d826dd85873",
+        "log_sha256": "17951709305fccf42ed01205153099824e4da7702aff4f3752bbe55f2f481dfd",
+        "request_sha256": "23af5c75fdbbe2d1d8e0527aefa3a46babfca6d0bf9a1ee253fa610c00dce8cc"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 15,
+        "result": "runs/shared-public-evaluator-focused-2/20261005T122037-9ea14fe6/classes/fbf62e52b530b68d/result.json",
+        "result_sha256": "805a868a19923f9b1a8095c7dfd60423056685cd9bb4e20c8ff63b56dc23b194",
+        "log_sha256": "2cbc2863ac84244fdd147200a8208f976a6a333ea53fd8caf34386ce79cf3d11",
+        "request_sha256": "4d053350d92e9eb218f75b45e6b5b50182df275e1cfcbd28f677c89498779e21"
+      }
+    ],
+    "scope": "Real joined financial ledger, semaphore, actual model executor using synthetic offline transport, and actual runtime evaluate method with synthetic sandbox callback/constructed runtime shell. Anchored original clock/controller and accounting regressions. No Engine or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "focused_result": {
+    "summary": "runs/shared-public-evaluator-focused-2/20261005T121859-02589825/summary.json",
+    "sha256": "6433f7616a5fdb8b7419a6d68f3b6e75bd33c7801a9c1cdd7d99166a2e6f158e",
+    "passed": 13,
+    "reused": false,
+    "reason": "Combined suite required four resource tokens versus the focused run two. Exact runner identity includes this budget; cache correctly refused reuse."
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/shared-public-evaluator-focused-1/20261005T121806-80fac14e/summary.json",
+      "sha256": "0793f7b0469579f6f7971838aa697d9bbda2aef83c616b4f3ed2d6e0b5cc9fed",
+      "outcomes": {},
+      "interpretation": "Discovery rejected inherited test methods. Moved only shared fixture helpers into a non-test base; every manifested class now declares its tests directly. No tests ran."
+    },
+    {
+      "summary": "runs/shared-public-evaluator-offline-1/20261005T121944-b1ee539a/summary.json",
+      "sha256": "b5d7c7b11ab1a9ed8b98070d35cb8dedc1366abbb9a17d67212799fd0a366d8b",
+      "outcomes": {
+        "not_run": 132
+      },
+      "interpretation": "Selected financial qualification classes require four resource tokens, exceeding the requested two. No tests ran; corrected the central budget to four without changing per-class limits."
+    }
+  ],
+  "source_pins": {
+    "docs/shared-public-evaluator-capacity-v1.md": "a8c856f4bccdcfe9802801d8cd714a62b6e00ab1d6e37fe06bdc5323eab6b3f6",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "6ad6ed044931f3b0b3d99aeafcb811e167acdfe60c484b518307ebbbc24b46a1",
+    "gossip_harness/cumulative_study_controller_v2.py": "7019f578522c83839e5387dc0fb3c3c68fc13439c867faf1c4c56331d6d9e661",
+    "gossip_harness/cumulative_study_runtime_v2.py": "64e8b71e1607229683c2e14282b9338d89564054e5fc430a6596945acb6ef7a0",
+    "gossip_harness/peer_financial_authority_v5.py": "72635edf24de8c5ba79eaef4bee736a28b4436263e245d783429ff77f0641b03",
+    "tests/test_shared_public_evaluator_capacity_v1.py": "9a03e9166d2ee480f84dca24ba526d5d263f60f18355a745e897818f31b5dab9",
+    "verification-manifest.json": "b64bc1dbedfeb140c9865bd7f4d52a026b754e3a9586341c524e7dc557d18bd5"
+  },
+  "limitations": [
+    "This binds existing public evaluation to model capacity. Generated-probe declarations still issue no leases and do not bind qualified resource envelopes to physical probe admission.",
+    "The complete ranked selection/controller policy still needs activation. Changed-source independent reviews and a matching rehearsal remain required; older qualified source is historical.",
+    "A trusted runtime checks the existing sandbox cleanup receipt; the capacity primitive itself provides no independent candidate acceptance or cleanup proof.",
+    "In-flight operations are not hard-preempted by the admission clock; unresolved cleanup remains a stop, not a retry.",
+    "Remaining release/browser/worker/V2 acceptance routes, named physical controls and a complete six-trajectory/four-milestone pilot remain outstanding."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Bind original generated-probe reservations and qualified envelopes to actual executor admission, then activate the complete comparison policy and finish remaining acceptance/physical/rehearsal gates."
+}

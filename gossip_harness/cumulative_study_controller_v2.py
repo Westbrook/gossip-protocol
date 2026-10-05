@@ -209,6 +209,10 @@ class StudyPlan:
             require(not Path(path).is_absolute() and ".." not in Path(path).parts, "Unsafe source pin")
             sha256(value)
         child_deadlines.selected(self)  # Explicit versioned opt-in; absent means the frozen wall-clock policy.
+        from .peer_financial_authority_v5 import EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
+        if EVALUATOR_CAPACITY_KEY in self.runtime:
+            require(digest(self.runtime[EVALUATOR_CAPACITY_KEY]) == digest(EVALUATOR_CAPACITY_POLICY)
+                    and child_deadlines.selected(self), 'Exact shared evaluator policy and original clock required')
         scopes = [path for paths in self.package_paths.values() for path in paths]
         require(len(scopes) == len(set(scopes)), "Shared writable path needs an explicit ownership policy")
         for index, path in enumerate(scopes):

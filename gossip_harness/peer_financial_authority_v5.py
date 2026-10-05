@@ -5,10 +5,13 @@ may close after repair only when every original outcome is known and settled.
 Financial closure is neither successful candidate publication nor acceptance.
 """
 from __future__ import annotations
+from contextlib import contextmanager
 from dataclasses import asdict
 from pathlib import Path
 import sqlite3
-from typing import Any, TYPE_CHECKING
+import threading
+import time
+from typing import Any, Iterator, TYPE_CHECKING
 if TYPE_CHECKING:
     from .cumulative_issued_qualification_v1 import IssuedQualification
 from . import peer_financial_authority_v3 as v3
@@ -25,6 +28,11 @@ PROTOCOL = 'peer-financial-authority-v5'
 PERMIT_PROTOCOL = 'peer-financial-operator-permit-v5'
 QUALIFICATION_PROTOCOL = 'peer-financial-qualification-v5'
 QUALIFICATION_POLICY = 'cumulative-issued-qualification-v1'
+EVALUATOR_CAPACITY_KEY = 'shared_evaluator_capacity'
+EVALUATOR_CAPACITY_POLICY = {'protocol': 'shared-public-evaluator-capacity-v1',
+    'pool': 'original-financial-authority-semaphore', 'slots_per_evaluation': 1,
+    'release': 'confirmed-sandbox-cleanup', 'clock': 'original-child-monotonic',
+    'unknown_cleanup': 'retain-slot-and-halt'}
 REQUIRED_SOURCES = (*v4.REQUIRED_SOURCES,
     'gossip_harness/peer_financial_authority_v5.py', 'gossip_harness/peer_financial_rpc_v5.py',
     'gossip_harness/peer_financial_terminal_v2.py',
@@ -49,6 +57,19 @@ REQUIRED_TEST_CLASSES = (*v4.REQUIRED_TEST_CLASSES,
     'tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests',
     'tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests')
 _REPOSITORY = Path(__file__).resolve().parent.parent
+
+
+class _EvaluationSlot:
+    """Local capacity only; no candidate, observation or acceptance authority."""
+    def __init__(self) -> None:
+        self.thread = threading.get_ident()
+        self.cleaned = False
+        self.closed = False
+
+    def confirm_cleanup(self) -> None:
+        require(not self.closed and self.thread == threading.get_ident(),
+                'Evaluation slot belongs to another scope or thread')
+        self.cleaned = True
 
 
 def source_fingerprints() -> dict[str, str]:
@@ -93,7 +114,63 @@ class CumulativeAuthorityV5(v4.CumulativeAuthorityV4):
             kwargs['expected_checkpoint']=kwargs['checkpoint'].commitment
         else:
             require(qualification_session is None,'Fixture cannot silently bypass a supplied live grant')
+        self.active_evaluations = 0
+        self.unresolved_evaluations = 0
         super().__init__(*args,**kwargs)
+        self._evaluation_slots = self.slots
+
+    @contextmanager
+    def evaluation_slot(self, *, deadline_ns: int) -> Iterator[_EvaluationSlot]:
+        """Share actual model slots and keep occupancy through sandbox cleanup.
+
+        The trusted runtime supplies the authenticated original child deadline.
+        This primitive neither authenticates a probe declaration nor dispatches.
+        Unknown cleanup keeps its slot and halts admission; it is never retried.
+        """
+        require(type(deadline_ns) is int and 0 < deadline_ns <= 2**63-1,
+                'Exact absolute evaluator deadline required')
+        require(digest(self.permit['execution_design'].get('runtime', {}).get(EVALUATOR_CAPACITY_KEY))
+                == digest(EVALUATOR_CAPACITY_POLICY), 'Prospective shared evaluator policy required')
+        with self._active():
+            slot = _EvaluationSlot()
+            while True:
+                with self.terminal_gate:
+                    self._guard_evidence()
+                    require(self.slots is self._evaluation_slots and not self.failed_closed
+                            and not self.closing, 'Shared evaluator owner changed or halted')
+                    with self.ledger.atomic() as db:
+                        self.assert_mutations_open(db)
+                        require(not self._halted(db), 'Shared evaluator cohort halted')
+                    remaining = deadline_ns - time.monotonic_ns()
+                    require(remaining > 0, 'Original evaluator deadline exhausted')
+                # Never hold the terminal gate while waiting for a model to finish.
+                if self._evaluation_slots.acquire(timeout=min(.05, remaining / 1e9)):
+                    break
+            entered = False
+            try:
+                with self.terminal_gate:
+                    self._guard_evidence()
+                    require(self.slots is self._evaluation_slots and not self.failed_closed
+                            and not self.closing, 'Shared evaluator owner changed or halted')
+                    with self.ledger.atomic() as db:
+                        self.assert_mutations_open(db)
+                        require(not self._halted(db), 'Shared evaluator cohort halted')
+                    require(time.monotonic_ns() < deadline_ns, 'Original evaluator deadline exhausted')
+                    self.active_evaluations += 1
+                    entered = True
+                yield slot
+            finally:
+                slot.closed = True
+                with self.terminal_gate:
+                    if entered:
+                        self.active_evaluations -= 1
+                    if not entered or slot.cleaned:
+                        self._evaluation_slots.release()
+                    else:
+                        self.unresolved_evaluations += 1
+                        self.failed_closed = True
+                        with self.ledger.atomic() as db:
+                            self._halt(db)
 
     def claim(self, *args: Any, **kwargs: Any) -> Any:
         self._guard_evidence()
@@ -316,6 +393,8 @@ class CumulativeAuthorityV5(v4.CumulativeAuthorityV4):
     def _quiescent(self, db: sqlite3.Connection, status: str) -> None:
         # Original result/publication/journal validation happens in inherited
         # prepare/seal BEFORE this joined transaction. Never nest that verifier.
+        if self.active_evaluations or self.unresolved_evaluations:
+            raise SealBusy('Evaluator execution or cleanup is unresolved')
         if self.active_executions or db.execute(
             "SELECT 1 FROM financial_actions_v2 WHERE cohort=? AND state IN ('pending','publication_pending') LIMIT 1",
             (self.cohort_id,)).fetchone():
