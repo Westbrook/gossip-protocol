@@ -30,7 +30,8 @@
     "MANIFEST.in",
     "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json",
     "docs/cumulative-cli-result-projection-v1.txt",
-    "docs/cumulative-workflow-v2-addendum-v4.txt"
+    "docs/cumulative-workflow-v2-addendum-v4.txt",
+    "tests/fixtures/generated-probe-values-v1/admission.json"
   ],
   "retained_fixtures": [
     "results/practical-live-1/accepted/single",
@@ -45,7 +46,8 @@
     "docs/candidate-product-worker-hooks-v1.json",
     "tests/fixtures/storage-desktop-inputs-v1/d02-mount-projection.json",
     "docs/cumulative-cli-result-projection-v1.txt",
-    "docs/cumulative-workflow-v2-addendum-v4.txt"
+    "docs/cumulative-workflow-v2-addendum-v4.txt",
+    "tests/fixtures/generated-probe-values-v1/admission.json"
   ],
   "lanes": [
     "fast",
@@ -6888,6 +6890,16 @@
       "overlap": "Policy binding differs from the transport and real-Git controls.",
       "overlap_reason": "An unused helper does not change execution; the explicit policy must carry the intended new protocol without silently changing v1.",
       "disposition": "Nearest static/fast before any prospective workflow adoption; no scientific acceptance or receipt reuse credit."
+    },
+    "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Only bounded closed public proposals are admitted; pure values cannot authenticate observations or acceptance.",
+      "isolation": "Class process; caller-local dictionaries and immutable authored vectors; no candidate imports or execution.",
+      "overlap": "Parser/value relations only; future physical owner, cold-reader and selection checks remain separate.",
+      "distinct_defect": "Wrong shared identity, stale blob, mutated no-op metadata, replayed current content, forged pass markers or malformed proposals could distort selection.",
+      "disposition": "Static gate then fresh fast controls. No model-quality sample or runtime integration credit."
     }
   },
   "audit": {

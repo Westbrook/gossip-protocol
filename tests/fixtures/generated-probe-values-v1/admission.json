@@ -1,0 +1,98 @@
+{
+  "admission": [
+    {
+      "expect": "admitted",
+      "id": "valid-changed-refresh",
+      "proposal": {
+        "expectation": {
+          "kind": "contract_relation",
+          "value": true
+        },
+        "parameters": {
+          "initial_text": "old",
+          "replacement_text": "new"
+        },
+        "requirement_id": "M2-REFRESH",
+        "template_id": "refresh-identity-v1"
+      }
+    },
+    {
+      "expect": "inadmissible_expectation",
+      "id": "scalar-never-autocorrected",
+      "proposal": {
+        "expectation": {
+          "kind": "exact_scalar",
+          "value": "refreshed"
+        },
+        "parameters": {
+          "text": "same"
+        },
+        "requirement_id": "M2-REFRESH",
+        "template_id": "refresh-noop-v1"
+      }
+    },
+    {
+      "expect": "inadmissible_expectation",
+      "id": "bool-not-integer-relation-alias",
+      "proposal": {
+        "expectation": {
+          "kind": "contract_relation",
+          "value": 1
+        },
+        "parameters": {
+          "initial_text": "old",
+          "replacement_text": "new"
+        },
+        "requirement_id": "M2-REFRESH",
+        "template_id": "refresh-identity-v1"
+      }
+    },
+    {
+      "expect": "changed_refresh_required",
+      "id": "no-new-text-for-changed-template",
+      "proposal": {
+        "expectation": {
+          "kind": "contract_relation",
+          "value": true
+        },
+        "parameters": {
+          "initial_text": "same",
+          "replacement_text": "same"
+        },
+        "requirement_id": "M2-REFRESH",
+        "template_id": "refresh-identity-v1"
+      }
+    },
+    {
+      "expect": "unencodable_text_not_in_initial_domain",
+      "id": "manifest-surrogate-explicitly-unsupported",
+      "proposal": {
+        "expectation": {
+          "kind": "contract_relation",
+          "value": true
+        },
+        "parameters": {
+          "text": "\ud800"
+        },
+        "requirement_id": "M3-BACKUP-RESTORE",
+        "template_id": "manifest-content-hash-v1"
+      }
+    },
+    {
+      "expect": "unsupported_template",
+      "id": "unsupported-free-code",
+      "proposal": {
+        "expectation": {
+          "kind": "contract_relation",
+          "value": true
+        },
+        "parameters": {
+          "code": "print(True)"
+        },
+        "requirement_id": "M2-REFRESH",
+        "template_id": "run-python"
+      }
+    }
+  ],
+  "protocol": "cumulative-probe-authored-qualification-vectors-v1"
+}

@@ -1,0 +1,163 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-amendment-1/audit.py",
+  "audit_driver_sha256": "eee3c67590025935043cd1857f51371312a5aa9daaacb0b8af5a283ece0e6914",
+  "candidate_histories_executed": 0,
+  "failure_cause": "Launcher omitted mandatory independent review package and digest; setup stopped before Engine access.",
+  "failure_run": "/Users/westbrook/.gossip-protocol-runs/20261005T054741-7d0aa723",
+  "independent_approval_created": false,
+  "inputs_sha256": "69df1636b72ef1e7375951cdd2851836f84f82be4fa3e56fb90ab7fe0d2efc93",
+  "limitations": [
+    "Root read-only consistency audit, not independent acceptance.",
+    "No correctness judgment is reusable from the setup failure.",
+    "Candidate bytes and layouts are unchanged in the requests; storage profile/source bindings changed.",
+    "Four old layout deliveries are inapplicable; a code-only review expressly disclaims layout approval.",
+    "No new physical run, provider call or public push."
+  ],
+  "new_model_quality_samples": 0,
+  "outcomes": {
+    "not_run": 6
+  },
+  "protocol": "workflow-shared-review-gap-v1",
+  "result_sha256": "1510b2498d4dfdb072cc6ed7c2d31f451628784f9943fa990d8ddb7f63f1aed4",
+  "review_comparison": [
+    {
+      "control": "P01",
+      "differences": [
+        {
+          "kind": "changed",
+          "new": "39d87c2efd21605ccceb37cdd309d17991bd775af748da8dca0f5b204fb57062",
+          "old": "c682c9646b79ad8d90c267cb509c392dbf2639c0268ca71d73b267f7c7b32abe",
+          "pointer": "/plan/profile_sha256"
+        },
+        {
+          "kind": "changed",
+          "new": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da",
+          "old": "1c2b1c95ffc2e07308afaf3ad7451f6b6f6be107bbc34aa48bdde6d1e3b5ef69",
+          "pointer": "/profile/definition_sources/gossip_harness~1candidate_storage_product_profile_v1.py"
+        },
+        {
+          "kind": "added",
+          "new": "74dcb92e0d0d129dd607bd593a218efcb974813719dc5f9dbd364670e083009c",
+          "pointer": "/profile/definition_sources/gossip_harness~1cumulative_finite_mapping_v1.py"
+        }
+      ],
+      "exact_match": false,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P01",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P01/request.json",
+      "fresh_request_sha256": "d2036112c3a94f30e3b1ea737d9ed8d2f08c5d0703bf6923b84c26be148d3647",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/P01/request.json",
+      "old_request_sha256": "65655051ecd056c27fd4553d3b937f8f8b40e8126a20520fe904f4deb10463dd"
+    },
+    {
+      "control": "D01",
+      "differences": [
+        {
+          "kind": "changed",
+          "new": "39d87c2efd21605ccceb37cdd309d17991bd775af748da8dca0f5b204fb57062",
+          "old": "c682c9646b79ad8d90c267cb509c392dbf2639c0268ca71d73b267f7c7b32abe",
+          "pointer": "/plan/profile_sha256"
+        },
+        {
+          "kind": "changed",
+          "new": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da",
+          "old": "1c2b1c95ffc2e07308afaf3ad7451f6b6f6be107bbc34aa48bdde6d1e3b5ef69",
+          "pointer": "/profile/definition_sources/gossip_harness~1candidate_storage_product_profile_v1.py"
+        },
+        {
+          "kind": "added",
+          "new": "74dcb92e0d0d129dd607bd593a218efcb974813719dc5f9dbd364670e083009c",
+          "pointer": "/profile/definition_sources/gossip_harness~1cumulative_finite_mapping_v1.py"
+        }
+      ],
+      "exact_match": false,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D01",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D01/request.json",
+      "fresh_request_sha256": "168509e394fdadf44204963432509e86c617cba96d4f72faed2a3c13aacf3362",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/D01/request.json",
+      "old_request_sha256": "19dc5725075b5cfc51bb5f41550fc384165cfac53b9aa25c68224cb6a59d92d1"
+    },
+    {
+      "control": "P02",
+      "differences": [
+        {
+          "kind": "changed",
+          "new": "dd3bd8a7f04f18796c3bbd412d74bb20427085b7caf00cd3cd60617b0fee076e",
+          "old": "3102ae512be7933d1f09c2d07c2df371af7aa05b4c55b1fa1797d2c68d8f1793",
+          "pointer": "/plan/profile_sha256"
+        },
+        {
+          "kind": "changed",
+          "new": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da",
+          "old": "1c2b1c95ffc2e07308afaf3ad7451f6b6f6be107bbc34aa48bdde6d1e3b5ef69",
+          "pointer": "/profile/definition_sources/gossip_harness~1candidate_storage_product_profile_v1.py"
+        },
+        {
+          "kind": "added",
+          "new": "74dcb92e0d0d129dd607bd593a218efcb974813719dc5f9dbd364670e083009c",
+          "pointer": "/profile/definition_sources/gossip_harness~1cumulative_finite_mapping_v1.py"
+        }
+      ],
+      "exact_match": false,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P02",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P02/request.json",
+      "fresh_request_sha256": "8cba3fb43621488359842c336e84329a206ab7a5741a9b0401f4fc369c818982",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/P02/request.json",
+      "old_request_sha256": "1c8838afc4e311b517210b5731d6ef434803bd80b42e0389fb2d9ab90cada740"
+    },
+    {
+      "control": "D02",
+      "differences": [
+        {
+          "kind": "changed",
+          "new": "dd3bd8a7f04f18796c3bbd412d74bb20427085b7caf00cd3cd60617b0fee076e",
+          "old": "3102ae512be7933d1f09c2d07c2df371af7aa05b4c55b1fa1797d2c68d8f1793",
+          "pointer": "/plan/profile_sha256"
+        },
+        {
+          "kind": "changed",
+          "new": "6461a4e15063b12b3620115844e33b82515fa76df6f61be4cee5ef671249d7da",
+          "old": "1c2b1c95ffc2e07308afaf3ad7451f6b6f6be107bbc34aa48bdde6d1e3b5ef69",
+          "pointer": "/profile/definition_sources/gossip_harness~1candidate_storage_product_profile_v1.py"
+        },
+        {
+          "kind": "added",
+          "new": "74dcb92e0d0d129dd607bd593a218efcb974813719dc5f9dbd364670e083009c",
+          "pointer": "/profile/definition_sources/gossip_harness~1cumulative_finite_mapping_v1.py"
+        }
+      ],
+      "exact_match": false,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D02",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D02/request.json",
+      "fresh_request_sha256": "04d3dae730eed89c916429e64b27e4c96abd645e7a65a445ff6f933886b89737",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/D02/request.json",
+      "old_request_sha256": "365920e25b5cabf2d9dfe2f7754f1a65660a143d8d16fa633fade7f5504bf899"
+    },
+    {
+      "control": "P03",
+      "differences": [],
+      "exact_match": true,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P03",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/P03/request.json",
+      "fresh_request_sha256": "02240814ee77b03521cbddcde84639ef7d9bb4401b11168b8b2d15850058b6c2",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/P03/request.json",
+      "old_request_sha256": "02240814ee77b03521cbddcde84639ef7d9bb4401b11168b8b2d15850058b6c2"
+    },
+    {
+      "control": "D03",
+      "differences": [],
+      "exact_match": true,
+      "fresh_fixture_directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D03",
+      "fresh_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh/D03/request.json",
+      "fresh_request_sha256": "4e99f5f624abe095813fd574654cacd85bac1cff47cf39e5c369dde68b2a9924",
+      "old_request": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews/D03/request.json",
+      "old_request_sha256": "4e99f5f624abe095813fd574654cacd85bac1cff47cf39e5c369dde68b2a9924"
+    }
+  ],
+  "review_packet": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-amendment-1/review-request.json",
+  "review_packet_sha256": "1ed59fbf0fd456c40be0e3104f6c9dc12a5cb058c3587c6739324423577d4258",
+  "source_inputs_reconciled": 732,
+  "source_inputs_unchanged": true,
+  "status": "setup_failure_and_review_gap_confirmed",
+  "summary_sha256": "1c27297a5759067eae10720a6c8ecff3ecb55ebf93b733a4d04c6b23565781ed",
+  "worker_log_sha256": "68216e8f1c07ed7f16a4d71638a205e3e6135ef565d6e0be9fb3480d0b96633d"
+}

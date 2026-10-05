@@ -1,0 +1,77 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-adoption-1/audit.py",
+  "audit_driver_sha256": "2e61a214df60c6a62a5cec8f7f5b72040a18361a42640748d7246d05fd9c604d",
+  "coverage": [
+    "Closed bounded JSON proposal parsing and frozen caller-supplied parser limits",
+    "Product-contract and released-requirement binding, exact expectations, deterministic probe identity",
+    "Stable correct document identity and replacement blob, exact no-op record preservation",
+    "Historical completed receipt replay and captured manifest/content-hash relations",
+    "Malformed/forged values, missing evidence, retained prerequisite contradiction and no observation/acceptance authority"
+  ],
+  "independent_review_status": "subagent authorization requested; no approval fabricated",
+  "limits": [
+    "No production runtime imports this module yet; caller-supplied values are not authenticated observations.",
+    "Four fixed public templates are an initial slice, not all project requirements or unrestricted generated tests.",
+    "This is root scoped verification; no independent acceptance or model-quality sample.",
+    "Historical 778/38 results retain their original source/config/runtime identity; they are not reissued for this changed tree."
+  ],
+  "module": "gossip_harness/cumulative_generated_probe_values_v1.py",
+  "new_model_quality_samples": 0,
+  "protocol": "cumulative-generated-probe-values-qualification-v1",
+  "remaining": [
+    "Freeze prospective quotas within the existing study limits.",
+    "Implement versioned bounded child/session execution, protected original capture and cold-reader reconstruction.",
+    "Execute admitted probes across every eligible candidate/context and the actual merged source before selection.",
+    "Retain failure/unavailable distinctions and exact merged-source non-author approvals.",
+    "Complete matching full rehearsal before any live comparative trial."
+  ],
+  "retained_failure": {
+    "cause": "Three optional-record index type errors in the adopted draft.",
+    "correction": "Explicitly reject a missing/non-dictionary refresh record before indexing; original failure output preserved.",
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-offline-1/20261005T060337-c10cd018",
+    "static_log_sha256": "ee2eb684b15c954efd9cba9bedf9f29c779331306f0a8cfd358fafb28d383cb1",
+    "summary_sha256": "c252bb8a45673ff182da07aa29235468700abffe6952f28f4cbed80681f049ee",
+    "tests_executed": 0
+  },
+  "shared_review_packet": "runs/workflow-shared-review-amendment-1/review-request.json",
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_values_v1.py": "25417664295c665fcd302f89cef1481103a269efd5ab90a7362435e044a5e70b",
+    "pyproject.toml": "4ff56a94516517cc097b556d32bdc6f59fc38384bca2f65bb733a76b695037bd",
+    "tests/fixtures/generated-probe-values-v1/admission.json": "51bdf7da6dc43ed823331ee9a0bee2df0fe32e75e8ab7a10d8024fbe2c184a14",
+    "tests/test_cumulative_generated_probe_values_v1.py": "4c6a7a921aa57455fea809f05cbcdca79318694cd2bb1c13ccc4237200a82179",
+    "verification-manifest.json": "1bb1a50855b4ad5536020473160d7fc795048002e1e37f1dd778aa459cf342f0"
+  },
+  "status": "pure_layer_qualified_runtime_integration_pending",
+  "verification": {
+    "duration_seconds": 3.9447261672466993,
+    "fingerprint": "0d808a63a2fe51614a5e0061a9e26729d7b94a9bac9887a3d9f909a315b9acce",
+    "fresh_tests": 16,
+    "inputs_sha256": "b290e1d429a5e3bb67571c4fc562f4d059e16a38700f0d6af5b268050f656b45",
+    "ordered_tests": [
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_admitted_identity_is_stable_and_independent_of_caller_mutation",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_all_templates_accept_independent_complete_values_without_authority",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_authored_admission_vectors",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_bool_integer_aliases_and_malformed_records_fail",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_captured_hash_comes_from_parameters_and_manifest_is_exact",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_child_capture_marker_or_pass_receipt_is_never_evidence",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_missing_value_is_unavailable_but_known_prerequisite_failure_survives",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_no_arbitrary_code_selector_or_expectation_fields",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_noop_requires_exact_entire_record",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_enforces_bytes_count_depth_and_nodes",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_rejects_duplicate_nested_members_nonfinite_and_bad_utf8",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_requires_exact_host_limits",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_product_contract_and_release_gate_cannot_be_substituted",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_replay_requires_historical_receipt_and_exact_completed_job",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_same_wrong_identity_and_stale_blob_are_rejected",
+      "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_text_domain_uses_utf8_bytes_not_characters"
+    ],
+    "result_sha256": "bbfc8a62cc7e13ab2eec875fffd016f8acd40811d9175860f3f32195d1b54231",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-offline-2/20261005T060436-ec9181db",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 735,
+    "static": "passed; configured coverage only, 117 unchanged baseline type diagnostics remain",
+    "summary_sha256": "b4cd48dbe03a0991b6861340d0edc01bc280d60625f1f57e9903a3f081e9ab85",
+    "worker_log_sha256": "02e76187c800a9d20018e60dc75826035375bea752e91cd5c8549ccb03a97245"
+  }
+}
