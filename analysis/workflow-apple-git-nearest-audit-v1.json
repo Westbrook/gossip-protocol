@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/0a79a4a796c72991/result.json": "ba44cd58e6df26353790d3b433a0d95f46fa4138ada3fb1fe27b2365c8123857",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/0a79a4a796c72991/worker.log": "3122b800c6ffe99a9057aeee87c41573e63d6665737d8af0d650c5c539b9bf2f",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/1b794ef14895b7b3/result.json": "abc33e3f6640c6bdc7a809e39f67d57521c87e1489450541a434e9da2e40fc9d",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/1b794ef14895b7b3/worker.log": "248dd93512090ae0834307cee1d43792743211a4d3ebb7fbab30eb808e997f24",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/2b92f97ada087439/result.json": "393d1c4d660b3184187cba89983f18fc74267dba79213b1a7562100f67b66d77",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/2b92f97ada087439/worker.log": "c3ef178ac530e9399707aa5f58b9796f5e9824c45866c82e3aedb8113215e705",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/76f4605da08fb58a/result.json": "7251fdcb0a3c7691a20cea2ad9de141b859b3b7be70eb96a34a3eabe50a62f3d",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/76f4605da08fb58a/worker.log": "5f92d7f18699180ac159f9553eb3e16b7324fd77735471d2f783ad9e99d6a0c8",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/accae53f0cf0a510/result.json": "7006b0919720f09d02fe4aecb1224a857c165d0df3efb416ab55cfd4aae1ddd2",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/accae53f0cf0a510/worker.log": "11a72ab129b2f2035e05f8dbae295de17321845dd67711e83e6398f2557412c3",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/ba4196843ed07f6e/result.json": "19ec14700e9f4c4afae606dc9763c9a1649629ea3ee6c889dd7fb5b0df685953",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/ba4196843ed07f6e/worker.log": "fe225ddf1d3c2b02d6abbdd8c23f2d69e259031095ce970b7f92f283b3828d6f",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/ce5ce8bce1e9ce95/result.json": "acfdbec3daa1f15317f29627a1e57e130a993005be3b6ab1d38f8d5b69483958",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/ce5ce8bce1e9ce95/worker.log": "81b62738e8385654e2db59f4fa7cc2862d81b2e082440a6f8c9e8ab5f0e311e1",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/df77fe551dc5fbf3/result.json": "cb5a0f4eb881e5337bf412df5694e9a8e72e3143ebcb7217dd4e02ce1085f77b",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/df77fe551dc5fbf3/worker.log": "1c2ac99c038c202353217996c3fa9f1d6159137da24211fc0ad283cdd7e0ec7f",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/f45db4b62badaefd/result.json": "871af04659fe6402aa17629dac2ec227cd0b542772679c7cd980cc4210f03660",
+    "runs/workflow-apple-git-offline-1/20261005T042056-50bef118/classes/f45db4b62badaefd/worker.log": "2d75f6c5697b2ced6fb203aa012b7843704c4f687ba171c6189b83211c2925e8"
+  },
+  "classes": 9,
+  "duration_seconds": 67.2995401667431,
+  "fingerprint": "fd5021892d05db5d89fd2b0878f1a17eb610f969cfc474ae630192b4719a4713",
+  "fresh_tests": 95,
+  "inputs_sha256": "ba34deeaddd0a33af945251e39790be8f72bd5f9f32f07a2b7ecf49f3b983e88",
+  "limitations": [
+    "Local source, ordered-suite, artifact and runtime reconciliation; not scientific acceptance.",
+    "All95 tests executed fresh using the declared task-local Apple Git runtime.",
+    "Full775check gate and fresh physical qualification remain required."
+  ],
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-apple-git-nearest-audit-v1",
+  "reused_tests": 0,
+  "runtime_sha256": "40349fe46e54560eddb5c74822c124ab29fcc50e5796f498936abb70cdb718b6",
+  "selected_tests": 95,
+  "session": "runs/workflow-apple-git-offline-1/20261005T042056-50bef118",
+  "source_inputs": 732,
+  "static_status": "passed",
+  "status": "passed",
+  "summary_sha256": "3b57b1d41c3530a79d77407ce4ed9e12ee52ae59dbcee85819074682dfaacbe7"
+}
