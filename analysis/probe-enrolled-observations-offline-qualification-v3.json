@@ -1,0 +1,345 @@
+{
+  "protocol": "probe-enrolled-observations-offline-qualification-v3",
+  "created_at_utc": "2026-10-05T14:31:08.162568+00:00",
+  "prior_commit": "51aaee576bf32c22210df01a9952f4de9723ab50",
+  "status": "ORIGINAL_CONTROLLER_AND_OBSERVATION_JOINS_OFFLINE_CHECKED",
+  "implemented": [
+    "Execution v7 retains the authenticated original enrollment reference in physical intent and rejects a substituted cached reference before intent.",
+    "Reader v3 adds reconstruct_enrolled with independently supplied controller and execution checkpoints; neither prefix can silently advance.",
+    "The complete original cell assignment is reconstructed and joined to actual state journal/head/cleanup paths and the retained physical-intent enrollment reference.",
+    "The original child clock, clock domain, probe window and configured cleanup headroom are independently checked without renewing expired windows.",
+    "Actual physical-original reconstruction runs inside the join, followed by enrollment/state/source/checkpoint revalidation. Incomplete good values remain unavailable; observed defects remain failures.",
+    "Original linkage confers no aggregate resource qualification, candidate selection, independent acceptance or statistical independence."
+  ],
+  "qualification": {
+    "summary": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/summary.json",
+    "summary_sha256": "55ab84a0e225ce577442e7f2f170f99e6500bc1c67a62b182036d3fcbe522f2b",
+    "inputs_sha256": "1d0548c4c3a5bfe9f440d44841cc18ae2b21b54035d2f4bf5525e7fc38794979",
+    "static_sha256": "8440e0bb2c203ba873a4e9e7792fc60b553f204aa37741f9d0af73cbe82c9719",
+    "source_input_count": 776,
+    "fresh_tests": 305,
+    "reused_tests": 0,
+    "classes": 31,
+    "duration_seconds": 471.2123858332634,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "18d882983554a687559894f184c70224f32289133e20f33393e94a747d0852a0",
+        "log_sha256": "6367aa8abf1837bd839d177c62e839c09a65fc4993d4690ca1673da391ddedd0",
+        "request_sha256": "86b9387f5d83499539ac358f52bc9e9d121debd7622f2bf77fa9714160572295"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/f8102915f46ef306/result.json",
+        "result_sha256": "159f5632a368c9becc95ddffddcc72126ee3c18981a29dd5a7ba20ad144b383b",
+        "log_sha256": "0d1b60a3c8ddd746074e050f15c11efaaa74abb66647eb4ca55f87920a65a98f",
+        "request_sha256": "647a411a3504fef06532c4ac0a107919db7a82becab43463bad83e15074aad3f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/682d942eed25d87d/result.json",
+        "result_sha256": "fde6cfb5f6baedd115f4f8e1c8f4b2281c860965de9e060b8a0e22726d054200",
+        "log_sha256": "5203512dfef23b8c016d2bcd4d2bfe3038f7f31751da36305f9f81cb68cac73c",
+        "request_sha256": "f76e8370eea39791ae53d26e1dd8a34dade4bd1d67282670430324d0d18ab1e3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/18e8426870583b7c/result.json",
+        "result_sha256": "be5c04a356a2a66d89d4bb7560eabb6339f07482f1b73ea99296d73fb61f473d",
+        "log_sha256": "5b13809d9e3a30f60be3802c9b4ebabd992c3e242992ced4169955ee5a6fe542",
+        "request_sha256": "4db6f544e92d9cde7621a1d720ff42b383fd4489d17214455bf73c85e6ca6914"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "d8ea69cc9a2e1efd50f01178dd8d0a21e9c39ed22dd04da4e9e68982ff0bd921",
+        "log_sha256": "b822ff81a73185f4691563cf97e29092473a56a231a0560a1c1ab00de8aca340",
+        "request_sha256": "c2abb9c1b33fd1b090198b12b23ab337f287741ce03aaeed5d92d36ae027b342"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "9d98a096cd81e6ef5c078513c8181570ff74ced60dd9e9d3a95d60c7124e24a3",
+        "log_sha256": "db106274ee79abdd070cb639a9107385c5a95007ccd4ecf55c461e130ae2265f",
+        "request_sha256": "0efffbbef483612d2eb18ded89a51c124dfd42a8064b31533616bc5828a0afcf"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "5d5c9c623775c780fab7077c2664c980f2b7f1124ccfd59c80560134509e58e4",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "request_sha256": "53d703d5665e93b2e494e38d450175abc870339706b8fd69c773355d7e6e5ca3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "568068a4c78c304f8dd6145638fa32e386e00cbe3e7223ac2c8d20fb70c1e65b",
+        "log_sha256": "2fdca199e1c2435e792ee3a8bc957bfe3d090a0c9cab81f3b3c4a5402560b519",
+        "request_sha256": "9231851623b4ed284d2083a42f7413164c73e000658b575f4ea3cd7ffeb10483"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "d87881ee839a525224da6cbf4f3a55003f3a54da391e1cb496f2de2d3cf9eefe",
+        "log_sha256": "0093fb4596d805ab8bebd1ceff88687c9782ccaec28cb14241f1017a1e4d717d",
+        "request_sha256": "bc3b2ed2be34e15f026d3201a450e47d5d5ed2f508a8d31da1830d01f28b7000"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/9357695866ace6b8/result.json",
+        "result_sha256": "bc1dbf2ac69645f7e67ba986627f23eeff703e198885e4814d42891aa4d440f6",
+        "log_sha256": "71a35a4ad00d93e7acd7fe4993b898e89f38db1b881f53e749d331679f4fa168",
+        "request_sha256": "4b744c6bef5f4e8227bf70d7ed16944fcd44e0c11ae1dc372e986d6abfc310ef"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "d34377d75b181b6a6f265728e8e1f4d58c5674597d45186a01d1a1c5fe607a97",
+        "log_sha256": "d5f502f3d19b746bdb60fe5eda0a073833a7abd383edf2f6ca3679ae186efe5e",
+        "request_sha256": "3010d0e7d603230a411677dc79a3ecec270acca8a5f8bf78565e40a335ed2066"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "6e0e51230968012e02339cc8641d77d7ae633a1651a4d0363dbd40d2f16141a0",
+        "log_sha256": "a58a8bba2a9e4c6b50789fba5b20acb11be422f9c7ec2c3306257690468ab26e",
+        "request_sha256": "7c4a47707420ecae858f27f045c962d95e653f16d5c6824a14359a61235e8a3f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/27cee16273d7430c/result.json",
+        "result_sha256": "7a62a59ba5df39536f958dfe3e0fde67a11a97a26da79d5e273d6bc9c596c90e",
+        "log_sha256": "106f44127d7204e13698c67223afc566bb3a1caa51fd69b27ee67a2b0b13496d",
+        "request_sha256": "587740cd7ac998106357922800117bd5e06253540499ffd86df486038834c6d7"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "e47796bca7fcaa4ac9b2b5615de6a30a73d05a20ef9251e5dbeea613ea8ddaa8",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "698eb8518fdbddd428b77cd867cbed856cfab1eaab902bba44ae35159303145b"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "42ba3511770f4ca851555b01c33d129b3efe98a5d7af89d9b1cdf7cbadbbf804",
+        "log_sha256": "e507b06babc882509108c8df14c12b234196fe9512d930ab772419537b9c1442",
+        "request_sha256": "f51f11efc9ecb41ed6b9c09e84fa201e62b7e3f087b17092a79dacc4b9db4736"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "533409a654973550e3ae6a272481440d0d5ccc96e19ef839007c725a561d435a",
+        "log_sha256": "ff70505cf32143c45e80555a95257ecd6e7320163b9d14a23b3be2b4c28b863e",
+        "request_sha256": "ed44f3aa295f2477c7647c45ed94e319fb5c3b14ef2a7c1518cf36e7fc3c2f14"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/102d0d423f447c48/result.json",
+        "result_sha256": "a09fdee93630a4bc5309be3f2dd845f7ee0e687f3026be1a9f298a72c1742783",
+        "log_sha256": "505b95fbd59d826f4fbe2ffb7fe0acfabb4c2a47d40cab7dd902bfe32ed8ef09",
+        "request_sha256": "4ff006bbc2e97fcec3cfa3cf32848af9e7feded3fe96d94c30b1836b96bf99cd"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "c2c05d1d00383e21f6008d158cbf29c9bbdcba4df2721b6a4a2c40e9e2c6a605",
+        "log_sha256": "310c9e3ab74283fd05bd7c2b2c4a3864ec9ebea86dad1b374dd278c2af91d75e",
+        "request_sha256": "289e2c3f7d78245db007766af82a306870e47916772bee79f56e3492ce81ac73"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "b5d3856bb872be6719c58171c58b3e2aacd9b89ad1008a6e6a26d18958127200",
+        "log_sha256": "a98656cc59f683576efbd7ef798dbaad02a33c4ceb86856f95ba4bdd66767187",
+        "request_sha256": "55e0f4824dd09a04416bca7775defadd1279c164d40069f4dfe1470b4ea56b48"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 32,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/a3b1c052b71e1d3c/result.json",
+        "result_sha256": "d6446489dd05eea2ee16a11507021c122d908360bc92bad8db29b1f22a14599b",
+        "log_sha256": "d9d1edd0299b19b26449151c60d7e8124bbf807d8af8bee65803dda4bd345dbd",
+        "request_sha256": "00cc5d66f210b20e24b52524e03d723bfd16a4935d4c473441880c4df26a8c92"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "9448b72e6f92e6b96f2c563c3fdc0e59e1df71be71c984ef943c33615a6fc3f0",
+        "log_sha256": "fa054891ff40f7228ce5b62320dc0f5d7f31ebe8689fd0ecf8d75d0ede6c2dc6",
+        "request_sha256": "8c8d486ae96336d3f71dd161d273cc0bf78ae2c27a8c8b777beb7b56e37f6351"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "6ad7608e5c4274cd36ca098ee1be50a90da02e770c6ab3fc2df5428a404a313c",
+        "log_sha256": "3c613d20682f2f5953630046147f92f996f30f8ad6816cacd7a509b3810f9d6b",
+        "request_sha256": "22459716594e8f151d98fbdee371733dc96bfd8f7010d013a14c596ed8e3277f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 25,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/ab2edbb000d9a9d0/result.json",
+        "result_sha256": "6334465469dbee32f061496e571b6101b95be3af444cde97261d8e87413b1b0d",
+        "log_sha256": "e73b595db8951f9545368992f55d782520fde800bb3bc6c98d30a6f11782bceb",
+        "request_sha256": "7bc583cbb8b7ec8e97c47aa7476b81fe3966a8c5f8d2f04a91fc8dd7d1da4f23"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "b553f6d56df823d2cea68cc35e4ec5760b54d852002a00c8a73d765ee4ab30d2",
+        "log_sha256": "7dc02d2becc87ffc3ea714b12622c4d7c710abfb5f6b7ee74702a36e99113ce4",
+        "request_sha256": "d61bcfad67d8804129430dfa9d0d6d43ca85dd89701a20cc33658b2cb9ad6513"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "284f3cd8e6fe4eaadfb49f98382a25424e8fa3a7d5067575bb344a6b6ab69d58",
+        "log_sha256": "c5246542775001a402c1f3f3b733209e63d5454d90c7e4bdc6a9ef807abc80ed",
+        "request_sha256": "c0a45351eb08d95fa2bf756b16adce1320933efa902100d71fa4bbb8c0dec21b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "e5e9025608d8246753462f032a87686f7e1f4cc2a8df9daa28c575c8104aa6c8",
+        "log_sha256": "6d2608b9a4696ba08c385b57acce57df63603c42173a56b698626775c9bf9b6e",
+        "request_sha256": "a4ef95b992c9666a3d3417ede6b7aede44039eb96d1ead8adf656b6ef1f069c5"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "11b8325b1dab3744c241f8cc18b9faa55f428b1bca6aec90b28aafe0f104a957",
+        "log_sha256": "765de9ed9bf01f12de2a42da849a2725cf786796c3cfdb101f324965c2b65ab5",
+        "request_sha256": "6fc33f3a1d29c2ab4e16a69529831bd220d57e8c6ffcc46e041a30b2166782ed"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "6bb68d0fca9a50988f32a2b5a01af2db845814cf0d1a0517e4134ee268f27cf3",
+        "log_sha256": "6d24a0d13e8983efdc1c995900236cb8f86c77956ea4c3c5a913564112ce8bd7",
+        "request_sha256": "e9801d93a29aabee07391e47c98b5a9e8764dab4171a9e56766c581125cb5bf3"
+      },
+      {
+        "class": "tests/test_generated_probe_enrolled_observations_v1.py::GeneratedProbeEnrolledObservationGitTests",
+        "tests": 8,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/3b45d8dd42717c69/result.json",
+        "result_sha256": "b53db3c9bc22277ae68e292b4f892744af644c44367dc7da760c8f5f9cea2f80",
+        "log_sha256": "6a65f2a6a9a5d017f82885936722f3bafc0146ea22eee9e8f84c51477e99ce91",
+        "request_sha256": "1daf18c0fcd3f575510da167ad21d3ce4cdd37345cd19d5ce6df34322a8156eb"
+      },
+      {
+        "class": "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests": 13,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/ba96f304814469e3/result.json",
+        "result_sha256": "3b7c8e7f70f3d49323496e962bb71ecb79b8be2c82a53b05af4fc3d15b8a593a",
+        "log_sha256": "0fc3a0eb65044118987816eb313d47f0b85a8e9001c71d02c0c3f5cbd72d2d31",
+        "request_sha256": "356c0d6330a3b0de13d5b88f384d0ecdd8501ba39f5a7b1804756fdeeda951a3"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-enrolled-observations-qualification/20261005T142225-9bcc8e3d/classes/f6cea13342c33618/result.json",
+        "result_sha256": "607ba16dc055eac06db74e389f5194c768a7dc3c1fe6f7a318db5c31fe745538",
+        "log_sha256": "8e23f37e67e3324488c5828bd0b01b61def731be2ac66640e9b7e759de8f985d",
+        "request_sha256": "50064f418e2730ae784e1442260a60215aefe9a97a057bac4d88341888f2436a"
+      }
+    ],
+    "scope": "New joined-reader controls execute both original readers without function mocks, using actual inert Git and anchored journals. Financial/mesh/source-review and Engine evidence is deliberately synthetic. Existing owner-only controls retain their declared synthetic reader seam. No Engine, candidate or provider execution; no physical qualification."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "focused_runs": [
+    {
+      "summary": "runs/probe-enrolled-observations-focused/20261005T141622-b4baa824/summary.json",
+      "sha256": "1399afd1f1ae0f42526846099ae2a92a7fd73f7d85c83fa0d5d98619a2d6777c",
+      "status": "failed",
+      "outcomes": {
+        "not_run": 8
+      }
+    },
+    {
+      "summary": "runs/probe-enrolled-observations-focused/20261005T141700-ada6d9f9/summary.json",
+      "sha256": "986b6c03557687ccd894fbd8017f36c2cc0877f5b1fec4663b622a77e3779ec7",
+      "status": "passed",
+      "outcomes": {
+        "passed": 8
+      }
+    },
+    {
+      "summary": "runs/probe-enrolled-observations-owner-focused/20261005T142058-011464e8/summary.json",
+      "sha256": "74d71870fdab6fe78cb5ec0df16555f70cbf253c78a3c085711f60a7831050fa",
+      "status": "passed",
+      "outcomes": {
+        "passed": 2
+      }
+    }
+  ],
+  "retained_failure_interpretation": [
+    "The first static gate required explicit type narrowing after enrollment-reference shape validation. Fixed the assertion; zero test workers ran before that static failure. The failed receipt remains retained."
+  ],
+  "source_pins": {
+    "docs/probe-cell-enrollment-adoption-v6.md": "1caf24f557961d339510d245755dad2f2bfa6ee4db588e54e5ca0a166d2d70d9",
+    "docs/probe-enrolled-observations-v3.md": "7e3c16067111fc9ae2c28499d52c5f640e1c9bb7ad55ea254869ce85413ee560",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "78f9ae4752d8bab010e0286ece55fd760f42a6226c0d31f71a642e9b3c01d6fd",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "b5a8dbfb4f4b1ffebeada17bc3b6606cb153a57c7c1e4e2faf81cf1accdc638a",
+    "gossip_harness/cumulative_generated_probe_reader_v1.py": "8eefe14fad5c7710cb19d8d16a42f18c5533e59c26b1e13e7a6c6af69d1038af",
+    "tests/generated_probe_originals_fixture_v1.py": "510cf088b7f530aa7be83d3ac2e9f0384a20d6dbcc5d059770e98b64fc94fac5",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "00ab2c0cf5e201010451009d06f4e44181d7074da8fa781653c32d0fe74d65f7",
+    "tests/test_generated_probe_enrolled_observations_v1.py": "5178bcad3f0eaf6e402ee7dfcd72455591a165e1d9d3971449fca8293974a55e",
+    "verification-manifest.json": "b2a3d42dd187fda703aabc725cacf5a9110d484587be1891b587a4e189c0383f"
+  },
+  "limitations": [
+    "The complete ranked controller still needs to consume the joined observation matrix under its frozen policy. The lower-level reconstruct API still leaves controller enrollment external.",
+    "Qualified aggregate resource charges and whole physical composition remain unfinished; successful synthetic-record joins do not prove actual Engine execution or independent source approval.",
+    "Current-source independent reviews, named physical controls, remaining acceptance routes and a full matching rehearsal remain required before the live pilot.",
+    "The protocol is versioned and historical receipts cannot qualify this changed execution/reading contract."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Prioritize the scheduled matched swarm-versus-orchestrator live result: S4-G, S16-G and O16-G on the four-milestone Local Research Library in healthy and recovery conditions. Close only concrete execution or validity blockers (qualified resource charges, ranked-controller adoption, missing acceptance routes, required reviews/physical controls and matching rehearsal); add no generic infrastructure, new arms or expanded contract. Report the complete cohort quality, completion and recovery outcomes, including failed/stopped arms."
+}

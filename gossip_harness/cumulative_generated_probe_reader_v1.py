@@ -22,6 +22,8 @@ from . import candidate_storage_prestart_v1 as prestart
 from . import candidate_storage_product_execution_v1 as transport
 from . import cumulative_generated_probe_driver_v1 as driver
 from . import cumulative_generated_probe_execution_v1 as execution
+from . import cumulative_generated_probe_accounting_v1 as accounting
+from . import cumulative_child_deadline_v1 as child_clocks
 from . import cumulative_generated_probe_pipe_v1 as pipes
 from . import cumulative_generated_probe_plan_v1 as plans
 from . import cumulative_generated_probe_state_v1 as state
@@ -29,7 +31,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
 from .sandbox import DockerValidator
 
-PROTOCOL = 'cumulative-generated-probe-reader-v1-local-cleanup-v2'
+PROTOCOL = 'cumulative-generated-probe-reader-v1-enrolled-observations-v3'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
@@ -227,10 +229,22 @@ class _Reader:
         require(type(identifier) is str and re.fullmatch(r'probe-[0-9a-f]{32}', identifier) is not None,
                 'original_execution_id_invalid')
         assert isinstance(identifier, str)
+        reference = intent.get('cell_enrollment')
+        require(type(reference) is dict and set(reference) == {
+            'slot', 'record_sha256', 'cell_root_assigned', 'dispatch_authority', 'acceptance_authority'},
+            'original_cell_enrollment_reference_required')
+        assert isinstance(reference, dict)
+        require(type(reference['slot']) is str and re.fullmatch(
+            r'generated-probe\.cell-enrollment\.[0-9a-f]{64}', reference['slot']) is not None,
+            'original_cell_enrollment_slot_invalid')
+        plans.registry.sha256(reference['record_sha256'])
+        require(reference['cell_root_assigned'] is True and reference['dispatch_authority'] is False
+                and reference['acceptance_authority'] is False, 'original_cell_enrollment_authority_differs')
         same({k:v for k,v in intent.items() if k != 'cleanup_root'},
             {'protocol': execution.PROTOCOL, 'execution_id': identifier, 'container': 'gossip-' + identifier,
              'volume': 'gossip-volume-' + identifier, 'binding_sha256': values.digest(asdict(binding)),
-             'state_intent_sha256': transport.sha(self.raw('intent.json')), 'environment': self.environment},
+             'state_intent_sha256': transport.sha(self.raw('intent.json')), 'environment': self.environment,
+             'cell_enrollment': reference},
             'original_physical_intent_differs')
         require(type(intent.get('cleanup_root')) is str and Path(intent['cleanup_root']).is_absolute(), 'original_cleanup_root_required')
         self.intent = intent
@@ -401,3 +415,62 @@ def reconstruct(owner: state.ProbeExecutionState, *, expected: chain.PrefixCommi
         'qualified_execution_originals':complete,'limitations':limitations,
         'physically_executed_by_reader':False,'independent_acceptance':False,'acceptance_authority':False,
         'scope':'public generated-probe observation only; controller enrollment, scientific independence and product selection remain external'}
+
+
+def reconstruct_enrolled(owner: state.ProbeExecutionState, *, expected: chain.PrefixCommitment,
+                         enrollment: accounting.ProbeCellEnrollment,
+                         controller_expected: chain.PrefixCommitment) -> dict[str, Any]:
+    """Join a cold physical read to one original cell at two independent prefixes.
+
+    Caller-provided runner/reader verdicts are never accepted. This repeats the
+    underlying original reader and preserves fail/unavailable dispositions. It
+    neither renews the clock nor issues resource, selection or acceptance rights.
+    """
+    require(type(owner) is state.ProbeExecutionState and type(expected) is chain.PrefixCommitment
+            and type(enrollment) is accounting.ProbeCellEnrollment
+            and type(controller_expected) is chain.PrefixCommitment,
+            'exact_enrolled_observation_and_independent_prefixes_required')
+    source_pins = sources()
+    controller = enrollment.owner
+    controller.records.chain.validate_boundary(expected=controller_expected)
+    owner._owner()
+    require(owner.journal is not None, 'original_probe_journal_unavailable')
+    assert owner.journal is not None
+    journal = owner.journal
+    require(journal.checkpoint() == expected, 'probe_checkpoint_append_rollback_or_substitution')
+    original = journal._chain
+    require(type(original.authority) is execution.ExternalHead
+            and (owner.root, owner.delta_root) == (original.raw_root, original.delta_root),
+            'original_enrolled_observation_roots_differ')
+    assert isinstance(original.authority, execution.ExternalHead)
+    roots = (owner.root, owner.delta_root, original.authority.root, enrollment.execution_root / 'cleanup')
+    proof = enrollment.authenticate(owner.plan, candidate_store=owner.store, binding=owner.binding,
+        registration=owner.registration, roots=roots, expected=controller_expected)
+    clock = child_clocks.read(controller.records, controller.plan, controller.index, active=False)
+    environment = json.loads(owner.environment_raw)
+    window = owner.binding.window
+    require(environment.get('clock_domain') == clock.clock_domain
+            and clock.started_ns <= window.started_ns < window.deadline_ns
+            and window.deadline_ns + execution.cleanup_allowance_ns() <= clock.deadline_ns,
+            'original_enrolled_observation_clock_or_cleanup_differs')
+    if journal.has('physical-intent.json'):
+        intent = process.strict_json_loads(journal.read('physical-intent.json'))
+        require(type(intent) is dict, 'original_object_required:physical-intent.json')
+        same(intent.get('cell_enrollment'), proof, 'physical_intent_enrollment_differs_from_original')
+        require(intent.get('cleanup_root') == str(roots[3]), 'physical_intent_cleanup_root_differs_from_original')
+    observation = reconstruct(owner, expected=expected)
+    # Neither journal may advance during the join, even with valid new records.
+    same(enrollment.authenticate(owner.plan, candidate_store=owner.store, binding=owner.binding,
+        registration=owner.registration, roots=roots, expected=controller_expected), proof,
+        'original_enrollment_changed_during_observation')
+    owner._validate_current(check_window=False)
+    require(journal.checkpoint() == expected, 'probe_checkpoint_append_rollback_or_substitution')
+    controller.records.chain.validate_boundary(expected=controller_expected)
+    require(sources() == source_pins, 'probe_reader_sources_changed')
+    return {'protocol': PROTOCOL, 'cell_sha256': enrollment.cell_sha256,
+        'reservation_slot': enrollment.reservation_slot, 'enrollment': proof,
+        'controller_checkpoint': asdict(controller_expected), 'execution_checkpoint': asdict(expected),
+        'original_child_clock': asdict(clock), 'observation': observation,
+        'original_cell_bound': True, 'qualified_resource_envelope': False,
+        'selection_authority': False, 'acceptance_authority': False,
+        'physically_executed_by_reader': False, 'independent_acceptance': False}

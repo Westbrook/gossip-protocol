@@ -7395,6 +7395,17 @@
       "distinct_defect": "Public evaluation bypasses model capacity, permits terminal sealing while active, or refunds uncertain cleanup.",
       "boundary": "Actual financial executor and runtime evaluate method; synthetic public sandbox callback and runtime shell. No Engine or provider calls.",
       "disposition": "Run with affected V5 financial/RPC/qualification and controller runtime/clock classes."
+    },
+    "tests/test_generated_probe_enrolled_observations_v1.py::GeneratedProbeEnrolledObservationGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 900,
+      "invariant": "Cold observations join complete original cell enrollment, exact roots and retained intent references at independently supplied controller and execution checkpoints; incomplete positives remain unavailable and known failures remain failures.",
+      "isolation": "Worker process with inert Git and externally anchored journals. No candidate, Engine or provider execution.",
+      "overlap": "Runs both actual original-enrollment and full physical-record readers without function mocks; complements their separate component tests.",
+      "distinct_defect": "A self-consistent physical transcript from a different cell/root or an implicitly advanced controller prefix must not supply the assigned cell observation.",
+      "boundary": "Original joins are real; financial/mesh/source-review and Engine responses are deliberately synthetic authored records. Not physical or statistical qualification.",
+      "disposition": "Run with affected accounting, state, execution, reader and whole-original-chain controls after the static gate."
     }
   },
   "audit": {

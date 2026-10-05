@@ -40,7 +40,7 @@ from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 from .peer_financial_authority_v5 import CumulativeAuthorityV5, EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-cell-enrollment-v6'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-enrollment-intent-v7'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
@@ -215,7 +215,9 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._child_clock_current()
         require(type(enrollment) is accounting.ProbeCellEnrollment, 'original_probe_cell_enrollment_required')
         self.enrollment = self._original_enrollment = enrollment
-        self._enrollment_identity = values.digest(self._read_enrollment())
+        enrolled = self._read_enrollment()
+        self._enrollment_raw = values.canonical(enrolled)
+        self._enrollment_identity = values.digest(enrolled)
         self._check_deadline()
         self.endpoint.validate()
 
@@ -327,6 +329,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
                 and values.canonical(self.runtime) == self.probe_state.runtime_raw
                 and values.canonical(self.environment) == self.probe_state.environment_raw, 'probe_owner_binding_changed')
         if not self._cleanup_phase:
+            require(type(self._enrollment_raw) is bytes and transport.sha(self._enrollment_raw) == self._enrollment_identity,
+                    'probe_retained_enrollment_reference_changed')
             self._executor_current()
             self._child_clock_current()
             self.probe_state.current(deadline_ns=self._source_deadline_ns())
@@ -394,7 +398,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
         intent = {'protocol': PROTOCOL, 'execution_id': execution_id, 'container': 'gossip-' + execution_id,
             'volume': 'gossip-volume-' + execution_id, 'binding_sha256': values.digest(asdict(self.binding)),
             'state_intent_sha256': transport.sha(self.read_authenticated('intent.json')),
-            'cleanup_root': str(self.cleanup_root), 'environment': self.environment}
+            'cleanup_root': str(self.cleanup_root), 'environment': self.environment,
+            'cell_enrollment': json.loads(self._enrollment_raw)}
         self._retain('physical-intent.json', values.canonical(intent)); self._effect_boundary()
         self._capacity_dispatched = True
         return self._dispatch_probe(intent)

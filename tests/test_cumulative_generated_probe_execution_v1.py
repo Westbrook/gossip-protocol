@@ -142,7 +142,8 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         self.enrollment = accounting.ProbeCellEnrollment(controller, book, 'synthetic-reservation', 'a'*64,
             f.root/'enrolled-probe', 'M2', 0, corpus.Quotas(2, 8), ranked.ReviewLimits(10000, 8, 1000, 20))
         self.enrollment_reader = mock.Mock(return_value={
-            'slot':'synthetic-original-cell', 'record_sha256':'b'*64, 'cell_root_assigned':True,
+            'slot':accounting._enrollment_slot('synthetic-reservation','a'*64),
+            'record_sha256':'b'*64, 'cell_root_assigned':True,
             'dispatch_authority':False, 'acceptance_authority':False})
         # The loaded-source guard recognizes declared decorators via __wrapped__.
         # Use that documented seam, rather than disabling any integrity checker.
@@ -222,6 +223,8 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         self.assertTrue(result['container_cleanup']);self.assertTrue(result['volume_cleanup'])
         self.assertTrue(self.probe_state.journal.has('intent.json'))
         self.assertTrue(self.probe_state.journal.has('physical-intent.json'))
+        intent=json.loads(self.probe_state.journal.read('physical-intent.json'))
+        self.assertEqual(intent['cell_enrollment'],self.enrollment_reader.return_value)
         self.assertFalse(self.probe_state.journal.has('volume-before-dispatch.json'))
         self.assertFalse(self.probe_state.journal.has('session-dispatch.json'))
         self.assertEqual(self.probe_state.journal.read('physical-terminal.json'),values.canonical(result))
@@ -448,6 +451,13 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         self.enrollment_reader.side_effect=ValueError('original enrollment unavailable during safety cleanup')
         owner._effect_boundary()
         self.assertFalse(self.probe_state.journal.has('intent.json'))
+
+    def test_cached_enrollment_reference_cannot_change_before_intent(self):
+        owner=self.owner()
+        owner._enrollment_raw=values.canonical({**self.enrollment_reader.return_value,'record_sha256':'c'*64})
+        with self.assertRaisesRegex(ValueError,'retained_enrollment_reference_changed'):owner.execute_once()
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+        self.assertEqual(self.finance_fixture.free_slots(),2)
 
 
 if __name__ == '__main__': unittest.main()

@@ -52,8 +52,9 @@ The refused Unix socket never reaches an Engine. No candidate or provider runs.
 ## Remaining work
 
 The ranked controller still needs qualified aggregate byte/time/workspace charges
-and a full observation-to-original-cell join. The cold physical reader does not
-yet independently authenticate the controller enrollment. Complete source
+and complete controller adoption of joined observations. The
+[joined cold reader](probe-enrolled-observations-v3.md) now independently
+authenticates controller enrollment using both original checkpoints. Complete source
 reviews, physical fault controls and a matching full rehearsal remain required
 before the live pilot. Reconstruction checks expiry before and after the boundary;
 this does not establish hard preemption of every filesystem or Git operation.

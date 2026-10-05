@@ -30,10 +30,16 @@ from tests.test_cumulative_generated_probe_values_v2 import admitted, proposal, 
 
 
 class SyntheticOriginals:
-    def __init__(self, template='refresh-noop-v1', *, defect=False):
+    def __init__(self, template='refresh-noop-v1', *, defect=False, enrolled=None):
         self.stack=ExitStack()
         self.root=Path(self.stack.enter_context(tempfile.TemporaryDirectory(prefix='synthetic-probe-originals-'))).resolve()
         self.row=proposal(template,text='old\ncafé',replacement='new\n🌍');self.probe=admitted(self.row)
+        if enrolled is not None:
+            locator, prepared, store = enrolled
+            assert template == 'refresh-noop-v1' and prepared.layout is None
+            self.probe = prepared.record()['probe']
+            assert self.probe['template_id'] == template
+            self.row = {k:self.probe[k] for k in ('template_id','requirement_id','parameters','expectation')}
         self.vals=values_for(self.row)
         if defect:
             if template=='refresh-noop-v1':self.vals['refresh']['status']='refreshed'
@@ -41,7 +47,10 @@ class SyntheticOriginals:
             elif template=='completed-receipt-replay-v1':self.vals['replay']['documents'][0]['text']='wrong'
             else:self.vals['captured_job']['content_hashes']=json.dumps(['0'*64])
         self.files={'solution.py':b'raise RuntimeError("synthetic source must never execute")\n'}
-        self.store=GitStore.create(self.root/'source.git',{k:v.decode() for k,v in self.files.items()})
+        self.store=(GitStore.create(self.root/'source.git',{k:v.decode() for k,v in self.files.items()})
+            if enrolled is None else store)
+        if enrolled is not None:
+            self.files={k:v.encode() for k,v in self.store.read_files().items()}
         commit=self.store.head();tree=self.store._git('rev-parse',commit+'^{tree}')
         self.capture_files={};layout=None
         if template=='manifest-content-hash-v1':
@@ -52,8 +61,9 @@ class SyntheticOriginals:
             finally:db.close()
             raw=p.read_bytes();self.capture_files={'m2/library.sqlite':raw}
             layout=reader.plans.CaptureLayout(('m2/library.sqlite',),reader.sqlite_observation.sqlite_schema_sha256(raw))
-        self.plan=declaration(proposed=self.probe,public=release('M4',('M2-REFRESH','M3-BACKUP-RESTORE')),
+        self.plan=(declaration(proposed=self.probe,public=release('M4',('M2-REFRESH','M3-BACKUP-RESTORE')),
             subject=target(self.files,commit,tree,milestone='M4'),limits=replace(policy(),history_seconds=300),layout=layout)
+            if enrolled is None else prepared)
         rraw,rdelta=self.root/'review-raw',self.root/'review-delta'
         rh=ExternalHead.create(self.root/'review-head',journal_roots=(rraw,rdelta));self.stack.callback(rh.close)
         rj=chain.CheckpointChain.create(rraw,rdelta,context={'synthetic_fixture_only':True,'actual_source_review_supplied':False},authority=rh);self.stack.callback(rj.close)
@@ -80,20 +90,34 @@ class SyntheticOriginals:
             'daemon_id':self.info['ID'],'engine_version':self.version['Version'],'architecture':self.version['Arch'],
             'kernel_version':self.version['KernelVersion'],'image_id':self.image,
             'image_inspect_sha256':reader.process._sha(reader.process._encoded(self.image_info))}
-        self.environment=reader.execution.environment_for(self.plan,clock_domain='synthetic-record-clock')
-        now=time.monotonic_ns();self.window=state.ProbeWindow(now,now+300_000_000_000)
+        domain=('synthetic-record-clock' if enrolled is None else reader.child_clocks.read(
+            locator.owner.records,locator.owner.plan,locator.owner.index,active=True).clock_domain)
+        self.environment=reader.execution.environment_for(self.plan,clock_domain=domain)
+        now=time.monotonic_ns();self.window=state.ProbeWindow(now,now+self.plan.policy.history_seconds*1_000_000_000)
         self.binding=state.binding_for(self.plan,self.review,runtime=self.runtime,environment=self.environment,window=self.window)
         self.registration=state.observation_registration(self.plan,self.binding,gate_id='synthetic-probe-gate',
-            repetition_id='synthetic-record-read',cohort_trajectory_ids=('trajectory','t2','t3','t4','t5','t6'))
+            repetition_id='synthetic-record-read',cohort_trajectory_ids=(('trajectory','t2','t3','t4','t5','t6')
+                if enrolled is None else tuple(t.id for t in locator.owner.plan.cohort.trajectories)))
         self.available=True
         self.admission=admission.ObservationAdmission(self.registration,verify_registration=lambda:self.registration if self.available else None)
         self.raw,self.delta=self.root/'state-raw',self.root/'state-delta'
-        self.head=ExternalHead.create(self.root/'state-head',journal_roots=(self.raw,self.delta));self.stack.callback(self.head.close)
+        head_root=self.root/'state-head';self.cleanup_root=self.root/'cleanup'
+        self.enrollment_reference={'slot':reader.accounting._enrollment_slot('synthetic-reservation','a'*64),
+            'record_sha256':'b'*64,'cell_root_assigned':True,'dispatch_authority':False,'acceptance_authority':False}
+        if enrolled is not None:
+            self.enrollment_reference=reader.accounting.enroll_probe_cell(locator.owner,locator.book,
+                locator.reservation_slot,locator.cell_sha256,self.plan,candidate_store=self.store,
+                binding=self.binding,registration=self.registration,execution_root=locator.execution_root,
+                expected=locator.owner.records.chain.commitment,milestone=locator.milestone,generation=locator.generation,
+                quotas=locator.quotas,limits=locator.limits,selected=locator.selected)
+            locator.execution_root.mkdir()
+            self.raw,self.delta,head_root,self.cleanup_root=(locator.execution_root/name for name in ('raw','delta','head','cleanup'))
+        self.head=ExternalHead.create(head_root,journal_roots=(self.raw,self.delta));self.stack.callback(self.head.close)
         self.owner=self.open();self.owner.begin()
         self.records={};self.execution_id='probe-'+'1'*32;self.name='gossip-'+self.execution_id;self.volume='gossip-volume-'+self.execution_id
         self.cid='a'*64;self.exec_id='e'*64;self.pid=321
         self.docker=['docker','--host','unix://'+self.endpoint['socket_path']]
-        self.helpers=reader.driver.adapter_files(self.probe,released_requirements=('M2-REFRESH','M3-BACKUP-RESTORE'))
+        self.helpers=reader.driver.adapter_files(self.probe,released_requirements=tuple(self.plan.record()['released_requirements']))
         self.staging={'source_manifest':admission.source_manifest(self.files),'helper_manifest':admission.source_manifest(self.helpers)}
         self.mounts={'/workspace':str(self.root/'source-mount'),'/checks':str(self.root/'helper-mount')}
         self.labels={'gossip.execution':self.execution_id,'gossip.source':self.binding.source_sha256,
@@ -174,7 +198,7 @@ class SyntheticOriginals:
         self.put('physical-intent.json',{'protocol':reader.execution.PROTOCOL,'execution_id':self.execution_id,
             'container':self.name,'volume':self.volume,'binding_sha256':values.digest(asdict(self.binding)),
             'state_intent_sha256':reader.transport.sha(self.owner.journal.read('intent.json')),
-            'cleanup_root':str(self.root/'cleanup'),'environment':self.environment})
+            'cleanup_root':str(self.cleanup_root),'environment':self.environment,'cell_enrollment':self.enrollment_reference})
         self.put('staging.json',{'workspace':self.mounts['/workspace'],'checks':self.mounts['/checks'],'proof':self.staging})
         self.runtime_at('runtime')
         self.command('volume-before',['docker','volume','ls','--quiet','--filter','name=^'+self.volume+'$'])
@@ -198,7 +222,7 @@ class SyntheticOriginals:
         self.command('container-start',['docker','start',self.cid],self.cid.encode()+b'\n')
         self.put('session-dispatch.json',{'argv':self.docker+['exec','--interactive','--user','65534:65534',self.cid,
                                                           'python','-I','-B','/checks/child_driver.py']})
-        transcript=wire.ValueTranscript(self.probe,released_requirements=('M2-REFRESH','M3-BACKUP-RESTORE'),limits=self.plan.policy.wire_limits)
+        transcript=wire.ValueTranscript(self.probe,released_requirements=tuple(self.plan.record()['released_requirements']),limits=self.plan.policy.wire_limits)
         frames=[];acks=[]
         while (slot:=transcript.next_slot) is not None:
             artifact=reader.pipes.artifact_slot(slot)
