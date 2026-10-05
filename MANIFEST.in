@@ -12,7 +12,6 @@ recursive-include simulation *.py *.json
 recursive-include analysis *.py *.json
 recursive-include devtools *.py *.json *.cjs *.md
 include scripts/bootstrap-dev
-include .github/README.md .github/workflows/verification.yml
 # This exact small historical fixture is a declared dependency, not a study dump.
 include results/practical-live-1/accepted/single/README.md
 include results/practical-live-1/accepted/single/SOURCE_COMMIT

@@ -15,7 +15,8 @@ and historical compatibility have separate passing evidence. Earlier measurement
 below remain evidence for their recorded sources, not substitute passes for
 changed code. Release packaging uses an exact export of `main`; its source/wheel
 archives and build receipt are generated under `runs/verification-completion/dist-final/`.
-External publication and hosted CI await a configured destination.
+GitHub Actions was removed on October 5, 2026; verification now runs locally.
+The frozen receipts below describe the earlier release, not the current tree.
 
 The generated final rollup at
 [completion-qualification.json](/Users/westbrook/Documents/repos/gossip-protocol/runs/verification-completion/completion-qualification.json)
@@ -30,7 +31,7 @@ outside Git. The individual completed receipts are linked below.
 | Bounded scheduling | Class setup stays together; lane barriers, exclusive fixture jobs and nested resource declarations bound parallel work. Shared validation batches use separate validators and deterministic reduction. One/two-worker measurements and cancellation regressions cover the new boundaries. |
 | Exact evidence reuse | Source, suite, purpose, runtime, limits and protocol bind receipts. Final source/runtime reconciliation rejects drift. Deterministic visible observations may reuse evidence; independent final and repeatability observations execute physically. |
 | Scientific and historical compatibility | Complete sustained/swarm rehearsals and the probe diagnostic qualified their additive contracts while preserving original CORE sources. Recovery entry qualification composes 24 unchanged original cases with nine new guard probes. The pinned historical auditor reproduced its prior certificate. |
-| Measured tuning and release portability | Scoped timing/resource inventory, controlled failure probes, batched Git exports and curated source/wheel builds provide reviewable evidence. CI configuration is supplied; actual hosted execution depends on the documented repository/runner configuration. |
+| Measured tuning and release portability | Scoped timing/resource inventory, controlled failure probes, batched Git exports and curated source/wheel builds provide reviewable evidence. Verification is local; no hosted CI workflow is supplied. |
 
 No unique regression was removed on similarity alone. Further reductions in
 interpreter starts, shared GitStore work, Docker cleanup or independent scientific
@@ -269,13 +270,11 @@ npm ci --prefix devtools/browser
 npm --prefix devtools/browser run install-browser
 ```
 
-For CI or containers, provide the independent report workspace and configure its
+For isolated machines or containers, provide the independent report workspace and configure its
 location in `.progress-report/project.json`; it is intentionally outside this
 project. Provision the pinned browser and its operating-system dependencies once,
-then use the owned fixture server on its allocated port. The GitHub Actions
-workflow is in `.github/workflows/verification.yml`; its independent report and
-runner prerequisites are documented in [.github/README.md](.github/README.md).
-Remote execution awaits the publication destination and its configuration.
+then use the owned fixture server on its allocated port. Local verification and release contents are documented in
+[the release guide](docs/local-verification-and-releases.md).
 
 The local Codex environment can reuse its already provisioned Playwright package
 through `NODE_PATH`; no installation is required when the pinned package and
@@ -586,7 +585,7 @@ invariants, expected outcomes, input bindings, setup/run/cleanup costs and retai
 logs. Reused observations preserve original physical duration and do not add a
 physical sample. Historical timeout failures stay visible. Matching source alone
 does not establish current runtime validity or authorize receipt reuse. See
-[.github/README.md](.github/README.md) for CI prerequisites and curated release
+[the local release guide](docs/local-verification-and-releases.md) for curated release
 contents; optional unconfigured lanes are disclosed, not counted as passed.
 
 

@@ -225,7 +225,7 @@ class SyntheticOriginals:
         self.command('volume-remove',['docker','volume','rm',self.volume])
         self.command('volume-after',['docker','volume','ls','--quiet','--filter','name=^'+self.volume+'$'])
         self.put('physical-terminal.json',{'protocol':reader.execution.PROTOCOL,'execution_id':self.execution_id,
-            'pipe_result':terminal,'qualified_execution_originals':True,'container_cleanup':True,'volume_cleanup':True,
+            'pipe_result':terminal,'qualified_execution_originals':True,'local_cleanup':True,'container_cleanup':True,'volume_cleanup':True,
             'infrastructure':[],'acceptance_authority':False,'cold_reconstruction_supplied':False})
 
     def retain(self, *, stop_before=None, drop=(), transform=None):

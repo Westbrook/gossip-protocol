@@ -13,6 +13,12 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest import mock
+from contextlib import ExitStack
+import subprocess
+from types import SimpleNamespace
+
+from tests.test_shared_public_evaluator_capacity_v1 import SharedEvaluatorFinancialTests as _FinanceFixture
 
 from gossip_harness import candidate_client_process_v4 as process
 from gossip_harness import candidate_observation_admission_v1 as admission
@@ -63,7 +69,17 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         # Reuse only the earlier module's explicit inert fixture construction;
         # do not run, inherit or import its test class into this module's census.
         f = state_fixture.GeneratedProbeStateGitTests('test_unused_state_reopens_only_with_independent_current_prefix')
-        self.addCleanup(f.doCleanups); f.setUp(); self.fixture = f
+        finance = _FinanceFixture('test_model_submit_waits_while_actual_evaluator_slots_are_held')
+        finance.setUp(); self.addCleanup(finance.doCleanups); self.finance_fixture = finance
+        self.executor = finance.open()
+        original_target = state_fixture.target
+        def financial_target(*args, **kwargs):
+            t = original_target(*args, **kwargs)
+            return replace(t, subject=replace(t.subject, cohort_id=finance.child.cohort,
+                trajectory_id=finance.child.trajectory, execution_contract_sha256=finance.roster.execution_contract_sha256))
+        self.addCleanup(f.doCleanups)
+        with mock.patch.object(state_fixture, 'target', financial_target): f.setUp()
+        self.fixture = f
         self.socket_dir = tempfile.TemporaryDirectory(prefix='probe-sock-', dir='/private/tmp')
         self.addCleanup(self.socket_dir.cleanup)
         self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); self.addCleanup(self.sock.close)
@@ -75,12 +91,12 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         f.environment = execution.environment_for(f.plan, clock_domain='synthetic-offline-clock')
         f.binding = state.binding_for(f.plan, f.review, runtime=f.runtime, environment=f.environment, window=f.window)
         f.registration = state.observation_registration(f.plan, f.binding, gate_id='probe-gate',
-            repetition_id='public-development-1', cohort_trajectory_ids=('trajectory','t2','t3','t4','t5','t6'))
+            repetition_id='public-development-1', cohort_trajectory_ids=tuple(c.trajectory for c in self.finance_fixture.roster.children))
         f.admission = admission.ObservationAdmission(f.registration, verify_registration=lambda:f.registration if f.available else None)
         self.probe_state = f.open()
 
     def owner(self, **changes):
-        args = {'endpoint':self.endpoint,'cleanup_root':self.fixture.root/'cleanup'};args.update(changes)
+        args = {'endpoint':self.endpoint,'cleanup_root':self.fixture.root/'cleanup','executor':self.executor};args.update(changes)
         result = execution.ProbeExecution(self.probe_state, **args);self.addCleanup(result.close)
         return result
 
@@ -152,6 +168,67 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         self.assertEqual(self.probe_state.journal.read('physical-terminal.json'),values.canonical(result))
         with self.assertRaisesRegex(ValueError,'one_shot'): owner.execute_once()
         owner.close();self.assertFalse(self.probe_state.closed)
+
+
+    def test_dispatch_holds_actual_model_slot_until_refused_engine_cleanup_finishes(self):
+        owner=self.owner();observed=[]
+        def profile(frame,event,arg):
+            if event=='call' and frame.f_code is execution.ProbeExecution._dispatch_probe.__code__:
+                observed.append((self.executor.active_evaluations,self.finance_fixture.free_slots()))
+        prior=sys.getprofile();sys.setprofile(profile)
+        try:result=owner.execute_once()
+        finally:sys.setprofile(prior)
+        self.assertEqual(observed,[(1,1)])
+        self.assertTrue(result['local_cleanup']);self.assertEqual(self.finance_fixture.free_slots(),2)
+        self.assertEqual(self.executor.unresolved_evaluations,0)
+        self.assertEqual(self.finance_fixture.transport.calls,[])
+
+    def test_full_model_pool_blocks_probe_intent_until_capacity_returns(self):
+        import threading
+        owner=self.owner();observed=[]
+        # Occupy the exact semaphore used by the real financial executor. The
+        # financial suite independently exercises real pending model calls.
+        self.assertTrue(self.executor.slots.acquire(blocking=False))
+        self.assertTrue(self.executor.slots.acquire(blocking=False))
+        def release():
+            time.sleep(.15)
+            observed.append(not (self.probe_state.root/'intent.json').exists())
+            self.executor.slots.release();self.executor.slots.release()
+        t=threading.Thread(target=release);t.start()
+        try:result=owner.execute_once()
+        finally:t.join(5)
+        self.assertFalse(t.is_alive());self.assertEqual(observed,[True]);self.assertTrue(result['local_cleanup'])
+        self.assertEqual(self.finance_fixture.free_slots(),2)
+
+    def test_financial_owner_identity_and_cohort_must_match_before_intent(self):
+        owner=self.owner();identity=self.executor.owner_id
+        self.executor.owner_id='changed'
+        try:
+            with self.assertRaisesRegex(ValueError,'original_probe_executor_changed'):owner.execute_once()
+        finally:self.executor.owner_id=identity
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+        old=self.executor.contract['cohort_id'];self.executor.contract['cohort_id']='other'
+        try:
+            with self.assertRaisesRegex(ValueError,'cohort_or_trajectory'):self.owner()
+        finally:self.executor.contract['cohort_id']=old
+        self.assertEqual(self.finance_fixture.free_slots(),2)
+
+    def test_local_cleanup_requires_reaped_process_closed_streams_and_no_pipe_errors(self):
+        owner=self.owner()
+        child=subprocess.Popen([sys.executable,'-I','-B','-c','pass'],stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        owner._child=child
+        try:
+            child.wait(timeout=5)
+            self.assertFalse(owner._local_cleanup_complete())
+            for stream in (child.stdin,child.stdout,child.stderr):stream.close()
+            self.assertTrue(owner._local_cleanup_complete())
+            owner._pipe=SimpleNamespace(closed=True,cleanup_errors=['local_reap:TimeoutError'])
+            self.assertFalse(owner._local_cleanup_complete())
+        finally:
+            owner._pipe=None
+            if child.poll() is None:child.kill();child.wait(timeout=5)
+            for stream in (child.stdin,child.stdout,child.stderr):stream.close()
 
 
 if __name__ == '__main__': unittest.main()

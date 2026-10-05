@@ -87,8 +87,9 @@ final and repeatability observations always execute physically.
 
 Use `python -m devtools.inventory_report --help` to join the manifest with
 explicitly selected receipts, and `python -m devtools.benchmark_validation --help`
-for the small provider-free measurement workload. CI and portable source contents
-are documented in [.github/README.md](.github/README.md). Optional external
+for the small provider-free measurement workload. Local verification and portable
+source contents are documented in [the release guide](docs/local-verification-and-releases.md).
+GitHub Actions is disabled. Optional external
 integration dependencies are declared separately from offline coverage.
 
 ## Run the original experiment

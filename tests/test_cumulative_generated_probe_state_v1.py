@@ -67,7 +67,7 @@ class GeneratedProbeStateGitTests(unittest.TestCase):
         self.binding = state.binding_for(self.plan, self.review, runtime=self.runtime,
                                          environment=self.environment, window=self.window)
         self.registration = state.observation_registration(self.plan, self.binding, gate_id='probe-gate',
-            repetition_id='public-development-1', cohort_trajectory_ids=('trajectory', 't2', 't3', 't4', 't5', 't6'))
+            repetition_id='public-development-1', cohort_trajectory_ids=(self.plan.target.subject.trajectory_id, 't2', 't3', 't4', 't5', 't6'))
         self.available = True
         self.on_verify = None
         def verify_registration():

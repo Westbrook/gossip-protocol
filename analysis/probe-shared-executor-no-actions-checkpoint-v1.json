@@ -1,0 +1,221 @@
+{
+  "protocol": "probe-shared-executor-and-actions-removal-checkpoint-v1",
+  "created_at_utc": "2026-10-05T12:46:45.155094+00:00",
+  "prior_commit": "bb2d192d74b2729e1235f38063f2c7839880ef6c",
+  "status": "OFFLINE_QUALIFIED_GITHUB_ACTIONS_DISABLED",
+  "github_actions": {
+    "enabled": false,
+    "authored_workflows": [],
+    "removed_workflow": ".github/workflows/verification.yml",
+    "verification": "Local devtools.verify; no replacement hosted CI.",
+    "pages": {
+      "status": "built",
+      "build_type": "legacy",
+      "source": {
+        "branch": "gh-pages",
+        "path": "/"
+      },
+      "html_url": "https://westbrook.github.io/gossip-protocol/"
+    },
+    "pages_new_build_tested": false,
+    "historical_runs_retained": true
+  },
+  "implemented": [
+    "ProbeExecution requires the actual matching financial owner, cohort, trajectory and execution contract with selected shared-capacity policy.",
+    "One slot from the actual model semaphore is acquired before probe intent/setup and held through container, volume and local cleanup. Waiting does not renew the registered probe deadline.",
+    "Uncertain cleanup retains capacity and halts. Reaped local child, closed streams and no pipe cleanup errors are necessary for a qualified terminal and cold-reader acceptance.",
+    "Removed authored GitHub Actions workflow, obsolete manifest/packaging inputs and hosted-CI setup instructions; documented local verification."
+  ],
+  "qualification": {
+    "summary": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/summary.json",
+    "summary_sha256": "56ee207a5667c83912d571f37d6cd0696b34a50e7061762491509e2fe750a321",
+    "inputs_sha256": "61a7284beca3e83346bd36eedbe0348a705e4be34d5798bafc13ac9e58b169bf",
+    "static_sha256": "6a3fe151c16aff41d10b84163e1a07a1d7667f99f6b8727945c05e9043ac7142",
+    "source_input_count": 775,
+    "fresh_tests": 124,
+    "reused_tests": 0,
+    "classes": 16,
+    "duration_seconds": 136.90431299991906,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "d72d8b19535dcf906840065820a575e1f424f25b7c9385f66fed965a85489b20",
+        "log_sha256": "b1f7dd438cfa1713a94235f7ade67ce91c2cf103537dffee4331bb6d967cedd1",
+        "request_sha256": "029c00e02441e840d4c357c90b9e839b270a4cc3dfe623e11e6c01929a5a570c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "38c620c91015d196fb51bde2449d47c7891cf181ecc97c8c8cb95b06a45dd83a",
+        "log_sha256": "991a69c9fe62cd559c36c2e5963b5d098b418316385f65f19f6ce4d855362642",
+        "request_sha256": "f5ba73c97415dd3d178539ad7bf0fce0b1e17bc380848b2b461cd5f782338c53"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/9357695866ace6b8/result.json",
+        "result_sha256": "5170db7d502a30bbb4f098931e7e6267394f83bbb80341267f1649bf9b7c94a6",
+        "log_sha256": "b1614fd0e73586678dad7abda3d97d3506fdfdbbbdb200070f17ffb49ec76003",
+        "request_sha256": "025a1935bc1d92b88664fb9272ee3a6cca8661f42a038141a2226e0bdb0358f6"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "bf1dbfab05e5e775c64e0718d7ec11e9d59e7f42f729e9ca6f6b8112a8dd8a56",
+        "log_sha256": "d1773692d05d6167a19db433cc895329967a6261cef693016e4880db17a782f8",
+        "request_sha256": "a8d1f56ecde3bc22e1280c797e1f04e111e6e215c3fac297e1abc01c0042606d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/27cee16273d7430c/result.json",
+        "result_sha256": "c28abd7b045fee3b2b859c5bf918cbf6bffa76bff57ca921e3ffd02d39218ce0",
+        "log_sha256": "5974a7f81b5d206e0a4a6b390f9186f51246e30d44dea03f9265fffa94180408",
+        "request_sha256": "56e3bf047d63cd2f71a3dff0c108423b7d9449c15c7e5fd3af0c3f5ebbe398f7"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "7de5c1ee0d934830363a9554df4e16fa29cf29b853146c6c4aa79bb36e73e80d",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "4874c554443193993c020f886cf90d7e91b78f2a39461c0e16e31a4b022d9b04"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "4433f478eed745f9e052fa41d11eca260bfa5347f4b1d9380301241f24dc0c00",
+        "log_sha256": "65965f406e86b9fe75dc597c100d2b7a7efc791b187e56c99ed67d73568894cf",
+        "request_sha256": "989dfa4d1d74857efe0b66677a4b06e345dde412f297972bc7d8b4c1a2d85454"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "8706d2d81f3a388f135dae3f1337b50a130038f6545f2712be1feb55befadfc6",
+        "log_sha256": "388cca82e484250537f5ef1db5d66e618863038ceb193427e279566e3f0e164f",
+        "request_sha256": "d119d46c577ebcd578dadf7ce4a49e6362800bbcbab7f7bc82cb32dcee547cb3"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/102d0d423f447c48/result.json",
+        "result_sha256": "4ad8e4e635ad839f0f07368ee54e12809fc5d4e5adfbd718b1e6e6a364e93ce5",
+        "log_sha256": "7057f2b301a773e4ada64b21e8191475eccb07ebe3b667d2f0bb5c50d6101453",
+        "request_sha256": "eb8aa380a06544d7e6d7ddb21ad578d95c70f99801a6cf715cb01e183dc7fdbe"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "42cacc5076b1eac35e8bbb73eaa45fd54c319f1f0e5fad9b9793b149b12b50a1",
+        "log_sha256": "b2a8d61183e95f207f90285a30ea2cf0605d4dd771a23bf52be1e1a3e6c37690",
+        "request_sha256": "1f4d39b36827a905647e69c3c0023e45a65adb17ce13b3414372bca3967c7417"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 10,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/7f2661dc8de595c9/result.json",
+        "result_sha256": "4daf103aaca11b357f80b5ce56255e9eae91f52d1d3dcc58c98f469ff8a35f34",
+        "log_sha256": "5b4dca1fbbfd9131e0c7fcb2d85c8d55b440354e72566a4b77f35e949c8ce1b8",
+        "request_sha256": "f6f469f30099829531e0c5e4ae4afba7a4f6de8e98ae0803d21755b1a3d4c0f3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "cd61d1059d176bfbdf1c7e70c97e8a9a91234d4298be07b37ed368c2d9396620",
+        "log_sha256": "cffd06f85930fd45fb391015013e65771838099dc0a5387b216431bbedabd597",
+        "request_sha256": "22a0f4c37e09e3006343bf1eff012bbb45e64092a6e81c83d5092626ea9fc9cf"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "4404a95d381655f6013bcbc59a358c3cb41fb7a028dda4bd10cf380b3ba6e2ac",
+        "log_sha256": "58ca51da52c738a0341dcd5297683a3af3cc0a25044f7b1bd312481fd49d2ee1",
+        "request_sha256": "4d570ee3dc32c79f09d8184d02eae1dcf63f319c1b41130fe8867b07fc2fe029"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "66c80d535b2480f6f39588c8613946c0d2745c13d457fede40943f893f3717a0",
+        "log_sha256": "15d7006b013687d45cd3a0e89fe3558bbbbd8bfeb43b54b7e5dc8e94b6957942",
+        "request_sha256": "2bb65a4271cbd88b98decc51b3cb80f4b427bda875608b4527ca10fc3dcee24e"
+      },
+      {
+        "class": "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests": 13,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/ba96f304814469e3/result.json",
+        "result_sha256": "11589133be40357a035bbecd5c45f2b77dbe1d2a53c895e76c3cfb2851b3a710",
+        "log_sha256": "ec026c4d5ee438145152f10b1a78461d71233024093d8b18e008fddcb9f56fea",
+        "request_sha256": "5878d473b095d1561cde3d4959cacbe519c51cd7aefdf0f231a1269fab5413a0"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-shared-executor-no-actions-qualification/20261005T124340-38a3930e/classes/f6cea13342c33618/result.json",
+        "result_sha256": "d9426ff108e5b18cef351ff32d4c937fc4dd18a525be91e12137148b272ee2fd",
+        "log_sha256": "758c94b00568932ac2346e067a82dd17e5a16bcfb2ff9824a24c8e5d8ab81646",
+        "request_sha256": "5a60b74ed51a04216361659f046a4a2f69e5a26a48af18f43f7845c3733b8ea2"
+      }
+    ],
+    "scope": "Actual isolated financial authorities, shared semaphore, Git and journals; owned refused Engine socket, host-authored pass process, synthetic complete cold records. No Engine/candidate/provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "source_pins": {
+    ".github/README.md": null,
+    ".github/workflows/verification.yml": null,
+    "MANIFEST.in": "d1b2fb01d5470ab1d2365798eba17d129b9f9ddf3f3cffab178f768ebae8ac81",
+    "README.md": "00f8647437513366aa0b993ec9fec91c7b5fec21ed764b3a14dcdef22e08c6c7",
+    "VERIFICATION.md": "82067f5c52f6ad93031bce58b8a8096a5c4e4f0a47d496ab623dd091ae71b03d",
+    "VERIFICATION_PLAN.md": "1dd6f3db0e2d2e44eabbf0be0fecc3da407784f01bde9ab67701e44f161be043",
+    "docs/local-verification-and-releases.md": "1294fe5bd2453930611cd9428e17afd0d28a3ea16f155683c961e9d350b2368a",
+    "docs/probe-shared-executor-v3.md": "c98cab54673fc55567800dc46d61df401e48b3f1d9d16ad86061a861022bec0a",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "5544b2f376e40c13b9ab3ba68c12224eb0ddbc463bf17eca0bcc19a326a1bc4b",
+    "gossip_harness/cumulative_generated_probe_reader_v1.py": "783ae256ca948fdf81b9ead82c2e85c73ab8c8c005fe4926575a055958222ab7",
+    "tests/generated_probe_originals_fixture_v1.py": "46350bf686477af6c083afe004212117bf786e9cb9c20149a7ed1cf93ac4c5d7",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "afa384ab703977801fce2add7756c6d9430cf9e4d0cb7199675935bee0e896d8",
+    "tests/test_cumulative_generated_probe_state_v1.py": "3ac82d6eead6484e7d103dc8504bacfa366e49abdc9eb06cadc8ff5dd3e24569",
+    "tests/test_generated_probe_original_chains_v1.py": "d74afbc2c3f2e3d51924022a480288c54241b2e55a930c74ff30c23d21e91531",
+    "verification-manifest.json": "6232c116d5cfa9bf49da795dd2b456019e571455a7f7e5b902bbcdef43854c42"
+  },
+  "prior_intermediate_run": {
+    "summary": "runs/probe-shared-executor-qualification/20261005T123657-ff4ed1fa/summary.json",
+    "fresh_tests": 124,
+    "reuse": false,
+    "reason": "Actions removal changed manifest and packaging inputs; reran on final configuration."
+  },
+  "limitations": [
+    "Full reservation-to-cell/controller binding, original whole-child clock join, qualified resource envelopes and ranked policy activation remain outstanding.",
+    "Current-source independent reviews, physical controls, remaining release/browser/worker/V2 acceptance and the matching complete rehearsal remain required.",
+    "No new GitHub Pages deployment was attempted. Existing built status and branch configuration were verified after disabling Actions."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints",
+    "github_actions_enabled": false
+  }
+}

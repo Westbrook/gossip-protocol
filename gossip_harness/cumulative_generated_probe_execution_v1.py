@@ -35,8 +35,9 @@ from . import cumulative_generated_probe_state_v1 as state
 from . import cumulative_generated_probe_values_v2 as values
 from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
+from .peer_financial_authority_v5 import CumulativeAuthorityV5, EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-enclosing-deadline-v2'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-shared-executor-v3'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
@@ -141,11 +142,15 @@ class ProbeExecution(transport.CandidateStorageExecution):
     binding: Any
 
     def __init__(self, probe_state: state.ProbeExecutionState, *, endpoint: process.EngineEndpoint,
-                 cleanup_root: Path):
+                 cleanup_root: Path, executor: CumulativeAuthorityV5):
         require(type(probe_state) is state.ProbeExecutionState and type(endpoint) is process.EngineEndpoint,
                 'exact_probe_state_and_endpoint_required')
         probe_state.current()
         self.probe_state, self.endpoint = probe_state, endpoint
+        require(type(executor) is CumulativeAuthorityV5, 'actual_probe_financial_executor_required')
+        self.executor = executor
+        self._executor_identity = (executor.owner_id, executor.config_sha256)
+        self._executor_current()
         self.policy = RuntimePolicy(probe_state.plan.policy.control_seconds)
         self.root, self.delta_root = probe_state.root, probe_state.delta_root
         self.cleanup_root = Path(cleanup_root)
@@ -187,7 +192,30 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._created: dict[str, Any] | None = None
         self._running: dict[str, Any] | None = None
         self._attempted = False
+        self._capacity_active = False
+        self._capacity_dispatched = False
         self.endpoint.validate()
+
+    def _executor_current(self) -> None:
+        executor = self.executor
+        require(type(executor) is CumulativeAuthorityV5
+                and (executor.owner_id, executor.config_sha256) == self._executor_identity,
+                'original_probe_executor_changed')
+        executor._guard_evidence()
+        subject = self.probe_state.plan.target.subject
+        require(executor.contract['cohort_id'] == subject.cohort_id
+                and executor.contract['execution_contract_sha256'] == subject.execution_contract_sha256
+                and executor.terminal_config['child']['trajectory'] == subject.trajectory_id,
+                'probe_executor_cohort_or_trajectory_differs')
+        require(values.exact(executor.permit['execution_design'].get('runtime', {}).get(EVALUATOR_CAPACITY_KEY),
+                             EVALUATOR_CAPACITY_POLICY), 'probe_shared_executor_policy_required')
+
+    def _local_cleanup_complete(self) -> bool:
+        if self._pipe is not None and (not self._pipe.closed or self._pipe.cleanup_errors):
+            return False
+        child = self._child
+        return child is None or (child.poll() is not None and all(
+            stream is None or stream.closed for stream in (child.stdin, child.stdout, child.stderr)))
 
     def _check_deadline(self) -> None:
         require(self._active_deadline_ns is None or time.monotonic_ns() < self._active_deadline_ns,
@@ -270,6 +298,24 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._owner(); require(not self._attempted, 'probe_owner_is_one_shot')
         self._attempted = True
         self._effect_boundary()
+        self._executor_current()
+        with self.executor.evaluation_slot(deadline_ns=self.binding.window.deadline_ns) as slot:
+            self._capacity_active = True
+            try:
+                self._executor_current()
+                self._effect_boundary()  # Waiting cannot renew the registered window.
+                result = self._execute_admitted()
+                if (result['container_cleanup'] is True and result['volume_cleanup'] is True
+                        and result['local_cleanup'] is True):
+                    slot.confirm_cleanup()
+                return result
+            finally:
+                self._capacity_active = False
+                if not self._capacity_dispatched:
+                    slot.confirm_cleanup()  # No probe setup or Engine effect was invoked.
+
+    def _execute_admitted(self) -> dict[str, Any]:
+        require(self._capacity_active, 'shared_probe_executor_slot_required')
         require(values.canonical(self.environment) == values.canonical(environment_for(self.probe_state.plan,
                 clock_domain=self.environment['clock_domain'])), 'physical_probe_environment_changed')
         self.probe_state.begin()
@@ -279,9 +325,11 @@ class ProbeExecution(transport.CandidateStorageExecution):
             'state_intent_sha256': transport.sha(self.read_authenticated('intent.json')),
             'cleanup_root': str(self.cleanup_root), 'environment': self.environment}
         self._retain('physical-intent.json', values.canonical(intent)); self._effect_boundary()
+        self._capacity_dispatched = True
         return self._dispatch_probe(intent)
 
     def _dispatch_probe(self, intent: dict[str, Any]) -> dict[str, Any]:
+        require(self._capacity_active, 'shared_probe_executor_slot_required')
         commands = _Commands(self)
         files = plans.verify_current_source(self.probe_state.store, self.probe_state.plan,
             deadline_ns=self._source_deadline_ns())
@@ -459,8 +507,9 @@ class ProbeExecution(transport.CandidateStorageExecution):
         except BaseException as error:
             errors.append('final_admission:'+type(error).__name__+':'+str(error)[:200]); qualified = False
         terminal = {'protocol': PROTOCOL, 'execution_id': intent['execution_id'], 'pipe_result': pipe_result,
-            'qualified_execution_originals': qualified and not errors and all(removed.values()),
+            'qualified_execution_originals': qualified and not errors and all(removed.values()) and self._local_cleanup_complete(),
             'container_cleanup': removed['container'], 'volume_cleanup': removed['volume'], 'infrastructure': errors,
+            'local_cleanup': self._local_cleanup_complete(),
             'acceptance_authority': False, 'cold_reconstruction_supplied': False}
         self._retain('physical-terminal.json', values.canonical(terminal)); self.checkpoint()
         if primary is not None and not isinstance(primary, Exception): raise primary

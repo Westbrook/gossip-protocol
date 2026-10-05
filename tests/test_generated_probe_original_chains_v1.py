@@ -47,6 +47,20 @@ class GeneratedProbeWholeOriginalChainTests(unittest.TestCase):
         result=self.observe(self.make(),drop=('volume-after.json',))
         self.assertEqual(result['disposition'],'unavailable');self.assertFalse(result['qualified_execution_originals'])
 
+    def test_local_cleanup_is_required_even_with_complete_container_cleanup(self):
+        for value in (False, None):
+            with self.subTest(value=value):
+                def change(name, raw):
+                    if name == 'physical-terminal.json':
+                        body = json.loads(raw)
+                        if value is None: body.pop('local_cleanup')
+                        else: body['local_cleanup'] = value
+                        return values.canonical(body)
+                    return raw
+                result = self.observe(self.make(), transform=change)
+                self.assertEqual(result['disposition'], 'unavailable')
+                self.assertFalse(result['qualified_execution_originals'])
+
     def test_known_defect_survives_missing_cleanup_original(self):
         result=self.observe(self.make(defect=True),drop=('container-remove.json',))
         self.assertEqual(result['disposition'],'fail');self.assertFalse(result['mechanics_complete'])

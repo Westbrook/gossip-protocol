@@ -29,7 +29,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
 from .sandbox import DockerValidator
 
-PROTOCOL = 'cumulative-generated-probe-reader-v1-journal-labels-v1'
+PROTOCOL = 'cumulative-generated-probe-reader-v1-local-cleanup-v2'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
@@ -358,7 +358,8 @@ class _Reader:
                 and final.get('acceptance_authority') is False and final.get('cold_reconstruction_supplied') is False,
                 'original_terminal_identity_differs')
         if not (final.get('qualified_execution_originals') is True and final.get('container_cleanup') is True
-                and final.get('volume_cleanup') is True and final.get('infrastructure')==[]):
+                and final.get('volume_cleanup') is True and final.get('local_cleanup') is True
+                and final.get('infrastructure')==[]):
             raise Unavailable('original_physical_completion_unavailable')
         self.order('staging-final.json','container-remove-dispatch.json','container-remove.json','container-after-dispatch.json',
             'container-after.json','volume-cleanup-inspect-dispatch.json','volume-cleanup-inspect.json','volume-remove-dispatch.json',
