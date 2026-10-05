@@ -1,0 +1,1444 @@
+{
+  "arm": "B",
+  "bytes": 1098741,
+  "files": 63,
+  "pair": 3,
+  "seconds": 0.329535,
+  "select_events": [
+    [
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.155484125
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ],
+          [
+            "error",
+            1
+          ]
+        ],
+        "seconds": 0.000205084
+      }
+    ],
+    [
+      {
+        "events": [
+          [
+            "input",
+            2
+          ]
+        ],
+        "seconds": 1.0375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.162485959
+      },
+      {
+        "events": [
+          [
+            "input",
+            2
+          ]
+        ],
+        "seconds": 6.709e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 7.7833e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.475e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.3458e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.291e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.2833e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.875e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.3083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 6.917e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.000171291
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.000104084
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.8917e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.0667e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.475e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.5959e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.2e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.2916e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.4291e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.3458e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.5e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.2541e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.6792e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.8125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.1125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.45e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.1041e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.2542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.3042e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 8.209e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.225e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.4083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.25e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.0958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.3041e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.375e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.0334e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.0375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.275e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.1083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.2875e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.7458e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.55e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.6167e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7625e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.3083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.7041e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 8.4542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 9.4542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.125e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4334e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.0292e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.9167e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.6792e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.4e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8292e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.0292e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.709e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.000104833
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 8.4958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.9e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 8.0208e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 0.000118916
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.7e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.8125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.791e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.0083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.4e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.9791e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.3792e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.4167e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.5833e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.75e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.1084e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4042e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.0875e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.4166e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.625e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.1666e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.6916e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.9875e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.6541e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.5167e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.9958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8166e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.3208e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8709e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 9.209e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.7542e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 5.75e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5792e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.3125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.975e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.7708e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.2708e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.6209e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7334e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5583e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.2125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.0166e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.525e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4458e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.1042e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.3875e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.1083e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.7541e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 6.0916e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5209e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.4958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 4.083e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 7.041e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.85e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.025e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.75e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.0791e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.6333e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.4292e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 6.459e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7792e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.1459e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.05e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.5375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.575e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4167e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.0791e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.3875e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.8333e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.775e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.9958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7084e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.0375e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.7583e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.9417e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.4041e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.7125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5166e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.5042e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.1209e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.9667e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 3.6958e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 1.8667e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 7.75e-06
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ]
+        ],
+        "seconds": 2.7125e-05
+      },
+      {
+        "events": [
+          [
+            "output",
+            1
+          ],
+          [
+            "error",
+            1
+          ]
+        ],
+        "seconds": 0.000443042
+      }
+    ]
+  ],
+  "status": "complete"
+}

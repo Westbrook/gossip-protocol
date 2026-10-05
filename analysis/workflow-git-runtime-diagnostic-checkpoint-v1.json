@@ -1,0 +1,37 @@
+{
+  "diagnostics": {
+    "workflow-git-binary-comparison-1": {
+      "driver_sha256": "b9222b71222fe7360ab68022617f26347f68b9e346c3468d2c0687913bc5bae9",
+      "plan_sha256": "b9090204a0ec84da7115cc5f96285a722dc9dda7e217e12ab83ee9a69f232baa",
+      "result_sha256": "a42941ff3aa8b307139a3fb641eadb3a10978ec90e5e8cd4b40aaec539c6f594"
+    },
+    "workflow-git-capture-profile-1": {
+      "driver_sha256": "e13bf2f19d8570bc156bdff032f56f2609470530e07be144ebddfa41145fb6cd",
+      "plan_sha256": "97e860ec76012e132f9c75f19c610d5f74d7cebaa56ae3d1b1f6ff8fb3900af4",
+      "result_sha256": "970f30870b88fa72826e34282e39c26a472f5cb9a92592ee7d45b3058529b287"
+    },
+    "workflow-git-selector-comparison-1": {
+      "driver_sha256": "363f3aa9873e7e5877c6cd72916fd37f9228e8bf7f18a5ddf9f4d3a398743b89",
+      "plan_sha256": "00084fbf5c1337964f9248955408bebd986780b0fdbe5cfe260617ebe183e975",
+      "result_sha256": "f474f58823e7800563799b6b49d97a32092842fc60b338fe49ce4d747ef11e96"
+    },
+    "workflow-git-startup-trace-1": {
+      "driver_sha256": "b8c0de0027411c2da17de4b55da7e2ce2acf80e217f4a8189a5d54abdeb06c4b",
+      "plan_sha256": "4282769cc7d799f2d2c8a3b1e9f89d8acbdde1b3f124195abef95621519284cc",
+      "result_sha256": "50d8e7db2fb394884f320dde6fcb660e7c0c97b921147a2fcda2d57f67228b60"
+    }
+  },
+  "findings": [
+    "Profile: 1.022 of 1.050 profiled seconds spent inside kqueue wait across three captures.",
+    "Selector backend comparison: no useful improvement; medians .330776 vs .330031 seconds, Poll faster five of eight pairs. No selector change.",
+    "One traced cat-file child took .159 seconds before its first Git trace event; Git reported .012 seconds total internally. This locates startup latency but does not identify an OS cause.",
+    "Installed-binary comparison: Apple Git faster eight of eight alternating pairs; exact 63-file/1098741-byte output matched. Homebrew median .187298 seconds; Apple median .093014 seconds; median paired ratio .310804.",
+    "One fixed warm repository/host and small diagnostic sample; no whole-workflow/general speedup or quality claim."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Run nearest and full offline qualification under exact Apple Git runtime, then fresh declared Docker qualification if those pass.",
+  "protocol": "workflow-git-runtime-diagnostic-checkpoint-v1",
+  "qualification_plan": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-runtime-1/plan.json",
+  "qualification_plan_sha256": "7740e7935575026410f480a2d6face46c11e8073b85b7d959e05548f55b66369",
+  "status": "diagnostics_complete_runtime_not_qualified"
+}
