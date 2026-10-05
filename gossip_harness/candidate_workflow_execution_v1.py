@@ -31,6 +31,7 @@ from . import candidate_workflow_profile_v1 as profile
 from . import candidate_workflow_review_v1 as review
 from . import candidate_observation_admission_v1 as admission
 from . import candidate_execution_journal_v1 as journals
+from . import candidate_journal_batch_read_v1 as journal_read
 from . import candidate_checkpoint_chain_v1 as chain
 from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_emergency_cleanup_v1 as cleanup
@@ -47,6 +48,9 @@ ADAPTER_PROTOCOL = 'candidate-workflow-wire-v1'
 TARGET_CONTRACT = transport.TARGET_CONTRACT
 FAMILY = 'workflow-final-m4-v1'
 SOURCE_CAPTURE_POLICY = source_capture.TwoProcessCapturePolicy()
+# Versioned and bound in limits, original config, owner context and genesis.
+# Fresh complete reads remain required at every checkpoint.
+JOURNAL_READ_POLICY = journal_read.BatchReadPolicy()
 LIMITS = chain.Limits()
 CHUNK_BYTES = transport.CHUNK_BYTES
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
@@ -160,6 +164,7 @@ def _runtime_identity(endpoint: Any, image_id: str, *, deadline: float,
 def evaluator_sources() -> dict[str, str]:
     result = transport.evaluator_sources()
     result.update(source_capture.evaluator_sources())
+    result.update(journal_read.evaluator_sources())
     result.update(exposure.definition_sources())
     result.update(profile.definition_sources())
     names = ('candidate_workflow_execution_v1.py', 'candidate_workflow_profile_v1.py',
@@ -260,6 +265,7 @@ def binding_for(files: dict[str, bytes], value: profile.WorkflowProfile, policy:
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
         digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+            'journal_read_policy': JOURNAL_READ_POLICY.record(),
             'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES, 'prestart_policy': prestart.definition(),
             'capture_bytes': b02.MAX_CAPTURE_BYTES, 'wire': wire_definition(),
             'call_count': len(value.phases), 'cleanup': asdict(cleanup.CleanupLimits())}), digest({'seed': policy.seed}))
@@ -807,6 +813,7 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
                 'review_provenance': review_authority.provenance(plan),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+                'journal_read_policy': JOURNAL_READ_POLICY.record(),
                 'deadline_policy': deadline_policy(),
                 'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
@@ -817,7 +824,8 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
             existed = self.root.exists()
             require(existed == (expected_checkpoint is not None), 'Reopen requires independently supplied exact prefix')
             self.journal = journals.OwnerJournal(self.root, self.delta_root, context=context,
-                authority=checkpoint_authority, expected=expected_checkpoint, limits=LIMITS)
+                authority=checkpoint_authority, expected=expected_checkpoint, limits=LIMITS,
+                read_policy=JOURNAL_READ_POLICY)
             if existed:
                 require(self.read_authenticated('config.json') == encoded(self.config), 'Authenticated config differs')
             else:
@@ -838,6 +846,8 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
         self._owner()
         require(self.profile == profile_for_binding(self.binding)
             and type(self.plan) is review.WorkflowSourcePlan, 'Original workflow mapping profile differs')
+        require(self.config.get('journal_read_policy') == JOURNAL_READ_POLICY.record(),
+            'Workflow journal read policy differs')
         require(evaluator_sources() == self.sources, 'workflow evaluator changed')
         with self._timings.span('source'):
             tree, files = capture_git_source(self.store, self.registration.commit_oid)
@@ -1432,7 +1442,8 @@ def qualification_binding_for(files: dict[str, bytes], value: WorkflowQualificat
         QUALIFICATION_FAMILY, value.control_id, review.source_sha256(files), digest(value.record()), value.sha256,
         fixture, marker, marker, digest(evaluator_sources()), digest(runtime),
         digest({'environment': DockerValidator._environment(), 'host_python': [platform.python_implementation(), platform.python_version()]}),
-        digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(), 'wire': wire_definition(),
+        digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+            'journal_read_policy': JOURNAL_READ_POLICY.record(), 'wire': wire_definition(),
             'prestart_policy': prestart.definition(), 'journal': asdict(LIMITS), 'cleanup': asdict(cleanup.CleanupLimits())}),
         digest({'seed': policy.seed}))
 
@@ -1527,6 +1538,7 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
                 'product_acceptance_authority': False,
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
+                'journal_read_policy': JOURNAL_READ_POLICY.record(),
                 'deadline_policy': deadline_policy(),
                 'journal_limits': asdict(LIMITS), 'prestart_policy': prestart.definition(),
                 'endpoint': None if self.endpoint is None else asdict(self.endpoint)}
@@ -1537,7 +1549,8 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
             existed = self.root.exists()
             require(existed == (expected_checkpoint is not None), 'Reopen requires independently supplied exact prefix')
             self.journal = journals.OwnerJournal(self.root, self.delta_root, context=context,
-                authority=checkpoint_authority, expected=expected_checkpoint, limits=LIMITS)
+                authority=checkpoint_authority, expected=expected_checkpoint, limits=LIMITS,
+                read_policy=JOURNAL_READ_POLICY)
             if existed:
                 require(self.read_authenticated('config.json') == encoded(self.config), 'Authenticated config differs')
             else:
@@ -1558,6 +1571,8 @@ class CandidateWorkflowQualificationExecution(CandidateWorkflowExecution):
         self._owner()
         require(type(self) is CandidateWorkflowQualificationExecution and type(self.profile) is WorkflowQualificationProfile,
             'Exact qualifier owner/profile required')
+        require(self.config.get('journal_read_policy') == JOURNAL_READ_POLICY.record(),
+            'Qualifier journal read policy differs')
         require(evaluator_sources() == self.sources, 'Qualifier evaluator changed')
         with self._timings.span('source'):
             tree, files = capture_git_source(self.store, self.registration.commit_oid)

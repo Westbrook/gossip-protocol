@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/35b75e435d31e528/result.json": "8c54519ce07b462daf9129e637f6f342430e2f07afbef138b64bbe0ffed16e40",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/35b75e435d31e528/worker.log": "17a668ee1d8541fc1f06cca2ce319f9eb029f29a21fa44d5a3d73399dabca792",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/448ac036db494738/result.json": "c23b9c4824740ea091b4cb42d9b8ca04e90b0e78206a08613469bda91a20601c",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/448ac036db494738/worker.log": "552bbfb2fb38e0b13f4e6a0a1645054a591837fdedd9a6749f739f59001942c3",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/8c6cd0d811e3b907/result.json": "1c11089cdae5d86d2c2f32c9c2e87b411618908ffd9caf56bfe78a1a19795c1e",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/8c6cd0d811e3b907/worker.log": "ecaba57393d6ef6f29690b6f42762e6253bc545ea0952ee7cd91639b8d93df76",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/bdf47adfa2fefb8d/result.json": "0fb77819b3d982b5fd78af3a280dadf23af6f6f184d5326e8d482082c6251943",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/bdf47adfa2fefb8d/worker.log": "43535e15b5505399ff0d2914f5a7c96d7ec68fd7b6c459d110f493dc2be23ddb",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/e8b950e2743e3c9c/result.json": "c518687985cab429214550eac34d025ff8a9da20df91e251e071b620c734ce72",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/e8b950e2743e3c9c/worker.log": "79e3afd0f2bdaf66ce9ad64e5479f540db5d79541786f3e947a6b6de40d0b017",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/ecf4c87790be7626/result.json": "f77968cc969d986561e10d52588a3cfae1d1ac3c203efbdb36b4c82bbed8b6dd",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/ecf4c87790be7626/worker.log": "f9699abc072f958ffbbadda8bdbc900d4eb2acbc51040373d391b25443881d4b",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/f19583e8ea3186e7/result.json": "2a595142789cce61f6b4215cd5b4736ebfc8b79ebdfaa1692d800cd354f6e3a0",
+    "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300/classes/f19583e8ea3186e7/worker.log": "6e39cfa6c8f85def8dddc55575eeb2a1c54398b0de40e512d6082e99d02eddc8"
+  },
+  "classes": 7,
+  "duration_seconds": 121.12000170908868,
+  "fingerprint": "a1664fa9d77b70f0035b22e0d77e6a7eb2251aa2bcf826b10f275f79fadd68d8",
+  "fresh_tests": 97,
+  "inputs_sha256": "78a62da54fd4b1610e3f730d5e9bd3656958f1bffc2fb2615e5319dae4cc2589",
+  "limitations": [
+    "Local source, ordered-suite, artifact and runtime reconciliation; not scientific acceptance.",
+    "Full677check gate and new changed-source physical qualification remain required.",
+    "Three failed runs retained: nested context assertion, missing fixture freeze, then GitStore text input. Production code was unchanged between these test-fixture corrections."
+  ],
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-batch-read-nearest-audit-v1",
+  "reused_tests": 0,
+  "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+  "selected_tests": 97,
+  "session": "runs/workflow-batch-read-nearest-1/20261005T025655-5dd9a300",
+  "source_inputs": 732,
+  "static_status": "passed",
+  "status": "passed",
+  "summary_sha256": "3bf2ea521c938f7fe7ef302d02813e701a11c76e31b82d99727a56d042945468"
+}

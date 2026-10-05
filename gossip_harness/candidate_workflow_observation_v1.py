@@ -216,6 +216,8 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
     freeze = owner.retained_freeze()
     owner.current(freeze)
     require(owner.config.get('deadline_policy') == execution.deadline_policy(), 'Original deadline policy differs')
+    require(owner.config.get('journal_read_policy') == execution.JOURNAL_READ_POLICY.record(),
+        'Original workflow journal read policy differs')
     require(intent['protocol'] == owner.binding.protocol
         and execution.encoded(intent['registration']) == execution.encoded(asdict(owner.observation_registration))
         and execution.encoded(intent['original_binding']) == execution.encoded(asdict(owner.binding))
@@ -684,6 +686,8 @@ def reconstruct_qualification(owner: execution.CandidateWorkflowQualificationExe
         'Exact physical harness qualification owner required')
     before = owner.checkpoint()
     owner.current(owner.retained_freeze())
+    require(owner.config.get('journal_read_policy') == execution.JOURNAL_READ_POLICY.record(),
+        'Original qualifier journal read policy differs')
     intent_raw = owner.read_authenticated('intent.json')
     intent = _json(intent_raw)
     require(intent['protocol'] == execution.QUALIFICATION_PROTOCOL

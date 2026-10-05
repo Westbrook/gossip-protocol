@@ -1,0 +1,78 @@
+{
+  "changed_sources": {
+    "gossip_harness/candidate_workflow_execution_v1.py": "ca1981f36f5d0d5fbe9017407c1a9fb82a06fd7c5f08b9bb88abaac7aa40057f",
+    "gossip_harness/candidate_workflow_observation_v1.py": "abfd2a77493549e6b921f8e287833f67398d3103b69c7e6923975aa8974fd35b",
+    "tests/test_candidate_workflow_observation_v1.py": "830bf9274d7b18a1d7ab5ee91a358d9bb1350133008302c0cb2ba46cc06808ad",
+    "tests/test_cumulative_workflow_recipe_v1.py": "f93560e3b1df5056351cd0e96f0644c1ebd8783e4f225c86085ab17ab58cb6d4"
+  },
+  "component_policy": "candidate-journal-batch-read-v1",
+  "failed_attempts": [
+    {
+      "correction": "Test assertion omitted execution_context wrapper",
+      "outcomes": {
+        "error": 1,
+        "not_run": 3,
+        "passed": 93
+      },
+      "production_change": false,
+      "run": "runs/workflow-batch-read-nearest-1/20261005T025050-01cf63f2",
+      "summary_sha256": "9a6f3f80f03d55d7d0073a49ddf3e7d88ee6b4092493174d6b87599cac1e9f7a"
+    },
+    {
+      "correction": "Test omitted existing fixture cohort freeze",
+      "outcomes": {
+        "error": 1,
+        "not_run": 3,
+        "passed": 93
+      },
+      "production_change": false,
+      "run": "runs/workflow-batch-read-nearest-1/20261005T025301-492bf2cb",
+      "summary_sha256": "5a2c46930573e9ef79e37c611e6a886d83113970b01804e9134a1283634bac5b"
+    },
+    {
+      "correction": "Qualifier fixture passed bytes to text-only GitStore.create",
+      "outcomes": {
+        "error": 1,
+        "passed": 1
+      },
+      "production_change": false,
+      "run": "runs/workflow-batch-read-nearest-1/20261005T025612-19d23361",
+      "summary_sha256": "b953cdcc1cef3925e6cf921efd9f11f34507d940c4eaf02702c6a6ff4ec54126"
+    }
+  ],
+  "full_selection": {
+    "classes": 65,
+    "path": "runs/workflow-batch-read-adoption-1/full-selection.json",
+    "sha256": "753f1df19e0e16ddec32749ff9e02846b661873509a60cef9d081c1daadfad26",
+    "tests": 677
+  },
+  "implementation": [
+    "Product and separate harness-qualifier owners select the exact versioned policy",
+    "Policy bound in limits digest, configuration, normalized owner context and genesis",
+    "Reader helper sources included in evaluator closure",
+    "Current-state and original-record readers reject absent or changed policy"
+  ],
+  "invariants": [
+    "Fresh bounded read/hash of every genesis, delta and raw file at every checkpoint",
+    "Fresh descriptors per checkpoint; no cross-checkpoint byte or decision cache",
+    "All ancestor/path/leaf guards and external head checks remain",
+    "Existing 30second call/control and300second history deadlines unchanged",
+    "Legacy shared OwnerJournal default and frozen evidence remain untouched"
+  ],
+  "limitations": [
+    "Component timing is one retained journal on one machine, not an end-to-end performance result",
+    "Batch descriptors change syscall/race observation timing and are not an atomic snapshot",
+    "No physical qualification or live study launch until remaining gates and full study obligations pass",
+    "Public and provider disclosure holds remain; local evidence only"
+  ],
+  "nearest_audit": {
+    "fresh_tests": 97,
+    "path": "analysis/workflow-batch-read-nearest-audit-v1.json",
+    "reused_tests": 0,
+    "sha256": "eb6a0a66915967d1494c5638b198a8219511bf408637a1e276c55f7986e72ef8"
+  },
+  "new_methods": 3,
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-batch-read-adoption-v1",
+  "status": "nearest_passed_full_and_physical_pending"
+}

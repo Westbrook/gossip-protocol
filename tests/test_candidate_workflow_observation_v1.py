@@ -181,6 +181,14 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
     def setUp(self):
         self.prepare_owner()
 
+    def test_original_reader_rejects_missing_or_downgraded_journal_policy(self):
+        owner = self.owner
+        for replacement in (None, {'protocol': 'legacy-reader'}):
+            with self.subTest(replacement=replacement):
+                owner.config['journal_read_policy'] = replacement
+                with self.assertRaisesRegex(ValueError, 'journal read policy differs'):
+                    observer.reconstruct(owner)
+
     def prepare_owner(self, case_id='WF18-same-process-call-isolation', schema_sha256='d' * 64,
             *, ready_eligibility=True):
         self.temp = tempfile.TemporaryDirectory()
@@ -196,7 +204,8 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         head = ExternalHead.create(root / 'head', journal_roots=(owner.root, owner.delta_root))
         self.addCleanup(head.close)
         owner.journal = journals.OwnerJournal(owner.root, owner.delta_root,
-            context={'fixture': 'synthetic reader mechanism only'}, authority=head, limits=execution.LIMITS)
+            context={'fixture': 'synthetic reader mechanism only'}, authority=head, limits=execution.LIMITS,
+            read_policy=execution.JOURNAL_READ_POLICY)
         self.addCleanup(owner.close)
         owner.policy = execution.WorkflowPolicy()
         owner.profile = profile.profile_for(case_id)
@@ -219,7 +228,8 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         owner.runtime = {'kind': 'fixture-no-Docker'}
         owner.docker = ['docker']
         owner.review_sha256 = 'd' * 64
-        owner.config = {'fixture': True, 'deadline_policy': execution.deadline_policy()}
+        owner.config = {'fixture': True, 'deadline_policy': execution.deadline_policy(),
+            'journal_read_policy': execution.JOURNAL_READ_POLICY.record()}
         owner.observation_registration = SimpleNamespace()
         # Runtime admission/source authentication is separately tested by actual
         # constructor controls; this fixture isolates the retained-reader path.

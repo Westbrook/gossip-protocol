@@ -6,10 +6,12 @@ prerequisites, a capsule, or product acceptance. Actual Git, protected review
 journals, typed input files and fixture owners remain real and independently
 checked here. Candidate fixture Python is never imported or executed.
 """
+from collections import Counter
 from contextlib import ExitStack
 from copy import deepcopy
 from dataclasses import asdict, replace
 import hashlib
+import json
 from pathlib import Path
 import subprocess
 import tempfile
@@ -18,6 +20,8 @@ import unittest
 from unittest import mock
 
 from gossip_harness import candidate_checkpoint_chain_v1 as chain
+from gossip_harness import candidate_journal_batch_read_v1 as batch
+from gossip_harness import candidate_http_journal_v3 as stable
 from gossip_harness.candidate_checkpoint_head_v1 import ExternalHead
 from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import candidate_workflow_execution_v1 as execution
@@ -168,6 +172,76 @@ class CandidateWorkflowGitCompositionTests(unittest.TestCase):
         # Closing the owned execution cannot silently close its borrowed proof.
         self.assertEqual(fixture.authority.authenticate(fixture.plan), fixture.authority.enrollment.report_sha256)
         self.assertEqual(fixture.mechanism_journal.commitment, fixture.authority.expected)
+
+    def check_batch_owner(self, owner, freeze=None):
+        self.addCleanup(owner.close)
+        policy = execution.JOURNAL_READ_POLICY.record()
+        self.assertEqual(owner.config['journal_read_policy'], policy)
+        self.assertEqual(json.loads(owner.read_authenticated('config.json'))['journal_read_policy'], policy)
+        genesis = json.loads((owner.delta_root/'genesis.json').read_bytes())
+        self.assertEqual(genesis['journal_read'], policy)
+        self.assertEqual(genesis['context']['journal_read'], policy)
+        self.assertEqual(genesis['context']['execution_context']['config_sha256'], execution.digest(owner.config))
+        for name, digest in batch.evaluator_sources().items():
+            self.assertEqual(owner.sources[name], digest)
+        original = batch.CheckpointReader.read
+        reads = []
+
+        def record(reader, path, *, max_bytes=stable.MAX_RECORD_BYTES):
+            reads.append((reader, Path(path)))
+            return original(reader, path, max_bytes=max_bytes)
+
+        owner._retain('fresh-read.bin', b'one')
+        expected = owner.checkpoint()
+        with mock.patch.object(batch.CheckpointReader, 'read', new=record):
+            self.assertEqual(owner.checkpoint(), expected)
+            self.assertEqual(owner.checkpoint(), expected)
+        paths = {p for directory in (owner.root, owner.delta_root)
+                 for p in directory.iterdir() if p.name != 'owner.lock'}
+        self.assertEqual(Counter(path for _, path in reads), Counter({p: 2 for p in paths}))
+        readers = {reader for reader, _ in reads}
+        self.assertEqual(len(readers), 2)
+        for reader in readers:
+            with self.assertRaises(stable.JournalError):
+                reader.validate()
+        owner.current(freeze)
+        owner.config['journal_read_policy'] = None
+        with self.assertRaisesRegex(ValueError, 'journal read policy differs'):
+            owner.current(freeze)
+        owner.config['journal_read_policy'] = policy
+        (owner.root/'fresh-read.bin').write_bytes(b'two')
+        with self.assertRaises(chain.ChainUnknown):
+            owner.checkpoint()
+        self.assertEqual(owner.checkpoint_authority.read(), expected)
+
+    def test_product_owner_binds_policy_and_freshly_reads_each_checkpoint(self):
+        fixture = self.fixture('workflow')
+        self.check_batch_owner(construct_fixture_owner(fixture), fixture.state['freeze'])
+
+    def test_qualifier_owner_binds_policy_and_freshly_reads_each_checkpoint(self):
+        # Actual Git/owner/admission classes; synthetic controller, no candidate dispatch.
+        value = execution.WorkflowQualificationProfile('WQ-FRAME-EXACT')
+        files = execution.qualification_source_files(value.control_id)
+        store = GitStore.create(self.root/'qualifier.git', {name: raw.decode('ascii') for name, raw in files.items()})
+        tree, actual = execution.capture_git_source(store, store.head())
+        self.assertEqual(actual, files)
+        policy = execution.WorkflowPolicy()
+        binding = execution.qualification_binding_for(files, value, policy, {'kind': 'fixture-no-Docker'})
+        subject = registry.Subject('recipe-fixture', COHORT[0], 'M4', 'c'*64,
+            exposure.BASE_SHA256, admission.source_sha256(files))
+        gate = execution.qualification_gate_for(subject, binding, gate_id='qualifier-fixture')
+        registration = execution.WorkflowQualificationRegistration(binding, store.head(), tree,
+            'fresh-qualifier', gate, COHORT)
+        registered = execution.qualification_observation_registration(registration)
+        issued = admission.ObservationAdmission(registered, verify_registration=lambda: registered,
+            verify_cohort=lambda: None)
+        raw, delta = self.root/'raw', self.root/'delta'
+        head = ExternalHead.create(self.root/'head', journal_roots=(raw, delta))
+        self.stack.callback(head.close)
+        owner = execution.CandidateWorkflowQualificationExecution(raw, store, registration, policy,
+            value=value, admission_authority=issued, checkpoint_authority=head, delta_root=delta,
+            cleanup_root=self.root/'cleanup', mode='fixture')
+        self.check_batch_owner(owner)
 
     def test_actual_runtime_builder_spec_disk_codec_scope_and_fixture_owner(self):
         fixture = self.fixture('workflow')
