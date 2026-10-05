@@ -1,0 +1,109 @@
+{
+  "adapter_source_sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735",
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-wire-adoption-1/audit.py",
+  "audit_driver_sha256": "4952bca7fe893bd6b25c17def5a619782106c53266a1436bf0ac59e89e062209",
+  "behavior_changes": [
+    "Known refresh, replay and captured-row contradictions are evaluated before missing-slot classification.",
+    "No missing response is invented; every required value remains mandatory for pass.",
+    "Wire framing rejects wrong order, duplicate members, nonfinite values, truncated/extra frames and caller-frozen quota violations.",
+    "Capture boundaries cannot supply database values or skip capture; supplied values remain unauthenticated until a separate owner proves origins.",
+    "Fixed child source imports actual candidate APIs only inside its intended sandbox; host tests compile the source and exercise only its host-authored emit helper.",
+    "Finished marker means wire completion only. Actual exit and owned cleanup are separate required facts."
+  ],
+  "candidate_executions": 0,
+  "engine_calls": 0,
+  "execution_limits": "WireLimits has no implicit study allowance; a prospective owner must freeze values within existing total budgets and absolute deadlines.",
+  "historical_receipts": "Earlier 16/778/38 results remain under their original source/configuration/runtime identities; none are reissued for this tree.",
+  "independent_acceptance": false,
+  "new_model_quality_samples": 0,
+  "protocol": "cumulative-generated-probe-wire-qualification-v1",
+  "provider_calls": 0,
+  "remaining": [
+    "Versioned source/review/registration-bound sandbox owner and durable dispatch intent.",
+    "Actual bounded concurrent stream drains, absolute deadline enforcement and acknowledged continuation after protected evidence retention.",
+    "Independent reviewed SQLite path/schema capture at /tmp/m2/library.sqlite; original reconstruction and cleanup.",
+    "Cold reader with independently expected checkpoint; include these sources in evaluator and rehearsal closure.",
+    "All candidate/context tests, conditional selection, fresh merged-source tests and non-author approvals.",
+    "Complete physical qualification and matching six-trajectory/four-milestone rehearsal before live comparison."
+  ],
+  "shared_review": {
+    "fresh_request_bytes_unchanged": true,
+    "packet": "runs/workflow-shared-review-amendment-1/review-request.json",
+    "status": "independent_subagent_authorization_pending"
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_driver_v1.py": "f1a81a8891e976815b73a121db344624679544d14a16c74b689da3510f9590e4",
+    "gossip_harness/cumulative_generated_probe_values_v1.py": "372cd2bf5beca40d08a8b76f26567a4b0bc3bc04b81e057a047fd86423391e64",
+    "gossip_harness/cumulative_generated_probe_wire_v1.py": "29c40f06fb9f6d510580030b84721ed76e9e24e9380949b4b510670779c8eecc",
+    "pyproject.toml": "38054228c4ece1478bf197aea722b10a1ada024a8ac149d1ac542ad09590dc7a",
+    "tests/test_cumulative_generated_probe_values_v1.py": "f1c6b984eaad579b4d79f4b68a624e27f3a26efcd868a9b774f24b1af4ca0807",
+    "tests/test_cumulative_generated_probe_wire_v1.py": "5a00cc43375d200776697bb13550cbf7edd3d9877951cd988e627c2561d85364",
+    "verification-manifest.json": "38bc71404f37aaf56f48ee070810e80387436e968751690ad95ccdf57c1dbc85"
+  },
+  "status": "wire_and_values_qualified_physical_owner_pending",
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests",
+        "log_sha256": "7a3e9c8685efa1851dd37e9b3f195e91c8ab7633e0206a3ae3129566beffd179",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_admitted_identity_is_stable_and_independent_of_caller_mutation",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_all_templates_accept_independent_complete_values_without_authority",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_authored_admission_vectors",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_bad_capture_survives_missing_submit_without_manufactured_values",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_bool_integer_aliases_and_malformed_records_fail",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_captured_hash_comes_from_parameters_and_manifest_is_exact",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_child_capture_marker_or_pass_receipt_is_never_evidence",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_known_refresh_failure_survives_missing_replay",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_known_replay_failure_survives_missing_refresh",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_missing_value_is_unavailable_but_known_prerequisite_failure_survives",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_no_arbitrary_code_selector_or_expectation_fields",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_noop_requires_exact_entire_record",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_enforces_bytes_count_depth_and_nodes",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_rejects_duplicate_nested_members_nonfinite_and_bad_utf8",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_parser_requires_exact_host_limits",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_product_contract_and_release_gate_cannot_be_substituted",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_replay_requires_historical_receipt_and_exact_completed_job",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_same_wrong_identity_and_stale_blob_are_rejected",
+          "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests.test_text_domain_uses_utf8_bytes_not_characters"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-wire-offline-1/20261005T061427-f4007d5c/classes/ed997219b874d2f8/result.json",
+        "result_sha256": "14b99416d2435a8c07d18bdb5394726de671d6921f2ba75f9860e10080ddf462"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests",
+        "log_sha256": "ee59c998b3c7547ca55ea54b15aff7bf055552f946488cba67695e657a44973c",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_all_templates_complete_only_with_every_frame_and_capture",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_capture_marker_cannot_supply_database_values_or_skip_capture",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_capture_value_is_bounded_unique_and_caller_mutation_isolated",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_continuation_is_exact_and_cannot_inject_another_command",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_envelope_and_boundary_shapes_are_exact",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_exact_frame_bound_and_total_stream_quota_do_not_reset",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_explicit_limits_reject_bool_zero_and_inconsistent_bounds",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_fixed_child_source_compiles_and_emit_waits_for_exact_bounded_ack",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_known_value_failure_survives_stopped_or_malformed_tail",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_mutated_admission_or_release_is_rejected_before_staging",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_request_contains_only_fixed_public_recipe",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_returned_event_mutation_does_not_change_transcript",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_slot_reorder_duplicate_and_extra_frame_poison_transcript",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_staged_helper_is_fixed_and_requests_are_independent",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_structure_limits_apply_to_nested_candidate_values",
+          "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests.test_truncated_multiline_duplicate_nonfinite_and_invalid_utf8_frames"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-wire-offline-1/20261005T061427-f4007d5c/classes/5e6007d926e7bcd5/result.json",
+        "result_sha256": "9bcc8f6d0879695c8549892e012d9ebfd57ea963babdccb2c3af5573911ac33d"
+      }
+    ],
+    "duration_seconds": 4.175616375170648,
+    "fingerprint": "6aba8e6a823ba82c1b2d1821516aaec0270ea626c47d55daf2344ac7adf04915",
+    "fresh_tests": 35,
+    "inputs_sha256": "506998db04d31563706340b49b4f6914cbe59b99eb9d717ef4444d055040cef5",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-wire-offline-1/20261005T061427-f4007d5c",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 738,
+    "static": "passed; configured type coverage only, unchanged legacy baseline retained",
+    "summary_sha256": "7b81b1c84475283c7ef08208a69d40b684bc706f6a36c4a26867ae490a42a0e2"
+  }
+}

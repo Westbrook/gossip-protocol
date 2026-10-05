@@ -6900,6 +6900,26 @@
       "overlap": "Parser/value relations only; future physical owner, cold-reader and selection checks remain separate.",
       "distinct_defect": "Wrong shared identity, stale blob, mutated no-op metadata, replayed current content, forged pass markers or malformed proposals could distort selection.",
       "disposition": "Static gate then fresh fast controls. No model-quality sample or runtime integration credit."
+    },
+    "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Closed ordered bounded frames and fixed child request carry no private oracle or execution authority; capture markers never substitute for captured state.",
+      "isolation": "Class process; synthetic byte frames and host-owned child emit helper only; no candidate import or process.",
+      "overlap": "Complements pure predicates; actual sandbox, SQLite origins, deadlines and cleanup require separate physical owner qualification.",
+      "distinct_defect": "Slot replay/reorder, truncated or duplicate JSON, quota resets, forged capture markers, premature finish and mutated probe identity.",
+      "disposition": "Central static then fresh fast wire and predicate classes; no physical or model-quality credit."
+    },
+    "tests/test_cumulative_generated_probe_values_v2.py::GeneratedProbePredicateV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Versioned pure value checks preserve a present contradiction despite missing later slots; complete required values remain mandatory for pass.",
+      "isolation": "Class process; caller-local dictionaries and immutable authored vectors; no candidate imports or execution.",
+      "overlap": "Parser/value relations only; future physical owner, cold-reader and selection checks remain separate.",
+      "distinct_defect": "Wrong refresh, replay or captured-row values must not become unavailable merely because a later or prerequisite slot is missing.",
+      "disposition": "Static gate then fresh fast controls. No model-quality sample or runtime integration credit."
     }
   },
   "audit": {
