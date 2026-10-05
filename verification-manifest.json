@@ -7319,11 +7319,11 @@
       "lane": "git",
       "weight": 1,
       "timeout_seconds": 900,
-      "invariant": "Complete enrolled original matrices, exact source pins and immediate phase chronology bind capacity declarations. Probe cells also bind the original child horizon, exact probe and fixed-peer/merged Git source in a separate candidate view.",
+      "invariant": "Complete original matrices, phase chronology, child horizon and exact Git source bind probe cells; one immutable root assignment per cell rejects replay, overlapping roots and uncertain-append replacement.",
       "isolation": "class process with isolated inert Git and externally anchored journals",
       "overlap": "Uses original ranked/corpus readers and declared capacity arithmetic; financial and mesh endpoints are synthetic.",
       "distinct_defect": "A caller can otherwise submit a self-consistent shrunken matrix or late allocation and treat accounting as original-backed admission.",
-      "boundary": "Real Git/journal, original child clock and separate candidate snapshot checks; synthetic financial/mesh seams; no candidate/Engine/provider execution, qualified envelopes, leases or dispatch authority.",
+      "boundary": "Real Git/journal, separate snapshots, durable enrollment and lost-anchor-acknowledgement controls; synthetic financial/mesh/registration data; no candidate/Engine/provider execution, qualified envelopes, leases or dispatch authority.",
       "disposition": "Run with affected ranked/corpus and capacity checks after static gate."
     },
     "tests/test_candidate_source_capture_deadline_v1.py::EnclosingCapturePolicyTests": {

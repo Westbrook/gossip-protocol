@@ -1,0 +1,211 @@
+{
+  "protocol": "probe-cell-enrollment-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T13:29:32.563543+00:00",
+  "prior_commit": "4fc3303fa80e0039299a0cc0a0955650615cfd9d",
+  "status": "UNIQUE_ORIGINAL_PROBE_CELL_ROOT_ENROLLMENT_OFFLINE_QUALIFIED",
+  "implemented": [
+    "One deterministic immutable controller slot assigns a canonical execution root to an original reserved probe cell. Complete source/reservation/registration identity is rechecked before the write.",
+    "Exact six-trajectory roster and probe window are constrained by the original child horizon and history limit. New enrollment requires a live original clock.",
+    "Existing cell assignments cannot be repeated, including identical retries. Complete original cell rosters are scanned for cross-cell execution-root and candidate-view overlaps.",
+    "The single anchored append validates its expected predecessor. An actual committed append with deliberately lost acknowledgement leaves retained uncertain evidence and cannot issue another root.",
+    "Read-only inspection reconstructs the complete assignment and historical predecessor checkpoint, can inspect after expiry, and grants no renewal or dispatch."
+  ],
+  "qualification": {
+    "summary": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/summary.json",
+    "summary_sha256": "ad7b3fe22de7112c0ef9be39cf15740e404e3256e01ae4d0e4b7c37a21fbb095",
+    "inputs_sha256": "92c7751b0bcf02c9a832c0cf0fe3a3e1764a483ae48384397b93375ac09cd6ac",
+    "static_sha256": "9728b2a1568b86ea7964caa49d769a3a6173fdfa142355342ffa3c44686a3dac",
+    "source_input_count": 775,
+    "fresh_tests": 191,
+    "reused_tests": 0,
+    "classes": 18,
+    "duration_seconds": 285.0859525827691,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "f460c3efb2c95da2902ebb964830632b586728cea3433c46f49e7a1b8e587dd8",
+        "log_sha256": "77935288994fdad6c3ca2010ccaf6f6fd5c1871637e4b72acdf18cff1e331bc2",
+        "request_sha256": "ec2227b6d2f4737ec65091711de1f39133187a2f6f73b49ffa83f45554b6bba9"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/f8102915f46ef306/result.json",
+        "result_sha256": "6e8edb9f136c7c194a45d581b1d3528d2ee8f876bf36a0f269d8ab2d855648a5",
+        "log_sha256": "8586bcc4f45f917134717e2d1fd9fc606e03cf573b717f52c3c66ca5eceae6f6",
+        "request_sha256": "6121f795c3d9b8f190d2ab432c693b8be2ccb44d3aa293eff6900552b2130614"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/682d942eed25d87d/result.json",
+        "result_sha256": "af6b4ffeffb8df1d37b48e082b196b5947b1e3d50bf925b899b64f6e3bac775c",
+        "log_sha256": "e43c53a066809ea94cf2cef638b29da8109eb74f707b87f7d54e83e70d72c83e",
+        "request_sha256": "74c26eb4c5d38573b6cebcbc1f741c8aab944028b2fbffbbdc6d0662573e3d73"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/18e8426870583b7c/result.json",
+        "result_sha256": "9e050a3cefde85266f5e68dcaed9bbb1468da4354ee6a0a32595d01fa83d4b2b",
+        "log_sha256": "8a52700ec0b0b89ce1559386dbcae908bc31b2a4ffd334957ef9c008a6b990ee",
+        "request_sha256": "9fe556db43e8102a9ca52cb5f1ecf85ef1b7aa33c1dc0bc3751d3b096e7eb2d0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "e12221982c686a99b092d5068ae9aa91607c580fbda57e30000b36db5aae2dd6",
+        "log_sha256": "5d099b5abd0ebe6fb4334484976d98e271b8674ead8a698c01e651fd972dd052",
+        "request_sha256": "2ebb46f37e3e24409564a3a99546d901e2a39c6cf185f84bdac66059cbbf101e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "9a8219ee868745df3095eb62fe493626748d621909220bffb1ddaeb9d8c41a22",
+        "log_sha256": "bdb9396f96eeebdebba7536ae9bd851ddd96012e09b9a50d6dd04cd49721cb85",
+        "request_sha256": "f591c9972311196a8ba49f7c9effd1a0188c16532fd045a35e2c02da87a650af"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "a009dbd8c30cde5bffb1005a01ebb10c7e0ffadf07b879a9332d819e691d9903",
+        "log_sha256": "ef0108301d23717df7221b03059f05a75d1a6dd25c3f39fdcd66f0d8c7728935",
+        "request_sha256": "e5619ab05e168b34e2bb9da3f951647a197062b17a0b5958275ffdba2ed590f0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/9357695866ace6b8/result.json",
+        "result_sha256": "8b24a101d5171258983e47e1cd53003a15844e698daf7e67553c797b0d2004f7",
+        "log_sha256": "6581641035cbdcacf455b97fdecffc995a897ad8ac5a61c2572f665f2047da73",
+        "request_sha256": "f0671514dadfad92f922856e236424b19af1b1893d0bb48a4a854d92bed690fd"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "7e55cf1347a69af3a641662e96163b5b2a2d272f28ff0075837f8f37fd3afa97",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db",
+        "request_sha256": "a4de83a83197404d127996535e57221f6859ec13c6f2ac491e4756d07904ee26"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "dbb3804debb7f934a96efc0eed1519a1b92699ae2730e022f883f5a4212ecb3d",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "5f9da0a0be0cb88b6921811cdac1cabad9ef5c7b83b43d226e943c34c03e00a1"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "7de9e8cdd0fb8f3ff111b3b77d0bf48981091074fec38643bbc2f34661c68327",
+        "log_sha256": "8dd223efa0643f801eb312672f6e937804c0efc8e6f2b7b6b88868ec171228cf",
+        "request_sha256": "32e627553b2976de37529e106a3e2ef98c837a03061ca8bc3560b7420243a244"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 30,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/7686ba4051122c92/result.json",
+        "result_sha256": "64d639980dd556c0b936d7f74803bc9a9dd8ede07a27b887120bfb1cd61dc303",
+        "log_sha256": "81b12e23dccf9d5b3e6a73ddf64e2123cf867e540bd35aa840119e73521b3fd0",
+        "request_sha256": "6b24f32693f0d4b1313c7e878b25efe54b0e7384735385511f4afca425ce4317"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "46ecdd765b1e4600cb03c6da623b9d091cb19587af93d4a54eb0bf84131b0984",
+        "log_sha256": "a97958682e64f7b4ad212e6bdaf28e5d0fa8366c9490a29e7259c8e355c0af61",
+        "request_sha256": "95107e32dd23c7447b3db1427884c931055ac15ffc702cfa1b9bf71ce8de596c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "0027706c88086047a559bdc1ca45797d18a7aa588608a98276b0eb0d3cfdbd75",
+        "log_sha256": "4ab037e8208c316eb6a8ad5cd6c9776f596f30466d299141889fd974567f37f8",
+        "request_sha256": "e0d46942b798a6c1f1d16209a2113c31fa4090aba0cf08397f5d75410d73cc73"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "f119dc0e66443961019b5ae6386d7fe30af5813722561b599212e2223d908fb8",
+        "log_sha256": "a311e047c1c4bed69e734b2b874bbd248a050a319bb1882eca1a67f38955a27c",
+        "request_sha256": "b5d638b74b8cf43a83db195a3235a7682a443e8c3b104b2643bebf78988d7168"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "352e146f9c5b0f046ccd4eed6b7e34cfa14a1640d33c3883f44c388497087891",
+        "log_sha256": "8de026e73242a86593f62341e05b2c278aa7014df0c41bc04dcc15947f339f9f",
+        "request_sha256": "dc7ad85d4f4b0bbea0ebca359467e8538617bf03e159bd293ee85c60ff1e7b5d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "f3eb0ae99c0abc0c7c294a0fe273f8bd1e2e03f77425dc04704711c138d6899f",
+        "log_sha256": "7a6d7ea5e8f14a991f050af7ffde089b31204aa5b9c412c63fcb8de78f01443c",
+        "request_sha256": "d06b4384daa188cd57909cd1b2563d0f1555cd689a1ea9cacf24da78083f8d94"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-cell-enrollment-qualification/20261005T132436-172e7d2a/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "aabd7d595f99737569120e8c28b7f3864a2276e49ae8310cf474192bc447a5c0",
+        "log_sha256": "9a6ced141e41ae9d13f98b3d825c7786786f61688587e9ef720c5f36360f04a1",
+        "request_sha256": "fdeef17ef8c71f2e14b7e7520404ebb9bbb9426c31d994e92eb452165016bacf"
+      }
+    ],
+    "scope": "Actual inert Git, anchored journals, single append and lost-acknowledgement failure; synthetic financial, mesh and registration data. No Engine, candidate or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failure": {
+    "summary": "runs/probe-cell-enrollment-focused/20261005T131929-a716f71d/summary.json",
+    "sha256": "a85d5d1f8f2373639a0873546c352aa365db68ee79cf8932daa234a47be06766",
+    "interpretation": "Cold comparison rejected the newly retained registration because tuple fields had serialized to lists. Normalized the expected stored registration before exact comparison; failed raw logs remain retained."
+  },
+  "source_pins": {
+    "docs/generated-probe-cell-enrollment-v1.md": "13209b20436fe7d013f8dfc78783eff50d289fbbac9de05dc77869b397df00f8",
+    "docs/generated-probe-reserved-cell-v1.md": "4478cf4133d689d4dc280aeb641b09ad84bac892cc0c6de7589ead42b7c92476",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "22090ed0074ba8ace27a9abc2755171587c019c6d9a3b13d2e05446864e82904",
+    "tests/test_cumulative_generated_probe_accounting_v1.py": "02e08c1a02338d81f42d31d9c98ea39cf5d18688073c86533c9265cf1a2e2684",
+    "verification-manifest.json": "a207634833e34957f2ba27644bf2b71aa86a71006898f08cacfc9a59af9d02d2"
+  },
+  "limitations": [
+    "Enrollment is retained as pending qualification, and does not yet participate in physical dispatch or the ranked controller. It is a unique root assignment, not an execution intent or lease.",
+    "Synthetic typed registration data does not authenticate independent review or runtime; those original checks and qualified resource limits remain required.",
+    "Physical-observation/controller-clock joins, changed-source independent reviews, remaining acceptance routes, physical controls and a complete matching rehearsal remain outstanding."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Consume the immutable original cell enrollment at physical admission together with qualified resource limits and independent source/runtime approval; join physical observations before ranked selection activation."
+}

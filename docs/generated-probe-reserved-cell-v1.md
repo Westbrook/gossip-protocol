@@ -39,3 +39,7 @@ controller readers. Financial proof and mesh seams are synthetic; they are not a
 new provider or candidate execution, independent review, live experiment or
 statistical sample. The accounting protocol is versioned for this source join;
 older retained qualifications retain their original source identity.
+
+The [durable enrollment continuation](generated-probe-cell-enrollment-v1.md)
+assigns one canonical root per reserved cell. That assignment remains pending
+qualification and is separate from physical execution intent and dispatch.

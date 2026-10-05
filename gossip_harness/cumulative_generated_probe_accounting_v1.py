@@ -9,15 +9,18 @@ executor leases or proves physical costs, execution or independent acceptance.
 from __future__ import annotations
 
 import hashlib
+import time
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
 from . import candidate_checkpoint_chain_v1 as chain
+from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_observation_admission_v1 as admission
 from . import cumulative_generated_probe_capacity_v1 as capacity
 from . import cumulative_generated_probe_context_v1 as contexts
 from . import cumulative_generated_probe_plan_v1 as plans
+from . import cumulative_generated_probe_state_v1 as states
 from . import cumulative_generated_probe_corpus_v1 as corpus
 from . import cumulative_generated_probe_matrix_v1 as matrices
 from . import cumulative_generated_probe_ranked_originals_v1 as ranked
@@ -27,13 +30,13 @@ from . import cumulative_study_runtime_v2 as runtime
 from . import cumulative_child_deadline_v1 as child_deadlines
 from .gitstore import GitStore
 
-PROTOCOL = 'cumulative-generated-probe-original-accounting-v1-reserved-cell-v3'
+PROTOCOL = 'cumulative-generated-probe-original-accounting-v1-cell-enrollment-v4'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 require = study.require
 
 
 def sources() -> dict[str, str]:
-    pins = {**ranked.sources(), **plans.evaluator_sources(),
+    pins = {**ranked.sources(), **states.evaluator_sources(),
         'gossip_harness/cumulative_generated_probe_accounting_v1.py': LOADED_SOURCE_SHA256,
         'gossip_harness/cumulative_generated_probe_capacity_v1.py': capacity.LOADED_SOURCE_SHA256,
         'gossip_harness/cumulative_generated_probe_corpus_v1.py': corpus.LOADED_SOURCE_SHA256}
@@ -242,3 +245,149 @@ def inspect_probe_cell(owner: runtime.GossipChildRuntime, book: capacity.Reserva
         'original_matrix_bound': True, 'original_source_bound': True,
         'unique_execution_intent_retained': False, 'qualified_resource_envelope': False,
         'selection_authority': False, 'dispatch_authority': False, 'acceptance_authority': False}
+
+
+def _enrollment_slot(reservation_slot: str, cell_sha256: str) -> str:
+    return 'generated-probe.cell-enrollment.' + values.digest([reservation_slot, cell_sha256])
+
+
+def _canonical_root(root: Path) -> Path:
+    require(isinstance(root, Path) and root.is_absolute() and root.resolve() == root,
+            'canonical_probe_execution_root_required')
+    return root
+
+
+def _overlap(left: Path, right: Path) -> bool:
+    return left.is_relative_to(right) or right.is_relative_to(left)
+
+
+def _enrollments(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger) -> list[dict[str, Any]]:
+    """Enumerate exactly the bounded original cell roster, not an untrusted index."""
+    found = []
+    for index, allocation in enumerate(book.snapshot()['entries']):
+        slot = book._slot(index)
+        for phase in ('contextual', 'merged'):
+            for cell in allocation['request']['matrix']['cells'][phase]:
+                if allocation['request']['phase'] != 'after-review' or cell['kind'] != 'generated-history':
+                    continue
+                key = _enrollment_slot(slot, cell['cell_sha256'])
+                row = owner.records.read(key)
+                if row is None:
+                    continue
+                require(row.get('protocol') == PROTOCOL and row.get('reservation_slot') == slot
+                        and row.get('cell_sha256') == cell['cell_sha256']
+                        and allocation['decision']['status'] == 'reserved_declaration',
+                        'original_probe_enrollment_identity_differs')
+                require(owner.records.chain.position(owner.records.name(key)) >
+                        owner.records.chain.position(owner.records.name(slot)),
+                        'probe_enrollment_precedes_reservation')
+                _canonical_root(Path(row['execution_root']))
+                _canonical_root(Path(row['candidate_store']))
+                found.append(row)
+    return found
+
+
+def _enrollment_value(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
+                      slot: str, cell_sha256: str, plan: plans.ProbePlan, *,
+                      candidate_store: GitStore, binding: states.ProbeBinding,
+                      registration: admission.ObservationRegistration, execution_root: Path,
+                      expected: chain.PrefixCommitment, milestone: str, generation: int,
+                      quotas: corpus.Quotas, limits: ranked.ReviewLimits,
+                      selected: tuple[str, ...] | None) -> dict[str, Any]:
+    proof = inspect_probe_cell(owner, book, slot, cell_sha256, plan, candidate_store=candidate_store,
+        expected=expected, milestone=milestone, generation=generation, quotas=quotas, limits=limits,
+        selected=selected)
+    require(type(binding) is states.ProbeBinding and type(registration) is admission.ObservationRegistration,
+            'exact_probe_enrollment_binding_and_registration_required')
+    expected_registration = states.observation_registration(plan, binding,
+        gate_id=registration.gate.gate_id, repetition_id=registration.repetition_id,
+        cohort_trajectory_ids=tuple(t.id for t in owner.plan.cohort.trajectories))
+    require(registration == expected_registration, 'probe_enrollment_registration_differs')
+    original = proof['reservation']['original_child_clock']
+    require(original['started_ns'] <= binding.window.started_ns < binding.window.deadline_ns <= original['deadline_ns'],
+            'probe_enrollment_window_outside_original_child')
+    require(binding.window.deadline_ns - binding.window.started_ns <= plan.policy.history_seconds * 1_000_000_000,
+            'probe_enrollment_window_exceeds_history_limit')
+    root = _canonical_root(execution_root)
+    head = owner.records.chain.authority
+    require(type(head) is ExternalHead, 'original_probe_enrollment_head_required')
+    assert isinstance(head, ExternalHead)
+    protected = (owner.protected.path, candidate_store.path, owner.records.chain.raw_root,
+                 owner.records.chain.delta_root, head.root)
+    require(all(not _overlap(root, p) for p in protected), 'probe_execution_root_overlaps_protected_state')
+    return {'protocol': PROTOCOL, 'reservation_slot': slot, 'cell_sha256': cell_sha256,
+        'source_join_sha256': values.digest(proof), 'probe_plan_sha256': values.digest(plan.record()),
+        'binding': asdict(binding), 'registration': study.plain(asdict(registration)),
+        'candidate_store': str(candidate_store.path), 'execution_root': str(root),
+        'roots': {name: str(root / name) for name in ('raw', 'delta', 'head', 'cleanup')},
+        'status': 'enrolled_pending_qualification', 'qualified_resource_envelope': False,
+        'dispatch_authority': False, 'selection_authority': False, 'acceptance_authority': False}
+
+
+def enroll_probe_cell(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
+                      slot: str, cell_sha256: str, plan: plans.ProbePlan, *,
+                      candidate_store: GitStore, binding: states.ProbeBinding,
+                      registration: admission.ObservationRegistration, execution_root: Path,
+                      expected: chain.PrefixCommitment, milestone: str, generation: int,
+                      quotas: corpus.Quotas, limits: ranked.ReviewLimits,
+                      selected: tuple[str, ...] | None = None) -> dict[str, Any]:
+    """One irreversible root assignment per reserved cell; no dispatch callback.
+
+    Unknown appends follow the existing anchored journal's fail-closed rules.
+    Even an identical second call is refused. Inspection never issues a new root.
+    """
+    value = _enrollment_value(owner, book, slot, cell_sha256, plan, candidate_store=candidate_store,
+        binding=binding, registration=registration, execution_root=execution_root, expected=expected,
+        milestone=milestone, generation=generation, quotas=quotas, limits=limits, selected=selected)
+    key = _enrollment_slot(slot, cell_sha256)
+    require(owner.records.read(key) is None, 'probe_cell_already_enrolled')
+    require(not execution_root.exists(), 'probe_execution_root_must_be_fresh')
+    for row in _enrollments(owner, book):
+        old = Path(row['execution_root'])
+        require(not _overlap(execution_root, old)
+                and not _overlap(execution_root, Path(row['candidate_store']))
+                and not _overlap(candidate_store.path, old), 'probe_execution_root_already_assigned_or_overlapping')
+    original = child_deadlines.read(owner.records, owner.plan, owner.index, active=True)
+    issued = time.monotonic_ns()
+    require(binding.window.started_ns <= issued < binding.window.deadline_ns
+            and not original.expired(time.time()), 'probe_enrollment_window_expired_or_not_started')
+    owner.records.chain.validate_boundary(expected=expected)
+    owner.records.put(key, {**value, 'issued_at_ns': issued, 'input_checkpoint': asdict(expected)})
+    owner.records.chain.validate_boundary()
+    return {'slot': key, 'record_sha256': study.digest(owner.records.read(key)),
+            'cell_root_assigned': True, 'dispatch_authority': False, 'acceptance_authority': False}
+
+
+def inspect_probe_enrollment(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
+                             slot: str, cell_sha256: str, plan: plans.ProbePlan, *,
+                             candidate_store: GitStore, binding: states.ProbeBinding,
+                             registration: admission.ObservationRegistration, execution_root: Path,
+                             expected: chain.PrefixCommitment, milestone: str, generation: int,
+                             quotas: corpus.Quotas, limits: ranked.ReviewLimits,
+                             selected: tuple[str, ...] | None = None) -> dict[str, Any]:
+    """Reconstruct the exact retained assignment, including after its time window."""
+    value = _enrollment_value(owner, book, slot, cell_sha256, plan, candidate_store=candidate_store,
+        binding=binding, registration=registration, execution_root=execution_root, expected=expected,
+        milestone=milestone, generation=generation, quotas=quotas, limits=limits, selected=selected)
+    key = _enrollment_slot(slot, cell_sha256); row = owner.records.read(key)
+    require(type(row) is dict and set(row) == set(value) | {'issued_at_ns', 'input_checkpoint'},
+            'complete_original_probe_enrollment_required')
+    assert row is not None
+    require(values.exact({k: row[k] for k in value}, value), 'original_probe_enrollment_changed')
+    prior = chain.PrefixCommitment(**row['input_checkpoint'])
+    require(prior == ranked._original_prefix(owner, prior.sequence, expected)
+            and owner.records.chain.position(owner.records.name(key)) == prior.sequence + 1
+            and type(row['issued_at_ns']) is int
+            and binding.window.started_ns <= row['issued_at_ns'] < binding.window.deadline_ns,
+            'original_probe_enrollment_chronology_differs')
+    rows = _enrollments(owner, book)
+    for other in rows:
+        if other['reservation_slot'] == slot and other['cell_sha256'] == cell_sha256:
+            continue
+        require(not _overlap(execution_root, Path(other['execution_root']))
+                and not _overlap(execution_root, Path(other['candidate_store']))
+                and not _overlap(candidate_store.path, Path(other['execution_root'])),
+                'original_probe_root_assignment_conflict')
+    owner.records.chain.validate_boundary(expected=expected)
+    return {'slot': key, 'record_sha256': study.digest(row), 'cell_root_assigned': True,
+            'dispatch_authority': False, 'acceptance_authority': False}

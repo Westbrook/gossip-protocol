@@ -8,6 +8,8 @@ from gossip_harness import cumulative_generated_probe_accounting_v1 as accountin
 from gossip_harness import cumulative_child_deadline_v1 as clocks
 from gossip_harness import cumulative_generated_probe_context_v1 as contexts
 from gossip_harness import cumulative_generated_probe_plan_v1 as plans
+from gossip_harness import cumulative_generated_probe_state_v1 as states
+from unittest import mock
 from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import project_acceptance_registry_v1 as registry
 from gossip_harness.gitstore import GitStore
@@ -373,3 +375,100 @@ class GeneratedProbeOriginalAccountingGitTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'registered_head_changed'):
             self.inspect_cell(f,slot,cell,plan)
         self.assertEqual(f.owner.protected.head(),accepted);self.assertEqual(f.chain.commitment,before)
+
+
+    def enrollment(self,f,plan):
+        now=time.monotonic_ns()
+        # Explicit synthetic registration hashes. Enrollment grants no review,
+        # runtime, resource qualification or observation admission capability.
+        binding=states.ProbeBinding(plan.target.subject.source_sha256,values.PRODUCT_SHA256,f.milestone,
+            values.digest(plan.record()),*(['a'*64]*7),states.ProbeWindow(now,now+30_000_000_000))
+        registration=states.observation_registration(plan,binding,gate_id='reserved-probe',
+            repetition_id='public-development-1',cohort_trajectory_ids=tuple(t.id for t in f.plan.cohort.trajectories))
+        return {'candidate_store':f.cell_store,'binding':binding,'registration':registration,
+            'execution_root':f.root/'probe-execution','expected':f.chain.commitment,
+            'milestone':f.milestone,'generation':f.generation,'quotas':self.quotas,'limits':f.limits}
+
+    def test_cell_enrollment_is_one_durable_assignment_and_inspection_never_reissues(self):
+        f,slot,cell,plan,selected=self.cell_fixture();args=self.enrollment(f,plan);before=f.chain.commitment
+        result=accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        self.assertEqual(f.chain.commitment.sequence,before.sequence+1)
+        self.assertFalse(args['execution_root'].exists());self.assertFalse(result['dispatch_authority'])
+        args['expected']=f.chain.commitment
+        self.assertEqual(accounting.inspect_probe_enrollment(f.owner,f.book,slot,cell.sha256,plan,**args),result)
+        for root in (args['execution_root'],f.root/'different-root'):
+            with self.assertRaisesRegex(ValueError,'probe_cell_already_enrolled'):
+                accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**{**args,'execution_root':root})
+        self.assertEqual(f.chain.commitment.sequence,before.sequence+1)
+
+    def test_enrollment_rejects_existing_protected_or_noncanonical_execution_roots(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan);before=f.chain.commitment
+        existing=f.root/'existing';existing.mkdir()
+        for root in (existing,f.cell_store.path/'inside',f.owner.protected.path,f.chain.raw_root,f.root/'alias'/'..'/'new'):
+            with self.subTest(root=str(root)),self.assertRaises(ValueError):
+                accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**{**args,'execution_root':root})
+        self.assertEqual(f.chain.commitment,before)
+
+    def test_enrollment_rejects_expired_window_and_changed_registration_without_writes(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan);before=f.chain.commitment
+        changed=replace(args['registration'],definition_sha256='b'*64)
+        with self.assertRaisesRegex(ValueError,'registration_differs'):
+            accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**{**args,'registration':changed})
+        with mock.patch.object(accounting.time,'time',return_value=f.owner.deadline):
+            with self.assertRaisesRegex(ValueError,'window_expired_or_not_started'):
+                accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        self.assertEqual(f.chain.commitment,before)
+
+    def test_cold_enrollment_inspection_rejects_substituted_root_and_reauthenticates_source(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan)
+        accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        args['expected']=f.chain.commitment;before=f.chain.commitment
+        with self.assertRaisesRegex(ValueError,'original_probe_enrollment_changed'):
+            accounting.inspect_probe_enrollment(f.owner,f.book,slot,cell.sha256,plan,
+                **{**args,'execution_root':f.root/'substituted'})
+        with mock.patch.object(accounting.time,'time',return_value=f.owner.deadline):
+            result=accounting.inspect_probe_enrollment(f.owner,f.book,slot,cell.sha256,plan,**args)
+        self.assertTrue(result['cell_root_assigned']);self.assertEqual(f.chain.commitment,before)
+        value=next(iter(f.proofs.values()));value['result_payload']={'kind':'failure','payload':{}}
+        with self.assertRaisesRegex(ValueError,'finance request/result'):
+            accounting.inspect_probe_enrollment(f.owner,f.book,slot,cell.sha256,plan,**args)
+
+    def test_distinct_cells_cannot_share_or_nest_execution_roots(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan)
+        accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        active,matrix,_=corpus.read(f.owner,expected=f.chain.commitment,milestone=f.milestone,
+            generation=f.generation,quotas=self.quotas,limits=f.limits)
+        other=next(c for c in matrix.contextual_cells if c.kind=='generated-history' and c.actor!=cell.actor)
+        gen,_=ranked.reconstruct_frozen(f.owner,expected=f.chain.commitment,milestone=f.milestone,
+            generation=f.generation,limits=f.limits)
+        context=contexts.compose(gen,'contextual',actor=other.actor);r=context.record()
+        commit=f.owner.protected.propose(contexts.delta_from_base(gen,context),gen.base.commit_oid)
+        view=GitStore.fork(f.owner.protected,f.root/'other-probe-view.git')
+        view._git('fetch','--no-tags',str(f.owner.protected.path),commit+':refs/heads/accepted')
+        target=replace(plan.target,candidate_id=other.actor,context_id=context.sha256,commit_oid=commit,
+            tree_oid=r['tree_oid'],subject=replace(plan.target.subject,source_sha256=r['source_sha256']))
+        other_plan=replace(plan,target=target);other_args={**self.enrollment(f,other_plan),'candidate_store':view}
+        before=f.chain.commitment
+        for root in (args['execution_root'],args['execution_root']/'nested'):
+            with self.assertRaisesRegex(ValueError,'already_assigned_or_overlapping'):
+                accounting.enroll_probe_cell(f.owner,f.book,slot,other.sha256,other_plan,
+                    **{**other_args,'execution_root':root})
+        self.assertEqual(f.chain.commitment,before)
+
+
+    def test_unknown_enrollment_append_retains_evidence_and_cannot_issue_another_root(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan)
+        original=f.chain._anchor
+        def lost_reply(old,new):
+            original(old,new)
+            raise OSError('synthetic lost anchor acknowledgement')
+        with mock.patch.object(f.chain,'_anchor',side_effect=lost_reply):
+            with self.assertRaises(ChainUnknown):
+                accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        self.assertTrue(f.chain.uncertain)
+        key=accounting._enrollment_slot(slot,cell.sha256)
+        self.assertTrue((f.chain.raw_root/f.owner.records.name(key)).exists())
+        self.assertFalse(args['execution_root'].exists())
+        with self.assertRaises(ChainUnknown):
+            accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,
+                **{**args,'execution_root':f.root/'retry-root'})
