@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/35b75e435d31e528/result.json": "dae23503113eeab0f66f1b8a34d970fb8c778a4af91ad9ff5ea49a987049e06f",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/35b75e435d31e528/worker.log": "c2b0d698bcf9e235453d87d8e67e9b5922646319b2ecf4baaeca1f218879072c",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/448ac036db494738/result.json": "b0ea20b69c5cd5e1ae1af3b00a36cdff7003a3f8fe5a8d5bb1952a33b3f1892d",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/448ac036db494738/worker.log": "d84f2d0227e5e6606b0b7746823caba4d97137e29b973afa853f66501bd5794e",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/44fe0d6ef4f803a7/result.json": "173df98151cc91edc45f6ce68302935d66ecf6a68dd63af6c1158e4a4f27ee05",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/44fe0d6ef4f803a7/worker.log": "6ee16e26080a4c6625a4e061950cfd9a2075d92968cc2c9f60746e88ca05b708",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/49c0faf45ab6b81c/result.json": "159432c22dded53c88aa7939c1b1f2b8ee0f63edc236a7a3d0e7f43477f3a9b8",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/49c0faf45ab6b81c/worker.log": "a048eb90755ed7b267e565fac2c8cb43d15a4804a6bec0e91c1a941fe8755fc3",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/bdf47adfa2fefb8d/result.json": "0808a32ac743d7061872c62c04eb33caa9e7eb16d196a4b14c36885e02955719",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/bdf47adfa2fefb8d/worker.log": "a84a2e74a46d1c96b16772b0b53bb6c910ee859838b37dbce26aa4721e435828",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/c2dcdb81ab3c2694/result.json": "2e45254a2083f93d5dc625fbdd55c8f65190b4c100e514f0338ed556d6949a7f",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/c2dcdb81ab3c2694/worker.log": "4b053cfe998373b5f1cba5fa8446e2faf7241fbef299954f112019587cf49287",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/d944ab3447aa14a4/result.json": "cca94053bf895d36922559a43bdc895caada6d3c9670dd6b43f56e4ea8f22d97",
+    "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be/classes/d944ab3447aa14a4/worker.log": "dcc6f160f520796f2f59c848bc30e68ceb112b0dd0eb2a89237ed1df3e02f18a"
+  },
+  "classes": 7,
+  "duration_seconds": 164.59847229067236,
+  "fingerprint": "c53f1e11329861e3521fa3343171a3f580148c9b8221aa61ac2511bbe1d4c144",
+  "fresh_tests": 103,
+  "inputs_sha256": "c4802d972ac63d92ad87abbd2d00a146fe1094cfaaea705216db106b1749a277",
+  "limitations": [
+    "Local source, ordered-suite, artifact and runtime reconciliation; not scientific acceptance.",
+    "Full680check gate and new changed-source physical qualification remain required.",
+    "One failed run retained: existing deadline-test mock had not been changed to the new combined API. Production source was unchanged after that test correction."
+  ],
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-combined-review-nearest-audit-v1",
+  "reused_tests": 0,
+  "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+  "selected_tests": 103,
+  "session": "runs/workflow-combined-review-nearest-1/20261005T034014-26c4e4be",
+  "source_inputs": 732,
+  "static_status": "passed",
+  "status": "passed",
+  "summary_sha256": "3f7757172c3a3e119bb54d9b02b3b929cd2c211fb0f71fe2a56a34b03bfdfff5"
+}

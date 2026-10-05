@@ -214,6 +214,31 @@ class CandidateWorkflowGitCompositionTests(unittest.TestCase):
             owner.checkpoint()
         self.assertEqual(owner.checkpoint_authority.read(), expected)
 
+    def test_current_uses_fresh_combined_review_and_checks_both_identities(self):
+        fixture = self.fixture('workflow')
+        owner = construct_fixture_owner(fixture)
+        self.addCleanup(owner.close)
+        authority = fixture.authority
+        self.assertEqual(owner.config['review_read_policy'], execution.review_read_policy())
+        with mock.patch.object(authority, 'authenticate', side_effect=AssertionError('legacy duplicate read')), \
+             mock.patch.object(authority, 'provenance', side_effect=AssertionError('legacy duplicate read')), \
+             mock.patch.object(authority, 'authenticate_with_provenance', wraps=authority.authenticate_with_provenance) as reads:
+            owner.current(fixture.state['freeze'])
+            owner.current(fixture.state['freeze'])
+            self.assertEqual(reads.call_count, 2)
+        report_sha256, provenance = authority.authenticate_with_provenance(fixture.plan)
+        for result in (('f'*64, provenance), (report_sha256, {**provenance, 'positions': {}})):
+            with mock.patch.object(authority, 'authenticate_with_provenance', return_value=result):
+                with self.assertRaisesRegex(ValueError, 'Layout authority changed'):
+                    owner.current(fixture.state['freeze'])
+        owner.config['review_read_policy'] = None
+        with self.assertRaisesRegex(ValueError, 'review read policy differs'):
+            owner.current(fixture.state['freeze'])
+        owner.config['review_read_policy'] = execution.review_read_policy()
+        (fixture.mechanism_journal.raw_root/'report.json').write_bytes(b'{}')
+        with self.assertRaises(chain.ChainError):
+            owner.current(fixture.state['freeze'])
+
     def test_product_owner_binds_policy_and_freshly_reads_each_checkpoint(self):
         fixture = self.fixture('workflow')
         self.check_batch_owner(construct_fixture_owner(fixture), fixture.state['freeze'])

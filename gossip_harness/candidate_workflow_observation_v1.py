@@ -218,6 +218,8 @@ def reconstruct(owner: execution.CandidateWorkflowExecution) -> dict[str, Any]:
     require(owner.config.get('deadline_policy') == execution.deadline_policy(), 'Original deadline policy differs')
     require(owner.config.get('journal_read_policy') == execution.JOURNAL_READ_POLICY.record(),
         'Original workflow journal read policy differs')
+    require(owner.config.get('review_read_policy') == execution.review_read_policy(),
+        'Original workflow review read policy differs')
     require(intent['protocol'] == owner.binding.protocol
         and execution.encoded(intent['registration']) == execution.encoded(asdict(owner.observation_registration))
         and execution.encoded(intent['original_binding']) == execution.encoded(asdict(owner.binding))

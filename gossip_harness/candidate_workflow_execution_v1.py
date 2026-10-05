@@ -72,6 +72,13 @@ class WorkflowDeadlineExceeded(transport.ExecutionError):
     """Expired owner observation window, distinct from source/admission failure."""
 
 
+def review_read_policy() -> dict[str, Any]:
+    return {'protocol': 'workflow-current-review-read-v2',
+        'scope': 'product workflow current-state boundary',
+        'read': 'one fresh authenticated report and provenance together',
+        'checkpoint_guards': 'before and after original read', 'cross_call_cache': False}
+
+
 def deadline_policy() -> dict[str, Any]:
     return {'id': DEADLINE_POLICY_ID, 'call_seconds': 30, 'history_seconds': 300,
         'clock': 'one absolute monotonic window; no reset or host-work discount',
@@ -265,7 +272,7 @@ def binding_for(files: dict[str, bytes], value: profile.WorkflowProfile, policy:
             'host_python': [platform.python_implementation(), platform.python_version()],
             'snapshot_protocol': b01.SNAPSHOT_PROTOCOL, 'volume_options': b01.VOLUME_OPTIONS}),
         digest({'policy': asdict(policy), 'deadline_policy': deadline_policy(), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
-            'journal_read_policy': JOURNAL_READ_POLICY.record(),
+            'journal_read_policy': JOURNAL_READ_POLICY.record(), 'review_read_policy': review_read_policy(),
             'journal': asdict(LIMITS), 'chunk_bytes': CHUNK_BYTES, 'prestart_policy': prestart.definition(),
             'capture_bytes': b02.MAX_CAPTURE_BYTES, 'wire': wire_definition(),
             'call_count': len(value.phases), 'cleanup': asdict(cleanup.CleanupLimits())}), digest({'seed': policy.seed}))
@@ -810,7 +817,7 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
             self.config = {'protocol': self.binding.protocol, 'mode': mode, 'root': str(self.root), 'delta_root': str(self.delta_root),
                 'cleanup_root': str(self.cleanup_root), 'repository': str(store.path.resolve()), 'registration': asdict(registration),
                 'profile': value.record(), 'plan': asdict(plan), 'review_sha256': self.review_sha256,
-                'review_provenance': review_authority.provenance(plan),
+                'review_provenance': review_authority.provenance(plan), 'review_read_policy': review_read_policy(),
                 'source_manifest': admission.source_manifest(self.files), 'sources': self.sources,
                 'runtime': self.runtime, 'policy': asdict(policy), 'source_capture_policy': SOURCE_CAPTURE_POLICY.record(),
                 'journal_read_policy': JOURNAL_READ_POLICY.record(),
@@ -848,12 +855,15 @@ class CandidateWorkflowExecution(transport.CandidateStorageExecution):
             and type(self.plan) is review.WorkflowSourcePlan, 'Original workflow mapping profile differs')
         require(self.config.get('journal_read_policy') == JOURNAL_READ_POLICY.record(),
             'Workflow journal read policy differs')
+        require(self.config.get('review_read_policy') == review_read_policy(),
+            'Workflow review read policy differs')
         require(evaluator_sources() == self.sources, 'workflow evaluator changed')
         with self._timings.span('source'):
             tree, files = capture_git_source(self.store, self.registration.commit_oid)
         require(tree == self.tree and files == self.files, 'Final Git source changed')
-        require(self.review_authority.authenticate(self.plan) == self.review_sha256
-            and digest(self.review_authority.provenance(self.plan)) == self.binding.review_origin_sha256, 'Layout authority changed')
+        report_sha256, provenance = self.review_authority.authenticate_with_provenance(self.plan)
+        require(report_sha256 == self.review_sha256
+            and digest(provenance) == self.binding.review_origin_sha256, 'Layout authority changed')
         self.admission.check_current(self.observation_registration, freeze)
 
     def execute_once(self) -> dict[str, Any]:

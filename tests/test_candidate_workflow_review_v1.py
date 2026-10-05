@@ -9,6 +9,7 @@ import hashlib
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from gossip_harness import candidate_workflow_review_v1 as review
 from gossip_harness import candidate_checkpoint_chain_v1 as chain
@@ -81,6 +82,29 @@ class CandidateWorkflowReviewTests(unittest.TestCase):
         original = authority.provenance(self.plan)
         self.assertEqual(original['positions'], {'request': 1, 'report': 2, 'delivery': 3})
         self.assertEqual(journal.commitment, authority.expected)
+
+    def test_combined_read_matches_both_legacy_identities_and_never_caches(self):
+        authority, journal = self.make()
+        expected = (authority.authenticate(self.plan), authority.provenance(self.plan))
+        with mock.patch.object(authority, '_original', wraps=authority._original) as reads:
+            actual = authority.authenticate_with_provenance(self.plan)
+            self.assertEqual(actual, expected)
+            self.assertEqual(reads.call_count, 1)
+            actual[1]['positions']['report'] = 999
+            self.assertEqual(authority.authenticate_with_provenance(self.plan), expected)
+            self.assertEqual(reads.call_count, 2)
+        (journal.raw_root/'report.json').write_bytes(b'{}')
+        with self.assertRaises(chain.ChainError):
+            authority.authenticate_with_provenance(self.plan)
+
+    def test_combined_read_refuses_changed_plan_and_revoked_prefix(self):
+        authority, _ = self.make()
+        authority.authenticate_with_provenance(self.plan)
+        with self.assertRaises(admission.AdmissionError):
+            authority.authenticate_with_provenance(replace(self.plan, source_sha256='f'*64))
+        authority.expected = replace(authority.expected, head_sha256='f'*64)
+        with self.assertRaises(chain.ChainError):
+            authority.authenticate_with_provenance(self.plan)
 
     def test_rejected_mechanism_duty_cannot_be_approved(self):
         rows = [{'id': duty, 'decision': 'rejected' if i == 0 else 'approved',

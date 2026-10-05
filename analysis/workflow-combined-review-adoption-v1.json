@@ -1,0 +1,64 @@
+{
+  "comparison": {
+    "combined_median_seconds": 0.0298983335,
+    "original_median_seconds": 0.0598812915,
+    "pairs": 8,
+    "path": "analysis/workflow-review-read-comparison-v1.json",
+    "scope": "One synthetic protected review/source plan; component only",
+    "sha256": "5bf49cdf1437f3ce599497a3744f0e56287a573d692589f56061d75ec58c7a1a"
+  },
+  "expanded_test": "Existing original-read-policy guard now covers both journal and review policy",
+  "failed_attempt": {
+    "correction": "Existing deadline test mock changed to combined method tuple; production code unchanged",
+    "outcomes": {
+      "error": 1,
+      "not_run": 35,
+      "passed": 67
+    },
+    "sha256": "8d9d497ec4c8e0e4745cf9632b5ad40065db015219d9e9f3d4a10823f09c805a",
+    "summary": "runs/workflow-combined-review-nearest-1/20261005T033832-6316354c/summary.json"
+  },
+  "full_selection": {
+    "classes": 65,
+    "path": "runs/workflow-combined-review-adoption-1/full-selection.json",
+    "sha256": "28f8d6fee806fc79b225f2dfa756e20706358c0463b18767f4f6f5c9988628e7",
+    "tests": 680
+  },
+  "implementation": [
+    "WorkflowReviewAuthority.authenticate_with_provenance derives both identities from one fresh complete original read",
+    "Workflow current-state validation compares both original report digest and provenance binding",
+    "Explicit policy bound in product limits/config and checked by current-state and original readers",
+    "Existing authenticate/provenance entry points remain fresh and unchanged for other callers"
+  ],
+  "invariants": [
+    "Original request/report/delivery hashes, exact source-profile request, ordered duties, delivery/chronology and before/after external-head checks remain inside _original",
+    "Returned dictionaries are fresh per call; caller mutations and prior successes cannot approve later tampering",
+    "No cross-call cache, new deadline, candidate scope reduction or product acceptance authority"
+  ],
+  "nearest": {
+    "fresh": 103,
+    "passed": 103,
+    "path": "analysis/workflow-combined-review-nearest-audit-v1.json",
+    "reused": 0,
+    "sha256": "7e63b817b34b59f1a0a087a5e8ed23920ccda5b459668496edc23c44b31e7878"
+  },
+  "new_methods": 3,
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-combined-review-adoption-v1",
+  "read_policy": "workflow-current-review-read-v2",
+  "remaining": [
+    "Full affected offline gate",
+    "Fresh source-bound38workflow and6shared physical qualification",
+    "Generated-probe execution/selection integration and complete matching rehearsal",
+    "All declared study/source/authority duties and external disclosure holds"
+  ],
+  "source_sha256": {
+    "gossip_harness/candidate_workflow_execution_v1.py": "d654c111392acd38373326aefa92f0935aca01832c31ca54baacd933fb3bb7d9",
+    "gossip_harness/candidate_workflow_observation_v1.py": "ee461341b20f50b394fb5eb33fed29269b9c601e593a3246c57f18b130b762b5",
+    "gossip_harness/candidate_workflow_review_v1.py": "ee51c1fd949f6d8734c9e9ecd914c3421ed0c545f91e8900693182fb9929e723",
+    "tests/test_candidate_workflow_observation_v1.py": "b5feafa9179538e3096c51fdd68d99d36cc4d85406f8dbd9e4ef251489b28524",
+    "tests/test_candidate_workflow_review_v1.py": "62e0f8493b677c2a6fb8ebcfa954c9823d950ec64383e48d886a2268b2b75e7c",
+    "tests/test_cumulative_workflow_recipe_v1.py": "a2a3f531268999424ade7473d07161cff9b879aeef57fe52c53fc296c114bc18"
+  },
+  "status": "nearest_passed_full_and_physical_pending"
+}

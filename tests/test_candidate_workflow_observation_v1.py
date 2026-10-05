@@ -181,13 +181,16 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
     def setUp(self):
         self.prepare_owner()
 
-    def test_original_reader_rejects_missing_or_downgraded_journal_policy(self):
+    def test_original_reader_rejects_missing_or_downgraded_read_policies(self):
         owner = self.owner
-        for replacement in (None, {'protocol': 'legacy-reader'}):
-            with self.subTest(replacement=replacement):
-                owner.config['journal_read_policy'] = replacement
-                with self.assertRaisesRegex(ValueError, 'journal read policy differs'):
-                    observer.reconstruct(owner)
+        for key, policy in (('journal_read_policy', execution.JOURNAL_READ_POLICY.record()),
+                            ('review_read_policy', execution.review_read_policy())):
+            for replacement in (None, {'protocol': 'legacy-reader'}):
+                with self.subTest(key=key, replacement=replacement):
+                    owner.config[key] = replacement
+                    with self.assertRaisesRegex(ValueError, 'read policy differs'):
+                        observer.reconstruct(owner)
+            owner.config[key] = policy
 
     def prepare_owner(self, case_id='WF18-same-process-call-isolation', schema_sha256='d' * 64,
             *, ready_eligibility=True):
@@ -229,7 +232,8 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         owner.docker = ['docker']
         owner.review_sha256 = 'd' * 64
         owner.config = {'fixture': True, 'deadline_policy': execution.deadline_policy(),
-            'journal_read_policy': execution.JOURNAL_READ_POLICY.record()}
+            'journal_read_policy': execution.JOURNAL_READ_POLICY.record(),
+            'review_read_policy': execution.review_read_policy()}
         owner.observation_registration = SimpleNamespace()
         # Runtime admission/source authentication is separately tested by actual
         # constructor controls; this fixture isolates the retained-reader path.
@@ -579,8 +583,7 @@ class CandidateWorkflowOriginalReaderTests(unittest.TestCase):
         original_binding = owner.binding
         owner.binding = replace(owner.binding, review_origin_sha256=execution.digest(provenance))
         owner.review_authority = mock.Mock()
-        owner.review_authority.authenticate.return_value = owner.review_sha256
-        owner.review_authority.provenance.return_value = provenance
+        owner.review_authority.authenticate_with_provenance.return_value = (owner.review_sha256, provenance)
         owner.admission = mock.Mock()
         # Actual current() remains a source/admission read, even after time.
         with mock.patch.object(execution, 'evaluator_sources', return_value={}), \

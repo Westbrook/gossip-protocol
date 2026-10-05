@@ -257,6 +257,15 @@ class WorkflowReviewAuthority:
     def provenance(self, plan: WorkflowSourcePlan) -> dict[str, Any]:
         return cast(dict[str, Any], self._original(plan)['provenance'])
 
+    def authenticate_with_provenance(self, plan: WorkflowSourcePlan) -> tuple[str, dict[str, Any]]:
+        """Both identities from one fresh, before/after checked original read.
+
+        No result survives this call. Derive the report identity from the
+        authenticated canonical record, not mutable enrollment after the read.
+        """
+        original = self._original(plan)
+        return digest(original['report']), cast(dict[str, Any], original['provenance'])
+
 
 @dataclass(frozen=True, slots=True)
 class WorkflowInspectionProfile:
