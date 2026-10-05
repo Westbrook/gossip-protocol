@@ -1,0 +1,780 @@
+{
+  "protocol": "current-acceptance-gap-audit-20261005-v1",
+  "created_at_utc": "2026-10-05T11:20:20.092196+00:00",
+  "source_head": "917039432f8aa1b09abd3c7e52e2224169a28470",
+  "branch": "codex/original-probe-accounting",
+  "scope": "Read-only current source and retained receipt audit; no project imports, tests, Engine/provider calls, repository/report/Git writes or external research. Active accounting files excluded from stability claims.",
+  "readiness": "NOT_READY_FOR_COMPLETE_PLANNED_COMPARISON",
+  "completion_percent": null,
+  "estimate_days": null,
+  "coverage_limit": "Family/owner-route/qualification critical-path audit, not a per-obligation proof for every one of312 units; no current complete assembled ScopeSubmission was authenticated.",
+  "findings": [
+    {
+      "id": "A01",
+      "priority": "P0",
+      "category": "implementation",
+      "status": "incomplete",
+      "finding": "Actual public runtime still selects one reviewer choice per package; generated-probe modules are not invoked by that runtime. Root accounting changes do not by themselves activate selection.",
+      "evidence": [
+        {
+          "path": "gossip_harness/cumulative_study_controller_v2.py",
+          "lines": "35-40,197,374-375",
+          "sha256": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+          "meaning": "Hardcoded shared policy and reviewer shape"
+        },
+        {
+          "path": "gossip_harness/cumulative_study_runtime_v2.py",
+          "lines": "632-643",
+          "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+          "meaning": "Actual selected_actor decision path"
+        }
+      ],
+      "next_action": "Root integrates an explicit versioned policy, pre-review evidence, original corpus, complete candidate/context/merged matrix, measured shared executor admission and original whole-child deadlines."
+    },
+    {
+      "id": "A02",
+      "priority": "P0",
+      "category": "implementation",
+      "status": "incomplete",
+      "finding": "Final owner/scope/cold reader roster has no browser, worker or release route despite existing component executors.",
+      "evidence": [
+        {
+          "path": "gossip_harness/cumulative_final_acceptance_v1.py",
+          "lines": "134-228,255-270",
+          "sha256": "249f3b58e5a4f38d662ac5061a365414a2315ff2c8393ccc2353062fe77d2b20",
+          "meaning": "Closed ObservationSpec and final-family roster"
+        },
+        {
+          "path": "gossip_harness/cumulative_scope_source_v3.py",
+          "lines": "242-274",
+          "sha256": "05f25a0fff387f56b80554f3c9f312dc4fb0567b3b46a9c6e901aa2ee6bd73fb",
+          "meaning": "Closed scope factories"
+        },
+        {
+          "path": "gossip_harness/cumulative_final_originals_v1.py",
+          "lines": "413-477",
+          "sha256": "3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a",
+          "meaning": "Closed physical original-reader dispatch"
+        },
+        {
+          "path": "gossip_harness/cumulative_rehearsal_codec_v1.py",
+          "lines": "30-47",
+          "sha256": "570343ef5201b161ed6d511d96a0b9513e55336e4739d62c2c87b800576f26f2",
+          "meaning": "Closed accepted serialized input types"
+        }
+      ],
+      "next_action": "Add bounded typed family adapters with scope slices, prospective purposes, owner dispatch, cold reader, codec and merged-source freeze support; root owns common-file joins."
+    },
+    {
+      "id": "A03",
+      "priority": "P0",
+      "category": "implementation",
+      "status": "incomplete",
+      "finding": "Browser component is M1 plus counter cases; it explicitly excludes M2-M4 browser journeys and global independent-purpose qualification.",
+      "evidence": [
+        {
+          "path": "gossip_harness/candidate_product_browser_cases_v1.py",
+          "lines": "87-124",
+          "sha256": "1202930a5a87fad2063a0477e9139498dbce1128247f204031495a2d505694e7",
+          "meaning": "Explicit unsupported scope and public-definition identities"
+        }
+      ],
+      "next_action": "Independent browser package authors exact later-milestone journeys and candidate-bound profiles/observations; integration adapter follows A02."
+    },
+    {
+      "id": "A04",
+      "priority": "P0",
+      "category": "implementation",
+      "status": "incomplete",
+      "finding": "Worker cases retain uncovered matching-claim instrumentation and exact precommit placement, separate from implemented crash/restart and epoch evidence.",
+      "evidence": [
+        {
+          "path": "gossip_harness/candidate_product_worker_cases_v1.py",
+          "lines": "50-56,127-154",
+          "sha256": "8d590eb5e8b5536462d216168c3d8e7d4bd101ae2e87f5eda0c6b940fbb28131",
+          "meaning": "Explicit partial facets and unavailable exact phase"
+        },
+        {
+          "path": "gossip_harness/candidate_product_worker_observation_v1.py",
+          "lines": "571-849",
+          "sha256": "538575469bfe3a527cdbe1f7e0562ebcc5b52921cadb6ec9b6f497d29f66bf2b",
+          "meaning": "Original reader distinguishes unavailable evidence"
+        }
+      ],
+      "next_action": "Worker package closes actual source-bound instrumentation/placement and corresponding controls without weakening original acceptance duties."
+    },
+    {
+      "id": "A05",
+      "priority": "P0",
+      "category": "implementation",
+      "status": "incomplete",
+      "finding": "V2 amendment assertions exist in historical acceptance cases, but the current final closed family roster does not supply a complete candidate-bound V2 family for migrations, counters, hash serialization, liveness and backup-root duties.",
+      "evidence": [
+        {
+          "path": "gossip_harness/library_v2_acceptance_cases_v1.py",
+          "lines": "20-32,147-355",
+          "sha256": "beca4fc8c16ebbb4e6ddf9b68e7ccae8a8bbde9d981f4bad20bbe6ee4adada44",
+          "meaning": "Six amendment groups and existing authored mixed API/CLI histories"
+        },
+        {
+          "path": "gossip_harness/cumulative_scope_source_v3.py",
+          "lines": "139,242-274",
+          "sha256": "05f25a0fff387f56b80554f3c9f312dc4fb0567b3b46a9c6e901aa2ee6bd73fb",
+          "meaning": "M2 route explicitly grants no V2 amendment credit; closed factories"
+        }
+      ],
+      "next_action": "Finish finite V2 family using actual independent API/storage/CLI/process observations and exact purpose rules; historical in-process reference adapters alone cannot supply hostile candidate acceptance."
+    },
+    {
+      "id": "A06",
+      "priority": "P1",
+      "category": "implementation",
+      "status": "partial",
+      "finding": "Release execution/observer V2 exists for three M4 delivery cases, expressly not the whole M4 group, and lacks final-owner routing.",
+      "evidence": [
+        {
+          "path": "gossip_harness/candidate_release_execution_v2.py",
+          "lines": "1-7,189-255",
+          "sha256": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+          "meaning": "Actual source-bound release owner and explicit scope limit"
+        },
+        {
+          "path": "gossip_harness/candidate_release_observer_v2.py",
+          "lines": "1-60",
+          "sha256": "a2091ba7e410c548fd0f7b150db2ab02f0b0eec4f7ff939d86e2f48c85d0da68",
+          "meaning": "Existing release observer"
+        }
+      ],
+      "next_action": "Release package supplies typed final registration/recipe/original adapter and an explicit remaining M4 duty map."
+    },
+    {
+      "id": "A07",
+      "priority": "P0",
+      "category": "independent_review",
+      "status": "incomplete",
+      "finding": "Complete semantic registration machinery exists and refuses incomplete executable edges, but a full current 312-unit/22-authority/188-duty independently enrolled submission is not established by inspected artifacts.",
+      "evidence": [
+        {
+          "path": "gossip_harness/cumulative_scope_authority_v3.py",
+          "lines": "44-120,142-171",
+          "sha256": "4a0202db105ce4dcf345a1dfbbce3d70a8768b11a06cec1b6ba23ee4f22f113f",
+          "meaning": "Full semantic target builder and fail-closed registration"
+        },
+        {
+          "path": "analysis/finite-mapping-offline-qualification-v1.json",
+          "lines": "all",
+          "sha256": "ada8b8805bd3d8de62c1a09997c4d3b9ae782993cbd826591ca01172a287bcc9",
+          "meaning": "Retained census and explicit no full semantic approval"
+        }
+      ],
+      "next_action": "Assemble exact complete declaration from current routes, enumerate missing cells, then independently review/enroll the full request. Do not label 140 associations or offline test counts full coverage."
+    },
+    {
+      "id": "A08",
+      "priority": "P1",
+      "category": "implementation",
+      "status": "implemented_not_independently_qualified",
+      "finding": "Prerequisite/control and source-promotion original authorities are implemented; old claims that these producers are absent are obsolete. Availability still depends on real independent originals.",
+      "evidence": [
+        {
+          "path": "gossip_harness/cumulative_final_acceptance_v3.py",
+          "lines": "110-174,232-265,319-321",
+          "sha256": "c74e3c5b1741a4502a42ef15d517984cab883a6d9bb3fcfc08b07fd63c53b295",
+          "meaning": "Original binding, prerequisite dispatch and no missing implementation producers"
+        },
+        {
+          "path": "gossip_harness/cumulative_source_promotion_v1.py",
+          "lines": "578-655",
+          "sha256": "aa492a581f218d327f129e45650f42ea3846fa4c5cde24cfcf5a5e7747c66aed",
+          "meaning": "Request, independent actor exclusion, review decision and immutable promotion verification"
+        }
+      ],
+      "next_action": "Retain mechanisms; obtain exact source/role/purpose-bound originals during complete qualification. An empty missing_producers list is not readiness."
+    },
+    {
+      "id": "A09",
+      "priority": "P1",
+      "category": "physical_verification",
+      "status": "component_pass_retained",
+      "finding": "Workflow physical family has a later successful 38-control run; earlier failures are superseded for those executed source bytes.",
+      "evidence": [
+        {
+          "path": "analysis/workflow-profile-build-workflow-terminal-audit-v1.json",
+          "lines": "all",
+          "sha256": "2d163a2c705a2823ddd6ba51791297902d7510f8263c8531de7b5f94ae09e650",
+          "meaning": "38 passed, actual retained session, explicit component-only limitations"
+        },
+        {
+          "path": "gossip_harness/candidate_workflow_profile_v1.py",
+          "lines": "310,386-539",
+          "sha256": "ed8945cf2d9d30401fe271931130f04fbf4f8cf3b2d0312ee3cebb63b831fb70",
+          "meaning": "20 history family and separate purpose conversion"
+        }
+      ],
+      "next_action": "Retain 38 evidence; reconcile changed manifest/config and exact purpose/runtime before reuse. Do not repeat solely because older handoff says failed, and do not promote this to independent acceptance."
+    },
+    {
+      "id": "A10",
+      "priority": "P1",
+      "category": "independent_review_and_physical_verification",
+      "status": "incomplete",
+      "finding": "Shared storage/M2 six-control follow-on executed zero histories: launcher lacked mandatory independent package; four stale storage layout reviews require amendment.",
+      "evidence": [
+        {
+          "path": "analysis/workflow-shared-review-gap-v1.json",
+          "lines": "all",
+          "sha256": "0ee006f1e9a344620c177bff9a8bd77ebfae53771074863d00781d1871db56a4",
+          "meaning": "Six not_run, zero candidate histories, four mismatching original review requests"
+        }
+      ],
+      "next_action": "Frozen-component stream resolves exact four reviews; root qualifies six bounded physical controls after source/receipt gate."
+    },
+    {
+      "id": "A11",
+      "priority": "P1",
+      "category": "physical_verification",
+      "status": "incomplete",
+      "finding": "Browser journal successor has 287 offline passes but no physical qualification in that checkpoint; changed browser runtime must be qualified rather than inheriting earlier failed physical evidence.",
+      "evidence": [
+        {
+          "path": "analysis/browser-journal-successor-qualification-v1.json",
+          "lines": "all",
+          "sha256": "20c725d2f5b47276e7bd73bb5f91f1d0a1bdc9dcf2fafb1a641634850d50abb1",
+          "meaning": "Offline-only success and explicit outstanding physical work"
+        },
+        {
+          "path": "analysis/candidate-product-browser-physical2-audit-v1.json",
+          "lines": "all",
+          "sha256": "2ff55c3641458103a6622154092f4245ae4d90e799bb8fda03dc3063dcd8f93c",
+          "meaning": "Retained earlier physical evidence; no current complete claim"
+        }
+      ],
+      "next_action": "Qualify coherent browser component after implementation/source gates; retain earlier failures and exact run scope."
+    },
+    {
+      "id": "A12",
+      "priority": "P0",
+      "category": "rehearsal",
+      "status": "incomplete",
+      "finding": "Six-child/four-milestone zero-provider capsule, cold readers and issued qualification exist, but no matching complete current contract rehearsal is proven. Known missing final routes make complete planned acceptance unattainable now.",
+      "evidence": [
+        {
+          "path": "gossip_harness/cumulative_rehearsal_capsule_v3.py",
+          "lines": "24-29,63-115",
+          "sha256": "8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+          "meaning": "Six trajectories,96 roles,24 milestones, full cold read and final packet"
+        },
+        {
+          "path": "gossip_harness/cumulative_rehearsal_validator_v2.py",
+          "lines": "184-214,331-342",
+          "sha256": "4842b139fedd3fa5d132ab36cd47087d5af10e3ffa8e20da95ede112c65ca060",
+          "meaning": "Actual original complete cohort/fault/terminal verification"
+        },
+        {
+          "path": "gossip_harness/cumulative_qualified_study_v1.py",
+          "lines": "94-101,125-180",
+          "sha256": "75c27f42b79cf347f53630d8b3a41a094dfada2be6638b72b0555870e6059991",
+          "meaning": "Issuance before child deadlines/provider admission"
+        }
+      ],
+      "next_action": "Freeze only after integrated policy and complete scope; run one new full rehearsal matching the actual live contract; audit every original and final barrier."
+    },
+    {
+      "id": "A13",
+      "priority": "P0",
+      "category": "scientific_evidence",
+      "status": "incomplete",
+      "finding": "No new larger-swarm matched quality or statistical evidence follows from these engineering receipts. Development-family repetition is not independent replication.",
+      "evidence": [
+        {
+          "path": "analysis/scientific-evidence-status-20261004.json",
+          "lines": "all",
+          "sha256": "bd41d755580346ed03161bbc41da5cc109261cf0467c4996e15c45d1d076d4f3",
+          "meaning": "Retained live evidence boundary"
+        },
+        {
+          "path": "analysis/cumulative-confirmatory-design-check-v1.json",
+          "lines": "all",
+          "sha256": "42ecfbf0baf92936b91192456e9730acec2efb4924f8c2d00a5f206877241fdb",
+          "meaning": "Independent-unit and future confirmation constraints"
+        }
+      ],
+      "next_action": "Treat six trajectories as development pilot; retain held-out family sampling, placement/transport isolation and explicit success/failure/inconclusive decision thresholds as subsequent scientific obligations."
+    }
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_study_controller_v2.py": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+    "gossip_harness/cumulative_study_runtime_v2.py": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+    "gossip_harness/cumulative_final_acceptance_v1.py": "249f3b58e5a4f38d662ac5061a365414a2315ff2c8393ccc2353062fe77d2b20",
+    "gossip_harness/cumulative_scope_source_v3.py": "05f25a0fff387f56b80554f3c9f312dc4fb0567b3b46a9c6e901aa2ee6bd73fb",
+    "gossip_harness/cumulative_final_originals_v1.py": "3fc665a4622ab02469e240f2bd0240256ab6d7183759c7fdf3e2b22d4b98192a",
+    "gossip_harness/cumulative_rehearsal_codec_v1.py": "570343ef5201b161ed6d511d96a0b9513e55336e4739d62c2c87b800576f26f2",
+    "gossip_harness/candidate_product_browser_cases_v1.py": "1202930a5a87fad2063a0477e9139498dbce1128247f204031495a2d505694e7",
+    "gossip_harness/candidate_product_worker_cases_v1.py": "8d590eb5e8b5536462d216168c3d8e7d4bd101ae2e87f5eda0c6b940fbb28131",
+    "gossip_harness/candidate_product_worker_observation_v1.py": "538575469bfe3a527cdbe1f7e0562ebcc5b52921cadb6ec9b6f497d29f66bf2b",
+    "gossip_harness/library_v2_acceptance_cases_v1.py": "beca4fc8c16ebbb4e6ddf9b68e7ccae8a8bbde9d981f4bad20bbe6ee4adada44",
+    "gossip_harness/candidate_release_execution_v2.py": "6e57c6bd80a95870e95fdb4eb7c289b87a8055febacfe6b6e4c09a1b5ff8a242",
+    "gossip_harness/candidate_release_observer_v2.py": "a2091ba7e410c548fd0f7b150db2ab02f0b0eec4f7ff939d86e2f48c85d0da68",
+    "gossip_harness/cumulative_scope_authority_v3.py": "4a0202db105ce4dcf345a1dfbbce3d70a8768b11a06cec1b6ba23ee4f22f113f",
+    "analysis/finite-mapping-offline-qualification-v1.json": "ada8b8805bd3d8de62c1a09997c4d3b9ae782993cbd826591ca01172a287bcc9",
+    "gossip_harness/cumulative_final_acceptance_v3.py": "c74e3c5b1741a4502a42ef15d517984cab883a6d9bb3fcfc08b07fd63c53b295",
+    "gossip_harness/cumulative_source_promotion_v1.py": "aa492a581f218d327f129e45650f42ea3846fa4c5cde24cfcf5a5e7747c66aed",
+    "analysis/workflow-profile-build-workflow-terminal-audit-v1.json": "2d163a2c705a2823ddd6ba51791297902d7510f8263c8531de7b5f94ae09e650",
+    "gossip_harness/candidate_workflow_profile_v1.py": "ed8945cf2d9d30401fe271931130f04fbf4f8cf3b2d0312ee3cebb63b831fb70",
+    "analysis/workflow-shared-review-gap-v1.json": "0ee006f1e9a344620c177bff9a8bd77ebfae53771074863d00781d1871db56a4",
+    "analysis/browser-journal-successor-qualification-v1.json": "20c725d2f5b47276e7bd73bb5f91f1d0a1bdc9dcf2fafb1a641634850d50abb1",
+    "analysis/candidate-product-browser-physical2-audit-v1.json": "2ff55c3641458103a6622154092f4245ae4d90e799bb8fda03dc3063dcd8f93c",
+    "gossip_harness/cumulative_rehearsal_capsule_v3.py": "8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+    "gossip_harness/cumulative_rehearsal_validator_v2.py": "4842b139fedd3fa5d132ab36cd47087d5af10e3ffa8e20da95ede112c65ca060",
+    "gossip_harness/cumulative_qualified_study_v1.py": "75c27f42b79cf347f53630d8b3a41a094dfada2be6638b72b0555870e6059991",
+    "analysis/scientific-evidence-status-20261004.json": "bd41d755580346ed03161bbc41da5cc109261cf0467c4996e15c45d1d076d4f3",
+    "analysis/cumulative-confirmatory-design-check-v1.json": "42ecfbf0baf92936b91192456e9730acec2efb4924f8c2d00a5f206877241fdb"
+  },
+  "workflow_retained_receipt_reconciliation": {
+    "session": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174",
+    "summary_sha256": "353bc1669db533a2dba658eacbd07089dfc9920f74608cb063fe6644e6f962f2",
+    "inputs_sha256": "69df1636b72ef1e7375951cdd2851836f84f82be4fa3e56fb90ab7fe0d2efc93",
+    "outcomes": {
+      "passed": 38
+    },
+    "selected_total": 38,
+    "recorded_input_count": 732,
+    "changed_recorded_inputs": [
+      {
+        "path": "pyproject.toml",
+        "recorded_sha256": "a3ce65444d696566a6b841b2e8b90c750eea7c12b7058ea11c63ac3fa8b7c931",
+        "current_sha256": "db7c5562622a6d0215366877d59d6ba53ecdf68da22f05fda7738ac84837d2e4"
+      },
+      {
+        "path": "verification-manifest.json",
+        "recorded_sha256": "8cd3c1d7b6c6d310e0f052e6c32b54cf95f79303585303c744239b07a171028c",
+        "current_sha256": "235e83eee7186493db62d3770f3b7bec0f81c0d5068652f6fa178e7a1d91cd8f"
+      }
+    ],
+    "current_runtime_reaudited": false,
+    "original_journals_reaudited": false,
+    "receipt_reuse_granted": false,
+    "interpretation": "Read and hash audit of retained terminal receipt; all recorded implementation/test inputs remain equal, only current configuration changes listed. This is no fresh physical execution or independent candidate judgment.",
+    "ordered_class_config_comparison": {
+      "original_configuration_commit": "351bd7f1c1c23234925e30a618aeb437e976d6a9",
+      "original_config_hashes_match_recorded_inputs": true,
+      "ordered_classes": [
+        "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests",
+        "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests",
+        "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests"
+      ],
+      "classes": [
+        {
+          "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests",
+          "request_sha256": "02170b34ddfa578d01ef37e30d56c1fc9c149ad8bf6a76ac66a8079b40ccfccd",
+          "result_sha256": "f03602c9462d47efe4222996b7d1f16eef73bce58e515380aff99504194fe408",
+          "ordered_request_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_actual_reopen_discards_prior_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_empty_export_incorrectly_exports_all",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_epoch_overflow_uses_old_domain_error",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_first_domain_error_stops_later_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_injected_fault_after_commit_retains_documents_blobs_receipt_and_job",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_mixed_final_jobs_are_reverse_sorted",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_old_valid_epoch_is_not_fenced",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_reused_database_is_physical_identity_and_state_bleed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_rollback_leaks_hidden_blob_despite_error_response",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_v0_incorrectly_dispatches_m1_jobs"
+          ],
+          "ordered_current_ast_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_actual_reopen_discards_prior_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_empty_export_incorrectly_exports_all",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_epoch_overflow_uses_old_domain_error",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_first_domain_error_stops_later_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_injected_fault_after_commit_retains_documents_blobs_receipt_and_job",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_mixed_final_jobs_are_reverse_sorted",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_old_valid_epoch_is_not_fenced",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_reused_database_is_physical_identity_and_state_bleed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_rollback_leaks_hidden_blob_despite_error_response",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_v0_incorrectly_dispatches_m1_jobs"
+          ],
+          "ordered_result_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_actual_reopen_discards_prior_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_empty_export_incorrectly_exports_all",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_epoch_overflow_uses_old_domain_error",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_first_domain_error_stops_later_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_injected_fault_after_commit_retains_documents_blobs_receipt_and_job",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_mixed_final_jobs_are_reverse_sorted",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_old_valid_epoch_is_not_fenced",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_reused_database_is_physical_identity_and_state_bleed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_rollback_leaks_hidden_blob_despite_error_response",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_v0_incorrectly_dispatches_m1_jobs"
+          ],
+          "request_equals_current_ast": true,
+          "request_equals_result": true,
+          "original_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 6720,
+            "invariant": "Known candidate defects yield precise authenticated counterevidence; missing mechanics is never a substitute product defect.",
+            "boundary": "Actual pinned Engine and independently authored mutant source; explicit source-inspection controls distinguish source-only defects.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "current_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 6720,
+            "invariant": "Known candidate defects yield precise authenticated counterevidence; missing mechanics is never a substitute product defect.",
+            "boundary": "Actual pinned Engine and independently authored mutant source; explicit source-inspection controls distinguish source-only defects.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "class_config_equal": true,
+          "request_config_matches_current": true
+        },
+        {
+          "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests",
+          "request_sha256": "2256cbe28e6cdc41c0bfa8bf5cad05afea0897ade76fdf7715e42b980e2f5a8b",
+          "result_sha256": "40dc493cd8087e75ac3bcb444c25ad04e91be2485871fa73991a3fd4dd8e47f2",
+          "ordered_request_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_01_normalized_61824_is_actually_emitted_captured_and_compared",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_02_exact_131072_frame_payload_plus_separate_delimiter",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_03_131073_frame_is_explicitly_incomplete",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_04_exact_524288_stdout_raw_retention_without_product_credit",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_05_524289_stdout_retains_bounded_prefix_and_total_observed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_06_exact_65536_stderr_raw_retention",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_07_65537_stderr_is_incomplete_without_a_product_verdict"
+          ],
+          "ordered_current_ast_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_01_normalized_61824_is_actually_emitted_captured_and_compared",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_02_exact_131072_frame_payload_plus_separate_delimiter",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_03_131073_frame_is_explicitly_incomplete",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_04_exact_524288_stdout_raw_retention_without_product_credit",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_05_524289_stdout_retains_bounded_prefix_and_total_observed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_06_exact_65536_stderr_raw_retention",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_07_65537_stderr_is_incomplete_without_a_product_verdict"
+          ],
+          "ordered_result_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_01_normalized_61824_is_actually_emitted_captured_and_compared",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_02_exact_131072_frame_payload_plus_separate_delimiter",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_03_131073_frame_is_explicitly_incomplete",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_04_exact_524288_stdout_raw_retention_without_product_credit",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_05_524289_stdout_retains_bounded_prefix_and_total_observed",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_06_exact_65536_stderr_raw_retention",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_07_65537_stderr_is_incomplete_without_a_product_verdict"
+          ],
+          "request_equals_current_ast": true,
+          "request_equals_result": true,
+          "original_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 4320,
+            "invariant": "Seven closed producers physically establish normalized and raw wire exact/overflow behavior through the actual capture path.",
+            "boundary": "Distinct harness_qualification purpose, no product-history credit or Registry acceptance; actual Engine and owned cleanup.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "current_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 4320,
+            "invariant": "Seven closed producers physically establish normalized and raw wire exact/overflow behavior through the actual capture path.",
+            "boundary": "Distinct harness_qualification purpose, no product-history credit or Registry acceptance; actual Engine and owned cleanup.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "class_config_equal": true,
+          "request_config_matches_current": true
+        },
+        {
+          "class": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests",
+          "request_sha256": "750bd7bf62da520aa11d97e4ff373211d99efbfcc5deec866e9cfc992d4d9ac3",
+          "result_sha256": "0182519734b51c0be477e6142c00a58a648dfb45d30d9df3e9826a7dbabd63dc",
+          "ordered_request_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_01_inherited_text_persistence",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_02_identity_and_replay",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_03_errors_preserve_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_04_cancel_fences_old_token",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_05_atomic_conflict_after_prepare",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_06_per_source_provenance",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_07_invalid_member_rolls_back",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_08_injected_transaction_failure",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_09_empty_modes",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_10_defaults_export_selection",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_11_v0_unsupported_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_12_mixed_job_state_reopen",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_13_domain_error_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_14_exact_64_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_15_existing_job_token_domain",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_16_absent_token_hook_distinction",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_17_actual_61446_answer_growth",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_18_three_calls_one_actual_exec_isolated_databases",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_19_complete_fault_rollback_source_corroboration",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_20_invalid_query_options_continue"
+          ],
+          "ordered_current_ast_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_01_inherited_text_persistence",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_02_identity_and_replay",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_03_errors_preserve_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_04_cancel_fences_old_token",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_05_atomic_conflict_after_prepare",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_06_per_source_provenance",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_07_invalid_member_rolls_back",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_08_injected_transaction_failure",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_09_empty_modes",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_10_defaults_export_selection",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_11_v0_unsupported_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_12_mixed_job_state_reopen",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_13_domain_error_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_14_exact_64_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_15_existing_job_token_domain",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_16_absent_token_hook_distinction",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_17_actual_61446_answer_growth",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_18_three_calls_one_actual_exec_isolated_databases",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_19_complete_fault_rollback_source_corroboration",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_20_invalid_query_options_continue"
+          ],
+          "ordered_result_ids": [
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_01_inherited_text_persistence",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_02_identity_and_replay",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_03_errors_preserve_catalog",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_04_cancel_fences_old_token",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_05_atomic_conflict_after_prepare",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_06_per_source_provenance",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_07_invalid_member_rolls_back",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_08_injected_transaction_failure",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_09_empty_modes",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_10_defaults_export_selection",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_11_v0_unsupported_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_12_mixed_job_state_reopen",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_13_domain_error_continuation",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_14_exact_64_operations",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_15_existing_job_token_domain",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_16_absent_token_hook_distinction",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_17_actual_61446_answer_growth",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_18_three_calls_one_actual_exec_isolated_databases",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_19_complete_fault_rollback_source_corroboration",
+            "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_20_invalid_query_options_continue"
+          ],
+          "request_equals_current_ast": true,
+          "request_equals_result": true,
+          "original_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 12120,
+            "invariant": "All20closed workflow histories execute actual solution.solve, with complete outputs and qualified physical isolation/conservation evidence.",
+            "boundary": "Actual pinned Engine, fresh candidate/container/journals per history; serial effects and bounded readers; no provider.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "current_class_config": {
+            "lane": "docker",
+            "weight": 4,
+            "timeout_seconds": 12120,
+            "invariant": "All20closed workflow histories execute actual solution.solve, with complete outputs and qualified physical isolation/conservation evidence.",
+            "boundary": "Actual pinned Engine, fresh candidate/container/journals per history; serial effects and bounded readers; no provider.",
+            "isolation": "Dedicated class worker; private mutable fixtures and originals. Docker classes reserve all4tokens and keep nested effects serial.",
+            "overlap": "Complements baseline family regressions; source, fast/Git and physical evidence remain separate.",
+            "distinct_defect": "Changed or unqualified workflow source, purpose, response, capture, control-flow, lifecycle or original identity must not authorize accepted evidence.",
+            "disposition": "Run coherent static and offline lanes first; Docker classes only after source review and offline qualification. Preserve failed/unrun outcomes and exact input/runtime identity.",
+            "overlap_reason": "New closed workflow and host-inspection family has no applicable historical runtime receipt."
+          },
+          "class_config_equal": true,
+          "request_config_matches_current": true
+        }
+      ],
+      "manifest_changed_top_level_fields_excluding_classes": [
+        "input_globs",
+        "retained_fixtures"
+      ],
+      "manifest_changed_existing_classes": [],
+      "manifest_added_classes": [
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessBackupRootV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessEnrollmentDefectV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessExportDefectV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessExportV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessHighWaterDefectV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessM2MigrationV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessMigrationDefectV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessReindexV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessRestoreV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessV0MigrationV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessWorkerOrderV1DockerTests",
+        "tests/test_candidate_product_process_docker_v1.py::ProductProcessWorkerTerminalV1DockerTests",
+        "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests",
+        "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests/test_cumulative_generated_probe_values_v1.py::GeneratedProbePredicateTests",
+        "tests/test_cumulative_generated_probe_values_v2.py::GeneratedProbePredicateV2Tests",
+        "tests/test_cumulative_generated_probe_wire_v1.py::GeneratedProbeWireTests",
+        "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests"
+      ],
+      "pyproject_semantic_changes": [
+        {
+          "path": "/tool/mypy/files",
+          "removed": [],
+          "added": [
+            "gossip_harness/cumulative_generated_probe_matrix_v1.py",
+            "gossip_harness/cumulative_generated_probe_capacity_v1.py",
+            "gossip_harness/cumulative_generated_probe_corpus_v1.py",
+            "gossip_harness/cumulative_generated_probe_accounting_v1.py",
+            "gossip_harness/cumulative_generated_probe_ranked_originals_v1.py",
+            "gossip_harness/cumulative_generated_probe_context_v1.py",
+            "gossip_harness/cumulative_generated_probe_execution_v1.py",
+            "gossip_harness/cumulative_generated_probe_reader_v1.py",
+            "gossip_harness/cumulative_generated_probe_pipe_v1.py",
+            "gossip_harness/cumulative_generated_probe_state_v1.py",
+            "gossip_harness/cumulative_generated_probe_review_v1.py",
+            "gossip_harness/cumulative_generated_probe_plan_v1.py",
+            "gossip_harness/cumulative_generated_probe_values_v2.py",
+            "gossip_harness/cumulative_generated_probe_wire_v1.py",
+            "gossip_harness/cumulative_generated_probe_driver_v1.py",
+            "gossip_harness/cumulative_generated_probe_values_v1.py"
+          ],
+          "old_order_preserved": true
+        }
+      ],
+      "exact_whole_receipt_reuse_qualified": false,
+      "reason": "Current global input/config fingerprints differ; current runtime/environment/purpose proof not audited. Original scoped physical evidence remains retained, not a new execution or automatically reusable final qualification.",
+      "manifest_list_deltas": {
+        "input_globs": {
+          "added": [
+            "tests/fixtures/generated-probe-values-v1/admission.json"
+          ],
+          "removed": [],
+          "old_order_preserved": true
+        },
+        "retained_fixtures": {
+          "added": [
+            "tests/fixtures/generated-probe-values-v1/admission.json"
+          ],
+          "removed": [],
+          "old_order_preserved": true
+        }
+      }
+    }
+  },
+  "critical_path": [
+    {
+      "order": 1,
+      "work": "Root original deadline/shared executor/versioned policy activation; parallel finite browser/worker/V2/release families; retain qualified workflow evidence.",
+      "dependencies": []
+    },
+    {
+      "order": 2,
+      "work": "Root integrates typed scope/final/cold routes and builds full executable declaration. Independent source/layout/purpose reviews can prepare per frozen component.",
+      "dependencies": [
+        1
+      ]
+    },
+    {
+      "order": 3,
+      "work": "Current-source offline gates, exact independent review enrollments, required missing physical controls and host-fault schedules; full scope registration and merged source/final barriers.",
+      "dependencies": [
+        2
+      ]
+    },
+    {
+      "order": 4,
+      "work": "Freeze matching six-trajectory/four-milestone contract; complete zero-provider rehearsal and independent original readback; reconcile current wallet headroom and external API authorization.",
+      "dependencies": [
+        3
+      ]
+    },
+    {
+      "order": 5,
+      "work": "Run actual matched live larger-project pilot and classify observed success/failure/persistence by independent acceptance.",
+      "dependencies": [
+        4
+      ]
+    },
+    {
+      "order": 6,
+      "work": "Run preregistered held-out-family confirmation and transport-by-placement isolation under separately concrete sample/budget plan.",
+      "dependencies": [
+        5
+      ]
+    }
+  ],
+  "disjoint_packages": [
+    {
+      "id": "browser",
+      "owned_new_files": "New later-browser cases/profile/recipe draft + focused tests",
+      "shared_files_root_only": [
+        "cumulative_final_acceptance_v1.py",
+        "cumulative_scope_source_v3.py",
+        "cumulative_final_originals_v1.py",
+        "cumulative_rehearsal_codec_v1.py"
+      ],
+      "independent_now": true,
+      "boundary": "Existing browser execution source frozen while draft profiles develop; no root controller/accounting edits."
+    },
+    {
+      "id": "worker",
+      "owned_new_files": "New worker instrumentation/review/recipe successor + tests",
+      "independent_now": true,
+      "boundary": "Actual hook/claim evidence and finite positive/defect histories; common final/cold joins remain root-owned."
+    },
+    {
+      "id": "v2",
+      "owned_new_files": "New finite V2 mixed API/CLI observation profile/recipe + tests",
+      "independent_now": true,
+      "boundary": "Can complete definitions, exact per-duty mappings and typed recipe while root defines deadline interface; physical executor adoption depends on that interface."
+    },
+    {
+      "id": "release",
+      "owned_new_files": "New release registration/recipe/cold adapter draft + focused tests",
+      "independent_now": true,
+      "boundary": "Reuse current release executor; explicit three-case limit; do not modify common final owner or claim full M4 coverage."
+    }
+  ],
+  "scope_discipline": [
+    "Infrastructure has outpaced scientific sampling. Stop new generic authority frameworks and micro-optimization programs; each edit must close a named launch gate or an observed blocking failure.",
+    "Do not expand product contract, number of comparator arms, broad UI/report features or stress matrices before the planned larger pilot.",
+    "Do not silently remove promised larger-project duties or downgrade unavailable final acceptance to failure/pass. Existing required deadlines, independent purposes, source protection and final barriers remain.",
+    "Use component evidence when exact contract permits; do not rerun unchanged physical controls or add redundant proof frameworks simply for another green number.",
+    "Parallel throughput depends on disjoint draft components and one shared integration/verification owner, not more concurrent costly suites.",
+    "Pilot readiness and defensible statistical conclusion are separate milestones. Current burndown cannot forecast either from historical percent complete."
+  ],
+  "parallel_priority_recommendation": {
+    "first": "release",
+    "why": "Important crash/persistence coverage but real hook placement/claim authority creates more coupling to root deadline and shared physical lifecycle work. Independent finite case and inspection plans are useful now.",
+    "second": "browser",
+    "third": "worker"
+  }
+}

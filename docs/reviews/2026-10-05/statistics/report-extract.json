@@ -1,0 +1,27 @@
+{
+  "read_at_utc": "2026-10-05T11:18:54.574168+00:00",
+  "original_report_sha256": "5e3fcdd998ea8df5afe72fb63549cdcddf596b09c6e7c4fc6b5b90073495677d",
+  "scheduleAssessment": {
+    "at": "2026-10-05T11:14:52+00:00",
+    "basis": "Remaining effort has stayed 25/248 since 2026-10-03T02:13:19Z, approximately 57 hours at assessment. Completed historical effort is not a remaining-time forecast.",
+    "largerPilotEstimate": "Planning allowance of 1\u20132 further weeks, low confidence; assumes focused implementation, bounded parallel work, required approvals and no major qualification failures. Not a velocity-derived forecast or commitment.",
+    "statisticalConclusionETA": null,
+    "statisticalReason": "Needs independent project/task families and a frozen effect-size/sample plan; more repetitions of the development family do not supply independent samples.",
+    "remainingEffortTasks": {
+      "confirmation": 6,
+      "peerLocalCoordinationHarness": 5,
+      "gossipOrchestratorEvidence": 6,
+      "largerProjectStudy": 8
+    },
+    "parallelRecommendation": [
+      "Root: whole-child deadline/shared-executor/controller integration and combined verification.",
+      "Independent agent: review frozen probe/storage components and qualify source applicability.",
+      "Independent agent: current-source acceptance-gap audit; propose bounded disjoint implementation work.",
+      "Independent agent: confirmatory design, independent sampling, meaningful effect size and budget scenarios."
+    ],
+    "parallelAuthorization": "User explicitly approved all three streams; three agents dispatched. Root retains integration and shared verification.",
+    "constraints": "Keep a sole integration/verification owner, disjoint file ownership and the bounded physical test budget. Do not increase API spending or narrow scientific scope."
+  },
+  "nextAction": "Continue scientific development from main in a fresh codex/ branch when needed. Treat the three detached worktrees as retained evidence snapshots. Connect the original-backed corpus/matrix and declared capacity to actual shared executors and original whole-child deadlines, explicitly activate the successor controller, then finish independent reviews, physical controls, host-fault schedules and the matching six-trajectory/four-milestone rehearsal before live and held-out comparisons.",
+  "feedback": []
+}

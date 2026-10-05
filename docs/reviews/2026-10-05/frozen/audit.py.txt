@@ -1,0 +1,65 @@
+from pathlib import Path
+import json, hashlib, subprocess, sqlite3, datetime, stat
+R=Path('/Users/westbrook/Documents/repos/gossip-protocol')
+P=Path('/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-2')
+S=Path('/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-prerequisite-1/fresh')
+A=Path('/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-shared-review-amendment-1/review-request.json')
+O=Path('/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/product-storage-boundary-retention-1/storage/layout-reviews')
+D=Path('/private/tmp/gossip-frozen-review-20261005'); D.mkdir(exist_ok=False)
+def h(b):return hashlib.sha256(b).hexdigest()
+def enc(v):return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def read(p):return json.loads(p.read_bytes())
+def git(p,*args):return subprocess.check_output(['git','--git-dir',str(p),*args],stderr=subprocess.PIPE,timeout=30)
+def inventory(directory,target,provenance):
+ files={p.relative_to(directory/'source').as_posix():p.read_bytes() for p in (directory/'source').rglob('*') if p.is_file()}
+ assert all(p.is_file() and not p.is_symlink() for p in (directory/'source').rglob('*') if not p.is_dir())
+ manifest=[{'path':k,'bytes':len(v),'sha256':h(v)} for k,v in sorted(files.items())]
+ assert manifest==provenance['source_manifest']
+ actual=h(enc({'protocol':'candidate-observation-admission-v1','kind':'complete-git-blob-inventory','files':manifest}))
+ subject=target.get('subject',target); assert actual==subject['source_sha256']
+ g=directory/'candidate.git'; commit=target['commit_oid'];tree=target['tree_oid']
+ assert git(g,'rev-parse','HEAD').decode().strip()==commit
+ assert git(g,'rev-parse',commit+'^{tree}').decode().strip()==tree
+ records=git(g,'ls-tree','-r','-z',commit).split(b'\0'); names=[]
+ for row in records:
+  if not row:continue
+  info,name=row.split(b'\t'); mode,kind,oid=info.split();name=name.decode();names.append(name)
+  assert mode in (b'100644',b'100755') and kind==b'blob'
+  assert git(g,'cat-file','blob',oid.decode())==files[name]
+ assert sorted(names)==sorted(files)
+ assert git(g,'rev-parse','HEAD').decode().strip()==commit
+ return {'source_files':len(files),'source_bytes':sum(map(len,files.values())),'source_sha256':actual,'tree_oid':tree,'commit_oid':commit,'source_manifest':manifest,'git_blob_bytes_match':True}
+def schema(p):
+ c=sqlite3.connect(p.as_uri()+'?mode=ro&immutable=1',uri=True);c.row_factory=sqlite3.Row
+ try:rows=[dict(x) for x in c.execute('SELECT type,name,tbl_name,sql FROM sqlite_schema ORDER BY type,name')]
+ finally:c.close()
+ return {'file_sha256':h(p.read_bytes()),'schema_sha256':h(enc(rows)),'rows':len(rows)}
+owner=read(P/'owner-sources.json');pins=[]
+for name,pin in owner.items():
+ current=h((R/name).read_bytes());assert current==pin;pins.append({'path':name,'sha256':current})
+assert subprocess.check_output(['git','diff','main','--',*owner],cwd=R)==b''
+controls=[];census=read(P/'census.json')
+for row in census['controls']:
+ d=P/row['id']; q=read(d/'request.json');assert h((d/'request.json').read_bytes())==row['request_sha256'];assert q['plan']==row['plan']
+ for name,pin in row['plan']['evaluator_sources'].items():assert h((R/name).read_bytes())==pin
+ provenance=read(d/'source-provenance.json'); record=inventory(d,row['target'],provenance)
+ helper=[{'path':p.name,'bytes':len(p.read_bytes()),'sha256':h(p.read_bytes())} for p in sorted((d/'helpers').iterdir())];assert helper==row['plan']['helper_manifest']
+ record.update(id=row['id'],variant=row['variant'],request_sha256=row['request_sha256'],control_sha256=h((d/'control.json').read_bytes()),provenance_sha256=h((d/'source-provenance.json').read_bytes()),plan_source_count=len(row['plan']['evaluator_sources']),helper_manifest=helper,report_present=(d/'report.json').exists(),delivery_present=(d/'delivery.json').exists())
+ if (d/'schema.sqlite').exists():
+  record['schema']=schema(d/'schema.sqlite');assert record['schema']['schema_sha256']==row['plan']['layout']['schema_sha256']
+ controls.append(record)
+amend=read(A); old_index=read(O/'index.json'); byid={r['id']:r for r in old_index['controls']};storage=[]
+for row in amend['controls']:
+ d=S/row['control'];q=read(d/'request.json');old=read(Path(row['old_request']));assert h((d/'request.json').read_bytes())==row['fresh_request_sha256']
+ rec=inventory(d,q['plan'],read(d/'source-provenance.json')); rec.update(id=row['control'],request_sha256=row['fresh_request_sha256'],previous_request_sha256=h(Path(row['old_request']).read_bytes()),exact_prior_request=old==q,definition_pin_count=len(q['profile'].get('definition_sources',{})),new_report_present=(d/'report.json').exists(),new_delivery_present=(d/'delivery.json').exists())
+ for name,pin in q['profile'].get('definition_sources',{}).items():assert h((R/name).read_bytes())==pin
+ rec['schema']=schema(d/'schema.sqlite');assert rec['schema']['schema_sha256']==q['plan']['schema_sha256']
+ ix=byid[row['control']]; originals={}
+ for kind in ('request','report','delivery'):
+  pin=h((O/row['control']/(kind+'.json')).read_bytes());assert pin==ix[kind+'_sha256'];originals[kind]=pin
+ rec['prior_originals_verified']=originals
+ storage.append(rec)
+reviewed=['gossip_harness/cumulative_generated_probe_plan_v1.py','gossip_harness/cumulative_generated_probe_review_v1.py','gossip_harness/cumulative_generated_probe_state_v1.py','gossip_harness/cumulative_generated_probe_execution_v1.py','gossip_harness/cumulative_generated_probe_reader_v1.py','gossip_harness/cumulative_generated_probe_pipe_v1.py','gossip_harness/cumulative_generated_probe_driver_v1.py','gossip_harness/candidate_m2_product_observation_v1.py','gossip_harness/candidate_source_capture_policy_v2.py','gossip_harness/candidate_storage_product_profile_v1.py','gossip_harness/cumulative_finite_mapping_v1.py','gossip_harness/candidate_storage_review_authority_v1.py','gossip_harness/candidate_m2_review_authority_v1.py','tests/generated_probe_physical_fixture_v1.py','tests/test_generated_probe_physical_fixture_v1.py','docs/candidate-storage-m2-physical-qualification-v1.md']
+out={'protocol':'independent-bounded-frozen-component-review-20261005-v1','reviewer':'current_frozen_component_review','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'repo':str(R),'main':subprocess.check_output(['git','rev-parse','main'],cwd=R).decode().strip(),'head_at_end':subprocess.check_output(['git','rev-parse','HEAD'],cwd=R).decode().strip(),'source_pins_match_main_and_current':True,'owner_source_count':len(owner),'owner_sources':pins,'probe_packet':str(P),'probe_census_sha256':h((P/'census.json').read_bytes()),'owner_sources_file_sha256':h((P/'owner-sources.json').read_bytes()),'probe_controls':controls,'storage_amendment':str(A),'storage_amendment_sha256':h(A.read_bytes()),'storage_controls':storage,'read_source_scope':[{'path':p,'sha256':h((R/p).read_bytes())} for p in reviewed],'physical_executions':0,'test_runs':0,'provider_calls':0,'new_approvals':0,'acceptance_authority':False,'activities':['Read source and retained review originals as data','Read-only SHA256 and complete Git blob identity traversal','Read-only immutable SQLite schema queries','Write new reviewer-owned artifacts only'],'limitations':['Byte-complete inventory is not semantic review of every candidate module.','No source-layout enrollment/report/delivery authority created.','No runtime, cleanup, physical timing, hostile-source sandbox or product acceptance proven.']}
+(D/'evidence.json').write_bytes(json.dumps(out,indent=2,sort_keys=True).encode()+b'\n')
+print(json.dumps({'directory':str(D),'evidence_sha256':h((D/'evidence.json').read_bytes()),'controls':len(controls),'storage':len(storage),'owner_pins':len(owner)}))

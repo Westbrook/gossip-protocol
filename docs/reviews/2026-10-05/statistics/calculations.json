@@ -1,0 +1,1840 @@
+{
+  "schema": "read-only-statistical-planning-20261005-v1",
+  "status": "Recommendation and calculations only; no protocol freeze, funding approval, new model sample, or inference on the convenience pilot",
+  "created_at_utc": "2026-10-05T11:18:59.228199+00:00",
+  "git_head": "917039432f8aa1b09abd3c7e52e2224169a28470",
+  "source_bindings": [
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/AGENTS.md",
+      "sha256": "21a97036894f4030d5b989de07d8817c004bc3e9d57b9f84305620a4961557c1"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/scientific-evidence-status-20261004.json",
+      "sha256": "bd41d755580346ed03161bbc41da5cc109261cf0467c4996e15c45d1d076d4f3"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-confirmatory-design-v4.json",
+      "sha256": "c1bb87d2a1c1792c5c44e54d6d7b5b100381cc0d23558ae3e43427ccb8fc0587"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/benchmark-live-gossip-followup-design-v2.json",
+      "sha256": "9a067d78c3807e9da28c830a6ad2ac166eb10a62bca1dceabb2abe348a0305ad"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/cumulative-confirmatory-design-check-v1.json",
+      "sha256": "42ecfbf0baf92936b91192456e9730acec2efb4924f8c2d00a5f206877241fdb"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/analysis/confirmatory_statistics.py",
+      "sha256": "5289b38ed2f174a37b329094d09f97864857dd45ec472a459f04d0e9302c9740"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/large-swarm-project-plan-v1.json",
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e"
+    },
+    {
+      "path": "/Users/westbrook/Documents/repos/gossip-protocol/docs/large-swarm-project-plan-v1.md",
+      "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2"
+    }
+  ],
+  "report_extract_sha256": "a76d8ac8d55f1d7dff744d68bb45ef1c70e617d429e5c6f36667c19b66046116",
+  "calculation_script_sha256": "467df136f180e1a3b2839de52cda5746b6664097c69e3709d3b1f42bbe3c9dc3",
+  "retained_outcomes_reaggregated": [
+    {
+      "protocol": "sustained-quality-v1",
+      "source": "/Users/westbrook/Documents/repos/gossip-protocol/results/sustained-live-1/results.json",
+      "sha256": "aefd4c45576f8c530db3695d59ba67151ca83f15629fd01b1943509ca937c151",
+      "finished": 1790798095.091294,
+      "arms": {
+        "reviewed-portfolio": {
+          "runs": 4,
+          "accepted": 4,
+          "completed": 4,
+          "families": [
+            "inventory",
+            "workflow"
+          ]
+        },
+        "strong-single": {
+          "runs": 4,
+          "accepted": 3,
+          "completed": 4,
+          "families": [
+            "inventory",
+            "workflow"
+          ]
+        },
+        "cheap-sequential": {
+          "runs": 4,
+          "accepted": 3,
+          "completed": 4,
+          "families": [
+            "inventory",
+            "workflow"
+          ]
+        }
+      }
+    },
+    {
+      "protocol": "verification-quality-v1",
+      "source": "/Users/westbrook/Documents/repos/gossip-protocol/results/verification-live-1/results.json",
+      "sha256": "8d9521bbf1a30a35770e30d330c0c5ccff68e249f6a193f7be716b467aa9bf47",
+      "finished": 1790831987.758995,
+      "arms": {
+        "cheap-reviewed": {
+          "runs": 6,
+          "accepted": 0,
+          "completed": 6,
+          "families": [
+            "buildgraph",
+            "calendar"
+          ]
+        },
+        "strong-reviewed": {
+          "runs": 6,
+          "accepted": 3,
+          "completed": 6,
+          "families": [
+            "buildgraph",
+            "calendar"
+          ]
+        },
+        "portfolio-reviewed": {
+          "runs": 6,
+          "accepted": 0,
+          "completed": 3,
+          "families": [
+            "buildgraph",
+            "calendar"
+          ]
+        }
+      }
+    },
+    {
+      "protocol": "continuation-followup-v1",
+      "source": "/Users/westbrook/Documents/repos/gossip-protocol/results/followup-live-1/results.json",
+      "sha256": "485f548fed6350733622d3607938eb2a99c66babe72f71014443780b9303e278",
+      "finished": 1790974318.734056,
+      "arms": {
+        "current-independent": {
+          "runs": 4,
+          "accepted": 3,
+          "completed": 4,
+          "families": [
+            "job-queue",
+            "warehouse"
+          ]
+        },
+        "improved-independent": {
+          "runs": 4,
+          "accepted": 3,
+          "completed": 3,
+          "families": [
+            "job-queue",
+            "warehouse"
+          ]
+        },
+        "improved-sequential": {
+          "runs": 4,
+          "accepted": 4,
+          "completed": 4,
+          "families": [
+            "job-queue",
+            "warehouse"
+          ]
+        }
+      }
+    }
+  ],
+  "method": "Retained Bonferroni-Clopper-Pearson paired risk-difference interval. Exact finite multinomial summation in floating point; independently implemented conditional enumeration checked against retained calculation for benefit/exclusion. This is a calculation consistency check, not independent formal numerical qualification.",
+  "margin": 0.1,
+  "margin_authority": "Proposed engineering margin, not user-approved",
+  "classification": {
+    "worthwhile_benefit": "L>+0.10",
+    "exclude_worthwhile_benefit": "U<+0.10 (overlaps equivalence/harm)",
+    "practical_equivalence": "L>-0.10 and U<+0.10",
+    "directional_harm": "U<0 (overlaps equivalence when negative but small)",
+    "worthwhile_harm": "U<-0.10",
+    "unresolved_benefit_equivalence_harm": "none of worthwhile benefit, practical equivalence, worthwhile harm"
+  },
+  "grid": [
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.0031510294099338565,
+        "exclude_worthwhile_benefit": 9.19668665967168e-06,
+        "practical_equivalence": 0.0,
+        "directional_harm": 2.9321710813614434e-09,
+        "worthwhile_harm": 3.2792289273684283e-13,
+        "unresolved_benefit_equivalence_harm": 0.9968489705897382
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.00622848082992089,
+        "exclude_worthwhile_benefit": 3.152144409739056e-05,
+        "practical_equivalence": 0.0,
+        "directional_harm": 2.7397855177413587e-07,
+        "worthwhile_harm": 6.219092474634795e-10,
+        "unresolved_benefit_equivalence_harm": 0.9937715185481699
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.012734354406560245,
+        "exclude_worthwhile_benefit": 0.0001695473833892551,
+        "practical_equivalence": 0.0,
+        "directional_harm": 8.54415104688323e-06,
+        "worthwhile_harm": 2.2509310545470047e-07,
+        "unresolved_benefit_equivalence_harm": 0.9872654205003343
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.00013101904794614032,
+        "exclude_worthwhile_benefit": 0.0006561126805081667,
+        "practical_equivalence": 0.0,
+        "directional_harm": 4.14306846787997e-06,
+        "worthwhile_harm": 6.2041868175744725e-09,
+        "unresolved_benefit_equivalence_harm": 0.9998689747478671
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 1.7516848313450032e-11,
+        "exclude_worthwhile_benefit": 0.004135760108261629,
+        "practical_equivalence": 0.0,
+        "directional_harm": 3.9960044687947535e-07,
+        "worthwhile_harm": 1.7516848313450035e-11,
+        "unresolved_benefit_equivalence_harm": 0.9999999999649664
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 2.090369875518932e-06,
+        "exclude_worthwhile_benefit": 0.011893361223643263,
+        "practical_equivalence": 0.0,
+        "directional_harm": 0.0003253354044641361,
+        "worthwhile_harm": 2.0903698755189343e-06,
+        "unresolved_benefit_equivalence_harm": 0.9999958192602488
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 0.0001601538999420048,
+        "exclude_worthwhile_benefit": 0.01617838007272123,
+        "practical_equivalence": 0.0,
+        "directional_harm": 0.002160300473549929,
+        "worthwhile_harm": 0.00016015389994200482,
+        "unresolved_benefit_equivalence_harm": 0.999679692200116
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.05,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 6.2190924746348e-10,
+        "exclude_worthwhile_benefit": 0.3080856380065841,
+        "practical_equivalence": 0.0,
+        "directional_harm": 0.07188339156456862,
+        "worthwhile_harm": 0.006228480829920882,
+        "unresolved_benefit_equivalence_harm": 0.9937715185481699
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.1062331305748001,
+        "exclude_worthwhile_benefit": 3.7651849804637134e-07,
+        "practical_equivalence": 2.0068133668700924e-09,
+        "directional_harm": 1.3992678304840337e-12,
+        "worthwhile_harm": 2.9432214931844925e-20,
+        "unresolved_benefit_equivalence_harm": 0.8937668674183864
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.0826951860614619,
+        "exclude_worthwhile_benefit": 1.7112105592579964e-06,
+        "practical_equivalence": 4.2207604282137466e-14,
+        "directional_harm": 1.5856795069131299e-10,
+        "worthwhile_harm": 1.0374199319337395e-15,
+        "unresolved_benefit_equivalence_harm": 0.917304813938495
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.0673121493059371,
+        "exclude_worthwhile_benefit": 1.947817715108806e-05,
+        "practical_equivalence": 1.3135324311294942e-28,
+        "directional_harm": 2.815782714921641e-08,
+        "worthwhile_harm": 8.781409105925295e-12,
+        "unresolved_benefit_equivalence_harm": 0.9326878506852815
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0008559805027121308,
+        "exclude_worthwhile_benefit": 0.0011242510638707621,
+        "practical_equivalence": 1.2430266441941166e-08,
+        "directional_harm": 4.3060094351677786e-07,
+        "worthwhile_harm": 4.5974279244453315e-12,
+        "unresolved_benefit_equivalence_harm": 0.999144007062424
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 2.1170824419119074e-12,
+        "exclude_worthwhile_benefit": 0.44354490798477736,
+        "practical_equivalence": 0.09290815973160894,
+        "directional_harm": 0.0003074706648965636,
+        "worthwhile_harm": 2.1170824419119087e-12,
+        "unresolved_benefit_equivalence_harm": 0.9070918402641569
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 4.278980735827696e-07,
+        "exclude_worthwhile_benefit": 0.10393285335960005,
+        "practical_equivalence": 1.973973007632868e-08,
+        "directional_harm": 0.0010183218456084502,
+        "worthwhile_harm": 4.278980735827706e-07,
+        "unresolved_benefit_equivalence_harm": 0.9999991244641229
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 2.4188009302196088e-05,
+        "exclude_worthwhile_benefit": 0.06991462687880157,
+        "practical_equivalence": 2.1030071323704797e-28,
+        "directional_harm": 0.002751762386161351,
+        "worthwhile_harm": 2.4188009302196125e-05,
+        "unresolved_benefit_equivalence_harm": 0.9999516239813956
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.05,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 1.0374199319337397e-15,
+        "exclude_worthwhile_benefit": 0.9723561095062566,
+        "practical_equivalence": 4.2207604282137756e-14,
+        "directional_harm": 0.6045158647060886,
+        "worthwhile_harm": 0.08269518606146183,
+        "unresolved_benefit_equivalence_harm": 0.917304813938495
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.3725739752975457,
+        "exclude_worthwhile_benefit": 4.335226924116283e-09,
+        "practical_equivalence": 1.3361129947951953e-09,
+        "directional_harm": 2.074092625020846e-18,
+        "worthwhile_harm": 5.019497817624942e-31,
+        "unresolved_benefit_equivalence_harm": 0.6274260233663413
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.2591933828344807,
+        "exclude_worthwhile_benefit": 5.982691114424576e-08,
+        "practical_equivalence": 3.9291441773197893e-13,
+        "directional_harm": 9.704355820811314e-15,
+        "worthwhile_harm": 1.1009035114075106e-23,
+        "unresolved_benefit_equivalence_harm": 0.7408066171651264
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.18383636899014946,
+        "exclude_worthwhile_benefit": 1.8231764204585976e-06,
+        "practical_equivalence": 7.18085691048637e-33,
+        "directional_harm": 4.2914259903615197e-11,
+        "worthwhile_harm": 4.196455647268761e-17,
+        "unresolved_benefit_equivalence_harm": 0.8161636310098505
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0010878040840092125,
+        "exclude_worthwhile_benefit": 0.0013273466466952669,
+        "practical_equivalence": 8.501513125183518e-06,
+        "directional_harm": 7.054912743173451e-09,
+        "worthwhile_harm": 5.4242469553247356e-17,
+        "unresolved_benefit_equivalence_harm": 0.9989036944028655
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 6.39986821755774e-15,
+        "exclude_worthwhile_benefit": 0.8845312133579798,
+        "practical_equivalence": 0.7690626892253375,
+        "directional_harm": 0.00043653387394994823,
+        "worthwhile_harm": 6.3998682175577426e-15,
+        "unresolved_benefit_equivalence_harm": 0.23093731077464974
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 9.777458374602712e-09,
+        "exclude_worthwhile_benefit": 0.3281419016419677,
+        "practical_equivalence": 8.201455354013844e-05,
+        "directional_harm": 0.0011294574016414232,
+        "worthwhile_harm": 9.777458374602762e-09,
+        "unresolved_benefit_equivalence_harm": 0.999917965891543
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 2.55782631908437e-06,
+        "exclude_worthwhile_benefit": 0.18325591712010725,
+        "practical_equivalence": 7.545340376704026e-32,
+        "directional_harm": 0.0030735407887967515,
+        "worthwhile_harm": 2.557826319084375e-06,
+        "unresolved_benefit_equivalence_harm": 0.9999948843473618
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.05,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 1.1009035114075123e-23,
+        "exclude_worthwhile_benefit": 0.9999731820487293,
+        "practical_equivalence": 3.929144177319826e-13,
+        "directional_harm": 0.9536108864221925,
+        "worthwhile_harm": 0.25919338283448046,
+        "unresolved_benefit_equivalence_harm": 0.7408066171651265
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.8140156699102774,
+        "exclude_worthwhile_benefit": 2.3912278841306964e-12,
+        "practical_equivalence": 2.3912276710642354e-12,
+        "directional_harm": 2.7454332077228924e-28,
+        "worthwhile_harm": 2.3782784007713524e-51,
+        "unresolved_benefit_equivalence_harm": 0.18598433008733148
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.6414321643167503,
+        "exclude_worthwhile_benefit": 2.0620435661405115e-10,
+        "practical_equivalence": 2.0484522022942136e-10,
+        "directional_harm": 5.343352647694473e-22,
+        "worthwhile_harm": 3.698204215923298e-38,
+        "unresolved_benefit_equivalence_harm": 0.35856783547840443
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.46197162943841197,
+        "exclude_worthwhile_benefit": 3.524553841582542e-08,
+        "practical_equivalence": 3.707512470594659e-11,
+        "directional_harm": 5.296695579882928e-16,
+        "worthwhile_harm": 1.1831657905723155e-26,
+        "unresolved_benefit_equivalence_harm": 0.5380283705245129
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0012320838616573311,
+        "exclude_worthwhile_benefit": 0.0014364338892200556,
+        "practical_equivalence": 0.0014316563436824212,
+        "directional_harm": 8.928775288551125e-12,
+        "worthwhile_harm": 7.427261589599813e-26,
+        "unresolved_benefit_equivalence_harm": 0.9973362597946602
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 2.766372172793738e-21,
+        "exclude_worthwhile_benefit": 0.9986569704142954,
+        "practical_equivalence": 0.9973139408285907,
+        "directional_harm": 0.000613712494247532,
+        "worthwhile_harm": 2.766372172793743e-21,
+        "unresolved_benefit_equivalence_harm": 0.0026860591714092104
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 1.4173335324485891e-11,
+        "exclude_worthwhile_benefit": 0.744978231330825,
+        "practical_equivalence": 0.4899564626616496,
+        "directional_harm": 0.001319235415305584,
+        "worthwhile_harm": 1.4173335324486003e-11,
+        "unresolved_benefit_equivalence_harm": 0.5100435373100038
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 6.063278613811943e-08,
+        "exclude_worthwhile_benefit": 0.4506312962891264,
+        "practical_equivalence": 5.489075939392477e-06,
+        "directional_harm": 0.0032879218628242,
+        "worthwhile_harm": 6.06327861381198e-08,
+        "unresolved_benefit_equivalence_harm": 0.9999943896584882
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.05,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 3.698204215923306e-38,
+        "exclude_worthwhile_benefit": 0.999999999998641,
+        "practical_equivalence": 2.0484522022942206e-10,
+        "directional_harm": 0.9998776798144606,
+        "worthwhile_harm": 0.6414321643167502,
+        "unresolved_benefit_equivalence_harm": 0.3585678354784046
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.9949815889560885,
+        "exclude_worthwhile_benefit": 6.2819047085612415e-18,
+        "practical_equivalence": 6.2819047085612415e-18,
+        "directional_harm": 1.75906329173962e-46,
+        "worthwhile_harm": 3.2644183565620804e-89,
+        "unresolved_benefit_equivalence_harm": 0.005018411043911499
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.9613259394873049,
+        "exclude_worthwhile_benefit": 1.3975513424739666e-14,
+        "practical_equivalence": 1.3975513424739627e-14,
+        "directional_harm": 4.424680738337976e-35,
+        "worthwhile_harm": 7.266873263042559e-65,
+        "unresolved_benefit_equivalence_harm": 0.03867406051268102
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.8473400877625771,
+        "exclude_worthwhile_benefit": 4.7518144957580404e-11,
+        "practical_equivalence": 4.751813275891719e-11,
+        "directional_harm": 1.089052648033096e-24,
+        "worthwhile_harm": 4.245535548990387e-44,
+        "unresolved_benefit_equivalence_harm": 0.15265991218990474
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0013862972287576512,
+        "exclude_worthwhile_benefit": 0.0015043593170339681,
+        "practical_equivalence": 0.0015043593170094437,
+        "directional_harm": 8.084095655594731e-17,
+        "worthwhile_harm": 6.914445050460348e-42,
+        "unresolved_benefit_equivalence_harm": 0.9971093434542329
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 6.411617094667434e-33,
+        "exclude_worthwhile_benefit": 0.9999999882951273,
+        "practical_equivalence": 0.9999999765902545,
+        "directional_harm": 0.0006937842420269289,
+        "worthwhile_harm": 6.411617094667466e-33,
+        "unresolved_benefit_equivalence_harm": 2.3409745567775605e-08
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 2.0503539077846302e-16,
+        "exclude_worthwhile_benefit": 0.9857039153419934,
+        "practical_equivalence": 0.9714078306839868,
+        "directional_harm": 0.001402952974136614,
+        "worthwhile_harm": 2.0503539077846576e-16,
+        "unresolved_benefit_equivalence_harm": 0.028592169316012755
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 1.1103323712107836e-10,
+        "exclude_worthwhile_benefit": 0.8326550476160632,
+        "practical_equivalence": 0.6653100952321263,
+        "directional_harm": 0.0034905605533094002,
+        "worthwhile_harm": 1.1103323712107895e-10,
+        "unresolved_benefit_equivalence_harm": 0.3346899045458072
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.05,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 7.266873263042603e-65,
+        "exclude_worthwhile_benefit": 1.0,
+        "practical_equivalence": 1.3975513424739725e-14,
+        "directional_harm": 0.9999999999429493,
+        "worthwhile_harm": 0.9613259394873049,
+        "unresolved_benefit_equivalence_harm": 0.03867406051268113
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.0010880391390383636,
+        "exclude_worthwhile_benefit": 2.457349220197381e-06,
+        "practical_equivalence": 0.0,
+        "directional_harm": 3.4428911210159785e-10,
+        "worthwhile_harm": 2.450529542913267e-14,
+        "unresolved_benefit_equivalence_harm": 0.9989119608609371
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.0025315875054996895,
+        "exclude_worthwhile_benefit": 1.110333523216508e-05,
+        "practical_equivalence": 0.0,
+        "directional_harm": 5.079111710079872e-08,
+        "worthwhile_harm": 9.784378999845322e-11,
+        "unresolved_benefit_equivalence_harm": 0.9974684123966565
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.0052216390845049344,
+        "exclude_worthwhile_benefit": 5.066285922775724e-05,
+        "practical_equivalence": 0.0,
+        "directional_harm": 1.970413160575058e-06,
+        "worthwhile_harm": 4.388386069084527e-08,
+        "unresolved_benefit_equivalence_harm": 0.9947783170316343
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 3.603885477610686e-05,
+        "exclude_worthwhile_benefit": 0.0002720995063053567,
+        "practical_equivalence": 0.0,
+        "directional_harm": 8.299832847688729e-07,
+        "worthwhile_harm": 8.960883360937622e-10,
+        "unresolved_benefit_equivalence_harm": 0.9999639602491356
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 1.0295738729332368e-12,
+        "exclude_worthwhile_benefit": 0.0009109892787494004,
+        "practical_equivalence": 0.0,
+        "directional_harm": 3.94784844866424e-08,
+        "worthwhile_harm": 1.0295738729332372e-12,
+        "unresolved_benefit_equivalence_harm": 0.9999999999979409
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 4.3846700792305694e-07,
+        "exclude_worthwhile_benefit": 0.005868403080824943,
+        "practical_equivalence": 0.0,
+        "directional_harm": 8.738525540072194e-05,
+        "worthwhile_harm": 4.3846700792305757e-07,
+        "unresolved_benefit_equivalence_harm": 0.999999123065984
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 4.588005790949869e-05,
+        "exclude_worthwhile_benefit": 0.007205097139014308,
+        "practical_equivalence": 0.0,
+        "directional_harm": 0.0007595883931462021,
+        "worthwhile_harm": 4.5880057909498704e-05,
+        "unresolved_benefit_equivalence_harm": 0.999908239884181
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 30,
+      "whole_project_trajectories_three_arm": 90,
+      "alpha": 0.025,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 9.78437899984533e-11,
+        "exclude_worthwhile_benefit": 0.19955298153809897,
+        "practical_equivalence": 0.0,
+        "directional_harm": 0.032542483109377664,
+        "worthwhile_harm": 0.002531587505499686,
+        "unresolved_benefit_equivalence_harm": 0.9974684123966566
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.05226392219763914,
+        "exclude_worthwhile_benefit": 6.09183858106204e-08,
+        "practical_equivalence": 1.349939937817082e-10,
+        "directional_harm": 1.431481038564014e-13,
+        "worthwhile_harm": 2.769160912058985e-21,
+        "unresolved_benefit_equivalence_harm": 0.9477360776673668
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.03980454359626118,
+        "exclude_worthwhile_benefit": 3.3892674299516627e-07,
+        "practical_equivalence": 9.139604032087029e-16,
+        "directional_harm": 1.735683678590215e-11,
+        "worthwhile_harm": 5.788311908581669e-17,
+        "unresolved_benefit_equivalence_harm": 0.9601954564037379
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.03511812748528908,
+        "exclude_worthwhile_benefit": 4.970243911749297e-06,
+        "practical_equivalence": 4.798940413378514e-31,
+        "directional_harm": 4.866563489233835e-09,
+        "worthwhile_harm": 1.042760092535364e-12,
+        "unresolved_benefit_equivalence_harm": 0.9648818725136681
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.00022368293410540645,
+        "exclude_worthwhile_benefit": 0.00037040790212990366,
+        "practical_equivalence": 5.400926250200939e-10,
+        "directional_harm": 8.16944907752335e-08,
+        "worthwhile_harm": 4.406259651114185e-13,
+        "unresolved_benefit_equivalence_harm": 0.9997763165253614
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 3.2240795992708386e-13,
+        "exclude_worthwhile_benefit": 0.29753711921090614,
+        "practical_equivalence": 0.030934912628733657,
+        "directional_harm": 4.5519112159158896e-05,
+        "worthwhile_harm": 3.22407959927084e-13,
+        "unresolved_benefit_equivalence_harm": 0.9690650873706216
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 6.33329042269077e-08,
+        "exclude_worthwhile_benefit": 0.055670149359360314,
+        "practical_equivalence": 7.66042560011039e-10,
+        "directional_harm": 0.0003069452345315041,
+        "worthwhile_harm": 6.333290422690786e-08,
+        "unresolved_benefit_equivalence_harm": 0.999999872568149
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 6.219104600109622e-06,
+        "exclude_worthwhile_benefit": 0.03718096148463832,
+        "practical_equivalence": 6.831188638277588e-31,
+        "directional_harm": 0.001026101807972366,
+        "worthwhile_harm": 6.219104600109633e-06,
+        "unresolved_benefit_equivalence_harm": 0.9999875617907998
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 100,
+      "whole_project_trajectories_three_arm": 300,
+      "alpha": 0.025,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 5.78831190858167e-17,
+        "exclude_worthwhile_benefit": 0.9429082458937659,
+        "practical_equivalence": 9.139604032087102e-16,
+        "directional_harm": 0.46366666762785463,
+        "worthwhile_harm": 0.03980454359626114,
+        "unresolved_benefit_equivalence_harm": 0.9601954564037378
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.2502312923354238,
+        "exclude_worthwhile_benefit": 5.978705496360037e-10,
+        "practical_equivalence": 1.702152230652951e-11,
+        "directional_harm": 1.5335078035251668e-19,
+        "worthwhile_harm": 9.626118884728667e-33,
+        "unresolved_benefit_equivalence_harm": 0.7497687076475548
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.15997249966021762,
+        "exclude_worthwhile_benefit": 9.35253491530816e-09,
+        "practical_equivalence": 2.0509888167001353e-17,
+        "directional_harm": 8.039995419439643e-16,
+        "worthwhile_harm": 3.7209728851329898e-25,
+        "unresolved_benefit_equivalence_harm": 0.8400275003397824
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.11337328684559617,
+        "exclude_worthwhile_benefit": 3.874251253269694e-07,
+        "practical_equivalence": 5.104381906601883e-41,
+        "directional_harm": 5.5190916739430835e-12,
+        "worthwhile_harm": 3.2048732413598096e-18,
+        "unresolved_benefit_equivalence_harm": 0.8866267131544039
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0003226161722010444,
+        "exclude_worthwhile_benefit": 0.0004326436419671593,
+        "practical_equivalence": 1.3709561148169405e-08,
+        "directional_harm": 1.118388352925751e-09,
+        "worthwhile_harm": 3.2963036150040502e-18,
+        "unresolved_benefit_equivalence_harm": 0.9996773701182379
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 2.4944144979456923e-16,
+        "exclude_worthwhile_benefit": 0.7891395675894569,
+        "practical_equivalence": 0.5787919665126828,
+        "directional_harm": 0.0001291858556125397,
+        "worthwhile_harm": 2.494414497945694e-16,
+        "unresolved_benefit_equivalence_harm": 0.4212080334873168
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 1.2946773656018945e-09,
+        "exclude_worthwhile_benefit": 0.21741550722554093,
+        "practical_equivalence": 7.59853897550988e-08,
+        "directional_harm": 0.00037207647704186445,
+        "worthwhile_harm": 1.2946773656019016e-09,
+        "unresolved_benefit_equivalence_harm": 0.9999999214252554
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 5.825335721538789e-07,
+        "exclude_worthwhile_benefit": 0.1126195622742967,
+        "practical_equivalence": 2.9795343141242262e-40,
+        "directional_harm": 0.0011830984348396808,
+        "worthwhile_harm": 5.825335721538801e-07,
+        "unresolved_benefit_equivalence_harm": 0.9999988349328557
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 200,
+      "whole_project_trajectories_three_arm": 600,
+      "alpha": 0.025,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 3.720972885132995e-25,
+        "exclude_worthwhile_benefit": 0.9998934128858464,
+        "practical_equivalence": 2.0509888167001587e-17,
+        "directional_harm": 0.9112649578593429,
+        "worthwhile_harm": 0.15997249966021745,
+        "unresolved_benefit_equivalence_harm": 0.8400275003397825
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.7122407674179237,
+        "exclude_worthwhile_benefit": 2.1991889987681184e-13,
+        "practical_equivalence": 2.1991405835301097e-13,
+        "directional_harm": 6.478526685331275e-30,
+        "worthwhile_harm": 1.532022276023144e-53,
+        "unresolved_benefit_equivalence_harm": 0.2877592325818564
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.5131388943287357,
+        "exclude_worthwhile_benefit": 2.5709641454908993e-11,
+        "practical_equivalence": 1.6144030109753156e-11,
+        "directional_harm": 2.2172280324617518e-23,
+        "worthwhile_harm": 5.844269430288205e-40,
+        "unresolved_benefit_equivalence_harm": 0.48686110565512014
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.3437134472033915,
+        "exclude_worthwhile_benefit": 6.1756472703422194e-09,
+        "practical_equivalence": 6.899966649911148e-25,
+        "directional_harm": 4.419994316936258e-17,
+        "worthwhile_harm": 4.580900689198823e-28,
+        "unresolved_benefit_equivalence_harm": 0.6562865527966085
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.0004010071855451583,
+        "exclude_worthwhile_benefit": 0.0004557309511414641,
+        "practical_equivalence": 0.000433502592770978,
+        "directional_harm": 8.261523373388495e-13,
+        "worthwhile_harm": 2.5145361200559498e-27,
+        "unresolved_benefit_equivalence_harm": 0.9991654902216838
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 9.690415313640491e-23,
+        "exclude_worthwhile_benefit": 0.9961095400951161,
+        "practical_equivalence": 0.9922190801902322,
+        "directional_harm": 0.00016555632852702527,
+        "worthwhile_harm": 9.690415313640507e-23,
+        "unresolved_benefit_equivalence_harm": 0.0077809198097676955
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 1.522544534496807e-12,
+        "exclude_worthwhile_benefit": 0.6256792951571049,
+        "practical_equivalence": 0.25137319664678187,
+        "directional_harm": 0.000408176918077389,
+        "worthwhile_harm": 1.5225445344968197e-12,
+        "unresolved_benefit_equivalence_harm": 0.7486268033501732
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 1.1114714516642803e-08,
+        "exclude_worthwhile_benefit": 0.33447734659700146,
+        "practical_equivalence": 4.624375796586704e-21,
+        "directional_harm": 0.0012755529417460085,
+        "worthwhile_harm": 1.1114714516642875e-08,
+        "unresolved_benefit_equivalence_harm": 0.9999999777705708
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 400,
+      "whole_project_trajectories_three_arm": 1200,
+      "alpha": 0.025,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 5.844269430288219e-40,
+        "exclude_worthwhile_benefit": 0.9999999999866174,
+        "practical_equivalence": 1.6144030109753227e-11,
+        "directional_harm": 0.999570086801274,
+        "worthwhile_harm": 0.5131388943287357,
+        "unresolved_benefit_equivalence_harm": 0.48686110565512036
+      }
+    },
+    {
+      "scenario": "large_gain_low_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.25,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.2,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 0.9873995593468134,
+        "exclude_worthwhile_benefit": 3.516781588339964e-19,
+        "practical_equivalence": 3.516781588339964e-19,
+        "directional_harm": 1.484400127670501e-48,
+        "worthwhile_harm": 4.3907058405590874e-92,
+        "unresolved_benefit_equivalence_harm": 0.012600440653186433
+      }
+    },
+    {
+      "scenario": "large_gain_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 0.9248244137007198,
+        "exclude_worthwhile_benefit": 1.088749945917529e-15,
+        "practical_equivalence": 1.0887499459160432e-15,
+        "directional_harm": 7.675498744590715e-37,
+        "worthwhile_harm": 2.8475109500017513e-67,
+        "unresolved_benefit_equivalence_harm": 0.07517558629927913
+      }
+    },
+    {
+      "scenario": "large_gain_high_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.4,
+      "p_orchestrator_only": 0.2,
+      "delta": 0.2,
+      "discordance": 0.6000000000000001,
+      "probabilities": {
+        "worthwhile_benefit": 0.7638177936252558,
+        "exclude_worthwhile_benefit": 6.0934470250389594e-12,
+        "practical_equivalence": 6.0932881893880554e-12,
+        "directional_harm": 4.61495144401726e-26,
+        "worthwhile_harm": 6.057843686462305e-46,
+        "unresolved_benefit_equivalence_harm": 0.23618220636865092
+      }
+    },
+    {
+      "scenario": "gain_at_margin",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.2,
+      "p_orchestrator_only": 0.1,
+      "delta": 0.1,
+      "discordance": 0.30000000000000004,
+      "probabilities": {
+        "worthwhile_benefit": 0.00044156135902210744,
+        "exclude_worthwhile_benefit": 0.0004878679127740243,
+        "practical_equivalence": 0.0004878679124663129,
+        "directional_harm": 4.684910020781583e-18,
+        "worthwhile_harm": 7.919996644459859e-44,
+        "unresolved_benefit_equivalence_harm": 0.9990705707285116
+      }
+    },
+    {
+      "scenario": "zero_gain_low_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.05,
+      "p_orchestrator_only": 0.05,
+      "delta": 0.0,
+      "discordance": 0.1,
+      "probabilities": {
+        "worthwhile_benefit": 9.714037979041999e-35,
+        "exclude_worthwhile_benefit": 0.9999999195784737,
+        "practical_equivalence": 0.9999998391569472,
+        "directional_harm": 0.00019380365374390394,
+        "worthwhile_harm": 9.714037979042048e-35,
+        "unresolved_benefit_equivalence_harm": 1.6084305280407944e-07
+      }
+    },
+    {
+      "scenario": "zero_gain_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.15,
+      "p_orchestrator_only": 0.15,
+      "delta": 0.0,
+      "discordance": 0.3,
+      "probabilities": {
+        "worthwhile_benefit": 1.2523374339082609e-17,
+        "exclude_worthwhile_benefit": 0.9682601271075372,
+        "practical_equivalence": 0.9365202542150743,
+        "directional_harm": 0.00044891747671704476,
+        "worthwhile_harm": 1.2523374339082783e-17,
+        "unresolved_benefit_equivalence_harm": 0.06347974578492563
+      }
+    },
+    {
+      "scenario": "zero_gain_high_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.3,
+      "p_orchestrator_only": 0.3,
+      "delta": 0.0,
+      "discordance": 0.6,
+      "probabilities": {
+        "worthwhile_benefit": 1.5021307499416853e-11,
+        "exclude_worthwhile_benefit": 0.7462390700225511,
+        "practical_equivalence": 0.49247814004510193,
+        "directional_harm": 0.0013538508266927839,
+        "worthwhile_harm": 1.5021307499416937e-11,
+        "unresolved_benefit_equivalence_harm": 0.5075218599248554
+      }
+    },
+    {
+      "scenario": "large_harm_medium_discordance",
+      "n_independent_families": 800,
+      "whole_project_trajectories_three_arm": 2400,
+      "alpha": 0.025,
+      "p_swarm_only": 0.1,
+      "p_orchestrator_only": 0.3,
+      "delta": -0.19999999999999998,
+      "discordance": 0.4,
+      "probabilities": {
+        "worthwhile_benefit": 2.847510950001768e-67,
+        "exclude_worthwhile_benefit": 1.0,
+        "practical_equivalence": 1.0887499459160511e-15,
+        "directional_harm": 0.999999999517948,
+        "worthwhile_harm": 0.9248244137007197,
+        "unresolved_benefit_equivalence_harm": 0.07517558629927931
+      }
+    }
+  ],
+  "normal_approximation_sensitivity": [
+    {
+      "alpha": 0.05,
+      "true_delta": 0.2,
+      "discordance": 0.3,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 205,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.05,
+      "true_delta": 0.2,
+      "discordance": 0.4,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 283,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.05,
+      "true_delta": 0.2,
+      "discordance": 0.6,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 440,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.05,
+      "true_delta": 0,
+      "discordance": 0.1,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 79,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.05,
+      "true_delta": 0,
+      "discordance": 0.3,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 236,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.05,
+      "true_delta": 0,
+      "discordance": 0.6,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 471,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0.2,
+      "discordance": 0.3,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 248,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0.2,
+      "discordance": 0.4,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 343,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0.2,
+      "discordance": 0.6,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 533,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0,
+      "discordance": 0.1,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 96,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0,
+      "discordance": 0.3,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 286,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    },
+    {
+      "alpha": 0.025,
+      "true_delta": 0,
+      "discordance": 0.6,
+      "target_margin": 0.1,
+      "approximate_n_one_sided_decision_80pct": 571,
+      "limitation": "Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation."
+    }
+  ],
+  "illustrative_interval_examples_not_observations": [
+    {
+      "pairs": 1,
+      "wins": 0,
+      "losses": 0,
+      "ties": 1,
+      "estimate": 0.0,
+      "lower": -0.9875,
+      "upper": 0.9875,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 1,
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "estimate": 1.0,
+      "lower": -0.9750000000000001,
+      "upper": 1.0,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 30,
+      "wins": 9,
+      "losses": 3,
+      "ties": 18,
+      "estimate": 0.2,
+      "lower": -0.15846382250668056,
+      "upper": 0.5034791462580805,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 100,
+      "wins": 30,
+      "losses": 10,
+      "ties": 60,
+      "estimate": 0.2,
+      "lower": 0.013763053206328257,
+      "upper": 0.37000789640513226,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 100,
+      "wins": 15,
+      "losses": 15,
+      "ties": 70,
+      "estimate": 0.0,
+      "lower": -0.16849444488554893,
+      "upper": 0.16849444488554893,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 30,
+      "wins": 0,
+      "losses": 0,
+      "ties": 30,
+      "estimate": 0.0,
+      "lower": -0.13590067257572858,
+      "upper": 0.13590067257572858,
+      "confidence": 0.95,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 1,
+      "wins": 0,
+      "losses": 0,
+      "ties": 1,
+      "estimate": 0.0,
+      "lower": -0.99375,
+      "upper": 0.99375,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 1,
+      "wins": 1,
+      "losses": 0,
+      "ties": 0,
+      "estimate": 1.0,
+      "lower": -0.9875,
+      "upper": 1.0,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 30,
+      "wins": 9,
+      "losses": 3,
+      "ties": 18,
+      "estimate": 0.2,
+      "lower": -0.1950386851820129,
+      "upper": 0.5304445871911591,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 100,
+      "wins": 30,
+      "losses": 10,
+      "ties": 60,
+      "estimate": 0.2,
+      "lower": -0.00669692882131645,
+      "upper": 0.3872224292887825,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 100,
+      "wins": 15,
+      "losses": 15,
+      "ties": 70,
+      "estimate": 0.0,
+      "lower": -0.18628401884068713,
+      "upper": 0.18628401884068713,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    },
+    {
+      "pairs": 30,
+      "wins": 0,
+      "losses": 0,
+      "ties": 30,
+      "estimate": 0.0,
+      "lower": -0.15563672849004584,
+      "upper": 0.15563672849004584,
+      "confidence": 0.975,
+      "method": "Bonferroni-Clopper-Pearson discordant-cell risk difference"
+    }
+  ],
+  "assumptions": [
+    "One independently sampled family per paired contrast; paired arms may correlate.",
+    "Independent draws from a frozen target family/fault mixture; no within-family milestone/seed/scenario inflation.",
+    "No post-outcome method, margin, sample, or contrast selection.",
+    "The exact finite planning probabilities do not imply scenarios are empirically estimated."
+  ]
+}

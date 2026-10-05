@@ -1,0 +1,42 @@
+{
+  "status": "bounded_review_complete_not_execution_approval",
+  "material_findings": [
+    {
+      "id": "F1",
+      "priority": "high",
+      "title": "Enclosing deadline is not propagated to fixed 60-second source capture",
+      "classification": "source-level timing-contract gap; no measured runtime failure or false acceptance",
+      "files": [
+        "gossip_harness/cumulative_generated_probe_state_v1.py:190",
+        "gossip_harness/cumulative_generated_probe_plan_v1.py:207",
+        "gossip_harness/candidate_source_capture_policy_v2.py:84",
+        "gossip_harness/cumulative_generated_probe_pipe_v1.py:250"
+      ]
+    },
+    {
+      "id": "F2",
+      "priority": "high",
+      "title": "Prepared control packets do not implement complete physical qualification",
+      "classification": "readiness gap, not new observed behavior regression",
+      "files": [
+        "tests/generated_probe_physical_fixture_v1.py:199",
+        "tests/test_generated_probe_physical_fixture_v1.py:61"
+      ]
+    }
+  ],
+  "probe_source_applicable": true,
+  "probe_exact_reviews_remaining": 12,
+  "storage_amendment_reviews_remaining": [
+    "P01",
+    "D01",
+    "P02",
+    "D02"
+  ],
+  "storage_exact_originals_retainable": [
+    "P03",
+    "D03"
+  ],
+  "fresh_physical_executions": 0,
+  "new_layout_approvals": 0,
+  "new_quality_samples": 0
+}

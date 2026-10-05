@@ -1,0 +1,125 @@
+{
+  "protocol": "parallel-readiness-review-20261005-v1",
+  "user_authorization": "Start all three streams",
+  "status": "Three independent review/design streams completed; no executable acceptance approvals issued.",
+  "implementation_commit": "663ab278beacdd50e6987aa9c5a76c4fba576c5a",
+  "accounting_checks": {
+    "fresh_passed": 87,
+    "reused": 0,
+    "source_inputs": 771,
+    "audit": "analysis/generated-probe-original-accounting-offline-qualification-v1.json"
+  },
+  "findings": [
+    "Probe/storage packet source closures remain applicable to inspected bytes. Review reports are not executable approval originals.",
+    "Nested source capture starts a fresh timeout instead of inheriting the enclosing deadline; late progress is refused, but the stronger wall bound is not enforced inside capture.",
+    "Host-fault H01-H08 descriptions remain unexecuted qualification obligations.",
+    "Workflow has a retained 38/38 physical component pass. Current ordered tests and class configuration match; full runtime/environment/purpose reuse is not qualified.",
+    "Controller activation plus browser/worker/release/V2 final routes and full semantic enrollment remain incomplete.",
+    "Release final adapter is the quickest independent implementation package; later browser journeys offer larger user-facing coverage. Root retains shared joins and verification.",
+    "Finish the existing six-trajectory, four-milestone pilot before further generic infrastructure or roster expansion.",
+    "One development family cannot establish population superiority. Excluding a worthwhile benefit and establishing practical equivalence are different conclusions."
+  ],
+  "schedule": {
+    "remaining_effort": 25,
+    "total_effort": 248,
+    "remaining_unchanged_since_utc": "2026-10-03T02:13:19Z",
+    "pilot_allowance": "1-2 further weeks, low confidence; assumes focused work, required approvals and no major qualification failures. Not inferred from historical percentage.",
+    "statistical_resolution_eta": null,
+    "reason": "Requires measured pilot resources, independent-family sampling, a frozen effect/sample plan and concrete funding."
+  },
+  "next_action": "Propagate an original enclosing deadline through source/control execution and integrate shared admission and versioned controller; complete only the named launch gates, then the matching rehearsal and authorized live pilot.",
+  "boundaries": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "executable_approvals_created_by_reviews": 0,
+    "scientific_scope_expanded": false,
+    "recommendations_are_not_new_funding_or_protocol_authority": true
+  },
+  "artifacts": [
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/review.md",
+      "retained": "docs/reviews/2026-10-05/frozen/review.md",
+      "sha256": "b5d997a6d0cb55a51b0d21ceb2d2aa88ef63ac808d0978725ff04e23849d960e"
+    },
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/evidence.json",
+      "retained": "docs/reviews/2026-10-05/frozen/evidence.json",
+      "sha256": "da4e563ebf55f5229ff31d2e3e40aa61608893ae871758b83f1594a4b9e91f8a"
+    },
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/findings.json",
+      "retained": "docs/reviews/2026-10-05/frozen/findings.json",
+      "sha256": "934a8659d32a48ddeead1742c524e0b05c20e7cd472d7747ef9016110f5c42bb"
+    },
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/mutations.json",
+      "retained": "docs/reviews/2026-10-05/frozen/mutations.json",
+      "sha256": "8b7cbf78cf766f2d68abd53acc8654b2d4c10506214cba1ccb19dee75c2092b4"
+    },
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/audit.py",
+      "retained": "docs/reviews/2026-10-05/frozen/audit.py.txt",
+      "sha256": "cf565a350a0e762b20c28be76420a1cbde8cedff12e9342b49a434bbd17fb527"
+    },
+    {
+      "stream": "frozen",
+      "original": "/private/tmp/gossip-frozen-review-20261005/manifest.json",
+      "retained": "docs/reviews/2026-10-05/frozen/manifest.json",
+      "sha256": "44c641f6f870109cd447a16668ded6b23355a6d243d150790b44d5c0cbe69f04"
+    },
+    {
+      "stream": "acceptance",
+      "original": "/private/tmp/gossip-current-acceptance-audit-20261005/summary.md",
+      "retained": "docs/reviews/2026-10-05/acceptance/summary.md",
+      "sha256": "a4369dd8f34a6b3956326e3477fc1a388e57efbcc50237b9fe183f33adad2c58"
+    },
+    {
+      "stream": "acceptance",
+      "original": "/private/tmp/gossip-current-acceptance-audit-20261005/audit.json",
+      "retained": "docs/reviews/2026-10-05/acceptance/audit.json",
+      "sha256": "f862b5971a7906dc8c8342fe8f062328d62e1aa53e2bdb1ab99dd78a0e3b7e07"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/design-memo.md",
+      "retained": "docs/reviews/2026-10-05/statistics/design-memo.md",
+      "sha256": "4d55550068c57d72ecc1bca3f14c53a15f2eb381d93c1375817842e668b9f794"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/calculations.json",
+      "retained": "docs/reviews/2026-10-05/statistics/calculations.json",
+      "sha256": "6f191a5609bdef274bff4bdbff8d5aff1bca77de5a91090e0186bd397d5bdc7c"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/calculate.py",
+      "retained": "docs/reviews/2026-10-05/statistics/calculate.py.txt",
+      "sha256": "467df136f180e1a3b2839de52cda5746b6664097c69e3709d3b1f42bbe3c9dc3"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/report-extract.json",
+      "retained": "docs/reviews/2026-10-05/statistics/report-extract.json",
+      "sha256": "a76d8ac8d55f1d7dff744d68bb45ef1c70e617d429e5c6f36667c19b66046116"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/artifact-hashes.json",
+      "retained": "docs/reviews/2026-10-05/statistics/artifact-hashes.json",
+      "sha256": "047948b6c71cf12292cc989919d1eea2b366d05c8356ad5dbe4577a21e499844"
+    },
+    {
+      "stream": "statistics",
+      "original": "/private/tmp/gossip-statistical-design-20261005/write_memo.py",
+      "retained": "docs/reviews/2026-10-05/statistics/write_memo.py.txt",
+      "sha256": "d574bbaae55b44ed01844549235dafd486e9e96b646da030007cd5b76de68e1e"
+    }
+  ]
+}

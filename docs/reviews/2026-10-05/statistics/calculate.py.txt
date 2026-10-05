@@ -1,0 +1,65 @@
+"""Read-only planning calculations. No model calls, executions, or inferential adoption."""
+from pathlib import Path
+import sys,json,hashlib,math,datetime,subprocess
+from statistics import NormalDist
+from collections import defaultdict
+ROOT=Path('/Users/westbrook/Documents/repos/gossip-protocol')
+OUT=Path(__file__).parent
+sys.path.insert(0,str(ROOT))
+from analysis import confirmatory_statistics as stats
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+source_names=['AGENTS.md','analysis/scientific-evidence-status-20261004.json','analysis/benchmark-confirmatory-design-v4.json','analysis/benchmark-live-gossip-followup-design-v2.json','analysis/cumulative-confirmatory-design-check-v1.json','analysis/confirmatory_statistics.py','large-swarm-project-plan-v1.json','docs/large-swarm-project-plan-v1.md']
+bindings=[{'path':str(ROOT/n),'sha256':sha(ROOT/n)} for n in source_names]
+report=Path('/Users/westbrook/.codex/visualizations/2026/09/30/01a0f016-e17e-7c03-a6a9-b13e8ca236fb/gossip-progress-report/data/project.json')
+reportbytes=report.read_bytes(); r=json.loads(reportbytes)
+report_extract={'read_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'original_report_sha256':hashlib.sha256(reportbytes).hexdigest(),'scheduleAssessment':r['handoff']['scheduleAssessment'],'nextAction':r['handoff']['nextAction'],'feedback':r['feedback']}
+(OUT/'report-extract.json').write_text(json.dumps(report_extract,indent=2)+'\n')
+evidence=json.loads((ROOT/'analysis/scientific-evidence-status-20261004.json').read_text())
+observations=[]
+for study in evidence['studies']:
+ p=ROOT/study['source']['local_retained_path'];assert sha(p)==study['source']['sha256']
+ data=json.loads(p.read_text());arms=defaultdict(lambda:{'runs':0,'accepted':0,'completed':0,'families':set()})
+ for c in data['cases']:
+  a=arms[c['policy']];a['runs']+=1;a['accepted']+=bool(c['accepted']);a['completed']+=c['milestones_completed']==study['milestones'];a['families'].add(c['project_id'])
+ for name,a in arms.items():
+  a['families']=sorted(a['families']); ref=study['arms'][name]
+  assert (a['runs'],a['accepted'],a['completed'])==(ref['planned_trajectories'],ref['whole_project_accepted'],ref['completed_all_milestones'])
+ observations.append({'protocol':study['protocol'],'source':str(p),'sha256':sha(p),'finished':data['finished_at'],'arms':dict(arms)})
+# Conditional enumeration W~Bin(n,p10), L|W~Bin(n-W,p01/(1-p10)).
+# All conclusions use one simultaneously valid interval; labels may overlap as declared.
+def probabilities(n,pw,pl,alpha,margin=.1):
+ lower=[stats._cp_lower(k,n,alpha/4) for k in range(n+1)]
+ upper=[1-lower[n-k] for k in range(n+1)]
+ flags={k:[] for k in ['worthwhile_benefit','exclude_worthwhile_benefit','practical_equivalence','directional_harm','worthwhile_harm','unresolved_benefit_equivalence_harm']}
+ for w,wm in enumerate(stats.binomial_masses(n,pw)):
+  if not wm:continue
+  subtotal={k:[] for k in flags}
+  for l,lm in enumerate(stats.binomial_masses(n-w,pl/(1-pw))):
+   lo=lower[w]-upper[l];hi=upper[w]-lower[l]
+   a=lo>margin;b=hi<margin;c=lo>-margin and hi<margin;d=hi<0;e=hi<-margin
+   for key,yes in zip(flags,[a,b,c,d,e,not(a or c or e)]):
+    if yes:subtotal[key].append(lm)
+  for key in flags:flags[key].append(wm*math.fsum(subtotal[key]))
+ ans={k:math.fsum(v) for k,v in flags.items()}
+ existing=stats.interval_decision_power(n,pw,pl,margin,alpha)
+ assert abs(ans['worthwhile_benefit']-existing['meaningful_benefit'])<1e-10
+ assert abs(ans['exclude_worthwhile_benefit']-existing['rules_out_meaningful_benefit'])<1e-10
+ assert abs(ans['worthwhile_benefit']+ans['practical_equivalence']+ans['worthwhile_harm']+ans['unresolved_benefit_equivalence_harm']-1)<1e-10
+ return ans
+scenarios=[('large_gain_low_discordance',.25,.05),('large_gain_medium_discordance',.30,.10),('large_gain_high_discordance',.40,.20),('gain_at_margin',.20,.10),('zero_gain_low_discordance',.05,.05),('zero_gain_medium_discordance',.15,.15),('zero_gain_high_discordance',.30,.30),('large_harm_medium_discordance',.10,.30)]
+grid=[]
+for alpha in [.05,.025]:
+ for n in [30,100,200,400,800]:
+  for name,pw,pl in scenarios:
+   grid.append({'scenario':name,'n_independent_families':n,'whole_project_trajectories_three_arm':3*n,'alpha':alpha,'p_swarm_only':pw,'p_orchestrator_only':pl,'delta':pw-pl,'discordance':pw+pl,'probabilities':probabilities(n,pw,pl,alpha)})
+  print('computed',alpha,n,flush=True)
+normal=[]
+for alpha in [.05,.025]:
+ for delta,q,target in [(.2,.3,.1),(.2,.4,.1),(.2,.6,.1),(0,.1,.1),(0,.3,.1),(0,.6,.1)]:
+  z=NormalDist().inv_cdf(1-alpha/2)
+  n=math.ceil((z+NormalDist().inv_cdf(.8))**2*(q-delta**2)/(delta-target)**2)
+  normal.append({'alpha':alpha,'true_delta':delta,'discordance':q,'target_margin':target,'approximate_n_one_sided_decision_80pct':n,'limitation':'Idealized normal planning scale only; NOT qualified coverage/power for an adopted paired interval; NOT equivalence power; not a sample-size recommendation.'})
+examples=[stats.paired_interval(w,l,t,a) for a in [.05,.025] for w,l,t in [(0,0,1),(1,0,0),(9,3,18),(30,10,60),(15,15,70),(0,0,30)]]
+result={'schema':'read-only-statistical-planning-20261005-v1','status':'Recommendation and calculations only; no protocol freeze, funding approval, new model sample, or inference on the convenience pilot','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'git_head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_bindings':bindings,'report_extract_sha256':sha(OUT/'report-extract.json'),'calculation_script_sha256':sha(Path(__file__)),'retained_outcomes_reaggregated':observations,'method':'Retained Bonferroni-Clopper-Pearson paired risk-difference interval. Exact finite multinomial summation in floating point; independently implemented conditional enumeration checked against retained calculation for benefit/exclusion. This is a calculation consistency check, not independent formal numerical qualification.','margin':.1,'margin_authority':'Proposed engineering margin, not user-approved','classification':{'worthwhile_benefit':'L>+0.10','exclude_worthwhile_benefit':'U<+0.10 (overlaps equivalence/harm)','practical_equivalence':'L>-0.10 and U<+0.10','directional_harm':'U<0 (overlaps equivalence when negative but small)','worthwhile_harm':'U<-0.10','unresolved_benefit_equivalence_harm':'none of worthwhile benefit, practical equivalence, worthwhile harm'},'grid':grid,'normal_approximation_sensitivity':normal,'illustrative_interval_examples_not_observations':examples,'assumptions':['One independently sampled family per paired contrast; paired arms may correlate.','Independent draws from a frozen target family/fault mixture; no within-family milestone/seed/scenario inflation.','No post-outcome method, margin, sample, or contrast selection.','The exact finite planning probabilities do not imply scenarios are empirically estimated.']}
+(OUT/'calculations.json').write_text(json.dumps(result,indent=2)+'\n')
+print('complete',sha(OUT/'calculations.json'))

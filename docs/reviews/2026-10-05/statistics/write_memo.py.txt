@@ -1,0 +1,91 @@
+from pathlib import Path
+import json,hashlib
+P=Path(__file__).parent
+x=json.loads((P/'calculations.json').read_text())
+def row(s,n,a=.05):return next(r for r in x['grid'] if r['scenario']==s and r['n_independent_families']==n and r['alpha']==a)
+lines=[]
+for n in [30,100,200,400,800]:
+ b=row('large_gain_medium_discordance',n)['probabilities'];e=row('zero_gain_medium_discordance',n)['probabilities']
+ lines.append(f"| {n} | {3*n} | {b['worthwhile_benefit']:.1%} | {e['exclude_worthwhile_benefit']:.1%} | {e['practical_equivalence']:.1%} |")
+memo='''# Evidence-producing next study and confirmation planning
+
+Status: prospective recommendation only. No new scientific scope, sample size, margin, funding, or protocol is frozen. No harness test, candidate, Engine, Docker, or provider call was run. Root owns integration, verification, report, and Git. Read-only source inspection plus local standard-library statistical calculations completed against main commit `917039432f8aa1b09abd3c7e52e2224169a28470`; exact inspected source hashes are in calculations.json. Concurrent integration work is not qualified by this memo.
+
+## Decision now
+
+**Go for the minimum remaining work needed to execute the promised larger-project comparison; no-go for additional generic infrastructure expansion before that comparison yields evidence.** The next substantive scientific checkpoint is the complete six-trajectory, four-milestone Local Research Library cohort: S4-G (4 builders + 4 reviewers), S16-G (16 + 4), O16-G (16 + 4), in healthy and compound-recovery conditions. Keep all six, the independent acceptance barrier, and the existing common resource/fault contract. This is one development family, not six independent projects for population inference.
+
+The evidence checkpoint must publish the complete table of accepted whole projects, completed milestones, bounded stops, failures retained through the common horizon, actual fault exposure/recovery, exact accepted-source provenance, role activity, actual resources, and correctly separated clocks. Root's existing matching six-trajectory zero-provider rehearsal is a prerequisite engineering checkpoint; it supplies no live model-quality sample. The live result is the next investment decision, not a statistical victory declaration.
+
+Mandatory qualification is the finite work necessary to know the treatment ran and the endpoint is trustworthy: original-backed corpus/matrix and shared-executor integration, authentic whole-child accounting and deadlines, explicit successor policy activation, required independent source reviews, physical integrity/negative controls, real fault schedule, and the matching complete rehearsal plus funded registration. Failures in these surfaces require focused repair. Extra dashboards, more framework layers, open-ended hardening, larger role counts, more synthetic coverage, additional mechanism arms, or new proof formats are not reasons to defer the existing cohort unless tied to a concrete missing contract requirement. Preserve later four-cell transport/placement, unrestricted tool-loop, and multi-host obligations; do not relabel this pilot as their completion.
+
+## What current evidence says
+
+All three original retained results.json hashes match the scientific status bindings, and acceptance/completion counts were reaggregated directly. On the harder buildgraph/calendar development tasks, the cheap four-candidate portfolio accepted 0/6 and finished 3/6, against strong-reviewed 3/6 accepted and 6/6 finished. The easier portfolio had 4/4 acceptance versus 3/4 controls. The continuation pilot had sequential 4/4 acceptance and both independent arms 3/4. These are related repetitions in two families per study, not a pooled randomized population sample. Twelve candidate versions from three survivor-conditioned pools are not twelve independent projects. The last retained live study finished 2026-10-02T20:51:58.734056+00:00; this work creates zero new quality samples. There is still no isolated live 20-role placement result or transport-versus-orchestration result.
+
+The evidence is enough to reject an assumption that candidate breadth automatically improves persistence or quality. It is not enough to declare decentralized coordination generally successful or unsuccessful. Engineering checks are evidence about harness mechanics, not extra successes for an agent approach.
+
+## Predeclare the pilot investment checkpoint
+
+Use the complete pilot before selecting the next scope. The following are engineering investment rules, not significance tests and not frozen stop rules:
+
+- If invariants, source provenance, or treatment fidelity fail: do not interpret efficacy or launch confirmation. Repair the specific violated requirement and retain the failed run. Do not automatically retry to replace it with a success.
+- If both large arms achieve zero acceptance: the task/controller/model combination has a floor problem. Stop scale/infrastructure expansion; use the frozen development failure evidence to locate a bounded capability or policy failure. More independent samples of a broken common pipeline are unlikely to be the best next spend.
+- If S16-G consistently stops or fails while O16-G completes under both assigned conditions: stop enlargement of this peer policy. The result is an actionable negative for this implementation on this family, even though it is not a population proof. Require a concrete mechanism and predeclared changed development test before further architectural investment.
+- If all arms pass: the harness is feasible but the family has a ceiling for superiority. Preserve those results; do not weaken acceptance or change the pilot after seeing them. A separately selected development panel can estimate useful task difficulty.
+- If S16-G shows credible completed-project or recovery advantage without violated invariants, or the contrast remains mixed: proceed only to a bounded, separately budgeted development panel or to held-out confirmation once the prerequisites below are genuinely ready. One family cannot estimate paired discordance reliably. A proposed 8–12 independent development families would provide mechanism variation and resource estimates, not proof of a 10pp advantage; its exact size and funding are unselected. All such families become permanently excluded from confirmation.
+
+No hard threshold on the two related pilot conditions has calibrated population error. These rules decide whether to invest, not whether a universal hypothesis is true.
+
+## Efficient, scope-preserving confirmation
+
+Recommend S16-G minus O16-G as the single primary contrast: same 20 cognitive roles, models by role, offered aggregate budget/calls, candidate/evaluator capacity, evidence access, faults and horizon; different decision placement with the same gossip transport. Keep S4-G in every family block so the promised scale contrast remains observed; designate its contrast descriptive unless error is prospectively allocated. A durable, qualified central scheduler is the control, not a fragile single-process straw man. This contrast answers placement under gossip; it does not establish gossip's advantage over a replicated broker. The separate four-cell phase remains outstanding.
+
+Each independent held-out family contributes three complete fresh trajectories, with four cumulative milestones. Choose one healthy/recovery condition per family from a frozen target mixture, use the same condition across its three arms, and independently sample families. Repeated seeds, related repositories, milestones, acceptance cases, and both fault conditions within one family do not increase the family denominator. If both conditions are repeated or task strata are fixed, use a prospectively specified cluster/stratum analysis instead of claiming these iid calculations apply.
+
+Primary endpoint: binary independently accepted whole-project completion. The exact source must satisfy all four public milestones within common active resources/deadline, freeze at the complete-cohort barrier, then pass all inherited/new-feature/integration private gates with valid source/promotion provenance. Early terminal failure remains failure through the horizon. This endpoint already requires persistence; report all-milestone completion, stops, unresolved obligations, and recovery separately so acceptance gains cannot hide how work was lost. A separate confirmatory persistence or preservation claim needs its own prospective margin and multiplicity/hierarchical rule. Mandatory integrity gates remain mandatory rather than being traded for average quality.
+
+Use one predeclared paired risk-difference interval to distinguish worthwhile benefit (lower bound > +10pp), practical equivalence (interval wholly inside -10pp to +10pp), worthwhile harm (upper bound < -10pp), or unresolved uncertainty. Also report directional harm (upper < 0) and exclusion of worthwhile benefit (upper < +10pp); these labels overlap the other categories and are not interchangeable with equivalence. The 10pp engineering margin is an existing proposal, not a user-approved value. No test proves exact equality or universal failure.
+
+One primary contrast permits alpha .05. If scale and placement are both confirmatory, a simple existing option is alpha .025 each; retain all arms and plan the larger required study. Multiple labels from the same simultaneous interval do not create separate unadjusted hypothesis selection. Do not retrospectively promote a favorable secondary contrast or fault stratum. Keep one complete fixed confirmatory roster and one final analysis. Safety/infrastructure stops remain visible; an incomplete/unsettled roster yields no final declaration. No outcome-dependent extension, hard-case replacement, or private-feedback repair.
+
+Freeze model/controller/evaluator versions, independent family registry and exclusion genealogy, sampling distribution/fault mixture, resource/failure rules, seed/order schedule, margin, contrasts, estimator, sample size, and analysis source before calls. Balance arm order and host/time exposure. Fresh arm-specific model draws and mutable state; do not share live candidate outputs. Never query final private outcomes until all cohort sources are frozen. Development tuning and confirmation must use disjoint families. A fixed convenience benchmark supports conclusions on that benchmark; population claims require a defensible sampling frame.
+
+## Transparent power and interval calculations
+
+The fresh calculations enumerate the multinomial distribution of paired outcomes using the retained conservative Bonferroni–Clopper–Pearson interval. They use no fitted pilot effect and no Monte Carlo. With W=swarm-only acceptance and L=orchestrator-only acceptance, delta=P(W)-P(L), discordance q=P(W)+P(L), and variance of each pair's signed outcome is q-delta². Enumeration conditions on W~Bin(n,pW), then L|W~Bin(n-W,pL/(1-pW)). Each benefit/exclusion probability was checked against the retained implementation (tolerance 1e-10); mutually exclusive benefit/equivalence/worthwhile-harm/unresolved categories sum to one. This consistency check is not independent formal statistical-code qualification.
+
+The table uses one primary contrast, alpha .05, proposed margin 10pp. Benefit scenario: true +20pp, pW=.30, pL=.10. No-gain scenario: pW=pL=.15. Different columns concern different true scenarios.
+
+| Independent families | Three-arm trajectories | Show >10pp gain when true gain=20pp | Exclude >10pp gain when true gain=0 | Establish ±10pp equivalence when true gain=0 |
+|---:|---:|---:|---:|---:|
+'''+ '\n'.join(lines)+'''
+
+These are planning probabilities, not a selected sample size, minimum, authorization, or empirically established assumptions. At 100 genuinely independent families a observed 30 swarm-only/10 control-only/60 tied split would give this method an approximately +1.4pp to +37.0pp interval: evidence of positive direction but not of >10pp benefit. With 15/15 discordant and 70 ties, the interval is approximately ±16.8pp, so no statistical difference does not establish ±10pp equivalence. Thirty all-tied independent families still give approximately ±13.6pp. The one-family pilot is dramatically weaker and cannot use an iid 6-run interval.
+
+Discordance matters materially: under no gain at q=.10, 200 families have about 76.9% equivalence probability and 400 about 99.7%; under q=.30, the corresponding probabilities are about 0.01% and 49.0%. For a +20pp gain at q=.60, 800 families reach about 84.7% benefit power with this method. Full grids include alpha .025, boundary effects, and symmetric harm scenarios. A true gain exactly on the +10pp boundary should usually be unresolved about exceeding it.
+
+The inherited conservative method spends substantial precision. Idealized normal calculations suggest the order of magnitude could be lower: for +20pp gain versus +10pp margin at q=.40, roughly 283 independent families at alpha .05 or 343 at alpha .025 for 80% power; no-gain exclusion at q=.30 gives roughly 236 or 286. These are NOT validated sample-size choices, coverage guarantees, equivalence power, or promised savings. Before buying hundreds of projects, qualify an established paired score/profile-likelihood or exact-unconditional/melded method, check sparse/boundary coverage and decision power, then choose a fixed design prospectively. The existing source references identify these alternatives; this memo does not implement or adopt them.
+
+## What can be learned sooner without consuming confirmation
+
+Read-only independent reviews and failure audits of frozen development artifacts can run now. The complete zero-provider rehearsal can establish correct operation of roles, fault recovery, reservations, merged-source checks, and private barrier. It cannot establish model capability. The intact six-trajectory live development cohort then gives actual 20-role behavior, cost, latency, stop reasons, test signal selection, and bounded feasibility. A prespecified diagnostic replay of its already-frozen evidence can compare test discrimination or selection quality, but reused candidates/probes are not new live quality observations. Keep them labeled mechanistic diagnostics. A separate development panel can estimate task difficulty and resource tails before confirmation, provided all its families and derivatives are excluded from the held-out registry. Creating extra benchmark variants is not creating independent families.
+
+## Schedule and budget
+
+The report has 223/248 historical effort units complete; the remaining 25 have not decreased since 2026-10-03T02:13:19Z. It is not a calibrated 90%-done clock. Root's 1–2 further weeks to the larger pilot is a low-confidence planning allowance, conditional on focused implementation, parallel review, approvals and no major qualification failures. There is no defensible dated ETA to statistical resolution. Confirmation adds task authoring/independence review and potentially hundreds of complete families, not merely more repetitions of the pilot.
+
+The six-hour active horizon in the large-study plan is explicitly a proposal, not a measured runtime forecast or frozen new allocation. Conditional arithmetic only: six trajectories at that full horizon consume 36 trajectory-active hours; with K genuinely isolated matched trajectory slots a rough batch bound is ceil(6/K)*6 active hours, plus setup, faults, settlement, cohort waiting, private evaluation and audit. K is constrained by real global/provider/evaluator/host capacity, not the count of logical agent identities. Shared resources, repair delays and finalization make naive scaling invalid. For F three-arm families, active work at a hypothetical full horizon is 18F trajectory-hours; this is not actual billed work or a schedule prediction.
+
+Missing inputs before an honest funded ETA: final successor source/runtime/evaluator contract; measured complete-rehearsal critical path and cleanup/fault tails; actual provider request latency and effective concurrency; token/context/output distributions by role and milestone; current pinned model prices; settled cumulative ledger plus outstanding/prepaid reservations; exact trajectory ceilings and whether a complete cohort fits existing authorization; isolated host/CPU/memory/browser capacity; independent-family authoring and adjudication throughput; selected fault mixture, margins, multiplicity, estimator and powered family count. The historical $80 ceiling and older used-spend snapshots are not a current budget audit. No approval is inferred from this memo.
+
+The parallel statistical stream should finish the decision framework and resource model now, then wait for measured pilot inputs; it should not produce endless design revisions while the critical executor/controller integration is unfinished. Review and acceptance-gap streams can reduce root's serial work. Physical tests and combined-tree integration remain bounded shared resources and should keep one owner.
+
+## Source and output integrity
+
+`calculations.json` binds each inspected source, the original retained outcome files, a read-only report snapshot extract, calculation script, and main commit. The code reaggregated only historical development outcomes; no held-out confirmation family was opened or scored. `report-extract.json` preserves relevant canonical handoff/schedule/feedback content with its original report hash. Root may incorporate these outputs into the durable project/report after review; these temporary artifacts themselves are not a new preregistration or implementation qualification.
+'''
+(P/'design-memo.md').write_text(memo)
+manifest={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(P.iterdir()) if f.is_file() and f.name!='artifact-hashes.json'}
+(P/'artifact-hashes.json').write_text(json.dumps(manifest,indent=2)+'\n')
+print(json.dumps(manifest,indent=2))

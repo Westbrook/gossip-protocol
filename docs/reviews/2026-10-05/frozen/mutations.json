@@ -1,0 +1,90 @@
+[
+  {
+    "id": "D01",
+    "variant": "identity",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "D02",
+    "variant": "noop",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "D03",
+    "variant": "replay",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "D04",
+    "variant": "manifest",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "N01",
+    "variant": "hang",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "N02",
+    "variant": "bad-then-hang",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "N03",
+    "variant": "stdout-flood",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "N04",
+    "variant": "abrupt-exit",
+    "changed_paths": [
+      "library/catalog/store.py"
+    ],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "P01",
+    "variant": "reference",
+    "changed_paths": [],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "P02",
+    "variant": "reference",
+    "changed_paths": [],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "P03",
+    "variant": "reference",
+    "changed_paths": [],
+    "literal_mutation_verified": true
+  },
+  {
+    "id": "P04",
+    "variant": "reference",
+    "changed_paths": [],
+    "literal_mutation_verified": true
+  }
+]
