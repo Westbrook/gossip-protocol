@@ -1,0 +1,40 @@
+{
+  "diagnostic": {
+    "faster_pairs": 8,
+    "median_paired_ratio": 0.7664295201952477,
+    "original_median_seconds": 0.1088035005,
+    "pairs": 8,
+    "plan": "runs/workflow-checkpoint-layout-comparison-1/plan.json",
+    "plan_sha256": "003eb676a683da2a8de5a3f2197fb9918f62056dc7d27ff108a2dbd2e1dda869",
+    "proposed_median_seconds": 0.082093083,
+    "result": "runs/workflow-checkpoint-layout-comparison-1/result.json",
+    "result_sha256": "57316d4a9555d8f6a0c7b829715c74e10048d7fdef8b3962124c545206c15916"
+  },
+  "expected_workflow_raw_depth": 10,
+  "limits": [
+    "One warm corpus/host component comparison, not an end-to-end speed or model-quality claim.",
+    "Diagnostic copies retain old encoded context paths and are data only; they are never used as physical originals or replayed for acceptance.",
+    "Shallower actual ancestry still receives every required before/after guard; all bytes read fresh.",
+    "Call30/history300/source60/cleanup5 deadlines and all acceptance rules remain unchanged."
+  ],
+  "mechanism": "Existing devtools.verify --output option; ordinary distinct directories, no symlink aliases or relocated original owners.",
+  "new_model_quality_samples": 0,
+  "offline_audit": "analysis/workflow-apple-git-full-terminal-audit-v1.json",
+  "offline_audit_sha256": "f2550eb46dd2b9449c8029c8845a606c28be6e6b70f7019b49a876d062890aeb",
+  "offline_disposition": "Reuse audited qualification only while all732 source inputs and runtime identity remain exact. Output location alone is changed for new physical execution.",
+  "offline_fresh": 680,
+  "offline_reused": 95,
+  "offline_tests": 775,
+  "order": "Full workflow38 first; shared6 only on complete workflow pass. Fresh no-reuse physical checks. Stop on failure, retain originals and diagnose before any new attempt.",
+  "output_root": "/Users/westbrook/.gossip-protocol-runs",
+  "physical_selection": "runs/workflow-combined-review-adoption-1/physical-selection.json",
+  "physical_selection_sha256": "27132baa9feed84372b5a6060cff91f9bc6bcf5cdb2a7f45bdba15afb4968fa9",
+  "previous_workflow_raw_depth": 15,
+  "protocol": "workflow-shallow-layout-qualification-v1",
+  "purpose": "Fresh declared physical qualification at measured shallower persistent evidence location; no source/runtime/deadline/semantic changes or physical reuse.",
+  "retention": "Retain original outputs at this persistent root; no deletion or move to make a rerun pass. Current report and checked-in audit point to original absolute locations.",
+  "runtime_plan": "runs/workflow-apple-git-runtime-1/plan.json",
+  "runtime_plan_sha256": "7740e7935575026410f480a2d6face46c11e8073b85b7d959e05548f55b66369",
+  "shared_tests": 6,
+  "workflow_tests": 38
+}

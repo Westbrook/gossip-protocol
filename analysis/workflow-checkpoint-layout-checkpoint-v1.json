@@ -1,0 +1,22 @@
+{
+  "diagnostic": {
+    "faster_pairs": 8,
+    "median_paired_ratio": 0.7664295201952477,
+    "original_median_seconds": 0.1088035005,
+    "pairs": 8,
+    "plan": "runs/workflow-checkpoint-layout-comparison-1/plan.json",
+    "plan_sha256": "003eb676a683da2a8de5a3f2197fb9918f62056dc7d27ff108a2dbd2e1dda869",
+    "proposed_median_seconds": 0.082093083,
+    "result": "runs/workflow-checkpoint-layout-comparison-1/result.json",
+    "result_sha256": "57316d4a9555d8f6a0c7b829715c74e10048d7fdef8b3962124c545206c15916"
+  },
+  "interpretation": "Measured practical15-to10 directory-depth reduction improves component reads in8/8pairs. Test new physical layout once under identical qualified source/runtime and unchanged semantics, with all prior failures retained.",
+  "new_model_quality_samples": 0,
+  "original_files_unchanged": true,
+  "physical_status": "not_started",
+  "plan": "runs/workflow-shallow-layout-adoption-1/plan.json",
+  "plan_sha256": "009d57264dfeb4f0ebad7d889f7481c6f4aebb9375a9b7c680b901afb3a25ff7",
+  "protocol": "workflow-checkpoint-layout-checkpoint-v1",
+  "source_inputs_unchanged": true,
+  "status": "diagnostic_complete_physical_declared_not_started"
+}
