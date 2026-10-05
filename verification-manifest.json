@@ -7070,6 +7070,26 @@
       "overlap": "Closes complete-path parser composition gap left by the earlier 24 scoped controls; physical execution, independent review and fresh-process qualification remain separate.",
       "distinct_defect": "A reader seam that accepts forged runtime/exec/SQLite projections, reversed chronology, missing capture resume or cleanup must not grant completion even if the original terminal says success.",
       "disposition": "Static then this complete-chain Git class; rerun affected prior reader checks only if a production reader correction is required."
+    },
+    "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Complete ordered generation census and immutable whole-proposal B/C/A/X/M source construction; one frozen peer anchor, unranked alternatives retained and exact merged source never inferred from contextual passes.",
+      "isolation": "Worker-local pure source algebra; Git class uses fresh inert bare repositories and two-process full captures. No candidate import, Engine, provider or semantic approvals.",
+      "overlap": "Extends source declarations with cross-package contexts; controller enrollment, budgets, original-derived conditional selection and real execution qualification remain separate.",
+      "distinct_defect": "Anchor-added or deleted files leaking into an alternative, moving peers during comparison, omitted unsuccessful roles, unranked selection and equal-tree receipt borrowing.",
+      "disposition": "Static plus fast/Git construction controls; no physical candidate execution or new model-quality sample."
+    },
+    "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 240,
+      "invariant": "Complete ordered generation census and immutable whole-proposal B/C/A/X/M source construction; one frozen peer anchor, unranked alternatives retained and exact merged source never inferred from contextual passes.",
+      "isolation": "Worker-local pure source algebra; Git class uses fresh inert bare repositories and two-process full captures. No candidate import, Engine, provider or semantic approvals.",
+      "overlap": "Extends source declarations with cross-package contexts; controller enrollment, budgets, original-derived conditional selection and real execution qualification remain separate.",
+      "distinct_defect": "Anchor-added or deleted files leaking into an alternative, moving peers during comparison, omitted unsuccessful roles, unranked selection and equal-tree receipt borrowing.",
+      "disposition": "Static plus fast/Git construction controls; no physical candidate execution or new model-quality sample."
     }
   },
   "audit": {

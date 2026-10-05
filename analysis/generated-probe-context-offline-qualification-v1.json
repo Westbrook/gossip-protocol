@@ -1,0 +1,91 @@
+{
+  "protocol": "generated-probe-context-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T08:42:17.482777+00:00",
+  "status": "PARTIAL_CONTEXT_CONSTRUCTION_IMPLEMENTED_NOT_ADOPTED_BY_LIVE_CONTROLLER",
+  "prior_commit": "c8f6fc00659af4b2b3f3212d2ce4805d342f37e8",
+  "prospective_design": {
+    "path": "analysis/cumulative-generated-probe-context-addendum-v1.json",
+    "sha256": "c78a933e1f4fe07285c64fb88816fe0fbb920993dd296400f8c383f298d55be7"
+  },
+  "implemented": [
+    "Complete ordered S4-G/S16-G/O16-G builder and four-reviewer census, retaining failed/stopped/unknown and eligible unranked alternatives.",
+    "Immutable common generation base B; whole-delta base overlays C; first-endorsed peer anchor A; all eligible X replacements reconstructed from B plus the fixed peer vector.",
+    "Whole endorsed simultaneous vector to final M source construction. This function does not authenticate or approve the selection; that integration remains mandatory.",
+    "No-choice anchor records every eligible contextual row as unavailable, preserves B and planned exposure count, and supplies no authored-peer fallback.",
+    "Exact Git-tree construction including mode inheritance, new ordinary-file modes, Unicode names, directory sort ordering, omitted anchor additions and candidate deletions.",
+    "Read-only verification of actual unapproved Git objects against full expected context bytes and tree. No accepted ref movement or execution-reuse authority."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-context-offline-2/20261005T083834-626bd276/summary.json",
+    "summary_sha256": "01ace1f823c31f54858ca320f26ee1f6dd3344f824aea6b76f63b2dff600c55e",
+    "static_sha256": "19db361bd430cb54747badc5bf8ab08391bf195c05b5d8dbdbdfe3a83c057775",
+    "inputs_sha256": "e3bc315b3f0bd1743a093b9f53411a4994b796a9d8cb396f61ef30dacbcf33f6",
+    "source_input_count": 758,
+    "runtime_sha256": "c4fd9b711ffdd16741d1c5032f719b344f85a501b2fd4d8a4ecda7a45c09c828",
+    "tests_passed_fresh": 23,
+    "tests_reused": 0,
+    "duration_seconds": 91.3378826668486,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "lane": "fast",
+        "tests": 17,
+        "result": "runs/generated-probe-context-offline-2/20261005T083834-626bd276/classes/9c961a3514c7d5d3/result.json",
+        "result_sha256": "6158d09067549621ef5c362780aa54f888684fd3ac008be6a5915cf377a3d11b",
+        "log_sha256": "8841f2d960bb9b68aef8ffe5c375e47c1f6e1290d8f0193657b060d71b477aa1",
+        "request_sha256": "3fc2c9b79304911cfdc52df353495758753ea52d0769969c0ca88af8847fa14b",
+        "execution": "fresh local verifier; inert Git only, no candidate/Engine/provider execution"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "lane": "git",
+        "tests": 6,
+        "result": "runs/generated-probe-context-offline-2/20261005T083834-626bd276/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "fd723a31a6358d7e6d4f763f644adf0d98371a9535c8bb5e3c3c6f1546ad6887",
+        "log_sha256": "75db4da47ad972d9310d8ee8b88e4495e5f25587d478feabc2f4daeab68cf08b",
+        "request_sha256": "58e77d09d2ac2a8d658c3d2f64a21e63e4ae4fc233f936df7afe105e3678dafa",
+        "execution": "fresh local verifier; inert Git only, no candidate/Engine/provider execution"
+      }
+    ]
+  },
+  "retained_negative": {
+    "summary": "runs/generated-probe-context-mode-negative-1/20261005T083634-c759ae73/summary.json",
+    "summary_sha256": "7ce2e891a62d9129020f605944e35fd54efb6715f5fc1cd5752370b344af92a2",
+    "finding": "The initial byte-only materialization check accepted an unproposed executable-bit change. The explicit regression failed before adding exact Git-tree reconstruction and passed afterward."
+  },
+  "initial_checks": {
+    "summary": "runs/generated-probe-context-offline-1/20261005T083347-e87cd9d4/summary.json",
+    "status": "21 passed on the earlier byte-only implementation; not reused as current qualification"
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_context_v1.py": "1140f653a6ada6804b24621028c6e762a253675b4af7bfed81f1210e742e0584",
+    "tests/test_cumulative_generated_probe_context_v1.py": "e6a68d909e71a4576690b1cf9300e6ddcd4e441cc061491d81c0bf66b389567c",
+    "pyproject.toml": "d95eb166ccb450c4e0e24a46829d0c8a870bd0fca62afa8d6e1c53c91b365d29",
+    "verification-manifest.json": "0ba3dfe063343d230d84bae0c36c183d48a72cd2f9a2a489825ba2c55c0a6d5f"
+  },
+  "root_audit": {
+    "ordered_ast_and_request_and_result_ids_match": true,
+    "current_all_inputs_match": true,
+    "runtime_matches": true,
+    "result_and_log_hashes_match": true,
+    "independent_review": false
+  },
+  "scope_limits": [
+    "Context declarations are compiler inputs, not authenticated original financial/reviewer records. Production authentication and one-call ranked-reviewer directives are unfinished.",
+    "No pre-observation journal freeze or global unique-slot/root/aggregate-budget controller enrollment is implemented by this module.",
+    "Requirement/template/interface prerequisites, setup witnesses, carried-probe applicability, full ordered cell matrix and complete capacity admission remain required.",
+    "No original-reader-driven conditional selection, actual-context dispatch, actual-M fresh generated/authored retest, merged approval or promotion is implemented by this module.",
+    "Physical generated-probe qualification, eight host-fault schedules, independent source reviews, six-trajectory/four-milestone matching rehearsal and live/held-out comparisons remain unfinished.",
+    "The host-authored combination-regression example demonstrates why M must be retested; it is not a model-quality result.",
+    "Existing frozen V2 controller policy and prior study evidence are unchanged. No additional role, model call, generation, deadline, numeric execution allowance or spending is authorized here."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "candidate_executions": 0,
+    "provider_calls": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Connect authenticated original build/review records and ranked reviewer response contract to the fixed-context compiler in a versioned controller successor; freeze complete requirement/applicability/cell/budget census before any candidate dispatch, then derive simultaneous choices from original observations and retest actual M. Preserve all remaining physical/rehearsal/held-out obligations.",
+  "external_holds": "Existing automatic approval review rejections of public Git and provider disclosure remain unresolved; no retry or external disclosure in this cycle."
+}
