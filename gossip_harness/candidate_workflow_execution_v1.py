@@ -73,10 +73,12 @@ class WorkflowDeadlineExceeded(transport.ExecutionError):
 
 
 def review_read_policy() -> dict[str, Any]:
-    return {'protocol': 'workflow-current-review-read-v2',
+    return {'protocol': 'workflow-current-review-read-v3',
         'scope': 'product workflow current-state boundary',
         'read': 'one fresh authenticated report and provenance together',
-        'checkpoint_guards': 'before and after original read', 'cross_call_cache': False}
+        'checkpoint_guards': 'before and after original read', 'cross_call_cache': False,
+        'profile_construction': 'one fresh full-catalog record separately before and after Git capture',
+        'cross_capture_cache': False}
 
 
 def deadline_policy() -> dict[str, Any]:
@@ -237,8 +239,8 @@ class WorkflowBinding:
 
 def profile_for_binding(binding: WorkflowBinding) -> profile.WorkflowProfile:
     require(type(binding) is WorkflowBinding, 'Exact workflow binding required')
-    value = profile.profile_for(binding.case_id, binding.purpose)
-    record_sha256 = digest(value.record())
+    value, record = profile.profile_record_for(binding.case_id, binding.purpose)
+    record_sha256 = digest(record)
     require(record_sha256 == binding.profile_sha256 == binding.definition_sha256,
             'Workflow profile/definition differs')
     return value

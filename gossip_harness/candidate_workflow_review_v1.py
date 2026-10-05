@@ -181,10 +181,11 @@ class WorkflowSourcePlan:
     def request(self) -> dict[str, Any]:
         if self.profile_kind == 'workflow':
             from . import candidate_workflow_profile_v1 as profiles
-            value: Any = profiles.profile_for(self.case_id, self.purpose)
+            value: Any
+            value, record = profiles.profile_record_for(self.case_id, self.purpose)
         else:
             value = WorkflowInspectionProfile(self.purpose)
-        record = value.record()
+            record = value.record()
         require(value.case_id == self.case_id and digest(record) == self.profile_sha256,
                 'Reviewed workflow profile differs from exact source definition')
         return {'protocol': PROTOCOL, 'purpose': PURPOSE, 'plan': self.record(), 'profile': record,

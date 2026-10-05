@@ -1,0 +1,32 @@
+{
+  "artifacts": {
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/49c0faf45ab6b81c/result.json": "f86f39db22d02c3607a1c5edb140d1af9ddc0268ac2474644ca76c6c0ff44ca8",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/49c0faf45ab6b81c/worker.log": "0cbc2c82d3a707947a03c6ef3f0e93110521363188cb2cd7396af24eeb61240d",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/a778649cf5547621/result.json": "1d29431b3f64ae0a6098c66640aa54476ec53098bdf0eb7b177d9535a7df9cd5",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/a778649cf5547621/worker.log": "1e6c672ae99f3d0663c2a569aabe81906d5ce6c9c9b19b60ae4ce6fe44bf1752",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/c2dcdb81ab3c2694/result.json": "0bd741562426589d0f97d9300b9620d7b2107d81d65910477c67c568c99de358",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/c2dcdb81ab3c2694/worker.log": "36b7b090446c3a64a151f5b838818d7bc581320c8b1a77f0f2fb6365941685ca",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/ff399c9d03fea74b/result.json": "0c09222abe9f9df8e5b89b378be5f19ca7a13017db7a74dd02c87300a4dc38f5",
+    "runs/workflow-profile-build-offline-1/20261005T051450-20563a48/classes/ff399c9d03fea74b/worker.log": "6ccbad5b83b596dc3552faa7306fe0ec01da2c075d2acb945bd0827ee1f3baaf"
+  },
+  "classes": 4,
+  "duration_seconds": 107.30549520906061,
+  "fingerprint": "77908e1795eebe760d2b14505b82b159259e313848a80d2d640cde5e6d9648bb",
+  "fresh_tests": 65,
+  "inputs_sha256": "69df1636b72ef1e7375951cdd2851836f84f82be4fa3e56fb90ab7fe0d2efc93",
+  "limitations": [
+    "Local source, ordered-suite, artifact and runtime reconciliation; not scientific acceptance.",
+    "All65 tests executed fresh using the declared task-local Apple Git runtime.",
+    "Full778check gate and fresh physical qualification remain required."
+  ],
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-profile-build-nearest-audit-v1",
+  "reused_tests": 0,
+  "runtime_sha256": "92ff7aac679ad384f4b1071f4230181d5b2ff0b1f220d0e3813f9fa1485a0ab8",
+  "selected_tests": 65,
+  "session": "runs/workflow-profile-build-offline-1/20261005T051450-20563a48",
+  "source_inputs": 732,
+  "static_status": "passed",
+  "status": "passed",
+  "summary_sha256": "230f009dbc0beb9df5669959fa1787415d92c65c39d5ddfb281814aecd9b2baf"
+}

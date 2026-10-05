@@ -522,6 +522,18 @@ def profile_for(case_id: str, purpose: str = "public_release") -> WorkflowProfil
     return WorkflowProfile(case_id, purpose)
 
 
+def profile_record_for(case_id: str, purpose: str = "public_release") -> tuple[WorkflowProfile, dict[str, Any]]:
+    """One complete fresh record, including admission of every catalog case.
+
+    The immediate record construction validates the case. Avoid the adjacent
+    extra catalog build in profile_for; callers must not reuse this snapshot
+    across an effect boundary or a later validation call.
+    """
+    require(type(purpose) is str and purpose in registry.PURPOSES, "Prospective product purpose required")
+    value = WorkflowProfile(case_id, purpose)
+    return value, value.record()
+
+
 def reconstruct(value: WorkflowProfile) -> WorkflowProfile:
     require(accepted_profile(value), "Exact named workflow profile required")
     return profile_for(value.case_id, value.purpose)

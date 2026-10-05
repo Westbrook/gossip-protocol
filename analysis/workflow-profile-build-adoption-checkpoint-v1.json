@@ -1,0 +1,184 @@
+{
+  "baseline_commit": "dd65dbe7ed63ee7d84c99bdeec9884184c059bf6",
+  "change": "New profile_record_for validates purpose and builds the exact WorkflowProfile plus one complete fresh record. profile_for_binding and source-plan request use it. Separate record construction remains before and after Git capture. Standalone profile_for unchanged.",
+  "equal_records": 60,
+  "external_holds": [
+    "Public Git disclosure approval pending; no push attempted",
+    "Provider project-material disclosure approval pending; no API call"
+  ],
+  "limits": [
+    "Small noisy diagnostic sample; not a promised whole-workflow speedup.",
+    "No source acceptance, candidate outcome, deadline, evaluator criteria, purpose or spend changes.",
+    "No removal of historical admission for unused cases or source checks around Git.",
+    "Earlier failed comparison1 retained: revocation poisoned shared diagnostic owner; comparison2 isolates controls."
+  ],
+  "nearest": {
+    "audit": "analysis/workflow-profile-build-nearest-audit-v1.json",
+    "audit_sha256": "5f581d6e5611cdf52b78060ae953ad3d322e59fcd3178578f4e335b5024ab456",
+    "fingerprint": "77908e1795eebe760d2b14505b82b159259e313848a80d2d640cde5e6d9648bb",
+    "fresh": 65,
+    "reused": 0,
+    "tests": 65
+  },
+  "new_model_quality_samples": 0,
+  "paired_diagnostic": [
+    {
+      "A_median_seconds": 0.18994743749999998,
+      "B_faster_pairs": 4,
+      "B_median_seconds": 0.1411248955,
+      "case_id": "inherited-text-persistence",
+      "controls": [
+        {
+          "arm": "A",
+          "control": "Changed profile digest",
+          "exception_type": "ExecutionError",
+          "message": "Workflow profile/definition differs",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Changed plan source",
+          "exception_type": "AdmissionError",
+          "message": "Original review request differs from complete source/profile",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Changed evaluator registration",
+          "exception_type": "ExecutionError",
+          "message": "workflow evaluator changed",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Revoked original review prefix",
+          "exception_type": "ChainUnknown",
+          "message": "Chain evidence or anchor uncertain; preserve artifacts, never retry implicitly",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed profile digest",
+          "exception_type": "ExecutionError",
+          "message": "Workflow profile/definition differs",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed plan source",
+          "exception_type": "AdmissionError",
+          "message": "Original review request differs from complete source/profile",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed evaluator registration",
+          "exception_type": "ExecutionError",
+          "message": "workflow evaluator changed",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Revoked original review prefix",
+          "exception_type": "ChainUnknown",
+          "message": "Chain evidence or anchor uncertain; preserve artifacts, never retry implicitly",
+          "rejected": true
+        }
+      ],
+      "median_paired_ratio": 0.8367931097244378
+    },
+    {
+      "A_median_seconds": 0.1012558125,
+      "B_faster_pairs": 3,
+      "B_median_seconds": 0.0951926665,
+      "case_id": "WF19-provisional-fault-boundary",
+      "controls": [
+        {
+          "arm": "A",
+          "control": "Changed profile digest",
+          "exception_type": "ExecutionError",
+          "message": "Workflow profile/definition differs",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Changed plan source",
+          "exception_type": "AdmissionError",
+          "message": "Original review request differs from complete source/profile",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Changed evaluator registration",
+          "exception_type": "ExecutionError",
+          "message": "workflow evaluator changed",
+          "rejected": true
+        },
+        {
+          "arm": "A",
+          "control": "Revoked original review prefix",
+          "exception_type": "ChainUnknown",
+          "message": "Chain evidence or anchor uncertain; preserve artifacts, never retry implicitly",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed profile digest",
+          "exception_type": "ExecutionError",
+          "message": "Workflow profile/definition differs",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed plan source",
+          "exception_type": "AdmissionError",
+          "message": "Original review request differs from complete source/profile",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Changed evaluator registration",
+          "exception_type": "ExecutionError",
+          "message": "workflow evaluator changed",
+          "rejected": true
+        },
+        {
+          "arm": "B",
+          "control": "Revoked original review prefix",
+          "exception_type": "ChainUnknown",
+          "message": "Chain evidence or anchor uncertain; preserve artifacts, never retry implicitly",
+          "rejected": true
+        }
+      ],
+      "median_paired_ratio": 0.9361151193788874
+    }
+  ],
+  "plan_sha256": "7084b06216c566dd1ad081ebb9bb157863c48448a3eb3c398a65696784a48ae9",
+  "policy": "workflow-current-review-read-v3 binds full-catalog construction on each side of capture, no cross-call/cross-capture cache.",
+  "protocol": "workflow-profile-build-adoption-checkpoint-v1",
+  "prototype_failure_retained": "runs/workflow-current-profile-build-comparison-1/failure.json",
+  "required_verification": {
+    "full": "All74 classes from previous775 gate, including newly added methods; exact matching nearest results may be reused.",
+    "nearest": [
+      "tests/test_candidate_workflow_profile_v1.py",
+      "tests/test_candidate_workflow_review_v1.py",
+      "tests/test_cumulative_workflow_recipe_v1.py"
+    ],
+    "physical": "Fresh38 workflow checks followed by shared6 only after full offline success. Prior physical failures not reused.",
+    "rehearsal": "Complete matching six-trajectory/four-milestone rehearsal still required before live.",
+    "required_new_controls": [
+      "All60 record identities and caller mutation isolation",
+      "Invalid case/purpose and unused-case historical admission refusal",
+      "Profile change during Git capture rejected by fresh post-capture request"
+    ]
+  },
+  "selection_sha256": "2bf9d341dd20af1c4a9e9d48a99dcdc2698470adff09068f61eae4571ed9ebef",
+  "source_changes": {
+    "gossip_harness/candidate_workflow_execution_v1.py": "e8ff6eb4fede0b7ef2dba5d277587e73d117d0e1af23d35a7d62efa9d227474a",
+    "gossip_harness/candidate_workflow_profile_v1.py": "ed8945cf2d9d30401fe271931130f04fbf4f8cf3b2d0312ee3cebb63b831fb70",
+    "gossip_harness/candidate_workflow_review_v1.py": "599aa7a941de06222d504d2871df84fe0c0f2dde63a9b64880dd97c57dc20cf4",
+    "tests/test_candidate_workflow_profile_v1.py": "8a589162da1dfd11e0200e50ee76aa409938bb7eb91fc1a9212196589f8a1239",
+    "tests/test_cumulative_workflow_recipe_v1.py": "5719b5ff3da99449b54b96edf43821d32fa126912450aa778ec0444810e94dd5"
+  },
+  "status": "nearest_passed_full_and_physical_pending"
+}

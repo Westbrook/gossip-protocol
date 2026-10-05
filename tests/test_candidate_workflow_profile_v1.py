@@ -19,6 +19,31 @@ class CandidateWorkflowDefinitionTests(unittest.TestCase):
         cls.cases = profile.definitions()
         cls.by_id = {row["case_id"]: row for row in cls.cases}
 
+    def test_fresh_profile_record_preserves_all_purposes_and_caller_isolation(self) -> None:
+        for case_id in profile.CASE_IDS:
+            for purpose in profile.registry.PURPOSES:
+                with self.subTest(case_id=case_id, purpose=purpose):
+                    expected = profile.profile_for(case_id, purpose)
+                    value, record = profile.profile_record_for(case_id, purpose)
+                    self.assertEqual(value, expected)
+                    self.assertEqual(profile.encoded(record), profile.encoded(expected.record()))
+                    record["definition"]["calls"].clear()
+                    record["limits"].clear()
+                    self.assertEqual(profile.encoded(profile.profile_record_for(case_id, purpose)[1]),
+                                     profile.encoded(expected.record()))
+
+    def test_fresh_profile_record_rejects_bad_domain_and_unused_case_admission(self) -> None:
+        for case_id, purpose in [(None, "public_release"), (True, "public_release"),
+                                 ("unknown", "public_release"), (profile.CASE_IDS[0], True),
+                                 (profile.CASE_IDS[0], "unknown")]:
+            with self.subTest(case_id=case_id, purpose=purpose), self.assertRaises(ValueError):
+                profile.profile_record_for(case_id, purpose)
+        # A different case's admission failure still revokes the requested case.
+        # No selected-case-only relaxation is allowed by the construction helper.
+        with patch.object(profile, "historical_admission", return_value={"admitted": False}):
+            with self.assertRaisesRegex(ValueError, "Closed history lost original admission"):
+                profile.profile_record_for("WF19-provisional-fault-boundary")
+
     def test_complete_roster_and_original_eight_are_exact(self) -> None:
         self.assertEqual(tuple(row["case_id"] for row in self.cases), profile.CASE_IDS)
         self.assertEqual(len(self.cases), 20)

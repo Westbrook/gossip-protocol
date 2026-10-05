@@ -10,6 +10,7 @@ from collections import Counter
 from contextlib import ExitStack
 from copy import deepcopy
 from dataclasses import asdict, replace
+from functools import wraps
 import hashlib
 import json
 from pathlib import Path
@@ -238,6 +239,28 @@ class CandidateWorkflowGitCompositionTests(unittest.TestCase):
         (fixture.mechanism_journal.raw_root/'report.json').write_bytes(b'{}')
         with self.assertRaises(chain.ChainError):
             owner.current(fixture.state['freeze'])
+
+    def test_current_rebuilds_profile_after_git_capture(self):
+        fixture = self.fixture('workflow')
+        owner = construct_fixture_owner(fixture)
+        self.addCleanup(owner.close)
+        capture = execution.capture_git_source
+        previous = profiles.LIMITS['normalized_v2_answer_bytes']
+
+        @wraps(capture)
+        def change_profile_after_capture(store, commit):
+            result = capture(store, commit)
+            profiles.LIMITS['normalized_v2_answer_bytes'] = previous + 1
+            return result
+
+        try:
+            with mock.patch.object(execution, 'capture_git_source', change_profile_after_capture):
+                with self.assertRaisesRegex(ValueError, 'Reviewed workflow profile differs'):
+                    owner.current(fixture.state['freeze'])
+        finally:
+            profiles.LIMITS['normalized_v2_answer_bytes'] = previous
+        # Independent calls reconstruct again; no stale record survives failure.
+        owner.current(fixture.state['freeze'])
 
     def test_product_owner_binds_policy_and_freshly_reads_each_checkpoint(self):
         fixture = self.fixture('workflow')
