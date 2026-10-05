@@ -1,0 +1,85 @@
+{
+  "audit_path": "runs/workflow-current-state-profile-1/audit.json",
+  "audit_sha256": "de137ccb90a7a40e200c625f07382d4349ee7127db153e6273de9e23d63fc67b",
+  "cases": [
+    {
+      "case_id": "inherited-text-persistence",
+      "functions": {
+        "candidate_observation_admission_v1.py:verify_loaded_sources": {
+          "calls_per_current": 14.0,
+          "profiled_inclusive_seconds_per_current": 0.050942375500000005
+        },
+        "candidate_workflow_execution_v1.py:capture_git_source": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.026058313000000003
+        },
+        "candidate_workflow_execution_v1.py:evaluator_sources": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.044064000000000006
+        },
+        "candidate_workflow_execution_v1.py:profile_for_binding": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.036315
+        },
+        "candidate_workflow_profile_v1.py:case_definition": {
+          "calls_per_current": 4.0,
+          "profiled_inclusive_seconds_per_current": 0.0498591675
+        },
+        "candidate_workflow_review_v1.py:authenticate_with_provenance": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.0675209375
+        }
+      },
+      "median_unprofiled_seconds": 0.1616379795
+    },
+    {
+      "case_id": "WF19-provisional-fault-boundary",
+      "functions": {
+        "candidate_observation_admission_v1.py:verify_loaded_sources": {
+          "calls_per_current": 14.0,
+          "profiled_inclusive_seconds_per_current": 0.050620126
+        },
+        "candidate_workflow_execution_v1.py:capture_git_source": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.026119708000000002
+        },
+        "candidate_workflow_execution_v1.py:evaluator_sources": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.044810708500000004
+        },
+        "candidate_workflow_execution_v1.py:profile_for_binding": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.0376526045
+        },
+        "candidate_workflow_profile_v1.py:case_definition": {
+          "calls_per_current": 4.0,
+          "profiled_inclusive_seconds_per_current": 0.0510927705
+        },
+        "candidate_workflow_review_v1.py:authenticate_with_provenance": {
+          "calls_per_current": 1.0,
+          "profiled_inclusive_seconds_per_current": 0.061549271
+        }
+      },
+      "median_unprofiled_seconds": 0.1094090415
+    }
+  ],
+  "interpretation": [
+    "Complete current-state validation repeatedly rebuilds the full catalog four times and invokes nested loaded-source verification14times per call.",
+    "Definition-only saving is multiplied by repeated work, but selected-case-only admission is deferred because it changes validation eagerness.",
+    "Fresh fixture current-state calls cost roughly109-162ms before separate execution-journal checkpoints. Synthetic callbacks omit real registration-authority cost.",
+    "Further component optimization needs a complete-call comparison with fresh live-source and original-review revocation controls before adoption."
+  ],
+  "limitations": [
+    "Fixture-only synthetic review/admission and cohort callbacks; no independent semantic authority or product execution.",
+    "Fresh small execution journal and fixture reviewer differ from prior physical histories; timing is diagnostic only.",
+    "Profiler overhead excluded from unprofiled calls. No mocks or production monkeypatches.",
+    "No deadline, evaluator source or observation contract change. No provider or Engine calls.",
+    "Function inclusive times overlap and must not be added. No attribution of historical timeout to a single component or proof of proposed speedup.",
+    "No production source changed; previous775 offline receipts remain source-matching, while physical qualification is still incomplete."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Prototype one call-local immutable profile record reused only within current-state validation and original review request construction; retain fresh source validation around Git capture and original-review before/after guards. Keep public standalone APIs, full-catalog admission, deadlines and cross-call freshness. Measure entire current() and run mutation/revocation controls before any versioned adoption. If semantics cannot be preserved, reject the prototype.",
+  "protocol": "workflow-current-state-profile-checkpoint-v1",
+  "source_inputs_count": 732,
+  "status": "complete_diagnostic_only"
+}
