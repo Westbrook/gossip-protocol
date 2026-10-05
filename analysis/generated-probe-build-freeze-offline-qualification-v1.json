@@ -1,0 +1,116 @@
+{
+  "protocol": "generated-probe-build-freeze-qualification-v1",
+  "created_at_utc": "2026-10-05T09:51:14.506521+00:00",
+  "status": "PRE_REVIEW_ORIGINAL_ENROLLMENT_IMPLEMENTED_RESOURCE_AND_LIVE_ACTIVATION_UNFINISHED",
+  "prior_commit": "9462947724130dec1c4561c61258e47712e6a6f7",
+  "implemented": [
+    "Build originals can be authenticated before any review record exists; future review placeholders carry no evidentiary authority.",
+    "A single durable controller-journal record freezes the complete inherited-check census immediately after the builder roster; eligible, stopped, failed and unknown builder outcomes remain counted.",
+    "The later frozen reader requires exact agreement between original enrollment and recomputed source/cell identities, and requires enrollment before every review directive.",
+    "Historical input checkpoints are reconstructed from exact authenticated deltas, including head hash and byte counts, rather than trusted from a self-described record."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/summary.json",
+    "summary_sha256": "76c3c137de14f13c7f744c415f317d2f91cc639864665545d134e46b855b2e40",
+    "inputs_sha256": "047b94284c9afb51cf1362bd7b62453fd87a3d9f5b2a405ac8e89f979c04c924",
+    "static_sha256": "f5f2e66d2058b8ec422b19a1c836821c029ce112ef0fd8ba9f646c76f00c1b4d",
+    "source_input_count": 763,
+    "tests_passed_fresh": 68,
+    "tests_reused": 0,
+    "duration_seconds": 194.05184033419937,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "71678c0882b980bfa81cc94d7a31fc7b5d2ed79275003bc3c914bcd65b17c1a7",
+        "request_sha256": "2e3a472fd097a79734ba5cc988b32ad7ce2ef161e8f85178233eb99e9900aba6",
+        "log_sha256": "20c68bede1b5e3245b09e2c10e87cb4f82bae2a9322361e2d4b47e09b84a8286"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "9b3bdeaf3b67bd12edb31c559604980dd63ac2963c0b6d4b6327fa14843e5a06",
+        "request_sha256": "36fdeb72e7dcd301f01b4f94b718005aa9a8d8b067cec65f144fc75fe5d7b8b9",
+        "log_sha256": "b81e0651f1dec9c3ce1930b64d5c2a089473c463ce61f3b3dbf2a643f406cc54"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "ecc7398a643f2dce36c7d8c283527937d4e6fe082a7d98b056c74bb8f47ff4ec",
+        "request_sha256": "2dacc171b8fb986639f74020fbf891c9170209682c6a21806b6fba524f39c580",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "9eaaaa12871c8bba7731e9db0378ea4e0fc4ee2de30a518e041ffd7fe945bc15",
+        "request_sha256": "4861901e66b4d069f5923124312b2c8c596fd4b1c78cfe61cc285a5517df1c3c",
+        "log_sha256": "2c6e83037a67d2215293619ab001cd11a26b0be5a73fd80e32a91961ea18294c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 10,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/68092ded053e857c/result.json",
+        "result_sha256": "d83f06991757f16378e25c5fb30453b741bae1ec81591da327c60fe50ac35d7d",
+        "request_sha256": "0f3d6ce895ad4249393d42d5f0c794844946adb30fe46573326c8da50bb3b297",
+        "log_sha256": "5f559035b3363980a633ea38a1f3909b9312b3c407ef83b058d17d31bc74b4c0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/generated-probe-build-freeze-offline-2/20261005T094740-6dd4f2d5/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "1282df3dc1e917bc3cbf0deaf487ab206d0eb1b2f7f913f241ff3e39121b72a3",
+        "request_sha256": "85f7516dbcd278b58766db463c65c49e4a41385497286b235e69b96a1e6dfd10",
+        "log_sha256": "db4980ab437633ca43a182b0cebfc98e5ec4a5cbe724da242121240c8a65e79e"
+      }
+    ],
+    "scope": "Actual offline fast/Git tests and independently anchored journals; financial and mesh fixtures remain explicitly synthetic. No candidate, Engine, provider or live controller execution."
+  },
+  "retained_failure": {
+    "summary": "runs/generated-probe-build-freeze-prefix-negative-1/20261005T094623-dfc80f69/summary.json",
+    "sha256": "1617b749198564d82f96f9b9aee3ed740557e2069ef786e81d2cead5fd823244",
+    "finding": "The forged predecessor hash was accepted with valid sequence counters before the fix.",
+    "outcome": "1 failed negative before fix; regression passes in final combined run."
+  },
+  "earlier_check": {
+    "summary": "runs/generated-probe-build-freeze-offline-1/20261005T094343-a495ec72/summary.json",
+    "sha256": "322ded65ddc8117f9651baaaf57ac9de1e37ea1960685723ffae3914f7271fe6",
+    "passed": 29,
+    "superseded_by_final_source": true
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_and_log_hashes_match": true,
+    "all_current_source_inputs_match": true,
+    "runtime_stable_during_execution": true,
+    "current_runtime_difference_fields": [],
+    "current_environment_equivalence_claimed": true,
+    "receipt_reuse_claimed": false,
+    "independent_review": false
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_ranked_originals_v1.py": "a86c8712ac77602720b549cad6ef0c4fc3107c3431aa04ff9853c2a53af2b4a5",
+    "tests/ranked_originals_fixture_v1.py": "dcae8cdb224646f7ed504982feba643013c2fa787af2658e6f4f748bc7d63ce6",
+    "tests/test_cumulative_generated_probe_ranked_originals_v1.py": "3a41e0da528bc6e51e19cb2ff8a8752f5246d22da0f6b1a5b86c844a86936850",
+    "verification-manifest.json": "c97a09763f2c3a00dd22b528c9d3534f362f28d9696b31b534bbafd00219c6c5"
+  },
+  "remaining": [
+    "Actual versioned common-policy activation in the running controller; the legacy controller is intentionally not silently upgraded.",
+    "Complete post-review enrollment with original-backed carried/novel probe definitions, qualified setup/applicability, total raw-byte/deadline limits and shared executor/root reservations.",
+    "Pre-review observations before reviewer dispatch, exact-source contextual dispatch, original-reader conditional selection, fresh actual merged-source checks and required independent approvals.",
+    "Pending independent review packets, twelve physical controls, eight host-fault schedules, matching six-trajectory/four-milestone rehearsal, live comparison and held-out statistical confirmation."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Implement complete post-review controller enrollment and capacity admission, then wire both phases into the versioned successor controller before physical/rehearsal qualification. Preserve full project and cohort scope.",
+  "external_holds": "Public Git push and provider disclosure remain held; no external disclosure attempted."
+}

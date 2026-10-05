@@ -141,3 +141,108 @@ class GeneratedProbeRankedOriginalGitTests(unittest.TestCase):
     def test_an_expanded_directive_attempt_allowance_is_not_silently_adopted(self):
         f=self.fixture(directive_change=lambda d:replace(d,attempt_limit=2))
         with self.assertRaisesRegex(ValueError,'original_role_or_scope_differs'):f.read()
+
+
+class GeneratedProbeBuildFreezeGitTests(unittest.TestCase):
+    def fixture(self, **args):
+        f = OriginalFixture(**args); self.addCleanup(f.close); return f
+
+    @staticmethod
+    def freeze(f):
+        f.build_freeze = ranked.freeze_build_phase(f.owner, expected=f.chain.commitment,
+            milestone='M2', generation=0, limits=f.limits)
+
+    @staticmethod
+    def frozen(f):
+        return ranked.reconstruct_frozen(f.owner, expected=f.chain.commitment,
+            milestone='M2', generation=0, limits=f.limits)
+
+    def test_builds_can_be_authenticated_before_any_review_exists(self):
+        f = self.fixture(builds_only=True)
+        gen, proof = ranked.reconstruct_builds(f.owner, expected=f.expected,
+            milestone='M2', generation=0, limits=f.limits)
+        self.assertEqual(proof['review_originals'], [])
+        self.assertTrue(all(r.disposition == 'unknown' and not r.actors for r in gen.rankings))
+        self.assertEqual(len(gen.proposals), 4)
+        self.assertEqual(f.owner.finance.verified_terminal.call_count, 4)
+        self.assertEqual(f.chain.commitment, f.expected)
+
+    def test_small_and_large_freezes_survive_rankings_without_claiming_dispatch(self):
+        for index, count in [(0, 4), (2, 16)]:
+            with self.subTest(index=index):
+                f = self.fixture(index=index, at_build_boundary=self.freeze)
+                gen, proof = self.frozen(f)
+                record = f.owner.records.read(f.build_freeze['slot'])
+                self.assertEqual(record['build_phase_sha256'], gen.build_phase_sha256)
+                self.assertEqual(len(record['before_review_cells']), count)
+                self.assertEqual(record['matrix_build_phase']['release_sha256'], f.plan.releases[0].sha256)
+                self.assertTrue(proof['before_review_frozen'])
+                self.assertFalse(proof['durably_frozen']) # Full post-review matrix is still unfrozen.
+                self.assertFalse(proof['resource_admission']); self.assertFalse(proof['dispatch_authority'])
+                self.assertEqual(f.chain.commitment, f.expected)
+
+    def test_missing_or_late_freeze_cannot_be_invented_after_review(self):
+        f = self.fixture(); before = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'original_build_freeze_missing'): self.frozen(f)
+        with self.assertRaisesRegex(ValueError, 'immediately_follow_roster'): self.freeze(f)
+        self.assertEqual(f.chain.commitment, before)
+        self.assertIsNone(f.owner.records.read(f.stage+'.before-review-freeze'))
+
+    def test_intervening_controller_write_prevents_retrospective_enrollment(self):
+        f = self.fixture(builds_only=True)
+        f.owner.records.put('intervening-effect', {'status': 'intent'})
+        before = f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'immediately_follow_roster'): self.freeze(f)
+        self.assertEqual(f.chain.commitment, before)
+
+    def test_repeated_freeze_refuses_a_second_write(self):
+        f = self.fixture(builds_only=True, at_build_boundary=self.freeze); before=f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'already_frozen'): self.freeze(f)
+        self.assertEqual(f.chain.commitment, before)
+
+    def test_changed_frozen_file_is_rejected_by_original_chain(self):
+        f = self.fixture(at_build_boundary=self.freeze)
+        name = f.owner.records.name(f.build_freeze['slot'])
+        path = f.chain.raw_root/name
+        path.write_bytes(path.read_bytes()+b' ')
+        with self.assertRaises(ValueError): self.frozen(f)
+
+    def test_well_formed_but_wrong_original_enrollment_cannot_supply_a_freeze(self):
+        def wrong(f):
+            gen, _ = ranked.reconstruct_builds(f.owner, expected=f.chain.commitment,
+                milestone='M2', generation=0, limits=f.limits)
+            record = ranked._build_freeze_value(f.owner, gen)
+            record['before_review_cells'] = []
+            from dataclasses import asdict
+            record['input_checkpoint'] = asdict(f.chain.commitment)
+            f.owner.records.put(f.stage+'.before-review-freeze', record)
+        f = self.fixture(at_build_boundary=wrong)
+        with self.assertRaisesRegex(ValueError, 'original_build_freeze_differs'): self.frozen(f)
+
+    def test_missing_financial_original_prevents_any_freeze_write(self):
+        f = self.fixture(builds_only=True)
+        first=next(iter(f.proofs.values()));first['result_payload']={'kind':'failure','payload':{}}
+        before=f.chain.commitment
+        with self.assertRaisesRegex(ValueError, 'finance request/result'): self.freeze(f)
+        self.assertEqual(f.chain.commitment, before)
+        self.assertIsNone(f.owner.records.read(f.stage+'.before-review-freeze'))
+
+    def test_stopped_builders_remain_in_frozen_census_without_invented_test_sources(self):
+        f = self.fixture(index=2, stopped_builder='B02', at_build_boundary=self.freeze)
+        gen, proof = self.frozen(f); record=f.owner.records.read(f.build_freeze['slot'])
+        self.assertEqual(len(record['matrix_build_phase']['role_census']),16)
+        self.assertEqual(len(record['before_review_cells']),15)
+        self.assertEqual(gen.proposals[1].disposition,'stopped')
+        self.assertTrue(proof['before_review_frozen'])
+
+
+    def test_invented_predecessor_checkpoint_is_rejected_even_with_valid_sequence(self):
+        def wrong(f):
+            gen, _ = ranked.reconstruct_builds(f.owner, expected=f.chain.commitment,
+                milestone='M2', generation=0, limits=f.limits)
+            record = ranked._build_freeze_value(f.owner, gen)
+            from dataclasses import asdict
+            record['input_checkpoint'] = {**asdict(f.chain.commitment), 'head_sha256': 'f'*64}
+            f.owner.records.put(f.stage+'.before-review-freeze', record)
+        f = self.fixture(at_build_boundary=wrong)
+        with self.assertRaisesRegex(ValueError, 'original_build_freeze_predecessor_differs'): self.frozen(f)

@@ -2,7 +2,8 @@
 
 No legacy directive is upgraded after the fact. The separately retained ranking
 contract and exact new instructions must precede the original role work. This
-module does not install that contract in the legacy controller, dispatch a probe,
+module can freeze authenticated build evidence before review. It does not install
+that contract in the legacy controller, dispatch a probe,
 select a winner, or authorize acceptance. Full successor/cell/budget adoption is
 still required before any live use.
 """
@@ -18,6 +19,7 @@ from . import candidate_checkpoint_chain_v1 as chain
 from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_observation_admission_v1 as admission
 from . import cumulative_generated_probe_context_v1 as contexts
+from . import cumulative_generated_probe_matrix_v1 as matrix
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_study_controller_v2 as study
 from . import cumulative_study_runtime_v2 as runtime
@@ -25,7 +27,7 @@ from .peer_financial_authority_v2 import ledger_identity
 from .peer_project_contract_v2 import EvidenceRef, from_dict, resolve_local, strict_loads, to_dict
 from .peer_role_loop_v2 import WorkDirective, directive_id
 
-PROTOCOL = 'cumulative-generated-probe-ranked-originals-v1'
+PROTOCOL = 'cumulative-generated-probe-ranked-originals-v1-build-freeze-v1'
 DECISION_PROTOCOL = 'cumulative-generated-probe-ranked-decision-v1'
 CONTRACT_SLOT = 'generated-probe.ranking-contract'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
@@ -48,7 +50,10 @@ def sources() -> dict[str, str]:
     names = set(study.SOURCE_CLOSURE) | {
         'gossip_harness/cumulative_generated_probe_ranked_originals_v1.py',
         'gossip_harness/cumulative_generated_probe_context_v1.py',
-        'gossip_harness/cumulative_generated_probe_values_v2.py'}
+        'gossip_harness/cumulative_generated_probe_values_v2.py',
+        'gossip_harness/cumulative_generated_probe_matrix_v1.py',
+        'gossip_harness/cumulative_generated_probe_wire_v1.py',
+        'gossip_harness/cumulative_generated_probe_driver_v1.py'}
     result = {name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in sorted(names)}
     require(result['gossip_harness/cumulative_generated_probe_ranked_originals_v1.py'] == LOADED_SOURCE_SHA256,
             'loaded_ranked_reader_changed')
@@ -218,13 +223,11 @@ def _authenticate(owner: runtime.GossipChildRuntime, value: dict[str, Any], *, s
     return directive
 
 
-def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
-    """Read exact pre-execution originals into an immutable context declaration.
-
-    This does not freeze or dispatch the resulting matrix. The owning successor
-    must durably freeze it, its applicability and its full budget before effects.
-    """
+def _build_inputs(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                  milestone: str, generation: int, limits: ReviewLimits) -> tuple[
+                      dict[str, Any], int, study.Release, str, list[dict[str, Any]],
+                      list[dict[str, Any]], contexts.Base, dict[str, contexts.Proposal]]:
+    """Authenticate builds without requiring or inspecting future reviews."""
     require(type(owner) is runtime.GossipChildRuntime and type(owner.records) is study.Records
             and type(owner.records.chain) is chain.CheckpointChain
             and type(owner.records.chain.authority) is ExternalHead and type(expected) is chain.PrefixCommitment,
@@ -242,11 +245,8 @@ def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixComm
     stage = 'child.' + owner.trajectory.id + '.' + milestone + '.g' + str(generation)
     actors = owner.child.actors
     builds, build_refs = _roster(owner.records, stage, 'builds', actors[:-4], owner.trajectory.block_seed_sha256)
-    reviews, review_refs = _roster(owner.records, stage, 'reviews', actors[-4:], owner.trajectory.block_seed_sha256)
-    require(owner.records.chain.position(owner.records.name(stage+'.builds'))
-            < min(row['position'] for row in review_refs), 'review_precedes_complete_builder_roster')
     base = contexts.capture_base(owner.protected)
-    proposals = {}; rankings = {}; notes = []
+    proposals = {}
     for value, provenance in zip(builds, build_refs, strict=True):
         _authenticate(owner, value, stage=stage, release=release, generation=generation, base=base,
                       contract_position=contract_position, original_position=provenance['position'], limits=limits, review=False)
@@ -268,6 +268,76 @@ def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixComm
                 except (ValueError, TypeError, KeyError):
                     changes = ()
         proposals[alias] = contexts.Proposal(alias, disposition, base.sha256, study.digest(value), changes)
+    require(owner.protected.head() == base.commit_oid, 'generation_base_moved_during_original_join')
+    owner.records.chain.validate_boundary(expected=expected)
+    require(values.exact(contract(owner.plan, limits), declared), 'ranked_contract_changed_during_join')
+    return declared, contract_position, release, stage, builds, build_refs, base, proposals
+
+
+def reconstruct_builds(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                       milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+    declared, _, _, stage, _, build_refs, base, proposals = _build_inputs(
+        owner, expected=expected, milestone=milestone, generation=generation, limits=limits)
+    # Unknown placeholders are excluded from build_phase_record() and are never
+    # evidence that a review happened. No future review receipt is required.
+    compiled = contexts.Generation(owner.child.cohort, owner.trajectory.id, milestone, generation, owner.trajectory.arm,
+        base, tuple((p, tuple(sorted(owner.plan.package_paths[p]))) for p in study.PACKAGES),
+        tuple(proposals[a] for a in study.actors_for(owner.trajectory.arm)[:-4]),
+        tuple(contexts.Ranking(p, r, '0'*64, 'unknown', ()) for p, r in zip(study.PACKAGES, study.REVIEWERS, strict=True)))
+    return compiled, {'protocol': PROTOCOL, 'contract_sha256': study.digest(declared),
+        'original_checkpoint': asdict(expected), 'stage': stage, 'build_originals': build_refs,
+        'build_phase_sha256': compiled.build_phase_sha256, 'review_originals': [],
+        'durably_frozen': False, 'dispatch_authority': False, 'acceptance_authority': False}
+
+
+def _build_freeze_value(owner: runtime.GossipChildRuntime, compiled: contexts.Generation) -> dict[str, Any]:
+    number = study.MILESTONES.index(compiled.milestone)
+    census = matrix.compile_matrix(compiled, current=owner.plan.releases[number],
+        inherited=owner.plan.releases[number-1], active_probes=())
+    return {'protocol': PROTOCOL, 'parent_study_sha256': owner.plan.sha256,
+        'build_phase': compiled.build_phase_record(), 'build_phase_sha256': compiled.build_phase_sha256,
+        'matrix_build_phase': json.loads(census.build_phase_raw),
+        'before_review_cells': [{'cell_sha256': c.sha256, **c.record()} for c in census.base_cells],
+        'resource_admission': False, 'dispatch_authority': False, 'acceptance_authority': False}
+
+
+def freeze_build_phase(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                       milestone: str, generation: int, limits: ReviewLimits) -> dict[str, Any]:
+    """Retain exact original-backed checks immediately after the builder roster.
+
+    This records what must be tested. It allocates no resource, supplies no
+    observation capability, and does not assert that any check executed.
+    A repeated call is refused; inspection uses the original record.
+    """
+    compiled, proof = reconstruct_builds(owner, expected=expected,
+        milestone=milestone, generation=generation, limits=limits)
+    slot = proof['stage'] + '.before-review-freeze'
+    require(owner.records.read(slot) is None, 'build_phase_already_frozen')
+    require(owner.records.chain.position(owner.records.name(proof['stage']+'.builds')) == expected.sequence,
+            'build_freeze_must_immediately_follow_roster')
+    record = {**_build_freeze_value(owner, compiled), 'input_checkpoint': asdict(expected)}
+    # Recheck after compilation and immediately before the one durable write.
+    owner.records.chain.validate_boundary(expected=expected)
+    require(owner.protected.head() == compiled.base.commit_oid, 'generation_base_moved_before_freeze')
+    owner.records.put(slot, record)
+    owner.records.chain.validate_boundary()
+    return {'slot': slot, 'record_sha256': study.digest(record),
+        'checkpoint': asdict(owner.records.chain.commitment),
+        'build_phase_frozen': True, 'resource_admission': False, 'dispatch_authority': False}
+
+
+def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+    """Join ranked originals; use reconstruct_frozen to require pre-review freeze.
+
+    Neither reader admits resources, dispatches, or selects a candidate.
+    """
+    declared, contract_position, release, stage, builds, build_refs, base, proposals = _build_inputs(
+        owner, expected=expected, milestone=milestone, generation=generation, limits=limits)
+    reviews, review_refs = _roster(owner.records, stage, 'reviews', owner.child.actors[-4:], owner.trajectory.block_seed_sha256)
+    require(owner.records.chain.position(owner.records.name(stage+'.builds'))
+            < min(row['position'] for row in review_refs), 'review_precedes_complete_builder_roster')
+    rankings = {}; notes = []
     for value, provenance in zip(reviews, review_refs, strict=True):
         directive = _authenticate(owner, value, stage=stage, release=release, generation=generation, base=base,
                                   contract_position=contract_position, original_position=provenance['position'], limits=limits, review=True)
@@ -310,3 +380,58 @@ def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixComm
         'original_checkpoint':asdict(expected), 'stage':stage, 'generation_sha256':compiled.sha256,
         'build_originals':build_refs, 'review_originals':review_refs, 'review_definitions':notes,
         'durably_frozen':False, 'dispatch_authority':False, 'acceptance_authority':False}
+
+
+def _original_prefix(owner: runtime.GossipChildRuntime, sequence: int,
+                     expected: chain.PrefixCommitment) -> chain.PrefixCommitment:
+    """Reconstruct a historical prefix from the currently authenticated chain.
+
+    The embedded checkpoint is a claim; it cannot authenticate itself. Exact
+    deltas supply its head and byte counts, within the chain's existing bounds.
+    """
+    journal = owner.records.chain
+    require(type(sequence) is int and 0 <= sequence <= expected.sequence, 'historical_prefix_out_of_range')
+    journal.validate_boundary(expected=expected)
+    genesis = chain.stable.read(journal.delta_root/'genesis.json', max_bytes=chain._GENESIS_LIMIT)
+    prefix = chain.PrefixCommitment(expected.context_sha256, 0, expected.context_sha256, 0, 0, len(genesis))
+    for number in range(1, sequence+1):
+        raw = chain.stable.read(journal.delta_root/chain._delta_name(number), max_bytes=chain._DELTA_LIMIT)
+        delta = chain.stable.decode(raw, max_bytes=chain._DELTA_LIMIT)
+        # position() checks the committed raw file and exact acknowledged delta.
+        require(journal.position(delta['name']) == number
+                and delta['previous_head_sha256'] == prefix.head_sha256,
+                'historical_prefix_original_order_differs')
+        prefix = chain.PrefixCommitment(expected.context_sha256, number,
+            hashlib.sha256(chain._DELTA_DOMAIN+raw).hexdigest(), number,
+            prefix.raw_bytes+delta['bytes'], prefix.external_bytes+len(raw))
+    journal.validate_boundary(expected=expected)
+    return prefix
+
+
+def reconstruct_frozen(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
+                       milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+    """Require original pre-review enrollment, preserving independent chronology."""
+    compiled, proof = reconstruct(owner, expected=expected,
+        milestone=milestone, generation=generation, limits=limits)
+    slot = proof['stage'] + '.before-review-freeze'
+    record = owner.records.read(slot)
+    require(type(record) is dict and set(record) == set(_build_freeze_value(owner, compiled)) | {'input_checkpoint'},
+            'original_build_freeze_missing_or_changed')
+    assert record is not None
+    require(values.exact({k: v for k, v in record.items() if k != 'input_checkpoint'}, _build_freeze_value(owner, compiled)),
+            'original_build_freeze_differs')
+    position = owner.records.chain.position(owner.records.name(slot))
+    prefix = chain.PrefixCommitment(**record['input_checkpoint'])
+    require(prefix.context_sha256 == expected.context_sha256 and prefix.sequence + 1 == position
+            and owner.records.chain.position(owner.records.name(proof['stage']+'.builds')) == prefix.sequence,
+            'original_build_freeze_not_at_roster_boundary')
+    require(prefix == _original_prefix(owner, prefix.sequence, expected),
+            'original_build_freeze_predecessor_differs')
+    for original in proof['review_originals']:
+        value = owner.records.read(original['slot'])
+        assert value is not None
+        directive = owner.records.name(owner.key + '.directive.' + value['directive_id'])
+        require(position < owner.records.chain.position(directive), 'build_freeze_must_precede_review_directives')
+    owner.records.chain.validate_boundary(expected=expected)
+    return compiled, {**proof, 'before_review_freeze': {'slot': slot, 'record_sha256': study.digest(record),
+        'position': position}, 'before_review_frozen': True, 'resource_admission': False}

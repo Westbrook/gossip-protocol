@@ -39,7 +39,7 @@ class Mesh:
 class OriginalFixture:
     def __init__(self, *, index=0, review_change=None, frontier_change=None, result_change=None,
                  stopped_builder=None, stopped_reviewer=None, legacy_review=False, reverse_roster=False,
-                 late_contract=False, directive_change=None):
+                 late_contract=False, directive_change=None, at_build_boundary=None, builds_only=False):
         self.stack = ExitStack(); self.directive_change = directive_change
         helper = CumulativeStudyRepairedRuntimeV2Tests('test_known_failure_is_authenticated_and_retained_without_success_proof')
         helper.setUp(); self.stack.callback(helper.doCleanups)
@@ -76,6 +76,10 @@ class OriginalFixture:
             changes={self.plan.package_paths[package][0]:'# inert '+role+'\n'}
             self.builds.append(self.result(actor,directive,changes,stopped=role==stopped_builder,mutate=result_change))
         self.retain('builds',list(reversed(self.builds)) if reverse_roster else self.builds)
+        if at_build_boundary: at_build_boundary(self)
+        if builds_only:
+            self.expected=self.chain.commitment
+            return
         self.reviews=[]
         reviewers=sorted(owner.child.actors[-4:],key=lambda a:study.digest({'seed':owner.trajectory.block_seed_sha256,'actor':a}))
         for actor in reviewers:
