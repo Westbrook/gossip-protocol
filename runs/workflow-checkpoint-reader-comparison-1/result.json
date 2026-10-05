@@ -1,0 +1,141 @@
+{
+  "A_median_seconds": 0.171437271,
+  "B_faster_pairs": 8,
+  "B_median_seconds": 0.0760432085,
+  "median_paired_difference": -0.09869702150000001,
+  "median_paired_ratio": 0.4455740928599746,
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-checkpoint-reader-comparison-v1",
+  "rows": [
+    {
+      "arm": "A",
+      "pair": 0,
+      "read_count": 509,
+      "seconds": 0.15631575,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 0,
+      "read_count": 509,
+      "seconds": 0.075657667,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 1,
+      "read_count": 509,
+      "seconds": 0.08063825,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 1,
+      "read_count": 509,
+      "seconds": 0.204459917,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 2,
+      "read_count": 509,
+      "seconds": 0.242477541,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 2,
+      "read_count": 509,
+      "seconds": 0.084472208,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 3,
+      "read_count": 509,
+      "seconds": 0.097959917,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 3,
+      "read_count": 509,
+      "seconds": 0.219574166,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 4,
+      "read_count": 509,
+      "seconds": 0.149896167,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 4,
+      "read_count": 509,
+      "seconds": 0.072670334,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 5,
+      "read_count": 509,
+      "seconds": 0.070947708,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 5,
+      "read_count": 509,
+      "seconds": 0.17538975,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 6,
+      "read_count": 509,
+      "seconds": 0.157927167,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 6,
+      "read_count": 509,
+      "seconds": 0.07642875,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "B",
+      "pair": 7,
+      "read_count": 509,
+      "seconds": 0.074532791,
+      "status": "complete",
+      "verified_bytes": 843121
+    },
+    {
+      "arm": "A",
+      "pair": 7,
+      "read_count": 509,
+      "seconds": 0.167484792,
+      "status": "complete",
+      "verified_bytes": 843121
+    }
+  ],
+  "status": "complete",
+  "unchanged_originals_and_sources": true
+}
