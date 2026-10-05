@@ -1,0 +1,117 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-adoption-1/audit.py",
+  "audit_driver_sha256": "3037dbf2feb2dc224877dd68dff405f086e622013da758cfdf58484a2b681dcc",
+  "authority_limits": [
+    "Executed children are host-authored test scripts; no candidate code, Docker workload or provider call was executed.",
+    "Synthetic effect/retention/capture callbacks do not authenticate production source, runtime, registration, captured SQLite or journal durability.",
+    "No process is spawned by this module. The physical owner must establish ownership and exact source/runtime binding before supplying its child.",
+    "Local child kill/reap and pipe closure do not prove container/volume cleanup or process-crash recovery.",
+    "Callback duration is checked before/after, not preempted; physical callbacks still owe their own bounded IO and owned cleanup.",
+    "Observed future-frame rejection is not cryptographic proof of child-side causal ordering; reviewed adapter and actual process identity remain required.",
+    "State, sandbox, capture and cold-reader integration are not qualified by this component result.",
+    "Historical checks retain exact original bindings; this is not whole-tree or model-quality qualification."
+  ],
+  "candidate_executions": 0,
+  "coverage": [
+    "All four generated-probe wire templates over real host-authored binary subprocesses, including fragmented output and exact continuation bytes.",
+    "Concurrent nonblocking stdout/stderr drainage, capped retained streams, bounded frame queue and partial frame memory.",
+    "Hung process, absolute/control window checks, slow boundary, nonzero exit, extra/truncated/premature frames, closed stdin and stderr flood.",
+    "Known bad observed value remains a failure when a later response times out; good values do not override failed process mechanics.",
+    "Missing capture callback, revoked effect callback, failed retention without retry, interruption and invalid admission all close the transferred local process.",
+    "Raw frame and continuation originals, raw stream digests/counters, partial-write counts and terminal diagnostics."
+  ],
+  "development_originals": [
+    {
+      "finding": "Static type check rejected private Popen.text_mode access; replaced with public universal_newlines property.",
+      "outcomes": {
+        "not_run": 17
+      },
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-offline-1/20261005T070331-6be3cc87",
+      "summary_sha256": "9ea5a3b825608ea5ec0d386bc70af203f5a5c39e2965fee83e5fcecf536b3b4a"
+    },
+    {
+      "finding": "Initial 17 controls passed before the adversarial future-frame case was added. Not current qualification.",
+      "outcomes": {
+        "passed": 17
+      },
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-offline-2/20261005T070411-6f9be52e",
+      "summary_sha256": "d3e3c94431fc7e0acb8ea525ce0e2460523bc7252916e1783576e913e53ac435"
+    },
+    {
+      "finding": "Real host-authored child sent all future frames before acknowledgements; predecessor incorrectly reported mechanics_complete=true. Added observed-future-output rejection before continuation and immediately before writing.",
+      "outcomes": {
+        "failed": 1
+      },
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-prefetch-negative-1/20261005T070514-0f012367",
+      "summary_sha256": "3c5ec5b6d053554e6a402e0efd7932ed43ca73e7816f6f534720c8896265cc6b"
+    }
+  ],
+  "new_model_quality_samples": 0,
+  "product_acceptance": false,
+  "production_approvals_created": 0,
+  "protocol": "cumulative-generated-probe-pipe-qualification-v1",
+  "provider_calls": 0,
+  "remaining": [
+    "Physical owner integration with durable state, current source/review, authentic runtime/image and controller unique-slot/aggregate budget.",
+    "Reviewed sandbox launch, capture boundary, independent local/Engine cleanup and full original chronology.",
+    "Cold reconstruction and all candidate/context/merged selection joins.",
+    "Complete matching rehearsal, approved matched live comparison and independent held-out family confirmation."
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_pipe_v1.py": "361ac6dc5a80b9acfb6aaa2949343c5ce568a46923908354bbb84adab162337c",
+    "pyproject.toml": "44e81c27adf0a6cb4c03708f785c23fca306c58ae765c911dde7004189a22fa2",
+    "tests/test_cumulative_generated_probe_pipe_v1.py": "9bf4557ef7c628dab4258a68d6aa33c69d8aa26b9325611fd9884d9c39c490f3",
+    "verification-manifest.json": "a7b3486d2a4f5cbcb44672282bad70abb7a11a582fded17366b60770f13dfaec"
+  },
+  "status": "local_subprocess_exchange_qualified_physical_owner_pending",
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "lane": "fast",
+        "log_sha256": "c7c152842e67a1989a78648dca96bc475ce2c354d16cf2e2628d180d4678814f",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests.test_explicit_policy_rejects_outside_existing_envelopes"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-offline-3/20261005T070552-41e246e9/classes/ad031b6c500a542a/result.json",
+        "result_sha256": "c65666fe4c6d9402dd53a7ee4003b0dfb25788cc5369368af69013bf245b97bd"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "lane": "fixtures",
+        "log_sha256": "8039c010eafe29139b40e855b95dc5c12e1ff0e23fd6f481fc5630d97b678b61",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_admission_failure_stops_child_without_sending_continuation",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_all_templates_use_complete_finite_handshake",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_closed_stdin_records_no_completed_continuation",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_complete_exchange_reconstructs_raw_frames_and_continuations",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_failed_retention_is_not_retried_and_child_is_reaped",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_future_frames_before_acknowledgement_are_refused",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_hung_process_is_killed_at_absolute_window_without_reset",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_interruption_closes_owned_process_and_preserves_interruption",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_invalid_probe_closes_transferred_process",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_known_bad_value_survives_later_timeout",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_missing_capture_never_acknowledges_capture_boundary",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_nonzero_exit_and_extra_output_refuse_mechanical_completion",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_oversized_frame_and_queue_flood_do_not_grow_unbounded",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_slow_boundary_cannot_receive_a_fresh_window",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_stderr_backpressure_is_drained_while_exchanging_stdout",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_stderr_overflow_caps_retained_bytes_and_refuses_completion",
+          "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests.test_truncated_frame_does_not_become_an_observation"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-offline-3/20261005T070552-41e246e9/classes/3c677686820ec1e0/result.json",
+        "result_sha256": "555ed9f6982742e7e5dba449d18a15c4350955ed287b59d672fdb488d02c8a54"
+      }
+    ],
+    "duration_seconds": 6.447671207599342,
+    "fingerprint": "6c90f73b7ff37bae82dc1860a62732dfb4df242e6d36d2f89b0cb9f1fb1d8f12",
+    "fresh_tests": 18,
+    "inputs_sha256": "1cf56de90cec1fd31955f12f3092c54c9c924af8875ed85f5728f87529736724",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-pipe-offline-3/20261005T070552-41e246e9",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 748,
+    "static": "passed within configured coverage; unchanged legacy type baseline remains",
+    "summary_sha256": "e24f9c52059cd6703802e934a9f5e2b2e99416eeeaf89da746f5de68b662b3a2"
+  }
+}

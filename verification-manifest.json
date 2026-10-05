@@ -6970,6 +6970,26 @@
       "overlap": "State integration only; underlying journal integrity has separate existing coverage. Physical dispatch/capture/cleanup and production admission remain separate.",
       "distinct_defect": "Interrupted validation, revoked authority, moved source, expired window, stale checkpoint, suffix or raw tampering must not silently permit a duplicate attempt.",
       "disposition": "Central static then fresh affected fast/git checks; no actual independent approval or model-quality credit."
+    },
+    "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Bounded independent stdout/stderr consumption, exact finite handshake, absolute deadlines, exclusive continuation originals and owned local-child teardown; value findings remain distinct from process mechanics.",
+      "isolation": "Fresh host-authored local Python subprocess per scenario; no candidate import, Docker, provider, network or shared global patches.",
+      "overlap": "Complements frozen wire predicates and durable state. Physical sandbox identity, source/runtime admission, durable controller quota and cold reconstruction remain separate.",
+      "distinct_defect": "Backpressure, output flood, truncated or extra frames, bad value followed by timeout, closed stdin, failed retention or interruption must not deadlock, lose the known discrepancy or claim completion.",
+      "disposition": "Central static then fresh fast/fixtures checks. Synthetic callbacks and captures are not production authority or model-quality evidence."
+    },
+    "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests": {
+      "lane": "fixtures",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Bounded independent stdout/stderr consumption, exact finite handshake, absolute deadlines, exclusive continuation originals and owned local-child teardown; value findings remain distinct from process mechanics.",
+      "isolation": "Fresh host-authored local Python subprocess per scenario; no candidate import, Docker, provider, network or shared global patches.",
+      "overlap": "Complements frozen wire predicates and durable state. Physical sandbox identity, source/runtime admission, durable controller quota and cold reconstruction remain separate.",
+      "distinct_defect": "Backpressure, output flood, truncated or extra frames, bad value followed by timeout, closed stdin, failed retention or interruption must not deadlock, lose the known discrepancy or claim completion.",
+      "disposition": "Central static then fresh fast/fixtures checks. Synthetic callbacks and captures are not production authority or model-quality evidence."
     }
   },
   "audit": {
