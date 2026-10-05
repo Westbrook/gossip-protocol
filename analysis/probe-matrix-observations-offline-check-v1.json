@@ -1,0 +1,65 @@
+{
+  "protocol": "probe-matrix-observations-offline-check-v1",
+  "created_at_utc": "2026-10-05T14:50:28.858525+00:00",
+  "prior_commit": "856bcc7de3d1532b6c8ce1d04ba56c4ceaf7ab63",
+  "status": "COMPLETE_GENERATED_PHASE_ORIGINAL_CENSUS_OFFLINE_CHECKED",
+  "implemented": [
+    "Reconstruct the entire required generated-probe phase from original corpus and reservation before joining supplied original execution capabilities.",
+    "Retain missing cells as unavailable, preserve known defects, reject duplicates and wrong-phase capabilities.",
+    "Require separate merged-source originals; recheck all independent execution prefixes after reading all cells.",
+    "Expose outstanding authored public suites and withhold full-comparison, resource, selection and acceptance authority."
+  ],
+  "qualification": {
+    "summary": "runs/probe-matrix-observations-focused/20261005T144451-852d0dcc/summary.json",
+    "summary_sha256": "1f1a793db108064c5d3511eadac808118e3ca2234dd56e35be863c998862e0f5",
+    "inputs_sha256": "7712662f705420c015a7e01efb894e8b5cc42f8b04f7479d6bc0848db641643f",
+    "static_sha256": "5002f9496c2924a2ec8d37b0770aa8f1340c6ecbe996546040b36c9cebb5ba73",
+    "source_input_count": 778,
+    "fresh_tests": 7,
+    "reused_tests": 0,
+    "classes": 1,
+    "duration_seconds": 326.79588379058987,
+    "receipts": [
+      {
+        "class": "tests/test_generated_probe_matrix_reader_v1.py::GeneratedProbeMatrixReaderGitTests",
+        "tests": 7,
+        "result": "runs/probe-matrix-observations-focused/20261005T144451-852d0dcc/classes/bb8d284e0da4a1a8/result.json",
+        "result_sha256": "ed7bbd38b90448dc196cb68d9c1c77d0af3e5844d249e305c97f3262b44a6872",
+        "log_sha256": "e62285ad36390247ed17f95d86f0cffb2f722253f9cfb7df020e3679c277cfc4",
+        "request_sha256": "1a147a65bd57c2c33323e76f0f6f7c275084e3f1ffaca870576129984e88ba25"
+      }
+    ],
+    "scope": "New module and all its tests: real Git and anchored original journals, no original-reader function mocks. Financial, review and Engine records are synthetic. Existing production modules unchanged; no broad-suite rerun or old receipt reuse claimed."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/probe-matrix-observations-focused/20261005T144406-e83e9bda/summary.json",
+      "reason": "Static type check found loop variable reused for an optional lookup. Renamed the lookup variable; zero test workers ran in the failed session."
+    }
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_matrix_reader_v1.py": "04aa0182d2b1706bf875fa6ae644d3e3be9f09192342c14e87a6a36e7084f5f9",
+    "tests/test_generated_probe_matrix_reader_v1.py": "fdb23ea70a82072aa6af8dbbf2e9dcc9bcfcc45fb43d3aaf558ec8445c16b5ec",
+    "pyproject.toml": "305e13572dd5a31c261216d678344d2152d03064e297f0e79415d6034bd2938f",
+    "verification-manifest.json": "cef353105caec459f89c25bbd089639dcf54a35297cb16ccc3cfa10c7098c5a2",
+    "docs/probe-matrix-observations-v1.md": "a18b12c3557cdfdf219b5cebe1a58df84f1412111cdbc4f072244528c0d27d8c"
+  },
+  "limitations": [
+    "This is the complete generated phase, not a complete candidate comparison or runtime integration. Authored public-suite cell originals, qualified resource envelopes, and ranked selection/controller adoption remain required.",
+    "Independent final acceptance routes, exact reviews, physical qualification and matching six-trajectory/four-milestone rehearsal remain required before the scheduled live pilot."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Finish authored public-suite cell originals and connect complete contextual/merged evidence to the scheduled ranked controller. Keep S16-G versus O16-G outcomes primary; close only named launch and validity blockers, with no new arms or expanded product contract."
+}
