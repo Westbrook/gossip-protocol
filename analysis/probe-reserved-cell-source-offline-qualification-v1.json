@@ -1,0 +1,195 @@
+{
+  "protocol": "probe-reserved-cell-source-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T13:12:15.646519+00:00",
+  "prior_commit": "3420412fcce34b4fd4d2be3336a18eba9faa14d2",
+  "status": "ORIGINAL_RESERVED_CELL_AND_SEPARATE_GIT_SNAPSHOT_JOIN_OFFLINE_QUALIFIED",
+  "implemented": [
+    "Read-only probe join reconstructs the complete original matrix, successful reservation, original child horizon and before/after-review chronology.",
+    "Generated definition, ordered cases, public release, cohort, trajectory, generation, candidate and fixed-peer context must match the selected original cell.",
+    "Exact merged vectors must be complete and endorsed but do not acquire conditional selection authority.",
+    "Materialized source is checked in the original proposal repository and against the exact head of a separate candidate Git view. Self-consistent hashes for different source cannot borrow the cell.",
+    "Exact declared charge and schedule are retained in the inspection result without treating them as qualified measurements, execution leases or acceptance."
+  ],
+  "qualification": {
+    "summary": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/summary.json",
+    "summary_sha256": "a8b0d0278c6b7539db602f6503dc51bb143b87c9089388004b511e9e973128c4",
+    "inputs_sha256": "d1892fdc8ae46be55ffe483f8bb5243a5fb349544d8bea381c0dbde6eb998739",
+    "static_sha256": "0205fecc93b57cc79a77a97fd719e72ed1cb8dcad4efb41001f49993ab5eb386",
+    "source_input_count": 775,
+    "fresh_tests": 165,
+    "reused_tests": 0,
+    "classes": 16,
+    "duration_seconds": 186.93263408355415,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "b0685a57122daaede51699ad001361ad4c139c0478643495a8d0d7b580e4566c",
+        "log_sha256": "f4ccb2f731cdb0112e813cadb76514ee936077b4ec07b11fa62371cf9321f518",
+        "request_sha256": "450ac407a5b9f48d279e3b59f894d8ad9d550551424407415db099cf0fc2fd84"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/f8102915f46ef306/result.json",
+        "result_sha256": "75389b846b6a14cd16f8a0a3e5af84e4147463a5f5f5f031a451dc0dba0c7cca",
+        "log_sha256": "b8b46783e5a289d8eb53c8b937ea390d305ab74ad3b6ee9a686f1ac27b5f05c2",
+        "request_sha256": "b7c022d9d7a0e4d31ac8a015753a782d46cf6d42c8352e57c6607e09c94bc487"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/682d942eed25d87d/result.json",
+        "result_sha256": "f1699df8ca2ccc68318ff1ca9324cf41670803cb81732b15aa299c5fca30cc9b",
+        "log_sha256": "6fe294c2dbe61f9ff4b996a42879fee870ac69a652f1f71f29a88d6f64e08384",
+        "request_sha256": "c78bff6ee1b7b951e0270ac788f7f8e64d2b1e0fd6e9b3ba5ef8a77f5287d415"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/18e8426870583b7c/result.json",
+        "result_sha256": "4b68a2cb646749fcc7877370ac9388ec5da8dc2d76bd967b136dcb940c8d9111",
+        "log_sha256": "edf74f0d8e7a6dce93b8b6a8fb6b31a49018866625d1386cdd0e0ee7131dc5c6",
+        "request_sha256": "3fe4a3f65d9939918dec277cfe00f3dc43bd4e02c8b3240d66d0ec970642c9db"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "0f16dc9fbcd2f640bf72cd85de4789c49ff52f4ba2a5694304ff8f074b65e31e",
+        "log_sha256": "5313dc5691f12cacadf3518aa12f87e6795be55090c087424af24e0a5ad14058",
+        "request_sha256": "43bdc1f2934fddfadc7cc2939e3dae1e590fa36ce285bca93b5504e4fc23e404"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "22ddce7c5cb394154764328460f71a4695651e3714e25ae7a05c4248854b26d0",
+        "log_sha256": "a38a12053a863d28e920e47402e21746ed2cf5c134def3e0ef3f233196a2cc8c",
+        "request_sha256": "8ec74f41d8181c07a9183e7d731a00f906cc4e9064d52ad5c35483bd0c270607"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "97c4da3fa5fe5608dc6d7fd7c8a08a374daf86b1bb707d092e68b7cd9955d0ad",
+        "log_sha256": "0471bfd14d2798d26b9f3d697262f863ac31df3a82b438bd4c844f14f4941746",
+        "request_sha256": "3f3dbd673531594ac492bbb380c232aec17567d93c71785ce6b1dc3ba963d940"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/9357695866ace6b8/result.json",
+        "result_sha256": "04fd2440396e0826c95a4485c2464ffd190965d83ad2ad8d39ef695282fa4cfa",
+        "log_sha256": "8ace4f6b79587f15ef16b9963e70ebf0735338d5976ff38a1bbc8e2f01102141",
+        "request_sha256": "616958c09b463fd1f4b007677464ae55d807a49e75546fa1aa9dca1159ceff1f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "9a83b32458c10759cb8c4d3a438e2862d863471f3ae455f9a65d9f9228aac5f7",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db",
+        "request_sha256": "a215fb6f38f97475ddb4179d37fda25f673e51d0121d3e40f418d6082efac920"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "9ff83008951a0b73c19d2a00211206db66ec347d95a40075eb29dd7766fb7477",
+        "log_sha256": "db9a28fe6104301d9f56a786f8d819073f75e422063ce58853a519f0759909cb",
+        "request_sha256": "1c9b295f3dd9846ae547aa5174a9621a22c776243425492a0a8be3a9b22a6a61"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 24,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/c7a59e38eba7a02c/result.json",
+        "result_sha256": "842d01d859dd7602fb8d490f8244a52a0d6d4337d817ddaa854f3abb871a90f2",
+        "log_sha256": "2304de0fe897901847541b188699b4228e94c0529bcfcec79bc449adaa33cfd3",
+        "request_sha256": "ba3a5ee5294a373f5929c9d465a2cd6a5b9e00433f0f79abf148157110934a4a"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "0b496b1a1d869b55a03f4944a9e30276faf8ff566afb1aff61b909a18ed5d134",
+        "log_sha256": "fb6bea23d34078136e57b61d02f51fed41ecba676d76f66eb12d42cc3b5250bf",
+        "request_sha256": "114b061d49d9189f22efcd95735d02afc4db41abd450cd338b90d291759af1bc"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "f6a4a38a715d383f25e338be83b63bece67053277b355ee1b25499cf108eb4e4",
+        "log_sha256": "cfa62c56774c045fd39a875504b7dfdde819f7518efd852052ca15a37a5afa05",
+        "request_sha256": "15ee3e37d60ce8adc62f2e69b6e62c9f21d79b3d3b4127cb4be9e3400df89c4c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "a9b2400873def35f52312bef4c8a240be891491c7d7e53676f954ac0be704835",
+        "log_sha256": "57371d04b4de73207c26e608319ef37cb49c2c5b4e1dd531301f533a6cbc8497",
+        "request_sha256": "3dd9bfd3228b4e5342ab51807c33a2b2a7a6cd3b0c0ebdd01f58dce443fc5bdf"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "2ec9a6cd628abebaabbdc7deef7b4dc9940f6fe90cce7f27c6e51a7ce5fab64a",
+        "log_sha256": "e62e2f49b9488a608427b4ccb5a4a401125a50d574977953af7c10e460dae373",
+        "request_sha256": "04323cf257b9d9712c69645e3bdc97eccbce731a0ee8c4744ba31bcfbc634570"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/probe-reserved-cell-qualification/20261005T130858-efd232d6/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "51b22eb3818b6e13005418d58cab7940e7086eeaf544599ac71403a25c7b6e98",
+        "log_sha256": "7043e2fe1352811caccd4fc78deb06be7d4f53cf51c80b28b237f65a85e4539e",
+        "request_sha256": "40caca4d9ec747c9d2b405cc6ca41bdc283fa62a7b5f92855314617434c8602f"
+      }
+    ],
+    "scope": "Actual inert Git proposals/separate snapshot repositories, externally anchored journals, original controller readers; synthetic financial proof and mesh seams. No Engine, candidate or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failure": {
+    "summary": "runs/probe-reserved-cell-focused/20261005T130323-80ef50d3/summary.json",
+    "sha256": "4f5b82dc458969d88ee30388717b852c397305250d161190da05271f508fbf0e",
+    "interpretation": "Initial fixture incorrectly used the protected repository for the probe plan: source capture correctly refused a candidate commit that was not its accepted head. Added a required separate candidate view and verified both source identities without advancing the project accepted branch."
+  },
+  "source_pins": {
+    "docs/generated-probe-original-accounting-v1.md": "7e89ea26c9b2ce7a4acdf0c9e4f25ffd260f931d57bd87f5f6c5af4cff96dcea",
+    "docs/generated-probe-reserved-cell-v1.md": "f1fbab1e63aac03b13a571fd27fa4655cc783815f1f022c33a9ba411c2c216e4",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "88138132c3d63798974226c08ae58a7c3b8e87aabf2991be82551e3fc6f22382",
+    "tests/test_cumulative_generated_probe_accounting_v1.py": "3e59f9e9e69dc2e374397c26cc6042bd3ef8b32f0cc2ea438921d1b13ece9023",
+    "verification-manifest.json": "e3e0e1652150ddc60367fa4241f82af8fec3397377347ef25c1162c80751bdd6"
+  },
+  "limitations": [
+    "This read-only join is not wired into physical dispatch or the ranked controller. It appends no unique cell enrollment or execution intent.",
+    "Qualified resource envelopes, resource enforcement and original-derived conditional selection remain outstanding.",
+    "Independent cold joins of physical observations and original controller clock, changed-source reviews, remaining acceptance routes, physical controls and the complete matching rehearsal remain required."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Use the original-backed cell/source join in unique controller enrollment and physical admission, with qualified resource limits; join completed observations before ranked selection activation."
+}

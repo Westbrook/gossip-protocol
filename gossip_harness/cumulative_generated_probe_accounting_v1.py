@@ -16,6 +16,8 @@ from typing import Any
 from . import candidate_checkpoint_chain_v1 as chain
 from . import candidate_observation_admission_v1 as admission
 from . import cumulative_generated_probe_capacity_v1 as capacity
+from . import cumulative_generated_probe_context_v1 as contexts
+from . import cumulative_generated_probe_plan_v1 as plans
 from . import cumulative_generated_probe_corpus_v1 as corpus
 from . import cumulative_generated_probe_matrix_v1 as matrices
 from . import cumulative_generated_probe_ranked_originals_v1 as ranked
@@ -23,14 +25,15 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_study_controller_v2 as study
 from . import cumulative_study_runtime_v2 as runtime
 from . import cumulative_child_deadline_v1 as child_deadlines
+from .gitstore import GitStore
 
-PROTOCOL = 'cumulative-generated-probe-original-accounting-v1-child-deadline-v2'
+PROTOCOL = 'cumulative-generated-probe-original-accounting-v1-reserved-cell-v3'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 require = study.require
 
 
 def sources() -> dict[str, str]:
-    pins = {**ranked.sources(),
+    pins = {**ranked.sources(), **plans.evaluator_sources(),
         'gossip_harness/cumulative_generated_probe_accounting_v1.py': LOADED_SOURCE_SHA256,
         'gossip_harness/cumulative_generated_probe_capacity_v1.py': capacity.LOADED_SOURCE_SHA256,
         'gossip_harness/cumulative_generated_probe_corpus_v1.py': corpus.LOADED_SOURCE_SHA256}
@@ -168,3 +171,74 @@ def inspect(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
         'original_matrix_bound': True, 'executor_leases_issued': False,
         'whole_child_deadline_bound': original_clock is not None, 'original_child_clock': original_clock,
         'dispatch_authority': False, 'acceptance_authority': False}
+
+
+def inspect_probe_cell(owner: runtime.GossipChildRuntime, book: capacity.ReservationLedger,
+                       slot: str, cell_sha256: str, plan: plans.ProbePlan, *,
+                       candidate_store: GitStore, expected: chain.PrefixCommitment, milestone: str, generation: int,
+                       quotas: corpus.Quotas, limits: ranked.ReviewLimits,
+                       selected: tuple[str, ...] | None = None) -> dict[str, Any]:
+    """Join one planned probe to its complete original reservation and Git bytes.
+
+    This read-only join does not consume a cell, qualify an envelope or authorize
+    dispatch. A merged vector proves source construction only, not selection.
+    The future controller must retain a unique intent and authenticate qualified
+    resource limits before using this evidence for admission.
+    """
+    require(type(plan) is plans.ProbePlan and type(candidate_store) is GitStore,
+            'exact_reserved_probe_plan_and_store_required')
+    require(candidate_store.path != owner.protected.path, 'separate_probe_candidate_view_required')
+    original = inspect(owner, book, slot, expected=expected, milestone=milestone,
+        generation=generation, phase='after-review', quotas=quotas, limits=limits)
+    require(original['decision']['status'] == 'reserved_declaration', 'successful_probe_reservation_required')
+    require(original['whole_child_deadline_bound'], 'original_child_bound_probe_reservation_required')
+    plan_raw = values.canonical(plan.record())
+    row = owner.records.read(slot)
+    assert row is not None
+    request = row['request']
+    cells = [c for phase in ('contextual', 'merged') for c in request['matrix']['cells'][phase]
+             if c['cell_sha256'] == cell_sha256]
+    require(type(cell_sha256) is str and len(cells) == 1, 'exact_reserved_probe_cell_required')
+    cell = cells[0]
+    require(cell['kind'] == 'generated-history', 'generated_probe_cell_required')
+    target = plan.target
+    subject = target.subject
+    require((subject.cohort_id, subject.trajectory_id, subject.execution_contract_sha256,
+             subject.milestone, target.generation) ==
+            (owner.child.cohort, owner.trajectory.id, owner.plan.sha256, milestone, generation),
+            'reserved_probe_subject_or_generation_differs')
+    release = owner.plan.releases[study.MILESTONES.index(milestone)]
+    require(plan.release_raw == study.canonical_payload(study.plain(asdict(release))),
+            'reserved_probe_public_release_differs')
+    record = plan.record()
+    require(values.digest(record['probe']) == cell['definition_sha256']
+            and cell['ordered_check_ids'] == ['probe-' + record['probe']['probe_id'] + '-value',
+                                               'probe-' + record['probe']['probe_id'] + '-mechanics'],
+            'reserved_probe_definition_or_cases_differ')
+    compiled, _ = ranked.reconstruct_frozen(owner, expected=expected,
+        milestone=milestone, generation=generation, limits=limits, historical=True)
+    if cell['phase'] == 'contextual':
+        require(selected is None and target.stage == 'candidate-context'
+                and target.candidate_id == cell['actor'], 'reserved_probe_candidate_context_differs')
+        context = contexts.compose(compiled, 'contextual', actor=cell['actor'])
+        require(values.exact(cell['context'], context.record()), 'reserved_probe_context_original_differs')
+    else:
+        require(target.stage == 'merged' and target.candidate_id == 'merged',
+                'reserved_probe_merged_stage_differs')
+        context = contexts.compose(compiled, 'merged', selected=selected)
+    require(target.context_id == context.sha256, 'reserved_probe_context_identity_differs')
+    materialized = contexts.verify_materialized(owner.protected, compiled, context, target.commit_oid)
+    require((target.tree_oid, subject.source_sha256) ==
+            (materialized['tree_oid'], materialized['source_sha256']), 'reserved_probe_source_identity_differs')
+    plans.verify_current_source(candidate_store, plan)
+    charge = next(c for c in request['charges'] if c['cell_sha256'] == cell_sha256)
+    schedule = next(c for c in row['decision']['schedule'] if c['cell_sha256'] == cell_sha256)
+    require(values.canonical(plan.record()) == plan_raw, 'reserved_probe_plan_changed_during_join')
+    owner.records.chain.validate_boundary(expected=expected)
+    return {'protocol': PROTOCOL, 'reservation': original, 'cell': cell, 'declared_charge': charge,
+        'declared_schedule': schedule, 'probe_plan_sha256': values.digest(record),
+        'context': context.record(), 'materialized_source': materialized,
+        'candidate_store': str(candidate_store.path),
+        'original_matrix_bound': True, 'original_source_bound': True,
+        'unique_execution_intent_retained': False, 'qualified_resource_envelope': False,
+        'selection_authority': False, 'dispatch_authority': False, 'acceptance_authority': False}

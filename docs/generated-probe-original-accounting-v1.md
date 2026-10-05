@@ -27,3 +27,8 @@ clock policy is selected, accounting requires the window from the original
 still does not issue shared executor leases. Actual candidate execution,
 independent product acceptance, a complete matching rehearsal and live/held-out
 comparisons remain required. This component supplies no new model-quality sample.
+
+The [reserved-cell/source join](generated-probe-reserved-cell-v1.md) now maps one
+probe plan to its complete successful original allocation and materialized Git
+context. It preserves the distinction between declared charges and qualified
+resource limits; it grants no dispatch or selection authority.
