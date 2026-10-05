@@ -7,7 +7,8 @@
     "gossip_harness/candidate_workflow_review_v1.py": "41a7558926f7e2b6ad806e565a6265bdcd609c5adc88935bf95c5bfdac00bd53",
     "tests/test_candidate_workflow_profile_v1.py": "a7d54d9763f784cef3382977e2d7f543371c7e38247fa085b2b331ba160e6f3e"
   },
-  "full_selection": "runs/workflow-record-construction-source-1/full-selection.json",
+  "full_selection": "runs/workflow-record-construction-source-1/full-selection-v2.json",
+  "full_selection_sha256": "b06cc183ab75e3e85c74269a10fe4c28deb675201e7191b221d4855f4fac1bf3",
   "limitations": [
     "Before/after diagnostic samples are sequential, profiled local calls; no population inference or uninstrumented speedup claim.",
     "Reconstruction changes the evaluator source identity, so historical execution receipts cannot qualify the new tree.",
@@ -32,6 +33,10 @@
     "Reviewer-test harvesting, full study enrollment and matched rehearsal",
     "Live comparisons and held-out replication; external disclosure approval remains pending"
   ],
+  "selection_metadata_correction": {
+    "previous": "runs/workflow-record-construction-source-1/full-selection.json",
+    "reason": "Inherited expected_total648 corrected to650. Before dispatch, exact selectors, expected_tests650 and lane counts498fast/152git already declared the intended selection; running scope unchanged."
+  },
   "semantic_equivalence": {
     "allowed_differences": "Exactly six source SHA fields for the three changed production modules; all other canonical record bytes identical.",
     "path": "runs/workflow-record-construction-source-1/workflow-record-equivalence-2.json",
