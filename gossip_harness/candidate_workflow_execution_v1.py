@@ -226,7 +226,8 @@ class WorkflowBinding:
 def profile_for_binding(binding: WorkflowBinding) -> profile.WorkflowProfile:
     require(type(binding) is WorkflowBinding, 'Exact workflow binding required')
     value = profile.profile_for(binding.case_id, binding.purpose)
-    require(value.sha256 == binding.profile_sha256 and digest(value.record()) == binding.definition_sha256,
+    record_sha256 = digest(value.record())
+    require(record_sha256 == binding.profile_sha256 == binding.definition_sha256,
             'Workflow profile/definition differs')
     return value
 

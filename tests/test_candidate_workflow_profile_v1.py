@@ -202,6 +202,35 @@ class CandidateWorkflowDefinitionTests(unittest.TestCase):
         with patch.object(profile, "ORIGINAL_SOURCE_SHA256", "0" * 64), self.assertRaises(ValueError):
             profile.case_definition(value.case_id)
 
+    def test_records_preserve_public_views_for_every_history_and_purpose(self) -> None:
+        for purpose in profile.registry.PURPOSES:
+            for case_id in profile.CASE_IDS:
+                with self.subTest(case=case_id, purpose=purpose):
+                    value = profile.profile_for(case_id, purpose)
+                    record = value.record()
+                    self.assertTrue(profile.exact(record["definition"], profile.case_definition(case_id)))
+                    self.assertTrue(profile.exact(record["selectors"], value.selectors()))
+                    self.assertEqual(record["ordered_calls"], list(value.phases))
+                    self.assertEqual(record["ordered_case_ids"], list(value.ordered_case_ids))
+                    self.assertEqual(record["requirement_ids"], list(value.requirement_ids))
+                    self.assertEqual(record["input_recipe_sha256"], profile.digest(profile.recipe_for(case_id)))
+                    self.assertEqual(record["purpose"], purpose)
+
+    def test_record_mutation_cannot_leak_and_source_revocation_is_fresh(self) -> None:
+        value = profile.profile_for("WF18-same-process-call-isolation")
+        first = value.record()
+        expected = deepcopy(first)
+        first["definition"]["calls"][0]["input"]["operations"].clear()
+        first["definition"]["calls"][0]["expected"].clear()
+        first["selectors"][0]["source_unit_ids"].append("forged")
+        first["ordered_case_ids"].clear()
+        first["requirement_ids"].clear()
+        first["limits"]["call_timeout_seconds"] = 999
+        self.assertTrue(profile.exact(value.record(), expected))
+        with patch.object(profile, "ORIGINAL_SOURCE_SHA256", "0" * 64), self.assertRaises(ValueError):
+            value.record()
+        self.assertTrue(profile.exact(value.record(), expected))
+
     def test_exact_types_complete_bad_call_survives_missing_tail(self) -> None:
         value = profile.profile_for("WF18-same-process-call-isolation")
         first = profile.expected_for(value.case_id, 0)

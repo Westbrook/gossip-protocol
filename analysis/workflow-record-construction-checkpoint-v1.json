@@ -1,0 +1,76 @@
+{
+  "baseline_commit": "eed44d8",
+  "behavior": "Fresh complete catalog per record; local derived views use that same definition. Binding and request each hash one freshly constructed record. No cached records across calls or omitted freshness boundaries. Separate original-review authentications and deadlines unchanged.",
+  "changed_sources": {
+    "gossip_harness/candidate_workflow_execution_v1.py": "99d2ccdb83762546fdda8ee108674ceaf10acfbb713a38dd4dd47adb4adb8e7d",
+    "gossip_harness/candidate_workflow_profile_v1.py": "75024bd802083cc0ff9f6cf91f0f4ca2ff0692cf4db45c9743ee0a7118a042b2",
+    "gossip_harness/candidate_workflow_review_v1.py": "41a7558926f7e2b6ad806e565a6265bdcd609c5adc88935bf95c5bfdac00bd53",
+    "tests/test_candidate_workflow_profile_v1.py": "a7d54d9763f784cef3382977e2d7f543371c7e38247fa085b2b331ba160e6f3e"
+  },
+  "full_selection": "runs/workflow-record-construction-source-1/full-selection.json",
+  "limitations": [
+    "Before/after diagnostic samples are sequential, profiled local calls; no population inference or uninstrumented speedup claim.",
+    "Reconstruction changes the evaluator source identity, so historical execution receipts cannot qualify the new tree.",
+    "Exact values/requirements and refreshed boundary checks are preserved; redundant within-call reconstructions and their time-of-read observations are reduced.",
+    "First equivalence script allowed only one source-pin location and failed on the five other expected source-pin changes. The retained second script authenticates precisely all six changed locations, with no value differences permitted."
+  ],
+  "nearest": {
+    "fresh": 74,
+    "inputs_sha256": "703d1dc90ef7c1de78db5f90f258a5ba0192e4d7159ce43301515c9862b1cf03",
+    "passed": 74,
+    "reused": 0,
+    "run": "runs/workflow-record-construction-nearest-1/20261005T020247-ddf4fd9f",
+    "source_count": 732,
+    "static": "passed",
+    "summary_sha256": "666e16e776f58a06206f6dd59871d28014f9c28be57f2988e150a38fbc57b8c4"
+  },
+  "new_model_quality_samples": 0,
+  "protocol": "workflow-record-construction-v2",
+  "remaining": [
+    "Full650 affected offline checks",
+    "Fresh changed-source38 workflow Docker and6shared transport checks",
+    "Reviewer-test harvesting, full study enrollment and matched rehearsal",
+    "Live comparisons and held-out replication; external disclosure approval remains pending"
+  ],
+  "semantic_equivalence": {
+    "allowed_differences": "Exactly six source SHA fields for the three changed production modules; all other canonical record bytes identical.",
+    "path": "runs/workflow-record-construction-source-1/workflow-record-equivalence-2.json",
+    "records": 60,
+    "sha256": "6a45bab3fa642a89b8cc3d8fd30998a99f4ba3b3da2cf2243c1acdf1e0855eb5"
+  },
+  "status": "nearest_passed_full_qualification_pending",
+  "timing_diagnostic": {
+    "plan.request": {
+      "after_median": 0.043755875,
+      "after_seconds": [
+        0.041823417,
+        0.043755875,
+        0.047567375
+      ],
+      "before_median": 0.188881458,
+      "before_seconds": [
+        0.184540125,
+        0.188881458,
+        0.201875959
+      ],
+      "catalog_reconstructions_after": 2,
+      "catalog_reconstructions_before": 13
+    },
+    "profile_for_binding": {
+      "after_median": 0.042026834,
+      "after_seconds": [
+        0.042026834,
+        0.040743417,
+        0.042112
+      ],
+      "before_median": 0.19554325,
+      "before_seconds": [
+        0.197312375,
+        0.188061958,
+        0.19554325
+      ],
+      "catalog_reconstructions_after": 2,
+      "catalog_reconstructions_before": 13
+    }
+  }
+}

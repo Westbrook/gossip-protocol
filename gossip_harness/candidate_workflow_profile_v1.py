@@ -415,8 +415,11 @@ class WorkflowProfile:
         return self.ordered_case_ids
 
     def selectors(self) -> list[dict[str, Any]]:
+        return self._selectors_for_calls(self.calls)
+
+    def _selectors_for_calls(self, calls: tuple[dict[str, Any], ...]) -> list[dict[str, Any]]:
         rows: list[dict[str, Any]] = []
-        for call_index, call in enumerate(self.calls):
+        for call_index, call in enumerate(calls):
             prefix = self.case_id + ":" + call["call_id"]
             def append(kind: str, suffix: str, path: list[str | int], units: list[str], rationale: str,
                        operation_index: int | None = None) -> None:
@@ -472,7 +475,16 @@ class WorkflowProfile:
         return rows
 
     def record(self) -> dict[str, Any]:
+        # Build one fresh definition per record. Derived views share only this
+        # local snapshot; no definition or source validation survives the call.
         definition = case_definition(self.case_id)
+        calls = tuple(definition["calls"])
+        selectors = self._selectors_for_calls(calls)
+        phases = [call["call_id"] for call in calls]
+        requirement_ids = list(dict.fromkeys(_REQUIREMENT_BY_UNIT[unit]
+                               for row in selectors for unit in row["source_unit_ids"]))
+        recipe = {"protocol": INPUT_PROTOCOL, "case_id": self.case_id,
+                  "calls": [deepcopy(call["input"]) for call in calls]}
         return {"protocol": PROTOCOL, "family": self.family, "case_id": self.case_id, "purpose": self.purpose,
                 "original_definition_purpose": definition["original_definition_purpose"],
                 "definition": definition, "definition_sha256": digest(definition),
@@ -482,9 +494,9 @@ class WorkflowProfile:
                 "effective_requirements": exposure.cli.manifest(),
                 "workflow_requirements": exposure.manifest(),
                 "combined_effective_requirements": exposure.combined_manifest(),
-                "ordered_calls": list(self.phases), "selectors": self.selectors(),
-                "ordered_case_ids": list(self.ordered_case_ids), "requirement_ids": list(self.requirement_ids),
-                "input_recipe_sha256": digest(recipe_for(self.case_id)), "seed": 0,
+                "ordered_calls": phases, "selectors": selectors,
+                "ordered_case_ids": [row["case_id"] for row in selectors], "requirement_ids": requirement_ids,
+                "input_recipe_sha256": digest(recipe), "seed": 0,
                 "m4_compatibility_output_associations": [
                     {"operation_index": index, "rationale": rationale}
                     for index, rationale in M4_COMPATIBILITY_RESULTS.get(self.case_id, {}).items()],

@@ -184,9 +184,10 @@ class WorkflowSourcePlan:
             value: Any = profiles.profile_for(self.case_id, self.purpose)
         else:
             value = WorkflowInspectionProfile(self.purpose)
-        require(value.case_id == self.case_id and value.sha256 == self.profile_sha256,
+        record = value.record()
+        require(value.case_id == self.case_id and digest(record) == self.profile_sha256,
                 'Reviewed workflow profile differs from exact source definition')
-        return {'protocol': PROTOCOL, 'purpose': PURPOSE, 'plan': self.record(), 'profile': value.record(),
+        return {'protocol': PROTOCOL, 'purpose': PURPOSE, 'plan': self.record(), 'profile': record,
             'duties': list(DUTIES), 'scope': 'named workflow source attribution only',
             'product_correctness_approved': False, 'whole_scope_approved': False}
 
