@@ -1,0 +1,125 @@
+{
+  "changed_execution_contract": {
+    "capture": "candidate-git-source-two-process-v1",
+    "capture_seconds": 60,
+    "cleanup_reap_seconds": 5,
+    "current_review_read": "workflow-current-review-read-v2; both original report digest and provenance from one fresh before/after authenticated review read; no cross-call cache",
+    "journal_read": "candidate-journal-batch-read-v1",
+    "journal_read_scope": "Fresh complete reads; ancestor checks before/after every file; fresh directory descriptors for each checkpoint; unchanged bounds and deadlines",
+    "policy": "candidate-source-capture-policy-v2",
+    "record_construction": "workflow-record-construction-v2; fresh complete definitions per call with within-call derived views, no cross-call cache",
+    "source_commit": "8e4a4d6785c8623eef5850799c9f6d3865c5e98d",
+    "workflow_call_seconds": 30,
+    "workflow_history_seconds": 300
+  },
+  "execution_order": "Workflow38 first. Shared6 only after complete workflow qualification; no reuse for physical checks. Stop on failure and retain original artifacts.",
+  "execution_status": "NOT_STARTED_OFFLINE_GATE_PENDING",
+  "historical_failure": {
+    "audit": "analysis/workflow-batch-physical-checkpoint-v1.json",
+    "audit_sha256": "18e46519f825f1514b1eb741096daab35834575383da2c794dfe6e25f6543cfc",
+    "disposition": "Both prior originals retained: first control qualified and next distinct history hit deadline. Measured combined review-read change justifies one new current-source qualification after complete offline gate; no unchanged retry or deadline widening.",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 36,
+      "passed": 1
+    },
+    "session": "runs/workflow-batch-read-physical-1/20261005T032028-96a941f3"
+  },
+  "lanes": [
+    "docker"
+  ],
+  "physical_source_pins": {
+    "gossip_harness/candidate_checkpoint_chain_v1.py": "2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481",
+    "gossip_harness/candidate_client_process_v4.py": "5fe7901bc0b79aca276e725bdca77de60c88466f804523740988982056c1b48b",
+    "gossip_harness/candidate_execution_journal_v1.py": "eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15",
+    "gossip_harness/candidate_git_source_two_process_v1.py": "da4b55f9f4b85ac719e188705685c72145c6f43d7321141aa6e5d8c24e63c660",
+    "gossip_harness/candidate_http_journal_v3.py": "7bcb8b7e8c3bee570a28c21dfd7ad278d0a435581ef184d2c645b61f569f988b",
+    "gossip_harness/candidate_journal_batch_read_v1.py": "5ec880aad17cb215ffa8fce8c4f9a121306bcc222ea169d55b0aac85b709ba73",
+    "gossip_harness/candidate_source_capture_policy_v2.py": "a4b72e39e51fac876e968a9ba9b4d4eb7c8ae0a6443cc7716d6a3c6ef9c985c2",
+    "gossip_harness/candidate_workflow_execution_v1.py": "d654c111392acd38373326aefa92f0935aca01832c31ca54baacd933fb3bb7d9",
+    "gossip_harness/candidate_workflow_observation_v1.py": "ee461341b20f50b394fb5eb33fed29269b9c601e593a3246c57f18b130b762b5",
+    "gossip_harness/candidate_workflow_profile_v1.py": "75024bd802083cc0ff9f6cf91f0f4ca2ff0692cf4db45c9743ee0a7118a042b2",
+    "gossip_harness/candidate_workflow_review_v1.py": "ee51c1fd949f6d8734c9e9ecd914c3421ed0c545f91e8900693182fb9929e723",
+    "tests/test_candidate_storage_m2_physical_v1.py": "2f85bf8b2e028a081b83916e9fe944667e6ec3f17b29ab135d4c91eb812dd0a3",
+    "tests/test_candidate_workflow_physical_v1.py": "d76638ccaafb2ab1373caac90701d5d6d6228e0fabbd1ef8496e42cf49b7794d",
+    "verification-manifest.json": "8cd3c1d7b6c6d310e0f052e6c32b54cf95f79303585303c744239b07a171028c"
+  },
+  "precondition": "All680 declared affected offline checks on exact current source must pass, with current runtime and original receipt reconciliation. The running gate is not yet a pass;103focused checks alone are insufficient.",
+  "prior_selection": {
+    "path": "runs/workflow-batch-read-adoption-1/physical-selection.json",
+    "sha256": "bc1075ce198601e4f01b860c18d7070b19b191aac0e01f58b7fa91e4862e5ead"
+  },
+  "protocol": "workflow-combined-review-physical-selections-v1",
+  "purpose": "Physical current-source harness qualification; neither paid candidates nor new scientific samples",
+  "shared_transport": {
+    "methods": 6,
+    "selected_method_ids": [
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP01Tests.test_b01_rollback_and_admission_original_negatives",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD01Tests.test_b01_orphan_content_is_detected_from_physical_storage",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP02Tests.test_b02_commit_result_freshness",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD02Tests.test_b02_cached_return_alias_is_detected",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP03Tests.test_m2_ordinary_two_handle_history",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD03Tests.test_m2_lifecycle_response_defect_is_detected"
+    ],
+    "selectors": [
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP01Tests",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD01Tests",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP02Tests",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD02Tests",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalP03Tests",
+      "tests/test_candidate_storage_m2_physical_v1.py::CandidateStorageM2PhysicalD03Tests"
+    ]
+  },
+  "workers": 4,
+  "workflow": {
+    "defects": 11,
+    "mechanisms": 7,
+    "methods": 38,
+    "positive_histories": 20,
+    "selected_method_ids": [
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_01_inherited_text_persistence",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_02_identity_and_replay",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_03_errors_preserve_catalog",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_04_cancel_fences_old_token",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_05_atomic_conflict_after_prepare",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_06_per_source_provenance",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_07_invalid_member_rolls_back",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_08_injected_transaction_failure",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_09_empty_modes",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_10_defaults_export_selection",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_11_v0_unsupported_continuation",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_12_mixed_job_state_reopen",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_13_domain_error_continuation",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_14_exact_64_operations",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_15_existing_job_token_domain",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_16_absent_token_hook_distinction",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_17_actual_61446_answer_growth",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_18_three_calls_one_actual_exec_isolated_databases",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_19_complete_fault_rollback_source_corroboration",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_20_invalid_query_options_continue",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_actual_reopen_discards_prior_catalog",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_empty_export_incorrectly_exports_all",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_epoch_overflow_uses_old_domain_error",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_first_domain_error_stops_later_operations",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_injected_fault_after_commit_retains_documents_blobs_receipt_and_job",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_mixed_final_jobs_are_reverse_sorted",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_old_valid_epoch_is_not_fenced",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_reused_database_is_physical_identity_and_state_bleed",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_rollback_leaks_hidden_blob_despite_error_response",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_v0_incorrectly_dispatches_m1_jobs",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_01_normalized_61824_is_actually_emitted_captured_and_compared",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_02_exact_131072_frame_payload_plus_separate_delimiter",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_03_131073_frame_is_explicitly_incomplete",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_04_exact_524288_stdout_raw_retention_without_product_credit",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_05_524289_stdout_retains_bounded_prefix_and_total_observed",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_06_exact_65536_stderr_raw_retention",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_07_65537_stderr_is_incomplete_without_a_product_verdict"
+    ],
+    "selectors": [
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests",
+      "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests"
+    ]
+  }
+}
