@@ -1,0 +1,623 @@
+{
+  "A_median_seconds": 0.0598812915,
+  "B_faster_pairs": 8,
+  "B_median_seconds": 0.0298983335,
+  "fixture_files_unchanged": {
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/delta/delta-00000001.json": "6767aef2e2b6003fcf46f8038ba84f5a0ac0abd20d25637c2fbd750fd257312f",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/delta/delta-00000002.json": "c7e161874afedd89f0ef8806a555b13831c001161c1e0ce47d00adfa76b6c76a",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/delta/delta-00000003.json": "aa66767f657bf5ae8cf368b4e7d26ed2f480506605d5c2083602268fee9ca3fb",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/delta/genesis.json": "1e26fefb17f6eaeca9555a7b3423e7e798cea8d831101785461a9a312f1ac424",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/delta/owner.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/head/head.json": "399e5cd87b1a5099ea808febaf88c38e32aadd4c6c9968bf5738a833573d3b28",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/head/head.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/raw/delivery.json": "3e40f78fe3cc97ce0411fcee905a9098d827fc86a34ae1e1c4ae6284e834aad0",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/raw/owner.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/raw/report.json": "e08e91a072ec71d8af20e44208eb7ff19c12c2d63243aad4fd2d4cf42723195c",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-review-read-comparison-1/synthetic-protected-review/raw/request.json": "e3633bda62b2a7b71d78558ed8ec641ec3c3253ec58349f7dd65d88ca7033360"
+  },
+  "median_paired_ratio": 0.502295307915975,
+  "new_model_quality_samples": 0,
+  "original_plan_unchanged": true,
+  "profiles": {
+    "A": [
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.10848945800000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "_original",
+        "internal_seconds": 7.1166e-05,
+        "line": 248,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.07290479100000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "request",
+        "internal_seconds": 2.4708e-05,
+        "line": 181,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.05523058300000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "provenance",
+        "internal_seconds": 3.958e-06,
+        "line": 257,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.053266125000000004,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "authenticate",
+        "internal_seconds": 3.2500000000000002e-06,
+        "line": 253,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.048403958000000004,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "case_definition",
+        "internal_seconds": 0.000214333,
+        "line": 320,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.048188833,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "definitions",
+        "internal_seconds": 0.00031497000000000003,
+        "line": 293,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.047991667,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "record",
+        "internal_seconds": 3.7170000000000005e-05,
+        "line": 477,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.035513209000000004,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "_authenticate",
+        "internal_seconds": 7.721400000000001e-05,
+        "line": 195,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 92,
+        "cumulative_seconds": 0.026951459,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "historical_admission",
+        "internal_seconds": 0.00021324600000000002,
+        "line": 279,
+        "primitive_calls": 92
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.024450375,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "profile_for",
+        "internal_seconds": 7.4990000000000005e-06,
+        "line": 519,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.021622668,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "definition_sources",
+        "internal_seconds": 1.7211000000000002e-05,
+        "line": 73,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 82,
+        "cumulative_seconds": 0.017559703,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_http_journal_v3.py",
+        "function": "read",
+        "internal_seconds": 0.002006205,
+        "line": 53,
+        "primitive_calls": 82
+      },
+      {
+        "calls": 124,
+        "cumulative_seconds": 0.015905421,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/library_project_fixture_v1.py",
+        "function": "oracle",
+        "internal_seconds": 0.002166649,
+        "line": 727,
+        "primitive_calls": 124
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.014289249,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "guard_sources",
+        "internal_seconds": 1.9622000000000003e-05,
+        "line": 65,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.013620458,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "validate_boundary",
+        "internal_seconds": 3.3875000000000003e-05,
+        "line": 558,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 28,
+        "cumulative_seconds": 0.013531872,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "require_current",
+        "internal_seconds": 4.6496000000000003e-05,
+        "line": 340,
+        "primitive_calls": 28
+      },
+      {
+        "calls": 36,
+        "cumulative_seconds": 0.013129126000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_head_v1.py",
+        "function": "read",
+        "internal_seconds": 3.5289e-05,
+        "line": 257,
+        "primitive_calls": 36
+      },
+      {
+        "calls": 36,
+        "cumulative_seconds": 0.013037672,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_head_v1.py",
+        "function": "_read_current",
+        "internal_seconds": 0.00018863200000000002,
+        "line": 264,
+        "primitive_calls": 36
+      },
+      {
+        "calls": 8,
+        "cumulative_seconds": 0.012589833,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py",
+        "function": "verify_loaded_sources",
+        "internal_seconds": 0.000226318,
+        "line": 301,
+        "primitive_calls": 8
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.011766375,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "definition_sources",
+        "internal_seconds": 3.0495000000000002e-05,
+        "line": 345,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.01138225,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "_supplements",
+        "internal_seconds": 0.00015571700000000001,
+        "line": 158,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.011246041,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "combined_manifest",
+        "internal_seconds": 3.373e-06,
+        "line": 80,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.011236082000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "_verify_all",
+        "internal_seconds": 0.00016233,
+        "line": 492,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.010274375,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "<dictcomp>",
+        "internal_seconds": 8.333000000000001e-06,
+        "line": 233,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 6,
+        "cumulative_seconds": 0.010266042000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "position",
+        "internal_seconds": 3.5667e-05,
+        "line": 434,
+        "primitive_calls": 6
+      }
+    ],
+    "B": [
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.052750416,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "_original",
+        "internal_seconds": 2.6833000000000002e-05,
+        "line": 248,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.036005125,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "request",
+        "internal_seconds": 9.833e-06,
+        "line": 181,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.024329083,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "case_definition",
+        "internal_seconds": 0.000113708,
+        "line": 320,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.024214957000000002,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "definitions",
+        "internal_seconds": 0.000141516,
+        "line": 293,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.023340541000000003,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "record",
+        "internal_seconds": 1.5830000000000003e-05,
+        "line": 477,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.016718375,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "_authenticate",
+        "internal_seconds": 3.0788000000000004e-05,
+        "line": 195,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 46,
+        "cumulative_seconds": 0.013440793000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "historical_admission",
+        "internal_seconds": 0.000101415,
+        "line": 279,
+        "primitive_calls": 46
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.012440584000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "profile_for",
+        "internal_seconds": 3.8350000000000006e-06,
+        "line": 519,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.010341250000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "definition_sources",
+        "internal_seconds": 8.541e-06,
+        "line": 73,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 41,
+        "cumulative_seconds": 0.008480332,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_http_journal_v3.py",
+        "function": "read",
+        "internal_seconds": 0.0009717790000000001,
+        "line": 53,
+        "primitive_calls": 41
+      },
+      {
+        "calls": 62,
+        "cumulative_seconds": 0.00818658,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/library_project_fixture_v1.py",
+        "function": "oracle",
+        "internal_seconds": 0.0011715410000000001,
+        "line": 727,
+        "primitive_calls": 62
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.006760416,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "guard_sources",
+        "internal_seconds": 6.998000000000001e-06,
+        "line": 65,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.006600833,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "validate_boundary",
+        "internal_seconds": 1.1582e-05,
+        "line": 558,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 14,
+        "cumulative_seconds": 0.0063659580000000006,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "require_current",
+        "internal_seconds": 1.9457e-05,
+        "line": 340,
+        "primitive_calls": 14
+      },
+      {
+        "calls": 18,
+        "cumulative_seconds": 0.006358501000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_head_v1.py",
+        "function": "read",
+        "internal_seconds": 1.4165e-05,
+        "line": 257,
+        "primitive_calls": 18
+      },
+      {
+        "calls": 18,
+        "cumulative_seconds": 0.006320003,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_head_v1.py",
+        "function": "_read_current",
+        "internal_seconds": 8.466100000000001e-05,
+        "line": 264,
+        "primitive_calls": 18
+      },
+      {
+        "calls": 4,
+        "cumulative_seconds": 0.0060477510000000005,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_observation_admission_v1.py",
+        "function": "verify_loaded_sources",
+        "internal_seconds": 0.000102663,
+        "line": 301,
+        "primitive_calls": 4
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.005865082000000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "_supplements",
+        "internal_seconds": 8.3205e-05,
+        "line": 158,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.0057042920000000006,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "definition_sources",
+        "internal_seconds": 1.4037000000000001e-05,
+        "line": 345,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 2,
+        "cumulative_seconds": 0.0055151670000000005,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "_verify_all",
+        "internal_seconds": 7.4368e-05,
+        "line": 492,
+        "primitive_calls": 2
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.0053169590000000004,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/cumulative_workflow_exposure_v1.py",
+        "function": "combined_manifest",
+        "internal_seconds": 1.376e-06,
+        "line": 80,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 1,
+        "cumulative_seconds": 0.0047484170000000004,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_review_v1.py",
+        "function": "<dictcomp>",
+        "internal_seconds": 2.4160000000000002e-06,
+        "line": 233,
+        "primitive_calls": 1
+      },
+      {
+        "calls": 3,
+        "cumulative_seconds": 0.0047460010000000006,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "position",
+        "internal_seconds": 1.4461000000000001e-05,
+        "line": 434,
+        "primitive_calls": 3
+      },
+      {
+        "calls": 49,
+        "cumulative_seconds": 0.004727,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_profile_v1.py",
+        "function": "_frozen_source",
+        "internal_seconds": 0.000116656,
+        "line": 105,
+        "primitive_calls": 49
+      },
+      {
+        "calls": 3,
+        "cumulative_seconds": 0.0038952500000000003,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+        "function": "read",
+        "internal_seconds": 2.666e-06,
+        "line": 457,
+        "primitive_calls": 3
+      }
+    ]
+  },
+  "protocol": "workflow-review-read-comparison-v1",
+  "result": {
+    "provenance": {
+      "enrollment": {
+        "delivery_name": "delivery.json",
+        "delivery_sha256": "3e40f78fe3cc97ce0411fcee905a9098d827fc86a34ae1e1c4ae6284e834aad0",
+        "report_name": "report.json",
+        "report_sha256": "e08e91a072ec71d8af20e44208eb7ff19c12c2d63243aad4fd2d4cf42723195c",
+        "request_name": "request.json",
+        "request_sha256": "e3633bda62b2a7b71d78558ed8ec641ec3c3253ec58349f7dd65d88ca7033360",
+        "reviewer_id": "fixture-reviewer"
+      },
+      "expected_prefix": {
+        "context_sha256": "5cc22957f4731bd819c6233a61412a394325f04474efd753a072b891ad21170d",
+        "external_bytes": 1753,
+        "head_sha256": "6d22d68157b2dec15ec49547dfe4e8f9feea3018cc7ac4bfdd74184344e13b99",
+        "raw_bytes": 34495,
+        "raw_file_count": 3,
+        "sequence": 3
+      },
+      "positions": {
+        "delivery": 3,
+        "report": 2,
+        "request": 1
+      },
+      "protocol": "candidate-workflow-mechanism-review-v1",
+      "purpose": "independent_final_m4_workflow_layout_and_invocation"
+    },
+    "report_sha256": "e08e91a072ec71d8af20e44208eb7ff19c12c2d63243aad4fd2d4cf42723195c"
+  },
+  "rows": [
+    {
+      "arm": "A",
+      "pair": 0,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.057859209,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 0,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.028850875,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 1,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.028694417,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 1,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.060509958,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 2,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.060142708,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 2,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.030791917,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 3,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.029272708,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 3,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.061256167,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 4,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.059619875,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 4,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.031193958,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 5,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.030545334,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 5,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.058494833,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 6,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.060316334,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 6,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.030492,
+      "status": "complete"
+    },
+    {
+      "arm": "B",
+      "pair": 7,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.029304667,
+      "status": "complete"
+    },
+    {
+      "arm": "A",
+      "pair": 7,
+      "result_sha256": "c5e9c86c5b59f55114dc0df91d49611dc1cd38aa8b06c2f9e78a2c2d50669b53",
+      "seconds": 0.058720208,
+      "status": "complete"
+    }
+  ],
+  "source_inputs_unchanged": true,
+  "status": "complete"
+}
