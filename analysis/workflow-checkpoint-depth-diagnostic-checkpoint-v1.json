@@ -1,0 +1,28 @@
+{
+  "bytes_per_phase": 1626287,
+  "copies": "Shallow files are data copies; their encoded original context paths are not rewritten. They are not valid relocated journals or reusable authenticated execution evidence. Original owners and heads are untouched.",
+  "driver_sha256": "0ad2a8d7a7e3ff7b91992a48098ba5c4982b90855d71c661330994f9b5a68779",
+  "files_per_phase": 817,
+  "guards": "Unchanged production reader validates every actual ancestor before/after every file, reads every byte freshly, checks identities and inventories, and closes fresh descriptors each phase.",
+  "limitations": [
+    "Read/hash phase only, not full owner/head/delta-semantic validation or workflow execution.",
+    "One warmed fixture/host; cannot infer whole-workflow speed or quality.",
+    "The depth4 diagnostic is shallower than a full canonical runner artifact path; measure and declare any actual persistent layout before adopting it."
+  ],
+  "median_paired_ratio": 0.5468251371308321,
+  "new_model_quality_samples": 0,
+  "next_action": "Consider a dedicated shallow persistent evidence root for new physical qualifications using the existing runner output option. Measure the actual proposed root depth, retain source/runtime/limits and full38+6 roster, preserve all old evidence, and run one fresh changed-layout qualification only after declaration. No unchanged retry, no deadline widening, no acceptance credit from this diagnostic.",
+  "original_depth": 15,
+  "original_median_seconds": 0.075657208,
+  "pairs": 8,
+  "plan": "runs/workflow-checkpoint-depth-comparison-1/plan.json",
+  "plan_sha256": "815e995eee652b48d68d495f427060a2614d99b6308956ae5cb89d627849937b",
+  "protocol": "workflow-checkpoint-depth-diagnostic-checkpoint-v1",
+  "result": "runs/workflow-checkpoint-depth-comparison-1/result.json",
+  "result_sha256": "2f50cbf735cf700a7c5c2bce8301ab541ec7a8dc8e90240f5bec58daa6b5d97e",
+  "shallow_depth": 4,
+  "shallow_faster_pairs": 8,
+  "shallow_median_seconds": 0.039665916999999995,
+  "status": "complete",
+  "verification": "Root reconciled16 intent/result rows, medians, source inputs, original file hashes and both byte corpora; no tests rerun."
+}
