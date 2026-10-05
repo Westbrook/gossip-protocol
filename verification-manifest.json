@@ -7010,6 +7010,26 @@
       "overlap": "New physical-owner integration boundaries only; existing state/pipe and sandbox helpers retain separate checks. Real Engine success, capture, cleanup, interruption and cold verification remain unqualified.",
       "distinct_defect": "Wrong exec command/user/PID, swapped runtime or endpoint, cleanup overlap, replayed intent or unavailable runtime must not admit a candidate observation or consume unrelated resources.",
       "disposition": "Static then fresh fast/git controls; physical qualification waits for independent exact source review and complete combined contract."
+    },
+    "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Closed complete source transformations, all four probe templates, exact Git/helper/review originals and authored schema declaration; preparation neither imports candidate code nor supplies approval or observation.",
+      "isolation": "Worker process; fresh inert bare Git, temporary source directories and fixed trusted literal schema SQLite only; no Engine, provider or generated candidate import.",
+      "overlap": "Preparation/provenance only. Real sandbox execution, actual reviewer delivery, fault qualification and cold reconstruction remain separate.",
+      "distinct_defect": "Wrong source seam, schema drift, helper/proposal leakage, partial source census or reused output root must not silently produce a purportedly reviewed qualification case.",
+      "disposition": "Static then scoped fast/git checks, followed by fresh retained full twelve-control preparation and source/request census reconciliation."
+    },
+    "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Closed complete source transformations, all four probe templates, exact Git/helper/review originals and authored schema declaration; preparation neither imports candidate code nor supplies approval or observation.",
+      "isolation": "Worker process; fresh inert bare Git, temporary source directories and fixed trusted literal schema SQLite only; no Engine, provider or generated candidate import.",
+      "overlap": "Preparation/provenance only. Real sandbox execution, actual reviewer delivery, fault qualification and cold reconstruction remain separate.",
+      "distinct_defect": "Wrong source seam, schema drift, helper/proposal leakage, partial source census or reused output root must not silently produce a purportedly reviewed qualification case.",
+      "disposition": "Static then scoped fast/git checks, followed by fresh retained full twelve-control preparation and source/request census reconciliation."
     }
   },
   "audit": {

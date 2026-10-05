@@ -1,0 +1,478 @@
+{
+  "audit": {
+    "checks": [
+      "All 752 current source/configuration fingerprints and exact ordered six-test results reconcile with retained worker bytes.",
+      "All twelve control records match the closed roster; complete file inventory and bytes match authored reference/mutant provenance.",
+      "Fresh independent read-only ls-tree/cat-file traversal for all twelve bare repositories reconstructs and hashes every blob; exact HEAD/tree/source identity and before/after HEAD agree.",
+      "Retained release, complete evaluator closure, exact fixed helper files, canonical review requests and applicable authored SQLite schema bytes/profile agree.",
+      "No candidate module is imported or executed; no review report/delivery or acceptance authority is supplied."
+    ],
+    "driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-adoption-1/audit.py",
+    "driver_sha256": "e5f838399167dc20137f71358201f1da52da5e3c4f771da26e8731e45ddf5dda"
+  },
+  "candidate_executions": 0,
+  "independent_source_approvals_created": 0,
+  "limits": [
+    "Root consistency audit is not an independent semantic review or scientific acceptance.",
+    "Twelve authored controls derive from one reference family, not twelve independent model-built projects.",
+    "Expected pass/fail dispositions are prospective requirements; no physical results have been fabricated.",
+    "Existing external-disclosure holds remain; this checkpoint authorizes neither public push nor provider disclosure."
+  ],
+  "new_model_quality_samples": 0,
+  "physical_qualification_complete": false,
+  "preparation": {
+    "census_sha256": "edcfe3f2c1d6756e30709cb1343d83035485a38649d9ea674befed7c80b1df57",
+    "complete_controls": [
+      {
+        "candidate_executions": 0,
+        "commit_oid": "d5cf15c8a0ce365e0f0142b158f72ef158f44db9",
+        "control_sha256": "01481c7a9c1581b474a24dda7ba18de5d0591c01611956d1abd79f3396f70923",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/P01",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "pass",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 176,
+            "path": "probe-request.json",
+            "sha256": "7d6bbc477b069b4306edeae48c1bdf5a6316ac51e7edad15d768e4580663d165"
+          }
+        ],
+        "id": "P01",
+        "independent_review_supplied": false,
+        "provenance_sha256": "c77657a1ef41adb38f1f618b3c3bbb91bbb583d5d71459ecc780278d2f27c996",
+        "request_sha256": "8c4177f28e93e5dc2d16b2a21b3b33989698f58f9dcf7bf8f24d064471c6d765",
+        "schema_file_sha256": null,
+        "source_bytes": 1086958,
+        "source_file_count": 61,
+        "source_sha256": "5730de3cafac8f3d0dc729953d89e7ccbe0794c16eb4b60dcd5cbb37ab827c9c",
+        "template": "refresh-identity-v1",
+        "tree_oid": "732e0770d54a8a5aca6ca38c5369f62c1de3ba16",
+        "variant": "reference"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "e00e1e269dec0d7b6fa682d28ab89b0ef95ce8ff",
+        "control_sha256": "4462c5dbeb3af9dd2620b937ea40a80c4a565f61d8261fdc094a8687c296d45c",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/D01",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "fail",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 176,
+            "path": "probe-request.json",
+            "sha256": "7d6bbc477b069b4306edeae48c1bdf5a6316ac51e7edad15d768e4580663d165"
+          }
+        ],
+        "id": "D01",
+        "independent_review_supplied": false,
+        "provenance_sha256": "9360768cbc8290a546d344828882944fc4f6e917d72e1c95555ff94b664f82ed",
+        "request_sha256": "c343a940d05477be8b4688ff0925ed665ef70d5a9f9d4873a328db3ff0fdd104",
+        "schema_file_sha256": null,
+        "source_bytes": 1087238,
+        "source_file_count": 61,
+        "source_sha256": "ad4258d773828c739bc27c7cce3ba90d559017b072e580cf35406cc04db20f60",
+        "template": "refresh-identity-v1",
+        "tree_oid": "62b6c1794a521ac7b5f7d3a740374433c7bf8a7f",
+        "variant": "identity"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "d5cf15c8a0ce365e0f0142b158f72ef158f44db9",
+        "control_sha256": "ae8d253f2416248b872816d9c34bd62799ca7c1bf020cbb1b9e800d21c731312",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/P02",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "pass",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "P02",
+        "independent_review_supplied": false,
+        "provenance_sha256": "c77657a1ef41adb38f1f618b3c3bbb91bbb583d5d71459ecc780278d2f27c996",
+        "request_sha256": "625122a58103798f26b922f7bef03e2aed776931caf3a5c66c8d4cac52da8975",
+        "schema_file_sha256": null,
+        "source_bytes": 1086958,
+        "source_file_count": 61,
+        "source_sha256": "5730de3cafac8f3d0dc729953d89e7ccbe0794c16eb4b60dcd5cbb37ab827c9c",
+        "template": "refresh-noop-v1",
+        "tree_oid": "732e0770d54a8a5aca6ca38c5369f62c1de3ba16",
+        "variant": "reference"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "0c58ce70570bbe19b0249f3711acfdc4cd4e4581",
+        "control_sha256": "f3f4e6d9d60ce407aeb6b61dd5120babf9081807f08766d0163f0f172f9f5741",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/D02",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "fail",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "D02",
+        "independent_review_supplied": false,
+        "provenance_sha256": "4f0a750b0c880d6e45f2e8613e01c451823ad472b187d4526f528e79e31d7c11",
+        "request_sha256": "e4a2af94542c2157fba980636a4adffdc0d94df3decb255758e906a8e4a9a2c8",
+        "schema_file_sha256": null,
+        "source_bytes": 1087193,
+        "source_file_count": 61,
+        "source_sha256": "b7b7b587cd3cc5c235f766e2a893052fe03bcb30a9999ec2c998054207e2a52c",
+        "template": "refresh-noop-v1",
+        "tree_oid": "ebdc3a55bac42eb022189f160f99c25c524fe55f",
+        "variant": "noop"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "d5cf15c8a0ce365e0f0142b158f72ef158f44db9",
+        "control_sha256": "69b78da470b0b525d1c8d52cf406014386ae3815765c42748c54040740927ff6",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/P03",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "pass",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 184,
+            "path": "probe-request.json",
+            "sha256": "c372fb5b66606ee5990923f7c1df545752540441dd49cea2b7ebc54b41ca7252"
+          }
+        ],
+        "id": "P03",
+        "independent_review_supplied": false,
+        "provenance_sha256": "c77657a1ef41adb38f1f618b3c3bbb91bbb583d5d71459ecc780278d2f27c996",
+        "request_sha256": "88d0625be987c7e1ed9eaccecd23bd8fa6336cb687499d359f439b57077dd29e",
+        "schema_file_sha256": null,
+        "source_bytes": 1086958,
+        "source_file_count": 61,
+        "source_sha256": "5730de3cafac8f3d0dc729953d89e7ccbe0794c16eb4b60dcd5cbb37ab827c9c",
+        "template": "completed-receipt-replay-v1",
+        "tree_oid": "732e0770d54a8a5aca6ca38c5369f62c1de3ba16",
+        "variant": "reference"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "f02daa66c290b963dcc966dce8bfdf7e4c68bbd2",
+        "control_sha256": "a4403d215af8b96382c584b8d63c4bda27330a1abefcbc44bd2ffa99cc53fa25",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/D03",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "fail",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 184,
+            "path": "probe-request.json",
+            "sha256": "c372fb5b66606ee5990923f7c1df545752540441dd49cea2b7ebc54b41ca7252"
+          }
+        ],
+        "id": "D03",
+        "independent_review_supplied": false,
+        "provenance_sha256": "2a804f385fcc43042bdca8fa5bbc50f9509b97231e981b5ce05d4d92a8956c82",
+        "request_sha256": "1ce6669eb1f6b3a69d59e81b6d514b23e6ae6c7d70a9deaf042efdfb6ffb32b8",
+        "schema_file_sha256": null,
+        "source_bytes": 1087363,
+        "source_file_count": 61,
+        "source_sha256": "c810e096040ca036d821bb913a11553611fb716018266f245753c09175db2f40",
+        "template": "completed-receipt-replay-v1",
+        "tree_oid": "934b88bbcf7287eda0523b5d7526895d99b02492",
+        "variant": "replay"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "d5cf15c8a0ce365e0f0142b158f72ef158f44db9",
+        "control_sha256": "3cd40005dff716dc86256e97af4f31d1928f61ccaf94b72f544ed1fe630b53ce",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/P04",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "pass",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 130,
+            "path": "probe-request.json",
+            "sha256": "9cd85b608c6a31a3ddece40a31715ac1e2427d9da699f375ffe1bb47496ef234"
+          }
+        ],
+        "id": "P04",
+        "independent_review_supplied": false,
+        "provenance_sha256": "c77657a1ef41adb38f1f618b3c3bbb91bbb583d5d71459ecc780278d2f27c996",
+        "request_sha256": "8370b1cfcd21964affe384e4cbf2f71370f9d7d1776a1c437cc6bfcb8781223c",
+        "schema_file_sha256": "72a3e63836efbeab2fc5a74678f1f8797e06513789e6c74ca962ea0fe210bfdf",
+        "source_bytes": 1086958,
+        "source_file_count": 61,
+        "source_sha256": "5730de3cafac8f3d0dc729953d89e7ccbe0794c16eb4b60dcd5cbb37ab827c9c",
+        "template": "manifest-content-hash-v1",
+        "tree_oid": "732e0770d54a8a5aca6ca38c5369f62c1de3ba16",
+        "variant": "reference"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "86c7ac3e332d2528cc45bab6eedcdf9d3b99d5eb",
+        "control_sha256": "8c41e1ce66d9716c032dbb4b3bc031d65120927b06ea01775d25dfc69e26cb13",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/D04",
+        "expected_mechanics_complete": true,
+        "expected_value_disposition": "fail",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 130,
+            "path": "probe-request.json",
+            "sha256": "9cd85b608c6a31a3ddece40a31715ac1e2427d9da699f375ffe1bb47496ef234"
+          }
+        ],
+        "id": "D04",
+        "independent_review_supplied": false,
+        "provenance_sha256": "8a9cbaeefbf21d0294c8015c12af27365d39e540c3a1523aa9b8b0defdb7f725",
+        "request_sha256": "915dfb43a5a8b958309f3d3a31bcb7d1dfe3e9f9117c1a8bee18dcb5ccf57716",
+        "schema_file_sha256": "72a3e63836efbeab2fc5a74678f1f8797e06513789e6c74ca962ea0fe210bfdf",
+        "source_bytes": 1087224,
+        "source_file_count": 61,
+        "source_sha256": "e87884b820d22da57447b0e2d7b4d0fcdaa6752be329ea9065130ae84e499731",
+        "template": "manifest-content-hash-v1",
+        "tree_oid": "fb1fb048f668208d3cb6fbc653e25539bb5cb6c2",
+        "variant": "manifest"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "c15d58b2176b4fdabcb465d0d82ec3fe42a84663",
+        "control_sha256": "e43700ae2c762b1435cf0a5b5161182d01c1482713d4e27a57952c971ea93add",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/N01",
+        "expected_mechanics_complete": false,
+        "expected_value_disposition": "unavailable",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "N01",
+        "independent_review_supplied": false,
+        "provenance_sha256": "3836e71aae05a983b38a2b44f306818d9a73d5e2c6768bbb22df4a4509eaed5c",
+        "request_sha256": "e4b7528ca084fc46a92cb5b97c91ad3af5a9c034acdc0c04478f083512eec27c",
+        "schema_file_sha256": null,
+        "source_bytes": 1087118,
+        "source_file_count": 61,
+        "source_sha256": "4a1e06ac0427d4e66b4c2fd7ac5f5a34d3637981067c004c958c8fe2e50254ff",
+        "template": "refresh-noop-v1",
+        "tree_oid": "b77eee2ce8682d0413f505e789a0cef955527bb1",
+        "variant": "hang"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "a361b0168cf193d1f48cb7a9425f64a64c742d64",
+        "control_sha256": "a8da935c2af85bf942ec775146d45c23677e41a8c50b142de06bd6143c2d1f35",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/N02",
+        "expected_mechanics_complete": false,
+        "expected_value_disposition": "fail",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "N02",
+        "independent_review_supplied": false,
+        "provenance_sha256": "32e1f61ff02f5cd3a3c89bc2dcecd4a4a3a2f36ece488a7944d3c17117f572ca",
+        "request_sha256": "d0a701b101475e28e5ec129ac8a00b10584095e486e989e4c95ff1d86e0c8866",
+        "schema_file_sha256": null,
+        "source_bytes": 1087281,
+        "source_file_count": 61,
+        "source_sha256": "00078672881accbf50e95f856bbe7d88771f686dee13c5d28e4ac91cd242db68",
+        "template": "refresh-noop-v1",
+        "tree_oid": "3bacfe56d27c76d9c601b8bfd48186f076f9b679",
+        "variant": "bad-then-hang"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "6393d91a5ee9c56958b884ddff1dbbf982c9196d",
+        "control_sha256": "ad4d89903512055a8cddc5f119b625faefaa143e4f946f73eb78a14ac69f0df1",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/N03",
+        "expected_mechanics_complete": false,
+        "expected_value_disposition": "unavailable",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "N03",
+        "independent_review_supplied": false,
+        "provenance_sha256": "9a1ab33ffc97f8e6fe02fa38ee15ab4b9f51e8d215aefd52c87e755ebb20f193",
+        "request_sha256": "fe329518bd11ab7405cd0789f9c37d912155226df531eba4395ab527da407d16",
+        "schema_file_sha256": null,
+        "source_bytes": 1087219,
+        "source_file_count": 61,
+        "source_sha256": "a22d4e66ed8a0d2c61a241ee3c27b83b557b4012873426ec4ed8531f9357d864",
+        "template": "refresh-noop-v1",
+        "tree_oid": "83d562a92cb758c5d93946c7c6eecc8202e87815",
+        "variant": "stdout-flood"
+      },
+      {
+        "candidate_executions": 0,
+        "commit_oid": "7320370ebd8822d4bb2b4b3b813901c83e7df7c1",
+        "control_sha256": "269ba38a7c5e3b06d8239e718e84f5095fd5b17ef8b7fa02e7ae1dea3a273142",
+        "directory": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1/N04",
+        "expected_mechanics_complete": false,
+        "expected_value_disposition": "unavailable",
+        "helper_manifest": [
+          {
+            "bytes": 3664,
+            "path": "child_driver.py",
+            "sha256": "9b9d245c856b4f94f7b9d7f452618bd8649b4548b6e41060399c27f5c0c89735"
+          },
+          {
+            "bytes": 121,
+            "path": "probe-request.json",
+            "sha256": "11e7f79978bef6a48df449574ac277bb27144c1d17610965af246df7f42b04ba"
+          }
+        ],
+        "id": "N04",
+        "independent_review_supplied": false,
+        "provenance_sha256": "d876112c507ff887ac630b65f9705ef60c14556ea94532aca4b4703424787df4",
+        "request_sha256": "09bcd0795c408a9d3a91417b58c522586bb30cb08aea408642dfb1788742ed85",
+        "schema_file_sha256": null,
+        "source_bytes": 1087090,
+        "source_file_count": 61,
+        "source_sha256": "e2f70a0e9c070fddd37670700771085def11d0889a358d76d8096cc407f3f5e2",
+        "template": "refresh-noop-v1",
+        "tree_oid": "358a835d76a632bbf9e7124d1d490131f52d1a4c",
+        "variant": "abrupt-exit"
+      }
+    ],
+    "exit_code": 0,
+    "owner_sources_sha256": "a735a04fcac7f3998301f85b2f88d2467e526072e894bc673d2edbe6805d61f4",
+    "packet": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-review-packet-1",
+    "release_sha256": "fe22ce01f48d995bdec2de215be6f94356a00f089cb627ae2639e3840658c7e8",
+    "session": 98069
+  },
+  "product_acceptance": false,
+  "protocol": "generated-probe-physical-preparation-checkpoint-v1",
+  "provider_calls": 0,
+  "retained_failures": [
+    {
+      "correction": "Restored unchanged explicit mypy scope after proposed fixture roots pulled unrelated legacy test errors into coverage. No type baseline changed.",
+      "outcomes": {
+        "not_run": 6
+      },
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-offline-1/20261005T073229-917f4d0c",
+      "summary_sha256": "bf13832920135ee66c998f1019e96af7087886fb88a54641bbf302e7dd2c8620"
+    },
+    {
+      "correction": "Corrected retained-layout assertion to compare canonical JSON bytes rather than list/tuple representation. Generator bytes unchanged.",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 1,
+        "passed": 4
+      },
+      "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-offline-2/20261005T073336-41ffc63c",
+      "summary_sha256": "4728a3423e3cf1a9b0a2759394de44a17d5d7910b78e9b1f6556f7001b6665c3"
+    }
+  ],
+  "source_pins": {
+    "tests/generated_probe_physical_fixture_v1.py": "5bc0b807329b82e29c35de593097efe56bca4cf77e725aba83fc35adeb0fada9",
+    "tests/test_generated_probe_physical_fixture_v1.py": "87d8d2753fc2963534b86bac532d2bfab7c30913ea1475d360946176b5dac1ef",
+    "verification-manifest.json": "f700cb4af8f668362faabfcf103c163e7e7bde95a8c232bad25d55854b53149c"
+  },
+  "status": "complete_inert_packet_audited_independent_review_and_physical_execution_pending",
+  "unverified": [
+    "Independent exact-source/layout/invocation reviews for twelve requests.",
+    "Actual candidate execution on generated-probe sandbox owner, all twelve expected control dispositions and listed eight host fault schedules.",
+    "Cold reconstruction of retained physical originals; production controller unique slots/roots/aggregate quotas and candidate/context/merged selection integration.",
+    "Complete matching six-trajectory/four-milestone rehearsal, planned live comparison including larger swarm, and independent held-out-family confirmation."
+  ],
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "lane": "fast",
+        "log_sha256": "b20397e9d33d9a88608a583dde35afabe3f16fdd9bcce5d0f02fb4a1917f51d5",
+        "ordered_tests": [
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests.test_closed_roster_covers_each_template_with_reference_and_defect",
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests.test_mutants_change_only_the_named_store_extension",
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests.test_real_public_contract_and_probe_request_keep_expectations_host_side",
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests.test_schema_is_authored_and_rejects_changed_schema_source"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-offline-3/20261005T073426-dc3d5295/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "73b69f5b8f77f56f648bfcc5c65a0116ea55a60c94e955cb1e2cd8c72334525d"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "lane": "git",
+        "log_sha256": "5256f39ee164129ba8e7f23d3707e99a2078647c1e01477e57de641ff5eb4f87",
+        "ordered_tests": [
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests.test_complete_inert_source_request_and_helper_census_survive_preparation",
+          "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests.test_invalid_selection_does_not_create_a_packet"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-offline-3/20261005T073426-dc3d5295/classes/f6cea13342c33618/result.json",
+        "result_sha256": "ddc66e7ceac79c4c8d7b73463f334fc83adef322baee864ea5ceeac82027d757"
+      }
+    ],
+    "duration_seconds": 12.247101999819279,
+    "fingerprint": "e42b03896643aefa9985a64124f5b1161550bf9f7843bdb103ae05d9f0caeb92",
+    "fresh_tests": 6,
+    "inputs_sha256": "6949c09bd27162ec61f70d3af05359a143c3d844a130bc47e368e0536bc0270d",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/generated-probe-physical-preparation-offline-3/20261005T073426-dc3d5295",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 752,
+    "static": "passed within original configured type coverage; new fixture helpers have syntax/lint/focused checks, not new type coverage",
+    "summary_sha256": "09e318a4b836c62519772738c7ca906368bb809c071f83fe76d2898da88795f3"
+  }
+}
