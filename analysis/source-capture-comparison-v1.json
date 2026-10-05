@@ -1,0 +1,46 @@
+{
+  "protocol": "source-capture-comparison-audit-v1",
+  "audited_at_utc": "2026-10-05T01:09:03.658043+00:00",
+  "status": "passed",
+  "read_only_assertions": 1041,
+  "execution_session": 95842,
+  "execution_exit_code": 0,
+  "completed_pairs": 8,
+  "planned_pairs": 8,
+  "completed_calls": 16,
+  "planned_calls": 16,
+  "source_manifest": {
+    "files": 63,
+    "bytes": 1098747,
+    "all_exact": true
+  },
+  "source_pin_count": 733,
+  "fixture_pin_count": 98,
+  "original_pin_count": 9,
+  "result_sha256": "69a17aa1c7b42168fa1c3ef0a992a4045ce900315f0ac6804d7a7d1078476695",
+  "plan_sha256": "333f719eb4960a2278a4b3244b2c7106e22100b85f493b5c77b0f5ce822a2a67",
+  "all_original_outputs_preserved": true,
+  "wall_seconds": {
+    "original_median": 0.6221779169999999,
+    "two_process_median": 0.3080056245,
+    "median_paired_difference": -0.312878334,
+    "median_paired_ratio": 0.4936541380712942,
+    "faster_pairs": 8,
+    "AB_median_difference": -0.3122569795,
+    "BA_median_difference": -0.32198395900000004
+  },
+  "decision": "Integrate explicit two-process policy into workflow callers and qualify affected source before repeating physical workflow. Component measurements justify integration; do not claim full-workflow success.",
+  "limits": [
+    "One fixed local fixture/runtime, warmed OS caches, fixed alternating order; not independent project samples.",
+    "Per-child audit callback overhead differs between four-child and two-child captures; observed ratio is not an uninstrumented benchmark.",
+    "Source checks, cleanup and policy hashing remain inside timing; external identity corroboration is outside timing.",
+    "No workflow, Docker, provider call, model-quality outcome or statistical population inference.",
+    "Last workflow physical failure remains failed; no unchanged retry or deadline widening."
+  ],
+  "new_model_quality_samples": 0,
+  "followup_required": [
+    "Explicit workflow source policy adoption with versioned policy/source binding and exception handling.",
+    "Affected offline coverage then declared38workflow plus6shared transport physical controls.",
+    "Executable reviewer test harvesting and full matched study rehearsal before live comparison."
+  ]
+}
