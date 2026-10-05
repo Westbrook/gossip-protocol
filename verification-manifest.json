@@ -6950,6 +6950,26 @@
       "overlap": "Linkage integrity complements source-plan checks; it neither supplies the production reviewer nor qualifies execution.",
       "distinct_defect": "Stale prefix, tampered originals, cross-context replay, wrong reviewer/purpose, missing duties or reversed delivery could otherwise authorize an unreviewed probe.",
       "disposition": "Central static then combined new plan fast/git and review fast classes; all synthetic approvals remain test-only."
+    },
+    "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 480,
+      "invariant": "One retained intent per protected journal, exact prospective registration/current source/review and absolute window; reopen never redispatches an existing intent.",
+      "isolation": "Class worker with real inert Git and external-head journals, synthetic controller/reviewer, isolated controlled clock; no candidate imports, Docker or provider calls.",
+      "overlap": "State integration only; underlying journal integrity has separate existing coverage. Physical dispatch/capture/cleanup and production admission remain separate.",
+      "distinct_defect": "Interrupted validation, revoked authority, moved source, expired window, stale checkpoint, suffix or raw tampering must not silently permit a duplicate attempt.",
+      "disposition": "Central static then fresh affected fast/git checks; no actual independent approval or model-quality credit."
+    },
+    "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 480,
+      "invariant": "One retained intent per protected journal, exact prospective registration/current source/review and absolute window; reopen never redispatches an existing intent.",
+      "isolation": "Class worker with real inert Git and external-head journals, synthetic controller/reviewer, isolated controlled clock; no candidate imports, Docker or provider calls.",
+      "overlap": "State integration only; underlying journal integrity has separate existing coverage. Physical dispatch/capture/cleanup and production admission remain separate.",
+      "distinct_defect": "Interrupted validation, revoked authority, moved source, expired window, stale checkpoint, suffix or raw tampering must not silently permit a duplicate attempt.",
+      "disposition": "Central static then fresh affected fast/git checks; no actual independent approval or model-quality credit."
     }
   },
   "audit": {

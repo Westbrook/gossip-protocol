@@ -1,0 +1,102 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-state-adoption-1/audit.py",
+  "audit_driver_sha256": "26cc5109caef81d2122178bef66e1a2c99ecda3cddb8ea0848882f76e51d1d58",
+  "authority_limits": [
+    "Synthetic reviewer and controller callbacks test linkage only; no production approval or registration authentication is supplied.",
+    "Fresh Git fixtures contain inert candidate code that is never imported or executed.",
+    "Runtime/image/environment are declared identities only; no actual runtime proof is supplied.",
+    "One-shot is per protected journal; trusted controller must independently enforce unique execution slot/root and aggregate quotas.",
+    "Owner close/reopen is tested in one host process. Physical process crash/restart, cold reconstruction and cross-process recovery remain unqualified.",
+    "Absolute-window checks do not bound the duration of a blocking journal/source operation; the physical owner still owes bounded IO and cleanup.",
+    "The state has no candidate dispatch, continuation, product acceptance or merge authority.",
+    "Historical full-suite and physical receipts retain their original exact identities and are not reissued for this expanded tree."
+  ],
+  "candidate_executions": 0,
+  "coverage": [
+    "Durable one-shot intent survives owner close/reopen; repeated begin and stale expected prefix are refused.",
+    "Current source, review and prospective registration are checked again before/after intent; post-write failure preserves the attempt.",
+    "Absolute monotonic start/deadline boundaries and post-intent expiry are checked with explicit controlled clocks.",
+    "Original configuration, non-overlapping roots, caller mutation isolation, unknown suffixes and raw tampering.",
+    "Wrong-thread and closed-owner access rejected; no dispatched process or physical observation is returned."
+  ],
+  "failed_development_run": {
+    "cause": "Test compared in-memory tuples against decoded JSON lists; corrected to canonical retained-byte equality. Production state source unchanged.",
+    "inputs_sha256": "54ee54b2c54908f535e1c2d88aa769a9f7be2daf052376087545223662f00fbd",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 12,
+      "passed": 4
+    },
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-state-offline-1/20261005T065203-4b0c4430",
+    "summary_sha256": "58e4e7497c408b712abe75635b98d406eb402b30481bec79890b0430895353ea"
+  },
+  "independent_source_approvals_created": 0,
+  "new_model_quality_samples": 0,
+  "product_acceptance": false,
+  "protocol": "cumulative-generated-probe-state-qualification-v1",
+  "provider_calls": 0,
+  "remaining": [
+    "Actual independently enrolled review originals for each source/layout/invocation.",
+    "Controller-owned unique execution-slot enrollment, aggregate budgets and clock-domain provenance.",
+    "Versioned physical owner: actual image/runtime checks, durable dispatch original, bounded concurrent streams and IO, absolute deadline and owned teardown.",
+    "Reviewed SQLite capture and independent reconstruction from protected originals.",
+    "All candidate/context and actual merged-source testing, evidence-based selection and non-author exact-merge approvals.",
+    "Complete matching rehearsal, approved matched live comparisons and independent held-out families."
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_state_v1.py": "e194084e0c236e985862e04cc8a89d2d0bc47b428d116a3d0d4a486b7a839c02",
+    "pyproject.toml": "6287d7575cb2839f908767bc992a4a8502fdbac393388f9ee3314ad6e5e56af6",
+    "tests/test_cumulative_generated_probe_state_v1.py": "83b4121e067ec80507c7fd9aac5c281ad8cae0d887d8aa18892543898378bd6c",
+    "verification-manifest.json": "8b2ba429b10fe4bef1aeb1f908301c71afb92f4a5ca7400b329295ec40b54c6b"
+  },
+  "status": "durable_state_qualified_physical_owner_pending",
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "lane": "fast",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests.test_window_is_exact_positive_bounded_and_ordered"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-state-offline-2/20261005T065258-b98103ff/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "81a15588b7ee44bf58c5db69bf67c3719cf93e1311908d4468229e2187d90578"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "lane": "git",
+        "log_sha256": "539db157a54344abce7d7cd299a9eef203b43d93e94e12d9dc9e76e31b9945db",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_absolute_window_rejects_not_started_and_expired_without_intent",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_caller_mutation_cannot_change_retained_declarations",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_expiry_during_post_intent_validation_preserves_single_attempt",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_intent_survives_reopen_and_never_permits_second_begin",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_raw_original_tamper_invalidates_current_state",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_registration_revocation_before_intent_leaves_no_intent",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_registration_substitution_rejected_before_state_creation",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_review_revocation_invalidates_previously_open_state",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_revocation_after_durable_intent_fails_without_erasing_intent",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_runtime_declaration_mismatch_rejected_before_state_creation",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_separate_state_cannot_overlap_source_or_review",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_source_and_review_changes_are_checked_again_at_begin",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_stale_prefix_cannot_adopt_later_intent",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_tampered_config_and_unanchored_suffix_are_not_adopted",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_unused_state_reopens_only_with_independent_current_prefix",
+          "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests.test_wrong_thread_and_closed_owner_reject_access"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-state-offline-2/20261005T065258-b98103ff/classes/7f05683e5b85960b/result.json",
+        "result_sha256": "c4efa25ee7c7a751e4dd27e7bdcac899c0c8df456e8e3fa6eb1025f0aac1df73"
+      }
+    ],
+    "duration_seconds": 97.13883129041642,
+    "fingerprint": "b1b671f4c5d371afbcfae781af21ef1335af7fa30b330dccbc309d9d04310595",
+    "fresh_tests": 17,
+    "inputs_sha256": "996b134bd0da630ef58cb3437eef6a518dc918defc6a0ce8f76e7babc5059360",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-state-offline-2/20261005T065258-b98103ff",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 746,
+    "static": "passed within configured coverage; unchanged legacy type baseline remains",
+    "summary_sha256": "85b9d3eaaeda92ae47e284f814bf899ae0125f86d0cad8fd8e03bd8d3a323f4a"
+  }
+}
