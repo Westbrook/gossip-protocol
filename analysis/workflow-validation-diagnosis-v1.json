@@ -1,0 +1,153 @@
+{
+  "baseline_records": 60,
+  "finding": "Each profile_for_binding and WorkflowSourcePlan.request constructs two records and reconstructs all20 definitions13 times. Current checks call profile_for_binding once and request twice via separate original-review authentications. Profiled leaves identify redundant catalog reconstruction; the 28.23s non-source current total is not entirely attributed by these separate profiled calls.",
+  "leaf_profiles": {
+    "definition_leaves": [
+      {
+        "index": 0,
+        "leaf": "profile_for_binding",
+        "wall_seconds": 0.197312375
+      },
+      {
+        "index": 0,
+        "leaf": "plan.request",
+        "wall_seconds": 0.184540125
+      },
+      {
+        "index": 1,
+        "leaf": "profile_for_binding",
+        "wall_seconds": 0.188061958
+      },
+      {
+        "index": 1,
+        "leaf": "plan.request",
+        "wall_seconds": 0.188881458
+      },
+      {
+        "index": 2,
+        "leaf": "profile_for_binding",
+        "wall_seconds": 0.19554325
+      },
+      {
+        "index": 2,
+        "leaf": "plan.request",
+        "wall_seconds": 0.201875959
+      }
+    ],
+    "evaluator_sources_seconds": [
+      0.117892,
+      0.048516167,
+      0.047642792
+    ]
+  },
+  "limitations": [
+    "Read-only stdlib audit of retained originals and current source; no candidate, provider, Docker, owner reopen or new Engine query.",
+    "Prefix/head agreement authenticates retained local consistency, not an independently supplied external trust anchor.",
+    "Timing sidecar is diagnostic, not acceptance authority. Instrumented span union is not total workflow duration or the 30-second call window.",
+    "Historical owned cleanup evidence is checked; no current live resource census is claimed.",
+    "Offline success does not qualify this failed workflow; 37 checks remain unrun.",
+    "Leaf profiles include cProfile overhead and do not recreate the full physical-worker loaded-module environment.",
+    "First audit script expected the wrong container-name filter spelling; source-confirmed ^/ prefix corrected in retained second script. No original execution files changed."
+  ],
+  "new_model_quality_samples": 0,
+  "physical_failure": {
+    "audit_checks": 2362,
+    "audit_path": "runs/workflow-validation-diagnosis-1/workflow-two-process-failure-audit-2.json",
+    "audit_sha256": "5c194aedeaa5ff091e2bdc1a3968d038b5accd4fa887e1e358fed450684d3f98",
+    "cleanup_originals_verified": true,
+    "outcomes": {
+      "failed": 1,
+      "not_run": 37
+    },
+    "retained_raw_files": 241,
+    "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-two-process-physical-1/20261005T014236-3f4b29b6",
+    "verifier_mechanics": {
+      "cleanup_verified": true,
+      "prestart_verified": true,
+      "session_complete": false,
+      "status": "infrastructure_error",
+      "unavailable": [
+        "call-000:Original evidence absent: call-000-result-exec-verified.json",
+        "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+      ]
+    }
+  },
+  "proposed_change": "Reuse a freshly constructed definition only within one record call; derive selectors, phases, IDs and input recipe from it. Hash each just-built record once in binding and request checks. Keep fresh records across calls, source identity checks, separate review authentications and existing deadlines.",
+  "protocol": "workflow-validation-diagnosis-v1",
+  "required_verification": [
+    "Compare all60 profiles across20 histories and3 purposes with pre-edit snapshot, allowing only declared source-pin changes.",
+    "Nearest definition/review/execution and source-mutation regressions through central static gate.",
+    "Full affected offline qualification, then new changed-source physical workflow qualification; no reuse of failed outcomes."
+  ],
+  "retained_directory": "runs/workflow-validation-diagnosis-1",
+  "source_commit": "8c59303302a0c12c5ada44c177d0332d77d07484",
+  "status": "diagnosis_complete_optimization_pending",
+  "timing_partition": {
+    "error_spans": [
+      {
+        "end_ns": 4517702191169541,
+        "parent": null,
+        "seq": 389,
+        "stage": "capture",
+        "start_ns": 4517699583235500,
+        "status": "error"
+      },
+      {
+        "end_ns": 4517702191138291,
+        "parent": 389,
+        "seq": 400,
+        "stage": "effect",
+        "start_ns": 4517701364785958,
+        "status": "error"
+      },
+      {
+        "end_ns": 4517702191167833,
+        "parent": 389,
+        "seq": 404,
+        "stage": "effect",
+        "start_ns": 4517702191159916,
+        "status": "error"
+      }
+    ],
+    "exclusive_seconds": {
+      "capture": 0.187556584,
+      "checkpoint": 11.617328458,
+      "control": 1.972422115,
+      "current": 28.234788168,
+      "effect": 0.005393921,
+      "queue": 0.238925416,
+      "runtime": 0.599816374,
+      "source": 16.037092542,
+      "teardown": 0.048429,
+      "write": 0.011594459
+    },
+    "inclusive_seconds": {
+      "capture": 31.224279665,
+      "checkpoint": 11.617328458,
+      "control": 33.641388083,
+      "current": 44.27188071,
+      "effect": 48.304939341,
+      "queue": 0.238925416,
+      "runtime": 0.599816374,
+      "source": 16.037092542,
+      "teardown": 2.957557376,
+      "write": 5.414486209
+    },
+    "instrumented_union_seconds": 58.953347037,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-two-process-physical-1/20261005T014236-3f4b29b6/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-dk2a1vz8/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-7eff284c9fdd468bacf11fd7f02cd3e5-timings.json",
+    "sha256": "ce06f90d63dabda57468b05eff08833a92265ccf01a1450b359691a6ac17ee93",
+    "spans": 452,
+    "stage_counts": {
+      "capture": 4,
+      "checkpoint": 165,
+      "control": 26,
+      "current": 76,
+      "effect": 84,
+      "queue": 4,
+      "runtime": 10,
+      "source": 76,
+      "teardown": 3,
+      "write": 4
+    }
+  }
+}
