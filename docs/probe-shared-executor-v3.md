@@ -1,5 +1,8 @@
 # Generated probes require the shared executor
 
+The [v4 continuation](probe-original-child-clock-v4.md) additionally enforces the
+original child clock at physical admission. This document describes the v3 checkpoint.
+
 `ProbeExecution` now requires the actual `CumulativeAuthorityV5` instance in its
 constructor. There is no default executor and no separate probe semaphore.
 Before admission it checks the financial owner/configuration identity and the

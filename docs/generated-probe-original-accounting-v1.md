@@ -21,8 +21,9 @@ after the accepted source moves.
 
 The tests use real inert Git repositories and externally anchored journals.
 Financial and mesh endpoint responses are synthetic. The adapter is not yet
-called by the study controller. Declared costs are not qualified measurements,
-caller-provided windows are not bound to the original whole-child deadline,
-and the ledger does not issue shared executor leases. Actual candidate execution,
+called by the study controller. Declared costs are not qualified measurements. When the prospective original-child
+clock policy is selected, accounting requires the window from the original
+`child.begin`; the unselected historical policy has no such binding. The ledger
+still does not issue shared executor leases. Actual candidate execution,
 independent product acceptance, a complete matching rehearsal and live/held-out
 comparisons remain required. This component supplies no new model-quality sample.

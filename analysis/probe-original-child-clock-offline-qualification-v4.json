@@ -1,0 +1,230 @@
+{
+  "protocol": "probe-original-child-clock-offline-qualification-v4",
+  "created_at_utc": "2026-10-05T12:57:30.345584+00:00",
+  "prior_commit": "e736930b8df5f5f2cd37b5906f84eccf4d4ac996",
+  "status": "PHYSICAL_PROBE_ORIGINAL_CHILD_CLOCK_JOIN_OFFLINE_QUALIFIED",
+  "implemented": [
+    "Mandatory exact prospective StudyPlan joins actual executor contract, terminal roster, runtime policy and controller checkpoint chain.",
+    "Reads anchored original child.begin under selected same-interpreter clock policy; source pins and original controller records are rechecked before non-cleanup effects.",
+    "Registered probe clock domain and monotonic window must be contained within the original child horizon. Nested deadline checks also apply original monotonic and wall-clock earlier stops.",
+    "After shared capacity waiting, original child expiry prevents intent/setup and releases the unstarted slot.",
+    "Separately bounded cleanup remains possible after project expiry; uncertain cleanup retains capacity under the existing policy."
+  ],
+  "qualification": {
+    "summary": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/summary.json",
+    "summary_sha256": "1d2c846e7e04de2c2bf9d8e3a1ce5b5e312f0e8f6248a0d9c0f54fb4e4f0214d",
+    "inputs_sha256": "d79e57582e2b386842964019808e48997dacce790dd0477c247f85d4e070c127",
+    "static_sha256": "f9861d28e5205cca2a7a96a22f1e49fe464d83b3a57daa99f2771094a95d6af2",
+    "source_input_count": 775,
+    "fresh_tests": 161,
+    "reused_tests": 0,
+    "classes": 20,
+    "duration_seconds": 228.80896579194814,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "cbf958bc9d9fb073782dfa9b857ed63679023ca09cb17a44451d6cb53adfe1b7",
+        "log_sha256": "4fa80bd705e3a38c4bb615c3c01a90851d970560bee27257e222507939a319c8",
+        "request_sha256": "a408e9e749f72e816c708535abb10c91283949c74cedbac67dd87db948ef8cac"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/f8102915f46ef306/result.json",
+        "result_sha256": "3321bf4209126664946e6a9ba0f4bd34056ae398f7ed3a8d5357ce13288c3a7d",
+        "log_sha256": "f2a9509232777f59bfbd81ccbf33eb5fff7da74f3f7d99def91c5e972361dc08",
+        "request_sha256": "baea3b7c8ab61017214d47205c23b5b8d9fbc8ca92f9c118e858306dcadaf97c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "4a68d95f77b87083417bc397fe130f121ff1160eea89b5838431470ab7997c24",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "request_sha256": "e65dfc22257b8d66e3a10a7445a390538585234e28b72c345e1363370f9f938b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "f1eb291d726dff7e351d9ed2c5f026347af053a8918c27b9c65e8732d8cc6cef",
+        "log_sha256": "910009f22e66a0d8cbf7ce1c913863da9372bbb9745253d99a8233e055d4b9c1",
+        "request_sha256": "fdb47d861cfe15af0c5beb913fc9db03db1ec982f2cc39f3c46222d03b27f085"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/9357695866ace6b8/result.json",
+        "result_sha256": "60323e214e4b42df9c2065be3350b7eba4b739204bab293872a83db34f043c7a",
+        "log_sha256": "c1d11f4adac09cca19356f23724ab777ec7e70df33aa171c5e9baeed9385f49c",
+        "request_sha256": "9d214d2b95c65a4553c2d238dab9f16e6c43ff99d9b88267d3aa18863dcd76fb"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "ce1256eaed66f33d719dc43e3f7a846d494e0f6a3cade4669b648be186054b68",
+        "log_sha256": "21158f3a000201af53646c90c4aca5b62d39594d161d8c0c76ef02428e79906f",
+        "request_sha256": "0ada730d967e0608fbb7687abf99eaa1520fcdea9ce6cd87b322921b0d45f31e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/27cee16273d7430c/result.json",
+        "result_sha256": "fb65835e32c1b21c7c2f025d8312f808c1497b9355e5495f1155e15d0a1fd43d",
+        "log_sha256": "46ed8a2aed91b867682aa64aa5ccf8778278ace27bc9b69c34addfd1957e05c0",
+        "request_sha256": "25f675c4290a67b919d670455e870ec2e106a1bfc4885b8f4813c43f6c0f9927"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "f766ce1ade7866e359dc9b48a2433f05de1f779a1b690bb1e86aee283fd2a9d0",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "638ef62f7226edcbf7f3fd352661e13f82dee0cd0fd3077365cfcf62944a6fb2"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "fa3630d530f33d840892e3856b3ea38124b93d4e80fb3977ce7a6a7092ffcaad",
+        "log_sha256": "e3a31b6d2e5086dabdbf8c7e5d3b87868177827cc87bc7a0a9fac71466a845cd",
+        "request_sha256": "db5cc29eb20d6003a706afa2b45f4c417ee3c6ec376e32b881d0927ff248c9ea"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "a5cc6e7336daacb74a581abbab490244acde419e90d55a78745217c2ce53591d",
+        "log_sha256": "b5c0899f77c3920e2443ef1d64ecfeb9686804849bed1c065dfed8d104027332",
+        "request_sha256": "aa8155b39a4d04020b230bd5e20a5341cca605c4e9d61ef3426744961d86c9c5"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/102d0d423f447c48/result.json",
+        "result_sha256": "c53b193ef63f964d4e2d436aad6d0209cc4e859fd7b405bc7137a8361ad8074b",
+        "log_sha256": "51f832fe8cf8fe3d99ab74ab11406274f627c34ea8e55fd8bda1dfc1d0fb4d06",
+        "request_sha256": "315af24f44b1dce1b12f08ec4cf276910c977d8ef8ab6244aeeb8d3e2d24888d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "a7b1f9722e6e831d23b6e0593cb73443909271eaa84a22e72fb45949556fecf9",
+        "log_sha256": "ec87b4b7c656de1d8001327dbfc0f796819bd353c6651340730ebd4f929c8686",
+        "request_sha256": "f5818fbe7ca6a8ff58385a8fb7aa23eb3a8fad2b3e3d78b888450320a49fc156"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "cf0c5d2e15e0e1e80337520066242c766a9246e20b47f0c174d87245f0502c08",
+        "log_sha256": "77a81fa58d0b556f748807634d2377cf368a1e6ffcc96a58a08173de9ae75e70",
+        "request_sha256": "dd00bb48a8794c6e8395ad3ec29389ed6d0f92c6b50096099550f312ae9370f1"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 15,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/fbf62e52b530b68d/result.json",
+        "result_sha256": "8c8f4db248af448bd3bb9a237fd5c9c369c957091b510da34b5fd72d836d63b1",
+        "log_sha256": "b293478ba4f663e4b8056315090002f846c42b7cffacad7b09688d10a05b20b9",
+        "request_sha256": "3d51b68f216bf371eb36e1b45e20ce7807c17ec7b4ee8b49e0dccc1f2f4fcb95"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 16,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/f54c022d158ecd14/result.json",
+        "result_sha256": "2256a2d31d7cfb3eeee12a3a9b8c0547c8cf379a218e9c28edf27f0348445937",
+        "log_sha256": "0ef163a37bda8306703b001234f3f000a1910c895755992d3a7e798e5cc1818d",
+        "request_sha256": "d01b7c2e9604a7b10ec5fd5b81b1e4791361ee44860c113b9d4f2d1a281575c2"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "5e116411b25606755675f855df1d92f221de0c65c84e097ac49c740a2b55423d",
+        "log_sha256": "abefb7e9731918911ecbeea95791b89d279cf2427bf163400f629095780ac28c",
+        "request_sha256": "d40ae98694744efce101af434372afc30c3ca2fa617e930c4e8583b9292afb1f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "f8fe9fee5d478e38567342ded302fbb4dbfa5cd0687008be847f7dbcad58d9e4",
+        "log_sha256": "70e331c24821c2d521bc98bc8a28877006424bf5257a5b6a1f5e01ae15cc0fe9",
+        "request_sha256": "62398b488a154e81f32118c78f739951e1d0b33efef6332b38c07d0c118c25f3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "40abdab02386d2661ddbbb879b40c0fbde0fc62db21421d60e9f1caf1c791c22",
+        "log_sha256": "cff968e93af8372e3ce40e738378ad36d8922f8a9f2d7d3aa957a829f1b96a80",
+        "request_sha256": "beca56370f97e8eed79af8fc7a4f3f12f616b964677d3870a212e419814bba3b"
+      },
+      {
+        "class": "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests": 13,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/ba96f304814469e3/result.json",
+        "result_sha256": "ec14fa12d517569a805c74c4c54ef4e7371f6c27908d8bb301a2e07c400ae15b",
+        "log_sha256": "679c72947725fde043fda30023a1183b948ab82403335c9a41363d69195d6e37",
+        "request_sha256": "81055c6f729c2038d1a3e2186cd7bd91414e306b27ba11911d060c830a102d9b"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-original-child-clock-qualification/20261005T125316-a75efa81/classes/f6cea13342c33618/result.json",
+        "result_sha256": "3b711f859419cef4b1bc0717e59fd0a9bcd7ae3ba6269ccaa06d045e78580e87",
+        "log_sha256": "5eb8ba7ae604fa14bd99d71803b3e32611c9343c5e0912436b6307837ef272b6",
+        "request_sha256": "2aba12b69dadb13fb9d34543d322bf361da29b8b88168934a155f246fb76eee9"
+      }
+    ],
+    "scope": "Actual isolated financial authorities and anchored child-start journals, inert Git and deliberately refused Engine socket. Synthetic reviews and transport. No Engine or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "focused_result": {
+    "summary": "runs/probe-original-child-clock-focused/20261005T125125-772774f6/summary.json",
+    "fresh_tests": 18,
+    "reuse": false,
+    "reason": "Added original-plan rejection regression and updated manifest before final coherent qualification."
+  },
+  "source_pins": {
+    "docs/generated-probe-original-accounting-v1.md": "deaf2965801be60581e70bf26cfcee653bd037a7494e687b477929c7028822ca",
+    "docs/probe-original-child-clock-v4.md": "0891836b41d13af02e7290ce7f13f4c36711607c3ffd19160d7399346d2071c4",
+    "docs/probe-shared-executor-v3.md": "b989bd5066fa6388073cf94af730ce0de66253dd3ea9c1cac315ba6bbac815ab",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "e4706188f03bfb6a5a5f8a8ce9ed3b774ca3d78e2de9ce910dc30af0fdadc73e",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "164fd6494a6bb6843415b14e1be3e7490ea0758325ee0c6f3e69bc60c8c538cc",
+    "verification-manifest.json": "4a03bd154584f4087e8d893b204d92845e7eb3b746498598152a10aee5beef90"
+  },
+  "limitations": [
+    "Reservation-to-cell binding, qualified resource envelopes and complete ranked controller activation remain incomplete.",
+    "Independent cold joins to the original controller clock remain outstanding; this checkpoint authenticates the live physical owner.",
+    "Changed-source independent reviews, remaining release/browser/worker/V2 acceptance routes, physical controls and a complete matching six-trajectory/four-milestone rehearsal remain required.",
+    "No hard preemption of in-flight OS calls is claimed; bounded cleanup is separate from the active project clock."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Bind complete original reservations to specific matrix cells and qualified envelopes at controller admission; join retained physical observations to those originals before activating ranked selection."
+}

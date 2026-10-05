@@ -33,11 +33,13 @@ from . import cumulative_generated_probe_pipe_v1 as pipes
 from . import cumulative_generated_probe_plan_v1 as plans
 from . import cumulative_generated_probe_state_v1 as state
 from . import cumulative_generated_probe_values_v2 as values
+from . import cumulative_study_controller_v2 as study
+from . import cumulative_child_deadline_v1 as child_clocks
 from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 from .peer_financial_authority_v5 import CumulativeAuthorityV5, EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-shared-executor-v3'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-original-child-clock-v4'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
@@ -142,7 +144,7 @@ class ProbeExecution(transport.CandidateStorageExecution):
     binding: Any
 
     def __init__(self, probe_state: state.ProbeExecutionState, *, endpoint: process.EngineEndpoint,
-                 cleanup_root: Path, executor: CumulativeAuthorityV5):
+                 cleanup_root: Path, executor: CumulativeAuthorityV5, study_plan: study.StudyPlan):
         require(type(probe_state) is state.ProbeExecutionState and type(endpoint) is process.EngineEndpoint,
                 'exact_probe_state_and_endpoint_required')
         probe_state.current()
@@ -151,6 +153,13 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self.executor = executor
         self._executor_identity = (executor.owner_id, executor.config_sha256)
         self._executor_current()
+        require(type(study_plan) is study.StudyPlan, 'exact_probe_study_plan_required')
+        self.study_plan = study_plan
+        self._study_identity = study_plan.sha256
+        self._clock_records = study.Records(executor.checkpoint_chain)
+        self._clock_index = executor.terminal_config['child_index']
+        self.original_child_clock = self._read_child_clock()
+        self._child_clock_identity = values.digest(asdict(self.original_child_clock))
         self.policy = RuntimePolicy(probe_state.plan.policy.control_seconds)
         self.root, self.delta_root = probe_state.root, probe_state.delta_root
         self.cleanup_root = Path(cleanup_root)
@@ -194,6 +203,7 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._attempted = False
         self._capacity_active = False
         self._capacity_dispatched = False
+        self._child_clock_current()
         self.endpoint.validate()
 
     def _executor_current(self) -> None:
@@ -210,6 +220,28 @@ class ProbeExecution(transport.CandidateStorageExecution):
         require(values.exact(executor.permit['execution_design'].get('runtime', {}).get(EVALUATOR_CAPACITY_KEY),
                              EVALUATOR_CAPACITY_POLICY), 'probe_shared_executor_policy_required')
 
+    def _read_child_clock(self) -> child_clocks.ChildClock:
+        require(type(self.study_plan) is study.StudyPlan and self.study_plan.sha256 == self._study_identity
+                == self.executor.contract['execution_contract_sha256'], 'probe_original_study_changed')
+        require(self._clock_records.chain is self.executor.checkpoint_chain
+                and values.exact(self.study_plan.roster.record(), self.executor.terminal_roster.record()),
+                'probe_original_controller_or_roster_changed')
+        require(values.exact(self.study_plan.runtime, self.executor.permit['execution_design'].get('runtime')),
+                'probe_financial_runtime_differs_from_study')
+        self.study_plan.verify_sources(Path(__file__).resolve().parents[1])
+        return child_clocks.read(self._clock_records, self.study_plan, self._clock_index, active=True)
+
+    def _child_clock_current(self) -> None:
+        original = self._read_child_clock()
+        require(original == self.original_child_clock
+                and values.digest(asdict(original)) == self._child_clock_identity,
+                'probe_original_child_clock_changed')
+        window = self.binding.window
+        require(self.environment['clock_domain'] == original.clock_domain
+                and original.started_ns <= window.started_ns < window.deadline_ns <= original.deadline_ns,
+                'probe_window_outside_original_child')
+        require(not original.expired(time.time()), 'probe_original_child_deadline_expired')
+
     def _local_cleanup_complete(self) -> bool:
         if self._pipe is not None and (not self._pipe.closed or self._pipe.cleanup_errors):
             return False
@@ -224,6 +256,9 @@ class ProbeExecution(transport.CandidateStorageExecution):
             require(self._cleanup_deadline is not None and time.monotonic() < self._cleanup_deadline,
                     'probe_cleanup_deadline')
         else:
+            require(values.digest(asdict(self.original_child_clock)) == self._child_clock_identity,
+                    'probe_original_child_clock_changed')
+            require(not self.original_child_clock.expired(time.time()), 'probe_original_child_deadline_expired')
             self.probe_state._window()
 
     @contextmanager
@@ -260,6 +295,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
                 and values.canonical(self.runtime) == self.probe_state.runtime_raw
                 and values.canonical(self.environment) == self.probe_state.environment_raw, 'probe_owner_binding_changed')
         if not self._cleanup_phase:
+            self._executor_current()
+            self._child_clock_current()
             self.probe_state.current(deadline_ns=self._source_deadline_ns())
         self._check_deadline()
 
