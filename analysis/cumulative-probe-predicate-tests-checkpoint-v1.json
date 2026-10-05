@@ -1,0 +1,48 @@
+{
+  "directory": "runs/cumulative-probe-predicate-tests-draft-1",
+  "files": {
+    "handoff.json": "6e7224d57293f39c60c8f00dfefdbc44fb42d0d3d3a3f05cb29412adf957f034",
+    "predicates.py": "a56aabb3e1106bc918f45e1d63679511257c04e2b3ccf744715f2df18c7b33fa",
+    "prospective-manifest.json": "dc5e753ff35ced2a11cce81f9395ee5eec259e3415573a66e11428b5c647be0d",
+    "qualification-vectors.json": "f3b3ad44484c37edf80f1ac2d72a18567499de9686e1f91cf7c27f12e694c269",
+    "test_predicates.py": "eaea49f45d3486fa8cfedf7b996ebf5c0b4d1dd4fa86bdb01e6c2650c9ed92e4"
+  },
+  "limits": [
+    "Fixtures supply values, never authenticated original observations.",
+    "Four templates are a first implementation slice, not complete project-test coverage.",
+    "Parser limits in tests are local test fixtures; prospective study quotas remain unchosen.",
+    "No child-driver imports or candidate execution; no private acceptance or statistical credit."
+  ],
+  "method_count": 16,
+  "new_model_quality_samples": 0,
+  "protocol": "cumulative-probe-predicate-tests-checkpoint-v1",
+  "remaining": [
+    "Choose and bind study quotas and relation admission before adoption.",
+    "Install pure module and tests with explicit manifest and type coverage, then static and fast tests.",
+    "Implement independently source-bound dynamic owner, controlled continuation and actual SQLite capture.",
+    "Implement original reader and candidate/context/merged-source controller joins.",
+    "Complete matching rehearsal and controlled live quality comparison."
+  ],
+  "required_next": "After current650 offline and changed-source physical gates, adopt pure predicate module and test class with explicit manifest/type coverage; run static then nearestfast. This does not replace required new execution owner/cold reader/controller joins.",
+  "source_review": {
+    "candidate_code_imported": false,
+    "draft_predicates_imported": false,
+    "original_normative_contract_pin_matches": true,
+    "stale_original_draft_source_pins": {
+      "gossip_harness/candidate_workflow_execution_v1.py": {
+        "current": "99d2ccdb83762546fdda8ee108674ceaf10acfbb713a38dd4dd47adb4adb8e7d",
+        "draft_pin": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134"
+      },
+      "gossip_harness/candidate_workflow_observation_v1.py": {
+        "current": "045463f6fd5190663904dfcd812c3d39d378a164c1f7b0ff3a8a802f90acbbcb",
+        "draft_pin": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657"
+      },
+      "gossip_harness/candidate_workflow_profile_v1.py": {
+        "current": "75024bd802083cc0ff9f6cf91f0f4ca2ff0692cf4db45c9743ee0a7118a042b2",
+        "draft_pin": "e937e3f0e35763464904689250c267b8710af6979a1a9946788ec9b8f71c3a94"
+      }
+    },
+    "test_source_ast_parsed": true
+  },
+  "status": "authored_not_executed"
+}
