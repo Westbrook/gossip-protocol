@@ -7418,6 +7418,18 @@
       "boundary": "Original corpus, accounting and observation journals; no model, Engine or candidate execution.",
       "disposition": "Offline launch-gate check only; no physical qualification or scientific sample.",
       "overlap_reason": "Single-cell reader tests do not establish the complete original matrix census or cross-cell stability."
+    },
+    "tests/test_cumulative_public_suite_cell_v1.py::PublicSuiteCellOriginalGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 900,
+      "invariant": "Each public-suite cell binds its original phase, exact inherited/current suite and full actual Git context without promotion or reuse.",
+      "isolation": "Class process; fresh inert Git repositories and anchored controller journals per test.",
+      "overlap": "Actual original corpus/accounting/source readers; synthetic financial and mesh records.",
+      "distinct_defect": "A preceding or future suite, generated cell, stale head, changed source, or accepted store could be mistaken for the required candidate public test.",
+      "boundary": "Cold source/declaration join only; no provider, Engine or candidate execution.",
+      "disposition": "Offline binding check before public-cell physical owner and controller integration.",
+      "overlap_reason": "Generated-probe bindings do not cover inherited authored suites or their before-review source context."
     }
   },
   "audit": {

@@ -1,0 +1,59 @@
+{
+  "protocol": "public-suite-cell-binding-offline-check-v1",
+  "created_at_utc": "2026-10-05T15:00:22.981196+00:00",
+  "prior_commit": "d179d4df5448e0d472cb8a83aea071aeecaef236",
+  "status": "ORIGINAL_AUTHORED_SUITE_AND_CONTEXT_BINDING_OFFLINE_CHECKED",
+  "implemented": [
+    "Read the exact authored public-suite cell from a complete original reservation bound to its child clock.",
+    "Reconstruct the inherited suite/base overlay before review, current suite/frozen peer context, or current suite/endorsed merged construction vector.",
+    "Require a separate actual Git view, exact commit head and full context bytes/modes; recheck original financial/role evidence after source capture.",
+    "Retain cold historical inspection without granting execution reuse, promotion, selection or acceptance."
+  ],
+  "qualification": {
+    "summary": "runs/public-suite-cell-binding/20261005T145802-94f2afb5/summary.json",
+    "summary_sha256": "f65b235315c69a8d2e5aa3c1ed9e7b89d20be2987e0de9aa3b825b3c64eedefe",
+    "inputs_sha256": "3cb86a5c62c6001ba7642a9d6d7860652ba6a88cd18d93c2e269d657ab180d89",
+    "static_sha256": "de16f0f72315a0fb52c7a1faf099938d4fa134d8f654e31026b94b9f3a063aa5",
+    "source_input_count": 780,
+    "fresh_tests": 9,
+    "reused_tests": 0,
+    "classes": 1,
+    "duration_seconds": 127.20678466744721,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_public_suite_cell_v1.py::PublicSuiteCellOriginalGitTests",
+        "tests": 9,
+        "result": "runs/public-suite-cell-binding/20261005T145802-94f2afb5/classes/d6f32eefc577e62d/result.json",
+        "result_sha256": "86ebe122a5da508ca034f408778a769fa92b59189266c8fd9938d86d593c01c0",
+        "log_sha256": "335076c988560a972fa95913d83b6b78204108031d5cc9fca3dbc1590c837a26",
+        "request_sha256": "7e8a0230016827a8cc6b4a72bc83681b8184a0e1ed6b4c2f35669086af077a86"
+      }
+    ],
+    "scope": "All new module tests: actual inert Git and anchored controller originals with synthetic finance/mesh records. No candidate, Engine or model execution. Existing production modules unchanged; no blanket old-receipt reuse or broad regression claim."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_public_suite_cell_v1.py": "2f614629f7f8fd238a85c0fcf5eed888abcf64f96d67c83d67eb6e9b7270722c",
+    "tests/test_cumulative_public_suite_cell_v1.py": "0b47fe115f98c317584d7edc88c699f54e8cf831ae77bb05c43947e27dc8a286",
+    "pyproject.toml": "41e75094dbe4d945bed67300af3d7980610d34fb75ce863c59aa613964a8e0cf",
+    "verification-manifest.json": "b53ef9a5cd0ab0b28febec0bb22e1d1ffa12fec980525710578c68b145773e40",
+    "docs/public-suite-cell-binding-v1.md": "31732c4c34dfa33ecd64b8b155a60d27c9164ef4729cba1c08adcd649cc0ece7"
+  },
+  "limitations": [
+    "No public-cell physical execution owner or observations are supplied by this binding.",
+    "Qualified resource envelopes, shared-pool/deadline adoption for public cells, complete ranked selection/controller integration and remaining final acceptance/physical rehearsal gates still precede the scheduled comparison."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Implement original-bound authored public-cell execution/readback through the actual shared evaluator pool and original child deadline; then connect complete contextual and merged evidence to ranked selection. Keep the scheduled S16-G versus O16-G comparison primary, without new arms or product duties."
+}
