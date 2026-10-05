@@ -7150,6 +7150,26 @@
       "overlap": "Consumes matrix declarations only. Source/setup/corpus authentication, actual shared-pool adoption and controller activation remain separate requirements.",
       "distinct_defect": "Silent cell omission, future-review dependency, reset deadlines, premature slot reuse, cumulative overspend, duplicate phase allocation and fabricated capacity history.",
       "disposition": "Static and fast accounting controls; this does not qualify live admission or prove experimental quality."
+    },
+    "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Every active and carried probe is rebuilt from original ranked reviews under prospective quotas; complete prior enrollment, Git lineage and all offer/rejection records survive later generations.",
+      "isolation": "Pure quota reducers plus inert Git and actual externally anchored journals. Synthetic mesh/financial returns remain explicit; actual runtime original-result checks run. No provider, Docker or candidate execution.",
+      "overlap": "Extends historical context/original joins and matrix compilation; no physical profile, shared-executor reservation, selection, successor-policy activation or acceptance.",
+      "distinct_defect": "Self-authenticating prior corpus, changed historical source or finance, omitted old probes, reset novel quotas, silently filtered unsupported carry and repeated/late enrollment.",
+      "disposition": "Static, fast reduction and Git/original lineage controls; physical/rehearsal/live comparison remains separate."
+    },
+    "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 900,
+      "invariant": "Every active and carried probe is rebuilt from original ranked reviews under prospective quotas; complete prior enrollment, Git lineage and all offer/rejection records survive later generations.",
+      "isolation": "Pure quota reducers plus inert Git and actual externally anchored journals. Synthetic mesh/financial returns remain explicit; actual runtime original-result checks run. No provider, Docker or candidate execution.",
+      "overlap": "Extends historical context/original joins and matrix compilation; no physical profile, shared-executor reservation, selection, successor-policy activation or acceptance.",
+      "distinct_defect": "Self-authenticating prior corpus, changed historical source or finance, omitted old probes, reset novel quotas, silently filtered unsupported carry and repeated/late enrollment.",
+      "disposition": "Static, fast reduction and Git/original lineage controls; physical/rehearsal/live comparison remains separate."
     }
   },
   "audit": {

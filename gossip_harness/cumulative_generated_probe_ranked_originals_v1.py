@@ -27,7 +27,7 @@ from .peer_financial_authority_v2 import ledger_identity
 from .peer_project_contract_v2 import EvidenceRef, from_dict, resolve_local, strict_loads, to_dict
 from .peer_role_loop_v2 import WorkDirective, directive_id
 
-PROTOCOL = 'cumulative-generated-probe-ranked-originals-v1-build-freeze-v1'
+PROTOCOL = 'cumulative-generated-probe-ranked-originals-v1-historical-join-v1'
 DECISION_PROTOCOL = 'cumulative-generated-probe-ranked-decision-v1'
 CONTRACT_SLOT = 'generated-probe.ranking-contract'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
@@ -224,7 +224,7 @@ def _authenticate(owner: runtime.GossipChildRuntime, value: dict[str, Any], *, s
 
 
 def _build_inputs(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                  milestone: str, generation: int, limits: ReviewLimits) -> tuple[
+                  milestone: str, generation: int, limits: ReviewLimits, historical: bool = False) -> tuple[
                       dict[str, Any], int, study.Release, str, list[dict[str, Any]],
                       list[dict[str, Any]], contexts.Base, dict[str, contexts.Proposal]]:
     """Authenticate builds without requiring or inspecting future reviews."""
@@ -245,7 +245,15 @@ def _build_inputs(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCo
     stage = 'child.' + owner.trajectory.id + '.' + milestone + '.g' + str(generation)
     actors = owner.child.actors
     builds, build_refs = _roster(owner.records, stage, 'builds', actors[:-4], owner.trajectory.block_seed_sha256)
-    base = contexts.capture_base(owner.protected)
+    require(type(historical) is bool, 'explicit_historical_read_mode_required')
+    observed_head = owner.protected.head()
+    previous = owner.records.read(stage+'.before-review-freeze') if historical else None
+    if historical:
+        require(type(previous) is dict, 'historical_read_requires_original_build_freeze')
+        assert previous is not None
+        base = contexts.capture_base(owner.protected, commit_oid=previous['build_phase']['base']['commit_oid'])
+    else:
+        base = contexts.capture_base(owner.protected)
     proposals = {}
     for value, provenance in zip(builds, build_refs, strict=True):
         _authenticate(owner, value, stage=stage, release=release, generation=generation, base=base,
@@ -268,7 +276,7 @@ def _build_inputs(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCo
                 except (ValueError, TypeError, KeyError):
                     changes = ()
         proposals[alias] = contexts.Proposal(alias, disposition, base.sha256, study.digest(value), changes)
-    require(owner.protected.head() == base.commit_oid, 'generation_base_moved_during_original_join')
+    require(owner.protected.head() == observed_head, 'generation_base_moved_during_original_join')
     owner.records.chain.validate_boundary(expected=expected)
     require(values.exact(contract(owner.plan, limits), declared), 'ranked_contract_changed_during_join')
     return declared, contract_position, release, stage, builds, build_refs, base, proposals
@@ -327,13 +335,14 @@ def freeze_build_phase(owner: runtime.GossipChildRuntime, *, expected: chain.Pre
 
 
 def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+                milestone: str, generation: int, limits: ReviewLimits, historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
     """Join ranked originals; use reconstruct_frozen to require pre-review freeze.
 
     Neither reader admits resources, dispatches, or selects a candidate.
     """
+    observed_head = owner.protected.head()
     declared, contract_position, release, stage, builds, build_refs, base, proposals = _build_inputs(
-        owner, expected=expected, milestone=milestone, generation=generation, limits=limits)
+        owner, expected=expected, milestone=milestone, generation=generation, limits=limits, historical=historical)
     reviews, review_refs = _roster(owner.records, stage, 'reviews', owner.child.actors[-4:], owner.trajectory.block_seed_sha256)
     require(owner.records.chain.position(owner.records.name(stage+'.builds'))
             < min(row['position'] for row in review_refs), 'review_precedes_complete_builder_roster')
@@ -373,7 +382,7 @@ def reconstruct(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixComm
         base, tuple((p, tuple(sorted(owner.plan.package_paths[p]))) for p in study.PACKAGES),
         tuple(proposals[a] for a in study.actors_for(owner.trajectory.arm)[:-4]),
         tuple(rankings[p] for p in study.PACKAGES))
-    require(owner.protected.head() == base.commit_oid, 'generation_base_moved_during_original_join')
+    require(owner.protected.head() == observed_head, 'generation_base_moved_during_original_join')
     owner.records.chain.validate_boundary(expected=expected)
     require(values.exact(contract(owner.plan, limits), declared), 'ranked_contract_changed_during_join')
     return compiled, {'protocol':PROTOCOL, 'contract_sha256':study.digest(declared),
@@ -409,10 +418,10 @@ def _original_prefix(owner: runtime.GossipChildRuntime, sequence: int,
 
 
 def reconstruct_frozen(owner: runtime.GossipChildRuntime, *, expected: chain.PrefixCommitment,
-                       milestone: str, generation: int, limits: ReviewLimits) -> tuple[contexts.Generation, dict[str, Any]]:
+                       milestone: str, generation: int, limits: ReviewLimits, historical: bool = False) -> tuple[contexts.Generation, dict[str, Any]]:
     """Require original pre-review enrollment, preserving independent chronology."""
     compiled, proof = reconstruct(owner, expected=expected,
-        milestone=milestone, generation=generation, limits=limits)
+        milestone=milestone, generation=generation, limits=limits, historical=historical)
     slot = proof['stage'] + '.before-review-freeze'
     record = owner.records.read(slot)
     require(type(record) is dict and set(record) == set(_build_freeze_value(owner, compiled)) | {'input_checkpoint'},

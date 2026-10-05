@@ -1,0 +1,157 @@
+{
+  "protocol": "generated-probe-corpus-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T10:41:50.767347+00:00",
+  "status": "ORIGINAL_BACKED_CUMULATIVE_CORPUS_ENROLLED_EXECUTOR_AND_POLICY_ADOPTION_UNFINISHED",
+  "prior_commit": "2b89f036cedc71af56fe0b73235f337ca5392a09",
+  "implemented": [
+    "Explicit historical Git capture verifies the original commit remains in accepted ancestry and never moves accepted refs. Normal current-source joins retain their previous fail-closed behavior.",
+    "A prospective corpus policy binds quota/source/parser identities before ranked work. Enrollment immediately after the original review roster freezes all active probe definitions, offer dispositions and the full comparison matrix.",
+    "Carried probes are reconstructed from every original historical ranked/financial/mesh/Git join and compared with retained corpus records. A stored corpus is never its own authentication.",
+    "Duplicate offers preserve the first original provenance. Per-package/milestone and per-trajectory quotas retain explicit rejections without granting another model action. Unsupported carry stops reconstruction rather than disappearing.",
+    "Review completeness is checked before applying canonical package/proposal quota order, independently of the seeded runtime/journal order."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/summary.json",
+    "summary_sha256": "021a024edc2fd9c2cbdf1de9875ac29a2393b6f0b5177a3530ae72472efb60c8",
+    "inputs_sha256": "0bb8e3299613ff0d1a052afe641a91fc4593f7b7d0d45c99d60f24d9ba284d2f",
+    "static_sha256": "bd82d42a49e24e61b2d0894d48a23445908ce131be0f3372176affe1d971a7ce",
+    "source_input_count": 767,
+    "tests_passed_fresh": 110,
+    "tests_reused": 0,
+    "duration_seconds": 441.7123136250302,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/682d942eed25d87d/result.json",
+        "result_sha256": "fc13ce04a277aebb3b1f3f817ec2530ab80a62bb4ad1183fd4e572bb91c425da",
+        "request_sha256": "1b327a334b81ada4489ae941f361a8073f1ef2e94a516bba2be5e52b829ebb7f",
+        "log_sha256": "0cf70d96941082d50525b79f66540c4c7b017ae3c71900c6eb1f3cb98fc55bf0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/18e8426870583b7c/result.json",
+        "result_sha256": "0e2de5ab66c04d357f912b86ba00d6dd9ded0280f7fecf27470e1867e8cb5e45",
+        "request_sha256": "51170b36ee3fbf7ff72a4bad7a07ea6e94c63d810d6daac40f0dcaa594c67ac6",
+        "log_sha256": "59f011ff8cfe3e249d6e44ee2185e7fe1330c48861d78e2bf1f2284e7a534709"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "4acafb57c9cc501908cc3d34cb500fcf3940693f92fb58d14924f13153794f44",
+        "request_sha256": "c02fb21792f4d9e68f05c1c75c1777299f35ba623522f66b8c5b5e536ebcdaca",
+        "log_sha256": "7b45c5ed1d301b45ba3279a81f562fd7e6d1b26b0ce1ab4ecfd5d91869eaa786"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "05eebfe5a14dcc5a3789af01363d896de042c654e20fb2b28163b593ec449888",
+        "request_sha256": "09e789f0491a72a0460f5f73f0a70ff6bcbb0c70a8e7bc65f99f611acaf1bd48",
+        "log_sha256": "bd91627d837118faa10fcd7cb842d62199df0cdcf8dccdda63461b07b7ac247d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "fc9c662e0cc5723bd698ba40940f19d4cdbc6f35f1c1d87b3c3e7e0bdd74e8a9",
+        "request_sha256": "7c733edb016a44e6e2dd3a4ee1d9e4076896bfe4ca6d1a60c9d1093904363e40",
+        "log_sha256": "279ba3f31a600da6734214daf5979b34f0283eb0a065ec7b9f1c9d379485c640"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "4378d9808443557be33f4a6fed18c401ea46fec1b13766aa035919be0f71f271",
+        "request_sha256": "cf5200fbdb3ac7ec9650e8c0d39eb36f017b7297b3b0790dc9010eddfb36305b",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "f2bafab623c9946527bacfc467a4d6480d7247ccd65b8a56d3bd50854c40d2c1",
+        "request_sha256": "57ef64bc420821f8798d46b06d8f4bf24f42c77165903c2ebb415c50d7ed858a",
+        "log_sha256": "6b2a018b1aff6cdbc316e187fc58b7023ccf58e3eac7b3290e478e739d100afa"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "56bb198c90514c3eaf263e6b9eca4ccd847e459651bcc5868ef8053e7cceb253",
+        "request_sha256": "275b48e3150d54cc2b1745371a0991aed7d539b40a97aedfc81bb9b0472ff0dd",
+        "log_sha256": "688afb31572776967a907e0bc839bd6ef4a80049520f9f844bc0624ce7823ea1"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "acefe9f819f69cf5b25f21eb8caf736ddf1a72c3e7023546eacd6046739ff794",
+        "request_sha256": "6485a2086858f05782a09717c381886914f61a086e5bbc92c18c6c858e349808",
+        "log_sha256": "a7c781c0440ecd96e54e0a8536519700139fc5395b959049cf63ca5e7c3a4a0e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/generated-probe-corpus-offline-2/20261005T102959-90576258/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "b6a826ab0f8d0fc836f0f1977b4915faccca8250865866c3198d27b6e28517a1",
+        "request_sha256": "3a6e109024bc16a9e838da0e7153bdf7c7ed29d4001c32f0e23218de4b91ff2e",
+        "log_sha256": "c0b2c3cd39869c527acd4bae214cfc6ee2fcf1e92859e9b127d22c44bb7633b6"
+      }
+    ],
+    "scope": "Actual offline verifier, inert Git, real externally anchored journals and actual runtime original-result/materialization checks. Mesh and financial endpoint returns remain synthetic; fixture public releases are partial synthetic releases. No candidate, Engine or provider execution."
+  },
+  "retained_failure": {
+    "summary": "runs/generated-probe-corpus-offline-1/20261005T102633-2a5284d0/summary.json",
+    "sha256": "bdfb2409fa10bb88dd18292d3a29fc7a5ed130a3c6c351cfbb18a3c600354376",
+    "outcomes": {
+      "error": 1,
+      "not_run": 30,
+      "passed": 77
+    },
+    "finding": "The first integration failed closed because it assumed package-ordered definitions while authenticated reviewer originals follow seeded runtime order. Canonical quota processing now verifies the complete unique scope census and preserves the original journal order.",
+    "new_regressions": [
+      "Seeded review ordering cannot alter quota allocation.",
+      "Missing or duplicate review scopes cannot masquerade as a complete definition census."
+    ]
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_and_log_hashes_match": true,
+    "all_current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_context_v1.py": "e5d4759a843d94dd3740c0f0470f3f0d8da2c568877a22b4e8a6d2a2c75efa2f",
+    "gossip_harness/cumulative_generated_probe_ranked_originals_v1.py": "0f391c46630854b8255ecaf8a9bfecef3854514e7c0f5b962fe33ce45a8ab2c1",
+    "gossip_harness/cumulative_generated_probe_corpus_v1.py": "edaf5665ee469b9e3bffb11c810f47eccbe348d706d1107d72fbce1454120066",
+    "tests/ranked_originals_fixture_v1.py": "a7504e6d0cb0c08e787d3fe10e2304fba08c20f0a30467982e6d1b4fe64b626b",
+    "tests/test_cumulative_generated_probe_ranked_originals_v1.py": "ee7f58df7c13d2f3d0735f0a7f132661e888e1a0344047384118b2b1040a1c76",
+    "tests/test_cumulative_generated_probe_corpus_v1.py": "8778ef5b4a7d00efcf96ff7774030585d0f6e741e89eb1860713474b63b51c48",
+    "pyproject.toml": "fd0720fcb6e8c4e5495fbb8d2d9a96b114701fca8c8d9c486cf305f3c23ac7d9",
+    "verification-manifest.json": "0f3629b97926171e17526d23464c2a0dfa6567be9ba1c4aefd0dec37ce16827d"
+  },
+  "limits": [
+    "This policy is a prospectively recorded addendum, not activation of the legacy controller shared policy or permission to add roles, generations, time or model actions.",
+    "Corpus chronology/provenance does not prove that public pre-review tests were physically executed, delivered to reviewers, or passed.",
+    "The frozen matrix still needs exact materialized candidate contexts, qualified setup and resource profiles, real shared-executor leases, original whole-child deadline binding and actual execution observations.",
+    "Cross-milestone corpus continuity does not replace the controller public milestone-completion barrier or independent final product acceptance."
+  ],
+  "remaining": [
+    "Activate the versioned successor common policy and connect original pre-review observations to reviewer inputs, then original-backed corpus/matrix enrollment to capacity and actual shared executors.",
+    "Qualify physical profiles, bind the existing whole-child horizon and all cumulative storage roots, execute every required candidate/context check and derive simultaneous choices from original observations.",
+    "Freshly evaluate the actual merged source with independent approvals; finish pending review packets, twelve physical controls, eight host-fault schedules, matching six-trajectory/four-milestone rehearsal, live comparison and held-out statistical confirmation."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Integrate these original-backed phase/corpus/matrix records and declared capacity into the actual versioned controller execution path, preserving common scientific policy and all acceptance barriers.",
+  "external_holds": "Public Git and provider disclosure remain held; no external disclosure attempted."
+}

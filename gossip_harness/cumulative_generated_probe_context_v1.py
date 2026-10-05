@@ -19,7 +19,7 @@ from . import cumulative_study_controller_v2 as study
 from . import project_acceptance_registry_v1 as registry
 from .gitstore import GitStore, _path, _run
 
-PROTOCOL = 'cumulative-generated-probe-context-v1-pre-review-identity-v1'
+PROTOCOL = 'cumulative-generated-probe-context-v1-historical-base-v1'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 PACKAGES = study.PACKAGES
 Files = tuple[tuple[str, bytes], ...]
@@ -115,13 +115,16 @@ class Base:
         return study.digest(self.record())
 
 
-def capture_base(store: GitStore) -> Base:
+def capture_base(store: GitStore, *, commit_oid: str | None = None) -> Base:
     require(type(store) is GitStore, 'exact_git_store_required')
     head = store.head()
-    tree, files = capture.capture_registered_source(store, head, policy=capture.TwoProcessCapturePolicy())
+    selected = head if commit_oid is None else commit_oid
+    oid(selected)
+    require(store.is_ancestor(selected, head), 'historical_base_not_in_accepted_lineage')
+    tree, files = capture.capture_registered_source(store, selected, policy=capture.TwoProcessCapturePolicy())
     # Capture already bounded the immutable ordinary-blob tree. Read its modes
     # and independently reconstruct the complete tree hash from captured bytes.
-    listing = _run(store.path, 'ls-tree', '-r', '-z', head).stdout
+    listing = _run(store.path, 'ls-tree', '-r', '-z', selected).stdout
     require(listing.endswith(b'\0'), 'complete_mode_inventory_required')
     modes = []
     for raw in listing[:-1].split(b'\0'):
@@ -130,7 +133,7 @@ def capture_base(store: GitStore) -> Base:
         require(kind == b'blob', 'ordinary_blob_required')
         modes.append((path.decode('utf-8'), mode.decode('ascii')))
     require(store.head() == head, 'base_head_changed_during_capture')
-    return Base(head, tree, tuple(sorted(files.items())), tuple(sorted(modes)))
+    return Base(selected, tree, tuple(sorted(files.items())), tuple(sorted(modes)))
 
 
 @dataclass(frozen=True, slots=True)

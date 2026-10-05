@@ -246,3 +246,23 @@ class GeneratedProbeBuildFreezeGitTests(unittest.TestCase):
             f.owner.records.put(f.stage+'.before-review-freeze', record)
         f = self.fixture(at_build_boundary=wrong)
         with self.assertRaisesRegex(ValueError, 'original_build_freeze_predecessor_differs'): self.frozen(f)
+
+
+    def test_historical_read_uses_original_git_base_without_moving_accepted_source(self):
+        f=self.fixture(at_build_boundary=self.freeze)
+        old=f.owner.protected.head();new=f.owner.protected.propose({'base.py':'# advanced\n'},old)
+        f.owner.protected._git('update-ref','refs/heads/accepted',new,old)
+        with self.assertRaisesRegex(ValueError,'original_generation_source_differs'):self.frozen(f)
+        gen,proof=ranked.reconstruct_frozen(f.owner,expected=f.chain.commitment,milestone='M2',generation=0,
+            limits=f.limits,historical=True)
+        self.assertEqual(gen.base.commit_oid,old);self.assertEqual(f.owner.protected.head(),new)
+        self.assertTrue(proof['before_review_frozen']);self.assertFalse(proof['dispatch_authority'])
+
+    def test_historical_read_refuses_a_disconnected_accepted_lineage(self):
+        f=self.fixture(at_build_boundary=self.freeze);old=f.owner.protected.head()
+        tree=f.owner.protected._git('rev-parse',old+'^{tree}').strip()
+        other=f.owner.protected._git('commit-tree',tree,'-m','unrelated historical test root').strip()
+        f.owner.protected._git('update-ref','refs/heads/accepted',other,old)
+        with self.assertRaisesRegex(ValueError,'historical_base_not_in_accepted_lineage'):
+            ranked.reconstruct_frozen(f.owner,expected=f.chain.commitment,milestone='M2',generation=0,
+                limits=f.limits,historical=True)
