@@ -1,0 +1,2302 @@
+{
+  "audit_assertions": 84113,
+  "audit_path": "runs/workflow-profile-build-physical-audit-1/audit.json",
+  "audit_sha256": "06968bfaae26981546945d2dfb485f5a34f83a4df314fe92578f7f27e04f0294",
+  "audit_status": "passed",
+  "cases": [
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-FRAME-EXACT",
+      "census_sha256": "151eaca3f0ad04cf41b1b022f0aaf538c54e21a41b2f3f71017a5035814b48dc",
+      "details": {
+        "control_id": "WQ-FRAME-EXACT",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "9626396b89a318d629c1782768af0d64f7c2bfd807265cb9cc118469bdc609cc",
+        "external_bytes": 54897,
+        "head_sha256": "a16c5d4d77cd6c476f42aaa8a051d802a2a5e4d68e492da38b049aa05a3a9066",
+        "raw_bytes": 285296,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.040170585,
+          "checkpoint": 1.526525503,
+          "control": 0.886134331,
+          "current": 2.248302627,
+          "effect": 0.002457414,
+          "queue": 0.058340042,
+          "runtime": 0.237436959,
+          "source": 0.682062248,
+          "teardown": 0.034455999,
+          "write": 0.013713877
+        },
+        "instrumented_union_seconds": 5.729599585,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-FRAME-EXACT/raw-workflow-77963abc4bd74936b994e74798f783b5-timings.json",
+        "sha256": "5e4be0d51ebbd01d41daaf6228fda5084792ab93a85b5bcb25d8ae82bbb58458",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-FRAME-OVER",
+      "census_sha256": "bec9b071e6488ad55ba5457bff5dab8ffa0f39aa773f8144ee84b94b1d839d0a",
+      "details": {
+        "control_id": "WQ-FRAME-OVER",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "34f8551028d86b998db8304666a316e9c3801887e55ce0b2a7f7fe6011825ca9",
+        "external_bytes": 54895,
+        "head_sha256": "d7b53f9e5a231915e85b18dde513cd0d7c9005961701e15f6f0ef4683f30c788",
+        "raw_bytes": 285292,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.041725208,
+          "checkpoint": 1.49779696,
+          "control": 1.025001417,
+          "current": 2.261677377,
+          "effect": 0.002542332,
+          "queue": 0.051498166,
+          "runtime": 0.209679,
+          "source": 0.664888541,
+          "teardown": 0.029533168,
+          "write": 0.006156542
+        },
+        "instrumented_union_seconds": 5.790498711,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-FRAME-OVER/raw-workflow-111cd43c05da4b14b925736f4407b9c4-timings.json",
+        "sha256": "87ab6d74bd61ccadca2924ff13a1f6be575ff96fa61f22182267b01b9f3499ef",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-NORMALIZED-61824",
+      "census_sha256": "1067aa0212795918f8133b1f309c8d9003273a34347226ee2d00374fadf5a4d8",
+      "details": {
+        "control_id": "WQ-NORMALIZED-61824",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "49592ed76ead3c9ea38fba58c6ccf3db38d68a3ad7c03cfd31740f99759982fc",
+        "external_bytes": 54906,
+        "head_sha256": "a43428d859792c97ef24acbda49b0e8f5eea68e75778ba55413721e4d8e4fe45",
+        "raw_bytes": 216170,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.047713252,
+          "checkpoint": 1.602070759,
+          "control": 1.031108704,
+          "current": 2.393269708,
+          "effect": 0.00247216,
+          "queue": 0.059023792,
+          "runtime": 0.218512708,
+          "source": 0.670695543,
+          "teardown": 0.038002666,
+          "write": 0.005492292
+        },
+        "instrumented_union_seconds": 6.068361584,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-NORMALIZED-61824/raw-workflow-5231074f2249448d8f8913117e4c41e0-timings.json",
+        "sha256": "61e02a63f49bddc9f7df7cea973e49ede9afdc2369044d9a7f48aa810f7f14aa",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDERR-EXACT",
+      "census_sha256": "a3f2f641a7eb464e00b47a3dc24c5a40e050251d2d4fbc3015475783e76fac10",
+      "details": {
+        "control_id": "WQ-STDERR-EXACT",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "8cf0aad27949ab4e24c7a67bc4fda3aef89d019a8889d60d2bf2c61e889e5d4b",
+        "external_bytes": 54900,
+        "head_sha256": "1844599d35e13b318544560d2b35201bb4ace4c91e81ba959be56b357bfbb706",
+        "raw_bytes": 219821,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.039684042,
+          "checkpoint": 1.777114752,
+          "control": 1.621216669,
+          "current": 2.546843963,
+          "effect": 0.002778077,
+          "queue": 0.046828291,
+          "runtime": 0.247252417,
+          "source": 2.529703539,
+          "teardown": 0.035976625,
+          "write": 0.007292917
+        },
+        "instrumented_union_seconds": 8.854691292,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDERR-EXACT/raw-workflow-aa44c00d7d564ae3aff7a896f63b7a52-timings.json",
+        "sha256": "48c8b90820f8805de9dbf98b21dc7ae86305541217eb4aca4feceadc1209655d",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDERR-OVER",
+      "census_sha256": "e43e3eb661424545e3a06d20651db3989a613c08314170df22346a2ecff58c14",
+      "details": {
+        "control_id": "WQ-STDERR-OVER",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "862de081187ab7ec40035ff64923d3e9c3c6baade187213cec9e75ef0cde3554",
+        "external_bytes": 54898,
+        "head_sha256": "106243dc383af145e028e9c01b1a28636e6b575d43a511e2cf871308272a68f8",
+        "raw_bytes": 219815,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.049101455,
+          "checkpoint": 1.535501166,
+          "control": 0.85543604,
+          "current": 2.46856817,
+          "effect": 0.002608545,
+          "queue": 0.195723917,
+          "runtime": 0.255452541,
+          "source": 1.997806456,
+          "teardown": 0.031081458,
+          "write": 0.004987
+        },
+        "instrumented_union_seconds": 7.396266748,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDERR-OVER/raw-workflow-07ed945b7383446aae838d1e28683c06-timings.json",
+        "sha256": "cf857fc5617b4f6dd785e48719f847c93db58799d61e35af7baa259ddccb7719",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDOUT-EXACT",
+      "census_sha256": "8e7ce110b5878da7aff6e6fb58d243175f47feb24efd7f4884ba363b258b3d3a",
+      "details": {
+        "control_id": "WQ-STDOUT-EXACT",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "075e02da91744582009559260f3aebcb38018e824e9c77dea9013625a57e767e",
+        "external_bytes": 54899,
+        "head_sha256": "646756c4b3cfea1c082607a0eb921bc203b801d206a38c399475e8b33c111f88",
+        "raw_bytes": 678504,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.038244833,
+          "checkpoint": 1.608821129,
+          "control": 1.000509874,
+          "current": 2.856761045,
+          "effect": 0.002681913,
+          "queue": 0.062763959,
+          "runtime": 0.231779167,
+          "source": 0.957613084,
+          "teardown": 0.029874625,
+          "write": 0.008592958
+        },
+        "instrumented_union_seconds": 6.797642587,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDOUT-EXACT/raw-workflow-c23b28fd73e14847bca96e262780bee4-timings.json",
+        "sha256": "8882357be88540ba3028ad8752d214ff6dae157b4c34efeb711a865eafbaade7",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDOUT-OVER",
+      "census_sha256": "eecff72548959b6eab712cdbad625af3dbe69c74304aac8e8a3da661f55fd053",
+      "details": {
+        "control_id": "WQ-STDOUT-OVER",
+        "kind": "mechanism",
+        "original_status": "passed",
+        "product_acceptance_authority": false
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "14e79441d6b10d4ecd1a9189e64ecd3a6d3c7ab6959a34da4f9d4f5c4557cb9a",
+        "external_bytes": 54897,
+        "head_sha256": "6e994b2d6b7de4f5292cbd7033beb82efce1c97d359f4084adc59a65c7b5583d",
+        "raw_bytes": 678498,
+        "raw_file_count": 139,
+        "sequence": 139
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.04216825,
+          "checkpoint": 1.449293751,
+          "control": 0.85381521,
+          "current": 2.428587295,
+          "effect": 0.002230704,
+          "queue": 0.054497708,
+          "runtime": 0.213127625,
+          "source": 0.598907371,
+          "teardown": 0.029965918,
+          "write": 0.004884541
+        },
+        "instrumented_union_seconds": 5.677478373,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/140d8f45ff3db381/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalMechanismTests-wjxkstp4/WQ-STDOUT-OVER/raw-workflow-4a2d518470764313957f6c769c66709f-timings.json",
+        "sha256": "7abaf33ab7cf116d8b866f52197edc236d0f68c1ea4942540ea773b034cd72cc",
+        "spans": 254,
+        "stage_counts": {
+          "capture": 1,
+          "checkpoint": 100,
+          "control": 16,
+          "current": 40,
+          "effect": 47,
+          "queue": 1,
+          "runtime": 5,
+          "source": 40,
+          "teardown": 2,
+          "write": 2
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF09-empty-modes",
+      "census_sha256": "f4a2046aa84648547005892b510ab309d86a068c9f076a198160198c3bdeadba",
+      "details": {
+        "case_id": "WF09-empty-modes",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 6
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "9740101eb7d90e5e114cbe5902cf541aac8d53a61a46d2057aefb21a0d6630ae",
+        "external_bytes": 167791,
+        "head_sha256": "d6f5b843ca27e300ed047e800bc165f9a9a71ac62772e0411ddc1e2418aca471",
+        "raw_bytes": 1242016,
+        "raw_file_count": 429,
+        "sequence": 429
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.330045176,
+          "checkpoint": 13.254318365,
+          "control": 3.181319336,
+          "current": 10.96029564,
+          "effect": 0.010546363,
+          "queue": 0.214005627,
+          "runtime": 0.932846374,
+          "source": 4.870767995,
+          "teardown": 0.041327333,
+          "write": 0.024267
+        },
+        "instrumented_union_seconds": 33.819739209,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF09-empty-modes/raw-workflow-b898bf4c78664feb99ed556ad15c5677-timings.json",
+        "sha256": "0cf2297de039f437ee919afc73f25472ee37793df31ef11f622dadb083be7d29",
+        "spans": 832,
+        "stage_counts": {
+          "capture": 7,
+          "checkpoint": 304,
+          "control": 44,
+          "current": 144,
+          "effect": 151,
+          "queue": 7,
+          "runtime": 19,
+          "source": 144,
+          "teardown": 2,
+          "write": 10
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF10-defaults-and-export-selection",
+      "census_sha256": "c3bb4b91bd0cf0526144217690a6013f4642d9def25f7d31e3f2028d240f1a4b",
+      "details": {
+        "case_id": "WF10-defaults-and-export-selection",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 12
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "bd2a0618a0e6459c276e7ff558d72bcde195998402b49e83d7035e2cd7fc8b63",
+        "external_bytes": 107910,
+        "head_sha256": "3d6368d307d7ee1d0b723fdede7f283e9dbc975c0163c230c44b95eee70464d4",
+        "raw_bytes": 786051,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.200753788,
+          "checkpoint": 6.172405254,
+          "control": 2.237620867,
+          "current": 6.911759258,
+          "effect": 0.006765616,
+          "queue": 0.177786376,
+          "runtime": 0.574290583,
+          "source": 4.16739325,
+          "teardown": 0.041000501,
+          "write": 0.016506001
+        },
+        "instrumented_union_seconds": 20.506281494,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF10-defaults-and-export-selection/raw-workflow-f36ee2d7edf24cb0b68696207c5e7071-timings.json",
+        "sha256": "78f331b72540233e3d3303db60f0686df8f0483abcdb7a9db7e74c8219436aab",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF11-v0-unsupported-m1-continuation",
+      "census_sha256": "79d9d276b450d96472ab2cfb57886d29dc50ce898e57364b07f2185308279fee",
+      "details": {
+        "case_id": "WF11-v0-unsupported-m1-continuation",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 12
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "8e6e8f98c24865f7569e3a8fec544fd59247a316dd73d6602d68d8f1bde612aa",
+        "external_bytes": 125911,
+        "head_sha256": "821aaf3df49046495dc8bbb760893ce48d55e3fa0203ba44ee2bf787b27143e3",
+        "raw_bytes": 961538,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.228440044,
+          "checkpoint": 7.47101275,
+          "control": 2.174876287,
+          "current": 7.806216945,
+          "effect": 0.007508512,
+          "queue": 0.199904667,
+          "runtime": 0.629094664,
+          "source": 2.57548034,
+          "teardown": 0.041803583,
+          "write": 0.016269958
+        },
+        "instrumented_union_seconds": 21.15060775,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF11-v0-unsupported-m1-continuation/raw-workflow-412a6958febb4844b27e6874f11ee818-timings.json",
+        "sha256": "37a71ccbe385a2aa98137959124514c862aebab4ac50ed75018194a61f68e2fb",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF12-mixed-job-state-order-and-reopen",
+      "census_sha256": "185fdcf78eb9bae939cc317f5f1a817160277eb26896bab346860ede1c6e395b",
+      "details": {
+        "case_id": "WF12-mixed-job-state-order-and-reopen",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 27
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "a86104e62a0a23f8d406e0a9842c1810b69cab4771b2ab6438cdbe3a1be92f5d",
+        "external_bytes": 143915,
+        "head_sha256": "2460e5eab81a9fc263d358171288a3c40cb96b6ff40f44784849b724efbb50ca",
+        "raw_bytes": 1235463,
+        "raw_file_count": 367,
+        "sequence": 367
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.291425205,
+          "checkpoint": 11.033320626,
+          "control": 4.032141536,
+          "current": 10.021206128,
+          "effect": 0.010171425,
+          "queue": 0.219806916,
+          "runtime": 0.773487624,
+          "source": 9.217503667,
+          "teardown": 0.038815667,
+          "write": 0.023595122
+        },
+        "instrumented_union_seconds": 35.661473916,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF12-mixed-job-state-order-and-reopen/raw-workflow-4abdbe0727c14c709b3badae4184b1a3-timings.json",
+        "sha256": "2ead9d1fcdd9e2504f5a49cfc002e2cb790fcfee01fcaba556d3971af0364c91",
+        "spans": 724,
+        "stage_counts": {
+          "capture": 6,
+          "checkpoint": 265,
+          "control": 40,
+          "current": 125,
+          "effect": 132,
+          "queue": 6,
+          "runtime": 15,
+          "source": 125,
+          "teardown": 2,
+          "write": 8
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF13-domain-errors-continue",
+      "census_sha256": "0d15c24b1d3def7dbec0b056b80176820a46dc58f96d3b0286c5982f1acef9c2",
+      "details": {
+        "case_id": "WF13-domain-errors-continue",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 11
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "d24337a375be081203ab45e9ff6b7fb22f27288f83d0589fc73facd818caabbb",
+        "external_bytes": 107896,
+        "head_sha256": "b3c45b1f52f61598e1092336cab19d40e362a1e73fd783552603716cdd846251",
+        "raw_bytes": 759827,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.184044412,
+          "checkpoint": 5.506751254,
+          "control": 1.642810163,
+          "current": 6.395747363,
+          "effect": 0.006264547,
+          "queue": 0.196172999,
+          "runtime": 0.511112041,
+          "source": 2.113755633,
+          "teardown": 0.032839999,
+          "write": 0.014861961
+        },
+        "instrumented_union_seconds": 16.604360372,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF13-domain-errors-continue/raw-workflow-13903a0eee98486b99d77c705b33f9fb-timings.json",
+        "sha256": "2d4c4cade602d4c5ceee809e778fc8b8595ad61a9455c9fd92375af2e124d50d",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF14-exact64-operations",
+      "census_sha256": "e2f12e773739f198ecf3f2fb449571bc7cf52939951cb3cd241bae598acc6d52",
+      "details": {
+        "case_id": "WF14-exact64-operations",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 68
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "5072b081be2f585a6587425686ecf6e47dde85cd2b5d1d2a9e832c37d05d06df",
+        "external_bytes": 107891,
+        "head_sha256": "0788312bc6d264488cc0011528d549631211661f350f5d4bfe7158590a635ba6",
+        "raw_bytes": 875709,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.185731874,
+          "checkpoint": 5.523533545,
+          "control": 2.156535423,
+          "current": 6.873837621,
+          "effect": 0.006394488,
+          "queue": 0.203980458,
+          "runtime": 0.47198375,
+          "source": 2.554120177,
+          "teardown": 0.036459957,
+          "write": 0.013610708
+        },
+        "instrumented_union_seconds": 18.026188001,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF14-exact64-operations/raw-workflow-c41764df8e0540a5ba707ace9aa3c269-timings.json",
+        "sha256": "9998f53ced7863ca75c4ead8d8121b55c7895a771b23342e06c7a77d2789e80c",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF15-existing-job-token-domain",
+      "census_sha256": "3d40f4e04afebaff0c2cb9f2ac9c6b2ab5c1db44296502aab8c68c0f4754a980",
+      "details": {
+        "case_id": "WF15-existing-job-token-domain",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 14
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "1b666c0c707b7503217e1ac9db407cb6a8ac10f025a5652fb9d26cae48a10a8b",
+        "external_bytes": 107900,
+        "head_sha256": "7eab6d1ed1a7a8026cc5e0f60075f87daf3f3553a159dac6fb431d1a368113ba",
+        "raw_bytes": 756838,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.178824874,
+          "checkpoint": 5.896308246,
+          "control": 2.384037744,
+          "current": 7.137336832,
+          "effect": 0.00700626,
+          "queue": 0.182063875,
+          "runtime": 0.525938207,
+          "source": 3.981518084,
+          "teardown": 0.029964082,
+          "write": 0.014781121
+        },
+        "instrumented_union_seconds": 20.337779325,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF15-existing-job-token-domain/raw-workflow-e177e7acc3924085a33b70768cd8f577-timings.json",
+        "sha256": "6112c666c330ece88ebaae65df2257be567df57886d256934196b201bc30bb1c",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF16-absent-token-and-hook-distinction",
+      "census_sha256": "4c528801a15b6c39e0c315bf8ae4eced11ff8063973743d923308d5ba997780a",
+      "details": {
+        "case_id": "WF16-absent-token-and-hook-distinction",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 20
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "cfad56ba5d55663220c7f5cfbf4929bb87c58374110dd6574595eebe08655c16",
+        "external_bytes": 107916,
+        "head_sha256": "ce9cf7135b59f80742a00240059cfb0b2d71ee128c8934a9577399306bc9e849",
+        "raw_bytes": 769717,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.182288078,
+          "checkpoint": 5.598256176,
+          "control": 1.906014415,
+          "current": 6.93425267,
+          "effect": 0.006375416,
+          "queue": 0.191988874,
+          "runtime": 0.465821168,
+          "source": 2.658963166,
+          "teardown": 0.036299584,
+          "write": 0.014155957
+        },
+        "instrumented_union_seconds": 17.994415504,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF16-absent-token-and-hook-distinction/raw-workflow-5ec521845470463194c48e81e885d5f4-timings.json",
+        "sha256": "7deb0d53e19bf0fd5e70c02242ffb8650f00732971d576c25b739cfeb972ab77",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF17-normalized-answer-growth",
+      "census_sha256": "609c5224e779d6e25250e6783a1ee35f43616b4ad24312b70b213d37638e385a",
+      "details": {
+        "case_id": "WF17-normalized-answer-growth",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 6
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "45a0f98098b69080711e980d949b7fd65dbbff38b433ed17e7ee2078f8be51c0",
+        "external_bytes": 107907,
+        "head_sha256": "51981444a29711f31523e3469fae9096d6a4f045e5d9f62e9ed41f683f1533b3",
+        "raw_bytes": 1407639,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.183262043,
+          "checkpoint": 5.879518578,
+          "control": 2.859597919,
+          "current": 7.19461175,
+          "effect": 0.006278372,
+          "queue": 0.189407875,
+          "runtime": 0.597383542,
+          "source": 5.190546458,
+          "teardown": 0.034876542,
+          "write": 0.013935669
+        },
+        "instrumented_union_seconds": 22.149418748,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF17-normalized-answer-growth/raw-workflow-ff1ee22fb3ac4a0d81cc690d80ef5b36-timings.json",
+        "sha256": "65f7e445bc0ebe5dcdc75a25b56a790e1c7ffb7e7b7dd9363ddf978d9a8684cf",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF18-same-process-call-isolation",
+      "census_sha256": "890e7b0ae25ae189aa83e704eadbc507c309c40ee13e11a66ec04273776cb1bf",
+      "details": {
+        "case_id": "WF18-same-process-call-isolation",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 20
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "52a2599d39da1e354331be45194e52bc56889771b0aa0da6ed3cb1063bc038f4",
+        "external_bytes": 245751,
+        "head_sha256": "628e8d17bacd914edc2b0f7ea02ab4002158ca7ce3b34d4ee4e42f32c932a95a",
+        "raw_bytes": 2011434,
+        "raw_file_count": 629,
+        "sequence": 629
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.526508792,
+          "checkpoint": 27.930565208,
+          "control": 4.271733172,
+          "current": 16.236847916,
+          "effect": 0.016840786,
+          "queue": 0.276118251,
+          "runtime": 1.434032795,
+          "source": 8.985938707,
+          "teardown": 0.034198292,
+          "write": 0.038558248
+        },
+        "instrumented_union_seconds": 59.751342167,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF18-same-process-call-isolation/raw-workflow-beb41dc79a6242ab9b397e6c4d7ab24e-timings.json",
+        "sha256": "82e8ad3548c656a6099b409f78a64c523974d0cef146b282fa6b3a80fe1ffbf9",
+        "spans": 1222,
+        "stage_counts": {
+          "capture": 11,
+          "checkpoint": 442,
+          "control": 63,
+          "current": 214,
+          "effect": 221,
+          "queue": 11,
+          "runtime": 29,
+          "source": 214,
+          "teardown": 2,
+          "write": 15
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF19-provisional-fault-boundary",
+      "census_sha256": "edb67b4e3ce46433a3053b1f0c9ba94088e46d69b9bb92f90fe79874d294404a",
+      "details": {
+        "case_id": "WF19-provisional-fault-boundary",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 28
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "18d81c9b56079ae7927119cb69e3c6191a10c26848a4d86e832a2e539a84a172",
+        "external_bytes": 161902,
+        "head_sha256": "56599a72c73e7f1ae6e9e290eaf69b016c3ec0fb98bdac9d1dad1b48e8d7d1b9",
+        "raw_bytes": 1452918,
+        "raw_file_count": 413,
+        "sequence": 413
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.314337623,
+          "checkpoint": 12.22797763,
+          "control": 3.64066033,
+          "current": 10.403523746,
+          "effect": 0.010141583,
+          "queue": 0.217104584,
+          "runtime": 0.745100293,
+          "source": 3.76657388,
+          "teardown": 0.030917626,
+          "write": 0.021396459
+        },
+        "instrumented_union_seconds": 31.377733754,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF19-provisional-fault-boundary/raw-workflow-87ea3e87c77a49478dddd6b6783cb159-timings.json",
+        "sha256": "8d5fa2624328f3bddc2c4c1f88f2207f2fe3f5da92d2c555b8432166050b1c81",
+        "spans": 818,
+        "stage_counts": {
+          "capture": 7,
+          "checkpoint": 298,
+          "control": 45,
+          "current": 142,
+          "effect": 149,
+          "queue": 7,
+          "runtime": 17,
+          "source": 142,
+          "teardown": 2,
+          "write": 9
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF20-invalid-query-options-continue",
+      "census_sha256": "9e3f776a79cd05101897267caa65870cbe4ab5799d01b66c2e217f8b6478d0b2",
+      "details": {
+        "case_id": "WF20-invalid-query-options-continue",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 9
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "0d2b18d9733fc918e9616e0eecef08ea165e7a361dbf822aff818cb9184002d3",
+        "external_bytes": 107909,
+        "head_sha256": "02641eeb12a925a49f38c4d849410f8ecabe3d3783205bdb29432050bc03cece",
+        "raw_bytes": 742119,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.194604045,
+          "checkpoint": 5.673925505,
+          "control": 2.234905624,
+          "current": 7.126474204,
+          "effect": 0.006262417,
+          "queue": 0.195435209,
+          "runtime": 0.497053291,
+          "source": 3.795187583,
+          "teardown": 0.032995375,
+          "write": 0.017817875
+        },
+        "instrumented_union_seconds": 19.774661128,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-WF20-invalid-query-options-continue/raw-workflow-c9979e13ee064534b1b5740e86f8e027-timings.json",
+        "sha256": "99b484da120998b5db0513334a12c1435d0c8a3949a2f8ace909538bacd8e45a",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-errors-preserve-catalog",
+      "census_sha256": "8b687af588dc31260f99440c35e746e40b848b0555b056b126143cd9b1c762bb",
+      "details": {
+        "case_id": "errors-preserve-catalog",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 10
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "e8a149b94f96f43b1ea3853fec3a42c7ebdfad9738b2338527e2104418db609d",
+        "external_bytes": 107878,
+        "head_sha256": "9d0fe39e62a69123868fed42ba7ff015a958b1d2387243185443d7414663e20f",
+        "raw_bytes": 751028,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.338306627,
+          "checkpoint": 14.377453455,
+          "control": 5.719339498,
+          "current": 16.203893538,
+          "effect": 0.012948584,
+          "queue": 0.504150167,
+          "runtime": 0.927857041,
+          "source": 8.760278168,
+          "teardown": 0.064813209,
+          "write": 0.054258167
+        },
+        "instrumented_union_seconds": 46.963298454,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-errors-preserve-catalog/raw-workflow-b82ef4f63dd84e78a20e35945e813df8-timings.json",
+        "sha256": "12178f62378abc8fbec684891d124d6baafabf70954f659d7e88eee162205dc5",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-identity-and-replay",
+      "census_sha256": "2185cb0067616716f1474e9dd5e5d24d0c2af7cf4557508301c979854779d4b6",
+      "details": {
+        "case_id": "identity-and-replay",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 10
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "7565cf95a893d1deb20b12f790b369122f49751c81edb99543d6466033783174",
+        "external_bytes": 107872,
+        "head_sha256": "23be1989993884c25fa3195458a02750228a3ec1bdcdb591f8e64fbd7dff03e9",
+        "raw_bytes": 772071,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.443454626,
+          "checkpoint": 10.07647033,
+          "control": 3.104336834,
+          "current": 10.537755294,
+          "effect": 0.01447312,
+          "queue": 0.231242292,
+          "runtime": 0.942826916,
+          "source": 7.116742254,
+          "teardown": 0.16389396,
+          "write": 0.030112709
+        },
+        "instrumented_union_seconds": 32.661308335,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-identity-and-replay/raw-workflow-16d4b63bfa38427180b47fb2443ec18b-timings.json",
+        "sha256": "7e37071117009889d78fa2b6896879d4a329ea238991966c0a8ac0ca6e10db6a",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-inherited-text-persistence",
+      "census_sha256": "0ed7ba1084add3648242dcd9bb4a7a0ec79a56dbd4ffcbcfb5bbbfda746d8357",
+      "details": {
+        "case_id": "inherited-text-persistence",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 9
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "c7127f2c6bedc93e38cc9196972e3db4c6c4eee572d543c6249409266ed2189c",
+        "external_bytes": 125885,
+        "head_sha256": "38cd11d395ec7c2c4c40626864f979cdaab254b22c88274a73fa20962ec06997",
+        "raw_bytes": 968344,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.223792625,
+          "checkpoint": 7.918653678,
+          "control": 2.271085659,
+          "current": 8.056383469,
+          "effect": 0.00780032,
+          "queue": 0.183779917,
+          "runtime": 0.567311168,
+          "source": 2.899891247,
+          "teardown": 0.041967457,
+          "write": 0.017981921
+        },
+        "instrumented_union_seconds": 22.188647461,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-inherited-text-persistence/raw-workflow-5f534f83479a47dba53e1094adb1cfdb-timings.json",
+        "sha256": "fdb59818d8d7c9d42f9cea0d547201ddce42977946b0dfb8b908e6fe3fbe1781",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-atomic-conflict-after-prepare",
+      "census_sha256": "988fb800a4312b82180595a74d6122398464f8330ffaee4347bc2f8614934087",
+      "details": {
+        "case_id": "m1-atomic-conflict-after-prepare",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 10
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "86b03edd76065b910fe6674c39b1031225bd70760911a127e456e590a9ac2c45",
+        "external_bytes": 107898,
+        "head_sha256": "49afd7e7dd93188787d161d4b67d1511435b1bf2f4f0631048c6e3cce729c6c7",
+        "raw_bytes": 757250,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.276422665,
+          "checkpoint": 6.657606334,
+          "control": 1.790291126,
+          "current": 8.154152868,
+          "effect": 0.008360214,
+          "queue": 0.228986374,
+          "runtime": 0.550351916,
+          "source": 2.604887294,
+          "teardown": 0.042929126,
+          "write": 0.016575542
+        },
+        "instrumented_union_seconds": 20.330563459,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-atomic-conflict-after-prepare/raw-workflow-832dfba5cd684be883a8afacdb3155d4-timings.json",
+        "sha256": "98513adc15eaf984e6e8e4e313421fd433c6641d4577369dd329d502ff31350e",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-cancel-fences-old-token",
+      "census_sha256": "c31320f7176fefcd292ed1e9aa0ad25508a4f87dbfb6aaeb9775922d165ae4d3",
+      "details": {
+        "case_id": "m1-cancel-fences-old-token",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 13
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "451d40b00fbf6f1a5bfd7c5e0b6b80bce3078ef5e921eb20150f1155968e0122",
+        "external_bytes": 125885,
+        "head_sha256": "f39ffcef660f699e469176932dd5c75662ffb1a99d3e95cc5f1f5f32536e54eb",
+        "raw_bytes": 973500,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.404727252,
+          "checkpoint": 12.679594459,
+          "control": 3.832767839,
+          "current": 16.770693715,
+          "effect": 0.012698452,
+          "queue": 0.333875749,
+          "runtime": 1.117458705,
+          "source": 7.70484133,
+          "teardown": 0.042121417,
+          "write": 0.036171206
+        },
+        "instrumented_union_seconds": 42.934950124,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-cancel-fences-old-token/raw-workflow-f29ce76c6e6a4bfd9c94fd1c32290758-timings.json",
+        "sha256": "e4cda440eee0782399caac39aa53cc760306938bd9c90cb86693239b1ed43f1c",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-injected-transaction-failure",
+      "census_sha256": "d01c70b44dd234a017a93aff629c95060aa1489c250e531a15350ba27ec9e776",
+      "details": {
+        "case_id": "m1-injected-transaction-failure",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 12
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "0280857e197297b5ed11e22cf4ba3868c329b68080af3d5ee26bbac0a2459d57",
+        "external_bytes": 125895,
+        "head_sha256": "f390f50116859bd450f5093ced8582c9513cfeac5206bdeebd5e6fb17c55b14f",
+        "raw_bytes": 974959,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.229298585,
+          "checkpoint": 7.703395463,
+          "control": 2.322948077,
+          "current": 8.082384875,
+          "effect": 0.008010499,
+          "queue": 0.22922575,
+          "runtime": 0.565061584,
+          "source": 4.111716878,
+          "teardown": 0.041484498,
+          "write": 0.018802246
+        },
+        "instrumented_union_seconds": 23.312328455,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-injected-transaction-failure/raw-workflow-a6b0e2d37374436488722546fa1801ae-timings.json",
+        "sha256": "2dd64f060243b27d0d4067318a9555b170a08203ed727fcb09b7313082387cbf",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-invalid-member-rolls-back",
+      "census_sha256": "b1dc7581d9dbe69e9e0e3ab31652664cd07aec946278f34479c0b47304a50c50",
+      "details": {
+        "case_id": "m1-invalid-member-rolls-back",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 8
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "3dcf2f0fba6b51302fd19508ae58f0f1041c280dd817478a195909b9fb8b27e3",
+        "external_bytes": 107887,
+        "head_sha256": "4b0d7d40a62ad3331077f75b8c3601cd1b9fad1af7d7419840959c71b0d23479",
+        "raw_bytes": 741629,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.194388706,
+          "checkpoint": 5.658496005,
+          "control": 2.11624517,
+          "current": 6.878124294,
+          "effect": 0.006221363,
+          "queue": 0.208836249,
+          "runtime": 0.472056334,
+          "source": 3.466825585,
+          "teardown": 0.031192417,
+          "write": 0.013942542
+        },
+        "instrumented_union_seconds": 19.046328665,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-invalid-member-rolls-back/raw-workflow-c6d554e61bef4c4894488e33751f16bc-timings.json",
+        "sha256": "64951210f7a5e9c5a0055578cb4f9c84cb065317beb2bf84a7ccebfc1af6ef83",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-per-source-provenance",
+      "census_sha256": "255b67b736d8060051c866eb1f6cdde5c7601cfef9c35995dd830c4f189099ad",
+      "details": {
+        "case_id": "m1-per-source-provenance",
+        "kind": "reference",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "passed": 9
+        },
+        "variant": "reference"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "ac9cd3b226e95829affa8590147d7e9e37798f62a7f9e282e0f03e599a8d74c2",
+        "external_bytes": 125881,
+        "head_sha256": "c71e120475b545572c90fa5cdfb8366cbe96b58df8dc04fefa764ef74e6becfc",
+        "raw_bytes": 968379,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.25353979,
+          "checkpoint": 8.527433133,
+          "control": 3.382290698,
+          "current": 9.035952329,
+          "effect": 0.008955176,
+          "queue": 0.226910501,
+          "runtime": 0.670710377,
+          "source": 5.561022956,
+          "teardown": 0.037741125,
+          "write": 0.018838792
+        },
+        "instrumented_union_seconds": 27.723394877,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/42afdb4c26ce2771/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalPositiveTests-x4xz5sst/reference-m1-per-source-provenance/raw-workflow-12b34a8459ac4a759119c0972d22bd1c-timings.json",
+        "sha256": "b0c63e6674425e29ac9ab10cb901237921cebb3be72bfa3cfe35e791e2563eb9",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/after-commit-fault-WF19-provisional-fault-boundary",
+      "census_sha256": "dabb7595e02ace507595ffa817a54876fcb22b92ffe87a98ff87eca8b348ffab",
+      "details": {
+        "case_id": "WF19-provisional-fault-boundary",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 8,
+          "passed": 20
+        },
+        "variant": "after-commit-fault"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "d76565ddddbfa9c91437fadcaeb9929b02e09e9c1a95355e889b40a80eb23403",
+        "external_bytes": 161916,
+        "head_sha256": "eb5156f7f32ab07fab97957aec0545163e0a37144aa314dca9b13152be01d08c",
+        "raw_bytes": 1466375,
+        "raw_file_count": 413,
+        "sequence": 413
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.325489744,
+          "checkpoint": 12.521770798,
+          "control": 2.601048214,
+          "current": 10.782660995,
+          "effect": 0.01041087,
+          "queue": 0.201453165,
+          "runtime": 0.838417209,
+          "source": 3.853482,
+          "teardown": 0.038031541,
+          "write": 0.02055692
+        },
+        "instrumented_union_seconds": 31.193321456,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/after-commit-fault-WF19-provisional-fault-boundary/raw-workflow-72fbf3bd75104a19b3a85a5753508938-timings.json",
+        "sha256": "652cdc861bc01f160b186f103d2dcccc1d298b964a53e6f3dddcf2d843803706",
+        "spans": 818,
+        "stage_counts": {
+          "capture": 7,
+          "checkpoint": 298,
+          "control": 45,
+          "current": 142,
+          "effect": 149,
+          "queue": 7,
+          "runtime": 17,
+          "source": 142,
+          "teardown": 2,
+          "write": 9
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/empty-export-is-all-WF10-defaults-and-export-selection",
+      "census_sha256": "ac582e4d610402bc334bfd4e692e9f0e725abe216b5c8199c09967e78a04943b",
+      "details": {
+        "case_id": "WF10-defaults-and-export-selection",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 1,
+          "passed": 11
+        },
+        "variant": "empty-export-is-all"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "8e8d983a0778d427fff1fd05569787b9573db6667ef22a4c09f4dc50185f35a1",
+        "external_bytes": 107926,
+        "head_sha256": "f39d55b6f29c3ce80dde267a3b05724fb700be69640599f9d6372656e33a1032",
+        "raw_bytes": 788575,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.186057667,
+          "checkpoint": 5.679787126,
+          "control": 2.64202779,
+          "current": 6.915643593,
+          "effect": 0.00647712,
+          "queue": 0.206577624,
+          "runtime": 0.588583336,
+          "source": 5.181840577,
+          "teardown": 0.034534791,
+          "write": 0.0171655
+        },
+        "instrumented_union_seconds": 21.458695124,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/empty-export-is-all-WF10-defaults-and-export-selection/raw-workflow-5ab1b972df2c464c85e067a4a5905f3b-timings.json",
+        "sha256": "34cc74192b709b93321fc134a57798c59b8dabc2e8b2cf3eebebb894add3dc24",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/fresh-reopen-inherited-text-persistence",
+      "census_sha256": "3a4f9f905899ede9725a1b42830e10cd0decad215ffbd1c514df18dbf40137ac",
+      "details": {
+        "case_id": "inherited-text-persistence",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 4,
+          "passed": 5
+        },
+        "variant": "fresh-reopen"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "ed92ecce7136142f65b410e53d8703d496847ca1c4d184fda9a4d74ef0bedd94",
+        "external_bytes": 125885,
+        "head_sha256": "d75e1c1d1c419224fb98b88cf38b27e73fbbfbb76130fce88b424583d0ba1940",
+        "raw_bytes": 962395,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.270887293,
+          "checkpoint": 9.077769666,
+          "control": 2.132727088,
+          "current": 9.394070001,
+          "effect": 0.009162499,
+          "queue": 0.189049292,
+          "runtime": 0.720537709,
+          "source": 3.333871537,
+          "teardown": 0.032549125,
+          "write": 0.01987954
+        },
+        "instrumented_union_seconds": 25.18050375,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/fresh-reopen-inherited-text-persistence/raw-workflow-6614d0b6bc2c4b7ba809b90980b0d450-timings.json",
+        "sha256": "25ecb773099b568f24d139c72ae88dde8e74bbd64c243003e812eeb6b754a369",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/lookup-before-token-WF16-absent-token-and-hook-distinction",
+      "census_sha256": "30c4e04c604b392129062b10383cb2af1f56a70df1d5d270675e83916bed17a9",
+      "details": {
+        "case_id": "WF16-absent-token-and-hook-distinction",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 10,
+          "passed": 10
+        },
+        "variant": "lookup-before-token"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "7802741776cede102a6953e75a963e1a1258fcf148909704b4eea62de8c88527",
+        "external_bytes": 107931,
+        "head_sha256": "6ef2d0e2a3279e9829e0f6b12a5e040112ff528c45abbda1aeef5c07a0463f3f",
+        "raw_bytes": 770179,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.191161082,
+          "checkpoint": 5.993339714,
+          "control": 2.727926908,
+          "current": 7.351519245,
+          "effect": 0.007192211,
+          "queue": 0.237268625,
+          "runtime": 0.494070916,
+          "source": 6.208156172,
+          "teardown": 0.034535124,
+          "write": 0.01617725
+        },
+        "instrumented_union_seconds": 23.261347247,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-ee7d650200364ce495c7759c0f593eae-timings.json",
+        "sha256": "b72bccbb15e7e613b92d6d2cb617c6005c3fcd16fae755f0ee6b4a95b61dd3ca",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/old-epoch-comparator-m1-cancel-fences-old-token",
+      "census_sha256": "d8e8c8372a8f18308913e0c387b8a530148a5c4f2b99cb92f0034b37f0db7752",
+      "details": {
+        "case_id": "m1-cancel-fences-old-token",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 1,
+          "passed": 12
+        },
+        "variant": "old-epoch-comparator"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "d6fc32dea19918d983a2778a3ea5670d2a2d4ad3f33e324b80720421d15813e5",
+        "external_bytes": 125903,
+        "head_sha256": "0ad6e5251478055531763e9234b9a4636f0766c2b586d6d9500f459866e3613c",
+        "raw_bytes": 973649,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.22035813,
+          "checkpoint": 7.616253533,
+          "control": 2.165150167,
+          "current": 8.453540666,
+          "effect": 0.008116336,
+          "queue": 0.191315083,
+          "runtime": 0.573330167,
+          "source": 3.019948123,
+          "teardown": 0.039970207,
+          "write": 0.018027126
+        },
+        "instrumented_union_seconds": 22.306009538,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/old-epoch-comparator-m1-cancel-fences-old-token/raw-workflow-66dbd380298044afac0d6c824b971f98-timings.json",
+        "sha256": "75fb7be758fb90cc82555e32eb7a32e71c62608a0ca964b0a904708e47d280bb",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/reused-root-WF18-same-process-call-isolation",
+      "census_sha256": "6c742a3b5a257658e86671859d419cfed0a28853c7020b69f47c98b55cc22764",
+      "details": {
+        "case_id": "WF18-same-process-call-isolation",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 8,
+          "passed": 12
+        },
+        "variant": "reused-root"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "9bf1c0cefc67092e4aa3df2a98ed5d051a8d4aa32c8844d071431fea13bbee61",
+        "external_bytes": 245759,
+        "head_sha256": "90ba1ebeaea1d43588701f09f64e86f2d7e201116ca088b97881f4b1df677595",
+        "raw_bytes": 2438467,
+        "raw_file_count": 629,
+        "sequence": 629
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.583354331,
+          "checkpoint": 36.431570111,
+          "control": 5.015184039,
+          "current": 18.69273993,
+          "effect": 0.019469801,
+          "queue": 0.230468791,
+          "runtime": 1.614295377,
+          "source": 11.260063449,
+          "teardown": 0.056068876,
+          "write": 0.046093914
+        },
+        "instrumented_union_seconds": 73.949308619,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/reused-root-WF18-same-process-call-isolation/raw-workflow-5d1dbe15bdef499dab65634771717fe7-timings.json",
+        "sha256": "71e32c6c68e824535e362efb277186a9623c8cf98cfb5904b778d359cd5c1f6b",
+        "spans": 1222,
+        "stage_counts": {
+          "capture": 11,
+          "checkpoint": 442,
+          "control": 63,
+          "current": 214,
+          "effect": 221,
+          "queue": 11,
+          "runtime": 29,
+          "source": 214,
+          "teardown": 2,
+          "write": 15
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/reverse-final-jobs-WF12-mixed-job-state-order-and-reopen",
+      "census_sha256": "b32d794afd8528eb659d4c287b075562a4b1c758832624e5c4832f455d3edc5d",
+      "details": {
+        "case_id": "WF12-mixed-job-state-order-and-reopen",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 1,
+          "passed": 26
+        },
+        "variant": "reverse-final-jobs"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "5ea5729769a7d6dd4c0ac78659ea569a2cbf6826b806a5f03d103b2ec882bb0f",
+        "external_bytes": 143929,
+        "head_sha256": "f89f979ebc77236e87fb607f2ae80bb51daf23892eab460df7217252bcc7d67c",
+        "raw_bytes": 1235601,
+        "raw_file_count": 367,
+        "sequence": 367
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.280029832,
+          "checkpoint": 9.554661968,
+          "control": 3.117231625,
+          "current": 9.320771196,
+          "effect": 0.009319872,
+          "queue": 0.246562917,
+          "runtime": 0.685536998,
+          "source": 5.764132258,
+          "teardown": 0.029804875,
+          "write": 0.019843873
+        },
+        "instrumented_union_seconds": 29.027895414,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/reverse-final-jobs-WF12-mixed-job-state-order-and-reopen/raw-workflow-39f6ed8cfa3943b0ae696cf61d51e040-timings.json",
+        "sha256": "24b77e82983f665bc2a16fedf232dfa5ebc0df9e852de618ace77d0bf78ecf65",
+        "spans": 724,
+        "stage_counts": {
+          "capture": 6,
+          "checkpoint": 265,
+          "control": 40,
+          "current": 125,
+          "effect": 132,
+          "queue": 6,
+          "runtime": 15,
+          "source": 125,
+          "teardown": 2,
+          "write": 8
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/rollback-orphan-WF19-provisional-fault-boundary",
+      "census_sha256": "841bc610881fcb2df3304bd5914067a6be0b232a638b63ead7a0cbd27c08ab59",
+      "details": {
+        "case_id": "WF19-provisional-fault-boundary",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": false,
+          "status": "infrastructure_error",
+          "unavailable": [
+            "call-000:Original evidence absent: call-000-frame-004.bin",
+            "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+          ]
+        },
+        "outcome_counts": {
+          "failed": 4,
+          "infrastructure_error": 16,
+          "passed": 8
+        },
+        "variant": "rollback-orphan"
+      },
+      "infrastructure": [
+        "ExecutionError:Complete bounded workflow frame unavailable"
+      ],
+      "prefix": {
+        "context_sha256": "d7b80febc0095d5813753a803455010f7f8811d30163c06936c48a63cd94aa20",
+        "external_bytes": 125804,
+        "head_sha256": "44f59a20144d6e9c7357c3ed36397591806409a85b3b004f52420cf661543d71",
+        "raw_bytes": 1172983,
+        "raw_file_count": 320,
+        "sequence": 320
+      },
+      "qualified": true,
+      "terminal_status": "infrastructure_error",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.224040378,
+          "checkpoint": 7.093223916,
+          "control": 2.635461289,
+          "current": 7.696152415,
+          "effect": 0.007549375,
+          "queue": 0.1957495,
+          "runtime": 0.579215458,
+          "source": 2.576907626,
+          "teardown": 0.050723001,
+          "write": 0.014787084
+        },
+        "instrumented_union_seconds": 21.073810042,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/rollback-orphan-WF19-provisional-fault-boundary/raw-workflow-e71b392a2b72442a88dc0086b2d1c8c8-timings.json",
+        "sha256": "67aea4dabc83c01f7f1c1e51a31d95939c233044e5e3ce9dd4a0691adac5572c",
+        "spans": 618,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 224,
+          "control": 36,
+          "current": 106,
+          "effect": 113,
+          "queue": 6,
+          "runtime": 13,
+          "source": 106,
+          "teardown": 3,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/stop-after-error-WF13-domain-errors-continue",
+      "census_sha256": "28146ccc2bee5cf8fc77917c7db0756b836c9678ba0e2becc8be6f504002bb75",
+      "details": {
+        "case_id": "WF13-domain-errors-continue",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 2,
+          "infrastructure_error": 6,
+          "passed": 3
+        },
+        "variant": "stop-after-error"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "e0e5b51fbb0b03ed4c1853e2c7c73e98ab6b11e4a1af9a61188e1559bb71427d",
+        "external_bytes": 107903,
+        "head_sha256": "a19aee7dbdc8f1365cb7136a65a1e55b4e915aa0e2218e3b2ea35fca2b3f2b6f",
+        "raw_bytes": 750263,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.212995876,
+          "checkpoint": 6.847599378,
+          "control": 2.865306827,
+          "current": 7.513476707,
+          "effect": 0.007432335,
+          "queue": 0.179761542,
+          "runtime": 0.589261375,
+          "source": 5.014984541,
+          "teardown": 0.036764584,
+          "write": 0.01834658
+        },
+        "instrumented_union_seconds": 23.285929745,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/stop-after-error-WF13-domain-errors-continue/raw-workflow-8171b02253a04d1da206b528f366684c-timings.json",
+        "sha256": "ae3f43113eacc32f0a41c7ef42c8aff353e3d60b30ad087eccbf3eb037ee7758",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/unbounded-epoch-WF15-existing-job-token-domain",
+      "census_sha256": "30f550f1ddf28dabb7281c28d346837299b9ce915aca8bb0860fcbadd1d818f7",
+      "details": {
+        "case_id": "WF15-existing-job-token-domain",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 2,
+          "passed": 12
+        },
+        "variant": "unbounded-epoch"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "2c2827e8128b039950146aa408ef9e72fea720efddd92b56fc2d57cc690f9aaf",
+        "external_bytes": 107908,
+        "head_sha256": "bad14d58f28e547adbacda8ca95fb764dad02aef1493ba461ea56d2e2cd075f0",
+        "raw_bytes": 756957,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.176199001,
+          "checkpoint": 5.631126445,
+          "control": 1.944515541,
+          "current": 7.020837798,
+          "effect": 0.006629466,
+          "queue": 0.176486709,
+          "runtime": 0.500919875,
+          "source": 2.575819371,
+          "teardown": 0.030626999,
+          "write": 0.016977874
+        },
+        "instrumented_union_seconds": 18.080139079,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/unbounded-epoch-WF15-existing-job-token-domain/raw-workflow-946d089fa6e843ffab5e58ef927531bc-timings.json",
+        "sha256": "572c359c69789dc09e61997a64639423d2f946d002f5ecc32f8d02a66f588e8e",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        },
+        "truncated": false
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/v0-job-dispatch-WF11-v0-unsupported-m1-continuation",
+      "census_sha256": "0bc1163b0fc550733f10b0e5842bbf12a250b4491ac85034f34bca5da327a673",
+      "details": {
+        "case_id": "WF11-v0-unsupported-m1-continuation",
+        "kind": "defect",
+        "mechanics": {
+          "cleanup_verified": true,
+          "prestart_verified": true,
+          "session_complete": true,
+          "status": "passed",
+          "unavailable": []
+        },
+        "outcome_counts": {
+          "failed": 6,
+          "passed": 6
+        },
+        "variant": "v0-job-dispatch"
+      },
+      "infrastructure": [],
+      "prefix": {
+        "context_sha256": "6b5e8e6ec1ff2ba4884e6be6feff53e0e397740d6aa2a9e71f8990051c54aa80",
+        "external_bytes": 125919,
+        "head_sha256": "abef754736c6ccd9f4a8fa50995f88e56e65e59e476fcadb64ed716a869acb5e",
+        "raw_bytes": 963554,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "qualified": true,
+      "terminal_status": "completed",
+      "timings": {
+        "exclusive_seconds": {
+          "capture": 0.306433421,
+          "checkpoint": 9.243791035,
+          "control": 2.778651469,
+          "current": 9.7654595,
+          "effect": 0.009290081,
+          "queue": 0.194016584,
+          "runtime": 0.685032,
+          "source": 6.062485083,
+          "teardown": 0.033457333,
+          "write": 0.020786457
+        },
+        "instrumented_union_seconds": 29.099402963,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-wcx9sfc3/v0-job-dispatch-WF11-v0-unsupported-m1-continuation/raw-workflow-01c0f5b5ac654fdea8de4666bef21744-timings.json",
+        "sha256": "71d91587c33b08057b1f0939a3c35f97ea4fd827e9324ee0c67b0d04a94cfb75",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        },
+        "truncated": false
+      }
+    }
+  ],
+  "draft_alias_correction": "Flat Python evaluator aliases resolve under gossip_harness; flat JSON inputs resolve at repository root. First prepared driver was not executed.",
+  "driver_sha256": "4b26a02b46079b4c9b0ef1810dc20bb7c23e901c02cbddf7350c0142e4e6c628",
+  "duration_seconds": 1118.9123802091926,
+  "inputs_sha256": "69df1636b72ef1e7375951cdd2851836f84f82be4fa3e56fb90ab7fe0d2efc93",
+  "limits": [
+    "Root local source/receipt/journal/cleanup consistency audit, not independent scientific acceptance or repeatability.",
+    "Fixed deliberately defective and reference fixtures; simulated reviewer/admission scaffolding. No model-quality observation.",
+    "Intentional incomplete defect and overflow cases remain distinct from correct project completion.",
+    "Timing rows are diagnostic; truncated timing traces cannot establish whole duration.",
+    "Original heads/prefixes reconciled locally; not a newly independent trust anchor or a fresh Engine census."
+  ],
+  "new_model_quality_samples": 0,
+  "outcomes": {
+    "passed": 38
+  },
+  "protocol": "workflow-profile-build-physical-audit-v1",
+  "selected_tests": 38,
+  "session": "/Users/westbrook/.gossip-protocol-runs/20261005T052738-ff27b174",
+  "source_count": 732,
+  "status": "passed",
+  "summary_sha256": "353bc1669db533a2dba658eacbd07089dfc9920f74608cb063fe6644e6f962f2"
+}
