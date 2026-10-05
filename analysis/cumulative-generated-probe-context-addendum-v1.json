@@ -1,0 +1,514 @@
+{
+  "protocol": "cumulative-generated-probe-context-addendum-v1",
+  "created_at_utc": "2026-10-05T00:18:15.835633+00:00",
+  "status": "SOURCE_ONLY_PROSPECTIVE_CONTEXT_POLICY_NOT_ADOPTED_OR_EXECUTED",
+  "repository": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "parent_plan": {
+    "path": "/private/tmp/cumulative-generated-probe-plan-1.json",
+    "sha256": "6093dbe6905ba84d12c65022ee8002bd067ddcc748295ab0574f616f61102916"
+  },
+  "question": "How to compare package alternatives without vetoing all partial implementations for unfinished peer packages, and preserve correctness when conditional choices change their tested context.",
+  "recommendation": {
+    "policy": "Two explicitly different public evidence contexts: exact generation-base overlays for eligible local/inherited pre-review checks; then one frozen reviewer-endorsed peer anchor for contextual post-review alternatives, followed by an exact final-composite retest.",
+    "why": "The current shared generation base is the smallest existing context, but new peer APIs can be absent. A single real candidate anchor supplies new peer code without forbidden authored solutions, favorable per-candidate peer choices, extra model calls, iterative search or Cartesian product testing.",
+    "claim": "Candidate evidence is conditional on the recorded peer context. Final-composite execution establishes only its actual tested properties; neither common-context success nor a clean textual merge proves general package correctness.",
+    "authorizations": "No new cognitive role, reviewer action, generation, financial allocation, deadline or numeric evidence allowance. This is a root-selectable prospective policy inside the existing scope; physical context cells and setup witnesses must fit the declared existing aggregate envelope before adoption."
+  },
+  "source_conclusions": [
+    {
+      "id": "C1",
+      "fact": "The normative graph has17 M2-M4 requirement integration slots, not16 independent features. Maximum ready requirement frontier is3. Packages label contributors and need not each add a new feature in M4.",
+      "source": "library-cumulative-product-v2.json:861-1205"
+    },
+    {
+      "id": "C2",
+      "fact": "Every actual generation currently gives builders the same exact integrated source and reviewers all complete scoped proposals; current code selects one whole delta per package.",
+      "source": "gossip_harness/cumulative_study_controller_v2.py:442-464; cumulative_study_runtime_v2.py:622-649"
+    },
+    {
+      "id": "C3",
+      "fact": "No prequalified current-milestone peer/stub implementation was found in the inspected plan, contract, public fixture and runtime. Authored reference implementations explicitly exclude use as live candidate input.",
+      "source": "library_m1_reference_v1.py:1-6; library_m2_reference_v1.py:1-6; library_m3_reference_v1.py:1-5; library_m4_reference_v1.py:1-5"
+    },
+    {
+      "id": "C4",
+      "fact": "V2 requires real persistent Service/Store/JobManager delegation. A stub may establish a separately labeled shape interaction, but cannot supply durable transaction, recovery or merged-source correctness.",
+      "source": "library-cumulative-product-v2.json:120-127; library_project_fixture_v1.py:146-176"
+    },
+    {
+      "id": "C5",
+      "fact": "The graph alone does not specify a qualified per-probe observation/precondition mapping or certify that a dependency works in a particular source. That mapping and original observations remain necessary; static file/method presence is insufficient.",
+      "source": "library-cumulative-product-v2.json:/dependency_graph; docs/large-swarm-project-plan-v1.md:164-170"
+    }
+  ],
+  "notation": {
+    "B": "Exact common generation base commit/tree/files after the public requirement release.",
+    "D_p_a": "One complete eligible proposal delta from alias a for package p, bound to its original builder financial result and exact B. Never cherry-pick favorable files/functions.",
+    "C_p_a": "Base-overlay source B plus D_p_a, with all peer package bytes remaining exactly B.",
+    "R_p": "Closed, ordered, unique list of endorsed eligible aliases in the single current reviewer result for package p.",
+    "A": "Unapproved peer anchor = B plus the whole first-endorsed delta in each R_p. Every anchor choice is fixed before new generated-test outcomes are observed.",
+    "X_p_a": "Contextual candidate source = A with the entire package p restored from B and D_p_a applied. It is not A with a second delta layered on top: absence/deletion and every unchanged owned file must match the exact B+candidate package.",
+    "M": "Actual final composite of the simultaneously resolved conditional choices, built from the original B and those complete deltas."
+  },
+  "context_policy": [
+    {
+      "phase": "base_overlay_pre_review",
+      "source": "C_p_a",
+      "purpose": "Inherited and genuinely package-local checks whose prospectively declared dependency capability is available in B. Supply these exact receipts to the current reviewer.",
+      "admission": "Probe registry declares subject package, requirement/graph slots, transitive prerequisites, interfaces used, setup and observation owners, and whether B supplies them. Unsupported same-milestone peer features make a check context-insufficient, not a failure attributed to p.",
+      "limits": "Do not run the entire new-milestone product suite as an unconditional per-package veto. Do not infer all inherited checks are local: API/client checks can cross packages."
+    },
+    {
+      "phase": "anchor_freeze_after_review",
+      "source": "A",
+      "purpose": "Provide one common same-generation peer context for all alternatives. This is an evaluation fixture assembled from actual model proposals; it is neither a correctness oracle nor a selected/promoted winner.",
+      "admission": "Authenticate all four reviewer results and alias maps. Each R_p must provide at least one valid endorsement. First means reviewer ranking order, not arrival order or host quality score. If a package has no valid endorsed proposal, anchor creation is unavailable and the existing repair/stop path applies. No seed/reference fallback.",
+      "chronology": "Reviewers may see pre-review B evidence, but cannot see new A/X outcomes until a later already-budgeted action. Exact A/source vector and admitted ordered probe suite are committed before any contextual candidate test starts."
+    },
+    {
+      "phase": "contextual_all_alternatives",
+      "source": "X_p_a for every eligible a in each applicable package p",
+      "purpose": "Hold all peer package implementations fixed while changing only the package alternative being compared. Include eligible unranked candidates in the planned comparison census; they remain unselectable unless endorsed.",
+      "admission": "Registered target-context applicability and dependency witnesses are fixed before results. A check spanning several packages can be executed for each relevant target replacement, with each exact context retained. No individual candidate gets a favorable peer source. No package is switched in A while another package is being compared.",
+      "scope": "Use actual full Git source identity, not a package hash alone. Results mean behavior of X_p_a; causal blame requires additional evidence and is not inferred by equal failures across the row."
+    },
+    {
+      "phase": "simultaneous_conditional_choice",
+      "source": "All X matrices against the same frozen A",
+      "purpose": "For each package, take the first reviewer-endorsed alias whose required applicable candidate evidence is complete and passing under the precommitted rule. Compute all choices against A and retain the complete vector before constructing M.",
+      "failure": "If a required witness or matrix cell is unavailable, that alternative is not demonstrated passing. If none of a package’s endorsements qualifies, no complete choice vector exists. Retain it as context/selection failure and use the existing bounded repair generation; do not infer every package implementation is independently incorrect."
+    },
+    {
+      "phase": "actual_composite_retest",
+      "source": "M",
+      "purpose": "Execute the full applicable admitted generated suite plus the existing authored public suite on the exact final composite. Newly chosen peer packages invalidate any inference that X results alone transfer to M.",
+      "admission": "Require fresh source-bound merged execution and complete required outcomes. No waiver because M shares one package, passes inherited checks, has the same shape, or has an unproven equivalent tree.",
+      "failure": "If M fails or is unavailable, it is not completed or promoted. Preserve the combined source, all individual/context results and diagnostics through the current development-source/repair flow. Do not cycle anchors or try alternate combinations within the same generation."
+    }
+  ],
+  "minimum_census": {
+    "contract_sources": "Exactly existing dependency graph, package ownership, current requirement release, current template registry and original builder/reviewer views; no new task graph or feature count.",
+    "fields": [
+      "context policy/version and current study/trajectory/milestone/generation/release hash",
+      "B commit/tree/common source manifest and original publication ref",
+      "complete package path roster; no implicit path ownership",
+      "all planned builder aliases: financial result, valid/failed/stopped/unknown disposition, proposal/base OID, exact changed paths and whole source identity",
+      "all current reviewer result/view refs and ordered endorsements; fixed alias mapping",
+      "one anchor source vector mapping every package to exact original proposal OID, or explicit missing reason",
+      "for each proposal: C and X source vectors/full Git identities and predecessor binding; target package and immutable peer package hashes",
+      "for each admitted assertion: requirement ID, graph slot and transitive prerequisite IDs, released milestone, observation/driver/template hash, target package set, base/anchor/merged applicability and exact required setup witness records",
+      "all required logical execution cells in prospective deterministic order, with observed/not_run/failed/unavailable and original execution references; unknown cannot disappear through filtered eligibility",
+      "simultaneously selected vector and exact resulting M tree/source; fresh final execution/cleanup/decision records"
+    ],
+    "graph_projection": "Use existing17 slots unchanged. Compute each probe’s declared prerequisite closure only from the pinned graph; map inherited M1 requirements through the frozen M1 fixture, not invented M2 graph slots. A graph ready label is a scheduling/contract requirement, not proof an observed API works. Never mark upstream slots complete from a downstream pass or from an anchor’s mere construction.",
+    "unique_context_count": "With n_p eligible alternatives per package and one endorsed anchor each, there are at most 1 + sum_p(n_p - 1) distinct X source vectors:13 for four packages with4 alternatives;1 for four packages with1. These counts are derived from the existing role census, not an extra allowance or number of independent samples.",
+    "logical_vs_physical": "There are still sum_p(n_p) logical contextual candidate exposures (16 or4), before multiplying by applicable assertions, setup operations and merged checks. Identical anchor trees do not automatically permit reuse: source OID, ordered suite, purpose, controls, evaluator, runtime, seed, limits and original execution contract must match exactly. Repeated package-role rows are not independent evidence.",
+    "budget": "The initial plan already requires per-candidate and merged tests. Reconcile base checks, anchor setup, all substitution matrices, raw retention and the mandatory M retest in that full prospective work census; dedup only under the exact existing reuse rules. If capacity cannot accommodate it, report the policy not yet qualified rather than trim difficult rows, add limits, or execute a partial comparison."
+  },
+  "concrete_examples": [
+    {
+      "requirement": "M2-IDENTITY-REVISIONS",
+      "registered_contributors": [
+        "catalog"
+      ],
+      "existing_dependencies": [],
+      "appropriate_context": "Direct real Store/catalog contract probes may be C_catalog_a-local if their qualified setup uses only inherited B dependencies. A Service-based lifecycle probe is not automatically local merely because this graph slot names catalog; new query code may be needed.",
+      "citation": "library-cumulative-product-v2.json:863-879"
+    },
+    {
+      "requirement": "M2-REFRESH",
+      "registered_contributors": [
+        "ingestion",
+        "catalog"
+      ],
+      "existing_dependencies": [
+        "M2-IDENTITY-REVISIONS"
+      ],
+      "appropriate_context": "For ingestion alternatives, keep anchor catalog fixed; for catalog alternatives, keep anchor ingestion fixed. If invoked through Service, the anchor query implementation is also an execution dependency and must be recorded. Missing new base Store/Service capabilities are context insufficiency, not proof every ingestion candidate is bad. Retest refresh/identity relations on M after catalog or ingestion changes.",
+      "citation": "library-cumulative-product-v2.json:881-898;120-125"
+    },
+    {
+      "requirement": "M2-QUERY and M2-INTERFACES",
+      "registered_contributors": [
+        "query",
+        "clients"
+      ],
+      "existing_dependencies": [
+        "M2-REFRESH",
+        "M2-COLLECTIONS",
+        "M2-DELETE-RESTORE",
+        "M2-QUERY"
+      ],
+      "appropriate_context": "Use fixed real anchor catalog/ingestion/query as appropriate. Base-only clients cannot be judged against absent new lifecycle routes. A successful client test over an invented stub is not application integration evidence. Final M must pass the actual full chain.",
+      "citation": "library-cumulative-product-v2.json:954-991;1202-1205"
+    },
+    {
+      "requirement": "M3-WORKER-RECOVERY, M3-REINDEX, M3-EXPORT",
+      "registered_contributors": [
+        "ingestion",
+        "catalog",
+        "query",
+        "clients"
+      ],
+      "existing_dependencies": [
+        "integrated M2-INTERFACES and slot-specific M2 dependencies"
+      ],
+      "appropriate_context": "Previous milestone B should have the required integrated M2 public evidence, but that does not establish new M3 capabilities. Freeze within-generation anchor peers for new checks. Worker/recovery/restore claims still require their real process/storage observation lanes; equality from output alone supplies none.",
+      "citation": "library-cumulative-product-v2.json:994-1074;1196-1205"
+    },
+    {
+      "requirement": "M4-API-SCHEMA through M4-RELEASE-HANDOFF",
+      "registered_contributors": [
+        "catalog",
+        "query",
+        "clients"
+      ],
+      "existing_dependencies": [
+        "integrated M3-INTERFACES plus M4 slot chain"
+      ],
+      "appropriate_context": "M4 does not require an invented new ingestion feature. Preserve inherited ingestion behavior and test original receipts, migration and projections on real M. A no-op whole candidate can be eligible if the existing source and public obligations warrant it; no padding features.",
+      "citation": "library-cumulative-product-v2.json:1095-1205"
+    }
+  ],
+  "failure_and_attribution_rules": [
+    "Every real failed predicate is retained as a fact about its exact executed composite. Do not erase it merely because a peer may be responsible.",
+    "Classify product contradiction separately from dependency capability missing, malformed candidate/protocol, trusted infrastructure failure and incomplete observation. A target-owned missing required method cannot be excused as a peer problem; interface ownership/preconditions must be fixed in the registry, not guessed from error prose.",
+    "A failed registered prerequisite means dependent semantic assertions lack their setup; record them unavailable/not_run as appropriate, not vacuously passed. This cannot confer candidate-selection success.",
+    "Even if all alternatives fail with identical peer context, do not infer a common target-candidate bug or claim no valid combination exists. The anchor can be the bottleneck. Report exact contextual failure counts and unavailable selection, and keep the whole trajectory outcome in the denominator.",
+    "No replacement anchor, adaptive context cherry-picking, coordinate-descent loop or 4^4 product search occurs inside a generation. Any such policy would be a separately specified execution contract with a newly reconciled work census.",
+    "If M passes after several choices changed A, those fresh results validate M only. They do not retroactively prove every chosen package was independently correct or that the old A ranking was causally optimal.",
+    "If M fails, the next existing generation receives full public source-bound feedback and the normal bounded repair opportunity. No extra reviewer action or deadline is invented; after the last generation honest incomplete/failure remains.",
+    "Public merged retest and a conditional ranking are not the separately required two appropriate non-author approvals bound to exact merged source. Preserve that authority obligation; this addendum does not manufacture it from earlier rankings."
+  ],
+  "cold_reconstruction_additions": [
+    "Authenticate both original shared base and every full proposal; recompute C, A, X and M from complete deltas and immutable paths, including deletions. Verify all peer bytes in each X equal A exactly.",
+    "Prove all first-endorsed anchor choices and probe applicability were frozen before contextual outcomes; all candidate matrices use one A; selection is derived simultaneously from that A and the precommitted ranks.",
+    "Validate every declared context/setup/observation cell, its raw/control/deadline source bindings and final M execution. Reject receipts borrowed from C or X as M proof.",
+    "Reconcile unranked eligible candidates, missing anchors, failed setup, unattempted cells and no-choice generations without reducing denominators. Validate existing repair publication chronology and original one-call reviewer census."
+  ],
+  "additional_qualification_defects": [
+    "The shared base lacks a new query/Store API while same-generation peer proposals provide it: base-only absence must not veto every target candidate as a product defect.",
+    "One package alternative changes behavior only when paired with a different peer: common A comparisons hold peers fixed; final M retest catches a combination regression after simultaneous conditional choices.",
+    "All target alternatives encounter a bad peer anchor: retain context failure/unknown and no selected success, with unchanged call count and existing repair feedback.",
+    "Overlay alternative includes deletion or omits a file added by the anchor candidate: X must restore B for the full target package before applying the alternative; no mixed candidate trees.",
+    "Attempt to substitute authored reference peer, silently change A during package traversal, reuse C/X result for M, omit unranked rows, or run a second adaptive anchor: reject against the pinned policy.",
+    "Final M fails while all chosen X checks passed: milestone/promotion denied; later repair acts on the documented actual source and evidence without treating prior passes as final approval."
+  ],
+  "unresolved_root_choices": [
+    {
+      "id": "CTX1",
+      "choice": "Adopt the single reviewer-endorsed anchor policy versus keep base-only probes and defer every unsupported cross-package check to merged execution.",
+      "recommendation": "Single anchor if the complete work census fits the existing envelope. Base-only is smaller mechanically but supplies no same-generation comparative evidence for missing new dependencies; disclose that limitation if chosen."
+    },
+    {
+      "id": "CTX2",
+      "choice": "Freeze the finite requirement-to-template-to-interface/observation dependency table.",
+      "recommendation": "Use the exact graph and persistent interface contracts below; do not infer it merely from changed file paths or graph contributor labels. Existing qualified prerequisite/public observations may be reused only with exact matching identities."
+    },
+    {
+      "id": "CTX3",
+      "choice": "Specify developmental Git state on no-choice versus final-M failure, so repair source and evidence are unambiguous.",
+      "recommendation": "No-choice retains B; A/X remain unapproved fixture refs. After a full chosen M fails, preserve existing developmental integration/repair semantics with explicit unapproved status and no semantic promotion. Root must align this with actual current Git CAS/recovery contract before implementation."
+    }
+  ],
+  "dependency_graph_census": [
+    {
+      "id": "M2-IDENTITY-REVISIONS",
+      "milestone": "M2",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on_slots": []
+    },
+    {
+      "id": "M2-REFRESH",
+      "milestone": "M2",
+      "packages": [
+        "ingestion",
+        "catalog"
+      ],
+      "depends_on_slots": [
+        "M2-IDENTITY-REVISIONS"
+      ]
+    },
+    {
+      "id": "M2-ANNOTATIONS",
+      "milestone": "M2",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on_slots": [
+        "M2-IDENTITY-REVISIONS"
+      ]
+    },
+    {
+      "id": "M2-COLLECTIONS",
+      "milestone": "M2",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on_slots": [
+        "M2-ANNOTATIONS"
+      ]
+    },
+    {
+      "id": "M2-DELETE-RESTORE",
+      "milestone": "M2",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on_slots": [
+        "M2-IDENTITY-REVISIONS"
+      ]
+    },
+    {
+      "id": "M2-QUERY",
+      "milestone": "M2",
+      "packages": [
+        "query"
+      ],
+      "depends_on_slots": [
+        "M2-REFRESH",
+        "M2-COLLECTIONS",
+        "M2-DELETE-RESTORE"
+      ]
+    },
+    {
+      "id": "M2-INTERFACES",
+      "milestone": "M2",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M2-QUERY"
+      ]
+    },
+    {
+      "id": "M3-WORKER-RECOVERY",
+      "milestone": "M3",
+      "packages": [
+        "ingestion",
+        "catalog"
+      ],
+      "depends_on_slots": [
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M3-REINDEX",
+      "milestone": "M3",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on_slots": [
+        "M2-QUERY",
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M3-EXPORT",
+      "milestone": "M3",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M2-QUERY",
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M3-BACKUP-RESTORE",
+      "milestone": "M3",
+      "packages": [
+        "catalog",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M3-WORKER-RECOVERY",
+        "M3-REINDEX",
+        "M3-EXPORT",
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M3-DIAGNOSTICS",
+      "milestone": "M3",
+      "packages": [
+        "catalog",
+        "query",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M3-BACKUP-RESTORE",
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M3-INTERFACES",
+      "milestone": "M3",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M3-DIAGNOSTICS",
+        "M2-INTERFACES"
+      ]
+    },
+    {
+      "id": "M4-API-SCHEMA",
+      "milestone": "M4",
+      "packages": [
+        "catalog",
+        "query"
+      ],
+      "depends_on_slots": [
+        "M3-INTERFACES"
+      ]
+    },
+    {
+      "id": "M4-MIGRATION",
+      "milestone": "M4",
+      "packages": [
+        "catalog"
+      ],
+      "depends_on_slots": [
+        "M4-API-SCHEMA",
+        "M3-INTERFACES"
+      ]
+    },
+    {
+      "id": "M4-COMPATIBILITY",
+      "milestone": "M4",
+      "packages": [
+        "query",
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M4-MIGRATION",
+        "M3-INTERFACES"
+      ]
+    },
+    {
+      "id": "M4-RELEASE-HANDOFF",
+      "milestone": "M4",
+      "packages": [
+        "clients"
+      ],
+      "depends_on_slots": [
+        "M4-COMPATIBILITY",
+        "M3-INTERFACES"
+      ]
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/cumulative_probe_plan/probe_authority_review",
+    "result": "Confirmed exact base is current only common context; inspected reference solutions forbid live-input use; no qualified ready peer fixture located. Source-only review, no runtime."
+  },
+  "source_pins": {
+    "docs/large-swarm-project-plan-v1.md": {
+      "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
+      "anchors": [
+        "73-83: one product, package alternatives, frozen graph",
+        "120-133: blind proposal boundary and locally arrived evidence",
+        "156-178: tests, whole candidates and exact-source promotion",
+        "232-238: semantic integration conflicts"
+      ]
+    },
+    "large-swarm-project-plan-v1.json": {
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e",
+      "anchors": [
+        "/peer_policy_contract/integration (lines332-334)",
+        "/review_and_test_selection",
+        "/acceptance_and_barrier"
+      ]
+    },
+    "library-cumulative-product-v2.json": {
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "anchors": [
+        "120-127: real persistent cross-package Service interfaces",
+        "861-1205: exact17-slot dependency graph and cross-package gates",
+        "1208-1273: explicit package ownership/immutable fixtures"
+      ]
+    },
+    "gossip_harness/library_project_fixture_v1.py": {
+      "sha256": "fa4440f1ac7e63e3b4ef7d9978a8970e8d6cd688efe9c2e1b6d1e75c0f757caf",
+      "anchors": [
+        "146-176: Service -> JobManager -> durable Store",
+        "218-225: actual combined-source conflict/repair evidence"
+      ]
+    },
+    "gossip_harness/cumulative_study_controller_v2.py": {
+      "sha256": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+      "anchors": [
+        "35-41: package policy",
+        "202-220: exact disjoint package rosters",
+        "373-383: all released requirements within scope",
+        "442-464: one generation source and scoped review frontiers",
+        "469-487: integrate then evaluate exact source"
+      ]
+    },
+    "gossip_harness/cumulative_study_runtime_v2.py": {
+      "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+      "anchors": [
+        "309-324: one existing reviewer action per package/generation",
+        "622-649: whole scoped selection",
+        "667-703: candidate source and Git CAS"
+      ]
+    },
+    "gossip_harness/library_m1_reference_v1.py": {
+      "sha256": "80e3c2ed79610f2830abdeb59e38ae57b746051c6af538985d96482568882c08",
+      "anchors": [
+        "1-6: not live input"
+      ]
+    },
+    "gossip_harness/library_m2_reference_v1.py": {
+      "sha256": "000bdcd8cf167348899875448fa49f1ed599c5ac7273731bbb94accdc35979be",
+      "anchors": [
+        "1-6: offline qualification, excluded from candidate starts/prompts"
+      ]
+    },
+    "gossip_harness/library_m3_reference_v1.py": {
+      "sha256": "3ad17289d83fca6bc576cc001a2bba6bdf52d2cbf3c5dc536fe0222e2a89f39c",
+      "anchors": [
+        "1-5: not live candidate input"
+      ]
+    },
+    "gossip_harness/library_m4_reference_v1.py": {
+      "sha256": "6df29231508ee642ddfe60dfbe5f36fe8382deb4692ac7177728b0183e5e1452",
+      "anchors": [
+        "1-5: not live candidate input"
+      ]
+    },
+    "gossip_harness/library_cumulative_public_fixture_v2.py": {
+      "sha256": "03e2e74c796084355a37e1e35c9532a81f12749e7cd8cfd17fa902d358019052",
+      "anchors": [
+        "1-5 and63-73: positive fixture not full V2 authority"
+      ]
+    },
+    "gossip_harness/cumulative_source_promotion_v1.py": {
+      "sha256": "aa492a581f218d327f129e45650f42ea3846fa4c5cde24cfcf5a5e7747c66aed",
+      "anchors": [
+        "81-213: exact V2 history and integration reconstruction"
+      ]
+    }
+  },
+  "claims": {
+    "implemented": false,
+    "qualified": false,
+    "runtime_actions": 0,
+    "new_model_quality_samples": 0,
+    "additional_roles": 0,
+    "additional_reviewer_actions": 0,
+    "new_numeric_limits": false
+  },
+  "draft_correction": {
+    "previous_path": "/private/tmp/cumulative-generated-probe-context-addendum-1.json",
+    "previous_sha256": "45b2af233eea1ab4743a00bdf46c0d7a789bfbc0e24fe3bfee966763012447c7",
+    "change": "Corrected source JSON pointer from nonexistent /multi_action_policy to actual /peer_policy_contract; design unchanged."
+  }
+}

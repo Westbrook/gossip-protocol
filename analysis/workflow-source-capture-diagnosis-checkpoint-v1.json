@@ -1,0 +1,314 @@
+{
+  "created_at_utc": "2026-10-05T00:40:17.376566+00:00",
+  "decision": {
+    "choice": "Versioned TWO-process fresh capture: existing ls-tree inventory followed by one interactive cat-file --batch-command --buffer session for exact commit/tree/blob info and blob contents.",
+    "hypothesis": "Reducing repeated command lifecycles may reduce observed elapsed cost. This has not been demonstrated and is not promised to satisfy workflow deadlines.",
+    "next": "Review actual successor helper/tests, integrate opt-in coherently, run central static/nearest/affected offline gates, then required current physical38+shared6. Preserve failed runs and full study scope.",
+    "preserve": [
+      "All file/path/mode/type/OID/hash/framing/size guards",
+      "Validate every blob size before requesting any blob content",
+      "Same60s absolute capture clock and5s owned cleanup",
+      "Sequential child lifetimes and bounded concurrent pipe handling",
+      "Fresh bytes every capture; no cross-boundary cache",
+      "No raw-tree walk, new commit-message/depth restrictions, or silent v1 changes"
+    ],
+    "primary_protocol_reference": "https://git-scm.com/docs/git-cat-file",
+    "status": "prototype_selected_not_implemented_or_qualified"
+  },
+  "diagnostics": [
+    {
+      "audit": {
+        "bytes": 7338,
+        "path": "analysis/workflow-source-profile-terminal-audit-v1.json",
+        "sha256": "c86198c2a65516b7ca53fce9e8f2e8667cad7d478ae1d23b09676711aabc2abc"
+      },
+      "capture_calls": 1,
+      "exit_code": 0,
+      "kind": "cProfile parent function timing",
+      "parent_fork_exec_seconds": 0.007159834,
+      "profile_seconds": 0.652544209,
+      "readiness_wait_seconds": 0.635866118,
+      "session": 42532,
+      "sha1_seconds": 0.000366461,
+      "source_identity": {
+        "bytes": 1098747,
+        "commit_oid": "13dbce3e8bdaed8c6b6beefce417b61e5149dbb6",
+        "file_count": 63,
+        "manifest_sha256": "a569a1f788765ec8af37eca3de10c746012b7553ffeea497c27cceb350adb9b5",
+        "tree_oid": "db17648057d0d26b90ed334f827659325bc742c7"
+      }
+    },
+    {
+      "aggregate": {
+        "child_system_seconds": 0.020845,
+        "child_user_seconds": 0.012001,
+        "parent_cpu_ns": 19653000,
+        "wall_ns": 634938125
+      },
+      "audit": {
+        "bytes": 7745,
+        "path": "analysis/workflow-source-command-accounting-audit-v1.json",
+        "sha256": "fa4725a586cd99c759158edc7de73bf304c5e2f5db4683336c7d28e0192317cb"
+      },
+      "capture_calls": 1,
+      "commands": [
+        {
+          "child_system_seconds": 0.003869,
+          "child_user_seconds": 0.002604,
+          "parent_cpu_ns": 3323000,
+          "tag": "resolve_commit_tree",
+          "wall_ns": 266345708
+        },
+        {
+          "child_system_seconds": 0.004721999999999999,
+          "child_user_seconds": 0.0027209999999999995,
+          "parent_cpu_ns": 3479000,
+          "tag": "list_tree",
+          "wall_ns": 42568833
+        },
+        {
+          "child_system_seconds": 0.0058130000000000005,
+          "child_user_seconds": 0.0027350000000000005,
+          "parent_cpu_ns": 4465000,
+          "tag": "batch_sizes",
+          "wall_ns": 267951000
+        },
+        {
+          "child_system_seconds": 0.006440999999999999,
+          "child_user_seconds": 0.003941,
+          "parent_cpu_ns": 5959000,
+          "tag": "batch_contents",
+          "wall_ns": 55643625
+        }
+      ],
+      "exit_code": 0,
+      "kind": "filtered per-command wall and OS CPU accounting",
+      "metadata_pair_percent_of_capture_wall": 84.14941345662618,
+      "metadata_pair_wall_seconds": 0.534296708,
+      "session": 43739,
+      "source_identity": {
+        "bytes": 1098747,
+        "commit_oid": "13dbce3e8bdaed8c6b6beefce417b61e5149dbb6",
+        "file_count": 63,
+        "manifest_sha256": "a569a1f788765ec8af37eca3de10c746012b7553ffeea497c27cceb350adb9b5",
+        "tree_oid": "db17648057d0d26b90ed334f827659325bc742c7"
+      }
+    }
+  ],
+  "generated_probe_work": {
+    "context_addendum": {
+      "bytes": 28868,
+      "path": "analysis/cumulative-generated-probe-context-addendum-v1.json",
+      "sha256": "c78a933e1f4fe07285c64fb88816fe0fbb920993dd296400f8c383f298d55be7"
+    },
+    "implementation_packet": {
+      "bytes": 1389,
+      "path": "runs/cumulative-probe-catalog-draft-1/handoff-v2.json",
+      "sha256": "f501c051eada1abb4af93af793b5b2755be851f96214aca9fb63b82f8c0dc0fc"
+    },
+    "missing": "A versioned public dynamic owner/session/cold reader, exact capture mapping, all candidate/context/merged wiring, qualification and matching rehearsal. No current full-scope duties waived.",
+    "packet_files": 9,
+    "source_pins_checked": 13,
+    "status": "Source-only drafts of four finite predicates/driver/schema; not imported, compiled, tested, integrated or executable via current registered owners."
+  },
+  "goal_turn_audit": {
+    "current": "progress: two physically executed component diagnostics localize the next implementation hypothesis",
+    "previous": "no_progress: status assessment and unexecuted design; no new runtime or implementation"
+  },
+  "interpretation": [
+    "In the first instrumented sample parent readiness waits dominated; hashing and parent fork/exec time were small.",
+    "In the second instrumented sample resolve and size metadata commands occupied84.15%ofcapturewall. Bulk content transfer was0.05564s. ParentCPU0.019653s and waited childCPU0.032846s were separately small relative to0.63494s wall.",
+    "No direct attribution to disk, scheduling, loader, sandbox or kernel cause follows. CPU counters can overlap in wall time and were not subtracted as an exact wait decomposition.",
+    "Different instrumentation and one sample each preclude speedup, repeatability or original65-call mean claims."
+  ],
+  "protocol": "workflow-source-capture-diagnosis-checkpoint-v1",
+  "publication": {
+    "hold": "Existing automatic approval review disclosure rejections and pending questions remain; this local evidence grants no external disclosure approval.",
+    "local_only": true,
+    "provider_calls": 0,
+    "public_pushes": 0
+  },
+  "qualification_status": {
+    "latest_offline": {
+      "fresh": 631,
+      "passed": 647,
+      "reused": 16,
+      "run": "runs/workflow-deadline-offline-5/20261004T233836-5a01031b"
+    },
+    "latest_physical": {
+      "failed": 1,
+      "not_run": 37,
+      "run": "runs/workflow-deadline-physical-1/20261004T235907-b73cce1a"
+    },
+    "new_candidate_acceptances": 0,
+    "new_model_quality_samples": 0,
+    "verification_source_map_reconciled": {
+      "files": 729,
+      "no_production_test_or_configuration_changes": true,
+      "same_as_latest_physical_inputs": true
+    }
+  },
+  "retained_files": [
+    {
+      "bytes": 22191,
+      "path": "runs/workflow-source-profile-diagnostic-1/capture.prof",
+      "sha256": "f5e77961bcea96be55298da59fc0ffeebf534936c16256ef6f5ff41ed44a6da2"
+    },
+    {
+      "bytes": 84152,
+      "path": "runs/workflow-source-profile-diagnostic-1/functions.json",
+      "sha256": "31036323cc93810631228218eb399606a03bd299c416ebe7b53e4aec51346190"
+    },
+    {
+      "bytes": 7720,
+      "path": "runs/workflow-source-profile-diagnostic-1/interpretation.json",
+      "sha256": "13ef7553b4c9abd76f4570d55c86e5e9d410cb426c1388cc85b1393935b5db59"
+    },
+    {
+      "bytes": 158786,
+      "path": "runs/workflow-source-profile-diagnostic-1/plan.json",
+      "sha256": "6379eaf88f4380ce494e011dfbe914ebef060410c0c00789d85df2148ec2fd29"
+    },
+    {
+      "bytes": 12912,
+      "path": "runs/workflow-source-profile-diagnostic-1/result.json",
+      "sha256": "6609f968746fd8a96e8d236be6d9df0849926e804395d0453aabfd17f496dad7"
+    },
+    {
+      "bytes": 3613,
+      "path": "runs/workflow-source-profile-diagnostic-1/retention.json",
+      "sha256": "0d5db4969f1e9eafd122bd5e9ce2e23a9283baf2474fe681e3e262ea8384bfd1"
+    },
+    {
+      "bytes": 96267,
+      "path": "runs/workflow-source-profile-diagnostic-1/terminal-audit.json",
+      "sha256": "ebb8b11118aa723e25ad96b8dca8a14f9ffb5da2cbd5dc9cb5a8f094c797954e"
+    },
+    {
+      "bytes": 4673,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-README-1.md",
+      "sha256": "ede9021b551f99e4c015c952473dea508de3379e2323d3d042135232bfd81882"
+    },
+    {
+      "bytes": 4877,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-README-2.md",
+      "sha256": "922fc1dab419a1f9e73742511f379470f103960a4e08916f9b1192236c42fc62"
+    },
+    {
+      "bytes": 17926,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-driver-1.py",
+      "sha256": "e3fca5962f5a713c3837caffe92b5fe4d8fd35fb10f071dd275314e4c760f95d"
+    },
+    {
+      "bytes": 18001,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-driver-2.py",
+      "sha256": "193edd51cea825320ea66adbca8e12de4adb23f3c3f896f81aa836c48502775f"
+    },
+    {
+      "bytes": 158468,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-plan-1.json",
+      "sha256": "b9ea8c654a25df5b53010974d9b8e64d1cf23aaa1c6ebbf59312c82f127d3f85"
+    },
+    {
+      "bytes": 158786,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-plan-2.json",
+      "sha256": "6379eaf88f4380ce494e011dfbe914ebef060410c0c00789d85df2148ec2fd29"
+    },
+    {
+      "bytes": 6967,
+      "path": "runs/workflow-source-profile-diagnostic-1/workflow-source-profile-source-review-1.json",
+      "sha256": "0355148b4f71c83be86d909e3536b9b675f1efb71678cfe42afdb6bf96e08942"
+    },
+    {
+      "bytes": 2559,
+      "path": "runs/workflow-source-profile-diagnostic-2/command-accounting.json",
+      "sha256": "44366750db37eaa175620f60e7456199f6b0166c4ce530f7e86292bd2f155d71"
+    },
+    {
+      "bytes": 160221,
+      "path": "runs/workflow-source-profile-diagnostic-2/plan.json",
+      "sha256": "d6436598f2afd946a9691b12f7595d0077a67588171cd6945e0b2c8169b83e1b"
+    },
+    {
+      "bytes": 12873,
+      "path": "runs/workflow-source-profile-diagnostic-2/result.json",
+      "sha256": "77042b88a462513baa9c91eea84cfcaee614e21f20f448c769c6d2e645c70b9d"
+    },
+    {
+      "bytes": 3441,
+      "path": "runs/workflow-source-profile-diagnostic-2/workflow-source-profile-README-3.md",
+      "sha256": "11208fd0850416fba0005cc5e9eb5a2e1b1ece5bf51765aea7240c85252419d0"
+    },
+    {
+      "bytes": 20321,
+      "path": "runs/workflow-source-profile-diagnostic-2/workflow-source-profile-driver-3.py",
+      "sha256": "68dbbb44ec7df84ce98cb00d36193d519650f68888ca5ecbb9eac4fa9324e299"
+    },
+    {
+      "bytes": 160221,
+      "path": "runs/workflow-source-profile-diagnostic-2/workflow-source-profile-plan-3.json",
+      "sha256": "d6436598f2afd946a9691b12f7595d0077a67588171cd6945e0b2c8169b83e1b"
+    },
+    {
+      "bytes": 5061,
+      "path": "runs/workflow-source-profile-diagnostic-2/workflow-source-profile-source-review-2.json",
+      "sha256": "fc782498332aaf2f3b6046541363fa4b63308f7f70956dd76e34b05b2051cbd4"
+    },
+    {
+      "bytes": 7745,
+      "path": "runs/workflow-source-profile-diagnostic-2/workflow-source-profile-terminal-audit-2.json",
+      "sha256": "fa4725a586cd99c759158edc7de73bf304c5e2f5db4683336c7d28e0192317cb"
+    },
+    {
+      "bytes": 6241,
+      "path": "runs/cumulative-probe-catalog-draft-1/api-map.json",
+      "sha256": "f11792e24671f64ceaf0bf89d8f437521efe41eb47beca06b1b5dc60986aa1a1"
+    },
+    {
+      "bytes": 13953,
+      "path": "runs/cumulative-probe-catalog-draft-1/catalog.json",
+      "sha256": "2d90f07a9c72acb2a62abf3e8ea9e66086db7137a970553ef3a3e54579d62f63"
+    },
+    {
+      "bytes": 3657,
+      "path": "runs/cumulative-probe-catalog-draft-1/child_driver.py",
+      "sha256": "bbf49ca9da6a088f2ecb530f8c51802a45f51f677292e2fac3c8f2ef9e6e4921"
+    },
+    {
+      "bytes": 3852,
+      "path": "runs/cumulative-probe-catalog-draft-1/coverage.json",
+      "sha256": "1c70694d0ba9846d79c71bc1a5d7f2f124bbf62e5adecc99d4968f3bd884d459"
+    },
+    {
+      "bytes": 1389,
+      "path": "runs/cumulative-probe-catalog-draft-1/handoff-v2.json",
+      "sha256": "f501c051eada1abb4af93af793b5b2755be851f96214aca9fb63b82f8c0dc0fc"
+    },
+    {
+      "bytes": 7629,
+      "path": "runs/cumulative-probe-catalog-draft-1/integration.json",
+      "sha256": "62605e73ba49827b0f9adaa433e128ff916b09da0578fd4d23acac682d3f2be8"
+    },
+    {
+      "bytes": 13095,
+      "path": "runs/cumulative-probe-catalog-draft-1/predicates.py",
+      "sha256": "a56aabb3e1106bc918f45e1d63679511257c04e2b3ccf744715f2df18c7b33fa"
+    },
+    {
+      "bytes": 6177,
+      "path": "runs/cumulative-probe-catalog-draft-1/proposal.schema.json",
+      "sha256": "298c1e9ca99f1d9a2eb3e7cc09b4448e17ebf6974efb70a5881b4ebeaf631b19"
+    },
+    {
+      "bytes": 5224,
+      "path": "runs/cumulative-probe-catalog-draft-1/qualification-vectors.json",
+      "sha256": "f3b3ad44484c37edf80f1ac2d72a18567499de9686e1f91cf7c27f12e694c269"
+    },
+    {
+      "bytes": 1761,
+      "path": "runs/cumulative-probe-catalog-draft-1/source-pins.json",
+      "sha256": "76103ddf3a8bedc1304a0ce163b9da8cdce052c944da5d18d743734fcdd1f4c9"
+    }
+  ],
+  "source_commit": "76a163074de3147f45edcea17c663986652e8027"
+}

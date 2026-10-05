@@ -1,0 +1,159 @@
+{
+  "acceptance": false,
+  "aggregate": {
+    "child_cpu_seconds": 0.032846,
+    "child_cpu_to_wall_percent": 5.173102497192147,
+    "child_system_seconds": 0.020845,
+    "child_user_seconds": 0.012001,
+    "driver_elapsed_before_postchecks_and_output_seconds": 1.298885458,
+    "parent_cpu_seconds": 0.019653,
+    "parent_cpu_to_wall_percent": 3.0952622351981147,
+    "profile_bracket_seconds": 0.63494925,
+    "wall_seconds": 0.634938125
+  },
+  "artifacts": [
+    {
+      "bytes": 12873,
+      "path": "/private/tmp/workflow-source-profile-output-2/result.json",
+      "sha256": "77042b88a462513baa9c91eea84cfcaee614e21f20f448c769c6d2e645c70b9d"
+    },
+    {
+      "bytes": 2559,
+      "path": "/private/tmp/workflow-source-profile-output-2/command-accounting.json",
+      "sha256": "44366750db37eaa175620f60e7456199f6b0166c4ce530f7e86292bd2f155d71"
+    },
+    {
+      "bytes": 160221,
+      "path": "/private/tmp/workflow-source-profile-output-2/plan.json",
+      "sha256": "d6436598f2afd946a9691b12f7595d0077a67588171cd6945e0b2c8169b83e1b"
+    },
+    {
+      "bytes": 5061,
+      "path": "/private/tmp/workflow-source-profile-source-review-2.json",
+      "sha256": "fc782498332aaf2f3b6046541363fa4b63308f7f70956dd76e34b05b2051cbd4"
+    }
+  ],
+  "audit_status": "pass",
+  "audited_at_utc": "2026-10-05T00:36:55.901921+00:00",
+  "binding_checks": {
+    "all_current_pins_match": true,
+    "imported_harness_sources": 49,
+    "repository_directories": 72,
+    "repository_files": 98,
+    "retained_original_files": 9,
+    "source_files": 729
+  },
+  "check_count": 905,
+  "commands": [
+    {
+      "child_cpu_seconds": 0.006473,
+      "child_cpu_to_command_wall_percent": 2.430300097045303,
+      "child_system_seconds": 0.003869,
+      "child_user_seconds": 0.002604,
+      "command_tag": "resolve_commit_tree",
+      "ordinal": 0,
+      "parent_cpu_seconds": 0.003323,
+      "wall_percent_of_aggregate": 41.94829346560344,
+      "wall_seconds": 0.266345708
+    },
+    {
+      "child_cpu_seconds": 0.007442999999999998,
+      "child_cpu_to_command_wall_percent": 17.484623080928714,
+      "child_system_seconds": 0.004721999999999999,
+      "child_user_seconds": 0.0027209999999999995,
+      "command_tag": "list_tree",
+      "ordinal": 1,
+      "parent_cpu_seconds": 0.003479,
+      "wall_percent_of_aggregate": 6.704406512051864,
+      "wall_seconds": 0.042568833
+    },
+    {
+      "child_cpu_seconds": 0.008548,
+      "child_cpu_to_command_wall_percent": 3.190135509850682,
+      "child_system_seconds": 0.0058130000000000005,
+      "child_user_seconds": 0.0027350000000000005,
+      "command_tag": "batch_sizes",
+      "ordinal": 2,
+      "parent_cpu_seconds": 0.004465,
+      "wall_percent_of_aggregate": 42.20111999102274,
+      "wall_seconds": 0.267951
+    },
+    {
+      "child_cpu_seconds": 0.010381999999999999,
+      "child_cpu_to_command_wall_percent": 18.658022370037894,
+      "child_system_seconds": 0.006440999999999999,
+      "child_user_seconds": 0.003941,
+      "command_tag": "batch_contents",
+      "ordinal": 3,
+      "parent_cpu_seconds": 0.005959,
+      "wall_percent_of_aggregate": 8.763629526892878,
+      "wall_seconds": 0.055643625
+    }
+  ],
+  "findings": [],
+  "identity": {
+    "bytes": 1098747,
+    "commit_oid": "13dbce3e8bdaed8c6b6beefce417b61e5149dbb6",
+    "file_count": 63,
+    "manifest_sha256": "a569a1f788765ec8af37eca3de10c746012b7553ffeea497c27cceb350adb9b5",
+    "tree_oid": "db17648057d0d26b90ed334f827659325bc742c7"
+  },
+  "interval_reconciliation": {
+    "aggregate_parent_cpu_outside_command_intervals_seconds": 0.0024269999999999986,
+    "aggregate_wall_outside_command_intervals_seconds": 0.002428959000000064,
+    "child_delta_sums_match_aggregate": true,
+    "child_user_system_counters_continuous_across_gaps": true,
+    "command_parent_cpu_sum_seconds": 0.017226,
+    "command_wall_sum_seconds": 0.632509166,
+    "four_sequential_complete_pairs": true,
+    "resolve_and_sizes_percent_of_aggregate_wall": 84.14941345662619,
+    "resolve_and_sizes_wall_seconds": 0.5342967080000001
+  },
+  "limits": [
+    "Parent and child CPU may overlap. No parent+child CPU subtraction from wall is used as a precise wait decomposition; counters are separately sampled and have platform accounting resolution.",
+    "Low CPU relative to elapsed time locates an off-CPU question. It does not identify disk I/O, filesystem access, scheduling, dynamic loader behavior, pipe delivery, kqueue latency or another causal subsystem.",
+    "Four source children returned bytes after helper cleanup and all pairs are complete; counters cover terminated/waited-for children. Audit request census alone is not independent OS reaping proof.",
+    "Trace/audit/accounting overhead and warmed caches remain. Cross-instrument timings do not establish improvement or original65-span mean.",
+    "Environment digest matches the first result but values were not retained, so it cannot be independently reconstructed from this receipt. Root-reported session/exit facts were not rerun.",
+    "Pinned originals and current bytes agree; this is not a new full-journal authentication. Existing physical1failed/37not_run and offline647passed remain distinct and unchanged.",
+    "No candidate behavior, actualOwner, Docker workflow, acceptance, receipt reuse or scientific sample is validated."
+  ],
+  "next_action_implications": [
+    "Prioritize resolve_commit_tree (git rev-parse identities) and batch_sizes (git cat-file --batch-check) for any separately authorized diagnostic that distinguishes command startup, output/readiness/EOF and exit/reap timing.",
+    "Preserve the existing complete fresh-source capture, hashes, deadlines and all guards. These measurements do not select or justify a production optimization, cache, skipped capture, timeout change, or unchanged physical retry.",
+    "Treat this as one diagnostic with different instrumentation from cProfile. Retain both originals; do not pool them into a speedup or acceptance claim."
+  ],
+  "prior_cprofile_result": {
+    "bytes": 12912,
+    "path": "/private/tmp/workflow-source-profile-output-1/result.json",
+    "sha256": "6609f968746fd8a96e8d236be6d9df0849926e804395d0453aabfd17f496dad7"
+  },
+  "protocol": "workflow-source-command-accounting-terminal-audit-v1",
+  "qualification": false,
+  "review_scope": "Read-only retained JSON, file hashes, directory inventory and numeric arithmetic. No project imports, diagnostic rerun, test/checker, Git subprocess, Engine/provider call or repository edit.",
+  "root_reported_execution": {
+    "capture_calls": 1,
+    "exit_code": 0,
+    "independent_shell_recreation": false,
+    "instrumentation": "sys.setprofile command accounting",
+    "session_id": 43739
+  },
+  "runtime": {
+    "dont_write_bytecode": 1,
+    "environment_sha256": "cdf5029b703cb3fba9510c4cae0e3e997fff6910e7d398cfde7d964617d327c2",
+    "git": {
+      "bytes": 3662256,
+      "sha256": "9b19807c702934b8c51fd2da8c2d38053bd7328536546e5a47eb3914dcc7bcde"
+    },
+    "git_path": "/opt/homebrew/Cellar/git/2.54.0/bin/git",
+    "isolated": 1,
+    "python": {
+      "bytes": 17257904,
+      "sha256": "b8014caecb1f334bbc67e99b74d9f5fa6e3519c6567c98a890940b31ffeffa32"
+    },
+    "python_path": "/Users/westbrook/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+    "python_version": "3.11.15 (main, Jul 18 2026, 16:57:24) [Clang 22.1.3 ]"
+  },
+  "scientific_samples": 0,
+  "supported_diagnosis": "In this single distinct sample, resolve_commit_tree and batch_sizes together occupy about84.15% of aggregate wall time. Recorded child CPU and parent CPU are each small relative to aggregate wall; the data prioritizes off-CPU command lifecycle investigation over a CPU-dominated explanation within these measured processes."
+}

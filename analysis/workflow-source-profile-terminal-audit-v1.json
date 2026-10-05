@@ -1,0 +1,161 @@
+{
+  "acceptance": false,
+  "artifacts": [
+    {
+      "bytes": 12912,
+      "path": "/private/tmp/workflow-source-profile-output-1/result.json",
+      "sha256": "6609f968746fd8a96e8d236be6d9df0849926e804395d0453aabfd17f496dad7"
+    },
+    {
+      "bytes": 84152,
+      "path": "/private/tmp/workflow-source-profile-output-1/functions.json",
+      "sha256": "31036323cc93810631228218eb399606a03bd299c416ebe7b53e4aec51346190"
+    },
+    {
+      "bytes": 22191,
+      "path": "/private/tmp/workflow-source-profile-output-1/capture.prof",
+      "sha256": "f5e77961bcea96be55298da59fc0ffeebf534936c16256ef6f5ff41ed44a6da2"
+    },
+    {
+      "bytes": 158786,
+      "path": "/private/tmp/workflow-source-profile-output-1/plan.json",
+      "sha256": "6379eaf88f4380ce494e011dfbe914ebef060410c0c00789d85df2148ec2fd29"
+    },
+    {
+      "bytes": 6967,
+      "path": "/private/tmp/workflow-source-profile-source-review-1.json",
+      "sha256": "0355148b4f71c83be86d909e3536b9b675f1efb71678cfe42afdb6bf96e08942"
+    }
+  ],
+  "audit_status": "pass",
+  "audited_at_utc": "2026-10-05T00:29:13.761419+00:00",
+  "check_count": 867,
+  "detailed_checks": {
+    "bytes": 96267,
+    "path": "/private/tmp/workflow-source-profile-terminal-audit-1.json",
+    "sha256": "ebb8b11118aa723e25ad96b8dca8a14f9ffb5da2cbd5dc9cb5a8f094c797954e"
+  },
+  "findings": [],
+  "identity": {
+    "bytes": 1098747,
+    "commit_oid": "13dbce3e8bdaed8c6b6beefce417b61e5149dbb6",
+    "file_count": 63,
+    "manifest_sha256": "a569a1f788765ec8af37eca3de10c746012b7553ffeea497c27cceb350adb9b5",
+    "tree_oid": "db17648057d0d26b90ed334f827659325bc742c7"
+  },
+  "independent_timing_review": {
+    "agent": "/root/workflow_deadline_review/transport_review",
+    "arithmetic_reconciles": true,
+    "remaining_findings": []
+  },
+  "input_counts": {
+    "imported_harness_sources": 49,
+    "repository_directories": 72,
+    "repository_files": 98,
+    "retained_original_files": 9,
+    "source_files": 729
+  },
+  "limits": [
+    "The parent wait observation does not identify Git child CPU, filesystem, scheduling, pipe-delivery or other underlying cause. It is not evidence that kqueue itself consumed CPU or should be replaced.",
+    "One cProfile/audit-hook sample with warmed caches does not establish original65-span mean, speedup, comparative performance, or statistical causality. Cumulative times overlap and were not summed.",
+    "Exact profile/JSON arithmetic and pinned identity agree, but no candidate semantic behavior, actualOwner workflow, Docker test, acceptance, reuse or new scientific sample was exercised.",
+    "No watchdog firing or recorded cleanup failure occurred; successful helper source requires releases. Request census alone is not independent OS child-reaping proof.",
+    "Current bytes and retained pre/post claims are corroborated for729sourcefiles,98repositoryfiles,9originals and binaries. Environment values were intentionally not retained, so environment digest was shape-checked rather than independently reconstructed.",
+    "Initial exit127 occurred before driver execution according to root; this audit does not independently recreate that shell attempt. It does not count as a capture or retry of the physical control.",
+    "The physical failure remains1failed/37not_run with infrastructure_error; the earlier647offlinepass remains separate. No qualification claim follows from this diagnostic."
+  ],
+  "profile": {
+    "bracket_minus_self_seconds": 4.4665999999859984e-05,
+    "driver_elapsed_before_postchecks_and_output_seconds": 1.22296025,
+    "functions": 173,
+    "kqueue_select_caller_seconds": 0.635866118,
+    "other_self_seconds": 0.016655802000000053,
+    "profile_bracket_seconds": 0.652588875,
+    "selected_rows": [
+      {
+        "cumulative_seconds": 0.635888407,
+        "file": "~",
+        "function": "<method 'control' of 'select.kqueue' objects>",
+        "line": 0,
+        "primitive_calls": 240,
+        "self_percent": 97.44755960281611,
+        "self_seconds": 0.635888407,
+        "total_calls": 240
+      },
+      {
+        "cumulative_seconds": 0.007159834,
+        "file": "~",
+        "function": "<built-in method _posixsubprocess.fork_exec>",
+        "line": 0,
+        "primitive_calls": 4,
+        "self_percent": 1.097218226941617,
+        "self_seconds": 0.007159834,
+        "total_calls": 4
+      },
+      {
+        "cumulative_seconds": 0.000366461,
+        "file": "~",
+        "function": "<built-in method _hashlib.openssl_sha1>",
+        "line": 0,
+        "primitive_calls": 63,
+        "self_percent": 0.0561588004223634,
+        "self_seconds": 0.000366461,
+        "total_calls": 63
+      },
+      {
+        "cumulative_seconds": 0.6525399590000001,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_source_capture_policy_v1.py",
+        "function": "capture_registered_source",
+        "line": 66,
+        "primitive_calls": 1,
+        "self_percent": 0.0038311580510861595,
+        "self_seconds": 2.5e-05,
+        "total_calls": 1
+      },
+      {
+        "cumulative_seconds": 0.652213875,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_git_source_batch_v1.py",
+        "function": "capture_git_source_batch",
+        "line": 190,
+        "primitive_calls": 1,
+        "self_percent": 0.09824759627895187,
+        "self_seconds": 0.0006411090000000001,
+        "total_calls": 1
+      },
+      {
+        "cumulative_seconds": 0.650921626,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_git_source_batch_v1.py",
+        "function": "_command",
+        "line": 106,
+        "primitive_calls": 4,
+        "self_percent": 0.1657391154627502,
+        "self_seconds": 0.001081521,
+        "total_calls": 4
+      },
+      {
+        "cumulative_seconds": 0.000115043,
+        "file": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_git_source_batch_v1.py",
+        "function": "_release",
+        "line": 61,
+        "primitive_calls": 4,
+        "self_percent": 0.006187779991470278,
+        "self_seconds": 4.0378000000000005e-05,
+        "total_calls": 4
+      }
+    ],
+    "self_seconds_sum": 0.6525442090000001
+  },
+  "protocol": "workflow-source-profile-terminal-audit-summary-v1",
+  "qualification": false,
+  "review_scope": "Read-only retained JSON, hashes, profile data decoding and arithmetic. No project import, diagnostic rerun, test/checker, Git subprocess, Engine/provider call or repository edit.",
+  "root_reported_execution": {
+    "actual_capture_calls": 1,
+    "exit_code": 0,
+    "session_id": 42532,
+    "startup_attempt_capture_calls": 0,
+    "startup_attempt_exit_code": 127,
+    "startup_correction": "Nonexistent integration .venv invocation corrected to established main .venv resolving to same plan-pinned Python binary. Root-reported shell outcomes; receipt independently confirms one capture."
+  },
+  "scientific_samples": 0,
+  "supported_diagnosis": "This one profiled parent capture spent most attributed wall time inside kqueue.control called by selectors.select while servicing its Git subprocess pipes. Fork/exec and blob SHA1 parent self times were much smaller in this sample."
+}
