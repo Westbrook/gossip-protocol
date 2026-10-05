@@ -1,5 +1,6 @@
 """Actual host-authored subprocess controls, never candidate or Docker executions."""
 from dataclasses import replace
+from contextlib import contextmanager, nullcontext
 import json
 import subprocess
 import sys
@@ -100,7 +101,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
         self.boundaries += 1
 
     def exchange(self, owner, **overrides):
-        options = {'released_requirements': RELEASED, 'before_effect': self.boundary, 'retain': self.retain}
+        options = {'released_requirements': RELEASED, 'before_effect': self.boundary, 'retain': self.retain, 'deadline_scope': lambda deadline: nullcontext()}
         options.update(overrides)
         result = owner.exchange(admitted(self.row), **options)
         self.assertIsNotNone(owner.child.poll())
@@ -123,7 +124,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
             self.assertEqual(raw, wire.continuation_bytes(ack['slot']))
             self.assertEqual(ack['written_bytes'], len(raw))
         with self.assertRaises(ValueError): owner.exchange(admitted(self.row), released_requirements=RELEASED,
-            before_effect=self.boundary, retain=self.retain)
+            before_effect=self.boundary, retain=self.retain, deadline_scope=lambda deadline: nullcontext())
 
     def test_all_templates_use_complete_finite_handshake(self):
         for template in ('refresh-identity-v1', 'completed-receipt-replay-v1', 'manifest-content-hash-v1'):
@@ -135,6 +136,32 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
                     return values_for(self.row)['captured_job']
                 result = self.exchange(owner, capture_job=capture)
                 self.assertTrue(result['mechanics_complete']); self.assertEqual(result['value']['disposition'], 'pass')
+
+    def test_step_deadline_scope_encloses_retention_validation_and_capture(self):
+        owner = self.make(template='manifest-content-hash-v1')
+        active = []; deadlines = []; callbacks = []
+        @contextmanager
+        def scope(deadline):
+            self.assertFalse(active)
+            self.assertLessEqual(deadline, owner.deadline_ns)
+            active.append(deadline); deadlines.append(deadline)
+            try: yield
+            finally: active.pop()
+        def retain(name, raw):
+            if name.startswith(('probe-frame-', 'probe-continue-')):
+                self.assertTrue(active); callbacks.append(('retain', active[0]))
+            self.retain(name, raw)
+        def boundary():
+            self.assertTrue(active); callbacks.append(('boundary', active[0]))
+        def capture():
+            self.assertTrue(active); callbacks.append(('capture', active[0]))
+            return values_for(self.row)['captured_job']
+        result = self.exchange(owner, deadline_scope=scope, retain=retain,
+                               before_effect=boundary, capture_job=capture)
+        self.assertTrue(result['mechanics_complete'])
+        self.assertFalse(active)
+        self.assertTrue(all(d in deadlines for _, d in callbacks))
+        self.assertEqual(sum(k == 'capture' for k, _ in callbacks), 1)
 
     def test_stderr_backpressure_is_drained_while_exchanging_stdout(self):
         owner = self.make(mode='stderr-noise'); result = self.exchange(owner)
@@ -220,7 +247,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
             raise ValueError('synthetic uncertain journal')
         with self.assertRaisesRegex(ValueError, 'uncertain journal'):
             owner.exchange(admitted(self.row), released_requirements=RELEASED,
-                           before_effect=self.boundary, retain=fail)
+                           before_effect=self.boundary, retain=fail, deadline_scope=lambda deadline: nullcontext())
         self.assertEqual(attempted, ['probe-frame-imported.bin'])
         self.assertIsNotNone(owner.child.poll()); self.assertTrue(owner.closed)
 
@@ -229,7 +256,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
         def interrupt(): raise KeyboardInterrupt('controlled test interruption')
         with self.assertRaises(KeyboardInterrupt):
             owner.exchange(admitted(self.row), released_requirements=RELEASED,
-                           before_effect=interrupt, retain=self.retain)
+                           before_effect=interrupt, retain=self.retain, deadline_scope=lambda deadline: nullcontext())
         self.assertIsNotNone(owner.child.poll()); self.assertTrue(owner.closed)
         self.assertFalse(json.loads(self.originals['probe-pipe-terminal.json'])['mechanics_complete'])
 
@@ -243,7 +270,7 @@ class GeneratedProbePipeProcessTests(unittest.TestCase):
     def test_invalid_probe_closes_transferred_process(self):
         owner = self.make()
         with self.assertRaises(ValueError):
-            owner.exchange({}, released_requirements=RELEASED, before_effect=self.boundary, retain=self.retain)
+            owner.exchange({}, released_requirements=RELEASED, before_effect=self.boundary, retain=self.retain, deadline_scope=lambda deadline: nullcontext())
         self.assertTrue(owner.closed); self.assertIsNotNone(owner.child.poll())
 
 

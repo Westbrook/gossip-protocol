@@ -1,0 +1,254 @@
+{
+  "protocol": "probe-enclosing-deadlines-offline-qualification-v2",
+  "created_at_utc": "2026-10-05T11:45:12.588429+00:00",
+  "prior_commit": "9940c5b1e20639e181531b1758df8d77bfc944cc",
+  "status": "SOURCE_AND_CALLBACK_DEADLINES_QUALIFIED_OFFLINE_PHYSICAL_AND_CONTROLLER_INTEGRATION_PENDING",
+  "implemented": [
+    "Accepted-head reads, tree inventory and interactive metadata/content capture share min(original caller deadline, entry+60s).",
+    "Active state and new-state creation pass the original window; nested controls can only shorten it. Cold evidence inspection retains an independent audit clock.",
+    "Pipe steps scope retention, source/runtime validation, capture and acknowledgement in the same original step deadline.",
+    "Execution owner and Docker-control methods inherit and restore the earliest enclosing bound, including on failure.",
+    "Plan, state, pipe and execution protocol identities changed explicitly; retained historical source and packets were not overwritten."
+  ],
+  "qualification": {
+    "summary": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/summary.json",
+    "summary_sha256": "d33b383e24a8718fac44dca3164bdb8749d2680029f7e012a43c9b2ef71470dc",
+    "inputs_sha256": "43380264146b811e917ebf9da99fe211e66fb8eb6d38dd5bed172c1204a0af03",
+    "static_sha256": "2154b0ea83c9719bf00331c048281e4b9568be30ffbe2eb531f3f7f742acd493",
+    "source_input_count": 773,
+    "fresh_tests": 150,
+    "reused_tests": 0,
+    "classes": 19,
+    "duration_seconds": 61.096972124651074,
+    "receipts": [
+      {
+        "class": "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1Tests",
+        "tests": 22,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/f45db4b62badaefd/result.json",
+        "result_sha256": "67536d09c97b0880cc4fb7147d020c98171ec74ec14c05a0e1b7fc9c8a67bf1d",
+        "log_sha256": "6ca728db482df0fdfcad11c47dfe0eb6dc025e4456f71ba3074bdacdde416aa3",
+        "request_sha256": "bd0b836260f6d9f30911840fc92748d131e16ec2287afff0242369b78a6c27c0"
+      },
+      {
+        "class": "tests/test_candidate_git_source_two_process_v1.py::CandidateSourceCapturePolicyV2Tests",
+        "tests": 7,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/ba4196843ed07f6e/result.json",
+        "result_sha256": "3e170a014e17211eb53143f125d48d3ce6075989ef721664e5fd98ed6b79dbe0",
+        "log_sha256": "c32df4f247a079621b9084982f4cb2cef9ea619b993447691b1adf46934d17ec",
+        "request_sha256": "2363496633e98f36ab0215149adb23f5bbf0fa80f97f285051b07bf62d51adf5"
+      },
+      {
+        "class": "tests/test_candidate_source_capture_deadline_v1.py::EnclosingCapturePolicyTests",
+        "tests": 4,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/9f33096338494c1f/result.json",
+        "result_sha256": "3321979bfc6b668ede80f2ac5b3cd6cf0bb18457fc565a99cf8cc71e5c712ab7",
+        "log_sha256": "2138b8345ce30acf1693bd7c9adef7bf1a738453e62bdde69521be5f7cf1cefd",
+        "request_sha256": "70427bd6f6ae06bc5f0dfe7c4ac0e3e9581e755d08242c6818fcf2e22bc4fec0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "f90154d61bbe2767a470d51152062ca75e2752fdc826a37e2256951144046778",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "request_sha256": "c3165d43bf57b8aa31d62e60c946dc33d78f64e5eebc7a4716a0ecb018fb8c1a"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "90c927bb1de21c355254522004763c9c65a9467f13e4bcc227adca2e4beac341",
+        "log_sha256": "24f7045e983891b125dc11ef1fb4e521f8af4de809c881bf8df0a2fcf0fbea70",
+        "request_sha256": "89632b606d19db5a37944bc03d245ea4b8a36bc2eb0fe24cd364b25ae002f81c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/9357695866ace6b8/result.json",
+        "result_sha256": "1e722489fa2b94da3fe22d617bb6a4fe0a0fdf8a0acd22f492a9dfb0a03bcb38",
+        "log_sha256": "cad6aab533a60b596872c01bef5023b516b4b90a4214da2c07494384600d6a6c",
+        "request_sha256": "4ad8ef80e2b3d90618005551f04ad10694aedf4cc43ef2fe200d2f0b76a918ad"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "1267ed019ab8cd91b4867383b4f90401380f58390553442b0a2397592edc9bc5",
+        "log_sha256": "badde55b2385211745575cb551af5590717469e3b739803531eb381721e0bb8d",
+        "request_sha256": "f0e9e99d9b996c08140c77e9b3f9448426ca0e1d0519110f854daa42aaeb9d01"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/27cee16273d7430c/result.json",
+        "result_sha256": "ca93119eee3f4c65a54a916482cb34557b86ea474a0e8527ff4599e4bb696768",
+        "log_sha256": "4de8f55a148603a55caefba9019a51bd5281eecdfa35bf6a3c516190d19d111d",
+        "request_sha256": "b3aded4a2a83b65b0b78a87e8da4024e736c94d499aaf35e2aa1533048c80d61"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests",
+        "tests": 10,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/b5572376f8dd4cea/result.json",
+        "result_sha256": "9e08ba6392c518e5b2f42812d1396b8956c39c43af7081e8145b7496c0c08412",
+        "log_sha256": "0dab965859044b8e62147717fea5da98b2856f09cab73ad0bfef5bf98c77253c",
+        "request_sha256": "d5fa6a2315dff76cd73915ed89452be5441b7c4abed2ef9044d27bab6e7903d1"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "0a4b266e35b5b0b8d5a76bebc5ea335a66bdbe7517a67845a907725f9049ca45",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "2bcc6bf07e434ffb234076ea5c9f26221f0716a11192776846eaa4445b77a697"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "14b04842a7c922365e9ccfa61be17494ee8bb318e58b074a5006707eff6d669a",
+        "log_sha256": "591ac5fa66a5f134f4e167efd9557db495bda95d6e1e8572dd8746b2f8016e2c",
+        "request_sha256": "262d5a27b334f82be4331ba5cfaea2d15fd83aec30a64317ccf08a2627b7ee8c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "3ba17d9ae93071195204bd73e8c6208b28b2d50656ea05854bc6f32c55604994",
+        "log_sha256": "bb1de0c1f199025efac29664a28b2e4a3fc058d100343f64ad01c245de5a0186",
+        "request_sha256": "834ab5b6286885c6442736a8b61d4a1157f279079a235b33a70a488f74340d5d"
+      },
+      {
+        "class": "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1GitTests",
+        "tests": 9,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/76f4605da08fb58a/result.json",
+        "result_sha256": "280ec55f73ed680fbd85a17fc9fe65bda78680a132858d12168c1faf5e80dd06",
+        "log_sha256": "3e8c2c31b3b04155083941e80443d59f759cb3142b9dd6d2ec564b494ff8d073",
+        "request_sha256": "994b3e8971e4042f28ab2ba6f6fe43ebbb4a3747dadd9e68c91d159f4850f39b"
+      },
+      {
+        "class": "tests/test_candidate_source_capture_deadline_v1.py::EnclosingCaptureGitTests",
+        "tests": 4,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/2f9319499bc41caa/result.json",
+        "result_sha256": "ddfad13ad063eac4766e16dcc3f97892b01c1d2b8ae24fe3f8fc622b0f17634c",
+        "log_sha256": "542ba6911788d8f2a50460816ea9e5db0cc234f6ce09d6129a5da591bce83acb",
+        "request_sha256": "3a6184dcfa48d263b01360d3b9abbd724ccddd4f7e002295c84c8610004e6ad4"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 6,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/e065be6d322f552e/result.json",
+        "result_sha256": "7c89a7dc59b9cb187ec888bfa1f3e8650fd9d2707a821e8cc6f066d8037753c9",
+        "log_sha256": "f8fb13f3decb17bf1178b8a52fe2c23bba00e3d439f944e3237e5035d565b6fd",
+        "request_sha256": "62f9a8122d2fb7da77d7c2bb1810997a3674562a09a6f36cb242b87198fce7e0"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "44819c037891d542f37aff061db3b43d4e68d9c439791f85ea8b8f4455db4ec7",
+        "log_sha256": "2547883f90eb3bb280b754e15191ee01145420b6b6d60d04577703845dba7249",
+        "request_sha256": "f4ac8eecd28261b0850825343c02a7eaa5bbe8940ed934069f89eb4d64ea1ec6"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "a1577d577780accd1ecc49a1e2003eb71474f97d85316576063d390400a4e31f",
+        "log_sha256": "cfa32eb7fe20a54c174697d9a3bf5dcbac8552b367fb681f18d7eca1114261bf",
+        "request_sha256": "59fbba0883766d1afa89bc37496c0874ddce5896439584b80c70b3af6dd3714c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "e12839ae98bce9d09d157022d0d6a2c689d814654ccdde21267c32e1f3523e0f",
+        "log_sha256": "f4288c5bc1b519768c19434d25a6a6fe03bb45d74f94208cb49df72443d34c81",
+        "request_sha256": "50a7d03faacd923fd93bc3178e6a49a0c2e6b728532f8c4d0f297d173ea79cac"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-enclosing-deadline-offline-3/20261005T114333-fd964093/classes/f6cea13342c33618/result.json",
+        "result_sha256": "0149b0fdb76baec1c19afbe51e668a68d906624c522cdd7d03605647eb37d11e",
+        "log_sha256": "c46282a9d8ae782c461668ea85770d968f5a5acef350279b2d2b1b0d8382a582",
+        "request_sha256": "4b059c90dfcea7da7e2acf4bde375c23f522eab4aa54a633669497d732fff223"
+      }
+    ],
+    "scope": "Actual offline tests, inert Git, anchored journals, owned host-authored sleeper processes and local pipe handshakes. Controller/source-review seams are synthetic. No Engine, candidate implementation or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/probe-enclosing-deadline-focused-1/20261005T113742-c099fae1/summary.json",
+      "sha256": "63c7d111fd0143a6c9dea47a75fc14dc200063b1165f04cafcaecbd4410becae",
+      "outcomes": {
+        "not_run": 8
+      },
+      "interpretation": "Static gate could not find node in the resumed shell PATH; no tests ran. Reused the previously installed v24.16.0 executable without installing tools."
+    },
+    {
+      "summary": "runs/probe-enclosing-deadline-focused-2/20261005T113835-65c6fa6f/summary.json",
+      "sha256": "fcce8a8585cc977714ee01511b00a6a88c64bde7202821850aed793113f8eb88",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 2,
+        "passed": 5
+      },
+      "interpretation": "Five passed; half-second fixture deadline sometimes expired before reaching the deliberately stalled third Git child. Capture correctly refused. Fixture now allows three seconds to reach each selected stage; controlled-clock tests retain subsecond coverage."
+    },
+    {
+      "summary": "runs/probe-enclosing-deadline-offline-1/20261005T113952-806b7814/summary.json",
+      "sha256": "c8f9d88b19ecdac3fdc79b63800deab80e79670e2f7df3edcf067c14370d3728",
+      "outcomes": {
+        "error": 1,
+        "not_run": 34,
+        "passed": 115
+      },
+      "interpretation": "115 passed; a test spy replaced an evaluator function and correctly triggered the loaded-source guard. Replaced that spy with non-mutating Python call observation; no guard relaxed."
+    },
+    {
+      "summary": "runs/probe-enclosing-deadline-offline-2/20261005T114153-4f6b5546/summary.json",
+      "sha256": "c118d5ddc8e42ceb496f02a9bf358d50749185cb932d81dcf2d886db2a1a7300",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 17,
+        "passed": 132
+      },
+      "interpretation": "132 passed; old assertion expected the state-window post-check, but the new nested capture now refuses immediately after admission exhausts its deadline. Updated the precise error expectation; durable-intent and no-redispatch assertions remain."
+    }
+  ],
+  "source_pins": {
+    "docs/probe-enclosing-deadlines-v2.md": "42c85742045eb9881e0332400662dcf0d285e94702c44d69c8c7ebf0d771f131",
+    "gossip_harness/candidate_source_capture_deadline_v1.py": "256e67113e532085a05f2f96cee49f2c0e46fd800e6dfb9d9bdebbf587525ddf",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "003ffc2ba1a57b54ff6ae225463955f18f9e56ef41146200df4fb29dc7cd56cd",
+    "gossip_harness/cumulative_generated_probe_pipe_v1.py": "1d1b217f1fa7d69d560dcd08788e20c3d0e6517b97e05df8d6bd8154aa4c9fa3",
+    "gossip_harness/cumulative_generated_probe_plan_v1.py": "2dd506bb85a8330f6b1c03b1b6aaf4600f3f1172ce6148a0c6340eab4ce8efde",
+    "gossip_harness/cumulative_generated_probe_state_v1.py": "55601430670a0132f73395c7b8cf3610412eba909bcac00c14c3143b91af9df2",
+    "pyproject.toml": "bc585d2cb6674a07d8c43b5a40beddc70950da58fb1b6ace26fc5956d9a965ab",
+    "tests/test_candidate_source_capture_deadline_v1.py": "819c1ca9f7f43baa1d5043c01e71b7a1251177ed5000783614c5eb3a5e134317",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "c6af052c86453b89cfa70185987a0fa543cd378ac4e6e03eb5ea6738052589a2",
+    "tests/test_cumulative_generated_probe_pipe_v1.py": "db6a0bd84b53c04075436967ec00ebb87120102cc03fc3d507c657cfd7850f7e",
+    "tests/test_cumulative_generated_probe_state_v1.py": "446870c4f9606760b80d976051b4b5ed14135d81a6d2f60769df4a9c0757f6ec",
+    "verification-manifest.json": "04b6caa85f042a754e8ff330e2f227d50aeb084dabe868cb10c16d3ec6923791"
+  },
+  "limitations": [
+    "Separate normal/emergency cleanup and five-second source-child reap allowances remain; no hard preemption of stuck OS/filesystem calls is claimed.",
+    "Journal and evaluator-hashing work retains byte/resource bounds and post-operation checks, not interruptible hard-real-time scheduling.",
+    "The enclosing window still needs original whole-child/controller financial admission and shared executor integration; caller-supplied deadlines alone are not that authority.",
+    "Changed probe source invalidates earlier exact layout requests for current execution. Preserve old packets; produce and independently enroll changed-source reviews before physical qualification.",
+    "H01-H08 physical host-fault schedules, complete acceptance routes and matching six-trajectory/four-milestone rehearsal remain owed."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Bind the original controller/child deadline and shared executor admission, activate the successor policy, and complete named review/acceptance/physical gates before the complete rehearsal and authorized live pilot."
+}

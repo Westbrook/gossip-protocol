@@ -25,7 +25,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import project_acceptance_registry_v1 as registry
 from .gitstore import GitStore
 
-PROTOCOL = 'cumulative-generated-probe-state-v1'
+PROTOCOL = 'cumulative-generated-probe-state-v1-enclosing-deadline-v2'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 require = plans.require
 
@@ -162,9 +162,9 @@ class ProbeExecutionState:
             'runtime_declaration': json.loads(self.runtime_raw), 'environment_declaration': json.loads(self.environment_raw),
             'evaluator_sources': self.sources}
         self.config_raw = values.canonical(config)
-        self._validate_current(check_window=False)
         existed = self.root.exists()
         require(existed == (expected_checkpoint is not None), 'reopen_requires_independent_expected_prefix')
+        self._validate_current(check_window=not existed)
         try:
             self.journal = journals.OwnerJournal(self.root, self.delta_root,
                 context={'protocol': PROTOCOL, 'config_sha256': hashlib.sha256(self.config_raw).hexdigest()},
@@ -174,6 +174,8 @@ class ProbeExecutionState:
             else:
                 self.journal.retain('config.json', self.config_raw)
             self.journal.checkpoint()
+            if not existed:
+                self._window()
         except BaseException:
             self.close()
             raise
@@ -187,30 +189,39 @@ class ProbeExecutionState:
         require(self.binding.window.started_ns <= now < self.binding.window.deadline_ns,
                 'probe_absolute_window_unavailable')
 
-    def _validate_current(self, *, check_window: bool) -> None:
+    def _validate_current(self, *, check_window: bool, deadline_ns: int | None = None) -> None:
         self._owner()
         if check_window:
             self._window()
+            if deadline_ns is not None:
+                require(type(deadline_ns) is int and 0 < deadline_ns <= 2**63-1,
+                        'exact_probe_control_deadline_required')
+            deadline_ns = min(self.binding.window.deadline_ns,
+                              deadline_ns if deadline_ns is not None else self.binding.window.deadline_ns)
+            require(time.monotonic_ns() < deadline_ns, 'probe_control_deadline')
         require(values.canonical(self.plan.record()) == self._plan_raw
                 and values.canonical(asdict(self.binding)) == self._binding_raw, 'probe_plan_or_binding_replaced')
         require(evaluator_sources() == self.sources, 'probe_state_evaluator_changed')
         self.admission.check_current(self.registration, None)
-        plans.verify_current_source(self.store, self.plan)
+        plans.verify_current_source(self.store, self.plan, deadline_ns=deadline_ns)
         expected = binding_for(self.plan, self.review, runtime=json.loads(self.runtime_raw),
                                environment=json.loads(self.environment_raw), window=self.binding.window)
         require(expected == self.binding, 'probe_runtime_review_or_binding_changed')
         self.admission.check_current(self.registration, None)
         if check_window:
             self._window()
+            assert deadline_ns is not None
+            require(time.monotonic_ns() < deadline_ns, 'probe_control_deadline')
 
-    def current(self) -> chain.PrefixCommitment:
+    def current(self, *, deadline_ns: int | None = None) -> chain.PrefixCommitment:
         self._owner()
         require(self.journal is not None, 'probe_journal_unavailable')
         assert self.journal is not None
         self.journal.checkpoint()
-        self._validate_current(check_window=True)
+        self._validate_current(check_window=True, deadline_ns=deadline_ns)
         checkpoint = self.journal.checkpoint()
         self._window()
+        require(deadline_ns is None or time.monotonic_ns() < deadline_ns, 'probe_control_deadline')
         return checkpoint
 
     def begin(self) -> dict[str, Any]:

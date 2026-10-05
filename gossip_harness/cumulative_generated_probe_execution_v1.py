@@ -8,6 +8,7 @@ execution records are not a cold verification, selection or acceptance receipt.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from contextlib import contextmanager
 import hashlib
 import json
 from pathlib import Path
@@ -15,7 +16,7 @@ import platform
 import subprocess
 import tempfile
 import time
-from typing import Any, cast
+from typing import Any, Iterator, cast
 import uuid
 
 from . import candidate_client_process_v4 as process
@@ -35,7 +36,7 @@ from . import cumulative_generated_probe_values_v2 as values
 from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-journal-labels-v1'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-enclosing-deadline-v2'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
@@ -121,9 +122,10 @@ class _Commands(transport._Commands):
         require(self.control_deadline is None, 'nested_probe_control_forbidden')
         self.control_deadline = self.probe_owner._operation_deadline(self.probe_owner.policy.timeout_seconds)
         try:
-            result = super().run(label, arguments, limit)
-            self._before_spawn()  # Also charge source validation/retention after wait.
-            return result
+            with self.probe_owner._deadline_scope(int(self.control_deadline * 1_000_000_000)):
+                result = super().run(label, arguments, limit)
+                self._before_spawn()  # Also charge source validation/retention after wait.
+                return result
         finally:
             self.control_deadline = None
 
@@ -176,6 +178,7 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._cleanup: cleanup.CleanupChannel | None = None
         self._cleanup_phase = False
         self._cleanup_deadline: float | None = None
+        self._active_deadline_ns: int | None = None
         self.cleanup_result: Any = None
         self._pipe: pipes.ProbePipe | None = None
         self._child: subprocess.Popen[bytes] | None = None
@@ -187,16 +190,39 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self.endpoint.validate()
 
     def _check_deadline(self) -> None:
+        require(self._active_deadline_ns is None or time.monotonic_ns() < self._active_deadline_ns,
+                'probe_nested_control_deadline')
         if self._cleanup_phase:
             require(self._cleanup_deadline is not None and time.monotonic() < self._cleanup_deadline,
                     'probe_cleanup_deadline')
         else:
             self.probe_state._window()
 
+    @contextmanager
+    def _deadline_scope(self, deadline_ns: int) -> Iterator[None]:
+        """All nested control/source operations inherit the earliest live bound."""
+        self._owner()
+        require(type(deadline_ns) is int and 0 < deadline_ns <= 2**63-1,
+                'exact_probe_nested_deadline_required')
+        previous = self._active_deadline_ns
+        self._active_deadline_ns = min(previous, deadline_ns) if previous is not None else deadline_ns
+        try:
+            self._check_deadline()
+            yield
+            self._check_deadline()
+        finally:
+            self._active_deadline_ns = previous
+
+    def _source_deadline_ns(self) -> int:
+        return min(self.binding.window.deadline_ns, self._active_deadline_ns
+                   if self._active_deadline_ns is not None else self.binding.window.deadline_ns)
+
     def _operation_deadline(self, seconds: float) -> float:
         deadline = time.monotonic() + seconds
         cap = self._cleanup_deadline if self._cleanup_phase else self.binding.window.deadline_ns / 1_000_000_000
         assert cap is not None
+        if self._active_deadline_ns is not None:
+            cap = min(cap, self._active_deadline_ns / 1_000_000_000)
         return min(deadline, cap)
 
     def _effect_boundary(self) -> None:
@@ -206,7 +232,7 @@ class ProbeExecution(transport.CandidateStorageExecution):
                 and values.canonical(self.runtime) == self.probe_state.runtime_raw
                 and values.canonical(self.environment) == self.probe_state.environment_raw, 'probe_owner_binding_changed')
         if not self._cleanup_phase:
-            self.probe_state.current()
+            self.probe_state.current(deadline_ns=self._source_deadline_ns())
         self._check_deadline()
 
     def _runtime(self, label: str) -> None:
@@ -257,7 +283,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
 
     def _dispatch_probe(self, intent: dict[str, Any]) -> dict[str, Any]:
         commands = _Commands(self)
-        files = plans.verify_current_source(self.probe_state.store, self.probe_state.plan)
+        files = plans.verify_current_source(self.probe_state.store, self.probe_state.plan,
+            deadline_ns=self._source_deadline_ns())
         record = self.probe_state.plan.record()
         helpers = driver.adapter_files(record['probe'], released_requirements=tuple(record['released_requirements']))
         require(admission.source_manifest(helpers) == record['helper_manifest'], 'probe_helper_manifest_differs')
@@ -399,7 +426,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
                     return value
 
                 pipe_result = self._pipe.exchange(record['probe'], released_requirements=tuple(record['released_requirements']),
-                    before_effect=self._effect_boundary, retain=retain_pipe, capture_job=capture_job)
+                    before_effect=self._effect_boundary, retain=retain_pipe, capture_job=capture_job,
+                    deadline_scope=self._deadline_scope)
                 require(pipe_result['mechanics_complete'], 'probe_pipe_mechanics_incomplete')
                 self._identity(container_id, 'session-final', completed=True); self._runtime('runtime-final')
                 self._retain('staging-final.json', values.canonical(verify_staging())); self._effect_boundary()

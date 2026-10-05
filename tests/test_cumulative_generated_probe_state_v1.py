@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 import tempfile
+import sys
 import threading
 import time
 import unittest
@@ -140,13 +141,53 @@ class GeneratedProbeStateGitTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'probe_absolute_window'): owner.begin()
         self.assertFalse(owner.journal.has('intent.json'))
 
+    def test_source_capture_inherits_earliest_original_or_nested_deadline(self):
+        owner = self.open()
+        shorter = time.monotonic_ns() + 30_000_000_000
+        calls = []
+        def profile(frame, event, arg):
+            if event == 'call' and frame.f_code is plans.verify_current_source.__code__:
+                calls.append(frame.f_locals['deadline_ns'])
+        prior = sys.getprofile(); sys.setprofile(profile)
+        try:
+            owner.current(deadline_ns=shorter)
+            self.assertEqual(calls[-1], shorter)
+            owner.current(deadline_ns=self.window.deadline_ns + 1_000_000_000)
+            self.assertEqual(calls[-1], self.window.deadline_ns)
+            count = len(calls)
+            with self.assertRaisesRegex(ValueError, 'probe_control_deadline'):
+                owner.current(deadline_ns=time.monotonic_ns()-1)
+            self.assertEqual(len(calls), count)
+        finally: sys.setprofile(prior)
+
+    def test_cold_original_validation_uses_independent_audit_clock(self):
+        owner = self.open()
+        calls = []
+        def profile(frame, event, arg):
+            if event == 'call' and frame.f_code is plans.verify_current_source.__code__:
+                calls.append(frame.f_locals['deadline_ns'])
+        prior = sys.getprofile(); sys.setprofile(profile)
+        try:
+            with mock.patch.object(time, 'monotonic_ns', return_value=self.window.deadline_ns + 1):
+                owner._validate_current(check_window=False)
+            self.assertEqual(calls, [None])
+        finally: sys.setprofile(prior)
+
+    def test_new_state_refuses_expired_window_before_capture_or_journal_creation(self):
+        with mock.patch.object(time, 'monotonic_ns', return_value=self.window.deadline_ns):
+            with self.assertRaisesRegex(ValueError, 'probe_absolute_window'):
+                self.open()
+        self.assertFalse(self.raw.exists())
+
     def test_expiry_during_post_intent_validation_preserves_single_attempt(self):
         owner = self.open()
         def expire_after_write():
             if (self.raw / 'intent.json').exists(): self.now = self.window.deadline_ns
         self.on_verify = expire_after_write
         with mock.patch.object(time, 'monotonic_ns', side_effect=lambda: self.now):
-            with self.assertRaisesRegex(ValueError, 'probe_absolute_window'): owner.begin()
+            # Expiry inside admission now stops the nested capture itself,
+            # before the later state-window post-check could be reached.
+            with self.assertRaisesRegex(ValueError, 'Capture deadline exhausted'): owner.begin()
         self.assertTrue(owner.journal.has('intent.json'))
         with self.assertRaisesRegex(ValueError, 'existing_probe_intent'): owner.begin()
 

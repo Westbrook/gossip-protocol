@@ -9,12 +9,15 @@ import copy
 import json
 from pathlib import Path
 import socket
+import sys
 import tempfile
+import time
 import unittest
 
 from gossip_harness import candidate_client_process_v4 as process
 from gossip_harness import candidate_observation_admission_v1 as admission
 from gossip_harness import cumulative_generated_probe_execution_v1 as execution
+from gossip_harness import cumulative_generated_probe_plan_v1 as plans
 from gossip_harness import cumulative_generated_probe_state_v1 as state
 from gossip_harness import cumulative_generated_probe_values_v2 as values
 from tests import test_cumulative_generated_probe_state_v1 as state_fixture
@@ -90,6 +93,33 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         self.assertIn('gossip_harness/cumulative_generated_probe_execution_v1.py',env['sources'])
         self.assertIn('gossip_harness/cumulative_generated_probe_pipe_v1.py',env['sources'])
         self.assertFalse(owner.cleanup_root.exists())
+
+    def test_nested_callback_scope_bounds_real_source_and_restores_on_failure(self):
+        owner = self.owner()
+        outer = time.monotonic_ns() + 60_000_000_000
+        inner = outer - 30_000_000_000
+        calls = []
+        def profile(frame, event, arg):
+            if event == 'call' and frame.f_code is plans.verify_current_source.__code__:
+                calls.append(frame.f_locals['deadline_ns'])
+        prior = sys.getprofile(); sys.setprofile(profile)
+        try:
+            with owner._deadline_scope(outer):
+                with owner._deadline_scope(inner):
+                    owner._effect_boundary()
+                    self.assertEqual(calls[-1], inner)
+                    self.assertLessEqual(owner._operation_deadline(60), inner / 1e9)
+                    with owner._deadline_scope(outer+1):
+                        self.assertEqual(owner._source_deadline_ns(), inner)
+                self.assertEqual(owner._source_deadline_ns(), outer)
+                with self.assertRaisesRegex(RuntimeError, 'controlled'):
+                    with owner._deadline_scope(inner): raise RuntimeError('controlled')
+                self.assertEqual(owner._source_deadline_ns(), outer)
+        finally: sys.setprofile(prior)
+        self.assertIsNone(owner._active_deadline_ns)
+        with self.assertRaisesRegex(ValueError, 'nested_control_deadline'):
+            with owner._deadline_scope(time.monotonic_ns()-1): self.fail('expired scope entered')
+        self.assertIsNone(owner._active_deadline_ns)
 
     def test_overlap_and_endpoint_substitution_are_rejected_before_dispatch(self):
         with self.assertRaisesRegex(ValueError,'probe_cleanup_origin_overlap'):

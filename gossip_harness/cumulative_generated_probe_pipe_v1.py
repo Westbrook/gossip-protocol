@@ -8,6 +8,8 @@ container or volume removal. No result here is a product acceptance judgment.
 """
 from __future__ import annotations
 
+from contextlib import AbstractContextManager
+
 from collections import deque
 from dataclasses import asdict, dataclass
 import hashlib
@@ -22,7 +24,7 @@ from typing import Any, Callable
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
 
-PROTOCOL = 'cumulative-generated-probe-pipe-v1-journal-labels-v1'
+PROTOCOL = 'cumulative-generated-probe-pipe-v1-enclosing-deadline-v2'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 READ_BYTES = 65536
 FRAME_QUEUE = 8
@@ -61,6 +63,7 @@ def definition(policy: PipePolicy) -> dict[str, Any]:
         'queued_frames': FRAME_QUEUE, 'cleanup_seconds': CLEANUP_SECONDS,
         'journal_slot_labels': {slot: artifact_slot(slot) for slot in sorted({s for rows in wire._SLOTS.values() for s in rows})},
         'clock': 'absolute monotonic nanoseconds; each exchange step also has one control window',
+        'callback_clock': 'owner deadline scope encloses frame retention, validation, capture and acknowledgement; no nested renewal',
         'io': 'POSIX nonblocking pipes; stdout and stderr drained together during reads and writes',
         'retention': 'raw frames, continuation intents/completions, bounded raw streams and local terminal',
         'prefetch': 'observed future or partial frame before acknowledgement refused; not proof of child-side causality',
@@ -220,6 +223,7 @@ class ProbePipe:
 
     def exchange(self, admitted: dict[str, Any], *, released_requirements: tuple[str, ...],
                  before_effect: Callable[[], None], retain: Callable[[str, bytes], None],
+                 deadline_scope: Callable[[int], AbstractContextManager[None]],
                  capture_job: Callable[[], Any] | None = None) -> dict[str, Any]:
         """Boundary callbacks are obligations of the external physical owner.
 
@@ -231,7 +235,7 @@ class ProbePipe:
         require(not self.exchanged, 'probe_pipe_exchange_is_one_shot')
         self.exchanged = True
         try:
-            require(callable(before_effect) and callable(retain), 'owner_boundaries_required')
+            require(callable(before_effect) and callable(retain) and callable(deadline_scope), 'owner_boundaries_required')
             transcript = wire.ValueTranscript(admitted, released_requirements=released_requirements, limits=self.policy.wire)
         except BaseException:
             self.close()
@@ -255,32 +259,35 @@ class ProbePipe:
         try:
             while (slot := transcript.next_slot) is not None:
                 deadline = self._step_deadline()
-                boundary(deadline)
-                raw = self._line(deadline)
-                keep('probe-frame-' + artifact_slot(slot) + '.bin', raw)
-                self._remaining(deadline)
-                event = transcript.append(raw)
-                boundary(deadline)
-                require(not self.errors, 'probe_stream_integrity_unavailable')
-                if slot == 'capture_job':
-                    require(callable(capture_job), 'reviewed_capture_callback_required')
-                    assert capture_job is not None
-                    captured = capture_job()
+                with deadline_scope(deadline):
                     boundary(deadline)
-                    transcript.supply_captured_value(captured)
-                require(not self.frames and not self.pending, 'probe_unacknowledged_future_output')
-                ack = wire.continuation_bytes(slot)
-                keep('probe-continue-' + artifact_slot(slot) + '-intent.bin', ack)
+                    raw = self._line(deadline)
+                    keep('probe-frame-' + artifact_slot(slot) + '.bin', raw)
+                    self._remaining(deadline)
+                    event = transcript.append(raw)
+                    boundary(deadline)
+                    require(not self.errors, 'probe_stream_integrity_unavailable')
+                    if slot == 'capture_job':
+                        require(callable(capture_job), 'reviewed_capture_callback_required')
+                        assert capture_job is not None
+                        captured = capture_job()
+                        boundary(deadline)
+                        transcript.supply_captured_value(captured)
+                    require(not self.frames and not self.pending, 'probe_unacknowledged_future_output')
+                    ack = wire.continuation_bytes(slot)
+                    keep('probe-continue-' + artifact_slot(slot) + '-intent.bin', ack)
+                    boundary(deadline)
+                    self.acks.append({'slot': slot, 'requested_bytes': len(ack), 'written_bytes': 0})
+                    try:
+                        self._write(ack, deadline)
+                    finally:
+                        self.acks[-1]['written_bytes'] = self._written
+                    keep('probe-continue-' + artifact_slot(slot) + '-written.json', values.canonical(self.acks[-1]))
+                    boundary(deadline)
+            deadline = self._step_deadline()
+            with deadline_scope(deadline):
+                natural = self._finish(deadline)
                 boundary(deadline)
-                self.acks.append({'slot': slot, 'requested_bytes': len(ack), 'written_bytes': 0})
-                try:
-                    self._write(ack, deadline)
-                finally:
-                    self.acks[-1]['written_bytes'] = self._written
-                keep('probe-continue-' + artifact_slot(slot) + '-written.json', values.canonical(self.acks[-1]))
-                boundary(deadline)
-            natural = self._finish(self._step_deadline())
-            boundary(self.deadline_ns)
         except BaseException as error:
             primary = error
             infrastructure.append(type(error).__name__ + ':' + str(error)[:300])

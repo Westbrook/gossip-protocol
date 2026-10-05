@@ -9,11 +9,12 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 import hashlib
 import json
+import time
 from pathlib import Path, PurePosixPath
 from typing import Any
 
 from . import candidate_observation_admission_v1 as admission
-from . import candidate_source_capture_policy_v2 as capture
+from . import candidate_source_capture_deadline_v1 as capture
 from . import cumulative_generated_probe_driver_v1 as driver
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_generated_probe_wire_v1 as wire
@@ -21,10 +22,10 @@ from . import cumulative_study_controller_v2 as study
 from . import project_acceptance_registry_v1 as registry
 from .gitstore import GitStore
 
-PROTOCOL = 'cumulative-generated-probe-plan-v1'
+PROTOCOL = 'cumulative-generated-probe-plan-v1-enclosing-deadline-v2'
 PURPOSE = 'public-generated-probe-development-v1'
 REVIEW_PURPOSE = 'independent-generated-probe-source-layout-invocation-v1'
-SOURCE_POLICY = capture.TwoProcessCapturePolicy()
+SOURCE_POLICY = capture.DeadlineCapturePolicy()
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 DUTIES = ('complete_source_and_public_invocation', 'capture_representation_or_not_applicable',
           'bounds_release_and_remaining_scope')
@@ -189,7 +190,8 @@ def asdict_target(target: ProbeTarget) -> dict[str, Any]:
 
 
 def prepare_plan(store: GitStore, target: ProbeTarget, admitted: dict[str, Any],
-                 release: study.Release, policy: ProbePolicy, layout: CaptureLayout | None = None) -> ProbePlan:
+                 release: study.Release, policy: ProbePolicy, layout: CaptureLayout | None = None,
+                 *, deadline_ns: int | None = None) -> ProbePlan:
     require(type(store) is GitStore and type(target) is ProbeTarget and type(policy) is ProbePolicy,
             'exact_source_target_policy_required')
     release_raw, requirements = _release_snapshot(release)
@@ -197,21 +199,26 @@ def prepare_plan(store: GitStore, target: ProbeTarget, admitted: dict[str, Any],
     pins = tuple(evaluator_sources().items())
     plan = ProbePlan(target, release_raw, probe_raw, policy, layout, pins)
     plan.record()
-    verify_current_source(store, plan)
+    verify_current_source(store, plan, deadline_ns=deadline_ns)
     require(_release_snapshot(release)[0] == release_raw
             and values.canonical(wire.checked_probe(admitted, released_requirements=requirements)) == probe_raw,
             'caller_inputs_changed_during_capture')
     return plan
 
 
-def verify_current_source(store: GitStore, plan: ProbePlan) -> dict[str, bytes]:
-    """Fresh complete Git capture; no cached files or approval are returned."""
+def verify_current_source(store: GitStore, plan: ProbePlan, *, deadline_ns: int | None = None) -> dict[str, bytes]:
+    """Fresh capture; live callers supply their enclosing bound.
+
+    Construction and cold audit have an independent 60-second capture budget;
+    they cannot dispatch. Active state/owner paths always supply their deadline.
+    """
+    if deadline_ns is None:
+        deadline_ns = time.monotonic_ns() + 60_000_000_000
     require(type(store) is GitStore and type(plan) is ProbePlan, 'exact_store_and_plan_required')
     before = values.canonical(plan.record())
-    require(store.head() == plan.target.commit_oid, 'registered_head_changed')
-    tree, files = capture.capture_registered_source(store, plan.target.commit_oid, policy=SOURCE_POLICY)
+    tree, files = capture.capture_registered_source(store, plan.target.commit_oid,
+        policy=SOURCE_POLICY, deadline_ns=deadline_ns)
     require(tree == plan.target.tree_oid and admission.source_sha256(files) == plan.target.subject.source_sha256,
             'complete_registered_source_differs')
-    require(store.head() == plan.target.commit_oid, 'head_changed_during_capture')
     require(values.canonical(plan.record()) == before, 'plan_changed_during_capture')
     return files

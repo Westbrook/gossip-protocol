@@ -7325,6 +7325,26 @@
       "distinct_defect": "A caller can otherwise submit a self-consistent shrunken matrix or late allocation and treat accounting as original-backed admission.",
       "boundary": "Real Git/journal and source/materialization checks; no candidate, Engine, provider, executor leases or whole-child deadline authority.",
       "disposition": "Run with affected ranked/corpus and capacity checks after static gate."
+    },
+    "tests/test_candidate_source_capture_deadline_v1.py::EnclosingCapturePolicyTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 60,
+      "invariant": "Accepted-head reads, capture and post-check share the original enclosing deadline; no nested renewal.",
+      "isolation": "class process; temporary inert Git and owned host-authored sleeper children",
+      "distinct_defect": "Independent 60-second source/head calls can overrun a shorter active probe/control window.",
+      "boundary": "No candidate, Engine, provider, physical probe qualification or complete whole-child bound.",
+      "disposition": "Run with changed probe plan/state/pipe/execution/reader and retained source transport regressions."
+    },
+    "tests/test_candidate_source_capture_deadline_v1.py::EnclosingCaptureGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Accepted-head reads, capture and post-check share the original enclosing deadline; no nested renewal.",
+      "isolation": "class process; temporary inert Git and owned host-authored sleeper children",
+      "distinct_defect": "Independent 60-second source/head calls can overrun a shorter active probe/control window.",
+      "boundary": "No candidate, Engine, provider, physical probe qualification or complete whole-child bound.",
+      "disposition": "Run with changed probe plan/state/pipe/execution/reader and retained source transport regressions."
     }
   },
   "audit": {
