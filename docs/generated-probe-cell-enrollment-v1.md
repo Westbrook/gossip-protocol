@@ -31,10 +31,11 @@ financial/reviewer evidence still must be available.
 The retained status is `enrolled_pending_qualification`. It grants no dispatch,
 selection or acceptance authority and makes no claim that resource envelopes are
 qualified. The typed registration is a prospective identity, not an independent
-source review or runtime proof. Physical execution does not yet consume this
-enrollment: the successor controller must join qualified resource limits,
-independent source approval, one-shot execution intent and physical observations
-before activation. An enrollment alone must never become an admission callback.
+source review or runtime proof. [Physical execution v6](probe-cell-enrollment-adoption-v6.md)
+now requires this enrollment as an additional ownership check. The successor
+controller must still join qualified resource limits, independent source approval,
+one-shot execution intent and physical observations before activation. An
+enrollment alone must never become an admission callback.
 
 Tests use inert Git, anchored journals and synthetic financial, mesh and
 registration data. They include an actual anchored append whose acknowledgement

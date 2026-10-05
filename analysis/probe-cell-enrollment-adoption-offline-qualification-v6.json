@@ -1,0 +1,349 @@
+{
+  "protocol": "probe-cell-enrollment-adoption-offline-qualification-v6",
+  "created_at_utc": "2026-10-05T14:08:49.237819+00:00",
+  "prior_commit": "dd511fd8855a53dd407568c56d1c9f09e9b7fcf1",
+  "status": "PHYSICAL_OWNER_ORIGINAL_ENROLLMENT_COMPONENT_CHECKS_PASSED",
+  "implemented": [
+    "Physical owner now requires an exact immutable enrollment locator and the same actual financial executor, plan, controller journal and child.",
+    "Actual state raw/delta/external-head and cleanup paths must match the one assigned root.",
+    "Locator reconstructs original enrollment from the externally anchored current controller prefix, without issuing a new assignment or dispatch authority.",
+    "Before each non-cleanup effect, including after shared-capacity waits, state and original enrollment are reauthenticated; unused slots release on refusal before intent.",
+    "Enrollment unavailability cannot veto separately bounded safety cleanup. The v6 environment pins the accounting source closure; observation admission remains separately mandatory."
+  ],
+  "qualification": {
+    "summary": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/summary.json",
+    "summary_sha256": "ed8289548be5c8108e6706ad3fe8840b7a7d191d2eb0d760d1ff612dfd82ec97",
+    "inputs_sha256": "1e49828eb2ade5e5b3c632a7efaa5e902c468512097cb788632a1337f61d1ba1",
+    "static_sha256": "ad520b22d4b864a3f0af7fbcab79133f8a9c2f8296aa5a4349d942ba33975aab",
+    "source_input_count": 775,
+    "fresh_tests": 296,
+    "reused_tests": 0,
+    "classes": 30,
+    "duration_seconds": 491.17065375018865,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "7f4dbb7e1e9d486bf8167e1782d56e55961e1fde90a393e7a5daf50b7a5dd677",
+        "log_sha256": "d8c407d4e1d994700b49ca3536277d5e5536b1ac8014cc777ed2fc9f02eb9429",
+        "request_sha256": "65f71ceef88a7ce30ac999843cb7a0f4802b5b79adb98a2a6f1920cac1c9091c"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/f8102915f46ef306/result.json",
+        "result_sha256": "ad3d03e99b71deb78037bc664a1f7dee1abf7d7b0cca039d6351e9a13eac8c95",
+        "log_sha256": "0155bc06b04ee5c854ae6203e82332d1b6ddd3b992fbec61e769aff3252fe750",
+        "request_sha256": "3f1264dc6f23ab48f6a6fae1c61fefabdc2437e44a8eac05b40cb23ca42653a8"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/682d942eed25d87d/result.json",
+        "result_sha256": "1afc4ed7a137bacf3ab4daa9d53ff8379c282635c5f986cbbdead1054f719219",
+        "log_sha256": "5489662dfca75cb8c294e4307cda1237e534b867bfab29f0ec89b74195dd517f",
+        "request_sha256": "4d447b3b5e1cefce2bc8d529a08a62a59cad797dbd7cd232f6182c7f78a0aadf"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/18e8426870583b7c/result.json",
+        "result_sha256": "9878239304eab841bbb848fb84d0f4bd470decf5981cf44e30841c0d76c163ac",
+        "log_sha256": "165d003dabd81c31ecfb859ec128ef7377ce2db10641a1393f047be2f2401b96",
+        "request_sha256": "9946bb4b5d908a9d98358a064245da9d6b6b8dc894cffabae7c65c8399ba0de7"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "tests": 18,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "a77c8dbc9e6ddc4667ed9555315b51f5b7482c23a94f46170a8ea173e2aea36b",
+        "log_sha256": "a0f09f84f18d029316cbc04d7cd1293bcb99502c673dc5e54955fe33d438e28d",
+        "request_sha256": "5e5f105ae7c140df808cabc28a005947697d14212c9b40eab09e637dd2679ba2"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusReductionTests",
+        "tests": 9,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/387abd7a3fd4e2bd/result.json",
+        "result_sha256": "2421142506adf2215fc85b27e05797b326ddf0024845d91efce21b80ca2bb505",
+        "log_sha256": "bdb9396f96eeebdebba7536ae9bd851ddd96012e09b9a50d6dd04cd49721cb85",
+        "request_sha256": "fa8d3625a3c0dce1ebda7b0247e23bb9f79e855fbe9a6c700f78419b5ffc370f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "78da6b0756fce982f4533ddc728a6b428e9a0382bf6ed33a0a2218202ba64fbb",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "request_sha256": "5e0e4a014f040f825015fc8412021d047f9c51017303a7880927e1a86b3425e2"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "d0cb8f981dc11fb2f9861e885484809d1fc08e645f23ba7a9031fa0cb1544b97",
+        "log_sha256": "cfcfbcc90c3dea82fc6ddf7baafbf1a637d716245d6ac9cc255b5fb566bbe297",
+        "request_sha256": "b9043824fa957cd66d40e707e57b85eebed3b5c253b14b81dc42261096075180"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "978bff63b0ba6f96fba8fd840e62f2f0c8026f99420ce5d0caf488e9e0e5e579",
+        "log_sha256": "991a69c9fe62cd559c36c2e5963b5d098b418316385f65f19f6ce4d855362642",
+        "request_sha256": "119a807b27f3a2a1a3b3d2390bee2c072d9ef03b6a4e8eb03943d6def3043261"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/9357695866ace6b8/result.json",
+        "result_sha256": "4cb829d48ba5781e32c8f5dd66f37c3cd9616307a3c66682a4b0555e6ca8fef9",
+        "log_sha256": "b42cc87356ad36efeafcb0d76e1d24d153406eae235cd3a50128e0ff30f1b6d0",
+        "request_sha256": "685c64afb9633ac555a7f3102cc760772bfb3904b4deb9f7ef017ec48ad04311"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "tests": 8,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "bbff5470c80c154f5ac539ac80ae4e7cbe00c353fc2a61740575481d5e86314d",
+        "log_sha256": "d5f502f3d19b746bdb60fe5eda0a073833a7abd383edf2f6ca3679ae186efe5e",
+        "request_sha256": "d253fbaf760b20fbaa1f5b30113513b1f544f772c167efd0834cb8fd9220829b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "f7fb5ed0f511aabd50487b172e254ac7bbfb4651f2a1e9ad5b2be9152841c5be",
+        "log_sha256": "5d4ce38622b9b8fd475579203b03a160cafac9dee22d17bcb79b223aa80cb42e",
+        "request_sha256": "20402d566901726af66f8563650fa73c478ecdee8f4e89f3b67f8e1e44a81cf9"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/27cee16273d7430c/result.json",
+        "result_sha256": "6fe27cf3e1c9b705e51fa2eb8e36e24132f9fe4a55f43f94e3b38f37f9df235c",
+        "log_sha256": "b7f8218aef4f532325dd79aaab353a19ab61e060d0ed6ca603975fb15060f00e",
+        "request_sha256": "e4861e7a23308d4548fc7353eb1385a0e7941f6ae821fcc2bdf527205723302b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "f2053b9138e762f804927f1a326c9eed30724a2d5e874fd7b3a48ac4937ed988",
+        "log_sha256": "c715c7d30c64aa7c1e41fc017f36e8897528f9ef9ec9ff5068ca54a201a76a8f",
+        "request_sha256": "546d9769b9f8ad7955925702517d538f1c0631c12fb538bed1504cf74d6a908d"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "78f009114076c3edf154e5b3c2eea6819e8f569e21bd2fcbaf30c572e1d85542",
+        "log_sha256": "39657a748f844677b44422d1d979b1c9b4485249d7cca323e03b06da091339ff",
+        "request_sha256": "287a2333dcb029524b3f7ead61eba6fb3b646a86cc9a62bd64c8c840eb14fde8"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "3e83b5300aea925b0caf8b4f6a51dc33a616929b05b0e7a01200c801d0338b96",
+        "log_sha256": "024e7aec751f4b6f56530327558f988ce33087a139b3dfb4737e8045b39720ed",
+        "request_sha256": "fe3e0b5e408d1c7ba372f3ac1d0fbee9a45debf7114b0cfe7b82fc2b20aa8f57"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/102d0d423f447c48/result.json",
+        "result_sha256": "4080d7dd4c254a9c19eb4fa9bedf3b171e32e0c9d3e41c3214ca8f56e17f0b9e",
+        "log_sha256": "24f9318a14db88621a063aa45e3d3b1c5bb9afb6d210cd657fcccc5fe8111644",
+        "request_sha256": "82ec40cf70215faadcf23e82f8a215b56ada77c2969d66fea3804f7e4b99f944"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "c70ee7b7cc1440706a7031d0b32e060803f7e483f4d7574b4dbdcfed8e121813",
+        "log_sha256": "08c77abc64f083afb95c4087d57094b93bddaaeaeaf6275ba4777616e7d13e62",
+        "request_sha256": "953c3ea1c3cf9f2732b82d9ff04c14ea38a7d149229423c0adad32effa7dc45d"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "570ed0c6aa2c629023919a70e760b33e322be373efcd3414222531538ab30f77",
+        "log_sha256": "843e697086cf78728a748a11c3a59c2b4128d519992818b2d283a17c1771a6c3",
+        "request_sha256": "5544f8d002b5d11104a1f499e54b75567668d5f8058440c19b3372757ff3728c"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_accounting_v1.py::GeneratedProbeOriginalAccountingGitTests",
+        "tests": 32,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/a3b1c052b71e1d3c/result.json",
+        "result_sha256": "0360994273b599ae00cd278946934b5e54aa1e3167a57249898ad0bd0e302bb2",
+        "log_sha256": "04d216d954306e7e399724a633b59d16c90caf7d831e65ce585951c5bd4a78aa",
+        "request_sha256": "ae2d8cc641ef1912e251cc8da1839b22b1fc90f819c38665e6d59c087249f76d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "tests": 6,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "bdae54fe6c95598ef0727f3092d78a54dd13a7fae11ef901f8a3cbe88afe2877",
+        "log_sha256": "da08bccd4e0e83a80a0fcfbbe077fd9ea76f5c23510650e350d6015107124b91",
+        "request_sha256": "57276c44b73ac97891d528d456ed65ad67cea8db8ddd129a2990c03554ee8f84"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_corpus_v1.py::GeneratedProbeCorpusOriginalGitTests",
+        "tests": 7,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/0141c3b8fa3f16da/result.json",
+        "result_sha256": "26a77d7fdb733c74617a0360037b3b622f1f3eeb2f4eccc7176e7652e4e2bff8",
+        "log_sha256": "3c53379350443d26b428f2d4be69e59fe5e3754f317aadbba94c32f94704c746",
+        "request_sha256": "79c0841daca3aacbf9e3186e151189dcc911a7df8659fcdde9de10ec09c625dd"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 24,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/e235bd31124ffb82/result.json",
+        "result_sha256": "f3eb4618db6a3b95ab8ab8a094f768add729e9d65e63c26381eb38319d20b653",
+        "log_sha256": "3db75ab7a466c5beeb0ddb867b36b3bebbb92bc643e7338a053d6fe0013b7f41",
+        "request_sha256": "82f7562e7ca4e30036db133e57cd41730d3f6a9f2e3f67c5199c1b65e43aef90"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "2a2a5ef05ebacf7ce0fc880829370f48c3a811a0cce6df5ee0fd5bedb6c40a30",
+        "log_sha256": "f657ebba7228ff0b0c941cfec22080ab6c9f0024a8a394f05cfd6a855c23813c",
+        "request_sha256": "3c9a106eec0ca1a160649a80303b0104ab7166cb691708821c468b872ae06c5d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeBuildFreezeGitTests",
+        "tests": 12,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/02ac7595af62b7b8/result.json",
+        "result_sha256": "1f7ac21c61f9236a592ca5c04f58d1bd76c6d95f6a80834ec0b1648311cd965a",
+        "log_sha256": "88551934c5938313a186f49a23bbf6039d3b5e470c3d1e6c36e5ad8c38f32498",
+        "request_sha256": "734cf0fd9998cbcad8058b40b3e3c7adcd2e41aa54966daa3668c58802eb3add"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "tests": 12,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "e8f15f2f3319c42052b1093a5ad1e2e259bab6aa40f31a214146c28d586977fc",
+        "log_sha256": "313959ccbedb403b835a27d94679fccec2af285e0e4ed4749864e785626f37a8",
+        "request_sha256": "b8e2e0041dd0a7b6c0ce853f5ce9f482612514a72b48c8f1f434dc49bc0857ea"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "d4f41750e9e413dbd6da8204b7522a90c24bef0ce658eadfa5e241e48b9f50d3",
+        "log_sha256": "a0f39b116df2161ac5be1f951a81e460f79436c68c35805fcc5a3c05455dd1a2",
+        "request_sha256": "10c887c5533137ec45fb1fcd075b4b365a70a02edc5d8a2a0ca78acbdd24d4cc"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "565dd4d4ee071fc7a17b35624d914485d7a0509e55eb59917d49851f247dc5cd",
+        "log_sha256": "146f9207c9475d40039a64acdd3013a4a771a3cd79297a1890b8ed5a05bf90bf",
+        "request_sha256": "3c4405857bcd1cfe32dc242ba5756b87b1e78107801f9eba42d15b1c9b945d53"
+      },
+      {
+        "class": "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests": 13,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/ba96f304814469e3/result.json",
+        "result_sha256": "7d445cbe28119e3a7b16e74223f8206e76a45eb69e27f68830baf3be103e808c",
+        "log_sha256": "891be9acd1f7290254895b394d8da8f415a08ae468efeb7d927bffe7e4977d8a",
+        "request_sha256": "1bea52eae093d76b738e98b9085c6ab60526bbf5174962038f5ba9cd94b68f94"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-enrollment-adoption-qualification/20261005T135942-b73e440c/classes/f6cea13342c33618/result.json",
+        "result_sha256": "84ffd4fd11b21e46d8f1ca3d9bff4f7c278823501a28e0f989c378a4dfaf2ee6",
+        "log_sha256": "ccbb3f6a6c23939b114524d11e3709ab206f3c256121fdd6f41f4a133b3a8972",
+        "request_sha256": "919285bec10825404e4ddd077810bd6c838fa6df9a4dc20bbd8e72f44ad90994"
+      }
+    ],
+    "scope": "Component controls only. Accounting uses actual inert Git and anchored originals with synthetic financial/mesh evidence. Owner tests use actual financial authorities and shared capacity, inert state journals and a declared synthetic enrollment-reader decorator. No combined physical qualification, Engine, candidate or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "focused_runs": [
+    {
+      "summary": "runs/probe-enrollment-adoption-focused/20261005T135251-38ac0a72/summary.json",
+      "sha256": "e0eb54f0dc1d7548194bf135d4ae0b9ca665698470e38156f40770810bcd579d",
+      "status": "failed",
+      "outcomes": {
+        "error": 1,
+        "not_run": 22,
+        "passed": 2
+      }
+    },
+    {
+      "summary": "runs/probe-enrollment-adoption-focused/20261005T135424-1fb75fe4/summary.json",
+      "sha256": "3746126eae552c805794775749a0adddced9e3ca38b072fd6393a2d3c1622742",
+      "status": "failed",
+      "outcomes": {
+        "error": 1,
+        "not_run": 22
+      }
+    },
+    {
+      "summary": "runs/probe-enrollment-adoption-focused/20261005T135513-9e3eb370/summary.json",
+      "sha256": "3915118d880692460bd7d76216122ac30ebbb13598048cd211a605c3133d101c",
+      "status": "failed",
+      "outcomes": {
+        "error": 1,
+        "not_run": 22
+      }
+    },
+    {
+      "summary": "runs/probe-enrollment-adoption-focused/20261005T135736-218fa818/summary.json",
+      "sha256": "7ba69c2ad7a00b7268b74877f20d01913c476bc4ceafc6aed697674b6f8c4caf",
+      "status": "passed",
+      "outcomes": {
+        "passed": 24
+      }
+    }
+  ],
+  "retained_failure_interpretation": [
+    "Fixture parent directory was missing before external-head creation. Fixed explicit parent creation.",
+    "A fixture runtime dictionary shadowed the imported runtime module. Renamed the import.",
+    "Source-definition integrity correctly rejected an undeclared mocked reader. Tests now use the guard-supported explicit decorated synthetic seam; a negative test preserves undeclared-substitution refusal. Production integrity code was unchanged."
+  ],
+  "source_pins": {
+    "docs/generated-probe-cell-enrollment-v1.md": "a44dda0f869de41ca097cf98b9681589d47f540af084765df2d6a6555fbe07c3",
+    "docs/probe-cell-enrollment-adoption-v6.md": "d59e0378f3ce4d8255feaa008109fbf66b1056d54ec8b51463bc083fcae0d06d",
+    "gossip_harness/cumulative_generated_probe_accounting_v1.py": "8ebc12f113f2d9365ee7a717e15073010f495ce1c22166f62ee062cf5c1e7890",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "c1fa5baad348e50f6cf057767d5d22908ed9d91174fc96b513ab6b2e4e1dee5c",
+    "tests/test_cumulative_generated_probe_accounting_v1.py": "4643f3c6878c303eb9acce41aeef36a9f5ea025e083813ea218d8eb8d4e6da06",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "e32cb3ac9c77b8242823c9e2a4b1ec109f6e4eb46e00a46f581e62492345f8ff",
+    "tests/test_cumulative_generated_probe_state_v1.py": "acad3d1c35b124d683845cb9f2eff6ebd571455577965c8bd6477711869e6e10",
+    "verification-manifest.json": "26c83f17919cf420720c62f23becc1e34843139363702020b722c4d26946cfed"
+  },
+  "limitations": [
+    "Pending enrollment remains insufficient to authorize dispatch or prove qualified aggregate resource envelopes. Existing separate observation admission is still required.",
+    "Owner tests deliberately wrap the enrollment reader and do not prove complete original financial/mesh/controller/physical composition. The full matching rehearsal remains required.",
+    "Cold physical observation reading still needs its own independent original-controller enrollment join. Ranked activation and several acceptance routes remain incomplete.",
+    "No new exact-source independent review or physical fault control was executed. Expiry checks do not establish hard OS preemption for every original-reconstruction operation."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Derive and qualify actual aggregate resource charges, independently join cold physical observations to enrolled original cells, and integrate the complete ranked controller before the matching rehearsal and live pilot."
+}

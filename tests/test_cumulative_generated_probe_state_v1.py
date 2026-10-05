@@ -30,7 +30,7 @@ def sha(raw):
 
 
 class GeneratedProbeStateGitTests(unittest.TestCase):
-    def setUp(self):
+    def setUp(self, *, execution_root_name=None):
         self.temp = tempfile.TemporaryDirectory(prefix='synthetic-probe-state-')
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name).resolve()
@@ -76,7 +76,12 @@ class GeneratedProbeStateGitTests(unittest.TestCase):
             return self.registration if self.available else None
         self.admission = admission.ObservationAdmission(self.registration, verify_registration=verify_registration)
         self.raw, self.delta = self.root / 'state-raw', self.root / 'state-delta'
-        self.head = ExternalHead.create(self.root / 'state-head', journal_roots=(self.raw, self.delta))
+        head_root = self.root / 'state-head'
+        if execution_root_name is not None:
+            (self.root / execution_root_name).mkdir()
+            self.raw, self.delta = (self.root / execution_root_name / name for name in ('raw', 'delta'))
+            head_root = self.root / execution_root_name / 'head'
+        self.head = ExternalHead.create(head_root, journal_roots=(self.raw, self.delta))
         self.addCleanup(self.head.close)
 
     def open(self, **overrides):

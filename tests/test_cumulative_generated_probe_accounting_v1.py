@@ -401,6 +401,42 @@ class GeneratedProbeOriginalAccountingGitTests(unittest.TestCase):
                 accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**{**args,'execution_root':root})
         self.assertEqual(f.chain.commitment.sequence,before.sequence+1)
 
+    def test_physical_locator_reads_actual_enrollment_and_preserves_assignment_after_append(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan)
+        original=accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        locator=accounting.ProbeCellEnrollment(f.owner,f.book,slot,cell.sha256,args['execution_root'],
+            f.milestone,f.generation,self.quotas,f.limits)
+        roots=tuple(args['execution_root']/name for name in ('raw','delta','head','cleanup'))
+        def authenticate(**changes):
+            supplied={k:args[k] for k in ('candidate_store','binding','registration')}
+            supplied['roots']=roots;supplied.update(changes)
+            return locator.authenticate(plan,**supplied)
+        self.assertEqual(authenticate(),original)
+        # Real later controller record; no rewrite of the original assignment.
+        f.owner.records.put('synthetic-later-controller-record',{'synthetic_fixture_only':True})
+        before=f.chain.commitment
+        self.assertEqual(authenticate(),original)
+        self.assertFalse(original['dispatch_authority'])
+        with self.assertRaisesRegex(ValueError,'roots_differ_from_enrollment'):
+            authenticate(roots=(*roots[:3],f.root/'different-cleanup'))
+        with self.assertRaisesRegex(ValueError,'registration_differs'):
+            authenticate(registration=replace(args['registration'],definition_sha256='b'*64))
+        self.assertEqual(f.chain.commitment,before)
+
+    def test_physical_locator_requires_actual_original_and_independent_current_head(self):
+        f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan)
+        locator=accounting.ProbeCellEnrollment(f.owner,f.book,slot,cell.sha256,args['execution_root'],
+            f.milestone,f.generation,self.quotas,f.limits)
+        supplied={k:args[k] for k in ('candidate_store','binding','registration')}
+        supplied['roots']=tuple(args['execution_root']/name for name in ('raw','delta','head','cleanup'))
+        with self.assertRaisesRegex(ValueError,'complete_original_probe_enrollment_required'):
+            locator.authenticate(plan,**supplied)
+        prior=f.chain.commitment
+        accounting.enroll_probe_cell(f.owner,f.book,slot,cell.sha256,plan,**args)
+        with mock.patch.object(f.chain.authority,'read',return_value=prior):
+            with self.assertRaises(ChainUnknown):locator.authenticate(plan,**supplied)
+        self.assertTrue(f.chain.uncertain)
+
     def test_enrollment_rejects_existing_protected_or_noncanonical_execution_roots(self):
         f,slot,cell,plan,_=self.cell_fixture();args=self.enrollment(f,plan);before=f.chain.commitment
         existing=f.root/'existing';existing.mkdir()

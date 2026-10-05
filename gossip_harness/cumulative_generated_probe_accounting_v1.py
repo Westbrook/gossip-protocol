@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import time
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
@@ -391,3 +391,46 @@ def inspect_probe_enrollment(owner: runtime.GossipChildRuntime, book: capacity.R
     owner.records.chain.validate_boundary(expected=expected)
     return {'slot': key, 'record_sha256': study.digest(row), 'cell_root_assigned': True,
             'dispatch_authority': False, 'acceptance_authority': False}
+
+
+@dataclass(frozen=True, slots=True)
+class ProbeCellEnrollment:
+    """An original-record locator, never an observation-admission capability.
+
+    Physical callers supply their actual state and roots to authenticate(). No
+    cached caller dictionary or success callback can replace the original join.
+    The controller journal authenticates its current prefix against its external
+    head; later controller appends do not renew or replace this cell's assignment.
+    """
+    owner: runtime.GossipChildRuntime
+    book: capacity.ReservationLedger
+    reservation_slot: str
+    cell_sha256: str
+    execution_root: Path
+    milestone: str
+    generation: int
+    quotas: corpus.Quotas
+    limits: ranked.ReviewLimits
+    selected: tuple[str, ...] | None = None
+
+    def __post_init__(self) -> None:
+        require(type(self.owner) is runtime.GossipChildRuntime
+                and type(self.book) is capacity.ReservationLedger
+                and self.book.records is self.owner.records,
+                'same_original_probe_enrollment_controller_required')
+        _canonical_root(self.execution_root)
+
+    def authenticate(self, plan: plans.ProbePlan, *, candidate_store: GitStore,
+                     binding: states.ProbeBinding, registration: admission.ObservationRegistration,
+                     roots: tuple[Path, Path, Path, Path]) -> dict[str, Any]:
+        self.__post_init__()
+        expected_roots = tuple(self.execution_root / name for name in ('raw', 'delta', 'head', 'cleanup'))
+        require(type(roots) is tuple and roots == expected_roots,
+                'physical_probe_roots_differ_from_enrollment')
+        for root in roots:
+            _canonical_root(root)
+        expected = self.owner.records.chain.require_current()
+        return inspect_probe_enrollment(self.owner, self.book, self.reservation_slot, self.cell_sha256,
+            plan, candidate_store=candidate_store, binding=binding, registration=registration,
+            execution_root=self.execution_root, expected=expected, milestone=self.milestone,
+            generation=self.generation, quotas=self.quotas, limits=self.limits, selected=self.selected)

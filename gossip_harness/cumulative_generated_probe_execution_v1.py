@@ -1,8 +1,8 @@
 """Original-only sandbox owner for prospectively registered public probes.
 
-No fixture dispatch route exists. The caller's admission capability must prove
-unique controller slot/root enrollment and aggregate budget against originals;
-this owner is not that controller. Reviews remain independently supplied. Raw
+No fixture dispatch route exists. Exact controller slot/root enrollment is
+mandatory; the separate admission capability must still prove aggregate budget
+against originals. Reviews remain independently supplied. Raw
 execution records are not a cold verification, selection or acceptance receipt.
 """
 from __future__ import annotations
@@ -32,6 +32,7 @@ from . import cumulative_generated_probe_driver_v1 as driver
 from . import cumulative_generated_probe_pipe_v1 as pipes
 from . import cumulative_generated_probe_plan_v1 as plans
 from . import cumulative_generated_probe_state_v1 as state
+from . import cumulative_generated_probe_accounting_v1 as accounting
 from . import cumulative_generated_probe_values_v2 as values
 from . import cumulative_study_controller_v2 as study
 from . import cumulative_child_deadline_v1 as child_clocks
@@ -39,7 +40,7 @@ from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 from .peer_financial_authority_v5 import CumulativeAuthorityV5, EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-cleanup-headroom-v5'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-cell-enrollment-v6'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
@@ -64,7 +65,7 @@ class RuntimePolicy:
 
 def evaluator_sources() -> dict[str, str]:
     root = Path(__file__).resolve().parent
-    result = {**state.evaluator_sources(), **workflow.evaluator_sources(),
+    result = {**state.evaluator_sources(), **workflow.evaluator_sources(), **accounting.sources(),
         **{'gossip_harness/' + name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in
             ('cumulative_generated_probe_execution_v1.py', 'cumulative_generated_probe_pipe_v1.py',
              'candidate_m2_product_observation_v1.py')}}
@@ -84,7 +85,7 @@ def environment_for(plan: plans.ProbePlan, *, clock_domain: str) -> dict[str, An
         'prestart': prestart.definition(), 'normal_cleanup_seconds': NORMAL_CLEANUP_SECONDS,
         'fallback_cleanup': asdict(FALLBACK_LIMITS), 'local_cleanup_seconds': pipes.CLEANUP_SECONDS,
         'reserved_cleanup_allowance_ns': cleanup_allowance_ns(),
-        'registration_contract': 'trusted controller authenticates unique root/slot and aggregate quotas before every effect',
+        'registration_contract': 'original cell enrollment binds physical roots; separate admission authenticates aggregate quotas before every effect',
         'scope': 'public generated-probe execution originals; no independent acceptance authority'}
 
 
@@ -151,7 +152,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
     binding: Any
 
     def __init__(self, probe_state: state.ProbeExecutionState, *, endpoint: process.EngineEndpoint,
-                 cleanup_root: Path, executor: CumulativeAuthorityV5, study_plan: study.StudyPlan):
+                 cleanup_root: Path, executor: CumulativeAuthorityV5, study_plan: study.StudyPlan,
+                 enrollment: accounting.ProbeCellEnrollment):
         require(type(probe_state) is state.ProbeExecutionState and type(endpoint) is process.EngineEndpoint,
                 'exact_probe_state_and_endpoint_required')
         probe_state.current()
@@ -211,7 +213,28 @@ class ProbeExecution(transport.CandidateStorageExecution):
         self._capacity_active = False
         self._capacity_dispatched = False
         self._child_clock_current()
+        require(type(enrollment) is accounting.ProbeCellEnrollment, 'original_probe_cell_enrollment_required')
+        self.enrollment = self._original_enrollment = enrollment
+        self._enrollment_identity = values.digest(self._read_enrollment())
+        self._check_deadline()
         self.endpoint.validate()
+
+    def _read_enrollment(self) -> dict[str, Any]:
+        enrollment = self.enrollment
+        require(type(enrollment) is accounting.ProbeCellEnrollment and enrollment is self._original_enrollment,
+                'original_probe_enrollment_locator_changed')
+        require(enrollment.owner.finance is self.executor and enrollment.owner.plan is self.study_plan
+                and enrollment.owner.records.chain is self.executor.checkpoint_chain
+                and enrollment.owner.index == self._clock_index,
+                'probe_enrollment_executor_or_controller_differs')
+        assert self.probe_state.journal is not None
+        original = self.probe_state.journal._chain
+        require(self.journal is self.probe_state.journal and original.authority is self._physical_head
+                and (self.root, self.delta_root) == (self.probe_state.root, self.probe_state.delta_root)
+                == (original.raw_root, original.delta_root), 'probe_enrollment_state_roots_changed')
+        return enrollment.authenticate(self.probe_state.plan, candidate_store=self.probe_state.store,
+            binding=self.probe_state.binding, registration=self.probe_state.registration,
+            roots=(self.root, self.delta_root, self._physical_head.root, self.cleanup_root))
 
     def _executor_current(self) -> None:
         executor = self.executor
@@ -307,6 +330,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
             self._executor_current()
             self._child_clock_current()
             self.probe_state.current(deadline_ns=self._source_deadline_ns())
+            require(values.digest(self._read_enrollment()) == self._enrollment_identity,
+                    'original_probe_enrollment_changed')
         self._check_deadline()
 
     def _runtime(self, label: str) -> None:

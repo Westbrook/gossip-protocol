@@ -6,6 +6,7 @@ resource creation. These fixtures supply no independent source approval.
 """
 from dataclasses import asdict, replace
 import copy
+from functools import wraps
 import json
 from pathlib import Path
 import socket
@@ -23,6 +24,12 @@ from tests.test_cumulative_child_deadline_v1 import selected_plan
 from tests.test_cumulative_study_repaired_runtime_v2 import CumulativeStudyRepairedRuntimeV2Tests as _PlanFixture
 from gossip_harness import cumulative_child_deadline_v1 as clocks
 from gossip_harness import cumulative_study_controller_v2 as study
+from gossip_harness import cumulative_study_runtime_v2 as study_runtime
+from gossip_harness import cumulative_generated_probe_accounting_v1 as accounting
+from gossip_harness import cumulative_generated_probe_capacity_v1 as capacity
+from gossip_harness import cumulative_generated_probe_corpus_v1 as corpus
+from gossip_harness import cumulative_generated_probe_ranked_originals_v1 as ranked
+from tests.test_cumulative_generated_probe_capacity_v1 import budget
 from gossip_harness.peer_project_contract_v2 import to_dict
 
 from gossip_harness import candidate_client_process_v4 as process
@@ -108,7 +115,7 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
             return replace(t, subject=replace(t.subject, cohort_id=finance.child.cohort,
                 trajectory_id=finance.child.trajectory, execution_contract_sha256=finance.roster.execution_contract_sha256))
         self.addCleanup(f.doCleanups)
-        with mock.patch.object(state_fixture, 'target', financial_target): f.setUp()
+        with mock.patch.object(state_fixture, 'target', financial_target): f.setUp(execution_root_name='enrolled-probe')
         self.fixture = f
         self.socket_dir = tempfile.TemporaryDirectory(prefix='probe-sock-', dir='/private/tmp')
         self.addCleanup(self.socket_dir.cleanup)
@@ -124,9 +131,31 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
             repetition_id='public-development-1', cohort_trajectory_ids=tuple(c.trajectory for c in self.finance_fixture.roster.children))
         f.admission = admission.ObservationAdmission(f.registration, verify_registration=lambda:f.registration if f.available else None)
         self.probe_state = f.open()
+        # Only the ranked-original reconstruction is synthetic in this owner
+        # fixture. Accounting tests exercise that join with actual inert Git and
+        # anchored records. This seam is not a combined physical qualification.
+        controller = object.__new__(study_runtime.GossipChildRuntime)
+        controller.records, controller.plan = records, self.study_plan
+        controller.finance, controller.index = self.executor, 0
+        book = capacity.ReservationLedger(records, budget(), clock_domain=clocks.clock_domain(),
+            expected=records.chain.commitment, create=True)
+        self.enrollment = accounting.ProbeCellEnrollment(controller, book, 'synthetic-reservation', 'a'*64,
+            f.root/'enrolled-probe', 'M2', 0, corpus.Quotas(2, 8), ranked.ReviewLimits(10000, 8, 1000, 20))
+        self.enrollment_reader = mock.Mock(return_value={
+            'slot':'synthetic-original-cell', 'record_sha256':'b'*64, 'cell_root_assigned':True,
+            'dispatch_authority':False, 'acceptance_authority':False})
+        # The loaded-source guard recognizes declared decorators via __wrapped__.
+        # Use that documented seam, rather than disabling any integrity checker.
+        # These tests therefore do NOT qualify the original-enrollment reader.
+        @wraps(accounting.inspect_probe_enrollment)
+        def synthetic_enrollment(*args, **kwargs):
+            return self.enrollment_reader(*args, **kwargs)
+        patcher = mock.patch.object(accounting, 'inspect_probe_enrollment', synthetic_enrollment)
+        patcher.start(); self.addCleanup(patcher.stop)
 
     def owner(self, **changes):
-        args = {'endpoint':self.endpoint,'cleanup_root':self.fixture.root/'cleanup','executor':self.executor,'study_plan':self.study_plan};args.update(changes)
+        args = {'endpoint':self.endpoint,'cleanup_root':self.fixture.root/'enrolled-probe'/'cleanup',
+            'executor':self.executor,'study_plan':self.study_plan,'enrollment':self.enrollment};args.update(changes)
         result = execution.ProbeExecution(self.probe_state, **args);self.addCleanup(result.close)
         return result
 
@@ -361,6 +390,64 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'no_original_cleanup_allowance'):f.owner()
         self.assertFalse(f.probe_state.journal.has('intent.json'))
         self.assertEqual(f.finance_fixture.free_slots(),2)
+
+    def test_enrollment_is_required_and_roots_cannot_be_redirected(self):
+        with self.assertRaisesRegex(ValueError,'original_probe_cell_enrollment_required'):
+            self.owner(enrollment=None)
+        with self.assertRaisesRegex(ValueError,'roots_differ_from_enrollment'):
+            self.owner(cleanup_root=self.fixture.root/'other-cleanup')
+        owner=self.owner();owner.root=self.fixture.root/'other-raw'
+        with self.assertRaisesRegex(ValueError,'state_roots_changed'):owner._read_enrollment()
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+        self.assertEqual(self.finance_fixture.free_slots(),2)
+
+    def test_undeclared_accounting_code_substitution_is_rejected(self):
+        with mock.patch.object(accounting,'inspect_probe_enrollment',self.enrollment_reader):
+            with self.assertRaisesRegex(admission.AdmissionError,'Previously imported evaluator code differs'):
+                self.owner()
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+
+    def test_enrollment_locator_and_actual_controller_cannot_be_substituted(self):
+        owner=self.owner();owner.enrollment=replace(self.enrollment)
+        with self.assertRaisesRegex(ValueError,'locator_changed'):owner.execute_once()
+        owner.enrollment=self.enrollment
+        for attribute,new in (('finance',object()),('plan',replace(self.study_plan)),('index',1)):
+            prior=getattr(self.enrollment.owner,attribute)
+            with self.subTest(attribute=attribute):
+                setattr(self.enrollment.owner,attribute,new)
+                try:
+                    with self.assertRaisesRegex(ValueError,'executor_or_controller_differs'):owner._effect_boundary()
+                finally:setattr(self.enrollment.owner,attribute,prior)
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+
+    def test_enrollment_is_reauthenticated_after_wait_before_intent(self):
+        import threading
+        owner=self.owner();calls=[]
+        for _ in range(2):self.assertTrue(self.executor.slots.acquire(blocking=False))
+        def inspect(*args,**kwargs):
+            calls.append(self.executor.active_evaluations)
+            if self.executor.active_evaluations:raise ValueError('synthetic_original_enrollment_unavailable')
+            return self.enrollment_reader.return_value
+        self.enrollment_reader.side_effect=inspect
+        t=threading.Thread(target=lambda:(time.sleep(.2),self.executor.slots.release(),self.executor.slots.release()))
+        t.start()
+        try:
+            with self.assertRaisesRegex(ValueError,'original_enrollment_unavailable'):owner.execute_once()
+        finally:t.join(5)
+        self.assertFalse(t.is_alive());self.assertIn(0,calls);self.assertIn(1,calls)
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+        self.assertFalse(owner.cleanup_root.exists())
+        self.assertEqual(self.finance_fixture.free_slots(),2)
+        self.assertEqual(self.executor.unresolved_evaluations,0)
+
+    def test_enrollment_change_refuses_effects_but_does_not_prevent_safety_cleanup(self):
+        owner=self.owner()
+        self.enrollment_reader.return_value={**self.enrollment_reader.return_value,'record_sha256':'c'*64}
+        with self.assertRaisesRegex(ValueError,'original_probe_enrollment_changed'):owner.execute_once()
+        owner._cleanup_phase=True;owner._cleanup_deadline=time.monotonic()+10
+        self.enrollment_reader.side_effect=ValueError('original enrollment unavailable during safety cleanup')
+        owner._effect_boundary()
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
 
 
 if __name__ == '__main__': unittest.main()
