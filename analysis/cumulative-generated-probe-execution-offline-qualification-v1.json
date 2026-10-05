@@ -1,0 +1,98 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-execution-adoption-1/audit.py",
+  "audit_driver_sha256": "644f346638c831415b55787390113bb3dd878592ff266b0796de76c07788edc5",
+  "authority_limits": [
+    "These eight checks cover owner entry/identity/refused-runtime behavior, not full physical execution correctness.",
+    "No candidate code, Docker CLI/container or provider call was executed. The refused endpoint is a temporary socket owned by the offline fixture.",
+    "Earlier workflow physical receipts and state/pipe component checks remain tied to their exact original contracts; none is reissued as combined generated-probe physical qualification.",
+    "No new evidence of swarm quality or population-level statistical effect is produced."
+  ],
+  "candidate_executions": 0,
+  "cold_reconstruction_supplied": false,
+  "docker_resource_creations": 0,
+  "implementation": [
+    "Source/policy/environment closure bound through the prospective state; fresh original runtime and Engine endpoint before resource creation.",
+    "Pinned read-only source/helpers, created-state sandbox proof, running keeper continuity and exact unprivileged exec identity.",
+    "Existing bounded retained control commands plus the qualified generated-probe stream handler, with per-frame identity/runtime/staging originals.",
+    "Declared SQLite capture: pause owned keeper, capture complete /tmp tar, preserve original bytes, require reviewed path census/schema and fixed immutable query, unpause and recheck identities.",
+    "Durable resource claims and bounded normal cleanup, followed by separate prior-only fallback cleanup without healing an uncertain journal.",
+    "Borrowed state/head lifetime preserved; original terminal is explicitly not cold reconstruction or product acceptance."
+  ],
+  "independent_source_approvals_created": 0,
+  "initial_static_failure": {
+    "correction": "Explicitly narrowed the exact ExecID list and retained a typed ExternalHead for cleanup origin binding.",
+    "outcomes": {
+      "not_run": 8
+    },
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-execution-offline-1/20261005T071910-0f6337b3",
+    "summary_sha256": "214632f8da256d94fee3d4b1f0c9c05865c8f6273bf0853043ec3d2fc78e1bd9"
+  },
+  "new_model_quality_samples": 0,
+  "physical_qualification_complete": false,
+  "product_acceptance": false,
+  "protocol": "cumulative-generated-probe-execution-offline-qualification-v1",
+  "provider_calls": 0,
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "d8686ad652dd1689eec55501de2d28471077da848d509e2df82f967a3360a720",
+    "pyproject.toml": "f78804ef3c3d3732a1d4581e45c1a071b8d81c781867a0902ba4ff32700590cd",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "60da3e1d8b358a0102fbffa2a6744bbbf0b1f9732e08d8ae98127300a429b17b",
+    "verification-manifest.json": "683b8c19572bcc814af1654601355cf47511eadd50f5907b81ca9aaf0fdea658"
+  },
+  "status": "physical_owner_implemented_offline_entry_checks_passed_physical_qualification_pending",
+  "unverified": [
+    "Successful real-Engine resource creation/start, actual candidate process/identity sequence, paused SQLite capture and normal/fallback cleanup on this new owner.",
+    "Resource-construction, pause, capture, stream, journal and cleanup failure/interruption combinations on the complete physical owner.",
+    "Performance/deadline feasibility of complete physical path within the registered absolute window.",
+    "Production controller unique-slot/root and aggregate budget enrollment; the supplied admission capability remains responsible for authenticating these originals.",
+    "Independent exact source/layout/invocation review and source adequacy; test review/controller capabilities are explicitly synthetic.",
+    "Cold original reconstruction, all candidate/context and actual merged-source selection, matching complete rehearsal, live quality comparison and held-out confirmation."
+  ],
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "lane": "fast",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests.test_exact_exec_pid_and_natural_completion",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests.test_other_command_identity_cannot_supply_probe_values",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests.test_runtime_policy_uses_only_retained_image_and_existing_control_envelope"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-execution-offline-2/20261005T072011-a7eb0e4f/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "858d7b334a588a69aa00a070a92b02618f6973dfc1195b16e3f7a4e965b25a96"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "lane": "git",
+        "log_sha256": "6c4994dbc3e6f197581e80d0536c3971ad1f1645d3b6d51e59d6f846008919f0",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests.test_changed_owner_runtime_cannot_consume_intent",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests.test_constructor_binds_physical_environment_but_close_keeps_caller_state",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests.test_existing_state_intent_forbids_a_new_physical_dispatch",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests.test_overlap_and_endpoint_substitution_are_rejected_before_dispatch",
+          "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests.test_refused_runtime_preserves_attempt_without_creating_resources"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-execution-offline-2/20261005T072011-a7eb0e4f/classes/d114aeabb2a947d2/result.json",
+        "result_sha256": "62f2f5511f002a80aa6132cb653bc3199af2a6d85de97d696e7231278ad7a21e"
+      }
+    ],
+    "duration_seconds": 30.909645915962756,
+    "fingerprint": "07c2ee397174d87e0f4b9105be5e93e1edc1b7019809c394d5c97e76bf6712a9",
+    "fresh_tests": 8,
+    "inputs_sha256": "33625d4480d664a3273cfc615d3baeff6dfa8ae3bb321c01f49587d804a58f3c",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-execution-offline-2/20261005T072011-a7eb0e4f",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 750,
+    "static": "passed within configured coverage; unchanged legacy type baseline remains",
+    "summary_sha256": "604f8b5dc9e99631b0f395951edb031e0553c9a3dbdddff919c7d19e5a10713f"
+  },
+  "verified_offline": [
+    "Exact exec command/user/nonprivileged flags, stable positive PID and natural zero-exit identity projection.",
+    "Retained image and existing control bounds; separate cleanup budgets sum to 120 seconds plus existing local process cleanup.",
+    "Real inert Git and protected journals with synthetic review/controller; physical environment includes owner and stream-handler sources.",
+    "Cleanup overlap, changed endpoint, owner runtime mutation and existing durable intent reject before physical dispatch.",
+    "Owned non-listening Unix socket refuses runtime connection; attempt and failed terminal survive, no Docker CLI resource operation or candidate session is launched, and repeated execution is refused.",
+    "Closing the new owner leaves the caller-owned state and external head usable."
+  ]
+}
