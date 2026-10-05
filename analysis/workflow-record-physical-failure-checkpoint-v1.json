@@ -1,0 +1,140 @@
+{
+  "audit": "runs/workflow-record-physical-failure-audit-1/audit.json",
+  "audit_sha256": "41d3495cff2adbc71f9fcc821797b133b21f7f7605192e936bbd65e4a2d9a364",
+  "cleanup_originals": [
+    {
+      "kind": "volume",
+      "resource_id": "gossip-volume-workflow-7a584c048a8542a8adc451a95ebcc255",
+      "retirement_sha256": "d067d3569d88653d89a28399ec4dba3d19bf075061d2f28d3cfb60d074313833"
+    },
+    {
+      "kind": "container",
+      "resource_id": "ca5f106301b6849a342b130b075cedee54bd8806aeb7ed76d8a77641dd39c009",
+      "retirement_sha256": "54b8ea2df1dba46425b4fa528101bbfdaea56ab30666b8b8687190b7bc4c89c3"
+    }
+  ],
+  "limits": [
+    "Read-only stdlib audit of retained originals and current source; no candidate, provider, Docker, owner reopen or new Engine query.",
+    "Prefix/head agreement authenticates retained local consistency, not an independently supplied external trust anchor.",
+    "Timing sidecar is diagnostic, not acceptance authority. Instrumented span union is not total workflow duration or the 30-second call window.",
+    "Historical owned cleanup evidence is checked; no current live resource census is claimed.",
+    "Offline success does not qualify this failed workflow; 37 checks remain unrun.",
+    "Changed runs reach different points and contain different span counts; their whole-run times are not a paired speedup experiment.",
+    "The new instrumented partition has83 source/current checks and179 checkpoints. Source capture21.16s and checkpoint validation15.54s now dominate; non-source current validation11.76s remains.",
+    "The existing batch-reader component is a next diagnostic candidate, not an adopted or qualified workflow policy."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Measure full retained-checkpoint read cost with the existing explicitly versioned candidate_journal_batch_read_v1 component before any workflow adoption. It already supports fresh readers that close at each full verification; workflow OwnerJournal currently selects legacy reads. Preserve all source/runtime checks, complete raw inventory/hash checks, immutable prior evidence and original deadlines. Do not retry this unchanged source.",
+  "next_candidate_source_paths": [
+    "gossip_harness/candidate_journal_batch_read_v1.py",
+    "gossip_harness/candidate_checkpoint_chain_v1.py",
+    "gossip_harness/candidate_execution_journal_v1.py",
+    "gossip_harness/candidate_product_browser_execution_v1.py"
+  ],
+  "offline_gate": {
+    "audit": "analysis/workflow-record-full-terminal-audit-v1.json",
+    "fresh": 576,
+    "reused": 74,
+    "selected": 650,
+    "status": "passed"
+  },
+  "original_raw_files": 254,
+  "outcomes": {
+    "failed": 1,
+    "not_run": 37
+  },
+  "progress_inside_failed_case": "Both workflow boundaries, result execution verification and result capture completed. Post-result runtime/staging verification and final process completion remain absent; no product verdict is eligible.",
+  "protocol": "workflow-record-physical-failure-checkpoint-v1",
+  "qualification_status": "failed_infrastructure",
+  "root_audit_assertions": 2484,
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-record-construction-physical-1/20261005T022819-67263120",
+  "shared6_status": "deferred_after_workflow_failure",
+  "source_commit": "d7a34f02c6bc6f957bc1d5479a766c32d8326333",
+  "summary_sha256": "10bd0a483c1a14bf0b798f11b0963aa1b966e8b20801adfcbe36746cb0cdcfbc",
+  "timings": {
+    "error_spans": [
+      {
+        "end_ns": 4520437281457416,
+        "parent": null,
+        "seq": 389,
+        "stage": "capture",
+        "start_ns": 4520430957252875,
+        "status": "error"
+      },
+      {
+        "end_ns": 4520437281420458,
+        "parent": 389,
+        "seq": 438,
+        "stage": "control",
+        "start_ns": 4520436830449666,
+        "status": "error"
+      },
+      {
+        "end_ns": 4520437281415750,
+        "parent": 438,
+        "seq": 439,
+        "stage": "effect",
+        "start_ns": 4520436830456041,
+        "status": "error"
+      },
+      {
+        "end_ns": 4520437281454083,
+        "parent": 389,
+        "seq": 443,
+        "stage": "effect",
+        "start_ns": 4520437281440083,
+        "status": "error"
+      }
+    ],
+    "exclusive_seconds": {
+      "capture": 0.205639541,
+      "checkpoint": 15.535990706,
+      "control": 4.927108465,
+      "current": 11.75753729,
+      "effect": 0.006872457,
+      "queue": 0.451524501,
+      "runtime": 0.539646042,
+      "source": 21.163228041,
+      "teardown": 0.06198904,
+      "write": 0.013167999
+    },
+    "inclusive_seconds": {
+      "capture": 33.609379374,
+      "checkpoint": 15.535990706,
+      "control": 35.292787584,
+      "current": 32.920765331,
+      "effect": 39.732133331,
+      "queue": 0.451524501,
+      "runtime": 0.539646042,
+      "source": 21.163228041,
+      "teardown": 4.033098666,
+      "write": 3.961889791
+    },
+    "instrumented_union_seconds": 54.662704082,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-record-construction-physical-1/20261005T022819-67263120/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-sbs00lz0/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-7a584c048a8542a8adc451a95ebcc255-timings.json",
+    "sha256": "cb7ec6b15d60e23d6715d8fbce2ac0618616f67fdb14e1dc7318f1984626ef04",
+    "spans": 491,
+    "stage_counts": {
+      "capture": 4,
+      "checkpoint": 179,
+      "control": 30,
+      "current": 83,
+      "effect": 91,
+      "queue": 4,
+      "runtime": 10,
+      "source": 83,
+      "teardown": 3,
+      "write": 4
+    }
+  },
+  "verifier_mechanics": {
+    "cleanup_verified": true,
+    "prestart_verified": true,
+    "session_complete": false,
+    "status": "infrastructure_error",
+    "unavailable": [
+      "call-000:Original evidence absent: call-000-result-runtime-after-verified.json,call-000-result-staging-after.json",
+      "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+    ]
+  }
+}
