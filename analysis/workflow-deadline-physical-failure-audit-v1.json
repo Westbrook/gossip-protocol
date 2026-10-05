@@ -1,0 +1,508 @@
+{
+  "artifacts": {
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/completion-census.json": "5715b5c876d675a1e4ffe0ec8ee2a6f613731d2407660815ef03c5e1aa4164cc",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/control-outcome.json": "b946e933c7bb2cc154a6794f4115ddc04909c56f2711cebf7d153053213a8259",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/original-prefix.json": "6d58b8a14cf8ad258828749001a2f107bec3322bd615338729d79ffc190772eb",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/physical-observation.json": "f59e3651bdbfd63965ea7b8e0b0f1d5ab51a67d015a54d3d73285961234722d1",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/config.json": "9eed33d494b48ec344cf237a7e445d769f06fd534d12f041a82831f536628278",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/intent.json": "07c02ceadb826220c612dfe51da574b2d510f289743658f9c35ce62633ac3b8a",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/runtime.json": "b721b93ebf7c53e37006b21b2c744859ce2774f4a6774f14e5f8b3bbdf17177d",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/session.json": "0c7ebf7ee74b6419f288b3d4508c4773e20c29ae247d6480ab4a95ce3a3dbfc1",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/terminal.json": "faf4f559022e73836a60ef75831b2f1fc3bdb210f9cac002f5a1fe9af75ccb57",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/workflow-verifier.json": "5d2152e60cb7801bcf9c31ed013297eb5a08b5b9e048250e98a2f791b7062cb3",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/source-plan.json": "d0c30d06fc00c5d2dad6eb170f9f56eea5f84defc3106b5ccb0d5b3dc8162d49",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/source-provenance.json": "3bb74acc6b2ee119f215901458a900c3583fd87f9f25155dadc15fbf987dd3e4",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/terminal-copy.json": "faf4f559022e73836a60ef75831b2f1fc3bdb210f9cac002f5a1fe9af75ccb57",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/request.json": "d5bae4cbc0366e044de7f38b80d56ca878b8dac0dec6eb3b611c6b5127a396df",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/result.json": "fcf2cde1dc6368db8b66c7f63419a1fcbb46b79d3f41ec84794b51790c79622c",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/worker.log": "68a8387f3231ed00c197a9e4e2a5cc71229f8aabc87710f1d5d51e352ea234a3",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/inputs.json": "24f2180e792860b2f93bdaeb2dbed746f947d989c7dc9cc7cc9a44ffdb180c68",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/runtime-final.json": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/static.json": "18c5243c0c49a8ff714ee58245ef5a63be1bef6792c40d04191ee18bae02a16b",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/static.log": "512ac8e0cf1af809151a6606c2512df18ec267db51887b419fc776d8d4372e80",
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/summary.json": "05b5862eca02271bcc6c3020bf21f58c8eb72225e342e647d855ecae49b61dfb",
+    "/private/tmp/workflow-deadline-physical-originals-audit-part-2.json": "9821e0bc3fd44623c422f40bfdf9a28ed7a34dd9e5299fec19f00321b7e564f1"
+  },
+  "audit_status": "integrity_passed_qualification_failed_incomplete",
+  "checks": {
+    "all729_current_input_paths_and_hashes": {
+      "passed": true
+    },
+    "all74_evaluator_source_pins": {
+      "detail": [],
+      "passed": true
+    },
+    "cancelled_sibling_classes": {
+      "passed": true
+    },
+    "class_cleanup_completed": {
+      "passed": true
+    },
+    "deadline_terminal_failure": {
+      "passed": true
+    },
+    "docker_lane": {
+      "passed": true
+    },
+    "exact_ordered38_inventory": {
+      "passed": true
+    },
+    "exact_request": {
+      "passed": true
+    },
+    "fingerprint": {
+      "passed": true
+    },
+    "fresh_result_and_log_paths": {
+      "passed": true
+    },
+    "honest_terminal_failure": {
+      "passed": true
+    },
+    "incomplete_session_truth": {
+      "passed": true
+    },
+    "no_duplicate_ids_or_unclaimed_skips": {
+      "passed": true
+    },
+    "no_late_call_result_or_continuation": {
+      "passed": true
+    },
+    "one_original_execution": {
+      "passed": true
+    },
+    "plan_registration_binding": {
+      "passed": true
+    },
+    "policy_not_widened": {
+      "passed": true
+    },
+    "recorded_runtime_final": {
+      "passed": true
+    },
+    "result_log_hashes": {
+      "passed": true
+    },
+    "result_rows_and_failure_mapping": {
+      "passed": true
+    },
+    "retained_engine_version_image": {
+      "passed": true
+    },
+    "runner_hash": {
+      "passed": true
+    },
+    "runtime_binding": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-000-runtime-after-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-000-runtime-after.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-000-runtime-before-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-000-runtime-before.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-001-runtime-before-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-boundary-001-runtime-before.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-runtime-after-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-runtime-after.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-runtime-before-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:call-000-runtime-before.json": {
+      "passed": true
+    },
+    "runtime_boundary:runtime.json": {
+      "passed": true
+    },
+    "runtime_boundary:session-ready-runtime-after-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:session-ready-runtime-after.json": {
+      "passed": true
+    },
+    "runtime_boundary:session-ready-runtime-before-verified.json": {
+      "passed": true
+    },
+    "runtime_boundary:session-ready-runtime-before.json": {
+      "passed": true
+    },
+    "runtime_reconciliation": {
+      "passed": true
+    },
+    "same_inputs_runtime_environment_as_offline_pass": {
+      "passed": true
+    },
+    "session": {
+      "passed": true
+    },
+    "session_stream:stderr": {
+      "passed": true
+    },
+    "session_stream:stdout": {
+      "passed": true
+    },
+    "source_manifests_bound": {
+      "passed": true
+    },
+    "stale_flags": {
+      "passed": true
+    },
+    "static_pass": {
+      "passed": true
+    },
+    "terminal_cleanup_claim": {
+      "passed": true
+    },
+    "terminal_copy": {
+      "passed": true
+    },
+    "terminal_intent_binding": {
+      "passed": true
+    },
+    "three_declared_classes": {
+      "passed": true
+    },
+    "unavailable_result_preserved": {
+      "passed": true
+    },
+    "verifier_and_observation_hashes": {
+      "passed": true
+    },
+    "worker_reuse_counts": {
+      "passed": true
+    },
+    "zero_qualified_controls_or_samples": {
+      "passed": true
+    }
+  },
+  "cleanup_conclusion": "Retained ordinary cleanup is authenticated for the exact owned container and volume: successful removal, empty post-removal listing, and claim retirement. No new present-absence Engine query was made.",
+  "current_input_count": 729,
+  "diagnostic_sidecars": [
+    {
+      "authority": false,
+      "interpretation": "Not read or used to authenticate outcome; b03 independently interprets diagnostic timings.",
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-89d50f3064134c7390d70ccdd5caac4e-timings.json",
+      "sha256": "596cfc63daf89a7c5533d2423ac91253520b329754d0cc19a398dcf60c557087"
+    }
+  ],
+  "duration_seconds": 92.9147335421294,
+  "errors": [],
+  "evaluator_sha256": "27003f0014cb86ebf7287b8574363e562b52305eff2ed0bb88194ba3785b5fce",
+  "evaluator_sources_count": 74,
+  "expected_missing_originals": [
+    "call-000-response.bin",
+    "call-000-result-response-eligible.json",
+    "call-000-result-capture-eligible.json",
+    "call-000-completion-eligible.json",
+    "call-000-next.json",
+    "call-000-resume-001.json",
+    "call-000-boundary-001-capture.json",
+    "call-000-boundary-001-unpause.json"
+  ],
+  "findings": [
+    {
+      "detail": "First attempted defect control hit the declared workflow call deadline before call-000 response/capture eligibility; this does not qualify the intended candidate discrepancy.",
+      "kind": "qualification_failure"
+    },
+    {
+      "detail": "10 remaining methods in the started defect class and all27 methods across the two unlaunched classes remain not_run.",
+      "kind": "incomplete_coverage"
+    }
+  ],
+  "fingerprint": "77f5d1ea5f082d1165c6f20be34d8231a6e58f7329a6c95e9532e6efcc351660",
+  "integrity_check_count": 614,
+  "limits": [
+    "Only retained source/JSON/hash evidence audited; no project imports, tests, checker, Engine, provider, Git or process controls invoked.",
+    "Common and native source digests recomputed from authenticated declared blob manifest; candidate Git object contents not independently dereferenced.",
+    "Recorded initial/final/runtime/environment identities and current source bytes audited; no new Engine identity or current resource absence query performed.",
+    "This first physical control did not qualify a product discrepancy. The remaining37 tests did not run; the offline647 pass remains separate, and no scientific sample or acceptance claim is made."
+  ],
+  "method_source_pin": {
+    "method": "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+    "method_ast_sha256": "aa2e1b64371c8ca6cbcd083f2911f4516a88119e3a429f7cc4561897f192e2a7",
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/tests/test_candidate_workflow_physical_v1.py",
+    "sha256": "d76638ccaafb2ab1373caac90701d5d6d6228e0fabbd1ef8496e42cf49b7794d"
+  },
+  "ordered38": [
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_actual_reopen_discards_prior_catalog",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_empty_export_incorrectly_exports_all",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_epoch_overflow_uses_old_domain_error",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_first_domain_error_stops_later_operations",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_injected_fault_after_commit_retains_documents_blobs_receipt_and_job",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_mixed_final_jobs_are_reverse_sorted",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_old_valid_epoch_is_not_fenced",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_reused_database_is_physical_identity_and_state_bleed",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_rollback_leaks_hidden_blob_despite_error_response",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalDefectTests.test_v0_incorrectly_dispatches_m1_jobs",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_01_normalized_61824_is_actually_emitted_captured_and_compared",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_02_exact_131072_frame_payload_plus_separate_delimiter",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_03_131073_frame_is_explicitly_incomplete",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_04_exact_524288_stdout_raw_retention_without_product_credit",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_05_524289_stdout_retains_bounded_prefix_and_total_observed",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_06_exact_65536_stderr_raw_retention",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalMechanismTests.test_07_65537_stderr_is_incomplete_without_a_product_verdict",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_01_inherited_text_persistence",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_02_identity_and_replay",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_03_errors_preserve_catalog",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_04_cancel_fences_old_token",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_05_atomic_conflict_after_prepare",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_06_per_source_provenance",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_07_invalid_member_rolls_back",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_08_injected_transaction_failure",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_09_empty_modes",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_10_defaults_export_selection",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_11_v0_unsupported_continuation",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_12_mixed_job_state_reopen",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_13_domain_error_continuation",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_14_exact_64_operations",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_15_existing_job_token_domain",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_16_absent_token_hook_distinction",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_17_actual_61446_answer_growth",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_18_three_calls_one_actual_exec_isolated_databases",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_19_complete_fault_rollback_source_corroboration",
+    "tests/test_candidate_workflow_physical_v1.py::CandidateWorkflowPhysicalPositiveTests.test_20_invalid_query_options_continue"
+  ],
+  "ordered38_sha256": "c4b0a61d5ddd4e6e613aef33d47907c6069c4ec66cc686ca69fa0fa38aaddb90",
+  "original_chain_audit": {
+    "chain_inventory_sha256": "2cc216ff73bc8b2a362698b91b848614161b832a088c94204bb7ef89ca59b5b8",
+    "check_count": 560,
+    "checker_correction_disclosure": {
+      "correction": "Prior checker incorrectly equated complete WorkflowRegistration with ObservationRegistration. Source candidate_workflow_execution_v1.py:294-302 projects common gate/commit/tree/repetition/cohort fields and adds definition/profile/original-purpose/original-binding hash; exact projection is now independently recomputed. Earlier artifact preserved.",
+      "path": "/private/tmp/workflow-deadline-physical-originals-audit-part-1.json",
+      "sha256": "dc32eb83539f749e4bde77329272b7f93ff66271c729b1e04712a886baf11bda"
+    },
+    "checkpoint_inventory_digest": "0103bbafbc748c973dea90e7a94bd5ab6ae70529e174f8ad3cdd4e9bc4b3b38b",
+    "cleanup_resources": [
+      {
+        "absence_sequence": 202,
+        "claim_sequence": 22,
+        "confirmation_sequence": 31,
+        "kind": "volume",
+        "name": "gossip-volume-workflow-89d50f3064134c7390d70ccdd5caac4e",
+        "removal_sequence": 198,
+        "resource_id": "gossip-volume-workflow-89d50f3064134c7390d70ccdd5caac4e",
+        "retained_ordinary_removal_authenticated": true,
+        "retirement_sequence": 203
+      },
+      {
+        "absence_sequence": 189,
+        "claim_sequence": 32,
+        "confirmation_sequence": 37,
+        "kind": "container",
+        "name": "gossip-workflow-89d50f3064134c7390d70ccdd5caac4e",
+        "removal_sequence": 185,
+        "resource_id": "4d60bd07c5b12da8eef04bb9324c08d527bc34c3325e89ef70ab8293eae9d949",
+        "retained_ordinary_removal_authenticated": true,
+        "retirement_sequence": 190
+      }
+    ],
+    "failed_checks": [],
+    "limits": [
+      "Stdlib byte/JSON audit only; no project imports, runtime execution, Engine/provider/Git/process controls or artifact mutations.",
+      "Authentication is against retained local external-head/prefix originals; this does not establish independent external anchoring or present live resource absence.",
+      "Cleanup is supported by retained successful ordinary removal and post-removal absence records; cleanup/context.json alone is not an emergency-cleanup execution result.",
+      "Timing sidecar was not read and grants no authority. Test inventory/result/log/current-source/runtime audit belongs to parent."
+    ],
+    "path": "/private/tmp/workflow-deadline-physical-originals-audit-part-2.json",
+    "raw_inventory_sha256": "17dc4a3a3b3c84f780dc1b0633761ea6ea7011ccb683d369aff8e1128988c9b6",
+    "reconstructed_commitment": {
+      "context_sha256": "2546bc601c612e3d23a41bb3d141e546dc3bfd8ac2ff3469d41c80cb413ca6d0",
+      "external_bytes": 81304,
+      "head_sha256": "54d8ce54d1e698eaaf13eaa1b07d42b92e25e66e1c5657816198922f2d7f9211",
+      "raw_bytes": 540427,
+      "raw_file_count": 209,
+      "sequence": 209
+    },
+    "sha256": "9821e0bc3fd44623c422f40bfdf9a28ed7a34dd9e5299fec19f00321b7e564f1",
+    "status": "integrity_passed"
+  },
+  "physically_attempted_tests": 1,
+  "preserved_distinct_results": {
+    "current_offline": {
+      "outcomes": {
+        "passed": 647
+      },
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-5/20261004T233836-5a01031b/summary.json",
+      "sha256": "71339ca723230ee50a9df7db904b6f189c1c5893e70e4d4416c105ed3531d6a9",
+      "status": "passed"
+    },
+    "prior_offline_failure": {
+      "outcomes": {
+        "error": 1,
+        "not_run": 12,
+        "passed": 634
+      },
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-offline-4/20261004T225916-ebdb6690/summary.json",
+      "sha256": "3d7c3efc38f2f616932f20f73b209a29d37ae8b1ae27866b38649c3b498b442e",
+      "status": "failed"
+    }
+  },
+  "protocol": "workflow-deadline-physical-failure-audit-v1",
+  "qualification_status": "failed_incomplete",
+  "retained_failure": {
+    "case_id": "WF16-absent-token-and-hook-distinction",
+    "cleanup_verified": true,
+    "commands": [
+      "volume-before",
+      "container-before",
+      "volume-create",
+      "volume-created",
+      "container-create",
+      "container-prestart",
+      "container-start",
+      "session-ready-pause",
+      "session-ready-state",
+      "session-ready-capture",
+      "session-ready-unpause",
+      "call-000-boundary-000-paths",
+      "call-000-boundary-000-pause",
+      "call-000-boundary-000-state",
+      "call-000-boundary-000-capture",
+      "call-000-boundary-000-unpause",
+      "call-000-boundary-001-paths",
+      "call-000-boundary-001-pause",
+      "call-000-boundary-001-state",
+      "container-remove",
+      "container-after",
+      "volume-cleanup-inspect",
+      "volume-remove",
+      "volume-after"
+    ],
+    "container_cleanup": true,
+    "execution_id": "workflow-89d50f3064134c7390d70ccdd5caac4e",
+    "family": "workflow-final-m4-v1",
+    "infrastructure": [
+      "WorkflowDeadlineExceeded:Declared workflow observation deadline reached"
+    ],
+    "intent_sha256": "07c02ceadb826220c612dfe51da574b2d510f289743658f9c35ce62633ac3b8a",
+    "missing_step_ids": [
+      "call-000"
+    ],
+    "native_source_sha256": "c4de5797fa282818b3cc00f3a25caeb54fc080a64798a7b1b5eee16ff9633c2c",
+    "original_definition_purpose": "public_contract_regression",
+    "protocol": "candidate-workflow-execution-v1",
+    "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1",
+    "status": "infrastructure_error",
+    "volume_cleanup": true
+  },
+  "reused_classes": 0,
+  "root": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "root_commit_reported": "ffaf4d1; no Git command invoked",
+  "runtime": {
+    "api_version": "1.47",
+    "architecture": "arm64",
+    "cgroup_driver": "cgroupfs",
+    "cgroup_version": "2",
+    "daemon_id": "747f7865-a584-478c-9d4f-e49d37aa7dad",
+    "endpoint": {
+      "device": 16777232,
+      "inode": 290124857,
+      "socket_path": "/Users/westbrook/.docker/run/docker.sock"
+    },
+    "engine_git_commit": "6bc6209",
+    "engine_version": "29.2.1",
+    "image_id": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f",
+    "image_inspect_sha256": "8a01fff934caffc39b9a2b8f3c85452e1e87e994cfaa747a5b912fc4685c1e74",
+    "kernel_version": "6.12.72-linuxkit",
+    "oom_kill_disable_supported": false,
+    "os": "linux",
+    "protocol": "candidate-client-process-v4"
+  },
+  "selected_tests": 38,
+  "session": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a",
+  "session_result": {
+    "argv": [
+      "docker",
+      "--host",
+      "unix:///Users/westbrook/.docker/run/docker.sock",
+      "exec",
+      "--interactive",
+      "--user",
+      "65534:65534",
+      "4d60bd07c5b12da8eef04bb9324c08d527bc34c3325e89ef70ab8293eae9d949",
+      "python",
+      "-I",
+      "-B",
+      "/checks/workflow_adapter.py"
+    ],
+    "capture_complete": true,
+    "errors": [],
+    "exit_code": 137,
+    "natural_exit": false,
+    "requests": [
+      "call-000"
+    ],
+    "stderr": {
+      "bytes": 0,
+      "observed_bytes": 0,
+      "path": "session-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "truncated": false
+    },
+    "stdout": {
+      "bytes": 544,
+      "observed_bytes": 544,
+      "path": "session-stdout.bin",
+      "sha256": "56275467e259c222297eff9b69aa165860cf0c8ba2928f4c09e6f6ce37aa7266",
+      "truncated": false
+    },
+    "timed_out": true
+  },
+  "source_audit_limit": "Evaluator/source/config/method hashes and declared native/common manifest digests authenticate to retained local head/prefix originals. Independent semantic scope approval, candidate Git re-derivation, external anchoring and present resource absence were not reverified.",
+  "source_binding": {
+    "case_id": "WF16-absent-token-and-hook-distinction",
+    "definition_sha256": "5e654947e7c720cf95277f3654c6ac0999d72bc143e8132a92af76a44b644042",
+    "environment_sha256": "7af9f2a58f8011b73442bebc90a493a10c44ae0f9a470c600d1d33ae611895dd",
+    "evaluator_sha256": "27003f0014cb86ebf7287b8574363e562b52305eff2ed0bb88194ba3785b5fce",
+    "family": "workflow-final-m4-v1",
+    "fixture_sha256": "9f0aed15ab0413b61c08dece553e02d6e5b0bd53ecac9be352f3c4709656fd14",
+    "limits_sha256": "2553c0d65c308a63ded7fc16f38d11ea15a6161d8d2fb814a4b932a545931a8b",
+    "milestone": "M4",
+    "native_source_sha256": "c4de5797fa282818b3cc00f3a25caeb54fc080a64798a7b1b5eee16ff9633c2c",
+    "profile_sha256": "5e654947e7c720cf95277f3654c6ac0999d72bc143e8132a92af76a44b644042",
+    "protocol": "candidate-workflow-execution-v1",
+    "purpose": "public_release",
+    "requirements_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "review_origin_sha256": "1ef36e68fcd1310d6f6f319eb8b33ed87be3935580e89d598e4ca81af76ade17",
+    "review_sha256": "430187c0f579c7db32661aab8bb1c5a85173b811103053dc339bebaa0ad32f67",
+    "runtime_sha256": "b721b93ebf7c53e37006b21b2c744859ce2774f4a6774f14e5f8b3bbdf17177d",
+    "seed_sha256": "933b92bb140687fa4ffb814e49d17e6a5962971e3da0125ff07c16789d9dadf6",
+    "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1"
+  },
+  "source_config_input_map_sha256": "37cea4057629dee195043628be376b4938552b4f143beea38fac591ce5aa3a5b",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "static": "passed",
+  "terminal_outcomes": {
+    "failed": 1,
+    "not_run": 37
+  },
+  "unlaunched_class_tests": 27,
+  "verifier_mechanics": {
+    "cleanup_verified": true,
+    "prestart_verified": true,
+    "session_complete": false,
+    "status": "infrastructure_error",
+    "unavailable": [
+      "call-000:Original evidence absent: call-000-boundary-001-runtime-after-verified.json,call-000-boundary-001-staging-after.json",
+      "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+    ]
+  },
+  "within_started_class_not_run": 10,
+  "workers_started": 1
+}

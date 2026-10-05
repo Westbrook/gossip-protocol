@@ -1,0 +1,656 @@
+{
+  "protocol": "cumulative-generated-probe-implementation-plan-v1",
+  "created_at_utc": "2026-10-05T00:01:28.078645+00:00",
+  "status": "SOURCE_ONLY_DRAFT_NOT_ADOPTED_IMPLEMENTED_OR_QUALIFIED",
+  "repository": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+  "method": "Read-only source/JSON inspection and one fresh temporary plan write. No project imports, tests, checkers, provider, Engine, Git execution, repository edits or live-source mutation. Parent remains sole runtime/integration owner.",
+  "scope": {
+    "existing_requirement": "integration_recovery: evidence-guided cross-implementation tests and exact merged-source approval; docs/large-swarm-project-plan-v1.md:156-170",
+    "preserved": "Six trajectories; S4-G/S16-G/O16-G; healthy/compound blocks; four milestones; all 312 source units, 22 authorities and 188 duties; existing models, 8/20 cognitive roles, zero scouts, one reviewer financial action per package/generation, original cumulative wallet and cap, four executor slots, existing generation count, common active horizon and qualified execution deadlines.",
+    "not_new_science": "Generated tests are public adaptive development evidence, never private acceptance or an independent sample. No funding authorization, live launch, protocol adoption or quality conclusion is supplied by this draft.",
+    "no_user_approval_gate_inferred": "Root may choose routine prospective contracts within existing authorized scope. Numeric allowance, oracle scope and ranking are explicit design decisions requiring versioning, source review and matching qualification, not automatically another user permission request."
+  },
+  "source_findings": [
+    {
+      "id": "F1",
+      "finding": "Current reviewer tests are arbitrary list members, retained with a selected_actor before merge; there is no admission or execution consuming these tests.",
+      "source": "gossip_harness/cumulative_study_runtime_v2.py:616"
+    },
+    {
+      "id": "F2",
+      "finding": "The reviewer financial task universe permits one review per package/generation. The legacy verification_stage supports six reviews/four repairs and different singleton/portfolio policies; copying its state machine would change this study.",
+      "source": "gossip_harness/cumulative_study_runtime_v2.py:309"
+    },
+    {
+      "id": "F3",
+      "finding": "Current reviewers see scoped proposals and common source, but the frontier construction does not itself run every candidate public suite before review; actual public evaluation follows integration. The adapter must supply the planned pre-review public evidence, with package applicability defined.",
+      "source": "gossip_harness/cumulative_study_controller_v2.py:452"
+    },
+    {
+      "id": "F4",
+      "finding": "No qualified dynamic cumulative V2 expected-value authority is established by the inspected sources. Existing workflow/M2 definitions are closed authored corpora; native.oracle is inherited V0/M1; verification_probes reference callback is an interface, not V2 semantic authority.",
+      "source": "gossip_harness/candidate_workflow_profile_v1.py:158"
+    },
+    {
+      "id": "F5",
+      "finding": "Candidates are package-scoped deltas over one generation base, not complete independently implemented applications. A full cross-package suite used indiscriminately as a per-package veto can reject every candidate for missing peer work. Applicability and observation prerequisites must be frozen before outcomes.",
+      "source": "gossip_harness/cumulative_study_runtime_v2.py:623"
+    },
+    {
+      "id": "F6",
+      "finding": "The existing cold original reader reconstructs the old selected_actor schema, exact merge order and public evaluation chronology. A runtime-only feature would fail to produce auditable new evidence.",
+      "source": "gossip_harness/cumulative_source_promotion_v1.py:176"
+    }
+  ],
+  "recommended_minimum": {
+    "name": "Versioned public generated-probe adapter with precommitted conditional candidate ranking",
+    "feature_protocol": "proposed cumulative-generated-probes-v1",
+    "versioning": "Explicit opt-in runtime feature and source-pinned policy/registry/limit hashes, included in StudyPlan identity, resource contract and shared-policy identity. Preserve the absent-feature V2 path and its reader byte semantics; never silently adopt legacy plans/receipts. Introduce a feature-aware policy resolver or composed successor, not an unversioned change to selection.",
+    "authority": "An independently source-reviewed finite catalog of parameterized cumulative-V2 assertion templates. It validates inputs, requirement/milestone applicability, exact scalar expectations or contract relations. Unsupported assertions stay notes. A general cumulative state-machine oracle is a separate, larger choice, not a prerequisite for useful qualified finite probes.",
+    "selection": "The existing reviewer call emits an ordered unique list of endorsed local candidate aliases plus typed proposals. After all admitted checks execute on all scoped eligible candidates, the host mechanically chooses the first endorsed candidate whose mandatory applicable public/probe evidence is complete and passing. No host quality ranking, majority oracle or unendorsed fallback. This is result-conditioned execution of a reviewer precommitment, not reviewer reasoning over newly observed results.",
+    "merged_gate": "The exact mechanically combined source receives every applicable admitted suite before it can count as generation/milestone completion or obtain semantic promotion. A package pass never transfers to a changed merged tree.",
+    "repair": "Failed or unavailable checks, rejected proposals and an unreconciled choice are retained in the existing generation terminal/public feedback. Subsequent already-budgeted builder and reviewer actions receive that evidence. No extra dispatch, generation, deadline or retry-until-green."
+  },
+  "chronology": [
+    {
+      "step": 1,
+      "action": "Authenticate existing builder financial results, exact original request/view and scope. Materialize each complete eligible package proposal in its private Git fork at the exact shared generation base. Preserve failed/stopped/incomplete builders in the denominator; do not test invalid source as eligible."
+    },
+    {
+      "step": 2,
+      "action": "Freeze deterministic candidate roster and rotated alias map using the existing preregistered seed. Retain alias-to-actor-to-proposal/source bindings on the host; reviewers receive complete candidate contents under aliases and exact ordered applicable public receipts. The current raw-actor frontier needs this presentation adapter to meet the written plan."
+    },
+    {
+      "step": 3,
+      "action": "Revalidate retained generated probes under the currently released public contract and registry. Execute applicable public and retained-probe suites for every eligible exact candidate before publishing the reviewer frontier. No concealed acceptance cases or later milestone requirements enter this view."
+    },
+    {
+      "step": 4,
+      "action": "Use the existing one scoped reviewer dispatch to return a closed versioned decision containing stage, package, ranked endorsed aliases, reasons and finite typed test proposals. An empty ranking means no endorsement. No proposal may select arbitrary commands, paths, functions or additional agents."
+    },
+    {
+      "step": 5,
+      "action": "Retain exact reviewer bytes and financial/view/source bindings. Parse/admit all proposals deterministically; retain both admissions and rejections, then freeze one ordered suite and applicability census before execution. Do not drop a valid hard test after seeing candidate failures."
+    },
+    {
+      "step": 6,
+      "action": "Execute each applicable admitted new check against every eligible candidate in deterministic recorded order, under the same scope and evidence allocation rules across arms. Retain raw output, control/deadline originals and typed host results. Unknown is not passed; incomplete matrix cannot support a comparative all-candidates-success claim."
+    },
+    {
+      "step": 7,
+      "action": "Publish/retain the complete matrix; mechanically apply the prospectively declared conditional ranking. A candidate is chosen only if it was reviewer-endorsed and all its required applicable evidence passes. If none qualifies, record no choice and send evidence into the next existing repair generation. Evidence must precede the selection record and any protected Git acceptance."
+    },
+    {
+      "step": 8,
+      "action": "Create the exact composite using selected package source OIDs and existing scoped Git prepare/CAS semantics. Prefer an unpromoted integration-candidate ref so merged checks run before semantic promotion. If current protected branch remains a developmental integration branch, mark it unapproved and forbid milestone completion/promotion until merged checks pass. Do not claim this distinction supplies the separately required non-author source approvals."
+    },
+    {
+      "step": 9,
+      "action": "Run all applicable generated checks and existing authored public suite on that exact merged OID/tree/source. Retain fresh source bindings and complete results. Stale head or changed tree requires existing rebase/revalidation and new source-bound approvals, never receipt transplantation or timeout rearming."
+    },
+    {
+      "step": 10,
+      "action": "Retain a terminal generation record with public/probe results, selection, merge and applicable/unavailable census; publish it through the existing mesh feedback. Close owned execution state, freeze originals and let the new cold reader reconstruct admissions, matrix, choice and merged verdict from originals. Final independent acceptance stays behind the existing full-cohort barrier."
+    }
+  ],
+  "selection_alternative": {
+    "name": "Keep the existing single provisional selected_actor and veto it on new tests; use next generation feedback for reconsideration",
+    "advantages": "Smallest schema/selection change and still lets new tests prevent bad completion; no new review action.",
+    "limits": "It cannot choose a different already-good candidate in the same generation after discovering the provisional choice fails. Even on the final generation it can only reject. Describe as evidence-gated provisional choice, not same-generation comparative evidence-informed selection.",
+    "recommendation": "Prefer conditional ranking for this study if root freezes its rule; keep next-generation feedback in either case. Do not copy the old inspect/review loop or silently invent an extra review budget.",
+    "scientific_confound": "Conditional ranking, added authored public prechecks and expanded test coverage are part of the common quality machinery. Apply identically to all arms; any outcome cannot be attributed to gossip alone, and all current arms still use gossip."
+  },
+  "typed_contract": {
+    "proposal_shape": "Closed data object: protocol, active requirement ID, registered template ID/version, bounded typed parameters, and (only for scalar template) proposed exact expected scalar. Relation templates expose only registered observation slots and operations; no Python, shell, arbitrary JSONPath, regex, loops, executable AST or freeform comparator.",
+    "admission_binding": [
+      "PRODUCT_V2_SHA256 plus inherited/addendum hashes",
+      "released milestone/release hash",
+      "source-reviewed template and checker hashes",
+      "allowed parameter domain and preconditions",
+      "requirement/source-unit scope",
+      "observation types and adapter version",
+      "candidate/merged applicability",
+      "purpose public-cumulative-generated-development-v1",
+      "financial reviewer result, directive, materialized view and original payload refs",
+      "stage/package/alias roster and limits"
+    ],
+    "expected_value_authority": "For scalar equality, a pinned template derives the contract value from bounded public inputs/known setup, or validates a published fixed scalar. Reviewer expectation must match using type-exact equality. Do not use candidate output, majority agreement, the old V1 oracle outside its exact domain or a candidate/reference implementation as an unqualified V2 oracle. Wrong expectations get generic rejection with no corrected answer.",
+    "relations": [
+      {
+        "id": "refresh_preserves_identity",
+        "requirements": "V2 stable-identity/refresh clauses; lines 352-354,379-382",
+        "setup": "Known existing active document; admissible refresh with a current token and valid text/path; before and after response observations recorded separately.",
+        "assertion": "Type-check successful responses; document_id, source_id, source and title match before/after. Do not demand unchanged blob_id for changed content. A failed refresh cannot satisfy the relation vacuously. Identity equality alone does not prove durable persistence."
+      },
+      {
+        "id": "completed_receipt_replay",
+        "requirements": "V2 line382 and inherited completed-token semantics",
+        "setup": "Original successful completed M1 receipt, optional legal lifecycle changes, then replay of the applicable completed token.",
+        "assertion": "Require exact typed original receipt equality, and compare independently captured durable receipt bytes if preservation is claimed. Do not generalize this to arbitrary retry commands or assume candidate-reported repeated output proves persistence."
+      },
+      {
+        "id": "manifest_text_hash_matches",
+        "requirements": "V2 lines1468-1471",
+        "setup": "Independently captured declared manifest entries and persisted content_hashes, with exact registered ordering and storage observation capability.",
+        "assertion": "Host computes bare lowercase SHA256 of strict UTF-8 text and compares the corresponding captured hash (or contract-defined null for unencodable text). A candidate emitting equal invented strings twice is insufficient. Exact preservation of serialized strings is a separate predicate."
+      }
+    ],
+    "preconditions": "Static input preconditions are checked at admission. Runtime prerequisites are explicit required observations. If they fail with authenticated product behavior, record the corresponding failure; missing/ambiguous observations are unavailable. Never treat a false antecedent as a successful invariant.",
+    "stateful_execution": "Host-authored driver performs the finite public operation sequence against the real Service/Store/transport defined by the template. Inputs may reference previously bound typed runtime values only through template-defined slots. Fresh isolated mutable state per candidate/probe history; the registered within-history state persists only as required. No substitution of the solve-only inherited adapter for full cumulative lifecycle semantics.",
+    "deduplication": "Identity binds template/version, milestone semantics, full parameter/action sequence, required assertion and observation purpose. Do not deduplicate by raw input alone: two different relations on the same history may be distinct. Coalesce execution only when exact source/suite/purpose/runtime/limit/seed contracts permit; retain all logical assertions and original execution links.",
+    "cross_milestone": "Revalidate retained probes against current release/compatibility templates without editing their original values/meaning. Explicitly retire unsupported changed-contract probes with generic reasons; do not leak a newly computed answer. Retain original provenance and no admission-slot refund that would silently expand the fixed allowance."
+  },
+  "applicability_and_coverage": {
+    "candidate_unit": "One exact scoped package delta over the same generation source; record full Git tree even though only one package differs.",
+    "frozen_rule": "Every template declares affected package(s), required peer interfaces/base state and candidate-versus-merged execution targets. Every eligible candidate in each applicable package receives the same test. Cross-package checks requiring simultaneously new peer features run on the actual composite unless a prospectively fixed public dependency fixture qualifies candidate-stage use.",
+    "no_after_the_fact_waiver": "All eligible candidate rows and all declared assertion cells are retained. Do not relabel failures as inapplicable after execution. Not-applicable carries the predeclared contract rule; unavailable carries a missing observation and never passes.",
+    "full_scope": "A finite public probe catalog does not reduce final product obligations, replace independent acceptance or claim unimplemented V2 oracle coverage. The entire 312/22/188 denominator persists. If a planned relation lacks a qualified observation route, reject its proposal and report the explicit unsupported capability."
+  },
+  "execution_and_trust": {
+    "reuse": "Reuse source capture identities, Git forks/CAS, fixed Docker sandbox argument construction, owned cleanup, authenticated checkpoint original storage and host typed-equality primitives after exact semantic/source review. Existing workflow original-reader patterns illustrate the necessary raw/control/deadline boundary.",
+    "not_direct_reuse": [
+      "verification_probes.py can inform strict parsing/bounds/rejection/provenance, but its policy name, callback authority, input-only dedup and 4/8 allowances must not be relabeled cumulative V2.",
+      "verification_stage.py has different roles/call caps, source identity and repeated-review semantics; reuse algorithmic patterns only, not that controller.",
+      "BlackboxValidator requires solution.py/solve, has its own 1MiB/512-case/2-second defaults, and returns older receipt semantics. It cannot directly cover stateful V2 Service/Store operations or supply durable originals.",
+      "DockerPublicChecks trusts a caller-authored command emitting outcome JSON. Candidate-controlled output cannot authenticate checker execution or a verdict. Keep generated expected values and predicate interpretation on the trusted host, using independently captured bytes and a source-bound host owner.",
+      "CandidateWorkflowExecution is closed to final-M4 predefined histories and profile identities. Do not instantiate it with invented dynamic case IDs or relabel a history/public receipt as another purpose. A generated-history execution owner needs its own explicit binding/adapter."
+    ],
+    "command_admission": "Only fixed source-pinned host adapters and allowlisted argv/API actions chosen by registered templates. Reviewer supplies bounded data only. Commands use argv, not shell; no downloaded dependencies, ambient credentials, host mounts, network or arbitrary import/member names. Confine any logical paths to the disposable declared root; reject traversal, symlinks and special files.",
+    "sandbox": "Use the prospectively bound existing pinned image/resource profile, fresh candidate execution containers and explicit observed cleanup. Candidate source is never imported or run on host. Expectations, contract decisions, admission hashes and host pass/fail do not enter the candidate as authoritative verdicts. Keep authentic process/Engine/source originals where physical facts are asserted.",
+    "deadlines": "All parsing, capture, execution and retention consume the existing active child horizon. Derive remaining absolute time before each side effect; do not reset per nested call or discount host retention/capture. Each template uses an existing qualified per-call/history limit or remains unlaunchable until a matching in-envelope limit is frozen and qualified. Cleanup remains the existing separately bounded owned teardown; no app writes after expiry.",
+    "resource_accounting": "Share the four-slot resource budget with existing evaluators; no nested unbounded pools. Serial execution is a valid first implementation. Record actual wall time, evaluator slots, containers, output bytes and test/observation counts separately from financial model usage; financial authority continues charging every already-declared reviewer/build/repair action."
+  },
+  "limits_to_freeze": {
+    "status": "Prospective root design decisions inside current total envelope, not yet numeric allowances",
+    "required_fields": [
+      "max proposal bytes per existing review response",
+      "max proposals per reviewer/generation",
+      "max novel admitted assertions per package/milestone and across retained milestones",
+      "max actions per history",
+      "max input/observation bytes/depth/nodes",
+      "max retained raw bytes per child",
+      "max candidate/probe execution cells including the actual merged tree",
+      "deterministic cap allocation order and duplicate handling",
+      "absolute deadline composition and physical executor limits"
+    ],
+    "parser_ceiling_candidate": "The older 65536-byte batch/16384-byte value parser ceilings are defensible reusable parsing examples if compatible with the selected templates; they are not an inherited authorization or proof of full V2 input coverage.",
+    "work_bound": "For each generation, required cells = sum over packages of eligible candidate count times applicable active assertions, plus distinct applicable merged assertions, plus existing authored public checks. Each active assertion has a frozen operation/byte ceiling. Include carried probes and all four milestones when proving capacity. S4 versus S16 has different replication work; the admitted novel assertion scope and aggregate evidence allocation rule must remain matched.",
+    "overrun": "Reject over-cap proposals before semantic execution with retained reasons in deterministic order. If the full predeclared candidate matrix cannot fit remaining horizon/capacity, retain unattempted/unknown cells and stop or fail the generation under the frozen policy; do not sample convenient candidates or expand the allowance."
+  },
+  "original_evidence": {
+    "bindings": [
+      "study/trajectory/milestone/generation/package",
+      "original financial action/result and worker request/view/source refs",
+      "alias roster",
+      "review raw bytes and schema policy",
+      "template/contract/parameter/admission hashes",
+      "ordered suite and applicability census",
+      "candidate original base/proposal/offered Git OID/tree and exact source manifest",
+      "merged parent OIDs, prepared OID/tree and CAS target",
+      "adapter/evaluator source closure, image, runtime/environment, limits, seed and purpose",
+      "raw stdin/stdout/stderr or framed observation originals, start/finish/cleanup and deadline eligibility records",
+      "host-derived typed outcomes and precommitted selection rule"
+    ],
+    "ordering": "Checkpoint positions must prove source/roster -> pre-review evidence -> reviewer view/result -> admission/ordered suite -> each execution intent/raw/control/result -> matrix -> selection -> exact merge -> merged execution/public results -> completion/promotion. Candidate or merged source movement invalidates applicability of old execution receipts.",
+    "retention": "Write fresh append-only intent/result records and raw artifacts under owned child roots included in the existing closed inventory; preserve every rejected/failed/unknown result. No overwrite to recover. A durable intent without authenticated completion is unknown and never automatically redispatched.",
+    "cold_read": "New read-only reader must independently reconstruct admission using pinned public rules, validate exact raw/control hashes and chronology, derive typed outcomes and conditional choice, capture actual Git source/tree, and reconcile all failed/unattempted/duplicate/retired cells. It must not call Docker/provider or execute candidate code while auditing. Wire it into current source-promotion history reconstruction, full cohort validator, closed capsule and issued qualification.",
+    "reusable_vs_fresh": "Reuse only exact matching purpose/source/ordered-suite/evaluator/runtime/environment/limits/seed/contract receipts with the original execution link. Private independent acceptance or repeatability remains fresh by its own contract. Infrastructure failure is never reusable correctness."
+  },
+  "failure_semantics": [
+    "Bad reviewer JSON, unsupported requirement/template, invalid expected scalar, duplicate and cap excess: retained admission rejection/review note; not a candidate correctness failure and no corrected answer.",
+    "Unexpected trusted checker exception, pin drift, corrupt authenticated bytes, conflicting original result or malformed provenance: infrastructure/authority failure; never a model mistake or normal rejected proposal.",
+    "Authenticated valid observation contradicts an admitted predicate: product probe failure, retained even if later work is missing. Exact earliest failure is not erased by later timeout.",
+    "Candidate exception/invalid output is a protocol violation only if the source-bound owner proves the applicable operation was run under the contract. Otherwise unknown/unavailable. Container/transport/cleanup failure stays infrastructure failure.",
+    "Time or resource exhaustion leaves remaining cells not_run/unknown. Neither a partial passing suite nor an empty new-probe batch is evidence that generated testing succeeded.",
+    "No endorsed candidate with complete passing applicable evidence means selection_rejected. No best-effort host fallback, no consensus authority, no automatic extra reviewer/repair call.",
+    "Merged failure consumes the existing feedback/repair path; a per-package pass cannot authorize the composite. Existing semantic review and final barrier remain separate."
+  ],
+  "proposed_edits": [
+    {
+      "path": "gossip_harness/cumulative_generated_probes_v1.py",
+      "kind": "new proposed module",
+      "work": "Closed protocol/schema, finite template registry, source-bound expectation/relation admission, deterministic quotas/dedup/revalidation and typed result selection. Public definitions only; no execution, provider or candidate imports."
+    },
+    {
+      "path": "gossip_harness/cumulative_generated_probe_execution_v1.py",
+      "kind": "new proposed module",
+      "work": "Source-bound trusted host owner around fixed sandbox adapters; exact private/merged Git subjects; untrusted observation transport; raw/control/deadline originals; bounded execution and owned cleanup. New owner does not impersonate existing final-acceptance profiles."
+    },
+    {
+      "path": "gossip_harness/cumulative_generated_probe_originals_v1.py",
+      "kind": "new proposed module",
+      "work": "Read-only original reconstruction of all suite/candidate/merge rows, typed predicates and conditional ranking; exact chronological joins and failure census."
+    },
+    {
+      "path": "gossip_harness/cumulative_study_controller_v2.py",
+      "kind": "minimal opt-in orchestration hooks",
+      "work": "Validate full feature policy/registry/limits in prospective plan; source closure and shared-policy variant; candidate precheck/frontier hook; closed one-call ranked review schema; terminal/feedback generated-evidence fields. Legacy absent-feature path preserved."
+    },
+    {
+      "path": "gossip_harness/cumulative_study_runtime_v2.py",
+      "kind": "minimal opt-in runtime hooks",
+      "work": "Materialize all eligible scoped proposals once; candidate prechecks and alias projection; admission and bounded candidate matrix before selection; reuse exact offered refs for mechanical merge; merged checks and original retention. Keep financial task count/kind/profile/allowed source paths unchanged."
+    },
+    {
+      "path": "gossip_harness/cumulative_source_promotion_v1.py and gossip_harness/cumulative_rehearsal_validator_v2.py",
+      "kind": "feature-aware reader dispatch/source closure",
+      "work": "Call new cold reader only for exact new feature protocol; reconstruct new histories rather than old _integration selected_actor parser. Update required source/test closure. Do not modify frozen V1 reader semantics."
+    },
+    {
+      "path": "gossip_harness/cumulative_rehearsal_inventory_v1.py; cumulative_rehearsal_capsule_v3.py; cumulative_rehearsal_matching_v1.py; cumulative_qualified_study_v1.py; cumulative_issued_qualification_v1.py",
+      "kind": "conditional downstream joins to review",
+      "work": "Ensure raw root appears in closed inventory and the feature/evaluator registry/limit identities survive fixture/live mapping and issuance. Add explicit validation only where existing exact StudyPlan/source matching does not already enforce the new binding; avoid gratuitous file changes."
+    },
+    {
+      "path": "tests/test_cumulative_generated_probes_v1.py; tests/test_cumulative_generated_probe_execution_v1.py; tests/test_cumulative_generated_probe_originals_v1.py; tests/test_cumulative_generated_probe_docker_v1.py",
+      "kind": "new proposed tests",
+      "work": "Pure admission, source/chronology/integration, cold reader and real sandbox trust/deadline/cleanup controls; explicit manifest classes/lanes required. Exact naming finalized with implementation."
+    },
+    {
+      "path": "verification-manifest.json and pyproject.toml",
+      "kind": "required qualification coverage",
+      "work": "Declare every new class and exact static/type coverage; retain existing discovery roots/fixtures. Source and configuration fingerprints change; root reconciles affected receipts before costly lanes."
+    },
+    {
+      "path": "prospective generated-probe contract/registry artifact and design documentation",
+      "kind": "new explicit policy only after root choice",
+      "work": "Freeze numeric in-envelope capacity, supported templates, alias/ranking/applicability policy and failure/unknown behavior identically across arms; no old oracle/purpose/receipt promotion."
+    }
+  ],
+  "verification_plan": {
+    "owner": "root; this draft executes nothing",
+    "order": [
+      "Identify exact affected dependency closure and read retained receipts.",
+      "Run central static gate and nearest pure admission/selection/source tests after coherent edits.",
+      "Run affected fast/git classes once source is coherent; preserve all old failures and no absent-feature regression.",
+      "Only then run new physical Docker trust/capture/deadline/cleanup controls under shared resource budget.",
+      "Run one new complete matching zero-provider six-child/four-milestone rehearsal because execution/selection contract changed; audit original evidence through cold capsule before live issuance."
+    ],
+    "new_classes_proposed": [
+      {
+        "class": "CumulativeGeneratedProbeAdmissionV1Tests",
+        "lane": "fast",
+        "defects": "Wrong expectations, unsupported V2 oracle, bool/int alias, duplicate/nested/nonfinite JSON, bounds, same-input different relations, old policy or private-purpose injection, stage revalidation and cap arithmetic."
+      },
+      {
+        "class": "CumulativeGeneratedProbeSelectionV1Tests",
+        "lane": "fast",
+        "defects": "Candidate-A ranked first but fails a distinguishing test while B passes selects B only when endorsed; unknown A never counts as pass; omitted unendorsed candidate never chosen; no all-failed fallback; applicability cannot be changed after outcomes; no extra review dispatch."
+      },
+      {
+        "class": "CumulativeGeneratedProbeGitV1Tests",
+        "lane": "git",
+        "defects": "Exact private candidates versus common base; one proposal materialization; source substitution; conditional choice precedes CAS; merged check differs from candidate check; stale head invalidates evidence; crash after intent never reexecutes."
+      },
+      {
+        "class": "CumulativeGeneratedProbeOriginalsV1Tests",
+        "lane": "git",
+        "defects": "Closed raw/oracle/decision reconstruction; missing/truncated/forged/raw-output verdict; altered expectation/source/view/alias/seed/purpose; reordered records; matrix omission; partial failure retained; no execution during cold read."
+      },
+      {
+        "class": "CumulativeGeneratedProbeDockerV1Tests",
+        "lane": "docker",
+        "defects": "Real valid and intentionally wrong implementations; candidate emits forged pass JSON, modifies own output, loops or exits; host retains raw and derives verdict; immutable checks/no expectations leak; active deadline includes captures; owned cleanup; actual merged-source replay."
+      }
+    ],
+    "existing_relevant_classes": {
+      "tests/test_verification_probes.py::VerificationProbeTests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 180,
+        "boundary": "Pure probe parser and revalidation functions with small synthetic reference/domain callbacks."
+      },
+      "tests/test_verification_stage.py::VerificationStageTests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 180,
+        "boundary": "Stage orchestration with synthetic builder/reviewer callbacks and evaluation receipts; candidate text is interpreted as test data only."
+      },
+      "tests/test_blackbox_validator.py::BlackboxValidatorTests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 180,
+        "boundary": "Mocked Docker process and filesystem staging; host parser/oracle and receipt construction."
+      },
+      "tests/test_blackbox_validator.py::BlackboxDockerTests": {
+        "lane": "docker",
+        "weight": 1,
+        "timeout_seconds": 1800,
+        "boundary": "Actual Docker image, process isolation, child supervisor and host result comparison; entirely offline candidates."
+      },
+      "tests/test_sandbox.py::DockerValidatorTests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 180,
+        "boundary": "Filesystem staging and mocked Docker CLI lifecycle for the trusted-checker adapter."
+      },
+      "tests/test_cumulative_study_repaired_runtime_v2.py::CumulativeStudyRepairedRuntimeV2Tests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 360,
+        "boundary": "Private SQLite and deterministic worker transport; process/Git effects explicitly stubbed in composition. No provider or Docker. Financial classes reserve three tokens for bounded internal workers."
+      },
+      "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionFinanceV1Tests": {
+        "lane": "fast",
+        "weight": 3,
+        "timeout_seconds": 180,
+        "boundary": "Trusted host original parser/journal/Git or narrowly disclosed method-isolation boundary; exact fixtures are documented by each test."
+      },
+      "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionGitV1Tests": {
+        "lane": "git",
+        "weight": 1,
+        "timeout_seconds": 900,
+        "boundary": "Trusted host original parser/journal/Git or narrowly disclosed method-isolation boundary; exact fixtures are documented by each test."
+      },
+      "tests/test_cumulative_source_promotion_v1.py::CumulativeSourcePromotionHistoryV1Tests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 180,
+        "boundary": "Trusted host original parser/journal/Git or narrowly disclosed method-isolation boundary; exact fixtures are documented by each test."
+      },
+      "tests/test_cumulative_rehearsal_validator_v2.py::CumulativeRehearsalValidatorV2Tests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 360,
+        "boundary": "Authored component controls; cold full-semantic audit explicitly stubbed in positive issuance fixtures. Four-worker financial class reserves full4; real signed RPC and default worker transport with local urllib interception. No network or Docker."
+      },
+      "tests/test_cumulative_terminal_originals_v2.py::CumulativeTerminalRepairedV2Tests": {
+        "lane": "fast",
+        "weight": 3,
+        "timeout_seconds": 360,
+        "boundary": "Private SQLite and deterministic worker transport; process/Git effects explicitly stubbed in composition. No provider or Docker. Financial classes reserve three tokens for bounded internal workers."
+      },
+      "tests/test_cumulative_rehearsal_inputs_v1.py::CumulativeRehearsalInputsV1Tests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 360,
+        "boundary": "Authored component controls; cold full-semantic audit explicitly stubbed in positive issuance fixtures. Four-worker financial class reserves full4; real signed RPC and default worker transport with local urllib interception. No network or Docker."
+      },
+      "tests/test_cumulative_issued_qualification_v1.py::CumulativeIssuedQualificationV1Tests": {
+        "lane": "fast",
+        "weight": 4,
+        "timeout_seconds": 360,
+        "boundary": "Authored component controls; cold full-semantic audit explicitly stubbed in positive issuance fixtures. Four-worker financial class reserves full4; real signed RPC and default worker transport with local urllib interception. No network or Docker."
+      },
+      "tests/test_cumulative_qualified_study_v1.py::CumulativeQualifiedStudyV1Tests": {
+        "lane": "fast",
+        "weight": 1,
+        "timeout_seconds": 360,
+        "boundary": "Authored component controls; cold full-semantic audit explicitly stubbed in positive issuance fixtures. Four-worker financial class reserves full4; real signed RPC and default worker transport with local urllib interception. No network or Docker."
+      }
+    },
+    "selection_limit": "This is a source-derived affected-area inventory, not a final central-runner --list result or qualification claim. Select extra browser/HTTP/storage lanes only if the adopted templates actually execute those surfaces. Existing unrelated physical suites are not automatically rerun; exact changed contracts still require matching whole-study rehearsal."
+  },
+  "root_design_decisions_before_implementation": [
+    {
+      "id": "D1",
+      "question": "Adopt conditional ranked endorsement or retain provisional-choice veto?",
+      "recommendation": "Conditional ranking plus unchanged next-generation evidence feedback; explicitly label its limited cognitive chronology."
+    },
+    {
+      "id": "D2",
+      "question": "Which independently qualified public scalar/relation templates and observation routes constitute the V2 admission authority?",
+      "recommendation": "Finite parameterized catalog covering the named relation forms, with explicit unsupported coverage. Do not author a hidden general reference implementation or bless old oracle answers by renaming."
+    },
+    {
+      "id": "D3",
+      "question": "What finite evidence work/byte/action allowances fit the already authorized common aggregate resource/time/spend envelope across all six trajectories?",
+      "recommendation": "Freeze a deterministic capacity formula and measured complete rehearsal; no imported 4/8 authority, silent role-specific boost or timeout widening."
+    },
+    {
+      "id": "D4",
+      "question": "Where does unapproved composite Git state live before its generated and public merged checks?",
+      "recommendation": "Prepared composite ref or explicitly developmental protected integration ref; final promotion still requires existing exact-source non-author approvals. Never mistake the host selection matrix for these approvals."
+    }
+  ],
+  "review": {
+    "independent_source_reviewer": "/root/cumulative_probe_plan/probe_authority_review",
+    "finding": "Confirmed finite corpus/old oracle only; supplied typed refresh, completed-replay and independently observed text-hash relation boundaries. Source-only, no runtime."
+  },
+  "source_pins": {
+    "large-swarm-project-plan-v1.json": {
+      "sha256": "a7a613df5b06368498fedc22d926423c744166e3306c03f5b2d8cb2897e9199e",
+      "anchors": [
+        "/readiness_gates/integration_recovery",
+        "/review_and_test_selection",
+        "/resource_proposal",
+        "/acceptance_and_barrier"
+      ]
+    },
+    "docs/large-swarm-project-plan-v1.md": {
+      "sha256": "7d176792452dd9e29d2db83d6d933f96d9004ddbf0cf3cbb0cdbaf8f807ab4d2",
+      "anchors": [
+        "156-170"
+      ]
+    },
+    "library-cumulative-product-v2.json": {
+      "sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+      "anchors": [
+        "freeze_policy",
+        "352-354: identity/edit rules",
+        "379-382: refresh and completed replay",
+        "1468-1471: manifest content hashes"
+      ]
+    },
+    "gossip_harness/cumulative_study_controller_v2.py": {
+      "sha256": "402ded9c4a81c6db751258f3b2f0591f9890c164dc9b5c4d4b3ec4e5ea05fead",
+      "anchors": [
+        "35-41: shared selection/repair policy",
+        "110-146: Release",
+        "150-242: StudyPlan",
+        "359-386: directives",
+        "443-496: build/review/integrate/evaluate chronology"
+      ]
+    },
+    "gossip_harness/cumulative_study_runtime_v2.py": {
+      "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+      "anchors": [
+        "96-133: DockerPublicChecks",
+        "309-324: one financial reviewer action per generation",
+        "482-614: causal views and result authentication",
+        "616-703: select then private Git merge",
+        "761-809: closed originals census"
+      ]
+    },
+    "gossip_harness/verification_probes.py": {
+      "sha256": "9e29ee63c0b0a82afe8d4f8a55ef70502efaeae50c3578ba8f8abda570c2dedd",
+      "anchors": [
+        "20-24: older limits/policy",
+        "36-75: bounded JSON",
+        "155-180: caller-supplied oracle",
+        "204-276: admission",
+        "279-318: revalidation"
+      ]
+    },
+    "gossip_harness/verification_stage.py": {
+      "sha256": "21752f84506d4417fc07a7b7047ad2632b7afef0a98984a9009ad53043897d71",
+      "anchors": [
+        "15-22: older policy/call limits",
+        "139-159: receipt validation",
+        "162-174: callback contract",
+        "304-331: prompt",
+        "424-487: provisional choice and repeated review"
+      ]
+    },
+    "gossip_harness/blackbox_validator.py": {
+      "sha256": "878f3374e545684cf626e658eabfa5772828e3b97df5562a3252531a4dd56a0e",
+      "anchors": [
+        "1-8: host oracle and untrusted output",
+        "194-205: exact typed equality",
+        "207-276: solve-only interface and limits",
+        "276-432: sandbox request and host scoring"
+      ]
+    },
+    "gossip_harness/sandbox.py": {
+      "sha256": "82ffe5b9b942e60b82948fe7bcf82120dd1af03dc05f9aa05e08b0c8e7de6344",
+      "anchors": [
+        "29-69: trusted commands",
+        "146-176: container restrictions",
+        "193-253: launch, raw output and cleanup"
+      ]
+    },
+    "gossip_harness/candidate_workflow_profile_v1.py": {
+      "sha256": "e937e3f0e35763464904689250c267b8710af6979a1a9946788ec9b8f71c3a94",
+      "anchors": [
+        "158-162: finite supplements",
+        "279-290: historical oracle admission",
+        "339-342: closed expected_for",
+        "LIMITATIONS"
+      ]
+    },
+    "gossip_harness/candidate_m2_product_profile_v1.py": {
+      "sha256": "2450f8e4ed4406c2944dafb8292fad95c18946db369c8a1e28726b138a9e59e6",
+      "anchors": [
+        "1-8: limited semantic coverage",
+        "47-53: fixed corpus",
+        "445-446: authored expectation"
+      ]
+    },
+    "gossip_harness/library_cumulative_public_fixture_v2.py": {
+      "sha256": "03e2e74c796084355a37e1e35c9532a81f12749e7cd8cfd17fa902d358019052",
+      "anchors": [
+        "63-73: inherited expectations and excluded amendments"
+      ]
+    },
+    "gossip_harness/candidate_workflow_execution_v1.py": {
+      "sha256": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134",
+      "anchors": [
+        "module header and imports",
+        "deadline_policy",
+        "CandidateWorkflowExecution: closed final-M4 profile"
+      ]
+    },
+    "gossip_harness/candidate_workflow_observation_v1.py": {
+      "sha256": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657",
+      "anchors": [
+        "1-6: original bytes versus verdicts",
+        "35-59: required originals and eligibility",
+        "_command: raw control reconciliation"
+      ]
+    },
+    "gossip_harness/candidate_storage_product_execution_v1.py": {
+      "sha256": "7763de068a0e679d2c27d6632dc42dfb44fa98f74ec4f16d53df34f4285d1367",
+      "anchors": [
+        "module header",
+        "evaluator_sources",
+        "_Commands"
+      ]
+    },
+    "gossip_harness/candidate_observation_admission_v1.py": {
+      "sha256": "c8456643140a241c7006756a16c3b5dc54d5f21620cf3562dd1a0fcea99efc6a",
+      "anchors": [
+        "source_manifest",
+        "source_sha256"
+      ]
+    },
+    "gossip_harness/candidate_checkpoint_chain_v1.py": {
+      "sha256": "2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481",
+      "anchors": [
+        "authenticated original storage and prefix"
+      ]
+    },
+    "gossip_harness/candidate_execution_journal_v1.py": {
+      "sha256": "eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15",
+      "anchors": [
+        "original execution journal"
+      ]
+    },
+    "gossip_harness/gitstore.py": {
+      "sha256": "407ca69e6b82e68d37e2ee28a1c8034ef6d756e6cc9a1674cd711ba728be38da",
+      "anchors": [
+        "prepare",
+        "accept",
+        "propose",
+        "_checkout"
+      ]
+    },
+    "gossip_harness/cumulative_rehearsal_validator_v1.py": {
+      "sha256": "f61bfa300e2dde8ed4a0024274781fbded8e3593e956a1466a460c2fb27c9786",
+      "anchors": [
+        "198-274: integration reconstruction",
+        "330-418: chronology and public originals"
+      ]
+    },
+    "gossip_harness/cumulative_source_promotion_v1.py": {
+      "sha256": "aa492a581f218d327f129e45650f42ea3846fa4c5cde24cfcf5a5e7747c66aed",
+      "anchors": [
+        "81: _histories_v2",
+        "176: inherited integration reader call",
+        "source promotion authority"
+      ]
+    },
+    "gossip_harness/cumulative_rehearsal_validator_v2.py": {
+      "sha256": "4842b139fedd3fa5d132ab36cd47087d5af10e3ffa8e20da95ede112c65ca060",
+      "anchors": [
+        "40-63: reader/source/test closure",
+        "checked_design_envelope",
+        "_checked_financial_origin",
+        "audit_cohort_originals"
+      ]
+    },
+    "gossip_harness/cumulative_terminal_originals_v2.py": {
+      "sha256": "1d964fb9dbd86c0aff14880918a8e6d5838c841ac3efeb6cce872452db0dad6a",
+      "anchors": [
+        "TERMINAL_READER_SOURCES",
+        "audit_terminal_cohort"
+      ]
+    },
+    "gossip_harness/cumulative_rehearsal_inventory_v1.py": {
+      "sha256": "6fe9601e81bf71d069f7c0411d3ae910c75ef31bb4eec9ca5e7c83034148fc04",
+      "anchors": [
+        "audit_child_inventory"
+      ]
+    },
+    "gossip_harness/cumulative_rehearsal_matching_v1.py": {
+      "sha256": "c3e15cba43319d61053352074c7178482dfadcd93a0661de3efc949c29f6925f",
+      "anchors": [
+        "validate_mapping"
+      ]
+    },
+    "gossip_harness/cumulative_rehearsal_capsule_v3.py": {
+      "sha256": "8e79a117472f97042bbabaa0b48976d48e1bb4ad06bd002fb11eed552910bcda",
+      "anchors": [
+        "audit_closed_capsule"
+      ]
+    },
+    "gossip_harness/cumulative_qualified_study_v1.py": {
+      "sha256": "75c27f42b79cf347f53630d8b3a41a094dfada2be6638b72b0555870e6059991",
+      "anchors": [
+        "_validate_inputs: exact evaluator and source/runtime identity"
+      ]
+    },
+    "gossip_harness/cumulative_issued_qualification_v1.py": {
+      "sha256": "938712c4b5c2ca8be8a0f83dfb88ebe99f715ba2abde9581f559c480aec3f295",
+      "anchors": [
+        "issued source-bound qualification"
+      ]
+    },
+    "verification-manifest.json": {
+      "sha256": "dabf586ccdf07be3e8d06bee14e83498b5d2adea17b502c06e884dd5ea4e712f",
+      "anchors": [
+        "classes",
+        "input_globs",
+        "lanes"
+      ]
+    },
+    "pyproject.toml": {
+      "sha256": "688bddb77439fd9c354698df4354f5c6ef83d54d1362bd6def4dc99bec8b3127",
+      "anchors": [
+        "tool.devtools.static",
+        "tool.mypy"
+      ]
+    }
+  },
+  "gap_audit": {
+    "path": "/private/tmp/current-study-launch-gap-audit-20261004-1.json",
+    "sha256": "1b38dce6f0adf7d59cf75c4dc1dabd09c647a49ff100fc1eba754fb1e163a502"
+  },
+  "claims": {
+    "implementation": false,
+    "source_contract_adopted": false,
+    "tests_run": 0,
+    "new_model_quality_samples": 0,
+    "live_ready": false,
+    "statistical_conclusion": null
+  }
+}

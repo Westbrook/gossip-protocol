@@ -1,0 +1,546 @@
+{
+  "batch_option_assessment": {
+    "current_selection": "Workflow still uses default OwnerJournal read_policy=None; no opt-in was introduced.",
+    "judgment": "Checkpoint work is measurable but secondary. Existing per-checkpoint BatchReadPolicy addresses only a subset of validation and cannot be assumed to remove all9.278s. Larger measured source/current categories remain. No adoption, speedup prediction or claim that batch would satisfy30s follows from this run.",
+    "measured_checkpoint_seconds": 9.277919626,
+    "observed_coverage_share_percent": 12.991381984509857
+  },
+  "capture_subtrees": [
+    {
+      "association_basis": "Inference from unchanged ordered source flow, exactly three capture spans, retained ready/two boundary frames and request/control records; sidecar does not encode these labels.",
+      "exclusive_seconds_by_stage": {
+        "capture": 0.066037166,
+        "checkpoint": 1.243838831,
+        "control": 0.634244125,
+        "current": 4.965917832,
+        "effect": 0.000835794,
+        "runtime": 0.125726417,
+        "source": 7.648705335
+      },
+      "inclusive_seconds": 14.6853055,
+      "source_flow_association": "session-ready",
+      "span_seq": 101,
+      "status": "complete"
+    },
+    {
+      "association_basis": "Inference from unchanged ordered source flow, exactly three capture spans, retained ready/two boundary frames and request/control records; sidecar does not encode these labels.",
+      "exclusive_seconds_by_stage": {
+        "capture": 0.057043128,
+        "checkpoint": 1.99636733,
+        "control": 0.312923086,
+        "current": 4.894519039,
+        "effect": 0.000919001,
+        "runtime": 0.093866625,
+        "source": 6.682947916
+      },
+      "inclusive_seconds": 14.038586125,
+      "source_flow_association": "call-000 boundary-000 constructed-store",
+      "span_seq": 200,
+      "status": "complete"
+    },
+    {
+      "association_basis": "Inference from unchanged ordered source flow, exactly three capture spans, retained ready/two boundary frames and request/control records; sidecar does not encode these labels.",
+      "exclusive_seconds_by_stage": {
+        "capture": 0.028450249,
+        "checkpoint": 1.714702503,
+        "control": 0.245740125,
+        "current": 3.240463127,
+        "effect": 0.000685498,
+        "runtime": 0.048030208,
+        "source": 4.357803207
+      },
+      "inclusive_seconds": 9.635874917,
+      "source_flow_association": "call-000 boundary-001 closed-store",
+      "span_seq": 294,
+      "status": "error"
+    }
+  ],
+  "cleanup": {
+    "container_verified": true,
+    "limit": "Bounded record/stream inspection here; external-chain ownership/integrity reconciliation is separate.",
+    "records": {
+      "container-after": {
+        "capture_complete": true,
+        "exit_code": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 0,
+        "stdout_sha256_matches": true,
+        "stdout_shape": "empty",
+        "timed_out": false
+      },
+      "container-remove": {
+        "capture_complete": true,
+        "exit_code": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 65,
+        "stdout_sha256_matches": true,
+        "stdout_shape": "owned full ID/name plus LF",
+        "timed_out": false
+      },
+      "volume-after": {
+        "capture_complete": true,
+        "exit_code": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 0,
+        "stdout_sha256_matches": true,
+        "stdout_shape": "empty",
+        "timed_out": false
+      },
+      "volume-remove": {
+        "capture_complete": true,
+        "exit_code": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 56,
+        "stdout_sha256_matches": true,
+        "stdout_shape": "owned full ID/name plus LF",
+        "timed_out": false
+      }
+    },
+    "terminal_verified": true,
+    "volume_verified": true
+  },
+  "conclusion": "Qualification failed because the declared call observation deadline was reached. The complete timing tree identifies host validation as material: fresh source capture34.485s and other current() work24.729s, versus explicit checkpoint9.278s. This does not isolate the cause inside current() residue, measure candidate CPU, or establish any optimization as sufficient.",
+  "conditional_next_action": {
+    "first": "Source-only map the65 current() invocations and their fresh guard APIs: profile reconstruction/equality, evaluator source closure+loaded-source validation, registered Git capture, review authenticate/provenance, and admission.check_current. Do not attribute24.729s residue to any one of these without measurements.",
+    "next_measurement_design_only": "If further diagnosis is authorized, consider smaller bounded nested diagnostic spans around the existing current() primitives, and inside fresh source capture around policy/source-pin validation, fixed Git command startup/IO, and parse/manifest verification. Preserve call counts, all fresh bytes, every boundary and limits; keep timings outside acceptance. An instrumented successor would need explicit review/version/qualification before any new dispatch.",
+    "no_retry": "Retain this failed run and source pins. Root decides later work; no runtime retry or implementation is authorized by this diagnosis.",
+    "primitive_local_optimization_screen": "Inspect an existing primitive only after its measured contribution is discriminated; prefer reducing implementation overhead while producing the same freshly checked originals and guard outcomes. No caching, guard/checkpoint removal, narrowed source inventory, modified capture roster, clock discount or deadline widening is proposed here."
+  },
+  "failure_path": {
+    "error_spans": [
+      {
+        "end_ns": 4511501570512833,
+        "exclusive_seconds": 0.028450249,
+        "inclusive_seconds": 9.635874917,
+        "parent": null,
+        "seq": 294,
+        "stage": "capture",
+        "start_ns": 4511491934637916,
+        "status": "error"
+      },
+      {
+        "end_ns": 4511501570472500,
+        "exclusive_seconds": 0.038973418,
+        "inclusive_seconds": 2.290833084,
+        "parent": 294,
+        "seq": 332,
+        "stage": "control",
+        "start_ns": 4511499279639416,
+        "status": "error"
+      },
+      {
+        "end_ns": 4511501570506625,
+        "exclusive_seconds": 7.792e-06,
+        "inclusive_seconds": 1.075e-05,
+        "parent": 294,
+        "seq": 343,
+        "stage": "control",
+        "start_ns": 4511501570495875,
+        "status": "error"
+      },
+      {
+        "end_ns": 4511501570505333,
+        "exclusive_seconds": 2.958e-06,
+        "inclusive_seconds": 2.958e-06,
+        "parent": 343,
+        "seq": 344,
+        "stage": "effect",
+        "start_ns": 4511501570502375,
+        "status": "error"
+      },
+      {
+        "end_ns": 4511501570510333,
+        "exclusive_seconds": 1e-06,
+        "inclusive_seconds": 1e-06,
+        "parent": 294,
+        "seq": 345,
+        "stage": "effect",
+        "start_ns": 4511501570509333,
+        "status": "error"
+      }
+    ],
+    "no_exact_call_split": "Sidecar has no call_id, command label, call-start timestamp or deadline value. No exact30s allocation or absolute deadline instant is reconstructed. Error spans can propagate and are not five distinct product defects.",
+    "retained_facts": [
+      "Ready and constructed-store captures have actual complete originals and eligibility markers.",
+      "Closed-store boundary frame and its path/pause/state records exist. State command exited0 with complete capture and timed_out=false; inspection shows container Running=true, Paused=true.",
+      "No second copy or unpause dispatch, no second resume, no result/next/completion/final-exec originals exist.",
+      "The whole-call runtime/staging-after originals exist after the active call clears; they do not manufacture missing per-boundary/result eligibility."
+    ],
+    "source_grounded_diagnostic_inference": "The third capture span294 is the second boundary. Its third recorded finite control span332 has complete effect/current/checkpoint children and matches the completed state command; the workflow post-control _check_deadline then rejects before returning its result. The immediate unpause attempt span343/effect344 and capture-final runtime effect345 also reject before dispatch. This is source-flow/record-supported diagnostic localization, not a separately captured Python traceback."
+  },
+  "interpretation_references": [
+    {
+      "bytes": 9655,
+      "path": "/private/tmp/gossip-workflow-timing-interpretation-1.json",
+      "sha256": "d4db100bdc4b9b78fe88e1d0a9b1c13d69beed15d542a34d9a53dac47a9bdc19"
+    },
+    {
+      "bytes": 14181,
+      "path": "/private/tmp/workflow-checkpoint-batch-option-source-map-1.json",
+      "sha256": "1dddbe1976b2f6a69cce1762282c2e765983fc153b41a37b29f88948dde1e4de"
+    }
+  ],
+  "limitations": [
+    "No candidate correctness or mutant-detection verdict was obtained;20outcomes remain infrastructure_error.",
+    "No total-runtime/candidate-CPU/per-call-budget comparison or causal source-vs-filesystem attribution.",
+    "The original earlier physical failure remains failed; changed-contract failures cannot establish a speedup.",
+    "Full chain audit delegated to separate reviewer; this artifact does not replace it."
+  ],
+  "non_double_counted_timing": {
+    "algorithm": "Intervals are [start_ns,end_ns). Coverage is their union. Exclusive(row)=duration(row)-union(direct-child intervals). This complete valid tree permits exclusive aggregation by stage; inclusive values are non-additive.",
+    "by_stage": {
+      "capture": {
+        "count": 3,
+        "error_count": 1,
+        "exclusive_ns": 151530543,
+        "exclusive_percent_of_observed_coverage": 0.21218023498678626,
+        "exclusive_seconds": 0.151530543,
+        "inclusive_ns": 38359766542,
+        "inclusive_seconds": 38.359766542,
+        "max_inclusive_ns": 14685305500,
+        "mean_inclusive_seconds": 12.786588847333334
+      },
+      "checkpoint": {
+        "count": 144,
+        "error_count": 0,
+        "exclusive_ns": 9277919626,
+        "exclusive_percent_of_observed_coverage": 12.991381984509857,
+        "exclusive_seconds": 9.277919626,
+        "inclusive_ns": 9277919626,
+        "inclusive_seconds": 9.277919626,
+        "max_inclusive_ns": 145735083,
+        "mean_inclusive_seconds": 0.06442999740277777
+      },
+      "control": {
+        "count": 25,
+        "error_count": 2,
+        "exclusive_ns": 2089097792,
+        "exclusive_percent_of_observed_coverage": 2.925253560379153,
+        "exclusive_seconds": 2.089097792,
+        "inclusive_ns": 42544636417,
+        "inclusive_seconds": 42.544636417,
+        "max_inclusive_ns": 3054666958,
+        "mean_inclusive_seconds": 1.7017854566800001
+      },
+      "current": {
+        "count": 65,
+        "error_count": 0,
+        "exclusive_ns": 24728884583,
+        "exclusive_percent_of_observed_coverage": 34.626554078817335,
+        "exclusive_seconds": 24.728884583,
+        "inclusive_ns": 59214333458,
+        "inclusive_seconds": 59.214333458,
+        "max_inclusive_ns": 1421052042,
+        "mean_inclusive_seconds": 0.9109897455076923
+      },
+      "effect": {
+        "count": 74,
+        "error_count": 2,
+        "exclusive_ns": 4911288,
+        "exclusive_percent_of_observed_coverage": 0.006877017803122262,
+        "exclusive_seconds": 0.004911288,
+        "inclusive_ns": 60950818122,
+        "inclusive_seconds": 60.950818122,
+        "max_inclusive_ns": 1486828709,
+        "mean_inclusive_seconds": 0.8236597043513514
+      },
+      "queue": {
+        "count": 3,
+        "error_count": 0,
+        "exclusive_ns": 196278834,
+        "exclusive_percent_of_observed_coverage": 0.27483890901818003,
+        "exclusive_seconds": 0.196278834,
+        "inclusive_ns": 196278834,
+        "inclusive_seconds": 0.196278834,
+        "max_inclusive_ns": 179788334,
+        "mean_inclusive_seconds": 0.065426278
+      },
+      "runtime": {
+        "count": 8,
+        "error_count": 0,
+        "exclusive_ns": 424770460,
+        "exclusive_percent_of_observed_coverage": 0.5947836933326722,
+        "exclusive_seconds": 0.42477046,
+        "inclusive_ns": 424770460,
+        "inclusive_seconds": 0.42477046,
+        "max_inclusive_ns": 65431542,
+        "mean_inclusive_seconds": 0.0530963075
+      },
+      "source": {
+        "count": 65,
+        "error_count": 0,
+        "exclusive_ns": 34485448875,
+        "exclusive_percent_of_observed_coverage": 48.28815696860734,
+        "exclusive_seconds": 34.485448875,
+        "inclusive_ns": 34485448875,
+        "inclusive_seconds": 34.485448875,
+        "max_inclusive_ns": 962185625,
+        "mean_inclusive_seconds": 0.5305453673076923
+      },
+      "teardown": {
+        "count": 3,
+        "error_count": 0,
+        "exclusive_ns": 43414167,
+        "exclusive_percent_of_observed_coverage": 0.06079057049122817,
+        "exclusive_seconds": 0.043414167,
+        "inclusive_ns": 2617651208,
+        "inclusive_seconds": 2.617651208,
+        "max_inclusive_ns": 2617611500,
+        "mean_inclusive_seconds": 0.8725504026666666
+      },
+      "write": {
+        "count": 3,
+        "error_count": 0,
+        "exclusive_ns": 13699710,
+        "exclusive_percent_of_observed_coverage": 0.01918298205432304,
+        "exclusive_seconds": 0.01369971,
+        "inclusive_ns": 6614099626,
+        "inclusive_seconds": 6.614099626,
+        "max_inclusive_ns": 2415343375,
+        "mean_inclusive_seconds": 2.2046998753333336
+      }
+    },
+    "current_with_source_inclusive_seconds": 59.214333458,
+    "current_with_source_percent_of_coverage": 82.91471104742467,
+    "denominator_limit": "71.416s observed span union, not92.915s runner duration, candidate CPU or an exact call-budget denominator. Initial setup, post-flush work and other uninstrumented intervals differ.",
+    "exclusive_sum_ns": 71415955878,
+    "observed_union_ns": 71415955878,
+    "observed_union_seconds": 71.415955878,
+    "span_envelope_seconds": 71.658338875,
+    "uninstrumented_gap_inside_envelope_seconds": 0.242382997
+  },
+  "original_evidence_pins": {
+    "control-outcome.json": {
+      "bytes": 467,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/control-outcome.json",
+      "sha256": "b946e933c7bb2cc154a6794f4115ddc04909c56f2711cebf7d153053213a8259"
+    },
+    "original-prefix.json": {
+      "bytes": 244,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/original-prefix.json",
+      "sha256": "6d58b8a14cf8ad258828749001a2f107bec3322bd615338729d79ffc190772eb"
+    },
+    "physical-observation.json": {
+      "bytes": 4559,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/physical-observation.json",
+      "sha256": "f59e3651bdbfd63965ea7b8e0b0f1d5ab51a67d015a54d3d73285961234722d1"
+    },
+    "raw/call-000-boundary-000-capture-eligible.json": {
+      "bytes": 756,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/call-000-boundary-000-capture-eligible.json",
+      "sha256": "1bdaff0bae8c1aebf03f291062adcb381142cca6f2b9faf654bc903264467f2e"
+    },
+    "raw/call-000-boundary-001-state-stdout.bin": {
+      "bytes": 6887,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/call-000-boundary-001-state-stdout.bin",
+      "sha256": "e25673e6d869352a4da627af0e2cd8b25f7b184fc43c0da7e1a194cf3fa4ed0d"
+    },
+    "raw/call-000-boundary-001-state.json": {
+      "bytes": 788,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/call-000-boundary-001-state.json",
+      "sha256": "55e6e19c0bc985f45f2ce9a5f1c9b9e8371c329770a5cf69f890137440926d38"
+    },
+    "raw/call-000-resume-000.json": {
+      "bytes": 33,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/call-000-resume-000.json",
+      "sha256": "eed20be0bf4a5c359a16001d5c0acb8bfa628f3a313402d3f560d1ebdaae8004"
+    },
+    "raw/config.json": {
+      "bytes": 65635,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/config.json",
+      "sha256": "9eed33d494b48ec344cf237a7e445d769f06fd534d12f041a82831f536628278"
+    },
+    "raw/intent.json": {
+      "bytes": 4836,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/intent.json",
+      "sha256": "07c02ceadb826220c612dfe51da574b2d510f289743658f9c35ce62633ac3b8a"
+    },
+    "raw/session-stderr.bin": {
+      "bytes": 0,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/session-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "raw/session-stdout.bin": {
+      "bytes": 544,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/session-stdout.bin",
+      "sha256": "56275467e259c222297eff9b69aa165860cf0c8ba2928f4c09e6f6ce37aa7266"
+    },
+    "raw/session.json": {
+      "bytes": 682,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/session.json",
+      "sha256": "0c7ebf7ee74b6419f288b3d4508c4773e20c29ae247d6480ab4a95ce3a3dbfc1"
+    },
+    "raw/terminal.json": {
+      "bytes": 1299,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/terminal.json",
+      "sha256": "faf4f559022e73836a60ef75831b2f1fc3bdb210f9cac002f5a1fe9af75ccb57"
+    },
+    "raw/workflow-verifier.json": {
+      "bytes": 50770,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw/workflow-verifier.json",
+      "sha256": "5d2152e60cb7801bcf9c31ed013297eb5a08b5b9e048250e98a2f791b7062cb3"
+    },
+    "terminal-copy.json": {
+      "bytes": 1299,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/terminal-copy.json",
+      "sha256": "faf4f559022e73836a60ef75831b2f1fc3bdb210f9cac002f5a1fe9af75ccb57"
+    }
+  },
+  "protocol": "workflow-deadline-physical-timing-diagnosis-v1",
+  "raw_session": {
+    "boundary_ids": [
+      "constructed-store",
+      "closed-store"
+    ],
+    "capture_complete": true,
+    "errors": [],
+    "exit_code": 137,
+    "frame_kinds": [
+      "ready",
+      "boundary",
+      "boundary"
+    ],
+    "meaning": "The candidate reached the closed-store trace boundary but was not resumed to return a result. Exit137 follows owned forced cleanup; it is not evidence of OOM or a natural product failure.",
+    "natural_exit": false,
+    "result_frame_present": false,
+    "stderr_bytes": 0,
+    "stdout_bytes": 544,
+    "timed_out": true
+  },
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a",
+  "run_outcome": {
+    "duration_seconds": 92.9147335421294,
+    "infrastructure": [
+      "WorkflowDeadlineExceeded:Declared workflow observation deadline reached"
+    ],
+    "missing_step_ids": [
+      "call-000"
+    ],
+    "product_outcome_counts": {
+      "infrastructure_error": 20
+    },
+    "qualification_verified": false,
+    "scientific_sample_or_independent_acceptance": false,
+    "selected": 38,
+    "status": "failed",
+    "terminal_status": "infrastructure_error",
+    "test_statuses": {
+      "failed": 1,
+      "not_run": 37
+    }
+  },
+  "runner_evidence_pins": {
+    "classes/a00d1fd18849b5e5/result.json": {
+      "bytes": 5226,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/result.json",
+      "sha256": "fcf2cde1dc6368db8b66c7f63419a1fcbb46b79d3f41ec84794b51790c79622c"
+    },
+    "classes/a00d1fd18849b5e5/worker.log": {
+      "bytes": 2048,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/worker.log",
+      "sha256": "68a8387f3231ed00c197a9e4e2a5cc71229f8aabc87710f1d5d51e352ea234a3"
+    },
+    "inputs.json": {
+      "bytes": 86970,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/inputs.json",
+      "sha256": "24f2180e792860b2f93bdaeb2dbed746f947d989c7dc9cc7cc9a44ffdb180c68"
+    },
+    "runtime-final.json": {
+      "bytes": 1435,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/runtime-final.json",
+      "sha256": "ea6fee026f0061e37175f7a43ddf6a29ccf488ecb1d5d66d59d3a7e5aef6ba68"
+    },
+    "static.json": {
+      "bytes": 103567,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/static.json",
+      "sha256": "18c5243c0c49a8ff714ee58245ef5a63be1bef6792c40d04191ee18bae02a16b"
+    },
+    "summary.json": {
+      "bytes": 16138,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/summary.json",
+      "sha256": "05b5862eca02271bcc6c3020bf21f58c8eb72225e342e647d855ecae49b61dfb"
+    }
+  },
+  "scope": "Bounded read-only timing arithmetic and retained original inspection. Separate reviewer owns full external-chain/integrity audit. No project imports, tests, checkers, Engine/provider calls, process polling, source edits or retries.",
+  "sidecar": {
+    "bytes": 47141,
+    "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-deadline-physical-1/20261004T235907-b73cce1a/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-1grez0h3/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-89d50f3064134c7390d70ccdd5caac4e-timings.json",
+    "sha256": "596cfc63daf89a7c5533d2423ac91253520b329754d0cc19a398dcf60c557087"
+  },
+  "sidecar_consistency_with_originals": {
+    "binding_sha256": true,
+    "bounds": true,
+    "evaluator_sha256": true,
+    "execution_id": true,
+    "no_truncation": true,
+    "policy": true,
+    "protocol": true,
+    "source_sha256": true
+  },
+  "source_checkpoint_reported_by_root": "ffaf4d1",
+  "source_hashes_matching_retained_evaluator": {
+    "gossip_harness/candidate_checkpoint_chain_v1.py": true,
+    "gossip_harness/candidate_execution_journal_v1.py": true,
+    "gossip_harness/candidate_source_capture_policy_v1.py": true,
+    "gossip_harness/candidate_storage_product_execution_v1.py": true,
+    "gossip_harness/candidate_workflow_execution_v1.py": true,
+    "gossip_harness/candidate_workflow_observation_v1.py": true
+  },
+  "source_pins": {
+    "gossip_harness/candidate_checkpoint_chain_v1.py": {
+      "bytes": 28491,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_checkpoint_chain_v1.py",
+      "sha256": "2d88d4e74231bc3c92f775fb3a561b7879585852d223f56a09dcc6964b898481"
+    },
+    "gossip_harness/candidate_execution_journal_v1.py": {
+      "bytes": 8650,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_execution_journal_v1.py",
+      "sha256": "eda37713701503b8f22ffab2bb0d31bc6b4c414ad9828cfad6426697cd289f15"
+    },
+    "gossip_harness/candidate_journal_batch_read_v1.py": {
+      "bytes": 10460,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_journal_batch_read_v1.py",
+      "sha256": "5ec880aad17cb215ffa8fce8c4f9a121306bcc222ea169d55b0aac85b709ba73"
+    },
+    "gossip_harness/candidate_source_capture_policy_v1.py": {
+      "bytes": 3747,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_source_capture_policy_v1.py",
+      "sha256": "11d508df039f40b059145fa2dbeea126eb4c3a94e1ab6f4dadf431e47e1d4988"
+    },
+    "gossip_harness/candidate_storage_product_execution_v1.py": {
+      "bytes": 48236,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_storage_product_execution_v1.py",
+      "sha256": "7763de068a0e679d2c27d6632dc42dfb44fa98f74ec4f16d53df34f4285d1367"
+    },
+    "gossip_harness/candidate_workflow_execution_v1.py": {
+      "bytes": 88890,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_execution_v1.py",
+      "sha256": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134"
+    },
+    "gossip_harness/candidate_workflow_observation_v1.py": {
+      "bytes": 58528,
+      "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/gossip_harness/candidate_workflow_observation_v1.py",
+      "sha256": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657"
+    }
+  },
+  "validation": {
+    "authority_limit": "Sidecar metadata matches originals but sidecar is deliberately outside their journal; these are diagnostic calculations, not a correctness attestation.",
+    "checks": [
+      "strict JSON no duplicate/nonfinite values",
+      "fixed row keys/stages and integer nonnegative intervals",
+      "unique contiguous seq and monotonic start order",
+      "earlier parent identity/containment and sibling/root nonoverlap",
+      "declared record/byte bounds",
+      "exact exclusive sum equals union"
+    ],
+    "max_depth": 5,
+    "root_spans": 42,
+    "rows": 393,
+    "status_counts": {
+      "complete": 388,
+      "error": 5
+    },
+    "truncated": false,
+    "violations": []
+  }
+}

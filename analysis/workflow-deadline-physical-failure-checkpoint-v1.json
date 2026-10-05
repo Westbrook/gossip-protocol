@@ -1,0 +1,71 @@
+{
+  "protocol": "workflow-deadline-physical-failure-checkpoint-v1",
+  "created_at_utc": "2026-10-05T00:09:22.647515+00:00",
+  "source_commit": "ffaf4d1c3fa54d936d89a80362b8fde9c132694b",
+  "status": "physical_qualification_failed",
+  "run": "runs/workflow-deadline-physical-1/20261004T235907-b73cce1a",
+  "outcomes": {
+    "failed": 1,
+    "not_run": 37
+  },
+  "workers_started": 1,
+  "reused_classes": 0,
+  "duration_seconds": 92.9147335421294,
+  "static": "passed; baseline-aware",
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "failure": {
+    "method": "CandidateWorkflowPhysicalDefectTests.test_absent_lookup_precedes_token_validation",
+    "reason": "WorkflowDeadlineExceeded:Declared workflow observation deadline reached",
+    "missing_step": "call-000",
+    "candidate_result_returned": false,
+    "interpretation": "Harness observation deadline failure; no intended product discrepancy qualified. Remaining37 methods not run."
+  },
+  "cleanup": {
+    "retained_ordinary_cleanup_authenticated": true,
+    "resources": [
+      "owned container",
+      "owned volume"
+    ],
+    "meaning": "Removal, empty post-removal listing and ownership retirement authenticated; no new current Engine query."
+  },
+  "audit": {
+    "path": "analysis/workflow-deadline-physical-failure-audit-v1.json",
+    "sha256": "f03fbb625cbe1f82a86c43c14f0fbe783876a54fa0f8b57e754b044844931515",
+    "integrity_assertions": 614,
+    "assertions_are_not_tests": true
+  },
+  "diagnostic_timing": {
+    "path": "analysis/workflow-deadline-physical-timing-diagnosis-v1.json",
+    "sha256": "3f0592ff95a4f391474c9e46b21173bd959b5e1a8609840dfcc7e53a7f9d1ad9",
+    "rows": 393,
+    "truncated": false,
+    "observed_union_seconds": 71.415955878,
+    "source_exclusive_seconds": 34.485448875,
+    "other_current_exclusive_seconds": 24.728884583,
+    "checkpoint_exclusive_seconds": 9.277919626,
+    "limits": "Outside authenticated journal; exact call clock/candidate CPU and current residue cause are not identified. Do not sum inclusive nested spans or compare changed-contract attempts as a speedup."
+  },
+  "preserved_offline_pass": {
+    "run": "runs/workflow-deadline-offline-5/20261004T233836-5a01031b",
+    "passed": 647,
+    "fresh": 631,
+    "reused": 16,
+    "independent_audit": "analysis/workflow-deadline-full-terminal-audit-v2.json"
+  },
+  "next_action": "Decompose fresh source and current guard costs while preserving every fresh validation boundary and unchanged30/300 limits. No optimization selected, unchanged retry, cache, guard removal or deadline widening. Shared6Docker controls remain required; all launch gaps/full scope preserved.",
+  "generated_test_plan": {
+    "path": "analysis/cumulative-generated-probe-plan-v1.json",
+    "sha256": "6093dbe6905ba84d12c65022ee8002bd067ddcc748295ab0574f616f61102916",
+    "status": "Source-only proposal, not adopted/implemented/qualified. Same-call conditional ranking can use actual admitted evidence without another reviewer action; exact finite authority/applicability/resource choices remain."
+  },
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "gossip_advantage_or_failure_established": false
+  },
+  "external_actions": {
+    "provider_calls": 0,
+    "pushed": false,
+    "holds": "Existing provider/public-disclosure holds unchanged."
+  }
+}
