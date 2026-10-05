@@ -1,0 +1,218 @@
+{
+  "audit_correction": "First audit used UTF-8 canonical config hashing rather than the existing ASCII-escaped workflow encoding; original raw config hash matched genesis. Corrected audit explicitly verifies raw hash and actual canonical encoding; first driver retained. No production or original evidence changes.",
+  "cases": [
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-batch-read-physical-1/20261005T032028-96a941f3/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-m449ym6v/lookup-before-token-WF16-absent-token-and-hook-distinction",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "ad8c575bbd6c0fb59c89c50f075619f4ad6c1c3a86022f03dcbbe21baba34447",
+        "external_bytes": 108085,
+        "head_sha256": "518fb8c92a1591d61700343b1114aaf764709df6bc32dab25a631861caf750ce",
+        "raw_bytes": 770411,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.285173882,
+          "checkpoint": 8.075334707,
+          "control": 5.34800812,
+          "current": 12.964728585,
+          "effect": 0.008145457,
+          "queue": 0.345210499,
+          "runtime": 0.6511695,
+          "source": 20.03716158,
+          "teardown": 0.072964166,
+          "write": 0.018404251
+        },
+        "inclusive_seconds": {
+          "capture": 26.403567877,
+          "checkpoint": 8.075334707,
+          "control": 28.883321666,
+          "current": 33.001890165,
+          "effect": 35.873491289,
+          "queue": 0.345210499,
+          "runtime": 0.6511695,
+          "source": 20.03716158,
+          "teardown": 2.206015375,
+          "write": 5.153387958
+        },
+        "instrumented_union_seconds": 47.806300747,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-batch-read-physical-1/20261005T032028-96a941f3/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-m449ym6v/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-f942ac57570241098c78579c768dce01-timings.json",
+        "sha256": "e8b8bfdac7ff8eb5eeb959d51f2ced144cfcbb01fec2a744f12f0d0552cc627e",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-batch-read-physical-1/20261005T032028-96a941f3/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-m449ym6v/fresh-reopen-inherited-text-persistence",
+      "control_status": "failed_infrastructure",
+      "original_prefix": {
+        "context_sha256": "6b9352f5ff792a0ef7244d8f988ddaee72a00625d7a3e0ebad7813aff167e15e",
+        "external_bytes": 116408,
+        "head_sha256": "f937f79389948aedb9fe39b069c714acd9e4bfffacb392d6c87d004069fd03ae",
+        "raw_bytes": 934124,
+        "raw_file_count": 296,
+        "sequence": 296
+      },
+      "source_sha256": "96b4629a23786a6b70e9212959c8d0c8e652ee57e109d0549ef2c117cbfd477a",
+      "timings": {
+        "error_spans": [
+          {
+            "end_ns": 4523626221864916,
+            "parent": null,
+            "seq": 483,
+            "stage": "capture",
+            "start_ns": 4523621801667958,
+            "status": "error"
+          },
+          {
+            "end_ns": 4523626221829625,
+            "parent": 483,
+            "seq": 521,
+            "stage": "control",
+            "start_ns": 4523625832364000,
+            "status": "error"
+          },
+          {
+            "end_ns": 4523626221823541,
+            "parent": 521,
+            "seq": 522,
+            "stage": "effect",
+            "start_ns": 4523625832368791,
+            "status": "error"
+          },
+          {
+            "end_ns": 4523626221858375,
+            "parent": 483,
+            "seq": 526,
+            "stage": "control",
+            "start_ns": 4523626221846875,
+            "status": "error"
+          },
+          {
+            "end_ns": 4523626221857416,
+            "parent": 526,
+            "seq": 527,
+            "stage": "effect",
+            "start_ns": 4523626221854000,
+            "status": "error"
+          },
+          {
+            "end_ns": 4523626221862375,
+            "parent": 483,
+            "seq": 528,
+            "stage": "effect",
+            "start_ns": 4523626221861500,
+            "status": "error"
+          }
+        ],
+        "exclusive_seconds": {
+          "capture": 0.274120165,
+          "checkpoint": 7.957103461,
+          "control": 6.091134544,
+          "current": 13.194071076,
+          "effect": 0.007643755,
+          "queue": 0.330107749,
+          "runtime": 0.672007124,
+          "source": 23.415864126,
+          "teardown": 0.066516875,
+          "write": 0.016526666
+        },
+        "inclusive_seconds": {
+          "capture": 32.593379251,
+          "checkpoint": 7.957103461,
+          "control": 33.671790625,
+          "current": 36.609935202,
+          "effect": 39.600904497,
+          "queue": 0.330107749,
+          "runtime": 0.672007124,
+          "source": 23.415864126,
+          "teardown": 2.112239292,
+          "write": 3.857317665
+        },
+        "instrumented_union_seconds": 52.025095541,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-batch-read-physical-1/20261005T032028-96a941f3/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-m449ym6v/fresh-reopen-inherited-text-persistence/raw-workflow-ecc29856c63b49b493b43c49fba726b7-timings.json",
+        "sha256": "03806fadf6696eee6682397365a5ecd706a873c434a02555773543e9495a1ab8",
+        "spans": 576,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 208,
+          "control": 35,
+          "current": 98,
+          "effect": 107,
+          "queue": 5,
+          "runtime": 12,
+          "source": 98,
+          "teardown": 3,
+          "write": 5
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": false,
+        "status": "infrastructure_error",
+        "unavailable": [
+          "call-000:Original evidence absent: call-000-result-runtime-after-verified.json,call-000-result-staging-after.json",
+          "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+        ]
+      }
+    }
+  ],
+  "external_holds": [
+    "Public Git disclosure approval pending",
+    "Provider-project-material disclosure approval pending"
+  ],
+  "full_offline": {
+    "audit": "analysis/workflow-batch-read-full-terminal-audit-v1.json",
+    "audit_sha256": "c7acccff3147ce5bd65c8bbc94bc5779379b9e7b3c3171084847ab3377dbe4a6",
+    "fresh": 580,
+    "reused": 97,
+    "tests": 677
+  },
+  "interpretation": [
+    "Prior repeatedly timing-out first defect check now completes and specifically detects its declared defect; this is harness success on that fixed control.",
+    "Second, distinct reopen history exceeded the unchanged call deadline after result capture; no eligible product verdict.",
+    "Both original owned container/volume cleanup records reconcile.",
+    "Current677 offline checks remain qualified; physical workflow qualification fails and36 checks remain unrun. Shared6 controls deferred.",
+    "No new model-quality sample or general speedup claim. The historical and current histories have different completed work and source identities."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Diagnose the remaining source/current validation cost before changing source again. Inspect duplicate fresh review-authentication/provenance work within one current-state boundary, and consider a measured single-process fresh Git capture only with full object/inventory/source equivalence and unchanged guards. No unchanged Docker retry or deadline widening.",
+  "outcomes": {
+    "failed": 1,
+    "not_run": 36,
+    "passed": 1
+  },
+  "protocol": "workflow-batch-physical-checkpoint-v1",
+  "retained_audit": {
+    "assertions": 4679,
+    "kind": "Root stdlib local original/source/cleanup integrity audit; not independent scientific acceptance",
+    "path": "runs/workflow-batch-physical-audit-1/audit.json",
+    "sha256": "a31d4731989415ae83e863d367a02dad39e94081f44c284790f235ac81208492"
+  },
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-batch-read-physical-1/20261005T032028-96a941f3",
+  "status": "failed_infrastructure",
+  "summary_sha256": "9f04d0b9c6ff61b4fcbd87c70de1e3ccf7565222d992e5a20324d3b05a371eab"
+}
