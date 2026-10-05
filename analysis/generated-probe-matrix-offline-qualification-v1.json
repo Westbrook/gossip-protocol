@@ -1,0 +1,113 @@
+{
+  "protocol": "generated-probe-matrix-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T09:31:20.140113+00:00",
+  "status": "LOGICAL_CENSUS_IMPLEMENTED_RESOURCE_AND_CONTROLLER_ADMISSION_UNFINISHED",
+  "prior_commit": "225df47cdb29a6163b17408d76c44779f1df29ba",
+  "implemented": [
+    "Versioned context protocol separates build-phase identity from later ranking outcomes. Pre-review context and materialized-source bindings no longer depend on future reviewer data.",
+    "Complete declared before-review/contextual/merged cell lists retain eligible unranked candidates and unavailable anchor rows, plus a separate failed/stopped/unknown role census.",
+    "The finite driver footprint includes actual query dependencies for refresh histories and no direct client API coverage. All client alternatives therefore retain required authored current-public-suite cells.",
+    "Inherited public suites are diagnostic reviewer inputs, not unconditional package vetoes against absent new peer capabilities. Qualified setup/applicability is still required before actual use.",
+    "Each generated history includes value and mechanics obligations. All current authored checks and active probes are separately declared on the future selected merged source; equal context bytes grant no reuse.",
+    "Carried probes preserve their original definition/origin and must revalidate against the current release. Duplicate, unsorted, unsupported or future probe declarations are rejected rather than silently filtered."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/summary.json",
+    "summary_sha256": "68abf7f10c3791018508547bcd4224341eb16af2993185de1b431cc32abf5dce",
+    "static_sha256": "3d3810fe9fabef3e5f527cab43f1b0a0e71d5ebd0bee5d272c3a6f6f8cefe813",
+    "inputs_sha256": "7ae9caeca0e1f9b6a5dc2cc468b61f47d2d6d6c2d4f8cbce29dfdff09f8f9139",
+    "runtime_sha256": "c4fd9b711ffdd16741d1c5032f719b344f85a501b2fd4d8a4ecda7a45c09c828",
+    "source_input_count": 763,
+    "tests_passed_fresh": 58,
+    "tests_reused": 0,
+    "duration_seconds": 144.75879708305,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextTests",
+        "lane": "fast",
+        "tests": 18,
+        "result": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/classes/c5aecd2559f28ac2/result.json",
+        "result_sha256": "c3a65c83fce23375ad523195a05507398fe7fa10338495a599ae7b3d20ff2797",
+        "log_sha256": "b457eb212ba268bccbab73540ccf9664926fd617f0a065eb8a5182a2449a49cf",
+        "request_sha256": "d2aa726c35a6b9782e60800ed8bd90af596ae2a82c1564e722828f34f647e94b"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "lane": "fast",
+        "tests": 14,
+        "result": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "8dc0627c3a3d4e1e7b051837c27cd2dac06bb30c090f87aa60a496b87cd9ce29",
+        "log_sha256": "4fba48a7f826fd315a5ceda9d1ffeb958fdd054460d302ca32b82f6b688e3551",
+        "request_sha256": "19da512bea5bc7c90175a4d916c181222c899bb8b9e8c27f224b729b34ea3806"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "lane": "fast",
+        "tests": 8,
+        "result": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "7f8586449cce18bed29e8ed22cd1ab4314d1bc05cd59e8a1b244f7c8cc64d865",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db",
+        "request_sha256": "0d4d2ad3d29a8fc092d607f92bf9872f82ce7ec27b5205cbb373923c8db8494f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_context_v1.py::GeneratedProbeContextGitTests",
+        "lane": "git",
+        "tests": 6,
+        "result": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/classes/f2d3993c6d0a2905/result.json",
+        "result_sha256": "3e5d03db03ac348d149bff32854ce401a2e5a4200d66d57bdb89f2de6f95d369",
+        "log_sha256": "e16ee9915d0c8027e975b7b1edd38b3dc1f212252643209fafe20323f19f3d44",
+        "request_sha256": "4ab3728dbb06a9e1772ec502ba482fd3335b94b3d1c1a651c55eea06622e7c75"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "lane": "git",
+        "tests": 12,
+        "result": "runs/generated-probe-matrix-offline-1/20261005T092524-5747b5a0/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "0b860284371b776ea44d4af74c958c483ed9a868d2cf4f5cb7fce278cce99aab",
+        "log_sha256": "66d07e090a2cafa4aee81f098a1b666d22b9c65ce9c01f29aa0d16f545d89257",
+        "request_sha256": "bc6f40d638befbddad78ebce22ed700df52111a917ee5a2a614df793682f6fd6"
+      }
+    ],
+    "execution_scope": "Actual offline verifier tests, inert Git and anchored journals. Ranked-original integration uses synthetic mesh/financial returns. No candidate, Engine or provider execution."
+  },
+  "retained_negative": {
+    "summary": "runs/generated-probe-pre-review-identity-negative-1/20261005T091908-13d171b1/summary.json",
+    "summary_sha256": "8919775c0f96bd55ddb9d813ed7122bfc501220a3788a446faae62a7d823c119",
+    "finding": "Pre-review source identity changed when future rankings arrived; regression failed before the versioned build-phase identity fix."
+  },
+  "planning_census": {
+    "path": "analysis/generated-probe-matrix-planning-census-v1.json",
+    "sha256": "4cc857f4eda1674f7d068720784e4e33d6aff8da9ba05c4e6cf514e3ff992f0c"
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_context_v1.py": "007f378cef20c422343dcb9e62562876ed3520f5d3c2d8cf1dca06edf0f24f6f",
+    "gossip_harness/cumulative_generated_probe_matrix_v1.py": "a57da21e54b400ed531f08eb83a07dd1194538e7e2d282643904d735873196db",
+    "tests/test_cumulative_generated_probe_context_v1.py": "c3195924fc99cf143b64ffdb08231c5a4680c530194aa269954fb4b058e265b1",
+    "tests/test_cumulative_generated_probe_matrix_v1.py": "0e804c4a99543bfa68647df512141b7e8751e0afceba71ca7b4a21ce1231b439",
+    "pyproject.toml": "e08606143eb0f84220dab1460500bddd9ea061cbbb5518a2d7a511756305a82f",
+    "verification-manifest.json": "324165fdaa0d39845ca409641d80f47daa385267afc7467145d110a7324776bc"
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_and_log_hashes_match": true,
+    "all_current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "remaining": [
+    "Physical source/setup witness and footprint qualification; the declared dependency graph does not establish prerequisite completion.",
+    "Prospectively frozen novel/carry-forward assertion quotas, complete raw byte and deadline capacity, shared four-slot admission and deterministic cap handling.",
+    "Durable controller phase/cell registration, global unique roots/slots and original-admission capabilities; these declarations reserve no resources.",
+    "Versioned common-policy activation, actual source-bound dispatch, original-reader conditional selection and fresh exact-M checks with existing independent approvals.",
+    "Pending independent packet-2/storage reviews, twelve physical controls, eight host-fault schedules, matching six-trajectory/four-milestone rehearsal and live/held-out confirmation."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Turn the two phase declarations into controller-owned durable admissions: freeze eligible pre-review checks before review, preserve their stable identity, then freeze the complete post-review matrix and all capacity/slot/root bindings before any contextual dispatch. Finish policy activation and original-only conditional choice/merged retesting; do not launch until the remaining physical/rehearsal/approval gates are satisfied.",
+  "external_holds": "Public Git/provider disclosure approval holds remain unresolved; no external disclosure attempted."
+}

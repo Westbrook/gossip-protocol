@@ -1,0 +1,318 @@
+{
+  "protocol": "generated-probe-matrix-planning-census-v1",
+  "status": "ILLUSTRATIVE_COUNTS_NOT_CAPACITY_ADMISSION",
+  "assumptions": [
+    "All configured builders produce eligible proposals and each package has a valid first endorsement.",
+    "One distinct probe per currently released finite template; original M2 probes carry unchanged into M3/M4.",
+    "Every candidate has one whole inherited public suite before review and one current suite in its fixed peer context; every merged result needs one fresh current suite and every active probe.",
+    "No identical-source deduplication. Only M2-M4 are included; M1 and faults/qualification/model/review/setup/retention/cleanup work are additional."
+  ],
+  "rows": [
+    {
+      "arm": "S4-G",
+      "milestone": "M2",
+      "eligible_builders": 4,
+      "active_distinct_probes": 3,
+      "execution_cells": {
+        "before_review": 4,
+        "contextual": 13,
+        "merged": 4,
+        "total": 21
+      },
+      "generated_histories": 12,
+      "authored_suite_executions": 9,
+      "declaration": "runs/generated-probe-matrix-planning-1/S4-G-M2.json",
+      "declaration_sha256": "87b93a2cf68e94409b2ddf810a50a93dd3057389e60c56f7485b2b1c76e1982b"
+    },
+    {
+      "arm": "S4-G",
+      "milestone": "M3",
+      "eligible_builders": 4,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 4,
+        "contextual": 15,
+        "merged": 5,
+        "total": 24
+      },
+      "generated_histories": 15,
+      "authored_suite_executions": 9,
+      "declaration": "runs/generated-probe-matrix-planning-1/S4-G-M3.json",
+      "declaration_sha256": "f1b1a79aeb07549a6bba35fbaf1f1a33b11746a587b47ca4f2752784b8005581"
+    },
+    {
+      "arm": "S4-G",
+      "milestone": "M4",
+      "eligible_builders": 4,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 4,
+        "contextual": 15,
+        "merged": 5,
+        "total": 24
+      },
+      "generated_histories": 15,
+      "authored_suite_executions": 9,
+      "declaration": "runs/generated-probe-matrix-planning-1/S4-G-M4.json",
+      "declaration_sha256": "e19ee2b71d0a56e40ad4c287ac8d98d19223a87bfc7e5c13e821d2fa099bcf46"
+    },
+    {
+      "arm": "S16-G",
+      "milestone": "M2",
+      "eligible_builders": 16,
+      "active_distinct_probes": 3,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 52,
+        "merged": 4,
+        "total": 72
+      },
+      "generated_histories": 39,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/S16-G-M2.json",
+      "declaration_sha256": "44a5b5266049bf9aab64f63d086815c2d83513c23f016195a31e7212e4100354"
+    },
+    {
+      "arm": "S16-G",
+      "milestone": "M3",
+      "eligible_builders": 16,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 60,
+        "merged": 5,
+        "total": 81
+      },
+      "generated_histories": 48,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/S16-G-M3.json",
+      "declaration_sha256": "8d194f23b3c88bf81f642de3fe063b11d8e6b3618c33f32a78a1ed42994a6e29"
+    },
+    {
+      "arm": "S16-G",
+      "milestone": "M4",
+      "eligible_builders": 16,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 60,
+        "merged": 5,
+        "total": 81
+      },
+      "generated_histories": 48,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/S16-G-M4.json",
+      "declaration_sha256": "2f82c1253fbf88cc37388d445ee8d7654a0e1b8acc2899cc7c234f5c2c79d4e8"
+    },
+    {
+      "arm": "O16-G",
+      "milestone": "M2",
+      "eligible_builders": 16,
+      "active_distinct_probes": 3,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 52,
+        "merged": 4,
+        "total": 72
+      },
+      "generated_histories": 39,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/O16-G-M2.json",
+      "declaration_sha256": "9ab93ec7d1d4af84a35975bf169f3d43fb68155495dc66a83b0434b6a463a1aa"
+    },
+    {
+      "arm": "O16-G",
+      "milestone": "M3",
+      "eligible_builders": 16,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 60,
+        "merged": 5,
+        "total": 81
+      },
+      "generated_histories": 48,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/O16-G-M3.json",
+      "declaration_sha256": "9c1e9f48b6af45f09cf861c2456683248ecbd82e1241d65b66e090d19812b1bc"
+    },
+    {
+      "arm": "O16-G",
+      "milestone": "M4",
+      "eligible_builders": 16,
+      "active_distinct_probes": 4,
+      "execution_cells": {
+        "before_review": 16,
+        "contextual": 60,
+        "merged": 5,
+        "total": 81
+      },
+      "generated_histories": 48,
+      "authored_suite_executions": 33,
+      "declaration": "runs/generated-probe-matrix-planning-1/O16-G-M4.json",
+      "declaration_sha256": "987dff77b9f09f2376c9638ec3b584c6496b271b5dbd07f6d7ba076cffb8957a"
+    }
+  ],
+  "conditional_three_generation_counts_per_trajectory": {
+    "S4-G": 207,
+    "S16-G": 702,
+    "O16-G": 702
+  },
+  "limits": [
+    "Counts are an example, not an upper bound or a new allowance. More distinct generated inputs increase the matrix.",
+    "An authored suite may contain many assertions. Cells are neither equal-cost units nor independent scientific samples.",
+    "No wall time, byte budget, deadline feasibility, qualified setup, or slot reservation is established by these counts."
+  ],
+  "catalog": {
+    "protocol": "cumulative-generated-probe-matrix-v1",
+    "compiler_source_sha256": "a57da21e54b400ed531f08eb83a07dd1194538e7e2d282643904d735873196db",
+    "driver_source_sha256": "f1a81a8891e976815b73a121db344624679544d14a16c74b689da3510f9590e4",
+    "product_sha256": "2d88ce0775888f148b0ec3caf90b3d5c82d8fed71f53bec5f7e75f492ae998dc",
+    "templates": [
+      {
+        "template_id": "refresh-identity-v1",
+        "requirement_release_gate": "M2-REFRESH",
+        "target_packages": [
+          "catalog",
+          "ingestion",
+          "query"
+        ],
+        "required_imports": [
+          "library.catalog.store.Store",
+          "library.ingestion.local.import_file",
+          "library.ingestion.jobs.JobManager",
+          "library.query.service.Service"
+        ],
+        "invoked_interfaces": [
+          "Store.__init__",
+          "Store.close",
+          "Service.__init__",
+          "Service.lifecycle_show",
+          "Service.refresh_document",
+          "import_file"
+        ],
+        "required_history_slots": [
+          "imported",
+          "before"
+        ],
+        "graph_prerequisites": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "whole_requirement_coverage": false,
+        "setup_or_graph_completion_inferred": false
+      },
+      {
+        "template_id": "refresh-noop-v1",
+        "requirement_release_gate": "M2-REFRESH",
+        "target_packages": [
+          "catalog",
+          "ingestion",
+          "query"
+        ],
+        "required_imports": [
+          "library.catalog.store.Store",
+          "library.ingestion.local.import_file",
+          "library.ingestion.jobs.JobManager",
+          "library.query.service.Service"
+        ],
+        "invoked_interfaces": [
+          "Store.__init__",
+          "Store.close",
+          "Service.__init__",
+          "Service.lifecycle_show",
+          "Service.refresh_document",
+          "import_file"
+        ],
+        "required_history_slots": [
+          "imported",
+          "before"
+        ],
+        "graph_prerequisites": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "whole_requirement_coverage": false,
+        "setup_or_graph_completion_inferred": false
+      },
+      {
+        "template_id": "completed-receipt-replay-v1",
+        "requirement_release_gate": "M2-REFRESH",
+        "target_packages": [
+          "catalog",
+          "ingestion",
+          "query"
+        ],
+        "required_imports": [
+          "library.catalog.store.Store",
+          "library.ingestion.local.import_file",
+          "library.ingestion.jobs.JobManager",
+          "library.query.service.Service"
+        ],
+        "invoked_interfaces": [
+          "Store.__init__",
+          "Store.close",
+          "Service.__init__",
+          "Service.lifecycle_show",
+          "Service.refresh_document",
+          "JobManager.__init__",
+          "JobManager.submit",
+          "JobManager.prepare",
+          "JobManager.commit"
+        ],
+        "required_history_slots": [
+          "submitted",
+          "prepared",
+          "original_receipt",
+          "before"
+        ],
+        "graph_prerequisites": [
+          "M2-IDENTITY-REVISIONS"
+        ],
+        "whole_requirement_coverage": false,
+        "setup_or_graph_completion_inferred": false
+      },
+      {
+        "template_id": "manifest-content-hash-v1",
+        "requirement_release_gate": "M3-BACKUP-RESTORE",
+        "target_packages": [
+          "catalog",
+          "ingestion"
+        ],
+        "required_imports": [
+          "library.catalog.store.Store",
+          "library.ingestion.local.import_file",
+          "library.ingestion.jobs.JobManager"
+        ],
+        "invoked_interfaces": [
+          "Store.__init__",
+          "Store.close",
+          "JobManager.__init__",
+          "JobManager.submit"
+        ],
+        "required_history_slots": [
+          "submitted",
+          "capture_job"
+        ],
+        "graph_prerequisites": [
+          "M2-IDENTITY-REVISIONS",
+          "M2-REFRESH",
+          "M2-ANNOTATIONS",
+          "M2-COLLECTIONS",
+          "M2-DELETE-RESTORE",
+          "M2-QUERY",
+          "M2-INTERFACES",
+          "M3-WORKER-RECOVERY",
+          "M3-REINDEX",
+          "M3-EXPORT"
+        ],
+        "whole_requirement_coverage": false,
+        "setup_or_graph_completion_inferred": false
+      }
+    ],
+    "unsupported_generated_packages": [
+      "clients"
+    ],
+    "scope": "finite driver footprint only; physical qualification and exact setup witnesses remain required"
+  },
+  "new_model_quality_samples": 0,
+  "dispatch_authority": false
+}

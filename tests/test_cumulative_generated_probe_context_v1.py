@@ -181,6 +181,17 @@ class GeneratedProbeContextTests(unittest.TestCase):
         self.assertEqual(gen.sha256, identity); self.assertEqual(gen.anchor_vector[0], 'B01')
 
 
+    def test_pre_review_context_identity_does_not_depend_on_future_rankings(self):
+        before=fixture()
+        before=replace(before,rankings=tuple(replace(r,actors=(),disposition='unknown') for r in before.rankings))
+        after=replace(before,rankings=fixture().rankings)
+        original=ctx.compose(before,'base-overlay',actor='B02')
+        reconstructed=ctx.compose(after,'base-overlay',actor='B02')
+        self.assertEqual(original.files,reconstructed.files)
+        self.assertEqual(original.sha256,reconstructed.sha256)
+        ctx.verify_context(after,original)
+
+
 class GeneratedProbeContextGitTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='probe-context-'); self.addCleanup(self.temp.cleanup)

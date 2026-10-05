@@ -7110,6 +7110,16 @@
       "overlap": "Connects context construction to the existing runtime original-result verifier; does not activate the new policy, freeze cell budgets, conditionally select or run merged tests.",
       "distinct_defect": "Retrospective legacy-review reinterpretation, wrong seeded roster, omitted frontier candidates, changed source/ledger, forged terminal materialization and malformed ranking fallback.",
       "disposition": "Static then fast parser and Git/original composition controls; physical/successor/rehearsal qualification remains required."
+    },
+    "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Stable build-phase pre-review identities; complete inherited/public/generated/fresh-merged logical cells, including unranked alternatives and required client public suites.",
+      "isolation": "Pure inert source/context declarations and source-pinned normative graph/driver footprint; no candidate, Engine, provider or resource allocation.",
+      "overlap": "Uses separately qualified source compiler and ranking declarations. Does not supply physical setup witnesses, full byte/time capacity, durable registration, selection or live-policy adoption.",
+      "distinct_defect": "Future rankings rebinding earlier checks, empty client evidence vacuously passing, omitted unavailable/unranked rows, silent deduplication or borrowing contextual results for merged evidence.",
+      "disposition": "Static and focused fast matrix controls plus changed context/ranked-original fast/Git classes; no scientific sample or physical candidate-execution credit."
     }
   },
   "audit": {

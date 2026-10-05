@@ -19,7 +19,7 @@ from . import cumulative_study_controller_v2 as study
 from . import project_acceptance_registry_v1 as registry
 from .gitstore import GitStore, _path, _run
 
-PROTOCOL = 'cumulative-generated-probe-context-v1'
+PROTOCOL = 'cumulative-generated-probe-context-v1-pre-review-identity-v1'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 PACKAGES = study.PACKAGES
 Files = tuple[tuple[str, bytes], ...]
@@ -235,6 +235,17 @@ class Generation:
     def sha256(self) -> str:
         return study.digest(self.record())
 
+    def build_phase_record(self) -> dict[str, Any]:
+        # A pre-review observation cannot depend on future reviewer output.
+        # Keep every original build and its disposition, but no ranking data.
+        record = self.record()
+        del record['rankings']
+        return {**record, 'phase': 'before-review'}
+
+    @property
+    def build_phase_sha256(self) -> str:
+        return study.digest(self.build_phase_record())
+
     @property
     def anchor_vector(self) -> Vector | None:
         return tuple(r.actors[0] for r in self.rankings) if all(r.actors for r in self.rankings) else None
@@ -309,7 +320,8 @@ def compose(generation: Generation, phase: str, *, actor: str | None = None,
     entries(snapshot, source=True)
     base_modes = dict(generation.base.modes)
     modes = tuple((path, base_modes.get(path, '100644')) for path, _ in snapshot)
-    return Context(generation.sha256, phase, actor, vector, snapshot, modes)
+    binding = generation.build_phase_sha256 if phase == 'base-overlay' else generation.sha256
+    return Context(binding, phase, actor, vector, snapshot, modes)
 
 
 def verify_context(generation: Generation, context: Context) -> None:
@@ -341,7 +353,7 @@ def verify_materialized(store: GitStore, generation: Generation, context: Contex
     tree, files = capture.capture_registered_source(store, commit_oid, policy=capture.TwoProcessCapturePolicy())
     require(tuple(sorted(files.items())) == context.files, 'materialized_context_source_differs')
     require(tree == source_tree_oid(context.files, context.modes), 'materialized_context_tree_differs')
-    return {'protocol': PROTOCOL, 'context_sha256': context.sha256, 'generation_sha256': generation.sha256,
+    return {'protocol': PROTOCOL, 'context_sha256': context.sha256, 'generation_sha256': context.generation_sha256,
             'commit_oid': commit_oid, 'tree_oid': tree, 'source_sha256': admission.source_sha256(files),
             'acceptance_authority': False, 'dispatch_authority': False, 'execution_reuse_authority': False}
 
