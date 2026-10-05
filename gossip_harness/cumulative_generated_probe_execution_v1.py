@@ -39,11 +39,17 @@ from . import project_acceptance_registry_v1 as registry
 from .sandbox import DockerValidator
 from .peer_financial_authority_v5 import CumulativeAuthorityV5, EVALUATOR_CAPACITY_KEY, EVALUATOR_CAPACITY_POLICY
 
-PROTOCOL = 'cumulative-generated-probe-execution-v1-original-child-clock-v4'
+PROTOCOL = 'cumulative-generated-probe-execution-v1-cleanup-headroom-v5'
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 NORMAL_CLEANUP_SECONDS = 60
 FALLBACK_LIMITS = cleanup.CleanupLimits(total_seconds=60, request_seconds=5)
 require = plans.require
+
+
+def cleanup_allowance_ns() -> int:
+    """Configured sequential teardown allowances; not hard OS preemption."""
+    return int((pipes.CLEANUP_SECONDS + NORMAL_CLEANUP_SECONDS + FALLBACK_LIMITS.total_seconds)
+               * 1_000_000_000)
 
 
 @dataclass(frozen=True, slots=True)
@@ -77,6 +83,7 @@ def environment_for(plan: plans.ProbePlan, *, clock_domain: str) -> dict[str, An
         'pipe': pipes.definition(pipes.PipePolicy(plan.policy.wire_limits, plan.policy.stderr_bytes, policy.timeout_seconds)),
         'prestart': prestart.definition(), 'normal_cleanup_seconds': NORMAL_CLEANUP_SECONDS,
         'fallback_cleanup': asdict(FALLBACK_LIMITS), 'local_cleanup_seconds': pipes.CLEANUP_SECONDS,
+        'reserved_cleanup_allowance_ns': cleanup_allowance_ns(),
         'registration_contract': 'trusted controller authenticates unique root/slot and aggregate quotas before every effect',
         'scope': 'public generated-probe execution originals; no independent acceptance authority'}
 
@@ -240,6 +247,8 @@ class ProbeExecution(transport.CandidateStorageExecution):
         require(self.environment['clock_domain'] == original.clock_domain
                 and original.started_ns <= window.started_ns < window.deadline_ns <= original.deadline_ns,
                 'probe_window_outside_original_child')
+        require(window.deadline_ns + cleanup_allowance_ns() <= original.deadline_ns,
+                'probe_window_leaves_no_original_cleanup_allowance')
         require(not original.expired(time.time()), 'probe_original_child_deadline_expired')
 
     def _local_cleanup_complete(self) -> bool:

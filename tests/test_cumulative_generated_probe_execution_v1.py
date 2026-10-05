@@ -70,7 +70,7 @@ class GeneratedProbeExecutionIdentityTests(unittest.TestCase):
 
 
 class GeneratedProbeExecutionGitTests(unittest.TestCase):
-    def setUp(self):
+    def setUp(self, *, child_age_seconds=0):
         # Reuse only the earlier module's explicit inert fixture construction;
         # do not run, inherit or import its test class into this module's census.
         f = state_fixture.GeneratedProbeStateGitTests('test_unused_state_reopens_only_with_independent_current_prefix')
@@ -95,7 +95,12 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
         finance.permit = permit
         records = study.Records(finance.chain)
         records.put('contract', self.study_plan.record())
-        records.put('child.'+finance.child.trajectory+'.begin', clocks.begin(self.study_plan,0,time.time))
+        origin=clocks.begin(self.study_plan,0,time.time)
+        # Simulate an already-running child without sleeping or renewing its horizon.
+        origin['started_at']-=child_age_seconds;origin['deadline']-=child_age_seconds
+        origin['original_clock']['started_ns']-=child_age_seconds*1_000_000_000
+        origin['original_clock']['deadline_ns']-=child_age_seconds*1_000_000_000
+        records.put('child.'+finance.child.trajectory+'.begin',origin)
         self.executor = finance.open()
         original_target = state_fixture.target
         def financial_target(*args, **kwargs):
@@ -318,6 +323,44 @@ class GeneratedProbeExecutionGitTests(unittest.TestCase):
             owner._effect_boundary()
         owner._cleanup_deadline=time.monotonic()-1
         with self.assertRaisesRegex(ValueError,'cleanup_deadline'):owner._check_deadline()
+
+
+    def test_original_child_window_reserves_all_sequential_cleanup_allowances(self):
+        owner=self.owner();original=owner.original_child_clock;binding=owner.binding
+        allowance=execution.cleanup_allowance_ns()
+        self.assertEqual(allowance,125_000_000_000)
+        self.assertEqual(owner.environment['reserved_cleanup_allowance_ns'],allowance)
+        deadline=original.deadline_ns-allowance
+        owner.binding=replace(binding,window=state.ProbeWindow(deadline-1_000_000_000,deadline))
+        owner._child_clock_current()
+        for end in (deadline+1,original.deadline_ns):
+            owner.binding=replace(binding,window=state.ProbeWindow(deadline-1_000_000_000,end))
+            with self.assertRaisesRegex(ValueError,'no_original_cleanup_allowance'):owner._child_clock_current()
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+
+    def test_cleanup_headroom_refusal_never_acquires_a_model_slot_or_starts_intent(self):
+        owner=self.owner();original=owner.original_child_clock
+        owner.binding=replace(owner.binding,window=state.ProbeWindow(
+            owner.binding.window.started_ns,original.deadline_ns))
+        # Physical dispatch rechecks the original bound before waiting or intent.
+        with self.assertRaisesRegex(ValueError,'no_original_cleanup_allowance'):owner.execute_once()
+        self.assertEqual(self.finance_fixture.free_slots(),2)
+        self.assertEqual(self.executor.active_evaluations,0)
+        self.assertFalse(self.probe_state.journal.has('intent.json'))
+        self.assertEqual(self.finance_fixture.transport.calls,[])
+
+
+    def test_valid_late_child_probe_state_cannot_dispatch_without_cleanup_headroom(self):
+        f=GeneratedProbeExecutionGitTests('test_constructor_binds_physical_environment_but_close_keeps_caller_state')
+        self.addCleanup(f.doCleanups);f.setUp(child_age_seconds=250)
+        # The authentic state has a fresh 300-second window and remains valid;
+        # its enclosing 600-second project has already used 250 seconds.
+        f.probe_state.current()
+        original=clocks.read(study.Records(f.executor.checkpoint_chain),f.study_plan,0,active=True)
+        self.assertLess(f.probe_state.binding.window.deadline_ns,original.deadline_ns)
+        with self.assertRaisesRegex(ValueError,'no_original_cleanup_allowance'):f.owner()
+        self.assertFalse(f.probe_state.journal.has('intent.json'))
+        self.assertEqual(f.finance_fixture.free_slots(),2)
 
 
 if __name__ == '__main__': unittest.main()

@@ -1,5 +1,8 @@
 # Physical probes inherit the original child clock
 
+The [v5 continuation](probe-cleanup-headroom-v5.md) also reserves the sequential
+cleanup allowances before the original project deadline.
+
 The physical `ProbeExecution` constructor now requires the prospective
 `StudyPlan` as well as the real shared financial executor. It reads `contract`
 and `child.<trajectory>.begin` from that executor's anchored checkpoint chain.

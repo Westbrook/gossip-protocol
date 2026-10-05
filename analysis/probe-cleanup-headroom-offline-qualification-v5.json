@@ -1,0 +1,238 @@
+{
+  "protocol": "probe-cleanup-headroom-offline-qualification-v5",
+  "created_at_utc": "2026-10-05T13:40:33.542666+00:00",
+  "prior_commit": "551fd9eaea849428998f8c3fe17ed0e6bce1b8d7",
+  "status": "ORIGINAL_PROJECT_CLEANUP_HEADROOM_OFFLINE_QUALIFIED",
+  "implemented": [
+    "The physical probe owner computes the sequential local, ordinary and fallback cleanup allowances from their actual configured constants: 125 seconds total.",
+    "The prospective execution environment includes that allowance and has a new v5 protocol identity.",
+    "Constructor and non-cleanup effect boundaries require active probe deadline plus cleanup allowance to fit the original project horizon. The boundary is inclusive and no active window is silently shortened.",
+    "Cleanup after expiry remains permitted through its separately bounded safety path; unknown cleanup still retains the shared slot and halts.",
+    "A valid 300-second probe state in a simulated already-running child passes state checks but is refused by physical admission when it lacks cleanup headroom."
+  ],
+  "configured_cleanup_allowance_ns": 125000000000,
+  "qualification": {
+    "summary": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/summary.json",
+    "summary_sha256": "4f4b27ba58ca25d34e400314752b58f992c436ee7d2afed0df017e918c67d8d6",
+    "inputs_sha256": "8f2577fac0f625319a2ab5d9c32de8f0a3f658b3e730ef99ef47617aa073ed93",
+    "static_sha256": "33945dbd76bebfe00047cf0e54b90d7a3a31c992c463a479bd17bd5e44dec7c8",
+    "source_input_count": 775,
+    "fresh_tests": 173,
+    "reused_tests": 0,
+    "classes": 21,
+    "duration_seconds": 97.51695295795798,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildClockTests",
+        "tests": 8,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/55d8d5f647e94b5c/result.json",
+        "result_sha256": "8df1637036fa8c802e31cf24f9bfc1af48ceb4758e64468a88cd22ea9c8d131a",
+        "log_sha256": "d4c171003860d1c8ea6254653839ae5eb171a26113828fcf2ab20ba99ca405b9",
+        "request_sha256": "51c38b60d187b2430b591911cc5d5a687006850b7228ba752d91ce29eb5e3e79"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildControllerIntegrationTests",
+        "tests": 5,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/f8102915f46ef306/result.json",
+        "result_sha256": "6a8abf1fdaddae4b122126615c94afac26338d16d6b0324db6498333b9d33e8a",
+        "log_sha256": "585a15558580bc1d8984f24ec8feccd837415510825f04304b5b192155d4de86",
+        "request_sha256": "f8adfacd082e054ef62f670b90899265fc7570ff79ce7a5f1266cba1785e182f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/682d942eed25d87d/result.json",
+        "result_sha256": "c603bb514fce8f4858be0643f076961a875a45b6b4902bdc2db2c12bfbdc2ac6",
+        "log_sha256": "2a04e5249c974f17e17691bed89121e88804c999d7dfb15484bdfe37882a2cfb",
+        "request_sha256": "e047bf67e919b4cd52bab133c83fc50781da7fd419eafe1b87b6ab12a5d968b3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/18e8426870583b7c/result.json",
+        "result_sha256": "ebe2646ed43723a1c87114ae0aada1a24e1ddb3259928b948d7c93488ff75aa3",
+        "log_sha256": "003dc6440234e93e1e3d4d2598077685b84bb9ce8dabf55eaf81e8393ce16f13",
+        "request_sha256": "e3ae87e79afd7d7d5eea9e9750eaab14bc4cc5be13c612a8af11ead0333ee116"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionIdentityTests",
+        "tests": 3,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/0923e28281ab3f32/result.json",
+        "result_sha256": "93702c6e45b824c9ab18bfcdf806187176e09a7e2ccc64d1065454f9ccc28e69",
+        "log_sha256": "04e8bbddb06933218eae2d9e2d39e6bd4b961e0dfcb957c6ec3f02a2cb4b4780",
+        "request_sha256": "8a5f3102263943b862321ded208bc43ebdedc8218ce6418ffc665f3ec6ec2314"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipePolicyTests",
+        "tests": 2,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/95dbbf2e35834963/result.json",
+        "result_sha256": "62aab6d3c5563a08058ac3ad9f26c8f36511936f1fb16723275b77e96ceb8458",
+        "log_sha256": "991a69c9fe62cd559c36c2e5963b5d098b418316385f65f19f6ce4d855362642",
+        "request_sha256": "74af6d8d18ac2bcfa6973d376e25588c40fee2c12943c352ca1c1a37c59b121d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "tests": 10,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/9357695866ace6b8/result.json",
+        "result_sha256": "7a0e5d444db89f9f7ef44a920f8cc8053757c80db94680c8c0baedd4873e65c4",
+        "log_sha256": "aca5003baca1b9009ff44a3577138e572b0e57bab753798f58388cd170d6876b",
+        "request_sha256": "e2f94318eeadc53be10fec70cdfd3767915461b87b2501472ff74e10a1859d1e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalParserTests",
+        "tests": 14,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/8e309230cb39bdf6/result.json",
+        "result_sha256": "b82f2d233029465b2c0699faba331acc20ad2b3914dddb5d9c91cf3af07f8b2f",
+        "log_sha256": "a84464d6d9fa3c1815abd15b4755dc2c0ffa0b49be56faf65b025368e879a144",
+        "request_sha256": "92c05bc2cef6082bf1b43359b2691f281c0b7c2893175eb52b6e21fed3c9dc2e"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeReconstructionCompositionTests",
+        "tests": 4,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/27cee16273d7430c/result.json",
+        "result_sha256": "58277dbb8681c47b80ab7c721d9f25d8efe3c6da04b963a57474cb87ca507f61",
+        "log_sha256": "1ae899366ecf7c3bca606d88ed0d995ca2bf4a1f7a1d2648e632af10ca9213f6",
+        "request_sha256": "1667f9a689fb34002a06da84ef6c5e2c9806bc1bd4708ea120bf8ee5a702f8ae"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeWindowTests",
+        "tests": 1,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/cc5cda8bb683fcb2/result.json",
+        "result_sha256": "f6896364d350a472c19c429a4d43789a1d416101f113af4ab6c216e605070b88",
+        "log_sha256": "1101d5c89fefc8d408b9956b4aa1e9b27378f3dfd5db0756f19fa881577e4e50",
+        "request_sha256": "ff6c5841c8cd3f45bcd267e47a3df5966cb68d7213729bdfde54490ade5e6dfc"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalFixtureTests",
+        "tests": 4,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/5637bed8de0204ce/result.json",
+        "result_sha256": "54e66f2a5676367009cea855aa61bc05c830f38a2cc20d4366ce00d1eb6d8b5d",
+        "log_sha256": "ec3bb877b96bcf20dc7cecc19b1bba5a54be2c6414293a1c02afe19bb11c82b8",
+        "request_sha256": "7f99b914f62bf0a6f3d08a44950b682a1467bf2e8639483e775415165c94b0cf"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorFinancialTests",
+        "tests": 8,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/ffd570e99fb6527f/result.json",
+        "result_sha256": "1d06bfcc326e7dc040b379b4755554ef0ad6cf648e30579e098be8d5af5d148f",
+        "log_sha256": "d23d4f2211481d3d1103c386c9322d665ce9dcab288fceef6b773b1e4da046f3",
+        "request_sha256": "2b3c0d238af201de652fb1517508d4e2ac7b11c350ebaf1934ea45daf3909d62"
+      },
+      {
+        "class": "tests/test_shared_public_evaluator_capacity_v1.py::SharedEvaluatorRuntimeTests",
+        "tests": 5,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/102d0d423f447c48/result.json",
+        "result_sha256": "df540e0c2dcd7c374bb277bd7c6c23c0d4f651eeba14fb5898254dd2cd57c37b",
+        "log_sha256": "cc2f3cde303d3e8bf84b964e9b24b658c686b887221fc6132d68b4cecfb33c68",
+        "request_sha256": "0eac1b742150d08904c3e05871823ea6c9e053bfac3bb35f6745d6ce2359d7a3"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_pipe_v1.py::GeneratedProbePipeProcessTests",
+        "tests": 18,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/1d1ff598ce6fe32a/result.json",
+        "result_sha256": "c016e01771896465f5e6941e086336d4e6714323bc05982ad09b15033235602e",
+        "log_sha256": "8322f9c5d5b5d291b55f96f7b22364a5c45f2d128fdfa0bded2c55204d5ce283",
+        "request_sha256": "a3119b7f91b5ddce2c266846934c76888c33c20068bc293db7b2f445b30f4890"
+      },
+      {
+        "class": "tests/test_cumulative_child_deadline_v1.py::OriginalChildProbeAccountingTests",
+        "tests": 3,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/73fd65282e2d50e8/result.json",
+        "result_sha256": "4e512f70c7bc3dba3d01c27d95eaa704919ea6a67989fc43d265928ddd914b2c",
+        "log_sha256": "2b28e07ed3a36225d98d9130d997fa150bbeaeb59eb15cdaf0a7e6490c83ae52",
+        "request_sha256": "8ef3494bcd6c195b877902c43cee88808818cc0176766ea2d930a46119dd5e1f"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_execution_v1.py::GeneratedProbeExecutionGitTests",
+        "tests": 19,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/4cfd57ca651d5096/result.json",
+        "result_sha256": "78c93cd83cc6fc21e0c1e40b86891c0790feb12e6263ca3569b47b387566e122",
+        "log_sha256": "fbda467b4670de97f8a3d7cdce9ad30cc84ec1447c2c2f1ad27426f6971e955f",
+        "request_sha256": "87059199ddbbb8fd97595b11e914b7ab459e91b45b2b15ef4aa1d2d1f809e9e1"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "tests": 5,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "4a8b53f3f7560c2de0bfec6d6774421ae6ca3be755487398837284aab55e3d29",
+        "log_sha256": "b5056286cc3e3d5971e215d7fd64040b169bd7bce5b8f4f781c2e43a4c224eec",
+        "request_sha256": "3321e2ff4f450b371bbc31366709489ed1577a38903da6844e446c6226537f89"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_reader_v1.py::GeneratedProbeOriginalStateGitTests",
+        "tests": 6,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/ec7c5d2708f99050/result.json",
+        "result_sha256": "67e69209a13107a743a35bc38b93422a8d4eab8057dc644775b03bdeb78c9686",
+        "log_sha256": "ee6676d89b350a1750e50f5dfe6ebee8b03662a911f4ba9223f8769e1dc31b44",
+        "request_sha256": "c3d95a545b6ffe26b9ce2d9dfc023411a4bf6f51ed8dae7a91a3ddc9b00afcee"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_state_v1.py::GeneratedProbeStateGitTests",
+        "tests": 19,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/6c5074dfd4a5077e/result.json",
+        "result_sha256": "35f39f421eb505f87f777040a3d1acd2739d120691af82c5f0a94d6c3c7e4792",
+        "log_sha256": "bb2c509d0d148a7647287c0d0bb2d2e54ba79ae02492890c528bce476f26b503",
+        "request_sha256": "02ca44c5ee839cc3edde4e5506433eb9f324c0c3449b94729ac19e6d27df154c"
+      },
+      {
+        "class": "tests/test_generated_probe_original_chains_v1.py::GeneratedProbeWholeOriginalChainTests",
+        "tests": 13,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/ba96f304814469e3/result.json",
+        "result_sha256": "d9a69d786b9531a4eea4aa7e8a5a888b46c8b647e53456d76bd2971309d33d08",
+        "log_sha256": "866046d9f255cc657d4d959c0114386e0eb285673f9d653358f89e63e1a06942",
+        "request_sha256": "b1651291587bc49a73a0a63958b8954a9d1918c1b6473f97ea8f7b15cb430eb2"
+      },
+      {
+        "class": "tests/test_generated_probe_physical_fixture_v1.py::GeneratedProbePhysicalPreparationGitTests",
+        "tests": 2,
+        "result": "runs/probe-cleanup-headroom-qualification/20261005T133724-9796abad/classes/f6cea13342c33618/result.json",
+        "result_sha256": "90ef0b316a2364b0523c0f7670c46e705fbc04494b61b58d66d16923b2cb5cc7",
+        "log_sha256": "3313b82316419c81ef5f980a2b4b63f7810f9e75e2162ede842de4d02384e3a6",
+        "request_sha256": "a6f76622d830de06137e88cd90c6ab9bb382212908d2b054458f76451cd5b2f5"
+      }
+    ],
+    "scope": "Actual isolated financial authorities, child-start journals and inert Git, with refused Engine socket. The late-child fixture shifts its original recorded start without sleeping or renewing its horizon. Synthetic reviews/transport; no Engine, candidate or provider execution."
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_log_hashes_match": true,
+    "current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "focused_result": {
+    "summary": "runs/probe-cleanup-headroom-focused/20261005T133409-739a5293/summary.json",
+    "fresh_tests": 21,
+    "reuse": false,
+    "reason": "Added valid late-child admission regression and updated manifest before final coherent qualification."
+  },
+  "source_pins": {
+    "docs/probe-cleanup-headroom-v5.md": "53aea9f4294f96d628a863171b8bcebc5e0476f35d6e28a1571e79bbccab57d9",
+    "docs/probe-original-child-clock-v4.md": "fa82d7a1f683bd55237da35651e4c9744ec68831c914d5f63aa871741b4db6b2",
+    "gossip_harness/cumulative_generated_probe_execution_v1.py": "82b6afe9224e42ce047d33784a74236687f70a7c884daf95f47380a702330a45",
+    "tests/test_cumulative_generated_probe_execution_v1.py": "d653e97979d4cf131dedcef11bd856457ca62e29bd05a534e7b43fde30d6a9fc",
+    "verification-manifest.json": "270f721f0f263d6ba38177168d0aeadf8e5eed206edaf02fde41c476436a6b4a"
+  },
+  "limitations": [
+    "The 125-second value is a sum of configured allowances, not hard OS preemption or a measured runtime guarantee.",
+    "Declared raw bytes, journal bytes and workspace charges still lack a complete qualified accounting boundary. The source-limit inventory is not a qualified aggregate envelope.",
+    "Durable cell enrollment still needs physical admission adoption together with original qualified resources; complete ranked activation remains outstanding.",
+    "Independent physical/cold joins, changed-source reviews, remaining acceptance routes and the complete matching rehearsal remain required."
+  ],
+  "scientific_evidence": {
+    "new_quality_samples": 0,
+    "new_provider_calls": 0,
+    "new_api_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "publication_policy": {
+    "sites": false,
+    "github_actions": false,
+    "github_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "when": "completed work checkpoints"
+  },
+  "next_action": "Derive and qualify exact charged resource envelopes from actual journal/staging/runtime boundaries, consume immutable cell enrollment at physical admission, and join complete observations before ranked selection activation."
+}
