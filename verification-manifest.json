@@ -6920,6 +6920,36 @@
       "overlap": "Parser/value relations only; future physical owner, cold-reader and selection checks remain separate.",
       "distinct_defect": "Wrong refresh, replay or captured-row values must not become unavailable merely because a later or prerequisite slot is missing.",
       "disposition": "Static gate then fresh fast controls. No model-quality sample or runtime integration credit."
+    },
+    "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exact release, probe, candidate/context, limits, helper code and fresh complete Git source binding; declarations confer no dispatch or acceptance authority.",
+      "isolation": "Class worker; fresh inert bare Git repositories only in git lane; no candidate import, Engine or provider.",
+      "overlap": "Complements wire/value checks; independent review, actual sandbox process and cold evidence reconstruction remain separate.",
+      "distinct_defect": "Changed head/tree/source, deleted paths, future release, context substitution, caller mutation or helper-source drift could otherwise misattribute a passing probe.",
+      "disposition": "Static then nearest fast/git declarations and actual source capture; no physical or statistical qualification credit."
+    },
+    "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Exact release, probe, candidate/context, limits, helper code and fresh complete Git source binding; declarations confer no dispatch or acceptance authority.",
+      "isolation": "Class worker; fresh inert bare Git repositories only in git lane; no candidate import, Engine or provider.",
+      "overlap": "Complements wire/value checks; independent review, actual sandbox process and cold evidence reconstruction remain separate.",
+      "distinct_defect": "Changed head/tree/source, deleted paths, future release, context substitution, caller mutation or helper-source drift could otherwise misattribute a passing probe.",
+      "disposition": "Static then nearest fast/git declarations and actual source capture; no physical or statistical qualification credit."
+    },
+    "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Separately delivered exact-plan review originals, complete grounded duties, chronology and independently held current head are mandatory; hashes do not establish reviewer adequacy.",
+      "isolation": "Class process; real protected journals holding explicitly synthetic unit-review fixtures; no actual source review, Git candidate or Engine/provider execution.",
+      "overlap": "Linkage integrity complements source-plan checks; it neither supplies the production reviewer nor qualifies execution.",
+      "distinct_defect": "Stale prefix, tampered originals, cross-context replay, wrong reviewer/purpose, missing duties or reversed delivery could otherwise authorize an unreviewed probe.",
+      "disposition": "Central static then combined new plan fast/git and review fast classes; all synthetic approvals remain test-only."
     }
   },
   "audit": {

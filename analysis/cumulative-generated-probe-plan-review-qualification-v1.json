@@ -1,0 +1,114 @@
+{
+  "audit_driver": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-adoption-1/audit.py",
+  "audit_driver_sha256": "1c6f52b31055fdb1039cf0870c762ea4da2a88c7a8287baedcbaf47287012624",
+  "authority_limits": [
+    "Only source-plan construction and review-linkage mechanisms were qualified.",
+    "Every review in these tests is explicitly synthetic; no actual independent source review or production approval was created.",
+    "Real Git fixtures contain inert text/code bytes that were not imported or executed as candidates.",
+    "The declaration does not prove candidate/context construction, image/runtime identity, deadlines or physical observations.",
+    "No frozen historical evaluator or value/wire source was changed. Earlier receipts retain their exact original bindings."
+  ],
+  "candidate_executions": 0,
+  "coverage": [
+    "Fresh complete real-Git capture, exact head/tree/source hash, deletion preservation and no cross-capture dictionary reuse.",
+    "Original public Release digest, released milestone/requirements, candidate/context/stage/generation and caller-mutation isolation.",
+    "Explicit policy limits within existing envelopes and closed applicable SQLite path/schema declarations.",
+    "Exact helper/evaluator source bindings and separate generated-probe review requests.",
+    "Current independent external prefix, original request/report/delivery hashes, full grounded duties and chronological delivery.",
+    "Wrong reviewer/protocol/purpose, cross-context review reuse, missing scope caveats, forged digests and tampered originals rejected."
+  ],
+  "independent_source_approvals_created": 0,
+  "initial_development_run": {
+    "fresh_tests": 15,
+    "inputs_sha256": "6d4ba7a9631fcbc58eed2a0cb250f50a496d647456d194bfee5e97d05749546e",
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-offline-1/20261005T062922-15354b89",
+    "scope": "Plan-only predecessor before adding the review source closure; not reused as current qualification.",
+    "summary_sha256": "622e363083988b033d5807e001d77d5e1682e57925959edb05a3006ff8a9b4c4"
+  },
+  "new_model_quality_samples": 0,
+  "product_acceptance": false,
+  "protocol": "cumulative-generated-probe-plan-review-qualification-v1",
+  "provider_calls": 0,
+  "remaining": [
+    "Actual independently enrolled reviews for each exact source/layout/invocation.",
+    "Versioned physical owner with runtime/environment/image/registration binding, durable intent, absolute deadline, bounded streams and owned teardown.",
+    "Authentic SQLite capture at the declared boundary and independent cold reconstruction from protected originals.",
+    "All-candidate/context and actual merged-source testing, conditional reviewer selection and non-author exact-merge approvals.",
+    "Complete matching rehearsal and approved live comparisons; independent held-out families for statistical inference."
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_plan_v1.py": "44c0cd91482158152d555309a0f8f78cc714f5afbb0b4f0f2540795b35007a84",
+    "gossip_harness/cumulative_generated_probe_review_v1.py": "46903874fc39557089edf517139e78fc5db86dec391b7210b6fbb076df8dbfbd",
+    "pyproject.toml": "d060f734f17ed40d3cda15a8cb43efc728c0ac2c0c0785862f388d65443bc9cd",
+    "tests/test_cumulative_generated_probe_plan_v1.py": "6e360ae14ee4a26e4c66e33a6441c1fbf7e2465ee6428306b0475dfdfeb1b65f",
+    "tests/test_cumulative_generated_probe_review_v1.py": "bdc5b30433e24133af268d40206216f5b362930922ca094e6b508a008a676bf3",
+    "verification-manifest.json": "2f8f2e458f2e5e8d56da7f074c26d8ea546ae0dad9fefbc1c1d41bc81e7c08ec"
+  },
+  "status": "plan_and_review_linkage_qualified_physical_owner_pending",
+  "verification": {
+    "classes": [
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests",
+        "lane": "fast",
+        "log_sha256": "6d6c280c365f16ab2b1d58cf8771d1cd6db71439bf105a8f521965575602404c",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_candidate_context_generation_and_merge_stage_change_identity",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_capture_paths_reject_traversal_duplicates_and_unsorted_census",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_evaluator_pin_substitution_is_rejected",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_forged_probe_snapshot_cannot_enter_review_request",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_limits_are_explicit_inside_existing_bounds_and_change_identity",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_only_capture_template_accepts_and_requires_layout",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_plan_snapshots_are_independent_of_later_caller_mutation",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_request_binds_exact_public_release_helpers_and_target_without_authority",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_target_rejects_boolean_generation_short_git_and_wrong_contract",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanTests.test_unreleased_requirement_and_milestone_mismatch_are_refused"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-offline-2/20261005T063500-f333d228/classes/9357695866ace6b8/result.json",
+        "result_sha256": "53bd8b906d765dbdb072370fe15239b32bbcaf7883c4990250556c3c4e7260db"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests",
+        "lane": "fast",
+        "log_sha256": "eddcc5b7eec31859142b021b022f5f35e3484f1a70ae9b92fd3b2eda5769e342",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_delivery_before_report_cannot_authorize_execution",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_different_protocol_reviewer_or_delivery_is_refused",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_duplicate_noncanonical_or_overlarge_originals_are_refused",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_enrollment_hash_substitution_is_refused",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_exact_originals_and_chronology_reconstruct_provenance",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_original_tampering_is_rejected_even_after_success",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_other_candidate_context_or_stage_cannot_reuse_review",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_rejected_missing_or_ungrounded_duties_are_refused",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_scope_limits_and_distinct_names_are_required",
+          "tests/test_cumulative_generated_probe_review_v1.py::GeneratedProbeReviewTests.test_success_is_not_cached_across_external_prefix_change"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-offline-2/20261005T063500-f333d228/classes/b5572376f8dd4cea/result.json",
+        "result_sha256": "44b9087fc1f053743508457d07a791dc925c174b8fab1f697f66db46d7c841d6"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests",
+        "lane": "git",
+        "log_sha256": "5eb74cd335ad663ff2653ea5af65bce39aba9c33388517d9ec750a01b88562e1",
+        "ordered_tests": [
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests.test_captured_dictionary_mutation_does_not_pollute_next_capture",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests.test_moved_head_is_rejected_instead_of_using_cached_files",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests.test_new_context_captures_deletions_and_all_remaining_files",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests.test_real_complete_git_capture_and_review_request_without_candidate_import",
+          "tests/test_cumulative_generated_probe_plan_v1.py::GeneratedProbePlanGitTests.test_wrong_tree_or_full_source_hash_is_rejected"
+        ],
+        "result_path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-offline-2/20261005T063500-f333d228/classes/5432b47e0a68e700/result.json",
+        "result_sha256": "47fb1367e3afb436291035578878a3c4cfc5ac53ea1603918113eeee38465266"
+      }
+    ],
+    "duration_seconds": 39.146882000379264,
+    "fingerprint": "b0e0dab195219eab1573800222e9717ede9b4cb6539d194e532abaaac93afaaf",
+    "fresh_tests": 25,
+    "inputs_sha256": "9fbb919df84620d5807b1ed605e862c949fb1837f1319ab78926f8e3b93028e9",
+    "reused_tests": 0,
+    "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/cumulative-generated-probe-plan-offline-2/20261005T063500-f333d228",
+    "runtime_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "source_inputs": 744,
+    "static": "passed within configured coverage; unchanged legacy type baseline remains",
+    "summary_sha256": "8900bf0aa438221d777bf53289399419fa6fe70b12b933491372b47495e0dc26"
+  }
+}
