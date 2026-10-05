@@ -1,0 +1,107 @@
+{
+  "protocol": "generated-probe-capacity-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T10:13:20.287554+00:00",
+  "status": "DECLARED_CAPACITY_ACCOUNTING_IMPLEMENTED_PHYSICAL_ENVELOPES_AND_CONTROLLER_ADOPTION_UNFINISHED",
+  "prior_commit": "5047333858b478ebeb73824a29f7182fd29c9445",
+  "implemented": [
+    "Complete before-review and after-review charge rosters reject omitted, reordered, duplicate and extra cells. Unranked candidates and all conditional merged obligations remain present.",
+    "A deterministic four-slot schedule keeps cleanup in slot occupancy and respects review and selection barriers; both phases share one absolute generation window.",
+    "The anchored controller-journal ledger prospectively fixes its declared accounting limits and records successful declarations and whole-phase declines. Cumulative retained/raw/delta/workspace/cell bounds are not refunded or silently resized.",
+    "Fresh ledger instances recompute allocation decisions from original records. Recovery also verifies the capacity contract preceded ranked work, closing the demonstrated late-contract gap.",
+    "Bounded canonical request parsing and owner configuration checks reject oversized/deep requests, substituted accounting and increased limits."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-capacity-offline-3/20261005T101121-b4f68e63/summary.json",
+    "summary_sha256": "9b3a9200a1a52f1aa907c7774dd5157ccae8a35ea1523210835928460ee77c74",
+    "inputs_sha256": "ac79ff4144743188ef0ec96b9bb6f974e4ea63b81d760d2e54b3b6f841812d1c",
+    "static_sha256": "513460fd1cfc0c6633983bb5f4c9248088b113c667d9fbe07a2559ec14a1f359",
+    "source_input_count": 765,
+    "tests_passed_fresh": 38,
+    "tests_reused": 0,
+    "duration_seconds": 4.960829417221248,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests",
+        "tests": 11,
+        "result": "runs/generated-probe-capacity-offline-3/20261005T101121-b4f68e63/classes/682d942eed25d87d/result.json",
+        "result_sha256": "e1709a7c68008be1ef430bcb0e3d301687edc80786e84d4a4ca0ed44db6d00f2",
+        "request_sha256": "b69ef2badbafaf7158babb7806b55b3bd76a0d23f763d905f4e6abd55ac03b2f",
+        "log_sha256": "735d0b3cba35949ee1cd61ea3d19bb22bd68ef667a524fd647338b6044bf5d0d"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests",
+        "tests": 13,
+        "result": "runs/generated-probe-capacity-offline-3/20261005T101121-b4f68e63/classes/18e8426870583b7c/result.json",
+        "result_sha256": "3e81be8a78e7ec84354dd4a9b4faf39b5a3779d429c72ce59a03d03943c41237",
+        "request_sha256": "d74b11c82b4bc9a83ea7eff7442fc381a7d46ac0ada983dbe2203a7287d39c5c",
+        "log_sha256": "4118bb206e18e2c3cd65d808cb2cee4556c33b8fc4bad672be4bc0efc7b922c9"
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_matrix_v1.py::GeneratedProbeMatrixTests",
+        "tests": 14,
+        "result": "runs/generated-probe-capacity-offline-3/20261005T101121-b4f68e63/classes/f1320d7909b3bb97/result.json",
+        "result_sha256": "baaaee3c19ad99b233f8635954e97938ca6ff5bbaafa293e48670d1b496b42a8",
+        "request_sha256": "3dae97b143aa60f09435e245a844b7c418376a663237c0a8a7b1be5441d30542",
+        "log_sha256": "dc6d1f4d868dba6aeddafb926841c50e32d0eff8ffe4abd9e7b5e4fb1d3e59da"
+      }
+    ],
+    "scope": "Pure matrix/envelope fixtures and actual temporary externally anchored checkpoint journals. No Git candidate execution, Engine execution, model calls, executor leases or live allocation."
+  },
+  "retained_negative": {
+    "summary": "runs/generated-probe-capacity-late-contract-negative-1/20261005T101025-c0b44dc3/summary.json",
+    "sha256": "ee1189870400581386106bbcf30c9a150fd2581da0139b984b4c1f38d4623c45",
+    "finding": "Opening a ledger through its recovery path accepted a capacity contract retained after ranked work. The regression failed before the chronology check and passes now."
+  },
+  "earlier_attempts": [
+    {
+      "summary": "runs/generated-probe-capacity-offline-1/20261005T100806-a9e2b7d8/summary.json",
+      "sha256": "32cfb78a19c33b7b732614c080b62ef14477f30b17a8ba93aa86bdcd865dc4a7",
+      "outcome": "Static type annotation error; 36 tests did not run. Fixed without changing the existing baseline."
+    },
+    {
+      "summary": "runs/generated-probe-capacity-offline-2/20261005T100859-db2da5fd/summary.json",
+      "sha256": "5c045372487b4594add870c4622af022b6fe023ba4b717e0941e2d6e1a186899",
+      "outcome": "36 passed before the additional cold-replay regression; superseded by the final 38-check source."
+    }
+  ],
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_and_log_hashes_match": true,
+    "all_current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_capacity_v1.py": "daee1406e6ad3b3dc849fa9e07e2514e68c2be57fff3ef6195587fd10e13c856",
+    "tests/test_cumulative_generated_probe_capacity_v1.py": "290b659d5ba186d1aff7aaa2da30a46b010c1092d7b4cd6fca8939f7e2c14357",
+    "pyproject.toml": "70bccf9fb731fb573614000f78ae3f514bbee2c3619fe9b2ef35eaed07014d4c",
+    "verification-manifest.json": "a8f2f2670e6cadae6be781cc2af2f288c3b5d8d793eb8f08bcb3a34b35a39816"
+  },
+  "resource_finding": {
+    "runtime_source": "gossip_harness/cumulative_study_runtime_v2.py",
+    "sha256": "ecde3e1a611a4425d0c9e84c873ccc523d02cfcde37c5b90508d039a2011354f",
+    "finding": "The existing 4 GiB original-artifact census covers named runtime directories. It is not a prospective storage allocation for the generated-probe journals or a shared physical-executor lease."
+  },
+  "limits": [
+    "Test envelope numbers are synthetic accounting controls, not measured costs, operational allowances, or a qualified live schedule.",
+    "The ledger authenticates its accounting history, not the scientific completeness or provenance of caller-supplied corpus/setup/source inputs. Those require the original-backed controller enrollment path.",
+    "This module does not alter the existing model/evaluator pools, issue executor leases, allocate physical storage, enforce subprocess timeouts, create observation admissions or activate a new scientific policy.",
+    "Generation-window continuity is checked across the two phases; lineage to the original whole-child horizon and other M1/model/controller work remains a controller integration requirement.",
+    "Raw/delta/workspace envelopes must include all owner/review/capture/cleanup roots and be qualified. The ledger own journal overhead must also be budgeted by its controller. No such physical sizing qualification is claimed here."
+  ],
+  "remaining": [
+    "Authenticate the entire original-backed carried and novel probe corpus, deterministic quotas, setup applicability and each actual source before controller enrollment.",
+    "Qualify complete per-cell resource profiles and bind declarations to the existing whole-child horizon, cumulative artifact capacity and actual shared four-slot executors across all work.",
+    "Version and activate the successor common policy, use both phases around actual reviewer calls, dispatch real contextual checks, select from original evidence and freshly test the merged tree.",
+    "Complete pending independent reviews, twelve physical controls, eight fault schedules, matching six-trajectory/four-milestone rehearsal, live paired comparison and independent held-out confirmation."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Connect original-backed post-review corpus enrollment to the declared capacity ledger and actual controller horizon/shared executors; do not treat a reserved declaration as physical admission.",
+  "external_holds": "Public Git and provider disclosure remain held; no external disclosure attempted."
+}

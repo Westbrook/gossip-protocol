@@ -7130,6 +7130,26 @@
       "overlap": "Uses the existing original join; does not admit resources, activate the controller policy, dispatch checks, freeze the post-review matrix or grant acceptance.",
       "distinct_defect": "Future-review dependency, retrospective or repeated enrollment, original freeze substitution, omitted stopped roles and financial-original failure before a write.",
       "disposition": "Static then focused fast/Git checks; physical and complete successor qualification remain required."
+    },
+    "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityPlanningTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Complete two-phase charge census, cleanup and dependency barriers, cumulative no-refund bounds and cold replay of the exact anchored reservation/decline history.",
+      "isolation": "Pure matrix fixtures and temporary actual external-head/checkpoint journals; no provider, candidate, Docker, executor lease or qualified physical envelope.",
+      "overlap": "Consumes matrix declarations only. Source/setup/corpus authentication, actual shared-pool adoption and controller activation remain separate requirements.",
+      "distinct_defect": "Silent cell omission, future-review dependency, reset deadlines, premature slot reuse, cumulative overspend, duplicate phase allocation and fabricated capacity history.",
+      "disposition": "Static and fast accounting controls; this does not qualify live admission or prove experimental quality."
+    },
+    "tests/test_cumulative_generated_probe_capacity_v1.py::GeneratedProbeCapacityLedgerTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Complete two-phase charge census, cleanup and dependency barriers, cumulative no-refund bounds and cold replay of the exact anchored reservation/decline history.",
+      "isolation": "Pure matrix fixtures and temporary actual external-head/checkpoint journals; no provider, candidate, Docker, executor lease or qualified physical envelope.",
+      "overlap": "Consumes matrix declarations only. Source/setup/corpus authentication, actual shared-pool adoption and controller activation remain separate requirements.",
+      "distinct_defect": "Silent cell omission, future-review dependency, reset deadlines, premature slot reuse, cumulative overspend, duplicate phase allocation and fabricated capacity history.",
+      "disposition": "Static and fast accounting controls; this does not qualify live admission or prove experimental quality."
     }
   },
   "audit": {
