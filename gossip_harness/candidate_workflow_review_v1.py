@@ -20,7 +20,7 @@ from . import candidate_checkpoint_chain_v1 as chain
 from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_execution_journal_v1 as journals
 from . import candidate_observation_admission_v1 as admission
-from . import candidate_source_capture_policy_v1 as capture
+from . import candidate_source_capture_policy_v2 as capture
 from .candidate_storage_product_profile_v1 import encoded, decode, digest
 from .candidate_storage_review_authority_v1 import ReviewEnrollment
 from . import project_acceptance_registry_v1 as registry
@@ -33,7 +33,7 @@ INSPECTION_PURPOSE = 'independent_final_m4_workflow_product_inspection'
 INSPECTION_FAMILY = 'workflow-source-inspection-v1'
 ORIGINAL_DEFINITION_PURPOSE = 'source_bound_qualification'
 VERIFIER_FILE = 'inspection-verifier.json'
-SOURCE_CAPTURE_POLICY = capture.BatchCapturePolicy()
+SOURCE_CAPTURE_POLICY = capture.TwoProcessCapturePolicy()
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 require = admission.require
 DUTIES = ('complete_source_and_all_persisted_state',

@@ -188,11 +188,13 @@ class CumulativeFinalAcceptanceV3Tests(unittest.TestCase):
 
     def test_batch_source_capture_unavailable_is_infrastructure_not_unhandled_or_product_failure(self):
         from gossip_harness.candidate_source_capture_policy_v1 import SourceCaptureUnavailable
-        @shared.normalize_authority
-        def unavailable():
-            raise SourceCaptureUnavailable('owned source transport did not complete')
-        with self.assertRaisesRegex(consumer.AuthorityUnavailable,'source transport'):
-            unavailable()
+        for error_type in (SourceCaptureUnavailable, shared.two_process_capture.SourceCaptureUnavailable):
+            @shared.normalize_authority
+            def unavailable():
+                raise error_type('owned source transport did not complete')
+            with self.subTest(error_type=error_type.__module__), self.assertRaisesRegex(
+                    consumer.AuthorityUnavailable, 'source transport'):
+                unavailable()
 
     def test_qualification_batch_capture_unavailable_does_not_become_source_revision(self):
         store=self.inert_store(self.root/'harness.git');store.head=lambda:'a'*40

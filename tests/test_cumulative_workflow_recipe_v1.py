@@ -11,9 +11,11 @@ from copy import deepcopy
 from dataclasses import asdict, replace
 import hashlib
 from pathlib import Path
+import subprocess
 import tempfile
 from types import SimpleNamespace
 import unittest
+from unittest import mock
 
 from gossip_harness import candidate_checkpoint_chain_v1 as chain
 from gossip_harness.candidate_checkpoint_head_v1 import ExternalHead
@@ -290,8 +292,13 @@ class CandidateWorkflowGitCompositionTests(unittest.TestCase):
 
     def test_actual_source_identity_and_recipe_implementation_closure_remain_exact(self):
         fixture = self.fixture('workflow')
-        tree, files = review.capture_git_source(fixture.store, fixture.commit)
-        self.assertEqual((tree, files), (fixture.tree, fixture.files))
+        for capture in (review.capture_git_source, execution.capture_git_source):
+            with self.subTest(capture=capture.__module__), mock.patch.object(
+                    subprocess, 'Popen', wraps=subprocess.Popen) as launches:
+                tree, files = capture(fixture.store, fixture.commit)
+            self.assertEqual((tree, files), (fixture.tree, fixture.files))
+            self.assertEqual(launches.call_count, 2)
+        self.assertEqual(execution.SOURCE_CAPTURE_POLICY, review.SOURCE_CAPTURE_POLICY)
         record = fixture.recipe.record()
         self.assertEqual(record['source_manifest'], admission.source_manifest(files))
         self.assertEqual(fixture.recipe.registration.gate.binding.subject.source_sha256,
@@ -299,9 +306,15 @@ class CandidateWorkflowGitCompositionTests(unittest.TestCase):
         for name in ('candidate_workflow_review_v1.py', 'candidate_workflow_execution_v1.py',
                      'candidate_workflow_observation_v1.py', 'cumulative_workflow_observation_recipe_v1.py',
                      'cumulative_rehearsal_codec_v1.py', 'cumulative_final_acceptance_v1.py',
-                     'candidate_source_capture_policy_v1.py', 'candidate_git_source_batch_v1.py'):
+                     'candidate_source_capture_policy_v1.py', 'candidate_git_source_batch_v1.py',
+                     'candidate_source_capture_policy_v2.py', 'candidate_git_source_two_process_v1.py'):
             self.assertEqual(record['sources']['gossip_harness/' + name],
                              hashlib.sha256((ROOT/'gossip_harness'/name).read_bytes()).hexdigest())
+        self.assertEqual(record['source_capture_policy']['protocol'], 'candidate-source-capture-policy-v2')
+        from gossip_harness.candidate_source_capture_policy_v1 import BatchCapturePolicy
+        with mock.patch.object(execution, 'SOURCE_CAPTURE_POLICY', BatchCapturePolicy()):
+            with self.assertRaisesRegex(ValueError, 'two-process source-capture policy'):
+                fixture.recipe.revalidate()
         for broken in (replace(fixture.recipe, runtime_bytes=b'{}'),
                        replace(fixture.recipe, registration=replace(fixture.recipe.registration, tree_oid='e'*40))):
             with self.assertRaises(ValueError):

@@ -21,6 +21,7 @@ from types import ModuleType
 from . import candidate_checkpoint_chain_v1 as checkpoint
 from .candidate_checkpoint_head_v1 import ExternalHead
 from .candidate_source_capture_policy_v1 import SourceCaptureUnavailable
+from . import candidate_source_capture_policy_v2 as two_process_capture
 from . import candidate_client_execution_v5 as cli
 from . import candidate_client_observation_source_v1 as cli_source
 from . import candidate_http_execution_v4 as http
@@ -70,7 +71,8 @@ def implementation_sources() -> dict[str, str]:
          'gossip_harness/cumulative_observation_recipe_factory_v1.py': recipe_factory.LOADED_SOURCE_SHA256,
          'gossip_harness/cumulative_study_controller_v1.py':
              hashlib.sha256((root / 'gossip_harness/cumulative_study_controller_v1.py').read_bytes()).hexdigest()},
-        workflow.guard_sources(), cli.evaluator_sources(), http.evaluator_sources(), product.evaluator_sources(),
+        workflow.guard_sources(), two_process_capture.evaluator_sources(),
+        cli.evaluator_sources(), http.evaluator_sources(), product.evaluator_sources(),
         storage.evaluator_sources(), storage.profile.definition_sources(),
         cli.cases.definition_sources(), cli.cumulative.definition_sources(), product.core.definition_sources(),
         scope_authority.implementation_sources(), dict(original_catalog.source_pins)))
@@ -107,7 +109,8 @@ def normalize_authority(operation: Callable[_P, _R]) -> Callable[_P, _R]:
             raise
         except (checkpoint.ChainUnknown, admission.AdmissionUnavailable, cli.ExecutionUnknown,
                 http.ExecutionUnknown, product.ExecutionUnknown, storage.ExecutionUnknown, OSError, GitError,
-                subprocess.SubprocessError, sqlite3.DatabaseError, SourceCaptureUnavailable) as error:
+                subprocess.SubprocessError, sqlite3.DatabaseError, SourceCaptureUnavailable,
+                two_process_capture.SourceCaptureUnavailable) as error:
             raise consumer.AuthorityUnavailable(str(error)) from error
         except (ValueError, KeyError, TypeError) as error:
             raise consumer.AuthorityError(str(error)) from error

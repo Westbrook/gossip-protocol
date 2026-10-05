@@ -35,7 +35,7 @@ from . import candidate_checkpoint_chain_v1 as chain
 from .candidate_checkpoint_head_v1 import ExternalHead
 from . import candidate_emergency_cleanup_v1 as cleanup
 from . import candidate_client_process_v4 as process
-from . import candidate_source_capture_policy_v1 as source_capture
+from . import candidate_source_capture_policy_v2 as source_capture
 from . import cumulative_workflow_exposure_v1 as exposure
 from .gitstore import GitStore
 from .sandbox import DockerValidator
@@ -46,7 +46,7 @@ PROTOCOL = 'candidate-workflow-execution-v1'
 ADAPTER_PROTOCOL = 'candidate-workflow-wire-v1'
 TARGET_CONTRACT = transport.TARGET_CONTRACT
 FAMILY = 'workflow-final-m4-v1'
-SOURCE_CAPTURE_POLICY = source_capture.BatchCapturePolicy()
+SOURCE_CAPTURE_POLICY = source_capture.TwoProcessCapturePolicy()
 LIMITS = chain.Limits()
 CHUNK_BYTES = transport.CHUNK_BYTES
 LOADED_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
@@ -172,7 +172,7 @@ def evaluator_sources() -> dict[str, str]:
 
 
 def capture_git_source(store: GitStore, commit_oid: str) -> tuple[str, dict[str, bytes]]:
-    """The new workflow owner always selects exact reviewed batch60/cleanup5 capture.
+    """The workflow owner selects the measured two-process60/cleanup5 capture policy.
 
     No callback, legacy selection or cached capture crosses an effect boundary.
     SourceCaptureUnavailable remains an infrastructure error for the reader.

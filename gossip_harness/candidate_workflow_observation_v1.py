@@ -565,7 +565,8 @@ class WorkflowObservationSource:
         try:
             return self._observation(gate, freeze)
         except (execution.ExecutionUnknown, execution.chain.ChainUnknown, admission.AdmissionUnavailable,
-                capture_policy.SourceCaptureUnavailable, OSError, subprocess.SubprocessError, GitError) as error:
+                capture_policy.SourceCaptureUnavailable, execution.source_capture.SourceCaptureUnavailable,
+                OSError, subprocess.SubprocessError, GitError) as error:
             raise AuthorityUnavailable(str(error)) from error
         except AuthorityError:
             raise

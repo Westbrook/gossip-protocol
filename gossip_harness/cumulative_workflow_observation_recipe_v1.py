@@ -17,7 +17,7 @@ from . import candidate_workflow_profile_v1 as profile
 from . import candidate_workflow_review_v1 as review
 from . import candidate_observation_admission_v1 as admission
 from . import candidate_scope_consumer_v1 as consumer
-from . import candidate_source_capture_policy_v1 as capture
+from . import candidate_source_capture_policy_v2 as capture
 from . import cumulative_scope_source_v3 as scope_source
 from . import cumulative_workflow_exposure_v1 as exposure
 from .candidate_checkpoint_head_v1 import ExternalHead
@@ -67,9 +67,9 @@ def _source(store: GitStore, commit_oid: str, tree_oid: str,
             'Exact source store and reviewed workflow plan required')
     require(store.head() == commit_oid == plan.commit_oid,
             'Recipe source is not the current protected final Git head')
-    require(type(execution.SOURCE_CAPTURE_POLICY) is capture.BatchCapturePolicy
-        and execution.SOURCE_CAPTURE_POLICY == capture.BatchCapturePolicy(),
-        'Exact fixed batch source-capture policy required')
+    require(type(execution.SOURCE_CAPTURE_POLICY) is capture.TwoProcessCapturePolicy
+        and execution.SOURCE_CAPTURE_POLICY == capture.TwoProcessCapturePolicy(),
+        'Exact fixed two-process source-capture policy required')
     tree, files = execution.capture_git_source(store, commit_oid)
     require(tree == tree_oid == plan.tree_oid and admission.source_sha256(files) == plan.source_sha256,
             'Recipe final Git tree or complete common source differs')

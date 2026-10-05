@@ -1,0 +1,85 @@
+{
+  "protocol": "workflow-two-process-adoption-checkpoint-v1",
+  "at_utc": "2026-10-05T01:16:51.132128+00:00",
+  "status": "nearest_passed_broad_and_physical_pending",
+  "changed_files": {
+    "gossip_harness/candidate_workflow_execution_v1.py": {
+      "before": "20e544a89e3d1b1ff69a30a3e51fbdcb704259a4986fb22719f7e0032c9c4134",
+      "after": "0a4f749d2ac1a75f553ac95d3303417a89b0e1f9c98d72a1eba4cef9e38a9ea9"
+    },
+    "gossip_harness/candidate_workflow_review_v1.py": {
+      "before": "10b3004759e97ed550f8ace5360387c9429844c6cc54a44a69b9d804cb028a5a",
+      "after": "ae61c897100c89f2674beb0a2d59593de51648eb0a1032a8475485045c7bed51"
+    },
+    "gossip_harness/cumulative_workflow_observation_recipe_v1.py": {
+      "before": "e787426b66c7c42e4888450130ebf35054ce7cc0b517d33fe56a45b465b9f044",
+      "after": "7da436bb180f23d7b0ed20cf5ae15ce2e4f5b44b5681d563747795c50627e66c"
+    },
+    "gossip_harness/candidate_workflow_observation_v1.py": {
+      "before": "c7ae8ca108118c7a02d6d13b8796c98fa3e6b60c7e42319e4fee3cbf9c761657",
+      "after": "045463f6fd5190663904dfcd812c3d39d378a164c1f7b0ff3a8a802f90acbbcb"
+    },
+    "gossip_harness/cumulative_final_acceptance_v1.py": {
+      "before": "8e6a767c8076d5b71c68cdc5c099dea1e17b6eda4e9fd54d8c1cd2400b1f02ce",
+      "after": "249f3b58e5a4f38d662ac5061a365414a2315ff2c8393ccc2353062fe77d2b20"
+    },
+    "tests/test_cumulative_workflow_recipe_v1.py": {
+      "before": "36b7ab080b788bdd94710516ed3eea3c88060089599a2951ae4d1d35dfcda33d",
+      "after": "3878a5c17fc83ec195348dee0fbcd6cd0d1b591eae1a8470af0c6464541bae1a"
+    },
+    "tests/test_candidate_workflow_observation_v1.py": {
+      "before": "9e59f8b2bda42d83f6d73c7c124a0f528e28ff6238701b8804855b47a0bbecc8",
+      "after": "a35600386bfa9734e8e6454e93eb15ae6d0677358a39b1c0800668cfa3b4b1d3"
+    },
+    "tests/test_cumulative_final_acceptance_v3.py": {
+      "before": "a712d2fb8e4100bcccddba36092c3c2c14d88654892aed7ce71bdd291ef321d8",
+      "after": "b2f8655814c933be1d931892cee97a3abb0b3229481938f04cbad7821e752642"
+    }
+  },
+  "decision_evidence": "analysis/source-capture-comparison-v1.json",
+  "measured_fixed_fixture_median_seconds": {
+    "original": 0.6221779169999999,
+    "two_process": 0.3080056245
+  },
+  "adoption": "Workflow execution, host inspection and recipes now require explicit versioned two-process policy. Capture errors from either policy remain operationally unavailable. Evaluator source closure includes the successor policy and helper. Existing deadlines, size limits and fresh reads remain.",
+  "verification": {
+    "session": "runs/workflow-two-process-nearest-1/20261005T011237-bf498518",
+    "session_id": 94252,
+    "exit_code": 0,
+    "physically_executed": 83,
+    "reused": 0,
+    "selected_classes": 6,
+    "static_passed": true,
+    "baseline_existing_type_diagnostics": 117,
+    "source_inputs": 732,
+    "source_inputs_match": true,
+    "runtime_matches": true,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "duration_seconds": 175.79858441557735,
+    "fingerprint": "e3c4c7fe6943793e4f57043dfb215ba7f6665b9df18f340b386c6715089ef347",
+    "summary_sha256": "32e629ede2d3a0a4a8ab6f11e3531db2fbd212b7af4c9e4b1f89020730f6c374",
+    "inputs_sha256": "3cd44c52c30d58ed60acdf112b965cd1b0186d1ab2a5c139f475dfb9a35915a4",
+    "class_counts": {
+      "tests/test_candidate_workflow_execution_v1.py::CandidateWorkflowExecutionTests": 27,
+      "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowCaptureSelectionTests": 4,
+      "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowObservationTests": 11,
+      "tests/test_candidate_workflow_observation_v1.py::CandidateWorkflowOriginalReaderTests": 18,
+      "tests/test_cumulative_final_acceptance_v3.py::CumulativeFinalAcceptanceV3Tests": 13,
+      "tests/test_cumulative_workflow_recipe_v1.py::CandidateWorkflowGitCompositionTests": 10
+    }
+  },
+  "regressions": [
+    "Both actual workflow capture entrypoints launch exactly two Git children and return exact original source.",
+    "Recipe records bind successor policy and both its helper files; substituting old policy is rejected.",
+    "Old and new capture failures normalize to infrastructure unavailability in workflow and final readers."
+  ],
+  "remaining": [
+    "Current-source648-method affected offline gate; exact six nearest class receipts are eligible for reuse if fingerprints remain equal.",
+    "Declared38workflow and6shared transport Docker controls; last attempt remains1failed/37not_run and shared6deferred.",
+    "Complete semantic scope and actual reviewer-test execution, followed by matching full rehearsal and authorized live comparison."
+  ],
+  "new_model_quality_samples": 0,
+  "no_api_calls": true,
+  "publication": "Local commit only; provider/public-disclosure holds unchanged."
+}

@@ -49,6 +49,17 @@ class ByteOwner:
 
 
 class CandidateWorkflowObservationTests(unittest.TestCase):
+    def test_both_source_transport_failures_are_operationally_unavailable(self):
+        source = object.__new__(observer.WorkflowObservationSource)
+        for error_type in (observer.capture_policy.SourceCaptureUnavailable,
+                           execution.source_capture.SourceCaptureUnavailable):
+            failure = error_type('source transport incomplete')
+            with self.subTest(error_type=error_type.__module__), mock.patch.object(
+                    source, '_observation', side_effect=failure):
+                with self.assertRaises(observer.AuthorityUnavailable) as raised:
+                    source.observation(None, None)
+                self.assertIs(raised.exception.__cause__, failure)
+
     def test_engine_request_and_full_response_are_bound(self):
         path = '/exec/' + 'e' * 64 + '/json'
         records = {'x-request.bin': execution.process._request('GET', path), 'x-response.bin': http_original(exec_value())}
