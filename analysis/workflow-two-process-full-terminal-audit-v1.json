@@ -1,0 +1,54 @@
+{
+  "protocol": "workflow-two-process-full-terminal-audit-v1",
+  "audited_at_utc": "2026-10-05T01:41:40.157007+00:00",
+  "status": "passed",
+  "audit_owner": "root; receipt reconciliation, not independent scientific acceptance",
+  "read_only_assertions": 1065,
+  "session_id": 88949,
+  "execution_exit_code": 0,
+  "receipt_directory": "runs/workflow-two-process-nearest-1/20261005T011749-c4d5beb2",
+  "source_commit": "a67359e9076ebf116f1d47756b506bde51670b63",
+  "selected": 648,
+  "selected_classes": 63,
+  "outcomes": {
+    "passed": 648
+  },
+  "physically_executed": 565,
+  "reused": 83,
+  "workers_started": 57,
+  "reused_classes": 6,
+  "reuse_origins": [
+    "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-two-process-nearest-1/20261005T011237-bf498518/summary.json"
+  ],
+  "duration_seconds": 1369.195185707882,
+  "fingerprint": "e3c4c7fe6943793e4f57043dfb215ba7f6665b9df18f340b386c6715089ef347",
+  "inputs_sha256": "3cd44c52c30d58ed60acdf112b965cd1b0186d1ab2a5c139f475dfb9a35915a4",
+  "summary_sha256": "f609b3a40c1a6a4694a77e41e7b3a313e8a7687ba72ba25eb18fce32ee87660a",
+  "static_sha256": "6c3ae2ca2e8ef1a81bcc8e9e179f1cc177523e8f2d4f8b30ee4046c6cf66da17",
+  "source_input_count": 732,
+  "all_current_source_inputs_match": true,
+  "stale_inputs": false,
+  "stale_runtime": false,
+  "runtime_reconciliation": {
+    "final_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "initial_sha256": "68ed20be52f8081daf402b095cb298021d53b7b37b2b23b21e7f6bd1ecf3ebdc",
+    "matches": true
+  },
+  "static_passed": true,
+  "accepted_existing_type_debt": 117,
+  "new_model_quality_samples": 0,
+  "physical_next": {
+    "plan": "/private/tmp/workflow-two-process-physical-selection-1.json",
+    "plan_sha256": "365f42084670e1eb86f33023841a68d7d2265f0b4f5c373e273c9a48e4f964c6",
+    "workflow": 38,
+    "shared_transport": 6,
+    "status": "not_yet_executed"
+  },
+  "limits": [
+    "Affected offline suite only; not all5501 discovered tests or Docker qualification.",
+    "83results explicitly reused from exact same source/config/runtime/input identity and ordered per-class tests; original execution linked.",
+    "Existing117type diagnostics remain accepted baseline; do not claim all legacy functions type-safe.",
+    "No new live model-quality observations or statistical proof about gossip.",
+    "Historical workflow failure remains preserved; one changed-source physical qualification is now justified."
+  ]
+}
