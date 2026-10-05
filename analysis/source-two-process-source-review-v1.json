@@ -1,0 +1,149 @@
+{
+  "acceptance": false,
+  "author_handoff": {
+    "bytes": 4808,
+    "path": "/private/tmp/workflow-source-two-process-draft-1/AUTHOR-HANDOFF-1.json",
+    "sha256": "6fb6b01ff402433104f852f1285fd55eb1cc17ada1e64822dad2137d41376373"
+  },
+  "config_checked": {
+    "added_class_records": [
+      "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1Tests",
+      "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1GitTests",
+      "tests/test_candidate_git_source_two_process_v1.py::CandidateSourceCapturePolicyV2Tests"
+    ],
+    "added_strict_type_roots": [
+      "gossip_harness/candidate_git_source_two_process_v1.py",
+      "gossip_harness/candidate_source_capture_policy_v2.py"
+    ],
+    "base_hashes_match_current_root": true,
+    "old_records_and_other_manifest_fields_unchanged": true,
+    "only_toml_changes": "Two roots plus new override matching v1: disallow_untyped_defs, disallow_any_generics, warn_return_any.",
+    "prior_ordered_type_roots_preserved": true
+  },
+  "config_pins": [
+    {
+      "bytes": 669200,
+      "path": "/private/tmp/workflow-source-two-process-root-config-1/verification-manifest.json",
+      "sha256": "8cd3c1d7b6c6d310e0f052e6c32b54cf95f79303585303c744239b07a171028c"
+    },
+    {
+      "bytes": 15616,
+      "path": "/private/tmp/workflow-source-two-process-root-config-1/pyproject.toml",
+      "sha256": "a3ce65444d696566a6b841b2e8b90c750eea7c12b7058ea11c63ac3fa8b7c931"
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "This clears source/config coherence only. Real protocol behavior, all test outcomes, performance and actual cleanup require root verification; nothing was executed here.",
+    "No existing/default caller adopts the helper or policy. No workflow/Docker/candidate behavior, eligibility, scientific acceptance, reuse credit or speedup is established.",
+    "Full existing receipt identities remain distinct; proposed targeted verification is appropriate to the unused primitive/policy plus its frozen dependency, not a claim about later adopter scope."
+  ],
+  "prior_production_review": {
+    "bytes": 6742,
+    "path": "/private/tmp/workflow-source-two-process-source-review-1.json",
+    "sha256": "c8e44024b4004feaf7337acb8339de678ee6de4b12702a290bf95f6074f2b1b7"
+  },
+  "production_reuse": "Helper remains exact reviewed da4b55f9...; policy remains exact a4b72e39... annotation-only successor. Prior production review applies unchanged.",
+  "protocol": "workflow-source-two-process-final-source-review-v1",
+  "qualification": false,
+  "resolved_coverage_observation": {
+    "after_sha256": "694c12ccef61b6e25b88d16d1ccb8b92d290131a6ae1ad322794b4c1f71c7ab1",
+    "before_sha256": "c310c51351e5231b0ca03668f34da582d02b8714ddff33d8f452f5d49139762d",
+    "detail": "New early stdout/stderr EOF injection exposes empty output while stdin is still open and child poll remainsNone. It requires the early-EOF error, no contents dispatch, one kill/reap, selector release, and all pipes closed. This covers the genuine interactive-state branch missing from the prior truncation mocks."
+  },
+  "review_scope": "Source/JSON/hash/AST inventory only; no project imports, execution, tests, checkers, Git subprocess, Engine/provider call or repository edits.",
+  "reviewed_at_utc": "2026-10-05T00:56:20.213175+00:00",
+  "root_config_handoff": {
+    "bytes": 986,
+    "path": "/private/tmp/workflow-source-two-process-root-config-1/handoff.json",
+    "sha256": "fd9a2bc4a7881ddc96394e7c0493c38b303f8616300bb2f1ef51d318651fb606"
+  },
+  "scientific_samples": 0,
+  "source_pins": [
+    {
+      "bytes": 12949,
+      "path": "/private/tmp/workflow-source-two-process-draft-1/gossip_harness/candidate_git_source_two_process_v1.py",
+      "sha256": "da4b55f9f4b85ac719e188705685c72145c6f43d7321141aa6e5d8c24e63c660"
+    },
+    {
+      "bytes": 5231,
+      "path": "/private/tmp/workflow-source-two-process-draft-1/gossip_harness/candidate_source_capture_policy_v2.py",
+      "sha256": "a4b72e39e51fac876e968a9ba9b4d4eb7c8ae0a6443cc7716d6a3c6ef9c985c2"
+    },
+    {
+      "bytes": 40627,
+      "path": "/private/tmp/workflow-source-two-process-draft-1/tests/test_candidate_git_source_two_process_v1.py",
+      "sha256": "694c12ccef61b6e25b88d16d1ccb8b92d290131a6ae1ad322794b4c1f71c7ab1"
+    }
+  ],
+  "status": "source_cleared_for_root_coherent_integration_and_nearest_verification",
+  "test_inventory": {
+    "CandidateGitSourceTwoProcessV1GitTests": [
+      "test_real_git_matches_legacy_binary_unicode_executable_and_path_edges",
+      "test_each_capture_launches_exactly_two_git_children_and_rechecks_source",
+      "test_large_commit_message_does_not_consume_blob_content_budget",
+      "test_empty_subtree_preserves_root_tree_identity",
+      "test_annotated_tag_tree_blob_and_empty_commit_are_rejected",
+      "test_sha256_repository_and_identity_are_unsupported",
+      "test_private_symlink_gitlink_and_oversized_blob_are_rejected",
+      "test_missing_blob_is_rejected",
+      "test_inherited_git_redirects_and_replacements_cannot_change_capture"
+    ],
+    "CandidateGitSourceTwoProcessV1Tests": [
+      "test_protocol_bounds_and_error_classes_preserve_legacy_contract",
+      "test_public_capture_uses_one_listing_and_one_interactive_child",
+      "test_safe_git_arguments_and_scrubbed_environment_reach_child",
+      "test_partial_reads_and_writes_preserve_binary_frames",
+      "test_invalid_commit_and_deadline_reject_before_either_child",
+      "test_bad_complete_tree_rejects_before_interactive_child",
+      "test_file_count_limit_plus_one_precedes_interactive_dispatch",
+      "test_identity_and_info_framing_fail_before_any_contents_command",
+      "test_blob_and_aggregate_limits_precede_any_contents_command",
+      "test_exact_file_blob_and_aggregate_limits_are_admitted",
+      "test_aggregate_limit_plus_one_rejects_before_contents",
+      "test_large_commit_info_never_requests_commit_or_tree_contents",
+      "test_content_header_hash_length_newline_and_suffix_must_match",
+      "test_duplicate_blob_oid_still_returns_each_path",
+      "test_nonzero_exit_after_complete_output_is_not_success",
+      "test_early_stdout_or_stderr_eof_rejects_info_phase_and_releases_child",
+      "test_stderr_bound_failure_reaps_child_and_closes_every_pipe",
+      "test_interruption_releases_owned_resources_and_preserves_exception",
+      "test_cleanup_failure_attempts_other_releases_and_cannot_certify_success",
+      "test_late_wait_cleanup_or_hash_cannot_return_success",
+      "test_listing_and_interactive_stage_share_one_absolute_deadline",
+      "test_selector_failure_precedes_spawn_and_spawn_failure_closes_selector"
+    ],
+    "CandidateSourceCapturePolicyV2Tests": [
+      "test_exact_fixed_policy_record_identifies_phase_order_and_limits",
+      "test_required_explicit_policy_rejects_none_foreign_and_subclass_before_dispatch",
+      "test_evaluator_sources_bind_policy_and_both_helpers",
+      "test_changed_limits_or_types_refuse_before_helper_dispatch",
+      "test_changed_loaded_source_refuses_before_helper_dispatch",
+      "test_explicit_policy_dispatches_freshly_with_fixed_timeout",
+      "test_malformed_metadata_and_cleanup_uncertainty_remain_unavailable"
+    ]
+  },
+  "test_source_conclusions": [
+    "22 inert transport methods cover public dispatch/order, hostile Git environment, partial reads/writes, binary/duplicate blobs, exact/over limits, bad identity/type/framing, no content before all sizes, nonzero exit, stderr bounds, body interruption, cleanup failures, late wait/cleanup/hash and one shared deadline.",
+    "7 policy methods cover fixed record, exact required type, source binding/drift, limit drift, fresh dispatch and unavailable lower-level errors. Their class runs isolated from transport/Git classes.",
+    "9 real-Git methods target legacy byte equality, exactly two fresh children/source changes, large commit messages, empty subtrees, tags/tree/blob/empty source rejection, SHA256 rejection, unsafe paths/oversize, missing blob and Git redirection/replacement suppression.",
+    "Real-Git fixture setup uses timeout60 and unique temporary repositories. No candidate modules, Docker or provider work is invoked by these classes.",
+    "Assertions test contract regressions. No erroneous test was found and no further implementation-mirroring expansion is requested."
+  ],
+  "total_methods": 38,
+  "verification_scope": {
+    "global_static_required": true,
+    "lanes": [
+      "fast",
+      "git"
+    ],
+    "nearest_selectors": [
+      "tests/test_candidate_git_source_two_process_v1.py",
+      "tests/test_candidate_git_source_batch_v1.py"
+    ],
+    "new_class_records_complete": true,
+    "owner": "root",
+    "runtime_status": "Not executed by this review; root-owned result pending.",
+    "workers": 4
+  }
+}

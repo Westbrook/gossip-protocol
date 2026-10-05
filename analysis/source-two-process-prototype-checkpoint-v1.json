@@ -1,0 +1,103 @@
+{
+  "protocol": "source-two-process-prototype-checkpoint-v1",
+  "created_at_utc": "2026-10-05T01:00:52.722545+00:00",
+  "status": "unused_opt_in_component_verified",
+  "base_commit": "6f7841d7f0f5989f63516e85fe51c5dc3ea43f9d",
+  "implementation": [
+    {
+      "path": "gossip_harness/candidate_git_source_two_process_v1.py",
+      "bytes": 12949,
+      "sha256": "da4b55f9f4b85ac719e188705685c72145c6f43d7321141aa6e5d8c24e63c660"
+    },
+    {
+      "path": "gossip_harness/candidate_source_capture_policy_v2.py",
+      "bytes": 5231,
+      "sha256": "a4b72e39e51fac876e968a9ba9b4d4eb7c8ae0a6443cc7716d6a3c6ef9c985c2"
+    },
+    {
+      "path": "tests/test_candidate_git_source_two_process_v1.py",
+      "bytes": 40627,
+      "sha256": "694c12ccef61b6e25b88d16d1ccb8b92d290131a6ae1ad322794b4c1f71c7ab1"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 15616,
+      "sha256": "a3ce65444d696566a6b841b2e8b90c750eea7c12b7058ea11c63ac3fa8b7c931"
+    },
+    {
+      "path": "verification-manifest.json",
+      "bytes": 669200,
+      "sha256": "8cd3c1d7b6c6d310e0f052e6c32b54cf95f79303585303c744239b07a171028c"
+    }
+  ],
+  "verification": {
+    "physically_executed": 64,
+    "reused": 0,
+    "new_component_methods": 38,
+    "frozen_component_methods": 26,
+    "selected_classes": 5,
+    "session": "runs/source-two-process-offline-1/20261005T005800-728c5fd2",
+    "session_id": 47472,
+    "exit_code": 0,
+    "duration_seconds": 50.79322333354503,
+    "fingerprint": "5bd26655f98789d68bb85a39a4be5753d80528805e7dbac6273600e1277de006",
+    "source_inputs": 732,
+    "source_inputs_match_at_checkpoint": true,
+    "stale_inputs": false,
+    "stale_runtime": false,
+    "static_status": "passed",
+    "static_baseline_debt": 117,
+    "peak_resource_tokens": 3,
+    "artifacts": [
+      {
+        "path": "runs/source-two-process-offline-1/20261005T005800-728c5fd2/summary.json",
+        "bytes": 43782,
+        "sha256": "99b6cb930091be98676f3619374ec0968941f42226ffdedfced1e96d0510e5d4"
+      },
+      {
+        "path": "runs/source-two-process-offline-1/20261005T005800-728c5fd2/inputs.json",
+        "bytes": 87352,
+        "sha256": "b7692359ffa990860267ff43b2b3ad73006ac33bb669a26a722340e93e99bdfb"
+      },
+      {
+        "path": "runs/source-two-process-offline-1/20261005T005800-728c5fd2/static.json",
+        "bytes": 104015,
+        "sha256": "6768b57891be185a62f2419b576c80b8c33fb38e5dae46721c3f6f5a89f380b9"
+      }
+    ]
+  },
+  "source_review": {
+    "path": "/private/tmp/workflow-source-two-process-source-review-2.json",
+    "bytes": 8775,
+    "sha256": "54f9491ceba6a7f9ea55e0a2dc06cf3775b93149c204fb3796c50fa3363b4caf"
+  },
+  "scientific_status": {
+    "new_model_quality_samples": 0,
+    "latest_live_study_finished_utc": "2026-10-02T20:51:58.734056+00:00",
+    "hard_task_portfolio_accepted": {
+      "accepted": 0,
+      "planned": 6
+    },
+    "hard_task_strong_builder_accepted": {
+      "accepted": 3,
+      "planned": 6
+    },
+    "gossip_vs_orchestrator_isolated": false,
+    "twenty_role_live_quality_result": false
+  },
+  "limits": [
+    "New helper and exact policy are unused opt-ins; frozen defaults and workflow callers remain unchanged.",
+    "This focused gate validates the component and frozen comparison module, not the complete combined workflow.",
+    "No measured speedup yet. The fixed8-pair public-wrapper comparison is being prepared.",
+    "Last workflow Docker qualification remains1failed/37not_run;6shared transport controls remain deferred. No unchanged failure retry.",
+    "Prior647-method broad pass is historical on its exact earlier source, not reused as current combined-tree acceptance.",
+    "117 preexisting type diagnostics remain bound to the existing baseline; static pass does not prove every legacy function type-safe.",
+    "Reviewer-proposed tests still require candidate/merged-source execution and selection integration.",
+    "No provider call or remote push; prior external disclosure review rejections and pending questions remain."
+  ],
+  "next": [
+    "Run reviewed predetermined paired component comparison on the retained fixture without profiler hooks.",
+    "Only if justified, explicitly adopt versioned policy then run affected offline and declared physical coverage; retain deadlines and full scope.",
+    "Continue actual test-harvesting execution and complete matched rehearsal before live comparisons."
+  ]
+}

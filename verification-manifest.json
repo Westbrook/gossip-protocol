@@ -6852,6 +6852,42 @@
       "overlap_reason": "Previously held workflow checks constructed specifications manually and did not call either actual recipe builder or disk codec.read.",
       "timeout_seconds": 600,
       "weight": 1
+    },
+    "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "invariant": "Two sequential Git children preserve complete bounded frames, metadata-before-content admission, one absolute deadline and independent owned-resource cleanup.",
+      "isolation": "class process; bounded transport and framing faults with separately owned short helper processes",
+      "boundary": "Versioned source-capture primitive only; no Docker, candidate module execution, provider work or product acceptance.",
+      "distinct_defect": "Phase confusion, partial or excess output, late completion and cleanup exceptions cannot certify source or leave owned resources unreleased.",
+      "overlap": "New interactive transport controls; unchanged legacy release and parser controls are reused by source and separately regressed.",
+      "overlap_reason": "Holding cat-file open across validated metadata and content phases introduces state absent from the four-child reader.",
+      "disposition": "Run static and nearest offline checks before opt-in adopter changes or timing comparison; no workflow qualification inferred."
+    },
+    "tests/test_candidate_git_source_two_process_v1.py::CandidateGitSourceTwoProcessV1GitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 300,
+      "invariant": "Two fresh sequential Git processes return exactly the eligible commit tree and blob bytes without cross-capture caching or narrower candidate scope.",
+      "isolation": "class process; unique temporary Git fixtures and real fresh object reads",
+      "boundary": "Actual Git metadata/content equality, path/object rejection and independent source refresh; no candidate behavior or Docker.",
+      "distinct_defect": "Tag or SHA256 admission, changed object bytes, Git redirection, hidden or nonordinary paths, and altered content limits must not bypass exact source validation.",
+      "overlap": "Legacy equivalence is checked on shared fixtures; these are correctness observations, not performance or project-quality samples.",
+      "overlap_reason": "Different Git command topology must preserve large commit-message and empty-subtree behavior as well as ordinary source limits.",
+      "disposition": "Root owns central verification and later controlled component comparison; adopter and physical qualification remain separate."
+    },
+    "tests/test_candidate_git_source_two_process_v1.py::CandidateSourceCapturePolicyV2Tests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 120,
+      "invariant": "Only the exact declared two-process policy with bound helper sources, wire limits and unchanged60/5 limits can select the new capture.",
+      "isolation": "class process; scoped source/policy mutations with no live Git or Docker dispatch",
+      "boundary": "Explicit opt-in policy identity and error propagation; frozen v1 defaults remain separate.",
+      "distinct_defect": "Wrong policy types, stale helper bytes, constant drift, lower-level incomplete capture and accidental fallback cannot pass closed policy admission.",
+      "overlap": "Policy binding differs from the transport and real-Git controls.",
+      "overlap_reason": "An unused helper does not change execution; the explicit policy must carry the intended new protocol without silently changing v1.",
+      "disposition": "Nearest static/fast before any prospective workflow adoption; no scientific acceptance or receipt reuse credit."
     }
   },
   "audit": {
