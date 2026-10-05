@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T044748-c11f75ec/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-18oyb7mk/lookup-before-token-WF16-absent-token-and-hook-distinction",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "a961c30bb6ef84762219e00d6e76885c95c0577d7928d9c45e810db3396e47ea",
+        "external_bytes": 107931,
+        "head_sha256": "8c9fa8b2af2d280526d60456a923bffc9a981199d5b0fa79ceea804e3e5fe0f6",
+        "raw_bytes": 770053,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.564629999,
+          "checkpoint": 14.900215998,
+          "control": 3.592937419,
+          "current": 20.303503096,
+          "effect": 0.010530075,
+          "queue": 0.323703834,
+          "runtime": 1.007226292,
+          "source": 6.704626162,
+          "teardown": 0.104685667,
+          "write": 0.031515293
+        },
+        "inclusive_seconds": {
+          "capture": 25.7812445,
+          "checkpoint": 14.900215998,
+          "control": 27.098846583,
+          "current": 27.008129258,
+          "effect": 33.98978554,
+          "queue": 0.323703834,
+          "runtime": 1.007226292,
+          "source": 6.704626162,
+          "teardown": 4.1785705,
+          "write": 5.741878043
+        },
+        "instrumented_union_seconds": 47.543573835,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T044748-c11f75ec/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-18oyb7mk/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-3f2b807231e24eeeb0820d466eb6eade-timings.json",
+        "sha256": "a0868019c75f565531646bc0a26c06d2c4807456daaeef99c6e26971bda521df",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.gossip-protocol-runs/20261005T044748-c11f75ec/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-18oyb7mk/fresh-reopen-inherited-text-persistence",
+      "control_status": "failed_infrastructure",
+      "original_prefix": {
+        "context_sha256": "d20127d924a5fe63f69e5148f7de9905533ced8de37654de8207c35fa8d5dea2",
+        "external_bytes": 119308,
+        "head_sha256": "5a205d4e00eee1fa3d7c1d439c0d94ec97c9d678d15832e48a8b208aa549bc43",
+        "raw_bytes": 937237,
+        "raw_file_count": 304,
+        "sequence": 304
+      },
+      "source_sha256": "96b4629a23786a6b70e9212959c8d0c8e652ee57e109d0549ef2c117cbfd477a",
+      "timings": {
+        "error_spans": [
+          {
+            "end_ns": 4528869983510708,
+            "parent": null,
+            "seq": 483,
+            "stage": "capture",
+            "start_ns": 4528865487991875,
+            "status": "error"
+          },
+          {
+            "end_ns": 4528869983481291,
+            "parent": 483,
+            "seq": 532,
+            "stage": "control",
+            "start_ns": 4528868715531125,
+            "status": "error"
+          },
+          {
+            "end_ns": 4528869983506458,
+            "parent": 483,
+            "seq": 543,
+            "stage": "effect",
+            "start_ns": 4528869983502125,
+            "status": "error"
+          }
+        ],
+        "exclusive_seconds": {
+          "capture": 0.482394128,
+          "checkpoint": 12.747665252,
+          "control": 5.911769823,
+          "current": 20.882733501,
+          "effect": 0.012881245,
+          "queue": 0.315753373,
+          "runtime": 1.034911126,
+          "source": 8.453671797,
+          "teardown": 0.0490995,
+          "write": 0.023291
+        },
+        "inclusive_seconds": {
+          "capture": 30.916720333,
+          "checkpoint": 12.747665252,
+          "control": 32.137444914,
+          "current": 29.336405298,
+          "effect": 35.213550294,
+          "queue": 0.315753373,
+          "runtime": 1.034911126,
+          "source": 8.453671797,
+          "teardown": 1.872009583,
+          "write": 3.718228082
+        },
+        "instrumented_union_seconds": 49.914170745,
+        "path": "/Users/westbrook/.gossip-protocol-runs/20261005T044748-c11f75ec/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-18oyb7mk/fresh-reopen-inherited-text-persistence/raw-workflow-d5e83a0ae0aa4097bb77ac27963781e8-timings.json",
+        "sha256": "07f10b25f151f1afb4b72560b86817d14643acf21235d1444de9d3c4837010b5",
+        "spans": 591,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 215,
+          "control": 35,
+          "current": 101,
+          "effect": 109,
+          "queue": 5,
+          "runtime": 12,
+          "source": 101,
+          "teardown": 3,
+          "write": 5
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": false,
+        "status": "infrastructure_error",
+        "unavailable": [
+          "call-000:Original evidence absent: call-000-result-runtime-after-verified.json,call-000-result-staging-after.json",
+          "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+        ]
+      }
+    }
+  ],
+  "interpretation": [
+    "The shallower layout did not produce a qualified whole-workflow run: one pass, one restart deadline failure,36 unrun.",
+    "Exact source/runtime inputs still match the audited775 offline gate. Original journals, terminal bindings and owned cleanup reconcile.",
+    "Host-side current checks and checkpoint time were much greater than in the preceding run. These separate historical runs do not isolate a cause or prove a layout regression/improvement.",
+    "Post-run load averages17.248/17.211/13.937 with18 logical CPUs are a later diagnostic snapshot, not proof of contention during the failed call.",
+    "No new model-quality observations; infrastructure failures remain unqualified and cannot be reused as correctness judgments."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Profile repeated whole-catalog construction inside case_definition. Test a fresh selected-definition prototype on every case for exact value equivalence before considering a versioned production change. Preserve source integrity, actual selected-case admission, full catalog API, deadlines and all previous failures.",
+  "outcomes": {
+    "failed": 1,
+    "not_run": 36,
+    "passed": 1
+  },
+  "protocol": "workflow-shallow-layout-physical-checkpoint-v1",
+  "retained_audit": {
+    "assertions": 4733,
+    "path": "runs/workflow-shallow-layout-physical-audit-1/audit.json",
+    "sha256": "c4969c84411deff437deaca3cb24aaf230822b0fcf61c6c8e1c6a05475343f9a"
+  },
+  "run": "/Users/westbrook/.gossip-protocol-runs/20261005T044748-c11f75ec",
+  "status": "failed_infrastructure",
+  "summary_sha256": "90d9712319150484a278eb861113d82889ccbee9ad03d7140573ff784296f773"
+}
