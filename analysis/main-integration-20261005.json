@@ -1,0 +1,80 @@
+{
+  "protocol": "main-integration-20261005-v1",
+  "created_at_utc": "2026-10-05T10:49:18.565419+00:00",
+  "purpose": "Consolidate existing development into main and preserve historical evidence before pruning merged branch names. This does not complete the scientific investigation.",
+  "previous_main": "00d51d1d662b81bfb1fa1a26504ab066a0c0eb65",
+  "fast_forward_head": "bf57b1227b0f038d9b1b83efd413a0567184c8c0",
+  "fast_forward_commits": 102,
+  "merged_development_tips": {
+    "codex/candidate-observation-bridge": "71fce44827f726f6e8af5dde248632ad49682608",
+    "codex/cumulative-acceptance-foundation": "0c815ef3bc9a0ef163a6b9dfdc3939966b8ad010",
+    "codex/cumulative-project-contract": "966e5f7ae0ae8c88b5192380d2340ceb6a41d982",
+    "codex/cumulative-rehearsal-readers": "bf57b1227b0f038d9b1b83efd413a0567184c8c0",
+    "codex/http-v3-qualification": "e8220a3a53a84681ed2b4fa2e71b4e7816dbc9bc"
+  },
+  "remaining_merge_parent": "0c815ef3bc9a0ef163a6b9dfdc3939966b8ad010",
+  "merge_resolution": {
+    "README.md": "Retain both streams and update stale running text to the retained terminal outcome.",
+    "verification-manifest.json": "Exact newer manifest plus twelve original Docker class records. Existing class policies unchanged."
+  },
+  "qualification": {
+    "summary": "runs/main-branch-integration-20261005-correct-lane/20261005T104617-c1fa30f4/summary.json",
+    "summary_sha256": "5cef97618aed31e764ceb8f1ae95c790a9a78d3a2e44a9bb44f4f707541c60ab",
+    "static_sha256": "4a59f10310d0b5c6e6bc68da2c6e676b7a0c5b8c89b5462bb1f611e46b7a2de1",
+    "inputs_sha256": "89ca11dc6c9cdf4c3a837f0d1ee40abd79fcff29c8ea46a4b95fbf377f838205",
+    "source_inputs": 769,
+    "fresh_checks": 2,
+    "reused_checks": 0,
+    "static_passed": true,
+    "inputs_and_runtime_match": true,
+    "complete_discovered_tests": 5796,
+    "new_docker_definitions_discovered": 12,
+    "physical_controls_run_during_merge": 0,
+    "limitation": "Targeted integration verification, not full-suite or full physical qualification."
+  },
+  "latest_corpus_qualification": {
+    "commit": "bf57b1227b0f038d9b1b83efd413a0567184c8c0",
+    "checkpoint": "analysis/generated-probe-corpus-offline-qualification-v1.json",
+    "fresh_checks": 110,
+    "receipt_reused_for_merged_tree": false,
+    "runtime_sources_unchanged_by_merge": true
+  },
+  "retained_initial_merge_verification_failure": {
+    "summary": "runs/main-branch-integration-20261005/20261005T104529-e02aa876/summary.json",
+    "cause": "Two fixtures-lane regressions were initially selected using fast; zero tests or static tools launched. Correct lane selected on next attempt."
+  },
+  "audit_environment_note": "An initial audit from the restricted shell correctly rejected the runtime-environment mismatch. This audit uses the same escalated environment as the recorded execution; exact runtime and input comparison passed. No tests rerun for this audit.",
+  "historical_physical_qualification": {
+    "workspace": "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol",
+    "summary": "runs/product-process-physical-v1-qualification-2/20261004T092236-3acddb2d/summary.json",
+    "summary_sha256": "8673141e112304c387efb898b57ca2a280609e4aec1610074f451b77bbfea2fc",
+    "outcomes": {
+      "failed": 1,
+      "not_run": 7,
+      "passed": 4
+    },
+    "test_source_sha256": "69190508d65c225d3eafd9b390a77dbe61934cb097f8cc68b7edd4eee9d40a9e",
+    "current_physical_qualification": false,
+    "meaning": "Four passes, one infrastructure failure, seven unrun. Historical observations remain source-bound and are not acceptance evidence for the merged tree."
+  },
+  "retention": {
+    "strategy": "Keep three evidence-bearing worktrees at original commits in detached HEAD state; remove only branch references proven ancestors of main.",
+    "worktrees": [
+      "/Users/westbrook/.codex/worktrees/cumulative-project-contract/gossip-protocol",
+      "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol",
+      "/Users/westbrook/.codex/worktrees/http-v3-qualification/gossip-protocol"
+    ],
+    "protected_remote_branches": [
+      "main",
+      "gh-pages"
+    ],
+    "raw_runs_deleted": false
+  },
+  "remote_sync": "Pending when this commit was prepared; canonical Progress Report records terminal push/prune outcome.",
+  "scientific_effect": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "new_spend": 0,
+    "whole_product_qualified": false
+  }
+}

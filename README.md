@@ -1309,6 +1309,13 @@ routes. Complete semantic scope, physical qualification and full rehearsal remai
 required. A separately frozen physical run failed its work-window guard; the
 original failure and independently verified cleanup are retained.
 
+The [twelve physical product controls](docs/product-process-physical-controls-v1.md)
+retain eight authored reference histories and four deliberate defects. Their
+historical corrected run ended with four passes, one infrastructure failure and
+seven unrun controls; it did not establish full physical qualification. The
+[initial failure and correction](analysis/product-process-physical-preliminary-checkpoint-v1.json)
+remain preserved. These are evaluator controls, not agent-quality samples.
+
 ## Research and review
 
 - `research.html`: initial evidence review and proposed harness architecture.
