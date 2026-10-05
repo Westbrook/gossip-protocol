@@ -1,0 +1,441 @@
+{
+  "audit_corrections": [
+    "First adaptation assumed all completed controls had no unavailable per-result slots. The intentional stop-after-error mutant has an authenticated one-result response, a concrete shape failure, and exactly six missing later result slots. Audit now checks that exact evidence; it never uses generic unavailability as detection.",
+    "Second adaptation assumed the timed-out case had no retained product observations. This later timeout occurred after response and capture work: eight fault discrepancies are retained, but the next-message acknowledgement and final completion are missing. Audit preserves partial observations, verifies incomplete phase/mechanics and denies completed qualification.",
+    "First and second failed audit drivers retained. No source, expected test result or original artifact was changed."
+  ],
+  "cases": [
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/lookup-before-token-WF16-absent-token-and-hook-distinction",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "a9eb2e1a475d4739339c741f090da18de7ba5e3223cb560d4d4518e32486ecec",
+        "external_bytes": 108083,
+        "head_sha256": "c70134500f65f19fb6ec1be0380069984cf5d81901f7da5863fb16d29ccb5e4d",
+        "raw_bytes": 770658,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "5e35997a6189108314b436d0aad0338567b5e81011c60513910a73d71893aed1",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.274455334,
+          "checkpoint": 6.580964211,
+          "control": 2.127163249,
+          "current": 7.99099474,
+          "effect": 0.006193713,
+          "queue": 0.182917082,
+          "runtime": 0.542064332,
+          "source": 2.4221848,
+          "teardown": 0.043753875,
+          "write": 0.019842751
+        },
+        "inclusive_seconds": {
+          "capture": 11.543565666,
+          "checkpoint": 6.580964211,
+          "control": 11.667379877,
+          "current": 10.41317954,
+          "effect": 13.253855671,
+          "queue": 0.182917082,
+          "runtime": 0.542064332,
+          "source": 2.4221848,
+          "teardown": 1.483494417,
+          "write": 2.099884083
+        },
+        "instrumented_union_seconds": 20.190534087,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/lookup-before-token-WF16-absent-token-and-hook-distinction/raw-workflow-4b9bddab367540798c575b44a55f37b8-timings.json",
+        "sha256": "f6e0da6d99dfa1fd4903e164129433c910b4865cd03feaa62eadaf1bb20b6b70",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/fresh-reopen-inherited-text-persistence",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "c5275fc65d20b5b2d2b978311dad55f1f220bd8aa4fa3f152f3360efe5d72c19",
+        "external_bytes": 126037,
+        "head_sha256": "5d7d02d3bd03c996915c527b06310181cd627a022a9b038fc9a79661816b0fc9",
+        "raw_bytes": 962877,
+        "raw_file_count": 321,
+        "sequence": 321
+      },
+      "source_sha256": "96b4629a23786a6b70e9212959c8d0c8e652ee57e109d0549ef2c117cbfd477a",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.360271457,
+          "checkpoint": 8.91852625,
+          "control": 2.557732336,
+          "current": 9.837050294,
+          "effect": 0.00760825,
+          "queue": 0.196796292,
+          "runtime": 0.68214921,
+          "source": 5.807199542,
+          "teardown": 0.042843874,
+          "write": 0.021580791
+        },
+        "inclusive_seconds": {
+          "capture": 18.014809876,
+          "checkpoint": 8.91852625,
+          "control": 16.105444084,
+          "current": 15.644249836,
+          "effect": 19.653887667,
+          "queue": 0.196796292,
+          "runtime": 0.68214921,
+          "source": 5.807199542,
+          "teardown": 1.678076833,
+          "write": 2.958468
+        },
+        "instrumented_union_seconds": 28.431758296,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/fresh-reopen-inherited-text-persistence/raw-workflow-19f42af16f804acb89b904d9536b6bdd-timings.json",
+        "sha256": "ee9884231d07876339356cc59152a898407e8e4a5ed4ac39dd6f99a254eedaaf",
+        "spans": 630,
+        "stage_counts": {
+          "capture": 5,
+          "checkpoint": 232,
+          "control": 35,
+          "current": 108,
+          "effect": 115,
+          "queue": 5,
+          "runtime": 13,
+          "source": 108,
+          "teardown": 2,
+          "write": 7
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/empty-export-is-all-WF10-defaults-and-export-selection",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "504a98fea0a6e7a119fd3fe691cfcb5fb4095de744c6751d6df38ba3964df1e3",
+        "external_bytes": 108078,
+        "head_sha256": "b3a288740adb1e81bc4cffe86041f9f3ee5df279893f31435f369f4aed82a1fc",
+        "raw_bytes": 789068,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "a75be39b40f9d252b6f2bfe8a67bba20b111d7327a8d787aaeebe94f5aef42a5",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.228650367,
+          "checkpoint": 6.758086043,
+          "control": 1.794702961,
+          "current": 8.622838088,
+          "effect": 0.006921124,
+          "queue": 0.218009916,
+          "runtime": 0.608309251,
+          "source": 2.461632458,
+          "teardown": 0.047333292,
+          "write": 0.019424124
+        },
+        "inclusive_seconds": {
+          "capture": 11.579402083,
+          "checkpoint": 6.758086043,
+          "control": 11.931583957,
+          "current": 11.084470546,
+          "effect": 14.030373835,
+          "queue": 0.218009916,
+          "runtime": 0.608309251,
+          "source": 2.461632458,
+          "teardown": 1.512079541,
+          "write": 2.213943293
+        },
+        "instrumented_union_seconds": 20.765907624,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/empty-export-is-all-WF10-defaults-and-export-selection/raw-workflow-e39e076828b34537bcac543136e8e63e-timings.json",
+        "sha256": "66b356f56cfd6ce2be9125a625cae3e54951e5e4e607bb0e06b408001e4b5a5f",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/unbounded-epoch-WF15-existing-job-token-domain",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "dbd43114c9b677c15df80ee477a30911241d9b212602a658ae55f6199c17852e",
+        "external_bytes": 108060,
+        "head_sha256": "7a15b319e7c57b106dbaa1a9b4b82326cde877708e86b136cbc557a2ef4c03c1",
+        "raw_bytes": 757446,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "56581547f9ce4119ccc221d39ec2f5122eea72983157bdea652494318f9231d6",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.227679245,
+          "checkpoint": 6.728973377,
+          "control": 1.863236835,
+          "current": 8.351294833,
+          "effect": 0.006366288,
+          "queue": 0.185368209,
+          "runtime": 0.618233751,
+          "source": 5.708704584,
+          "teardown": 0.050221542,
+          "write": 0.018931168
+        },
+        "inclusive_seconds": {
+          "capture": 13.176337124,
+          "checkpoint": 6.728973377,
+          "control": 12.073875377,
+          "current": 14.059999417,
+          "effect": 16.916187955,
+          "queue": 0.185368209,
+          "runtime": 0.618233751,
+          "source": 5.708704584,
+          "teardown": 1.638934958,
+          "write": 2.665071458
+        },
+        "instrumented_union_seconds": 23.759009832,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/unbounded-epoch-WF15-existing-job-token-domain/raw-workflow-1510547f2af4465b823537a78aacc345-timings.json",
+        "sha256": "5bf747f839f970154240dd863c57c7f7ae9265c736d42e6b7c7da341112f446a",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/stop-after-error-WF13-domain-errors-continue",
+      "control_status": "qualified_defect_control",
+      "original_prefix": {
+        "context_sha256": "e383297ad2aa158c41d285c5c7546343bd16b22f2b1b2c81954896399106677c",
+        "external_bytes": 108055,
+        "head_sha256": "ade4a964a8f880fa388a20f3521fea8755f7d35e0a1a9f1a61308796d22b163a",
+        "raw_bytes": 750741,
+        "raw_file_count": 275,
+        "sequence": 275
+      },
+      "source_sha256": "fd5e33959c0a2be51e8a6d125fd349ad82fdbec8c34d8d53cf3b1b2081c87e54",
+      "timings": {
+        "error_spans": [],
+        "exclusive_seconds": {
+          "capture": 0.238845375,
+          "checkpoint": 7.248803296,
+          "control": 1.824394837,
+          "current": 8.711127498,
+          "effect": 0.006984907,
+          "queue": 0.187865168,
+          "runtime": 0.604530249,
+          "source": 2.434109416,
+          "teardown": 0.048676168,
+          "write": 0.018034878
+        },
+        "inclusive_seconds": {
+          "capture": 12.151823833,
+          "checkpoint": 7.248803296,
+          "control": 12.060703,
+          "current": 11.145236914,
+          "effect": 14.24947266,
+          "queue": 0.187865168,
+          "runtime": 0.604530249,
+          "source": 2.434109416,
+          "teardown": 1.591607042,
+          "write": 2.299384127
+        },
+        "instrumented_union_seconds": 21.323371792,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/stop-after-error-WF13-domain-errors-continue/raw-workflow-59d389f5465e410a87f54e4a2b2c7130-timings.json",
+        "sha256": "89d1f0d9156660d70903bb6dd46a1180586f3061aa48201c67c62e1b7e772f8e",
+        "spans": 536,
+        "stage_counts": {
+          "capture": 4,
+          "checkpoint": 199,
+          "control": 30,
+          "current": 91,
+          "effect": 98,
+          "queue": 4,
+          "runtime": 11,
+          "source": 91,
+          "teardown": 2,
+          "write": 6
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": true,
+        "status": "passed",
+        "unavailable": []
+      }
+    },
+    {
+      "case": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/after-commit-fault-WF19-provisional-fault-boundary",
+      "control_status": "failed_infrastructure",
+      "original_prefix": {
+        "context_sha256": "4e4611db38d6d4ec5a86aeb4390f41cff15689348071902841cbf53818256e7d",
+        "external_bytes": 160187,
+        "head_sha256": "bfa96c469fb03a192d1f74ecd8267ebe9e9442c42fddd4d2db46e1b1cee091bc",
+        "raw_bytes": 1466100,
+        "raw_file_count": 408,
+        "sequence": 408
+      },
+      "source_sha256": "ea25abb15024302e99d62bd23969d27c7e2dcfb28570a465568144666ed9465a",
+      "timings": {
+        "error_spans": [
+          {
+            "end_ns": 4528045784436333,
+            "parent": null,
+            "seq": 742,
+            "stage": "write",
+            "start_ns": 4528045579386083,
+            "status": "error"
+          },
+          {
+            "end_ns": 4528045784432208,
+            "parent": 742,
+            "seq": 743,
+            "stage": "effect",
+            "start_ns": 4528045579387708,
+            "status": "error"
+          }
+        ],
+        "exclusive_seconds": {
+          "capture": 0.411818124,
+          "checkpoint": 14.108384131,
+          "control": 3.819248453,
+          "current": 12.871599871,
+          "effect": 0.010322423,
+          "queue": 0.232660541,
+          "runtime": 0.819113834,
+          "source": 6.628694914,
+          "teardown": 0.058521375,
+          "write": 0.02052054
+        },
+        "inclusive_seconds": {
+          "capture": 27.296512084,
+          "checkpoint": 14.108384131,
+          "control": 23.940913791,
+          "current": 19.500294785,
+          "effect": 26.025792915,
+          "queue": 0.232660541,
+          "runtime": 0.819113834,
+          "source": 6.628694914,
+          "teardown": 2.17950825,
+          "write": 3.389945416
+        },
+        "instrumented_union_seconds": 38.980884206,
+        "path": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415/classes/a00d1fd18849b5e5/artifacts/gossip-workflow-physical-CandidateWorkflowPhysicalDefectTests-n0e38e9y/after-commit-fault-WF19-provisional-fault-boundary/raw-workflow-c761d7471cdb4f37bd17e9fa44bd7f9c-timings.json",
+        "sha256": "50ccd8f7a51b38775adb1a2743e3d817cdaa1630245bc103d2cc0463d83ab6c9",
+        "spans": 794,
+        "stage_counts": {
+          "capture": 7,
+          "checkpoint": 289,
+          "control": 45,
+          "current": 137,
+          "effect": 144,
+          "queue": 7,
+          "runtime": 17,
+          "source": 137,
+          "teardown": 3,
+          "write": 8
+        }
+      },
+      "verifier_mechanics": {
+        "cleanup_verified": true,
+        "prestart_verified": true,
+        "session_complete": false,
+        "status": "infrastructure_error",
+        "unavailable": [
+          "call-000:Original evidence absent: call-000-next.json",
+          "completion:Original evidence absent: session-final-exec-request.bin,session-final-exec-response.bin"
+        ]
+      }
+    }
+  ],
+  "external_holds": [
+    "Public Git disclosure approval pending",
+    "Provider-project-material disclosure approval pending"
+  ],
+  "full_offline": {
+    "audit": "analysis/workflow-apple-git-full-terminal-audit-v1.json",
+    "fresh": 680,
+    "reused": 95,
+    "tests": 775
+  },
+  "interpretation": [
+    "Five declared defect controls qualified, including the formerly timing-out restart history.",
+    "A distinct later injected-fault history reached the unchanged observation deadline before call-000-next.json; no complete physical qualification.",
+    "The remaining32 workflow checks and shared6 were not run.",
+    "The timed-out history retains partial fault observations; those do not repair its missing completion or count as a scientific sample.",
+    "No direct randomized whole-workflow speedup claim from historical executions."
+  ],
+  "new_model_quality_samples": 0,
+  "next_action": "Measure fresh checkpoint reader ancestry cost on byte-identical corpora at original and shallow directory depths. Keep guards, current source, deadlines and originals unchanged. Diagnose before any new runtime layout or source change; no unchanged Docker retry.",
+  "outcomes": {
+    "failed": 1,
+    "not_run": 32,
+    "passed": 5
+  },
+  "protocol": "workflow-apple-git-physical-checkpoint-v1",
+  "retained_audit": {
+    "assertions": 13356,
+    "kind": "Root stdlib retained-source/runtime/journal/original/cleanup consistency audit, not independent scientific acceptance",
+    "path": "runs/workflow-apple-git-physical-audit-1/audit.json",
+    "sha256": "a7d88bdfbb976e8c10281651fcbe6071acb5a8f6853eef390b22765400efb837"
+  },
+  "run": "/Users/westbrook/.codex/worktrees/cumulative-reader-integration/gossip-protocol/runs/workflow-apple-git-physical-1/20261005T043305-99214415",
+  "status": "failed_infrastructure",
+  "summary_sha256": "8ac3f91b66be4c30538cdd44836e9abb4f90e53c5d2c267de919c55b1b9ea8dd"
+}
