@@ -7090,6 +7090,26 @@
       "overlap": "Extends source declarations with cross-package contexts; controller enrollment, budgets, original-derived conditional selection and real execution qualification remain separate.",
       "distinct_defect": "Anchor-added or deleted files leaking into an alternative, moving peers during comparison, omitted unsuccessful roles, unranked selection and equal-tree receipt borrowing.",
       "disposition": "Static plus fast/Git construction controls; no physical candidate execution or new model-quality sample."
+    },
+    "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests": {
+      "lane": "fast",
+      "weight": 1,
+      "timeout_seconds": 180,
+      "invariant": "Closed one-call ranking/probe definitions and exact predeclared controller/mesh/source/directive/original-finance joins; invalid reviewer data grants no endorsement, integrity failures abort and all roles remain counted.",
+      "isolation": "Worker-local inert Git and independently anchored real journals. Synthetic mesh/financial terminal responses are explicitly not full financial/runtime qualification; actual plan/source and original materialization checks run. No provider, candidate or Engine execution.",
+      "overlap": "Connects context construction to the existing runtime original-result verifier; does not activate the new policy, freeze cell budgets, conditionally select or run merged tests.",
+      "distinct_defect": "Retrospective legacy-review reinterpretation, wrong seeded roster, omitted frontier candidates, changed source/ledger, forged terminal materialization and malformed ranking fallback.",
+      "disposition": "Static then fast parser and Git/original composition controls; physical/successor/rehearsal qualification remains required."
+    },
+    "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests": {
+      "lane": "git",
+      "weight": 1,
+      "timeout_seconds": 600,
+      "invariant": "Closed one-call ranking/probe definitions and exact predeclared controller/mesh/source/directive/original-finance joins; invalid reviewer data grants no endorsement, integrity failures abort and all roles remain counted.",
+      "isolation": "Worker-local inert Git and independently anchored real journals. Synthetic mesh/financial terminal responses are explicitly not full financial/runtime qualification; actual plan/source and original materialization checks run. No provider, candidate or Engine execution.",
+      "overlap": "Connects context construction to the existing runtime original-result verifier; does not activate the new policy, freeze cell budgets, conditionally select or run merged tests.",
+      "distinct_defect": "Retrospective legacy-review reinterpretation, wrong seeded roster, omitted frontier candidates, changed source/ledger, forged terminal materialization and malformed ranking fallback.",
+      "disposition": "Static then fast parser and Git/original composition controls; physical/successor/rehearsal qualification remains required."
     }
   },
   "audit": {

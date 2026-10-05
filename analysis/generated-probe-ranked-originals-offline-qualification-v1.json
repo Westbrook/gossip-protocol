@@ -1,0 +1,134 @@
+{
+  "protocol": "generated-probe-ranked-originals-offline-qualification-v1",
+  "created_at_utc": "2026-10-05T09:05:27.683015+00:00",
+  "status": "PROSPECTIVE_ORIGINAL_JOIN_IMPLEMENTED_LEGACY_CONTROLLER_NOT_ACTIVATED",
+  "prior_commit": "58a4ff5d54d8cbe135af397b52ea6d8446504896",
+  "implemented": [
+    "Closed bounded one-call ranked-review schema: full candidate aliases, reasons and finite typed probe definitions; duplicate/wrong/unreleased definitions retained as generic rejections.",
+    "Prospective contract and exact ranked instructions must precede original role work. Legacy selected-actor responses/directives are not silently converted.",
+    "Read-only join over independently anchored controller originals, deterministic seeded result order, complete source/local views, exact mesh payloads and the existing runtime V5 terminal/known-failure verifier.",
+    "One-attempt directive allowance, exact role/package/generation/model-profile/path scope, source bytes, ledger inode identity, complete scoped frontier and directive/result chronology are checked.",
+    "Result-stage substitution reproduced and fixed: every builder stage and per-frontier grouped reviewer stage must match its actual directive context.",
+    "Complete builder/reviewer census normalized for context construction; malformed completed proposals cannot become eligible, malformed reviews give no endorsement, stopped/unknown roles remain counted, integrity failures propagate."
+  ],
+  "qualification": {
+    "summary": "runs/generated-probe-ranked-originals-offline-6/20261005T090241-36cf63bb/summary.json",
+    "summary_sha256": "b6fdea58569e3bb42691f98b47c5d4058dad161f6e9e29102adaa5b143190bb7",
+    "static_sha256": "87c383e9122d79581d12a49185725c18f6135c47e056878e8b5d81e78d981f7b",
+    "inputs_sha256": "671c5a47a836bd279731f806c9024a81a5bdd013ee3ad6890b15a9388eb2d4ff",
+    "runtime_sha256": "c4fd9b711ffdd16741d1c5032f719b344f85a501b2fd4d8a4ecda7a45c09c828",
+    "source_input_count": 761,
+    "tests_passed_fresh": 20,
+    "tests_reused": 0,
+    "duration_seconds": 60.81010800041258,
+    "receipts": [
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedDecisionTests",
+        "lane": "fast",
+        "tests": 8,
+        "result": "runs/generated-probe-ranked-originals-offline-6/20261005T090241-36cf63bb/classes/341c7faaa25eaac5/result.json",
+        "result_sha256": "488dc690d3ba9f715b053f64d7edf365e218a03ea69ad61a5327bf3f9729428a",
+        "log_sha256": "9b96ef066019952984efc014a16718557fedfe922e390c427e92c3f01a4cf5db",
+        "request_sha256": "ba4865b7a8b8391a9112d5a1df32a5e33a742d0c574b4861338dfcde74c4c9e7",
+        "execution": "Fresh verifier execution; synthetic mesh/financial originals, real inert Git/journals; no candidate/Engine/provider execution."
+      },
+      {
+        "class": "tests/test_cumulative_generated_probe_ranked_originals_v1.py::GeneratedProbeRankedOriginalGitTests",
+        "lane": "git",
+        "tests": 12,
+        "result": "runs/generated-probe-ranked-originals-offline-6/20261005T090241-36cf63bb/classes/2b84227c36ddde65/result.json",
+        "result_sha256": "7a5a913274b5eabe3bceb334a8c231c1b24ed4f31e21084ccac00b90832c201a",
+        "log_sha256": "2d03b06eec491109606f397ecf95dd5f86ee66b6404c07a531880fec80de3a9f",
+        "request_sha256": "b0c03cb7e50ecadfd03700028dc3780c338aa640d23eb419f25be546266392bb",
+        "execution": "Fresh verifier execution; synthetic mesh/financial originals, real inert Git/journals; no candidate/Engine/provider execution."
+      }
+    ]
+  },
+  "retained_failures": [
+    {
+      "summary": "runs/generated-probe-ranked-originals-offline-1/20261005T085551-be983bfa/summary.json",
+      "sha256": "a524bf7a1c50bed2021eab8ef3b34d7ba88ac1478389cd6bfc8c5bb68458dbc8",
+      "outcomes": {
+        "not_run": 18
+      },
+      "meaning": "Static error from reusing a delta variable name for a review object; fixed separate name."
+    },
+    {
+      "summary": "runs/generated-probe-ranked-originals-offline-2/20261005T085622-cc81097c/summary.json",
+      "sha256": "d65d4e9a7736dd37b15737af5703d86b97a946b54cbf61c92b7e4220f9bbb603",
+      "outcomes": {
+        "not_run": 18
+      },
+      "meaning": "Fixture imported Lease from a nonexistent module; fixed to actual ledger module."
+    },
+    {
+      "summary": "runs/generated-probe-ranked-originals-offline-3/20261005T085646-799213ab/summary.json",
+      "sha256": "ae1a5d751363a936e8e8b486c749b686bd6ce4e039af257518ad8c6698775f83",
+      "outcomes": {
+        "error": 1,
+        "not_run": 9,
+        "passed": 8
+      },
+      "meaning": "Source guard rejected a mocked plan validator. Removed the mock; actual plan/source validation now runs."
+    },
+    {
+      "summary": "runs/generated-probe-ranked-stage-negative-1/20261005T085830-f66867c4/summary.json",
+      "sha256": "b20394cc91370ad888005a0759007dce5f7ca1c075fd609f8ce5d0a97ee2c9a9",
+      "outcomes": {
+        "failed": 1
+      },
+      "meaning": "Real join defect: financially matching proposal with a foreign result-stage label was accepted. Added exact grouped-stage and directive chronology checks."
+    },
+    {
+      "summary": "runs/generated-probe-ranked-originals-offline-4/20261005T085947-567fb161/summary.json",
+      "sha256": "855bf4880cb7f70afa390c50294a2492542388ea5adeb5f63aadcb86b46e4aa1",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 9,
+        "passed": 9
+      },
+      "meaning": "Fixture incorrectly expected content writes to change ledger inode identity. Corrected it to preserve the old file and substitute a different inode."
+    },
+    {
+      "summary": "runs/generated-probe-ranked-originals-offline-5/20261005T090105-f069cfac/summary.json",
+      "sha256": "96c3efc7e8090ca0dde6ec57685a2526dfc2acccacca6164082b7ce2c9de8161",
+      "outcomes": {
+        "failed": 1,
+        "not_run": 9,
+        "passed": 9
+      },
+      "meaning": "Fixture expected the inner stale-prefix message; chain correctly escalated to ChainUnknown. Corrected expectation without changing the chain."
+    }
+  ],
+  "source_pins": {
+    "gossip_harness/cumulative_generated_probe_ranked_originals_v1.py": "099bf98c85f30641648076def812cc75ca1cfb7c4fd61560eeb74d7ef1705333",
+    "tests/ranked_originals_fixture_v1.py": "21c7cd966d0cf156cc8e91a92bc6f40c10a86b9b7d856f221cadf3d77b8ace85",
+    "tests/test_cumulative_generated_probe_ranked_originals_v1.py": "f5d5657106870b2de02092abf3490d7e211f741b4ba3a07b0fc313304477c485",
+    "pyproject.toml": "4f86b15cc795e313d98017d0e04f71f493dbfb147d57fc2a5a2f04c3d8ca15a9",
+    "verification-manifest.json": "9e1e63d69e02a80e100c5855fef3d64df783decc4f2be15e3ef280cbe0da491f"
+  },
+  "root_audit": {
+    "ordered_ast_request_result_match": true,
+    "result_and_log_hashes_match": true,
+    "all_current_inputs_match": true,
+    "runtime_matches": true,
+    "independent_review": false
+  },
+  "scope_limits": [
+    "The adapter does not install the new policy in the existing live controller. Its separate contract does not amend the frozen legacy selection policy or authorize scientific adoption.",
+    "Integration fixtures use synthetic mesh originals and mocked financial terminal-return values. The actual runtime verifier, plan/source checks, journals and Git capture run, but complete financial authority, live role processes and provider execution are not qualified by these tests.",
+    "A single-attempt directive and four published reviewer originals do not replace the full original financial-call census or complete study qualification.",
+    "Review parser limits are mandatory declaration inputs; fixture numbers allocate no live budget. Aggregate probe quotas, full carried-probe applicability/setup/cell census and capacity admission remain unfinished.",
+    "The returned context declaration is not durably frozen and grants no dispatch, candidate selection, exact-M acceptance, independent approval or promotion.",
+    "Controller successor activation, original-observation conditional selection, actual-context execution, fresh actual-M retest, physical controls/host faults, independent reviews, complete rehearsal and held-out live comparisons all remain required."
+  ],
+  "scientific_evidence": {
+    "new_model_quality_samples": 0,
+    "provider_calls": 0,
+    "candidate_executions": 0,
+    "new_spend": 0,
+    "statistical_superiority_established": false
+  },
+  "next_action": "Implement the versioned common-policy activation and durable generation/cell enrollment with complete applicability and aggregate budget. Join original probe-reader observations to simultaneous ranked choices; preserve fresh actual-M retesting, independent approvals, all physical qualifications, matching rehearsal and held-out comparisons.",
+  "external_holds": "Existing public-push/provider-disclosure automatic approval review rejections remain unresolved. No external disclosure or new paid call attempted."
+}
